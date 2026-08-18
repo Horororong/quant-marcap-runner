@@ -29,6 +29,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas pyarrow numpy tabulate
 
+      - name: Set analysis end date to 2026-08-18
+        run: |
+          sed -i "s/END = pd.Timestamp('2025-09-05')/END = pd.Timestamp('2026-08-18')/" analyze_marcap.py
+          sed -i "s/YEARS = range(1998, 2026)/YEARS = range(1998, 2027)/" analyze_marcap.py
+          grep -E "^(END|YEARS)" analyze_marcap.py
+
       - name: Run PIT analysis
         run: python analyze_marcap.py
 
@@ -40,7 +46,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No result changes"
           else
-            git commit -m "Update marcap PIT analysis results"
+            git commit -m "Update marcap PIT analysis results through 2026-08-18"
             git push
           fi
 
