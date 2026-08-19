@@ -8,8 +8,8 @@ on:
       - 'update_dart_financials.py'
       - '.github/workflows/update-quant-data.yml'
   schedule:
-    # 07:30 KST, Monday-Friday (22:30 UTC, Sunday-Thursday)
-    - cron: '30 22 * * 0-4'
+    # 03:00 KST every day = 18:00 UTC previous day
+    - cron: '0 18 * * *'
 
 permissions:
   contents: write
