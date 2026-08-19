@@ -2,6 +2,11 @@ name: Update quant data
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'update_public_data.py'
+      - 'update_dart_financials.py'
+      - '.github/workflows/update-quant-data.yml'
   schedule:
     # 07:30 KST, Monday-Friday (22:30 UTC, Sunday-Thursday)
     - cron: '30 22 * * 0-4'
