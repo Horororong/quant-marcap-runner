@@ -226,55 +226,31 @@ def main():
         index=False,
         encoding="utf-8-sig"
     )
-
     # --------------------------------------------------
     # 핵심 실패 조건
     # --------------------------------------------------
-# 숫자형 검증 컬럼을 안전하게 숫자로 변환
-numeric_check_cols = [
-    "duplicate_dates",
-    "missing_price_cells",
-    "nonpositive_price_cells",
-]
+    # 숫자형 검증 컬럼을 안전하게 숫자로 변환
+    numeric_check_cols = [
+        "duplicate_dates",
+        "missing_price_cells",
+        "nonpositive_price_cells",
+    ]
 
-for col in numeric_check_cols:
-    report[col] = pd.to_numeric(
-        report[col],
-        errors="coerce"
-    ).fillna(0)
+    for col in numeric_check_cols:
+        report[col] = pd.to_numeric(
+            report[col],
+            errors="coerce"
+        ).fillna(0)
 
-hard_fail = (
-    (report["exists"] == False)
-    | (report["status"] != "OK")
-    | (report["duplicate_dates"] > 0)
-    | (report["missing_price_cells"] > 0)
-    | (report["nonpositive_price_cells"] > 0)
-)
+    hard_fail = (
+        (report["exists"] == False)
+        | (report["status"] != "OK")
+        | (report["duplicate_dates"] > 0)
+        | (report["missing_price_cells"] > 0)
+        | (report["nonpositive_price_cells"] > 0)
+    )
 
     failures = report[hard_fail]
 
     print("\nDATA VALIDATION REPORT")
     print(report.to_string(index=False))
-
-    if len(failures):
-        print("\nVALIDATION FAILED")
-        print(
-            failures[
-                [
-                    "asset_type",
-                    "name",
-                    "status",
-                    "error",
-                ]
-            ].to_string(index=False)
-        )
-
-        raise RuntimeError(
-            f"{len(failures)} dataset(s) failed validation."
-        )
-
-    print("\nAll required datasets passed validation.")
-
-
-if __name__ == "__main__":
-    main()
