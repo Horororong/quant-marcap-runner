@@ -34,6 +34,10 @@ jobs:
         run: |
           python scripts/download_kr_etf.py
 
+      - name: Update long S&P 500 history
+        run: |
+          python scripts/download_sp500_long.py
+
       - name: Validate all data
         run: |
           python scripts/validate_all_data.py
