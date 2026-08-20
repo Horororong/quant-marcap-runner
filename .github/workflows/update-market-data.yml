@@ -22,8 +22,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pandas FinanceDataReader
-
+          pip install pandas finance-datareader
+          
       - name: Update public market and macro data
         run: |
           python update_public_data.py
