@@ -46,6 +46,10 @@ jobs:
         run: |
           python scripts/backtest_permanent_portfolio_long.py
 
+      - name: Plot permanent portfolio charts
+        run: |
+          python scripts/plot_permanent_portfolio_long.py
+          
       - name: Analyze permanent portfolio by decade
         run: |
           python scripts/analyze_permanent_portfolio_decades.py
