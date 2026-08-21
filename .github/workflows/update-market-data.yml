@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pandas finance-datareader yfinance
+          pip install pandas numpy finance-datareader yfinance xlrd
           
       - name: Update public market and macro data
         run: |
@@ -42,6 +42,10 @@ jobs:
         run: |
           python scripts/download_long_proxy_inputs.py
 
+      - name: Run long permanent portfolio backtest
+        run: |
+          python scripts/backtest_permanent_portfolio_long.py
+
       - name: Validate all data
         run: |
           python scripts/validate_all_data.py
@@ -51,11 +55,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/indices/ data/fx/ data/macro/ data/status/ data/etf_kr/ data/proxy_long/
+          git add data/indices/ data/fx/ data/macro/ data/status/ data/etf_kr/ data/proxy_long/ results/permanent_portfolio_long/
 
           if git diff --cached --quiet; then
             echo "No market data changes."
           else
-            git commit -m "Update market and macro data"
+            git commit -m "Update market data and long portfolio backtest"
             git push
           fi
