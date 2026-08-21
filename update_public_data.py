@@ -23,10 +23,11 @@ INDEX_SERIES = {
     'KOSPI': 'KS11',
     'KOSDAQ': 'KQ11',
     'KOSPI200': 'KS200',
-    # KQ150 is no longer routed correctly by current FinanceDataReader and
-    # falls through to Yahoo, where it returns 404. 2203 is the official
-    # KRX index code for KOSDAQ 150, so use the explicit KRX index reader.
-    'KOSDAQ150': 'KRX-INDEX:2203',
+    # KOSDAQ150 is handled separately below because current FinanceDataReader
+    # does not route KQ150 through the same cached KRX index path as KOSDAQ.
+    # Use the exact KOSDAQ 150 index symbol from Investing as a stable fallback
+    # instead of the KRX endpoint that returns LOGOUT in GitHub Actions.
+    'KOSDAQ150': 'INVESTING:KQ150',
     'DOW': 'DJI',
     'NASDAQ_COMPOSITE': 'IXIC',
     'SP500': 'US500',
