@@ -23,7 +23,10 @@ INDEX_SERIES = {
     'KOSPI': 'KS11',
     'KOSDAQ': 'KQ11',
     'KOSPI200': 'KS200',
-    'KOSDAQ150': 'KQ150',
+    # KQ150 is no longer routed correctly by current FinanceDataReader and
+    # falls through to Yahoo, where it returns 404. 2203 is the official
+    # KRX index code for KOSDAQ 150, so use the explicit KRX index reader.
+    'KOSDAQ150': 'KRX-INDEX:2203',
     'DOW': 'DJI',
     'NASDAQ_COMPOSITE': 'IXIC',
     'SP500': 'US500',
