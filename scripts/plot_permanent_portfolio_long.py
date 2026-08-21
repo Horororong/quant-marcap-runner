@@ -12,6 +12,7 @@ SUMMARY_PATH = RESULTS / "summary.csv"
 
 CUM_PNG = RESULTS / "cumulative_return.png"
 DD_PNG = RESULTS / "drawdown.png"
+CHART_DATA_CSV = RESULTS / "chart_monthly.csv"
 
 
 def main():
@@ -23,7 +24,6 @@ def main():
         df["Date"] = pd.to_datetime(df["Date"])
         df = df.set_index("Date")
     else:
-        # 혹시 인덱스가 unnamed로 저장된 경우 대응
         first_col = df.columns[0]
         df[first_col] = pd.to_datetime(df[first_col])
         df = df.set_index(first_col)
@@ -39,7 +39,7 @@ def main():
 
     cumulative = nav / nav.iloc[0] - 1.0
 
-    # 1) 누적수익률 그래프
+    # 1) Cumulative-return PNG based on daily NAV.
     plt.figure(figsize=(12, 6))
     plt.plot(cumulative.index, cumulative.values)
     plt.title("Permanent Portfolio - Cumulative Return")
@@ -50,7 +50,7 @@ def main():
     plt.savefig(CUM_PNG, dpi=150)
     plt.close()
 
-    # 2) 낙폭 그래프
+    # 2) Daily drawdown PNG.
     plt.figure(figsize=(12, 6))
     plt.plot(drawdown.index, drawdown.values)
     plt.title("Permanent Portfolio - Drawdown")
@@ -61,8 +61,21 @@ def main():
     plt.savefig(DD_PNG, dpi=150)
     plt.close()
 
+    # 3) Compact monthly data for ChatGPT/other front ends.
+    #    cumulative_return = last trading-day cumulative return of each month.
+    #    drawdown = worst daily drawdown observed inside each month.
+    chart = pd.DataFrame(
+        {
+            "cumulative_return": cumulative.resample("ME").last(),
+            "drawdown": drawdown.resample("ME").min(),
+        }
+    ).dropna(how="all")
+    chart.index.name = "Date"
+    chart.to_csv(CHART_DATA_CSV, encoding="utf-8-sig")
+
     print(f"Saved: {CUM_PNG}")
     print(f"Saved: {DD_PNG}")
+    print(f"Saved: {CHART_DATA_CSV}")
 
 
 if __name__ == "__main__":
