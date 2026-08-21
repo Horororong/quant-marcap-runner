@@ -46,6 +46,10 @@ jobs:
         run: |
           python scripts/backtest_permanent_portfolio_long.py
 
+      - name: Run permanent portfolio robustness tests
+        run: |
+          python scripts/robustness_permanent_portfolio_long.py
+
       - name: Validate all data
         run: |
           python scripts/validate_all_data.py
