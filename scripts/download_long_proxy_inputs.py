@@ -12,6 +12,11 @@ FRED_SERIES = {
     "DTB3": "US_3M_TBILL.csv",
 }
 
+LBMA_GOLD_URL = (
+    "https://raw.githubusercontent.com/unbalancedparentheses/"
+    "forex-centuries/main/data/sources/lbma/lbma_gold_daily.csv"
+)
+
 
 def download_fred_series(series_id: str, output_name: str) -> None:
     url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"
@@ -47,35 +52,29 @@ def download_fred_series(series_id: str, output_name: str) -> None:
     )
 
 
-def download_gold_stooq() -> None:
-    # FRED's former London gold fixing series GOLDAMGBD228NLBM was removed
-    # from the FRED database. Use Stooq XAUUSD daily spot history instead.
-    url = "https://stooq.com/q/d/l/?s=xauusd&d1=19700101&i=d"
-    df = pd.read_csv(url)
+def download_gold_lbma() -> None:
+    df = pd.read_csv(LBMA_GOLD_URL)
 
-    if df.empty:
-        raise RuntimeError("Stooq XAUUSD download returned no data.")
+    required = {"date", "gold_pm_usd"}
+    if not required.issubset(df.columns):
+        raise RuntimeError(f"Unexpected LBMA gold columns: {list(df.columns)}")
 
-    if "Date" not in df.columns or "Close" not in df.columns:
-        raise RuntimeError(f"Unexpected Stooq XAUUSD columns: {list(df.columns)}")
-
+    df = df.rename(columns={"date": "Date", "gold_pm_usd": "Close"})
     df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
-    for col in ["Open", "High", "Low", "Close"]:
-        if col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors="coerce")
+    df["Close"] = pd.to_numeric(df["Close"], errors="coerce")
 
     df = df.dropna(subset=["Date", "Close"])
     df = df[df["Date"] >= pd.Timestamp(START_DATE)]
     df = df.sort_values("Date").drop_duplicates("Date")
 
     if df.empty:
-        raise RuntimeError(f"No valid XAUUSD observations after {START_DATE}.")
+        raise RuntimeError(f"No valid LBMA gold observations after {START_DATE}.")
 
-    output_path = OUTPUT_DIR / "GOLD_XAUUSD.csv"
-    df.to_csv(output_path, index=False, encoding="utf-8-sig")
+    output_path = OUTPUT_DIR / "GOLD_LBMA_PM_USD.csv"
+    df[["Date", "Close"]].to_csv(output_path, index=False, encoding="utf-8-sig")
 
     print(
-        f"XAUUSD: rows={len(df):,}, "
+        f"LBMA_GOLD: rows={len(df):,}, "
         f"first_date={df['Date'].iloc[0].date()}, "
         f"last_date={df['Date'].iloc[-1].date()}, "
         f"saved={output_path}"
@@ -115,7 +114,7 @@ def main() -> None:
     for series_id, output_name in FRED_SERIES.items():
         download_fred_series(series_id, output_name)
 
-    download_gold_stooq()
+    download_gold_lbma()
 
 
 if __name__ == "__main__":
