@@ -148,8 +148,8 @@ def build_gold_proxy(master: pd.DatetimeIndex) -> pd.Series:
     close = pd.to_numeric(gold["Close"], errors="coerce").reindex(master).ffill(limit=10)
     ret = close.pct_change(fill_method=None).rename("GOLD")
 
-    # GLD is the investable series once it exists.  Apply the ETF handoff first,
-    # then validate gaps.  This avoids falsely failing because the auxiliary
+    # GLD is the investable series once it exists. Apply the ETF handoff first,
+    # then validate gaps. This avoids falsely failing because the auxiliary
     # LBMA file may stop updating after GLD is already available.
     gld = load_etf_adj_close("GLD")
     gld_ret = gld.pct_change().reindex(master)
@@ -296,8 +296,11 @@ def main():
     summary = metrics(nav, port_ret, returns["RF_RETURN"], turnovers)
     pd.DataFrame([summary]).to_csv(RESULTS / "summary.csv", index=False, encoding="utf-8-sig")
 
+    # Calendar-year return must compound every daily return in the year. Using
+    # last NAV / first NAV omits the first trading day's return for years after 1970.
     annual = nav.groupby(nav.index.year).agg(["first", "last"])
-    annual["return"] = annual["last"] / annual["first"] - 1.0
+    annual["return"] = (1.0 + port_ret).groupby(port_ret.index.year).prod() - 1.0
+    annual.index.name = "Year"
     annual.to_csv(RESULTS / "annual_returns.csv", encoding="utf-8-sig")
 
     print("=== Permanent Portfolio Long Backtest ===")
