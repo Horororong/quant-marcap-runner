@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data" / "etf_us"
-PROXY_PATH = ROOT / "data" / "proxy_long" / "derived" / "permanent_portfolio_asset_returns_daily.csv"
+RAW_DIR = ROOT / "data" / "proxy_long" / "raw"
 OUT_DIR = ROOT / "results" / "permanent_portfolio_etf_only"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -19,18 +19,21 @@ ONE_WAY_COST = 0.0005  # 5bp per traded notional; ~10bp round trip
 TRADING_DAYS = 252
 
 
+def load_csv(path: Path) -> pd.DataFrame:
+    if not path.exists():
+        raise FileNotFoundError(path)
+    df = pd.read_csv(path, parse_dates=["Date"])
+    df = df.dropna(subset=["Date"]).sort_values("Date").drop_duplicates("Date")
+    return df.set_index("Date")
+
+
 def load_adj_close() -> pd.DataFrame:
     series = {}
     for ticker in TICKERS:
-        path = DATA_DIR / f"{ticker}.csv"
-        if not path.exists():
-            raise FileNotFoundError(path)
-        df = pd.read_csv(path, parse_dates=["Date"])
+        df = load_csv(DATA_DIR / f"{ticker}.csv")
         if "Adj Close" not in df.columns:
             raise ValueError(f"Adj Close missing: {ticker}")
-        s = pd.to_numeric(df["Adj Close"], errors="coerce")
-        s.index = df["Date"]
-        s = s[~s.index.duplicated(keep="last")].sort_index()
+        s = pd.to_numeric(df["Adj Close"], errors="coerce").dropna()
         series[ticker] = s.rename(ticker)
     prices = pd.concat(series.values(), axis=1, join="inner").dropna()
     if prices.empty:
@@ -47,19 +50,16 @@ def first_trading_days(index: pd.DatetimeIndex) -> set[pd.Timestamp]:
 
 def simulate(asset_returns: pd.DataFrame, cost_rate: float) -> pd.DataFrame:
     dates = asset_returns.index
-    rebalance_dates = first_trading_days(dates)
     weights = TARGET.copy()
     nav = INITIAL_CAPITAL
+    rebalance_dates = first_trading_days(dates)
     rows = []
-
-    # First common date is the allocation date; no same-close return is claimed.
     rows.append({"Date": dates[0], "NAV": nav, "Return": 0.0, "Turnover": 0.0, "Cost": 0.0, **{f"W_{k}": weights[k] for k in TICKERS}})
 
     for dt in dates[1:]:
         r = asset_returns.loc[dt]
-        port_ret = float((weights * r).sum())
-        nav *= (1.0 + port_ret)
-
+        nav_prev = nav
+        nav *= 1.0 + float((weights * r).sum())
         gross_weights = weights * (1.0 + r)
         gross_weights = gross_weights / gross_weights.sum()
         turnover = 0.0
@@ -67,7 +67,6 @@ def simulate(asset_returns: pd.DataFrame, cost_rate: float) -> pd.DataFrame:
 
         if dt in rebalance_dates:
             turnover = float(0.5 * (gross_weights - TARGET).abs().sum())
-            # sum(abs(delta weights)) = 2 * one-way turnover; cost applies to traded notional.
             traded_notional_fraction = float((gross_weights - TARGET).abs().sum())
             cost = nav * traded_notional_fraction * cost_rate
             nav -= cost
@@ -75,10 +74,9 @@ def simulate(asset_returns: pd.DataFrame, cost_rate: float) -> pd.DataFrame:
         else:
             weights = gross_weights
 
-        rows.append({"Date": dt, "NAV": nav, "Return": nav / rows[-1]["NAV"] - 1.0, "Turnover": turnover, "Cost": cost, **{f"W_{k}": weights[k] for k in TICKERS}})
+        rows.append({"Date": dt, "NAV": nav, "Return": nav / nav_prev - 1.0, "Turnover": turnover, "Cost": cost, **{f"W_{k}": weights[k] for k in TICKERS}})
 
-    out = pd.DataFrame(rows).set_index("Date")
-    return out
+    return pd.DataFrame(rows).set_index("Date")
 
 
 def drawdown_stats(nav: pd.Series):
@@ -93,7 +91,6 @@ def drawdown_stats(nav: pd.Series):
     recovery_date = recovered.index[0] if len(recovered) else pd.NaT
     recovery_days = (recovery_date - peak_date).days if pd.notna(recovery_date) else np.nan
 
-    # Longest completed time-under-water spell.
     longest = 0
     current_peak_date = nav.index[0]
     current_peak_value = float(nav.iloc[0])
@@ -119,7 +116,8 @@ def metrics(nav: pd.Series, rf_daily: pd.Series | None = None) -> dict:
     if rf_daily is None:
         excess = ret.copy()
     else:
-        excess = ret.align(rf_daily, join="inner")[0] - ret.align(rf_daily, join="inner")[1]
+        p, r = ret.align(rf_daily, join="inner")
+        excess = p - r
     sharpe = np.nan if excess.std(ddof=1) == 0 else excess.mean() / excess.std(ddof=1) * math.sqrt(TRADING_DAYS)
     downside = excess[excess < 0]
     downside_dev = math.sqrt((downside.pow(2).sum()) / len(excess)) if len(excess) else np.nan
@@ -161,29 +159,92 @@ def metrics(nav: pd.Series, rf_daily: pd.Series | None = None) -> dict:
     }
 
 
-def simulate_proxy_overlap(index: pd.DatetimeIndex) -> pd.DataFrame | None:
-    if not PROXY_PATH.exists():
-        return None
-    p = pd.read_csv(PROXY_PATH, parse_dates=["Date"])
-    p = p.set_index("Date").sort_index()
-    candidates = {
-        "SPY": ["STOCK_RETURN", "StockReturn", "stock_return", "STOCK"],
-        "TLT": ["LONG_TREASURY_RETURN", "BondReturn", "bond_return", "LONG_TREASURY"],
-        "GLD": ["GOLD_RETURN", "GoldReturn", "gold_return", "GOLD"],
-        "BIL": ["TBILL_RETURN", "CashReturn", "cash_return", "TBILL"],
-    }
-    cols = {}
-    for ticker, options in candidates.items():
-        hit = next((c for c in options if c in p.columns), None)
-        if hit is None:
-            return None
-        cols[ticker] = hit
-    r = p[[cols[t] for t in TICKERS]].copy()
-    r.columns = TICKERS
-    r = r.reindex(index).dropna()
-    if r.empty:
-        return None
-    return simulate(r, 0.0)
+def bond_price_from_yield(yield_decimal: float, coupon_rate: float) -> float:
+    n = 40
+    r = yield_decimal / 2.0
+    c = 100.0 * coupon_rate / 2.0
+    if abs(r) < 1e-12:
+        return 100.0 + c * n
+    discount = 1.0 + r
+    coupons = c * (1.0 - discount ** (-n)) / r
+    principal = 100.0 * discount ** (-n)
+    return coupons + principal
+
+
+def tbill_return(discount_pct: float, days: int) -> float:
+    d = discount_pct / 100.0
+    maturity_days = 91.0
+    price = 100.0 * (1.0 - d * maturity_days / 360.0)
+    hpr = 100.0 / price - 1.0
+    return (1.0 + hpr) ** (days / maturity_days) - 1.0
+
+
+def build_synthetic_proxy_returns(master: pd.DatetimeIndex) -> pd.DataFrame:
+    # STOCK: S&P 500 price + Shiller D/12 monthly dividend; intentionally NO SPY overlay.
+    sp = load_csv(RAW_DIR / "SP500_PRICE.csv")
+    close = pd.to_numeric(sp["Close"], errors="coerce").reindex(master)
+    stock = close.pct_change(fill_method=None)
+    sh = load_csv(RAW_DIR / "SHILLER_SP500_MONTHLY.csv")
+    div = pd.to_numeric(sh["DividendAnnualized"], errors="coerce")
+    div_by_month = {d.to_period("M"): float(v) for d, v in div.dropna().items()}
+    month_last = pd.Series(master, index=master).groupby(master.to_period("M")).max()
+    for period, pay_date in month_last.items():
+        if pay_date == master[0] or period not in div_by_month:
+            continue
+        loc = master.get_loc(pay_date)
+        prev_date = master[loc - 1]
+        if pd.notna(close.loc[pay_date]) and pd.notna(close.loc[prev_date]):
+            stock.loc[pay_date] = (close.loc[pay_date] + div_by_month[period] / 12.0) / close.loc[prev_date] - 1.0
+    stock.iloc[0] = 0.0
+
+    # LONG TREASURY: synthetic 20y constant-maturity par bond; intentionally NO TLT overlay.
+    def yfile(name: str):
+        d = load_csv(RAW_DIR / name)
+        return pd.to_numeric(d["Value"], errors="coerce").reindex(master)
+
+    y20, y10, y30 = yfile("US_20Y_YIELD.csv"), yfile("US_10Y_YIELD.csv"), yfile("US_30Y_YIELD.csv")
+    gap = (master >= pd.Timestamp("1987-01-01")) & (master <= pd.Timestamp("1993-09-30"))
+    est = (y10 + y30) / 2.0
+    y20.loc[gap & y20.isna()] = est.loc[gap & y20.isna()]
+    y20 = y20.ffill(limit=10)
+    y = y20 / 100.0
+    bond = pd.Series(index=master, dtype=float)
+    bond.iloc[0] = 0.0
+    for i in range(1, len(master)):
+        if pd.isna(y.iloc[i - 1]) or pd.isna(y.iloc[i]):
+            continue
+        prev, cur = master[i - 1], master[i]
+        yp, yc = float(y.iloc[i - 1]), float(y.iloc[i])
+        price = bond_price_from_yield(yc, yp)
+        accrued = 100.0 * yp * (cur - prev).days / 365.25
+        bond.iloc[i] = (price + accrued) / 100.0 - 1.0
+
+    # GOLD: LBMA PM USD; intentionally NO GLD overlay.
+    gold_df = load_csv(RAW_DIR / "GOLD_LBMA_PM_USD.csv")
+    gold_close = pd.to_numeric(gold_df["Close"], errors="coerce").reindex(master).ffill(limit=10)
+    gold = gold_close.pct_change(fill_method=None)
+    gold.iloc[0] = 0.0
+
+    # CASH: 3m T-bill bank-discount proxy; intentionally NO BIL overlay.
+    tb = load_csv(RAW_DIR / "US_3M_TBILL.csv")
+    raw = pd.to_numeric(tb["Value"], errors="coerce").reindex(master).ffill(limit=10)
+    cash = pd.Series(index=master, dtype=float)
+    cash.iloc[0] = 0.0
+    for i in range(1, len(master)):
+        if pd.isna(raw.iloc[i - 1]):
+            continue
+        cash.iloc[i] = tbill_return(float(raw.iloc[i - 1]), (master[i] - master[i - 1]).days)
+
+    out = pd.concat([stock.rename("SPY"), bond.rename("TLT"), gold.rename("GLD"), cash.rename("BIL")], axis=1)
+    valid = out.notna().all(axis=1)
+    if not valid.any():
+        raise RuntimeError("No valid synthetic-proxy overlap")
+    last_valid = valid[valid].index[-1]
+    out = out.loc[:last_valid]
+    if out.isna().any().any():
+        bad = out[out.isna().any(axis=1)].index[:5].strftime("%Y-%m-%d").tolist()
+        raise RuntimeError(f"Synthetic proxy has internal gaps: {bad}")
+    return out
 
 
 def save_chart(nav: pd.Series, spy_nav: pd.Series, name: str):
@@ -239,7 +300,6 @@ def main():
     net_m["total_transaction_cost_usd"] = float(net["Cost"].sum())
     gross_m["one_way_cost_rate"] = 0.0
     net_m["one_way_cost_rate"] = ONE_WAY_COST
-
     pd.DataFrame([gross_m, net_m]).to_csv(OUT_DIR / "summary.csv", index=False, encoding="utf-8-sig")
 
     combined = pd.DataFrame({
@@ -265,26 +325,52 @@ def main():
     annual.index.name = "Year"
     annual.to_csv(OUT_DIR / "annual_returns.csv", encoding="utf-8-sig")
 
-    # SPY benchmark over the exact same common ETF period.
     spy_nav = INITIAL_CAPITAL * prices["SPY"] / prices["SPY"].iloc[0]
     spy_m = metrics(spy_nav, rf)
     spy_m["scenario"] = "SPY_buy_hold"
-
-    # Same-period long-proxy cross-check if the derived asset return file exposes known columns.
     rows = [gross_m, net_m, spy_m]
-    proxy_bt = simulate_proxy_overlap(prices.index)
-    if proxy_bt is not None:
-        proxy_nav = proxy_bt["NAV"].reindex(prices.index).dropna()
-        proxy_rf = rf.reindex(proxy_nav.index).fillna(0.0)
-        proxy_m = metrics(proxy_nav, proxy_rf)
-        proxy_m["scenario"] = "long_proxy_same_period_gross"
-        rows.append(proxy_m)
     pd.DataFrame(rows).to_csv(OUT_DIR / "comparison.csv", index=False, encoding="utf-8-sig")
+
+    # Independent validation: compare raw synthetic proxies against actual ETFs,
+    # explicitly WITHOUT the ETF overlays used by the 1970 long-history series.
+    synth = build_synthetic_proxy_returns(prices.index)
+    common = synth.index.intersection(returns.index)
+    synth = synth.reindex(common)
+    etf_same = returns.reindex(common)
+    etf_same.iloc[0] = 0.0
+    synth.iloc[0] = 0.0
+
+    etf_bt = simulate(etf_same, 0.0)
+    synth_bt = simulate(synth, 0.0)
+    rf_same = etf_same["BIL"]
+    etf_same_m = metrics(etf_bt["NAV"], rf_same)
+    synth_same_m = metrics(synth_bt["NAV"], rf_same)
+    etf_same_m["scenario"] = "actual_ETFs_same_proxy_window"
+    synth_same_m["scenario"] = "synthetic_proxies_no_ETF_overlay"
+    pd.DataFrame([etf_same_m, synth_same_m]).to_csv(OUT_DIR / "proxy_validation_summary.csv", index=False, encoding="utf-8-sig")
+
+    asset_rows = []
+    for t in TICKERS:
+        a = etf_same[t].iloc[1:]
+        b = synth[t].iloc[1:]
+        pair = pd.concat([a.rename("ETF"), b.rename("Proxy")], axis=1).dropna()
+        diff = pair["Proxy"] - pair["ETF"]
+        asset_rows.append({
+            "ticker": t,
+            "start_date": pair.index[0].date().isoformat(),
+            "end_date": pair.index[-1].date().isoformat(),
+            "daily_return_correlation": float(pair.corr().iloc[0, 1]),
+            "annualized_tracking_error_proxy_minus_etf": float(diff.std(ddof=1) * math.sqrt(TRADING_DAYS)),
+            "mean_annualized_return_gap_proxy_minus_etf": float(diff.mean() * TRADING_DAYS),
+        })
+    pd.DataFrame(asset_rows).to_csv(OUT_DIR / "proxy_validation_assets.csv", index=False, encoding="utf-8-sig")
 
     save_chart(net["NAV"], spy_nav, "cumulative_wealth_log2.png")
     save_drawdown(net["NAV"], "drawdown.png")
 
     print(pd.DataFrame(rows)[["scenario", "start_date", "end_date", "cagr", "mdd", "sharpe_excess_bil_sqrt252", "sortino_excess_bil_sqrt252", "calmar", "monthly_win_rate", "monthly_payoff_ratio"]].to_string(index=False))
+    print("\nIndependent proxy validation")
+    print(pd.DataFrame([etf_same_m, synth_same_m])[["scenario", "start_date", "end_date", "cagr", "mdd", "annualized_volatility"]].to_string(index=False))
 
 
 if __name__ == "__main__":
