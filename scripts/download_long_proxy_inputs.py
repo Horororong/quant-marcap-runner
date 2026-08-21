@@ -10,7 +10,6 @@ START_DATE = "1970-01-01"
 FRED_SERIES = {
     "DGS20": "US_20Y_YIELD.csv",
     "DTB3": "US_3M_TBILL.csv",
-    "GOLDAMGBD228NLBM": "GOLD_USD_AM.csv",
 }
 
 
@@ -48,6 +47,41 @@ def download_fred_series(series_id: str, output_name: str) -> None:
     )
 
 
+def download_gold_stooq() -> None:
+    # FRED's former London gold fixing series GOLDAMGBD228NLBM was removed
+    # from the FRED database. Use Stooq XAUUSD daily spot history instead.
+    url = "https://stooq.com/q/d/l/?s=xauusd&d1=19700101&i=d"
+    df = pd.read_csv(url)
+
+    if df.empty:
+        raise RuntimeError("Stooq XAUUSD download returned no data.")
+
+    if "Date" not in df.columns or "Close" not in df.columns:
+        raise RuntimeError(f"Unexpected Stooq XAUUSD columns: {list(df.columns)}")
+
+    df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+    for col in ["Open", "High", "Low", "Close"]:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+
+    df = df.dropna(subset=["Date", "Close"])
+    df = df[df["Date"] >= pd.Timestamp(START_DATE)]
+    df = df.sort_values("Date").drop_duplicates("Date")
+
+    if df.empty:
+        raise RuntimeError(f"No valid XAUUSD observations after {START_DATE}.")
+
+    output_path = OUTPUT_DIR / "GOLD_XAUUSD.csv"
+    df.to_csv(output_path, index=False, encoding="utf-8-sig")
+
+    print(
+        f"XAUUSD: rows={len(df):,}, "
+        f"first_date={df['Date'].iloc[0].date()}, "
+        f"last_date={df['Date'].iloc[-1].date()}, "
+        f"saved={output_path}"
+    )
+
+
 def save_sp500_slice() -> None:
     source = ROOT / "data" / "indices" / "SP500_LONG.csv"
     if not source.exists():
@@ -80,6 +114,8 @@ def main() -> None:
 
     for series_id, output_name in FRED_SERIES.items():
         download_fred_series(series_id, output_name)
+
+    download_gold_stooq()
 
 
 if __name__ == "__main__":
