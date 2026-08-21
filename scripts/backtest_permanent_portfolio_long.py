@@ -146,15 +146,20 @@ def build_long_treasury_proxy(master: pd.DatetimeIndex) -> pd.Series:
 def build_gold_proxy(master: pd.DatetimeIndex) -> pd.Series:
     gold = load_csv(RAW / "GOLD_LBMA_PM_USD.csv")
     close = pd.to_numeric(gold["Close"], errors="coerce").reindex(master).ffill(limit=10)
-    if close.isna().any():
-        raise RuntimeError("Unresolved LBMA gold gaps on master calendar")
-    ret = close.pct_change().rename("GOLD")
+    ret = close.pct_change(fill_method=None).rename("GOLD")
 
+    # GLD is the investable series once it exists.  Apply the ETF handoff first,
+    # then validate gaps.  This avoids falsely failing because the auxiliary
+    # LBMA file may stop updating after GLD is already available.
     gld = load_etf_adj_close("GLD")
     gld_ret = gld.pct_change().reindex(master)
     use = gld_ret.notna()
     ret.loc[use] = gld_ret.loc[use]
     ret.iloc[0] = 0.0
+
+    if ret.isna().any():
+        missing = ret[ret.isna()].index[:5].strftime("%Y-%m-%d").tolist()
+        raise RuntimeError(f"Unresolved gold proxy gaps, examples: {missing}")
     return ret
 
 
