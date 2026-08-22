@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 import traceback
 import pandas as pd
 import FinanceDataReader as fdr
+from investiny import historical_data, search_assets
 
 ROOT = Path('data')
 DIRS = {
@@ -17,17 +18,16 @@ for d in DIRS.values():
     d.mkdir(parents=True, exist_ok=True)
 
 START_MARKET = '1995-01-01'
+START_KOSDAQ150 = '2015-07-13'  # KOSDAQ150 launch date
 START_MACRO = '1995-01-01'
 
+# KOSDAQ150 is collected separately with investiny. Current FinanceDataReader
+# KQ150 falls through to Yahoo (404), explicit KRX returns LOGOUT on GitHub
+# Actions, and FDR's old Investing reader is incompatible with the current API.
 INDEX_SERIES = {
     'KOSPI': 'KS11',
     'KOSDAQ': 'KQ11',
     'KOSPI200': 'KS200',
-    # KOSDAQ150 is handled separately below because current FinanceDataReader
-    # does not route KQ150 through the same cached KRX index path as KOSDAQ.
-    # Use the exact KOSDAQ 150 index symbol from Investing as a stable fallback
-    # instead of the KRX endpoint that returns LOGOUT in GitHub Actions.
-    'KOSDAQ150': 'INVESTING:KQ150',
     'DOW': 'DJI',
     'NASDAQ_COMPOSITE': 'IXIC',
     'SP500': 'US500',
@@ -81,6 +81,36 @@ def save_series(category: str, name: str, df: pd.DataFrame) -> dict:
     }
 
 
+def read_kosdaq150() -> pd.DataFrame:
+    """Read the actual KOSDAQ 150 index, not an ETF proxy."""
+    results = search_assets(query='KQ150', limit=10, type='Index')
+    if not results:
+        results = search_assets(query='KOSDAQ 150', limit=10, type='Index')
+    if not results:
+        raise RuntimeError('KOSDAQ150 not found by investiny search')
+
+    # Prefer the exact KQ150 symbol/name when multiple search results exist.
+    chosen = None
+    for item in results:
+        text = ' '.join(str(item.get(k, '')) for k in ('symbol', 'name', 'description')).upper()
+        if 'KQ150' in text or 'KOSDAQ 150' in text:
+            chosen = item
+            break
+    chosen = chosen or results[0]
+    investing_id = int(chosen['ticker'])
+
+    start = pd.Timestamp(START_KOSDAQ150).strftime('%m/%d/%Y')
+    end = pd.Timestamp.today().strftime('%m/%d/%Y')
+    raw = historical_data(investing_id=investing_id, from_date=start, to_date=end, interval='D')
+    df = pd.DataFrame(raw).rename(columns={
+        'date': 'Date', 'open': 'Open', 'high': 'High', 'low': 'Low',
+        'close': 'Close', 'volume': 'Volume'
+    })
+    if len(df) == 0:
+        raise RuntimeError('empty KOSDAQ150 dataframe from investiny')
+    return df
+
+
 def main():
     status = []
 
@@ -91,6 +121,13 @@ def main():
         except Exception as e:
             status.append({'category':'indices','name':name,'rows':0,'start_date':'','end_date':'','status':'ERROR','error':repr(e)})
             traceback.print_exc()
+
+    try:
+        print('INDEX KOSDAQ150 <- investiny KQ150 (TVC)', flush=True)
+        status.append(save_series('indices', 'KOSDAQ150', read_kosdaq150()))
+    except Exception as e:
+        status.append({'category':'indices','name':'KOSDAQ150','rows':0,'start_date':'','end_date':'','status':'ERROR','error':repr(e)})
+        traceback.print_exc()
 
     for name, symbol in FX_SERIES.items():
         try:
