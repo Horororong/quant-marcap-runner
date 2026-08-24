@@ -2,10 +2,12 @@ from __future__ import annotations
 
 from pathlib import Path
 from datetime import datetime, timezone
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import os
 import traceback
 import pandas as pd
+import requests
 import FinanceDataReader as fdr
-from investiny import historical_data, search_assets
 
 ROOT = Path('data')
 DIRS = {
@@ -18,12 +20,10 @@ for d in DIRS.values():
     d.mkdir(parents=True, exist_ok=True)
 
 START_MARKET = '1995-01-01'
-START_KOSDAQ150 = '2015-07-13'  # KOSDAQ150 launch date
 START_MACRO = '1995-01-01'
+START_KOSDAQ150 = '2015-07-13'
+KRX_KOSDAQ_INDEX_URL = 'https://data-dbg.krx.co.kr/svc/apis/idx/kosdaq_dd_trd'
 
-# KOSDAQ150 is collected separately with investiny. Current FinanceDataReader
-# KQ150 falls through to Yahoo (404), explicit KRX returns LOGOUT on GitHub
-# Actions, and FDR's old Investing reader is incompatible with the current API.
 INDEX_SERIES = {
     'KOSPI': 'KS11',
     'KOSDAQ': 'KQ11',
@@ -81,34 +81,71 @@ def save_series(category: str, name: str, df: pd.DataFrame) -> dict:
     }
 
 
-def read_kosdaq150() -> pd.DataFrame:
-    """Read the actual KOSDAQ 150 index, not an ETF proxy."""
-    results = search_assets(query='KQ150', limit=10, type='Index')
-    if not results:
-        results = search_assets(query='KOSDAQ 150', limit=10, type='Index')
-    if not results:
-        raise RuntimeError('KOSDAQ150 not found by investiny search')
+def _num(v):
+    if v is None or v == '':
+        return None
+    return pd.to_numeric(str(v).replace(',', ''), errors='coerce')
 
-    # Prefer the exact KQ150 symbol/name when multiple search results exist.
-    chosen = None
-    for item in results:
-        text = ' '.join(str(item.get(k, '')) for k in ('symbol', 'name', 'description')).upper()
-        if 'KQ150' in text or 'KOSDAQ 150' in text:
-            chosen = item
-            break
-    chosen = chosen or results[0]
-    investing_id = int(chosen['ticker'])
 
-    start = pd.Timestamp(START_KOSDAQ150).strftime('%m/%d/%Y')
-    end = pd.Timestamp.today().strftime('%m/%d/%Y')
-    raw = historical_data(investing_id=investing_id, from_date=start, to_date=end, interval='D')
-    df = pd.DataFrame(raw).rename(columns={
-        'date': 'Date', 'open': 'Open', 'high': 'High', 'low': 'Low',
-        'close': 'Close', 'volume': 'Volume'
-    })
-    if len(df) == 0:
-        raise RuntimeError('empty KOSDAQ150 dataframe from investiny')
-    return df
+def _fetch_krx_kosdaq150_day(day: pd.Timestamp, auth_key: str):
+    r = requests.get(
+        KRX_KOSDAQ_INDEX_URL,
+        headers={'AUTH_KEY': auth_key},
+        params={'basDd': day.strftime('%Y%m%d')},
+        timeout=20,
+    )
+    r.raise_for_status()
+    payload = r.json()
+    rows = payload.get('OutBlock_1') or payload.get('output') or []
+    for row in rows:
+        idx_name = str(row.get('IDX_NM', '')).replace(' ', '').upper()
+        if idx_name in {'코스닥150', 'KOSDAQ150'}:
+            fluc_rt = _num(row.get('FLUC_RT'))
+            return {
+                'Date': pd.to_datetime(row.get('BAS_DD') or day.strftime('%Y%m%d')),
+                'Open': _num(row.get('OPNPRC_IDX')),
+                'High': _num(row.get('HGPRC_IDX')),
+                'Low': _num(row.get('LWPRC_IDX')),
+                'Close': _num(row.get('CLSPRC_IDX')),
+                'Volume': _num(row.get('ACC_TRDVOL')),
+                'Change': (fluc_rt / 100.0) if pd.notna(fluc_rt) else None,
+                'Amount': _num(row.get('ACC_TRDVAL')),
+                'MarCap': _num(row.get('MKTCAP')),
+            }
+    return None
+
+
+def read_kosdaq150_official() -> pd.DataFrame:
+    auth_key = os.getenv('KRX_AUTH_KEY', '').strip()
+    if not auth_key:
+        raise RuntimeError('KRX_AUTH_KEY is not configured')
+
+    p = DIRS['indices'] / 'KOSDAQ150.csv'
+    existing = pd.DataFrame()
+    if p.exists():
+        existing = normalize(pd.read_csv(p))
+
+    today = pd.Timestamp.now(tz='Asia/Seoul').tz_localize(None).normalize()
+    if len(existing):
+        start = max(existing['Date'].max().normalize() - pd.Timedelta(days=7), pd.Timestamp(START_KOSDAQ150))
+    else:
+        start = pd.Timestamp(START_KOSDAQ150)
+
+    days = pd.date_range(start, today, freq='B')
+    fresh_rows = []
+    with ThreadPoolExecutor(max_workers=4) as ex:
+        futures = {ex.submit(_fetch_krx_kosdaq150_day, d, auth_key): d for d in days}
+        for fut in as_completed(futures):
+            row = fut.result()
+            if row:
+                fresh_rows.append(row)
+
+    fresh = pd.DataFrame(fresh_rows)
+    if len(existing) and len(fresh):
+        return normalize(pd.concat([existing, fresh], ignore_index=True))
+    if len(existing):
+        return existing
+    return normalize(fresh)
 
 
 def main():
@@ -123,8 +160,8 @@ def main():
             traceback.print_exc()
 
     try:
-        print('INDEX KOSDAQ150 <- investiny KQ150 (TVC)', flush=True)
-        status.append(save_series('indices', 'KOSDAQ150', read_kosdaq150()))
+        print('INDEX KOSDAQ150 <- official KRX Open API', flush=True)
+        status.append(save_series('indices', 'KOSDAQ150', read_kosdaq150_official()))
     except Exception as e:
         status.append({'category':'indices','name':'KOSDAQ150','rows':0,'start_date':'','end_date':'','status':'ERROR','error':repr(e)})
         traceback.print_exc()
