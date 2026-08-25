@@ -43,3 +43,5 @@ jobs:
             git commit -m 'Add anchor-sail moat backtest results'
             git push
           fi
+
+# trigger: anchor-sail-backtest-v1
