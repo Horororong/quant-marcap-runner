@@ -9,7 +9,6 @@ import xml.etree.ElementTree as ET
 
 import requests
 import pandas as pd
-import FinanceDataReader as fdr
 
 API_KEY = os.getenv('DART_API_KEY', '').strip()
 ROOT = Path('data/financials')
@@ -31,31 +30,37 @@ def get_corp_codes() -> pd.DataFrame:
         root = ET.fromstring(z.read(z.namelist()[0]))
     rows = [{child.tag: child.text for child in node} for node in root.findall('list')]
     df = pd.DataFrame(rows)
-    df['stock_code'] = df['stock_code'].fillna('').astype(str).str.zfill(6)
-    return df
-
-
-def current_krx_codes() -> pd.DataFrame:
-    krx = fdr.StockListing('KRX').copy()
-    code_col = 'Code' if 'Code' in krx.columns else 'Symbol'
-    name_col = 'Name' if 'Name' in krx.columns else code_col
-    out = krx[[code_col, name_col]].rename(columns={code_col:'stock_code', name_col:'stock_name'})
-    out['stock_code'] = out['stock_code'].astype(str).str.zfill(6)
-    return out.drop_duplicates('stock_code')
+    # OpenDART corpCode.xml itself identifies listed companies by a non-empty
+    # six-digit stock_code. This avoids FinanceDataReader.StockListing('KRX'),
+    # whose KRX web endpoint can block GitHub Actions runners.
+    raw_code = df['stock_code'].fillna('').astype(str).str.strip()
+    df = df[raw_code.str.fullmatch(r'\d{6}')].copy()
+    df['stock_code'] = df['stock_code'].astype(str).str.zfill(6)
+    return df.drop_duplicates('stock_code', keep='last')
 
 
 def fetch_full_fs(corp_code: str, year: int, report_code: str) -> list[dict]:
     params = {'crtfc_key':API_KEY, 'corp_code':corp_code, 'bsns_year':str(year),
               'reprt_code':report_code, 'fs_div':'CFS'}
-    r = requests.get(f'{BASE}/fnlttSinglAcntAll.json', params=params, timeout=30)
-    r.raise_for_status()
-    obj = r.json()
-    status = obj.get('status')
-    if status == '000':
-        return obj.get('list', [])
-    if status in {'013','014'}:
-        return []
-    raise RuntimeError(f'DART status={status} message={obj.get("message")}')
+    last_error = None
+    for attempt in range(3):
+        try:
+            r = requests.get(f'{BASE}/fnlttSinglAcntAll.json', params=params, timeout=30)
+            r.raise_for_status()
+            obj = r.json()
+            status = obj.get('status')
+            if status == '000':
+                return obj.get('list', [])
+            if status in {'013','014'}:
+                return []
+            raise RuntimeError(f'DART status={status} message={obj.get("message")}')
+        except (requests.Timeout, requests.ConnectionError) as e:
+            last_error = e
+            if attempt == 2:
+                raise
+    if last_error:
+        raise last_error
+    return []
 
 
 def read_next_offset(total: int) -> int:
@@ -77,9 +82,8 @@ def main():
         return
 
     corp = get_corp_codes()
-    krx = current_krx_codes()
-    master = krx.merge(corp[['corp_code','corp_name','stock_code','modify_date']],
-                       on='stock_code', how='left').sort_values('stock_code')
+    master = corp[['corp_code','corp_name','stock_code','modify_date']].copy().sort_values('stock_code')
+    master['stock_name'] = master['corp_name']
     master.to_csv(ROOT/'corp_master.csv', index=False, encoding='utf-8-sig')
 
     matched = master.dropna(subset=['corp_code']).drop_duplicates('stock_code').reset_index(drop=True)
