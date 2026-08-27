@@ -17,7 +17,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 180
     env:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
       KRX_AUTH_KEY: ${{ secrets.KRX_AUTH_KEY }}
@@ -39,22 +39,35 @@ jobs:
       - name: Update public market and macro data
         run: python update_public_data.py
 
-      - name: Update DART financials
-        run: python update_dart_financials.py
-
-      - name: Commit updated datasets
+      - name: Commit public datasets before DART
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/
+          git add data/indices/ data/fx/ data/macro/ data/status/public_data_status.csv
           if git diff --cached --quiet; then
-            echo "No data changes"
+            echo "No public data changes"
           else
-            git commit -m "Update quant datasets"
+            git commit -m "Update public market and macro data"
+            git push
+          fi
+
+      - name: Update DART financials
+        run: python update_dart_financials.py
+
+      - name: Commit DART datasets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/financials/ data/status/dart_status.csv data/status/dart_rotation_state.csv
+          if git diff --cached --quiet; then
+            echo "No DART data changes"
+          else
+            git commit -m "Update DART financials"
             git push
           fi
 
       - name: Upload status artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: quant-data-status
