@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'scripts/backfill_dart_legacy_quarterly.py'
+      - 'scripts/run_dart_legacy_quarterly.py'
       - '.github/workflows/backfill-dart-legacy-quarterly.yml'
   schedule:
     # 10:30 KST every day = 01:30 UTC.
@@ -42,7 +43,7 @@ jobs:
           pip install pandas requests beautifulsoup4 lxml
 
       - name: Collect and parse 2001-2015 DART periodic filings
-        run: python scripts/backfill_dart_legacy_quarterly.py
+        run: python scripts/run_dart_legacy_quarterly.py
 
       - name: Commit legacy datasets
         run: |
