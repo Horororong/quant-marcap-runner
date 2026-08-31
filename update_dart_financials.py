@@ -5,6 +5,7 @@ import os
 import zipfile
 from pathlib import Path
 from datetime import datetime, timezone
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import xml.etree.ElementTree as ET
 
 import requests
@@ -30,9 +31,6 @@ def get_corp_codes() -> pd.DataFrame:
         root = ET.fromstring(z.read(z.namelist()[0]))
     rows = [{child.tag: child.text for child in node} for node in root.findall('list')]
     df = pd.DataFrame(rows)
-    # OpenDART corpCode.xml itself identifies listed companies by a non-empty
-    # six-digit stock_code. This avoids FinanceDataReader.StockListing('KRX'),
-    # whose KRX web endpoint can block GitHub Actions runners.
     raw_code = df['stock_code'].fillna('').astype(str).str.strip()
     df = df[raw_code.str.fullmatch(r'\d{6}')].copy()
     df['stock_code'] = df['stock_code'].astype(str).str.zfill(6)
@@ -45,7 +43,7 @@ def fetch_full_fs(corp_code: str, year: int, report_code: str) -> list[dict]:
     last_error = None
     for attempt in range(3):
         try:
-            r = requests.get(f'{BASE}/fnlttSinglAcntAll.json', params=params, timeout=30)
+            r = requests.get(f'{BASE}/fnlttSinglAcntAll.json', params=params, timeout=25)
             r.raise_for_status()
             obj = r.json()
             status = obj.get('status')
@@ -73,6 +71,34 @@ def read_next_offset(total: int) -> int:
         return 0
 
 
+def collect_company(row: pd.Series, years: list[int]) -> tuple[list[dict], list[dict]]:
+    corp_code = str(row['corp_code'])
+    stock_code = str(row['stock_code']).zfill(6)
+    company_records, company_errors = [], []
+
+    for year in years:
+        for period, report_code in REPORT_CODES.items():
+            try:
+                for raw in fetch_full_fs(corp_code, year, report_code):
+                    item = dict(raw)
+                    item['stock_code'] = stock_code
+                    item['period'] = period
+                    item['requested_year'] = year
+                    rcept = str(item.get('rcept_no', ''))
+                    item['filing_date'] = rcept[:8] if len(rcept) >= 8 else ''
+                    company_records.append(item)
+            except Exception as e:
+                company_errors.append({
+                    'stock_code':stock_code,
+                    'corp_code':corp_code,
+                    'year':year,
+                    'period':period,
+                    'error':repr(e),
+                })
+
+    return company_records, company_errors
+
+
 def main():
     now_utc = datetime.now(timezone.utc)
     if not API_KEY:
@@ -89,6 +115,7 @@ def main():
     matched = master.dropna(subset=['corp_code']).drop_duplicates('stock_code').reset_index(drop=True)
     total = len(matched)
     batch_size = max(1, int(os.getenv('DART_MAX_COMPANIES', '300')))
+    workers = max(1, min(8, int(os.getenv('DART_WORKERS', '6'))))
     start = read_next_offset(total)
     positions = [(start + i) % total for i in range(min(batch_size, total))] if total else []
     batch = matched.iloc[positions].copy() if positions else matched.iloc[0:0].copy()
@@ -98,23 +125,18 @@ def main():
     years = list(range(max(2015, now.year - 2), now.year + 1))
     records, errors = [], []
 
-    for _, row in batch.iterrows():
-        corp_code = str(row['corp_code'])
-        stock_code = str(row['stock_code']).zfill(6)
-        for year in years:
-            for period, report_code in REPORT_CODES.items():
-                try:
-                    for raw in fetch_full_fs(corp_code, year, report_code):
-                        item = dict(raw)
-                        item['stock_code'] = stock_code
-                        item['period'] = period
-                        item['requested_year'] = year
-                        rcept = str(item.get('rcept_no', ''))
-                        item['filing_date'] = rcept[:8] if len(rcept) >= 8 else ''
-                        records.append(item)
-                except Exception as e:
-                    errors.append({'stock_code':stock_code,'corp_code':corp_code,
-                                   'year':year,'period':period,'error':repr(e)})
+    if len(batch):
+        print(f'DART batch start={start} size={len(batch)} workers={workers}', flush=True)
+        with ThreadPoolExecutor(max_workers=workers) as ex:
+            futures = [ex.submit(collect_company, row, years) for _, row in batch.iterrows()]
+            completed = 0
+            for fut in as_completed(futures):
+                company_records, company_errors = fut.result()
+                records.extend(company_records)
+                errors.extend(company_errors)
+                completed += 1
+                if completed % 25 == 0 or completed == len(batch):
+                    print(f'DART progress {completed}/{len(batch)}', flush=True)
 
     batch_tag = f'{start:05d}_{(start + max(len(batch)-1,0)):05d}'
     if records:
