@@ -11,6 +11,10 @@ on:
     # Runs after the main market/recent-DART update.
     - cron: '30 23 * * *'
 
+concurrency:
+  group: dart-full-history-backfill
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
