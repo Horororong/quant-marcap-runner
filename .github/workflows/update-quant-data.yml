@@ -23,6 +23,7 @@ jobs:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
       KRX_AUTH_KEY: ${{ secrets.KRX_AUTH_KEY }}
       DART_MAX_COMPANIES: ${{ vars.DART_MAX_COMPANIES || '300' }}
+      DART_WORKERS: ${{ vars.DART_WORKERS || '6' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
