@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import io
-import os
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -21,8 +20,6 @@ import requests
 #
 # IMPORTANT:
 # - Historical rows are never rebuilt from today's listing universe.
-# - Existing years are retained untouched unless the upstream yearly parquet for
-#   that same year changes.
 # - Duplicate Date+Code rows are removed deterministically.
 # - A status CSV records source freshness and row counts for auditing.
 # -----------------------------------------------------------------------------
@@ -127,8 +124,8 @@ def main() -> None:
     _write_wide(df, 'Marcap', 'marcap_daily.csv')
     _write_wide(df, 'Stocks', 'shares_daily.csv')
 
-    market_counts = df.groupby('Market')['Code'].nunique().to_dict()
-    latest_cross_section = df[df['Date'] == latest_date]
+    latest_cross_section = df[df['Date'] == latest_date].copy()
+    latest_market_counts = latest_cross_section.groupby('Market')['Code'].nunique().to_dict()
 
     status = pd.DataFrame([{
         'status': 'OK',
@@ -140,8 +137,8 @@ def main() -> None:
         'rows_current_year': int(len(df)),
         'unique_codes_current_year': int(df['Code'].nunique()),
         'latest_cross_section_rows': int(len(latest_cross_section)),
-        'latest_kospi_codes': int(market_counts.get('KOSPI', 0)),
-        'latest_kosdaq_codes': int(market_counts.get('KOSDAQ', 0)),
+        'latest_kospi_codes': int(latest_market_counts.get('KOSPI', 0)),
+        'latest_kosdaq_codes': int(latest_market_counts.get('KOSDAQ', 0)),
         'duplicate_date_code_rows': int(df.duplicated(['Date', 'Code']).sum()),
         'missing_close_rows': int(df['Close'].isna().sum()),
         'updated_at_utc': now_utc.isoformat(),
