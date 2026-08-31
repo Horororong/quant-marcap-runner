@@ -8,8 +8,9 @@ on:
       - 'update_dart_financials.py'
       - '.github/workflows/update-quant-data.yml'
   schedule:
-    # 03:00 KST every day = 18:00 UTC previous day
-    - cron: '0 18 * * *'
+    # 03:17 KST every day = 18:17 UTC previous day.
+    # Avoid the top of the hour, when GitHub scheduled Actions are more likely to be delayed or dropped.
+    - cron: '17 18 * * *'
 
 permissions:
   contents: write
