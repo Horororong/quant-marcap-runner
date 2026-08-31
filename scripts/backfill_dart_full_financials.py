@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import io
 import os
 import re
@@ -342,27 +343,49 @@ def shard_path(year: int, period: str, fs_div: str) -> Path:
     return FULL_DIR / f"dart_full_{year}_{period}_{fs_div}.csv.gz"
 
 
+def _batch_digest(df: pd.DataFrame) -> str:
+    cols = [
+        c
+        for c in [
+            "_stock_code",
+            "_corp_code",
+            "_requested_year",
+            "_period",
+            "_fs_div_requested",
+            "rcept_no",
+            "sj_div",
+            "account_id",
+            "account_nm",
+            "thstrm_nm",
+        ]
+        if c in df.columns
+    ]
+    if not cols:
+        payload = str(len(df)).encode("utf-8")
+    else:
+        stable = df[cols].fillna("").astype(str).sort_values(cols)
+        payload = stable.to_csv(index=False).encode("utf-8")
+    return hashlib.sha1(payload).hexdigest()[:16]
+
+
 def merge_full_rows(new_rows: list[dict]) -> int:
+    """Write immutable compressed batches instead of rewriting historical blobs.
+
+    Git stores binary gzip blobs inefficiently when they are rewritten. Immutable
+    batches keep repository growth predictable and preserve collection lineage.
+    Downstream factor builders should read all matching batch files and deduplicate
+    on filing/account keys.
+    """
     if not new_rows:
         return 0
 
     new = pd.DataFrame(new_rows)
     total_written = 0
     grouping = ["_requested_year", "_period", "_fs_div_requested"]
+    max_rows_per_file = 100_000
 
     for (year, period, fs_div), group in new.groupby(grouping, dropna=False):
-        path = shard_path(int(year), str(period), str(fs_div))
-        if path.exists():
-            old = pd.read_csv(
-                path,
-                dtype={"_stock_code": str, "_corp_code": str},
-                compression="gzip",
-                low_memory=False,
-            )
-            out = pd.concat([old, group], ignore_index=True, sort=False)
-        else:
-            out = group.copy()
-
+        out = group.copy()
         if "_stock_code" in out.columns:
             out["_stock_code"] = out["_stock_code"].astype(str).str.zfill(6)
 
@@ -395,10 +418,17 @@ def merge_full_rows(new_rows: list[dict]) -> int:
             if c in out.columns
         ]
         if sort_cols:
-            out = out.sort_values(sort_cols)
+            out = out.sort_values(sort_cols).reset_index(drop=True)
 
-        out.to_csv(path, index=False, encoding="utf-8-sig", compression="gzip")
-        total_written += len(group)
+        for start in range(0, len(out), max_rows_per_file):
+            chunk = out.iloc[start : start + max_rows_per_file].copy()
+            digest = _batch_digest(chunk)
+            path = FULL_DIR / (
+                f"dart_full_{int(year)}_{str(period)}_{str(fs_div)}_{digest}.csv.gz"
+            )
+            if not path.exists():
+                chunk.to_csv(path, index=False, encoding="utf-8-sig", compression="gzip")
+            total_written += len(chunk)
 
     return total_written
 
