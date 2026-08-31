@@ -1,0 +1,68 @@
+name: Backfill legacy DART quarterly financials
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/backfill_dart_legacy_quarterly.py'
+      - '.github/workflows/backfill-dart-legacy-quarterly.yml'
+  schedule:
+    # 10:30 KST every day = 01:30 UTC.
+    - cron: '30 1 * * *'
+
+concurrency:
+  group: dart-legacy-quarterly-backfill
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      DART_API_KEY: ${{ secrets.DART_API_KEY }}
+      DART_LEGACY_SEARCH_CORPS: ${{ vars.DART_LEGACY_SEARCH_CORPS || '400' }}
+      DART_LEGACY_DOCUMENTS: ${{ vars.DART_LEGACY_DOCUMENTS || '2000' }}
+      DART_LEGACY_WORKERS: ${{ vars.DART_LEGACY_WORKERS || '6' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas requests beautifulsoup4 lxml
+
+      - name: Collect and parse 2001-2015 DART periodic filings
+        run: python scripts/backfill_dart_legacy_quarterly.py
+
+      - name: Commit legacy datasets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/financials/legacy/ || true
+          git add data/status/dart_legacy_search_state.csv || true
+          git add data/status/dart_legacy_parse_state.csv || true
+          git add data/status/dart_legacy_status.csv || true
+          if git diff --cached --quiet; then
+            echo "No legacy DART changes"
+          else
+            git commit -m "Backfill legacy DART quarterly financials"
+            git push
+          fi
+
+      - name: Upload legacy backfill status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dart-legacy-quarterly-status
+          path: data/status/dart_legacy_status.csv
+          if-no-files-found: warn
