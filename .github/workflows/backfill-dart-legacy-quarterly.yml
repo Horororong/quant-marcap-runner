@@ -24,8 +24,11 @@ jobs:
     timeout-minutes: 180
     env:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
-      DART_LEGACY_SEARCH_CORPS: ${{ vars.DART_LEGACY_SEARCH_CORPS || '400' }}
-      DART_LEGACY_DOCUMENTS: ${{ vars.DART_LEGACY_DOCUMENTS || '2000' }}
+      # First-batch defaults are intentionally bounded so the legacy parser can
+      # be validated on real 2001-era filings before scaling up. Repository
+      # variables can override these without changing code.
+      DART_LEGACY_SEARCH_CORPS: ${{ vars.DART_LEGACY_SEARCH_CORPS || '100' }}
+      DART_LEGACY_DOCUMENTS: ${{ vars.DART_LEGACY_DOCUMENTS || '200' }}
       DART_LEGACY_WORKERS: ${{ vars.DART_LEGACY_WORKERS || '6' }}
 
     steps:
