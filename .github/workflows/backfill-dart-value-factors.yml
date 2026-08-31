@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'scripts/backfill_dart_full_financials.py'
+      - 'scripts/run_full_dart_backfill.py'
       - '.github/workflows/backfill-dart-value-factors.yml'
   schedule:
     # 08:30 KST every day = 23:30 UTC previous day.
@@ -42,7 +43,7 @@ jobs:
           pip install pandas requests pyarrow
 
       - name: Backfill full historical DART statements
-        run: python scripts/backfill_dart_full_financials.py
+        run: python scripts/run_full_dart_backfill.py
 
       - name: Commit full-history datasets
         run: |
