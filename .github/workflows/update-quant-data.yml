@@ -4,13 +4,14 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - 'scripts/update_krx_equities_daily.py'
       - 'update_public_data.py'
       - 'update_dart_financials.py'
       - '.github/workflows/update-quant-data.yml'
   schedule:
-    # 03:17 KST every day = 18:17 UTC previous day.
-    # Avoid the top of the hour, when GitHub scheduled Actions are more likely to be delayed or dropped.
-    - cron: '17 18 * * *'
+    # 07:30 KST every day = 22:30 UTC previous day.
+    # Run after the prior KRX trading session data has had time to settle upstream.
+    - cron: '30 22 * * *'
 
 permissions:
   contents: write
@@ -38,6 +39,24 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas numpy requests finance-datareader pyarrow
 
+      # 1) Update the KOSPI/KOSDAQ individual-stock panel first. This is the
+      # common price/liquidity/market-cap layer used by Korean equity backtests.
+      - name: Update KRX individual-stock panel
+        run: python scripts/update_krx_equities_daily.py
+
+      - name: Commit KRX individual-stock datasets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/krx_equities/ data/status/krx_equities_status.csv
+          if git diff --cached --quiet; then
+            echo "No KRX individual-stock data changes"
+          else
+            git commit -m "Update KRX individual-stock panel"
+            git push
+          fi
+
+      # 2) Update index, FX and macro series.
       - name: Update public market and macro data
         run: python update_public_data.py
 
@@ -53,6 +72,7 @@ jobs:
             git push
           fi
 
+      # 3) Only after market data succeeds, collect/rotate DART financial data.
       - name: Update DART financials
         run: python update_dart_financials.py
 
