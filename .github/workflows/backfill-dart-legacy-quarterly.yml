@@ -2,14 +2,11 @@ name: Backfill legacy DART quarterly financials
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'scripts/backfill_dart_legacy_quarterly.py'
-      - 'scripts/run_dart_legacy_quarterly.py'
-      - '.github/workflows/backfill-dart-legacy-quarterly.yml'
   schedule:
-    # 10:30 KST every day = 01:30 UTC.
-    - cron: '30 1 * * *'
+    # 00:15 KST every day = 15:15 UTC previous day.
+    # Run first so the 2001-2015 legacy backfill gets DART API quota before
+    # the recent-data update and the much larger 2015+ full-history backfill.
+    - cron: '15 15 * * *'
 
 concurrency:
   group: dart-legacy-quarterly-backfill
@@ -24,11 +21,10 @@ jobs:
     timeout-minutes: 180
     env:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
-      # First-batch defaults are intentionally bounded so the legacy parser can
-      # be validated on real 2001-era filings before scaling up. Repository
-      # variables can override these without changing code.
-      DART_LEGACY_SEARCH_CORPS: ${{ vars.DART_LEGACY_SEARCH_CORPS || '100' }}
-      DART_LEGACY_DOCUMENTS: ${{ vars.DART_LEGACY_DOCUMENTS || '200' }}
+      # Give the legacy backfill a bounded but meaningful daily quota share.
+      # Repository variables can still override these defaults.
+      DART_LEGACY_SEARCH_CORPS: ${{ vars.DART_LEGACY_SEARCH_CORPS || '300' }}
+      DART_LEGACY_DOCUMENTS: ${{ vars.DART_LEGACY_DOCUMENTS || '800' }}
       DART_LEGACY_WORKERS: ${{ vars.DART_LEGACY_WORKERS || '6' }}
 
     steps:
