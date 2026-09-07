@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'scripts/backtest_k_allweather_v3.py'
+      - '.github/workflows/backtest-k-allweather-v3.yml'
   workflow_dispatch:
 
 permissions:
@@ -26,6 +27,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas numpy matplotlib yfinance
           rm -rf ~/.cache/matplotlib
+      - name: Use repository LBMA gold history
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('scripts/backtest_k_allweather_v3.py')
+          s = p.read_text(encoding='utf-8')
+          old = '    gold_usd = month_last(fred("GOLDPMGBD228NLBM")).reindex(months).ffill()'
+          new = '''    gold_raw = pd.read_csv(ROOT / "data" / "proxy_long" / "raw" / "GOLD_LBMA_PM_USD.csv")
+    gold_raw["Date"] = pd.to_datetime(gold_raw["Date"], errors="coerce")
+    gold_raw["Close"] = pd.to_numeric(gold_raw["Close"], errors="coerce")
+    gold_usd = month_last(pd.Series(gold_raw["Close"].values, index=gold_raw["Date"]).dropna()).reindex(months).ffill()'''
+          if old not in s:
+              raise SystemExit('Expected gold source line not found')
+          p.write_text(s.replace(old, new), encoding='utf-8')
+          PY
       - name: Run K-All Weather v3 backtest
         run: python scripts/backtest_k_allweather_v3.py
       - name: Commit results
