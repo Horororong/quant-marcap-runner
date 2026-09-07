@@ -27,9 +27,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas numpy matplotlib yfinance
           rm -rf ~/.cache/matplotlib
-      - name: Use repository LBMA gold history
+      - name: Apply long-history proxy fixes
         run: |
           sed -i 's|    gold_usd = month_last(fred("GOLDPMGBD228NLBM")).reindex(months).ffill()|    gold_raw = pd.read_csv(ROOT / "data" / "proxy_long" / "raw" / "GOLD_LBMA_PM_USD.csv"); gold_usd = month_last(pd.Series(pd.to_numeric(gold_raw["Close"], errors="coerce").values, index=pd.to_datetime(gold_raw["Date"], errors="coerce")).dropna()).reindex(months).ffill()|' scripts/backtest_k_allweather_v3.py
+          sed -i '/    kr_price = ks200.copy()/,/    kr_stock_proxy = returns_from_price(kr_price)/c\    kr_stock_proxy = returns_from_price(ks200.ffill()); kodex200_ret = returns_from_price(kodex200); kr_stock_proxy.loc[kodex200_ret.notna()] = kodex200_ret.loc[kodex200_ret.notna()]' scripts/backtest_k_allweather_v3.py
+          sed -i '/    china_local = shcomp.copy()/,/    china_proxy = returns_from_price(china_local \* cnykrw)/c\    china_local_ret = returns_from_price(shcomp.ffill()); csi300_ret = returns_from_price(csi300); china_local_ret.loc[csi300_ret.notna()] = csi300_ret.loc[csi300_ret.notna()]; china_proxy = (1.0 + china_local_ret) * (1.0 + returns_from_price(cnykrw)) - 1.0' scripts/backtest_k_allweather_v3.py
+          sed -i '/    india_local = sensex.copy()/,/    india_proxy = returns_from_price(india_local \* inrkrw)/c\    india_local_ret = returns_from_price(sensex.ffill()); nifty_ret = returns_from_price(nifty); india_local_ret.loc[nifty_ret.notna()] = nifty_ret.loc[nifty_ret.notna()]; india_proxy = (1.0 + india_local_ret) * (1.0 + returns_from_price(inrkrw)) - 1.0' scripts/backtest_k_allweather_v3.py
       - name: Run K-All Weather v3 backtest
         run: python scripts/backtest_k_allweather_v3.py
       - name: Commit results
