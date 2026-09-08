@@ -1,0 +1,41 @@
+name: Compare K-All Weather Threeway
+
+on:
+  push:
+    paths:
+      - 'scripts/compare_k_allweather_threeway.py'
+      - '.github/workflows/compare-k-allweather-threeway.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install pandas numpy
+      - name: Run comparison
+        run: python scripts/compare_k_allweather_threeway.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: k-allweather-threeway-results
+          path: results/k_allweather_threeway
+          if-no-files-found: error
+      - name: Commit results
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/k_allweather_threeway
+          if git diff --cached --quiet; then
+            echo 'No changes'
+          else
+            git commit -m 'Add K-All Weather three-way comparison results'
+            git push
+          fi
