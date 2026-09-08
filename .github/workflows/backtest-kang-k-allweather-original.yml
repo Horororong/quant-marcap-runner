@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'scripts/backtest_kang_k_allweather_original.py'
+      - 'scripts/backtest_kang_k_allweather_original_v2.py'
       - '.github/workflows/backtest-kang-k-allweather-original.yml'
   workflow_dispatch:
 
@@ -26,7 +27,7 @@ jobs:
           pip install pandas numpy matplotlib yfinance
           rm -rf ~/.cache/matplotlib
       - name: Run backtest
-        run: python scripts/backtest_kang_k_allweather_original.py
+        run: python scripts/backtest_kang_k_allweather_original_v2.py
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
@@ -41,6 +42,6 @@ jobs:
           if git diff --cached --quiet; then
             echo 'No changes'
           else
-            git commit -m 'Add Kang K-All Weather original backtest results'
+            git commit -m 'Update Kang K-All Weather original backtest results'
             git push
           fi
