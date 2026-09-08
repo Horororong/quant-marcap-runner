@@ -1,0 +1,43 @@
+name: Analyze K-All Weather Robustness
+
+on:
+  push:
+    paths:
+      - 'scripts/analyze_k_allweather_robustness.py'
+      - '.github/workflows/analyze-k-allweather-robustness.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy
+      - name: Run robustness analysis
+        run: python scripts/analyze_k_allweather_robustness.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: k-allweather-robustness-results
+          path: results/k_allweather_robustness
+          if-no-files-found: error
+      - name: Commit results
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/k_allweather_robustness
+          if git diff --cached --quiet; then
+            echo 'No changes'
+          else
+            git commit -m 'Add K-All Weather robustness results'
+            git push
+          fi
