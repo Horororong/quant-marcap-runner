@@ -1,6 +1,6 @@
 import pandas as pd
 
-from scripts import backtest_kang_k_allweather_original as b
+import backtest_kang_k_allweather_original as b
 
 
 def build_panel_fixed():
