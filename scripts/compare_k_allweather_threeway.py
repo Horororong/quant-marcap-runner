@@ -47,7 +47,6 @@ def metrics(nav: pd.Series):
     sortino0 = float((r.mean() / downside) * np.sqrt(12)) if pd.notna(downside) and downside > 0 else np.nan
     calmar = float(cagr / abs(mdd)) if mdd < 0 else np.nan
 
-    # longest recovery in months, based on monthly NAV
     peak = nav.cummax()
     underwater = nav < peak
     longest = 0
@@ -72,6 +71,13 @@ def metrics(nav: pd.Series):
     }
 
 
+def delta_encode(values, scale=10000):
+    ints = [int(round(float(v) * scale)) for v in values]
+    out = [ints[0]]
+    out.extend(ints[i] - ints[i - 1] for i in range(1, len(ints)))
+    return ",".join(str(x) for x in out)
+
+
 def main():
     nav = load_nav()
     nav.to_csv(OUT / "nav_monthly.csv", encoding="utf-8-sig")
@@ -83,28 +89,40 @@ def main():
     summary = pd.DataFrame(rows)
     summary.to_csv(OUT / "summary.csv", index=False, encoding="utf-8-sig")
 
-    # Compact payload for ChatGPT inline interactive chart.
+    summary_compact = {
+        row["전략"]: {
+            "final_million": round(row["최종자산_원"] / 1_000_000, 2),
+            "cagr_pct": round(row["CAGR"] * 100, 2),
+            "vol_pct": round(row["연환산변동성"] * 100, 2),
+            "mdd_pct": round(row["MDD"] * 100, 2),
+            "sharpe0": round(row["Sharpe_rf0"], 2),
+            "calmar": round(row["Calmar"], 2),
+            "recovery_months": int(row["최대손실회복기간_개월"]),
+        }
+        for row in rows
+    }
+
     payload = {
         "dates": [d.strftime("%Y-%m") for d in nav.index],
-        "series": {
-            c: [round(float(v / INITIAL), 4) for v in nav[c].values]
-            for c in nav.columns
-        },
-        "summary": {
-            row["전략"]: {
-                "final_million": round(row["최종자산_원"] / 1_000_000, 2),
-                "cagr_pct": round(row["CAGR"] * 100, 2),
-                "vol_pct": round(row["연환산변동성"] * 100, 2),
-                "mdd_pct": round(row["MDD"] * 100, 2),
-                "sharpe0": round(row["Sharpe_rf0"], 2),
-                "calmar": round(row["Calmar"], 2),
-                "recovery_months": int(row["최대손실회복기간_개월"]),
-            }
-            for row in rows
-        },
+        "series": {c: [round(float(v / INITIAL), 4) for v in nav[c].values] for c in nav.columns},
+        "summary": summary_compact,
     }
     with open(OUT / "interactive_payload.json", "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, separators=(",", ":"))
+
+    compact = {
+        "start": nav.index[0].strftime("%Y-%m"),
+        "n": len(nav),
+        "scale": 10000,
+        "series": {
+            "current": delta_encode(nav["최신 K-올웨더 성장형"] / INITIAL),
+            "static": delta_encode(nav["강환국 정적 원본"] / INITIAL),
+            "seasonal": delta_encode(nav["강환국 계절형 원본"] / INITIAL),
+        },
+        "summary": summary_compact,
+    }
+    with open(OUT / "interactive_compact.json", "w", encoding="utf-8") as f:
+        json.dump(compact, f, ensure_ascii=False, separators=(",", ":"))
 
     print(summary.to_string(index=False))
 
