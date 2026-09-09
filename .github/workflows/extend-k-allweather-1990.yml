@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'scripts/extend_k_allweather_1990.py'
+      - 'scripts/extend_k_allweather_1990_v2.py'
       - '.github/workflows/extend-k-allweather-1990.yml'
   workflow_dispatch:
 
@@ -21,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: pip install pandas numpy requests yfinance lxml
       - name: Run extended backtest
-        run: python scripts/extend_k_allweather_1990.py
+        run: python scripts/extend_k_allweather_1990_v2.py
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
