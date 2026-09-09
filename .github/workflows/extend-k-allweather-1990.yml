@@ -1,0 +1,41 @@
+name: Extend K-All Weather to 1990
+
+on:
+  push:
+    paths:
+      - 'scripts/extend_k_allweather_1990.py'
+      - '.github/workflows/extend-k-allweather-1990.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install pandas numpy requests yfinance lxml
+      - name: Run extended backtest
+        run: python scripts/extend_k_allweather_1990.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: k-allweather-1990-results
+          path: results/k_allweather_1990
+          if-no-files-found: error
+      - name: Commit results
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/k_allweather_1990
+          if git diff --cached --quiet; then
+            echo 'No changes'
+          else
+            git commit -m 'Add 1990-2026 K-All Weather comparison results'
+            git push
+          fi
