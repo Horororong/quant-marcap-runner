@@ -1,0 +1,12 @@
+1990 extension assumptions
+- 2000 onward: reuse previously validated repository asset-return panels unchanged.
+- US equity 1990-1999: VFINX adjusted total-return proxy + USD/KRW.
+- Korea equity: OECD broad share-price monthly return (price return).
+- India equity: OECD broad share-price monthly return + INR/KRW.
+- China equity: Shanghai Composite monthly history from 1991; before Feb-1991 the China sleeve remains in KRW cash because the market was not investable for a full prior month.
+- Gold 1990-1999: BLS Export Price Index (End Use): Nonmonetary Gold [IQ12260] + USD/KRW. Sparse pre-1994 index levels are time-interpolated monthly. 2000 onward reuses the prior validated gold return panel unchanged.
+- US30Y early: GS30 yield, synthetic 30Y par-bond return + USD/KRW. US10Y: GS10 similarly.
+- Korea long-bond 1990-1999: OECD Housing Bond yield IRLOHO01KRM156N, priced as flat-curve synthetic 10Y/30Y. This is the largest pre-2000 approximation.
+- KRW cash: 3M interbank from 1991; IMF discount rate fallback for 1990.
+- Foreign assets remain unhedged where the original tested strategy was unhedged.
+- Gross and 10bp per traded-notional sensitivity are reported. Taxes ignored.
