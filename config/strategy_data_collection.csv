@@ -1,0 +1,28 @@
+data_id,asset_group,required_for,required_start,current_coverage,status,preferred_source,notes
+KR_GOVT_5Y_TR,KR bond,Strategy 7,1987,None,MISSING_EXACT,KIS/KAP/KRX total-return index,ETF candidates 114460 and 302190 are collected only as investable proxies
+KR_GOVT_20Y_TR,KR bond,Strategy 8,Available history,None,MISSING_EXACT,KIS/KAP/KRX total-return index,Use 148070 and 451530 only as lower/upper duration validation bounds
+US_SMALL_CAP_TR,US equity,GTAA3,1973,IWM from 2000,MISSING_LONG_PROXY,CRSP or Russell total-return index,Point-in-time and dividend-reinvested series required
+US_LARGE_VALUE_TR,US equity,LAA and GTAA3,1973,IWD from 2000,MISSING_LONG_PROXY,CRSP or Russell total-return index,Do not splice price-only index
+US_SMALL_VALUE_TR,US equity,GTAA3,1973,IWN from 2000,MISSING_LONG_PROXY,CRSP or Russell total-return index,Point-in-time and dividend-reinvested series required
+US_MOMENTUM_TR,US equity,GTAA3,1973,MTUM from 2013,MISSING_LONG_PROXY,MSCI USA Momentum or academic factor reconstruction,Record reconstruction method and selection lag
+GLOBAL_EQUITY_TR,Global equity,GTAA3,1973,VT from 2008,MISSING_LONG_PROXY,MSCI ACWI total-return index,Preserve developed and emerging coverage history
+DEVELOPED_EX_US_TR,Developed equity,Multiple dynamic strategies,1973,EFA from 2001,MISSING_LONG_PROXY,MSCI EAFE total-return index,Net versus gross dividend definition must be fixed
+EUROPE_EQUITY_TR,Europe equity,GTAA3,1973,VGK from 2005,MISSING_LONG_PROXY,MSCI Europe total-return index,Net versus gross dividend definition must be fixed
+JAPAN_EQUITY_TR,Japan equity,GTAA3,1973,EWJ from 1996,MISSING_LONG_PROXY,MSCI Japan total-return index,USD return series required
+EM_EQUITY_TR,Emerging equity,Multiple dynamic strategies,1988,EEM from 2003 and VWO from 2005,MISSING_LONG_PROXY,MSCI Emerging Markets total-return index,Earlier 1973 tests are not feasible without a documented synthetic proxy
+US_REIT_TR,US REIT,Jewish GTAA and dual momentum,1973,VNQ from 2004,MISSING_LONG_PROXY,FTSE Nareit All Equity REIT total-return index,Dividend reinvestment required
+US_MORTGAGE_REIT_TR,US mortgage REIT,Composite dual momentum,1973,REM from 2007,MISSING_LONG_PROXY,FTSE Nareit Mortgage REIT total-return index,Check structural breaks in mortgage REIT universe
+BROAD_COMMODITY_TR,Commodity,All Weather GTAA PAA VAA DAA,1973,DBC from 2006,MISSING_LONG_PROXY,S&P GSCI or Bloomberg Commodity total-return index,Futures roll return must be included
+US_LONG_TREASURY_TR,US Treasury,Multiple strategies,1973,TLT from 2002 and yield inputs from 1970,NEEDS_RECONSTRUCTION,FRED yields plus coupon-bond return model,Validate overlap against TLT adjusted close
+US_ZERO_LONG_TREASURY_TR,US Treasury,All Weather,1973,EDV from 2008,MISSING_LONG_PROXY,STRIPS total-return index or duration model,Validate overlap against EDV adjusted close
+US_INTERMEDIATE_TREASURY_TR,US Treasury,Multiple strategies,1973,IEF from 2002 and yield inputs from 1970,NEEDS_RECONSTRUCTION,FRED yields plus coupon-bond return model,Validate overlap against IEF adjusted close
+US_SHORT_TREASURY_TR,US Treasury,Multiple strategies,1973,SHY from 2002,MISSING_LONG_PROXY,FRED short yields plus coupon-bond return model,Validate overlap against SHY adjusted close
+US_ULTRASHORT_TREASURY_TR,US cash,Multiple strategies,1973,BIL from 2007 and DTB3 from 1970,NEEDS_RECONSTRUCTION,FRED DTB3 total-return accrual,Validate overlap against BIL adjusted close
+US_AGG_BOND_TR,US aggregate bond,Multiple dynamic strategies,1976,AGG from 2003 and BND from 2007,MISSING_LONG_PROXY,Bloomberg US Aggregate total-return index,Document index inception and unavailable earlier period
+US_IG_CORP_TR,US corporate bond,All Weather VAA,1973,LQD from 2002,MISSING_LONG_PROXY,ICE BofA US Corporate total-return index,Prefer official total-return index value
+US_HIGH_YIELD_TR,US high-yield bond,GTAA3 and composite dual momentum,1986,HYG from 2007,MISSING_LONG_PROXY,ICE BofA US High Yield total-return index,Do not extend before index market history without caveat
+GLOBAL_EX_US_SOVEREIGN_TR,International bond,GTAA3,1990,BWX from 2007,MISSING_LONG_PROXY,FTSE World Government Bond ex-US total-return index,USD unhedged series required
+US_LONG_TIPS_TR,US TIPS,All Weather,1997,LTPZ from 2009,MISSING_LONG_PROXY,Bloomberg US TIPS long total-return index,TIPS did not exist in the 1970s
+EM_LOCAL_CURRENCY_BOND_TR,Emerging bond,All Weather,2002,EMLC from 2010,MISSING_LONG_PROXY,JPM GBI-EM Global Diversified total-return index,USD unhedged series required
+USDKRW_LONG,FX,All ISA USD assets,1970,Daily data from 2003,MISSING_LONG_PROXY,Bank of Korea or FRED DEXKOUS,Pre-market-regime interpretation required
+US_UNEMPLOYMENT_LONG,Macro,LAA,1970,Currently collected from 1995,READY_TO_EXTEND,FRED UNRATE,Change macro collection start to 1970
