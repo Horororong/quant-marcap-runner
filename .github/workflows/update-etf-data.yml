@@ -3,7 +3,7 @@ name: Update ETF Data
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 21 * * *"
+    # 06:00 KST every Monday = 21:00 UTC Sunday.\n    - cron: "0 21 * * 0"
 
 permissions:
   contents: write
