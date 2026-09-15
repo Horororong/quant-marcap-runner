@@ -104,3 +104,12 @@ For backtests, do not replace historical universe membership with today's KRX li
 4. Price + fundamentals point-in-time join
 5. Market-cap/liquidity filters and investable universe snapshots
 6. Factor backtests with costs and out-of-sample validation
+
+
+## Giant Portfolio strategy data collection
+
+Master gap register: `config/strategy_data_collection.csv`
+
+Korean investable proxy universe: `config/kr_etf_universe.csv`
+
+The 28 US ETF tickers used by the 23 strategies are already collected. The remaining exact gaps are Korean 5-year and 20-year government-bond total-return series plus pre-ETF long-history proxies. Korean ETF candidates are collected for implementation and overlap validation, but are not labeled as exact replacements. All foreign-asset ISA tests use unhedged USD exposure and convert returns with USD/KRW.
