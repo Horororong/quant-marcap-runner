@@ -9,9 +9,9 @@ on:
       - 'update_dart_financials.py'
       - '.github/workflows/update-quant-data.yml'
   schedule:
-    # 07:30 KST every day = 22:30 UTC previous day.
+    # 07:30 KST every Monday = 22:30 UTC Sunday.
     # Run after the prior KRX trading session data has had time to settle upstream.
-    - cron: '30 22 * * *'
+    - cron: '30 22 * * 0'
 
 permissions:
   contents: write
