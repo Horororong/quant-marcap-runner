@@ -3,7 +3,8 @@ name: Update Market Data
 on:
   workflow_dispatch:
   schedule:
-    # 06:20 KST every Monday = 21:20 UTC Sunday.\n    - cron: "20 21 * * 0"
+    # 06:20 KST every Monday = 21:20 UTC Sunday.
+    - cron: "20 21 * * 0"
 
 permissions:
   contents: write
