@@ -28,6 +28,7 @@ Files: `data/indices/*.csv`
 
 ### FX
 - USD/KRW
+- Long USD/KRW from FRED (`DEXKOUS`, where available)
 
 Files: `data/fx/*.csv`
 
@@ -37,7 +38,7 @@ Files: `data/fx/*.csv`
 - 10Y-2Y spread (`T10Y2Y`)
 - Effective Fed Funds (`DFF`)
 - US CPI (`CPIAUCSL`)
-- US unemployment (`UNRATE`)
+- US unemployment (`UNRATE`, requested from 1970 for LAA)
 - US industrial production (`INDPRO`)
 
 Files: `data/macro/*.csv`
