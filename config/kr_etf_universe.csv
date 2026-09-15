@@ -1,0 +1,6 @@
+yahoo_ticker,code,name,role,proxy_quality,notes
+069500.KS,069500,KODEX200,KR_EQUITY,EXACT,KOSPI 200 investable proxy
+114460.KS,114460,ACE국고채3년,KR_GOVT_5Y_CANDIDATE,LOW,3Y-heavy basket that also holds a 5Y issue
+302190.KS,302190,TIGER중장기국채,KR_GOVT_5Y_CANDIDATE,MEDIUM,KIS government bond 3-10Y index; practical duration proxy
+148070.KS,148070,KOSEF국고채10년,KR_GOVT_20Y_LOWER_BOUND,LOW,Lower-duration bound for 20Y reconstruction
+451530.KS,451530,TIGER국고채30년스트립액티브,KR_GOVT_20Y_UPPER_BOUND,LOW,Higher-duration bound; do not use alone as an exact 20Y proxy
