@@ -20,7 +20,7 @@ for d in DIRS.values():
     d.mkdir(parents=True, exist_ok=True)
 
 START_MARKET = '1995-01-01'
-START_MACRO = '1995-01-01'
+START_MACRO = '1970-01-01'
 START_KOSDAQ150 = '2015-07-13'
 KRX_KOSDAQ_INDEX_URL = 'https://data-dbg.krx.co.kr/svc/apis/idx/kosdaq_dd_trd'
 
@@ -36,6 +36,10 @@ INDEX_SERIES = {
 
 FX_SERIES = {
     'USDKRW': 'USD/KRW',
+}
+
+FRED_FX_SERIES = {
+    'USDKRW_FRED_LONG': 'DEXKOUS',
 }
 
 FRED_SERIES = {
@@ -170,6 +174,14 @@ def main():
         try:
             print(f'FX {name} <- {symbol}', flush=True)
             status.append(save_series('fx', name, fdr.DataReader(symbol, START_MARKET)))
+        except Exception as e:
+            status.append({'category':'fx','name':name,'rows':0,'start_date':'','end_date':'','status':'ERROR','error':repr(e)})
+            traceback.print_exc()
+
+    for name, fred_id in FRED_FX_SERIES.items():
+        try:
+            print(f'FRED FX {name} <- {fred_id}', flush=True)
+            status.append(save_series('fx', name, fdr.DataReader(f'FRED:{fred_id}', START_MACRO)))
         except Exception as e:
             status.append({'category':'fx','name':name,'rows':0,'start_date':'','end_date':'','status':'ERROR','error':repr(e)})
             traceback.print_exc()
