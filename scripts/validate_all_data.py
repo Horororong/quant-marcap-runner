@@ -12,7 +12,8 @@ INDEX_DIR = ROOT / "indices"
 MACRO_DIR = ROOT / "macro"
 STATUS_DIR = ROOT / "status"
 
-UNIVERSE_FILE = Path("config/etf_universe.csv")
+US_UNIVERSE_FILE = Path("config/etf_universe.csv")
+KR_UNIVERSE_FILE = Path("config/kr_etf_universe.csv")
 
 REPORT_FILE = STATUS_DIR / "data_validation_report.csv"
 
@@ -139,7 +140,7 @@ def main():
     # --------------------------------------------------
     # 미국 ETF 28개
     # --------------------------------------------------
-    universe = pd.read_csv(UNIVERSE_FILE)
+    universe = pd.read_csv(US_UNIVERSE_FILE)
 
     expected_tickers = (
         universe["ticker"]
@@ -164,13 +165,17 @@ def main():
     # --------------------------------------------------
     # 한국 ETF
     # --------------------------------------------------
-    results.append(
-        validate_price_file(
-            KR_ETF_DIR / "069500_KODEX200.csv",
-            "KR_ETF",
-            "KODEX200"
+    kr_universe = pd.read_csv(KR_UNIVERSE_FILE, dtype={"code": str})
+    kr_universe["code"] = kr_universe["code"].str.zfill(6)
+
+    for row in kr_universe.itertuples(index=False):
+        results.append(
+            validate_price_file(
+                KR_ETF_DIR / f"{row.code}_{row.name}.csv",
+                "KR_ETF",
+                row.name
+            )
         )
-    )
 
     # --------------------------------------------------
     # 필수 지수
