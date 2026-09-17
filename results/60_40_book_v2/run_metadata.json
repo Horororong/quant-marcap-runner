@@ -1,0 +1,17 @@
+{
+  "as_of": "2026-09-18",
+  "latest_complete_month": "2026-08-31",
+  "book_rule": "SPY 60% + IEF 40%, annual rebalance",
+  "stock_proxy_before": "1993-01-29",
+  "bond_proxy_before": "2002-07-30",
+  "post_inception": "actual ETF adjusted close",
+  "proxy_sources": [
+    "https://raw.githubusercontent.com/bpineau/pofo/master/pkg/datasets/simdata/SP500.csv",
+    "https://raw.githubusercontent.com/bpineau/pofo/master/pkg/datasets/simdata/IEF.csv"
+  ],
+  "actual_sources": [
+    "data/etf_us/SPY.csv",
+    "data/etf_us/IEF.csv"
+  ],
+  "note": "Sharpe uses rf=0 per attached standard template; book Sharpe definition is not stated in attachment."
+}
