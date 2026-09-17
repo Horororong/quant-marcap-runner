@@ -1,0 +1,41 @@
+name: Backtest Book 60-40
+
+on:
+  push:
+    paths:
+      - 'scripts/backtest_6040_book.py'
+      - '.github/workflows/backtest-6040-book.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pandas numpy plotly
+
+      - name: Run 60/40 backtest
+        run: python scripts/backtest_6040_book.py
+
+      - name: Commit results
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/60_40_book
+          if git diff --cached --quiet; then
+            echo 'No result changes'
+          else
+            git commit -m 'Add 60-40 portfolio backtest results'
+            git push
+          fi
