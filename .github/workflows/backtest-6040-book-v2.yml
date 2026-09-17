@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'scripts/backtest_6040_book_v2.py'
+      - '.github/workflows/backtest-6040-book-v2.yml'
   workflow_dispatch:
 
 permissions:
