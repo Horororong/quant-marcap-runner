@@ -1,0 +1,37 @@
+{
+  "as_of": "2026-09-17",
+  "latest_complete_month": "2026-08-31",
+  "initial_capital_usd": 10000.0,
+  "allocation": {
+    "SP500": 0.6,
+    "IEF": 0.4
+  },
+  "rebalance": "annual, before first valuation/business day return of each calendar year",
+  "base_cost_bps_per_gross_traded_dollar": 5.0,
+  "cost_scenarios_bps": [
+    0.0,
+    5.0,
+    15.0
+  ],
+  "risk_free_rate_for_sharpe": 0.0,
+  "metrics": {
+    "CAGR_Sharpe_Vol": "monthly NAV",
+    "MDD_Recovery": "daily NAV"
+  },
+  "sources": {
+    "SP500": "https://raw.githubusercontent.com/bpineau/pofo/master/pkg/datasets/simdata/SP500.csv",
+    "IEF": "https://raw.githubusercontent.com/bpineau/pofo/master/pkg/datasets/simdata/IEF.csv",
+    "actual_overlap": [
+      "data/etf_us/SPY.csv",
+      "data/etf_us/IEF.csv"
+    ]
+  },
+  "proxy_start": "1962-01-02",
+  "proxy_end": "2026-08-31",
+  "notes": [
+    "Pre-ETF history is a backfilled total-return proxy; it is not executable SPY/IEF history before fund inception.",
+    "Taxes are excluded.",
+    "Initial deployment trading cost is excluded; annual rebalancing costs are modeled.",
+    "September 2026 is excluded because it is incomplete as of 2026-09-17."
+  ]
+}
