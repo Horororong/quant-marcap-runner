@@ -1,0 +1,40 @@
+name: Backtest permanent portfolio with standard template v2-9
+
+on:
+  push:
+    paths:
+      - 'scripts/quant_backtest_template_v2_9.py'
+      - 'scripts/backtest_permanent_template_v29.py'
+      - '.github/workflows/backtest-permanent-template-v29.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pandas numpy plotly
+      - name: Run uploaded standard template self-test
+        run: python scripts/quant_backtest_template_v2_9.py
+      - name: Run strategy 3 permanent portfolio
+        run: python scripts/backtest_permanent_template_v29.py
+      - name: Upload permanent portfolio results
+        uses: actions/upload-artifact@v4
+        with:
+          name: permanent-portfolio-v29
+          path: |
+            results/permanent_template_v29/interactive_dashboard.html
+            results/permanent_template_v29/interactive_dashboard_data.json
+            results/permanent_template_v29/summary_four_periods_template.csv
+            results/permanent_template_v29/cost_sensitivity_template.csv
+            results/permanent_template_v29/book_verification_template.csv
+            results/permanent_template_v29/actual_etf_overlap_check.json
+            results/permanent_template_v29/run_metadata.json
+            results/permanent_template_v29/chat_payload_four_periods.json
+          if-no-files-found: error
