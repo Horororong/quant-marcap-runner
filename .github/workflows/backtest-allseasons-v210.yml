@@ -1,0 +1,39 @@
+name: Backtest all-seasons with standard template v2-10
+
+on:
+  push:
+    paths:
+      - 'scripts/quant_backtest_template_v2_10.py'
+      - 'scripts/backtest_allseasons_v210.py'
+      - '.github/workflows/backtest-allseasons-v210.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pandas numpy
+      - name: Run v2-10 template self-test
+        run: python scripts/quant_backtest_template_v2_10.py
+      - name: Run strategy 4 all-seasons backtest
+        run: python scripts/backtest_allseasons_v210.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: allseasons-v210
+          path: |
+            results/allseasons_template_v210/summary_four_periods_template.csv
+            results/allseasons_template_v210/book_verification_template.csv
+            results/allseasons_template_v210/cost_sensitivity_template.csv
+            results/allseasons_template_v210/chat_payload_four_periods.json
+            results/allseasons_template_v210/inline_2001_cumulative.json
+            results/allseasons_template_v210/run_metadata.json
+            results/allseasons_template_v210/actual_etf_overlap_check.json
+          if-no-files-found: error
