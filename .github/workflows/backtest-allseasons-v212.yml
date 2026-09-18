@@ -1,0 +1,41 @@
+name: Backtest all-seasons with standard template v2-12
+
+on:
+  push:
+    paths:
+      - 'scripts/quant_backtest_template_v2_12.py'
+      - 'scripts/backtest_allseasons_v212.py'
+      - '.github/workflows/backtest-allseasons-v212.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pandas numpy
+      - name: Run v2-12 template self-test
+        run: python scripts/quant_backtest_template_v2_12.py
+      - name: Run strategy 4 all-seasons backtest
+        run: python scripts/backtest_allseasons_v212.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: allseasons-v212
+          path: |
+            results/allseasons_template_v212/summary_four_periods_template.csv
+            results/allseasons_template_v212/book_verification_template.csv
+            results/allseasons_template_v212/cost_sensitivity_template.csv
+            results/allseasons_template_v212/chat_payload_four_periods.json
+            results/allseasons_template_v212/inline_2001_cumulative.json
+            results/allseasons_template_v212/monthly_nav_full.csv
+            results/allseasons_template_v212/daily_nav_reliable_1991plus.csv.gz
+            results/allseasons_template_v212/run_metadata.json
+            results/allseasons_template_v212/actual_etf_overlap_check.json
+          if-no-files-found: error
