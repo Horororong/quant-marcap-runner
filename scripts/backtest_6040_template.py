@@ -5,7 +5,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from quant_backtest_template_v2_8 import (
+from quant_backtest_template_v2_9 import (
     BacktestConfig,
     run_four_periods,
     combine_period_payloads,
@@ -22,7 +22,7 @@ COST_SCENARIOS_BPS = (0.0, 5.0, 15.0)
 BOOK_START = "1970-01-01"
 BOOK_END = "2021-12-31"
 
-OUT = Path("results/60_40_template_v28")
+OUT = Path("results/60_40_template_v29")
 OUT.mkdir(parents=True, exist_ok=True)
 
 POFO_SP500 = "https://raw.githubusercontent.com/bpineau/pofo/master/pkg/datasets/simdata/SP500.csv"
@@ -211,22 +211,22 @@ def main() -> None:
     summary.to_csv(OUT / "summary_four_periods_template.csv", index=False, encoding="utf-8-sig")
 
     combined_payload = combine_period_payloads(
-        *[results[k]["chat_payload"] for k in ["book_validation", "from_2000", "from_2021", "longest"]]
+        *[results[k]["chat_payload"] for k in ["book_validation", "from_2001", "from_2021", "longest"]]
     )
     save_chat_payload(combined_payload, str(OUT / "chat_payload_four_periods.json"))
 
     daily_nav.to_csv(OUT / "daily_nav_full.csv.gz", compression="gzip")
     monthly_nav.to_csv(OUT / "monthly_nav_full.csv", encoding="utf-8-sig")
 
-    # 채팅 인터랙티브 그래프용: 표준 주 분석기간(2000~최신)
-    chart_monthly = monthly_nav.loc["2000-01-01":].copy()
+    # 채팅 인터랙티브 그래프용: 표준 주 분석기간(2001~최신)
+    chart_monthly = monthly_nav.loc["2001-01-01":].copy()
     chart_monthly.index.name = "Date"
-    chart_monthly.to_csv(OUT / "chart_monthly_from_2000.csv", encoding="utf-8-sig")
+    chart_monthly.to_csv(OUT / "chart_monthly_from_2001.csv", encoding="utf-8-sig")
 
-    chart_daily = daily_nav.loc["2000-01-01":].copy()
+    chart_daily = daily_nav.loc["2001-01-01":].copy()
     chart_dd = chart_daily / chart_daily.cummax() - 1.0
     chart_dd.index.name = "Date"
-    chart_dd.to_csv(OUT / "chart_daily_drawdown_from_2000.csv", encoding="utf-8-sig")
+    chart_dd.to_csv(OUT / "chart_daily_drawdown_from_2001.csv", encoding="utf-8-sig")
 
     # 최장기간 Drawdown도 표준 템플릿 원칙대로 일별 NAV에서 계산해 보존.
     chart_dd_full = daily_nav / daily_nav.cummax() - 1.0
@@ -244,6 +244,175 @@ def main() -> None:
     dd_year_min = chart_dd_full.groupby(chart_dd_full.index.year).min()
     dd_year_min.index.name = "Year"
     dd_year_min.to_csv(OUT / "chart_daily_dd_yearly_min_longest.csv", encoding="utf-8-sig")
+
+
+    # 선택형 인터랙티브 대시보드: 최장~현재 / 2001~현재 / 2021~현재.
+    # 누적자산·Log2는 월별 NAV, Drawdown은 일별 NAV를 사용한다.
+    def _period_chart_data(period_key: str) -> dict:
+        r = results[period_key]
+        m = r["monthly_nav"][["60/40 비용후(5bp)", "S&P500 100%"]].copy()
+        d = r["daily_nav"][["60/40 비용후(5bp)", "S&P500 100%"]].copy()
+        dd = d / d.cummax() - 1.0
+        mm = []
+        for dt, row in m.iterrows():
+            net = float(row["60/40 비용후(5bp)"])
+            sp = float(row["S&P500 100%"])
+            mm.append({
+                "date": dt.strftime("%Y-%m-%d"),
+                "net": net,
+                "sp": sp,
+                "net_log2": float(np.log2(net)),
+                "sp_log2": float(np.log2(sp)),
+                "net_asset": net * INITIAL_CAPITAL,
+                "sp_asset": sp * INITIAL_CAPITAL,
+            })
+        dd_rows = []
+        for dt, row in dd.iterrows():
+            dd_rows.append({
+                "date": dt.strftime("%Y-%m-%d"),
+                "net_dd": float(row["60/40 비용후(5bp)"] * 100.0),
+                "sp_dd": float(row["S&P500 100%"] * 100.0),
+            })
+        metric = r["metrics"]
+        return {
+            "label": r["label"],
+            "monthly": mm,
+            "drawdown": dd_rows,
+            "metrics": {
+                "net": {
+                    "CAGR": float(metric.loc["60/40 비용후(5bp)", "CAGR"] * 100),
+                    "MDD": float(metric.loc["60/40 비용후(5bp)", "MDD"] * 100),
+                    "Sharpe": float(metric.loc["60/40 비용후(5bp)", "Sharpe"]),
+                    "Vol": float(metric.loc["60/40 비용후(5bp)", "연환산_표준편차"] * 100),
+                    "Recovery": float(metric.loc["60/40 비용후(5bp)", "최대회복기간_개월"]),
+                    "Final": float(metric.loc["60/40 비용후(5bp)", "최종자산"]),
+                },
+                "sp": {
+                    "CAGR": float(metric.loc["S&P500 100%", "CAGR"] * 100),
+                    "MDD": float(metric.loc["S&P500 100%", "MDD"] * 100),
+                    "Sharpe": float(metric.loc["S&P500 100%", "Sharpe"]),
+                    "Vol": float(metric.loc["S&P500 100%", "연환산_표준편차"] * 100),
+                    "Recovery": float(metric.loc["S&P500 100%", "최대회복기간_개월"]),
+                    "Final": float(metric.loc["S&P500 100%", "최종자산"]),
+                },
+            },
+        }
+
+    dashboard_data = {
+        "longest": _period_chart_data("longest"),
+        "from_2001": _period_chart_data("from_2001"),
+        "from_2021": _period_chart_data("from_2021"),
+    }
+    (OUT / "interactive_dashboard_data.json").write_text(
+        json.dumps(dashboard_data, ensure_ascii=False), encoding="utf-8"
+    )
+
+    try:
+        from plotly.offline import get_plotlyjs
+        plotly_js = get_plotlyjs()
+    except Exception as e:
+        raise RuntimeError("plotly is required to build the standalone interactive dashboard") from e
+
+    data_json = json.dumps(dashboard_data, ensure_ascii=False)
+    html = f"""<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>60/40 백테스트 인터랙티브 대시보드</title>
+<style>
+:root {{ color-scheme: light dark; }}
+body {{ font-family: "Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif; margin:0; background:#f4f6f8; color:#111; }}
+.wrap {{ max-width:1280px; margin:0 auto; padding:20px; }}
+.toolbar {{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:14px; }}
+select {{ font:inherit; padding:10px 14px; border-radius:10px; border:1px solid #bbb; background:white; color:#111; }}
+.cards {{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin:12px 0 18px; }}
+.card {{ background:white; border-radius:12px; padding:14px 16px; box-shadow:0 1px 4px rgba(0,0,0,.08); }}
+.card h3 {{ margin:0 0 8px; font-size:15px; }}
+.metrics {{ display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; font-size:13px; }}
+.metric b {{ display:block; font-size:16px; margin-top:2px; }}
+.chart {{ height:430px; background:white; border-radius:12px; margin:12px 0; box-shadow:0 1px 4px rgba(0,0,0,.08); }}
+.note {{ font-size:12px; color:#666; margin-top:8px; }}
+@media (max-width:800px) {{
+  .cards {{ grid-template-columns:1fr; }}
+  .metrics {{ grid-template-columns:repeat(2,minmax(0,1fr)); }}
+  .chart {{ height:360px; }}
+}}
+@media (prefers-color-scheme: dark) {{
+  body {{ background:#111315; color:#f5f5f5; }}
+  .card,.chart {{ background:#1d2024; }}
+  select {{ background:#1d2024; color:#f5f5f5; border-color:#555; }}
+  .note {{ color:#aaa; }}
+}}
+</style>
+<script>{plotly_js}</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="toolbar">
+    <strong>60/40 포트폴리오</strong>
+    <label for="period">분석기간</label>
+    <select id="period">
+      <option value="longest">최장~현재</option>
+      <option value="from_2001" selected>2001~현재</option>
+      <option value="from_2021">2021~현재</option>
+    </select>
+  </div>
+  <div id="periodLabel" class="note"></div>
+  <div class="cards">
+    <div class="card"><h3>60/40 비용후(5bp)</h3><div id="netMetrics" class="metrics"></div></div>
+    <div class="card"><h3>S&P500 100%</h3><div id="spMetrics" class="metrics"></div></div>
+  </div>
+  <div id="cumChart" class="chart"></div>
+  <div id="logChart" class="chart"></div>
+  <div id="ddChart" class="chart"></div>
+  <div class="note">누적자산/Log2는 월별 NAV, Drawdown은 일별 NAV. 각 선택기간 시작 직전 값을 1.0으로 재기준화. 초기자산 $10,000.</div>
+</div>
+<script>
+const DATA = {data_json};
+const cfg = {{responsive:true, displaylogo:false, scrollZoom:true}};
+function fmt(v,d=2) {{ return Number(v).toLocaleString('ko-KR',{{minimumFractionDigits:d,maximumFractionDigits:d}}); }}
+function metricHTML(m) {{
+  return [
+    ['CAGR', fmt(m.CAGR)+'%'],
+    ['MDD', fmt(m.MDD)+'%'],
+    ['Sharpe', fmt(m.Sharpe)],
+    ['변동성', fmt(m.Vol)+'%'],
+    ['회복기간', fmt(m.Recovery,1)+'개월']
+  ].map(x=>'<div class="metric">'+x[0]+'<b>'+x[1]+'</b></div>').join('');
+}}
+function render(key) {{
+  const p=DATA[key], m=p.monthly, d=p.drawdown;
+  document.getElementById('periodLabel').textContent=p.label;
+  document.getElementById('netMetrics').innerHTML=metricHTML(p.metrics.net);
+  document.getElementById('spMetrics').innerHTML=metricHTML(p.metrics.sp);
+  const x=m.map(r=>r.date);
+  Plotly.react('cumChart',[
+    {{x, y:m.map(r=>r.net), name:'60/40 비용후(5bp)', mode:'lines', customdata:m.map(r=>r.net_asset), hovertemplate:'%{{x}}<br>%{{y:.3f}}배<br>$%{{customdata:,.0f}}<extra></extra>'}},
+    {{x, y:m.map(r=>r.sp), name:'S&P500 100%', mode:'lines', customdata:m.map(r=>r.sp_asset), hovertemplate:'%{{x}}<br>%{{y:.3f}}배<br>$%{{customdata:,.0f}}<extra></extra>'}}
+  ],{{title:'① 누적자산', yaxis:{{title:'배수'}}, xaxis:{{rangeslider:{{visible:true}}}}, hovermode:'x unified', margin:{{l:60,r:20,t:55,b:45}}}},cfg);
+
+  const vals=m.flatMap(r=>[r.net_log2,r.sp_log2]);
+  const minTick=Math.min(0,Math.floor(Math.min(...vals))), maxTick=Math.max(1,Math.ceil(Math.max(...vals)));
+  const tickvals=[], ticktext=[];
+  for(let i=minTick;i<=maxTick;i++){{tickvals.push(i);ticktext.push((2**i).toLocaleString('ko-KR',{{maximumFractionDigits:3}})+'배');}}
+  Plotly.react('logChart',[
+    {{x, y:m.map(r=>r.net_log2), name:'60/40 비용후(5bp)', mode:'lines', hovertemplate:'%{{x}}<br>Log2 %{{y:.3f}}<extra></extra>'}},
+    {{x, y:m.map(r=>r.sp_log2), name:'S&P500 100%', mode:'lines', hovertemplate:'%{{x}}<br>Log2 %{{y:.3f}}<extra></extra>'}}
+  ],{{title:'② Log2 누적자산', yaxis:{{title:'누적자산 배수',tickmode:'array',tickvals,ticktext}}, xaxis:{{rangeslider:{{visible:true}}}}, hovermode:'x unified', margin:{{l:70,r:20,t:55,b:45}}}},cfg);
+
+  const xd=d.map(r=>r.date);
+  Plotly.react('ddChart',[
+    {{x:xd, y:d.map(r=>r.net_dd), name:'60/40 비용후(5bp)', mode:'lines', hovertemplate:'%{{x}}<br>%{{y:.2f}}%<extra></extra>'}},
+    {{x:xd, y:d.map(r=>r.sp_dd), name:'S&P500 100%', mode:'lines', hovertemplate:'%{{x}}<br>%{{y:.2f}}%<extra></extra>'}}
+  ],{{title:'③ Drawdown (일별)', yaxis:{{title:'Drawdown (%)',rangemode:'tozero'}}, xaxis:{{rangeslider:{{visible:true}}}}, hovermode:'x unified', margin:{{l:70,r:20,t:55,b:45}}}},cfg);
+}}
+document.getElementById('period').addEventListener('change',e=>render(e.target.value));
+render('from_2001');
+</script>
+</body>
+</html>"""
+    (OUT / "interactive_dashboard.html").write_text(html, encoding="utf-8")
 
     # 비용 민감도도 동일 템플릿으로 재계산.
     sensitivity_rows = []
@@ -344,7 +513,7 @@ def main() -> None:
         "post_inception_data": "actual adjusted close from repository ETF files",
         "proxy_sources": [POFO_SP500, POFO_IEF],
         "actual_sources": ["data/etf_us/SPY.csv", "data/etf_us/IEF.csv"],
-        "standard_template": "scripts/quant_backtest_template_v2_8.py copied from attached project template",
+        "standard_template": "scripts/quant_backtest_template_v2_9.py derived from attached v2-8 with selectable period output",
         "notes": [
             "Pre-ETF history is a reconstructed proxy, not executable ETF history.",
             "Book Sharpe methodology is not stated, so the template rf=0 Sharpe is not directly comparable.",
