@@ -25,7 +25,9 @@ jobs:
       - name: Refresh long proxy inputs
         run: python scripts/download_long_proxy_inputs.py
       - name: Run All Weather long-proxy backtest
-        run: python scripts/backtest_all_weather_long.py
+        run: |
+          python scripts/backtest_all_weather_long.py
+          python scripts/all_weather_template_v2_14_summary.py
       - name: Commit results
         run: |
           git config user.name 'github-actions[bot]'
