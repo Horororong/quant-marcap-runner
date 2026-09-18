@@ -228,6 +228,11 @@ def main() -> None:
     chart_dd.index.name = "Date"
     chart_dd.to_csv(OUT / "chart_daily_drawdown_from_2000.csv", encoding="utf-8-sig")
 
+    # 최장기간 Drawdown도 표준 템플릿 원칙대로 일별 NAV에서 계산해 보존.
+    chart_dd_full = daily_nav / daily_nav.cummax() - 1.0
+    chart_dd_full.index.name = "Date"
+    chart_dd_full.to_csv(OUT / "chart_daily_drawdown_full.csv", encoding="utf-8-sig")
+
     # 비용 민감도도 동일 템플릿으로 재계산.
     sensitivity_rows = []
     for bps in COST_SCENARIOS_BPS:
