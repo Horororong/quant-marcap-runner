@@ -862,7 +862,7 @@ def _self_test() -> None:
     inc_cfg = BacktestConfig(title="inception", book_start="2000-01-01", book_end="2021-12-31")
     inc_out = run_four_periods(inception_monthly, inc_cfg, inception_daily)
     assert inc_out["longest"]["metrics"].loc["전략", "MDD_source"] == "daily"
-    assert inc_out["from_2001"]["metrics"].loc["전략", "MDD_source"] == "monthly_fallback"
+    assert inc_out["from_2001"]["metrics"].loc["전략", "MDD_source"] == "daily"
 
     # partial inception CAGR: 실제 첫 일별 관측일이 월말 직전이면 짧은 첫 달을
     # 한 달 전체로 계산하지 않는다.
