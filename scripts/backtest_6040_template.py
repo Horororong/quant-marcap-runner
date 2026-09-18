@@ -233,6 +233,18 @@ def main() -> None:
     chart_dd_full.index.name = "Date"
     chart_dd_full.to_csv(OUT / "chart_daily_drawdown_full.csv", encoding="utf-8-sig")
 
+    # 모바일 인터랙티브 차트용 요약(원천은 일별 Drawdown):
+    # 2021~현재는 월별 최악 일별 DD, 최장기간은 연도별 최악 일별 DD를 별도 보존.
+    dd_2021 = chart_dd_full.loc["2021-01-01":"2026-08-31"].copy()
+    dd_2021_min = dd_2021.groupby(dd_2021.index.to_period("M")).min()
+    dd_2021_min.index = dd_2021_min.index.astype(str)
+    dd_2021_min.index.name = "Month"
+    dd_2021_min.to_csv(OUT / "chart_daily_dd_monthly_min_2021.csv", encoding="utf-8-sig")
+
+    dd_year_min = chart_dd_full.groupby(chart_dd_full.index.year).min()
+    dd_year_min.index.name = "Year"
+    dd_year_min.to_csv(OUT / "chart_daily_dd_yearly_min_longest.csv", encoding="utf-8-sig")
+
     # 비용 민감도도 동일 템플릿으로 재계산.
     sensitivity_rows = []
     for bps in COST_SCENARIOS_BPS:
