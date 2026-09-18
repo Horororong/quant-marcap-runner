@@ -1,0 +1,58 @@
+{
+  "title": "All Weather long proxy backtest",
+  "weights": {
+    "SPY": 0.12,
+    "EFA": 0.12,
+    "EEM": 0.12,
+    "DBC": 0.07,
+    "GLD": 0.07,
+    "EDV": 0.18,
+    "LTPZ": 0.18,
+    "LQD": 0.07,
+    "EMLC": 0.07
+  },
+  "rebalance": "first US trading day close each year; effective next trading day",
+  "cost": "gross and 5bp one-way per traded notional",
+  "book_period": "1926-2019 not reconstructed; TIPS and EM local-currency bonds lack equivalent history. Book 9.24% is reference only.",
+  "EFA_pre_inception": "VGTSX total international Adj Close; short 2001 gap only",
+  "EEM_pre_inception": "VEIEX EM index fund Adj Close",
+  "DBC_pre_inception": "PCRIX Adj Close once available; earlier S&P GSCI spot + DTB3 collateral; earliest segment lacks roll yield",
+  "GLD_pre_inception": "LBMA PM USD gold spot",
+  "EDV_pre_inception": "synthetic 25y zero-coupon Treasury from DGS20/DGS30 with daily carry and repricing",
+  "LTPZ_pre_inception": "duration-scaled VIPSX; multiplier=2.8908=18.79/6.50; sensitivity 1.0/2.5/3.0",
+  "LQD_pre_inception": "VFICX total-return Adj Close",
+  "EMLC_pre_inception": "FNMIX hard-currency EM sovereign bond as imperfect fallback; cash sensitivity also reported; weakest proxy",
+  "sources": "Yahoo Finance Adj Close via yfinance; FRED Treasury yields; LBMA gold; existing repo definitions",
+  "notes_by_scenario": {
+    "baseline": {
+      "tips_duration_multiplier": 2.8907692307692305,
+      "em_pre_mode": "fnmix",
+      "data_end": "2026-09-18",
+      "source_start": "2000-12-29"
+    },
+    "tips_unscaled": {
+      "tips_duration_multiplier": 1.0,
+      "em_pre_mode": "fnmix",
+      "data_end": "2026-09-18",
+      "source_start": "2000-12-29"
+    },
+    "tips_2_5x": {
+      "tips_duration_multiplier": 2.5,
+      "em_pre_mode": "fnmix",
+      "data_end": "2026-09-18",
+      "source_start": "2000-12-29"
+    },
+    "tips_3_0x": {
+      "tips_duration_multiplier": 3.0,
+      "em_pre_mode": "fnmix",
+      "data_end": "2026-09-18",
+      "source_start": "2000-12-29"
+    },
+    "em_cash_pre2010": {
+      "tips_duration_multiplier": 2.8907692307692305,
+      "em_pre_mode": "cash",
+      "data_end": "2026-09-18",
+      "source_start": "2000-12-29"
+    }
+  }
+}
