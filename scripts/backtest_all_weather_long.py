@@ -102,8 +102,9 @@ def build_asset_returns(yfdata,tips_mult,em_pre_mode):
     r["EFA"]=splice(rr("EFA"),rr("VGTSX"))
     r["EEM"]=splice(rr("EEM"),rr("VEIEX"))
     r["DBC"]=splice(rr("DBC"),commodity_pre_dbc(yfdata,master,rf))
-    gold_px=load_csv_series(RAW/"GOLD_LBMA_PM_USD.csv","Close")
-    r["GLD"]=splice(rr("GLD"),pct_return(gold_px,master))
+    gold_px=load_csv_series(RAW/"GOLD_LBMA_PM_USD.csv","Close").reindex(master).ffill(limit=10)
+    gold_ret=gold_px.pct_change(fill_method=None)
+    r["GLD"]=splice(rr("GLD"),gold_ret)
     r["EDV"]=splice(rr("EDV"),zero_coupon_return(master,25.0))
     if "VIPSX" not in yfdata: raise RuntimeError("VIPSX required")
     r["LTPZ"]=splice(rr("LTPZ"),broad_tips_to_long(rr("VIPSX"),rf,tips_mult))
@@ -172,7 +173,8 @@ def period_slice(df,start):
 def run_scenario(yfdata,tips_mult,em_pre_mode,label):
     returns,notes=build_asset_returns(yfdata,tips_mult,em_pre_mode)
     gross=simulate(returns,0.0); net=simulate(returns,ONE_WAY_COST)
-    daily=pd.DataFrame({"NAV_Gross":gross["NAV"],"NAV_Net":net["NAV"],"Turnover":net["Turnover"],"TradedFraction":net["TradedFraction"],"Cost":net["Cost"]})
+    spy_nav=INITIAL*(1.0+returns["SPY"]).cumprod()
+    daily=pd.DataFrame({"NAV_Gross":gross["NAV"],"NAV_Net":net["NAV"],"NAV_SPY":spy_nav,"Turnover":net["Turnover"],"TradedFraction":net["TradedFraction"],"Cost":net["Cost"]})
     last=daily.index.max()
     if last.normalize()<(last+pd.offsets.MonthEnd(0)).normalize():
         daily=daily.loc[:(last.to_period("M")-1).to_timestamp("M")]
@@ -198,7 +200,7 @@ def main():
     summary.to_csv(OUT/"summary_robustness.csv",index=False)
     baseline_daily.to_csv(OUT/"daily_nav.csv")
     baseline_returns.to_csv(OUT/"asset_returns_daily.csv")
-    baseline_daily[["NAV_Gross","NAV_Net"]].resample("ME").last().to_csv(OUT/"monthly_nav.csv")
+    baseline_daily[["NAV_Gross","NAV_Net","NAV_SPY"]].resample("ME").last().to_csv(OUT/"monthly_nav.csv")
     cov=[{"symbol":sym,"first":s.index.min().date().isoformat(),"last":s.index.max().date().isoformat(),"rows":len(s)} for sym,s in yfdata.items()]
     pd.DataFrame(cov).sort_values("symbol").to_csv(OUT/"proxy_coverage.csv",index=False)
     proxy_notes={
