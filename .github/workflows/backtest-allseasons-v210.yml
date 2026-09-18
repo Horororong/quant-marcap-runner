@@ -34,6 +34,8 @@ jobs:
             results/allseasons_template_v210/cost_sensitivity_template.csv
             results/allseasons_template_v210/chat_payload_four_periods.json
             results/allseasons_template_v210/inline_2001_cumulative.json
+            results/allseasons_template_v210/monthly_nav_full.csv
+            results/allseasons_template_v210/daily_nav_reliable_1991plus.csv.gz
             results/allseasons_template_v210/run_metadata.json
             results/allseasons_template_v210/actual_etf_overlap_check.json
           if-no-files-found: error
