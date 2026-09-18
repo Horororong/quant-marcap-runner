@@ -226,9 +226,15 @@ def main() -> None:
         m = month_end_nav(d)
         r = run_four_periods(m, config, d)
 
-        avg_turnover = float(trades["GrossTurnover"].mean()) if len(trades) else 0.0
         for period_key, result in r.items():
             metric = result["metrics"].iloc[0]
+            period_start = pd.Timestamp(result["start"])
+            period_end = pd.Timestamp(result["end"])
+            if len(trades):
+                tt = trades[(trades["Date"] >= period_start) & (trades["Date"] <= period_end)]
+                avg_turnover = float(tt["GrossTurnover"].mean()) if len(tt) else 0.0
+            else:
+                avg_turnover = 0.0
             sensitivity_rows.append(
                 {
                     "Period": period_key,
