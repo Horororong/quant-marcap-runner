@@ -11,6 +11,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: backtest-6040-v29
+  cancel-in-progress: true
+
 jobs:
   backtest:
     runs-on: ubuntu-latest
