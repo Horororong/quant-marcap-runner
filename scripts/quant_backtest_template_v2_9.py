@@ -231,8 +231,8 @@ def standard_period_windows(
     # 필요한 과거 자료가 없으면 프록시/백필을 먼저 준비하도록 명시적으로 실패한다.
     if data_start.to_period("M") > pd.Period("2001-01", freq="M"):
         raise ValueError(
-            f"2000~기간 고정 조건을 충족할 수 없습니다. 데이터 시작월={data_start:%Y-%m}. "
-            "2000-01부터의 프록시/백필 데이터를 준비하십시오."
+            f"2001~기간 고정 조건을 충족할 수 없습니다. 데이터 시작월={data_start:%Y-%m}. "
+            "2001-01부터의 프록시/백필 데이터를 준비하십시오."
         )
     if data_start.to_period("M") > pd.Period("2021-01", freq="M"):
         raise ValueError(
