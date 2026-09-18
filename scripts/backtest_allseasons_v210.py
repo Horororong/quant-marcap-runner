@@ -224,6 +224,22 @@ def monthly_nav_from_daily(nav: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
+def splice_extended_monthly_to_daily(monthly_series: pd.Series, daily_series: pd.Series) -> pd.Series:
+    """Keep exploratory pre-daily history, then use exact daily-derived month-end returns.
+
+    The splice month is anchored to the extended monthly level so all later monthly
+    returns are mathematically identical to the reliable daily NAV path.
+    """
+    dm = monthly_nav_from_daily(daily_series.to_frame("x"))["x"]
+    anchor = dm.index[0]
+    if anchor not in monthly_series.index:
+        raise RuntimeError(f"monthly/daily NAV splice anchor missing: {anchor}")
+    scaled = dm * (float(monthly_series.loc[anchor]) / float(dm.loc[anchor]))
+    out = monthly_series.copy()
+    out.loc[scaled.index] = scaled
+    return out.sort_index()
+
+
 def flatten(results: dict) -> pd.DataFrame:
     rows = []
     for key, r in results.items():
@@ -243,15 +259,6 @@ def main() -> None:
     mg, mt0 = simulate(monthly_levels, 0.0)
     mn, mt5 = simulate(monthly_levels, BASE_COST_BPS)
     mb = benchmark_from_levels(monthly_levels)
-    monthly_nav = pd.concat(
-        [
-            mg.rename("사계절 비용전"),
-            mn.rename("사계절 비용후(5bp)"),
-            mb,
-        ],
-        axis=1,
-    ).dropna()
-
     dg, dt0 = simulate(daily_levels, 0.0)
     dn, dt5 = simulate(daily_levels, BASE_COST_BPS)
     db = benchmark_from_levels(daily_levels)
@@ -260,6 +267,21 @@ def main() -> None:
             dg.rename("사계절 비용전"),
             dn.rename("사계절 비용후(5bp)"),
             db,
+        ],
+        axis=1,
+    ).dropna()
+
+    # Preserve the exploratory pre-1991 monthly history, but from the first reliable
+    # daily month onward use exact daily-derived month-end returns. This removes
+    # frequency-engine drift from all fixed periods starting in 2001 or later.
+    mg = splice_extended_monthly_to_daily(mg, dg)
+    mn = splice_extended_monthly_to_daily(mn, dn)
+    mb = splice_extended_monthly_to_daily(mb, db)
+    monthly_nav = pd.concat(
+        [
+            mg.rename("사계절 비용전"),
+            mn.rename("사계절 비용후(5bp)"),
+            mb.rename("S&P500 100%"),
         ],
         axis=1,
     ).dropna()
@@ -316,6 +338,7 @@ def main() -> None:
     for bps in COST_SCENARIOS_BPS:
         mx, mtr = simulate(monthly_levels, bps)
         dx, dtr = simulate(daily_levels, bps)
+        mx = splice_extended_monthly_to_daily(mx, dx)
         m = pd.DataFrame({f"사계절_{bps:g}bp": mx})
         d = pd.DataFrame({f"사계절_{bps:g}bp": dx})
         rr = run_four_periods(m, config, d)
