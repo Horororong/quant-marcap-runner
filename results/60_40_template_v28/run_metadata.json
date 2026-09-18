@@ -1,0 +1,28 @@
+{
+  "as_of": "2026-09-18",
+  "latest_complete_month": "2026-08-31",
+  "strategy": "SPY 60% + IEF 40%, annual rebalance",
+  "book_validation": "1970-01 through 2021-12",
+  "initial_capital_usd": 10000.0,
+  "risk_free_rate_for_template_sharpe": 0.0,
+  "base_cost_bps_on_gross_rebalance_notional": 5.0,
+  "initial_deployment_cost_included": false,
+  "taxes_included": false,
+  "execution_assumption": "rebalance at calendar-year turn before first business-day close-to-close return",
+  "stock_proxy_before_actual": "1993-01-29",
+  "bond_proxy_before_actual": "2002-07-30",
+  "post_inception_data": "actual adjusted close from repository ETF files",
+  "proxy_sources": [
+    "https://raw.githubusercontent.com/bpineau/pofo/master/pkg/datasets/simdata/SP500.csv",
+    "https://raw.githubusercontent.com/bpineau/pofo/master/pkg/datasets/simdata/IEF.csv"
+  ],
+  "actual_sources": [
+    "data/etf_us/SPY.csv",
+    "data/etf_us/IEF.csv"
+  ],
+  "standard_template": "scripts/quant_backtest_template_v2_8.py copied from attached project template",
+  "notes": [
+    "Pre-ETF history is a reconstructed proxy, not executable ETF history.",
+    "Book Sharpe methodology is not stated, so the template rf=0 Sharpe is not directly comparable."
+  ]
+}
