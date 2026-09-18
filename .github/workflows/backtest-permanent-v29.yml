@@ -1,0 +1,50 @@
+name: Backtest permanent portfolio v2-9
+
+on:
+  push:
+    paths:
+      - 'scripts/quant_backtest_template_v2_9.py'
+      - 'scripts/backtest_permanent_portfolio_v29.py'
+      - '.github/workflows/backtest-permanent-v29.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pandas numpy plotly
+      - name: Run uploaded v2-9 template self-test
+        run: python scripts/quant_backtest_template_v2_9.py
+      - name: Run permanent portfolio through v2-9 template
+        run: python scripts/backtest_permanent_portfolio_v29.py
+      - name: Upload permanent portfolio dashboard
+        uses: actions/upload-artifact@v4
+        with:
+          name: permanent-portfolio-v29-dashboard
+          path: |
+            results/permanent_portfolio_v29/interactive_dashboard.html
+            results/permanent_portfolio_v29/summary_four_periods_template.csv
+            results/permanent_portfolio_v29/book_verification_template.csv
+            results/permanent_portfolio_v29/cost_sensitivity_template.csv
+            results/permanent_portfolio_v29/run_metadata.json
+            results/permanent_portfolio_v29/actual_etf_overlap_check.json
+          if-no-files-found: error
+      - name: Commit permanent portfolio results
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/permanent_portfolio_v29
+          if git diff --cached --quiet; then
+            echo 'No result changes'
+          else
+            git commit -m 'Add permanent portfolio v2-9 backtest results'
+            git pull --rebase origin main
+            git push
+          fi
