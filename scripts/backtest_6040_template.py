@@ -218,6 +218,16 @@ def main() -> None:
     daily_nav.to_csv(OUT / "daily_nav_full.csv.gz", compression="gzip")
     monthly_nav.to_csv(OUT / "monthly_nav_full.csv", encoding="utf-8-sig")
 
+    # 채팅 인터랙티브 그래프용: 표준 주 분석기간(2000~최신)
+    chart_monthly = monthly_nav.loc["2000-01-01":].copy()
+    chart_monthly.index.name = "Date"
+    chart_monthly.to_csv(OUT / "chart_monthly_from_2000.csv", encoding="utf-8-sig")
+
+    chart_daily = daily_nav.loc["2000-01-01":].copy()
+    chart_dd = chart_daily / chart_daily.cummax() - 1.0
+    chart_dd.index.name = "Date"
+    chart_dd.to_csv(OUT / "chart_daily_drawdown_from_2000.csv", encoding="utf-8-sig")
+
     # 비용 민감도도 동일 템플릿으로 재계산.
     sensitivity_rows = []
     for bps in COST_SCENARIOS_BPS:
