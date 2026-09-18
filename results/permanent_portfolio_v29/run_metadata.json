@@ -1,0 +1,43 @@
+{
+  "as_of": "2026-09-18",
+  "latest_complete_month": "2026-08-31",
+  "strategy": "SPY/TLT/GLD/BIL 25% each, annual rebalance",
+  "book_validation": "1970-01 through 2021-12",
+  "initial_capital_usd": 10000.0,
+  "risk_free_rate_for_template_sharpe": 0.0,
+  "base_cost_bps_on_gross_rebalance_notional": 5.0,
+  "initial_deployment_cost_included": false,
+  "taxes_included": false,
+  "execution_assumption": "rebalance at calendar-year turn before first business-day close-to-close return",
+  "actual_etf_inception": {
+    "SPY": "1993-01-29",
+    "TLT": "2002-07-30",
+    "GLD": "2004-11-18",
+    "BIL": "2007-05-30"
+  },
+  "pre_inception_proxies": {
+    "SPY": "pofo SP500 total-return reconstruction",
+    "TLT": "pofo TLT long-Treasury reconstruction",
+    "GLD": "pofo XAUUSD/LBMA gold spot reconstruction",
+    "BIL": "Kenneth French daily RF cumulative cash return"
+  },
+  "proxy_sources": [
+    "https://raw.githubusercontent.com/bpineau/pofo/master/pkg/datasets/simdata/SP500.csv",
+    "https://raw.githubusercontent.com/bpineau/pofo/master/pkg/datasets/simdata/TLT.csv",
+    "https://raw.githubusercontent.com/bpineau/pofo/master/pkg/datasets/simdata/XAUUSD.csv",
+    "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_Factors_daily_CSV.zip"
+  ],
+  "actual_sources": [
+    "data/etf_us/SPY.csv",
+    "data/etf_us/TLT.csv",
+    "data/etf_us/GLD.csv",
+    "data/etf_us/BIL.csv"
+  ],
+  "standard_template": "scripts/quant_backtest_template_v2_9.py",
+  "notes": [
+    "Pre-ETF history is reconstructed proxy history and is not directly executable ETF history.",
+    "Gold pre-GLD history is spot gold, while actual GLD includes fund expenses.",
+    "BIL pre-inception history uses Kenneth French daily risk-free return as a cash proxy.",
+    "Book Sharpe methodology is not stated; template Sharpe uses monthly returns with rf=0."
+  ]
+}
