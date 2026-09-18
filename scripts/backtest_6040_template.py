@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+# v2-9 period-selector trigger
+
 from pathlib import Path
 import json
 import numpy as np
