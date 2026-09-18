@@ -71,6 +71,11 @@ jobs:
         run: |
           python scripts/backtest_five_asset_defensive.py
 
+      - name: Run All Weather long-proxy backtest
+        run: |
+          python scripts/backtest_all_weather_long.py
+          python scripts/all_weather_template_v2_14_summary.py
+
       - name: Validate all data
         run: |
           python scripts/validate_all_data.py
@@ -80,7 +85,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/indices/ data/fx/ data/macro/ data/status/ data/etf_kr/ data/proxy_long/ results/permanent_portfolio_long/ results/five_asset_defensive/
+          git add data/indices/ data/fx/ data/macro/ data/status/ data/etf_kr/ data/proxy_long/ results/permanent_portfolio_long/ results/five_asset_defensive/ results/all_weather_long/
 
           if git diff --cached --quiet; then
             echo "No market data changes."
