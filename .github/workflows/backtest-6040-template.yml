@@ -1,9 +1,9 @@
-name: Backtest 60-40 with standard template v2-8
+name: Backtest 60-40 with standard template v2-9
 
 on:
   push:
     paths:
-      - 'scripts/quant_backtest_template_v2_8.py'
+      - 'scripts/quant_backtest_template_v2_9.py'
       - 'scripts/backtest_6040_template.py'
       - '.github/workflows/backtest-6040-template.yml'
   workflow_dispatch:
@@ -19,19 +19,29 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install pandas numpy
+      - run: pip install pandas numpy plotly
       - name: Run attached standard template self-test
-        run: python scripts/quant_backtest_template_v2_8.py
+        run: python scripts/quant_backtest_template_v2_9.py
       - name: Run 60-40 through standard template
         run: python scripts/backtest_6040_template.py
       - name: Commit template-based results
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add results/60_40_template_v28
+          git add results/60_40_template_v29
           if git diff --cached --quiet; then
             echo 'No result changes'
           else
-            git commit -m 'Add 60-40 standard-template backtest results'
+            git commit -m 'Add 60-40 v2-9 selectable dashboard results'
             git push
           fi
+
+      - name: Upload interactive dashboard
+        uses: actions/upload-artifact@v4
+        with:
+          name: 60-40-interactive-dashboard
+          path: |
+            results/60_40_template_v29/interactive_dashboard.html
+            results/60_40_template_v29/summary_four_periods_template.csv
+            results/60_40_template_v29/run_metadata.json
+          if-no-files-found: error
