@@ -286,6 +286,7 @@ def daily_strategy_returns(daily: pd.DataFrame, monthly_position: pd.Series, swi
 
     pos = d["Pos"]
     prev_pos = pos.shift(1)
+    prev_pos_bool = prev_pos.fillna(False).astype(bool)
     switch = (pos != prev_pos) & prev_pos.notna()
 
     gross = pd.Series(np.nan, index=d.index, dtype=float)
@@ -294,8 +295,8 @@ def daily_strategy_returns(daily: pd.DataFrame, monthly_position: pd.Series, swi
     gross.loc[same_stock] = stock_cc.loc[same_stock]
     gross.loc[same_bond] = bond_cc.loc[same_bond]
 
-    s2b = switch & (~pos) & prev_pos
-    b2s = switch & pos & (~prev_pos)
+    s2b = switch & (~pos) & prev_pos_bool
+    b2s = switch & pos & (~prev_pos_bool)
     gross.loc[s2b] = (1.0 + stock_overnight.loc[s2b]) * (1.0 + bond_intraday.loc[s2b]) - 1.0
     gross.loc[b2s] = (1.0 + bond_overnight.loc[b2s]) * (1.0 + stock_intraday.loc[b2s]) - 1.0
 
