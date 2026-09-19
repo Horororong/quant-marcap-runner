@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'scripts/backtest_kr_us_relative_momentum_v214.py'
+      - 'scripts/analyze_kr_us_relative_momentum_robustness.py'
       - '.github/workflows/backtest-kr-us-relative-momentum-v214.yml'
       - 'RUN_TRIGGER_REL_MOM.txt'
 
@@ -24,7 +25,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas numpy requests
       - name: Run standard v2-14 KR-US relative momentum backtest
-        run: python scripts/backtest_kr_us_relative_momentum_v214.py
+        run: |
+          python scripts/backtest_kr_us_relative_momentum_v214.py
+          python scripts/analyze_kr_us_relative_momentum_robustness.py
       - name: Commit results and long proxies
         run: |
           git config user.name 'github-actions[bot]'
