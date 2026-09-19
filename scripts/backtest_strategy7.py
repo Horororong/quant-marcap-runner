@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 import requests
 import time
+from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "results" / "strategy7"
@@ -40,39 +41,64 @@ def load_csv(path: Path) -> pd.DataFrame:
 
 
 def fred_download(series_id: str, out_name: str) -> pd.DataFrame:
-    # Limit the FRED graph request to the research window and retry transient
-    # gateway/read timeouts seen on GitHub-hosted runners.
+    """Download a FRED series without an API key.
+
+    Prefer FRED's static table page, which is materially more reliable on
+    GitHub-hosted runners than the chart CSV endpoint. Fall back to graph CSV.
+    """
+    headers = {"User-Agent": "Mozilla/5.0 quant-research-backtest/1.0"}
+    last_exc = None
+
+    # 1) Static table page: parse DATE/VALUE rows from the HTML table.
+    static_url = f"https://fred.stlouisfed.org/data/{series_id}"
+    try:
+        r = requests.get(static_url, timeout=(15, 75), headers=headers)
+        r.raise_for_status()
+        soup = BeautifulSoup(r.text, "html.parser")
+        rows = []
+        for tr in soup.find_all("tr"):
+            cells = [x.get_text(" ", strip=True) for x in tr.find_all(["td", "th"])]
+            if len(cells) < 2:
+                continue
+            dt = pd.to_datetime(cells[0], errors="coerce")
+            val = pd.to_numeric(cells[1], errors="coerce")
+            if pd.notna(dt) and pd.notna(val):
+                rows.append((dt, float(val)))
+        if len(rows) >= 12:
+            df = pd.DataFrame(rows, columns=["Date", "Value"])
+            df = df.sort_values("Date").drop_duplicates("Date")
+            p = RAW / out_name
+            df.to_csv(p, index=False, encoding="utf-8-sig")
+            return df
+    except Exception as exc:
+        last_exc = exc
+
+    # 2) Fallback: graph CSV with a constrained date range and retries.
     url = (
         "https://fred.stlouisfed.org/graph/fredgraph.csv"
         f"?id={series_id}&cosd=1986-12-01&coed={LAST_COMPLETE_MONTH.date()}"
     )
-    last_exc = None
-    for attempt in range(4):
+    for attempt in range(3):
         try:
-            r = requests.get(
-                url,
-                timeout=(20, 180),
-                headers={"User-Agent": "Mozilla/5.0 quant-research-backtest/1.0"},
-            )
+            r = requests.get(url, timeout=(15, 90), headers=headers)
             r.raise_for_status()
-            if len(r.content) < 50:
-                raise RuntimeError(f"FRED payload too small for {series_id}")
-            break
+            p = RAW / out_name
+            p.write_bytes(r.content)
+            df = pd.read_csv(p)
+            if df.shape[1] < 2:
+                raise RuntimeError(f"Unexpected FRED payload for {series_id}")
+            df = df.rename(columns={df.columns[0]: "Date", df.columns[1]: "Value"})
+            df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+            df["Value"] = pd.to_numeric(df["Value"], errors="coerce")
+            df = df.dropna(subset=["Date"]).sort_values("Date").drop_duplicates("Date")
+            if df["Value"].notna().sum() < 12:
+                raise RuntimeError(f"Insufficient FRED observations for {series_id}")
+            return df
         except Exception as exc:
             last_exc = exc
-            if attempt == 3:
-                raise RuntimeError(f"FRED download failed after retries: {series_id}") from last_exc
-            time.sleep(5 * (attempt + 1))
-    p = RAW / out_name
-    p.write_bytes(r.content)
-    df = pd.read_csv(p)
-    if df.shape[1] < 2:
-        raise RuntimeError(f"Unexpected FRED payload for {series_id}")
-    df = df.rename(columns={df.columns[0]: "Date", df.columns[1]: "Value"})
-    df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
-    df["Value"] = pd.to_numeric(df["Value"], errors="coerce")
-    df = df.dropna(subset=["Date"]).sort_values("Date").drop_duplicates("Date")
-    return df
+            time.sleep(4 * (attempt + 1))
+
+    raise RuntimeError(f"FRED download failed after static+CSV attempts: {series_id}") from last_exc
 
 
 def month_end_series_from_daily(df: pd.DataFrame, value_col: str) -> pd.Series:
