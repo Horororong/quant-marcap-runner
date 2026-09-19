@@ -471,7 +471,9 @@ def daily_nav_for_window(daily_ret: pd.Series, start: pd.Timestamp, end: pd.Time
     if (x.index[-1].to_period("M").end_time.normalize() - x.index[-1]).days > 7:
         return None
     gaps = pd.Series(x.index[1:] - x.index[:-1])
-    if len(gaps) and (gaps.dt.days > 7).any():
+    # Legitimate Korean exchange holiday closures can span more than 7 calendar days.
+    # Reject only materially long gaps that indicate incomplete daily data.
+    if len(gaps) and (gaps.dt.days > 10).any():
         return None
     return (1.0 + x).cumprod()
 
