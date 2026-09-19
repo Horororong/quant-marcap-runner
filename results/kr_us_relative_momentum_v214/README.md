@@ -8,7 +8,7 @@ Rule from book: compare trailing 12-month return of Korea and US equity indices 
 - MOM12 = P_t / P_(t-12) - 1.
 - Execution: first trading day of the next month on which both markets are open; trade at each market's Open.
 - Hold 100% of the selected index until the next signal changes the selected country.
-- Base cost: 25bp per full country switch; initial entry 12.5bp.
+- Base cost: 5bp per one-way traded notional, i.e. 10bp for a full country switch; initial entry 5bp.
 - Monthly CAGR/volatility/Sharpe; daily MDD/recovery.
 - Completed data only through 2026-08-31.
 
