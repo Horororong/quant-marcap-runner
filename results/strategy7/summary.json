@@ -1,0 +1,89 @@
+{
+  "title": "Strategy 7 - KOSPI absolute momentum",
+  "run_at_utc": "2026-09-19T04:24:18.201115",
+  "last_complete_month": "2026-08-31",
+  "initial_capital_krw": 10000000.0,
+  "signal_rule": "At month-end, KOSPI close >= 10-month SMA => stock; else bond. Prior month-end signal drives next month.",
+  "execution_rule": "No same-close signal execution. ETF-era switches are modeled on the first common trading day using old-asset close-to-open + new-asset open-to-close. Pre-ETF proxy period uses next-month return with prior-month signal (monthly boundary approximation).",
+  "main_bond_proxy": "1987-07/2018-07 synthetic rolling 5y national-housing-bond return from FRED/OECD yield; from 2018-08 TIGER 3-10y government bond ETF adjusted return.",
+  "book_proxy": "Synthetic rolling 5y national-housing-bond return throughout book period where available.",
+  "cost_assumptions": {
+    "gross": 0.0,
+    "base_total_switch_cost": 0.001,
+    "conservative_total_switch_cost": 0.002,
+    "initial_entry_cost": 0.0005
+  },
+  "periods": {
+    "book_validation": [
+      "1987-01-31",
+      "2021-12-31"
+    ],
+    "from_2001": [
+      "2001-01-31",
+      "2026-08-31"
+    ],
+    "from_2021": [
+      "2021-01-31",
+      "2026-08-31"
+    ],
+    "longest": [
+      "1987-01-31",
+      "2026-08-31"
+    ]
+  },
+  "data_diagnostics": {
+    "kospi": {
+      "exact_start": "1995-05-31",
+      "exact_end": "2026-08-31",
+      "oecd_start": "1981-01-31",
+      "oecd_end": "2026-08-31",
+      "splice_month": "1995-05-31",
+      "oecd_exact_overlap_monthly_return_corr": 0.767876100567436
+    },
+    "bond": {
+      "housing_yield_start": "1987-01-31",
+      "housing_yield_end": "2023-12-31",
+      "etf_start": "2018-07-31",
+      "etf_end": "2026-08-31",
+      "main_proxy_etf_return_start": "2018-08-31",
+      "overlap_months": 65,
+      "synthetic_vs_etf_return_corr": 0.6163375526871777,
+      "synthetic_annualized_vol": 0.032782273601519224,
+      "etf_annualized_vol": 0.04754296146894871,
+      "synthetic_minus_etf_ann_mean_return": 0.0003345876484452025,
+      "generic_govt_yield_start": null,
+      "generic_govt_yield_end": null
+    }
+  },
+  "regime": {
+    "months": 476,
+    "stock_month_share": 0.5777310924369747,
+    "bond_month_share": 0.42226890756302526,
+    "regime_switches": 68,
+    "switches_per_year": 1.7142857142857144
+  },
+  "charts": {
+    "from_2001": {
+      "risk_source": "monthly_fallback",
+      "monthly_points": 308,
+      "drawdown_points": 308
+    },
+    "from_2021": {
+      "risk_source": "daily",
+      "monthly_points": 68,
+      "drawdown_points": 1364
+    },
+    "longest": {
+      "risk_source": "monthly_fallback",
+      "monthly_points": 476,
+      "drawdown_points": 476
+    }
+  },
+  "limitations": [
+    "Exact Korean 5-year government-bond total-return index is not available in the project repository.",
+    "1987-1995 KOSPI uses an OECD share-price proxy scaled into the exact KOSPI series; it is not an exact KRX month-end history.",
+    "Historical 5y bond returns before ETF availability are reconstructed from monthly average 5y national-housing-bond yields; this is a proxy, not an official total-return index.",
+    "Pre-ETF execution is monthly and cannot exactly isolate the first-session close-to-open gap.",
+    "KOSPI is a price index, so dividends are excluded unless the source index itself includes them."
+  ]
+}
