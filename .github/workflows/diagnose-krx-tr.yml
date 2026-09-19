@@ -1,0 +1,37 @@
+name: Diagnose KRX Total Return Indices
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/fetch_krx_tr_diagnostic.py'
+      - '.github/workflows/diagnose-krx-tr.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas pykrx
+      - name: Query KRX TR indices
+        run: python scripts/fetch_krx_tr_diagnostic.py
+      - name: Commit diagnostic results
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/krx_tr_diagnostic/
+          if git diff --cached --quiet; then
+            echo 'No changes.'
+          else
+            git commit -m 'Fetch KRX total return index diagnostic'
+            git push
+          fi
