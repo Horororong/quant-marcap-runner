@@ -155,11 +155,14 @@ def build_bond_monthly_proxy() -> tuple[pd.Series, pd.Series, dict]:
 
     # Main practical proxy: historical 5y housing-bond synthetic until the ETF
     # has a full prior month, then investable 3-10y government-bond ETF.
-    main = syn_ret.copy()
     first_etf_ret = etf_ret.first_valid_index()
     if first_etf_ret is None:
         raise RuntimeError("No valid ETF bond return")
-    main.loc[etf_ret.index[etf_ret.index >= first_etf_ret]] = etf_ret.loc[etf_ret.index >= first_etf_ret]
+    # Reindex to the union before assignment so the ETF extends the proxy
+    # beyond the historical housing-bond-yield series endpoint.
+    main = syn_ret.reindex(syn_ret.index.union(etf_ret.index)).sort_index()
+    etf_idx = etf_ret.index[etf_ret.index >= first_etf_ret]
+    main.loc[etf_idx] = etf_ret.loc[etf_idx]
     main = main.sort_index()
     main.name = "bond_main_proxy"
 
