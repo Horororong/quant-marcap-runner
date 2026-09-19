@@ -16,8 +16,8 @@ AS_OF = pd.Timestamp("2026-09-19")
 LATEST_COMPLETE = (AS_OF.to_period("M") - 1).to_timestamp("M")
 INITIAL = 10_000.0
 RF = 0.0
-SWITCH_COST = 0.0025  # 25bp per full country switch, base case
-INITIAL_ENTRY_COST = SWITCH_COST / 2.0
+SWITCH_COST = 0.0010  # 10bp per full country switch = 5bp per one-way traded notional
+INITIAL_ENTRY_COST = SWITCH_COST / 2.0  # 5bp one-way initial entry
 
 BOOK_START = pd.Timestamp("1982-01-31")
 BOOK_END = pd.Timestamp("2021-12-31")
@@ -369,7 +369,7 @@ def metrics_monthly_book(book: pd.DataFrame):
 
 def cost_sensitivity(daily_base: pd.DataFrame, kr: pd.DataFrame, us: pd.DataFrame, periods):
     rows = []
-    for bps in [10, 25, 50]:
+    for bps in [4, 10, 20]:
         d, sw, *_ = build_daily_execution(kr, us, switch_cost=bps / 10000.0)
         for p, st, en in periods:
             x, _ = slice_rebase_daily(d, st, en)
@@ -491,7 +491,7 @@ Rule from book: compare trailing 12-month return of Korea and US equity indices 
 - MOM12 = P_t / P_(t-12) - 1.
 - Execution: first trading day of the next month on which both markets are open; trade at each market's Open.
 - Hold 100% of the selected index until the next signal changes the selected country.
-- Base cost: 25bp per full country switch; initial entry 12.5bp.
+- Base cost: 5bp per one-way traded notional, i.e. 10bp for a full country switch; initial entry 5bp.
 - Monthly CAGR/volatility/Sharpe; daily MDD/recovery.
 - Completed data only through {LATEST_COMPLETE.date()}.
 
