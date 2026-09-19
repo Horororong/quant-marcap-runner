@@ -145,7 +145,7 @@ def build_daily_execution(kr: pd.DataFrame, us: pd.DataFrame, switch_cost=SWITCH
             events.append((pd.Timestamp(d), str(asset), pd.Timestamp(sig_date)))
     if not events:
         raise RuntimeError("No execution events")
-    events = sorted(dict((d, (a, s)) for d, a, s in events).items())
+    events = sorted(events, key=lambda x: x[0])
 
     start = events[0][0]
     end = min(LATEST_COMPLETE, kr.index.max(), us.index.max())
