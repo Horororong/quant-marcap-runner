@@ -41,11 +41,17 @@ def load_csv(path: Path) -> pd.DataFrame:
 
 
 def fred_download(series_id: str, out_name: str) -> pd.DataFrame:
-    """Download a FRED series without an API key.
+    """Load a verified cached FRED series first; refresh only if absent."""
+    p = RAW / out_name
+    if p.exists():
+        cached = pd.read_csv(p, encoding="utf-8-sig")
+        if {"Date", "Value"}.issubset(cached.columns):
+            cached["Date"] = pd.to_datetime(cached["Date"], errors="coerce")
+            cached["Value"] = pd.to_numeric(cached["Value"], errors="coerce")
+            cached = cached.dropna(subset=["Date"]).sort_values("Date").drop_duplicates("Date")
+            if cached["Value"].notna().sum() >= 12:
+                return cached
 
-    Prefer FRED's static table page, which is materially more reliable on
-    GitHub-hosted runners than the chart CSV endpoint. Fall back to graph CSV.
-    """
     headers = {"User-Agent": "Mozilla/5.0 quant-research-backtest/1.0"}
     last_exc = None
 
