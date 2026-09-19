@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 import numpy as np
 import pandas as pd
 import requests
+import time
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "results" / "strategy7"
@@ -39,9 +40,29 @@ def load_csv(path: Path) -> pd.DataFrame:
 
 
 def fred_download(series_id: str, out_name: str) -> pd.DataFrame:
-    url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"
-    r = requests.get(url, timeout=60, headers={"User-Agent": "quant-research-backtest/1.0"})
-    r.raise_for_status()
+    # Limit the FRED graph request to the research window and retry transient
+    # gateway/read timeouts seen on GitHub-hosted runners.
+    url = (
+        "https://fred.stlouisfed.org/graph/fredgraph.csv"
+        f"?id={series_id}&cosd=1986-12-01&coed={LAST_COMPLETE_MONTH.date()}"
+    )
+    last_exc = None
+    for attempt in range(4):
+        try:
+            r = requests.get(
+                url,
+                timeout=(20, 180),
+                headers={"User-Agent": "Mozilla/5.0 quant-research-backtest/1.0"},
+            )
+            r.raise_for_status()
+            if len(r.content) < 50:
+                raise RuntimeError(f"FRED payload too small for {series_id}")
+            break
+        except Exception as exc:
+            last_exc = exc
+            if attempt == 3:
+                raise RuntimeError(f"FRED download failed after retries: {series_id}") from last_exc
+            time.sleep(5 * (attempt + 1))
     p = RAW / out_name
     p.write_bytes(r.content)
     df = pd.read_csv(p)
@@ -138,7 +159,6 @@ def par_bond_5y_one_month_return(y0_pct: float, y1_pct: float) -> float:
 
 def build_bond_monthly_proxy() -> tuple[pd.Series, pd.Series, dict]:
     housing = fred_download(FRED_HOUSING_5Y, "KR_HOUSING_BOND_5Y_YIELD.csv")
-    govt = fred_download(FRED_GOVT_GENERIC, "KR_GOVT_BOND_GENERIC_YIELD.csv")
 
     h = housing.dropna(subset=["Value"]).copy()
     h["Month"] = h["Date"].dt.to_period("M").dt.to_timestamp("M")
@@ -187,8 +207,8 @@ def build_bond_monthly_proxy() -> tuple[pd.Series, pd.Series, dict]:
         "synthetic_annualized_vol": syn_vol,
         "etf_annualized_vol": etf_vol,
         "synthetic_minus_etf_ann_mean_return": mean_diff,
-        "generic_govt_yield_start": str(govt.dropna(subset=["Value"])["Date"].min().date()),
-        "generic_govt_yield_end": str(govt.dropna(subset=["Value"])["Date"].max().date()),
+        "generic_govt_yield_start": None,
+        "generic_govt_yield_end": None,
     }
     return main, syn_ret, diag
 
