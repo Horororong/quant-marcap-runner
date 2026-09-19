@@ -44,7 +44,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/proxy_long/raw/KR_HOUSING_BOND_5Y_YIELD.csv
-          git add data/proxy_long/raw/KR_GOVT_BOND_GENERIC_YIELD.csv
           git add results/strategy7/
           if git diff --cached --quiet; then
             echo "No Strategy 7 result changes."
