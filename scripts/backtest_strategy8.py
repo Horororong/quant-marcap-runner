@@ -186,18 +186,36 @@ def bond_price_par(yield_decimal: float, coupon_rate: float, maturity_years: flo
 
 
 def synth_returns_from_yield(y: pd.Series, maturity_years: float = 20.0) -> pd.Series:
-    """Approximate constant-maturity par-bond total return from yield observations."""
+    """Approximate one-period total return of a rolling par Treasury.
+
+    At t0, buy a semiannual-coupon bond at par with coupon=y(t0).
+    At t1, reprice the same bond after elapsed time reduces remaining maturity.
+    """
     y = y.dropna().sort_index().astype(float) / 100.0
     out = pd.Series(index=y.index, dtype=float)
     if len(out):
         out.iloc[0] = np.nan
+
+    face, freq = 100.0, 2
+    base_times = np.arange(1, int(round(maturity_years * freq)) + 1, dtype=float) / freq
+
     for i in range(1, len(y)):
         prev, cur = y.index[i - 1], y.index[i]
-        yp, yc = float(y.iloc[i - 1]), float(y.iloc[i])
-        p = bond_price_par(yc, yp, maturity_years)
-        days = (cur - prev).days
-        accrued = 100.0 * yp * days / 365.2425
-        out.iloc[i] = (p + accrued) / 100.0 - 1.0
+        y0, y1 = float(y.iloc[i - 1]), float(y.iloc[i])
+        if min(y0, y1) <= -0.95:
+            continue
+
+        coupon = face * y0 / freq
+        cash = np.full(len(base_times), coupon, dtype=float)
+        cash[-1] += face
+        p0 = float(np.sum(cash / (1.0 + y0 / freq) ** (freq * base_times)))
+
+        elapsed = max((cur - prev).days / 365.2425, 1.0 / 365.2425)
+        t1 = base_times - elapsed
+        paid = float(cash[t1 <= 0].sum())
+        remain = t1 > 0
+        p1 = float(np.sum(cash[remain] / (1.0 + y1 / freq) ** (freq * t1[remain])))
+        out.iloc[i] = (paid + p1) / p0 - 1.0
     return out
 
 
