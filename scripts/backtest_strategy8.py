@@ -67,6 +67,19 @@ def fetch_ecos_20y() -> tuple[pd.DataFrame, str]:
     In sample-key mode, query one calendar year at a time and paginate within
     each year; then concatenate and de-duplicate.
     """
+    cache = OUT / "kr20y_ecos_daily.csv"
+    if cache.exists():
+        cached = pd.read_csv(cache, encoding="utf-8-sig")
+        if {"Date", "Value"}.issubset(cached.columns):
+            cached["Date"] = pd.to_datetime(cached["Date"], errors="coerce")
+            cached["Value"] = pd.to_numeric(cached["Value"], errors="coerce")
+            cached = cached.dropna().sort_values("Date").drop_duplicates("Date")
+            cm = cached.set_index("Date")["Value"].groupby(cached.set_index("Date").index.to_period("M")).last()
+            have = set(cm.index)
+            need = set(pd.period_range("2006-03", LAST_COMPLETE.to_period("M"), freq="M"))
+            if need.issubset(have):
+                return cached, "ECOS cached complete series"
+
     key = (os.getenv("ECOS_API_KEY") or "").strip() or "sample"
     base = "https://ecos.bok.or.kr/api/StatisticSearch"
     sess = requests.Session()
@@ -115,7 +128,20 @@ def fetch_ecos_20y() -> tuple[pd.DataFrame, str]:
             qe = min(LAST_COMPLETE, q.end_time.normalize())
             if qs > qe:
                 continue
-            rows.extend(fetch_range(qs.strftime("%Y%m%d"), qe.strftime("%Y%m%d"), 10))
+            last_err = None
+            for attempt in range(5):
+                try:
+                    qrows = fetch_range(qs.strftime("%Y%m%d"), qe.strftime("%Y%m%d"), 10)
+                    if qrows:
+                        rows.extend(qrows)
+                        last_err = None
+                        break
+                except Exception as exc:
+                    last_err = exc
+                time.sleep(0.5 * (attempt + 1))
+            if last_err is not None:
+                raise RuntimeError(f"ECOS quarter fetch failed {q}: {last_err}")
+            time.sleep(0.15)
     else:
         rows = fetch_range("20060101", LAST_COMPLETE.strftime("%Y%m%d"), 1000)
 
@@ -127,9 +153,13 @@ def fetch_ecos_20y() -> tuple[pd.DataFrame, str]:
     df["Date"] = pd.to_datetime(df["Date"], format="%Y%m%d", errors="coerce")
     df["Value"] = pd.to_numeric(df["Value"], errors="coerce")
     df = df.dropna().sort_values("Date").drop_duplicates("Date")
-    # Do not invent unavailable tail months. The backtest ends at the latest
-    # common month actually supported by all required assets.
-    return df, ("ECOS authenticated key" if key != "sample" else "ECOS sample key annual-chunked")
+    monthly_periods = set(df["Date"].dt.to_period("M"))
+    required = set(pd.period_range("2006-03", LAST_COMPLETE.to_period("M"), freq="M"))
+    missing = sorted(required - monthly_periods)
+    if missing:
+        raise RuntimeError(f"ECOS 20Y missing months after retries: {missing[:12]}")
+    df.to_csv(cache, index=False, encoding="utf-8-sig")
+    return df, ("ECOS authenticated key" if key != "sample" else "ECOS sample key quarterly-chunked")
 
 
 def fetch_pykrx_yield(kind: str, start: str, end: str) -> tuple[pd.Series, str]:
@@ -289,9 +319,14 @@ def build_assets() -> tuple[pd.DataFrame, dict]:
 
     bridge_ret = synth_returns_from_yield(y_bridge.loc[:LAST_COMPLETE], 5.0)
     kr20_ret = synth_returns_from_yield(y_kr20.loc[:LAST_COMPLETE], 20.0)
+    # First actual 20Y KTB auction was 2006-03-27. A genuine holding-period
+    # return can therefore start from the 2006-03 month-end position and be
+    # observed at 2006-04 month-end.
+    first_investable_return = pd.Timestamp("2006-04-30")
+    kr20_ret = kr20_ret[kr20_ret.index >= first_investable_return]
     first_kr20_ret = kr20_ret.first_valid_index()
     if first_kr20_ret is None:
-        raise RuntimeError("No valid ECOS Korean 20Y return after reconstruction")
+        raise RuntimeError("No valid investable Korean 20Y return after 2006-03-27 inception")
 
     kr_bond_ret = pd.concat([
         bridge_ret[bridge_ret.index < first_kr20_ret],
@@ -617,7 +652,7 @@ def main():
         },
         "limitations": [
             "Exact KR_GOVT_20Y_TR remains missing in the repository registry. From 20Y inception onward this run uses BOK ECOS 20Y Treasury yields to reconstruct the return of a rolling 20Y par bond, so it remains a reconstructed proxy rather than an official total-return index.",
-            "Korean 20Y Treasury yield history begins in 2006, so 2005 book start necessarily uses a bridge proxy.",
+            "The first actual Korean 20Y Treasury auction was 2006-03-27, so the 2005 book start and 2006-Q1 necessarily use a bridge proxy; 20Y holding returns start in 2006-04.",
             "Repository KODEX200 adjusted-price history starts in 2007, so earlier Korean-equity months use KOSPI200 price index.",
             "Primary book-style result mixes native-currency returns because the source rule does not specify FX treatment; KRW-translated sensitivity is reported separately.",
             "The standard windows end at the latest common month actually available across all four required assets; unavailable tail months are not fabricated.",
