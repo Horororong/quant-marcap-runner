@@ -118,30 +118,30 @@ def fetch_ecos_20y() -> tuple[pd.DataFrame, str]:
 
     rows: list[dict] = []
     if key == "sample":
-        # The public sample key truncates long windows around ~100 observations.
-        # Query quarter-by-quarter so each request window remains safely below
-        # that cap, then concatenate. This is slower but complete and reproducible.
-        start_q = pd.Period("2006Q1", freq="Q")
-        end_q = LAST_COMPLETE.to_period("Q")
-        for q in pd.period_range(start_q, end_q, freq="Q"):
-            qs = max(pd.Timestamp("2006-01-01"), q.start_time.normalize())
-            qe = min(LAST_COMPLETE, q.end_time.normalize())
-            if qs > qe:
-                continue
+        # The public sample key is not reliable for longer windows.
+        # Query month-by-month, validate every month, then cache the complete
+        # series in results/strategy8 for deterministic future reruns.
+        start_m = pd.Period("2006-03", freq="M")
+        end_m = LAST_COMPLETE.to_period("M")
+        for m in pd.period_range(start_m, end_m, freq="M"):
+            ms = m.start_time.normalize()
+            me = min(LAST_COMPLETE, m.end_time.normalize())
             last_err = None
+            mrows = []
             for attempt in range(5):
                 try:
-                    qrows = fetch_range(qs.strftime("%Y%m%d"), qe.strftime("%Y%m%d"), 10)
-                    if qrows:
-                        rows.extend(qrows)
+                    mrows = fetch_range(ms.strftime("%Y%m%d"), me.strftime("%Y%m%d"), 20)
+                    if mrows:
                         last_err = None
                         break
+                    last_err = RuntimeError("empty month")
                 except Exception as exc:
                     last_err = exc
-                time.sleep(0.5 * (attempt + 1))
+                time.sleep(0.4 * (attempt + 1))
             if last_err is not None:
-                raise RuntimeError(f"ECOS quarter fetch failed {q}: {last_err}")
-            time.sleep(0.15)
+                raise RuntimeError(f"ECOS month fetch failed {m}: {last_err}")
+            rows.extend(mrows)
+            time.sleep(0.05)
     else:
         rows = fetch_range("20060101", LAST_COMPLETE.strftime("%Y%m%d"), 1000)
 
@@ -159,7 +159,7 @@ def fetch_ecos_20y() -> tuple[pd.DataFrame, str]:
     if missing:
         raise RuntimeError(f"ECOS 20Y missing months after retries: {missing[:12]}")
     df.to_csv(cache, index=False, encoding="utf-8-sig")
-    return df, ("ECOS authenticated key" if key != "sample" else "ECOS sample key quarterly-chunked")
+    return df, ("ECOS authenticated key" if key != "sample" else "ECOS sample key monthly-chunked")
 
 
 def fetch_pykrx_yield(kind: str, start: str, end: str) -> tuple[pd.Series, str]:
