@@ -604,16 +604,19 @@ def main():
         "book_comparison": book_compare,
         "oos_2022_to_latest": oos,
         "krw_translation_sensitivity": krw_sens,
-        "timing_sensitivity_2001_latest": {
-            "CAGR_min": float(timing_df.CAGR.min()),
-            "CAGR_median": float(timing_df.CAGR.median()),
-            "CAGR_max": float(timing_df.CAGR.max()),
-            "MDD_min": float(timing_df.MDD.min()),
-            "MDD_median": float(timing_df.MDD.median()),
-            "MDD_max": float(timing_df.MDD.max()),
+        "timing_sensitivity": {
+            p: {
+                "CAGR_min": float(g.CAGR.min()),
+                "CAGR_median": float(g.CAGR.median()),
+                "CAGR_max": float(g.CAGR.max()),
+                "MDD_min": float(g.MDD.min()),
+                "MDD_median": float(g.MDD.median()),
+                "MDD_max": float(g.MDD.max()),
+            }
+            for p, g in timing_df.groupby("period")
         },
         "limitations": [
-            "Exact KR_GOVT_20Y_TR remains missing in the repository registry. From 20Y inception onward this run uses KRX OTC 20Y yields to reconstruct a constant-maturity 20Y bond return, so it remains a reconstructed proxy rather than an official total-return index.",
+            "Exact KR_GOVT_20Y_TR remains missing in the repository registry. From 20Y inception onward this run uses BOK ECOS 20Y Treasury yields to reconstruct the return of a rolling 20Y par bond, so it remains a reconstructed proxy rather than an official total-return index.",
             "Korean 20Y Treasury yield history begins in 2006, so 2005 book start necessarily uses a bridge proxy.",
             "Repository KODEX200 adjusted-price history starts in 2007, so earlier Korean-equity months use KOSPI200 price index.",
             "Primary book-style result mixes native-currency returns because the source rule does not specify FX treatment; KRW-translated sensitivity is reported separately.",
