@@ -616,11 +616,13 @@ def main():
     timing_book = []
     for m in range(1, 13):
         s, _, _ = run_portfolio(prices, BASE_TRADE_COST, BASE_ENTRY_COST, m)
-        timing.append({"rebalance_month": m, **manual_metrics(s, "2001-01-31", str(DATA_END.date()))})
-        timing_book.append({"rebalance_month": m, **manual_metrics(s, "2005-01-31", "2021-12-31")})
+        timing.append({"period": "from_2001", "rebalance_month": m, **manual_metrics(s, "2001-01-31", str(DATA_END.date()))})
+        timing_book.append({"period": "book_validation", "rebalance_month": m, **manual_metrics(s, "2005-01-31", "2021-12-31")})
     timing_df = pd.DataFrame(timing)
+    timing_book_df = pd.DataFrame(timing_book)
     timing_df.to_csv(OUT / "timing_sensitivity.csv", index=False, encoding="utf-8-sig")
-    pd.DataFrame(timing_book).to_csv(OUT / "timing_sensitivity_book.csv", index=False, encoding="utf-8-sig")
+    timing_book_df.to_csv(OUT / "timing_sensitivity_book.csv", index=False, encoding="utf-8-sig")
+    timing_all = pd.concat([timing_df, timing_book_df], ignore_index=True)
 
     oos = manual_metrics(variants["base_10bp"], "2022-01-31", str(DATA_END.date()))
 
@@ -678,7 +680,7 @@ def main():
                 "MDD_median": float(g.MDD.median()),
                 "MDD_max": float(g.MDD.max()),
             }
-            for p, g in timing_df.groupby("period")
+            for p, g in timing_all.groupby("period")
         },
         "limitations": [
             "Exact KR_GOVT_20Y_TR remains missing in the repository registry. From 20Y inception onward this run uses BOK ECOS 20Y Treasury yields to reconstruct the return of a rolling 20Y par bond, so it remains a reconstructed proxy rather than an official total-return index.",
