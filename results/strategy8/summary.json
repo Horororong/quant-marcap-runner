@@ -1,0 +1,146 @@
+{
+  "title": "Strategy 8 - 한미 평균 모멘텀 스코어",
+  "run_at_utc": "2026-09-22T02:04:55.379568",
+  "last_complete_month": "2026-08-31",
+  "source_rule": {
+    "assets": [
+      "SPY",
+      "TLT/US long Treasury",
+      "KODEX200/KOSPI200 proxy",
+      "Korean 20Y Treasury proxy"
+    ],
+    "momentum": "For each asset, compare current month-end wealth/price with 1..12 months ago; score = positive comparisons/12.",
+    "target_weight": "Each risky asset = 25% * score; residual = 0%-return cash.",
+    "rebalance": "Annual; Dec month-end signal, next January holding month. No same-close execution."
+  },
+  "implementation": {
+    "primary_convention": "book-style native-currency return mixing; no FX translation in primary result",
+    "cash_return": "0% (literal residual cash; no BIL substitution)",
+    "cost_base": "5bp first entry; 10bp per traded notional at annual rebalance; taxes and FX conversion fees excluded",
+    "risk_metrics": "monthly fallback because exact daily Korean 20Y total-return index is unavailable",
+    "us_bond_extension": "synthetic 20Y constant-maturity from Treasury yields before TLT, then TLT Adj Close",
+    "kr_equity_extension": "KOSPI200 price index before repo KODEX200 history, then KODEX200 Adj Close",
+    "kr_bond_extension": "repo KR 5Y yield bridge -> ECOS KR 20Y yield, repriced as synthetic 20Y par bond; KOSEF 10Y fallback only if ECOS fails; not official total-return index"
+  },
+  "diagnostics": {
+    "last_complete_month": "2026-08-31",
+    "spy_raw_start": "1993-01-31",
+    "tlt_raw_start": "2002-07-31",
+    "kospi200_start": "1995-01-31",
+    "kodex200_repo_start": "2007-01-31",
+    "kr_bridge_yield_start": "1987-01-31",
+    "kr_bond_mode": "fallback: KR 5Y yield synthetic -> KOSEF 10Y ETF",
+    "kr20_ecos_start": null,
+    "kr20_ecos_end": null,
+    "ecos_status": "unavailable",
+    "ecos_error": "RuntimeError(\"ECOS page error 1951: {'RESULT': {'CODE': 'INFO-200', 'MESSAGE': '해당하는 데이터가 없습니다.'}}\")",
+    "common_price_start": "1995-02-28",
+    "common_price_end": "2026-08-31"
+  },
+  "portfolio_stats": {
+    "gross": {
+      "start": "1997-01-31",
+      "end": "2026-08-31",
+      "rebalances": 30,
+      "avg_traded_notional_fraction": 0.45815522712717305
+    },
+    "net": {
+      "start": "1997-01-31",
+      "end": "2026-08-31",
+      "rebalances": 30,
+      "avg_traded_notional_fraction": 0.45815522712717305
+    }
+  },
+  "book_comparison": {
+    "book_reference": {
+      "CAGR": 0.08,
+      "MDD": -0.07
+    },
+    "our_proxy_base_cost": {
+      "CAGR": 0.05004266628306708,
+      "MDD": -0.1374353572746776,
+      "MDD_source": "monthly_fallback"
+    },
+    "gap": {
+      "CAGR_pctpt": -2.9957333716932917,
+      "MDD_pctpt": -6.7435357274677585
+    }
+  },
+  "oos_2022_to_latest": {
+    "start": "2022-01-31",
+    "end": "2026-08-31",
+    "months": 56,
+    "CAGR": 0.0379234115265763,
+    "CumulativeReturn": 0.18970176060222066,
+    "AnnualizedVol": 0.12522887510050426,
+    "MDD": -0.13513525809029747,
+    "Sharpe": 0.35778960185870556,
+    "FinalMultiple": 1.1897017606022207,
+    "FinalAssetKRW": 11897017.606022207
+  },
+  "krw_translation_sensitivity": {
+    "book_validation": {
+      "start": "2005-01-31",
+      "end": "2021-12-31",
+      "months": 204,
+      "CAGR": 0.05362320097781459,
+      "CumulativeReturn": 1.4302476405822278,
+      "AnnualizedVol": 0.06058653700044852,
+      "MDD": -0.08806759722485724,
+      "Sharpe": 0.8936719109277077,
+      "FinalMultiple": 2.4302476405822278,
+      "FinalAssetKRW": 24302476.405822277
+    },
+    "from_2001": {
+      "start": "2001-01-31",
+      "end": "2026-08-31",
+      "months": 308,
+      "CAGR": 0.046781222610822626,
+      "CumulativeReturn": 2.2332208562549725,
+      "AnnualizedVol": 0.07563176859345425,
+      "MDD": -0.1299814373424103,
+      "Sharpe": 0.642788910262328,
+      "FinalMultiple": 3.2332208562549725,
+      "FinalAssetKRW": 32332208.562549725
+    },
+    "from_2021": {
+      "start": "2021-01-31",
+      "end": "2026-08-31",
+      "months": 68,
+      "CAGR": 0.05454944790575533,
+      "CumulativeReturn": 0.3511784469117949,
+      "AnnualizedVol": 0.11284664282502603,
+      "MDD": -0.1299814373424103,
+      "Sharpe": 0.5264405461520306,
+      "FinalMultiple": 1.351178446911795,
+      "FinalAssetKRW": 13511784.469117949
+    },
+    "longest": {
+      "start": "1997-01-31",
+      "end": "2026-08-31",
+      "months": 356,
+      "CAGR": 0.057023688441184106,
+      "CumulativeReturn": 4.182190397891248,
+      "AnnualizedVol": 0.09601783309574893,
+      "MDD": -0.13751421722473045,
+      "Sharpe": 0.624642617341488,
+      "FinalMultiple": 5.182190397891248,
+      "FinalAssetKRW": 51821903.97891248
+    }
+  },
+  "timing_sensitivity_2001_latest": {
+    "CAGR_min": 0.04685417572520678,
+    "CAGR_median": 0.05601223096750607,
+    "CAGR_max": 0.06946003180879967,
+    "MDD_min": -0.1831510420903727,
+    "MDD_median": -0.13383324179942319,
+    "MDD_max": -0.08875307259975507
+  },
+  "limitations": [
+    "Exact KR_GOVT_20Y_TR remains missing in repository registry; this run is an exploratory proxy, not an exact Strategy-8 reproduction.",
+    "Korean 20Y Treasury yield history begins in 2006, so 2005 book start necessarily uses a bridge proxy.",
+    "Repository KODEX200 adjusted-price history starts in 2007, so earlier Korean-equity months use KOSPI200 price index.",
+    "Primary book-style result mixes native-currency returns because the source rule does not specify FX treatment; KRW-translated sensitivity is reported separately.",
+    "MDD/recovery are monthly fallback and can understate intramonth drawdowns."
+  ]
+}
