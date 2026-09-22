@@ -142,24 +142,27 @@ def fetch_pykrx_yield(kind: str, start: str, end: str) -> tuple[pd.Series, str]:
     return s, "pykrx KRX OTC treasury yield"
 
 
-def bond_price_20y(yield_decimal: float, coupon_rate: float) -> float:
-    n = 40
-    r = yield_decimal / 2.0
-    c = 100.0 * coupon_rate / 2.0
+def bond_price_par(yield_decimal: float, coupon_rate: float, maturity_years: float) -> float:
+    freq = 2
+    n = int(round(maturity_years * freq))
+    r = yield_decimal / freq
+    c = 100.0 * coupon_rate / freq
     if abs(r) < 1e-12:
         return 100.0 + c * n
     d = 1.0 + r
     return c * (1.0 - d ** (-n)) / r + 100.0 * d ** (-n)
 
 
-def synth_returns_from_yield(y: pd.Series) -> pd.Series:
+def synth_returns_from_yield(y: pd.Series, maturity_years: float = 20.0) -> pd.Series:
+    """Approximate constant-maturity par-bond total return from yield observations."""
     y = y.dropna().sort_index().astype(float) / 100.0
     out = pd.Series(index=y.index, dtype=float)
-    out.iloc[0] = 0.0
+    if len(out):
+        out.iloc[0] = np.nan
     for i in range(1, len(y)):
         prev, cur = y.index[i - 1], y.index[i]
         yp, yc = float(y.iloc[i - 1]), float(y.iloc[i])
-        p = bond_price_20y(yc, yp)
+        p = bond_price_par(yc, yp, maturity_years)
         days = (cur - prev).days
         accrued = 100.0 * yp * days / 365.2425
         out.iloc[i] = (p + accrued) / 100.0 - 1.0
@@ -211,7 +214,7 @@ def build_assets() -> tuple[pd.DataFrame, dict]:
     gap = (allm >= pd.Timestamp("1987-01-31")) & (allm <= pd.Timestamp("1993-09-30"))
     y20.loc[gap & y20.isna()] = ((y10 + y30) / 2).loc[gap & y20.isna()]
     y20 = y20.ffill(limit=2)
-    us_syn = synth_returns_from_yield(y20.dropna())
+    us_syn = synth_returns_from_yield(y20.dropna(), 20.0)
     tlt = month_end_from_daily(load_csv(ROOT / "data/etf_us/TLT.csv"), "Adj Close")
     us_bond_ret = splice_return_series(us_syn, tlt)
     us_bond_idx = wealth_from_returns(us_bond_ret.dropna())
@@ -237,14 +240,20 @@ def build_assets() -> tuple[pd.DataFrame, dict]:
         y_kr20 = kr20_daily.groupby(kr20_daily.index.to_period("M")).last()
         y_kr20.index = y_kr20.index.to_timestamp("M")
 
-        ym_index = y_kr10.index.union(y_kr20.index).sort_values()
-        ym = y_kr10.reindex(ym_index)
-        ym.loc[y_kr20.index] = y_kr20
-        ym = ym.sort_index().loc[:LAST_COMPLETE]
-
-        kr_bond_ret = synth_returns_from_yield(ym)
+        # Reconstruct each maturity separately, then splice RETURN series.
+        # Do not splice yields directly: a 10Y->20Y yield-level jump would create a false return.
+        kr10_ret = synth_returns_from_yield(y_kr10.loc[:LAST_COMPLETE], 10.0)
+        kr20_ret = synth_returns_from_yield(y_kr20.loc[:LAST_COMPLETE], 20.0)
+        first_kr20_ret = kr20_ret.first_valid_index()
+        if first_kr20_ret is None:
+            raise RuntimeError("No valid Korean 20Y return after yield reconstruction")
+        kr_bond_ret = pd.concat([
+            kr10_ret[kr10_ret.index < first_kr20_ret],
+            kr20_ret[kr20_ret.index >= first_kr20_ret],
+        ]).sort_index()
+        kr_bond_ret = kr_bond_ret[~kr_bond_ret.index.duplicated(keep="last")]
         kr_bond_idx = wealth_from_returns(kr_bond_ret)
-        kr_bond_mode = "KRX 10Y bridge before 20Y inception -> KRX 20Y yield synthetic"
+        kr_bond_mode = "KRX 10Y actual-duration bridge -> KRX 20Y actual-duration synthetic return splice"
     except Exception as e:
         pykrx_err = repr(e)
         # Secondary fallback: ECOS 20Y plus repo 5Y bridge before first 20Y observation.
@@ -266,7 +275,7 @@ def build_assets() -> tuple[pd.DataFrame, dict]:
         ym = y_bridge.reindex(ym_index)
         ym.loc[y_kr20.index] = y_kr20
         ym = ym.sort_index().loc[:LAST_COMPLETE]
-        kr_bond_ret = synth_returns_from_yield(ym)
+        kr_bond_ret = synth_returns_from_yield(ym, 20.0)
         kr_bond_idx = wealth_from_returns(kr_bond_ret)
         kr_bond_mode = "fallback: repo KR 5Y bridge -> ECOS KR 20Y yield synthetic"
         kr10_source = "repo 5Y housing-bond yield bridge"
@@ -292,6 +301,7 @@ def build_assets() -> tuple[pd.DataFrame, dict]:
         "kr_bond_mode": kr_bond_mode,
         "kr20_yield_start": str(y_kr20.index.min().date()) if len(y_kr20) else None,
         "kr20_yield_end": str(y_kr20.index.max().date()) if len(y_kr20) else None,
+        "kr20_return_start": str(first_kr20_ret.date()) if "first_kr20_ret" in locals() and first_kr20_ret is not None else None,
         "pykrx_error": pykrx_err,
         "ecos_status": ecos_status,
         "ecos_error": ecos_err,
@@ -560,7 +570,7 @@ def main():
             "risk_metrics": "monthly fallback because exact daily Korean 20Y total-return index is unavailable",
             "us_bond_extension": "synthetic 20Y constant-maturity from Treasury yields before TLT, then TLT Adj Close",
             "kr_equity_extension": "KOSPI200 price index before repo KODEX200 history, then KODEX200 Adj Close",
-            "kr_bond_extension": "KRX OTC 10Y yield bridge before 20Y inception -> KRX OTC 20Y final-quotation yield, repriced as a synthetic constant-maturity 20Y par bond; not an official total-return index",
+            "kr_bond_extension": "KRX OTC 10Y yield is reconstructed as an actual-duration 10Y par-bond return before 20Y inception; KRX OTC 20Y yield is separately reconstructed as a 20Y par-bond return, then the return series are spliced. This avoids a false 10Y-to-20Y yield transition return; it is not an official total-return index.",
         },
         "diagnostics": diag,
         "portfolio_stats": portstats,
