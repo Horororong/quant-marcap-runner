@@ -156,10 +156,40 @@ def fetch_ecos_20y() -> tuple[pd.DataFrame, str]:
     monthly_periods = set(df["Date"].dt.to_period("M"))
     required = set(pd.period_range("2006-03", LAST_COMPLETE.to_period("M"), freq="M"))
     missing = sorted(required - monthly_periods)
+
+    # The public sample endpoint can sporadically return an empty single-month
+    # response even when the same observations are returned in a wider window.
+    # Recover only the missing months from their surrounding quarter, then
+    # re-check completeness. No interpolation or synthetic filling is allowed.
+    if missing and key == "sample":
+        recovered = []
+        for m in missing:
+            q = m.asfreq("Q")
+            qs = max(pd.Timestamp("2006-03-01"), q.start_time.normalize())
+            qe = min(LAST_COMPLETE, q.end_time.normalize())
+            try:
+                qrows = fetch_range(qs.strftime("%Y%m%d"), qe.strftime("%Y%m%d"), 20)
+                for row in qrows:
+                    dt = pd.to_datetime(row.get("TIME"), format="%Y%m%d", errors="coerce")
+                    if pd.notna(dt) and dt.to_period("M") == m:
+                        recovered.append(row)
+            except Exception:
+                pass
+            time.sleep(0.1)
+
+        if recovered:
+            rdf = pd.DataFrame(recovered)[["TIME", "DATA_VALUE"]].copy()
+            rdf.columns = ["Date", "Value"]
+            rdf["Date"] = pd.to_datetime(rdf["Date"], format="%Y%m%d", errors="coerce")
+            rdf["Value"] = pd.to_numeric(rdf["Value"], errors="coerce")
+            df = pd.concat([df, rdf], ignore_index=True).dropna().sort_values("Date").drop_duplicates("Date")
+            monthly_periods = set(df["Date"].dt.to_period("M"))
+            missing = sorted(required - monthly_periods)
+
     if missing:
-        raise RuntimeError(f"ECOS 20Y missing months after retries: {missing[:12]}")
+        raise RuntimeError(f"ECOS 20Y missing months after month+quarter retries: {missing[:12]}")
     df.to_csv(cache, index=False, encoding="utf-8-sig")
-    return df, ("ECOS authenticated key" if key != "sample" else "ECOS sample key monthly-chunked")
+    return df, ("ECOS authenticated key" if key != "sample" else "ECOS sample key monthly+quarter recovered")
 
 
 def fetch_pykrx_yield(kind: str, start: str, end: str) -> tuple[pd.Series, str]:
