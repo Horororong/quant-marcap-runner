@@ -1,0 +1,46 @@
+name: Strategy 8 Backtest
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/backtest_strategy8.py"
+      - ".github/workflows/strategy8-backtest.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    env:
+      ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy requests
+
+      - name: Run Strategy 8 backtest
+        run: |
+          python scripts/backtest_strategy8.py
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/strategy8/
+          if git diff --cached --quiet; then
+            echo "No Strategy 8 result changes."
+          else
+            git commit -m "Run Strategy 8 backtest"
+            git push
+          fi
