@@ -122,10 +122,8 @@ def fetch_ecos_20y() -> tuple[pd.DataFrame, str]:
     df["Date"] = pd.to_datetime(df["Date"], format="%Y%m%d", errors="coerce")
     df["Value"] = pd.to_numeric(df["Value"], errors="coerce")
     df = df.dropna().sort_values("Date").drop_duplicates("Date")
-    if df["Date"].max().to_period("M") < LAST_COMPLETE.to_period("M"):
-        raise RuntimeError(
-            f"ECOS 20Y incomplete: last={df['Date'].max().date()}, expected month={LAST_COMPLETE.date()}"
-        )
+    # Do not invent unavailable tail months. The backtest ends at the latest
+    # common month actually supported by all required assets.
     return df, ("ECOS authenticated key" if key != "sample" else "ECOS sample key annual-chunked")
 
 
@@ -294,7 +292,8 @@ def build_assets() -> tuple[pd.DataFrame, dict]:
     }).dropna()
 
     diag = {
-        "last_complete_month": str(LAST_COMPLETE.date()),
+        "requested_last_complete_month": str(LAST_COMPLETE.date()),
+        "actual_common_data_end": str(DATA_END.date()),
         "spy_raw_start": str(spy.index.min().date()),
         "tlt_raw_start": str(tlt.index.min().date()),
         "kospi200_start": str(k200.index.min().date()),
@@ -483,6 +482,7 @@ def main():
     monthly, audit, portstats = make_monthly_nav(prices)
     monthly.index = monthly.index.to_period("M").to_timestamp("M")
     monthly = monthly.loc[:LAST_COMPLETE]
+    DATA_END = monthly.index.max()
 
     cfg = BacktestConfig(
         title=TITLE,
@@ -490,8 +490,8 @@ def main():
         risk_free_rate=0.0,
         book_start=str(BOOK_START.date()),
         book_end=str(BOOK_END.date()),
-        expected_end=LAST_COMPLETE.strftime("%Y-%m"),
-        standard_end_year=LAST_COMPLETE.year,
+        expected_end=DATA_END.strftime("%Y-%m"),
+        standard_end_year=DATA_END.year,
         as_of_date=AS_OF.strftime("%Y-%m-%d"),
     )
     results = run_four_periods(monthly, cfg, daily_nav=None)
@@ -514,9 +514,9 @@ def main():
     }
     windows = {
         "book_validation": ("2005-01-31", "2021-12-31"),
-        "from_2001": ("2001-01-31", str(LAST_COMPLETE.date())),
-        "from_2021": ("2021-01-31", str(LAST_COMPLETE.date())),
-        "longest": (str(monthly.index.min().date()), str(LAST_COMPLETE.date())),
+        "from_2001": ("2001-01-31", str(DATA_END.date())),
+        "from_2021": ("2021-01-31", str(DATA_END.date())),
+        "longest": (str(monthly.index.min().date()), str(DATA_END.date())),
     }
     cost_rows = []
     for p, (a, b) in windows.items():
@@ -527,11 +527,11 @@ def main():
     timing = []
     for m in range(1, 13):
         s, _, _ = run_portfolio(prices, BASE_TRADE_COST, BASE_ENTRY_COST, m)
-        timing.append({"rebalance_month": m, **manual_metrics(s, "2001-01-31", str(LAST_COMPLETE.date()))})
+        timing.append({"rebalance_month": m, **manual_metrics(s, "2001-01-31", str(DATA_END.date()))})
     timing_df = pd.DataFrame(timing)
     timing_df.to_csv(OUT / "timing_sensitivity.csv", index=False, encoding="utf-8-sig")
 
-    oos = manual_metrics(variants["base_10bp"], "2022-01-31", str(LAST_COMPLETE.date()))
+    oos = manual_metrics(variants["base_10bp"], "2022-01-31", str(DATA_END.date()))
 
     fxdf = load_csv(ROOT / "data/fx/USDKRW_FRED_LONG.csv")
     fxdf["Date"] = pd.to_datetime(fxdf["Date"], errors="coerce")
@@ -557,7 +557,7 @@ def main():
     summary = {
         "title": TITLE,
         "run_at_utc": AS_OF.isoformat(),
-        "last_complete_month": str(LAST_COMPLETE.date()),
+        "last_complete_month": str(DATA_END.date()),
         "source_rule": {
             "assets": ["SPY", "TLT/US long Treasury", "KODEX200/KOSPI200 proxy", "Korean 20Y Treasury proxy"],
             "momentum": "For each asset, compare current month-end wealth/price with 1..12 months ago; score = positive comparisons/12.",
@@ -591,6 +591,7 @@ def main():
             "Korean 20Y Treasury yield history begins in 2006, so 2005 book start necessarily uses a bridge proxy.",
             "Repository KODEX200 adjusted-price history starts in 2007, so earlier Korean-equity months use KOSPI200 price index.",
             "Primary book-style result mixes native-currency returns because the source rule does not specify FX treatment; KRW-translated sensitivity is reported separately.",
+            "The standard windows end at the latest common month actually available across all four required assets; unavailable tail months are not fabricated.",
             "MDD/recovery are monthly fallback and can understate intramonth drawdowns.",
         ],
     }
