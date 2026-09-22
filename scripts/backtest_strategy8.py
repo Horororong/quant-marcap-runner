@@ -316,7 +316,7 @@ def build_assets() -> tuple[pd.DataFrame, dict]:
 
     diag = {
         "requested_last_complete_month": str(LAST_COMPLETE.date()),
-        "actual_common_data_end": str(DATA_END.date()),
+        "actual_common_data_end": str(prices.index.max().date()),
         "spy_raw_start": str(spy.index.min().date()),
         "tlt_raw_start": str(tlt.index.min().date()),
         "kospi200_start": str(k200.index.min().date()),
