@@ -61,41 +61,58 @@ def fred_csv(series_id: str) -> pd.DataFrame:
 
 
 def fetch_ecos_20y() -> tuple[pd.DataFrame, str]:
+    """Fetch Korean 20Y Treasury daily yields from BOK ECOS.
+
+    ECOS's public sample key effectively truncates long date-range requests.
+    In sample-key mode, query one calendar year at a time and paginate within
+    each year; then concatenate and de-duplicate.
+    """
     key = (os.getenv("ECOS_API_KEY") or "").strip() or "sample"
-    start = "20060101"
-    end = LAST_COMPLETE.strftime("%Y%m%d")
     base = "https://ecos.bok.or.kr/api/StatisticSearch"
-    page_size = 1000 if key != "sample" else 10
     sess = requests.Session()
     sess.headers.update({"User-Agent": "quant-strategy8/1.0"})
 
-    def one(a: int, b: int):
-        url = f"{base}/{key}/json/kr/{a}/{b}/817Y002/D/{start}/{end}/010220000"
-        rr = sess.get(url, timeout=60)
-        rr.raise_for_status()
-        return rr.json()
+    def fetch_range(start: str, end: str, page_size: int) -> list[dict]:
+        def one(a: int, b: int):
+            url = f"{base}/{key}/json/kr/{a}/{b}/817Y002/D/{start}/{end}/010220000"
+            rr = sess.get(url, timeout=60)
+            rr.raise_for_status()
+            return rr.json()
 
-    first = one(1, page_size)
-    if "StatisticSearch" not in first:
-        raise RuntimeError(f"ECOS error: {first}")
-    total = int(first["StatisticSearch"]["list_total_count"])
-    rows = list(first["StatisticSearch"].get("row", []))
-    for a in range(page_size + 1, total + 1, page_size):
-        b = min(a + page_size - 1, total)
-        js = one(a, b)
-        if "StatisticSearch" not in js:
-            # ECOS sometimes reports list_total_count one row/page beyond the
-            # retrievable data and returns INFO-200 on the trailing request.
-            # If we already collected valid rows, treat that as normal EOF.
-            if rows and "RESULT" in js and js["RESULT"].get("CODE") == "INFO-200":
+        first = one(1, page_size)
+        if "StatisticSearch" not in first:
+            # No observations in a pre-inception/holiday-only range.
+            if "RESULT" in first and first["RESULT"].get("CODE") == "INFO-200":
+                return []
+            raise RuntimeError(f"ECOS error {start}~{end}: {first}")
+
+        total = int(first["StatisticSearch"]["list_total_count"])
+        rows = list(first["StatisticSearch"].get("row", []))
+        for a in range(page_size + 1, total + 1, page_size):
+            b = min(a + page_size - 1, total)
+            js = one(a, b)
+            if "StatisticSearch" not in js:
+                if rows and "RESULT" in js and js["RESULT"].get("CODE") == "INFO-200":
+                    break
+                raise RuntimeError(f"ECOS page error {start}~{end} at {a}: {js}")
+            page_rows = js["StatisticSearch"].get("row", [])
+            if not page_rows:
                 break
-            raise RuntimeError(f"ECOS page error {a}: {js}")
-        page_rows = js["StatisticSearch"].get("row", [])
-        if not page_rows:
-            break
-        rows.extend(page_rows)
-        if key == "sample":
-            time.sleep(0.01)
+            rows.extend(page_rows)
+            if key == "sample":
+                time.sleep(0.005)
+        return rows
+
+    rows: list[dict] = []
+    if key == "sample":
+        # Sample key truncates a multi-year query. Annual chunking preserves
+        # the full 2006~latest history without requiring a private secret.
+        for year in range(2006, LAST_COMPLETE.year + 1):
+            s = f"{year}0101"
+            e = min(LAST_COMPLETE, pd.Timestamp(f"{year}-12-31")).strftime("%Y%m%d")
+            rows.extend(fetch_range(s, e, 10))
+    else:
+        rows = fetch_range("20060101", LAST_COMPLETE.strftime("%Y%m%d"), 1000)
 
     df = pd.DataFrame(rows)
     if df.empty:
@@ -105,7 +122,11 @@ def fetch_ecos_20y() -> tuple[pd.DataFrame, str]:
     df["Date"] = pd.to_datetime(df["Date"], format="%Y%m%d", errors="coerce")
     df["Value"] = pd.to_numeric(df["Value"], errors="coerce")
     df = df.dropna().sort_values("Date").drop_duplicates("Date")
-    return df, ("ECOS authenticated key" if key != "sample" else "ECOS sample key paginated")
+    if df["Date"].max().to_period("M") < LAST_COMPLETE.to_period("M"):
+        raise RuntimeError(
+            f"ECOS 20Y incomplete: last={df['Date'].max().date()}, expected month={LAST_COMPLETE.date()}"
+        )
+    return df, ("ECOS authenticated key" if key != "sample" else "ECOS sample key annual-chunked")
 
 
 def fetch_pykrx_yield(kind: str, start: str, end: str) -> tuple[pd.Series, str]:
