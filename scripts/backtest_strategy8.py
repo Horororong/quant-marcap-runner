@@ -100,6 +100,48 @@ def fetch_ecos_20y() -> tuple[pd.DataFrame, str]:
     return df, ("ECOS authenticated key" if key != "sample" else "ECOS sample key paginated")
 
 
+def fetch_pykrx_yield(kind: str, start: str, end: str) -> tuple[pd.Series, str]:
+    """Fetch KRX OTC Treasury yields through pykrx in annual chunks."""
+    cache_name = "KR_" + ("10Y" if "10년" in kind else "20Y") + "_KOFIA_YIELD.csv"
+    cache = ROOT / "data" / "proxy_long" / "raw" / cache_name
+
+    if cache.exists():
+        x = load_csv(cache)
+        if {"Date", "Value"}.issubset(x.columns):
+            x["Date"] = pd.to_datetime(x["Date"], errors="coerce")
+            x["Value"] = pd.to_numeric(x["Value"], errors="coerce")
+            s = x.dropna(subset=["Date", "Value"]).sort_values("Date").drop_duplicates("Date").set_index("Date")["Value"]
+            if len(s) > 100 and s.index.max() >= pd.Timestamp("2025-12-01"):
+                return s.loc[:LAST_COMPLETE], "repo_cache_pykrx"
+
+    from pykrx import bond
+
+    pieces = []
+    y0, y1 = int(start[:4]), int(end[:4])
+    for year in range(y0, y1 + 1):
+        s0 = max(start, f"{year}0101")
+        e0 = min(end, f"{year}1231")
+        try:
+            df = bond.get_otc_treasury_yields(s0, e0, kind)
+            if df is not None and not df.empty:
+                col = "수익률" if "수익률" in df.columns else df.columns[0]
+                z = pd.to_numeric(df[col], errors="coerce")
+                z.index = pd.to_datetime(z.index, errors="coerce")
+                pieces.append(z.dropna())
+        except Exception:
+            pass
+        time.sleep(0.08)
+
+    if not pieces:
+        raise RuntimeError(f"pykrx returned no data for {kind}")
+
+    s = pd.concat(pieces).sort_index()
+    s = s[~s.index.duplicated(keep="last")].dropna()
+    s = s[s.index <= LAST_COMPLETE]
+    pd.DataFrame({"Date": s.index, "Value": s.values}).to_csv(cache, index=False, encoding="utf-8-sig")
+    return s, "pykrx KRX OTC treasury yield"
+
+
 def bond_price_20y(yield_decimal: float, coupon_rate: float) -> float:
     n = 40
     r = yield_decimal / 2.0
@@ -180,38 +222,55 @@ def build_assets() -> tuple[pd.DataFrame, dict]:
     kr_eq_ret = splice_return_series(k200_ret, kodex)
     kr_eq_idx = wealth_from_returns(kr_eq_ret.dropna())
 
-    # Repo-local bridge: Korean 5Y housing-bond yield (1987~2023) is used only
-    # before a 20Y series exists. It is explicitly a weak duration proxy.
-    kr_bridge = load_csv(ROOT / "data/proxy_long/raw/KR_HOUSING_BOND_5Y_YIELD.csv")
-    kr_bridge["Date"] = pd.to_datetime(kr_bridge["Date"], errors="coerce")
-    kr_bridge["Value"] = pd.to_numeric(kr_bridge["Value"], errors="coerce")
-    y_bridge = month_end_yield(kr_bridge)
-
-    ecos_status = "unavailable"
+    # Korean government-bond leg.
+    # 2001~20Y inception: 10Y KRX OTC yield reconstruction (explicit bridge only).
+    # 20Y inception onward: KRX OTC 20Y final-quotation yield reconstruction.
+    pykrx_err = None
+    ecos_status = "not_used"
     ecos_err = None
     try:
-        ecos, ecos_status = fetch_ecos_20y()
-        y_kr20 = month_end_yield(ecos)
-    except Exception as e:
-        y_kr20 = pd.Series(dtype=float)
-        ecos_err = repr(e)
+        kr10_daily, kr10_source = fetch_pykrx_yield("국고채10년", "20000101", LAST_COMPLETE.strftime("%Y%m%d"))
+        kr20_daily, kr20_source = fetch_pykrx_yield("국고채20년", "20060101", LAST_COMPLETE.strftime("%Y%m%d"))
 
-    if len(y_kr20):
+        y_kr10 = kr10_daily.groupby(kr10_daily.index.to_period("M")).last()
+        y_kr10.index = y_kr10.index.to_timestamp("M")
+        y_kr20 = kr20_daily.groupby(kr20_daily.index.to_period("M")).last()
+        y_kr20.index = y_kr20.index.to_timestamp("M")
+
+        ym_index = y_kr10.index.union(y_kr20.index).sort_values()
+        ym = y_kr10.reindex(ym_index)
+        ym.loc[y_kr20.index] = y_kr20
+        ym = ym.sort_index().loc[:LAST_COMPLETE]
+
+        kr_bond_ret = synth_returns_from_yield(ym)
+        kr_bond_idx = wealth_from_returns(kr_bond_ret)
+        kr_bond_mode = "KRX 10Y bridge before 20Y inception -> KRX 20Y yield synthetic"
+    except Exception as e:
+        pykrx_err = repr(e)
+        # Secondary fallback: ECOS 20Y plus repo 5Y bridge before first 20Y observation.
+        kr_bridge = load_csv(ROOT / "data/proxy_long/raw/KR_HOUSING_BOND_5Y_YIELD.csv")
+        kr_bridge["Date"] = pd.to_datetime(kr_bridge["Date"], errors="coerce")
+        kr_bridge["Value"] = pd.to_numeric(kr_bridge["Value"], errors="coerce")
+        y_bridge = month_end_yield(kr_bridge)
+        try:
+            ecos, ecos_status = fetch_ecos_20y()
+            y_kr20 = month_end_yield(ecos)
+        except Exception as ee:
+            y_kr20 = pd.Series(dtype=float)
+            ecos_err = repr(ee)
+
+        if not len(y_kr20):
+            raise RuntimeError(f"Unable to obtain Korean 20Y government-bond yield. pykrx={pykrx_err}; ecos={ecos_err}")
+
         ym_index = y_bridge.index.union(y_kr20.index).sort_values()
         ym = y_bridge.reindex(ym_index)
-        ym.update(y_kr20)
+        ym.loc[y_kr20.index] = y_kr20
         ym = ym.sort_index().loc[:LAST_COMPLETE]
         kr_bond_ret = synth_returns_from_yield(ym)
         kr_bond_idx = wealth_from_returns(kr_bond_ret)
-        kr_bond_mode = "KR 5Y yield bridge -> ECOS KR 20Y yield synthetic"
-    else:
-        # Network/API fallback only: 5Y yield reconstruction -> repo KOSEF 10Y ETF.
-        # This is NOT treated as an exact Strategy-8 result.
-        pre_ret = synth_returns_from_yield(y_bridge.loc[:LAST_COMPLETE])
-        k10 = month_end_from_daily(load_csv(ROOT / "data/etf_kr/148070_KOSEF국고채10년.csv"), "Adj Close")
-        kr_bond_ret = splice_return_series(pre_ret, k10)
-        kr_bond_idx = wealth_from_returns(kr_bond_ret.dropna())
-        kr_bond_mode = "fallback: KR 5Y yield synthetic -> KOSEF 10Y ETF"
+        kr_bond_mode = "fallback: repo KR 5Y bridge -> ECOS KR 20Y yield synthetic"
+        kr10_source = "repo 5Y housing-bond yield bridge"
+        kr20_source = ecos_status
 
     idx = spy_idx.index.intersection(us_bond_idx.index).intersection(kr_eq_idx.index).intersection(kr_bond_idx.index)
     idx = idx[idx <= LAST_COMPLETE]
@@ -228,10 +287,12 @@ def build_assets() -> tuple[pd.DataFrame, dict]:
         "tlt_raw_start": str(tlt.index.min().date()),
         "kospi200_start": str(k200.index.min().date()),
         "kodex200_repo_start": str(kodex.index.min().date()),
-        "kr_bridge_yield_start": str(y_bridge.index.min().date()),
+        "kr10_source": kr10_source,
+        "kr20_source": kr20_source,
         "kr_bond_mode": kr_bond_mode,
-        "kr20_ecos_start": str(y_kr20.index.min().date()) if len(y_kr20) else None,
-        "kr20_ecos_end": str(y_kr20.index.max().date()) if len(y_kr20) else None,
+        "kr20_yield_start": str(y_kr20.index.min().date()) if len(y_kr20) else None,
+        "kr20_yield_end": str(y_kr20.index.max().date()) if len(y_kr20) else None,
+        "pykrx_error": pykrx_err,
         "ecos_status": ecos_status,
         "ecos_error": ecos_err,
         "common_price_start": str(prices.index.min().date()),
@@ -499,7 +560,7 @@ def main():
             "risk_metrics": "monthly fallback because exact daily Korean 20Y total-return index is unavailable",
             "us_bond_extension": "synthetic 20Y constant-maturity from Treasury yields before TLT, then TLT Adj Close",
             "kr_equity_extension": "KOSPI200 price index before repo KODEX200 history, then KODEX200 Adj Close",
-            "kr_bond_extension": "repo KR 5Y yield bridge -> ECOS KR 20Y yield, repriced as synthetic 20Y par bond; KOSEF 10Y fallback only if ECOS fails; not official total-return index",
+            "kr_bond_extension": "KRX OTC 10Y yield bridge before 20Y inception -> KRX OTC 20Y final-quotation yield, repriced as a synthetic constant-maturity 20Y par bond; not an official total-return index",
         },
         "diagnostics": diag,
         "portfolio_stats": portstats,
@@ -515,7 +576,7 @@ def main():
             "MDD_max": float(timing_df.MDD.max()),
         },
         "limitations": [
-            "Exact KR_GOVT_20Y_TR remains missing in repository registry; this run is an exploratory proxy, not an exact Strategy-8 reproduction.",
+            "Exact KR_GOVT_20Y_TR remains missing in the repository registry. From 20Y inception onward this run uses KRX OTC 20Y yields to reconstruct a constant-maturity 20Y bond return, so it remains a reconstructed proxy rather than an official total-return index.",
             "Korean 20Y Treasury yield history begins in 2006, so 2005 book start necessarily uses a bridge proxy.",
             "Repository KODEX200 adjusted-price history starts in 2007, so earlier Korean-equity months use KOSPI200 price index.",
             "Primary book-style result mixes native-currency returns because the source rule does not specify FX treatment; KRW-translated sensitivity is reported separately.",
