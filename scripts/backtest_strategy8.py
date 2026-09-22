@@ -130,7 +130,7 @@ def fetch_ecos_20y() -> tuple[pd.DataFrame, str]:
             mrows = []
             for attempt in range(5):
                 try:
-                    mrows = fetch_range(ms.strftime("%Y%m%d"), me.strftime("%Y%m%d"), 20)
+                    mrows = fetch_range(ms.strftime("%Y%m%d"), me.strftime("%Y%m%d"), 10)
                     if mrows:
                         last_err = None
                         break
