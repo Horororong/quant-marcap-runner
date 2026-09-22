@@ -105,12 +105,17 @@ def fetch_ecos_20y() -> tuple[pd.DataFrame, str]:
 
     rows: list[dict] = []
     if key == "sample":
-        # Sample key truncates a multi-year query. Annual chunking preserves
-        # the full 2006~latest history without requiring a private secret.
-        for year in range(2006, LAST_COMPLETE.year + 1):
-            s = f"{year}0101"
-            e = min(LAST_COMPLETE, pd.Timestamp(f"{year}-12-31")).strftime("%Y%m%d")
-            rows.extend(fetch_range(s, e, 10))
+        # The public sample key truncates long windows around ~100 observations.
+        # Query quarter-by-quarter so each request window remains safely below
+        # that cap, then concatenate. This is slower but complete and reproducible.
+        start_q = pd.Period("2006Q1", freq="Q")
+        end_q = LAST_COMPLETE.to_period("Q")
+        for q in pd.period_range(start_q, end_q, freq="Q"):
+            qs = max(pd.Timestamp("2006-01-01"), q.start_time.normalize())
+            qe = min(LAST_COMPLETE, q.end_time.normalize())
+            if qs > qe:
+                continue
+            rows.extend(fetch_range(qs.strftime("%Y%m%d"), qe.strftime("%Y%m%d"), 10))
     else:
         rows = fetch_range("20060101", LAST_COMPLETE.strftime("%Y%m%d"), 1000)
 
