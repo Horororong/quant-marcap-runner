@@ -193,12 +193,12 @@ def build_assets() -> tuple[pd.DataFrame, dict]:
         y_kr20 = pd.Series(dtype=float)
         ecos_err = repr(e)
 
-    ym = y_generic.copy()
-    ym.loc[y_kr10.index] = y_kr10
+    ym_index = y_generic.index.union(y_kr10.index).union(y_kr20.index).sort_values()
+    ym = y_generic.reindex(ym_index)
+    ym.update(y_kr10)
     if len(y_kr20):
-        ym.loc[y_kr20.index] = y_kr20
+        ym.update(y_kr20)
     ym = ym.sort_index()
-    ym = ym[~ym.index.duplicated(keep="last")]
     ym = ym.loc[:LAST_COMPLETE]
     kr_bond_ret = synth_returns_from_yield(ym)
     kr_bond_idx = wealth_from_returns(kr_bond_ret)
