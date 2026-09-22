@@ -548,11 +548,14 @@ def main():
     pd.DataFrame(cost_rows).to_csv(OUT / "cost_sensitivity.csv", index=False, encoding="utf-8-sig")
 
     timing = []
+    timing_book = []
     for m in range(1, 13):
         s, _, _ = run_portfolio(prices, BASE_TRADE_COST, BASE_ENTRY_COST, m)
         timing.append({"rebalance_month": m, **manual_metrics(s, "2001-01-31", str(DATA_END.date()))})
+        timing_book.append({"rebalance_month": m, **manual_metrics(s, "2005-01-31", "2021-12-31")})
     timing_df = pd.DataFrame(timing)
     timing_df.to_csv(OUT / "timing_sensitivity.csv", index=False, encoding="utf-8-sig")
+    pd.DataFrame(timing_book).to_csv(OUT / "timing_sensitivity_book.csv", index=False, encoding="utf-8-sig")
 
     oos = manual_metrics(variants["base_10bp"], "2022-01-31", str(DATA_END.date()))
 
