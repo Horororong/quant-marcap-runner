@@ -25,7 +25,7 @@ MAX_INDEX_TASKS = max(1, int(os.getenv("LEGACY_DART_INDEX_TASKS", "6")))
 MAX_DOCS = max(1, int(os.getenv("LEGACY_DART_MAX_DOCS", "20")))
 WORKERS = max(1, min(8, int(os.getenv("LEGACY_DART_WORKERS", "4"))))
 BASE = "https://opendart.fss.or.kr/api"
-PARSER_VERSION = "legacy-v1"
+PARSER_VERSION = "legacy-v2"
 
 ROOT = Path("data/financials/legacy_2000_2014")
 NORM_DIR = ROOT / "normalized"
@@ -305,7 +305,12 @@ def update_filing_index() -> pd.DataFrame:
         if c not in all_idx.columns:
             all_idx[c] = ""
         all_idx[c] = all_idx[c].fillna("").astype(str)
-    all_idx["rcept_dt"] = pd.to_datetime(all_idx["rcept_dt"], format="%Y%m%d", errors="coerce")
+    rcept_raw = all_idx["rcept_dt"].astype(str).str.strip()
+    rcept_dt = pd.to_datetime(rcept_raw, format="%Y%m%d", errors="coerce")
+    iso_mask = rcept_dt.isna() & rcept_raw.ne("")
+    if iso_mask.any():
+        rcept_dt.loc[iso_mask] = pd.to_datetime(rcept_raw.loc[iso_mask], errors="coerce")
+    all_idx["rcept_dt"] = rcept_dt
 
     inferred = all_idx.apply(lambda r: infer_report_fields(r["report_nm"], r["rcept_dt"]), axis=1, result_type="expand")
     for c in inferred.columns:
@@ -757,6 +762,8 @@ def write_coverage(idx: pd.DataFrame) -> None:
     x=idx.copy()
     x["mapped"]=x["stock_code"].fillna("").astype(str).str.fullmatch(r"\d{6}")
     if not state.empty:
+        if "parser_version" in state.columns:
+            state = state[state["parser_version"].eq(PARSER_VERSION)].copy()
         keep=[c for c in ["rcept_no","status","usable_metric_count"] if c in state.columns]
         x=x.merge(state[keep].drop_duplicates("rcept_no",keep="last"),on="rcept_no",how="left")
     else:
