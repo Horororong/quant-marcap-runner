@@ -1,0 +1,73 @@
+name: Refresh recent DART financials
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'update_dart_financials.py'
+      - '.github/workflows/update-dart-recent.yml'
+  schedule:
+    # 13:30 KST daily = 04:30 UTC.
+    # This is intentionally separated from the historical backfill. It revisits
+    # the latest three business years so later amendments/corrections are kept
+    # fresh even after the one-time historical backlog is complete.
+    - cron: '30 4 * * *'
+
+concurrency:
+  group: dart-recent-refresh
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      DART_API_KEY: ${{ secrets.DART_API_KEY }}
+      DART_MAX_COMPANIES: ${{ vars.DART_RECENT_COMPANIES || '300' }}
+      DART_WORKERS: ${{ vars.DART_RECENT_WORKERS || '6' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas requests
+
+      - name: Refresh rolling recent DART financials
+        run: python update_dart_financials.py
+
+      - name: Commit recent DART datasets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/financials/corp_master.csv
+          git add data/financials/recent_batches/*.csv.gz || true
+          git add data/financials/dart_errors_*.csv || true
+          git add data/status/dart_status.csv data/status/dart_rotation_state.csv
+          if git diff --cached --quiet; then
+            echo "No recent DART changes"
+          else
+            git commit -m "Refresh recent DART financials"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Upload recent-DART status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dart-recent-status
+          path: |
+            data/status/dart_status.csv
+            data/status/dart_rotation_state.csv
+          if-no-files-found: warn
