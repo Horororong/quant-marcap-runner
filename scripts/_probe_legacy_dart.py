@@ -18,12 +18,13 @@ params={
     "page_count":"10",
     "sort":"date",
     "sort_mth":"asc",
+    "corp_cls":"Y",
 }
 r=requests.get(base+"/list.json",params=params,timeout=30)
 r.raise_for_status()
 obj=r.json()
 print("LIST_STATUS",obj.get("status"),obj.get("message"))
-print("TOTAL_COUNT",obj.get("total_count"))
+print("TOTAL_COUNT_Y",obj.get("total_count"))
 print("SAMPLE",[(x.get("rcept_no"),x.get("corp_name"),x.get("report_nm"),x.get("rcept_dt"),x.get("corp_cls")) for x in obj.get("list",[])[:5]])
 
 if obj.get("list"):
