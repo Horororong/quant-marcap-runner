@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+# manual-safe-trigger-20260923
+
 import importlib.util
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
