@@ -455,10 +455,10 @@ def build_selection(panel: pd.DataFrame, signal: pd.Timestamp, factors: pd.DataF
     if len(valid) < top_n:
         raise RuntimeError(f"{signal.date()}: only {len(valid)} valid four-factor stocks for top{top_n}")
 
-    valid["EY_1_PER"] = 4.0 * valid["net_income_q"] / valid["Marcap"]
+    valid["EY_1_PER"] = valid["net_income_q"] / valid["Marcap"]
     valid["BY_1_PBR"] = valid["equity"] / valid["Marcap"]
-    valid["CFY_1_PCR"] = 4.0 * valid["ocf_q"] / valid["Marcap"]
-    valid["SY_1_PSR"] = 4.0 * valid["revenue_q"] / valid["Marcap"]
+    valid["CFY_1_PCR"] = valid["ocf_q"] / valid["Marcap"]
+    valid["SY_1_PSR"] = valid["revenue_q"] / valid["Marcap"]
     factor_cols = ["EY_1_PER","BY_1_PBR","CFY_1_PCR","SY_1_PSR"]
     for c in factor_cols:
         valid[c + "_rank"] = valid[c].rank(method="average", ascending=False)
