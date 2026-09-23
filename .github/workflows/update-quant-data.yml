@@ -15,6 +15,10 @@ on:
     # Manual dispatch and relevant code changes always run immediately.
     - cron: '30 22 * * 2'
 
+concurrency:
+  group: update-quant-data
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
