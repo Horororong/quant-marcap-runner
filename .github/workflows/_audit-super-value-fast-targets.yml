@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install pandas requests pyarrow beautifulsoup4 lxml
-      - name: Audit existing index only
+      - name: Audit existing index only # rerun after receipt-date repair
         run: |
           python - <<'PY'
           import pandas as pd
