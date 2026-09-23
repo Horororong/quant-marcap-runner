@@ -48,7 +48,7 @@ def sell_tax_bps(dt: pd.Timestamp) -> float:
     # Verified historical regime needed by the currently complete PIT window.
     # KOSPI: transaction tax + rural special tax; KOSDAQ: transaction tax.
     # Both totaled 30bp before 2019-05-30, then 25bp from 2019-05-30.
-    return 30.0 if pd.Timestamp(dt) < pd.Timestamp("2019-05-30") else 25.0
+    return 30.0 if pd.Timestamp(dt) < pd.Timestamp("2019-06-03") else 25.0
 
 
 def to_num(x) -> float:
@@ -826,7 +826,7 @@ def main():
         "validated_performance_start":combined.index[0].date().isoformat(),
         "validated_performance_end":combined.index[-1].date().isoformat(),
         "cost_scenarios":{k:asdict(v) for k,v in COSTS.items()},
-        "sell_tax":"30bp through 2019-05-29; 25bp from 2019-05-30 in the validated historical window",
+        "sell_tax":"30bp through 2019-06-02; 25bp from 2019-06-03 in the validated historical window",
         "delisting_baseline":"last observed market value converted to cash if security disappears; stress case applies -100% after permanent disappearance",
         "missing_or_suspended_target":"target weight stays in cash; no substitution using future information",
         "initial_capital_krw":INITIAL_CAPITAL,
