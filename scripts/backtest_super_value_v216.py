@@ -822,10 +822,10 @@ def main():
         "template_version":CURRENT.TEMPLATE_VERSION,
         "signal":"Rank descending 1/PER, 1/PBR, 1/PCR, 1/PSR; buy lowest average rank",
         "factor_formulas":{
-            "1/PER":"4 * latest standalone-quarter net income / market cap",
+            "1/PER":"latest standalone-quarter net income / market cap",
             "1/PBR":"latest quarter-end total equity / market cap",
-            "1/PCR":"4 * latest standalone-quarter operating cash flow / market cap",
-            "1/PSR":"4 * latest standalone-quarter revenue / market cap",
+            "1/PCR":"latest standalone-quarter operating cash flow / market cap",
+            "1/PSR":"latest standalone-quarter revenue / market cap",
         },
         "quarter_reconstruction":{
             "October":"H1 current-period revenue/net income; OCF = H1 cumulative - Q1 cumulative",
