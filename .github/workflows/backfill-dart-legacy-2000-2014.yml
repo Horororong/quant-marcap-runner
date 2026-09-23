@@ -1,0 +1,82 @@
+name: Backfill legacy DART 2000-2014 PIT history
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/backfill_dart_legacy_2000_2014.py'
+      - '.github/workflows/backfill-dart-legacy-2000-2014.yml'
+  schedule:
+    # 10:30 KST daily = 01:30 UTC.
+    # Runs after the 08:30 KST standardized DART history backfill and before
+    # the 13:30 KST recent-DART refresh to spread API usage across the day.
+    - cron: '30 1 * * *'
+
+concurrency:
+  group: dart-legacy-2000-2014-backfill
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      DART_API_KEY: ${{ secrets.DART_API_KEY }}
+      LEGACY_DART_START_YEAR: '2000'
+      LEGACY_DART_END_YEAR: '2014'
+      # 180 index tasks total (year x quarter x Y/K/E). At 24/day the
+      # disclosure index is normally built in roughly eight scheduled runs.
+      LEGACY_DART_INDEX_TASKS: '24'
+      # Original-document downloads are the expensive phase. 1,000/day keeps
+      # ample headroom under DART request limits alongside the other workflows.
+      LEGACY_DART_MAX_DOCS: '1000'
+      LEGACY_DART_WORKERS: '6'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas requests pyarrow beautifulsoup4 lxml
+
+      - name: Backfill legacy PIT financial statements
+        run: python scripts/backfill_dart_legacy_2000_2014.py
+
+      - name: Commit legacy normalized data and status
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/financials/legacy_2000_2014/ || true
+          git add data/status/dart_legacy_index_state.csv || true
+          git add data/status/dart_legacy_backfill_state.csv || true
+          git add data/status/dart_legacy_backfill_status.csv || true
+          git add data/status/dart_legacy_coverage_by_period.csv || true
+          if git diff --cached --quiet; then
+            echo "No legacy DART changes"
+          else
+            git commit -m "Backfill legacy DART 2000-2014 PIT history"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Upload legacy DART status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dart-legacy-2000-2014-status
+          path: |
+            data/status/dart_legacy_index_state.csv
+            data/status/dart_legacy_backfill_state.csv
+            data/status/dart_legacy_backfill_status.csv
+            data/status/dart_legacy_coverage_by_period.csv
+          if-no-files-found: warn
