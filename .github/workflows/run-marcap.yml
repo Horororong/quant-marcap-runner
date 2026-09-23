@@ -3,6 +3,10 @@ name: Run marcap PIT analysis
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'analyze_marcap.py'
+      - 'RUN_TRIGGER.txt'
+      - '.github/workflows/run-marcap.yml'
   workflow_dispatch:
 
 permissions:
