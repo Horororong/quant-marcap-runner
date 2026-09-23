@@ -9,8 +9,8 @@
     "1/PSR": "latest standalone-quarter revenue / market cap"
   },
   "quarter_reconstruction": {
-    "October": "H1 current-period revenue/net income; OCF = H1 cumulative - Q1 cumulative",
-    "April": "Q4 = FY annual/cumulative - Q3 cumulative; equity = FY"
+    "October": "latest standalone Q2: H1 current-period if supplied, otherwise H1 cumulative - Q1 cumulative; equity = H1",
+    "April": "latest standalone Q4 = FY annual/cumulative - Q3 cumulative; equity = FY"
   },
   "universe": "PIT KOSPI+KOSDAQ individual securities from historical marcap panel; preferred shares retained; ETF/ETN/KONEX excluded upstream.",
   "execution": "Signal at Apr/Oct last trading-day close; execute at next trading-day close; new holdings earn from following session.",
@@ -32,35 +32,40 @@
       "commission_bps": 0.0,
       "spread_bps": 0.0,
       "slippage_bps": 0.0,
-      "market_impact_bps": 0.0
+      "market_impact_bps": 0.0,
+      "apply_sell_tax": false
     },
     "minimum": {
       "name": "minimum",
       "commission_bps": 1.5,
       "spread_bps": 0.0,
       "slippage_bps": 0.0,
-      "market_impact_bps": 0.0
+      "market_impact_bps": 0.0,
+      "apply_sell_tax": true
     },
     "base": {
       "name": "base",
       "commission_bps": 1.5,
       "spread_bps": 10.0,
       "slippage_bps": 10.0,
-      "market_impact_bps": 0.0
+      "market_impact_bps": 0.0,
+      "apply_sell_tax": true
     },
     "conservative": {
       "name": "conservative",
       "commission_bps": 2.0,
       "spread_bps": 20.0,
       "slippage_bps": 20.0,
-      "market_impact_bps": 10.0
+      "market_impact_bps": 10.0,
+      "apply_sell_tax": true
     }
   },
-  "sell_tax": "All-in statutory sell tax schedule encoded by date: 30/25/23/20/18/15bp regimes.",
+  "sell_tax": "Gross excludes sell tax. Net scenarios use total sell-side tax: 30bp pre-2019-06-03; 25bp through 2020; 23bp 2021-22; 20bp 2023; 18bp 2024; 15bp 2025; 20bp 2026 onward.",
   "delisting_baseline": "last observed market value converted to cash if security disappears; stress case applies -100% after permanent disappearance",
   "missing_or_suspended_target": "target weight stays in cash; no substitution using future information",
   "initial_capital_krw": 10000000.0,
   "risk_free_rate": 0.0,
   "metrics": "All final performance/risk metrics delegated to CURRENT v2-16 calculate_metrics(); strategy code produces daily NAV only.",
-  "data_as_of": "2026-09-23"
+  "data_as_of": "2026-09-24",
+  "pit_completion_rule": "CFS first; OFS is required only for company-periods where CFS returned NO_DATA."
 }
