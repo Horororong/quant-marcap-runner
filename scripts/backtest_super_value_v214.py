@@ -186,9 +186,17 @@ def load_financial_raw(year: int, period: str) -> pd.DataFrame:
         files += sorted((ROOT / "data/financials/full_history").glob(f"dart_full_{year}_{period}_{fs}_*.csv.gz"))
     if not files:
         raise FileNotFoundError(f"No full_history shards for {year} {period}")
+
+    wanted = {
+        "_stock_code","stock_code","_filing_date","filing_date",
+        "_fs_div_requested","fs_div_requested","fs_div",
+        "_period","period","_requested_year","requested_year",
+        "rcept_no","sj_div","account_id","account_nm",
+        "thstrm_amount","thstrm_add_amount",
+    }
     chunks = []
     for p in files:
-        x = pd.read_csv(p, low_memory=False, dtype=str)
+        x = pd.read_csv(p, low_memory=False, dtype=str, usecols=lambda z: z in wanted)
         ren = {}
         if "_stock_code" in x.columns and "stock_code" not in x.columns:
             ren["_stock_code"] = "stock_code"
@@ -203,21 +211,48 @@ def load_financial_raw(year: int, period: str) -> pd.DataFrame:
         x = x.rename(columns=ren)
         if "stock_code" not in x.columns:
             continue
-        x["stock_code"] = x["stock_code"].astype(str).str.zfill(6)
+        x["stock_code"] = x["stock_code"].astype(str).str.replace(".0","",regex=False).str.zfill(6)
         if "filing_date" not in x.columns and "rcept_no" in x.columns:
             x["filing_date"] = x["rcept_no"].astype(str).str[:8]
-        x["filing_date"] = pd.to_datetime(x["filing_date"], format="%Y%m%d", errors="coerce")
+        x["filing_date"] = pd.to_datetime(x["filing_date"].astype(str).str[:8], format="%Y%m%d", errors="coerce")
         if "fs_div_requested" not in x.columns:
             x["fs_div_requested"] = x.get("fs_div", "")
-        chunks.append(x)
+        x["fs_div_requested"] = x["fs_div_requested"].fillna(x.get("fs_div","")).astype(str).str.upper()
+
+        # Fast prefilter: keep only plausible rows for the four required value factors.
+        sj = x["sj_div"].fillna("").astype(str).str.upper()
+        aid = x["account_id"].fillna("").astype(str).str.lower()
+        nm = x["account_nm"].fillna("").astype(str).str.replace(r"\s+","",regex=True)
+        is_equity = (sj=="BS") & (
+            aid.str.contains("equity",regex=False)
+            | nm.isin(["자본총계","자본합계","자기자본","총자본"])
+        )
+        is_revenue = sj.isin(["IS","CIS"]) & (
+            aid.str.contains("revenue",regex=False)
+            | nm.isin(["매출액","매출","영업수익","수익","수익(매출액)","영업수익합계"])
+        )
+        is_profit = sj.isin(["IS","CIS"]) & (
+            aid.str.contains("profitloss",regex=False)
+            | nm.isin(["당기순이익","당기순이익(손실)","분기순이익","분기순이익(손실)",
+                       "반기순이익","반기순이익(손실)","연결당기순이익","당기순손익",
+                       "분기순손익","반기순손익"])
+        )
+        is_ocf = (sj=="CF") & (
+            aid.str.contains("cashflowsfromusedinoperatingactivities",regex=False)
+            | nm.isin(["영업활동현금흐름","영업활동으로인한현금흐름",
+                       "영업활동으로부터의현금흐름","영업활동에의한현금흐름"])
+        )
+        x = x[is_equity | is_revenue | is_profit | is_ocf].copy()
+        if len(x):
+            chunks.append(x)
+
     if not chunks:
-        raise ValueError(f"No readable financial rows {year} {period}")
+        raise ValueError(f"No candidate financial rows {year} {period}")
     out = pd.concat(chunks, ignore_index=True, sort=False)
-    dedup = [c for c in ["stock_code","rcept_no","fs_div_requested","sj_div","account_id","account_nm","thstrm_nm"] if c in out.columns]
+    dedup = [z for z in ["stock_code","rcept_no","fs_div_requested","sj_div","account_id","account_nm"] if z in out.columns]
     if dedup:
         out = out.drop_duplicates(dedup, keep="last")
     return out
-
 
 def metric_priority(row: pd.Series) -> tuple[Optional[str], int]:
     sj = str(row.get("sj_div", "") or "").upper()
