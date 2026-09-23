@@ -639,6 +639,9 @@ def metrics(nav: pd.Series, baseline_date: pd.Timestamp, name: str) -> dict:
     s = nav.astype(float).dropna().rename(name)
     daily = s.to_frame()
     monthly = daily.groupby(daily.index.to_period("M")).tail(1).copy()
+    # CURRENT v2-16 expects completed monthly observations to carry an explicit
+    # calendar month-end label. The value remains the actual last XKRX trading-day NAV.
+    monthly.index = monthly.index.to_period("M").to_timestamp("M")
 
     # Preserve the true strategy performance baseline (signal-day close before
     # next-session execution) so CURRENT annualises a partial inception month correctly.
