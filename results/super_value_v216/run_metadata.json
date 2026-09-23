@@ -1,0 +1,65 @@
+{
+  "strategy": "Original Kang Hwan-kuk Super Value (photo rules)",
+  "template_version": "v2-16",
+  "signal": "Rank descending 1/PER, 1/PBR, 1/PCR, 1/PSR; buy lowest average rank",
+  "factor_formulas": {
+    "1/PER": "4 * latest standalone-quarter net income / market cap",
+    "1/PBR": "latest quarter-end total equity / market cap",
+    "1/PCR": "4 * latest standalone-quarter operating cash flow / market cap",
+    "1/PSR": "4 * latest standalone-quarter revenue / market cap"
+  },
+  "quarter_reconstruction": {
+    "October": "H1 current-period revenue/net income; OCF = H1 cumulative - Q1 cumulative",
+    "April": "Q4 = FY annual/cumulative - Q3 cumulative; equity = FY"
+  },
+  "universe": "PIT KOSPI+KOSDAQ individual securities from historical marcap panel; preferred shares retained; ETF/ETN/KONEX excluded upstream.",
+  "execution": "Signal at Apr/Oct last trading-day close; execute at next trading-day close; new holdings earn from following session.",
+  "weighting": "equal weight",
+  "validated_signals": [
+    "2016-10-31",
+    "2017-04-28",
+    "2017-10-31",
+    "2018-04-30",
+    "2018-10-31",
+    "2019-04-30"
+  ],
+  "validated_performance_start": "2016-11-01",
+  "validated_performance_end": "2019-10-31",
+  "cost_scenarios": {
+    "gross": {
+      "name": "gross",
+      "commission_bps": 0.0,
+      "spread_bps": 0.0,
+      "slippage_bps": 0.0,
+      "market_impact_bps": 0.0
+    },
+    "minimum": {
+      "name": "minimum",
+      "commission_bps": 1.5,
+      "spread_bps": 0.0,
+      "slippage_bps": 0.0,
+      "market_impact_bps": 0.0
+    },
+    "base": {
+      "name": "base",
+      "commission_bps": 1.5,
+      "spread_bps": 10.0,
+      "slippage_bps": 10.0,
+      "market_impact_bps": 0.0
+    },
+    "conservative": {
+      "name": "conservative",
+      "commission_bps": 2.0,
+      "spread_bps": 20.0,
+      "slippage_bps": 20.0,
+      "market_impact_bps": 10.0
+    }
+  },
+  "sell_tax": "30bp through 2019-06-02; 25bp from 2019-06-03 in the validated historical window",
+  "delisting_baseline": "last observed market value converted to cash if security disappears; stress case applies -100% after permanent disappearance",
+  "missing_or_suspended_target": "target weight stays in cash; no substitution using future information",
+  "initial_capital_krw": 10000000.0,
+  "risk_free_rate": 0.0,
+  "metrics": "All final performance/risk metrics delegated to CURRENT v2-16 calculate_metrics(); strategy code produces daily NAV only.",
+  "data_as_of": "2026-09-23"
+}
