@@ -47,7 +47,7 @@ CHAT_PAYLOAD_MAX_DRAWDOWN_POINTS = 480
 
 
 # =========================================================
-# 0. 프로젝트 데이터 소스 계약 (v2-14)
+# 0. 프로젝트 데이터 소스 계약 (v2-15)
 # =========================================================
 
 PROJECT_GITHUB_REPO = "Horororong/quant-marcap-runner"
@@ -73,7 +73,7 @@ PROJECT_COLLECTION_WORKFLOWS = {
 BACKTEST_EXECUTION_CONTRACT = """
 사용자가 '백테스트해줘', '백테스트', '전략 검증' 등 백테스트 실행을 요청하면 다음 순서를 기본 강제한다.
 
-1) 항상 이 CURRENT v2-14 템플릿의 계산/검증/출력 규칙을 사용한다.
+1) 항상 이 CURRENT v2-15 템플릿의 계산/검증/출력 규칙을 사용한다.
 2) 필요한 가격, 지수, 환율, 거시, 재무, 프록시 데이터가 이미 사용자 GitHub 저장소
    Horororong/quant-marcap-runner 에 존재하는지 먼저 탐색한다.
 3) GitHub에 존재하는 데이터가 충분하면 외부 데이터 제공업체를 우선 사용하지 않는다.
@@ -963,7 +963,7 @@ CHATGPT_RENDERING_RULES = """
 18. Log2 차트는 log2(NAV)를 직접 그려 1배, 2배, 4배, 8배...가 동일 간격이어야 한다.
 19. 그래프 렌더링 전에 기간, 관측치, 누락치, 열 정렬을 검증한다.
 20. 한글 제목, 범례, 축 라벨을 기본으로 사용한다.
-21. 새 대화에서도 사용자가 단순히 '백테스트해줘'라고 요청하면 별도 지시 없이 이 CURRENT v2-14 템플릿의 계산 및 출력 규칙을 적용한다.
+21. 새 대화에서도 사용자가 단순히 '백테스트해줘'라고 요청하면 별도 지시 없이 이 CURRENT v2-15 템플릿의 계산 및 출력 규칙을 적용한다.
 22. 백테스트에 필요한 데이터는 사용자 GitHub 저장소 Horororong/quant-marcap-runner 를 최우선으로 탐색한다.
 23. GitHub에 필요한 데이터가 없거나 기간이 부족하면 임의 데이터로 대체하지 않는다.
 24. 반복 수집 가능한 누락 데이터는 config/etf_universe.csv, config/kr_etf_universe.csv 또는 config/strategy_data_collection.csv 중 적절한 자동수집 레지스트리에 추가한다.
