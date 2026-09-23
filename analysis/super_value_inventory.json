@@ -118,10 +118,62 @@
     "data/financials/recent_batches/dart_recent_03900_04199.csv.gz"
   ],
   "candidate_factor_files": [],
+  "candidate_scripts": [
+    "scripts/backfill_dart_full_financials.py",
+    "scripts/backfill_dart_legacy_quarterly.py",
+    "scripts/backfill_dart_value_factors.py",
+    "scripts/quant_backtest_postprocess.py",
+    "scripts/quant_backtest_template_CURRENT.py",
+    "scripts/quant_backtest_template_PROJECT_v2-15_CURRENT.py",
+    "scripts/quant_backtest_template_v2_10.py",
+    "scripts/quant_backtest_template_v2_12.py",
+    "scripts/quant_backtest_template_v2_13.py",
+    "scripts/quant_backtest_template_v2_14.py",
+    "scripts/quant_backtest_template_v2_8.py",
+    "scripts/quant_backtest_template_v2_9.py",
+    "scripts/run_dart_legacy_quarterly.py",
+    "scripts/run_full_dart_backfill.py",
+    "update_dart_financials.py"
+  ],
+  "candidate_workflows": [
+    ".github/workflows/_tmp_super_value_inventory.yml",
+    ".github/workflows/all-weather-backtest.yml",
+    ".github/workflows/analyze-anchor-sail-yearly.yml",
+    ".github/workflows/analyze-k-allweather-robustness.yml",
+    ".github/workflows/backfill-dart-legacy-quarterly.yml",
+    ".github/workflows/backfill-dart-value-factors.yml",
+    ".github/workflows/backtest-6040-book-v2.yml",
+    ".github/workflows/backtest-6040-book.yml",
+    ".github/workflows/backtest-6040-template.yml",
+    ".github/workflows/backtest-allseasons-v210.yml",
+    ".github/workflows/backtest-allseasons-v212.yml",
+    ".github/workflows/backtest-anchor-sail-moat.yml",
+    ".github/workflows/backtest-cash-sp500.yml",
+    ".github/workflows/backtest-k-allweather-seasonal-us30y.yml",
+    ".github/workflows/backtest-k-allweather-v3.yml",
+    ".github/workflows/backtest-kang-k-allweather-original.yml",
+    ".github/workflows/backtest-kr-us-relative-momentum-total-return-v214.yml",
+    ".github/workflows/backtest-kr-us-relative-momentum-v214.yml",
+    ".github/workflows/backtest-moat-anti-overheat.yml",
+    ".github/workflows/backtest-permanent-etf-only.yml",
+    ".github/workflows/backtest-permanent-template-v29.yml",
+    ".github/workflows/backtest-permanent-v29.yml",
+    ".github/workflows/compare-k-allweather-threeway.yml",
+    ".github/workflows/diagnose-krx-tr.yml",
+    ".github/workflows/extend-k-allweather-1990.yml",
+    ".github/workflows/run-marcap.yml",
+    ".github/workflows/strategy7-backtest.yml",
+    ".github/workflows/strategy8-backtest.yml",
+    ".github/workflows/test-krx-backtest-data.yml",
+    ".github/workflows/update-etf-data.yml",
+    ".github/workflows/update-market-data.yml",
+    ".github/workflows/update-quant-data.yml"
+  ],
   "coverage": {
     "full_history": {
       "files": 86,
-      "rows": 0,
+      "rows": 5903183,
+      "unique_codes": 0,
       "years": [
         2015,
         2016,
@@ -146,6 +198,7 @@
     "recent_batches": {
       "files": 25,
       "rows": 5397744,
+      "unique_codes": 2354,
       "years": [
         2024,
         2025,
@@ -158,8 +211,8 @@
         "Q3"
       ],
       "fs_div": [],
-      "min_filing_date": "1970-01-01",
-      "max_filing_date": "1970-01-01",
+      "min_filing_date": "2024-04-15",
+      "max_filing_date": "2026-09-22",
       "errors": []
     }
   },
