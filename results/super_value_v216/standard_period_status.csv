@@ -1,0 +1,6 @@
+﻿period,status,reason
+book_period,UNAVAILABLE,Book validation dates not recoverable from supplied photo/source extract and PIT financial backfill is incomplete before 2016.
+2000_to_latest,UNAVAILABLE,"KRX prices exist, but PIT DART financial-factor history is not fully parsed/backfilled for 2000~latest."
+2021_to_latest,UNAVAILABLE,PIT DART full_history is still sequentially backfilling; a contiguous complete 2021~latest financial panel is not yet present.
+longest_to_latest,UNAVAILABLE,"Price history begins 1995, but required PIT financial history does not yet cover a complete longest-to-latest window."
+verified_contiguous_PIT,AVAILABLE,All required Q1/H1 or Q3/FY tasks complete for both CFS and OFS at each signal from 2016-10-31 through 2019-10-31.
