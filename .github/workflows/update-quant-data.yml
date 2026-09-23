@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/update_krx_equities_daily.py'
       - 'scripts/export_krx_symbol_csv.py'
+      - 'scripts/krx_backtest_data.py'
       - 'update_public_data.py'
       - 'update_dart_financials.py'
       - '.github/workflows/update-quant-data.yml'
@@ -78,6 +79,9 @@ jobs:
       # The current-year parquet is overwritten on each refresh.
       - name: Update KRX individual-stock panel
         run: python scripts/update_krx_equities_daily.py
+
+      - name: Smoke-test KRX backtest adapter
+        run: python scripts/krx_backtest_data.py
 
       - name: Commit KRX individual-stock datasets
         run: |
