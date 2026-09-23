@@ -1,0 +1,11 @@
+{
+  "ok": false,
+  "files": [
+    {
+      "name": "2023_4Q_PL_20260814044456.zip.crdownload",
+      "size": 1589248
+    }
+  ],
+  "function": "function download_ext002(bsn_yr, docu_cd, role_cd, url) {\n\t\n\t\t\n\t\t\twindow.location.href = \"/cmm/downloadFnlttZip.do?fl_nm=\" + url;\n\t\t\n\t\t\n\t\n}",
+  "onclick": "download_ext002('2023','FY', 'PL', '2023_4Q_PL_20260814044456.zip'); return false;"
+}
