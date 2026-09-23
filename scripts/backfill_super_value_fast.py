@@ -210,6 +210,13 @@ def legacy_target_index(idx: pd.DataFrame) -> pd.DataFrame:
 
     x = idx.copy()
     x["rcept_dt"] = pd.to_datetime(x["rcept_dt"], errors="coerce")
+    missing_rcept_dt = x["rcept_dt"].isna()
+    if missing_rcept_dt.any():
+        x.loc[missing_rcept_dt, "rcept_dt"] = pd.to_datetime(
+            x.loc[missing_rcept_dt, "rcept_no"].astype(str).str[:8],
+            format="%Y%m%d",
+            errors="coerce",
+        )
     x["fiscal_year"] = pd.to_numeric(x["fiscal_year"], errors="coerce").astype("Int64")
     x["period"] = x["period"].astype(str)
     x["stock_code"] = x["stock_code"].fillna("").astype(str).str.zfill(6)
