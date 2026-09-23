@@ -14,6 +14,8 @@ import requests
 #
 # Storage policy
 # - Missing historical years (1995~prior year): backfill once, then keep immutable.
+# - On the first refresh after a calendar-year rollover, refresh the immediately
+#   preceding year once so its final trading sessions are not missed.
 # - Current year: download the full current-year parquet and overwrite that single
 #   file on each scheduled refresh. This is simple and prevents accidental loss of
 #   delisted/disappeared securities.
@@ -131,8 +133,9 @@ def _standardize(raw: bytes) -> pd.DataFrame:
 
 def _write_year(year: int, overwrite: bool) -> dict:
     out_path = RAW_DIR / f'marcap-{year}.parquet'
+    existed_before = out_path.exists()
 
-    if out_path.exists() and not overwrite:
+    if existed_before and not overwrite:
         df = pd.read_parquet(out_path)
         df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
         return {
@@ -152,7 +155,7 @@ def _write_year(year: int, overwrite: bool) -> dict:
     df.to_parquet(out_path, index=False, compression='snappy')
     return {
         'year': year,
-        'action': 'overwritten_current' if overwrite else 'backfilled_missing',
+        'action': 'overwritten_existing' if existed_before else 'backfilled_missing',
         'rows': int(len(df)),
         'first_date': str(pd.Timestamp(df['Date'].min()).date()),
         'latest_date': str(pd.Timestamp(df['Date'].max()).date()),
@@ -172,12 +175,39 @@ def main() -> None:
     now_kst = now_utc + timedelta(hours=9)
     current_year = now_kst.year
 
+    # Detect the first run after a calendar-year rollover. The previous year may
+    # have received its final trading session after our last December refresh, so
+    # finalize it exactly once when the pipeline moves into the new year.
+    previous_pipeline_year = None
+    status_path = STATUS_DIR / 'krx_equities_status.csv'
+    if status_path.exists():
+        try:
+            old_status = pd.read_csv(status_path)
+            if len(old_status):
+                if 'current_year' in old_status.columns:
+                    previous_pipeline_year = int(old_status.iloc[-1]['current_year'])
+                elif 'year' in old_status.columns:
+                    previous_pipeline_year = int(old_status.iloc[-1]['year'])
+        except Exception as exc:
+            print(f'WARN could not read previous status year: {exc}', flush=True)
+
+    rollover_refresh_previous_year = (
+        previous_pipeline_year is None or previous_pipeline_year < current_year
+    )
+
     manifest_rows = []
 
-    # 1) One-time backfill for every missing historical year.
+    # 1) One-time backfill for every missing historical year. At year rollover,
+    # overwrite only the immediately preceding year once to finalize it.
     for year in range(START_YEAR, current_year):
-        print(f'HISTORY {year}', flush=True)
-        manifest_rows.append(_write_year(year, overwrite=False))
+        overwrite_history = (
+            year == current_year - 1 and rollover_refresh_previous_year
+        )
+        print(
+            f'HISTORY {year} overwrite={overwrite_history}',
+            flush=True,
+        )
+        manifest_rows.append(_write_year(year, overwrite=overwrite_history))
 
     # 2) Current year is intentionally overwritten on every refresh.
     print(f'CURRENT {current_year}', flush=True)
