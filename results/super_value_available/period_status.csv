@@ -1,0 +1,5 @@
+﻿requested_period,status,available_performance,unavailable,reason
+2001-01-01~2021-12-31,PARTIAL_ONLY,2016-11-01~2021-12-31,2001-01-01~2016-10-31,PIT four-factor financial statements for the full historical universe are not sufficiently parsed/available before the first verified 2016-10-31 signal.
+2001-01-01~2026-09-21,PARTIAL_ONLY,2016-11-01~2026-09-21,2001-01-01~2016-10-31,Same pre-2016 PIT financial gap; 2019-10 onward uses the currently available DartLab HF finance archive and is reported with factor-coverage audit.
+2016-11-01~2019-10-31,FULLY_VERIFIED,2016-11-01~2019-10-31,,Repository DART PIT task coverage complete for every required signal.
+2019-11-01~2026-09-21,AVAILABLE_DATA_EXTENSION,2019-11-01~2026-09-21,,HF per-code DART finance files used; cross-sectional four-factor coverage is explicitly audited and this segment is not labeled fully complete unless coverage is 100%.
