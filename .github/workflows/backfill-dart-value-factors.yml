@@ -2,18 +2,6 @@ name: Backfill full DART financial-statement history
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'scripts/backfill_dart_full_financials.py'
-      - 'scripts/run_full_dart_backfill.py'
-      - '.github/workflows/backfill-dart-value-factors.yml'
-  schedule:
-    # 08:30 KST every day = 23:30 UTC previous day.
-    # Historical keys already marked OK/NO_DATA are never requested again.
-    # 7,000 tasks/day accelerates catch-up while leaving headroom under DART's typical 20k/day request limit.
-    # After backlog completion this becomes a lightweight check and only new
-    # report-period tasks are collected.
-    - cron: '30 23 * * *'
 
 concurrency:
   group: dart-full-history-backfill
