@@ -1,5 +1,73 @@
 [
   {
+    "tree_probe": {
+      "path": "dart/allFilings",
+      "status": 200,
+      "n_files_first_page": 999,
+      "min_path": "dart/allFilings/20150102.parquet",
+      "max_path": "dart/allFilings/20190219.parquet",
+      "first10": [
+        "dart/allFilings/20150102.parquet",
+        "dart/allFilings/20150105.parquet",
+        "dart/allFilings/20150106.parquet",
+        "dart/allFilings/20150107.parquet",
+        "dart/allFilings/20150108.parquet",
+        "dart/allFilings/20150109.parquet",
+        "dart/allFilings/20150112.parquet",
+        "dart/allFilings/20150113.parquet",
+        "dart/allFilings/20150114.parquet",
+        "dart/allFilings/20150115.parquet"
+      ],
+      "last10": [
+        "dart/allFilings/20190201.parquet",
+        "dart/allFilings/20190207.parquet",
+        "dart/allFilings/20190208.parquet",
+        "dart/allFilings/20190211.parquet",
+        "dart/allFilings/20190212.parquet",
+        "dart/allFilings/20190213.parquet",
+        "dart/allFilings/20190214.parquet",
+        "dart/allFilings/20190215.parquet",
+        "dart/allFilings/20190218.parquet",
+        "dart/allFilings/20190219.parquet"
+      ],
+      "link_header": "<https://huggingface.co/api/datasets/eddmpython/dartlab-data/tree/main/dart%2FallFilings?expand=false&recursive=false&limit=1000&cursor=ZXlKbWFXeGxYMjVoYldVaU9pSmtZWEowTDJGc2JFWnBiR2x1WjNNdk1qQXhPVEF5TVRrdWNHRnljWFZsZENJc0luUnlaV1ZmYjJsa0lqb2lPVEl5T0RrMllXRTNORGc0WmpNM01qTmxOV0UzWkRFNE5qUXhaRGt3TkRObE1HUTNOalUzTmlKOToxMDAw>; rel=\"next\""
+    }
+  },
+  {
+    "tree_probe": {
+      "path": "dart/panel",
+      "status": 200,
+      "n_files_first_page": 1000,
+      "min_path": "dart/panel/000010.parquet",
+      "max_path": "dart/panel/045970.parquet",
+      "first10": [
+        "dart/panel/000010.parquet",
+        "dart/panel/000020.parquet",
+        "dart/panel/000030.parquet",
+        "dart/panel/000040.parquet",
+        "dart/panel/000050.parquet",
+        "dart/panel/000060.parquet",
+        "dart/panel/000070.parquet",
+        "dart/panel/000080.parquet",
+        "dart/panel/000100.parquet",
+        "dart/panel/000110.parquet"
+      ],
+      "last10": [
+        "dart/panel/044990.parquet",
+        "dart/panel/045060.parquet",
+        "dart/panel/045100.parquet",
+        "dart/panel/045300.parquet",
+        "dart/panel/045340.parquet",
+        "dart/panel/045390.parquet",
+        "dart/panel/045510.parquet",
+        "dart/panel/045520.parquet",
+        "dart/panel/045660.parquet",
+        "dart/panel/045970.parquet"
+      ],
+      "link_header": "<https://huggingface.co/api/datasets/eddmpython/dartlab-data/tree/main/dart%2Fpanel?expand=false&recursive=false&limit=1000&cursor=ZXlKbWFXeGxYMjVoYldVaU9pSmtZWEowTDNCaGJtVnNMekEwTlRrM01DNXdZWEp4ZFdWMElpd2lkSEpsWlY5dmFXUWlPaUl4WldFMk5HVXhOMlJtWldZd09XTTJaR1ZoT1dVeVkyVTFNRGM0TVRJeVpESTJNV1kxTjJFM0luMD06MTAwMA%3D%3D>; rel=\"next\""
+    }
+  },
+  {
     "code": "005930",
     "kind": "finance",
     "status": 200,
