@@ -135,9 +135,14 @@ def signal_completeness(mapping: pd.DataFrame, state: pd.DataFrame, signal: pd.T
     for y, p in required_periods(signal):
         for fs in ("CFS", "OFS"):
             d, e, r = completion_ratio(mapping, state, y, p, fs)
+            shards = list((ROOT / "data/financials/full_history").glob(f"dart_full_{y}_{p}_{fs}_*.csv.gz"))
+            has_raw_shard = len(shards) > 0
             rows.append({"signal_date": signal, "year": y, "period": p, "fs_div": fs,
-                         "completed_codes": d, "expected_codes": e, "ratio": r})
-            if r < 1.0:
+                         "completed_codes": d, "expected_codes": e, "ratio": r,
+                         "raw_shards": len(shards), "has_raw_shard": has_raw_shard})
+            # NO_DATA tasks can be 'complete' without any usable standardized report rows.
+            # A signal is accepted only when task coverage is complete AND raw shards exist.
+            if r < 1.0 or not has_raw_shard:
                 ok = False
     return ok, rows
 
