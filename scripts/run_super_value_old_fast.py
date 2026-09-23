@@ -1,6 +1,6 @@
 from pathlib import Path
 import pandas as pd
-from backtest_super_value_original import run_sample, OUT
+from backtest_super_value_original import run_sample, OUT  # execution-filtered engine
 
 nav, sel, m, fac, de = run_sample("2016_2019","2016-09-01","2019-09-30","2016-10~2019-09")
 nav.to_csv(OUT/"nav_old_fast.csv", encoding="utf-8-sig")
