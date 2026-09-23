@@ -809,19 +809,6 @@ def main():
         financial_file_rows.append({"year":y,"period":p,"raw_rows":len(raw),"codes":raw["stock_code"].nunique()})
         period_cache[(y,p)] = report_snapshots(raw)
 
-    selections_by_n = {n:{} for n in TOP_NS}
-    audit_rows = []
-    all_selection_rows = []
-    for s in validated:
-        factors = build_factor_table(s, period_cache)
-        for n in TOP_NS:
-            sel,audit = build_selection(panel,s,factors,n)
-            selections_by_n[n][s] = sel
-            a = dict(audit); a["top_n"] = n
-            audit_rows.append(a)
-            tmp = sel.copy(); tmp["top_n"] = n
-            all_selection_rows.append(tmp)
-
     # Stop at the next incomplete scheduled signal. If every observed signal is
     # complete, carry the last validated holdings through the latest KRX date.
     performance_end = None
@@ -835,6 +822,19 @@ def main():
 
     panel_start = (validated[0] - pd.Timedelta(days=60)).date().isoformat()
     panel = load_krx(panel_start, performance_end.date().isoformat())
+
+    selections_by_n = {n:{} for n in TOP_NS}
+    audit_rows = []
+    all_selection_rows = []
+    for s in validated:
+        factors = build_factor_table(s, period_cache)
+        for n in TOP_NS:
+            sel,audit = build_selection(panel,s,factors,n)
+            selections_by_n[n][s] = sel
+            a = dict(audit); a["top_n"] = n
+            audit_rows.append(a)
+            tmp = sel.copy(); tmp["top_n"] = n
+            all_selection_rows.append(tmp)
 
     # Run primary cost scenarios for top20.
     nav_series = {}
