@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-# manual-safe-trigger-20260923
+# manual-safe-trigger-20260924-1
 
 import importlib.util
 import os
