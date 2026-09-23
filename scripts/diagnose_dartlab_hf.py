@@ -36,8 +36,26 @@ def summarize(code, kind):
     rec['target_hits']=hits
     return rec
 
+
+def list_hf_tree(path):
+    url=f'https://huggingface.co/api/datasets/eddmpython/dartlab-data/tree/main/{path}?recursive=false&expand=false&limit=1000'
+    r=requests.get(url,timeout=120)
+    rec={'path':path,'status':r.status_code}
+    if r.status_code==200:
+        items=r.json()
+        names=[x.get('path','') for x in items if x.get('type')=='file']
+        rec['n_files_first_page']=len(names)
+        rec['min_path']=min(names) if names else None
+        rec['max_path']=max(names) if names else None
+        rec['first10']=sorted(names)[:10]
+        rec['last10']=sorted(names)[-10:]
+        rec['link_header']=r.headers.get('Link')
+    return rec
+
 def main():
     out=[]
+    out.append({'tree_probe': list_hf_tree('dart/allFilings')})
+    out.append({'tree_probe': list_hf_tree('dart/panel')})
     for code in CODES:
         for kind in ['finance','docs']:
             try:
