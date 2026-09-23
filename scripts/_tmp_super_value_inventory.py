@@ -11,6 +11,8 @@ out = {
   "full_history_files": [],
   "recent_batch_files": [],
   "candidate_factor_files": [],
+  "candidate_scripts": [],
+  "candidate_workflows": [],
   "coverage": {},
 }
 if (fin/"full_history").exists():
@@ -21,16 +23,30 @@ out["candidate_factor_files"] = [
     str(p) for p in sorted(fin.rglob("*"))
     if p.is_file() and any(k in p.name.lower() for k in ["factor","valuation","ratio","per","pbr","psr","pcr"])
 ]
+out["candidate_scripts"] = [
+    str(p) for p in sorted(root.rglob("*.py"))
+    if any(k in p.name.lower() for k in ["dart","backfill","financial","factor","valuation","quant"])
+]
+out["candidate_workflows"] = [
+    str(p) for p in sorted((root/".github"/"workflows").glob("*.yml"))
+]
+
+def parse_fd(s):
+    z = s.astype(str).str.replace(r"\.0$", "", regex=True).str.strip()
+    return pd.to_datetime(z, format="%Y%m%d", errors="coerce")
 
 def coverage(files):
     years=set(); periods=set(); fs=set(); min_fd=None; max_fd=None; rows=0; errors=[]
+    codes=set()
     for p in files:
         m=re.search(r"dart_full_(\d{4})_([A-Z0-9]+)_([A-Z]+)_", p.name)
         if m:
             years.add(int(m.group(1))); periods.add(m.group(2)); fs.add(m.group(3))
         try:
-            df=pd.read_csv(p, compression="infer", usecols=lambda c: c in {"filing_date","stock_code","period","requested_year","fs_div"}, low_memory=False)
+            df=pd.read_csv(p, compression="infer", dtype=str, low_memory=False)
             rows += len(df)
+            if "stock_code" in df:
+                codes |= set(df["stock_code"].dropna().astype(str).str.zfill(6).unique().tolist())
             if "requested_year" in df:
                 years |= set(pd.to_numeric(df["requested_year"], errors="coerce").dropna().astype(int).unique().tolist())
             if "period" in df:
@@ -38,7 +54,7 @@ def coverage(files):
             if "fs_div" in df:
                 fs |= set(df["fs_div"].dropna().astype(str).unique().tolist())
             if "filing_date" in df:
-                x=pd.to_datetime(df["filing_date"], errors="coerce")
+                x=parse_fd(df["filing_date"])
                 if x.notna().any():
                     a=x.min(); b=x.max()
                     min_fd = a if min_fd is None or a<min_fd else min_fd
@@ -46,7 +62,7 @@ def coverage(files):
         except Exception as e:
             errors.append(f"{p}: {e!r}")
     return {
-      "files": len(files), "rows": rows, "years": sorted(years),
+      "files": len(files), "rows": rows, "unique_codes": len(codes), "years": sorted(years),
       "periods": sorted(periods), "fs_div": sorted(fs),
       "min_filing_date": None if min_fd is None else str(min_fd.date()),
       "max_filing_date": None if max_fd is None else str(max_fd.date()),
@@ -58,7 +74,6 @@ rb=[Path(p) for p in out["recent_batch_files"] if p.endswith((".csv",".csv.gz"))
 out["coverage"]["full_history"]=coverage(fh)
 out["coverage"]["recent_batches"]=coverage(rb)
 
-# KRX price status
 p=root/"data"/"status"/"krx_equities_status.csv"
 if p.exists():
     out["krx_status"]=pd.read_csv(p).tail(1).to_dict(orient="records")[0]
