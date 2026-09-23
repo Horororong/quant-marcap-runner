@@ -397,21 +397,41 @@ def assign_fiscal_periods(idx: pd.DataFrame) -> pd.DataFrame:
 
 
 def map_filings_to_krx(idx: pd.DataFrame) -> pd.DataFrame:
+    """Map legacy filings to historical KRX securities without O(N*M) frame scans."""
     x = idx.copy()
     intervals = build_krx_name_intervals()
     intervals["first_date"] = pd.to_datetime(intervals["first_date"], errors="coerce")
     intervals["last_date"] = pd.to_datetime(intervals["last_date"], errors="coerce")
     intervals["norm_name"] = intervals["norm_name"].fillna("").astype(str)
+    intervals["stock_code"] = intervals["stock_code"].astype(str).str.zfill(6)
+
+    by_code: dict[str, list[tuple[pd.Timestamp, pd.Timestamp, str]]] = {}
+    by_name: dict[str, list[tuple[str, str, pd.Timestamp, pd.Timestamp]]] = {}
+    for _, z in intervals.iterrows():
+        code = str(z["stock_code"]).zfill(6)
+        market = str(z.get("market", ""))
+        fd = z["first_date"]
+        ld = z["last_date"]
+        by_code.setdefault(code, []).append((fd, ld, market))
+        nn = str(z.get("norm_name", ""))
+        if nn:
+            by_name.setdefault(nn, []).append((code, market, fd, ld))
 
     modern = load_csv(MODERN_MAP_FILE, dtype={"stock_code":str,"corp_code":str})
+    corp_to_code: dict[str, str] = {}
     if not modern.empty:
         modern["stock_code"] = modern["stock_code"].astype(str).str.zfill(6)
         modern["corp_code"] = modern["corp_code"].fillna("").astype(str)
-        modern["first_date"] = pd.to_datetime(modern["first_date"], errors="coerce")
-        modern["last_date"] = pd.to_datetime(modern["last_date"], errors="coerce")
-        modern_by_corp = modern[modern["corp_code"] != ""].drop_duplicates("corp_code").set_index("corp_code")
-    else:
-        modern_by_corp = pd.DataFrame()
+        mm = modern[modern["corp_code"] != ""].drop_duplicates("corp_code", keep="last")
+        corp_to_code = dict(zip(mm["corp_code"], mm["stock_code"]))
+
+    def active(interval_list, dt: pd.Timestamp) -> bool:
+        if pd.isna(dt):
+            return bool(interval_list)
+        for fd, ld, *_ in interval_list:
+            if pd.notna(fd) and pd.notna(ld) and fd <= dt <= ld:
+                return True
+        return False
 
     stocks=[]; methods=[]; map_conf=[]
     for _, r in x.iterrows():
@@ -421,32 +441,29 @@ def map_filings_to_krx(idx: pd.DataFrame) -> pd.DataFrame:
         method = "unmapped"
         confidence = 0.0
 
-        if corp and not modern_by_corp.empty and corp in modern_by_corp.index:
-            mr = modern_by_corp.loc[corp]
-            if isinstance(mr, pd.DataFrame):
-                mr = mr.iloc[-1]
-            code = str(mr["stock_code"]).zfill(6)
-            if pd.notna(dt):
-                active = intervals[(intervals["stock_code"] == code) & (intervals["first_date"] <= dt) & (intervals["last_date"] >= dt)]
-            else:
-                active = intervals[intervals["stock_code"] == code]
-            if len(active):
-                chosen = code; method = "corp_code_active"; confidence = 1.0
+        code = corp_to_code.get(corp, "")
+        if code and active(by_code.get(code, []), dt):
+            chosen = code
+            method = "corp_code_active"
+            confidence = 1.0
 
         if not chosen and pd.notna(dt):
             nn = norm_name(r.get("corp_name",""))
-            cand = intervals[
-                (intervals["norm_name"] == nn)
-                & (intervals["first_date"] <= dt)
-                & (intervals["last_date"] >= dt)
-            ].copy()
+            cand = []
+            for code2, market, fd, ld in by_name.get(nn, []):
+                if pd.notna(fd) and pd.notna(ld) and fd <= dt <= ld:
+                    cand.append((code2, market))
             cls = str(r.get("corp_cls",""))
             want_market = "KOSPI" if cls == "Y" else ("KOSDAQ" if cls == "K" else "")
-            if want_market and len(cand[cand["market"] == want_market]):
-                cand = cand[cand["market"] == want_market]
-            codes = cand["stock_code"].drop_duplicates().tolist()
+            if want_market:
+                market_match = [c for c in cand if c[1] == want_market]
+                if market_match:
+                    cand = market_match
+            codes = sorted({c[0] for c in cand})
             if len(codes) == 1:
-                chosen = str(codes[0]).zfill(6); method = "historical_name_active"; confidence = 0.95
+                chosen = str(codes[0]).zfill(6)
+                method = "historical_name_active"
+                confidence = 0.95
 
         stocks.append(chosen)
         methods.append(method)
