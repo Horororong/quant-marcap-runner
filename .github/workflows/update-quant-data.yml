@@ -14,7 +14,7 @@ jobs:
         with: {ref: tmp/super-value-backtest-20260923}
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - run: pip install selenium
+      - run: pip install selenium pandas
       - run: python scripts/_tmp_dart_bulk_probe.py
       - run: |
           git config user.name "github-actions[bot]"
