@@ -219,7 +219,10 @@ def signal_dates(prices):
 def select_at_signal(prices, factors, sig, n=20):
     cs=prices[prices.Date==sig][["Code","Name","Market","Marcap","Amount"]].copy()
     cs["Marcap"]=pd.to_numeric(cs["Marcap"],errors="coerce")
-    cs=cs[(cs.Marcap>0)].copy()
+    cs["Amount"]=pd.to_numeric(cs["Amount"],errors="coerce")
+    # Signal-close information only: securities already halted/non-trading at the
+    # signal close are not considered executable candidates.
+    cs=cs[(cs.Marcap>0)&(cs.Amount>0)].copy()
     f=factors[factors.available_date<=sig].copy()
     f=f.sort_values(["stock_code","available_date","quarter_end"]).drop_duplicates("stock_code",keep="last")
     x=cs.merge(f,left_on="Code",right_on="stock_code",how="inner")
@@ -250,6 +253,11 @@ def simulate(prices, factors, start, end, label):
         if pos+1>=len(cal): continue
         ex=cal[pos+1]
         sel=select_at_signal(px,factors,sig,TOP_N)
+        trade_cs=px[px.Date==ex][["Code","Close","Amount"]].copy()
+        trade_cs["Close"]=pd.to_numeric(trade_cs["Close"],errors="coerce")
+        trade_cs["Amount"]=pd.to_numeric(trade_cs["Amount"],errors="coerce")
+        tradeable=set(trade_cs.loc[(trade_cs.Close>0)&(trade_cs.Amount>0),"Code"])
+        sel["exec_tradeable"]=sel["Code"].isin(tradeable)
         if len(sel)<TOP_N:
             print(f"WARN {label} {sig.date()} only {len(sel)} selected")
         if len(sel)<10:
@@ -275,11 +283,14 @@ def simulate(prices, factors, start, end, label):
             if st["w"] and i>0:
                 rs={}
                 for code,w in list(st["w"].items()):
-                    rv=ret.at[d,code] if code in ret.columns else np.nan
-                    if pd.isna(rv):
-                        lo=last_obs.get(code,pd.Timestamp.max)
-                        rv=-1.0 if (lo<d and lo<pd.Timestamp(end)) else 0.0
-                        if rv==-1.0 and k=="gross": delist_events+=1
+                    if code=="__CASH__":
+                        rv=0.0
+                    else:
+                        rv=ret.at[d,code] if code in ret.columns else np.nan
+                        if pd.isna(rv):
+                            lo=last_obs.get(code,pd.Timestamp.max)
+                            rv=-1.0 if (lo<d and lo<pd.Timestamp(end)) else 0.0
+                            if rv==-1.0 and k=="gross": delist_events+=1
                     rs[code]=float(rv)
                 pr=sum(st["w"].get(c,0)*r for c,r in rs.items())
                 st["nav"]*=max(0.0,1.0+pr)
@@ -291,7 +302,12 @@ def simulate(prices, factors, start, end, label):
             if d in event_map:
                 sel=event_map[d]
                 codes=list(sel.Code)
-                tgt={c:1.0/len(codes) for c in codes}
+                nslots=len(codes)
+                tradable_codes=list(sel.loc[sel["exec_tradeable"],"Code"])
+                tgt={c:1.0/nslots for c in tradable_codes}
+                unavailable=nslots-len(tradable_codes)
+                if unavailable:
+                    tgt["__CASH__"]=unavailable/nslots
                 allc=set(st["w"])|set(tgt)
                 turnover=0.5*sum(abs(tgt.get(c,0)-st["w"].get(c,0)) for c in allc)
                 if not st["w"]: turnover=1.0
@@ -303,10 +319,12 @@ def simulate(prices, factors, start, end, label):
     return nav,sel,delist_events
 
 def drawdown(s):
-    return s/s.cummax()-1
+    baseline_date=s.index[0]-pd.offsets.BDay(1)
+    z=pd.concat([pd.Series([1.0],index=[baseline_date]),s.astype(float)])
+    return (z/z.cummax()-1).iloc[1:]
 
 def recovery_days(s):
-    peak=s.iloc[0]; peak_date=s.index[0]; under=None; longest=0
+    peak=1.0; peak_date=s.index[0]-pd.offsets.BDay(1); under=None; longest=0
     for d,v in s.items():
         if v>=peak:
             if under is not None:
@@ -359,6 +377,7 @@ def main():
         coverage.append({"sample":label,"factor_rows":len(fac),"factor_codes":fac.stock_code.nunique(),
                          "factor_min":fac.available_date.min(),"factor_max":fac.available_date.max(),
                          "signals":sel.signal_date.nunique(),"min_eligible_selected":sel.groupby("signal_date").size().min(),
+                         "untradeable_execution_slots":int((~sel["exec_tradeable"]).sum()),
                          "delisting_loss_events":de})
     metrics_df=pd.concat(allm,ignore_index=True)
     metrics_df.to_csv(OUT/"metrics.csv",index=False,encoding="utf-8-sig")
