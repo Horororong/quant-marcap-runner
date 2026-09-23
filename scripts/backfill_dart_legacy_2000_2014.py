@@ -25,6 +25,7 @@ MAX_INDEX_TASKS = max(1, int(os.getenv("LEGACY_DART_INDEX_TASKS", "6")))
 MAX_DOCS = max(1, int(os.getenv("LEGACY_DART_MAX_DOCS", "20")))
 WORKERS = max(1, min(8, int(os.getenv("LEGACY_DART_WORKERS", "4"))))
 BASE = "https://opendart.fss.or.kr/api"
+PARSER_VERSION = "legacy-v1"
 
 ROOT = Path("data/financials/legacy_2000_2014")
 NORM_DIR = ROOT / "normalized"
@@ -655,6 +656,8 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
                 "fiscal_year":meta.get("fiscal_year",pd.NA),
                 "period":meta.get("period",""),
                 "document_sha256":sha,
+                "parser_version":PARSER_VERSION,
+                "value_basis":"first current-period amount column in the filed statement",
             })
             rows.append(rec)
 
@@ -662,21 +665,21 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
         for scope in ("CFS","OFS"):
             have={r["metric"] for r in rows if r["scope"]==scope and not math.isnan(float(r["amount_krw"]))}
             scopes[scope]=len(have)
-        best_scope=max(scopes,key=scopes.get) if scopes else ""
         usable=max(scopes.values()) if scopes else 0
+        best_scope=max(scopes,key=scopes.get) if usable > 0 else ""
         status="PARSED_4F" if usable>=4 else ("PARSED_PARTIAL" if rows else "NO_METRICS")
         state={
             "rcept_no":rcept,"status":status,"metric_rows":len(rows),
             "best_scope":best_scope,"usable_metric_count":usable,
-            "document_sha256":sha,"updated_at_utc":now_utc(),"error":""
+            "document_sha256":sha,"parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":""
         }
         return rows,state
     except RateLimitExceeded as e:
         return [],{"rcept_no":rcept,"status":"RATE_LIMIT","metric_rows":0,"best_scope":"",
-                   "usable_metric_count":0,"document_sha256":"","updated_at_utc":now_utc(),"error":repr(e)}
+                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":repr(e)}
     except Exception as e:
         return [],{"rcept_no":rcept,"status":"ERROR","metric_rows":0,"best_scope":"",
-                   "usable_metric_count":0,"document_sha256":"","updated_at_utc":now_utc(),"error":repr(e)}
+                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":repr(e)}
 
 
 def append_normalized(rows: list[dict]) -> None:
@@ -698,7 +701,10 @@ def process_pending(idx: pd.DataFrame) -> None:
         return
     state=load_csv(STATE_FILE,dtype={"rcept_no":str})
     terminal={"PARSED_4F","PARSED_PARTIAL","NO_METRICS"}
-    done=set(state.loc[state["status"].isin(terminal),"rcept_no"].astype(str)) if not state.empty else set()
+    if not state.empty and "parser_version" in state.columns:
+        done=set(state.loc[state["status"].isin(terminal) & state["parser_version"].eq(PARSER_VERSION),"rcept_no"].astype(str))
+    else:
+        done=set()
     eligible=idx[
         idx["stock_code"].fillna("").astype(str).str.fullmatch(r"\d{6}")
         & idx["rcept_no"].astype(str).ne("")
