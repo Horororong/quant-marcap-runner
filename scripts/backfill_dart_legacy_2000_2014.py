@@ -25,7 +25,7 @@ MAX_INDEX_TASKS = max(1, int(os.getenv("LEGACY_DART_INDEX_TASKS", "6")))
 MAX_DOCS = max(1, int(os.getenv("LEGACY_DART_MAX_DOCS", "20")))
 WORKERS = max(1, min(8, int(os.getenv("LEGACY_DART_WORKERS", "4"))))
 BASE = "https://opendart.fss.or.kr/api"
-PARSER_VERSION = "legacy-v1"
+PARSER_VERSION = "legacy-v2"
 
 ROOT = Path("data/financials/legacy_2000_2014")
 NORM_DIR = ROOT / "normalized"
@@ -305,7 +305,22 @@ def update_filing_index() -> pd.DataFrame:
         if c not in all_idx.columns:
             all_idx[c] = ""
         all_idx[c] = all_idx[c].fillna("").astype(str)
-    all_idx["rcept_dt"] = pd.to_datetime(all_idx["rcept_dt"], format="%Y%m%d", errors="coerce")
+    rcept_raw = all_idx["rcept_dt"].astype(str).str.strip()
+    rcept_dt = pd.to_datetime(rcept_raw, format="%Y%m%d", errors="coerce")
+    iso_mask = rcept_dt.isna() & rcept_raw.ne("")
+    if iso_mask.any():
+        rcept_dt.loc[iso_mask] = pd.to_datetime(rcept_raw.loc[iso_mask], errors="coerce")
+    # Repair rows damaged by the legacy fixed-format parser. DART receipt numbers
+    # begin with the authoritative filing date YYYYMMDD.
+    repair_mask = rcept_dt.isna()
+    if repair_mask.any():
+        repaired = pd.to_datetime(
+            all_idx.loc[repair_mask, "rcept_no"].astype(str).str[:8],
+            format="%Y%m%d",
+            errors="coerce",
+        )
+        rcept_dt.loc[repair_mask] = repaired
+    all_idx["rcept_dt"] = rcept_dt
 
     inferred = all_idx.apply(lambda r: infer_report_fields(r["report_nm"], r["rcept_dt"]), axis=1, result_type="expand")
     for c in inferred.columns:
@@ -397,21 +412,41 @@ def assign_fiscal_periods(idx: pd.DataFrame) -> pd.DataFrame:
 
 
 def map_filings_to_krx(idx: pd.DataFrame) -> pd.DataFrame:
+    """Map legacy filings to historical KRX securities without O(N*M) frame scans."""
     x = idx.copy()
     intervals = build_krx_name_intervals()
     intervals["first_date"] = pd.to_datetime(intervals["first_date"], errors="coerce")
     intervals["last_date"] = pd.to_datetime(intervals["last_date"], errors="coerce")
     intervals["norm_name"] = intervals["norm_name"].fillna("").astype(str)
+    intervals["stock_code"] = intervals["stock_code"].astype(str).str.zfill(6)
+
+    by_code: dict[str, list[tuple[pd.Timestamp, pd.Timestamp, str]]] = {}
+    by_name: dict[str, list[tuple[str, str, pd.Timestamp, pd.Timestamp]]] = {}
+    for _, z in intervals.iterrows():
+        code = str(z["stock_code"]).zfill(6)
+        market = str(z.get("market", ""))
+        fd = z["first_date"]
+        ld = z["last_date"]
+        by_code.setdefault(code, []).append((fd, ld, market))
+        nn = str(z.get("norm_name", ""))
+        if nn:
+            by_name.setdefault(nn, []).append((code, market, fd, ld))
 
     modern = load_csv(MODERN_MAP_FILE, dtype={"stock_code":str,"corp_code":str})
+    corp_to_code: dict[str, str] = {}
     if not modern.empty:
         modern["stock_code"] = modern["stock_code"].astype(str).str.zfill(6)
         modern["corp_code"] = modern["corp_code"].fillna("").astype(str)
-        modern["first_date"] = pd.to_datetime(modern["first_date"], errors="coerce")
-        modern["last_date"] = pd.to_datetime(modern["last_date"], errors="coerce")
-        modern_by_corp = modern[modern["corp_code"] != ""].drop_duplicates("corp_code").set_index("corp_code")
-    else:
-        modern_by_corp = pd.DataFrame()
+        mm = modern[modern["corp_code"] != ""].drop_duplicates("corp_code", keep="last")
+        corp_to_code = dict(zip(mm["corp_code"], mm["stock_code"]))
+
+    def active(interval_list, dt: pd.Timestamp) -> bool:
+        if pd.isna(dt):
+            return bool(interval_list)
+        for fd, ld, *_ in interval_list:
+            if pd.notna(fd) and pd.notna(ld) and fd <= dt <= ld:
+                return True
+        return False
 
     stocks=[]; methods=[]; map_conf=[]
     for _, r in x.iterrows():
@@ -421,32 +456,29 @@ def map_filings_to_krx(idx: pd.DataFrame) -> pd.DataFrame:
         method = "unmapped"
         confidence = 0.0
 
-        if corp and not modern_by_corp.empty and corp in modern_by_corp.index:
-            mr = modern_by_corp.loc[corp]
-            if isinstance(mr, pd.DataFrame):
-                mr = mr.iloc[-1]
-            code = str(mr["stock_code"]).zfill(6)
-            if pd.notna(dt):
-                active = intervals[(intervals["stock_code"] == code) & (intervals["first_date"] <= dt) & (intervals["last_date"] >= dt)]
-            else:
-                active = intervals[intervals["stock_code"] == code]
-            if len(active):
-                chosen = code; method = "corp_code_active"; confidence = 1.0
+        code = corp_to_code.get(corp, "")
+        if code and active(by_code.get(code, []), dt):
+            chosen = code
+            method = "corp_code_active"
+            confidence = 1.0
 
         if not chosen and pd.notna(dt):
             nn = norm_name(r.get("corp_name",""))
-            cand = intervals[
-                (intervals["norm_name"] == nn)
-                & (intervals["first_date"] <= dt)
-                & (intervals["last_date"] >= dt)
-            ].copy()
+            cand = []
+            for code2, market, fd, ld in by_name.get(nn, []):
+                if pd.notna(fd) and pd.notna(ld) and fd <= dt <= ld:
+                    cand.append((code2, market))
             cls = str(r.get("corp_cls",""))
             want_market = "KOSPI" if cls == "Y" else ("KOSDAQ" if cls == "K" else "")
-            if want_market and len(cand[cand["market"] == want_market]):
-                cand = cand[cand["market"] == want_market]
-            codes = cand["stock_code"].drop_duplicates().tolist()
+            if want_market:
+                market_match = [c for c in cand if c[1] == want_market]
+                if market_match:
+                    cand = market_match
+            codes = sorted({c[0] for c in cand})
             if len(codes) == 1:
-                chosen = str(codes[0]).zfill(6); method = "historical_name_active"; confidence = 0.95
+                chosen = str(codes[0]).zfill(6)
+                method = "historical_name_active"
+                confidence = 0.95
 
         stocks.append(chosen)
         methods.append(method)
@@ -740,6 +772,8 @@ def write_coverage(idx: pd.DataFrame) -> None:
     x=idx.copy()
     x["mapped"]=x["stock_code"].fillna("").astype(str).str.fullmatch(r"\d{6}")
     if not state.empty:
+        if "parser_version" in state.columns:
+            state = state[state["parser_version"].eq(PARSER_VERSION)].copy()
         keep=[c for c in ["rcept_no","status","usable_metric_count"] if c in state.columns]
         x=x.merge(state[keep].drop_duplicates("rcept_no",keep="last"),on="rcept_no",how="left")
     else:
