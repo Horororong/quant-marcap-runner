@@ -1,0 +1,25 @@
+name: Probe legacy DART API
+
+on:
+  push:
+    branches:
+      - analysis/legacy-dart-probe-20260923
+    paths:
+      - scripts/_probe_legacy_dart.py
+      - .github/workflows/_probe-legacy-dart.yml
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      DART_API_KEY: ${{ secrets.DART_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: analysis/legacy-dart-probe-20260923
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+      - run: python scripts/_probe_legacy_dart.py
