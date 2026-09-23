@@ -310,6 +310,16 @@ def update_filing_index() -> pd.DataFrame:
     iso_mask = rcept_dt.isna() & rcept_raw.ne("")
     if iso_mask.any():
         rcept_dt.loc[iso_mask] = pd.to_datetime(rcept_raw.loc[iso_mask], errors="coerce")
+    # Repair rows damaged by the legacy fixed-format parser. DART receipt numbers
+    # begin with the authoritative filing date YYYYMMDD.
+    repair_mask = rcept_dt.isna()
+    if repair_mask.any():
+        repaired = pd.to_datetime(
+            all_idx.loc[repair_mask, "rcept_no"].astype(str).str[:8],
+            format="%Y%m%d",
+            errors="coerce",
+        )
+        rcept_dt.loc[repair_mask] = repaired
     all_idx["rcept_dt"] = rcept_dt
 
     inferred = all_idx.apply(lambda r: infer_report_fields(r["report_nm"], r["rcept_dt"]), axis=1, result_type="expand")
