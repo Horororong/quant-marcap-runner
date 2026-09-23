@@ -1,3 +1,7 @@
+# LEGACY REGRESSION HELPER ONLY.
+# New/final backtest metrics and chat charts must be generated through
+# quant_backtest_template_CURRENT.py + quant_backtest_postprocess.py.
+# This file remains only to preserve the historical All Weather regression checks.
 from __future__ import annotations
 from pathlib import Path
 import math
