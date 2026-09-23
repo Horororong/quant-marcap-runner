@@ -17,9 +17,9 @@ jobs:
     timeout-minutes: 60
     env:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
-      SUPER_VALUE_FAST_MODERN_TASKS: '20'
-      SUPER_VALUE_FAST_LEGACY_DOCS: '20'
-      SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: '3'
+      SUPER_VALUE_FAST_MODERN_TASKS: '1'
+      SUPER_VALUE_FAST_LEGACY_DOCS: '1'
+      SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: '1'
       SUPER_VALUE_FAST_MODERN_WORKERS: '4'
       SUPER_VALUE_FAST_LEGACY_WORKERS: '4'
     steps:
@@ -45,5 +45,6 @@ jobs:
             echo "No changes"
           else
             git commit -m "Test super-value fast PIT backfill"
+            git pull --rebase origin analysis/super-value-fast-backfill-20260923
             git push origin HEAD:analysis/super-value-fast-backfill-20260923
           fi
