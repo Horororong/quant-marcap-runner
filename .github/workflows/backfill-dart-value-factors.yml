@@ -10,6 +10,7 @@ on:
   schedule:
     # 08:30 KST every day = 23:30 UTC previous day.
     # Historical keys already marked OK/NO_DATA are never requested again.
+    # 7,000 tasks/day accelerates catch-up while leaving headroom under DART's typical 20k/day request limit.
     # After backlog completion this becomes a lightweight check and only new
     # report-period tasks are collected.
     - cron: '30 23 * * *'
@@ -27,7 +28,7 @@ jobs:
     timeout-minutes: 180
     env:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
-      DART_FULL_BACKFILL_TASKS: ${{ vars.DART_FULL_BACKFILL_TASKS || '3000' }}
+      DART_FULL_BACKFILL_TASKS: '7000'
       DART_FULL_BACKFILL_WORKERS: ${{ vars.DART_FULL_BACKFILL_WORKERS || '6' }}
 
     steps:
