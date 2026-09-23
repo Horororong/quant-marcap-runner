@@ -1,0 +1,57 @@
+name: Backtest Super Value v2-16 PIT
+
+on:
+  push:
+    branches:
+      - 'analysis/super-value-v216-20260923'
+    paths:
+      - 'scripts/backtest_super_value_v216.py'
+      - '.github/workflows/backtest-super-value-v216.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: backtest-super-value-v216
+  cancel-in-progress: true
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: analysis/super-value-v216-20260923
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy pyarrow plotly exchange_calendars
+
+      - name: Run CURRENT v2-16 PIT super-value backtest
+        run: python scripts/backtest_super_value_v216.py
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: super-value-v216-results
+          path: results/super_value_v216/
+          if-no-files-found: error
+
+      - name: Commit results to analysis branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/super_value_v216/
+          if git diff --cached --quiet; then
+            echo "No result changes"
+          else
+            git commit -m "Add super value v2-16 PIT backtest results"
+            git push origin HEAD:analysis/super-value-v216-20260923
+          fi
