@@ -5,21 +5,51 @@ on:
   push:
     paths:
       - 'scripts/update_krx_equities_daily.py'
+      - 'scripts/export_krx_symbol_csv.py'
       - 'update_public_data.py'
       - 'update_dart_financials.py'
       - '.github/workflows/update-quant-data.yml'
   schedule:
-    # 07:30 KST every Monday = 22:30 UTC Sunday.
-    # Run after the prior KRX trading session data has had time to settle upstream.
-    - cron: '30 22 * * 0'
+    # Scheduler wakes weekly, but the gate below runs the pipeline only every
+    # other Wednesday at 07:30 KST (Tuesday 22:30 UTC).
+    # Manual dispatch and relevant code changes always run immediately.
+    - cron: '30 22 * * 2'
 
 permissions:
   contents: write
 
 jobs:
-  update:
+  gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    outputs:
+      run_update: ${{ steps.biweekly.outputs.run_update }}
+    steps:
+      - name: Decide whether this scheduled week is active
+        id: biweekly
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "run_update=true" >> "$GITHUB_OUTPUT"
+            echo "Manual/push event: run immediately"
+            exit 0
+          fi
+
+          # Unix week slots never reset at year-end, avoiding ISO-week 52/53
+          # edge cases. Odd slots are the active biweekly schedule.
+          SLOT=$(( $(date -u +%s) / 604800 ))
+          if [ $(( SLOT % 2 )) -eq 1 ]; then
+            echo "run_update=true" >> "$GITHUB_OUTPUT"
+            echo "Active biweekly slot: $SLOT"
+          else
+            echo "run_update=false" >> "$GITHUB_OUTPUT"
+            echo "Inactive biweekly slot: $SLOT"
+          fi
+
+  update:
+    needs: gate
+    if: needs.gate.outputs.run_update == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
     env:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
       KRX_AUTH_KEY: ${{ secrets.KRX_AUTH_KEY }}
@@ -39,8 +69,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas numpy requests finance-datareader pyarrow
 
-      # 1) Update the KOSPI/KOSDAQ individual-stock panel first. This is the
-      # common price/liquidity/market-cap layer used by Korean equity backtests.
+      # 1) Korean individual-stock PIT panel.
+      # Missing 1995~prior-year files are backfilled once.
+      # The current-year parquet is overwritten on each refresh.
       - name: Update KRX individual-stock panel
         run: python scripts/update_krx_equities_daily.py
 
@@ -48,15 +79,16 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/krx_equities/ data/status/krx_equities_status.csv
+          git add data/krx_equities/ data/status/krx_equities_status.csv data/status/krx_equities_manifest.csv
           if git diff --cached --quiet; then
             echo "No KRX individual-stock data changes"
           else
             git commit -m "Update KRX individual-stock panel"
+            git pull --rebase origin main
             git push
           fi
 
-      # 2) Update index, FX and macro series.
+      # 2) Index, FX and macro series.
       - name: Update public market and macro data
         run: python update_public_data.py
 
@@ -69,10 +101,11 @@ jobs:
             echo "No public data changes"
           else
             git commit -m "Update public market and macro data"
+            git pull --rebase origin main
             git push
           fi
 
-      # 3) Only after market data succeeds, collect/rotate DART financial data.
+      # 3) DART financial data.
       - name: Update DART financials
         run: python update_dart_financials.py
 
@@ -85,6 +118,7 @@ jobs:
             echo "No DART data changes"
           else
             git commit -m "Update DART financials"
+            git pull --rebase origin main
             git push
           fi
 
