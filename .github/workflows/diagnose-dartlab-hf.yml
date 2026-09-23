@@ -1,0 +1,38 @@
+name: Diagnose DartLab HF finance
+
+on:
+  push:
+    branches:
+      - 'analysis/super-value-20260923'
+    paths:
+      - 'scripts/diagnose_dartlab_hf.py'
+      - '.github/workflows/diagnose-dartlab-hf.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: analysis/super-value-20260923
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas pyarrow requests
+      - run: python scripts/diagnose_dartlab_hf.py
+      - name: Commit diagnostic
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/dartlab_hf_diagnostic.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Add DartLab HF diagnostic results"
+            git push origin HEAD:analysis/super-value-20260923
+          fi
