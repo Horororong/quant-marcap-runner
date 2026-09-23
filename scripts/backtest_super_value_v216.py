@@ -700,7 +700,9 @@ def metrics(nav: pd.Series, baseline_date: pd.Timestamp, name: str) -> dict:
     """Delegate every final performance/risk metric to CURRENT v2-16."""
     s = nav.astype(float).dropna().rename(name)
     daily = s.to_frame()
-    monthly = daily.groupby(daily.index.to_period("M")).tail(1).copy()
+    # CURRENT v2-16 requires completed monthly observations to carry an explicit
+    # calendar month-end label. Values still come from the final trading session.
+    monthly = daily.resample("ME").last().dropna(how="all")
 
     # Preserve the true strategy performance baseline (signal-day close before
     # next-session execution) so CURRENT annualises a partial inception month correctly.
