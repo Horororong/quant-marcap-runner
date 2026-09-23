@@ -19,7 +19,7 @@ OUT = ROOT / "results" / "super_value_v216"
 OUT.mkdir(parents=True, exist_ok=True)
 
 INITIAL_CAPITAL = 10_000_000.0
-AS_OF = pd.Timestamp("2026-09-23")
+AS_OF = pd.Timestamp("2026-09-24")
 
 _TEMPLATE_PATH = ROOT / "scripts" / "quant_backtest_template_PROJECT_v2-16_CURRENT.py"
 _spec = importlib.util.spec_from_file_location("quant_current_v216", _TEMPLATE_PATH)
@@ -49,6 +49,7 @@ class CostScenario:
     spread_bps: float
     slippage_bps: float
     market_impact_bps: float
+    apply_sell_tax: bool = True
 
     @property
     def common_bps(self) -> float:
@@ -56,27 +57,33 @@ class CostScenario:
 
 
 COSTS = {
-    "gross": CostScenario("gross", 0.0, 0.0, 0.0, 0.0),
-    "minimum": CostScenario("minimum", 1.5, 0.0, 0.0, 0.0),
-    "base": CostScenario("base", 1.5, 10.0, 10.0, 0.0),
-    "conservative": CostScenario("conservative", 2.0, 20.0, 20.0, 10.0),
+    "gross": CostScenario("gross", 0.0, 0.0, 0.0, 0.0, False),
+    "minimum": CostScenario("minimum", 1.5, 0.0, 0.0, 0.0, True),
+    "base": CostScenario("base", 1.5, 10.0, 10.0, 0.0, True),
+    "conservative": CostScenario("conservative", 2.0, 20.0, 20.0, 10.0, True),
 }
 
 
 def sell_tax_bps(dt: pd.Timestamp) -> float:
-    """All-in statutory sell tax for ordinary KOSPI/KOSDAQ shares, in basis points."""
-    d = pd.Timestamp(dt)
-    if d < pd.Timestamp("2019-06-03"):
+    """Total statutory sell-side tax burden for KOSPI/KOSDAQ small-investor trades.
+
+    KOSPI total includes the rural special tax where applicable. KOSPI and
+    KOSDAQ totals are equal over the regimes used here.
+    """
+    x = pd.Timestamp(dt)
+    if x < pd.Timestamp("2019-06-03"):
         return 30.0
-    if d < pd.Timestamp("2021-01-01"):
+    if x < pd.Timestamp("2021-01-01"):
         return 25.0
-    if d < pd.Timestamp("2023-01-01"):
+    if x < pd.Timestamp("2023-01-01"):
         return 23.0
-    if d < pd.Timestamp("2024-01-01"):
+    if x < pd.Timestamp("2024-01-01"):
         return 20.0
-    if d < pd.Timestamp("2025-01-01"):
+    if x < pd.Timestamp("2025-01-01"):
         return 18.0
-    return 15.0
+    if x < pd.Timestamp("2026-01-01"):
+        return 15.0
+    return 20.0
 
 
 def to_num(x) -> float:
@@ -157,40 +164,71 @@ def required_periods(signal: pd.Timestamp) -> list[tuple[int, str]]:
     raise ValueError(signal)
 
 
+def fallback_completion(mapping: pd.DataFrame, state: pd.DataFrame, year: int, period: str) -> dict:
+    """CFS first; require OFS only when CFS explicitly returned NO_DATA."""
+    expected = expected_codes_for_period(mapping, year, period)
+    sub = state[(state["year"] == year) & (state["period"] == period)].copy()
+    terminal = {"OK", "NO_DATA"}
+    cfs = (
+        sub[sub["fs_div"] == "CFS"]
+        .drop_duplicates("stock_code", keep="last")
+        .set_index("stock_code")["status"]
+        .to_dict()
+    )
+    ofs = (
+        sub[sub["fs_div"] == "OFS"]
+        .drop_duplicates("stock_code", keep="last")
+        .set_index("stock_code")["status"]
+        .to_dict()
+    )
+
+    complete = 0
+    cfs_ok = 0
+    cfs_no_data = 0
+    ofs_fallback_terminal = 0
+    ofs_fallback_ok = 0
+    for code in expected:
+        cs = cfs.get(code, "")
+        if cs == "OK":
+            complete += 1
+            cfs_ok += 1
+        elif cs == "NO_DATA":
+            cfs_no_data += 1
+            os_ = ofs.get(code, "")
+            if os_ in terminal:
+                complete += 1
+                ofs_fallback_terminal += 1
+                if os_ == "OK":
+                    ofs_fallback_ok += 1
+
+    cfs_shards = list((ROOT / "data/financials/full_history").glob(f"dart_full_{year}_{period}_CFS_*.csv.gz"))
+    ofs_shards = list((ROOT / "data/financials/full_history").glob(f"dart_full_{year}_{period}_OFS_*.csv.gz"))
+    raw_ok = (cfs_ok == 0 or bool(cfs_shards)) and (ofs_fallback_ok == 0 or bool(ofs_shards))
+    n_exp = len(expected)
+    ratio = complete / n_exp if n_exp else 0.0
+    return {
+        "year": year,
+        "period": period,
+        "completed_codes": complete,
+        "expected_codes": n_exp,
+        "ratio": ratio,
+        "cfs_ok_codes": cfs_ok,
+        "cfs_no_data_codes": cfs_no_data,
+        "ofs_fallback_terminal_codes": ofs_fallback_terminal,
+        "cfs_raw_shards": len(cfs_shards),
+        "ofs_raw_shards": len(ofs_shards),
+        "raw_ok": raw_ok,
+    }
+
+
 def signal_completeness(mapping: pd.DataFrame, state: pd.DataFrame, signal: pd.Timestamp) -> tuple[bool, list[dict]]:
-    """Completeness gate compatible with fast backfill: CFS first, OFS only on CFS NO_DATA."""
     rows = []
     ok = True
     for y, p in required_periods(signal):
-        expected = expected_codes_for_period(mapping, y, p)
-        ss = state[(state["year"] == y) & (state["period"] == p)].copy()
-        ss = ss.sort_values("updated_at_utc").drop_duplicates(["stock_code","fs_div"], keep="last")
-        cfs = ss[ss["fs_div"] == "CFS"].set_index("stock_code")["status"].to_dict()
-        ofs = ss[ss["fs_div"] == "OFS"].set_index("stock_code")["status"].to_dict()
-
-        complete_codes = set()
-        usable_codes = set()
-        for code in expected:
-            c = cfs.get(code, "")
-            if c == "OK":
-                complete_codes.add(code)
-                usable_codes.add(code)
-            elif c == "NO_DATA" and ofs.get(code, "") in {"OK", "NO_DATA"}:
-                complete_codes.add(code)
-                if ofs.get(code) == "OK":
-                    usable_codes.add(code)
-
-        raw_shards = list((ROOT / "data/financials/full_history").glob(f"dart_full_{y}_{p}_*.csv.gz"))
-        ratio = len(complete_codes) / len(expected) if expected else 0.0
-        period_ok = ratio >= 1.0 and bool(raw_shards)
-        rows.append({
-            "signal_date": signal, "year": y, "period": p, "fs_div": "CFS_then_OFS",
-            "completed_codes": len(complete_codes), "expected_codes": len(expected),
-            "usable_codes": len(usable_codes), "ratio": ratio,
-            "raw_shards": len(raw_shards), "has_raw_shard": bool(raw_shards),
-            "period_complete": period_ok,
-        })
-        if not period_ok:
+        a = fallback_completion(mapping, state, y, p)
+        a["signal_date"] = signal
+        rows.append(a)
+        if a["ratio"] < 1.0 or not a["raw_ok"]:
             ok = False
     return ok, rows
 
@@ -459,6 +497,29 @@ def last_trading_day(panel: pd.DataFrame, year: int, month: int) -> Optional[pd.
     return None if ds.empty else pd.Timestamp(ds.max())
 
 
+def last_trading_day_from_file(year: int, month: int) -> Optional[pd.Timestamp]:
+    p = ROOT / f"data/krx_equities/yearly/marcap-{year}.parquet"
+    if not p.exists():
+        return None
+    x = pd.read_parquet(p, columns=["Date"])
+    d = pd.to_datetime(x["Date"], errors="coerce").dt.normalize()
+    d = d[(d.dt.year == year) & (d.dt.month == month) & (d <= AS_OF)]
+    return None if d.empty else pd.Timestamp(d.max())
+
+
+def latest_krx_date() -> pd.Timestamp:
+    for year in range(AS_OF.year, 1994, -1):
+        p = ROOT / f"data/krx_equities/yearly/marcap-{year}.parquet"
+        if not p.exists():
+            continue
+        x = pd.read_parquet(p, columns=["Date"])
+        d = pd.to_datetime(x["Date"], errors="coerce").dropna()
+        d = d[d <= AS_OF]
+        if len(d):
+            return pd.Timestamp(d.max()).normalize()
+    raise RuntimeError("No KRX date available")
+
+
 def next_trading_day(all_dates: pd.DatetimeIndex, dt: pd.Timestamp) -> Optional[pd.Timestamp]:
     pos = all_dates.searchsorted(pd.Timestamp(dt), side="right")
     return None if pos >= len(all_dates) else pd.Timestamp(all_dates[pos])
@@ -587,7 +648,8 @@ def simulate(panel: pd.DataFrame, selections: dict[pd.Timestamp,pd.DataFrame],
                 if tar > old: buy += tar-old
                 if old > tar: sell += old-tar
             common = cost.common_bps / 10000.0
-            tax = sell_tax_bps(dt) / 10000.0
+            tax_bps = sell_tax_bps(dt) if cost.apply_sell_tax else 0.0
+            tax = tax_bps / 10000.0
             cost_fraction = (buy + sell) * common + sell * tax
             net_nav *= (1.0 - cost_fraction)
             weights = target
@@ -595,7 +657,7 @@ def simulate(panel: pd.DataFrame, selections: dict[pd.Timestamp,pd.DataFrame],
             turn_rows.append({
                 "signal_date": signal, "execution_date": dt, "top_n": top_n,
                 "buy_turnover": buy, "sell_turnover": sell,
-                "two_way_turnover": buy+sell, "sell_tax_bps": sell_tax_bps(dt),
+                "two_way_turnover": buy+sell, "sell_tax_bps": tax_bps,
                 "common_cost_bps": cost.common_bps,
                 "cost_fraction": cost_fraction,
                 "untradable_count": len(untradable),
@@ -639,9 +701,6 @@ def metrics(nav: pd.Series, baseline_date: pd.Timestamp, name: str) -> dict:
     s = nav.astype(float).dropna().rename(name)
     daily = s.to_frame()
     monthly = daily.groupby(daily.index.to_period("M")).tail(1).copy()
-    # CURRENT v2-16 expects completed monthly observations to carry an explicit
-    # calendar month-end label. The value remains the actual last XKRX trading-day NAV.
-    monthly.index = monthly.index.to_period("M").to_timestamp("M")
 
     # Preserve the true strategy performance baseline (signal-day close before
     # next-session execution) so CURRENT annualises a partial inception month correctly.
@@ -707,22 +766,20 @@ def main():
     mapping = load_map()
     state = load_state()
 
-    # Load a small surrounding window; exact usable interval is decided by PIT completeness.
-    panel = load_krx("2016-01-01", str(AS_OF.date()))
-    all_dates = pd.DatetimeIndex(sorted(panel["Date"].unique()))
-
+    # Discover candidate rebalance dates cheaply from yearly KRX files, then
+    # load only the actually validated performance window.
     candidate_signals = []
     completion_rows = []
     for y in range(2016, AS_OF.year + 1):
-        for m in (4,10):
-            s = last_trading_day(panel,y,m)
+        for m in (4, 10):
+            s = last_trading_day_from_file(y, m)
             if s is None:
                 continue
-            ok, rows = signal_completeness(mapping,state,s)
+            ok, rows = signal_completeness(mapping, state, s)
             for row in rows:
                 row["signal_complete"] = ok
                 completion_rows.append(row)
-            candidate_signals.append((s,ok))
+            candidate_signals.append((s, ok))
 
     complete_signals = [s for s,ok in candidate_signals if ok]
     complete_signals = sorted(complete_signals)
@@ -765,15 +822,19 @@ def main():
             tmp = sel.copy(); tmp["top_n"] = n
             all_selection_rows.append(tmp)
 
-    # Stop performance on the next (incomplete) scheduled signal date, not after it.
-    next_incomplete = None
+    # Stop at the next incomplete scheduled signal. If every observed signal is
+    # complete, carry the last validated holdings through the latest KRX date.
+    performance_end = None
     last_valid = validated[-1]
-    for s,ok in sorted(candidate_signals):
+    for s, ok in sorted(candidate_signals):
         if s > last_valid and not ok:
-            next_incomplete = s
+            performance_end = s
             break
-    if next_incomplete is None:
-        next_incomplete = pd.Timestamp(panel["Date"].max())
+    if performance_end is None:
+        performance_end = latest_krx_date()
+
+    panel_start = (validated[0] - pd.Timedelta(days=60)).date().isoformat()
+    panel = load_krx(panel_start, performance_end.date().isoformat())
 
     # Run primary cost scenarios for top20.
     nav_series = {}
@@ -781,7 +842,7 @@ def main():
     primary_nav = None
     baseline_date = validated[0]
     for cname,cost in COSTS.items():
-        nav,turn = simulate(panel,selections_by_n[BASE_TOP_N],BASE_TOP_N,cost,"last_close",next_incomplete)
+        nav,turn = simulate(panel,selections_by_n[BASE_TOP_N],BASE_TOP_N,cost,"last_close",performance_end)
         # Trim to the day before/at the first incomplete signal generated by simulate's internal stop.
         if cname == "gross":
             nav_series["Top20_Gross"] = nav["Gross"]
@@ -795,13 +856,13 @@ def main():
     # Top-N robustness with base cost.
     robustness_nav = {}
     for n in TOP_NS:
-        nav,turn = simulate(panel,selections_by_n[n],n,COSTS["base"],"last_close",next_incomplete)
+        nav,turn = simulate(panel,selections_by_n[n],n,COSTS["base"],"last_close",performance_end)
         robustness_nav[f"Top{n}_Base"] = nav["Net"]
         turn["variant"] = f"Top{n}_base"
         turnover_all.append(turn)
 
     # Delisting worst-case stress for top20.
-    stress_nav,stress_turn = simulate(panel,selections_by_n[20],20,COSTS["base"],"minus100",next_incomplete)
+    stress_nav,stress_turn = simulate(panel,selections_by_n[20],20,COSTS["base"],"minus100",performance_end)
     robustness_nav["Top20_Base_DelistMinus100"] = stress_nav["Net"]
     stress_turn["variant"] = "Top20_base_delist_minus100"
     turnover_all.append(stress_turn)
@@ -831,12 +892,12 @@ def main():
 
     # Standard template periods cannot be claimed unless financial PIT data cover them.
     std = pd.DataFrame([
-        {"period":"book_period","status":"UNAVAILABLE","reason":"Book validation dates not recoverable from supplied photo/source extract and PIT financial backfill is incomplete before 2016."},
-        {"period":"2000_to_latest","status":"UNAVAILABLE","reason":"KRX prices exist, but PIT DART financial-factor history is not fully parsed/backfilled for 2000~latest."},
-        {"period":"2021_to_latest","status":"UNAVAILABLE","reason":"PIT DART full_history is still sequentially backfilling; a contiguous complete 2021~latest financial panel is not yet present."},
-        {"period":"longest_to_latest","status":"UNAVAILABLE","reason":"Price history begins 1995, but required PIT financial history does not yet cover a complete longest-to-latest window."},
+        {"period":"book_period","status":"UNAVAILABLE","reason":"The supplied source extract does not expose an exact book validation date range; no date is imputed."},
+        {"period":"2000_to_latest","status":"UNAVAILABLE","reason":"Legacy 2000~2014 PIT filing parser/backfill is not complete enough for an unbiased all-stock factor panel."},
+        {"period":"2021_to_latest","status":"UNAVAILABLE","reason":"A fully contiguous PIT factor panel from 2021 through the latest KRX date is not yet complete."},
+        {"period":"longest_to_latest","status":"UNAVAILABLE","reason":"KRX price history is longer than the currently complete PIT financial-factor history."},
         {"period":"verified_contiguous_PIT","status":"AVAILABLE",
-         "reason":f"All required Q1/H1 or Q3/FY tasks complete for both CFS and OFS at each signal from {validated[0].date()} through {validated[-1].date()}."}
+         "reason":f"CFS-first/OFS-fallback PIT coverage is complete at each validated signal from {validated[0].date()} through {validated[-1].date()}; holdings are measured through {performance_end.date()}."}
     ])
     std.to_csv(OUT/"standard_period_status.csv",index=False,encoding="utf-8-sig")
 
@@ -860,8 +921,8 @@ def main():
             "1/PSR":"latest standalone-quarter revenue / market cap",
         },
         "quarter_reconstruction":{
-            "October":"H1 current-period revenue/net income; OCF = H1 cumulative - Q1 cumulative",
-            "April":"Q4 = FY annual/cumulative - Q3 cumulative; equity = FY",
+            "October":"latest standalone Q2: H1 current-period if supplied, otherwise H1 cumulative - Q1 cumulative; equity = H1",
+            "April":"latest standalone Q4 = FY annual/cumulative - Q3 cumulative; equity = FY",
         },
         "universe":"PIT KOSPI+KOSDAQ individual securities from historical marcap panel; preferred shares retained; ETF/ETN/KONEX excluded upstream.",
         "execution":"Signal at Apr/Oct last trading-day close; execute at next trading-day close; new holdings earn from following session.",
@@ -870,13 +931,14 @@ def main():
         "validated_performance_start":combined.index[0].date().isoformat(),
         "validated_performance_end":combined.index[-1].date().isoformat(),
         "cost_scenarios":{k:asdict(v) for k,v in COSTS.items()},
-        "sell_tax":"All-in statutory sell tax schedule encoded by date: 30/25/23/20/18/15bp regimes.",
+        "sell_tax":"Gross excludes sell tax. Net scenarios use total sell-side tax: 30bp pre-2019-06-03; 25bp through 2020; 23bp 2021-22; 20bp 2023; 18bp 2024; 15bp 2025; 20bp 2026 onward.",
         "delisting_baseline":"last observed market value converted to cash if security disappears; stress case applies -100% after permanent disappearance",
         "missing_or_suspended_target":"target weight stays in cash; no substitution using future information",
         "initial_capital_krw":INITIAL_CAPITAL,
         "risk_free_rate":0.0,
         "metrics":"All final performance/risk metrics delegated to CURRENT v2-16 calculate_metrics(); strategy code produces daily NAV only.",
         "data_as_of":AS_OF.date().isoformat(),
+        "pit_completion_rule":"CFS first; OFS is required only for company-periods where CFS returned NO_DATA.",
     }
     (OUT/"run_metadata.json").write_text(json.dumps(meta,ensure_ascii=False,indent=2,default=str),encoding="utf-8")
 
