@@ -1,0 +1,32 @@
+name: Test KRX backtest data adapter
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/krx_backtest_data.py'
+      - '.github/workflows/test-krx-backtest-data.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas pyarrow
+
+      - name: Run KRX adapter smoke test
+        run: python scripts/krx_backtest_data.py
