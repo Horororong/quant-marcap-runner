@@ -2,6 +2,9 @@ name: Fast-backfill super-value PIT inputs
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/backfill_super_value_fast.py'
   schedule:
     # 00:30 KST daily = 15:30 UTC previous day.
     # Dedicated catch-up path for the super-value strategy.
@@ -20,9 +23,9 @@ jobs:
     timeout-minutes: 300
     env:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
-      SUPER_VALUE_FAST_MODERN_TASKS: '7000'
-      SUPER_VALUE_FAST_LEGACY_DOCS: '6000'
-      SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: '180'
+      SUPER_VALUE_FAST_MODERN_TASKS: '2500'
+      SUPER_VALUE_FAST_LEGACY_DOCS: '2000'
+      SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: '1'
       SUPER_VALUE_FAST_MODERN_WORKERS: '6'
       SUPER_VALUE_FAST_LEGACY_WORKERS: '6'
 
