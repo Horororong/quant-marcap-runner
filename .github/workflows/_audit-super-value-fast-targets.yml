@@ -1,0 +1,33 @@
+name: Audit super-value fast targets
+
+on:
+  push:
+    branches:
+      - analysis/super-value-fast-backfill-20260923
+    paths:
+      - .github/workflows/_audit-super-value-fast-targets.yml
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: analysis/super-value-fast-backfill-20260923
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas requests pyarrow beautifulsoup4 lxml
+      - name: Audit existing index only
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          import scripts.backfill_super_value_fast as f
+          idx=f.legacy.load_csv(f.legacy.INDEX_FILE,dtype={"rcept_no":str,"stock_code":str,"corp_code":str})
+          t=f.legacy_target_index(idx)
+          print("INDEX_ROWS",len(idx))
+          print("TARGET_DOCS",len(t))
+          if len(t):
+              print(t.groupby(["fiscal_year","period"]).size().to_string())
+          PY
