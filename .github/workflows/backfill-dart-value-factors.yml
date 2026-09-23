@@ -9,7 +9,9 @@ on:
       - '.github/workflows/backfill-dart-value-factors.yml'
   schedule:
     # 08:30 KST every day = 23:30 UTC previous day.
-    # Runs after the main market/recent-DART update.
+    # Historical keys already marked OK/NO_DATA are never requested again.
+    # After backlog completion this becomes a lightweight check and only new
+    # report-period tasks are collected.
     - cron: '30 23 * * *'
 
 concurrency:
@@ -42,27 +44,32 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas requests pyarrow
 
-      - name: Backfill full historical DART statements
+      - name: Backfill PIT-safe DART history and build coverage report
         run: python scripts/run_full_dart_backfill.py
 
-      - name: Commit full-history datasets
+      - name: Commit full-history datasets and coverage status
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/financials/dart_historical_code_map.csv
           git add data/status/dart_full_backfill_state.csv data/status/dart_full_backfill_status.csv
+          git add data/status/dart_pit_coverage_by_period.csv data/status/dart_pit_coverage_status.csv || true
           git add data/financials/full_history/*.csv.gz || true
           if git diff --cached --quiet; then
-            echo "No DART full-history backfill changes"
+            echo "No DART full-history or status changes"
           else
-            git commit -m "Backfill full DART financial-statement history"
+            git commit -m "Backfill DART PIT history and coverage"
+            git pull --rebase origin main
             git push
           fi
 
-      - name: Upload backfill status
+      - name: Upload PIT/backfill status
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: dart-full-backfill-status
-          path: data/status/dart_full_backfill_status.csv
+          name: dart-pit-backfill-status
+          path: |
+            data/status/dart_full_backfill_status.csv
+            data/status/dart_pit_coverage_by_period.csv
+            data/status/dart_pit_coverage_status.csv
           if-no-files-found: warn
