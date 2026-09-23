@@ -1,7 +1,7 @@
 """
 quant_backtest_template_CURRENT.py
 
-표준 퀀트 백테스트 템플릿 v2-14 / CURRENT (2026-09 업데이트)
+표준 퀀트 백테스트 템플릿 v2-15 / CURRENT (2026-09 업데이트)
 
 핵심 원칙
 1) 성과 산출: 월별 NAV 기준
@@ -41,6 +41,9 @@ import math
 
 import numpy as np
 import pandas as pd
+
+TEMPLATE_VERSION = "v2-15"
+CHAT_PAYLOAD_MAX_DRAWDOWN_POINTS = 480
 
 
 # =========================================================
@@ -636,6 +639,38 @@ def run_four_periods(
 # 6. ChatGPT 인터랙티브 차트 payload
 # =========================================================
 
+def _compress_drawdown_for_chat(dd: pd.Series, max_points: int = CHAT_PAYLOAD_MAX_DRAWDOWN_POINTS) -> pd.Series:
+    """채팅 렌더링 전용 축약.
+
+    계산/MDD 산출에는 원본 일별 시계열을 그대로 사용하고, 화면 표시용 Drawdown만 축약한다.
+    각 구간의 최저점과 구간 끝점을 보존해 단순 등간격 샘플링보다 MDD/회복 형태 손실을 줄인다.
+    """
+    s = dd.dropna().astype(float).sort_index()
+    if len(s) <= max_points:
+        return s
+    if max_points < 8:
+        raise ValueError("max_points는 8 이상이어야 합니다.")
+
+    interior = s.iloc[1:-1]
+    bucket_count = max(1, (max_points - 2) // 2)
+    edges = np.linspace(0, len(interior), bucket_count + 1, dtype=int)
+    keep = {s.index[0], s.index[-1]}
+
+    for i in range(bucket_count):
+        chunk = interior.iloc[edges[i]:edges[i + 1]]
+        if chunk.empty:
+            continue
+        keep.add(chunk.idxmin())
+        keep.add(chunk.index[-1])
+
+    out = s.loc[sorted(keep)]
+    if len(out) > max_points:
+        # 부동소수점/경계 중복 상황에서도 상한을 확실히 지킨다.
+        pos = np.linspace(0, len(out) - 1, max_points, dtype=int)
+        out = out.iloc[np.unique(pos)]
+    return out
+
+
 def build_chat_payload(
     monthly_nav: pd.DataFrame,
     config: BacktestConfig,
@@ -673,10 +708,12 @@ def build_chat_payload(
 
         risk_s = dnav[name].astype(float) if dnav is not None else s
         dd = drawdown_series(risk_s)
+        # 성과/위험 계산은 전체 일별 데이터를 사용하되, 채팅 시각화 payload만 축약한다.
+        dd_chat = _compress_drawdown_for_chat(dd)
         drawdown_rows = [{
             "date": dt.strftime("%Y-%m-%d"),
             "drawdown_pct": round(float(v * 100.0), 6),
-        } for dt, v in dd.items()]
+        } for dt, v in dd_chat.items()]
 
         m = metrics.loc[name]
         series_payload[name] = {
@@ -714,6 +751,8 @@ def build_chat_payload(
         "risk_start": (dnav.index[0] if dnav is not None else mnav.index[0]).strftime("%Y-%m-%d"),
         "risk_end": (dnav.index[-1] if dnav is not None else mnav.index[-1]).strftime("%Y-%m-%d"),
         "risk_observations": len(dnav) if dnav is not None else len(mnav),
+        "drawdown_chart_observations": max(len(v["drawdown_rows"]) for v in series_payload.values()),
+        "drawdown_chart_max_points": CHAT_PAYLOAD_MAX_DRAWDOWN_POINTS,
         "series_order": list(mnav.columns),
         "log2_axis": {
             "tick_values": list(range(tick_min, tick_max + 1)),
@@ -931,6 +970,8 @@ CHATGPT_RENDERING_RULES = """
 25. 기존 수집기가 처리하지 못하는 데이터 유형이면 수집 스크립트/workflow도 함께 보완하여 이후 자동 업데이트 경로를 만든다.
 26. 외부 데이터는 GitHub 데이터가 없거나 품질/기간상 불충분하고, 출처·정의·시점 정합성을 검증할 수 있을 때만 보조적으로 사용한다.
 27. 자동수집 레지스트리나 workflow를 변경했다면 무엇을 왜 추가했는지 최종 보고에 명시한다.
+28. 전략별 스크립트가 CAGR/MDD/Sharpe/차트 규칙을 재구현하지 않는다. 전략 스크립트는 일별 NAV 산출까지만 담당하고, 성과표/위험지표/채팅 차트 payload는 CURRENT 템플릿 또는 quant_backtest_postprocess.py가 단일 계산원(single source of truth)으로 생성한다.
+29. 계산 정확도와 채팅 표시량을 분리한다. MDD와 회복기간은 전체 일별 NAV로 계산하되 Drawdown 차트 표시점은 CURRENT의 보존형 축약 로직을 사용한다.
 """
 
 
@@ -1147,7 +1188,7 @@ def _self_test() -> None:
     template_mdd = float(reg_out["from_2001"]["metrics"].loc["60/40", "MDD"])
     assert abs(template_mdd - independent_mdd) < 1e-12
 
-    # v2-14/CURRENT interactive-dashboard + project-data-contract regression test.
+    # v2-15/CURRENT interactive-dashboard + project-data-contract regression test.
     p_long = out["longest"]["chat_payload"]
     p_2001 = out["from_2001"]["chat_payload"]
     p_2021 = out["from_2021"]["chat_payload"]
