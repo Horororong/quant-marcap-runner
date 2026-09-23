@@ -7,13 +7,16 @@ import os
 import re
 import time
 import zipfile
+import warnings
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
+
+warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
 API_KEY = os.getenv("DART_API_KEY", "").strip()
 START_YEAR = int(os.getenv("LEGACY_DART_START_YEAR", "2000"))
@@ -745,8 +748,10 @@ def write_coverage(idx: pd.DataFrame) -> None:
         usable_four_factor_filings=("usable_4f","sum"),
         mapped_companies=("stock_code",lambda s:s[s.astype(str).str.fullmatch(r"\d{6}")].nunique()),
     ).reset_index()
-    cov["processing_pct"]=(100*cov["processed_filings"]/cov["mapped_filings"].replace(0,pd.NA)).round(2)
-    cov["usable_pct_of_processed"]=(100*cov["usable_four_factor_filings"]/cov["processed_filings"].replace(0,pd.NA)).round(2)
+    mapped_den = pd.to_numeric(cov["mapped_filings"], errors="coerce").astype(float).where(cov["mapped_filings"] != 0)
+    processed_den = pd.to_numeric(cov["processed_filings"], errors="coerce").astype(float).where(cov["processed_filings"] != 0)
+    cov["processing_pct"] = (100.0 * pd.to_numeric(cov["processed_filings"], errors="coerce").astype(float) / mapped_den).round(2)
+    cov["usable_pct_of_processed"] = (100.0 * pd.to_numeric(cov["usable_four_factor_filings"], errors="coerce").astype(float) / processed_den).round(2)
     cov["generated_at_utc"]=now_utc()
     cov.to_csv(COVERAGE_FILE,index=False,encoding="utf-8-sig")
 
