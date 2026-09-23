@@ -22,3 +22,5 @@ jobs:
           git add analysis/dart_download_function.json
           git commit -m "Inspect DART download function" || exit 0
           git push origin HEAD:tmp/super-value-backtest-20260923
+
+# run sample download
