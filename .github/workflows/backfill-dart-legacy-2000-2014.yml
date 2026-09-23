@@ -27,12 +27,12 @@ jobs:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
       LEGACY_DART_START_YEAR: '2000'
       LEGACY_DART_END_YEAR: '2014'
-      # 180 index tasks total (year x quarter x Y/K/E). At 24/day the
+      # 180 index tasks total (year x quarter x Y/K/E). At 36/day the
       # disclosure index is normally built in roughly eight scheduled runs.
-      LEGACY_DART_INDEX_TASKS: '24'
-      # Original-document downloads are the expensive phase. 1,000/day keeps
+      LEGACY_DART_INDEX_TASKS: '36'
+      # Original-document downloads are the expensive phase. 3,000/day keeps
       # ample headroom under DART request limits alongside the other workflows.
-      LEGACY_DART_MAX_DOCS: '1000'
+      LEGACY_DART_MAX_DOCS: '3000'
       LEGACY_DART_WORKERS: '6'
 
     steps:
