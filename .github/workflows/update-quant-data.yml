@@ -1,28 +1,24 @@
-name: Temp DART bulk schema probe
+name: Temp DART function probe
 on:
   push:
-    branches:
-      - tmp/super-value-backtest-20260923
-    paths:
-      - '.github/workflows/update-quant-data.yml'
+    branches: [tmp/super-value-backtest-20260923]
+    paths: ['.github/workflows/update-quant-data.yml']
 permissions:
   contents: write
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: tmp/super-value-backtest-20260923
+        with: {ref: tmp/super-value-backtest-20260923}
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: pip install selenium pandas
+        with: {python-version: '3.12'}
+      - run: pip install selenium
       - run: python scripts/_tmp_dart_bulk_probe.py
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add analysis/dart_bulk_sample_schema.json
-          git commit -m "Inspect DART bulk sample schema" || exit 0
+          git add analysis/dart_download_function.json
+          git commit -m "Inspect DART download function" || exit 0
           git push origin HEAD:tmp/super-value-backtest-20260923
