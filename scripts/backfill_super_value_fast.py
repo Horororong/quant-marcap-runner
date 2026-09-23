@@ -274,7 +274,7 @@ def legacy_fast() -> dict:
     targets = legacy_target_index(idx)
     done = legacy_done_set()
     pending = targets[~targets["rcept_no"].astype(str).isin(done)].copy()
-    pending = pending.sort_values(["fiscal_year", "period", "stock_code"]).head(LEGACY_LIMIT)
+    pending = pending.sort_values(["signal_cutoff", "stock_code", "period", "rcept_dt"]).head(LEGACY_LIMIT)
 
     metric_rows: list[dict] = []
     state_rows: list[dict] = []
