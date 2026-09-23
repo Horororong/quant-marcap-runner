@@ -4,6 +4,7 @@ import json
 import math
 import re
 import importlib.util
+import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Dict, Iterable, Optional
@@ -25,6 +26,7 @@ _spec = importlib.util.spec_from_file_location("quant_current_v216", _TEMPLATE_P
 if _spec is None or _spec.loader is None:
     raise RuntimeError(f"Cannot load CURRENT v2-16 template: {_TEMPLATE_PATH}")
 CURRENT = importlib.util.module_from_spec(_spec)
+sys.modules[_spec.name] = CURRENT
 _spec.loader.exec_module(CURRENT)
 
 METRIC_CONFIG = CURRENT.BacktestConfig(
