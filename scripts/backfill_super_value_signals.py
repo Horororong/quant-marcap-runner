@@ -239,7 +239,20 @@ def main() -> None:
     hit_rate_limit = False
     status_rows: list[dict] = []
 
-    for signal in candidate_signals():
+    signals = candidate_signals()
+    initial_state = load_state()
+    first_complete_idx = next(
+        (i for i, signal in enumerate(signals) if is_complete(mapping, initial_state, signal)),
+        None,
+    )
+    if first_complete_idx is None:
+        raise RuntimeError("No PIT-complete anchor signal exists; accelerator will not guess a start point")
+
+    # Match the backtest's contiguous-window rule: ignore incomplete dates before
+    # the first verified signal, then target the first gap after the verified run.
+    signals = signals[first_complete_idx:]
+
+    for signal in signals:
         state = load_state()
         before = is_complete(mapping, state, signal)
         if before:
