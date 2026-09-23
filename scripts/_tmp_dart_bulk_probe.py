@@ -1,19 +1,36 @@
 from pathlib import Path
-import json, re, requests
+import json, time
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-url="https://opendart.fss.or.kr/disclosureinfo/fnltt/dwld/list.do"
-r=requests.get(url,headers={"User-Agent":"Mozilla/5.0"},timeout=60)
-html=r.text
-snips=[]
-for m in re.finditer("2020", html):
-    snips.append(html[max(0,m.start()-800):min(len(html),m.start()+3500)])
-hrefs=re.findall(r'href=["\']([^"\']+)["\']', html, re.I)
-out={
-  "status":r.status_code,
-  "length":len(html),
-  "hrefs":[h for h in hrefs if "dwld" in h.lower() or "down" in h.lower() or "file" in h.lower()][:200],
-  "snippets_2020":snips[:5]
-}
+opt=Options()
+opt.add_argument("--headless=new")
+opt.add_argument("--no-sandbox")
+opt.add_argument("--disable-dev-shm-usage")
+opt.add_argument("--window-size=1920,1080")
+driver=webdriver.Chrome(options=opt)
+out=[]
+try:
+    driver.get("https://opendart.fss.or.kr/disclosureinfo/fnltt/dwld/main.do")
+    WebDriverWait(driver,30).until(EC.presence_of_element_located((By.CSS_SELECTOR,"table.tb01")))
+    time.sleep(2)
+    for tr in driver.find_elements(By.CSS_SELECTOR,"table.tb01 tbody tr"):
+        tds=tr.find_elements(By.TAG_NAME,"td")
+        vals=[td.text.strip() for td in tds]
+        if not vals: continue
+        links=[]
+        for a in tr.find_elements(By.TAG_NAME,"a"):
+            links.append({
+                "text":a.text.strip(),
+                "href":a.get_attribute("href"),
+                "onclick":a.get_attribute("onclick"),
+            })
+        out.append({"cells":vals,"links":links})
+finally:
+    driver.quit()
 Path("analysis").mkdir(exist_ok=True)
-Path("analysis/dart_bulk_probe.json").write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding="utf-8")
-print(json.dumps(out,ensure_ascii=False,indent=2)[:30000])
+Path("analysis/dart_bulk_selenium_probe.json").write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding="utf-8")
+print(json.dumps(out[:10],ensure_ascii=False,indent=2))
