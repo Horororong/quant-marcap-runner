@@ -3,4 +3,4 @@ book_period,UNAVAILABLE,The supplied source extract does not expose an exact boo
 2000_to_latest,UNAVAILABLE,Legacy 2000~2014 PIT filing parser/backfill is not complete enough for an unbiased all-stock factor panel.
 2021_to_latest,UNAVAILABLE,A fully contiguous PIT factor panel from 2021 through the latest KRX date is not yet complete.
 longest_to_latest,UNAVAILABLE,KRX price history is longer than the currently complete PIT financial-factor history.
-verified_contiguous_PIT,AVAILABLE,CFS-first/OFS-fallback PIT coverage is complete at each validated signal from 2016-10-31 through 2020-10-30; holdings are measured through 2021-04-30.
+verified_contiguous_PIT,AVAILABLE,CFS-first/OFS-fallback PIT coverage is complete at each validated signal from 2016-10-31 through 2021-04-30; holdings are measured through 2021-10-29.
