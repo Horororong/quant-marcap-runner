@@ -1,4 +1,5 @@
-# manual-retry-20260924-0946
+# Resume the next missing signal after successful run 35939950187 (6000 tasks).
+# Data continuation only: legacy super_value_v216 performance remains unaudited.
 from __future__ import annotations
 
 import importlib.util
