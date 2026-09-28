@@ -134,6 +134,12 @@ ALIASES = {
     "dividends_paid": [
         "배당금의지급", "배당금지급", "현금배당금의지급", "현금배당금지급",
     ],
+    "cash_dividend_total": [
+        "현금배당금총액", "현금배당금합계", "배당금총액",
+    ],
+    "dividend_per_share": [
+        "주당현금배당금", "주당배당금", "보통주주당현금배당금",
+    ],
 }
 
 # Accepted financial-statement context for each canonical input.  An empty
@@ -602,6 +608,16 @@ def detect_unit(text: str) -> tuple[str, float]:
     return u, UNIT_MULTIPLIERS[u]
 
 
+def detect_inline_unit(text: str) -> tuple[str, float]:
+    """Read units embedded in a row label, e.g. 현금배당금총액(백만원)."""
+    s = re.sub(r"\s+", "", str(text or ""))
+    m = re.search(r"[\[(（(](백만원|천원|억원|원)[\])）\]]", s)
+    if not m:
+        return "", math.nan
+    u = m.group(1)
+    return u, UNIT_MULTIPLIERS[u]
+
+
 def infer_scope(context: str) -> str:
     s = re.sub(r"\s+", "", str(context or ""))
     if "연결재무" in s or "연결대차대조표" in s or "연결손익계산서" in s or "연결현금흐름표" in s:
@@ -700,16 +716,19 @@ def table_candidates(text: str) -> list[dict]:
                         break
                 if math.isnan(val):
                     continue
-                amount_krw = val * mult if not math.isnan(mult) else math.nan
+                row_unit, row_mult = detect_inline_unit(cell)
+                use_unit = unit or row_unit
+                use_mult = mult if not math.isnan(mult) else row_mult
+                amount_krw = val * use_mult if not math.isnan(use_mult) else math.nan
                 conf = 0.45
                 if statement: conf += 0.20
                 if priority < 10: conf += 0.15
-                if unit: conf += 0.15
+                if use_unit: conf += 0.15
                 if scope == "CFS": conf += 0.02
                 out.append({
                     "metric":metric, "scope":scope, "statement":statement,
                     "account_name":cell, "raw_amount":raw_val, "amount_reported":val,
-                    "unit":unit, "unit_multiplier":mult, "amount_krw":amount_krw,
+                    "unit":use_unit, "unit_multiplier":use_mult, "amount_krw":amount_krw,
                     "priority":priority, "parser_confidence":min(conf,0.99),
                     "table_index":ti, "row_index":ri, "value_col":value_col,
                 })
