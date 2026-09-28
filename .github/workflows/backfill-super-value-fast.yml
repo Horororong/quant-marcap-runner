@@ -2,9 +2,6 @@ name: Fast-backfill super-value PIT inputs
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'scripts/backfill_super_value_fast.py'
   schedule:
     # 00:30 KST daily = 15:30 UTC previous day.
     # Dedicated catch-up path for the super-value strategy.
