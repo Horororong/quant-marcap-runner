@@ -189,6 +189,14 @@ def audit_one(meta: dict, stored: pd.DataFrame, state_row: pd.Series) -> dict:
     except Exception as e:
         reasons.append(f"fresh fetch exception:{type(e).__name__}:{e}")
 
+    detail_parts = []
+    for _, rr in stored.sort_values(["scope", "metric"]).iterrows():
+        detail_parts.append(
+            f"{rr.get('metric')}|{rr.get('scope')}|stmt={rr.get('statement')}|"
+            f"acct={rr.get('account_name')}|raw={rr.get('raw_amount')}|"
+            f"unit={rr.get('unit')}|krw={rr.get('amount_krw')}"
+        )
+
     audit_ok = bool(structural_ok and fresh_reparse_ok and mapping_ok)
     return {
         "rcept_no": rcept,
@@ -205,6 +213,7 @@ def audit_one(meta: dict, stored: pd.DataFrame, state_row: pd.Series) -> dict:
         "mapping_ok": mapping_ok,
         "audit_ok": audit_ok,
         "issues": " | ".join(dict.fromkeys(reasons)),
+        "stored_metric_details": " || ".join(detail_parts),
     }
 
 
