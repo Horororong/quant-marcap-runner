@@ -1,0 +1,44 @@
+name: Validate legacy parser schema
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/backfill_dart_legacy_2000_2014.py'
+      - 'scripts/backfill_super_value_fast.py'
+      - '.github/workflows/validate-legacy-parser.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install parser dependencies
+        run: pip install pandas requests beautifulsoup4 lxml
+      - name: Compile parser
+        run: python -m py_compile scripts/backfill_dart_legacy_2000_2014.py scripts/backfill_super_value_fast.py
+      - name: Schema sanity
+        run: |
+          python - <<'PY'
+          import sys
+          sys.path.insert(0, "scripts")
+          import backfill_dart_legacy_2000_2014 as m
+          required = {
+              "equity","revenue","net_income","ocf",
+              "total_assets","total_liabilities","current_assets","current_liabilities",
+              "cash_and_equivalents","short_term_borrowings","long_term_borrowings",
+              "operating_income","gross_profit","ppe","capex_ppe",
+              "depreciation","amortization","dividends_paid",
+              "cash_dividend_total","dividend_per_share",
+          }
+          missing = required - set(m.ALIASES)
+          assert not missing, f"missing canonical metrics: {sorted(missing)}"
+          assert m.CORE_4F == {"equity","revenue","net_income","ocf"}
+          print("legacy schema OK:", m.PARSER_VERSION, len(m.ALIASES), "canonical metrics")
+          PY
