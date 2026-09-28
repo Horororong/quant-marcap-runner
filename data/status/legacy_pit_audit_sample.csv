@@ -1,0 +1,37 @@
+﻿rcept_no,fiscal_year,period,stock_code,status,best_scope,stored_rows,fresh_rows,metric_match_count,structural_checks_ok,fresh_reparse_ok,mapping_ok,audit_ok,issues
+20000131000001,1998.0,FY,008080,PARSED_4F,OFS,4,4,4,True,True,True,True,
+20000329000439,1999.0,FY,009470,PARSED_4F,OFS,5,5,4,False,True,True,False,statement mismatch:revenue:nan
+20000330000192,1999.0,FY,000140,PARSED_4F,OFS,7,7,4,False,True,True,False,statement mismatch:equity:nan | statement mismatch:net_income:nan | statement mismatch:revenue:nan
+20000329000363,1999.0,FY,004380,PARSED_4F,CFS,8,8,4,True,True,True,True,
+20000329000180,1999.0,FY,025860,PARSED_4F,OFS,4,4,4,True,True,True,True,
+20000328000155,1999.0,FY,009360,PARSED_4F,CFS,8,8,4,True,True,True,True,
+20000328000171,1999.0,FY,012410,PARSED_4F,OFS,7,7,4,False,True,True,False,statement mismatch:equity:nan | statement mismatch:net_income:nan | statement mismatch:revenue:nan
+20000512000483,2000.0,Q1,000480,PARSED_4F,OFS,7,7,4,True,True,True,True,
+20000513000139,2000.0,H1,019540,PARSED_4F,OFS,4,4,4,True,True,True,True,
+20000515000106,2000.0,Q1,000850,PARSED_4F,OFS,7,7,4,True,True,True,True,
+20000515000145,2000.0,Q1,000050,PARSED_4F,OFS,7,7,4,True,True,True,True,
+20000515000183,2000.0,Q1,026940,PARSED_4F,OFS,4,4,4,True,True,True,True,
+20000513000315,2000.0,Q1,023900,PARSED_4F,OFS,4,4,4,False,True,True,False,statement mismatch:equity:nan | statement mismatch:net_income:nan | statement mismatch:revenue:nan
+20020401001508,2001.0,FY,002250,PARSED_4F,OFS,4,4,4,True,True,True,True,
+20020328000243,2001.0,FY,001070,PARSED_4F,OFS,4,4,4,True,True,True,True,
+20020401001459,2001.0,FY,002270,PARSED_4F,OFS,4,4,4,False,True,True,False,statement mismatch:net_income:nan
+20020401001149,2001.0,FY,002300,PARSED_4F,OFS,7,7,4,True,True,True,True,
+20020401000134,2001.0,FY,000700,PARSED_4F,OFS,7,7,4,False,True,True,False,statement mismatch:equity:nan | statement mismatch:net_income:nan | statement mismatch:revenue:nan
+20020328000110,2001.0,FY,002600,PARSED_4F,OFS,4,4,4,True,True,True,True,
+20000330000199,1999.0,FY,004550,PARSED_4F,CFS,8,8,4,True,True,True,True,
+20000330000292,1999.0,FY,009160,PARSED_4F,OFS,4,4,4,True,True,True,True,
+20000330000455,1999.0,FY,002420,PARSED_4F,OFS,4,4,4,True,True,True,True,
+20000330000365,1999.0,FY,032590,PARSED_4F,OFS,4,4,4,True,True,True,True,
+20000330000277,1999.0,FY,012250,PARSED_4F,OFS,4,4,4,True,True,True,True,
+20000331000177,1999.0,FY,022510,PARSED_PARTIAL,OFS,3,3,3,False,True,True,False,statement mismatch:equity:nan | statement mismatch:net_income:nan | statement mismatch:revenue:nan
+20000330000605,1999.0,FY,007860,PARSED_PARTIAL,nan,2,2,2,False,True,True,False,statement mismatch:equity:nan | missing/bad unit:equity:nan | unit conversion mismatch:equity | statement mismatch:revenue:nan | missing/bad unit:revenue:nan | unit conversion mismatch:revenue
+20000330000816,1999.0,FY,002600,PARSED_PARTIAL,OFS,3,3,3,False,True,True,False,statement mismatch:equity:nan | statement mismatch:net_income:nan | statement mismatch:revenue:nan
+20000330000380,1999.0,FY,035720,PARSED_PARTIAL,OFS,3,3,3,False,True,True,False,statement mismatch:equity:nan | statement mismatch:net_income:nan | statement mismatch:revenue:nan
+20000814000607,2000.0,H1,005090,PARSED_PARTIAL,OFS,1,1,1,False,True,True,False,statement mismatch:revenue:nan
+20000513000242,2000.0,Q1,015020,PARSED_PARTIAL,OFS,2,2,2,False,True,True,False,statement mismatch:equity:nan | statement mismatch:revenue:nan | missing/bad unit:revenue:nan | unit conversion mismatch:revenue
+20000510000030,2000.0,Q1,011390,PARSED_PARTIAL,OFS,2,2,2,True,True,True,True,
+20000513000333,2000.0,Q1,012790,PARSED_PARTIAL,OFS,1,1,1,False,True,True,False,statement mismatch:revenue:nan
+20000811000220,2001.0,Q1,003000,PARSED_PARTIAL,nan,1,1,1,False,True,True,False,statement mismatch:equity:nan | missing/bad unit:equity:nan | unit conversion mismatch:equity
+20000812000286,2001.0,Q1,018500,PARSED_PARTIAL,OFS,2,2,2,False,True,True,False,statement mismatch:equity:nan | statement mismatch:revenue:nan
+20020328000731,2001.0,FY,002780,PARSED_PARTIAL,OFS,3,3,3,False,True,True,False,statement mismatch:net_income:nan | statement mismatch:revenue:nan
+20000816000132,2001.0,Q1,003590,PARSED_PARTIAL,OFS,1,1,1,False,True,True,False,statement mismatch:revenue:nan
