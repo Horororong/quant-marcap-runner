@@ -14,13 +14,9 @@ OUT_SUMMARY = Path("data/status/legacy_pit_audit_summary.csv")
 FULL_N = max(1, int(os.getenv("LEGACY_AUDIT_SAMPLE", "24")))
 PARTIAL_N = max(4, FULL_N // 2)
 
-EXPECTED_STATEMENT = {
-    "equity": "BS",
-    "revenue": "IS",
-    "net_income": "IS",
-    "ocf": "CF",
-}
-VALID_METRICS = set(EXPECTED_STATEMENT)
+EXPECTED_STATEMENTS = legacy.METRIC_STATEMENTS
+CORE_METRICS = set(legacy.CORE_4F)
+VALID_METRICS = set(legacy.ALIASES)
 VALID_SCOPES = {"CFS", "OFS"}
 VALID_UNITS = set(legacy.UNIT_MULTIPLIERS)
 
@@ -126,7 +122,8 @@ def audit_one(meta: dict, stored: pd.DataFrame, state_row: pd.Series) -> dict:
         if metric not in VALID_METRICS:
             structural_ok = False
             reasons.append(f"unexpected metric:{metric}")
-        if metric in EXPECTED_STATEMENT and statement != EXPECTED_STATEMENT[metric]:
+        allowed_statements = EXPECTED_STATEMENTS.get(metric, set())
+        if statement and allowed_statements and statement not in allowed_statements:
             structural_ok = False
             reasons.append(f"statement mismatch:{metric}:{statement}")
         if scope not in VALID_SCOPES:
@@ -145,10 +142,10 @@ def audit_one(meta: dict, stored: pd.DataFrame, state_row: pd.Series) -> dict:
             scope: set(stored.loc[stored["scope"].eq(scope), "metric"].astype(str))
             for scope in VALID_SCOPES
         }
-        if not any(VALID_METRICS.issubset(v) for v in by_scope.values()):
+        if not any(CORE_METRICS.issubset(v) for v in by_scope.values()):
             structural_ok = False
             reasons.append("PARSED_4F missing 4 metrics in a single scope")
-        if best_scope and not VALID_METRICS.issubset(by_scope.get(best_scope, set())):
+        if best_scope and not CORE_METRICS.issubset(by_scope.get(best_scope, set())):
             structural_ok = False
             reasons.append("best_scope does not contain all 4 metrics")
 
