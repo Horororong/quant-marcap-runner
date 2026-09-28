@@ -25,7 +25,7 @@ MAX_INDEX_TASKS = max(1, int(os.getenv("LEGACY_DART_INDEX_TASKS", "6")))
 MAX_DOCS = max(1, int(os.getenv("LEGACY_DART_MAX_DOCS", "20")))
 WORKERS = max(1, min(8, int(os.getenv("LEGACY_DART_WORKERS", "4"))))
 BASE = "https://opendart.fss.or.kr/api"
-PARSER_VERSION = "legacy-v2"
+PARSER_VERSION = "legacy-v3-book"
 
 ROOT = Path("data/financials/legacy_2000_2014")
 NORM_DIR = ROOT / "normalized"
@@ -54,6 +54,12 @@ CORP_CLASSES = ("Y", "K", "E")
 PERIODIC_RE = re.compile(r"(사업보고서|반기보고서|분기보고서)")
 PERIOD_END_RE = re.compile(r"\((\d{4})[.\-/](\d{1,2})(?:[.\-/](\d{1,2}))?\)")
 
+CORE_4F = {"equity", "revenue", "net_income", "ocf"}
+
+# Canonical raw inputs needed to reproduce the stock-selection examples in
+# Kang Hwan-kuk's "하면 된다! 퀀트 투자".  Derived factors (PER/PBR/PFCR,
+# GP/A, NCAV, ROC, F-score, growth, etc.) are intentionally calculated later
+# from point-in-time raw values rather than stored here.
 ALIASES = {
     "equity": [
         "자본총계", "자본합계", "자기자본", "자본총액", "자본",
@@ -69,13 +75,96 @@ ALIASES = {
         "영업활동으로인한현금흐름", "영업활동현금흐름", "영업활동으로부터의현금흐름",
         "영업활동에의한현금흐름", "영업활동으로부터의순현금흐름",
     ],
+    "total_assets": [
+        "자산총계", "총자산", "자산합계",
+    ],
+    "total_liabilities": [
+        "부채총계", "총부채", "부채합계",
+    ],
+    "current_assets": [
+        "유동자산", "유동자산총계", "유동자산합계",
+    ],
+    "current_liabilities": [
+        "유동부채", "유동부채총계", "유동부채합계",
+    ],
+    "cash_and_equivalents": [
+        "현금및현금성자산", "현금및현금등가물", "현금및현금성자산합계",
+    ],
+    "short_term_borrowings": [
+        "단기차입금", "단기차입금합계", "단기금융부채",
+    ],
+    "current_portion_long_term_debt": [
+        "유동성장기부채", "유동성장기차입금", "유동성사채",
+    ],
+    "long_term_borrowings": [
+        "장기차입금", "장기차입금합계", "장기금융부채",
+    ],
+    "bonds_payable": [
+        "사채", "회사채", "사채합계",
+    ],
+    "operating_income": [
+        "영업이익", "영업이익(손실)", "영업손익", "영업손실",
+    ],
+    "gross_profit": [
+        "매출총이익", "매출총이익(손실)", "매출총손익", "매출총손실",
+    ],
+    "cost_of_sales": [
+        "매출원가", "영업비용",
+    ],
+    "ppe": [
+        "유형자산", "유형자산합계", "유형자산순액",
+    ],
+    "capex_ppe": [
+        "유형자산의취득", "유형자산취득", "유형자산의취득으로인한현금유출",
+        "유형자산취득으로인한현금유출",
+    ],
+    "capex_intangibles": [
+        "무형자산의취득", "무형자산취득", "무형자산의취득으로인한현금유출",
+        "무형자산취득으로인한현금유출",
+    ],
+    "depreciation": [
+        "감가상각비", "유형자산감가상각비",
+    ],
+    "amortization": [
+        "무형자산상각비", "무형자산감가상각비",
+    ],
+    "ebitda": [
+        "EBITDA", "상각전영업이익",
+    ],
+    "dividends_paid": [
+        "배당금의지급", "배당금지급", "현금배당금의지급", "현금배당금지급",
+    ],
 }
-STATEMENT_HINTS = {
-    "equity": ("대차대조표", "재무상태표"),
-    "revenue": ("손익계산서", "포괄손익계산서"),
-    "net_income": ("손익계산서", "포괄손익계산서"),
-    "ocf": ("현금흐름표",),
+
+# Accepted financial-statement context for each canonical input.  An empty
+# inferred context is still allowed for old filings whose HTML headings are
+# malformed; parser_confidence records that limitation for later quality gates.
+METRIC_STATEMENTS = {
+    "equity": {"BS"},
+    "total_assets": {"BS"},
+    "total_liabilities": {"BS"},
+    "current_assets": {"BS"},
+    "current_liabilities": {"BS"},
+    "cash_and_equivalents": {"BS"},
+    "short_term_borrowings": {"BS"},
+    "current_portion_long_term_debt": {"BS"},
+    "long_term_borrowings": {"BS"},
+    "bonds_payable": {"BS"},
+    "ppe": {"BS"},
+    "revenue": {"IS"},
+    "net_income": {"IS"},
+    "operating_income": {"IS"},
+    "gross_profit": {"IS"},
+    "cost_of_sales": {"IS"},
+    "ebitda": {"IS"},
+    "ocf": {"CF"},
+    "capex_ppe": {"CF"},
+    "capex_intangibles": {"CF"},
+    "depreciation": {"CF", "IS"},
+    "amortization": {"CF", "IS"},
+    "dividends_paid": {"CF"},
 }
+
 UNIT_MULTIPLIERS = {
     "원": 1.0,
     "천원": 1_000.0,
@@ -553,9 +642,8 @@ def choose_metric(account: str, statement: str) -> tuple[str, int] | tuple[None,
     best_score = 999
     for metric, aliases in ALIASES.items():
         if statement:
-            hints = STATEMENT_HINTS[metric]
-            required = "BS" if metric == "equity" else ("CF" if metric == "ocf" else "IS")
-            if statement != required:
+            allowed = METRIC_STATEMENTS.get(metric, set())
+            if allowed and statement not in allowed:
                 continue
         for rank, alias in enumerate(aliases):
             na = norm_account(alias)
@@ -703,7 +791,7 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
         scopes={}
         for scope in ("CFS","OFS"):
             have={r["metric"] for r in rows if r["scope"]==scope and not math.isnan(float(r["amount_krw"]))}
-            scopes[scope]=len(have)
+            scopes[scope]=len(have & CORE_4F)
         usable=max(scopes.values()) if scopes else 0
         best_scope=max(scopes,key=scopes.get) if usable > 0 else ""
         status="PARSED_4F" if usable>=4 else ("PARSED_PARTIAL" if rows else "NO_METRICS")
