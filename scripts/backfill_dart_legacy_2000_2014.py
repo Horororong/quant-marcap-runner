@@ -88,6 +88,11 @@ class RateLimitExceeded(RuntimeError):
     pass
 
 
+class DocumentUnavailable(RuntimeError):
+    """DART confirmed that the original filing document does not exist (status 014)."""
+    pass
+
+
 def now_utc() -> str:
     return datetime.now(timezone.utc).isoformat()
 
@@ -647,8 +652,10 @@ def fetch_document(rcept_no: str) -> tuple[bytes, str]:
             r.raise_for_status()
             if r.content[:2] != b"PK":
                 txt=r.text[:500]
-                if "020" in txt:
+                if "<status>020</status>" in txt or "요청 제한을 초과" in txt:
                     raise RateLimitExceeded(txt)
+                if "<status>014</status>" in txt or "파일이 존재하지 않습니다" in txt:
+                    raise DocumentUnavailable(txt)
                 raise RuntimeError(f"document not zip: {txt}")
             return r.content, hashlib.sha256(r.content).hexdigest()
         except RateLimitExceeded:
@@ -706,6 +713,9 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
             "document_sha256":sha,"parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":""
         }
         return rows,state
+    except DocumentUnavailable as e:
+        return [],{"rcept_no":rcept,"status":"NO_DOCUMENT","metric_rows":0,"best_scope":"",
+                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":repr(e)}
     except RateLimitExceeded as e:
         return [],{"rcept_no":rcept,"status":"RATE_LIMIT","metric_rows":0,"best_scope":"",
                    "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":repr(e)}
@@ -732,7 +742,7 @@ def process_pending(idx: pd.DataFrame) -> None:
     if idx.empty:
         return
     state=load_csv(STATE_FILE,dtype={"rcept_no":str})
-    terminal={"PARSED_4F","PARSED_PARTIAL","NO_METRICS"}
+    terminal={"PARSED_4F","PARSED_PARTIAL","NO_METRICS","NO_DOCUMENT"}
     if not state.empty and "parser_version" in state.columns:
         done=set(state.loc[state["status"].isin(terminal) & state["parser_version"].eq(PARSER_VERSION),"rcept_no"].astype(str))
     else:
@@ -778,7 +788,7 @@ def write_coverage(idx: pd.DataFrame) -> None:
         x=x.merge(state[keep].drop_duplicates("rcept_no",keep="last"),on="rcept_no",how="left")
     else:
         x["status"]=""; x["usable_metric_count"]=0
-    x["processed"]=x["status"].isin(["PARSED_4F","PARSED_PARTIAL","NO_METRICS"])
+    x["processed"]=x["status"].isin(["PARSED_4F","PARSED_PARTIAL","NO_METRICS","NO_DOCUMENT"])
     x["usable_4f"]=x["status"].eq("PARSED_4F")
 
     cov=x.groupby(["fiscal_year","period"],dropna=False).agg(
