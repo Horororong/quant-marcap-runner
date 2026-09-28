@@ -257,7 +257,7 @@ def legacy_done_set() -> set[str]:
     s = pd.read_csv(legacy.STATE_FILE, dtype={"rcept_no": str})
     if s.empty:
         return set()
-    terminal = {"PARSED_4F", "PARSED_PARTIAL", "NO_METRICS"}
+    terminal = {"PARSED_4F", "PARSED_PARTIAL", "NO_METRICS", "NO_DOCUMENT"}
     if "parser_version" in s.columns:
         s = s[s["parser_version"].eq(legacy.PARSER_VERSION)]
     return set(s.loc[s["status"].isin(terminal), "rcept_no"].astype(str))
