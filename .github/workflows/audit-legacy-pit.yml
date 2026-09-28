@@ -2,9 +2,6 @@ name: Audit legacy PIT sample
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'scripts/audit_legacy_pit_sample.py'
 
 permissions:
   contents: write
