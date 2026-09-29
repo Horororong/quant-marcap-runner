@@ -3,6 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 import json
 import importlib.util
+import sys
 
 import numpy as np
 import pandas as pd
@@ -12,6 +13,7 @@ _spec = importlib.util.spec_from_file_location("quant_backtest_template_v216_cur
 if _spec is None or _spec.loader is None:
     raise ImportError(f"cannot load CURRENT template: {_TEMPLATE_PATH}")
 _qbt = importlib.util.module_from_spec(_spec)
+sys.modules[_spec.name] = _qbt
 _spec.loader.exec_module(_qbt)
 BacktestConfig = _qbt.BacktestConfig
 TradingCostAssumptions = _qbt.TradingCostAssumptions
