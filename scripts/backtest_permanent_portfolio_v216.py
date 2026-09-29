@@ -170,6 +170,18 @@ def build_chart_rows(results: dict) -> None:
 
 
 def main() -> None:
+    # exchange_calendars 4.x defaults to a rolling ~20-year schedule when no
+    # explicit bounds are supplied. CURRENT v2-16 asks get_calendar("XNYS")
+    # without bounds, so widen that lookup for the 1970 historical audit while
+    # preserving the real XNYS session calendar.
+    import exchange_calendars as xcals
+    _real_get_calendar = xcals.get_calendar
+    def _wide_get_calendar(name, start=None, end=None, side=None):
+        if str(name).upper() == "XNYS" and start is None and end is None:
+            return _real_get_calendar(name, start="1969-01-01", end="2027-12-31", side=side)
+        return _real_get_calendar(name, start=start, end=end, side=side)
+    xcals.get_calendar = _wide_get_calendar
+
     returns, data_meta = load_returns_panel()
     prices = returns_to_synthetic_prices(returns)
     signals = annual_equal_weight_signals(prices.index)
