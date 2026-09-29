@@ -1,0 +1,40 @@
+name: Backtest permanent portfolio CURRENT v2-16
+
+on:
+  push:
+    branches:
+      - chatgpt/permanent-v216-20260929
+    paths:
+      - 'scripts/backtest_permanent_portfolio_v216.py'
+      - 'scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py'
+      - '.github/workflows/backtest-permanent-v216.yml'
+      - 'data/proxy_long/derived/permanent_portfolio_asset_returns_daily.csv'
+      - 'data/etf_us/SPY.csv'
+      - 'data/etf_us/TLT.csv'
+      - 'data/etf_us/GLD.csv'
+      - 'data/etf_us/BIL.csv'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install pandas numpy exchange-calendars
+      - name: Run CURRENT v2-16 self-test
+        run: python scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py
+      - name: Run strategy 3 permanent portfolio
+        run: python scripts/backtest_permanent_portfolio_v216.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: permanent-portfolio-v216-results
+          path: results/permanent_portfolio_v216/
+          if-no-files-found: error
