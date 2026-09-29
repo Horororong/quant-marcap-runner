@@ -1,0 +1,64 @@
+{
+  "status": "COMPLETE_WITH_LIMITATIONS",
+  "as_of": "2026-09-29",
+  "formal_performance_end": "2026-08-31",
+  "latest_daily_date": "2026-09-25",
+  "engine": "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py",
+  "engine_version": "v2-16",
+  "strategy": "SPY/TLT/GLD/BIL economic sleeves, 25% each, annual rebalance",
+  "execution": "signal on prior year final session; next XNYS session close execution; effective following return interval",
+  "book_period": "1970-01 through 2021-12",
+  "initial_capital_usd": 10000.0,
+  "benchmark": "S&P 500 total-return proxy from STOCK sleeve",
+  "cost_scenarios": {
+    "min_0bp": "0bp",
+    "base_5bp": "2bp spread + 3bp slippage on traded notional",
+    "conservative_15bp": "5bp spread + 10bp slippage on traded notional"
+  },
+  "taxes": "not included (investor-specific taxes excluded)",
+  "data": {
+    "derived_start": "1970-01-02",
+    "derived_original_end": "2026-08-19",
+    "extended_end": "2026-09-25",
+    "actual_etf_last_dates": {
+      "STOCK": "2026-09-25",
+      "LONG_TREASURY": "2026-09-25",
+      "GOLD": "2026-09-25",
+      "TBILL": "2026-09-25"
+    },
+    "recent_overlap_check": {
+      "STOCK": {
+        "n": 62,
+        "max_abs_daily_return_diff": 6.949904983195171e-08,
+        "mean_abs_daily_return_diff": 3.02198518408334e-08
+      },
+      "LONG_TREASURY": {
+        "n": 62,
+        "max_abs_daily_return_diff": 2.7344249705490986e-07,
+        "mean_abs_daily_return_diff": 5.108780846761132e-08
+      },
+      "GOLD": {
+        "n": 62,
+        "max_abs_daily_return_diff": 9.8879238130678e-17,
+        "mean_abs_daily_return_diff": 4.960574681757469e-17
+      },
+      "TBILL": {
+        "n": 62,
+        "max_abs_daily_return_diff": 1.6854881169654345e-07,
+        "mean_abs_daily_return_diff": 2.7141830916299528e-08
+      }
+    }
+  },
+  "data_method": {
+    "STOCK": "S&P500 price + Shiller dividend reconstruction, then SPY Adj Close; extended with SPY Adj Close",
+    "LONG_TREASURY": "synthetic 20Y constant-maturity Treasury return, then TLT Adj Close; extended with TLT Adj Close",
+    "GOLD": "LBMA PM USD gold, then GLD Adj Close; extended with GLD Adj Close",
+    "TBILL": "3M T-bill accrued return, then BIL Adj Close; extended with BIL Adj Close"
+  },
+  "limitations": [
+    "Pre-ETF history uses reconstructed proxies, so it is not directly executable ETF history.",
+    "Gold pre-GLD history is spot gold while GLD later includes fund expenses.",
+    "Long-Treasury pre-TLT history is a duration/coupon model, so model error can materially affect historical drawdowns.",
+    "Template Sharpe uses monthly returns and a constant annual risk-free rate of 0%; the book's Sharpe methodology is not stated."
+  ]
+}
