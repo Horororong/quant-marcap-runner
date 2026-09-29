@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   backtest:
@@ -38,3 +38,14 @@ jobs:
           name: permanent-portfolio-v216-results
           path: results/permanent_portfolio_v216/
           if-no-files-found: error
+      - name: Commit results to branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/permanent_portfolio_v216
+          if git diff --cached --quiet; then
+            echo 'No result changes'
+          else
+            git commit -m 'Add permanent portfolio CURRENT v2-16 results'
+            git push
+          fi
