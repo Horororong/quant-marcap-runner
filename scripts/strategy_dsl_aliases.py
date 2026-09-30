@@ -40,6 +40,28 @@ def normalize_alias_term(value: str) -> str:
     return re.sub(r"[\s_\-./]+", "", s)
 
 
+DIRECTION_ALIASES: dict[str, tuple[str, ...]] = {
+    "low": ("low", "lower", "낮은", "낮게", "작은", "적은", "저"),
+    "high": ("high", "higher", "높은", "높게", "큰", "많은", "고"),
+}
+
+
+def resolve_direction_alias(term: str) -> str:
+    key = normalize_alias_term(term)
+    matches = [
+        direction
+        for direction, terms in DIRECTION_ALIASES.items()
+        if key in {normalize_alias_term(x) for x in terms}
+    ]
+    if len(matches) != 1:
+        raise ValueError(f"unsupported or ambiguous direction alias: {term!r}")
+    return matches[0]
+
+
+def direction_alias_catalog() -> dict[str, list[str]]:
+    return {direction: list(terms) for direction, terms in DIRECTION_ALIASES.items()}
+
+
 ALIAS_RULES: tuple[FactorAliasRule, ...] = (
     FactorAliasRule(
         terms=("PER", "P/E", "주가수익비율"),
@@ -152,9 +174,7 @@ def resolve_factor_alias(term: str, requested_direction: str | None = None) -> d
     except KeyError as exc:
         raise ValueError(f"unsupported factor alias: {term!r}") from exc
 
-    direction = requested_direction.lower().strip() if requested_direction is not None else None
-    if direction not in {None, "high", "low"}:
-        raise ValueError("requested_direction must be high, low, or None")
+    direction = resolve_direction_alias(requested_direction) if requested_direction is not None else None
 
     if rule.fixed_direction is not None:
         if direction is not None and direction != rule.fixed_direction:
