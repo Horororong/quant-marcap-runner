@@ -3,6 +3,7 @@ from __future__ import annotations
 from strategy_dsl_aliases import (
     ALIAS_RULES,
     alias_catalog,
+    resolve_direction_alias,
     resolve_factor_alias,
     supported_alias_terms,
 )
@@ -10,12 +11,15 @@ from factor_registry import get_factor_definition
 
 
 def main() -> None:
-    per = resolve_factor_alias("PER", "low")
+    assert resolve_direction_alias("낮은") == "low"
+    assert resolve_direction_alias("높은") == "high"
+
+    per = resolve_factor_alias("PER", "낮은")
     assert per["source"] == "dart"
     assert per["field"] == "earnings_yield"
     assert per["direction"] == "high"
 
-    pbr = resolve_factor_alias("주가순자산비율", "low")
+    pbr = resolve_factor_alias("주가순자산비율", "낮은")
     assert pbr["field"] == "book_to_price"
     assert pbr["direction"] == "high"
 
@@ -32,7 +36,7 @@ def main() -> None:
     assert large["field"] == "Marcap"
     assert large["direction"] == "high"
 
-    amount = resolve_factor_alias("거래대금", "high")
+    amount = resolve_factor_alias("거래대금", "높은")
     assert amount["field"] == "Amount"
     assert amount["direction"] == "high"
 
