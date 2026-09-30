@@ -35,7 +35,7 @@ See `config/strategies/super_value_dart_dsl.json`.
 
 ## Corporate actions
 
-Execution does not silently convert missing held-price returns to 0% or -100%. Reviewed stock mergers can be registered in `config/corporate_actions.json`. During a declared suspension the engine carries the last observable old-share value for valuation while keeping the asset non-tradable; from the successor's trading date, the synthetic old-share claim is valued as `share_ratio × successor close`. Applied events are written to `corporate_action_audit.csv`.
+Execution does not silently convert missing held-price returns to 0% or -100%. Reviewed stock mergers can be registered in `config/corporate_actions.json`. From suspension until legal effectiveness, the engine carries the last observable old-share value for valuation only. From the legal effective date, the synthetic old-share claim is valued as `share_ratio × successor close`; it remains non-tradable until the successor/new shares become tradable. Applied events are written to `corporate_action_audit.csv`.
 
 The first registered regression case is Korean Paper (002300) -> Haesung Industrial (034810), effective 2020-07-01, exchange ratio 1.666146, successor trading from 2020-07-13.
 
