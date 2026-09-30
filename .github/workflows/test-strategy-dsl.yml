@@ -7,9 +7,11 @@ on:
       - 'scripts/strategy_dsl.py'
       - 'scripts/strategy_dsl_runner.py'
       - 'scripts/dart_value_factor_adapter.py'
+      - 'scripts/corporate_action_adapter.py'
       - 'scripts/test_dart_dsl_super_value.py'
       - 'scripts/test_strategy_dsl.py'
       - 'config/strategies/**'
+      - 'config/corporate_actions.csv'
       - '.github/workflows/test-strategy-dsl.yml'
       - 'scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py'
 
@@ -35,7 +37,7 @@ jobs:
           pip install pandas numpy pyarrow exchange_calendars plotly
       - name: Syntax check
         run: |
-          python -m py_compile scripts/strategy_dsl.py scripts/strategy_dsl_runner.py scripts/dart_value_factor_adapter.py scripts/test_strategy_dsl.py scripts/test_dart_dsl_super_value.py
+          python -m py_compile scripts/strategy_dsl.py scripts/strategy_dsl_runner.py scripts/dart_value_factor_adapter.py scripts/corporate_action_adapter.py scripts/test_strategy_dsl.py scripts/test_dart_dsl_super_value.py
       - name: Validate example DSL
         run: python scripts/strategy_dsl_runner.py config/strategies/kr_equity_rank_demo.json --validate-only
       - name: Integration smoke test against PROJECT v2-16
