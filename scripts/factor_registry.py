@@ -72,6 +72,18 @@ def supported_sources() -> list[str]:
     return sorted({source for source, _ in FACTOR_DEFINITIONS})
 
 
+def factor_catalog() -> list[dict[str, str]]:
+    return [
+        {
+            "source": definition.source,
+            "field": definition.field,
+            "storage": definition.storage,
+            "description": definition.description,
+        }
+        for _, definition in sorted(FACTOR_DEFINITIONS.items())
+    ]
+
+
 def supported_fields(source: str) -> list[str]:
     src = str(source).strip().lower()
     return sorted(field for (source_, field) in FACTOR_DEFINITIONS if source_ == src)
