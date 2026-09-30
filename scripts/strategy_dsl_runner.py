@@ -248,6 +248,60 @@ def engine_inputs(spec: StrategySpec, engine) -> tuple[Any, dict[str, Any], Any]
     return cfg, costs, execution
 
 
+
+def execute_daily_nav(
+    engine,
+    close_prices: pd.DataFrame,
+    target_weights: pd.DataFrame,
+    cost_scenarios: dict[str, Any],
+    execution_assumptions: Any,
+    initial_capital: float,
+    tradable_mask: pd.DataFrame | None = None,
+) -> dict[str, Any]:
+    """Convert deterministic target weights into full daily NAV only.
+
+    Strategy DSL owns strategy interpretation and portfolio construction.
+    PROJECT v2-16 owns execution, turnover and costs. Canonical performance
+    metrics remain a separate CURRENT postprocess step.
+    """
+    if not cost_scenarios:
+        raise ValueError("cost_scenarios must not be empty")
+
+    combined_daily: pd.DataFrame | None = None
+    gross_reference: pd.Series | None = None
+    executions: dict[str, Any] = {}
+
+    for name, cost in cost_scenarios.items():
+        exout = engine.simulate_target_weight_portfolio(
+            close_prices=close_prices,
+            target_weights=target_weights,
+            cost_assumptions=cost,
+            execution_assumptions=execution_assumptions,
+            tradable_mask=tradable_mask,
+            initial_capital=initial_capital,
+        )
+        executions[name] = exout
+        d = exout["daily_nav"]
+        if gross_reference is None:
+            gross_reference = d["Gross"].copy()
+            combined_daily = pd.DataFrame({"Gross": gross_reference})
+        elif not np.allclose(
+            gross_reference.to_numpy(),
+            d["Gross"].to_numpy(),
+            rtol=0,
+            atol=1e-12,
+        ):
+            raise AssertionError("Gross NAV changed across cost scenarios")
+        combined_daily[f"Net_{name}"] = d["Net"]
+
+    if combined_daily is None or combined_daily.empty:
+        raise RuntimeError("execution produced no daily NAV")
+    return {
+        "daily_nav": combined_daily,
+        "execution_scenarios": executions,
+    }
+
+
 def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = None, *, postprocess: bool = True) -> dict[str, Any]:
     spec = load_strategy_spec(spec_path)
     plan = compile_execution_plan(spec)
@@ -263,18 +317,19 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     assets = list(target_weights.columns)
     close, tradable = close_and_tradable_matrices(panel, assets)
     cfg, costs, execution = engine_inputs(spec, engine)
-    result = engine.run_execution_backtest(
+    result = execute_daily_nav(
+        engine=engine,
         close_prices=close,
         target_weights=target_weights,
-        config=cfg,
         cost_scenarios=costs,
         execution_assumptions=execution,
+        initial_capital=cfg.initial_capital,
         tradable_mask=tradable,
     )
 
     out = output_dir or (repo_root / "results" / "dsl" / spec.strategy_id)
     out.mkdir(parents=True, exist_ok=True)
-    daily = result["formal_daily_nav"].rename(columns=lambda c: f"NAV_{c}")
+    daily = result["daily_nav"].rename(columns=lambda c: f"NAV_{c}")
     daily.to_csv(out / "daily_nav.csv", index_label="Date")
     target_weights.to_csv(out / "target_weights.csv", index_label="signal_date")
     selections.to_csv(out / "selections.csv", index=False, encoding="utf-8-sig")
@@ -307,13 +362,23 @@ def main() -> None:
     ap.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
     ap.add_argument("--output-dir", type=Path, default=None)
     ap.add_argument("--validate-only", action="store_true")
+    ap.add_argument(
+        "--execution-only",
+        action="store_true",
+        help="build selections and daily NAV but skip canonical performance postprocess",
+    )
     args = ap.parse_args()
     spec = load_strategy_spec(args.strategy_json)
     plan = compile_execution_plan(spec)
     if args.validate_only:
         print(json.dumps(plan, ensure_ascii=False, indent=2))
         return
-    run_strategy(args.strategy_json, args.repo_root.resolve(), args.output_dir)
+    run_strategy(
+        args.strategy_json,
+        args.repo_root.resolve(),
+        args.output_dir,
+        postprocess=not args.execution_only,
+    )
 
 
 if __name__ == "__main__":
