@@ -219,12 +219,37 @@ def dart_coverage_audit(
 
 
 def close_and_tradable_matrices(panel: pd.DataFrame, assets: list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Build valuation prices and an execution mask from the raw KRX panel.
+
+    Security-specific interior price gaps are treated as suspensions:
+    - valuation carries the last observed close while the security is suspended;
+    - tradable remains False, so no trade can occur during the gap;
+    - when trading resumes, the next observed close realizes the full move from
+      the pre-suspension close.
+
+    Leading gaps before listing and trailing gaps after permanent disappearance
+    are never filled. A held security that disappears permanently therefore
+    still reaches the v2-16 missing-return fail-safe until an explicit delisting
+    / corporate-action return is supplied.
+    """
     p = panel.copy()
     p["Date"] = pd.to_datetime(p["Date"]).dt.normalize()
     p["Code"] = p["Code"].astype(str).str.zfill(6)
-    close = p.pivot(index="Date", columns="Code", values="Close").reindex(columns=assets).sort_index()
-    vol = p.pivot(index="Date", columns="Code", values="Volume").reindex(index=close.index, columns=assets)
-    tradable = close.notna() & (close > 0) & vol.notna() & (vol > 0)
+    raw_close = p.pivot(index="Date", columns="Code", values="Close").reindex(columns=assets).sort_index()
+    vol = p.pivot(index="Date", columns="Code", values="Volume").reindex(index=raw_close.index, columns=assets)
+
+    raw_close = raw_close.apply(pd.to_numeric, errors="coerce")
+    vol = vol.apply(pd.to_numeric, errors="coerce")
+    tradable = raw_close.notna() & (raw_close > 0) & vol.notna() & (vol > 0)
+
+    previous = raw_close.ffill()
+    future_exists = raw_close.bfill().notna()
+    interior_gap = raw_close.isna() & previous.notna() & future_exists
+    close = raw_close.where(~interior_gap, previous)
+    close.attrs["suspension_gap_cells_filled"] = int(interior_gap.to_numpy().sum())
+    close.attrs["suspension_gap_assets"] = [
+        str(col) for col in interior_gap.columns if bool(interior_gap[col].any())
+    ]
     return close, tradable.astype(bool)
 
 
