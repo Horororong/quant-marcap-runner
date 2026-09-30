@@ -12,13 +12,25 @@ Flow:
 
 - Asset class: `kr_equity`
 - Historical universe: KOSPI/KOSDAQ PIT panel from `data/krx_equities/yearly/`
-- Factor sources: existing KRX panel columns and standardized DART PIT value factors
+- Factor sources are resolved through `scripts/factor_registry.py`; KRX panel fields and standardized DART PIT value factors are the first registered providers
 - Composite ranking: weighted percentile ranks, best score = lowest composite score
 - Portfolio weighting: equal weight
 - Rebalance: selected months, last KRX trading day
 - Execution: signal close -> at least next-session close (`lag_sessions >= 1`)
 - Costs: explicit named fixed-bps scenarios
 - Metrics/charts: canonical CURRENT postprocessor only
+
+
+## Factor registry / provider contract
+
+The ranking engine does not branch on source names. Factor validation and data sourcing are centralized in `scripts/factor_registry.py`.
+
+- `FactorDefinition` declares `source + field + storage(panel/external)`.
+- panel factors are read directly from the KRX PIT cross-section.
+- external factors are supplied by a registered provider implementing `factor_frame()` and `coverage_report()`.
+- adding a new external source should only require new factor definitions plus a provider factory; the generic ranking loop should not change.
+
+This is the extension point for future quality, growth, momentum, macro, or other PIT-safe factor providers.
 
 ## DART PIT value factors
 
@@ -68,7 +80,7 @@ Outputs go to `results/dsl/<strategy_id>/` and include:
 - `daily_nav.csv`
 - `target_weights.csv`
 - `selections.csv`
-- `dart_pit_coverage.csv` when DART factors are used
+- `factor_provider_coverage.csv` when external factor providers are used
 - `execution_plan.json`
 - `strategy_fingerprint.txt`
 - canonical `metrics_CURRENT.csv`
