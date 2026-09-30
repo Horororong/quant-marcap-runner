@@ -52,9 +52,9 @@ jobs:
       - name: Extract audited exact-account reference
         run: |
           git fetch origin research/super-value-audit-20260924:refs/remotes/origin/research/super-value-audit-20260924
-          git show origin/research/super-value-audit-20260924:scripts/super_value_audited_nav.py > /tmp/super_value_audited_nav.py
+          git show origin/research/super-value-audit-20260924:scripts/super_value_audited_nav.py > scripts/_audited_super_value_reference.py
 
       - name: Compare DART factors and Top20 with audited reference
         env:
-          AUDITED_REFERENCE_SCRIPT: /tmp/super_value_audited_nav.py
+          AUDITED_REFERENCE_SCRIPT: scripts/_audited_super_value_reference.py
         run: python scripts/test_super_value_dsl_regression.py
