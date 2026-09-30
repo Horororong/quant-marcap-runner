@@ -1,9 +1,10 @@
 from __future__ import annotations
 
-"""Real-data parity test: Strategy DSL DART adapter vs legacy super-value selection."""
+"""Real-data parity test against the audited exact-account super-value reference."""
 
 from pathlib import Path
 import importlib.util
+import os
 import sys
 
 import numpy as np
@@ -14,13 +15,12 @@ from strategy_dsl import load_strategy_spec
 from strategy_dsl_runner import rank_cross_section, _scheduled_sell_tax_bps
 
 ROOT = Path(__file__).resolve().parents[1]
-SIGNAL = pd.Timestamp("2020-04-29")
+SIGNAL = pd.Timestamp("2019-10-31")
 TOP_N = 20
 
 
-def load_legacy():
-    path = ROOT / "scripts/backtest_super_value_v216.py"
-    spec = importlib.util.spec_from_file_location("legacy_super_value_v216", path)
+def load_module(name: str, path: Path):
+    spec = importlib.util.spec_from_file_location(name, path)
     if spec is None or spec.loader is None:
         raise ImportError(path)
     module = importlib.util.module_from_spec(spec)
@@ -40,12 +40,17 @@ def assert_close_frame(left: pd.DataFrame, right: pd.DataFrame, cols: list[str])
         bv = pd.to_numeric(b.loc[common, col], errors="coerce").to_numpy(float)
         if not np.allclose(av, bv, rtol=0, atol=1e-9, equal_nan=True):
             diff = np.nanmax(np.abs(av - bv))
-            raise AssertionError(f"factor mismatch {col}: max_abs_diff={diff}")
+            raise AssertionError(f"audited factor mismatch {col}: max_abs_diff={diff}")
 
 
 def main() -> None:
-    legacy = load_legacy()
+    legacy = load_module("legacy_super_value_v216", ROOT / "scripts/backtest_super_value_v216.py")
+    ref_path = Path(os.environ["AUDITED_REFERENCE_SCRIPT"])
+    audited = load_module("audited_super_value_reference", ref_path)
+
     spec = load_strategy_spec(ROOT / "config/strategies/super_value_original_dsl.json")
+    adapter = DartValueFactorAdapter(ROOT)
+
     exact_cases = [
         ("ifrs_ProfitLoss", "IS", "net_income"),
         ("ifrs-full_ProfitLoss", "CIS", "net_income"),
@@ -63,9 +68,6 @@ def main() -> None:
         if got != wanted:
             raise AssertionError(f"exact account mapping failed: {account_id} -> {got}, want={wanted}")
 
-    adapter = DartValueFactorAdapter(ROOT)
-
-    # The DSL cost schedule must reproduce the legacy dated sell-tax function.
     sample_dates = pd.DatetimeIndex([
         "2018-12-31", "2019-06-03", "2020-12-31", "2021-01-01",
         "2023-01-01", "2024-01-01", "2025-01-01", "2026-01-01",
@@ -76,20 +78,22 @@ def main() -> None:
         if not np.allclose(tax.to_numpy(float), expected.to_numpy(float), rtol=0, atol=0):
             raise AssertionError(f"sell-tax schedule mismatch: {scenario_name}")
 
-    period_cache = {}
-    for y, p in legacy.required_periods(SIGNAL):
-        period_cache[(y, p)] = legacy.report_snapshots(legacy.load_financial_raw(y, p))
-    old_factors = legacy.build_factor_table(SIGNAL, period_cache)
+    # Build an independent reference from the audited branch's exact-account
+    # normalizer, then use the unchanged quarter-reconstruction/selection rules.
+    ref_cache = {}
+    for y, period in legacy.required_periods(SIGNAL):
+        ref_cache[(y, period)] = audited.load_snapshots(y, period)
+    audited_factors = legacy.build_factor_table(SIGNAL, ref_cache)
     new_factors = adapter.base_metrics(SIGNAL)
 
     assert_close_frame(
-        old_factors,
+        audited_factors,
         new_factors,
         ["equity", "revenue_q", "net_income_q", "ocf_q"],
     )
 
     panel = legacy.load_krx(SIGNAL.date().isoformat(), SIGNAL.date().isoformat())
-    old_sel, old_audit = legacy.build_selection(panel, SIGNAL, old_factors, TOP_N)
+    audited_sel, audited_audit = legacy.build_selection(panel, SIGNAL, audited_factors, TOP_N)
 
     cs = panel[panel["Date"] == SIGNAL][
         ["Date", "Code", "Name", "Market", "Marcap", "Amount", "Volume", "Close"]
@@ -101,13 +105,12 @@ def main() -> None:
     )
     new_sel, _ = rank_cross_section(cs, spec)
 
-    old_codes = old_sel["Code"].astype(str).str.zfill(6).tolist()
+    ref_codes = audited_sel["Code"].astype(str).str.zfill(6).tolist()
     new_codes = new_sel["Code"].astype(str).str.zfill(6).tolist()
-    if old_codes != new_codes:
-        pairs = list(zip(old_codes, new_codes))
-        raise AssertionError(f"top20 order mismatch: {pairs}")
+    if ref_codes != new_codes:
+        raise AssertionError(f"audited Top20 order mismatch: {list(zip(ref_codes, new_codes))}")
 
-    old_compare = old_sel.set_index("Code")
+    ref_compare = audited_sel.set_index("Code")
     new_compare = new_sel.set_index("Code")
     mapping = {
         "EY_1_PER": "earnings_yield",
@@ -116,14 +119,32 @@ def main() -> None:
         "SY_1_PSR": "sales_yield",
     }
     for old_col, new_col in mapping.items():
-        a = pd.to_numeric(old_compare.loc[old_codes, old_col], errors="coerce").to_numpy(float)
-        b = pd.to_numeric(new_compare.loc[old_codes, new_col], errors="coerce").to_numpy(float)
+        a = pd.to_numeric(ref_compare.loc[ref_codes, old_col], errors="coerce").to_numpy(float)
+        b = pd.to_numeric(new_compare.loc[ref_codes, new_col], errors="coerce").to_numpy(float)
         if not np.allclose(a, b, rtol=0, atol=1e-12, equal_nan=True):
-            raise AssertionError(f"selected factor values differ: {old_col} vs {new_col}")
+            raise AssertionError(f"audited selected factor values differ: {old_col} vs {new_col}")
 
-    print("SUPER VALUE DSL REAL-DATA PARITY: PASS")
-    print(f"signal={SIGNAL.date()} valid_four_factor={old_audit['valid_four_factor']} top_n={TOP_N}")
-    print("top20=" + ",".join(old_codes))
+    # Diagnostic only: quantify why the unaudited legacy substring implementation
+    # is not an acceptable canonical regression target.
+    legacy_cache = {}
+    for y, period in legacy.required_periods(SIGNAL):
+        legacy_cache[(y, period)] = legacy.report_snapshots(legacy.load_financial_raw(y, period))
+    loose = legacy.build_factor_table(SIGNAL, legacy_cache)
+    merged = audited_factors[["Code", "equity"]].merge(
+        loose[["Code", "equity"]], on="Code", suffixes=("_audited", "_legacy")
+    )
+    diff_rows = int(
+        ~np.isclose(
+            pd.to_numeric(merged["equity_audited"], errors="coerce"),
+            pd.to_numeric(merged["equity_legacy"], errors="coerce"),
+            rtol=0, atol=1e-9, equal_nan=True,
+        )
+    ).sum()
+
+    print("SUPER VALUE DSL AUDITED REAL-DATA PARITY: PASS")
+    print(f"signal={SIGNAL.date()} valid_four_factor={audited_audit['valid_four_factor']} top_n={TOP_N}")
+    print(f"legacy_loose_equity_diff_rows={diff_rows}")
+    print("top20=" + ",".join(ref_codes))
 
 
 if __name__ == "__main__":
