@@ -189,6 +189,8 @@ def report_snapshots(raw: pd.DataFrame) -> pd.DataFrame:
                 "priority": priority,
                 "current": _to_num(row.get("thstrm_amount")),
                 "cumulative": _to_num(row.get("thstrm_add_amount")),
+                "account_nm": row.get("account_nm", ""),
+                "account_id": row.get("account_id", ""),
             })
         if not cand:
             continue
