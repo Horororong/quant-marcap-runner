@@ -14,7 +14,7 @@ def main() -> None:
     assert resolve_direction_alias("낮은") == "low"
     assert resolve_direction_alias("높은") == "high"
 
-    per = resolve_factor_alias("PER", "낮은")
+    per = resolve_factor_alias("슈퍼가치 PER", "낮은")
     assert per["source"] == "dart"
     assert per["field"] == "earnings_yield"
     assert per["direction"] == "high"
@@ -41,8 +41,14 @@ def main() -> None:
     assert amount["direction"] == "high"
 
     try:
-        resolve_factor_alias("PER")
-        raise AssertionError("PER without high/low direction was accepted")
+        resolve_factor_alias("PER", "낮은")
+        raise AssertionError("generic PER was incorrectly mapped to standalone-quarter earnings yield")
+    except ValueError:
+        pass
+
+    try:
+        resolve_factor_alias("슈퍼가치 PER")
+        raise AssertionError("Super Value PER without high/low direction was accepted")
     except ValueError:
         pass
 
@@ -59,7 +65,7 @@ def main() -> None:
         pass
 
     terms = supported_alias_terms()
-    assert "PER" in terms
+    assert "슈퍼가치 PER" in terms
     assert "소형주" in terms
 
     for row in alias_catalog():
