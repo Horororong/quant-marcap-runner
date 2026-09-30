@@ -14,6 +14,8 @@ from typing import Iterable, Protocol, Sequence, runtime_checkable
 
 import pandas as pd
 
+FACTOR_REGISTRY_VERSION = "1"
+
 
 @dataclass(frozen=True)
 class FactorDefinition:
@@ -39,10 +41,16 @@ def register_factor(definition: FactorDefinition) -> None:
 
 # KRX fields already present in the daily PIT panel.
 for _field, _description in {
+    "Open": "signal-date open price",
+    "High": "signal-date high price",
+    "Low": "signal-date low price",
     "Close": "signal-date close price",
     "Volume": "signal-date traded volume",
     "Amount": "signal-date traded amount",
     "Marcap": "signal-date market capitalization",
+    "Stocks": "signal-date listed share count",
+    "ChangesRatio": "signal-date percentage price change",
+    "Change": "signal-date decimal price change",
 }.items():
     register_factor(FactorDefinition("krx", _field, "panel", _description))
 
