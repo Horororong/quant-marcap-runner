@@ -140,7 +140,10 @@ def rank_cross_section(cross_section: pd.DataFrame, spec: StrategySpec) -> tuple
     factor_columns: list[str] = []
     for fac in spec.factors:
         v = transformed[fac.name].reindex(x.index)
-        rank = v.rank(method="average", pct=True, ascending=(fac.direction == "low"))
+        # Use raw ordinal ranks, not pct=True. All factors share the same
+        # missing-value intersection, so ordinal ranks are directly comparable
+        # and preserve exact ties without floating-point tie drift.
+        rank = v.rank(method="average", ascending=(fac.direction == "low"))
         col = f"factor_rank__{fac.name}"
         x[col] = rank
         factor_columns.append(col)
