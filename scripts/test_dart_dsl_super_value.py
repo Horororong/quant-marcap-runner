@@ -50,6 +50,10 @@ def main() -> None:
     for signal in target_weights.index:
         signal = pd.Timestamp(signal).normalize()
         cs = panel[panel["Date"] == signal].copy()
+        coverage = adapter.coverage_report(signal)
+        assert coverage
+        assert all(r["ratio"] == 1.0 and r["raw_ok"] for r in coverage), coverage
+
         factors = adapter.factor_frame(signal, cs)
         assert not factors.empty
         assert factors["available_date"].notna().any()
