@@ -16,6 +16,8 @@ import numpy as np
 import pandas as pd
 
 DART_HISTORY_DIR = "data/financials/full_history"
+DART_CODE_MAP_FILE = "data/financials/dart_historical_code_map.csv"
+DART_BACKFILL_STATE_FILE = "data/status/dart_full_backfill_state.csv"
 
 VALUE_FACTOR_FIELDS = (
     "earnings_yield",
@@ -43,6 +45,154 @@ def _to_num(x) -> float:
 
 def _normalize_name(x: str) -> str:
     return re.sub(r"\s+", "", str(x or "")).lower()
+
+
+
+def load_historical_code_map(repo_root: str | Path) -> pd.DataFrame:
+    path = Path(repo_root) / DART_CODE_MAP_FILE
+    if not path.exists():
+        raise FileNotFoundError(
+            f"DART PIT completeness gate requires historical code map: {path}"
+        )
+    x = pd.read_csv(path, dtype={"stock_code": str, "corp_code": str})
+    required = {"stock_code", "corp_code", "first_date", "last_date"}
+    missing = required - set(x.columns)
+    if missing:
+        raise KeyError(f"{path}: missing columns {sorted(missing)}")
+    x["stock_code"] = x["stock_code"].astype(str).str.replace(".0", "", regex=False).str.zfill(6)
+    x["corp_code"] = x["corp_code"].fillna("").astype(str).str.strip()
+    x["first_date"] = pd.to_datetime(x["first_date"], errors="coerce")
+    x["last_date"] = pd.to_datetime(x["last_date"], errors="coerce")
+    return x
+
+
+def load_backfill_state(repo_root: str | Path) -> pd.DataFrame:
+    path = Path(repo_root) / DART_BACKFILL_STATE_FILE
+    if not path.exists():
+        raise FileNotFoundError(
+            f"DART PIT completeness gate requires backfill state: {path}"
+        )
+    x = pd.read_csv(path, dtype={"stock_code": str, "corp_code": str})
+    required = {"stock_code", "year", "period", "fs_div", "status"}
+    missing = required - set(x.columns)
+    if missing:
+        raise KeyError(f"{path}: missing columns {sorted(missing)}")
+    x["stock_code"] = x["stock_code"].astype(str).str.replace(".0", "", regex=False).str.zfill(6)
+    x["year"] = pd.to_numeric(x["year"], errors="coerce").astype("Int64")
+    x["period"] = x["period"].astype(str)
+    x["fs_div"] = x["fs_div"].astype(str).str.upper()
+    x["status"] = x["status"].astype(str).str.upper()
+    return x
+
+
+def expected_codes_for_period(mapping: pd.DataFrame, year: int) -> set[str]:
+    """Conservative expected DART population for a report year."""
+    x = mapping[
+        mapping["corp_code"].str.fullmatch(r"\d{8}", na=False)
+        & mapping["first_date"].notna()
+        & mapping["last_date"].notna()
+        & (mapping["first_date"].dt.year <= int(year))
+        & (mapping["last_date"].dt.year >= int(year))
+    ]
+    return set(x["stock_code"].astype(str))
+
+
+def period_completeness(
+    repo_root: str | Path,
+    mapping: pd.DataFrame,
+    state: pd.DataFrame,
+    year: int,
+    period: str,
+) -> dict:
+    """CFS-first completion gate; OFS is required only after CFS NO_DATA."""
+    expected = expected_codes_for_period(mapping, year)
+    sub = state[(state["year"] == int(year)) & (state["period"] == str(period))].copy()
+
+    cfs = (
+        sub[sub["fs_div"] == "CFS"]
+        .drop_duplicates("stock_code", keep="last")
+        .set_index("stock_code")["status"]
+        .to_dict()
+    )
+    ofs = (
+        sub[sub["fs_div"] == "OFS"]
+        .drop_duplicates("stock_code", keep="last")
+        .set_index("stock_code")["status"]
+        .to_dict()
+    )
+
+    complete = cfs_ok = cfs_no_data = ofs_fallback_terminal = ofs_fallback_ok = 0
+    terminal = {"OK", "NO_DATA"}
+    for code in expected:
+        cfs_status = cfs.get(code, "")
+        if cfs_status == "OK":
+            complete += 1
+            cfs_ok += 1
+        elif cfs_status == "NO_DATA":
+            cfs_no_data += 1
+            ofs_status = ofs.get(code, "")
+            if ofs_status in terminal:
+                complete += 1
+                ofs_fallback_terminal += 1
+                if ofs_status == "OK":
+                    ofs_fallback_ok += 1
+
+    base = Path(repo_root) / DART_HISTORY_DIR
+    cfs_shards = list(base.glob(f"dart_full_{year}_{period}_CFS_*.csv.gz"))
+    ofs_shards = list(base.glob(f"dart_full_{year}_{period}_OFS_*.csv.gz"))
+    raw_ok = (cfs_ok == 0 or bool(cfs_shards)) and (ofs_fallback_ok == 0 or bool(ofs_shards))
+    n_expected = len(expected)
+    ratio = complete / n_expected if n_expected else 0.0
+    return {
+        "year": int(year),
+        "period": str(period),
+        "completed_codes": int(complete),
+        "expected_codes": int(n_expected),
+        "ratio": float(ratio),
+        "cfs_ok_codes": int(cfs_ok),
+        "cfs_no_data_codes": int(cfs_no_data),
+        "ofs_fallback_terminal_codes": int(ofs_fallback_terminal),
+        "cfs_raw_shards": len(cfs_shards),
+        "ofs_raw_shards": len(ofs_shards),
+        "raw_ok": bool(raw_ok),
+    }
+
+
+def signal_completeness_report(
+    repo_root: str | Path,
+    signal: pd.Timestamp,
+    mapping: pd.DataFrame | None = None,
+    state: pd.DataFrame | None = None,
+) -> list[dict]:
+    mapping = load_historical_code_map(repo_root) if mapping is None else mapping
+    state = load_backfill_state(repo_root) if state is None else state
+    rows = []
+    for year, period in required_periods(pd.Timestamp(signal)):
+        row = period_completeness(repo_root, mapping, state, year, period)
+        row["signal_date"] = pd.Timestamp(signal).normalize()
+        rows.append(row)
+    return rows
+
+
+def assert_signal_complete(
+    repo_root: str | Path,
+    signal: pd.Timestamp,
+    mapping: pd.DataFrame | None = None,
+    state: pd.DataFrame | None = None,
+) -> list[dict]:
+    rows = signal_completeness_report(repo_root, signal, mapping=mapping, state=state)
+    bad = [r for r in rows if r["ratio"] < 1.0 or not r["raw_ok"]]
+    if bad:
+        detail = "; ".join(
+            f'{r["year"]}-{r["period"]}: {r["completed_codes"]}/{r["expected_codes"]} '
+            f'({r["ratio"]:.2%}), raw_ok={r["raw_ok"]}'
+            for r in bad
+        )
+        raise RuntimeError(
+            f"{pd.Timestamp(signal).date()}: DART PIT source is incomplete; "
+            f"refusing partial-universe backtest. {detail}"
+        )
+    return rows
 
 
 def required_periods(signal: pd.Timestamp) -> list[tuple[int, str]]:
@@ -320,6 +470,21 @@ class DartValueFactorAdapter:
     def __init__(self, repo_root: str | Path):
         self.repo_root = Path(repo_root)
         self._period_cache: dict[tuple[int, str], pd.DataFrame] = {}
+        self._mapping: pd.DataFrame | None = None
+        self._state: pd.DataFrame | None = None
+        self._coverage_cache: dict[pd.Timestamp, list[dict]] = {}
+
+    def coverage_report(self, signal: pd.Timestamp) -> list[dict]:
+        signal = pd.Timestamp(signal).normalize()
+        if self._mapping is None:
+            self._mapping = load_historical_code_map(self.repo_root)
+        if self._state is None:
+            self._state = load_backfill_state(self.repo_root)
+        if signal not in self._coverage_cache:
+            self._coverage_cache[signal] = assert_signal_complete(
+                self.repo_root, signal, mapping=self._mapping, state=self._state
+            )
+        return self._coverage_cache[signal]
 
     def _snapshot(self, year: int, period: str) -> pd.DataFrame:
         key = (int(year), str(period))
@@ -330,6 +495,7 @@ class DartValueFactorAdapter:
 
     def factor_frame(self, signal: pd.Timestamp, cross_section: pd.DataFrame) -> pd.DataFrame:
         signal = pd.Timestamp(signal).normalize()
+        self.coverage_report(signal)
         periods = required_periods(signal)
         cache = {k: self._snapshot(*k) for k in periods}
         raw = build_raw_value_inputs(signal, cache)
