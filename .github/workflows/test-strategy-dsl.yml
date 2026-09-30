@@ -6,6 +6,9 @@ on:
     paths:
       - 'scripts/strategy_dsl.py'
       - 'scripts/factor_registry.py'
+      - 'scripts/corporate_action_registry.py'
+      - 'scripts/test_corporate_action_execution.py'
+      - 'config/kr_corporate_actions.csv'
       - 'scripts/test_factor_registry.py'
       - 'scripts/strategy_dsl_runner.py'
       - 'scripts/dart_value_factor_adapter.py'
@@ -38,11 +41,13 @@ jobs:
           pip install pandas numpy pyarrow exchange_calendars plotly
       - name: Syntax check
         run: |
-          python -m py_compile scripts/factor_registry.py scripts/strategy_dsl.py scripts/strategy_dsl_runner.py scripts/dart_value_factor_adapter.py scripts/test_factor_registry.py scripts/test_strategy_dsl.py scripts/test_dart_dsl_super_value.py scripts/test_dsl_execution_e2e.py
+          python -m py_compile scripts/factor_registry.py scripts/corporate_action_registry.py scripts/strategy_dsl.py scripts/strategy_dsl_runner.py scripts/dart_value_factor_adapter.py scripts/test_factor_registry.py scripts/test_corporate_action_execution.py scripts/test_strategy_dsl.py scripts/test_dart_dsl_super_value.py scripts/test_dsl_execution_e2e.py
       - name: Validate example DSL
         run: python scripts/strategy_dsl_runner.py config/strategies/kr_equity_rank_demo.json --validate-only
       - name: Factor provider registry extension test
         run: python scripts/test_factor_registry.py
+      - name: Corporate action execution regression
+        run: python scripts/test_corporate_action_execution.py
       - name: Integration smoke test against PROJECT v2-16
         run: python scripts/test_strategy_dsl.py
       - name: DART Super Value PIT integration
