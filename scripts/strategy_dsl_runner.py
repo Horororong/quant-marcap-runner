@@ -19,7 +19,12 @@ import numpy as np
 import pandas as pd
 
 from strategy_dsl import StrategySpec, compile_execution_plan, load_strategy_spec
-from dart_value_factor_adapter import DartValueFactorAdapter
+from factor_registry import (
+    build_external_provider,
+    external_sources,
+    fields_for_source,
+    panel_factor_fields,
+)
 
 ENGINE_FILE = "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py"
 POSTPROCESS_FILE = "scripts/quant_backtest_postprocess.py"
@@ -42,7 +47,7 @@ def load_project_engine(repo_root: Path):
 def required_panel_columns(spec: StrategySpec) -> list[str]:
     fields = set(BASE_PANEL_COLUMNS)
     fields.update(x.field for x in spec.universe.filters)
-    fields.update(x.field for x in spec.factors if x.source == "krx")
+    fields.update(panel_factor_fields(spec.factors))
     return sorted(fields)
 
 
@@ -136,8 +141,6 @@ def rank_cross_section(
     transformed: dict[str, pd.Series] = {}
     valid_all = pd.Series(True, index=x.index)
     for fac in spec.factors:
-        if fac.source not in {"krx", "dart"}:
-            raise NotImplementedError(f"DSL v1 runtime factor source not implemented: {fac.source}")
         if fac.field not in x.columns:
             raise KeyError(f"factor field not present in panel: {fac.field}")
         v = _transform_factor(x[fac.field], fac.transform)
@@ -181,14 +184,33 @@ def build_target_weights_from_panel(
     assets = sorted(p["Code"].unique())
     rows: list[pd.Series] = []
     selection_rows: list[pd.DataFrame] = []
-    needs_dart = any(f.source == "dart" for f in spec.factors)
-    if needs_dart and repo_root is None:
-        raise ValueError("repo_root is required when DART factors are used")
-    dart_adapter = DartValueFactorAdapter(repo_root) if needs_dart else None
+    sources = external_sources(spec.factors)
+    if sources and repo_root is None:
+        raise ValueError("repo_root is required when external factor providers are used")
+    providers = {
+        source: build_external_provider(source, repo_root)
+        for source in sources
+    }
 
     for dt in signal_dates_from_panel(p, spec):
         cs = p[p["Date"] == dt].copy()
-        external = dart_adapter.factor_frame(dt, cs) if dart_adapter is not None else None
+        external_frames: list[pd.DataFrame] = []
+        for source, provider in providers.items():
+            requested = fields_for_source(spec.factors, source)
+            frame = provider.factor_frame(pd.Timestamp(dt), cs, requested)
+            if frame["Code"].duplicated().any():
+                raise AssertionError(f"{source} provider returned duplicate Code rows")
+            external_frames.append(frame)
+
+        external = None
+        if external_frames:
+            external = external_frames[0]
+            for frame in external_frames[1:]:
+                overlap = sorted((set(external.columns) & set(frame.columns)) - {"Code"})
+                if overlap:
+                    raise ValueError(f"external provider column collision: {overlap}")
+                external = external.merge(frame, on="Code", how="outer", validate="one_to_one")
+
         selected, _ = rank_cross_section(cs, spec, external_factors=external)
         w = pd.Series(0.0, index=assets, name=dt)
         w.loc[selected["Code"].astype(str).str.zfill(6)] = selected["target_weight"].to_numpy(float)
@@ -204,17 +226,22 @@ def build_target_weights_from_panel(
 
 
 
-def dart_coverage_audit(
+def factor_provider_coverage_audit(
     panel: pd.DataFrame,
     spec: StrategySpec,
     repo_root: Path,
 ) -> pd.DataFrame:
-    if not any(f.source == "dart" for f in spec.factors):
+    sources = external_sources(spec.factors)
+    if not sources:
         return pd.DataFrame()
-    adapter = DartValueFactorAdapter(repo_root)
+    providers = {
+        source: build_external_provider(source, repo_root)
+        for source in sources
+    }
     rows: list[dict[str, Any]] = []
     for dt in signal_dates_from_panel(panel, spec):
-        rows.extend(adapter.coverage_report(pd.Timestamp(dt)))
+        for provider in providers.values():
+            rows.extend(provider.coverage_report(pd.Timestamp(dt)))
     return pd.DataFrame(rows)
 
 
@@ -333,9 +360,9 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     daily.to_csv(out / "daily_nav.csv", index_label="Date")
     target_weights.to_csv(out / "target_weights.csv", index_label="signal_date")
     selections.to_csv(out / "selections.csv", index=False, encoding="utf-8-sig")
-    coverage = dart_coverage_audit(panel, spec, repo_root)
+    coverage = factor_provider_coverage_audit(panel, spec, repo_root)
     if not coverage.empty:
-        coverage.to_csv(out / "dart_pit_coverage.csv", index=False, encoding="utf-8-sig")
+        coverage.to_csv(out / "factor_provider_coverage.csv", index=False, encoding="utf-8-sig")
     (out / "execution_plan.json").write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
     (out / "strategy_fingerprint.txt").write_text(spec.fingerprint() + "\n", encoding="utf-8")
 
