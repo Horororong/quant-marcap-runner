@@ -19,7 +19,13 @@ import numpy as np
 import pandas as pd
 
 from strategy_dsl import StrategySpec, compile_execution_plan, load_strategy_spec
-from dart_value_factor_adapter import DartValueFactorAdapter
+from corporate_action_registry import load_corporate_actions
+from factor_registry import (
+    build_external_provider,
+    external_sources,
+    fields_for_source,
+    panel_factor_fields,
+)
 
 ENGINE_FILE = "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py"
 POSTPROCESS_FILE = "scripts/quant_backtest_postprocess.py"
@@ -42,7 +48,7 @@ def load_project_engine(repo_root: Path):
 def required_panel_columns(spec: StrategySpec) -> list[str]:
     fields = set(BASE_PANEL_COLUMNS)
     fields.update(x.field for x in spec.universe.filters)
-    fields.update(x.field for x in spec.factors if x.source == "krx")
+    fields.update(panel_factor_fields(spec.factors))
     return sorted(fields)
 
 
@@ -136,8 +142,6 @@ def rank_cross_section(
     transformed: dict[str, pd.Series] = {}
     valid_all = pd.Series(True, index=x.index)
     for fac in spec.factors:
-        if fac.source not in {"krx", "dart"}:
-            raise NotImplementedError(f"DSL v1 runtime factor source not implemented: {fac.source}")
         if fac.field not in x.columns:
             raise KeyError(f"factor field not present in panel: {fac.field}")
         v = _transform_factor(x[fac.field], fac.transform)
@@ -181,14 +185,33 @@ def build_target_weights_from_panel(
     assets = sorted(p["Code"].unique())
     rows: list[pd.Series] = []
     selection_rows: list[pd.DataFrame] = []
-    needs_dart = any(f.source == "dart" for f in spec.factors)
-    if needs_dart and repo_root is None:
-        raise ValueError("repo_root is required when DART factors are used")
-    dart_adapter = DartValueFactorAdapter(repo_root) if needs_dart else None
+    sources = external_sources(spec.factors)
+    if sources and repo_root is None:
+        raise ValueError("repo_root is required when external factor providers are used")
+    providers = {
+        source: build_external_provider(source, repo_root)
+        for source in sources
+    }
 
     for dt in signal_dates_from_panel(p, spec):
         cs = p[p["Date"] == dt].copy()
-        external = dart_adapter.factor_frame(dt, cs) if dart_adapter is not None else None
+        external_frames: list[pd.DataFrame] = []
+        for source, provider in providers.items():
+            requested = fields_for_source(spec.factors, source)
+            frame = provider.factor_frame(pd.Timestamp(dt), cs, requested)
+            if frame["Code"].duplicated().any():
+                raise AssertionError(f"{source} provider returned duplicate Code rows")
+            external_frames.append(frame)
+
+        external = None
+        if external_frames:
+            external = external_frames[0]
+            for frame in external_frames[1:]:
+                overlap = sorted((set(external.columns) & set(frame.columns)) - {"Code"})
+                if overlap:
+                    raise ValueError(f"external provider column collision: {overlap}")
+                external = external.merge(frame, on="Code", how="outer", validate="one_to_one")
+
         selected, _ = rank_cross_section(cs, spec, external_factors=external)
         w = pd.Series(0.0, index=assets, name=dt)
         w.loc[selected["Code"].astype(str).str.zfill(6)] = selected["target_weight"].to_numpy(float)
@@ -204,17 +227,22 @@ def build_target_weights_from_panel(
 
 
 
-def dart_coverage_audit(
+def factor_provider_coverage_audit(
     panel: pd.DataFrame,
     spec: StrategySpec,
     repo_root: Path,
 ) -> pd.DataFrame:
-    if not any(f.source == "dart" for f in spec.factors):
+    sources = external_sources(spec.factors)
+    if not sources:
         return pd.DataFrame()
-    adapter = DartValueFactorAdapter(repo_root)
+    providers = {
+        source: build_external_provider(source, repo_root)
+        for source in sources
+    }
     rows: list[dict[str, Any]] = []
     for dt in signal_dates_from_panel(panel, spec):
-        rows.extend(adapter.coverage_report(pd.Timestamp(dt)))
+        for provider in providers.values():
+            rows.extend(provider.coverage_report(pd.Timestamp(dt)))
     return pd.DataFrame(rows)
 
 
@@ -248,6 +276,62 @@ def engine_inputs(spec: StrategySpec, engine) -> tuple[Any, dict[str, Any], Any]
     return cfg, costs, execution
 
 
+
+def execute_daily_nav(
+    engine,
+    close_prices: pd.DataFrame,
+    target_weights: pd.DataFrame,
+    cost_scenarios: dict[str, Any],
+    execution_assumptions: Any,
+    initial_capital: float,
+    tradable_mask: pd.DataFrame | None = None,
+    corporate_action_events: pd.DataFrame | None = None,
+) -> dict[str, Any]:
+    """Convert deterministic target weights into full daily NAV only.
+
+    Strategy DSL owns strategy interpretation and portfolio construction.
+    PROJECT v2-16 owns execution, turnover and costs. Canonical performance
+    metrics remain a separate CURRENT postprocess step.
+    """
+    if not cost_scenarios:
+        raise ValueError("cost_scenarios must not be empty")
+
+    combined_daily: pd.DataFrame | None = None
+    gross_reference: pd.Series | None = None
+    executions: dict[str, Any] = {}
+
+    for name, cost in cost_scenarios.items():
+        exout = engine.simulate_target_weight_portfolio(
+            close_prices=close_prices,
+            target_weights=target_weights,
+            cost_assumptions=cost,
+            execution_assumptions=execution_assumptions,
+            tradable_mask=tradable_mask,
+            initial_capital=initial_capital,
+            corporate_action_events=corporate_action_events,
+        )
+        executions[name] = exout
+        d = exout["daily_nav"]
+        if gross_reference is None:
+            gross_reference = d["Gross"].copy()
+            combined_daily = pd.DataFrame({"Gross": gross_reference})
+        elif not np.allclose(
+            gross_reference.to_numpy(),
+            d["Gross"].to_numpy(),
+            rtol=0,
+            atol=1e-12,
+        ):
+            raise AssertionError("Gross NAV changed across cost scenarios")
+        combined_daily[f"Net_{name}"] = d["Net"]
+
+    if combined_daily is None or combined_daily.empty:
+        raise RuntimeError("execution produced no daily NAV")
+    return {
+        "daily_nav": combined_daily,
+        "execution_scenarios": executions,
+    }
+
+
 def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = None, *, postprocess: bool = True) -> dict[str, Any]:
     spec = load_strategy_spec(spec_path)
     plan = compile_execution_plan(spec)
@@ -263,24 +347,36 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     assets = list(target_weights.columns)
     close, tradable = close_and_tradable_matrices(panel, assets)
     cfg, costs, execution = engine_inputs(spec, engine)
-    result = engine.run_execution_backtest(
+    corporate_actions = load_corporate_actions(
+        repo_root,
+        start=close.index.min(),
+        end=close.index.max(),
+        asset_codes=set(assets),
+    )
+    result = execute_daily_nav(
+        engine=engine,
         close_prices=close,
         target_weights=target_weights,
-        config=cfg,
         cost_scenarios=costs,
         execution_assumptions=execution,
+        initial_capital=cfg.initial_capital,
         tradable_mask=tradable,
+        corporate_action_events=corporate_actions,
     )
 
     out = output_dir or (repo_root / "results" / "dsl" / spec.strategy_id)
     out.mkdir(parents=True, exist_ok=True)
-    daily = result["formal_daily_nav"].rename(columns=lambda c: f"NAV_{c}")
+    daily = result["daily_nav"].rename(columns=lambda c: f"NAV_{c}")
     daily.to_csv(out / "daily_nav.csv", index_label="Date")
     target_weights.to_csv(out / "target_weights.csv", index_label="signal_date")
     selections.to_csv(out / "selections.csv", index=False, encoding="utf-8-sig")
-    coverage = dart_coverage_audit(panel, spec, repo_root)
+    first_execution = next(iter(result["execution_scenarios"].values()))
+    ca_applied = first_execution.get("corporate_actions", pd.DataFrame())
+    if isinstance(ca_applied, pd.DataFrame) and not ca_applied.empty:
+        ca_applied.to_csv(out / "corporate_actions_applied.csv", index=False, encoding="utf-8-sig")
+    coverage = factor_provider_coverage_audit(panel, spec, repo_root)
     if not coverage.empty:
-        coverage.to_csv(out / "dart_pit_coverage.csv", index=False, encoding="utf-8-sig")
+        coverage.to_csv(out / "factor_provider_coverage.csv", index=False, encoding="utf-8-sig")
     (out / "execution_plan.json").write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
     (out / "strategy_fingerprint.txt").write_text(spec.fingerprint() + "\n", encoding="utf-8")
 
@@ -307,13 +403,23 @@ def main() -> None:
     ap.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
     ap.add_argument("--output-dir", type=Path, default=None)
     ap.add_argument("--validate-only", action="store_true")
+    ap.add_argument(
+        "--execution-only",
+        action="store_true",
+        help="build selections and daily NAV but skip canonical performance postprocess",
+    )
     args = ap.parse_args()
     spec = load_strategy_spec(args.strategy_json)
     plan = compile_execution_plan(spec)
     if args.validate_only:
         print(json.dumps(plan, ensure_ascii=False, indent=2))
         return
-    run_strategy(args.strategy_json, args.repo_root.resolve(), args.output_dir)
+    run_strategy(
+        args.strategy_json,
+        args.repo_root.resolve(),
+        args.output_dir,
+        postprocess=not args.execution_only,
+    )
 
 
 if __name__ == "__main__":

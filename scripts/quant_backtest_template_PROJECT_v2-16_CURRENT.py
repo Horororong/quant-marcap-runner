@@ -924,6 +924,105 @@ def _schedule_signal_execution_dates(
     return out
 
 
+def _normalize_corporate_action_events(
+    close_prices: pd.DataFrame,
+    corporate_action_events: Optional[pd.DataFrame],
+) -> pd.DataFrame:
+    """검증된 주식합병 이벤트를 실행엔진용 연속수익률 정보로 정규화한다.
+
+    stock_merger:
+    - 거래가 중단된 전신 종목은 마지막 유효 종가부터 승계주 상장 전날까지 0%로 유지한다.
+      이는 일반 결측치 보간이 아니라 명시적으로 등록된 합병 이벤트에만 적용한다.
+    - event_date에는 (승계주 종가 * 교환비율 + 주당 현금) / 전신 마지막 종가 - 1
+      수익률을 적용한다.
+    - 수익 반영 직후 보유 비중을 predecessor -> successor로 무비용 이전한다.
+    """
+    columns = [
+        "event_date", "event_type", "predecessor_code", "successor_code",
+        "share_ratio", "cash_per_share", "source",
+    ]
+    if corporate_action_events is None:
+        return pd.DataFrame(columns=columns + ["last_trade_date", "last_price", "successor_price", "event_return"])
+    if not isinstance(corporate_action_events, pd.DataFrame):
+        raise TypeError("corporate_action_events는 DataFrame 또는 None이어야 합니다.")
+    if corporate_action_events.empty:
+        return pd.DataFrame(columns=columns + ["last_trade_date", "last_price", "successor_price", "event_return"])
+
+    required = {
+        "event_date", "event_type", "predecessor_code", "successor_code",
+        "share_ratio", "cash_per_share",
+    }
+    missing = required - set(corporate_action_events.columns)
+    if missing:
+        raise KeyError(f"corporate_action_events 필수 열 누락: {sorted(missing)}")
+
+    ca = corporate_action_events.copy()
+    ca["event_date"] = pd.to_datetime(ca["event_date"], errors="coerce").dt.normalize()
+    if ca["event_date"].isna().any():
+        raise ValueError("corporate_action_events에 유효하지 않은 event_date가 있습니다.")
+    ca["event_type"] = ca["event_type"].astype(str).str.strip().str.lower()
+    if (ca["event_type"] != "stock_merger").any():
+        bad = sorted(ca.loc[ca["event_type"] != "stock_merger", "event_type"].unique())
+        raise ValueError(f"현재 지원하지 않는 corporate action 유형: {bad}")
+
+    for col in ("predecessor_code", "successor_code"):
+        ca[col] = ca[col].astype(str).str.replace(".0", "", regex=False).str.zfill(6)
+    ca["share_ratio"] = pd.to_numeric(ca["share_ratio"], errors="coerce")
+    ca["cash_per_share"] = pd.to_numeric(ca["cash_per_share"], errors="coerce").fillna(0.0)
+    if ca["share_ratio"].isna().any() or (ca["share_ratio"] <= 0).any():
+        raise ValueError("stock_merger share_ratio는 0보다 커야 합니다.")
+    if (ca["cash_per_share"] < 0).any():
+        raise ValueError("cash_per_share는 음수일 수 없습니다.")
+    if ca.duplicated(["event_date", "predecessor_code"]).any():
+        raise ValueError("동일 event_date/predecessor_code corporate action이 중복됩니다.")
+    if "source" not in ca.columns:
+        ca["source"] = ""
+
+    assets = set(close_prices.columns)
+    trading_index = pd.DatetimeIndex(close_prices.index)
+    rows = []
+    for _, row in ca.sort_values(["event_date", "predecessor_code"]).iterrows():
+        event_date = pd.Timestamp(row["event_date"])
+        pred = row["predecessor_code"]
+        succ = row["successor_code"]
+        if pred not in assets or succ not in assets:
+            raise KeyError(
+                f"corporate action 자산이 가격패널에 없습니다: predecessor={pred}, successor={succ}"
+            )
+        if event_date not in trading_index:
+            raise ValueError(f"corporate action event_date가 거래일 인덱스에 없습니다: {event_date.date()}")
+
+        prior = pd.to_numeric(
+            close_prices.loc[close_prices.index < event_date, pred], errors="coerce"
+        ).dropna()
+        if prior.empty:
+            raise RuntimeError(f"{pred}: corporate action 전 유효 종가가 없습니다.")
+        last_trade_date = pd.Timestamp(prior.index[-1])
+        last_price = float(prior.iloc[-1])
+        successor_price = pd.to_numeric(
+            pd.Series([close_prices.at[event_date, succ]]), errors="coerce"
+        ).iloc[0]
+        if pd.isna(successor_price) or float(successor_price) <= 0:
+            raise RuntimeError(
+                f"{event_date.date()} {succ}: 승계주 event-date 종가가 없습니다."
+            )
+        event_value = float(row["share_ratio"]) * float(successor_price) + float(row["cash_per_share"])
+        event_return = event_value / last_price - 1.0
+        if not np.isfinite(event_return) or event_return <= -1.0:
+            raise RuntimeError(
+                f"{event_date.date()} {pred}->{succ}: 비정상 합병 수익률 {event_return}"
+            )
+        rec = {k: row.get(k, "") for k in columns}
+        rec.update({
+            "last_trade_date": last_trade_date,
+            "last_price": last_price,
+            "successor_price": float(successor_price),
+            "event_return": float(event_return),
+        })
+        rows.append(rec)
+    return pd.DataFrame(rows)
+
+
 def simulate_target_weight_portfolio(
     close_prices: pd.DataFrame,
     target_weights: pd.DataFrame,
@@ -932,6 +1031,7 @@ def simulate_target_weight_portfolio(
     tradable_mask: Optional[pd.DataFrame] = None,
     explicit_delisting_returns: Optional[pd.DataFrame] = None,
     initial_capital: float = 1.0,
+    corporate_action_events: Optional[pd.DataFrame] = None,
 ) -> Dict[str, Any]:
     """목표비중 신호를 t+1 체결, drift, turnover, 비용, 일별 NAV로 변환한다.
 
@@ -944,7 +1044,9 @@ def simulate_target_weight_portfolio(
 
     한계:
     - 원천 가격 결측을 거래정지/상폐라고 임의 해석하지 않는다.
-    - 보유 중 결측 수익률은 explicit_delisting_returns 등 검증된 명시적 자료가 없으면 실패한다.
+    - 보유 중 결측 수익률은 explicit_delisting_returns 또는 corporate_action_events처럼
+      검증된 명시적 자료가 없으면 실패한다.
+    - 등록된 stock_merger 이벤트는 거래중단 구간과 승계주 교환가치를 명시적으로 처리한다.
     """
     if not isinstance(close_prices, pd.DataFrame) or close_prices.empty:
         raise ValueError("close_prices는 비어 있지 않은 DataFrame이어야 합니다.")
@@ -985,12 +1087,27 @@ def simulate_target_weight_portfolio(
         fill = rets.isna() & dr.notna()
         rets = rets.where(~fill, dr)
 
+    corporate_actions = _normalize_corporate_action_events(px, corporate_action_events)
+    actions_by_date: Dict[pd.Timestamp, list[dict[str, Any]]] = {}
+    if not corporate_actions.empty:
+        for _, action in corporate_actions.iterrows():
+            event_date = pd.Timestamp(action["event_date"])
+            pred = str(action["predecessor_code"])
+            last_trade_date = pd.Timestamp(action["last_trade_date"])
+            suspended = rets.index[(rets.index > last_trade_date) & (rets.index < event_date)]
+            if len(suspended):
+                # 명시된 합병으로 인한 거래중단 구간만 0%로 유지한다.
+                rets.loc[suspended, pred] = rets.loc[suspended, pred].fillna(0.0)
+            rets.loc[event_date, pred] = float(action["event_return"])
+            actions_by_date.setdefault(event_date, []).append(action.to_dict())
+
     current_w = pd.Series(0.0, index=assets, dtype=float)
     gross_nav = float(initial_capital)
     net_nav = float(initial_capital)
     nav_rows = []
     trade_rows = []
     weight_rows = []
+    corporate_action_rows = []
 
     for i, dt in enumerate(px.index):
         r = rets.loc[dt].astype(float)
@@ -1013,6 +1130,28 @@ def simulate_target_weight_portfolio(
 
         denom = 1.0 + portfolio_return
         current_w = current_w * (1.0 + r) / denom
+
+        if dt in actions_by_date:
+            for action in actions_by_date[dt]:
+                pred = str(action["predecessor_code"])
+                succ = str(action["successor_code"])
+                transferred_weight = float(current_w[pred])
+                current_w[pred] = 0.0
+                current_w[succ] = float(current_w[succ]) + transferred_weight
+                corporate_action_rows.append({
+                    "Date": dt,
+                    "event_type": action["event_type"],
+                    "predecessor_code": pred,
+                    "successor_code": succ,
+                    "share_ratio": float(action["share_ratio"]),
+                    "cash_per_share": float(action["cash_per_share"]),
+                    "last_trade_date": pd.Timestamp(action["last_trade_date"]),
+                    "last_price": float(action["last_price"]),
+                    "successor_price": float(action["successor_price"]),
+                    "event_return": float(action["event_return"]),
+                    "transferred_weight": transferred_weight,
+                    "source": action.get("source", ""),
+                })
 
         buy_to = sell_to = cost_fraction = 0.0
         signal_date = None
@@ -1085,6 +1224,7 @@ def simulate_target_weight_portfolio(
         "weights": weights,
         "trades": trades,
         "execution_schedule": schedule_df,
+        "corporate_actions": pd.DataFrame(corporate_action_rows),
         "annualized_one_way_turnover": float(trades["one_way_turnover"].mean() * 252.0),
     }
 
@@ -1121,6 +1261,7 @@ def run_execution_backtest(
     execution_assumptions: Optional[ExecutionAssumptions] = None,
     tradable_mask: Optional[pd.DataFrame] = None,
     explicit_delisting_returns: Optional[pd.DataFrame] = None,
+    corporate_action_events: Optional[pd.DataFrame] = None,
 ) -> Dict[str, Any]:
     """체결→비용→NAV→최근 완결월→4기간 성과를 한 번에 연결한다."""
     if not cost_scenarios:
@@ -1140,6 +1281,7 @@ def run_execution_backtest(
             tradable_mask=tradable_mask,
             explicit_delisting_returns=explicit_delisting_returns,
             initial_capital=config.initial_capital,
+            corporate_action_events=corporate_action_events,
         )
         executions[name] = exout
         d = exout["daily_nav"]

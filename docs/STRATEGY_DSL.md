@@ -12,13 +12,25 @@ Flow:
 
 - Asset class: `kr_equity`
 - Historical universe: KOSPI/KOSDAQ PIT panel from `data/krx_equities/yearly/`
-- Factor sources: existing KRX panel columns and standardized DART PIT value factors
+- Factor sources are resolved through `scripts/factor_registry.py`; KRX panel fields and standardized DART PIT value factors are the first registered providers
 - Composite ranking: weighted percentile ranks, best score = lowest composite score
 - Portfolio weighting: equal weight
 - Rebalance: selected months, last KRX trading day
 - Execution: signal close -> at least next-session close (`lag_sessions >= 1`)
 - Costs: explicit named fixed-bps scenarios
 - Metrics/charts: canonical CURRENT postprocessor only
+
+## Factor registry / provider contract
+
+The ranking engine does not branch on source names. Factor validation and data sourcing are centralized in `scripts/factor_registry.py`.
+
+- `FactorDefinition` declares `source + field + storage(panel/external)`.
+- panel factors are read directly from the KRX PIT cross-section.
+- external factors are supplied by a registered provider implementing `factor_frame()` and `coverage_report()`.
+- adding a new external source requires new factor definitions plus a provider factory; the generic ranking and execution loops do not change.
+- `factor_registry_version` is recorded in every compiled execution plan.
+
+This is the extension point for future quality, growth, momentum, macro, or other PIT-safe factor providers.
 
 ## DART PIT value factors
 
@@ -33,6 +45,20 @@ The adapter uses only filings whose filing date is on or before the signal date.
 
 See `config/strategies/super_value_dart_dsl.json`.
 
+## Corporate-action continuity
+
+Execution does not silently replace missing held-stock returns with 0%. Verified events are stored in `config/kr_corporate_actions.csv` and loaded by `scripts/corporate_action_registry.py`.
+
+For a registered stock merger the PROJECT execution engine:
+
+1. keeps the predecessor flat only during the verified post-last-trade suspension interval,
+2. calculates the merger-date economic return from `successor close × share ratio + cash`,
+3. applies that return to NAV,
+4. transfers the post-event portfolio weight from predecessor to successor without turnover or trading cost,
+5. writes `corporate_actions_applied.csv` for audit.
+
+The first registered event is Korean Paper (002300) -> Haesung Industrial (034810), 1 old share to 1.6661460 successor shares, successor listing date 2020-07-13. This registry must be expanded with verified source documents before full-history results are treated as production-valid.
+
 ## Deliberately unsupported in v1
 
 The runner fails rather than inventing an answer for these cases:
@@ -42,7 +68,6 @@ The runner fails rather than inventing an answer for these cases:
 - dynamic historical sell-tax schedules
 - next-open/VWAP execution
 - market-cap/factor weighting
-- explicit corporate-action/delisting return adapter
 - ETF/macro/asset-allocation DSL
 
 These are adapters to add without changing the core schema philosophy.
@@ -57,18 +82,27 @@ Validation only:
 python scripts/strategy_dsl_runner.py config/strategies/kr_equity_rank_demo.json --validate-only
 ```
 
-Execution:
+Execution with canonical performance postprocess:
 
 ```bash
 python scripts/strategy_dsl_runner.py config/strategies/kr_equity_rank_demo.json
 ```
+
+Execution stage only (target weights -> PROJECT v2-16 t+1 execution -> daily NAV):
+
+```bash
+python scripts/strategy_dsl_runner.py config/strategies/super_value_dart_dsl.json --execution-only
+```
+
+The execution-only path is intentional for research windows whose PIT factor coverage is valid but which do not yet span the canonical 2000+/2021+/longest reporting windows. It does not calculate alternative performance metrics; formal metrics still go through `quant_backtest_postprocess.py` only.
 
 Outputs go to `results/dsl/<strategy_id>/` and include:
 
 - `daily_nav.csv`
 - `target_weights.csv`
 - `selections.csv`
-- `dart_pit_coverage.csv` when DART factors are used
+- `factor_provider_coverage.csv` when external factor providers are used
+- `corporate_actions_applied.csv` when a registered event affects a held position
 - `execution_plan.json`
 - `strategy_fingerprint.txt`
 - canonical `metrics_CURRENT.csv`
@@ -78,6 +112,6 @@ Outputs go to `results/dsl/<strategy_id>/` and include:
 
 Every validated strategy has a SHA-256 `strategy_fingerprint` derived from canonical JSON. Results should be keyed by at least:
 
-`strategy_fingerprint + engine_version + data_version/as-of`.
+`strategy_fingerprint + factor_registry_version + engine_version + data_version/as-of`.
 
-This is the basis for the future strategy-result database and natural-language research agent.
+The registry version is stored in the compiled execution plan so a change in factor semantics is auditable even when the strategy JSON itself is unchanged.\n\nThis is the basis for the future strategy-result database and natural-language research agent.
