@@ -15,7 +15,7 @@ Flow:
 - Factor sources:
   - existing KRX panel columns (`Marcap`, `Amount`, `Volume`, `Close`, etc.)
   - standardized PIT DART value adapter: `earnings_yield`, `book_to_price`, `cashflow_yield`, `sales_yield`
-- Composite ranking: weighted percentile ranks, best score = lowest composite score
+- Composite ranking: weighted ordinal ranks on one common eligible universe, best score = lowest composite score
 - Portfolio weighting: equal weight
 - Rebalance: selected months, last KRX trading day
 - Execution: signal close -> at least next-session close (`lag_sessions >= 1`)
