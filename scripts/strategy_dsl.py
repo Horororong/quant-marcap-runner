@@ -21,8 +21,9 @@ SUPPORTED_FILTER_OPS = {
     "gt", "gte", "lt", "lte", "eq", "ne", "in", "not_in", "notnull",
     "top_pct", "bottom_pct", "exclude_top_pct", "exclude_bottom_pct",
 }
-SUPPORTED_FACTOR_SOURCES = {"krx"}
+SUPPORTED_FACTOR_SOURCES = {"krx", "dart"}
 SUPPORTED_FACTOR_TRANSFORMS = {"identity", "inverse", "log1p"}
+SUPPORTED_DART_FACTOR_FIELDS = {"earnings_yield", "book_to_price", "cashflow_yield", "sales_yield"}
 SUPPORTED_DIRECTIONS = {"high", "low"}
 SUPPORTED_WEIGHTINGS = {"equal"}
 SUPPORTED_REBALANCE_FREQUENCIES = {"months"}
@@ -99,6 +100,11 @@ class FactorSpec:
             raise ValueError("factor name/field cannot be empty")
         if obj.source not in SUPPORTED_FACTOR_SOURCES:
             raise ValueError(f"unsupported factor source in DSL v1: {obj.source}")
+        if obj.source == "dart" and obj.field not in SUPPORTED_DART_FACTOR_FIELDS:
+            raise ValueError(
+                f"unsupported DART factor field in DSL v1: {obj.field}; "
+                f"supported={sorted(SUPPORTED_DART_FACTOR_FIELDS)}"
+            )
         if obj.direction not in SUPPORTED_DIRECTIONS:
             raise ValueError(f"unsupported factor direction: {obj.direction}")
         if obj.transform not in SUPPORTED_FACTOR_TRANSFORMS:
