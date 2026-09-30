@@ -64,14 +64,14 @@ def direction_alias_catalog() -> dict[str, list[str]]:
 
 ALIAS_RULES: tuple[FactorAliasRule, ...] = (
     FactorAliasRule(
-        terms=("PER", "P/E", "주가수익비율"),
+        terms=("슈퍼가치 PER", "분기 PER 프록시", "quarterly P/E proxy"),
         source="dart",
         field="earnings_yield",
         direction_relation="inverse",
-        note="PER low is equivalent to earnings_yield high.",
+        note="Only for the standalone-quarter Super Value definition; not generic trailing/annual PER.",
     ),
     FactorAliasRule(
-        terms=("EP", "E/P", "earnings yield", "이익수익률"),
+        terms=("분기 EP", "분기 E/P", "quarterly earnings yield", "분기 이익수익률"),
         source="dart",
         field="earnings_yield",
     ),
@@ -88,26 +88,26 @@ ALIAS_RULES: tuple[FactorAliasRule, ...] = (
         field="book_to_price",
     ),
     FactorAliasRule(
-        terms=("PCR", "P/CF", "주가현금흐름비율"),
+        terms=("슈퍼가치 PCR", "분기 PCR 프록시", "quarterly P/CF proxy"),
         source="dart",
         field="cashflow_yield",
         direction_relation="inverse",
-        note="PCR low is equivalent to cashflow_yield high.",
+        note="Only for the standalone-quarter Super Value definition; not generic trailing/annual PCR.",
     ),
     FactorAliasRule(
-        terms=("CFP", "CF/P", "cash flow yield", "현금흐름수익률"),
+        terms=("분기 CFP", "분기 CF/P", "quarterly cash flow yield", "분기 현금흐름수익률"),
         source="dart",
         field="cashflow_yield",
     ),
     FactorAliasRule(
-        terms=("PSR", "P/S", "주가매출비율"),
+        terms=("슈퍼가치 PSR", "분기 PSR 프록시", "quarterly P/S proxy"),
         source="dart",
         field="sales_yield",
         direction_relation="inverse",
-        note="PSR low is equivalent to sales_yield high.",
+        note="Only for the standalone-quarter Super Value definition; not generic trailing/annual PSR.",
     ),
     FactorAliasRule(
-        terms=("SP", "S/P", "sales yield", "매출수익률"),
+        terms=("분기 SP", "분기 S/P", "quarterly sales yield", "분기 매출수익률"),
         source="dart",
         field="sales_yield",
     ),
