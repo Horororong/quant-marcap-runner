@@ -106,8 +106,9 @@ def apply_corporate_action_continuations(
         last_old_date = pd.Timestamp(pre.index[-1])
         last_old_price = float(pre.iloc[-1])
 
+        effective_date = event["effective_date"]
         suspension_idx = px.index[
-            (px.index >= suspension_start) & (px.index < trade_date)
+            (px.index >= suspension_start) & (px.index < effective_date)
         ]
         observed_during_suspend = px.loc[suspension_idx, old].dropna()
         if len(observed_during_suspend):
@@ -115,18 +116,31 @@ def apply_corporate_action_continuations(
                 f"{event['event_id']}: old_code has prices during declared suspension: "
                 f"{observed_during_suspend.index[0].date()}"
             )
+        # Before legal effectiveness, the old share is suspended and its last
+        # observable market value is carried for valuation only.
         px.loc[suspension_idx, old] = last_old_price
         tradable.loc[suspension_idx, old] = False
 
+        # From the legal effective date, the holder owns a fixed claim on the
+        # successor shares. Value therefore follows the successor immediately,
+        # even though the newly issued shares remain non-tradable until their
+        # listed/trading date.
+        claim_idx = px.index[px.index >= effective_date]
+        successor_prices = px.loc[claim_idx, successor]
+        px.loc[claim_idx, old] = successor_prices * ratio
+
+        locked_claim_idx = px.index[
+            (px.index >= effective_date) & (px.index < trade_date)
+        ]
+        tradable.loc[locked_claim_idx, old] = False
         post_idx = px.index[px.index >= trade_date]
-        successor_prices = px.loc[post_idx, successor]
-        px.loc[post_idx, old] = successor_prices * ratio
         tradable.loc[post_idx, old] = tradable.loc[post_idx, successor].astype(bool)
 
         first_successor = successor_prices.dropna()
         if first_successor.empty:
             raise RuntimeError(
-                f"{event['event_id']}: no successor price on/after {trade_date.date()}"
+                f"{event['event_id']}: no successor price on/after effective date "
+                f"{effective_date.date()}"
             )
         first_successor_date = pd.Timestamp(first_successor.index[0])
         first_successor_price = float(first_successor.iloc[0])
@@ -143,7 +157,7 @@ def apply_corporate_action_continuations(
             "share_ratio": ratio,
             "last_old_trade_date": last_old_date,
             "last_old_price": last_old_price,
-            "first_successor_price_date": first_successor_date,
+            "first_claim_valuation_date": first_successor_date,
             "first_successor_price": first_successor_price,
             "first_claim_value_per_old_share": first_claim_value,
             "implied_return_from_last_old_close": first_claim_value / last_old_price - 1.0,
