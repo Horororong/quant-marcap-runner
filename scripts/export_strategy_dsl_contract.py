@@ -13,7 +13,7 @@ from execution_contract import (
     PROJECT_TEMPLATE_VERSION,
 )
 from factor_registry import FACTOR_REGISTRY_VERSION, factor_catalog, supported_fields, supported_sources
-from strategy_dsl_aliases import alias_catalog
+from strategy_dsl_aliases import alias_catalog, direction_alias_catalog
 from strategy_dsl import (
     SCHEMA_VERSION,
     STRATEGY_ID_RE,
@@ -200,6 +200,7 @@ def build_capabilities() -> dict:
         "factor_directions": sorted(SUPPORTED_DIRECTIONS),
         "factors": factor_catalog(),
         "natural_language_factor_aliases": alias_catalog(),
+        "natural_language_direction_aliases": direction_alias_catalog(),
         "portfolio_weightings": sorted(SUPPORTED_WEIGHTINGS),
         "rebalance_frequencies": sorted(SUPPORTED_REBALANCE_FREQUENCIES),
         "trading_day_rules": sorted(SUPPORTED_TRADING_DAY_RULES),
