@@ -15,6 +15,12 @@ import json
 import re
 
 from factor_registry import FACTOR_REGISTRY_VERSION, get_factor_definition
+from execution_contract import (
+    CORPORATE_ACTION_REGISTRY_VERSION,
+    DSL_MACHINE_CONTRACT_VERSION,
+    EXECUTION_ENGINE_VERSION,
+    PROJECT_TEMPLATE_VERSION,
+)
 
 SCHEMA_VERSION = "1.0"
 STRATEGY_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{2,63}$")
@@ -278,6 +284,10 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         "strategy_id": spec.strategy_id,
         "strategy_fingerprint": spec.fingerprint(),
         "factor_registry_version": FACTOR_REGISTRY_VERSION,
+        "execution_engine_version": EXECUTION_ENGINE_VERSION,
+        "corporate_action_registry_version": CORPORATE_ACTION_REGISTRY_VERSION,
+        "dsl_machine_contract_version": DSL_MACHINE_CONTRACT_VERSION,
+        "project_template_version": PROJECT_TEMPLATE_VERSION,
         "asset_class": spec.asset_class,
         "data_contract": {
             "price_universe": "data/krx_equities/yearly/marcap-YYYY.parquet",
