@@ -25,7 +25,7 @@ MAX_INDEX_TASKS = max(1, int(os.getenv("LEGACY_DART_INDEX_TASKS", "6")))
 MAX_DOCS = max(1, int(os.getenv("LEGACY_DART_MAX_DOCS", "20")))
 WORKERS = max(1, min(8, int(os.getenv("LEGACY_DART_WORKERS", "4"))))
 BASE = "https://opendart.fss.or.kr/api"
-PARSER_VERSION = "legacy-v3-book"
+PARSER_VERSION = "legacy-v4-book"
 
 ROOT = Path("data/financials/legacy_2000_2014")
 NORM_DIR = ROOT / "normalized"
@@ -69,7 +69,7 @@ ALIASES = {
     ],
     "net_income": [
         "당기순이익", "당기순이익(손실)", "당기순손익", "분기순이익", "분기순이익(손실)",
-        "분기순손익", "반기순이익", "반기순이익(손실)", "반기순손익", "당기순손실",
+        "분기순손익", "분기순손실", "반기순이익", "반기순이익(손실)", "반기순손익", "반기순손실", "당기순손실",
     ],
     "ocf": [
         "영업활동으로인한현금흐름", "영업활동현금흐름", "영업활동으로부터의현금흐름",
@@ -211,7 +211,7 @@ def parse_number(x: str) -> float:
     if not s:
         return math.nan
     s = s.replace(",", "").replace(" ", "")
-    s = s.replace("△", "-")
+    s = s.replace("△", "-").replace("▲", "-").replace("Δ", "-").replace("－", "-")
     if s in {"-", "—", "–"}:
         return 0.0
     neg = s.startswith("(") and s.endswith(")")
@@ -716,6 +716,13 @@ def table_candidates(text: str) -> list[dict]:
                         break
                 if math.isnan(val):
                     continue
+                # Older DART filings sometimes express a loss as a positive
+                # magnitude and put the sign only in the account label
+                # (e.g. 당기순손실 5,787).  Preserve an explicit numeric
+                # negative sign, otherwise normalize loss-labelled P&L rows.
+                account_norm = norm_account(cell)
+                if metric in {"net_income", "operating_income", "gross_profit"} and "손실" in account_norm and val > 0:
+                    val = -val
                 row_unit, row_mult = detect_inline_unit(cell)
                 use_unit = unit or row_unit
                 use_mult = mult if not math.isnan(mult) else row_mult
