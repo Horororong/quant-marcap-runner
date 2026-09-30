@@ -4,7 +4,10 @@
   "title": "오리지널 강환국 슈퍼 가치 전략 — Strategy DSL",
   "asset_class": "kr_equity",
   "universe": {
-    "markets": ["KOSPI", "KOSDAQ"],
+    "markets": [
+      "KOSPI",
+      "KOSDAQ"
+    ],
     "require_tradable_on_signal": false,
     "filters": []
   },
@@ -14,7 +17,7 @@
       "source": "dart",
       "field": "earnings_yield",
       "direction": "high",
-      "weight": 1.0,
+      "weight": 1,
       "transform": "identity"
     },
     {
@@ -22,7 +25,7 @@
       "source": "dart",
       "field": "book_to_price",
       "direction": "high",
-      "weight": 1.0,
+      "weight": 1,
       "transform": "identity"
     },
     {
@@ -30,7 +33,7 @@
       "source": "dart",
       "field": "cashflow_yield",
       "direction": "high",
-      "weight": 1.0,
+      "weight": 1,
       "transform": "identity"
     },
     {
@@ -38,7 +41,7 @@
       "source": "dart",
       "field": "sales_yield",
       "direction": "high",
-      "weight": 1.0,
+      "weight": 1,
       "transform": "identity"
     }
   ],
@@ -48,7 +51,10 @@
   },
   "rebalance": {
     "frequency": "months",
-    "months": [4, 10],
+    "months": [
+      4,
+      10
+    ],
     "trading_day": "last"
   },
   "execution": {
@@ -57,11 +63,143 @@
   },
   "cost_scenarios": {
     "gross": {
-      "commission_bps": 0.0,
-      "sell_tax_bps": 0.0,
-      "spread_bps": 0.0,
-      "slippage_bps": 0.0,
-      "market_impact_bps": 0.0
+      "commission_bps": 0,
+      "sell_tax_bps": 0,
+      "spread_bps": 0,
+      "slippage_bps": 0,
+      "market_impact_bps": 0
+    },
+    "minimum": {
+      "commission_bps": 1.5,
+      "sell_tax_bps": 0,
+      "spread_bps": 0,
+      "slippage_bps": 0,
+      "market_impact_bps": 0,
+      "sell_tax_schedule": [
+        {
+          "start": "1900-01-01",
+          "end": "2019-06-03",
+          "bps": 30
+        },
+        {
+          "start": "2019-06-03",
+          "end": "2021-01-01",
+          "bps": 25
+        },
+        {
+          "start": "2021-01-01",
+          "end": "2023-01-01",
+          "bps": 23
+        },
+        {
+          "start": "2023-01-01",
+          "end": "2024-01-01",
+          "bps": 20
+        },
+        {
+          "start": "2024-01-01",
+          "end": "2025-01-01",
+          "bps": 18
+        },
+        {
+          "start": "2025-01-01",
+          "end": "2026-01-01",
+          "bps": 15
+        },
+        {
+          "start": "2026-01-01",
+          "end": null,
+          "bps": 20
+        }
+      ]
+    },
+    "base": {
+      "commission_bps": 1.5,
+      "sell_tax_bps": 0,
+      "spread_bps": 10,
+      "slippage_bps": 10,
+      "market_impact_bps": 0,
+      "sell_tax_schedule": [
+        {
+          "start": "1900-01-01",
+          "end": "2019-06-03",
+          "bps": 30
+        },
+        {
+          "start": "2019-06-03",
+          "end": "2021-01-01",
+          "bps": 25
+        },
+        {
+          "start": "2021-01-01",
+          "end": "2023-01-01",
+          "bps": 23
+        },
+        {
+          "start": "2023-01-01",
+          "end": "2024-01-01",
+          "bps": 20
+        },
+        {
+          "start": "2024-01-01",
+          "end": "2025-01-01",
+          "bps": 18
+        },
+        {
+          "start": "2025-01-01",
+          "end": "2026-01-01",
+          "bps": 15
+        },
+        {
+          "start": "2026-01-01",
+          "end": null,
+          "bps": 20
+        }
+      ]
+    },
+    "conservative": {
+      "commission_bps": 2,
+      "sell_tax_bps": 0,
+      "spread_bps": 20,
+      "slippage_bps": 20,
+      "market_impact_bps": 10,
+      "sell_tax_schedule": [
+        {
+          "start": "1900-01-01",
+          "end": "2019-06-03",
+          "bps": 30
+        },
+        {
+          "start": "2019-06-03",
+          "end": "2021-01-01",
+          "bps": 25
+        },
+        {
+          "start": "2021-01-01",
+          "end": "2023-01-01",
+          "bps": 23
+        },
+        {
+          "start": "2023-01-01",
+          "end": "2024-01-01",
+          "bps": 20
+        },
+        {
+          "start": "2024-01-01",
+          "end": "2025-01-01",
+          "bps": 18
+        },
+        {
+          "start": "2025-01-01",
+          "end": "2026-01-01",
+          "bps": 15
+        },
+        {
+          "start": "2026-01-01",
+          "end": null,
+          "bps": 20
+        }
+      ]
     }
   },
   "period": {
@@ -75,7 +213,7 @@
   "metadata": {
     "factor_definition": "Legacy v2-16 parity: standalone-quarter NI/equity/OCF/revenue yields ranked descending",
     "selection_parity_target": "scripts/backtest_super_value_v216.py",
-    "cost_scope": "gross-only until historical sell-tax schedule is moved into the generic execution contract",
+    "cost_scope": "Matches legacy v2-16 minimum/base/conservative common costs plus historical dated sell-tax schedule",
     "validation_scope": "selection/factor parity does not itself validate corporate-action or delisting return assumptions"
   }
 }
