@@ -20,6 +20,7 @@ import pandas as pd
 
 from strategy_dsl import StrategySpec, compile_execution_plan, load_strategy_spec
 from dart_value_factor_adapter import DartValueFactorAdapter
+from corporate_action_adapter import apply_corporate_action_continuations
 
 ENGINE_FILE = "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py"
 POSTPROCESS_FILE = "scripts/quant_backtest_postprocess.py"
@@ -316,6 +317,12 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     target_weights, selections = build_target_weights_from_panel(panel, spec, repo_root=repo_root)
     assets = list(target_weights.columns)
     close, tradable = close_and_tradable_matrices(panel, assets)
+    close, tradable, corporate_action_audit = apply_corporate_action_continuations(
+        close,
+        tradable,
+        target_weights,
+        repo_root,
+    )
     cfg, costs, execution = engine_inputs(spec, engine)
     result = execute_daily_nav(
         engine=engine,
@@ -336,6 +343,12 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     coverage = dart_coverage_audit(panel, spec, repo_root)
     if not coverage.empty:
         coverage.to_csv(out / "dart_pit_coverage.csv", index=False, encoding="utf-8-sig")
+    if not corporate_action_audit.empty:
+        corporate_action_audit.to_csv(
+            out / "corporate_action_audit.csv",
+            index=False,
+            encoding="utf-8-sig",
+        )
     (out / "execution_plan.json").write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
     (out / "strategy_fingerprint.txt").write_text(spec.fingerprint() + "\n", encoding="utf-8")
 
@@ -353,7 +366,13 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
             "--as-of-date", spec.period.as_of_date or spec.period.end,
         ]
         subprocess.run(cmd, cwd=repo_root, check=True)
-    return {"spec": spec, "plan": plan, "engine_result": result, "output_dir": out}
+    return {
+        "spec": spec,
+        "plan": plan,
+        "engine_result": result,
+        "corporate_action_audit": corporate_action_audit,
+        "output_dir": out,
+    }
 
 
 def main() -> None:
