@@ -20,6 +20,7 @@ import pandas as pd
 
 from strategy_dsl import StrategySpec, compile_execution_plan, load_strategy_spec
 from dart_value_factor_adapter import DartValueFactorAdapter
+from corporate_action_adapter import build_corporate_action_inputs
 
 ENGINE_FILE = "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py"
 POSTPROCESS_FILE = "scripts/quant_backtest_postprocess.py"
@@ -288,6 +289,7 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     assets = list(target_weights.columns)
     close, tradable = close_and_tradable_matrices(panel, assets)
     cfg, costs, execution = engine_inputs(spec, engine)
+    corporate_actions = build_corporate_action_inputs(close, repo_root)
     result = engine.run_execution_backtest(
         close_prices=close,
         target_weights=target_weights,
@@ -295,6 +297,8 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
         cost_scenarios=costs,
         execution_assumptions=execution,
         tradable_mask=tradable,
+        explicit_delisting_returns=corporate_actions["explicit_returns"],
+        corporate_action_transfers=corporate_actions["transfers"],
     )
 
     out = output_dir or (repo_root / "results" / "dsl" / spec.strategy_id)
@@ -306,6 +310,10 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     coverage = dart_coverage_audit(panel, spec, repo_root)
     if not coverage.empty:
         coverage.to_csv(out / "dart_pit_coverage.csv", index=False, encoding="utf-8-sig")
+    if not corporate_actions["audit"].empty:
+        corporate_actions["audit"].to_csv(
+            out / "corporate_action_audit.csv", index=False, encoding="utf-8-sig"
+        )
     (out / "execution_plan.json").write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
     (out / "strategy_fingerprint.txt").write_text(spec.fingerprint() + "\n", encoding="utf-8")
 
