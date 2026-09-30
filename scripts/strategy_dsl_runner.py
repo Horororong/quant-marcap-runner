@@ -19,6 +19,7 @@ import numpy as np
 import pandas as pd
 
 from strategy_dsl import StrategySpec, compile_execution_plan, load_strategy_spec
+from corporate_action_registry import load_corporate_actions
 from factor_registry import (
     build_external_provider,
     external_sources,
@@ -284,6 +285,7 @@ def execute_daily_nav(
     execution_assumptions: Any,
     initial_capital: float,
     tradable_mask: pd.DataFrame | None = None,
+    corporate_action_events: pd.DataFrame | None = None,
 ) -> dict[str, Any]:
     """Convert deterministic target weights into full daily NAV only.
 
@@ -306,6 +308,7 @@ def execute_daily_nav(
             execution_assumptions=execution_assumptions,
             tradable_mask=tradable_mask,
             initial_capital=initial_capital,
+            corporate_action_events=corporate_action_events,
         )
         executions[name] = exout
         d = exout["daily_nav"]
@@ -344,6 +347,12 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     assets = list(target_weights.columns)
     close, tradable = close_and_tradable_matrices(panel, assets)
     cfg, costs, execution = engine_inputs(spec, engine)
+    corporate_actions = load_corporate_actions(
+        repo_root,
+        start=close.index.min(),
+        end=close.index.max(),
+        asset_codes=set(assets),
+    )
     result = execute_daily_nav(
         engine=engine,
         close_prices=close,
@@ -352,6 +361,7 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
         execution_assumptions=execution,
         initial_capital=cfg.initial_capital,
         tradable_mask=tradable,
+        corporate_action_events=corporate_actions,
     )
 
     out = output_dir or (repo_root / "results" / "dsl" / spec.strategy_id)
@@ -360,6 +370,10 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     daily.to_csv(out / "daily_nav.csv", index_label="Date")
     target_weights.to_csv(out / "target_weights.csv", index_label="signal_date")
     selections.to_csv(out / "selections.csv", index=False, encoding="utf-8-sig")
+    first_execution = next(iter(result["execution_scenarios"].values()))
+    ca_applied = first_execution.get("corporate_actions", pd.DataFrame())
+    if isinstance(ca_applied, pd.DataFrame) and not ca_applied.empty:
+        ca_applied.to_csv(out / "corporate_actions_applied.csv", index=False, encoding="utf-8-sig")
     coverage = factor_provider_coverage_audit(panel, spec, repo_root)
     if not coverage.empty:
         coverage.to_csv(out / "factor_provider_coverage.csv", index=False, encoding="utf-8-sig")
