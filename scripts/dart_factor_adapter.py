@@ -57,43 +57,53 @@ def normalize_name(x: Any) -> str:
 
 
 def metric_priority(row: pd.Series) -> tuple[Optional[str], int]:
-    """Map one DART raw account row to the canonical metric used by super-value."""
+    """Exact audited IFRS account mapping; rejects adjacent standard IFRS accounts."""
+    aid = str(row.get("account_id", "") or "").lower()
+    nm = re.sub(r"\s+", "", str(row.get("account_nm", "") or ""))
     sj = str(row.get("sj_div", "") or "").upper()
-    aid = normalize_name(row.get("account_id", ""))
-    nm = normalize_name(row.get("account_nm", ""))
-
-    if sj == "BS" and (
-        "ifrs-full_equity" in aid or aid.endswith("equity") or nm in {"자본총계", "총자본"}
-    ):
-        pri = 0 if ("ifrs-full-equity" in aid or nm == "자본총계") else 2
-        return "equity", pri
-
-    if sj in {"IS", "CIS"} and (
-        "revenue" in aid
-        or nm in {"매출액", "영업수익", "수익", "수익(매출액)", "매출"}
-    ):
-        pri = 0 if ("revenue" in aid or nm == "매출액") else 2
-        return "revenue", pri + (0 if sj == "IS" else 1)
-
-    if sj in {"IS", "CIS"} and (
-        "profitloss" in aid
-        or nm in {
-            "당기순이익", "당기순이익(손실)", "분기순이익", "분기순이익(손실)",
-            "반기순이익", "반기순이익(손실)", "연결당기순이익",
-        }
-    ):
-        pri = 0 if "profitloss" in aid else 2
-        return "net_income", pri + (0 if sj == "IS" else 1)
-
-    if sj == "CF" and (
-        "cashflowsfromusedinoperatingactivities" in aid
-        or nm in {"영업활동현금흐름", "영업활동으로인한현금흐름", "영업활동으로부터의현금흐름"}
-    ):
-        pri = 0 if "cashflowsfromusedinoperatingactivities" in aid else 2
-        return "ocf", pri
-
+    specs = {
+        "equity": (
+            {"BS"},
+            {"ifrs_equity", "ifrs-full_equity"},
+            {"자본총계", "총자본", "자본합계"},
+        ),
+        "revenue": (
+            {"IS", "CIS"},
+            {"ifrs_revenue", "ifrs-full_revenue"},
+            {"매출액", "매출", "영업수익", "수익(매출액)", "영업수익합계"},
+        ),
+        "net_income": (
+            {"IS", "CIS"},
+            {"ifrs_profitloss", "ifrs-full_profitloss"},
+            {
+                "당기순이익", "당기순이익(손실)", "분기순이익", "분기순이익(손실)",
+                "반기순이익", "반기순이익(손실)", "연결당기순이익",
+                "당기순손익", "분기순손익", "반기순손익",
+            },
+        ),
+        "ocf": (
+            {"CF"},
+            {
+                "ifrs_cashflowsfromusedinoperatingactivities",
+                "ifrs-full_cashflowsfromusedinoperatingactivities",
+            },
+            {
+                "영업활동현금흐름", "영업활동으로인한현금흐름",
+                "영업활동으로부터의현금흐름", "영업활동에의한현금흐름",
+            },
+        ),
+    }
+    for key, (statements, ids, names) in specs.items():
+        if sj not in statements:
+            continue
+        if aid in ids:
+            return key, 0 if sj != "CIS" else 1
+        # A different standard IFRS account is never accepted only because its
+        # Korean label resembles the desired metric. Custom accounts may fall
+        # back to a tightly enumerated Korean label.
+        if nm in names and not aid.startswith(("ifrs_", "ifrs-full_")):
+            return key, 2 if sj != "CIS" else 3
     return None, 99
-
 
 def required_periods_for_signal(signal: pd.Timestamp) -> list[tuple[int, str]]:
     signal = pd.Timestamp(signal).normalize()
@@ -119,7 +129,7 @@ def _load_financial_raw(repo_root: Path, year: int, period: str) -> pd.DataFrame
         "_stock_code", "stock_code", "_filing_date", "filing_date",
         "_fs_div_requested", "fs_div_requested", "fs_div",
         "_period", "period", "_requested_year", "requested_year",
-        "rcept_no", "sj_div", "account_id", "account_nm",
+        "rcept_no", "sj_div", "account_id", "account_nm", "currency",
         "thstrm_amount", "thstrm_add_amount",
     }
     chunks: list[pd.DataFrame] = []
@@ -215,31 +225,47 @@ def report_snapshots(raw: pd.DataFrame) -> pd.DataFrame:
                 "priority": priority,
                 "current": to_num(row.get("thstrm_amount")),
                 "cumulative": to_num(row.get("thstrm_add_amount")),
+                "account_id": row.get("account_id", ""),
+                "account_nm": row.get("account_nm", ""),
             })
         if not candidates:
             continue
 
         cand = pd.DataFrame(candidates)
+        currency_values = set(
+            str(x).upper().strip()
+            for x in g.get("currency", pd.Series(dtype=str)).dropna().tolist()
+            if str(x).strip()
+        )
+        currency_ok = currency_values == {"KRW"}
         rec: dict[str, Any] = {
             "Code": str(code).zfill(6),
             "fs_div": str(fs),
             "rcept_no": str(rcept),
             "filing_date": pd.Timestamp(filing_date) if pd.notna(filing_date) else pd.NaT,
+            "currency_ok": bool(currency_ok),
         }
         for metric in ("equity", "revenue", "net_income", "ocf"):
             z = cand[cand["metric"] == metric].copy()
+            rec[f"{metric}_current"] = np.nan
+            rec[f"{metric}_cum"] = np.nan
+            rec[f"{metric}_ambiguous"] = False
             if z.empty:
-                rec[f"{metric}_current"] = np.nan
-                rec[f"{metric}_cum"] = np.nan
                 continue
-            z["has_value"] = z[["current", "cumulative"]].notna().any(axis=1).astype(int)
-            z = z.sort_values(["has_value", "priority"], ascending=[False, True])
+            z = z[z[["current", "cumulative"]].notna().any(axis=1)].copy()
+            if z.empty:
+                continue
+            min_priority = z["priority"].min()
+            z = z[z["priority"] == min_priority].copy()
+            ambiguous = len(z[["current", "cumulative"]].drop_duplicates()) > 1
+            rec[f"{metric}_ambiguous"] = bool(ambiguous)
+            if not currency_ok or ambiguous:
+                continue
             best = z.iloc[0]
             rec[f"{metric}_current"] = best["current"]
             rec[f"{metric}_cum"] = best["cumulative"]
         rows.append(rec)
     return pd.DataFrame(rows)
-
 
 def latest_snapshot(snapshots: pd.DataFrame, signal: pd.Timestamp) -> pd.DataFrame:
     if snapshots.empty:
