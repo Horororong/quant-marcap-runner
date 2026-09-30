@@ -1,0 +1,39 @@
+name: Test DSL Execution E2E
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/strategy_dsl_runner.py'
+      - 'scripts/dart_value_factor_adapter.py'
+      - 'scripts/corporate_action_adapter.py'
+      - 'scripts/test_dsl_execution_e2e.py'
+      - 'config/strategies/super_value_dart_dsl.json'
+      - 'config/corporate_actions.json'
+      - '.github/workflows/test-dsl-execution-e2e.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dsl-execution-e2e-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy pyarrow exchange_calendars plotly
+      - name: Syntax check
+        run: |
+          python -m py_compile scripts/strategy_dsl_runner.py scripts/dart_value_factor_adapter.py scripts/corporate_action_adapter.py scripts/test_dsl_execution_e2e.py
+      - name: Real-data DSL execution E2E
+        run: python scripts/test_dsl_execution_e2e.py
