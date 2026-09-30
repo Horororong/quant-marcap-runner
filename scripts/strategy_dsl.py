@@ -165,19 +165,61 @@ class ExecutionSpec:
 
 
 @dataclass(frozen=True)
+class SellTaxBandSpec:
+    start: str
+    end: str | None
+    bps: float
+
+    @classmethod
+    def from_dict(cls, raw: Mapping[str, Any]) -> "SellTaxBandSpec":
+        start = str(raw.get("start", "")).strip()
+        end_raw = raw.get("end")
+        end = str(end_raw).strip() if end_raw not in (None, "") else None
+        bps = float(raw.get("bps", 0.0))
+        if not start:
+            raise ValueError("sell_tax_schedule band requires start")
+        if bps < 0:
+            raise ValueError("sell_tax_schedule bps must be >= 0")
+        import pandas as pd
+        start_ts = pd.Timestamp(start)
+        if end is not None and pd.Timestamp(end) <= start_ts:
+            raise ValueError("sell_tax_schedule end must be after start")
+        return cls(start=start, end=end, bps=bps)
+
+
+@dataclass(frozen=True)
 class CostScenarioSpec:
     commission_bps: float = 0.0
     sell_tax_bps: float = 0.0
     spread_bps: float = 0.0
     slippage_bps: float = 0.0
     market_impact_bps: float = 0.0
+    sell_tax_schedule: tuple[SellTaxBandSpec, ...] = ()
 
     @classmethod
     def from_dict(cls, raw: Mapping[str, Any]) -> "CostScenarioSpec":
-        obj = cls(**{k: float(raw.get(k, 0.0)) for k in cls.__dataclass_fields__})
-        for k, v in asdict(obj).items():
-            if v < 0:
+        bands = tuple(SellTaxBandSpec.from_dict(x) for x in raw.get("sell_tax_schedule", []))
+        obj = cls(
+            commission_bps=float(raw.get("commission_bps", 0.0)),
+            sell_tax_bps=float(raw.get("sell_tax_bps", 0.0)),
+            spread_bps=float(raw.get("spread_bps", 0.0)),
+            slippage_bps=float(raw.get("slippage_bps", 0.0)),
+            market_impact_bps=float(raw.get("market_impact_bps", 0.0)),
+            sell_tax_schedule=bands,
+        )
+        for k in ("commission_bps", "sell_tax_bps", "spread_bps", "slippage_bps", "market_impact_bps"):
+            if float(getattr(obj, k)) < 0:
                 raise ValueError(f"cost {k} must be >= 0")
+        if bands:
+            import pandas as pd
+            ordered = sorted(bands, key=lambda b: pd.Timestamp(b.start))
+            if tuple(ordered) != bands:
+                raise ValueError("sell_tax_schedule bands must be sorted by start")
+            for prev, cur in zip(bands, bands[1:]):
+                if prev.end is None:
+                    raise ValueError("open-ended sell_tax_schedule band must be last")
+                if pd.Timestamp(cur.start) < pd.Timestamp(prev.end):
+                    raise ValueError("sell_tax_schedule bands must not overlap")
         return obj
 
 
