@@ -90,6 +90,6 @@ Outputs go to `results/dsl/<strategy_id>/` and include:
 
 Every validated strategy has a SHA-256 `strategy_fingerprint` derived from canonical JSON. Results should be keyed by at least:
 
-`strategy_fingerprint + engine_version + data_version/as-of`.
+`strategy_fingerprint + factor_registry_version + engine_version + data_version/as-of`.
 
-This is the basis for the future strategy-result database and natural-language research agent.
+The registry version is stored in the compiled execution plan so a change in factor semantics is auditable even when the strategy JSON itself is unchanged.\n\nThis is the basis for the future strategy-result database and natural-language research agent.
