@@ -112,12 +112,25 @@ def apply_corporate_action_continuations(
         ]
         observed_during_suspend = px.loc[suspension_idx, old].dropna()
         if len(observed_during_suspend):
-            raise RuntimeError(
-                f"{event['event_id']}: old_code has prices during declared suspension: "
-                f"{observed_during_suspend.index[0].date()}"
-            )
-        # Before legal effectiveness, the old share is suspended and its last
-        # observable market value is carried for valuation only.
+            observed_idx = observed_during_suspend.index
+            if tradable.loc[observed_idx, old].astype(bool).any():
+                first = tradable.loc[observed_idx, old].astype(bool)
+                raise RuntimeError(
+                    f"{event['event_id']}: old_code is marked tradable during declared "
+                    f"suspension: {first[first].index[0].date()}"
+                )
+            if not np.allclose(
+                observed_during_suspend.to_numpy(float),
+                last_old_price,
+                rtol=0,
+                atol=max(1e-8, abs(last_old_price) * 1e-10),
+            ):
+                raise RuntimeError(
+                    f"{event['event_id']}: stale suspension prices differ from the "
+                    "last pre-suspension close"
+                )
+        # Some KRX rows retain a stale close with zero volume during suspension.
+        # Treat that as valuation metadata, never as executable liquidity.
         px.loc[suspension_idx, old] = last_old_price
         tradable.loc[suspension_idx, old] = False
 
