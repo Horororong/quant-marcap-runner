@@ -19,6 +19,7 @@ import numpy as np
 import pandas as pd
 
 from strategy_dsl import StrategySpec, compile_execution_plan, load_strategy_spec
+from dart_value_factor_adapter import DartValueFactorAdapter
 
 ENGINE_FILE = "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py"
 POSTPROCESS_FILE = "scripts/quant_backtest_postprocess.py"
@@ -107,8 +108,21 @@ def signal_dates_from_panel(panel: pd.DataFrame, spec: StrategySpec) -> list[pd.
     return sorted(set(out))
 
 
-def rank_cross_section(cross_section: pd.DataFrame, spec: StrategySpec) -> tuple[pd.DataFrame, pd.DataFrame]:
+def rank_cross_section(
+    cross_section: pd.DataFrame,
+    spec: StrategySpec,
+    external_factors: pd.DataFrame | None = None,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
     x = cross_section.copy()
+    if external_factors is not None and not external_factors.empty:
+        f = external_factors.copy()
+        f["Code"] = f["Code"].astype(str).str.zfill(6)
+        if f["Code"].duplicated().any():
+            raise AssertionError("external_factors must have one row per Code at a signal date")
+        overlap = [c for c in f.columns if c != "Code" and c in x.columns]
+        if overlap:
+            raise ValueError(f"external factor columns collide with panel columns: {overlap}")
+        x = x.merge(f, on="Code", how="left")
     if spec.universe.require_tradable_on_signal:
         close = pd.to_numeric(x["Close"], errors="coerce")
         volume = pd.to_numeric(x["Volume"], errors="coerce")
@@ -122,7 +136,7 @@ def rank_cross_section(cross_section: pd.DataFrame, spec: StrategySpec) -> tuple
     transformed: dict[str, pd.Series] = {}
     valid_all = pd.Series(True, index=x.index)
     for fac in spec.factors:
-        if fac.source != "krx":
+        if fac.source not in {"krx", "dart"}:
             raise NotImplementedError(f"DSL v1 runtime factor source not implemented: {fac.source}")
         if fac.field not in x.columns:
             raise KeyError(f"factor field not present in panel: {fac.field}")
@@ -154,7 +168,11 @@ def rank_cross_section(cross_section: pd.DataFrame, spec: StrategySpec) -> tuple
     selected["target_weight"] = 1.0 / n
     return selected, x[["Date", "Code", "Name", "Market", "composite_score", *factor_columns]].copy()
 
-def build_target_weights_from_panel(panel: pd.DataFrame, spec: StrategySpec) -> tuple[pd.DataFrame, pd.DataFrame]:
+def build_target_weights_from_panel(
+    panel: pd.DataFrame,
+    spec: StrategySpec,
+    repo_root: Path | None = None,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
     p = panel.copy()
     p["Date"] = pd.to_datetime(p["Date"]).dt.normalize()
     p["Code"] = p["Code"].astype(str).str.zfill(6)
@@ -163,9 +181,15 @@ def build_target_weights_from_panel(panel: pd.DataFrame, spec: StrategySpec) -> 
     assets = sorted(p["Code"].unique())
     rows: list[pd.Series] = []
     selection_rows: list[pd.DataFrame] = []
+    needs_dart = any(f.source == "dart" for f in spec.factors)
+    if needs_dart and repo_root is None:
+        raise ValueError("repo_root is required when DART factors are used")
+    dart_adapter = DartValueFactorAdapter(repo_root) if needs_dart else None
+
     for dt in signal_dates_from_panel(p, spec):
         cs = p[p["Date"] == dt].copy()
-        selected, _ = rank_cross_section(cs, spec)
+        external = dart_adapter.factor_frame(dt, cs) if dart_adapter is not None else None
+        selected, _ = rank_cross_section(cs, spec, external_factors=external)
         w = pd.Series(0.0, index=assets, name=dt)
         w.loc[selected["Code"].astype(str).str.zfill(6)] = selected["target_weight"].to_numpy(float)
         rows.append(w)
@@ -177,6 +201,21 @@ def build_target_weights_from_panel(panel: pd.DataFrame, spec: StrategySpec) -> 
     tw = tw.sort_index().fillna(0.0)
     selections = pd.concat(selection_rows, ignore_index=True) if selection_rows else pd.DataFrame()
     return tw, selections
+
+
+
+def dart_coverage_audit(
+    panel: pd.DataFrame,
+    spec: StrategySpec,
+    repo_root: Path,
+) -> pd.DataFrame:
+    if not any(f.source == "dart" for f in spec.factors):
+        return pd.DataFrame()
+    adapter = DartValueFactorAdapter(repo_root)
+    rows: list[dict[str, Any]] = []
+    for dt in signal_dates_from_panel(panel, spec):
+        rows.extend(adapter.coverage_report(pd.Timestamp(dt)))
+    return pd.DataFrame(rows)
 
 
 def close_and_tradable_matrices(panel: pd.DataFrame, assets: list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -220,7 +259,7 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
         columns=required_panel_columns(spec),
         repo_root=repo_root,
     )
-    target_weights, selections = build_target_weights_from_panel(panel, spec)
+    target_weights, selections = build_target_weights_from_panel(panel, spec, repo_root=repo_root)
     assets = list(target_weights.columns)
     close, tradable = close_and_tradable_matrices(panel, assets)
     cfg, costs, execution = engine_inputs(spec, engine)
@@ -239,6 +278,9 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     daily.to_csv(out / "daily_nav.csv", index_label="Date")
     target_weights.to_csv(out / "target_weights.csv", index_label="signal_date")
     selections.to_csv(out / "selections.csv", index=False, encoding="utf-8-sig")
+    coverage = dart_coverage_audit(panel, spec, repo_root)
+    if not coverage.empty:
+        coverage.to_csv(out / "dart_pit_coverage.csv", index=False, encoding="utf-8-sig")
     (out / "execution_plan.json").write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
     (out / "strategy_fingerprint.txt").write_text(spec.fingerprint() + "\n", encoding="utf-8")
 
