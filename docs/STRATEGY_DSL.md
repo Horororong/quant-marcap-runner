@@ -29,7 +29,7 @@ DSL v1 now supports these standardized DART fields:
 - `cashflow_yield` = standalone-quarter operating cash flow / signal-date market cap
 - `sales_yield` = standalone-quarter revenue / signal-date market cap
 
-The adapter uses only filings whose filing date is on or before the signal date. April reconstructs Q4 from FY minus Q3 cumulative values; October reconstructs Q2 from H1 minus Q1 where a standalone current-period value is unavailable. CFS is preferred over OFS when the CFS row is complete.
+The adapter uses only filings whose filing date is on or before the signal date. April reconstructs Q4 from FY minus Q3 cumulative values; October reconstructs Q2 from H1 minus Q1 where a standalone current-period value is unavailable. CFS is preferred over OFS when the CFS row is complete. Before a signal is evaluated, the adapter checks the historical code map plus DART backfill state and refuses to run if any required report period is not fully terminal (CFS OK, or CFS NO_DATA with terminal OFS fallback) or the corresponding raw shards are missing.
 
 See `config/strategies/super_value_dart_dsl.json`.
 
