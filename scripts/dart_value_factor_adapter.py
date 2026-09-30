@@ -138,39 +138,52 @@ def load_financial_raw(repo_root: Path, year: int, period: str) -> pd.DataFrame:
 
 
 def _metric_priority(row: pd.Series) -> tuple[Optional[str], int]:
+    """Map only explicit financial-statement concepts to standardized metrics.
+
+    Exact IFRS concept IDs are preferred. Korean account names are a fallback.
+    Broad substring matching is intentionally rejected because e.g.
+    ProfitLossBeforeTax or attributable-profit concepts must not be treated as
+    total ProfitLoss.
+    """
     sj = str(row.get("sj_div", "") or "").upper()
     aid = _normalize_name(row.get("account_id", ""))
     nm = _normalize_name(row.get("account_nm", ""))
 
-    if sj == "BS" and (
-        "ifrs-full-equity" in aid or aid.endswith("equity") or nm in {"자본총계", "총자본"}
-    ):
-        return "equity", 0 if ("ifrs-full-equity" in aid or nm == "자본총계") else 2
+    equity_ids = {"ifrs-full_equity", "ifrs_equity"}
+    revenue_ids = {"ifrs-full_revenue", "ifrs_revenue"}
+    profit_ids = {"ifrs-full_profitloss", "ifrs_profitloss"}
+    ocf_ids = {
+        "ifrs-full_cashflowsfromusedinoperatingactivities",
+        "ifrs_cashflowsfromusedinoperatingactivities",
+    }
 
-    if sj in {"IS", "CIS"} and (
-        "revenue" in aid or nm in {"매출액", "영업수익", "수익", "수익(매출액)", "매출"}
-    ):
-        pri = 0 if ("revenue" in aid or nm == "매출액") else 2
-        return "revenue", pri + (0 if sj == "IS" else 1)
+    if sj == "BS":
+        if aid in equity_ids:
+            return "equity", 0
+        if nm in {"자본총계", "총자본"}:
+            return "equity", 2
 
-    if sj in {"IS", "CIS"} and (
-        "profitloss" in aid
-        or nm in {
+    if sj in {"IS", "CIS"}:
+        statement_penalty = 0 if sj == "IS" else 1
+        if aid in revenue_ids:
+            return "revenue", statement_penalty
+        if nm in {"매출액", "영업수익", "수익", "수익(매출액)", "매출"}:
+            return "revenue", 2 + statement_penalty
+        if aid in profit_ids:
+            return "net_income", statement_penalty
+        if nm in {
             "당기순이익", "당기순이익(손실)", "분기순이익", "분기순이익(손실)",
             "반기순이익", "반기순이익(손실)", "연결당기순이익",
-        }
-    ):
-        pri = 0 if "profitloss" in aid else 2
-        return "net_income", pri + (0 if sj == "IS" else 1)
+        }:
+            return "net_income", 2 + statement_penalty
 
-    if sj == "CF" and (
-        "cashflowsfromusedinoperatingactivities" in aid
-        or nm in {"영업활동현금흐름", "영업활동으로인한현금흐름", "영업활동으로부터의현금흐름"}
-    ):
-        return "ocf", 0 if "cashflowsfromusedinoperatingactivities" in aid else 2
+    if sj == "CF":
+        if aid in ocf_ids:
+            return "ocf", 0
+        if nm in {"영업활동현금흐름", "영업활동으로인한현금흐름", "영업활동으로부터의현금흐름"}:
+            return "ocf", 2
 
     return None, 99
-
 
 def report_snapshots(raw: pd.DataFrame) -> pd.DataFrame:
     if "rcept_no" not in raw.columns:
@@ -208,7 +221,16 @@ def report_snapshots(raw: pd.DataFrame) -> pd.DataFrame:
                 rec[f"{metric}_cum"] = np.nan
                 continue
             z["has_value"] = z[["current", "cumulative"]].notna().any(axis=1).astype(int)
-            z = z.sort_values(["has_value", "priority"], ascending=[False, True])
+            z["account_key"] = (
+                z["account_id"].fillna("").astype(str).map(_normalize_name)
+                + "|"
+                + z["account_nm"].fillna("").astype(str).map(_normalize_name)
+            )
+            z = z.sort_values(
+                ["has_value", "priority", "account_key"],
+                ascending=[False, True, True],
+                kind="mergesort",
+            )
             best = z.iloc[0]
             rec[f"{metric}_current"] = best["current"]
             rec[f"{metric}_cum"] = best["cumulative"]
