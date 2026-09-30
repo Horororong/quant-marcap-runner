@@ -68,6 +68,7 @@ Outputs go to `results/dsl/<strategy_id>/` and include:
 - `daily_nav.csv`
 - `target_weights.csv`
 - `selections.csv`
+- `dart_pit_coverage.csv` when DART factors are used
 - `execution_plan.json`
 - `strategy_fingerprint.txt`
 - canonical `metrics_CURRENT.csv`
