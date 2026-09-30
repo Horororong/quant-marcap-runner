@@ -285,6 +285,17 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         },
         "universe": asdict(spec.universe),
         "factors": [asdict(x) for x in spec.factors],
+        "factor_contracts": [
+            {
+                "name": factor.name,
+                "source": definition.source,
+                "field": definition.field,
+                "storage": definition.storage,
+                "description": definition.description,
+            }
+            for factor in spec.factors
+            for definition in [get_factor_definition(factor.source, factor.field)]
+        ],
         "portfolio": asdict(spec.portfolio),
         "rebalance": asdict(spec.rebalance),
         "execution": asdict(spec.execution),
