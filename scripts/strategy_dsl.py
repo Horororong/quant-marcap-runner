@@ -14,7 +14,7 @@ import hashlib
 import json
 import re
 
-from factor_registry import get_factor_definition
+from factor_registry import FACTOR_REGISTRY_VERSION, get_factor_definition
 
 SCHEMA_VERSION = "1.0"
 STRATEGY_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{2,63}$")
@@ -277,6 +277,7 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         "schema_version": spec.schema_version,
         "strategy_id": spec.strategy_id,
         "strategy_fingerprint": spec.fingerprint(),
+        "factor_registry_version": FACTOR_REGISTRY_VERSION,
         "asset_class": spec.asset_class,
         "data_contract": {
             "price_universe": "data/krx_equities/yearly/marcap-YYYY.parquet",
