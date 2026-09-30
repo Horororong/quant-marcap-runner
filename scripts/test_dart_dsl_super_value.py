@@ -13,6 +13,7 @@ from strategy_dsl_runner import (
     load_project_engine,
 )
 from dart_value_factor_adapter import DartValueFactorAdapter
+from corporate_action_adapter import build_corporate_action_inputs
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC_PATH = ROOT / "config/strategies/super_value_dart_dsl.json"
@@ -49,16 +50,26 @@ def main() -> None:
     assets = list(target_weights.columns)
     close, tradable = close_and_tradable_matrices(panel, assets)
     cfg, costs, execution = engine_inputs(strategy, engine)
+    corporate_actions = build_corporate_action_inputs(close, ROOT)
     executed = engine.simulate_target_weight_portfolio(
         close_prices=close,
         target_weights=target_weights,
         cost_assumptions=costs["gross"],
         execution_assumptions=execution,
         tradable_mask=tradable,
+        explicit_delisting_returns=corporate_actions["explicit_returns"],
+        corporate_action_transfers=corporate_actions["transfers"],
         initial_capital=cfg.initial_capital,
     )
     assert len(executed["execution_schedule"]) == len(target_weights)
     assert (executed["daily_nav"] > 0).all().all()
+    ca_exec = executed["corporate_actions"]
+    assert not ca_exec.empty
+    merger = ca_exec[ca_exec["event_id"] == "2020-002300-034810"]
+    assert len(merger) == 1
+    assert merger.iloc[0]["source_asset"] == "002300"
+    assert merger.iloc[0]["target_asset"] == "034810"
+    assert float(merger.iloc[0]["source_weight_before_transfer"]) > 0
     for _, row in executed["execution_schedule"].iterrows():
         if pd.Timestamp(row["execution_date"]) <= pd.Timestamp(row["signal_date"]):
             raise AssertionError("execution must occur after signal date")
