@@ -11,7 +11,7 @@ import pandas as pd
 
 from dart_factor_adapter import DartValueFactorAdapter
 from strategy_dsl import load_strategy_spec
-from strategy_dsl_runner import rank_cross_section
+from strategy_dsl_runner import rank_cross_section, _scheduled_sell_tax_bps
 
 ROOT = Path(__file__).resolve().parents[1]
 SIGNAL = pd.Timestamp("2020-04-29")
@@ -47,6 +47,17 @@ def main() -> None:
     legacy = load_legacy()
     spec = load_strategy_spec(ROOT / "config/strategies/super_value_original_dsl.json")
     adapter = DartValueFactorAdapter(ROOT)
+
+    # The DSL cost schedule must reproduce the legacy dated sell-tax function.
+    sample_dates = pd.DatetimeIndex([
+        "2018-12-31", "2019-06-03", "2020-12-31", "2021-01-01",
+        "2023-01-01", "2024-01-01", "2025-01-01", "2026-01-01",
+    ])
+    for scenario_name in ("minimum", "base", "conservative"):
+        tax = _scheduled_sell_tax_bps(spec.cost_scenarios[scenario_name], sample_dates)
+        expected = pd.Series([legacy.sell_tax_bps(x) for x in sample_dates], index=sample_dates)
+        if not np.allclose(tax.to_numpy(float), expected.to_numpy(float), rtol=0, atol=0):
+            raise AssertionError(f"sell-tax schedule mismatch: {scenario_name}")
 
     period_cache = {}
     for y, p in legacy.required_periods(SIGNAL):
