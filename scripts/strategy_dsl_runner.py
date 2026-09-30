@@ -212,7 +212,13 @@ def engine_inputs(spec: StrategySpec, engine) -> tuple[Any, dict[str, Any], Any]
         market_calendar="XKRX",
     )
     costs = {
-        name: engine.TradingCostAssumptions(**vars(cost))
+        name: engine.TradingCostAssumptions(
+            commission_bps=cost.commission_bps,
+            sell_tax_bps=cost.sell_tax_bps,
+            spread_bps=cost.spread_bps,
+            slippage_bps=cost.slippage_bps,
+            market_impact_bps=cost.market_impact_bps,
+        )
         for name, cost in spec.cost_scenarios.items()
     }
     execution = engine.ExecutionAssumptions(
@@ -220,6 +226,115 @@ def engine_inputs(spec: StrategySpec, engine) -> tuple[Any, dict[str, Any], Any]
         execution_price=spec.execution.price,
     )
     return cfg, costs, execution
+
+
+def _scheduled_sell_tax_bps(cost_spec, dates: pd.DatetimeIndex) -> pd.Series:
+    """Resolve dated sell-tax bands; fixed sell_tax_bps is the fallback outside bands."""
+    out = pd.Series(float(cost_spec.sell_tax_bps), index=pd.DatetimeIndex(dates), dtype=float)
+    for band in cost_spec.sell_tax_schedule:
+        start = pd.Timestamp(band.start).normalize()
+        end = pd.Timestamp(band.end).normalize() if band.end is not None else None
+        mask = out.index >= start
+        if end is not None:
+            mask &= out.index < end
+        out.loc[mask] = float(band.bps)
+    return out
+
+
+def run_execution_with_dsl_costs(
+    engine,
+    close_prices: pd.DataFrame,
+    target_weights: pd.DataFrame,
+    config,
+    strategy_spec: StrategySpec,
+    execution_assumptions,
+    tradable_mask: pd.DataFrame | None = None,
+) -> dict[str, Any]:
+    """Run one deterministic execution path and apply fixed or dated DSL costs.
+
+    Portfolio returns/turnover are independent of transaction-cost magnitude in
+    the current target-weight engine, so a zero-cost execution is the canonical
+    source for holdings, drift and turnover. Each named cost scenario is then
+    applied to that same trade path, including historical sell-tax schedules.
+    """
+    base = engine.simulate_target_weight_portfolio(
+        close_prices=close_prices,
+        target_weights=target_weights,
+        cost_assumptions=engine.TradingCostAssumptions(),
+        execution_assumptions=execution_assumptions,
+        tradable_mask=tradable_mask,
+        initial_capital=config.initial_capital,
+    )
+    detail = base["daily_detail"].copy()
+    trades = base["trades"].copy()
+    idx = pd.DatetimeIndex(detail.index)
+    portfolio_return = pd.to_numeric(
+        detail["portfolio_return_before_cost"], errors="raise"
+    ).astype(float)
+
+    combined = pd.DataFrame({"Gross": base["daily_nav"]["Gross"].astype(float)}, index=idx)
+    scenarios: dict[str, Any] = {}
+    cost_meta: dict[str, Any] = {}
+
+    for name, cost in strategy_spec.cost_scenarios.items():
+        common_bps = (
+            float(cost.commission_bps)
+            + float(cost.spread_bps)
+            + float(cost.slippage_bps)
+            + float(cost.market_impact_bps)
+        )
+        tax_bps = _scheduled_sell_tax_bps(cost, idx)
+        buy = trades["buy_turnover"].astype(float).reindex(idx)
+        sell = trades["sell_turnover"].astype(float).reindex(idx)
+        cost_fraction = (
+            (buy + sell) * (common_bps / 10_000.0)
+            + sell * (tax_bps / 10_000.0)
+        )
+        if (cost_fraction >= 1.0).any():
+            raise RuntimeError(f"cost scenario {name} consumes >=100% of NAV on a trading day")
+        net_return = (1.0 + portfolio_return) * (1.0 - cost_fraction) - 1.0
+        net_nav = (1.0 + net_return).cumprod()
+        combined[f"Net_{name}"] = net_nav
+
+        trade_audit = trades.copy()
+        trade_audit["sell_tax_bps"] = tax_bps
+        trade_audit["cost_fraction"] = cost_fraction
+        trade_audit["net_return"] = net_return
+        trade_audit["net_nav"] = net_nav
+        scenarios[name] = {
+            "daily_nav": pd.DataFrame({"Gross": combined["Gross"], "Net": net_nav}),
+            "daily_detail": detail.assign(cost_fraction=cost_fraction, net_return=net_return),
+            "weights": base["weights"],
+            "trades": trade_audit,
+            "execution_schedule": base["execution_schedule"],
+            "annualized_one_way_turnover": base["annualized_one_way_turnover"],
+        }
+        cost_meta[name] = {
+            "commission_bps": cost.commission_bps,
+            "sell_tax_bps": cost.sell_tax_bps,
+            "spread_bps": cost.spread_bps,
+            "slippage_bps": cost.slippage_bps,
+            "market_impact_bps": cost.market_impact_bps,
+            "sell_tax_schedule": [
+                {"start": b.start, "end": b.end, "bps": b.bps}
+                for b in cost.sell_tax_schedule
+            ],
+        }
+
+    formal_daily, monthly, latest_meta = engine.complete_monthly_nav_from_daily(
+        combined, as_of_date=config.as_of_date
+    )
+    formal_daily.attrs["market_calendar"] = config.market_calendar
+    monthly.attrs["market_calendar"] = config.market_calendar
+    period_results = engine.run_four_periods(monthly, config, formal_daily)
+    return {
+        "period_results": period_results,
+        "formal_daily_nav": formal_daily,
+        "formal_monthly_nav": monthly,
+        "latest_daily_snapshot": latest_meta,
+        "execution_scenarios": scenarios,
+        "cost_scenarios": cost_meta,
+    }
 
 
 def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = None, *, postprocess: bool = True) -> dict[str, Any]:
@@ -244,14 +359,25 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     assets = list(target_weights.columns)
     close, tradable = close_and_tradable_matrices(panel, assets)
     cfg, costs, execution = engine_inputs(spec, engine)
-    result = engine.run_execution_backtest(
-        close_prices=close,
-        target_weights=target_weights,
-        config=cfg,
-        cost_scenarios=costs,
-        execution_assumptions=execution,
-        tradable_mask=tradable,
-    )
+    if any(cost.sell_tax_schedule for cost in spec.cost_scenarios.values()):
+        result = run_execution_with_dsl_costs(
+            engine=engine,
+            close_prices=close,
+            target_weights=target_weights,
+            config=cfg,
+            strategy_spec=spec,
+            execution_assumptions=execution,
+            tradable_mask=tradable,
+        )
+    else:
+        result = engine.run_execution_backtest(
+            close_prices=close,
+            target_weights=target_weights,
+            config=cfg,
+            cost_scenarios=costs,
+            execution_assumptions=execution,
+            tradable_mask=tradable,
+        )
 
     out = output_dir or (repo_root / "results" / "dsl" / spec.strategy_id)
     out.mkdir(parents=True, exist_ok=True)
