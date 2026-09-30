@@ -20,7 +20,7 @@ def main() -> None:
         daily = pd.read_csv(out / "daily_nav.csv", parse_dates=["Date"])
         weights = pd.read_csv(out / "target_weights.csv", parse_dates=["signal_date"])
         selections = pd.read_csv(out / "selections.csv", dtype={"Code": str})
-        coverage = pd.read_csv(out / "dart_pit_coverage.csv", parse_dates=["signal_date"])
+        coverage = pd.read_csv(out / "factor_provider_coverage.csv", parse_dates=["signal_date"])
 
         assert len(daily) > 100
         nav_cols = [c for c in daily.columns if c.startswith("NAV_")]
@@ -54,7 +54,7 @@ def main() -> None:
             "daily_nav.csv",
             "target_weights.csv",
             "selections.csv",
-            "dart_pit_coverage.csv",
+            "factor_provider_coverage.csv",
             "execution_plan.json",
             "strategy_fingerprint.txt",
         ):
