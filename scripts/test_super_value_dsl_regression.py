@@ -9,7 +9,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-from dart_factor_adapter import DartValueFactorAdapter
+from dart_factor_adapter import DartValueFactorAdapter, metric_priority
 from strategy_dsl import load_strategy_spec
 from strategy_dsl_runner import rank_cross_section, _scheduled_sell_tax_bps
 
@@ -46,6 +46,23 @@ def assert_close_frame(left: pd.DataFrame, right: pd.DataFrame, cols: list[str])
 def main() -> None:
     legacy = load_legacy()
     spec = load_strategy_spec(ROOT / "config/strategies/super_value_original_dsl.json")
+    exact_cases = [
+        ("ifrs_ProfitLoss", "IS", "net_income"),
+        ("ifrs-full_ProfitLoss", "CIS", "net_income"),
+        ("ifrs_ProfitLossBeforeTax", "IS", None),
+        ("ifrs-full_ProfitLossAttributableToOwnersOfParent", "IS", None),
+        ("ifrs_Equity", "BS", "equity"),
+        ("ifrs-full_EquityAndLiabilities", "BS", None),
+    ]
+    for account_id, sj_div, wanted in exact_cases:
+        got, _ = metric_priority(pd.Series({
+            "account_id": account_id,
+            "sj_div": sj_div,
+            "account_nm": "",
+        }))
+        if got != wanted:
+            raise AssertionError(f"exact account mapping failed: {account_id} -> {got}, want={wanted}")
+
     adapter = DartValueFactorAdapter(ROOT)
 
     # The DSL cost schedule must reproduce the legacy dated sell-tax function.
