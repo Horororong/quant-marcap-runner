@@ -211,9 +211,10 @@
   },
   "initial_capital": 10000000,
   "metadata": {
-    "factor_definition": "Legacy v2-16 parity: standalone-quarter NI/equity/OCF/revenue yields ranked descending",
-    "selection_parity_target": "scripts/backtest_super_value_v216.py",
+    "factor_definition": "Audited exact IFRS total equity / total net profit / revenue / operating cash flow; standalone-quarter yields ranked descending",
+    "selection_parity_target": "Legacy v2-16 Top20 compatibility is regression-checked at 2020-04-29; exact-account rules take precedence if legacy substring matching diverges",
     "cost_scope": "Matches legacy v2-16 minimum/base/conservative common costs plus historical dated sell-tax schedule",
-    "validation_scope": "selection/factor parity does not itself validate corporate-action or delisting return assumptions"
+    "validation_scope": "selection/factor parity does not itself validate corporate-action or delisting return assumptions",
+    "canonical_account_reference": "research/super-value-audit-20260924:scripts/super_value_audited_nav.py"
   }
 }
