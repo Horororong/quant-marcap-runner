@@ -83,10 +83,10 @@ def main() -> None:
             on="Code",
             how="inner",
         )
+        # Match the DSL universe exactly. This strategy intentionally does not
+        # require signal-day tradability; it only requires positive market cap.
         independent = independent[
-            (pd.to_numeric(independent["Close"], errors="coerce") > 0)
-            & (pd.to_numeric(independent["Volume"], errors="coerce") > 0)
-            & (pd.to_numeric(independent["Marcap"], errors="coerce") > 0)
+            pd.to_numeric(independent["Marcap"], errors="coerce") > 0
         ].copy()
         cols = ["earnings_yield", "book_to_price", "cashflow_yield", "sales_yield"]
         independent = independent.dropna(subset=cols).copy()
