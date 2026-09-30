@@ -70,11 +70,43 @@ def main() -> None:
         assert_close(z["cashflow_yield"], z["ocf_q"] / mc, "cashflow_yield")
         assert_close(z["sales_yield"], z["revenue_q"] / mc, "sales_yield")
 
-        chosen = selections[selections["signal_date"] == signal]
+        chosen = selections[selections["signal_date"] == signal].copy()
         assert set(chosen["Code"]).issubset(set(factors["Code"]))
         for col in ("factor_rank__EP", "factor_rank__BP", "factor_rank__CFP", "factor_rank__SP", "composite_score"):
             if chosen[col].isna().any():
                 raise AssertionError(f"{signal.date()}: selected row has missing {col}")
+
+        # Independently reconstruct the four-factor rank from standardized
+        # DART fields. This verifies the adapter+DSL contract, not legacy code.
+        independent = factors.merge(
+            cs[["Code", "Name", "Market", "Close", "Volume", "Amount", "Marcap"]],
+            on="Code",
+            how="inner",
+        )
+        independent = independent[
+            (pd.to_numeric(independent["Close"], errors="coerce") > 0)
+            & (pd.to_numeric(independent["Volume"], errors="coerce") > 0)
+            & (pd.to_numeric(independent["Marcap"], errors="coerce") > 0)
+        ].copy()
+        cols = ["earnings_yield", "book_to_price", "cashflow_yield", "sales_yield"]
+        independent = independent.dropna(subset=cols).copy()
+        for col in cols:
+            independent[col + "_rank"] = pd.to_numeric(
+                independent[col], errors="coerce"
+            ).rank(method="average", ascending=False, pct=True)
+        independent["score"] = independent[[x + "_rank" for x in cols]].mean(axis=1)
+        expected_codes = (
+            independent.sort_values(["score", "Code"], ascending=[True, True])
+            .head(20)["Code"].astype(str).str.zfill(6).tolist()
+        )
+        actual_codes = (
+            chosen.sort_values(["composite_score", "Code"], ascending=[True, True])
+            ["Code"].astype(str).str.zfill(6).tolist()
+        )
+        if actual_codes != expected_codes:
+            raise AssertionError(
+                f"{signal.date()}: DSL selection does not match independent four-factor rank"
+            )
 
     print("DART DSL SUPER VALUE INTEGRATION: PASS")
     print("signals:", [x.date().isoformat() for x in target_weights.index])
