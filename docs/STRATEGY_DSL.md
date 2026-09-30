@@ -33,6 +33,12 @@ The adapter uses only filings whose filing date is on or before the signal date.
 
 See `config/strategies/super_value_dart_dsl.json`.
 
+## Corporate actions
+
+Execution does not silently convert missing held-price returns to 0% or -100%. Reviewed stock mergers can be registered in `config/corporate_actions.json`. During a declared suspension the engine carries the last observable old-share value for valuation while keeping the asset non-tradable; from the successor's trading date, the synthetic old-share claim is valued as `share_ratio × successor close`. Applied events are written to `corporate_action_audit.csv`.
+
+The first registered regression case is Korean Paper (002300) -> Haesung Industrial (034810), effective 2020-07-01, exchange ratio 1.666146, successor trading from 2020-07-13.
+
 ## Deliberately unsupported in v1
 
 The runner fails rather than inventing an answer for these cases:
@@ -42,7 +48,7 @@ The runner fails rather than inventing an answer for these cases:
 - dynamic historical sell-tax schedules
 - next-open/VWAP execution
 - market-cap/factor weighting
-- explicit corporate-action/delisting return adapter
+- cash mergers, spin-offs, rights issues and other corporate actions not yet registered/supported
 - ETF/macro/asset-allocation DSL
 
 These are adapters to add without changing the core schema philosophy.
@@ -77,6 +83,7 @@ Outputs go to `results/dsl/<strategy_id>/` and include:
 - `target_weights.csv`
 - `selections.csv`
 - `dart_pit_coverage.csv` when DART factors are used
+- `corporate_action_audit.csv` when a reviewed event is applied
 - `execution_plan.json`
 - `strategy_fingerprint.txt`
 - canonical `metrics_CURRENT.csv`
