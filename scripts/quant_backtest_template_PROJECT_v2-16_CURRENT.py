@@ -931,6 +931,7 @@ def simulate_target_weight_portfolio(
     execution_assumptions: Optional[ExecutionAssumptions] = None,
     tradable_mask: Optional[pd.DataFrame] = None,
     explicit_delisting_returns: Optional[pd.DataFrame] = None,
+    corporate_action_transfers: Optional[pd.DataFrame] = None,
     initial_capital: float = 1.0,
 ) -> Dict[str, Any]:
     """목표비중 신호를 t+1 체결, drift, turnover, 비용, 일별 NAV로 변환한다.
@@ -945,6 +946,7 @@ def simulate_target_weight_portfolio(
     한계:
     - 원천 가격 결측을 거래정지/상폐라고 임의 해석하지 않는다.
     - 보유 중 결측 수익률은 explicit_delisting_returns 등 검증된 명시적 자료가 없으면 실패한다.
+    - 합병/현금상환 등 보유권리의 자산 변환은 corporate_action_transfers로 명시적으로 전달한다.
     """
     if not isinstance(close_prices, pd.DataFrame) or close_prices.empty:
         raise ValueError("close_prices는 비어 있지 않은 DataFrame이어야 합니다.")
@@ -985,12 +987,56 @@ def simulate_target_weight_portfolio(
         fill = rets.isna() & dr.notna()
         rets = rets.where(~fill, dr)
 
+    ca_by_date: Dict[pd.Timestamp, list[Dict[str, Any]]] = {}
+    if corporate_action_transfers is not None and len(corporate_action_transfers):
+        ca = corporate_action_transfers.copy()
+        required = {
+            "event_date", "source_asset", "target_asset",
+            "target_value_fraction", "cash_value_fraction",
+        }
+        missing = required - set(ca.columns)
+        if missing:
+            raise KeyError(f"corporate_action_transfers 필수 컬럼 누락: {sorted(missing)}")
+        ca["event_date"] = pd.to_datetime(ca["event_date"], errors="raise").dt.normalize()
+        ca["source_asset"] = ca["source_asset"].astype(str)
+        ca["target_asset"] = ca["target_asset"].fillna("").astype(str)
+        for _, row in ca.iterrows():
+            dt = pd.Timestamp(row["event_date"]).normalize()
+            source = str(row["source_asset"])
+            target = str(row["target_asset"]).strip()
+            target_fraction = float(row["target_value_fraction"])
+            cash_fraction = float(row["cash_value_fraction"])
+            if dt not in px.index:
+                raise ValueError(f"기업행위 일자가 가격 인덱스에 없습니다: {dt.date()}")
+            if source not in assets:
+                raise KeyError(f"기업행위 source_asset이 가격 자산에 없습니다: {source}")
+            if target and target not in assets:
+                raise KeyError(f"기업행위 target_asset이 가격 자산에 없습니다: {target}")
+            if target and target == source:
+                raise ValueError("기업행위 source_asset과 target_asset은 같을 수 없습니다.")
+            if min(target_fraction, cash_fraction) < -ex.weight_tolerance:
+                raise ValueError("기업행위 가치 배분비율은 음수일 수 없습니다.")
+            if abs((target_fraction + cash_fraction) - 1.0) > 1e-8:
+                raise ValueError(
+                    "기업행위 target_value_fraction + cash_value_fraction은 1이어야 합니다."
+                )
+            if not target and target_fraction > ex.weight_tolerance:
+                raise ValueError("target_asset이 없는데 target_value_fraction이 0보다 큽니다.")
+            rec = row.to_dict()
+            rec["event_date"] = dt
+            rec["source_asset"] = source
+            rec["target_asset"] = target
+            rec["target_value_fraction"] = target_fraction
+            rec["cash_value_fraction"] = cash_fraction
+            ca_by_date.setdefault(dt, []).append(rec)
+
     current_w = pd.Series(0.0, index=assets, dtype=float)
     gross_nav = float(initial_capital)
     net_nav = float(initial_capital)
     nav_rows = []
     trade_rows = []
     weight_rows = []
+    corporate_action_rows = []
 
     for i, dt in enumerate(px.index):
         r = rets.loc[dt].astype(float)
@@ -1013,6 +1059,39 @@ def simulate_target_weight_portfolio(
 
         denom = 1.0 + portfolio_return
         current_w = current_w * (1.0 + r) / denom
+
+        # Corporate-action settlement is not a trade: after the source claim's
+        # explicit settlement return is realized, move its value into successor
+        # stock and/or cash without turnover or transaction cost.
+        if dt in ca_by_date:
+            for event in ca_by_date[dt]:
+                source = event["source_asset"]
+                target = event["target_asset"]
+                target_fraction = float(event["target_value_fraction"])
+                cash_fraction = float(event["cash_value_fraction"])
+                source_weight = float(current_w.get(source, 0.0))
+                if source_weight < -ex.weight_tolerance:
+                    raise RuntimeError(
+                        f"기업행위 자동전환은 현재 숏 source 포지션을 지원하지 않습니다: "
+                        f"date={dt.date()}, asset={source}, weight={source_weight}"
+                    )
+                target_added = 0.0
+                cash_added = 0.0
+                if source_weight > ex.weight_tolerance:
+                    target_added = source_weight * target_fraction
+                    cash_added = source_weight * cash_fraction
+                    current_w[source] = 0.0
+                    if target:
+                        current_w[target] = float(current_w.get(target, 0.0)) + target_added
+                corporate_action_rows.append({
+                    "Date": dt,
+                    "event_id": event.get("event_id", ""),
+                    "source_asset": source,
+                    "target_asset": target,
+                    "source_weight_before_transfer": source_weight,
+                    "target_weight_added": target_added,
+                    "cash_weight_added": cash_added,
+                })
 
         buy_to = sell_to = cost_fraction = 0.0
         signal_date = None
@@ -1085,6 +1164,7 @@ def simulate_target_weight_portfolio(
         "weights": weights,
         "trades": trades,
         "execution_schedule": schedule_df,
+        "corporate_actions": pd.DataFrame(corporate_action_rows),
         "annualized_one_way_turnover": float(trades["one_way_turnover"].mean() * 252.0),
     }
 
@@ -1121,6 +1201,7 @@ def run_execution_backtest(
     execution_assumptions: Optional[ExecutionAssumptions] = None,
     tradable_mask: Optional[pd.DataFrame] = None,
     explicit_delisting_returns: Optional[pd.DataFrame] = None,
+    corporate_action_transfers: Optional[pd.DataFrame] = None,
 ) -> Dict[str, Any]:
     """체결→비용→NAV→최근 완결월→4기간 성과를 한 번에 연결한다."""
     if not cost_scenarios:
@@ -1139,6 +1220,7 @@ def run_execution_backtest(
             execution_assumptions=execution_assumptions,
             tradable_mask=tradable_mask,
             explicit_delisting_returns=explicit_delisting_returns,
+            corporate_action_transfers=corporate_action_transfers,
             initial_capital=config.initial_capital,
         )
         executions[name] = exout
