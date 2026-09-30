@@ -6,7 +6,12 @@ import numpy as np
 import pandas as pd
 
 from strategy_dsl import load_strategy_spec
-from strategy_dsl_runner import build_target_weights_from_panel, load_project_engine
+from strategy_dsl_runner import (
+    build_target_weights_from_panel,
+    close_and_tradable_matrices,
+    engine_inputs,
+    load_project_engine,
+)
 from dart_value_factor_adapter import DartValueFactorAdapter
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -40,6 +45,23 @@ def main() -> None:
     assert len(target_weights) == 2, target_weights.index
     assert set(target_weights.index.month) == {4, 10}
     assert np.allclose(target_weights.sum(axis=1).to_numpy(float), 1.0)
+
+    assets = list(target_weights.columns)
+    close, tradable = close_and_tradable_matrices(panel, assets)
+    cfg, costs, execution = engine_inputs(strategy, engine)
+    executed = engine.simulate_target_weight_portfolio(
+        close_prices=close,
+        target_weights=target_weights,
+        cost_assumptions=costs["gross"],
+        execution_assumptions=execution,
+        tradable_mask=tradable,
+        initial_capital=cfg.initial_capital,
+    )
+    assert len(executed["execution_schedule"]) == len(target_weights)
+    assert (executed["daily_nav"] > 0).all().all()
+    for _, row in executed["execution_schedule"].iterrows():
+        if pd.Timestamp(row["execution_date"]) <= pd.Timestamp(row["signal_date"]):
+            raise AssertionError("execution must occur after signal date")
 
     selections["signal_date"] = pd.to_datetime(selections["signal_date"]).dt.normalize()
     counts = selections.groupby("signal_date")["Code"].nunique()
