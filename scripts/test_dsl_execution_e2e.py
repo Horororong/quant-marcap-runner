@@ -21,6 +21,10 @@ def main() -> None:
         weights = pd.read_csv(out / "target_weights.csv", parse_dates=["signal_date"])
         selections = pd.read_csv(out / "selections.csv", dtype={"Code": str})
         coverage = pd.read_csv(out / "dart_pit_coverage.csv", parse_dates=["signal_date"])
+        corp = pd.read_csv(
+            out / "corporate_action_audit.csv",
+            dtype={"old_code": str, "successor_code": str},
+        )
 
         assert len(daily) > 100
         nav_cols = [c for c in daily.columns if c.startswith("NAV_")]
@@ -40,6 +44,12 @@ def main() -> None:
         assert selections.groupby("signal_date")["Code"].nunique().eq(20).all()
         assert coverage["ratio"].eq(1.0).all()
         assert coverage["raw_ok"].astype(bool).all()
+        assert "002300_20200701_merger_034810" in set(corp["event_id"])
+        event = corp.set_index("event_id").loc["002300_20200701_merger_034810"]
+        assert str(event["old_code"]).zfill(6) == "002300"
+        assert str(event["successor_code"]).zfill(6) == "034810"
+        assert abs(float(event["share_ratio"]) - 1.666146) < 1e-12
+        assert np.isfinite(float(event["implied_return_from_last_old_close"]))
 
         execution = result["engine_result"]["execution_scenarios"]["gross"]
         sched = execution["execution_schedule"]
@@ -55,6 +65,7 @@ def main() -> None:
             "target_weights.csv",
             "selections.csv",
             "dart_pit_coverage.csv",
+            "corporate_action_audit.csv",
             "execution_plan.json",
             "strategy_fingerprint.txt",
         ):
