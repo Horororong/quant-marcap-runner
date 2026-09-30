@@ -11,6 +11,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from execution_contract import CORPORATE_ACTION_REGISTRY_VERSION
+
 CORPORATE_ACTION_FILE = "config/kr_corporate_actions.csv"
 REQUIRED_COLUMNS = {
     "event_date",
