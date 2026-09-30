@@ -89,3 +89,12 @@ The canonical fields are:
 The original super-value selection is encoded in `config/strategies/super_value_original_dsl.json`. A real-data regression test compares the DART base metrics and ordered Top20 selection against `scripts/backtest_super_value_v216.py` for 2020-04-29.
 
 This parity test verifies factor/selection equivalence only. It does **not** upgrade the historical corporate-action, delisting-return, or sell-tax assumptions to validated status.
+
+
+## Dated transaction-cost schedules
+
+A cost scenario may define `sell_tax_schedule` as ordered, non-overlapping date bands. The generic DSL runner executes the portfolio once to obtain the deterministic turnover path, then applies each cost scenario to the same daily return/turnover path.
+
+This allows historical Korean sell-side tax regimes to be represented without putting tax logic inside a strategy-specific Python script. Fixed `sell_tax_bps` remains the fallback outside scheduled bands.
+
+The super-value DSL encodes the same historical thresholds as the legacy v2-16 research script and the regression test checks representative boundary dates against the legacy `sell_tax_bps()` function.
