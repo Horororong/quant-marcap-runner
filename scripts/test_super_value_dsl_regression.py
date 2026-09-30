@@ -133,13 +133,13 @@ def main() -> None:
     merged = audited_factors[["Code", "equity"]].merge(
         loose[["Code", "equity"]], on="Code", suffixes=("_audited", "_legacy")
     )
-    diff_rows = int(
+    diff_rows = int((
         ~np.isclose(
             pd.to_numeric(merged["equity_audited"], errors="coerce"),
             pd.to_numeric(merged["equity_legacy"], errors="coerce"),
             rtol=0, atol=1e-9, equal_nan=True,
         )
-    ).sum()
+    ).sum())
 
     print("SUPER VALUE DSL AUDITED REAL-DATA PARITY: PASS")
     print(f"signal={SIGNAL.date()} valid_four_factor={audited_audit['valid_four_factor']} top_n={TOP_N}")
