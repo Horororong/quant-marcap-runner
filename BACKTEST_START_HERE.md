@@ -16,6 +16,8 @@
 4. 성과/위험지표와 채팅 차트는 기존과 동일하게 `quant_backtest_postprocess.py`만 사용한다.
 5. DSL이 지원하지 않는 팩터/자산/체결 규칙이면 임의 근사하지 않는다. 반복 사용 가능한 기능은 DSL/어댑터를 확장하고, 특수 체결이 필요한 경우에만 별도 엔진을 둔다.
 6. 같은 Strategy DSL JSON + 같은 데이터 + 같은 엔진 버전은 항상 같은 결과를 내야 하며, `strategy_fingerprint`를 재현성 키로 사용한다.
+7. DART 가치팩터는 `scripts/dart_factor_adapter.py`를 통해서만 사용한다. `earnings_yield`, `book_to_price`, `cashflow_yield`, `sales_yield`는 exact IFRS account_id 우선, 공시접수일 PIT, CFS 우선/OFS fallback 규칙을 사용한다.
+8. `ProfitLossBeforeTax`, `ProfitLossAttributableToOwnersOfParent` 등 인접 IFRS 계정을 순이익으로 대체하지 않는다.
 
 ## 강제 실행 순서
 
