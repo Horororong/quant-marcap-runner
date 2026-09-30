@@ -10,7 +10,7 @@
 
 전략이 `scripts/strategy_dsl.py`의 지원 범위로 표현 가능하면 새 전략별 Python 스크립트를 만들지 않는다.
 
-1. 먼저 `config/strategy_dsl_capabilities_v1.json`에서 요청한 팩터·시장·리밸런싱·체결 규칙이 지원되는지 확인한다. 지원되지 않으면 임의 근사하지 않고 capability gap으로 중단한다.
+1. 먼저 `config/strategy_dsl_capabilities_v1.json`에서 요청한 팩터·시장·리밸런싱·체결 규칙이 지원되는지 확인한다. 자연어 팩터명은 `natural_language_factor_aliases`와 `natural_language_direction_aliases`만 사용해 canonical factor/direction으로 변환한다. 등록되지 않은 표현이나 회계기간 정의가 다른 PER/PCR/PSR 등은 임의 근사하지 않고 capability gap으로 중단한다.
 2. `config/strategy_dsl_schema_v1.json` 계약에 맞춰 자연어 조건을 `config/strategies/*.json` Strategy DSL로 변환한다.
 3. `python scripts/strategy_dsl_runner.py <strategy.json> --validate-only`로 스키마/실행계획을 다시 검증한다.
 4. 같은 JSON을 범용 러너로 실행해 목표비중과 일별 NAV를 만든다.
