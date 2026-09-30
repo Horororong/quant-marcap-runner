@@ -203,6 +203,21 @@ def build_target_weights_from_panel(
     return tw, selections
 
 
+
+def dart_coverage_audit(
+    panel: pd.DataFrame,
+    spec: StrategySpec,
+    repo_root: Path,
+) -> pd.DataFrame:
+    if not any(f.source == "dart" for f in spec.factors):
+        return pd.DataFrame()
+    adapter = DartValueFactorAdapter(repo_root)
+    rows: list[dict[str, Any]] = []
+    for dt in signal_dates_from_panel(panel, spec):
+        rows.extend(adapter.coverage_report(pd.Timestamp(dt)))
+    return pd.DataFrame(rows)
+
+
 def close_and_tradable_matrices(panel: pd.DataFrame, assets: list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
     p = panel.copy()
     p["Date"] = pd.to_datetime(p["Date"]).dt.normalize()
@@ -263,6 +278,9 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     daily.to_csv(out / "daily_nav.csv", index_label="Date")
     target_weights.to_csv(out / "target_weights.csv", index_label="signal_date")
     selections.to_csv(out / "selections.csv", index=False, encoding="utf-8-sig")
+    coverage = dart_coverage_audit(panel, spec, repo_root)
+    if not coverage.empty:
+        coverage.to_csv(out / "dart_pit_coverage.csv", index=False, encoding="utf-8-sig")
     (out / "execution_plan.json").write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
     (out / "strategy_fingerprint.txt").write_text(spec.fingerprint() + "\n", encoding="utf-8")
 
