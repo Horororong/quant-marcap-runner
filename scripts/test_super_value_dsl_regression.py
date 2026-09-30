@@ -124,26 +124,8 @@ def main() -> None:
         if not np.allclose(a, b, rtol=0, atol=1e-12, equal_nan=True):
             raise AssertionError(f"audited selected factor values differ: {old_col} vs {new_col}")
 
-    # Diagnostic only: quantify why the unaudited legacy substring implementation
-    # is not an acceptable canonical regression target.
-    legacy_cache = {}
-    for y, period in legacy.required_periods(SIGNAL):
-        legacy_cache[(y, period)] = legacy.report_snapshots(legacy.load_financial_raw(y, period))
-    loose = legacy.build_factor_table(SIGNAL, legacy_cache)
-    merged = audited_factors[["Code", "equity"]].merge(
-        loose[["Code", "equity"]], on="Code", suffixes=("_audited", "_legacy")
-    )
-    diff_rows = int((
-        ~np.isclose(
-            pd.to_numeric(merged["equity_audited"], errors="coerce"),
-            pd.to_numeric(merged["equity_legacy"], errors="coerce"),
-            rtol=0, atol=1e-9, equal_nan=True,
-        )
-    ).sum())
-
     print("SUPER VALUE DSL AUDITED REAL-DATA PARITY: PASS")
     print(f"signal={SIGNAL.date()} valid_four_factor={audited_audit['valid_four_factor']} top_n={TOP_N}")
-    print(f"legacy_loose_equity_diff_rows={diff_rows}")
     print("top20=" + ",".join(ref_codes))
 
 
