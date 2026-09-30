@@ -2,9 +2,9 @@ from __future__ import annotations
 
 """Generic Strategy DSL v1 runner.
 
-v1 runtime scope: KRX equity cross-sectional ranking strategies whose factor
-inputs are fields already present in the PIT KRX daily panel. DART/derived
-factor adapters are intentionally not faked here; they are the next extension.
+v1 runtime scope: KRX equity cross-sectional ranking strategies using PIT KRX
+panel fields and the standardized DART value-factor adapter. Unsupported factor
+families fail explicitly instead of being approximated.
 """
 
 from pathlib import Path
@@ -19,6 +19,7 @@ import numpy as np
 import pandas as pd
 
 from strategy_dsl import StrategySpec, compile_execution_plan, load_strategy_spec
+from dart_factor_adapter import DartValueFactorAdapter
 
 ENGINE_FILE = "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py"
 POSTPROCESS_FILE = "scripts/quant_backtest_postprocess.py"
@@ -122,10 +123,10 @@ def rank_cross_section(cross_section: pd.DataFrame, spec: StrategySpec) -> tuple
     transformed: dict[str, pd.Series] = {}
     valid_all = pd.Series(True, index=x.index)
     for fac in spec.factors:
-        if fac.source != "krx":
-            raise NotImplementedError(f"DSL v1 runtime factor source not implemented: {fac.source}")
         if fac.field not in x.columns:
-            raise KeyError(f"factor field not present in panel: {fac.field}")
+            raise KeyError(
+                f"factor field not present after source adapters: source={fac.source}, field={fac.field}"
+            )
         v = _transform_factor(x[fac.field], fac.transform)
         transformed[fac.name] = v
         valid_all &= v.notna() & np.isfinite(v)
@@ -154,17 +155,28 @@ def rank_cross_section(cross_section: pd.DataFrame, spec: StrategySpec) -> tuple
     selected["target_weight"] = 1.0 / n
     return selected, x[["Date", "Code", "Name", "Market", "composite_score", *factor_columns]].copy()
 
-def build_target_weights_from_panel(panel: pd.DataFrame, spec: StrategySpec) -> tuple[pd.DataFrame, pd.DataFrame]:
+def build_target_weights_from_panel(
+    panel: pd.DataFrame,
+    spec: StrategySpec,
+    dart_adapter: DartValueFactorAdapter | None = None,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
     p = panel.copy()
     p["Date"] = pd.to_datetime(p["Date"]).dt.normalize()
     p["Code"] = p["Code"].astype(str).str.zfill(6)
     if p.duplicated(["Date", "Code"]).any():
         raise AssertionError("panel contains duplicate Date+Code")
+
+    dart_fields = [f.field for f in spec.factors if f.source == "dart"]
+    if dart_fields and dart_adapter is None:
+        raise ValueError("strategy requires DART factors but dart_adapter was not supplied")
+
     assets = sorted(p["Code"].unique())
     rows: list[pd.Series] = []
     selection_rows: list[pd.DataFrame] = []
     for dt in signal_dates_from_panel(p, spec):
         cs = p[p["Date"] == dt].copy()
+        if dart_fields:
+            cs = dart_adapter.enrich_cross_section(cs, dt, dart_fields)
         selected, _ = rank_cross_section(cs, spec)
         w = pd.Series(0.0, index=assets, name=dt)
         w.loc[selected["Code"].astype(str).str.zfill(6)] = selected["target_weight"].to_numpy(float)
@@ -172,6 +184,7 @@ def build_target_weights_from_panel(panel: pd.DataFrame, spec: StrategySpec) -> 
         s = selected.copy()
         s["signal_date"] = dt
         selection_rows.append(s)
+
     tw = pd.DataFrame(rows)
     tw.index = pd.to_datetime(tw.index).normalize()
     tw = tw.sort_index().fillna(0.0)
@@ -220,7 +233,14 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
         columns=required_panel_columns(spec),
         repo_root=repo_root,
     )
-    target_weights, selections = build_target_weights_from_panel(panel, spec)
+    dart_adapter = (
+        DartValueFactorAdapter(repo_root)
+        if any(f.source == "dart" for f in spec.factors)
+        else None
+    )
+    target_weights, selections = build_target_weights_from_panel(
+        panel, spec, dart_adapter=dart_adapter
+    )
     assets = list(target_weights.columns)
     close, tradable = close_and_tradable_matrices(panel, assets)
     cfg, costs, execution = engine_inputs(spec, engine)
