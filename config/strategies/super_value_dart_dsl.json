@@ -5,7 +5,7 @@
   "asset_class": "kr_equity",
   "universe": {
     "markets": ["KOSPI", "KOSDAQ"],
-    "require_tradable_on_signal": true,
+    "require_tradable_on_signal": false,
     "filters": [
       {"field": "Marcap", "op": "gt", "value": 0}
     ]
