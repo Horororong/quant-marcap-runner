@@ -14,6 +14,8 @@ import hashlib
 import json
 import re
 
+from factor_registry import FACTOR_REGISTRY_VERSION, get_factor_definition
+
 SCHEMA_VERSION = "1.0"
 STRATEGY_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{2,63}$")
 SUPPORTED_ASSET_CLASSES = {"kr_equity"}
@@ -21,9 +23,7 @@ SUPPORTED_FILTER_OPS = {
     "gt", "gte", "lt", "lte", "eq", "ne", "in", "not_in", "notnull",
     "top_pct", "bottom_pct", "exclude_top_pct", "exclude_bottom_pct",
 }
-SUPPORTED_FACTOR_SOURCES = {"krx", "dart"}
 SUPPORTED_FACTOR_TRANSFORMS = {"identity", "inverse", "log1p"}
-SUPPORTED_DART_FACTOR_FIELDS = {"earnings_yield", "book_to_price", "cashflow_yield", "sales_yield"}
 SUPPORTED_DIRECTIONS = {"high", "low"}
 SUPPORTED_WEIGHTINGS = {"equal"}
 SUPPORTED_REBALANCE_FREQUENCIES = {"months"}
@@ -98,13 +98,7 @@ class FactorSpec:
         )
         if not obj.name or not obj.field:
             raise ValueError("factor name/field cannot be empty")
-        if obj.source not in SUPPORTED_FACTOR_SOURCES:
-            raise ValueError(f"unsupported factor source in DSL v1: {obj.source}")
-        if obj.source == "dart" and obj.field not in SUPPORTED_DART_FACTOR_FIELDS:
-            raise ValueError(
-                f"unsupported DART factor field in DSL v1: {obj.field}; "
-                f"supported={sorted(SUPPORTED_DART_FACTOR_FIELDS)}"
-            )
+        get_factor_definition(obj.source, obj.field)
         if obj.direction not in SUPPORTED_DIRECTIONS:
             raise ValueError(f"unsupported factor direction: {obj.direction}")
         if obj.transform not in SUPPORTED_FACTOR_TRANSFORMS:
@@ -283,6 +277,7 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         "schema_version": spec.schema_version,
         "strategy_id": spec.strategy_id,
         "strategy_fingerprint": spec.fingerprint(),
+        "factor_registry_version": FACTOR_REGISTRY_VERSION,
         "asset_class": spec.asset_class,
         "data_contract": {
             "price_universe": "data/krx_equities/yearly/marcap-YYYY.parquet",
@@ -291,6 +286,17 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         },
         "universe": asdict(spec.universe),
         "factors": [asdict(x) for x in spec.factors],
+        "factor_contracts": [
+            {
+                "name": factor.name,
+                "source": definition.source,
+                "field": definition.field,
+                "storage": definition.storage,
+                "description": definition.description,
+            }
+            for factor in spec.factors
+            for definition in [get_factor_definition(factor.source, factor.field)]
+        ],
         "portfolio": asdict(spec.portfolio),
         "rebalance": asdict(spec.rebalance),
         "execution": asdict(spec.execution),
