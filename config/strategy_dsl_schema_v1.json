@@ -1,0 +1,342 @@
+{
+  "$id": "strategy_dsl_schema_v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Machine contract for deterministic Korean-equity Strategy DSL generation.",
+  "properties": {
+    "asset_class": {
+      "enum": [
+        "kr_equity"
+      ]
+    },
+    "cost_scenarios": {
+      "additionalProperties": {
+        "additionalProperties": false,
+        "properties": {
+          "commission_bps": {
+            "default": 0,
+            "minimum": 0,
+            "type": "number"
+          },
+          "market_impact_bps": {
+            "default": 0,
+            "minimum": 0,
+            "type": "number"
+          },
+          "sell_tax_bps": {
+            "default": 0,
+            "minimum": 0,
+            "type": "number"
+          },
+          "slippage_bps": {
+            "default": 0,
+            "minimum": 0,
+            "type": "number"
+          },
+          "spread_bps": {
+            "default": 0,
+            "minimum": 0,
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "minProperties": 1,
+      "type": "object"
+    },
+    "execution": {
+      "additionalProperties": false,
+      "properties": {
+        "lag_sessions": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "price": {
+          "enum": [
+            "next_close"
+          ]
+        }
+      },
+      "required": [
+        "lag_sessions",
+        "price"
+      ],
+      "type": "object"
+    },
+    "factors": {
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "properties": {
+                  "field": {
+                    "enum": [
+                      "book_to_price",
+                      "cashflow_yield",
+                      "earnings_yield",
+                      "sales_yield"
+                    ]
+                  },
+                  "source": {
+                    "const": "dart"
+                  }
+                },
+                "required": [
+                  "source",
+                  "field"
+                ]
+              },
+              {
+                "properties": {
+                  "field": {
+                    "enum": [
+                      "Amount",
+                      "Change",
+                      "ChangesRatio",
+                      "Close",
+                      "High",
+                      "Low",
+                      "Marcap",
+                      "Open",
+                      "Stocks",
+                      "Volume"
+                    ]
+                  },
+                  "source": {
+                    "const": "krx"
+                  }
+                },
+                "required": [
+                  "source",
+                  "field"
+                ]
+              }
+            ]
+          }
+        ],
+        "properties": {
+          "direction": {
+            "enum": [
+              "high",
+              "low"
+            ]
+          },
+          "field": {
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "transform": {
+            "default": "identity",
+            "enum": [
+              "identity",
+              "inverse",
+              "log1p"
+            ]
+          },
+          "weight": {
+            "default": 1,
+            "exclusiveMinimum": 0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "source",
+          "field",
+          "direction"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "initial_capital": {
+      "default": 10000000,
+      "exclusiveMinimum": 0,
+      "type": "number"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "type": "object"
+    },
+    "period": {
+      "additionalProperties": false,
+      "properties": {
+        "as_of_date": {
+          "format": "date",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "book_end": {
+          "format": "date",
+          "type": "string"
+        },
+        "book_start": {
+          "format": "date",
+          "type": "string"
+        },
+        "end": {
+          "format": "date",
+          "type": "string"
+        },
+        "start": {
+          "format": "date",
+          "type": "string"
+        }
+      },
+      "required": [
+        "start",
+        "end",
+        "book_start",
+        "book_end"
+      ],
+      "type": "object"
+    },
+    "portfolio": {
+      "additionalProperties": false,
+      "properties": {
+        "number_of_positions": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "weighting": {
+          "enum": [
+            "equal"
+          ]
+        }
+      },
+      "required": [
+        "number_of_positions",
+        "weighting"
+      ],
+      "type": "object"
+    },
+    "rebalance": {
+      "additionalProperties": false,
+      "properties": {
+        "frequency": {
+          "enum": [
+            "months"
+          ]
+        },
+        "months": {
+          "items": {
+            "maximum": 12,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "trading_day": {
+          "enum": [
+            "last"
+          ]
+        }
+      },
+      "required": [
+        "frequency",
+        "months",
+        "trading_day"
+      ],
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "strategy_id": {
+      "pattern": "^[a-z0-9][a-z0-9_-]{2,63}$",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "universe": {
+      "additionalProperties": false,
+      "properties": {
+        "filters": {
+          "default": [],
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "field": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "op": {
+                "enum": [
+                  "bottom_pct",
+                  "eq",
+                  "exclude_bottom_pct",
+                  "exclude_top_pct",
+                  "gt",
+                  "gte",
+                  "in",
+                  "lt",
+                  "lte",
+                  "ne",
+                  "not_in",
+                  "notnull",
+                  "top_pct"
+                ]
+              },
+              "value": {}
+            },
+            "required": [
+              "field",
+              "op"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "markets": {
+          "items": {
+            "enum": [
+              "KOSPI",
+              "KOSDAQ"
+            ]
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "require_tradable_on_signal": {
+          "default": true,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "markets"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "strategy_id",
+    "title",
+    "asset_class",
+    "universe",
+    "factors",
+    "portfolio",
+    "rebalance",
+    "execution",
+    "cost_scenarios",
+    "period"
+  ],
+  "title": "quant-marcap-runner Strategy DSL",
+  "type": "object"
+}
