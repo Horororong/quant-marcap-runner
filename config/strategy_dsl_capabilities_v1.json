@@ -1,4 +1,13 @@
 {
+  "ai_workflow": [
+    "read config/strategy_dsl_capabilities_v1.json",
+    "resolve registered natural-language aliases only",
+    "generate config/strategy_dsl_schema_v1.json-constrained Strategy DSL",
+    "run strategy_dsl_runner.py --validate-only",
+    "run strategy_dsl_preflight.py",
+    "execute only when preflight status is ok",
+    "run canonical CURRENT postprocess for formal metrics"
+  ],
   "asset_classes": [
     "kr_equity"
   ],
@@ -21,7 +30,7 @@
     ],
     "unregistered_held_price_gap_policy": "fail"
   },
-  "dsl_machine_contract_version": "2",
+  "dsl_machine_contract_version": "3",
   "execution_constraints": {
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
@@ -345,6 +354,31 @@
   "portfolio_weightings": [
     "equal"
   ],
+  "preflight": {
+    "always_zero_command": "python scripts/strategy_dsl_preflight.py <strategy.json> --always-zero",
+    "classification": {
+      "capability_gap": "strategy cannot be represented by the current DSL/registry contract",
+      "data_gap": "strategy is representable but required PIT data is unavailable or incomplete"
+    },
+    "command": "python scripts/strategy_dsl_preflight.py <strategy.json>",
+    "does_not_compute": [
+      "factor values",
+      "holdings",
+      "NAV",
+      "performance metrics"
+    ],
+    "exit_codes": {
+      "capability_gap": 2,
+      "data_gap": 3,
+      "ok": 0
+    },
+    "statuses": [
+      "ok",
+      "capability_gap",
+      "data_gap"
+    ]
+  },
+  "preflight_contract_version": "1",
   "project_template_version": "v2-16",
   "rebalance_frequencies": [
     "months"
