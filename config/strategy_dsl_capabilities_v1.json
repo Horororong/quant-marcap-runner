@@ -21,7 +21,7 @@
     ],
     "unregistered_held_price_gap_policy": "fail"
   },
-  "dsl_machine_contract_version": "1",
+  "dsl_machine_contract_version": "2",
   "execution_constraints": {
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
@@ -144,6 +144,183 @@
   "markets": [
     "KOSPI",
     "KOSDAQ"
+  ],
+  "natural_language_factor_aliases": [
+    {
+      "direction_relation": "inverse",
+      "field": "earnings_yield",
+      "fixed_direction": null,
+      "note": "PER low is equivalent to earnings_yield high.",
+      "source": "dart",
+      "terms": [
+        "PER",
+        "P/E",
+        "주가수익비율"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "earnings_yield",
+      "fixed_direction": null,
+      "note": "",
+      "source": "dart",
+      "terms": [
+        "EP",
+        "E/P",
+        "earnings yield",
+        "이익수익률"
+      ]
+    },
+    {
+      "direction_relation": "inverse",
+      "field": "book_to_price",
+      "fixed_direction": null,
+      "note": "PBR low is equivalent to book_to_price high.",
+      "source": "dart",
+      "terms": [
+        "PBR",
+        "P/B",
+        "주가순자산비율"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "book_to_price",
+      "fixed_direction": null,
+      "note": "",
+      "source": "dart",
+      "terms": [
+        "BP",
+        "B/P",
+        "book to price",
+        "장부가치수익률"
+      ]
+    },
+    {
+      "direction_relation": "inverse",
+      "field": "cashflow_yield",
+      "fixed_direction": null,
+      "note": "PCR low is equivalent to cashflow_yield high.",
+      "source": "dart",
+      "terms": [
+        "PCR",
+        "P/CF",
+        "주가현금흐름비율"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "cashflow_yield",
+      "fixed_direction": null,
+      "note": "",
+      "source": "dart",
+      "terms": [
+        "CFP",
+        "CF/P",
+        "cash flow yield",
+        "현금흐름수익률"
+      ]
+    },
+    {
+      "direction_relation": "inverse",
+      "field": "sales_yield",
+      "fixed_direction": null,
+      "note": "PSR low is equivalent to sales_yield high.",
+      "source": "dart",
+      "terms": [
+        "PSR",
+        "P/S",
+        "주가매출비율"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "sales_yield",
+      "fixed_direction": null,
+      "note": "",
+      "source": "dart",
+      "terms": [
+        "SP",
+        "S/P",
+        "sales yield",
+        "매출수익률"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "Marcap",
+      "fixed_direction": null,
+      "note": "",
+      "source": "krx",
+      "terms": [
+        "시가총액",
+        "시총",
+        "market cap",
+        "marketcap",
+        "size"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "Marcap",
+      "fixed_direction": "low",
+      "note": "Small-cap preference means lower market capitalization.",
+      "source": "krx",
+      "terms": [
+        "소형주",
+        "소형주식",
+        "small cap",
+        "smallcap"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "Marcap",
+      "fixed_direction": "high",
+      "note": "Large-cap preference means higher market capitalization.",
+      "source": "krx",
+      "terms": [
+        "대형주",
+        "대형주식",
+        "large cap",
+        "largecap"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "Amount",
+      "fixed_direction": null,
+      "note": "",
+      "source": "krx",
+      "terms": [
+        "거래대금",
+        "trading amount",
+        "turnover amount"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "Volume",
+      "fixed_direction": null,
+      "note": "",
+      "source": "krx",
+      "terms": [
+        "거래량",
+        "volume"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "Close",
+      "fixed_direction": null,
+      "note": "",
+      "source": "krx",
+      "terms": [
+        "종가",
+        "close",
+        "close price"
+      ]
+    }
   ],
   "portfolio_weightings": [
     "equal"
