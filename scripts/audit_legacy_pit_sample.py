@@ -112,7 +112,8 @@ def audit_one(meta: dict, stored: pd.DataFrame, state_row: pd.Series) -> dict:
     structural_ok = True
     for _, r in stored.iterrows():
         metric = str(r.get("metric", ""))
-        statement = str(r.get("statement", ""))
+        statement_raw = r.get("statement", "")
+        statement = "" if pd.isna(statement_raw) else str(statement_raw)
         scope = str(r.get("scope", ""))
         unit = str(r.get("unit", ""))
         reported = pd.to_numeric(r.get("amount_reported"), errors="coerce")
