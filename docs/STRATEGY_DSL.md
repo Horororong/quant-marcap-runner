@@ -53,14 +53,14 @@ This is the extension point for future quality, growth, momentum, macro, or othe
 
 Examples:
 
-- `PER low` / `PER 낮은` -> `dart.earnings_yield`, canonical direction `high`
-- `PBR low` -> `dart.book_to_price`, canonical direction `high`
-- `PCR low` -> `dart.cashflow_yield`, canonical direction `high`
-- `PSR low` -> `dart.sales_yield`, canonical direction `high`
+- `슈퍼가치 PER 낮은` -> `dart.earnings_yield`, canonical direction `high` (standalone-quarter definition only)
+- `PBR 낮은` -> `dart.book_to_price`, canonical direction `high`
+- generic `PER/PCR/PSR` -> no automatic alias yet; trailing/annual definitions are a capability gap
+- `슈퍼가치 PCR/PSR` can map to the registered standalone-quarter cash-flow/sales yields
 - `소형주` -> `krx.Marcap`, fixed canonical direction `low`
 - `거래대금 high` -> `krx.Amount`, direction `high`
 
-Inverse valuation aliases encode direction inversion explicitly, so the AI compiler does not need to guess that “low PER” means “high earnings yield.” Unknown or ambiguous aliases fail instead of being substituted silently.
+Inverse aliases encode direction inversion explicitly only when their accounting-period definition matches the registered factor. Generic PER/PCR/PSR are intentionally not mapped to standalone-quarter factors. Unknown, ambiguous, or semantically mismatched aliases fail instead of being substituted silently.
 
 ## DART PIT value factors
 
