@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "strategy_id": "kr_equity_rank_demo",
+  "title": "KRX Ranking DSL Demo",
+  "asset_class": "kr_equity",
+  "universe": {
+    "markets": ["KOSPI", "KOSDAQ"],
+    "require_tradable_on_signal": true,
+    "filters": [
+      {"field": "Amount", "op": "gt", "value": 0},
+      {"field": "Marcap", "op": "exclude_bottom_pct", "value": 20}
+    ]
+  },
+  "factors": [
+    {"name": "size", "source": "krx", "field": "Marcap", "direction": "low", "weight": 1.0, "transform": "identity"},
+    {"name": "liquidity", "source": "krx", "field": "Amount", "direction": "high", "weight": 0.25, "transform": "log1p"}
+  ],
+  "portfolio": {"number_of_positions": 20, "weighting": "equal"},
+  "rebalance": {"frequency": "months", "months": [4, 10], "trading_day": "last"},
+  "execution": {"lag_sessions": 1, "price": "next_close"},
+  "cost_scenarios": {
+    "base": {"commission_bps": 1.5, "sell_tax_bps": 15.0, "spread_bps": 3.0, "slippage_bps": 5.0, "market_impact_bps": 0.0}
+  },
+  "period": {
+    "start": "2021-01-01",
+    "end": "2026-08-31",
+    "book_start": "2021-01-01",
+    "book_end": "2026-08-31",
+    "as_of_date": "2026-09-30"
+  },
+  "initial_capital": 10000000,
+  "metadata": {
+    "purpose": "DSL structure example, not an investment recommendation",
+    "runtime_scope": "KRX panel fields only in DSL v1"
+  }
+}

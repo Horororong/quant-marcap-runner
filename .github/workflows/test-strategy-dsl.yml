@@ -1,0 +1,42 @@
+name: Test Strategy DSL v1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/strategy-dsl-v1
+    paths:
+      - 'scripts/strategy_dsl.py'
+      - 'scripts/strategy_dsl_runner.py'
+      - 'scripts/test_strategy_dsl.py'
+      - 'config/strategies/**'
+      - '.github/workflows/test-strategy-dsl.yml'
+      - 'scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: strategy-dsl-v1-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy pyarrow exchange_calendars
+      - name: Syntax check
+        run: |
+          python -m py_compile scripts/strategy_dsl.py scripts/strategy_dsl_runner.py scripts/test_strategy_dsl.py
+      - name: Validate example DSL
+        run: python scripts/strategy_dsl_runner.py config/strategies/kr_equity_rank_demo.json --validate-only
+      - name: Integration smoke test against PROJECT v2-16
+        run: python scripts/test_strategy_dsl.py

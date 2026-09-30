@@ -6,6 +6,17 @@
 
 사용자가 전략과 조건을 주고 "백테스트해줘"라고 하면 아래 절차를 에이전트가 수행한다. 사용자가 데이터 확인, 지표 계산, 그래프 생성 단계를 따로 지시할 필요가 없다.
 
+## Strategy DSL 우선 경로 (v1)
+
+전략이 `scripts/strategy_dsl.py`의 지원 범위로 표현 가능하면 새 전략별 Python 스크립트를 만들지 않는다.
+
+1. 자연어 조건을 `config/strategies/*.json` Strategy DSL로 변환한다.
+2. `python scripts/strategy_dsl_runner.py <strategy.json> --validate-only`로 스키마/실행계획을 먼저 검증한다.
+3. 같은 JSON을 범용 러너로 실행해 목표비중과 일별 NAV를 만든다.
+4. 성과/위험지표와 채팅 차트는 기존과 동일하게 `quant_backtest_postprocess.py`만 사용한다.
+5. DSL이 지원하지 않는 팩터/자산/체결 규칙이면 임의 근사하지 않는다. 반복 사용 가능한 기능은 DSL/어댑터를 확장하고, 특수 체결이 필요한 경우에만 별도 엔진을 둔다.
+6. 같은 Strategy DSL JSON + 같은 데이터 + 같은 엔진 버전은 항상 같은 결과를 내야 하며, `strategy_fingerprint`를 재현성 키로 사용한다.
+
 ## 강제 실행 순서
 
 1. `scripts/quant_backtest_template_CURRENT.py`를 읽고 CURRENT 버전을 확인한다.
