@@ -40,5 +40,5 @@ jobs:
         run: python scripts/strategy_dsl_runner.py config/strategies/kr_equity_rank_demo.json --validate-only
       - name: Integration smoke test against PROJECT v2-16
         run: python scripts/test_strategy_dsl.py
-      - name: DART Super Value selection regression
+      - name: DART Super Value PIT integration
         run: python scripts/test_dart_dsl_super_value.py
