@@ -60,6 +60,9 @@ def main() -> None:
     plan = compile_execution_plan(spec)
     assert plan["project_engine"].endswith("v2-16_CURRENT.py")
     assert plan["strategy_fingerprint"] == spec.fingerprint()
+    assert plan["factor_registry_version"] == "1"
+    assert [x["source"] for x in plan["factor_contracts"]] == ["krx", "krx"]
+    assert [x["storage"] for x in plan["factor_contracts"]] == ["panel", "panel"]
 
     panel = make_panel()
     tw, selections = build_target_weights_from_panel(panel, spec)
