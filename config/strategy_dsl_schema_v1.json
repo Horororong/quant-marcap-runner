@@ -14,27 +14,27 @@
         "additionalProperties": false,
         "properties": {
           "commission_bps": {
-            "default": 0,
+            "default": 0.0,
             "minimum": 0,
             "type": "number"
           },
           "market_impact_bps": {
-            "default": 0,
+            "default": 0.0,
             "minimum": 0,
             "type": "number"
           },
           "sell_tax_bps": {
-            "default": 0,
+            "default": 0.0,
             "minimum": 0,
             "type": "number"
           },
           "slippage_bps": {
-            "default": 0,
+            "default": 0.0,
             "minimum": 0,
             "type": "number"
           },
           "spread_bps": {
-            "default": 0,
+            "default": 0.0,
             "minimum": 0,
             "type": "number"
           }
@@ -142,7 +142,7 @@
             ]
           },
           "weight": {
-            "default": 1,
+            "default": 1.0,
             "exclusiveMinimum": 0,
             "type": "number"
           }
