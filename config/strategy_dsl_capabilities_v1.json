@@ -1,0 +1,168 @@
+{
+  "asset_classes": [
+    "kr_equity"
+  ],
+  "canonical_outputs": [
+    "daily_nav.csv",
+    "target_weights.csv",
+    "selections.csv",
+    "execution_plan.json",
+    "strategy_fingerprint.txt",
+    "factor_provider_coverage.csv",
+    "corporate_actions_applied.csv",
+    "metrics_CURRENT.csv",
+    "chat_manifest_CURRENT.json"
+  ],
+  "corporate_action_registry_version": "1",
+  "corporate_actions": {
+    "registry": "config/kr_corporate_actions.csv",
+    "supported_event_types": [
+      "stock_merger"
+    ],
+    "unregistered_held_price_gap_policy": "fail"
+  },
+  "dsl_machine_contract_version": "1",
+  "execution_constraints": {
+    "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
+    "minimum_lag_sessions": 1
+  },
+  "execution_engine_version": "v2-16-exec-1",
+  "execution_prices": [
+    "next_close"
+  ],
+  "factor_directions": [
+    "high",
+    "low"
+  ],
+  "factor_registry_version": "1",
+  "factor_transforms": [
+    "identity",
+    "inverse",
+    "log1p"
+  ],
+  "factors": [
+    {
+      "description": "latest reported equity / signal-date market cap",
+      "field": "book_to_price",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter operating cash flow / signal-date market cap",
+      "field": "cashflow_yield",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter net income / signal-date market cap",
+      "field": "earnings_yield",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter revenue / signal-date market cap",
+      "field": "sales_yield",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "signal-date traded amount",
+      "field": "Amount",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date decimal price change",
+      "field": "Change",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date percentage price change",
+      "field": "ChangesRatio",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date close price",
+      "field": "Close",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date high price",
+      "field": "High",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date low price",
+      "field": "Low",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date market capitalization",
+      "field": "Marcap",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date open price",
+      "field": "Open",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date listed share count",
+      "field": "Stocks",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date traded volume",
+      "field": "Volume",
+      "source": "krx",
+      "storage": "panel"
+    }
+  ],
+  "filter_ops": [
+    "bottom_pct",
+    "eq",
+    "exclude_bottom_pct",
+    "exclude_top_pct",
+    "gt",
+    "gte",
+    "in",
+    "lt",
+    "lte",
+    "ne",
+    "not_in",
+    "notnull",
+    "top_pct"
+  ],
+  "markets": [
+    "KOSPI",
+    "KOSDAQ"
+  ],
+  "portfolio_weightings": [
+    "equal"
+  ],
+  "project_template_version": "v2-16",
+  "rebalance_frequencies": [
+    "months"
+  ],
+  "schema_version": "1.0",
+  "trading_day_rules": [
+    "last"
+  ],
+  "unsupported": [
+    "DART factors beyond the registered catalog",
+    "parameterized momentum/technical lookbacks",
+    "dynamic historical sell-tax schedules",
+    "next-open or VWAP execution",
+    "market-cap or factor-weighted portfolios",
+    "ETF/macro/asset-allocation DSL",
+    "unregistered corporate-action or delisting cash-flow assumptions"
+  ]
+}

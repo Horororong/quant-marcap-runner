@@ -44,7 +44,9 @@ import os
 import numpy as np
 import pandas as pd
 
-TEMPLATE_VERSION = "v2-16"
+from execution_contract import EXECUTION_ENGINE_VERSION, PROJECT_TEMPLATE_VERSION
+
+TEMPLATE_VERSION = PROJECT_TEMPLATE_VERSION
 CHAT_PAYLOAD_MAX_DRAWDOWN_POINTS = 480
 
 
