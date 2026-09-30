@@ -1,0 +1,48 @@
+name: Test DART Factor Adapter v1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/dart-factor-adapter-v1
+    paths:
+      - 'scripts/dart_factor_adapter.py'
+      - 'scripts/strategy_dsl.py'
+      - 'scripts/strategy_dsl_runner.py'
+      - 'scripts/test_super_value_dsl_regression.py'
+      - 'config/strategies/super_value_original_dsl.json'
+      - '.github/workflows/test-dart-factor-adapter.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dart-factor-adapter-v1-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy pyarrow plotly exchange_calendars
+
+      - name: Syntax check
+        run: |
+          python -m py_compile             scripts/dart_factor_adapter.py             scripts/strategy_dsl.py             scripts/strategy_dsl_runner.py             scripts/test_super_value_dsl_regression.py
+
+      - name: Validate super-value DSL
+        run: |
+          python scripts/strategy_dsl_runner.py             config/strategies/super_value_original_dsl.json             --validate-only
+
+      - name: Compare DART factors and Top20 with legacy v2-16
+        run: python scripts/test_super_value_dsl_regression.py
