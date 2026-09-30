@@ -57,11 +57,19 @@ Validation only:
 python scripts/strategy_dsl_runner.py config/strategies/kr_equity_rank_demo.json --validate-only
 ```
 
-Execution:
+Execution with canonical performance postprocess:
 
 ```bash
 python scripts/strategy_dsl_runner.py config/strategies/kr_equity_rank_demo.json
 ```
+
+Execution stage only (target weights -> PROJECT v2-16 t+1 execution -> daily NAV):
+
+```bash
+python scripts/strategy_dsl_runner.py config/strategies/super_value_dart_dsl.json --execution-only
+```
+
+The execution-only path is intentional for research windows whose PIT factor coverage is valid but which do not yet span the canonical 2000+/2021+/longest reporting windows. It does not calculate alternative performance metrics; formal metrics still go through `quant_backtest_postprocess.py` only.
 
 Outputs go to `results/dsl/<strategy_id>/` and include:
 
