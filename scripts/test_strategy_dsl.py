@@ -8,7 +8,12 @@ import numpy as np
 import pandas as pd
 
 from strategy_dsl import StrategySpec, compile_execution_plan
-from strategy_dsl_runner import build_target_weights_from_panel, load_project_engine, engine_inputs
+from strategy_dsl_runner import (
+    build_target_weights_from_panel,
+    close_and_tradable_matrices,
+    load_project_engine,
+    engine_inputs,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -83,6 +88,37 @@ def main() -> None:
         assert pd.Timestamp(row["execution_date"]) > pd.Timestamp(row["signal_date"])
     assert (out["daily_nav"] > 0).all().all()
     assert abs(float(out["weights"].iloc[-1].drop("Cash").sum()) - 1.0) < 1e-12
+
+    # KRX execution-price adapter: fill only interior suspension gaps for
+    # valuation, never leading/trailing disappearance; trading stays blocked.
+    gap_dates = pd.bdate_range("2024-01-02", periods=5)
+    gap_panel = pd.DataFrame([
+        {"Date": gap_dates[0], "Code": "111111", "Close": 100.0, "Volume": 100.0},
+        {"Date": gap_dates[1], "Code": "111111", "Close": 101.0, "Volume": 100.0},
+        # interior missing day for 111111
+        {"Date": gap_dates[3], "Code": "111111", "Close": 105.0, "Volume": 100.0},
+        {"Date": gap_dates[4], "Code": "111111", "Close": 106.0, "Volume": 100.0},
+        {"Date": gap_dates[0], "Code": "222222", "Close": 50.0, "Volume": 100.0},
+        {"Date": gap_dates[1], "Code": "222222", "Close": 51.0, "Volume": 100.0},
+    ])
+    # Add market-wide dates through a third security so pivot index contains all sessions.
+    gap_panel = pd.concat([
+        gap_panel,
+        pd.DataFrame({
+            "Date": gap_dates,
+            "Code": "333333",
+            "Close": [10, 10, 10, 10, 10],
+            "Volume": [100, 100, 100, 100, 100],
+        }),
+    ], ignore_index=True)
+    gap_close, gap_tradable = close_and_tradable_matrices(
+        gap_panel, ["111111", "222222", "333333"]
+    )
+    assert float(gap_close.loc[gap_dates[2], "111111"]) == 101.0
+    assert bool(gap_tradable.loc[gap_dates[2], "111111"]) is False
+    assert pd.isna(gap_close.loc[gap_dates[2], "222222"])
+    assert pd.isna(gap_close.loc[gap_dates[4], "222222"])
+    assert gap_close.attrs["suspension_gap_cells_filled"] >= 1
 
     with tempfile.TemporaryDirectory() as td:
         p = Path(td) / "plan.json"
