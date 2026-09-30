@@ -120,6 +120,41 @@ def main() -> None:
     assert pd.isna(gap_close.loc[gap_dates[4], "222222"])
     assert gap_close.attrs["suspension_gap_cells_filled"] >= 1
 
+    # Corporate-action engine contract: A converts into B without turnover.
+    ca_dates = pd.bdate_range("2024-02-01", periods=4)
+    ca_prices = pd.DataFrame({
+        "A": [100.0, 100.0, np.nan, np.nan],
+        "B": [50.0, 50.0, 60.0, 66.0],
+    }, index=ca_dates)
+    ca_targets = pd.DataFrame(
+        {"A": [1.0], "B": [0.0]},
+        index=[ca_dates[0]],
+    )
+    ca_explicit = pd.DataFrame(np.nan, index=ca_dates, columns=["A", "B"])
+    ca_explicit.loc[ca_dates[2], "A"] = 0.20
+    ca_transfers = pd.DataFrame([{
+        "event_id": "synthetic-merger",
+        "event_date": ca_dates[2],
+        "source_asset": "A",
+        "target_asset": "B",
+        "target_value_fraction": 1.0,
+        "cash_value_fraction": 0.0,
+    }])
+    ca_out = engine.simulate_target_weight_portfolio(
+        close_prices=ca_prices,
+        target_weights=ca_targets,
+        cost_assumptions=engine.TradingCostAssumptions(),
+        execution_assumptions=engine.ExecutionAssumptions(execution_lag_sessions=1),
+        explicit_delisting_returns=ca_explicit,
+        corporate_action_transfers=ca_transfers,
+        initial_capital=1.0,
+    )
+    assert abs(float(ca_out["daily_nav"].loc[ca_dates[2], "Gross"]) - 1.20) < 1e-12
+    assert abs(float(ca_out["daily_nav"].loc[ca_dates[3], "Gross"]) - 1.32) < 1e-12
+    assert abs(float(ca_out["weights"].loc[ca_dates[2], "A"])) < 1e-12
+    assert abs(float(ca_out["weights"].loc[ca_dates[2], "B"]) - 1.0) < 1e-12
+    assert len(ca_out["corporate_actions"]) == 1
+
     with tempfile.TemporaryDirectory() as td:
         p = Path(td) / "plan.json"
         p.write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
