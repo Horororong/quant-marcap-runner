@@ -118,25 +118,34 @@ def rank_cross_section(cross_section: pd.DataFrame, spec: StrategySpec) -> tuple
     if x.empty:
         raise RuntimeError("universe empty after filters")
 
-    total_weight = sum(f.weight for f in spec.factors)
-    score = pd.Series(0.0, index=x.index)
-    factor_columns: list[str] = []
+    # All factor ranks must be calculated on the identical eligible universe.
+    transformed: dict[str, pd.Series] = {}
+    valid_all = pd.Series(True, index=x.index)
     for fac in spec.factors:
         if fac.source != "krx":
             raise NotImplementedError(f"DSL v1 runtime factor source not implemented: {fac.source}")
         if fac.field not in x.columns:
             raise KeyError(f"factor field not present in panel: {fac.field}")
         v = _transform_factor(x[fac.field], fac.transform)
-        valid = v.notna() & np.isfinite(v)
-        x = x.loc[valid].copy()
-        v = v.loc[valid]
-        score = score.reindex(x.index)
+        transformed[fac.name] = v
+        valid_all &= v.notna() & np.isfinite(v)
+
+    x = x.loc[valid_all].copy()
+    if x.empty:
+        raise RuntimeError("universe empty after factor missing-value intersection")
+
+    total_weight = sum(f.weight for f in spec.factors)
+    score = pd.Series(0.0, index=x.index)
+    factor_columns: list[str] = []
+    for fac in spec.factors:
+        v = transformed[fac.name].reindex(x.index)
         rank = v.rank(method="average", pct=True, ascending=(fac.direction == "low"))
         col = f"factor_rank__{fac.name}"
         x[col] = rank
         factor_columns.append(col)
-        score = score.fillna(0.0) + rank * (fac.weight / total_weight)
-    x["composite_score"] = score.reindex(x.index)
+        score = score + rank * (fac.weight / total_weight)
+
+    x["composite_score"] = score
     x = x.sort_values(["composite_score", "Code"], ascending=[True, True]).copy()
     n = spec.portfolio.number_of_positions
     if len(x) < n:
@@ -144,7 +153,6 @@ def rank_cross_section(cross_section: pd.DataFrame, spec: StrategySpec) -> tuple
     selected = x.head(n).copy()
     selected["target_weight"] = 1.0 / n
     return selected, x[["Date", "Code", "Name", "Market", "composite_score", *factor_columns]].copy()
-
 
 def build_target_weights_from_panel(panel: pd.DataFrame, spec: StrategySpec) -> tuple[pd.DataFrame, pd.DataFrame]:
     p = panel.copy()
