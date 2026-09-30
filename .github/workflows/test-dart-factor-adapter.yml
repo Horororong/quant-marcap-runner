@@ -40,6 +40,9 @@ jobs:
         run: |
           python -m py_compile             scripts/dart_factor_adapter.py             scripts/strategy_dsl.py             scripts/strategy_dsl_runner.py             scripts/test_super_value_dsl_regression.py
 
+      - name: Core DSL regression
+        run: python scripts/test_strategy_dsl.py
+
       - name: Validate super-value DSL
         run: |
           python scripts/strategy_dsl_runner.py             config/strategies/super_value_original_dsl.json             --validate-only
