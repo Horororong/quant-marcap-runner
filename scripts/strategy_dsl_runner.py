@@ -19,6 +19,7 @@ import numpy as np
 import pandas as pd
 
 from strategy_dsl import StrategySpec, compile_execution_plan, load_strategy_spec
+from execution_contract import EXECUTION_ENGINE_VERSION, PROJECT_TEMPLATE_VERSION
 from corporate_action_registry import load_corporate_actions
 from factor_registry import (
     build_external_provider,
@@ -40,8 +41,16 @@ def load_project_engine(repo_root: Path):
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
-    if getattr(module, "TEMPLATE_VERSION", None) != "v2-16":
-        raise RuntimeError(f"DSL v1 expects project engine v2-16; got {getattr(module, 'TEMPLATE_VERSION', None)}")
+    if getattr(module, "TEMPLATE_VERSION", None) != PROJECT_TEMPLATE_VERSION:
+        raise RuntimeError(
+            f"DSL expects project template {PROJECT_TEMPLATE_VERSION}; "
+            f"got {getattr(module, 'TEMPLATE_VERSION', None)}"
+        )
+    if getattr(module, "EXECUTION_ENGINE_VERSION", None) != EXECUTION_ENGINE_VERSION:
+        raise RuntimeError(
+            f"DSL expects execution engine {EXECUTION_ENGINE_VERSION}; "
+            f"got {getattr(module, 'EXECUTION_ENGINE_VERSION', None)}"
+        )
     return module
 
 
