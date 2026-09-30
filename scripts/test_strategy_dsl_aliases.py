@@ -23,7 +23,7 @@ def main() -> None:
     assert pbr["field"] == "book_to_price"
     assert pbr["direction"] == "high"
 
-    ep = resolve_factor_alias("E/P", "high")
+    ep = resolve_factor_alias("분기 E/P", "높은")
     assert ep["field"] == "earnings_yield"
     assert ep["direction"] == "high"
 
