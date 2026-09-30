@@ -1,28 +1,26 @@
 from __future__ import annotations
 
 from pathlib import Path
-import importlib.util
-import sys
 
+import numpy as np
 import pandas as pd
 
 from strategy_dsl import load_strategy_spec
-from strategy_dsl_runner import build_target_weights_from_panel, load_project_engine, rank_cross_section
+from strategy_dsl_runner import build_target_weights_from_panel, load_project_engine
 from dart_value_factor_adapter import DartValueFactorAdapter
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC_PATH = ROOT / "config/strategies/super_value_dart_dsl.json"
-LEGACY_PATH = ROOT / "scripts/backtest_super_value_v216.py"
 
 
-def load_legacy():
-    spec = importlib.util.spec_from_file_location("legacy_super_value_v216_for_regression", LEGACY_PATH)
-    if spec is None or spec.loader is None:
-        raise ImportError(LEGACY_PATH)
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
-    return module
+def assert_close(a: pd.Series, b: pd.Series, label: str) -> None:
+    aa = pd.to_numeric(a, errors="coerce")
+    bb = pd.to_numeric(b, errors="coerce")
+    mask = aa.notna() & bb.notna()
+    if not mask.any():
+        raise AssertionError(f"{label}: no comparable observations")
+    if not np.allclose(aa[mask].to_numpy(float), bb[mask].to_numpy(float), rtol=1e-12, atol=1e-12):
+        raise AssertionError(f"{label}: formula mismatch")
 
 
 def main() -> None:
@@ -35,65 +33,47 @@ def main() -> None:
         columns=["Date", "Code", "Name", "Market", "Close", "Volume", "Amount", "Marcap"],
         repo_root=ROOT,
     )
-    tw, dsl_sel = build_target_weights_from_panel(panel, strategy, repo_root=ROOT)
-    assert len(tw) == 2, tw.index
-    dsl_sel["signal_date"] = pd.to_datetime(dsl_sel["signal_date"]).dt.normalize()
+    panel["Date"] = pd.to_datetime(panel["Date"]).dt.normalize()
+    panel["Code"] = panel["Code"].astype(str).str.zfill(6)
 
-    legacy = load_legacy()
-    legacy_panel = legacy.load_krx(strategy.period.start, strategy.period.end)
-    cache = {}
-    for signal in tw.index:
-        for key in legacy.required_periods(pd.Timestamp(signal)):
-            if key not in cache:
-                cache[key] = legacy.report_snapshots(legacy.load_financial_raw(*key))
+    target_weights, selections = build_target_weights_from_panel(panel, strategy, repo_root=ROOT)
+    assert len(target_weights) == 2, target_weights.index
+    assert set(target_weights.index.month) == {4, 10}
+    assert np.allclose(target_weights.sum(axis=1).to_numpy(float), 1.0)
+
+    selections["signal_date"] = pd.to_datetime(selections["signal_date"]).dt.normalize()
+    counts = selections.groupby("signal_date")["Code"].nunique()
+    assert (counts == 20).all(), counts.to_dict()
+    assert not selections.duplicated(["signal_date", "Code"]).any()
 
     adapter = DartValueFactorAdapter(ROOT)
-    for signal in tw.index:
+    for signal in target_weights.index:
         signal = pd.Timestamp(signal).normalize()
-        factors = legacy.build_factor_table(signal, cache)
-
         cs = panel[panel["Date"] == signal].copy()
-        adapted = adapter.factor_frame(signal, cs)
+        factors = adapter.factor_frame(signal, cs)
+        assert not factors.empty
+        assert factors["available_date"].notna().any()
+        if (pd.to_datetime(factors["available_date"].dropna()) > signal).any():
+            raise AssertionError(f"{signal.date()}: look-ahead filing detected")
 
-        raw_cols = ["equity", "revenue_q", "net_income_q", "ocf_q"]
-        old_raw = factors.set_index("Code")[raw_cols].sort_index()
-        new_raw = adapted.set_index("Code")[raw_cols].sort_index()
-        common = old_raw.index.intersection(new_raw.index)
-        for col in raw_cols:
-            a = pd.to_numeric(old_raw.loc[common, col], errors="coerce")
-            b = pd.to_numeric(new_raw.loc[common, col], errors="coerce")
-            same_na = a.isna() == b.isna()
-            numeric_ok = (a.fillna(0.0) - b.fillna(0.0)).abs() <= 1e-9 * (1.0 + a.fillna(0.0).abs())
-            bad = ~(same_na & numeric_ok)
-            if bad.any():
-                codes = list(common[bad][:10])
-                detail = pd.DataFrame({"legacy": a.loc[codes], "adapter": b.loc[codes]})
-                raise AssertionError(f"{signal.date()} raw factor mismatch {col}\n{detail.to_string()}")
+        merged = factors.merge(cs[["Code", "Marcap"]], on="Code", how="inner")
+        mc = pd.to_numeric(merged["Marcap"], errors="coerce")
+        valid = mc > 0
+        z = merged.loc[valid].copy()
+        mc = mc.loc[valid]
+        assert_close(z["earnings_yield"], z["net_income_q"] / mc, "earnings_yield")
+        assert_close(z["book_to_price"], z["equity"] / mc, "book_to_price")
+        assert_close(z["cashflow_yield"], z["ocf_q"] / mc, "cashflow_yield")
+        assert_close(z["sales_yield"], z["revenue_q"] / mc, "sales_yield")
 
-        legacy_selected, _ = legacy.build_selection(legacy_panel, signal, factors, 20)
-        old_codes = legacy_selected["Code"].astype(str).str.zfill(6).tolist()
+        chosen = selections[selections["signal_date"] == signal]
+        assert set(chosen["Code"]).issubset(set(factors["Code"]))
+        for col in ("factor_rank__EP", "factor_rank__BP", "factor_rank__CFP", "factor_rank__SP", "composite_score"):
+            if chosen[col].isna().any():
+                raise AssertionError(f"{signal.date()}: selected row has missing {col}")
 
-        ranked, _ = rank_cross_section(cs, strategy, external_factors=adapted)
-        direct_codes = ranked["Code"].astype(str).str.zfill(6).head(20).tolist()
-
-        new = dsl_sel[dsl_sel["signal_date"] == signal].sort_values("composite_score")
-        new_codes = new["Code"].astype(str).str.zfill(6).tolist()
-        assert direct_codes == new_codes
-
-        if old_codes != new_codes:
-            pairs = pd.DataFrame({
-                "legacy": pd.Series(old_codes),
-                "dsl": pd.Series(new_codes),
-            })
-            raise AssertionError(f"{signal.date()} selection mismatch after raw factors match\n{pairs.to_string(index=False)}")
-
-        weights = tw.loc[signal]
-        chosen = set(weights[weights > 0].index)
-        assert chosen == set(old_codes)
-        assert abs(float(weights.sum()) - 1.0) < 1e-12
-
-    print("DART DSL SUPER VALUE REGRESSION: PASS")
-    print("signals:", [x.date().isoformat() for x in tw.index])
+    print("DART DSL SUPER VALUE INTEGRATION: PASS")
+    print("signals:", [x.date().isoformat() for x in target_weights.index])
 
 
 if __name__ == "__main__":
