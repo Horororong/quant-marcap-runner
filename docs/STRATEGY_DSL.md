@@ -45,6 +45,20 @@ The adapter uses only filings whose filing date is on or before the signal date.
 
 See `config/strategies/super_value_dart_dsl.json`.
 
+## Corporate-action continuity
+
+Execution does not silently replace missing held-stock returns with 0%. Verified events are stored in `config/kr_corporate_actions.csv` and loaded by `scripts/corporate_action_registry.py`.
+
+For a registered stock merger the PROJECT execution engine:
+
+1. keeps the predecessor flat only during the verified post-last-trade suspension interval,
+2. calculates the merger-date economic return from `successor close × share ratio + cash`,
+3. applies that return to NAV,
+4. transfers the post-event portfolio weight from predecessor to successor without turnover or trading cost,
+5. writes `corporate_actions_applied.csv` for audit.
+
+The first registered event is Korean Paper (002300) -> Haesung Industrial (034810), 1 old share to 1.6661460 successor shares, successor listing date 2020-07-13. This registry must be expanded with verified source documents before full-history results are treated as production-valid.
+
 ## Deliberately unsupported in v1
 
 The runner fails rather than inventing an answer for these cases:
@@ -54,7 +68,6 @@ The runner fails rather than inventing an answer for these cases:
 - dynamic historical sell-tax schedules
 - next-open/VWAP execution
 - market-cap/factor weighting
-- explicit corporate-action/delisting return adapter
 - ETF/macro/asset-allocation DSL
 
 These are adapters to add without changing the core schema philosophy.
@@ -89,6 +102,7 @@ Outputs go to `results/dsl/<strategy_id>/` and include:
 - `target_weights.csv`
 - `selections.csv`
 - `factor_provider_coverage.csv` when external factor providers are used
+- `corporate_actions_applied.csv` when a registered event affects a held position
 - `execution_plan.json`
 - `strategy_fingerprint.txt`
 - canonical `metrics_CURRENT.csv`
