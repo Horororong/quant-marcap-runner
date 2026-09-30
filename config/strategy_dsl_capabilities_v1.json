@@ -170,12 +170,12 @@
       "direction_relation": "inverse",
       "field": "earnings_yield",
       "fixed_direction": null,
-      "note": "PER low is equivalent to earnings_yield high.",
+      "note": "Only for the standalone-quarter Super Value definition; not generic trailing/annual PER.",
       "source": "dart",
       "terms": [
-        "PER",
-        "P/E",
-        "주가수익비율"
+        "슈퍼가치 PER",
+        "분기 PER 프록시",
+        "quarterly P/E proxy"
       ]
     },
     {
@@ -185,10 +185,10 @@
       "note": "",
       "source": "dart",
       "terms": [
-        "EP",
-        "E/P",
-        "earnings yield",
-        "이익수익률"
+        "분기 EP",
+        "분기 E/P",
+        "quarterly earnings yield",
+        "분기 이익수익률"
       ]
     },
     {
@@ -220,12 +220,12 @@
       "direction_relation": "inverse",
       "field": "cashflow_yield",
       "fixed_direction": null,
-      "note": "PCR low is equivalent to cashflow_yield high.",
+      "note": "Only for the standalone-quarter Super Value definition; not generic trailing/annual PCR.",
       "source": "dart",
       "terms": [
-        "PCR",
-        "P/CF",
-        "주가현금흐름비율"
+        "슈퍼가치 PCR",
+        "분기 PCR 프록시",
+        "quarterly P/CF proxy"
       ]
     },
     {
@@ -235,22 +235,22 @@
       "note": "",
       "source": "dart",
       "terms": [
-        "CFP",
-        "CF/P",
-        "cash flow yield",
-        "현금흐름수익률"
+        "분기 CFP",
+        "분기 CF/P",
+        "quarterly cash flow yield",
+        "분기 현금흐름수익률"
       ]
     },
     {
       "direction_relation": "inverse",
       "field": "sales_yield",
       "fixed_direction": null,
-      "note": "PSR low is equivalent to sales_yield high.",
+      "note": "Only for the standalone-quarter Super Value definition; not generic trailing/annual PSR.",
       "source": "dart",
       "terms": [
-        "PSR",
-        "P/S",
-        "주가매출비율"
+        "슈퍼가치 PSR",
+        "분기 PSR 프록시",
+        "quarterly P/S proxy"
       ]
     },
     {
@@ -260,10 +260,10 @@
       "note": "",
       "source": "dart",
       "terms": [
-        "SP",
-        "S/P",
-        "sales yield",
-        "매출수익률"
+        "분기 SP",
+        "분기 S/P",
+        "quarterly sales yield",
+        "분기 매출수익률"
       ]
     },
     {
