@@ -14,6 +14,8 @@ import hashlib
 import json
 import re
 
+from factor_registry import get_factor_definition
+
 SCHEMA_VERSION = "1.0"
 STRATEGY_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{2,63}$")
 SUPPORTED_ASSET_CLASSES = {"kr_equity"}
@@ -21,9 +23,7 @@ SUPPORTED_FILTER_OPS = {
     "gt", "gte", "lt", "lte", "eq", "ne", "in", "not_in", "notnull",
     "top_pct", "bottom_pct", "exclude_top_pct", "exclude_bottom_pct",
 }
-SUPPORTED_FACTOR_SOURCES = {"krx", "dart"}
 SUPPORTED_FACTOR_TRANSFORMS = {"identity", "inverse", "log1p"}
-SUPPORTED_DART_FACTOR_FIELDS = {"earnings_yield", "book_to_price", "cashflow_yield", "sales_yield"}
 SUPPORTED_DIRECTIONS = {"high", "low"}
 SUPPORTED_WEIGHTINGS = {"equal"}
 SUPPORTED_REBALANCE_FREQUENCIES = {"months"}
@@ -98,13 +98,7 @@ class FactorSpec:
         )
         if not obj.name or not obj.field:
             raise ValueError("factor name/field cannot be empty")
-        if obj.source not in SUPPORTED_FACTOR_SOURCES:
-            raise ValueError(f"unsupported factor source in DSL v1: {obj.source}")
-        if obj.source == "dart" and obj.field not in SUPPORTED_DART_FACTOR_FIELDS:
-            raise ValueError(
-                f"unsupported DART factor field in DSL v1: {obj.field}; "
-                f"supported={sorted(SUPPORTED_DART_FACTOR_FIELDS)}"
-            )
+        get_factor_definition(obj.source, obj.field)
         if obj.direction not in SUPPORTED_DIRECTIONS:
             raise ValueError(f"unsupported factor direction: {obj.direction}")
         if obj.transform not in SUPPORTED_FACTOR_TRANSFORMS:
