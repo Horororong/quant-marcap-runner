@@ -131,8 +131,9 @@ def _alias_index() -> dict[str, FactorAliasRule]:
     for rule in ALIAS_RULES:
         for term in rule.terms:
             key = normalize_alias_term(term)
-            if key in out:
-                raise ValueError(f"duplicate normalized factor alias: {term!r}")
+            previous = out.get(key)
+            if previous is not None and previous != rule:
+                raise ValueError(f"conflicting normalized factor alias: {term!r}")
             out[key] = rule
     return out
 
