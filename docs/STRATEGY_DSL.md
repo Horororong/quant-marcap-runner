@@ -108,6 +108,18 @@ Examples:
 
 Inverse aliases encode direction inversion explicitly only when their accounting-period definition matches the registered factor. Generic PER/PCR/PSR are intentionally not mapped to standalone-quarter factors. Unknown, ambiguous, or semantically mismatched aliases fail instead of being substituted silently.
 
+## DART quarterly profitability factors
+
+The DART provider also exposes three profitability fields whose accounting period is explicit in the field name:
+
+- `quarterly_roe`: standalone-quarter net income / latest reported equity, only when equity is positive.
+- `quarterly_net_margin`: standalone-quarter net income / standalone-quarter revenue, only when revenue is positive.
+- `quarterly_ocf_margin`: standalone-quarter operating cash flow / standalone-quarter revenue, only when revenue is positive.
+
+These fields inherit the current DART source contract: April and October signal months only, PIT filing-date enforcement, CFS-first/OFS-fallback logic, and full-source completeness gating.
+
+Natural-language aliases are likewise explicit: `분기 ROE`, `분기 순이익률`, and `분기 OCF 마진`. Generic `ROE` is intentionally **not** mapped to `quarterly_roe`; annual/TTM ROE requires a separate definition.
+
 ## DART PIT value factors
 
 Current DART value-factor execution is a source-level capability with a fixed rebalance-month contract: **April and October only**. This constraint is exported as `factor_source_constraints.dart.rebalance_months=[4,10]` and is validated during DSL compilation. A DART strategy requesting another rebalance month is a `capability_gap`, not a `data_gap`.
