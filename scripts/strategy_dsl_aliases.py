@@ -208,6 +208,24 @@ ALIAS_RULES: tuple[FactorAliasRule, ...] = (
         fixed_direction="low",
         note="Lower 252-session annualized realized volatility is preferred.",
     ),
+    FactorAliasRule(
+        terms=("분기 ROE", "quarterly ROE", "분기 자기자본이익률"),
+        source="dart",
+        field="quarterly_roe",
+        note="Standalone-quarter net income divided by latest reported positive equity.",
+    ),
+    FactorAliasRule(
+        terms=("분기 순이익률", "quarterly net margin", "분기 net margin"),
+        source="dart",
+        field="quarterly_net_margin",
+        note="Standalone-quarter net income divided by positive standalone-quarter revenue.",
+    ),
+    FactorAliasRule(
+        terms=("분기 OCF 마진", "분기 영업현금흐름률", "quarterly OCF margin"),
+        source="dart",
+        field="quarterly_ocf_margin",
+        note="Standalone-quarter operating cash flow divided by positive standalone-quarter revenue.",
+    ),
 )
 
 
