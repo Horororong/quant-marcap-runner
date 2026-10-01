@@ -11,6 +11,7 @@ from jsonschema import Draft202012Validator, ValidationError
 
 from export_strategy_dsl_contract import build_strategy_json_schema
 from execution_contract import DECILE_RESEARCH_CONTRACT
+from krx_history_audit import expected_krx_sessions
 from strategy_dsl import StrategySpec, compile_execution_plan
 from strategy_dsl_deciles import (
     DECILE_LABELS, build_decile_target_weights_from_panel, execute_decile_nav,
@@ -164,7 +165,14 @@ def execution_test() -> None:
         path = Path(td) / "strategy.json"
         path.write_text(json.dumps(spec.to_dict()))
         out = Path(td) / "failure"
-        with patch("strategy_dsl_deciles.load_project_engine", return_value=engine), patch.object(engine, "load_krx_equity_panel", return_value=broken):
+        valid_dates = expected_krx_sessions(spec.period.start, spec.period.end)
+        broken_calendar_panel = broken[broken["Date"].isin(valid_dates)]
+        # Keep the held-price failure after the actual first execution session.
+        broken_calendar_panel = broken_calendar_panel.copy()
+        broken_calendar_panel.loc[(broken_calendar_panel["Date"] == pd.Timestamp("2024-05-03")) & (broken_calendar_panel["Code"] == "000001"), "Close"] = np.nan
+        # May 2 is the buy session in XKRX, so its source price must be valid.
+        broken_calendar_panel.loc[broken_calendar_panel["Date"] == pd.Timestamp("2024-05-02"), "Close"] = 220.0
+        with patch("strategy_dsl_deciles.load_project_engine", return_value=engine), patch.object(engine, "load_krx_equity_panel", return_value=broken_calendar_panel):
             expect_error(lambda: run_strategy(path, ROOT, out, postprocess=False), RuntimeError, "D01")
         assert not out.exists()
 

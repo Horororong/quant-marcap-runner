@@ -7,6 +7,7 @@ from unittest.mock import patch
 
 import numpy as np
 import pandas as pd
+from krx_history_audit import expected_krx_sessions
 
 from strategy_dsl import BenchmarkSpec, StrategySpec, compile_execution_plan
 from strategy_dsl_runner import benchmark_coverage_audit, load_benchmark_nav
@@ -64,7 +65,7 @@ def main() -> None:
         root = Path(td)
         p = root / "data/indices"
         p.mkdir(parents=True)
-        dates = pd.bdate_range("2024-04-01", "2024-04-30")
+        dates = expected_krx_sessions("2024-04-01", "2024-04-30")
         close = pd.Series(np.linspace(100.0, 110.0, len(dates)), index=dates)
         pd.DataFrame({"Date": dates, "Close": close.to_numpy()}).to_csv(
             p / "KOSPI.csv", index=False

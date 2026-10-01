@@ -19,6 +19,11 @@
 7. DSL이 지원하지 않는 팩터/자산/체결 규칙이면 임의 근사하지 않는다. 반복 사용 가능한 기능은 DSL/어댑터를 확장하고, 특수 체결이 필요한 경우에만 별도 엔진을 둔다.
 8. 같은 Strategy DSL JSON + 같은 데이터 + 같은 엔진/registry 버전은 항상 같은 결과를 내야 하며, `strategy_fingerprint`와 execution plan의 버전 필드를 재현성 키로 사용한다.
 
+preflight와 범용 실행은 요청기간의 XKRX 거래일을 각 요청시장과 정확히 대조한다.
+시장 전체 날짜 누락은 중단한다. 이는 종목별 기업행동 이력의 완전성 인증이 아니다.
+장기 실행의 원자료 검토에는 `docs/KRX_HISTORY_AUDIT.md`의 감사 절차를 사용하고,
+확인 후보를 전략 필터나 기업행동으로 자동 적용하지 않는다.
+
 팩터 10분위 연구를 요청하면 같은 JSON에서 `portfolio.selection="deciles"`,
 `portfolio.weighting="equal"`로 지정하고 `number_of_positions`는 생략/null로 둔다.
 일반 상위 N종목 전략의 기본값은 `selection="top_n"`이다. 10분위는 필터와

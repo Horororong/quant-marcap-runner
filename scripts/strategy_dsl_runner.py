@@ -21,6 +21,7 @@ import pandas as pd
 from strategy_dsl import BenchmarkSpec, StrategySpec, compile_execution_plan, load_strategy_spec
 from execution_contract import EXECUTION_ENGINE_VERSION, PROJECT_TEMPLATE_VERSION
 from corporate_action_registry import load_corporate_actions
+from krx_history_audit import require_session_coverage
 from factor_registry import (
     build_external_provider,
     external_filter_sources,
@@ -489,6 +490,7 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
         columns=required_panel_columns(spec),
         repo_root=repo_root,
     )
+    history_coverage = require_session_coverage(panel, spec.period.start, spec.period.end, spec.universe.markets)
     target_weights, selections = build_target_weights_from_panel(panel, spec, repo_root=repo_root)
     assets = list(target_weights.columns)
     close, tradable = close_and_tradable_matrices(panel, assets)
@@ -512,6 +514,7 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
 
     out = output_dir or (repo_root / "results" / "dsl" / spec.strategy_id)
     out.mkdir(parents=True, exist_ok=True)
+    (out / "history_coverage.json").write_text(json.dumps(history_coverage, ensure_ascii=False, indent=2), encoding="utf-8")
     daily = result["daily_nav"].rename(columns=lambda c: f"NAV_{c}")
     benchmark_meta = None
     if spec.benchmark is not None:

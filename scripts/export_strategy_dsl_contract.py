@@ -13,9 +13,11 @@ from execution_contract import (
     EXECUTION_ENGINE_VERSION,
     PROJECT_TEMPLATE_VERSION,
     PREFLIGHT_CONTRACT_VERSION,
+    HISTORY_AUDIT_CONTRACT_VERSION,
 )
 from factor_registry import FACTOR_REGISTRY_VERSION, factor_catalog, factor_source_constraints, filter_field_catalog, filterable_fields, supported_fields, supported_sources
 from krx_technical_factor_adapter import technical_factor_catalog
+from krx_history_audit import PRICE_DIFFERENCE_THRESHOLD_BPS
 from strategy_dsl_aliases import alias_catalog, direction_alias_catalog
 from strategy_dsl import (
     SCHEMA_VERSION,
@@ -215,6 +217,7 @@ def build_capabilities() -> dict:
         "factor_registry_version": FACTOR_REGISTRY_VERSION,
         "corporate_action_registry_version": CORPORATE_ACTION_REGISTRY_VERSION,
         "preflight_contract_version": PREFLIGHT_CONTRACT_VERSION,
+        "history_audit_contract_version": HISTORY_AUDIT_CONTRACT_VERSION,
         "asset_classes": sorted(SUPPORTED_ASSET_CLASSES),
         "markets": ["KOSPI", "KOSDAQ"],
         "benchmarks": {
@@ -256,6 +259,7 @@ def build_capabilities() -> dict:
             "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
         },
         "preflight": {
+            "history_coverage": "exact XKRX sessions for each requested market; does not certify security-level or corporate-action completeness",
             "command": "python scripts/strategy_dsl_preflight.py <strategy.json>",
             "always_zero_command": "python scripts/strategy_dsl_preflight.py <strategy.json> --always-zero",
             "statuses": ["ok", "capability_gap", "data_gap"],
@@ -283,6 +287,15 @@ def build_capabilities() -> dict:
             "supported_event_types": ["stock_merger"],
             "registry": "config/kr_corporate_actions.csv",
             "unregistered_held_price_gap_policy": "fail",
+            "history_completeness": "unverified; presence of registered events is not a coverage certificate",
+        },
+        "history_audit": {
+            "command": "python scripts/krx_history_audit.py --start YYYY-MM-DD --end YYYY-MM-DD --output-dir <audit_dir>",
+            "outputs": ["history_audit.json", "security_observation_coverage.csv", "history_review_candidates.csv"],
+            "price_difference_threshold_bps": PRICE_DIFFERENCE_THRESHOLD_BPS,
+            "candidate_policy": "diagnostics only; never infer events, cash flows or universe exclusions",
+            "exit_codes": {"market_session_complete": 0, "data_gap": 3},
+            "completeness_scope": "market-session presence; registered corporate-action history remains unverified",
         },
         "canonical_outputs": [
             "daily_nav.csv",
@@ -291,6 +304,7 @@ def build_capabilities() -> dict:
             "execution_plan.json",
             "strategy_fingerprint.txt",
             "factor_provider_coverage.csv",
+            "history_coverage.json",
             "corporate_actions_applied.csv",
             "metrics_CURRENT.csv",
             "chat_manifest_CURRENT.json",
