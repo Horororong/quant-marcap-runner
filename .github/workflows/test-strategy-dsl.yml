@@ -7,6 +7,7 @@ on:
       - 'scripts/strategy_dsl.py'
       - 'scripts/krx_technical_factor_adapter.py'
       - 'scripts/test_krx_technical_factor_adapter.py'
+      - 'scripts/test_krx_volatility_factor_adapter.py'
       - 'scripts/strategy_dsl_preflight.py'
       - 'scripts/test_strategy_dsl_preflight.py'
       - 'scripts/strategy_dsl_aliases.py'
@@ -53,7 +54,7 @@ jobs:
           pip install pandas numpy pyarrow exchange_calendars plotly
       - name: Syntax check
         run: |
-          python -m py_compile scripts/execution_contract.py scripts/export_strategy_dsl_contract.py scripts/strategy_dsl_aliases.py scripts/strategy_dsl_preflight.py scripts/krx_technical_factor_adapter.py scripts/factor_registry.py scripts/corporate_action_registry.py scripts/strategy_dsl.py scripts/strategy_dsl_runner.py scripts/dart_value_factor_adapter.py scripts/test_factor_registry.py scripts/test_strategy_dsl_aliases.py scripts/test_strategy_dsl_preflight.py scripts/test_krx_technical_factor_adapter.py scripts/test_corporate_action_execution.py scripts/test_strategy_dsl.py scripts/test_dart_dsl_super_value.py scripts/test_dsl_execution_e2e.py
+          python -m py_compile scripts/execution_contract.py scripts/export_strategy_dsl_contract.py scripts/strategy_dsl_aliases.py scripts/strategy_dsl_preflight.py scripts/krx_technical_factor_adapter.py scripts/factor_registry.py scripts/corporate_action_registry.py scripts/strategy_dsl.py scripts/strategy_dsl_runner.py scripts/dart_value_factor_adapter.py scripts/test_factor_registry.py scripts/test_strategy_dsl_aliases.py scripts/test_strategy_dsl_preflight.py scripts/test_krx_technical_factor_adapter.py scripts/test_krx_volatility_factor_adapter.py scripts/test_corporate_action_execution.py scripts/test_strategy_dsl.py scripts/test_dart_dsl_super_value.py scripts/test_dsl_execution_e2e.py
       - name: Check machine-readable DSL contract
         run: python scripts/export_strategy_dsl_contract.py --check
       - name: Natural-language factor alias test
@@ -64,6 +65,8 @@ jobs:
         run: python scripts/test_strategy_dsl_preflight.py
       - name: KRX technical factor adapter test
         run: python scripts/test_krx_technical_factor_adapter.py
+      - name: KRX volatility factor adapter test
+        run: python scripts/test_krx_volatility_factor_adapter.py
       - name: Factor provider registry extension test
         run: python scripts/test_factor_registry.py
       - name: Corporate action execution regression
