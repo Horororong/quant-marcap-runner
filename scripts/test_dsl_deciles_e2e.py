@@ -35,6 +35,9 @@ def main() -> None:
         schedule = pd.read_csv(out / "execution_schedule.csv", parse_dates=["signal_date", "execution_date"])
         audit = pd.read_csv(out / "decile_partition_audit.csv")
         contract = json.loads((out / "decile_contract.json").read_text())
+        references = json.loads((out / "return_reference_audit.json").read_text())
+        assert set(references) == set(DECILE_LABELS)
+        assert all(s["enabled"] and s["tolerance_bps"] == 1.0 for b in references.values() for s in b.values())
         assert contract["bucket_count"] == 10
         assert "independently" in contract["capital"]
         assert len(daily.columns) == 31

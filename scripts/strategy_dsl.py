@@ -23,6 +23,7 @@ from execution_contract import (
     PROJECT_TEMPLATE_VERSION,
     PREFLIGHT_CONTRACT_VERSION,
     HISTORY_AUDIT_CONTRACT_VERSION,
+    HELD_RETURN_TOLERANCE_BPS,
 )
 
 SCHEMA_VERSION = "1.0"
@@ -357,6 +358,8 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
                 | {get_filter_definition(f.field).source for f in spec.universe.filters}
             ),
             "pit_required": True,
+            "held_return_reference": "mandatory ChangesRatio/100 at execution; no automatic replacement of NAV returns",
+            "held_return_tolerance_bps": HELD_RETURN_TOLERANCE_BPS,
             "session_coverage": "exact XKRX sessions in requested period for each requested market; fail on missing or unexpected dates",
         },
         "universe": asdict(spec.universe),

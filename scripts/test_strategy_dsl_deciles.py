@@ -172,6 +172,7 @@ def execution_test() -> None:
         broken_calendar_panel.loc[(broken_calendar_panel["Date"] == pd.Timestamp("2024-05-03")) & (broken_calendar_panel["Code"] == "000001"), "Close"] = np.nan
         # May 2 is the buy session in XKRX, so its source price must be valid.
         broken_calendar_panel.loc[broken_calendar_panel["Date"] == pd.Timestamp("2024-05-02"), "Close"] = 220.0
+        broken_calendar_panel["ChangesRatio"] = broken_calendar_panel.groupby("Code")["Close"].pct_change(fill_method=None) * 100.0
         with patch("strategy_dsl_deciles.load_project_engine", return_value=engine), patch.object(engine, "load_krx_equity_panel", return_value=broken_calendar_panel):
             expect_error(lambda: run_strategy(path, ROOT, out, postprocess=False), RuntimeError, "D01")
         assert not out.exists()

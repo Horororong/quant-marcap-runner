@@ -28,6 +28,8 @@ from strategy_dsl_runner import (
     load_project_engine,
     required_panel_columns,
     run_current_postprocess,
+    return_reference_matrix,
+    save_return_reference_audit,
     scored_signals_from_panel,
 )
 
@@ -96,6 +98,7 @@ def execute_decile_nav(
     targets: dict[str, pd.DataFrame],
     engine,
     corporate_actions: pd.DataFrame,
+    reference_returns: pd.DataFrame | None = None,
 ) -> dict[str, Any]:
     """Use the unchanged PROJECT execution and cost engine for every bucket."""
     assets = sorted(panel["Code"].astype(str).str.zfill(6).unique())
@@ -131,6 +134,7 @@ def execute_decile_nav(
                 initial_capital=cfg.initial_capital,
                 tradable_mask=tradable.reindex(columns=codes),
                 corporate_action_events=events,
+                reference_returns=reference_returns.reindex(columns=codes) if reference_returns is not None else None,
             )
         except (RuntimeError, ValueError, AssertionError, KeyError) as exc:
             raise RuntimeError(f"{label}: decile execution failed; no price gaps are filled: {exc}") from exc
@@ -158,7 +162,7 @@ def run_decile_strategy(
     dates = pd.DatetimeIndex(pd.to_datetime(panel["Date"]).unique()).sort_values()
     benchmark_meta = benchmark_coverage_audit(repo_root, spec.benchmark, dates)
     events = load_corporate_actions(repo_root, start=dates.min(), end=dates.max(), asset_codes=set(panel["Code"]))
-    result = execute_decile_nav(panel, spec, targets, engine, events)
+    result = execute_decile_nav(panel, spec, targets, engine, events, return_reference_matrix(panel, sorted(panel["Code"].astype(str).str.zfill(6).unique())))
     daily = result["daily_nav"]
     if spec.benchmark is not None:
         daily["NAV_Benchmark"] = load_benchmark_nav(repo_root, spec.benchmark, daily.index)
@@ -181,9 +185,13 @@ def run_decile_strategy(
     if not coverage.empty:
         coverage.to_csv(out / "factor_provider_coverage.csv", index=False)
     trade_rows, schedule_rows, action_rows = [], [], []
+    reference_summaries, reference_rows = {}, []
     for label, execution_result in result["decile_results"].items():
         bucket_dir = out / label
         bucket_dir.mkdir(exist_ok=True)
+        reference_summary, reference_checks = save_return_reference_audit(execution_result, bucket_dir)
+        reference_summaries[label] = reference_summary
+        reference_rows.append(reference_checks.assign(decile=label))
         targets[label].to_csv(bucket_dir / "target_weights.csv", index_label="signal_date")
         execution_result["daily_nav"].rename(columns=lambda c: f"NAV_{c}").to_csv(bucket_dir / "daily_nav.csv", index_label="Date")
         for scenario, execution in execution_result["execution_scenarios"].items():
@@ -194,6 +202,8 @@ def run_decile_strategy(
                 action_rows.append(actions.assign(decile=label, cost_scenario=scenario))
     pd.concat(trade_rows, ignore_index=True).to_csv(out / "execution_trades.csv", index=False)
     pd.concat(schedule_rows, ignore_index=True).to_csv(out / "execution_schedule.csv", index=False)
+    (out / "return_reference_audit.json").write_text(json.dumps(reference_summaries, ensure_ascii=False, indent=2), encoding="utf-8")
+    pd.concat(reference_rows, ignore_index=True).to_csv(out / "held_return_checks.csv", index=False)
     if action_rows:
         pd.concat(action_rows, ignore_index=True).to_csv(out / "corporate_actions_applied.csv", index=False)
     if postprocess:

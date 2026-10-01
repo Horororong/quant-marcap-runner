@@ -307,3 +307,28 @@ candidates from actual source history. Its gap and price-reference checks do not
 alter the universe or execution; candidate events require independent evidence.
 Commands, threshold definitions, real-data snapshots and remaining scope are in
 [KRX_HISTORY_AUDIT.md](KRX_HISTORY_AUDIT.md).
+
+
+## Held-return reference validation and stock splits
+
+Both public portfolio modes require source `ChangesRatio` and pass decimal
+exchange returns to PROJECT execution. Each held asset is checked before NAV
+and before execution-day rebalance within 1bp of the effective price/event return.
+Missing/non-finite references or unresolved differences fail, without removing
+stocks or replacing NAV returns by ChangesRatio. Verified same-code split
+returns are reference-checked after multiplying by the registered share ratio.
+Verified merger disposal values and registered missing-reference suspensions
+have explicit audit counts; successor ordinary returns are still checked.
+
+Successful runs save `return_reference_audit.json` and `held_return_checks.csv`.
+Deciles save combined root audits and the individual scenario audits in each
+bucket directory. Low-level direct calls can omit the reference for compatibility
+and report `enabled=false`; such calls are not validated public DSL execution.
+The 1bp execution threshold differs from the 25bp source review-candidate threshold.
+
+The short runnable real split regression is
+`config/strategies/kr_equity_split_research.json`. It selects the highest nominal
+KOSDAQ price on 2024-03-29, buys on 2024-04-01, and validates the registered EcoPro
+split without claiming investment merit or long-horizon performance. Use
+`--execution-only`. Evidence, formulas and limits are in
+[HELD_RETURN_VALIDATION.md](HELD_RETURN_VALIDATION.md).

@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "strategy_id": "kr_equity_split_research",
+  "title": "KRX verified split execution regression",
+  "asset_class": "kr_equity",
+  "universe": {"markets": ["KOSDAQ"], "require_tradable_on_signal": true, "filters": []},
+  "factors": [{"name": "nominal_price", "source": "krx", "field": "Close", "direction": "high"}],
+  "portfolio": {"number_of_positions": 1, "weighting": "equal"},
+  "rebalance": {"frequency": "months", "months": [3], "trading_day": "last"},
+  "execution": {"lag_sessions": 1, "price": "next_close"},
+  "cost_scenarios": {"zero": {}, "fixed": {"commission_bps": 1.5, "spread_bps": 3, "slippage_bps": 5}},
+  "period": {"start": "2024-03-01", "end": "2024-04-26", "book_start": "2024-03-01", "book_end": "2024-04-26", "as_of_date": "2024-04-26"},
+  "initial_capital": 10000000,
+  "metadata": {"purpose": "narrow real-source split execution validation; no long-horizon investment performance claim"}
+}
