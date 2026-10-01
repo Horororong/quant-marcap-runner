@@ -262,8 +262,12 @@ def factor_provider_coverage_audit(
     }
     rows: list[dict[str, Any]] = []
     for dt in signal_dates_from_panel(panel, spec):
-        for provider in providers.values():
-            rows.extend(provider.coverage_report(pd.Timestamp(dt)))
+        for source, provider in providers.items():
+            requested = sorted(
+                set(fields_for_source(spec.factors, source))
+                | set(filter_fields_for_source(spec.universe.filters, source))
+            )
+            rows.extend(provider.coverage_report(pd.Timestamp(dt), requested))
     return pd.DataFrame(rows)
 
 
