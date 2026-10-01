@@ -104,3 +104,11 @@ in NAV but outside settled Cash; insufficient settled cash rejects execution.
 Known unresolved events in `config/kr_corporate_action_gaps.json` stop affected
 holdings without historical-universe exclusion. Jeisys actual payment remains
 unverified, as do applicable net proceeds, and has no executable registry entry.
+
+## GPT Python sandbox distribution
+
+For offline GPT use, read [SANDBOX_START_HERE.md](SANDBOX_START_HERE.md). The kit
+pins a clean code commit, original source hashes and Python 3.11/3.12 Linux
+wheel locks. Use its isolated Python and `scripts/sandbox_runtime.py`, which
+wraps the same checked DSL runner; it does not compute separate performance.
+Starter coverage is explicitly limited and every new DSL still needs preflight.

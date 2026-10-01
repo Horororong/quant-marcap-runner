@@ -120,3 +120,30 @@ supported range; if resource constraints prevent execution, report the failure
 and required resources rather than trimming the requested universe/period.
 A remote job service is an optional later execution alternative, not the initial
 implementation requirement for the user's chosen workflow.
+
+## Offline kit v1 implementation
+
+The additive delivery contract is generated from `SANDBOX_DISTRIBUTION_CONTRACT`
+(machine contract 21; engine/factor/performance versions unchanged). See
+`SANDBOX_START_HERE.md` for installation, Korean interpretation rules, exact
+starter coverage and result export. Builder snapshots a clean pinned commit,
+checks each source Git blob and byte SHA256, packages original whole-year KRX
+panels/whole-period DART shards, and splits code/data/wheels into transport parts.
+CPython 3.11/3.12 Linux x86_64 hashed wheel locks are separate; pip installs offline
+in an isolated venv. Runtime verifies code/data and rejects injected sources,
+uses the existing checked runner, and records hashes/versions/packages/fingerprint.
+Result ZIP excludes raw data, wheels and unvalidated staging.
+
+The Strategy DSL workflow retains its full test job and adds two clean-venv
+real-data offline replay jobs. Replay compares all engine artifacts to the
+source checked runner and tests actual missing coverage, known unresolved event,
+formal-report readiness, package mismatch and changed/missing source failures.
+A Linux libc guard blocks DNS/IP connections in bootstrap/pip/engine subprocesses.
+Only small verification ledgers are uploaded to Actions with seven-day retention;
+large generated kits stay ignored locally. This avoids repeated Git or artifact
+quota growth. A kit must be built from the tested deployment revision; it does
+not silently refresh an existing GPT session.
+
+Next milestone remains explicit requested-window research reporting in CURRENT.
+Starter windows currently yield validated research NAV; no new metrics or
+unrestricted natural-language parser were introduced by the kit.
