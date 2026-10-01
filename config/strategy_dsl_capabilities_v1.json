@@ -140,7 +140,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "20",
+  "dsl_machine_contract_version": "21",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -979,6 +979,25 @@
       "interrupted"
     ],
     "success": "ok requires validated NAV; canonical_report mode additionally requires validated CURRENT four-period/nine-chart outputs",
+    "version": "1"
+  },
+  "sandbox_distribution": {
+    "bootstrap": "bootstrap_quant.py --destination <new-directory>",
+    "builder": "scripts/build_sandbox_kit.py",
+    "coverage": "manifest inventories original whole panels/shards; every request still requires preflight",
+    "default_profile": "2020 DART value and size deciles; 2024 verified split; execution-only research NAV",
+    "execution": "same run_checked_strategy; strict DSL before data; no metric implementation",
+    "exports": "verified published artifacts, raw/normalized DSL, status, kit and execution manifests",
+    "installation": "isolated venv; exact hashed wheels; no index, downloads or implicit dependencies",
+    "instructions": "SANDBOX_START_HERE.md",
+    "integrity": "pinned clean Git commit; SHA256 code/data/transport; reject unexpected sources",
+    "platform": "CPython Linux x86_64 glibc >= 2.28",
+    "python_minors": [
+      "3.11",
+      "3.12"
+    ],
+    "reproducibility_scope": "kit identity, source hashes, contract versions, actual Python/packages and DSL fingerprint",
+    "runner": "scripts/sandbox_runtime.py",
     "version": "1"
   },
   "schema_version": "1.0",

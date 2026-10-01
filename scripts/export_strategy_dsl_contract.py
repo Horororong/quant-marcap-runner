@@ -19,6 +19,7 @@ from execution_contract import (
     KRX_MARKET_NORMALIZATION_VERSION,
     HELD_RETURN_TOLERANCE_BPS,
     RUN_ORCHESTRATION_CONTRACT,
+    SANDBOX_DISTRIBUTION_CONTRACT,
 )
 from factor_registry import FACTOR_REGISTRY_VERSION, factor_catalog, factor_source_constraints, filter_field_catalog
 from krx_technical_factor_adapter import technical_factor_catalog
@@ -53,6 +54,7 @@ def build_capabilities() -> dict:
         "schema_version": SCHEMA_VERSION,
         "input_validation": INPUT_VALIDATION_CONTRACT,
         "run_orchestration": RUN_ORCHESTRATION_CONTRACT,
+        "sandbox_distribution": SANDBOX_DISTRIBUTION_CONTRACT,
         "project_template_version": PROJECT_TEMPLATE_VERSION,
         "performance_template_version": PERFORMANCE_TEMPLATE_VERSION,
         "execution_engine_version": EXECUTION_ENGINE_VERSION,

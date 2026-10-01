@@ -6,7 +6,7 @@ PROJECT_TEMPLATE_VERSION = "v2-16"
 PERFORMANCE_TEMPLATE_VERSION = "v2-17"
 EXECUTION_ENGINE_VERSION = "v2-16-exec-3"
 CORPORATE_ACTION_REGISTRY_VERSION = "5"
-DSL_MACHINE_CONTRACT_VERSION = "20"
+DSL_MACHINE_CONTRACT_VERSION = "21"
 RUN_ORCHESTRATION_CONTRACT_VERSION = "1"
 RUN_EXIT_CODES = {"ok": 0, "capability_gap": 2, "data_gap": 3, "failed": 4, "interrupted": 130}
 RUN_ORCHESTRATION_CONTRACT = {
@@ -51,4 +51,24 @@ DECILE_RESEARCH_CONTRACT = {
     "capital": "initial_capital applies independently to each of ten long-only portfolios",
     "execution": "same PROJECT engine, lag, tradability, costs and verified corporate actions",
     "metrics": "CURRENT postprocess only; no synthetic long-short spread NAV",
+}
+
+# Offline delivery is additive; factor, execution and performance versions stay unchanged.
+from sandbox_bootstrap import KIT_CONTRACT_VERSION, SUPPORTED_PYTHON
+
+SANDBOX_DISTRIBUTION_CONTRACT = {
+    "version": KIT_CONTRACT_VERSION,
+    "builder": "scripts/build_sandbox_kit.py",
+    "bootstrap": "bootstrap_quant.py --destination <new-directory>",
+    "runner": "scripts/sandbox_runtime.py",
+    "instructions": "SANDBOX_START_HERE.md",
+    "python_minors": list(SUPPORTED_PYTHON),
+    "platform": "CPython Linux x86_64 glibc >= 2.28",
+    "installation": "isolated venv; exact hashed wheels; no index, downloads or implicit dependencies",
+    "integrity": "pinned clean Git commit; SHA256 code/data/transport; reject unexpected sources",
+    "execution": "same run_checked_strategy; strict DSL before data; no metric implementation",
+    "coverage": "manifest inventories original whole panels/shards; every request still requires preflight",
+    "exports": "verified published artifacts, raw/normalized DSL, status, kit and execution manifests",
+    "reproducibility_scope": "kit identity, source hashes, contract versions, actual Python/packages and DSL fingerprint",
+    "default_profile": "2020 DART value and size deciles; 2024 verified split; execution-only research NAV",
 }
