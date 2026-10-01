@@ -188,7 +188,7 @@ class KitTests(unittest.TestCase):
         for period in ('Q3', 'FY'):
             (history / f'dart_full_2019_{period}_CFS_00000.csv.gz').write_bytes(b'fixture')
         spec = SimpleNamespace(period=SimpleNamespace(start='2020-04-01', end='2020-04-29'),
-                               factors=[SimpleNamespace(source='dart')],
+                               factors=[SimpleNamespace(source='dart')], benchmark=None,
                                universe=SimpleNamespace(filters=[]))
         audit = {'status': 'ok', 'signal_dates': ['2020-04-29']}
         with patch('strategy_dsl.load_strategy_spec', return_value=spec), \
@@ -199,6 +199,10 @@ class KitTests(unittest.TestCase):
             spec.factors = [SimpleNamespace(source='technical')]
             _, coverage = self.source_selector(self.root, ['config/strategies/fixture.json'])
             self.assertEqual(coverage['krx_years'], [2018, 2019, 2020])
+            spec.benchmark = SimpleNamespace(symbol='KOSDAQ')
+            files, _ = self.source_selector(self.root, ['config/strategies/fixture.json'])
+            self.assertIn('data/indices/KOSDAQ.csv', files)
+            self.assertNotIn('data/indices/KOSPI.csv', files)
 
     def test_lock_mismatch_and_duplicate_rejected(self):
         wheel = next(self.wheels.glob('*.whl'))

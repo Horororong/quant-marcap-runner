@@ -86,13 +86,15 @@ def selected_sources(root, strategies, extra_years=()):
     from strategy_dsl_preflight import preflight_strategy
     from dart_value_factor_adapter import required_periods, DART_HISTORY_DIR, DART_BACKFILL_STATE_FILE, DART_CODE_MAP_FILE
     from factor_registry import get_filter_definition
-    years, periods, coverage = set(extra_years), set(), []
+    years, periods, coverage, benchmarks = set(extra_years), set(), [], set()
     for name in strategies:
         spec = load_strategy_spec(root / name)
         audit = preflight_strategy(root / name, root)
         if audit['status'] != 'ok':
             raise ValueError(f'kit example is not executable: {name}: {audit}')
         coverage.append({'strategy_path': name, 'preflight': audit})
+        if spec.benchmark is not None:
+            benchmarks.add(spec.benchmark.symbol)
         years.update(range(pd.Timestamp(spec.period.start).year, pd.Timestamp(spec.period.end).year + 1))
         # Use the shared preflight's actual trading signals, including partial
         # calendar months; do not invent a second rebalance calendar.
@@ -106,9 +108,8 @@ def selected_sources(root, strategies, extra_years=()):
                 years.update(range(signal.year - 2, signal.year + 1))
     files = {f'data/krx_equities/yearly/marcap-{year}.parquet' for year in years}
     files.add('data/status/krx_equities_status.csv')
-    if any(json.loads((root / name).read_text()).get('benchmark') for name in strategies):
-        # The public contract currently has a single KOSPI price-index source.
-        files.add('data/indices/KOSPI.csv')
+    from strategy_dsl_runner import BENCHMARK_INDEX_DIR
+    files.update(f'{BENCHMARK_INDEX_DIR}/{symbol}.csv' for symbol in benchmarks)
     if periods:
         files.update((DART_BACKFILL_STATE_FILE, DART_CODE_MAP_FILE))
         for year, period in sorted(periods):
