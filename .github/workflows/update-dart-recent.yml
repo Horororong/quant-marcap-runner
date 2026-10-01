@@ -3,6 +3,7 @@ name: Refresh recent DART financials
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - 'update_dart_financials.py'
       - '.github/workflows/update-dart-recent.yml'
@@ -44,6 +45,8 @@ jobs:
           pip install pandas requests
 
       - name: Refresh rolling recent DART financials
+        env:
+          DART_REFRESH_REPORT: ${{ runner.temp }}/dart-recent-refresh.json
         run: python update_dart_financials.py
 
       - name: Commit recent DART datasets
@@ -70,4 +73,5 @@ jobs:
           path: |
             data/status/dart_status.csv
             data/status/dart_rotation_state.csv
+            ${{ runner.temp }}/dart-recent-refresh.json
           if-no-files-found: warn

@@ -146,9 +146,23 @@ Optional repository variable:
 
 Files:
 - `data/financials/corp_master.csv`
-- `data/financials/dart_full_financial_statements_recent.csv`
-- `data/financials/dart_errors.csv`
+- `data/financials/recent_batches/dart_recent_<start>_<end>.csv.gz`
+- `data/financials/dart_errors_<start>_<end>.csv`
 - `data/status/dart_status.csv`
+- `data/status/dart_rotation_state.csv`
+
+Recent refresh finishes each rotation with a short final batch and restarts at
+zero, avoiding new offset filenames on every cycle. New/changed CSVs have fixed
+field/row order and gzip mtime=0 without filename metadata. Equivalent legacy
+files keep their original bytes. Actual filing/amount changes still publish;
+existing data/history is never bulk rewritten or removed.
+
+The recent status/rotation CSV `updated_at_utc` records the last meaningful
+status change; timestamp-only refreshes do not rewrite it. `next_offset`, errors
+and other real state changes remain persisted for resumption. Both update
+workflows retain a fresh `checked_at_utc`/changed-path heartbeat in a runner-temp
+JSON Actions artifact via `DART_REFRESH_REPORT`. See
+`docs/GIT_STORAGE_AUDIT_20261001.md` for measurements, limits and migration options.
 
 ## Research rules
 

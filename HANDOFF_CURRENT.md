@@ -5,6 +5,18 @@ Read `AGENTS.md` and `BACKTEST_START_HERE.md` before changing or running a backt
 GitHub refs, PR metadata and checks are authoritative for merge/CI status; this
 file is an architectural checkpoint, not a substitute for checking live status.
 
+## Git growth review
+
+The recent-storage fix is ported independently from tested commit
+`155d08a3f4c6233168105a7baee05721050a40d4` onto main checkpoint
+`b763c5ca903d652a815bbdbff6df978843a45c86`. It fixes rotation filename drift,
+deterministic CSV/gzip output and timestamp-only churn while preserving real
+rotation state, correction updates and existing files/history. This port does
+not activate the separate strict-input, execution-orchestration or broad-source
+archive feature branches. Read `docs/GIT_STORAGE_AUDIT_20261001.md` for the audit.
+The generated DSL/runtime contracts stay at main's versions below. Require the
+complete final-head Strategy DSL CI before integration.
+
 ## Goal and architecture
 
 User goal: a Korean strategy request produces a Strategy DSL JSON and runs on
