@@ -5,17 +5,50 @@ Read `AGENTS.md` and `BACKTEST_START_HERE.md` before changing or running a backt
 GitHub refs, PR metadata and checks are authoritative for merge/CI status; this
 file is an architectural checkpoint, not a substitute for checking live status.
 
+## Checked-run integration checkpoint
+
+This review unit starts from live main
+`71b363ce722c37ace0cdc1466069bafcf19c1604` and integrates, in small commits:
+
+1. PR #23 head `6bbfe22d8fa92383ae57e3d810d9bcd2e9af95cf` by native merge,
+   preserving ancestry and shared planned corporate-action exposure checks.
+2. Strict input validation from `88553d8e1994ba15a32d4adc3e6e6b7815418d88`.
+3. Checked execution lifecycle from `b2d3631b8a2604c4f1ee04bb2283d3bac55caa13`.
+
+The public CLI snapshots input, automatically gates preflight/report readiness,
+then publishes validated NAV and CURRENT reports separately with atomic status
+updates. Unknown fields, type coercion and malformed dates/numbers fail before
+data access. Planned known-event exposure is a data gap before NAV; runtime
+held-return/event guards remain enabled. Execution-only NAV is explicitly not a
+formal report. Existing result directories are rejected without modification.
+
+Storage update/observation workflows and source data are preserved. Generated
+contracts are regenerated from the combined code, never by choosing one side
+of a generated-file merge. Tests add checked-entry-point failure boundaries to
+the existing strict, shared preflight, lifecycle and real KRX/DART suites.
+Require complete final-commit CI before main deployment; inspect current refs
+and Actions for actual deployment status.
+
+Next development milestone is the versioned GPT sandbox offline kit, including
+checksummed source coverage, pinned environment, Korean capability/DSL guidance,
+result export and clean offline replay. Full data/code/package manifest and
+arbitrary requested-window CURRENT reporting are still missing. No broad raw
+archive/backfill deployment or new factor semantics are included here.
+
 ## Git growth review
 
 The recent-storage fix is ported independently from tested commit
 `155d08a3f4c6233168105a7baee05721050a40d4` onto main checkpoint
 `b763c5ca903d652a815bbdbff6df978843a45c86`. It fixes rotation filename drift,
 deterministic CSV/gzip output and timestamp-only churn while preserving real
-rotation state, correction updates and existing files/history. This port does
-not activate the separate strict-input, execution-orchestration or broad-source
-archive feature branches. Read `docs/GIT_STORAGE_AUDIT_20261001.md` for the audit.
-The generated DSL/runtime contracts stay at main's versions below. Require the
-complete final-head Strategy DSL CI before integration.
+rotation state, correction updates and existing files/history. It was deployed
+at `9356fd3d05fc2c964f566283904fb7567cf36171`; full CI passed at
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36930068580
+and its first main observation succeeded at
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36931922233.
+That storage port did not deploy strict-input/orchestration, which are now in
+the separate integration above. Broad-source archives remain separate.
+Read `docs/GIT_STORAGE_AUDIT_20261001.md` for the audit.
 
 Four-week read-only growth observation uses
 `config/git_storage_baseline_20261001.json` and
@@ -93,13 +126,14 @@ https://github.com/Horororong/quant-marcap-runner/actions/runs/36849922237
 https://github.com/Horororong/quant-marcap-runner/actions/runs/36849922248
 The continuation base is `f77a4543d6e58e01c78bf234cc9347784b7b0e73`.
 
-The next review unit adds known-event planned-exposure preflight, machine
-contract 17 / preflight 3, with no NAV/metric change. Relevant known gaps invoke
+PR #23 adds known-event planned-exposure preflight, initially machine
+contract 17 / preflight 3, with no NAV/metric change. It is included in the
+checked-run integration above; the combined machine contract is 20. Relevant known gaps invoke
 shared PIT selection and exact lag, including all ten deciles; unaffected
 strategies retain their historical universe. Timing/lineage and real KRX
 positive/negative tests are in `scripts/test_corporate_action_preflight.py`.
 Require full current-head CI including that new step and existing DART/KRX
-E2Es before merge. Read live PR/checks for its eventual merge status.
+E2Es before deployment. Read live PR/checks for current status.
 See `docs/CORPORATE_ACTION_PREFLIGHT.md` for scope.
 
 Repository: https://github.com/Horororong/quant-marcap-runner

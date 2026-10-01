@@ -329,7 +329,10 @@ python scripts/strategy_dsl_runner.py config/strategies/super_value_dart_dsl.jso
 
 The execution-only path is intentional for research windows whose PIT factor coverage is valid but which do not yet span the canonical 2000+/2021+/longest reporting windows. It does not calculate alternative performance metrics; formal metrics still go through `quant_backtest_postprocess.py` only.
 
-Outputs go to `results/dsl/<strategy_id>/` and include:
+The public CLI reserves a new `results/dsl/runs/<run_id>/` directory (or a new
+explicit `--output-dir`). `run_status.json` distinguishes validated NAV from a
+complete canonical report. Existing run directories are never overwritten.
+Execution files are published under `artifacts/` and include:
 
 - `daily_nav.csv`
 - `target_weights.csv`
@@ -338,8 +341,12 @@ Outputs go to `results/dsl/<strategy_id>/` and include:
 - `corporate_actions_applied.csv` when a registered event affects a held position
 - `execution_plan.json`
 - `strategy_fingerprint.txt`
-- canonical `metrics_CURRENT.csv`
-- canonical `chat_manifest_CURRENT.json`
+
+Formal success also publishes `report/metrics_CURRENT.csv` and
+`report/chat_manifest_CURRENT.json`. Execution-only success does not create a
+formal report. The existing Python component API `run_strategy()` retains its
+legacy `results/dsl/<strategy_id>/` default for direct callers; the checked CLI
+is the standard agent entry point. See [STRATEGY_DSL_RUN.md](STRATEGY_DSL_RUN.md).
 
 ## Reproducibility contract
 

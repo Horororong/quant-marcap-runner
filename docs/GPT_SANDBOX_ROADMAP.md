@@ -34,22 +34,25 @@ Already in main:
   verified event registry, enabled held-return guard and CURRENT performance.
 - Generated capabilities/schema and real DART/KRX/execution regression CI.
 
-Developed/tested on separate branches, **not included in this storage port**:
+The checked-run integration subsequently brings these existing review units
+together on the current data checkpoint (machine 20, input validation 1,
+preflight 3, run orchestration 1):
 - Strict shared DSL input validation: commit `88553d8e1994ba15a32d4adc3e6e6b7815418d88`.
 - PR #23 known-event planned-exposure preflight: head
-  `6bbfe22d8fa92383ae57e3d810d9bcd2e9af95cf` (open at inspection).
+  `6bbfe22d8fa92383ae57e3d810d9bcd2e9af95cf` (native merge preserves PR ancestry).
 - Checked one-command run lifecycle: commit `b2d3631b8a2604c4f1ee04bb2283d3bac55caa13`.
-- Broad collection/checkpoint/source-archive work: commit
+
+Still separate: broad collection/checkpoint/source-archive work, commit
   `2e6f95c85422629b26ef48ef57ae81ae247a9fba`. Deploy this separately, after
   measuring raw ZIP sizes and planning persistence; default Git archiving could
-  sharply increase storage. Do not rebuild these features merely because main
-  still lacks them; integrate and retest each dependency.
+  sharply increase storage. No backfill source/archive deployment is part of
+  the checked-run integration.
 
 ## Gaps and dependency order (assessment)
 
 | Priority | Gap | Required outcome |
 |---|---|---|
-| 1 | Main lacks the tested strict-input/shared preflight/checked lifecycle | Integrate those small review units in dependency order; unknown conditions cannot vanish, one command produces truthful readiness/status |
+| Completed prerequisite | Strict-input/shared preflight/checked lifecycle integration | Unknown conditions are rejected; one command produces explicit readiness/status; full CI and real-data regression are required before deployment |
 | 2 | No portable sandbox distribution or complete reproducibility manifest | Versioned offline kit: code/capabilities/DSL, checksummed data, pinned packages/wheels, bootstrap, replay manifest and result export |
 | 3 | Formal CURRENT reporting assumes four standard periods | Add an explicit requested-window research report contract in CURRENT, retaining existing four-period behavior; do not demand invented 2001 history for a valid 2015-start study |
 | 4 | GPT interpretation needs a bounded, reviewable contract | Korean prompt-to-DSL guide/harness with registered aliases, visible interpretation, unsupported/ambiguous-case regressions and no approximation |
@@ -67,8 +70,8 @@ holdings without removing them from historical universe.
 
 ## Proposed next development milestone: offline sandbox kit v1
 
-Prerequisite: deploy the tested strict input, PR #23 preflight and checked-run
-units. Then package one **unchanged supported engine path** for a fresh sandbox.
+Prerequisite: the checked-run integration described above, with full CI on the
+deployment commit. Package one **unchanged supported engine path** for a fresh sandbox.
 Do not start by adding an unrestricted natural-language parser or many factors.
 
 Concrete deliverables:

@@ -115,6 +115,32 @@ def readiness_test():
 def failures_and_snapshot_test(tmp):
     raw = json.loads(EXAMPLE.read_text())
     source = tmp / "strategy.json"
+    # The integrated CLI must retain strict validation before either shared
+    # preflight selection or execution can access data. Test representative
+    # semantic-loss boundaries through the checked entry point itself.
+    bad_inputs = []
+    for key, value, expected_path in (
+        ("universe", {**raw["universe"], "require_tradable_on_signal": "false"}, "$.universe.require_tradable_on_signal"),
+        ("rebalance", {**raw["rebalance"], "months": [4.5]}, "$.rebalance.months[0]"),
+        ("execution", {**raw["execution"], "lag_sessions": 1.5}, "$.execution.lag_sessions"),
+        ("period", {**raw["period"], "start": "2024-02-30"}, "$.period.start"),
+        ("cost_scenarios", {"invalid": {"commission_bps": float("inf")}}, "$.cost_scenarios.invalid.commission_bps"),
+    ):
+        item = deepcopy(raw)
+        item[key] = value
+        bad_inputs.append((item, expected_path))
+    for index, (item, expected_path) in enumerate(bad_inputs):
+        write_json(source, item)
+        out = tmp / f"strict_boundary_{index}"
+        with patch("strategy_dsl_run.preflight_strategy") as preflight, patch("strategy_dsl_run.run_strategy") as execution:
+            result = run_checked_strategy(source, ROOT, out, postprocess=False)
+            preflight.assert_not_called(); execution.assert_not_called()
+        assert result["status"] == "capability_gap" and result["phase"] == "input", result
+        assert result["error"]["path"] == expected_path, result
+        assert not result["nav_ready"] and not result["report_ready"]
+        assert not (out / "artifacts").exists() and not (out / "report").exists()
+        assert (out / "strategy_input.json").read_bytes() == source.read_bytes()
+        read_status(result)
     invalid = deepcopy(raw)
     invalid["execution"]["stop_loss_pct"] = 10
     write_json(source, invalid)
