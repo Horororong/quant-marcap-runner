@@ -76,6 +76,22 @@ def main() -> None:
         assert "unsupported factor" in cap["error"]["message"]
         assert exit_code_for(cap) == EXIT_CAPABILITY_GAP
 
+        # 2-B) Registered DART factor with unsupported rebalance month is a capability gap,
+        # not a data gap.
+        bad_month = base_spec("2024-01-01", "2024-01-31")
+        bad_month["strategy_id"] = "preflight_dart_month_capability_gap"
+        bad_month["factors"] = [
+            {"name": "bp", "source": "dart", "field": "book_to_price", "direction": "high"}
+        ]
+        bad_month["rebalance"] = {"frequency": "months", "months": [1], "trading_day": "last"}
+        bad_month_path = td / "dart_month_capability_gap.json"
+        write_spec(bad_month_path, bad_month)
+        month_gap = preflight_strategy(bad_month_path, ROOT)
+        assert month_gap["status"] == "capability_gap", month_gap
+        assert month_gap["phase"] == "compile"
+        assert "supports rebalance months" in month_gap["error"]["message"]
+        assert exit_code_for(month_gap) == EXIT_CAPABILITY_GAP
+
         # 3) Valid DSL but unavailable historical KRX file => data gap.
         missing_data = base_spec("1990-04-01", "1990-04-30")
         missing_data["strategy_id"] = "preflight_data_gap"
