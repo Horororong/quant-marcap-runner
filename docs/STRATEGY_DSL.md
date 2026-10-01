@@ -47,6 +47,21 @@ The ranking engine does not branch on source names. Factor validation and data s
 
 This is the extension point for future quality, growth, momentum, macro, or other PIT-safe factor providers.
 
+## Natural-language factor aliases
+
+`scripts/strategy_dsl_aliases.py` provides a deterministic lexical bridge between common Korean/English factor names and canonical fields. The alias catalog is exported into `strategy_dsl_capabilities_v1.json`.
+
+Examples:
+
+- `슈퍼가치 PER 낮은` -> `dart.earnings_yield`, canonical direction `high` (standalone-quarter definition only)
+- `PBR 낮은` -> `dart.book_to_price`, canonical direction `high`
+- generic `PER/PCR/PSR` -> no automatic alias yet; trailing/annual definitions are a capability gap
+- `슈퍼가치 PCR/PSR` can map to the registered standalone-quarter cash-flow/sales yields
+- `소형주` -> `krx.Marcap`, fixed canonical direction `low`
+- `거래대금 high` -> `krx.Amount`, direction `high`
+
+Inverse aliases encode direction inversion explicitly only when their accounting-period definition matches the registered factor. Generic PER/PCR/PSR are intentionally not mapped to standalone-quarter factors. Unknown, ambiguous, or semantically mismatched aliases fail instead of being substituted silently.
+
 ## DART PIT value factors
 
 DSL v1 now supports these standardized DART fields:

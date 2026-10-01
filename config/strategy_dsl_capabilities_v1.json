@@ -21,7 +21,7 @@
     ],
     "unregistered_held_price_gap_policy": "fail"
   },
-  "dsl_machine_contract_version": "1",
+  "dsl_machine_contract_version": "2",
   "execution_constraints": {
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
@@ -144,6 +144,203 @@
   "markets": [
     "KOSPI",
     "KOSDAQ"
+  ],
+  "natural_language_direction_aliases": {
+    "high": [
+      "high",
+      "higher",
+      "높은",
+      "높게",
+      "큰",
+      "많은",
+      "고"
+    ],
+    "low": [
+      "low",
+      "lower",
+      "낮은",
+      "낮게",
+      "작은",
+      "적은",
+      "저"
+    ]
+  },
+  "natural_language_factor_aliases": [
+    {
+      "direction_relation": "inverse",
+      "field": "earnings_yield",
+      "fixed_direction": null,
+      "note": "Only for the standalone-quarter Super Value definition; not generic trailing/annual PER.",
+      "source": "dart",
+      "terms": [
+        "슈퍼가치 PER",
+        "분기 PER 프록시",
+        "quarterly P/E proxy"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "earnings_yield",
+      "fixed_direction": null,
+      "note": "",
+      "source": "dart",
+      "terms": [
+        "분기 EP",
+        "분기 E/P",
+        "quarterly earnings yield",
+        "분기 이익수익률"
+      ]
+    },
+    {
+      "direction_relation": "inverse",
+      "field": "book_to_price",
+      "fixed_direction": null,
+      "note": "PBR low is equivalent to book_to_price high.",
+      "source": "dart",
+      "terms": [
+        "PBR",
+        "P/B",
+        "주가순자산비율"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "book_to_price",
+      "fixed_direction": null,
+      "note": "",
+      "source": "dart",
+      "terms": [
+        "BP",
+        "B/P",
+        "book to price",
+        "장부가치수익률"
+      ]
+    },
+    {
+      "direction_relation": "inverse",
+      "field": "cashflow_yield",
+      "fixed_direction": null,
+      "note": "Only for the standalone-quarter Super Value definition; not generic trailing/annual PCR.",
+      "source": "dart",
+      "terms": [
+        "슈퍼가치 PCR",
+        "분기 PCR 프록시",
+        "quarterly P/CF proxy"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "cashflow_yield",
+      "fixed_direction": null,
+      "note": "",
+      "source": "dart",
+      "terms": [
+        "분기 CFP",
+        "분기 CF/P",
+        "quarterly cash flow yield",
+        "분기 현금흐름수익률"
+      ]
+    },
+    {
+      "direction_relation": "inverse",
+      "field": "sales_yield",
+      "fixed_direction": null,
+      "note": "Only for the standalone-quarter Super Value definition; not generic trailing/annual PSR.",
+      "source": "dart",
+      "terms": [
+        "슈퍼가치 PSR",
+        "분기 PSR 프록시",
+        "quarterly P/S proxy"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "sales_yield",
+      "fixed_direction": null,
+      "note": "",
+      "source": "dart",
+      "terms": [
+        "분기 SP",
+        "분기 S/P",
+        "quarterly sales yield",
+        "분기 매출수익률"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "Marcap",
+      "fixed_direction": null,
+      "note": "",
+      "source": "krx",
+      "terms": [
+        "시가총액",
+        "시총",
+        "market cap",
+        "marketcap",
+        "size"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "Marcap",
+      "fixed_direction": "low",
+      "note": "Small-cap preference means lower market capitalization.",
+      "source": "krx",
+      "terms": [
+        "소형주",
+        "소형주식",
+        "small cap",
+        "smallcap"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "Marcap",
+      "fixed_direction": "high",
+      "note": "Large-cap preference means higher market capitalization.",
+      "source": "krx",
+      "terms": [
+        "대형주",
+        "대형주식",
+        "large cap",
+        "largecap"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "Amount",
+      "fixed_direction": null,
+      "note": "",
+      "source": "krx",
+      "terms": [
+        "거래대금",
+        "trading amount",
+        "turnover amount"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "Volume",
+      "fixed_direction": null,
+      "note": "",
+      "source": "krx",
+      "terms": [
+        "거래량",
+        "volume"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "Close",
+      "fixed_direction": null,
+      "note": "",
+      "source": "krx",
+      "terms": [
+        "종가",
+        "close",
+        "close price"
+      ]
+    }
   ],
   "portfolio_weightings": [
     "equal"
