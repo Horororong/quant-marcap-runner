@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 import tempfile
 
 import numpy as np
@@ -14,8 +15,14 @@ SPEC = ROOT / "config/strategies/super_value_dart_dsl.json"
 
 def main() -> None:
     with tempfile.TemporaryDirectory() as td:
-        out = Path(td) / "super_value_e2e"
-        result = run_strategy(SPEC, ROOT, out, postprocess=False)
+        td = Path(td)
+        out = td / "super_value_e2e"
+        raw = json.loads(SPEC.read_text(encoding="utf-8"))
+        raw["strategy_id"] = "super_value_dart_dsl_benchmark_e2e"
+        raw["benchmark"] = {"source": "index", "symbol": "KOSPI"}
+        spec_path = td / "strategy.json"
+        spec_path.write_text(json.dumps(raw, ensure_ascii=False, indent=2), encoding="utf-8")
+        result = run_strategy(spec_path, ROOT, out, postprocess=False)
 
         daily = pd.read_csv(out / "daily_nav.csv", parse_dates=["Date"])
         weights = pd.read_csv(out / "target_weights.csv", parse_dates=["signal_date"])
@@ -25,7 +32,7 @@ def main() -> None:
 
         assert len(daily) > 100
         nav_cols = [c for c in daily.columns if c.startswith("NAV_")]
-        assert nav_cols == ["NAV_Gross", "NAV_Net_gross"], nav_cols
+        assert nav_cols == ["NAV_Gross", "NAV_Net_gross", "NAV_Benchmark"], nav_cols
         assert np.isfinite(daily[nav_cols].to_numpy(float)).all()
         assert (daily[nav_cols] > 0).all().all()
         assert np.allclose(
@@ -34,6 +41,10 @@ def main() -> None:
             rtol=0,
             atol=1e-12,
         )
+        assert abs(float(daily["NAV_Benchmark"].iloc[0]) - 1.0) < 1e-12
+        assert result["benchmark"]["symbol"] == "KOSPI"
+        assert result["benchmark"]["observations"] == len(daily)
+        assert result["benchmark"]["exact_date_alignment"] is True
 
         assert len(weights) == 2
         asset_cols = [c for c in weights.columns if c != "signal_date"]
