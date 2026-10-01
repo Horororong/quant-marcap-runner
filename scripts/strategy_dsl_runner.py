@@ -23,9 +23,12 @@ from execution_contract import EXECUTION_ENGINE_VERSION, PROJECT_TEMPLATE_VERSIO
 from corporate_action_registry import load_corporate_actions
 from factor_registry import (
     build_external_provider,
+    external_filter_sources,
     external_sources,
     fields_for_source,
+    filter_fields_for_source,
     panel_factor_fields,
+    panel_filter_fields,
 )
 
 ENGINE_FILE = "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py"
@@ -56,7 +59,7 @@ def load_project_engine(repo_root: Path):
 
 def required_panel_columns(spec: StrategySpec) -> list[str]:
     fields = set(BASE_PANEL_COLUMNS)
-    fields.update(x.field for x in spec.universe.filters)
+    fields.update(panel_filter_fields(spec.universe.filters))
     fields.update(panel_factor_fields(spec.factors))
     return sorted(fields)
 
@@ -194,7 +197,10 @@ def build_target_weights_from_panel(
     assets = sorted(p["Code"].unique())
     rows: list[pd.Series] = []
     selection_rows: list[pd.DataFrame] = []
-    sources = external_sources(spec.factors)
+    sources = sorted(
+        set(external_sources(spec.factors))
+        | set(external_filter_sources(spec.universe.filters))
+    )
     if sources and repo_root is None:
         raise ValueError("repo_root is required when external factor providers are used")
     providers = {
@@ -206,7 +212,10 @@ def build_target_weights_from_panel(
         cs = p[p["Date"] == dt].copy()
         external_frames: list[pd.DataFrame] = []
         for source, provider in providers.items():
-            requested = fields_for_source(spec.factors, source)
+            requested = sorted(
+                set(fields_for_source(spec.factors, source))
+                | set(filter_fields_for_source(spec.universe.filters, source))
+            )
             frame = provider.factor_frame(pd.Timestamp(dt), cs, requested)
             if frame["Code"].duplicated().any():
                 raise AssertionError(f"{source} provider returned duplicate Code rows")
@@ -241,7 +250,10 @@ def factor_provider_coverage_audit(
     spec: StrategySpec,
     repo_root: Path,
 ) -> pd.DataFrame:
-    sources = external_sources(spec.factors)
+    sources = sorted(
+        set(external_sources(spec.factors))
+        | set(external_filter_sources(spec.universe.filters))
+    )
     if not sources:
         return pd.DataFrame()
     providers = {
