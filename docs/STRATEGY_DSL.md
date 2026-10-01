@@ -53,6 +53,18 @@ For orchestration that must always receive JSON without a non-zero process exit,
 
 Preflight intentionally does **not** calculate factor values, holdings, NAV, or performance. For DART strategies it reads coverage metadata and required shard presence only. This keeps “the engine cannot express this strategy” separate from “the engine can express it, but the requested history is not ready yet.”
 
+## KRX realized-volatility factors
+
+The `technical` provider also exposes annualized realized volatility from the exchange-reported daily `ChangesRatio` series:
+
+- `volatility_3m`: sample standard deviation of the latest 63 daily decimal returns × √252.
+- `volatility_6m`: sample standard deviation of the latest 126 daily decimal returns × √252.
+- `volatility_12m`: sample standard deviation of the latest 252 daily decimal returns × √252.
+
+The signal-day observation is included because execution occurs on a later session. Observations after the signal date are never read. Every requested daily observation must be present; an incomplete code/window receives `NaN`.
+
+Aliases include `3개월 변동성`, `6개월 변동성`, `12개월 변동성`, plus fixed-direction phrases such as `3개월 저변동성`, which compiles directly to `volatility_3m / low`.
+
 ## KRX technical momentum factors
 
 The `technical` provider derives fixed price-momentum factors from the historical KRX daily `ChangesRatio` series. It does not divide raw, unadjusted close prices and it never reads observations after the signal date.
