@@ -87,3 +87,12 @@ python scripts/quant_backtest_postprocess.py \
 - 채팅 표시: `chat_manifest_CURRENT.json`
 
 같은 데이터와 같은 전략이면 모델의 사고 수준과 무관하게 같은 성과 수치가 나와야 한다.
+
+## Cash exchange evidence boundary
+
+Read `docs/CASH_SHARE_EXCHANGE.md` for cash-only exchanges. A planned payment or
+delisting date is never actual receipt. The generic contract keeps unpaid claims
+in NAV but outside settled Cash; insufficient settled cash rejects execution.
+Known unresolved events in `config/kr_corporate_action_gaps.json` stop affected
+holdings without historical-universe exclusion. Jeisys actual payment remains
+unverified and has no executable registry entry.

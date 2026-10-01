@@ -1,0 +1,37 @@
+{
+  "code": "287410",
+  "event_type": "cash_share_exchange",
+  "entitlement_date": "2024-10-23",
+  "cash_per_share_krw": 13000,
+  "actual_delisting_date": "2024-11-07",
+  "planned_payment_date": "2024-11-07",
+  "actual_payment_status": "unverified",
+  "production_registry_added": false,
+  "research_date": "2026-10-01",
+  "sources": [
+    {
+      "url": "https://kind.krx.co.kr/external/2024/08/19/000507/20240819001229/11347.htm",
+      "role": "decision; cash only; statutory ratio is not successor allocation"
+    },
+    {
+      "url": "https://kind.krx.co.kr/external/2024/10/16/000490/20241016001343/70797.htm",
+      "role": "actual exchange suspension starting 2024-10-21"
+    },
+    {
+      "url": "https://kind.krx.co.kr/external/2024/10/23/000129/20241023000396/12000.htm",
+      "role": "completed exchange and fixed cash; payment date explicitly planned"
+    },
+    {
+      "url": "https://dart.fss.or.kr/report/viewer.do?dcmNo=10549921&eleId=24&offset=527383&length=326211&dtd=dart4.xsd&rcpNo=20250407003477",
+      "raw_html_sha256": "6e3bc08cd92db653142f7e8981e192462bd5e56d7b08e48482a9a3d78e31019f",
+      "role": "annual consolidated notes confirm actual exchange and delisting, not actual payment"
+    }
+  ],
+  "excluded_inferences": [
+    "planned payment is not actual receipt",
+    "delisting date is not payment date",
+    "12910 KRW appraisal-right payment is not 13000 KRW exchange cash",
+    "statutory 1:1.3575606 exchange ratio is not delivered successor shares"
+  ],
+  "required_to_unblock": "primary evidence confirming actual cash exchange payment date and applicable fixed net cash treatment"
+}

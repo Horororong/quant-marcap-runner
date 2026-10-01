@@ -44,6 +44,7 @@ import os
 import numpy as np
 import pandas as pd
 
+from cash_share_exchange import CASH_EVENT, normalize_cash_exchanges
 from execution_contract import EXECUTION_ENGINE_VERSION, PROJECT_TEMPLATE_VERSION, HELD_RETURN_TOLERANCE_BPS
 
 from quant_backtest_template_CURRENT import (
@@ -924,8 +925,9 @@ def _normalize_corporate_action_events(
     stock_merger:
     - 거래가 중단된 전신 종목은 마지막 유효 종가부터 승계주 상장 전날까지 0%로 유지한다.
       이는 일반 결측치 보간이 아니라 명시적으로 등록된 합병 이벤트에만 적용한다.
-    - event_date에는 (승계주 종가 * 교환비율 + 주당 현금) / 전신 마지막 종가 - 1
+    - event_date에는 (승계주 종가 * 교환비율) / 전신 마지막 종가 - 1
       수익률을 적용한다.
+    - 주식/현금 혼합 합병은 지원하지 않으며 cash_per_share=0을 요구한다.
     - 수익 반영 직후 보유 비중을 predecessor -> successor로 무비용 이전한다.
     stock_split은 같은 코드의 주식 수 비율을 적용하며 비중 이전/매매가 없다.
     """
@@ -965,6 +967,8 @@ def _normalize_corporate_action_events(
         raise ValueError("stock_merger share_ratio는 0보다 커야 합니다.")
     if not np.isfinite(ca["cash_per_share"]).all() or (ca["cash_per_share"] < 0).any():
         raise ValueError("cash_per_share는 음수일 수 없습니다.")
+    if ca.loc[ca["event_type"].eq("stock_merger"), "cash_per_share"].ne(0).any():
+        raise ValueError("mixed stock/cash merger is unsupported; cash must not be converted to successor shares")
     split = ca["event_type"].eq("stock_split")
     if (ca.loc[split, "predecessor_code"] != ca.loc[split, "successor_code"]).any() or ca.loc[split, "cash_per_share"].ne(0).any():
         raise ValueError("stock_split은 같은 종목코드와 현금 0을 요구합니다.")
@@ -1044,6 +1048,8 @@ def simulate_target_weight_portfolio(
     initial_capital: float = 1.0,
     corporate_action_events: Optional[pd.DataFrame] = None,
     reference_returns: Optional[pd.DataFrame] = None,
+    source_volumes: Optional[pd.DataFrame] = None,
+    corporate_action_gaps: Optional[pd.DataFrame] = None,
 ) -> Dict[str, Any]:
     """목표비중 신호를 t+1 체결, drift, turnover, 비용, 일별 NAV로 변환한다.
 
@@ -1110,7 +1116,31 @@ def simulate_target_weight_portfolio(
         rets = rets.where(~fill, dr)
         reference_exempt |= fill
 
-    corporate_actions = _normalize_corporate_action_events(px, corporate_action_events, mask, execution_targets)
+    cash_events = pd.DataFrame()
+    stock_events = corporate_action_events
+    if corporate_action_events is not None and not corporate_action_events.empty:
+        cash_events = corporate_action_events.loc[corporate_action_events["event_type"].eq(CASH_EVENT)].copy()
+        stock_events = corporate_action_events.loc[~corporate_action_events["event_type"].eq(CASH_EVENT)].copy()
+        if not cash_events.empty:
+            if ex.allow_short:
+                raise ValueError("cash exchange supports long-only execution; short positions are unsupported")
+            cash_events["event_date"] = pd.to_datetime(cash_events["event_date"]).dt.normalize()
+            cash_events["predecessor_code"] = cash_events["predecessor_code"].astype(str).str.zfill(6)
+            if cash_events.duplicated(["event_date", "predecessor_code"]).any() or corporate_action_events.duplicated(["event_date", "predecessor_code"]).any():
+                raise ValueError("duplicate corporate action for event_date + predecessor_code")
+    corporate_actions = _normalize_corporate_action_events(px, stock_events, mask, execution_targets)
+    volumes = None
+    if source_volumes is not None:
+        volumes = source_volumes.copy()
+        volumes.index = pd.to_datetime(volumes.index).normalize()
+        if volumes.index.duplicated().any() or volumes.columns.duplicated().any():
+            raise ValueError("source_volumes has duplicate dates or codes")
+        volumes = volumes.reindex(index=px.index, columns=assets).apply(pd.to_numeric, errors="coerce")
+    if not cash_events.empty:
+        cash_actions = normalize_cash_exchanges(px, cash_events, mask, volumes, reference, execution_targets, corporate_actions)
+        if not cash_actions.empty:
+            corporate_actions = cash_actions if corporate_actions.empty else pd.concat([corporate_actions, cash_actions], ignore_index=True)
+            corporate_actions = corporate_actions.sort_values(["event_date", "predecessor_code"])
     actions_by_date: Dict[pd.Timestamp, list[dict[str, Any]]] = {}
     if not corporate_actions.empty:
         for _, action in corporate_actions.iterrows():
@@ -1125,12 +1155,19 @@ def simulate_target_weight_portfolio(
                     # Missing references are allowed only in a registered suspension.
                     reference_exempt.loc[suspended, pred] = reference.loc[suspended, pred].isna() & rets.loc[suspended, pred].eq(0.0)
             rets.loc[event_date, pred] = float(action["event_return"])
-            if action["event_type"] == "stock_merger":
+            if action["event_type"] in ("stock_merger", CASH_EVENT):
                 # A disposal/exchange value is not the predecessor's price return.
                 reference_exempt.loc[event_date, pred] = True
             actions_by_date.setdefault(event_date, []).append(action.to_dict())
 
+    gaps = corporate_action_gaps.copy() if corporate_action_gaps is not None else pd.DataFrame()
+    if not gaps.empty:
+        gaps["event_date"] = pd.to_datetime(gaps["event_date"], errors="raise").dt.normalize()
     current_w = pd.Series(0.0, index=assets, dtype=float)
+    net_w = current_w.copy()
+    claims: list[dict[str, Any]] = []
+    payment_rows = []
+    net_weight_rows = []
     gross_nav = float(initial_capital)
     net_nav = float(initial_capital)
     nav_rows = []
@@ -1140,7 +1177,11 @@ def simulate_target_weight_portfolio(
 
     for i, dt in enumerate(px.index):
         r = rets.loc[dt].astype(float)
-        held = current_w.abs() > ex.weight_tolerance
+        held = (current_w.abs() > ex.weight_tolerance) | (net_w.abs() > ex.weight_tolerance)
+        for _, gap in gaps.iterrows():
+            code = gap["predecessor_code"]
+            if dt >= gap["event_date"] and code in held.index and held[code]:
+                raise RuntimeError(f"unresolved corporate action: date={dt.date()}, asset={code}, reason={gap['reason']}; no inferred cash receipt")
         checked_count = override_count = 0
         max_difference_bps = 0.0
         if reference is not None:
@@ -1174,7 +1215,11 @@ def simulate_target_weight_portfolio(
         if portfolio_return <= -1.0:
             raise RuntimeError(f"포트폴리오 NAV가 0 이하가 됩니다: {dt.date()}")
         gross_nav *= 1.0 + portfolio_return
-        net_nav *= 1.0 + portfolio_return
+        net_return = float((net_w * r).sum())
+        if net_return <= -1.0:
+            raise RuntimeError("Net NAV becomes non-positive")
+        net_nav *= 1.0 + net_return
+        net_w = net_w * (1.0 + r) / (1.0 + net_return)
 
         denom = 1.0 + portfolio_return
         current_w = current_w * (1.0 + r) / denom
@@ -1184,7 +1229,21 @@ def simulate_target_weight_portfolio(
                 pred = str(action["predecessor_code"])
                 succ = str(action["successor_code"])
                 transferred_weight = float(current_w[pred])
-                if pred != succ:
+                if action["event_type"] == CASH_EVENT:
+                    if transferred_weight > 0 or net_w[pred] > 0:
+                        claims.append({
+                            "event_date": dt, "predecessor_code": pred,
+                            "payment_date": pd.Timestamp(action["payment_date"]),
+                            "gross_amount": transferred_weight * gross_nav,
+                            "net_amount": float(net_w[pred]) * net_nav,
+                            "cash_per_share": float(action["cash_per_share"]),
+                            "source": action["source"], "payment_source": action["payment_source"],
+                            "settled": False,
+                        })
+                    current_w[pred] = net_w[pred] = 0.0
+                elif pred != succ:
+                    net_w[succ] = float(net_w[succ]) + float(net_w[pred])
+                    net_w[pred] = 0.0
                     current_w[pred] = 0.0
                     current_w[succ] = float(current_w[succ]) + transferred_weight
                 corporate_action_rows.append({
@@ -1202,12 +1261,31 @@ def simulate_target_weight_portfolio(
                     "source": action.get("source", ""),
                 })
 
+        # Receipt is available only at the first observed session close on/after
+        # the evidenced actual payment date. Receipt changes liquidity, not NAV.
+        for claim in claims:
+            if not claim["settled"] and dt >= claim["payment_date"]:
+                claim["settled"] = True
+                payment_rows.append({**claim, "processing_date": dt})
+        pending_gross = sum(c["gross_amount"] for c in claims if not c["settled"])
+        pending_net = sum(c["net_amount"] for c in claims if not c["settled"])
         buy_to = sell_to = cost_fraction = 0.0
+        net_buy_to = net_sell_to = 0.0
         signal_date = None
         if dt in execution_targets:
             target = execution_targets[dt].copy()
+            for _, gap in gaps.iterrows():
+                code = gap["predecessor_code"]
+                if dt >= gap["event_date"] and code in target.index and abs(target[code]) > ex.weight_tolerance:
+                    raise RuntimeError(f"unresolved corporate action: asset={code}, reason={gap['reason']}")
+            for _, event in cash_events.iterrows():
+                code = event["predecessor_code"]
+                if dt >= event["event_date"] and code in target.index and abs(target[code]) > ex.weight_tolerance:
+                    raise RuntimeError("cash-exchanged security cannot be repurchased after entitlement")
+            if pending_gross > 0 and float(target.sum()) + pending_gross / gross_nav > 1.0 + ex.weight_tolerance:
+                raise RuntimeError("insufficient settled cash: target weights include unpaid cash receivable")
             if mask is not None:
-                changing = (target - current_w).abs() > ex.weight_tolerance
+                changing = ((target - current_w).abs() > ex.weight_tolerance) | ((target - net_w).abs() > ex.weight_tolerance)
                 blocked = changing & (~mask.loc[dt])
                 if blocked.any():
                     raise RuntimeError(
@@ -1217,13 +1295,19 @@ def simulate_target_weight_portfolio(
             diff = target - current_w
             buy_to = float(diff.clip(lower=0.0).sum())
             sell_to = float((-diff.clip(upper=0.0)).sum())
-            cost_fraction = float(calculate_trading_cost_fraction(
-                pd.Series([buy_to], index=[dt]),
-                pd.Series([sell_to], index=[dt]),
-                costs,
+            net_diff = target - net_w
+            net_buy_to = float(net_diff.clip(lower=0).sum())
+            net_sell_to = float((-net_diff.clip(upper=0)).sum())
+            net_cost_fraction = float(calculate_trading_cost_fraction(
+                pd.Series([net_buy_to], index=[dt]),
+                pd.Series([net_sell_to], index=[dt]), costs,
             ).iloc[0])
-            net_nav *= 1.0 - cost_fraction
+            net_nav *= 1.0 - net_cost_fraction
+            if pending_net > 0 and float(target.sum()) + pending_net / net_nav > 1.0 + ex.weight_tolerance:
+                raise RuntimeError("insufficient settled cash after costs: net receivable cannot fund trades")
+            cost_fraction = net_cost_fraction
             current_w = target
+            net_w = target.copy()
             signal_date = next(sig for sig, exdt in schedule.items() if exdt == dt)
 
         if gross_nav <= 0 or net_nav <= 0:
@@ -1244,12 +1328,20 @@ def simulate_target_weight_portfolio(
             "signal_date": signal_date,
             "buy_turnover": buy_to,
             "sell_turnover": sell_to,
+            "net_buy_turnover": net_buy_to,
+            "net_sell_turnover": net_sell_to,
             "traded_fraction": buy_to + sell_to,
             "one_way_turnover": 0.5 * (buy_to + sell_to),
             "cost_fraction": cost_fraction,
         })
         wr = {"Date": dt, **{a: float(current_w[a]) for a in assets}}
-        wr["Cash"] = float(1.0 - current_w.sum())
+        wr["Cash"] = float(1.0 - current_w.sum() - pending_gross / gross_nav)
+        if not cash_events.empty:
+            wr["CashReceivable"] = pending_gross / gross_nav
+            nwr = {"Date": dt, **{a: float(net_w[a]) for a in assets}}
+            nwr["Cash"] = float(1.0 - net_w.sum() - pending_net / net_nav)
+            nwr["CashReceivable"] = pending_net / net_nav
+            net_weight_rows.append(nwr)
         weight_rows.append(wr)
 
     daily_nav = pd.DataFrame(nav_rows).set_index("Date")
@@ -1277,6 +1369,9 @@ def simulate_target_weight_portfolio(
         "trades": trades,
         "execution_schedule": schedule_df,
         "corporate_actions": pd.DataFrame(corporate_action_rows),
+        "cash_entitlements": pd.DataFrame([{k: v for k, v in c.items() if k != "settled"} for c in claims]),
+        "cash_payments": pd.DataFrame(payment_rows),
+        "net_weights": pd.DataFrame(net_weight_rows).set_index("Date") if net_weight_rows else weights,
         "return_reference_check": {
             "enabled": reference is not None,
             "tolerance_bps": HELD_RETURN_TOLERANCE_BPS,

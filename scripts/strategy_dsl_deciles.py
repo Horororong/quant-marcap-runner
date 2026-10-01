@@ -14,7 +14,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from corporate_action_registry import load_corporate_actions
+from corporate_action_registry import load_corporate_actions, load_corporate_action_gaps
 from execution_contract import DECILE_RESEARCH_CONTRACT
 from krx_history_audit import require_session_coverage
 from strategy_dsl import StrategySpec, compile_execution_plan
@@ -23,6 +23,7 @@ from strategy_dsl_runner import (
     close_and_tradable_matrices,
     engine_inputs,
     execute_daily_nav,
+    save_cash_exchange_audits,
     factor_provider_coverage_audit,
     load_benchmark_nav,
     load_project_engine,
@@ -99,6 +100,7 @@ def execute_decile_nav(
     engine,
     corporate_actions: pd.DataFrame,
     reference_returns: pd.DataFrame | None = None,
+    corporate_action_gaps: pd.DataFrame | None = None,
 ) -> dict[str, Any]:
     """Use the unchanged PROJECT execution and cost engine for every bucket."""
     assets = sorted(panel["Code"].astype(str).str.zfill(6).unique())
@@ -112,7 +114,7 @@ def execute_decile_nav(
         # Retain verified successors even when never selected by this bucket.
         while not corporate_actions.empty:
             successors = set(corporate_actions.loc[
-                corporate_actions["predecessor_code"].isin(used), "successor_code"
+                corporate_actions["predecessor_code"].isin(used) & corporate_actions["event_type"].ne("cash_share_exchange"), "successor_code"
             ])
             if successors.issubset(used):
                 break
@@ -134,6 +136,8 @@ def execute_decile_nav(
                 initial_capital=cfg.initial_capital,
                 tradable_mask=tradable.reindex(columns=codes),
                 corporate_action_events=events,
+                corporate_action_gaps=corporate_action_gaps,
+                source_volumes=panel.pivot(index="Date", columns="Code", values="Volume").reindex(index=close.index, columns=codes),
                 reference_returns=reference_returns.reindex(columns=codes) if reference_returns is not None else None,
             )
         except (RuntimeError, ValueError, AssertionError, KeyError) as exc:
@@ -162,7 +166,7 @@ def run_decile_strategy(
     dates = pd.DatetimeIndex(pd.to_datetime(panel["Date"]).unique()).sort_values()
     benchmark_meta = benchmark_coverage_audit(repo_root, spec.benchmark, dates)
     events = load_corporate_actions(repo_root, start=dates.min(), end=dates.max(), asset_codes=set(panel["Code"]))
-    result = execute_decile_nav(panel, spec, targets, engine, events, return_reference_matrix(panel, sorted(panel["Code"].astype(str).str.zfill(6).unique())))
+    result = execute_decile_nav(panel, spec, targets, engine, events, return_reference_matrix(panel, sorted(panel["Code"].astype(str).str.zfill(6).unique())), load_corporate_action_gaps(repo_root))
     daily = result["daily_nav"]
     if spec.benchmark is not None:
         daily["NAV_Benchmark"] = load_benchmark_nav(repo_root, spec.benchmark, daily.index)
@@ -189,6 +193,7 @@ def run_decile_strategy(
     for label, execution_result in result["decile_results"].items():
         bucket_dir = out / label
         bucket_dir.mkdir(exist_ok=True)
+        save_cash_exchange_audits(execution_result, bucket_dir)
         reference_summary, reference_checks = save_return_reference_audit(execution_result, bucket_dir)
         reference_summaries[label] = reference_summary
         reference_rows.append(reference_checks.assign(decile=label))
