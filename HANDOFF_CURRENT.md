@@ -25,6 +25,12 @@ after October 29. See `docs/GIT_STORAGE_OBSERVATION.md` for metric limitations
 and `docs/GPT_SANDBOX_ROADMAP.md` for the user's Codex-development/GPT-sandbox
 execution goal, missing deployment units and the proposed offline-kit milestone.
 
+The integration also preserves automatic backfill checkpoint
+`8784c9aaab277a82c1b74ffda0bd3163c8892c79` (October 1 21:16 UTC): five new
+2024 financial shards, historical mapping and collection state updates. The
+storage changes do not revise those observations. Validate the final combined
+commit against this current dataset, not only the earlier b763c5c snapshot.
+
 ## Goal and architecture
 
 User goal: a Korean strategy request produces a Strategy DSL JSON and runs on
