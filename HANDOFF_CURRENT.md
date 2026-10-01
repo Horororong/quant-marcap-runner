@@ -305,3 +305,11 @@ integration. Generated kit archives are local ignored outputs, not Git data.
 Next milestone: explicit requested-window research reporting in CURRENT. The
 starter kit currently publishes validated short-window NAV, not new metrics or
 an unrestricted natural-language compiler.
+# Standing project instructions and legacy ownership (2026-10-01)
+
+Read `PROJECT_CHARTER.md` immediately after `AGENTS.md`. The owner requires staged
+GitHub commits and durable progress at each completed stage. Current priority is
+safe resume and existing scheduled automation for the 2000–2014 legacy DART
+backfill, followed by original-source parser investigation and independent audit.
+The current stage, measured progress, workflow risks and exact next steps are in
+`docs/LEGACY_BACKFILL_HANDOVER.md`. Earlier checkpoints below are historical.

@@ -2,6 +2,10 @@
 
 This repository is a reproducible quantitative-research and backtesting system.
 
+Read `PROJECT_CHARTER.md` before other project documentation. It preserves the
+owner's standing project instructions, including the legacy DART backfill and
+independent source-audit requirements. Follow it in every new task/session.
+
 The long-term target architecture is:
 
 Korean natural-language strategy request  
@@ -22,12 +26,13 @@ The goal is to support new strategies primarily through reusable DSL capabilitie
 Before modifying or running the backtest system, read:
 
 1. `AGENTS.md`
-2. `BACKTEST_START_HERE.md`
-3. `HANDOFF_CURRENT.md`
-4. `PIPELINE.md`
-5. `docs/STRATEGY_DSL.md`
-6. documentation relevant to the task
-7. the actual implementation and tests
+2. `PROJECT_CHARTER.md` (standing owner instructions)
+3. `BACKTEST_START_HERE.md`
+4. `HANDOFF_CURRENT.md`
+5. `PIPELINE.md`
+6. `docs/STRATEGY_DSL.md`
+7. documentation relevant to the task
+8. the actual implementation and tests
 
 For performance/reporting work, also read:
 
