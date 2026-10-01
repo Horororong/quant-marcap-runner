@@ -30,7 +30,7 @@
     ],
     "unregistered_held_price_gap_policy": "fail"
   },
-  "dsl_machine_contract_version": "3",
+  "dsl_machine_contract_version": "4",
   "execution_constraints": {
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
@@ -43,7 +43,7 @@
     "high",
     "low"
   ],
-  "factor_registry_version": "2",
+  "factor_registry_version": "3",
   "factor_source_constraints": {
     "dart": {
       "reason": "current DART value adapter reconstructs standalone Q4 for April and Q2 for October signals only",
@@ -142,6 +142,92 @@
       "field": "Volume",
       "source": "krx",
       "storage": "panel"
+    }
+  ],
+  "filter_fields": [
+    {
+      "description": "signal-date traded amount",
+      "field": "Amount",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date decimal price change",
+      "field": "Change",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date percentage price change",
+      "field": "ChangesRatio",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date close price",
+      "field": "Close",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date high price",
+      "field": "High",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date low price",
+      "field": "Low",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date market capitalization",
+      "field": "Marcap",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date open price",
+      "field": "Open",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date listed share count",
+      "field": "Stocks",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date traded volume",
+      "field": "Volume",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "latest reported equity / signal-date market cap",
+      "field": "book_to_price",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter operating cash flow / signal-date market cap",
+      "field": "cashflow_yield",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter net income / signal-date market cap",
+      "field": "earnings_yield",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter revenue / signal-date market cap",
+      "field": "sales_yield",
+      "source": "dart",
+      "storage": "external"
     }
   ],
   "filter_ops": [
