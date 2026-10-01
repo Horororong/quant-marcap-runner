@@ -94,12 +94,12 @@ def selected_sources(root, strategies, extra_years=()):
             raise ValueError(f'kit example is not executable: {name}: {audit}')
         coverage.append({'strategy_path': name, 'preflight': audit})
         years.update(range(pd.Timestamp(spec.period.start).year, pd.Timestamp(spec.period.end).year + 1))
-        signals = pd.date_range(spec.period.start, spec.period.end, freq='ME')
+        # Use the shared preflight's actual trading signals, including partial
+        # calendar months; do not invent a second rebalance calendar.
+        signals = [pd.Timestamp(value) for value in audit['signal_dates']]
         sources = {factor.source for factor in spec.factors}
         sources.update(get_filter_definition(f.field).source for f in spec.universe.filters)
         for signal in signals:
-            if spec.rebalance.months and signal.month not in spec.rebalance.months:
-                continue
             if 'dart' in sources:
                 periods.update(required_periods(signal))
             if 'technical' in sources:

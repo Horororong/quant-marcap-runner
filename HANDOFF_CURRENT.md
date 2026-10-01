@@ -283,3 +283,25 @@ outstanding.
 
 Annual/rolling performance and evaluated OOS reports remain follow-up work;
 this milestone does not claim full-history corporate-action correctness.
+
+## Offline sandbox distribution follow-up
+
+The additive sandbox delivery contract is machine **21**, kit **1**; underlying
+factor registry **6**, preflight **3**, execution **v2-16-exec-3** and CURRENT
+**v2-17** remain unchanged. Read `SANDBOX_START_HERE.md` and
+`docs/GPT_SANDBOX_ROADMAP.md` for current entry points and exact starter coverage.
+Builder uses the shared preflight's actual signal dates when selecting DART
+periods and technical warm-up years, including partial calendar-month windows.
+
+Local evidence: 14 distribution boundary tests; clean offline CPython 3.11 and
+3.12 real-source replays, each with all 73 artifacts byte-identical to the source
+checked runner (DART 11, decile 53, verified split 9). Missing coverage, unresolved
+Jeisys event in both selection modes, formal-report readiness, wrong packages and
+missing kit sources are checked. No data/history deletion or collection-workflow
+change is part of this delivery. Required complete CI has the existing full test
+job plus both sandbox replay matrix jobs; verify live final-commit results before
+integration. Generated kit archives are local ignored outputs, not Git data.
+
+Next milestone: explicit requested-window research reporting in CURRENT. The
+starter kit currently publishes validated short-window NAV, not new metrics or
+an unrestricted natural-language compiler.

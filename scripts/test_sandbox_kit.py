@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import subprocess
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 import zipfile
@@ -46,6 +47,7 @@ class KitTests(unittest.TestCase):
             path.write_text(data)
         for args in [('init', '-q'), ('add', '.'), ('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '-qm', 'fixture')]:
             subprocess.run(['git', '-C', str(self.root), *args], check=True, capture_output=True)
+        self.source_selector = builder.selected_sources
         self.selection = patch.object(builder, 'selected_sources', return_value=({'data/source.csv'}, {'examples': []}))
         self.selection.start()
         self.addCleanup(self.selection.stop)
@@ -179,6 +181,24 @@ class KitTests(unittest.TestCase):
         (out / 'strategy_input.json').write_text('changed')
         with self.assertRaises(bootstrap.KitIntegrityError):
             runtime.export_run(out, self.base / 'changed.zip')
+
+    def test_actual_trading_signal_selects_partial_month_dart_and_warmup(self):
+        history = self.root / 'data/financials/full_history'
+        history.mkdir(parents=True)
+        for period in ('Q3', 'FY'):
+            (history / f'dart_full_2019_{period}_CFS_00000.csv.gz').write_bytes(b'fixture')
+        spec = SimpleNamespace(period=SimpleNamespace(start='2020-04-01', end='2020-04-29'),
+                               factors=[SimpleNamespace(source='dart')],
+                               universe=SimpleNamespace(filters=[]))
+        audit = {'status': 'ok', 'signal_dates': ['2020-04-29']}
+        with patch('strategy_dsl.load_strategy_spec', return_value=spec), \
+             patch('strategy_dsl_preflight.preflight_strategy', return_value=audit):
+            files, coverage = self.source_selector(self.root, ['config/strategies/fixture.json'])
+            self.assertEqual(coverage['dart_periods'], [[2019, 'FY'], [2019, 'Q3']])
+            self.assertIn('data/financials/full_history/dart_full_2019_FY_CFS_00000.csv.gz', files)
+            spec.factors = [SimpleNamespace(source='technical')]
+            _, coverage = self.source_selector(self.root, ['config/strategies/fixture.json'])
+            self.assertEqual(coverage['krx_years'], [2018, 2019, 2020])
 
     def test_lock_mismatch_and_duplicate_rejected(self):
         wheel = next(self.wheels.glob('*.whl'))
