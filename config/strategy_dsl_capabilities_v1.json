@@ -30,7 +30,7 @@
     ],
     "unregistered_held_price_gap_policy": "fail"
   },
-  "dsl_machine_contract_version": "4",
+  "dsl_machine_contract_version": "5",
   "execution_constraints": {
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
@@ -43,7 +43,7 @@
     "high",
     "low"
   ],
-  "factor_registry_version": "3",
+  "factor_registry_version": "4",
   "factor_source_constraints": {
     "dart": {
       "reason": "current DART value adapter reconstructs standalone Q4 for April and Q2 for October signals only",
@@ -142,6 +142,30 @@
       "field": "Volume",
       "source": "krx",
       "storage": "panel"
+    },
+    {
+      "description": "compound KRX daily ChangesRatio over roughly 12 months through the signal date",
+      "field": "momentum_12_0",
+      "source": "technical",
+      "storage": "external"
+    },
+    {
+      "description": "compound KRX daily ChangesRatio over roughly 12 months, skipping the latest 1 month",
+      "field": "momentum_12_1",
+      "source": "technical",
+      "storage": "external"
+    },
+    {
+      "description": "compound KRX daily ChangesRatio over roughly 3 months, skipping the latest 1 month",
+      "field": "momentum_3_1",
+      "source": "technical",
+      "storage": "external"
+    },
+    {
+      "description": "compound KRX daily ChangesRatio over roughly 6 months, skipping the latest 1 month",
+      "field": "momentum_6_1",
+      "source": "technical",
+      "storage": "external"
     }
   ],
   "filter_fields": [
@@ -150,6 +174,18 @@
       "field": "Amount",
       "source": "krx",
       "storage": "panel"
+    },
+    {
+      "description": "latest reported equity / signal-date market cap",
+      "field": "book_to_price",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter operating cash flow / signal-date market cap",
+      "field": "cashflow_yield",
+      "source": "dart",
+      "storage": "external"
     },
     {
       "description": "signal-date decimal price change",
@@ -170,6 +206,12 @@
       "storage": "panel"
     },
     {
+      "description": "standalone-quarter net income / signal-date market cap",
+      "field": "earnings_yield",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
       "description": "signal-date high price",
       "field": "High",
       "source": "krx",
@@ -188,10 +230,40 @@
       "storage": "panel"
     },
     {
+      "description": "compound KRX daily ChangesRatio over roughly 12 months through the signal date",
+      "field": "momentum_12_0",
+      "source": "technical",
+      "storage": "external"
+    },
+    {
+      "description": "compound KRX daily ChangesRatio over roughly 12 months, skipping the latest 1 month",
+      "field": "momentum_12_1",
+      "source": "technical",
+      "storage": "external"
+    },
+    {
+      "description": "compound KRX daily ChangesRatio over roughly 3 months, skipping the latest 1 month",
+      "field": "momentum_3_1",
+      "source": "technical",
+      "storage": "external"
+    },
+    {
+      "description": "compound KRX daily ChangesRatio over roughly 6 months, skipping the latest 1 month",
+      "field": "momentum_6_1",
+      "source": "technical",
+      "storage": "external"
+    },
+    {
       "description": "signal-date open price",
       "field": "Open",
       "source": "krx",
       "storage": "panel"
+    },
+    {
+      "description": "standalone-quarter revenue / signal-date market cap",
+      "field": "sales_yield",
+      "source": "dart",
+      "storage": "external"
     },
     {
       "description": "signal-date listed share count",
@@ -204,30 +276,6 @@
       "field": "Volume",
       "source": "krx",
       "storage": "panel"
-    },
-    {
-      "description": "latest reported equity / signal-date market cap",
-      "field": "book_to_price",
-      "source": "dart",
-      "storage": "external"
-    },
-    {
-      "description": "standalone-quarter operating cash flow / signal-date market cap",
-      "field": "cashflow_yield",
-      "source": "dart",
-      "storage": "external"
-    },
-    {
-      "description": "standalone-quarter net income / signal-date market cap",
-      "field": "earnings_yield",
-      "source": "dart",
-      "storage": "external"
-    },
-    {
-      "description": "standalone-quarter revenue / signal-date market cap",
-      "field": "sales_yield",
-      "source": "dart",
-      "storage": "external"
     }
   ],
   "filter_ops": [
@@ -444,6 +492,58 @@
         "close",
         "close price"
       ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "momentum_12_1",
+      "fixed_direction": null,
+      "note": "252-session lookback with the latest 21 sessions skipped.",
+      "source": "technical",
+      "terms": [
+        "12-1 모멘텀",
+        "12개월-1개월 모멘텀",
+        "12-1 momentum",
+        "12m-1m momentum"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "momentum_6_1",
+      "fixed_direction": null,
+      "note": "126-session lookback with the latest 21 sessions skipped.",
+      "source": "technical",
+      "terms": [
+        "6-1 모멘텀",
+        "6개월-1개월 모멘텀",
+        "6-1 momentum",
+        "6m-1m momentum"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "momentum_3_1",
+      "fixed_direction": null,
+      "note": "63-session lookback with the latest 21 sessions skipped.",
+      "source": "technical",
+      "terms": [
+        "3-1 모멘텀",
+        "3개월-1개월 모멘텀",
+        "3-1 momentum",
+        "3m-1m momentum"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "momentum_12_0",
+      "fixed_direction": null,
+      "note": "252-session lookback through the signal date.",
+      "source": "technical",
+      "terms": [
+        "12-0 모멘텀",
+        "12개월 스킵없음 모멘텀",
+        "12-0 momentum",
+        "12m momentum no skip"
+      ]
     }
   ],
   "portfolio_weightings": [
@@ -479,6 +579,32 @@
     "months"
   ],
   "schema_version": "1.0",
+  "technical_factors": [
+    {
+      "description": "compound KRX daily ChangesRatio over roughly 12 months through the signal date",
+      "field": "momentum_12_0",
+      "lookback_sessions": 252,
+      "skip_sessions": 0
+    },
+    {
+      "description": "compound KRX daily ChangesRatio over roughly 12 months, skipping the latest 1 month",
+      "field": "momentum_12_1",
+      "lookback_sessions": 252,
+      "skip_sessions": 21
+    },
+    {
+      "description": "compound KRX daily ChangesRatio over roughly 3 months, skipping the latest 1 month",
+      "field": "momentum_3_1",
+      "lookback_sessions": 63,
+      "skip_sessions": 21
+    },
+    {
+      "description": "compound KRX daily ChangesRatio over roughly 6 months, skipping the latest 1 month",
+      "field": "momentum_6_1",
+      "lookback_sessions": 126,
+      "skip_sessions": 21
+    }
+  ],
   "trading_day_rules": [
     "last"
   ],
