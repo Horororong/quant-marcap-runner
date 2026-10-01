@@ -40,6 +40,11 @@ def main() -> None:
     assert amount["field"] == "Amount"
     assert amount["direction"] == "high"
 
+    mom = resolve_factor_alias("12-1 모멘텀", "높은")
+    assert mom["source"] == "technical"
+    assert mom["field"] == "momentum_12_1"
+    assert mom["direction"] == "high"
+
     try:
         resolve_factor_alias("PER", "낮은")
         raise AssertionError("generic PER was incorrectly mapped to standalone-quarter earnings yield")
