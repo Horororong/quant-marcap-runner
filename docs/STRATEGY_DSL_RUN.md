@@ -33,6 +33,11 @@ a new identity; incidental IDs/timestamps do not change strategy fingerprints,
 selections or NAV. The normalized snapshot preserves scenario insertion order
 as well as canonical values, retaining existing NAV/audit column order.
 
+The default `results/dsl/runs/` tree is ignored by Git. Repeated checked runs
+therefore do not add generated results to Git history. Run directories still
+occupy local disk until explicitly archived or removed; no automatic deletion
+or overwrite policy is introduced. Existing tracked result files are preserved.
+
 The original input is read once. Preflight and execution consume the same
 normalized snapshot, so later edits to the original file cannot change a run.
 The snapshots, strategy fingerprint and component contract versions are stored.
@@ -134,3 +139,10 @@ compares every component artifact byte-for-byte with the existing runner,
 rejects known Jeisys exposure in top_n/deciles and missing historical data
 before NAV, and runs actual DART PIT/benchmark/held-return execution.
 Both are included alongside all prior tests in the full Strategy DSL workflow.
+
+The combined integration starts from main `71b363c` and preserves the successful
+live DART refresh at `af2b2b3`, including its new recent shard and rotation state.
+PR #23 ancestry is retained; its preflight, strict input and lifecycle review
+units are deployed together only after final-commit CI. The full-history and
+KRX source trees used by the real execution regressions are unchanged by that
+recent-data refresh. Data collection/storage observation workflows are preserved.
