@@ -20,6 +20,7 @@ from execution_contract import (
     DSL_MACHINE_CONTRACT_VERSION,
     EXECUTION_ENGINE_VERSION,
     PROJECT_TEMPLATE_VERSION,
+    PREFLIGHT_CONTRACT_VERSION,
 )
 
 SCHEMA_VERSION = "1.0"
@@ -289,6 +290,7 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         "execution_engine_version": EXECUTION_ENGINE_VERSION,
         "corporate_action_registry_version": CORPORATE_ACTION_REGISTRY_VERSION,
         "dsl_machine_contract_version": DSL_MACHINE_CONTRACT_VERSION,
+        "preflight_contract_version": PREFLIGHT_CONTRACT_VERSION,
         "project_template_version": PROJECT_TEMPLATE_VERSION,
         "asset_class": spec.asset_class,
         "data_contract": {
