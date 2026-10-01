@@ -14,7 +14,9 @@ from typing import Iterable, Protocol, Sequence, runtime_checkable
 
 import pandas as pd
 
-FACTOR_REGISTRY_VERSION = "3"
+from krx_technical_factor_adapter import TECHNICAL_FACTOR_SPECS
+
+FACTOR_REGISTRY_VERSION = "4"
 
 
 @dataclass(frozen=True)
@@ -73,6 +75,11 @@ for _field, _description in {
     "sales_yield": "standalone-quarter revenue / signal-date market cap",
 }.items():
     register_factor(FactorDefinition("dart", _field, "external", _description))
+
+
+# KRX exchange-reported technical factors.
+for _field, _spec in TECHNICAL_FACTOR_SPECS.items():
+    register_factor(FactorDefinition("technical", _field, "external", _spec.description))
 
 
 def get_factor_definition(source: str, field: str) -> FactorDefinition:
@@ -259,7 +266,7 @@ class ExternalFactorProvider(Protocol):
     ) -> pd.DataFrame:
         ...
 
-    def coverage_report(self, signal: pd.Timestamp) -> list[dict]:
+    def coverage_report(self, signal: pd.Timestamp, fields: Sequence[str]) -> list[dict]:
         ...
 
 
@@ -288,13 +295,35 @@ class DartFactorProvider:
             raise KeyError(f"DART provider output missing fields: {missing}")
         return frame[keep].copy()
 
-    def coverage_report(self, signal: pd.Timestamp) -> list[dict]:
+    def coverage_report(self, signal: pd.Timestamp, fields: Sequence[str]) -> list[dict]:
         rows = self._adapter.coverage_report(signal)
+        return [{"source": self.source, **row} for row in rows]
+
+
+class KrxTechnicalFactorProvider:
+    source = "technical"
+
+    def __init__(self, repo_root: str | Path):
+        from krx_technical_factor_adapter import KrxTechnicalFactorAdapter
+
+        self._adapter = KrxTechnicalFactorAdapter(repo_root)
+
+    def factor_frame(
+        self,
+        signal: pd.Timestamp,
+        cross_section: pd.DataFrame,
+        fields: Sequence[str],
+    ) -> pd.DataFrame:
+        return self._adapter.factor_frame(signal, cross_section, fields)
+
+    def coverage_report(self, signal: pd.Timestamp, fields: Sequence[str]) -> list[dict]:
+        rows = self._adapter.coverage_report(signal, fields)
         return [{"source": self.source, **row} for row in rows]
 
 
 PROVIDER_FACTORIES = {
     "dart": DartFactorProvider,
+    "technical": KrxTechnicalFactorProvider,
 }
 
 
