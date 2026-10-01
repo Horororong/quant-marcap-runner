@@ -70,6 +70,26 @@ def main() -> None:
         assert_close(z["cashflow_yield"], z["ocf_q"] / mc, "cashflow_yield")
         assert_close(z["sales_yield"], z["revenue_q"] / mc, "sales_yield")
 
+        positive_equity = pd.to_numeric(merged["equity"], errors="coerce") > 0
+        if positive_equity.any():
+            assert_close(
+                merged.loc[positive_equity, "quarterly_roe"],
+                merged.loc[positive_equity, "net_income_q"] / merged.loc[positive_equity, "equity"],
+                "quarterly_roe",
+            )
+        positive_revenue = pd.to_numeric(merged["revenue_q"], errors="coerce") > 0
+        if positive_revenue.any():
+            assert_close(
+                merged.loc[positive_revenue, "quarterly_net_margin"],
+                merged.loc[positive_revenue, "net_income_q"] / merged.loc[positive_revenue, "revenue_q"],
+                "quarterly_net_margin",
+            )
+            assert_close(
+                merged.loc[positive_revenue, "quarterly_ocf_margin"],
+                merged.loc[positive_revenue, "ocf_q"] / merged.loc[positive_revenue, "revenue_q"],
+                "quarterly_ocf_margin",
+            )
+
         chosen = selections[selections["signal_date"] == signal].copy()
         assert set(chosen["Code"]).issubset(set(factors["Code"]))
         for col in ("factor_rank__EP", "factor_rank__BP", "factor_rank__CFP", "factor_rank__SP", "composite_score"):
