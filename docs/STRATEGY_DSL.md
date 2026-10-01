@@ -20,6 +20,25 @@ Flow:
 - Costs: explicit named fixed-bps scenarios
 - Metrics/charts: canonical CURRENT postprocessor only
 
+## Optional index benchmark
+
+Add `"benchmark": {"source": "index", "symbol": "KOSPI"}` to the same strategy JSON.
+Supported symbols are `KOSPI`, `KOSDAQ`, `KOSPI200`, and `KOSDAQ150`; the source is
+`data/indices/{symbol}.csv`. Both source and symbol must be explicit. Omitting
+the benchmark leaves the existing strategy outputs unchanged.
+
+These are **price-index close** benchmarks, without dividends. They are not
+total-return indexes. The runner adds `NAV_Benchmark = Close / first Close` on
+the exact strategy daily dates and passes that series to CURRENT postprocess.
+It does not implement additional performance formulas.
+
+Preflight checks source prices without calculating benchmark NAV. Missing files,
+missing strategy dates, duplicate/invalid dates, or invalid prices produce a
+`data_gap`; unsupported benchmark definitions produce a `capability_gap`.
+No filling, interpolation, or shortening of the requested period is allowed.
+The execution plan records the benchmark definition and the result includes
+coverage metadata and the return basis.
+
 ## Machine-readable contract for AI strategy generation
 
 AI clients should not infer Strategy DSL support from Python source. Read these generated files first:
@@ -52,6 +71,18 @@ The command prints structured JSON and classifies readiness as:
 For orchestration that must always receive JSON without a non-zero process exit, add `--always-zero`.
 
 Preflight intentionally does **not** calculate factor values, holdings, NAV, or performance. For DART strategies it reads coverage metadata and required shard presence only. This keeps “the engine cannot express this strategy” separate from “the engine can express it, but the requested history is not ready yet.”
+
+## KRX realized-volatility factors
+
+The `technical` provider also exposes annualized realized volatility from the exchange-reported daily `ChangesRatio` series:
+
+- `volatility_3m`: sample standard deviation of the latest 63 daily decimal returns × √252.
+- `volatility_6m`: sample standard deviation of the latest 126 daily decimal returns × √252.
+- `volatility_12m`: sample standard deviation of the latest 252 daily decimal returns × √252.
+
+The signal-day observation is included because execution occurs on a later session. Observations after the signal date are never read. Every requested daily observation must be present; an incomplete code/window receives `NaN`.
+
+Aliases include `3개월 변동성`, `6개월 변동성`, `12개월 변동성`, plus fixed-direction phrases such as `3개월 저변동성`, which compiles directly to `volatility_3m / low`.
 
 ## KRX technical momentum factors
 
@@ -108,6 +139,18 @@ Examples:
 
 Inverse aliases encode direction inversion explicitly only when their accounting-period definition matches the registered factor. Generic PER/PCR/PSR are intentionally not mapped to standalone-quarter factors. Unknown, ambiguous, or semantically mismatched aliases fail instead of being substituted silently.
 
+## DART quarterly profitability factors
+
+The DART provider also exposes three profitability fields whose accounting period is explicit in the field name:
+
+- `quarterly_roe`: standalone-quarter net income / latest reported equity, only when equity is positive.
+- `quarterly_net_margin`: standalone-quarter net income / standalone-quarter revenue, only when revenue is positive.
+- `quarterly_ocf_margin`: standalone-quarter operating cash flow / standalone-quarter revenue, only when revenue is positive.
+
+These fields inherit the current DART source contract: April and October signal months only, PIT filing-date enforcement, CFS-first/OFS-fallback logic, and full-source completeness gating.
+
+Natural-language aliases are likewise explicit: `분기 ROE`, `분기 순이익률`, and `분기 OCF 마진`. Generic `ROE` is intentionally **not** mapped to `quarterly_roe`; annual/TTM ROE requires a separate definition.
+
 ## DART PIT value factors
 
 Current DART value-factor execution is a source-level capability with a fixed rebalance-month contract: **April and October only**. This constraint is exported as `factor_source_constraints.dart.rebalance_months=[4,10]` and is validated during DSL compilation. A DART strategy requesting another rebalance month is a `capability_gap`, not a `data_gap`.
@@ -141,7 +184,7 @@ The first registered event is Korean Paper (002300) -> Haesung Industrial (03481
 
 The runner fails rather than inventing an answer for these cases:
 
-- DART financial factors beyond the four standardized value fields (ROE/GP-A/NCAV/EV-EBIT, etc.)
+- DART financial factors beyond the registered value and quarterly profitability fields (annual/TTM ROE, GP-A, NCAV, EV-EBIT, etc.)
 - parameterized/ad-hoc momentum lookbacks beyond the registered fixed technical fields
 - dynamic historical sell-tax schedules
 - next-open/VWAP execution

@@ -192,9 +192,15 @@ class BenchmarkSpec:
 
     @classmethod
     def from_dict(cls, raw: Mapping[str, Any]) -> "BenchmarkSpec":
+        missing = {"source", "symbol"} - set(raw)
+        if missing:
+            raise ValueError(f"benchmark requires explicit fields: {sorted(missing)}")
+        extra = set(raw) - {"source", "symbol"}
+        if extra:
+            raise ValueError(f"unsupported benchmark fields: {sorted(extra)}")
         obj = cls(
-            source=str(raw.get("source", "index")).strip().lower(),
-            symbol=str(raw.get("symbol", "KOSPI")).strip().upper(),
+            source=str(raw["source"]).strip().lower(),
+            symbol=str(raw["symbol"]).strip().upper(),
         )
         if obj.source not in SUPPORTED_BENCHMARK_SOURCES:
             raise ValueError(f"unsupported benchmark source: {obj.source}")

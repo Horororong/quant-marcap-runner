@@ -16,7 +16,7 @@ import pandas as pd
 
 from krx_technical_factor_adapter import TECHNICAL_FACTOR_SPECS
 
-FACTOR_REGISTRY_VERSION = "4"
+FACTOR_REGISTRY_VERSION = "6"
 
 
 @dataclass(frozen=True)
@@ -67,12 +67,15 @@ for _field, _description in {
     register_factor(FactorDefinition("krx", _field, "panel", _description))
 
 
-# Standardized DART PIT value factors.
+# Standardized DART PIT value/profitability factors.
 for _field, _description in {
     "earnings_yield": "standalone-quarter net income / signal-date market cap",
     "book_to_price": "latest reported equity / signal-date market cap",
     "cashflow_yield": "standalone-quarter operating cash flow / signal-date market cap",
     "sales_yield": "standalone-quarter revenue / signal-date market cap",
+    "quarterly_roe": "standalone-quarter net income / latest reported positive equity",
+    "quarterly_net_margin": "standalone-quarter net income / positive standalone-quarter revenue",
+    "quarterly_ocf_margin": "standalone-quarter operating cash flow / positive standalone-quarter revenue",
 }.items():
     register_factor(FactorDefinition("dart", _field, "external", _description))
 

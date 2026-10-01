@@ -45,6 +45,10 @@ def main() -> None:
         assert result["benchmark"]["symbol"] == "KOSPI"
         assert result["benchmark"]["observations"] == len(daily)
         assert result["benchmark"]["exact_date_alignment"] is True
+        assert result["benchmark"]["return_basis"] == "price_index_close"
+        index_close = pd.read_csv(ROOT / "data/indices/KOSPI.csv", parse_dates=["Date"]).set_index("Date")["Close"]
+        aligned_close = index_close.reindex(pd.DatetimeIndex(daily["Date"]))
+        assert np.allclose(daily["NAV_Benchmark"], aligned_close / aligned_close.iloc[0], rtol=0, atol=1e-12)
 
         assert len(weights) == 2
         asset_cols = [c for c in weights.columns if c != "signal_date"]

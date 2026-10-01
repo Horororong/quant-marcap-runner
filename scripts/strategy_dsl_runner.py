@@ -2,9 +2,9 @@ from __future__ import annotations
 
 """Generic Strategy DSL v1 runner.
 
-v1 runtime scope: KRX equity cross-sectional ranking strategies whose factor
-inputs are fields already present in the PIT KRX daily panel. DART/derived
-factor adapters are intentionally not faked here; they are the next extension.
+Runtime scope: KRX equity cross-sectional ranking strategies with registered
+KRX, DART PIT, and technical providers. Optional price-index benchmarks share
+the exact strategy dates; canonical performance remains in CURRENT postprocess.
 """
 
 from pathlib import Path
@@ -18,7 +18,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-from strategy_dsl import StrategySpec, compile_execution_plan, load_strategy_spec
+from strategy_dsl import BenchmarkSpec, StrategySpec, compile_execution_plan, load_strategy_spec
 from execution_contract import EXECUTION_ENGINE_VERSION, PROJECT_TEMPLATE_VERSION
 from corporate_action_registry import load_corporate_actions
 from factor_registry import (
@@ -37,17 +37,16 @@ BASE_PANEL_COLUMNS = ["Date", "Code", "Name", "Market", "Close", "Volume", "Amou
 BENCHMARK_INDEX_DIR = "data/indices"
 
 
-def load_benchmark_nav(
+def _load_benchmark_close(
     repo_root: Path,
-    benchmark: Any,
+    benchmark: BenchmarkSpec,
     dates: pd.DatetimeIndex,
 ) -> pd.Series:
     if benchmark is None:
         raise ValueError("benchmark is required")
-    if getattr(benchmark, "source", None) != "index":
-        raise ValueError(f"unsupported benchmark source: {getattr(benchmark, 'source', None)!r}")
-
-    symbol = str(getattr(benchmark, "symbol")).upper()
+    # Validate direct callers too; the symbol may never become an arbitrary path.
+    benchmark = BenchmarkSpec.from_dict({"source": benchmark.source, "symbol": benchmark.symbol})
+    symbol = benchmark.symbol
     path = repo_root / BENCHMARK_INDEX_DIR / f"{symbol}.csv"
     if not path.exists():
         raise FileNotFoundError(f"benchmark index file not found: {path}")
@@ -55,12 +54,16 @@ def load_benchmark_nav(
     x = pd.read_csv(path, usecols=["Date", "Close"])
     x["Date"] = pd.to_datetime(x["Date"], errors="coerce").dt.normalize()
     x["Close"] = pd.to_numeric(x["Close"], errors="coerce")
-    x = x[x["Date"].notna()].sort_values("Date")
+    if x["Date"].isna().any():
+        raise ValueError(f"benchmark {symbol}: invalid Date rows")
+    x = x.sort_values("Date")
     if x["Date"].duplicated().any():
         raise AssertionError(f"benchmark {symbol}: duplicate Date rows")
 
     s = x.set_index("Date")["Close"]
-    idx = pd.DatetimeIndex(dates).normalize().sort_values()
+    idx = pd.DatetimeIndex(dates).normalize()
+    if idx.empty or idx.hasnans or idx.has_duplicates or not idx.is_monotonic_increasing:
+        raise ValueError("benchmark strategy dates must be non-empty, valid, unique, and increasing")
     aligned = s.reindex(idx)
     if aligned.isna().any():
         missing = [d.date().isoformat() for d in aligned.index[aligned.isna()][:12]]
@@ -70,6 +73,15 @@ def load_benchmark_nav(
     if not np.isfinite(aligned.to_numpy(float)).all() or not (aligned > 0).all():
         raise RuntimeError(f"benchmark {symbol}: non-positive or non-finite close values")
 
+    return aligned
+
+
+def load_benchmark_nav(
+    repo_root: Path,
+    benchmark: BenchmarkSpec,
+    dates: pd.DatetimeIndex,
+) -> pd.Series:
+    aligned = _load_benchmark_close(repo_root, benchmark, dates)
     nav = aligned / float(aligned.iloc[0])
     nav.name = "NAV_Benchmark"
     return nav
@@ -77,19 +89,22 @@ def load_benchmark_nav(
 
 def benchmark_coverage_audit(
     repo_root: Path,
-    benchmark: Any,
+    benchmark: BenchmarkSpec | None,
     dates: pd.DatetimeIndex,
 ) -> dict[str, Any] | None:
     if benchmark is None:
         return None
-    nav = load_benchmark_nav(repo_root, benchmark, dates)
+    close = _load_benchmark_close(repo_root, benchmark, dates)
     return {
         "source": benchmark.source,
         "symbol": benchmark.symbol,
-        "start": nav.index.min().date().isoformat(),
-        "end": nav.index.max().date().isoformat(),
-        "observations": int(len(nav)),
+        "start": close.index.min().date().isoformat(),
+        "end": close.index.max().date().isoformat(),
+        "observations": int(len(close)),
         "exact_date_alignment": True,
+        "return_basis": "price_index_close",
+        "includes_dividends": False,
+        "path": f"{BENCHMARK_INDEX_DIR}/{benchmark.symbol}.csv",
     }
 
 
