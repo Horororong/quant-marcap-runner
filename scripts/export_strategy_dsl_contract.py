@@ -14,6 +14,7 @@ from execution_contract import (
     PROJECT_TEMPLATE_VERSION,
     PREFLIGHT_CONTRACT_VERSION,
     HISTORY_AUDIT_CONTRACT_VERSION,
+    HELD_RETURN_TOLERANCE_BPS,
 )
 from factor_registry import FACTOR_REGISTRY_VERSION, factor_catalog, factor_source_constraints, filter_field_catalog, filterable_fields, supported_fields, supported_sources
 from krx_technical_factor_adapter import technical_factor_catalog
@@ -257,6 +258,9 @@ def build_capabilities() -> dict:
         "execution_constraints": {
             "minimum_lag_sessions": 1,
             "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
+            "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
+            "held_return_tolerance_bps": HELD_RETURN_TOLERANCE_BPS,
+            "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
         },
         "preflight": {
             "history_coverage": "exact XKRX sessions for each requested market; does not certify security-level or corporate-action completeness",
@@ -284,7 +288,8 @@ def build_capabilities() -> dict:
             "run canonical CURRENT postprocess for formal metrics",
         ],
         "corporate_actions": {
-            "supported_event_types": ["stock_merger"],
+            "supported_event_types": ["stock_merger", "stock_split"],
+            "split_contract": "same code, shares_after/shares_before > 0, zero cash; event_date is trading resumption; adjusted event return still checked against exchange reference",
             "registry": "config/kr_corporate_actions.csv",
             "unregistered_held_price_gap_policy": "fail",
             "history_completeness": "unverified; presence of registered events is not a coverage certificate",
@@ -305,6 +310,8 @@ def build_capabilities() -> dict:
             "strategy_fingerprint.txt",
             "factor_provider_coverage.csv",
             "history_coverage.json",
+            "return_reference_audit.json",
+            "held_return_checks.csv",
             "corporate_actions_applied.csv",
             "metrics_CURRENT.csv",
             "chat_manifest_CURRENT.json",

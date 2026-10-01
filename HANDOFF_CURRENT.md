@@ -19,29 +19,28 @@ Korean-language compiler/service is not implemented yet. Unsupported requests
 must identify the missing capability instead of mapping to a similar strategy.
 
 - Execution: `scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py`,
-  execution engine `v2-16-exec-1`.
+  execution engine `v2-16-exec-2`.
 - Canonical metrics/charts: `scripts/quant_backtest_template_CURRENT.py`
   (currently `v2-15`) and `scripts/quant_backtest_postprocess.py`.
   The execution and performance template versions are distinct; do not rename
   one to pretend it has the other's implementation.
-- Strategy schema: `1.0`; machine contract `10`; factor registry `6`;
-  preflight contract `2`; history-audit contract `1`; corporate-action registry `1`.
+- Strategy schema: `1.0`; machine contract `11`; factor registry `6`;
+  preflight contract `2`; history-audit contract `1`; corporate-action registry `2`.
 - Generated contracts: `config/strategy_dsl_schema_v1.json` and
   `config/strategy_dsl_capabilities_v1.json`. Regenerate with
   `python scripts/export_strategy_dsl_contract.py --write`; CI uses `--check`.
 
 ## Review units and resumption
 
-PRs #7-#14 are merged. The post-decile main commit
-`4006bcc8b7d8ef077cd3a2f85a7ebf14e0edb3c2` passed its own full main CI:
-https://github.com/Horororong/quant-marcap-runner/actions/runs/36809805639
+PRs #7-#15 are merged. The post-history-audit main commit
+`b7dbdc5b6b8c699fd20a96d9c593da57d971930d` passed its own full main CI:
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36813692858
 
-The current Work milestone adds an exact XKRX market-session gate to preflight
-and both top-N/decile runners, plus an independent source-history audit tool.
-It does not certify security-level history or corporate-action completeness.
-Its branch must pass the full Strategy DSL CI (including both real-data E2Es)
-before merging. Check live GitHub refs/PR/current-head checks. When reading this
-version on main, the history-audit milestone is already part of main.
+The current milestone adds mandatory held-return reference checks in both public
+DSL modes and verified same-code stock-split support in the PROJECT engine.
+Its branch must pass the full current-head CI including DART, real decile,
+existing execution and the real split E2E before merging. Check live GitHub refs
+and checks. When reading this version on main, this milestone is already merged.
 Never force-push main.
 
 Repository: https://github.com/Horororong/quant-marcap-runner
@@ -75,7 +74,9 @@ Repository: https://github.com/Horororong/quant-marcap-runner
   not a total-return index. Preflight checks raw source prices without NAV.
 - Verified merger continuity currently includes Korean Paper 002300 ->
   Haesung Industrial 034810, ratio 1.6661460, successor listing 2020-07-13.
-  This is not a complete historical corporate-action registry.
+  Verified split: EcoPro 086520, five shares per old share, trading resumes
+  2024-04-25 after suspension 2024-04-09..24. Evidence and independent test
+  are in `docs/HELD_RETURN_VALIDATION.md`. The registry is still incomplete.
 
 ## Non-negotiable correctness rules
 
@@ -137,19 +138,33 @@ observation gap (Code 287410; 89 missing sessions between observations).
 
 The source-history audit never removes stocks or fills values. First/last
 observations are window-censored, not automatically IPO/delisting dates.
-A complete market-session audit still does not certify whole-market history,
-dividends, security events or the accuracy of held-price returns. Generic raw
-close discontinuities with finite prices remain a production-readiness gap;
-the current execution engine does not yet cross-check held returns against
-ChangesRatio. Do not present the audit as having repaired those events.
+The archived snapshots describe registry version 1; after adding the verified
+EcoPro split, registry version 2 contains one registered event in 2024.
+Candidate counts are source observations and do not disappear after an event
+is verified; they are not counts of unresolved held returns.
+
+Public DSL runners now require ChangesRatio source data and validate each
+pre-rebalance held asset's effective return against ChangesRatio/100 within
+1bp before NAV/cost calculation. Missing/non-finite references or unresolved
+differences fail; no automatic substitution by exchange returns. First buys
+are cash beforehand; sells still require the prior holding's return to pass.
+Verified merger disposal values have explicit override audits. Split event
+returns are still reference-checked; wrong ratios do not bypass the gate.
+Per-scenario/decile audits record checks and explicit override counts.
+Low-level direct engine calls retain an optional reference matrix for backwards
+compatibility and explicitly report enabled=false when it is absent.
+
+The 25bp source-diagnostic threshold is distinct from the 1bp execution guard.
+Neither certifies whole-market events, dividends or total returns. Rights,
+spin-offs, unsupported events, missing sources and remaining history still need
+verified handling. Do not silently exclude stocks that would fail the guard.
 
 ## Next development sequence
 
-1. Confirm the history-audit milestone acceptance and current main CI.
+1. Confirm the held-return/split milestone acceptance and current main CI.
 2. Audit remaining years with all actual source files, reconcile calendar
    differences against official KRX history and investigate event candidates
-   with primary disclosures. Prioritize held-return discrepancy detection and
-   verified split/rights/merger/delisting handling before broad or full-history
+   with primary disclosures. Expand verified split/rights/merger/delisting handling before broad or full-history
    investment-performance claims. Never use future survival or audit candidates
    as a retrospective strategy filter. The event registry remains incomplete.
 3. Expand factors with explicit accounting-period definitions (annual/TTM,
@@ -158,6 +173,6 @@ ChangesRatio. Do not present the audit as having repaired those events.
    preserving ambiguity/gap behavior. Benchmark total-return support requires
    a separate verified source and explicit return-basis contract.
 
-Deciles and market-session validation are present. An arbitrary-language
+Deciles, market-session validation and held-return checks are present. An arbitrary-language
 compiler/service and complete historical corporate-action coverage are still
 outstanding.

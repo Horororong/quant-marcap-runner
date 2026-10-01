@@ -44,7 +44,7 @@ import os
 import numpy as np
 import pandas as pd
 
-from execution_contract import EXECUTION_ENGINE_VERSION, PROJECT_TEMPLATE_VERSION
+from execution_contract import EXECUTION_ENGINE_VERSION, PROJECT_TEMPLATE_VERSION, HELD_RETURN_TOLERANCE_BPS
 
 TEMPLATE_VERSION = PROJECT_TEMPLATE_VERSION
 CHAT_PAYLOAD_MAX_DRAWDOWN_POINTS = 480
@@ -929,8 +929,10 @@ def _schedule_signal_execution_dates(
 def _normalize_corporate_action_events(
     close_prices: pd.DataFrame,
     corporate_action_events: Optional[pd.DataFrame],
+    tradable_mask: Optional[pd.DataFrame] = None,
+    execution_targets: Optional[dict] = None,
 ) -> pd.DataFrame:
-    """검증된 주식합병 이벤트를 실행엔진용 연속수익률 정보로 정규화한다.
+    """검증된 합병/동일코드 분할을 실행엔진용 연속수익률 정보로 정규화한다.
 
     stock_merger:
     - 거래가 중단된 전신 종목은 마지막 유효 종가부터 승계주 상장 전날까지 0%로 유지한다.
@@ -938,6 +940,7 @@ def _normalize_corporate_action_events(
     - event_date에는 (승계주 종가 * 교환비율 + 주당 현금) / 전신 마지막 종가 - 1
       수익률을 적용한다.
     - 수익 반영 직후 보유 비중을 predecessor -> successor로 무비용 이전한다.
+    stock_split은 같은 코드의 주식 수 비율을 적용하며 비중 이전/매매가 없다.
     """
     columns = [
         "event_date", "event_type", "predecessor_code", "successor_code",
@@ -963,18 +966,23 @@ def _normalize_corporate_action_events(
     if ca["event_date"].isna().any():
         raise ValueError("corporate_action_events에 유효하지 않은 event_date가 있습니다.")
     ca["event_type"] = ca["event_type"].astype(str).str.strip().str.lower()
-    if (ca["event_type"] != "stock_merger").any():
-        bad = sorted(ca.loc[ca["event_type"] != "stock_merger", "event_type"].unique())
+    if (~ca["event_type"].isin(["stock_merger", "stock_split"])).any():
+        bad = sorted(ca.loc[~ca["event_type"].isin(["stock_merger", "stock_split"]), "event_type"].unique())
         raise ValueError(f"현재 지원하지 않는 corporate action 유형: {bad}")
 
     for col in ("predecessor_code", "successor_code"):
         ca[col] = ca[col].astype(str).str.replace(".0", "", regex=False).str.zfill(6)
     ca["share_ratio"] = pd.to_numeric(ca["share_ratio"], errors="coerce")
-    ca["cash_per_share"] = pd.to_numeric(ca["cash_per_share"], errors="coerce").fillna(0.0)
-    if ca["share_ratio"].isna().any() or (ca["share_ratio"] <= 0).any():
+    ca["cash_per_share"] = pd.to_numeric(ca["cash_per_share"], errors="coerce")
+    if not np.isfinite(ca["share_ratio"]).all() or (ca["share_ratio"] <= 0).any():
         raise ValueError("stock_merger share_ratio는 0보다 커야 합니다.")
-    if (ca["cash_per_share"] < 0).any():
+    if not np.isfinite(ca["cash_per_share"]).all() or (ca["cash_per_share"] < 0).any():
         raise ValueError("cash_per_share는 음수일 수 없습니다.")
+    split = ca["event_type"].eq("stock_split")
+    if (ca.loc[split, "predecessor_code"] != ca.loc[split, "successor_code"]).any() or ca.loc[split, "cash_per_share"].ne(0).any():
+        raise ValueError("stock_split은 같은 종목코드와 현금 0을 요구합니다.")
+    if (ca.loc[~split, "predecessor_code"] == ca.loc[~split, "successor_code"]).any():
+        raise ValueError("stock_merger는 다른 종목코드를 요구합니다.")
     if ca.duplicated(["event_date", "predecessor_code"]).any():
         raise ValueError("동일 event_date/predecessor_code corporate action이 중복됩니다.")
     if "source" not in ca.columns:
@@ -983,20 +991,34 @@ def _normalize_corporate_action_events(
     assets = set(close_prices.columns)
     trading_index = pd.DatetimeIndex(close_prices.index)
     rows = []
+    possible_successors: set[str] = set()
     for _, row in ca.sort_values(["event_date", "predecessor_code"]).iterrows():
         event_date = pd.Timestamp(row["event_date"])
         pred = row["predecessor_code"]
         succ = row["successor_code"]
+        if execution_targets is not None:
+            possible = set(possible_successors)
+            for execution_date, target in execution_targets.items():
+                if execution_date < event_date:
+                    possible.update(target.index[target.ne(0)])
+            if pred not in possible:
+                continue
+            possible_successors.add(succ)
         if pred not in assets or succ not in assets:
             raise KeyError(
                 f"corporate action 자산이 가격패널에 없습니다: predecessor={pred}, successor={succ}"
             )
         if event_date not in trading_index:
             raise ValueError(f"corporate action event_date가 거래일 인덱스에 없습니다: {event_date.date()}")
+        # Every run starts in cash; no previous holding exists on its first day.
+        if event_date == trading_index[0]:
+            continue
 
         prior = pd.to_numeric(
             close_prices.loc[close_prices.index < event_date, pred], errors="coerce"
         ).dropna()
+        if row["event_type"] == "stock_split" and tradable_mask is not None:
+            prior = prior[tradable_mask.loc[prior.index, pred]]
         if prior.empty:
             raise RuntimeError(f"{pred}: corporate action 전 유효 종가가 없습니다.")
         last_trade_date = pd.Timestamp(prior.index[-1])
@@ -1022,7 +1044,7 @@ def _normalize_corporate_action_events(
             "event_return": float(event_return),
         })
         rows.append(rec)
-    return pd.DataFrame(rows)
+    return pd.DataFrame(rows, columns=columns + ["last_trade_date", "last_price", "successor_price", "event_return"])
 
 
 def simulate_target_weight_portfolio(
@@ -1034,6 +1056,7 @@ def simulate_target_weight_portfolio(
     explicit_delisting_returns: Optional[pd.DataFrame] = None,
     initial_capital: float = 1.0,
     corporate_action_events: Optional[pd.DataFrame] = None,
+    reference_returns: Optional[pd.DataFrame] = None,
 ) -> Dict[str, Any]:
     """목표비중 신호를 t+1 체결, drift, turnover, 비용, 일별 NAV로 변환한다.
 
@@ -1080,6 +1103,16 @@ def simulate_target_weight_portfolio(
         mask = mask.astype(bool)
 
     rets = px.pct_change(fill_method=None)
+    reference = None
+    if reference_returns is not None:
+        if not isinstance(reference_returns, pd.DataFrame):
+            raise TypeError("reference_returns must be a DataFrame of decimal exchange returns")
+        reference = reference_returns.copy()
+        reference.index = pd.to_datetime(reference.index).normalize()
+        if reference.index.duplicated().any() or reference.columns.duplicated().any():
+            raise AssertionError("reference_returns has duplicate dates or security codes")
+        reference = reference.reindex(index=px.index, columns=assets).apply(pd.to_numeric, errors="coerce")
+    reference_exempt = pd.DataFrame(False, index=px.index, columns=assets)
     if len(rets):
         rets.iloc[0] = 0.0
     if explicit_delisting_returns is not None:
@@ -1088,8 +1121,9 @@ def simulate_target_weight_portfolio(
         dr = dr.reindex(index=px.index, columns=assets)
         fill = rets.isna() & dr.notna()
         rets = rets.where(~fill, dr)
+        reference_exempt |= fill
 
-    corporate_actions = _normalize_corporate_action_events(px, corporate_action_events)
+    corporate_actions = _normalize_corporate_action_events(px, corporate_action_events, mask, execution_targets)
     actions_by_date: Dict[pd.Timestamp, list[dict[str, Any]]] = {}
     if not corporate_actions.empty:
         for _, action in corporate_actions.iterrows():
@@ -1100,7 +1134,13 @@ def simulate_target_weight_portfolio(
             if len(suspended):
                 # 명시된 합병으로 인한 거래중단 구간만 0%로 유지한다.
                 rets.loc[suspended, pred] = rets.loc[suspended, pred].fillna(0.0)
+                if reference is not None:
+                    # Missing references are allowed only in a registered suspension.
+                    reference_exempt.loc[suspended, pred] = reference.loc[suspended, pred].isna() & rets.loc[suspended, pred].eq(0.0)
             rets.loc[event_date, pred] = float(action["event_return"])
+            if action["event_type"] == "stock_merger":
+                # A disposal/exchange value is not the predecessor's price return.
+                reference_exempt.loc[event_date, pred] = True
             actions_by_date.setdefault(event_date, []).append(action.to_dict())
 
     current_w = pd.Series(0.0, index=assets, dtype=float)
@@ -1114,8 +1154,27 @@ def simulate_target_weight_portfolio(
     for i, dt in enumerate(px.index):
         r = rets.loc[dt].astype(float)
         held = current_w.abs() > ex.weight_tolerance
-        if held.any() and r[held].isna().any():
-            bad = list(r[held][r[held].isna()].index)
+        checked_count = override_count = 0
+        max_difference_bps = 0.0
+        if reference is not None:
+            checked = held & ~reference_exempt.loc[dt]
+            checked_count = int(checked.sum())
+            override_count = int((held & reference_exempt.loc[dt]).sum())
+            observed = reference.loc[dt]
+            finite = np.isfinite(observed) & np.isfinite(r)
+            difference = (r - observed).abs() * 10_000.0
+            bad = checked & (~finite | (difference > HELD_RETURN_TOLERANCE_BPS))
+            if bad.any():
+                codes = list(bad[bad].index)
+                raise RuntimeError(
+                    f"held-return reference check failed: date={dt.date()}, assets={codes}, "
+                    f"tolerance_bps={HELD_RETURN_TOLERANCE_BPS}. "
+                    "Missing/non-finite or inconsistent returns require verified source/event data; no automatic corrections."
+                )
+            if checked_count:
+                max_difference_bps = float(difference[checked].max())
+        if held.any() and (~np.isfinite(r[held])).any():
+            bad = list(r[held][~np.isfinite(r[held])].index)
             raise RuntimeError(
                 f"보유종목의 일별 수익률이 정의되지 않았습니다: date={dt.date()}, assets={bad}. "
                 "거래정지/상장폐지/기업행위라면 명시적 처리자료를 제공하십시오. 0%로 조용히 대체하지 않습니다."
@@ -1138,8 +1197,9 @@ def simulate_target_weight_portfolio(
                 pred = str(action["predecessor_code"])
                 succ = str(action["successor_code"])
                 transferred_weight = float(current_w[pred])
-                current_w[pred] = 0.0
-                current_w[succ] = float(current_w[succ]) + transferred_weight
+                if pred != succ:
+                    current_w[pred] = 0.0
+                    current_w[succ] = float(current_w[succ]) + transferred_weight
                 corporate_action_rows.append({
                     "Date": dt,
                     "event_type": action["event_type"],
@@ -1188,6 +1248,9 @@ def simulate_target_weight_portfolio(
             "Net": net_nav / initial_capital,
             "portfolio_return_before_cost": portfolio_return,
             "cost_fraction": cost_fraction,
+            "held_return_checked_assets": checked_count,
+            "verified_return_override_assets": override_count,
+            "max_held_return_difference_bps": max_difference_bps,
         })
         trade_rows.append({
             "Date": dt,
@@ -1227,6 +1290,12 @@ def simulate_target_weight_portfolio(
         "trades": trades,
         "execution_schedule": schedule_df,
         "corporate_actions": pd.DataFrame(corporate_action_rows),
+        "return_reference_check": {
+            "enabled": reference is not None,
+            "tolerance_bps": HELD_RETURN_TOLERANCE_BPS,
+            "checked_observations": int(daily_nav["held_return_checked_assets"].sum()),
+            "verified_override_observations": int(daily_nav["verified_return_override_assets"].sum()),
+        },
         "annualized_one_way_turnover": float(trades["one_way_turnover"].mean() * 252.0),
     }
 

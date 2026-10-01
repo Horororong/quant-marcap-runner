@@ -34,7 +34,7 @@ from factor_registry import (
 
 ENGINE_FILE = "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py"
 POSTPROCESS_FILE = "scripts/quant_backtest_postprocess.py"
-BASE_PANEL_COLUMNS = ["Date", "Code", "Name", "Market", "Close", "Volume", "Amount", "Marcap"]
+BASE_PANEL_COLUMNS = ["Date", "Code", "Name", "Market", "Close", "Volume", "Amount", "Marcap", "ChangesRatio"]
 BENCHMARK_INDEX_DIR = "data/indices"
 
 
@@ -404,6 +404,27 @@ def engine_inputs(spec: StrategySpec, engine) -> tuple[Any, dict[str, Any], Any]
     return cfg, costs, execution
 
 
+def return_reference_matrix(panel: pd.DataFrame, assets: list[str]) -> pd.DataFrame:
+    x = panel[["Date", "Code", "ChangesRatio"]].copy()
+    x["Date"] = pd.to_datetime(x["Date"]).dt.normalize()
+    x["Code"] = x["Code"].astype(str).str.zfill(6)
+    x["ChangesRatio"] = pd.to_numeric(x["ChangesRatio"], errors="coerce") / 100.0
+    return x.pivot(index="Date", columns="Code", values="ChangesRatio").reindex(columns=assets).sort_index()
+
+
+def save_return_reference_audit(result: dict[str, Any], out: Path) -> tuple[dict, pd.DataFrame]:
+    summaries = {}
+    rows = []
+    for scenario, execution in result["execution_scenarios"].items():
+        summaries[scenario] = execution["return_reference_check"]
+        fields = ["held_return_checked_assets", "verified_return_override_assets", "max_held_return_difference_bps"]
+        rows.append(execution["daily_detail"][fields].reset_index().assign(cost_scenario=scenario))
+    (out / "return_reference_audit.json").write_text(json.dumps(summaries, ensure_ascii=False, indent=2), encoding="utf-8")
+    checks = pd.concat(rows, ignore_index=True)
+    checks.to_csv(out / "held_return_checks.csv", index=False)
+    return summaries, checks
+
+
 
 def execute_daily_nav(
     engine,
@@ -414,6 +435,7 @@ def execute_daily_nav(
     initial_capital: float,
     tradable_mask: pd.DataFrame | None = None,
     corporate_action_events: pd.DataFrame | None = None,
+    reference_returns: pd.DataFrame | None = None,
 ) -> dict[str, Any]:
     """Convert deterministic target weights into full daily NAV only.
 
@@ -437,6 +459,7 @@ def execute_daily_nav(
             tradable_mask=tradable_mask,
             initial_capital=initial_capital,
             corporate_action_events=corporate_action_events,
+            reference_returns=reference_returns,
         )
         executions[name] = exout
         d = exout["daily_nav"]
@@ -510,10 +533,12 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
         initial_capital=cfg.initial_capital,
         tradable_mask=tradable,
         corporate_action_events=corporate_actions,
+        reference_returns=return_reference_matrix(panel, assets),
     )
 
     out = output_dir or (repo_root / "results" / "dsl" / spec.strategy_id)
     out.mkdir(parents=True, exist_ok=True)
+    save_return_reference_audit(result, out)
     (out / "history_coverage.json").write_text(json.dumps(history_coverage, ensure_ascii=False, indent=2), encoding="utf-8")
     daily = result["daily_nav"].rename(columns=lambda c: f"NAV_{c}")
     benchmark_meta = None

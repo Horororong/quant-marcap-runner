@@ -66,14 +66,16 @@ coverage table.
 
 Both markets match the calendar in both snapshots. Code 287410 has 89 missing
 sessions between 2024-06-13 and 2024-10-28 observations. This is a source fact,
-not a verified explanation. The event registry contains one merger in 2020 and
-no registered events in 2024; neither count proves absence of other events.
+not a verified explanation. These archived snapshots used registry version 1, with one merger in 2020 and
+no registered events in 2024. Registry version 2 subsequently adds the verified
+EcoPro split in 2024; neither snapshot count certifies complete event history.
 
 - [2020 summary](audits/krx-history-2020/history_audit.json) and [candidates](audits/krx-history-2020/history_review_candidates.csv)
 - [2024 summary](audits/krx-history-2024/history_audit.json) and [candidates](audits/krx-history-2024/history_review_candidates.csv)
 
 Remaining work: audit other years, reconcile historical calendar differences,
-verify relevant events with primary disclosures, detect discrepancies in held
-returns and add explicit supported event handling. This milestone does not
-repair finite raw-price discontinuities or supply dividend/total-return data.
+verify relevant events with primary disclosures, expand explicit supported event handling. Public DSL runners now fail on
+unresolved held-return discrepancies and support the registered EcoPro split;
+see [HELD_RETURN_VALIDATION.md](HELD_RETURN_VALIDATION.md). The audit candidates
+remain source observations, not automatic corrections or dividend/total returns.
 CURRENT remains the sole performance calculator.

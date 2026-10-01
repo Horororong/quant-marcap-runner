@@ -24,6 +24,12 @@ preflight와 범용 실행은 요청기간의 XKRX 거래일을 각 요청시장
 장기 실행의 원자료 검토에는 `docs/KRX_HISTORY_AUDIT.md`의 감사 절차를 사용하고,
 확인 후보를 전략 필터나 기업행동으로 자동 적용하지 않는다.
 
+범용 실행은 보유종목의 유효수익률을 `ChangesRatio/100`과 1bp 허용범위에서
+NAV 반영 전에 검증한다. 미확인 불일치·보유 참고수익률 누락은 중단한다.
+등록된 분할은 주식 수 비율로 보정하되 보정값도 검증한다. 합병 처분가치의
+명시적 예외는 감사에 기록한다. `return_reference_audit.json`에서 검증 활성화와
+예외를 확인한다. 상세 정의는 `docs/HELD_RETURN_VALIDATION.md`를 따른다.
+
 팩터 10분위 연구를 요청하면 같은 JSON에서 `portfolio.selection="deciles"`,
 `portfolio.weighting="equal"`로 지정하고 `number_of_positions`는 생략/null로 둔다.
 일반 상위 N종목 전략의 기본값은 `selection="top_n"`이다. 10분위는 필터와

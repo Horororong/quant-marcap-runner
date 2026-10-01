@@ -10,6 +10,7 @@ missing prices.
 from pathlib import Path
 
 import pandas as pd
+import numpy as np
 
 from execution_contract import CORPORATE_ACTION_REGISTRY_VERSION
 
@@ -57,15 +58,22 @@ def load_corporate_actions(
 
     x["event_type"] = x["event_type"].astype(str).str.strip().str.lower()
     x["share_ratio"] = pd.to_numeric(x["share_ratio"], errors="coerce")
-    x["cash_per_share"] = pd.to_numeric(x["cash_per_share"], errors="coerce").fillna(0.0)
+    x["cash_per_share"] = pd.to_numeric(x["cash_per_share"], errors="coerce")
 
-    if (x["event_type"] != "stock_merger").any():
-        bad = sorted(x.loc[x["event_type"] != "stock_merger", "event_type"].unique())
+    if (~x["event_type"].isin(["stock_merger", "stock_split"])).any():
+        bad = sorted(x.loc[~x["event_type"].isin(["stock_merger", "stock_split"]), "event_type"].unique())
         raise ValueError(f"unsupported corporate action types: {bad}")
-    if x["share_ratio"].isna().any() or (x["share_ratio"] <= 0).any():
+    if not np.isfinite(x["share_ratio"]).all() or (x["share_ratio"] <= 0).any():
         raise ValueError("stock_merger share_ratio must be > 0")
-    if (x["cash_per_share"] < 0).any():
+    if not np.isfinite(x["cash_per_share"]).all() or (x["cash_per_share"] < 0).any():
         raise ValueError("cash_per_share must be >= 0")
+    split = x["event_type"].eq("stock_split")
+    if (x.loc[split, "predecessor_code"] != x.loc[split, "successor_code"]).any() or x.loc[split, "cash_per_share"].ne(0).any():
+        raise ValueError("stock_split requires the same security code and zero cash_per_share")
+    if (x.loc[~split, "predecessor_code"] == x.loc[~split, "successor_code"]).any():
+        raise ValueError("stock_merger requires different predecessor and successor codes")
+    if x["source"].fillna("").str.strip().eq("").any():
+        raise ValueError("corporate-action registry requires a non-empty source")
     if x.duplicated(["event_date", "predecessor_code"]).any():
         raise ValueError("duplicate corporate action for event_date + predecessor_code")
 
