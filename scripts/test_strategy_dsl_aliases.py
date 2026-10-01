@@ -45,6 +45,15 @@ def main() -> None:
     assert mom["field"] == "momentum_12_1"
     assert mom["direction"] == "high"
 
+    vol = resolve_factor_alias("3개월 변동성", "낮은")
+    assert vol["source"] == "technical"
+    assert vol["field"] == "volatility_3m"
+    assert vol["direction"] == "low"
+
+    lowvol = resolve_factor_alias("3개월 저변동성")
+    assert lowvol["field"] == "volatility_3m"
+    assert lowvol["direction"] == "low"
+
     qroe = resolve_factor_alias("분기 ROE", "높은")
     assert qroe["source"] == "dart"
     assert qroe["field"] == "quarterly_roe"

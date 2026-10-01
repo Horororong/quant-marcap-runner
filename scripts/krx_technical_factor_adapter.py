@@ -27,12 +27,15 @@ class TechnicalFactorSpec:
     lookback_sessions: int
     skip_sessions: int
     description: str
+    calculation: str = "compound_return"
 
     def __post_init__(self) -> None:
         if self.lookback_sessions < 1:
             raise ValueError("lookback_sessions must be >= 1")
         if self.skip_sessions < 0 or self.skip_sessions >= self.lookback_sessions:
             raise ValueError("skip_sessions must satisfy 0 <= skip < lookback")
+        if self.calculation not in {"compound_return", "annualized_volatility"}:
+            raise ValueError(f"unsupported technical calculation: {self.calculation}")
 
 
 TECHNICAL_FACTOR_SPECS: dict[str, TechnicalFactorSpec] = {
@@ -52,6 +55,21 @@ TECHNICAL_FACTOR_SPECS: dict[str, TechnicalFactorSpec] = {
         "momentum_12_0", 252, 0,
         "compound KRX daily ChangesRatio over roughly 12 months through the signal date",
     ),
+    "volatility_3m": TechnicalFactorSpec(
+        "volatility_3m", 63, 0,
+        "annualized sample standard deviation of KRX daily ChangesRatio over 63 sessions",
+        calculation="annualized_volatility",
+    ),
+    "volatility_6m": TechnicalFactorSpec(
+        "volatility_6m", 126, 0,
+        "annualized sample standard deviation of KRX daily ChangesRatio over 126 sessions",
+        calculation="annualized_volatility",
+    ),
+    "volatility_12m": TechnicalFactorSpec(
+        "volatility_12m", 252, 0,
+        "annualized sample standard deviation of KRX daily ChangesRatio over 252 sessions",
+        calculation="annualized_volatility",
+    ),
 }
 
 
@@ -61,6 +79,7 @@ def technical_factor_catalog() -> list[dict]:
             "field": spec.field,
             "lookback_sessions": spec.lookback_sessions,
             "skip_sessions": spec.skip_sessions,
+            "calculation": spec.calculation,
             "description": spec.description,
         }
         for _, spec in sorted(TECHNICAL_FACTOR_SPECS.items())
@@ -182,10 +201,15 @@ class KrxTechnicalFactorAdapter:
                 window = wide.reindex(index=window_dates, columns=code_list)
                 daily = window / 100.0
                 complete = daily.notna().sum(axis=0).eq(required_count)
-                gross = 1.0 + daily
-                complete &= (gross > 0).all(axis=0)
-                compounded = gross.prod(axis=0, min_count=required_count) - 1.0
-                values.loc[complete.index[complete]] = compounded.loc[complete]
+                if spec.calculation == "compound_return":
+                    gross = 1.0 + daily
+                    complete &= (gross > 0).all(axis=0)
+                    calculated = gross.prod(axis=0, min_count=required_count) - 1.0
+                elif spec.calculation == "annualized_volatility":
+                    calculated = daily.std(axis=0, ddof=1) * np.sqrt(252.0)
+                else:
+                    raise AssertionError(spec.calculation)
+                values.loc[complete.index[complete]] = calculated.loc[complete]
             out[spec.field] = values.reindex(code_list).to_numpy(float)
 
         return out

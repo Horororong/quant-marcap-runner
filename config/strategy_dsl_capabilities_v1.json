@@ -30,7 +30,7 @@
     ],
     "unregistered_held_price_gap_policy": "fail"
   },
-  "dsl_machine_contract_version": "6",
+  "dsl_machine_contract_version": "7",
   "execution_constraints": {
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
@@ -43,7 +43,7 @@
     "high",
     "low"
   ],
-  "factor_registry_version": "5",
+  "factor_registry_version": "6",
   "factor_source_constraints": {
     "dart": {
       "reason": "current DART value adapter reconstructs standalone Q4 for April and Q2 for October signals only",
@@ -184,6 +184,24 @@
       "field": "momentum_6_1",
       "source": "technical",
       "storage": "external"
+    },
+    {
+      "description": "annualized sample standard deviation of KRX daily ChangesRatio over 252 sessions",
+      "field": "volatility_12m",
+      "source": "technical",
+      "storage": "external"
+    },
+    {
+      "description": "annualized sample standard deviation of KRX daily ChangesRatio over 63 sessions",
+      "field": "volatility_3m",
+      "source": "technical",
+      "storage": "external"
+    },
+    {
+      "description": "annualized sample standard deviation of KRX daily ChangesRatio over 126 sessions",
+      "field": "volatility_6m",
+      "source": "technical",
+      "storage": "external"
     }
   ],
   "filter_fields": [
@@ -311,6 +329,24 @@
       "description": "standalone-quarter revenue / signal-date market cap",
       "field": "sales_yield",
       "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "annualized sample standard deviation of KRX daily ChangesRatio over 252 sessions",
+      "field": "volatility_12m",
+      "source": "technical",
+      "storage": "external"
+    },
+    {
+      "description": "annualized sample standard deviation of KRX daily ChangesRatio over 63 sessions",
+      "field": "volatility_3m",
+      "source": "technical",
+      "storage": "external"
+    },
+    {
+      "description": "annualized sample standard deviation of KRX daily ChangesRatio over 126 sessions",
+      "field": "volatility_6m",
+      "source": "technical",
       "storage": "external"
     }
   ],
@@ -583,6 +619,75 @@
     },
     {
       "direction_relation": "same",
+      "field": "volatility_3m",
+      "fixed_direction": null,
+      "note": "Annualized sample standard deviation of 63 daily KRX ChangesRatio observations.",
+      "source": "technical",
+      "terms": [
+        "3개월 변동성",
+        "63일 변동성",
+        "3m volatility"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "volatility_3m",
+      "fixed_direction": "low",
+      "note": "Lower 63-session annualized realized volatility is preferred.",
+      "source": "technical",
+      "terms": [
+        "3개월 저변동성",
+        "3m low volatility"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "volatility_6m",
+      "fixed_direction": null,
+      "note": "Annualized sample standard deviation of 126 daily KRX ChangesRatio observations.",
+      "source": "technical",
+      "terms": [
+        "6개월 변동성",
+        "126일 변동성",
+        "6m volatility"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "volatility_6m",
+      "fixed_direction": "low",
+      "note": "Lower 126-session annualized realized volatility is preferred.",
+      "source": "technical",
+      "terms": [
+        "6개월 저변동성",
+        "6m low volatility"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "volatility_12m",
+      "fixed_direction": null,
+      "note": "Annualized sample standard deviation of 252 daily KRX ChangesRatio observations.",
+      "source": "technical",
+      "terms": [
+        "12개월 변동성",
+        "252일 변동성",
+        "12m volatility"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "volatility_12m",
+      "fixed_direction": "low",
+      "note": "Lower 252-session annualized realized volatility is preferred.",
+      "source": "technical",
+      "terms": [
+        "12개월 저변동성",
+        "12m low volatility"
+      ]
+    },
+    {
+      "direction_relation": "same",
       "field": "quarterly_roe",
       "fixed_direction": null,
       "note": "Standalone-quarter net income divided by latest reported positive equity.",
@@ -653,28 +758,53 @@
   "schema_version": "1.0",
   "technical_factors": [
     {
+      "calculation": "compound_return",
       "description": "compound KRX daily ChangesRatio over roughly 12 months through the signal date",
       "field": "momentum_12_0",
       "lookback_sessions": 252,
       "skip_sessions": 0
     },
     {
+      "calculation": "compound_return",
       "description": "compound KRX daily ChangesRatio over roughly 12 months, skipping the latest 1 month",
       "field": "momentum_12_1",
       "lookback_sessions": 252,
       "skip_sessions": 21
     },
     {
+      "calculation": "compound_return",
       "description": "compound KRX daily ChangesRatio over roughly 3 months, skipping the latest 1 month",
       "field": "momentum_3_1",
       "lookback_sessions": 63,
       "skip_sessions": 21
     },
     {
+      "calculation": "compound_return",
       "description": "compound KRX daily ChangesRatio over roughly 6 months, skipping the latest 1 month",
       "field": "momentum_6_1",
       "lookback_sessions": 126,
       "skip_sessions": 21
+    },
+    {
+      "calculation": "annualized_volatility",
+      "description": "annualized sample standard deviation of KRX daily ChangesRatio over 252 sessions",
+      "field": "volatility_12m",
+      "lookback_sessions": 252,
+      "skip_sessions": 0
+    },
+    {
+      "calculation": "annualized_volatility",
+      "description": "annualized sample standard deviation of KRX daily ChangesRatio over 63 sessions",
+      "field": "volatility_3m",
+      "lookback_sessions": 63,
+      "skip_sessions": 0
+    },
+    {
+      "calculation": "annualized_volatility",
+      "description": "annualized sample standard deviation of KRX daily ChangesRatio over 126 sessions",
+      "field": "volatility_6m",
+      "lookback_sessions": 126,
+      "skip_sessions": 0
     }
   ],
   "trading_day_rules": [

@@ -123,7 +123,10 @@
                       "momentum_12_0",
                       "momentum_12_1",
                       "momentum_3_1",
-                      "momentum_6_1"
+                      "momentum_6_1",
+                      "volatility_12m",
+                      "volatility_3m",
+                      "volatility_6m"
                     ]
                   },
                   "source": {
@@ -315,7 +318,10 @@
                   "quarterly_net_margin",
                   "quarterly_ocf_margin",
                   "quarterly_roe",
-                  "sales_yield"
+                  "sales_yield",
+                  "volatility_12m",
+                  "volatility_3m",
+                  "volatility_6m"
                 ]
               },
               "op": {
