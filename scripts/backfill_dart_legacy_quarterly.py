@@ -14,6 +14,7 @@ import xml.etree.ElementTree as ET
 
 import pandas as pd
 import requests
+from dart_collection_storage import archive_document, cached_document
 from bs4 import BeautifulSoup
 
 API_KEY = os.getenv('DART_API_KEY', '').strip()
@@ -206,10 +207,14 @@ def save_catalog(rows: list[dict]) -> pd.DataFrame:
 
 
 def download_document(rcept_no: str) -> list[tuple[str, str]]:
+    cached = cached_document(rcept_no)
     for attempt in range(4):
-        r = requests.get(f'{BASE}/document.xml', params={'crtfc_key': API_KEY, 'rcept_no': rcept_no}, timeout=90)
-        r.raise_for_status()
-        content = r.content
+        if cached is None:
+            r = requests.get(f'{BASE}/document.xml', params={'crtfc_key': API_KEY, 'rcept_no': rcept_no}, timeout=90)
+            r.raise_for_status()
+            content = r.content
+        else:
+            content = cached[0]
         if content[:2] != b'PK':
             txt = content.decode('utf-8', errors='ignore')
             if '<status>020</status>' in txt:
@@ -218,6 +223,7 @@ def download_document(rcept_no: str) -> list[tuple[str, str]]:
                 raise RuntimeError(f'Not a zip for {rcept_no}: {txt[:300]}')
             time.sleep(1 + attempt)
             continue
+        archive_document(rcept_no, content)
         docs = []
         with zipfile.ZipFile(io.BytesIO(content)) as z:
             for name in z.namelist():

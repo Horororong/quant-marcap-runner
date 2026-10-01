@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: dart-full-history-backfill
-  cancel-in-progress: true
+  group: dart-historical-collection
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -16,6 +16,7 @@ jobs:
     timeout-minutes: 180
     env:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
+      DART_COLLECTION_MAX_SECONDS: '9600'
       DART_FULL_BACKFILL_TASKS: '7000'
       DART_FULL_BACKFILL_WORKERS: ${{ vars.DART_FULL_BACKFILL_WORKERS || '6' }}
 
@@ -36,7 +37,12 @@ jobs:
       - name: Backfill PIT-safe DART history and build coverage report
         run: python scripts/run_full_dart_backfill.py
 
+      - name: Snapshot authoritative collection health
+        if: always()
+        run: python scripts/dart_backfill_health.py > data/status/dart_collection_health.json
+
       - name: Commit full-history datasets and coverage status
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -44,6 +50,8 @@ jobs:
           git add data/status/dart_full_backfill_state.csv data/status/dart_full_backfill_status.csv
           git add data/status/dart_pit_coverage_by_period.csv data/status/dart_pit_coverage_status.csv || true
           git add data/financials/full_history/*.csv.gz || true
+          git add data/financials/dart_raw/ || true
+          git add data/status/dart_full_collection_run.json data/status/dart_collection_health.json || true
           if git diff --cached --quiet; then
             echo "No DART full-history or status changes"
           else
@@ -59,6 +67,23 @@ jobs:
           name: dart-pit-backfill-status
           path: |
             data/status/dart_full_backfill_status.csv
+            data/status/dart_full_collection_run.json
+            data/status/dart_collection_health.json
+            data/status/dart_full_backfill_state.csv
             data/status/dart_pit_coverage_by_period.csv
             data/status/dart_pit_coverage_status.csv
+          if-no-files-found: warn
+
+      - name: Preserve raw sources and checkpoints after failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dart-raw-recovery-${{ github.run_id }}
+          compression-level: 0
+          retention-days: 90
+          path: |
+            data/financials/dart_raw/
+            data/financials/full_history/
+            data/financials/legacy_2000_2014/
+            data/status/dart*
           if-no-files-found: warn

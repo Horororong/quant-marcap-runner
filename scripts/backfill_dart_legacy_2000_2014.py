@@ -15,6 +15,7 @@ from pathlib import Path
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
+from dart_collection_storage import archive_document, cached_document, atomic_csv, bounded_results, CollectionRun, collector_lock, redacted_error, ensure_time_budget
 
 warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
@@ -23,6 +24,7 @@ START_YEAR = int(os.getenv("LEGACY_DART_START_YEAR", "2000"))
 END_YEAR = int(os.getenv("LEGACY_DART_END_YEAR", "2014"))
 MAX_INDEX_TASKS = max(1, int(os.getenv("LEGACY_DART_INDEX_TASKS", "6")))
 MAX_DOCS = max(1, int(os.getenv("LEGACY_DART_MAX_DOCS", "20")))
+CHECKPOINT_DOCS = max(1, int(os.getenv("DART_CHECKPOINT_TASKS", "100")))
 WORKERS = max(1, min(8, int(os.getenv("LEGACY_DART_WORKERS", "4"))))
 BASE = "https://opendart.fss.or.kr/api"
 PARSER_VERSION = "legacy-v4-book"
@@ -34,6 +36,7 @@ INDEX_FILE = ROOT / "legacy_filings.csv.gz"
 INDEX_STATE_FILE = STATUS_DIR / "dart_legacy_index_state.csv"
 STATE_FILE = STATUS_DIR / "dart_legacy_backfill_state.csv"
 STATUS_FILE = STATUS_DIR / "dart_legacy_backfill_status.csv"
+RUN_FILE = STATUS_DIR / "dart_legacy_collection_run.json"
 COVERAGE_FILE = STATUS_DIR / "dart_legacy_coverage_by_period.csv"
 NAME_MAP_FILE = ROOT / "krx_name_intervals.csv.gz"
 LIFE_FILE = Path("results/security_life_table.csv")
@@ -228,9 +231,11 @@ def parse_number(x: str) -> float:
 
 
 def dart_get_json(path: str, params: dict, timeout: int = 30) -> dict:
+    ensure_time_budget()
     last = None
     for attempt in range(4):
         try:
+            ensure_time_budget()
             r = requests.get(f"{BASE}/{path}", params=params, timeout=timeout)
             r.raise_for_status()
             obj = r.json()
@@ -257,7 +262,7 @@ def save_index(df: pd.DataFrame) -> None:
     if df.empty:
         return
     df = df.drop_duplicates("rcept_no", keep="last").sort_values(["rcept_dt", "rcept_no"])
-    df.to_csv(INDEX_FILE, index=False, encoding="utf-8-sig", compression="gzip")
+    atomic_csv(df, INDEX_FILE)
 
 
 def infer_report_fields(report_nm: str, filing_date: pd.Timestamp) -> dict:
@@ -320,7 +325,7 @@ def upsert_state(path: Path, rows: list[dict], key: str) -> None:
     else:
         out = pd.concat([old, new], ignore_index=True, sort=False)
     out = out.drop_duplicates(key, keep="last")
-    out.to_csv(path, index=False, encoding="utf-8-sig")
+    atomic_csv(out, path)
 
 
 def fetch_index_task(row: pd.Series) -> tuple[list[dict], dict]:
@@ -368,7 +373,7 @@ def fetch_index_task(row: pd.Series) -> tuple[list[dict], dict]:
     except Exception as e:
         state = {
             "task_key": row["task_key"], "status": "ERROR", "rows_found": len(found),
-            "updated_at_utc": now_utc(), "error": repr(e),
+            "updated_at_utc": now_utc(), "error": redacted_error(e),
         }
         return found, state
 
@@ -389,9 +394,6 @@ def update_filing_index() -> pd.DataFrame:
         if state["status"] == "ERROR" and "RateLimitExceeded" in state["error"]:
             break
 
-    if state_rows:
-        upsert_state(INDEX_STATE_FILE, state_rows, "task_key")
-
     if new_rows:
         add = pd.DataFrame(new_rows)
         all_idx = pd.concat([existing, add], ignore_index=True, sort=False) if not existing.empty else add
@@ -399,6 +401,13 @@ def update_filing_index() -> pd.DataFrame:
         all_idx = existing
 
     if all_idx.empty:
+        if state_rows:
+            upsert_state(INDEX_STATE_FILE, state_rows, "task_key")
+        index_error = next((r for r in state_rows if r["status"] == "ERROR"), None)
+        if index_error:
+            if "RateLimitExceeded" in index_error["error"]:
+                raise RateLimitExceeded("legacy filing index quota exhausted; saved partial index")
+            raise RuntimeError("legacy filing index error; saved state, retry incomplete tasks")
         return all_idx
 
     for c in ["rcept_no","corp_code","corp_name","report_nm","rcept_dt","corp_cls"]:
@@ -428,6 +437,13 @@ def update_filing_index() -> pd.DataFrame:
     all_idx = assign_fiscal_periods(all_idx)
     all_idx = map_filings_to_krx(all_idx)
     save_index(all_idx)
+    if state_rows:
+        upsert_state(INDEX_STATE_FILE, state_rows, "task_key")
+    index_error = next((r for r in state_rows if r["status"] == "ERROR"), None)
+    if index_error:
+        if "RateLimitExceeded" in index_error["error"]:
+            raise RateLimitExceeded("legacy filing index quota exhausted; saved partial index")
+        raise RuntimeError("legacy filing index error; saved state, retry incomplete tasks")
     return all_idx
 
 
@@ -759,6 +775,9 @@ def select_best_candidates(cands: list[dict]) -> list[dict]:
 
 
 def fetch_document(rcept_no: str) -> tuple[bytes, str]:
+    cached = cached_document(rcept_no)
+    if cached is not None:
+        return cached
     last=None
     for attempt in range(4):
         try:
@@ -771,7 +790,8 @@ def fetch_document(rcept_no: str) -> tuple[bytes, str]:
                 if "<status>014</status>" in txt or "파일이 존재하지 않습니다" in txt:
                     raise DocumentUnavailable(txt)
                 raise RuntimeError(f"document not zip: {txt}")
-            return r.content, hashlib.sha256(r.content).hexdigest()
+            _, digest = archive_document(rcept_no, r.content)
+            return r.content, digest
         except RateLimitExceeded:
             raise
         except (requests.Timeout, requests.ConnectionError) as e:
@@ -829,13 +849,13 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
         return rows,state
     except DocumentUnavailable as e:
         return [],{"rcept_no":rcept,"status":"NO_DOCUMENT","metric_rows":0,"best_scope":"",
-                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":repr(e)}
+                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":redacted_error(e)}
     except RateLimitExceeded as e:
         return [],{"rcept_no":rcept,"status":"RATE_LIMIT","metric_rows":0,"best_scope":"",
-                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":repr(e)}
+                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":redacted_error(e)}
     except Exception as e:
         return [],{"rcept_no":rcept,"status":"ERROR","metric_rows":0,"best_scope":"",
-                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":repr(e)}
+                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":redacted_error(e)}
 
 
 def append_normalized(rows: list[dict]) -> None:
@@ -849,10 +869,10 @@ def append_normalized(rows: list[dict]) -> None:
         old=load_csv(p,dtype={"rcept_no":str,"stock_code":str,"corp_code":str})
         out=pd.concat([old,g],ignore_index=True,sort=False) if not old.empty else g
         out=out.drop_duplicates(["rcept_no","metric","scope"],keep="last")
-        out.to_csv(p,index=False,encoding="utf-8-sig",compression="gzip")
+        atomic_csv(out, p)
 
 
-def process_pending(idx: pd.DataFrame) -> None:
+def process_pending(idx: pd.DataFrame, run=None) -> None:
     if idx.empty:
         return
     state=load_csv(STATE_FILE,dtype={"rcept_no":str})
@@ -870,21 +890,37 @@ def process_pending(idx: pd.DataFrame) -> None:
     if eligible.empty:
         return
 
-    metric_rows=[]
-    state_rows=[]
-    with ThreadPoolExecutor(max_workers=WORKERS) as ex:
-        futs={ex.submit(process_filing,r.to_dict()):str(r["rcept_no"]) for _,r in eligible.iterrows()}
-        rate_limited=False
-        for fut in as_completed(futs):
-            rows,st=fut.result()
-            metric_rows.extend(rows); state_rows.append(st)
-            if st["status"]=="RATE_LIMIT":
-                rate_limited=True
-        # already submitted requests cannot be cancelled reliably; next run resumes safely.
-
-    append_normalized(metric_rows)
-    if state_rows:
+    metric_rows=[]; state_rows=[]; completed=0; rate_limited=False; errors=False
+    initial_count = run.record["processed_this_run"] if run is not None else 0
+    if run:
+        run.update(phase="documents", planned_this_run=len(eligible))
+    def checkpoint():
+        if not state_rows:
+            return
+        append_normalized(metric_rows)
         upsert_state(STATE_FILE,state_rows,"rcept_no")
+        metric_rows.clear(); state_rows.clear()
+        if run:
+            run.update(processed_this_run=initial_count + completed, checkpoint_count=run.record["checkpoint_count"] + 1)
+        print(f"legacy DART checkpoint {completed}/{len(eligible)}", flush=True)
+    try:
+        for task, result, error in bounded_results(process_filing, eligible.to_dict("records"), WORKERS,
+                lambda result, error: error is not None or result[1]["status"] == "RATE_LIMIT"):
+            if error is not None:
+                raise error
+            rows, st = result
+            completed += 1
+            metric_rows.extend(rows); state_rows.append(st)
+            rate_limited = rate_limited or st["status"] == "RATE_LIMIT"
+            errors = errors or st["status"] == "ERROR"
+            if len(state_rows) >= CHECKPOINT_DOCS:
+                checkpoint()
+    finally:
+        checkpoint()
+    if rate_limited:
+        raise RateLimitExceeded("legacy DART quota exhausted; checkpoint saved")
+    if errors:
+        raise RuntimeError("legacy DART parsing errors; checkpoint saved, see task state")
 
 
 def write_coverage(idx: pd.DataFrame) -> None:
@@ -917,7 +953,7 @@ def write_coverage(idx: pd.DataFrame) -> None:
     cov["processing_pct"] = (100.0 * pd.to_numeric(cov["processed_filings"], errors="coerce").astype(float) / mapped_den).round(2)
     cov["usable_pct_of_processed"] = (100.0 * pd.to_numeric(cov["usable_four_factor_filings"], errors="coerce").astype(float) / processed_den).round(2)
     cov["generated_at_utc"]=now_utc()
-    cov.to_csv(COVERAGE_FILE,index=False,encoding="utf-8-sig")
+    atomic_csv(cov, COVERAGE_FILE)
 
     tasks=build_index_tasks()
     ist=load_index_state()
@@ -941,30 +977,40 @@ def write_coverage(idx: pd.DataFrame) -> None:
         "workers":WORKERS,
         "updated_at_utc":now_utc(),
     }])
-    status.to_csv(STATUS_FILE,index=False,encoding="utf-8-sig")
+    atomic_csv(status, STATUS_FILE)
 
 
-def main() -> None:
+def _collect(run) -> None:
     if not API_KEY:
-        pd.DataFrame([{"mode":"SKIPPED","reason":"DART_API_KEY missing","updated_at_utc":now_utc()}]).to_csv(
-            STATUS_FILE,index=False,encoding="utf-8-sig"
-        )
-        return
-
-    idx=update_filing_index()
-    process_pending(idx)
-    # Reload index/state after writes for accurate status.
-    idx=load_csv(INDEX_FILE,dtype={"rcept_no":str,"corp_code":str,"stock_code":str})
-    if not idx.empty:
-        idx["rcept_dt"]=pd.to_datetime(idx["rcept_dt"],errors="coerce")
-        idx["period_end"]=pd.to_datetime(idx["period_end"],errors="coerce")
-    write_coverage(idx)
+        raise RuntimeError("DART_API_KEY missing")
+    run.update(phase="index")
+    try:
+        idx=update_filing_index()
+        process_pending(idx, run)
+    finally:
+        idx=load_csv(INDEX_FILE,dtype={"rcept_no":str,"corp_code":str,"stock_code":str})
+        if not idx.empty:
+            idx["rcept_dt"]=pd.to_datetime(idx["rcept_dt"],errors="coerce")
+            idx["period_end"]=pd.to_datetime(idx["period_end"],errors="coerce")
+        write_coverage(idx)
 
     if STATUS_FILE.exists():
         print(pd.read_csv(STATUS_FILE).to_string(index=False),flush=True)
     if COVERAGE_FILE.exists():
         cov=pd.read_csv(COVERAGE_FILE)
         print(cov.head(30).to_string(index=False),flush=True)
+    run.finish("ok")
+
+
+def main() -> None:
+    with collector_lock(STATUS_DIR / ".dart_legacy_collection.lock"):
+        run = CollectionRun(RUN_FILE, "legacy_2000_2014")
+        try:
+            _collect(run)
+        except BaseException as exc:
+            status = "rate_limited" if isinstance(exc, RateLimitExceeded) else ("interrupted" if isinstance(exc, KeyboardInterrupt) else "failed")
+            run.finish(status, type(exc).__name__)
+            raise
 
 
 if __name__ == "__main__":

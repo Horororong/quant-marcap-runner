@@ -21,6 +21,7 @@ from pathlib import Path
 import pandas as pd
 
 import backfill_dart_full_financials as base
+from dart_collection_storage import atomic_csv
 
 _original_build_tasks = base.build_tasks
 _latest_tasks = pd.DataFrame()
@@ -73,7 +74,7 @@ def write_pit_coverage(tasks: pd.DataFrame) -> None:
     key_cols = ["stock_code", "corp_code", "year", "period", "fs_div"]
     expected = _normalise_task_keys(tasks)
     if expected.empty:
-        pd.DataFrame(
+        empty_coverage = pd.DataFrame(
             columns=[
                 "year",
                 "period",
@@ -91,8 +92,9 @@ def write_pit_coverage(tasks: pd.DataFrame) -> None:
                 "data_available_pct",
                 "generated_at_utc",
             ]
-        ).to_csv(COVERAGE_FILE, index=False, encoding="utf-8-sig")
-        pd.DataFrame(
+        )
+        atomic_csv(empty_coverage, COVERAGE_FILE)
+        empty_status = pd.DataFrame(
             [
                 {
                     "mode": "NO_AVAILABLE_TASKS",
@@ -107,7 +109,8 @@ def write_pit_coverage(tasks: pd.DataFrame) -> None:
                     "generated_at_utc": generated_at,
                 }
             ]
-        ).to_csv(COVERAGE_STATUS_FILE, index=False, encoding="utf-8-sig")
+        )
+        atomic_csv(empty_status, COVERAGE_STATUS_FILE)
         return
 
     expected = expected[key_cols].drop_duplicates().copy()
@@ -190,7 +193,7 @@ def write_pit_coverage(tasks: pd.DataFrame) -> None:
         .drop(columns="_period_order")
         .reset_index(drop=True)
     )
-    coverage.to_csv(COVERAGE_FILE, index=False, encoding="utf-8-sig")
+    atomic_csv(coverage, COVERAGE_FILE)
 
     total_expected = int(coverage["expected_tasks"].sum())
     total_completed = int(coverage["completed_tasks"].sum())
@@ -226,7 +229,7 @@ def write_pit_coverage(tasks: pd.DataFrame) -> None:
             }
         ]
     )
-    summary.to_csv(COVERAGE_STATUS_FILE, index=False, encoding="utf-8-sig")
+    atomic_csv(summary, COVERAGE_STATUS_FILE)
 
     print(
         f"PIT coverage mode={mode} completed={total_completed}/{total_expected} "
@@ -238,5 +241,8 @@ def write_pit_coverage(tasks: pd.DataFrame) -> None:
 base.build_tasks = build_tasks_fixed
 
 if __name__ == "__main__":
-    base.main()
-    write_pit_coverage(_latest_tasks)
+    try:
+        base.main()
+    finally:
+        if not _latest_tasks.empty:
+            write_pit_coverage(_latest_tasks)

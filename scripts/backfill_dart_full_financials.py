@@ -6,17 +6,18 @@ import os
 import re
 import time
 import zipfile
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
 import pandas as pd
 import requests
+from dart_collection_storage import archive_api_response, atomic_csv, bounded_results, CollectionRun, collector_lock, redacted_error, ensure_time_budget
 
 API_KEY = os.getenv("DART_API_KEY", "").strip()
 MAX_TASKS = max(1, int(os.getenv("DART_FULL_BACKFILL_TASKS", "3000")))
 WORKERS = max(1, min(8, int(os.getenv("DART_FULL_BACKFILL_WORKERS", "6"))))
+CHECKPOINT_TASKS = max(1, int(os.getenv("DART_CHECKPOINT_TASKS", "100")))
 BASE = "https://opendart.fss.or.kr/api"
 
 REPORT_CODES = {
@@ -41,6 +42,7 @@ CURRENT_YEAR_DIR = Path("data/krx_equities/yearly")
 MAP_FILE = ROOT / "dart_historical_code_map.csv"
 TASK_FILE = STATUS_DIR / "dart_full_backfill_state.csv"
 STATUS_FILE = STATUS_DIR / "dart_full_backfill_status.csv"
+RUN_FILE = STATUS_DIR / "dart_full_collection_run.json"
 
 ROOT.mkdir(parents=True, exist_ok=True)
 FULL_DIR.mkdir(parents=True, exist_ok=True)
@@ -169,7 +171,7 @@ def build_historical_code_map(corp: pd.DataFrame, now_kst: datetime) -> pd.DataF
         )
 
     out = pd.DataFrame(rows).sort_values("stock_code").reset_index(drop=True)
-    out.to_csv(MAP_FILE, index=False, encoding="utf-8-sig")
+    atomic_csv(out, MAP_FILE)
     return out
 
 
@@ -242,13 +244,19 @@ def api_call(task: dict) -> list[dict]:
     }
     for attempt in range(3):
         try:
+            ensure_time_budget()
             r = requests.get(f"{BASE}/fnlttSinglAcntAll.json", params=params, timeout=30)
             r.raise_for_status()
             obj = r.json()
             status = str(obj.get("status", ""))
             if status == "000":
-                return obj.get("list", []) or []
+                archive_api_response(params, obj)
+                rows = obj.get("list")
+                if not isinstance(rows, list) or not rows or not all(isinstance(item, dict) for item in rows):
+                    raise ValueError("DART success response requires a nonempty list of account objects")
+                return rows
             if status in {"013", "014"}:
+                archive_api_response(params, obj)
                 return []
             if status == "020":
                 raise RateLimitExceeded(obj.get("message", "request limit exceeded"))
@@ -309,8 +317,11 @@ def process_task(task: dict) -> tuple[dict, list[dict]]:
 def read_done_keys() -> set[tuple[str, str, int, str, str]]:
     if not TASK_FILE.exists():
         return set()
-    state = pd.read_csv(TASK_FILE, dtype={"stock_code": str, "corp_code": str})
+    state = latest_task_state(pd.read_csv(TASK_FILE, dtype={"stock_code": str, "corp_code": str}))
     done = state[state["status"].isin(["OK", "NO_DATA"])].copy()
+    for (year, period, fs), group in done[done["status"].eq("OK")].groupby(["year", "period", "fs_div"]):
+        if not shard_path(int(year), str(period), str(fs)).exists() and not list(FULL_DIR.glob(f"dart_full_{int(year)}_{period}_{fs}_*.csv.gz")):
+            done = done.drop(group.index)
     return set(
         zip(
             done["stock_code"].astype(str).str.zfill(6),
@@ -322,6 +333,36 @@ def read_done_keys() -> set[tuple[str, str, int, str, str]]:
     )
 
 
+TASK_KEYS = ["stock_code", "corp_code", "year", "period", "fs_div"]
+
+
+def latest_task_state(frame):
+    out = frame.copy()
+    if out.empty:
+        return out
+    out["stock_code"] = out["stock_code"].astype(str).str.zfill(6)
+    out["corp_code"] = out["corp_code"].astype(str)
+    out["year"] = pd.to_numeric(out["year"], errors="raise").astype(int)
+    return out.sort_values("updated_at_utc", kind="stable").drop_duplicates(TASK_KEYS, keep="last")
+
+
+def task_progress(tasks, state):
+    expected = tasks.reindex(columns=TASK_KEYS).drop_duplicates().copy()
+    if len(expected):
+        expected["stock_code"] = expected["stock_code"].astype(str).str.zfill(6)
+        expected["corp_code"] = expected["corp_code"].astype(str)
+        expected["year"] = expected["year"].astype(int)
+    state = latest_task_state(state)
+    matched = expected.merge(state.reindex(columns=TASK_KEYS + ["status"]), on=TASK_KEYS, how="left")
+    counts = matched["status"].value_counts()
+    completed = int(counts.get("OK", 0) + counts.get("NO_DATA", 0))
+    return {"total_available_tasks": len(expected), "completed_tasks": completed,
+            "ok_tasks": int(counts.get("OK", 0)), "no_data_tasks": int(counts.get("NO_DATA", 0)),
+            "error_tasks": int(counts.get("ERROR", 0)), "pending_tasks": int(matched["status"].isna().sum()),
+            "remaining_tasks_estimate": len(expected) - completed,
+            "state_tasks_outside_current_plan": len(state) - int(matched["status"].notna().sum())}
+
+
 def save_state(new_rows: list[dict]) -> pd.DataFrame:
     new = pd.DataFrame(new_rows)
     if TASK_FILE.exists():
@@ -330,12 +371,8 @@ def save_state(new_rows: list[dict]) -> pd.DataFrame:
     else:
         out = new
 
-    if len(out):
-        out["stock_code"] = out["stock_code"].astype(str).str.zfill(6)
-        out = out.sort_values("updated_at_utc").drop_duplicates(
-            ["stock_code", "corp_code", "year", "period", "fs_div"], keep="last"
-        )
-    out.to_csv(TASK_FILE, index=False, encoding="utf-8-sig")
+    out = latest_task_state(out)
+    atomic_csv(out, TASK_FILE)
     return out
 
 
@@ -344,28 +381,11 @@ def shard_path(year: int, period: str, fs_div: str) -> Path:
 
 
 def _batch_digest(df: pd.DataFrame) -> str:
-    cols = [
-        c
-        for c in [
-            "_stock_code",
-            "_corp_code",
-            "_requested_year",
-            "_period",
-            "_fs_div_requested",
-            "rcept_no",
-            "sj_div",
-            "account_id",
-            "account_nm",
-            "thstrm_nm",
-        ]
-        if c in df.columns
-    ]
-    if not cols:
-        payload = str(len(df)).encode("utf-8")
-    else:
-        stable = df[cols].fillna("").astype(str).sort_values(cols)
-        payload = stable.to_csv(index=False).encode("utf-8")
-    return hashlib.sha1(payload).hexdigest()[:16]
+    # Include every source value, including amounts/unknown future account
+    # fields. Identical observations deduplicate despite a new collection time.
+    cols = sorted(c for c in df.columns if c != "_collected_at_utc")
+    stable = df[cols].fillna("").astype(str).sort_values(cols)
+    return hashlib.sha256(stable.to_csv(index=False).encode("utf-8")).hexdigest()
 
 
 def merge_full_rows(new_rows: list[dict]) -> int:
@@ -427,13 +447,60 @@ def merge_full_rows(new_rows: list[dict]) -> int:
                 f"dart_full_{int(year)}_{str(period)}_{str(fs_div)}_{digest}.csv.gz"
             )
             if not path.exists():
-                chunk.to_csv(path, index=False, encoding="utf-8-sig", compression="gzip")
+                atomic_csv(chunk, path)
             total_written += len(chunk)
 
     return total_written
 
 
-def main() -> None:
+def collect_task_batch(pending, workers, run=None):
+    """Shared durable writer for generic and prioritized collection paths."""
+    initial_count = run.record["processed_this_run"] if run is not None else 0
+    states: list[dict] = []
+    full_rows: list[dict] = []
+    rate_limited = False
+    fatal = None
+    errors = 0
+    completed = 0
+    rows_written_this_run = 0
+
+    def checkpoint():
+        nonlocal rows_written_this_run
+        if not states:
+            return
+        # Source rows first, terminal state second: crashes must not claim
+        # completion for a source file that was never durably written.
+        rows_written_this_run += merge_full_rows(full_rows)
+        save_state(states)
+        states.clear(); full_rows.clear()
+        if run is not None:
+            run.update(processed_this_run=initial_count + completed, checkpoint_count=run.record["checkpoint_count"] + 1)
+        print(f"DART full backfill checkpoint {completed}/{len(pending)}", flush=True)
+
+    try:
+        for task, result, error in bounded_results(process_task, pending.to_dict("records"), workers,
+                lambda result, error: isinstance(error, (RateLimitExceeded, FatalDartError))):
+            completed += 1
+            if error is None:
+                state, rows = result
+                states.append(state); full_rows.extend(rows)
+            else:
+                errors += 1
+                rate_limited = rate_limited or isinstance(error, RateLimitExceeded)
+                if isinstance(error, FatalDartError):
+                    fatal = error
+                states.append({**task, "status": "ERROR", "rows_saved": 0,
+                               "error": f"RATE_LIMIT: {redacted_error(error)}" if isinstance(error, RateLimitExceeded) else redacted_error(error),
+                               "updated_at_utc": datetime.now(timezone.utc).isoformat()})
+            if len(states) >= CHECKPOINT_TASKS:
+                checkpoint()
+    finally:
+        checkpoint()
+
+    return {"processed_tasks": completed, "rows_written": rows_written_this_run, "rate_limited": rate_limited, "fatal": fatal, "errors": errors}
+
+
+def _collect(run) -> None:
     if not API_KEY:
         raise FatalDartError("DART_API_KEY is missing")
 
@@ -467,85 +534,55 @@ def main() -> None:
         flush=True,
     )
 
-    states: list[dict] = []
-    full_rows: list[dict] = []
-    rate_limited = False
+    run.update(phase="collect", planned_this_run=len(pending), total_available_tasks=len(tasks))
+    batch = collect_task_batch(pending, WORKERS, run)
+    fatal, rate_limited = batch["fatal"], batch["rate_limited"]
+    rows_written_this_run = batch["rows_written"]
 
-    if len(pending):
-        with ThreadPoolExecutor(max_workers=WORKERS) as executor:
-            future_map = {
-                executor.submit(process_task, row.to_dict()): row.to_dict()
-                for _, row in pending.iterrows()
-            }
-            completed = 0
-            for future in as_completed(future_map):
-                task = future_map[future]
-                try:
-                    state, rows = future.result()
-                    states.append(state)
-                    full_rows.extend(rows)
-                except RateLimitExceeded as exc:
-                    rate_limited = True
-                    states.append(
-                        {
-                            **task,
-                            "status": "ERROR",
-                            "rows_saved": 0,
-                            "error": f"RATE_LIMIT: {exc}",
-                            "updated_at_utc": datetime.now(timezone.utc).isoformat(),
-                        }
-                    )
-                except FatalDartError:
-                    raise
-                except Exception as exc:
-                    states.append(
-                        {
-                            **task,
-                            "status": "ERROR",
-                            "rows_saved": 0,
-                            "error": repr(exc),
-                            "updated_at_utc": datetime.now(timezone.utc).isoformat(),
-                        }
-                    )
-
-                completed += 1
-                if completed % 250 == 0 or completed == len(pending):
-                    print(f"DART full backfill progress {completed}/{len(pending)}", flush=True)
-
-    rows_written_this_run = merge_full_rows(full_rows)
-
-    if states:
-        state_df = save_state(states)
-    elif TASK_FILE.exists():
-        state_df = pd.read_csv(TASK_FILE)
+    if TASK_FILE.exists():
+        state_df = pd.read_csv(TASK_FILE, dtype={"stock_code": str, "corp_code": str})
     else:
         state_df = pd.DataFrame()
 
-    done_count = int(state_df["status"].isin(["OK", "NO_DATA"]).sum()) if len(state_df) else 0
-    error_count = int((state_df["status"] == "ERROR").sum()) if len(state_df) else 0
+    progress = task_progress(tasks, state_df)
     unmatched_count = int((mapping["mapping_method"] == "unmatched").sum())
 
     status_df = pd.DataFrame(
         [
             {
-                "status": "RATE_LIMITED" if rate_limited else "OK",
+                "status": "FAILED" if fatal else ("RATE_LIMITED" if rate_limited else ("PARTIAL_ERRORS" if progress["error_tasks"] else "OK")),
                 "historical_codes": len(mapping),
                 "mapped_codes": mapped_count,
                 "unmatched_codes": unmatched_count,
-                "total_available_tasks": len(tasks),
-                "completed_tasks": done_count,
-                "remaining_tasks_estimate": max(0, len(tasks) - done_count),
-                "error_tasks": error_count,
+                **progress,
                 "full_rows_written_this_run": rows_written_this_run,
                 "full_shards_present": len(list(FULL_DIR.glob("dart_full_*.csv.gz"))),
                 "max_tasks_per_run": MAX_TASKS,
                 "workers": WORKERS,
-                "updated_at_utc": now_utc.isoformat(),
+                "updated_at_utc": datetime.now(timezone.utc).isoformat(),
             }
         ]
     )
-    status_df.to_csv(STATUS_FILE, index=False, encoding="utf-8-sig")
+    atomic_csv(status_df, STATUS_FILE)
     print(status_df.to_string(index=False), flush=True)
+    run.finish(status_df.iloc[0]["status"].lower(), redacted_error(fatal) if fatal else None)
+    if fatal:
+        raise fatal
+    if rate_limited:
+        raise RateLimitExceeded("DART quota exhausted; checkpoint saved, remaining tasks resumable")
+    if progress["error_tasks"]:
+        raise RuntimeError("DART task errors remain; checkpoint saved, see task state")
+
+
+def main() -> None:
+    with collector_lock(STATUS_DIR / ".dart_full_collection.lock"):
+        run = CollectionRun(RUN_FILE, "full_history")
+        try:
+            _collect(run)
+        except BaseException as exc:
+            if run.record["status"] == "running":
+                run.finish("interrupted" if isinstance(exc, KeyboardInterrupt) else "failed", type(exc).__name__)
+            raise
 
 
 if __name__ == "__main__":

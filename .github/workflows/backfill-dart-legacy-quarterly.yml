@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: dart-legacy-quarterly-backfill
-  cancel-in-progress: true
+  group: dart-historical-collection
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -40,6 +40,7 @@ jobs:
         run: python scripts/run_dart_legacy_quarterly.py
 
       - name: Commit legacy datasets
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -47,6 +48,7 @@ jobs:
           git add data/status/dart_legacy_search_state.csv || true
           git add data/status/dart_legacy_parse_state.csv || true
           git add data/status/dart_legacy_status.csv || true
+          git add data/financials/dart_raw/ || true
           if git diff --cached --quiet; then
             echo "No legacy DART changes"
           else

@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - 'scripts/dart_collection_storage.py'
       - 'scripts/backfill_dart_legacy_2000_2014.py'
       - 'scripts/backfill_super_value_fast.py'
       - '.github/workflows/validate-legacy-parser.yml'
@@ -22,7 +23,7 @@ jobs:
       - name: Install parser dependencies
         run: pip install pandas requests beautifulsoup4 lxml
       - name: Compile parser
-        run: python -m py_compile scripts/backfill_dart_legacy_2000_2014.py scripts/backfill_super_value_fast.py
+        run: python -m py_compile scripts/dart_collection_storage.py scripts/backfill_dart_legacy_2000_2014.py scripts/backfill_super_value_fast.py
       - name: Schema sanity
         run: |
           python - <<'PY'

@@ -76,3 +76,13 @@ momentum and volatility reuse repository KRX history; dividend events and PIT
 security classifications need their own data contracts. Current seven DART
 factors and seven technical factors are a research starting point, not the full
 general-purpose factor library.
+
+## Follow-up: scheduled priority collector found and storage fixed
+
+The earlier inspection covered three generic historical workflow pages. Further
+September 17–October 1 commit tracing identified the separate scheduled fast
+collector. Its September 30 run 36770908185 succeeded in 2h32m45s and generated
+the later stored updates. Thus generic-workflow failures do not establish that
+all collection had stopped. See [DART_COLLECTION.md](DART_COLLECTION.md) for the
+verified active path, broader scope, source/checkpoint fixes and refreshed counts.
+This still does not provide another GPT sandbox's chat/process history.

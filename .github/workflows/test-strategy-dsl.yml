@@ -4,6 +4,18 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - 'scripts/dart_collection_storage.py'
+      - 'scripts/dart_backfill_health.py'
+      - 'scripts/test_dart_collection.py'
+      - 'scripts/backfill_dart_full_financials.py'
+      - 'scripts/run_full_dart_backfill.py'
+      - 'scripts/backfill_dart_legacy_2000_2014.py'
+      - 'scripts/backfill_dart_legacy_quarterly.py'
+      - 'scripts/backfill_super_value_fast.py'
+      - 'scripts/backfill_super_value_signals.py'
+      - '.github/workflows/backfill-super-value-*.yml'
+      - '.github/workflows/backfill-dart-*.yml'
+      - 'docs/DART_COLLECTION.md'
       - 'scripts/strategy_dsl.py'
       - 'scripts/krx_technical_factor_adapter.py'
       - 'scripts/test_krx_technical_factor_adapter.py'
@@ -87,12 +99,16 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pandas numpy pyarrow exchange_calendars plotly jsonschema requests
+          pip install pandas numpy pyarrow exchange_calendars plotly jsonschema requests beautifulsoup4 lxml
       - name: Syntax check
         run: |
           python -m py_compile scripts/strategy_dsl_run.py scripts/test_strategy_dsl_run.py scripts/test_dsl_run_e2e.py scripts/corporate_action_preflight.py scripts/test_corporate_action_preflight.py scripts/test_strategy_dsl_validation.py scripts/cash_share_exchange.py scripts/test_cash_share_exchange.py scripts/execution_contract.py scripts/export_strategy_dsl_contract.py scripts/strategy_dsl_aliases.py scripts/strategy_dsl_preflight.py scripts/krx_technical_factor_adapter.py scripts/factor_registry.py scripts/corporate_action_registry.py scripts/strategy_dsl.py scripts/strategy_dsl_runner.py scripts/dart_value_factor_adapter.py scripts/test_factor_registry.py scripts/test_strategy_dsl_aliases.py scripts/test_strategy_dsl_preflight.py scripts/test_strategy_dsl_benchmark.py scripts/test_krx_technical_factor_adapter.py scripts/test_krx_volatility_factor_adapter.py scripts/test_corporate_action_execution.py scripts/test_strategy_dsl.py scripts/test_dart_dsl_super_value.py scripts/test_dsl_execution_e2e.py scripts/strategy_dsl_deciles.py scripts/test_strategy_dsl_deciles.py scripts/test_dsl_deciles_e2e.py scripts/krx_history_audit.py scripts/test_krx_history_audit.py scripts/test_held_return_guard.py scripts/corporate_action_reconciliation.py scripts/test_corporate_action_reconciliation.py scripts/quant_backtest_template_CURRENT.py scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py scripts/quant_backtest_postprocess.py scripts/test_canonical_performance.py scripts/test_verified_autumn_splits.py scripts/krx_market_normalization.py scripts/repair_krx_market_segments.py scripts/update_krx_equities_daily.py scripts/test_krx_market_normalization.py
       - name: Check machine-readable DSL contract
         run: python scripts/export_strategy_dsl_contract.py --check
+      - name: DART source archive checkpoint resume and authoritative health
+        run: |
+          python -m py_compile scripts/dart_collection_storage.py scripts/dart_backfill_health.py scripts/backfill_dart_full_financials.py scripts/run_full_dart_backfill.py scripts/backfill_dart_legacy_2000_2014.py scripts/backfill_dart_legacy_quarterly.py scripts/backfill_super_value_fast.py scripts/backfill_super_value_signals.py scripts/test_dart_collection.py
+          python scripts/test_dart_collection.py
       - name: Strict DSL input validation and normalization compatibility
         run: python scripts/test_strategy_dsl_validation.py
       - name: Checked execution lifecycle and CURRENT readiness

@@ -247,3 +247,17 @@ outstanding.
 
 Annual/rolling performance and evaluated OOS reports remain follow-up work;
 this milestone does not claim full-history corporate-action correctness.
+
+## DART collection continuation
+
+Collection storage/status contract 1 is developed from checked-run commit
+b2d3631 on a feature branch. Engine/registry/machine/performance versions are
+unchanged. Read docs/DART_COLLECTION.md before collection changes. The actual
+scheduled updater is backfill-super-value-fast.yml: September 30 run 36770908185
+succeeded, beyond the earlier three manual-workflow diagnosis. New code preserves
+whole responses/ZIPs, changed amounts, checkpoint/resume and current-plan counts;
+fast scheduling explicitly requests all_filings/both. Signal acceleration no
+longer discards non-super-value source accounts. Full 2015 quarterly tasks remain
+excluded. Local state snapshots are not live-process or PIT certificates.
+Deploy verified code to the collection owner before claiming the fixes are live;
+this checkout lacks DART_API_KEY and cannot launch an authenticated collector.

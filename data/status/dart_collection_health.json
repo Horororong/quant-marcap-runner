@@ -1,0 +1,64 @@
+{
+  "contract_version": "1",
+  "generated_at_utc": "2026-10-01T15:32:57.141512+00:00",
+  "scope": "offline collection snapshot; task completion/parse success do not certify validated PIT factors",
+  "full_history": {
+    "total_available_tasks": 222884,
+    "completed_tasks": 123260,
+    "ok_tasks": 89366,
+    "no_data_tasks": 33894,
+    "error_tasks": 0,
+    "pending_tasks": 99624,
+    "remaining_tasks_estimate": 99624,
+    "state_tasks_outside_current_plan": 7154,
+    "state_status_counts": {
+      "OK": 89366,
+      "NO_DATA": 41048
+    },
+    "source_snapshot": {
+      "file": "data/status/dart_full_backfill_state.csv",
+      "sha256": "604107cce8b708b6d9c2007dd157df075b3b9d5ac1a19ab6dbfab1123d8ae6f0",
+      "bytes": 11334022,
+      "latest_task_update_utc": "2026-09-30T20:25:33.455290+00:00"
+    },
+    "mapped_codes": 3986,
+    "unresolved_codes": 156,
+    "missing_raw_groups": [],
+    "run": {
+      "observation": "unknown",
+      "reason": "no instrumented collector run record"
+    }
+  },
+  "legacy": {
+    "source_snapshot": {
+      "file": "data/status/dart_legacy_backfill_state.csv",
+      "sha256": "9f19c9a7a81f5b1ba4e029962c66d28635796ddc56e8ac515b0bcc8643eac631",
+      "bytes": 2103527,
+      "latest_task_update_utc": "2026-09-30T22:43:55.305492+00:00"
+    },
+    "receipt_status_counts": {
+      "NO_METRICS": 5577,
+      "PARSED_4F": 3488,
+      "PARSED_PARTIAL": 3012,
+      "NO_DOCUMENT": 1239,
+      "ERROR": 28,
+      "RATE_LIMIT": 1
+    },
+    "run": {
+      "observation": "unknown",
+      "reason": "no instrumented collector run record"
+    },
+    "provider_connected": false
+  },
+  "fast_backfill": {
+    "observation": "unknown",
+    "reason": "no instrumented collector run record"
+  },
+  "raw_archives": {
+    "directory": "data/financials/dart_raw",
+    "document_zip_count": 0,
+    "api_json_count": 0,
+    "precontract_whole_account_coverage": "not_certified; some historical collectors filtered source accounts",
+    "scope": "newly archived sources only; historical terminal states were not re-downloaded"
+  }
+}

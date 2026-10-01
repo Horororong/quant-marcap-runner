@@ -134,3 +134,17 @@ compares every component artifact byte-for-byte with the existing runner,
 rejects known Jeisys exposure in top_n/deciles and missing historical data
 before NAV, and runs actual DART PIT/benchmark/held-return execution.
 Both are included alongside all prior tests in the full Strategy DSL workflow.
+
+## Storage and retention
+
+Run directories contain DSL snapshots, NAV, audit and report outputs; they do
+not copy the repository's KRX/DART source datasets. Repeated runs still consume
+space, especially long histories and ten portfolios. There is no automatic
+retention/deletion policy yet. Treat important runs as immutable evidence and
+apply an explicit age/size policy to disposable research runs. No old results
+were deleted in the collection milestone.
+
+Overwriting a cache or a latest-result pointer can be appropriate. Replacing
+an established result in place during execution can lose the prior validated
+result if the replacement fails. The checked runner therefore reserves a new
+run; a future latest alias should change atomically only after success.

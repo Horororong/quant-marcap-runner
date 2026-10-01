@@ -4,16 +4,21 @@ from __future__ import annotations
 
 import importlib.util
 import os
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 import pandas as pd
+from dart_collection_storage import CollectionRun, atomic_csv, collector_lock
 
 ROOT = Path(".")
 STATUS_DIR = Path("data/status")
 STATUS_DIR.mkdir(parents=True, exist_ok=True)
 STATUS_FILE = STATUS_DIR / "super_value_fast_backfill_status.csv"
+RUN_FILE = STATUS_DIR / "dart_fast_collection_run.json"
+COLLECTION_SCOPE = os.getenv("DART_COLLECTION_SCOPE", "signal_priority")
+STATEMENT_SCOPE = os.getenv("DART_STATEMENT_SCOPE", "cfs_first")
+if COLLECTION_SCOPE not in {"signal_priority", "all_filings"} or STATEMENT_SCOPE not in {"cfs_first", "both"}:
+    raise ValueError("unsupported DART collection/statement scope")
 
 MODERN_LIMIT = max(0, int(os.getenv("SUPER_VALUE_FAST_MODERN_TASKS", "8000")))
 LEGACY_LIMIT = max(0, int(os.getenv("SUPER_VALUE_FAST_LEGACY_DOCS", "5000")))
@@ -45,8 +50,8 @@ def terminal_state_map(path: Path) -> dict[tuple[str, str, int, str, str], str]:
     s = pd.read_csv(path, dtype={"stock_code": str, "corp_code": str})
     if s.empty:
         return {}
-    s["stock_code"] = s["stock_code"].astype(str).str.zfill(6)
-    s["year"] = pd.to_numeric(s["year"], errors="coerce").astype("Int64")
+    s = modern.latest_task_state(s)
+    durable = modern.read_done_keys()
     out = {}
     for _, r in s.dropna(subset=["year"]).iterrows():
         key = (
@@ -56,7 +61,7 @@ def terminal_state_map(path: Path) -> dict[tuple[str, str, int, str, str], str]:
             str(r["period"]),
             str(r["fs_div"]),
         )
-        out[key] = str(r["status"])
+        out[key] = str(r["status"]) if r["status"] != "OK" or key in durable else "MISSING_RAW"
     return out
 
 
@@ -70,54 +75,24 @@ def task_key(r) -> tuple[str, str, int, str, str]:
     )
 
 
-def process_modern_batch(tasks: pd.DataFrame) -> tuple[list[dict], list[dict], bool]:
-    states: list[dict] = []
-    rows: list[dict] = []
-    rate_limited = False
-    if tasks.empty:
-        return states, rows, rate_limited
-
-    with ThreadPoolExecutor(max_workers=MODERN_WORKERS) as ex:
-        futs = {ex.submit(modern.process_task, r.to_dict()): r.to_dict() for _, r in tasks.iterrows()}
-        n = 0
-        for fut in as_completed(futs):
-            task = futs[fut]
-            try:
-                state, recs = fut.result()
-                states.append(state)
-                rows.extend(recs)
-            except modern.RateLimitExceeded as e:
-                rate_limited = True
-                states.append({
-                    **task,
-                    "status": "ERROR",
-                    "rows_saved": 0,
-                    "error": f"RATE_LIMIT: {e}",
-                    "updated_at_utc": datetime.now(timezone.utc).isoformat(),
-                })
-            except modern.FatalDartError:
-                raise
-            except Exception as e:
-                states.append({
-                    **task,
-                    "status": "ERROR",
-                    "rows_saved": 0,
-                    "error": repr(e),
-                    "updated_at_utc": datetime.now(timezone.utc).isoformat(),
-                })
-            n += 1
-            if n % 500 == 0 or n == len(tasks):
-                print(f"super-value modern fast progress {n}/{len(tasks)}", flush=True)
-    return states, rows, rate_limited
+def process_modern_batch(tasks: pd.DataFrame, run=None) -> dict:
+    batch = modern.collect_task_batch(tasks, MODERN_WORKERS, run)
+    if batch["fatal"]:
+        raise batch["fatal"]
+    if batch["errors"] and not batch["rate_limited"]:
+        raise RuntimeError("modern fast task errors; checkpoint saved")
+    return batch
 
 
-def modern_fast() -> dict:
+def modern_fast(run=None) -> dict:
     now_utc = datetime.now(timezone.utc)
     now_kst = now_utc + timedelta(hours=9)
 
     corp = modern.load_all_dart_corps()
     mapping = modern.build_historical_code_map(corp, now_kst)
     tasks = modern.build_tasks(mapping, now_kst)
+    if len(tasks):
+        tasks = tasks.loc[~((tasks["year"].astype(int) == 2015) & tasks["period"].ne("FY"))].copy()
     if tasks.empty:
         return {"modern_total_cfs": 0, "modern_cfs_done": 0, "modern_fallback_done": 0,
                 "modern_run_tasks": 0, "modern_rate_limited": False}
@@ -135,37 +110,35 @@ def modern_fast() -> dict:
     pending_cfs = pending_cfs.sort_values(["year", "_po", "stock_code"]).drop(columns="_po")
 
     phase1 = pending_cfs.head(MODERN_LIMIT).copy()
-    states1, rows1, limited1 = process_modern_batch(phase1)
-    if rows1:
-        modern.merge_full_rows(rows1)
-    if states1:
-        modern.save_state(states1)
+    if run:
+        run.update(phase="modern_cfs")
+    batch1 = process_modern_batch(phase1, run)
+    limited1 = batch1["rate_limited"]
 
-    used = len(phase1)
+    used = batch1["processed_tasks"]
     left = max(MODERN_LIMIT - used, 0)
 
-    # CFS first. OFS is requested only when CFS explicitly reports NO_DATA.
-    # This avoids the roughly 2x cost of downloading OFS for every company-period.
+    # CFS first; default OFS is fallback, explicit broad scope collects both.
     states_after = terminal_state_map(modern.TASK_FILE)
     fallback_rows = []
-    if left > 0:
+    if left > 0 and not limited1:
         ofs = tasks[tasks["fs_div"] == "OFS"].copy()
         for _, r in ofs.iterrows():
             ofs_key = task_key(r)
             cfs_key = (ofs_key[0], ofs_key[1], ofs_key[2], ofs_key[3], "CFS")
-            if states_after.get(cfs_key) == "NO_DATA" and states_after.get(ofs_key, "") not in terminal:
+            if (STATEMENT_SCOPE == "both" or states_after.get(cfs_key) == "NO_DATA") and states_after.get(ofs_key, "") not in terminal:
                 fallback_rows.append(r)
     fallback = pd.DataFrame(fallback_rows)
     if not fallback.empty:
         fallback["_po"] = fallback["period"].map(period_order).fillna(9)
         fallback = fallback.sort_values(["year", "_po", "stock_code"]).drop(columns="_po").head(left)
-        states2, rows2, limited2 = process_modern_batch(fallback)
-        if rows2:
-            modern.merge_full_rows(rows2)
-        if states2:
-            modern.save_state(states2)
+        if run:
+            run.update(phase="modern_ofs")
+        batch2 = process_modern_batch(fallback, run)
+        limited2 = batch2["rate_limited"]
+        used += batch2["processed_tasks"]
     else:
-        states2, limited2 = [], False
+        limited2 = False
 
     state_final = terminal_state_map(modern.TASK_FILE)
     cfs_done = 0
@@ -188,7 +161,10 @@ def modern_fast() -> dict:
         "modern_cfs_completion_pct": round(100.0 * cfs_done / len(cfs), 2) if len(cfs) else 0.0,
         "modern_fallback_needed": fallback_needed,
         "modern_fallback_done": fallback_done,
-        "modern_run_tasks": len(phase1) + (len(fallback) if not fallback.empty else 0),
+        "modern_total_ofs": int(tasks["fs_div"].eq("OFS").sum()),
+        "modern_ofs_done": sum(state_final.get(task_key(row), "") in terminal
+                               for _, row in tasks[tasks["fs_div"].eq("OFS")].iterrows()),
+        "modern_run_tasks": used,
         "modern_rate_limited": bool(limited1 or limited2),
     }
 
@@ -263,7 +239,7 @@ def legacy_done_set() -> set[str]:
     return set(s.loc[s["status"].isin(terminal), "rcept_no"].astype(str))
 
 
-def legacy_fast() -> dict:
+def legacy_fast(run=None) -> dict:
     # update_filing_index resumes from the existing index-state file; with INDEX_TASKS=180
     # it can finish all remaining list-query buckets in one run, subject to DART limits.
     idx = legacy.update_filing_index()
@@ -273,67 +249,69 @@ def legacy_fast() -> dict:
         return {"legacy_target_docs": 0, "legacy_target_done": 0, "legacy_run_docs": 0,
                 "legacy_target_completion_pct": 0.0}
 
-    targets = legacy_target_index(idx)
+    targets = legacy_target_index(idx) if COLLECTION_SCOPE == "signal_priority" else idx[
+        idx["stock_code"].fillna("").astype(str).str.fullmatch(r"\d{6}")].copy()
     done = legacy_done_set()
     pending = targets[~targets["rcept_no"].astype(str).isin(done)].copy()
-    pending = pending.sort_values(["signal_cutoff", "stock_code", "period", "rcept_dt"]).head(LEGACY_LIMIT)
+    ordering = ["signal_cutoff", "stock_code", "period", "rcept_dt"] if COLLECTION_SCOPE == "signal_priority" else ["rcept_dt", "rcept_no"]
+    pending = pending.sort_values(ordering).head(LEGACY_LIMIT)
 
-    metric_rows: list[dict] = []
-    state_rows: list[dict] = []
-    rate_limited = False
-    if not pending.empty:
-        with ThreadPoolExecutor(max_workers=LEGACY_WORKERS) as ex:
-            futs = {ex.submit(legacy.process_filing, r.to_dict()): str(r["rcept_no"]) for _, r in pending.iterrows()}
-            n = 0
-            for fut in as_completed(futs):
-                rows, st = fut.result()
-                metric_rows.extend(rows)
-                state_rows.append(st)
-                if st.get("status") == "RATE_LIMIT":
-                    rate_limited = True
-                n += 1
-                if n % 250 == 0 or n == len(pending):
-                    print(f"super-value legacy fast progress {n}/{len(pending)}", flush=True)
-
-    if metric_rows:
-        legacy.append_normalized(metric_rows)
-    if state_rows:
-        legacy.upsert_state(legacy.STATE_FILE, state_rows, "rcept_no")
-
+    legacy.MAX_DOCS = LEGACY_LIMIT
+    legacy.WORKERS = LEGACY_WORKERS
+    try:
+        legacy.process_pending(pending, run)
+    finally:
+        latest_idx = legacy.load_csv(legacy.INDEX_FILE, dtype={"rcept_no": str, "stock_code": str, "corp_code": str})
+        if not latest_idx.empty:
+            latest_idx["rcept_dt"] = pd.to_datetime(latest_idx["rcept_dt"], errors="coerce")
+            latest_idx["period_end"] = pd.to_datetime(latest_idx["period_end"], errors="coerce")
+            legacy.write_coverage(latest_idx)
     done_after = legacy_done_set()
     target_done = int(targets["rcept_no"].astype(str).isin(done_after).sum())
-
-    # Keep the generic legacy coverage report current too.
-    latest_idx = legacy.load_csv(legacy.INDEX_FILE, dtype={"rcept_no": str, "stock_code": str, "corp_code": str})
-    if not latest_idx.empty:
-        latest_idx["rcept_dt"] = pd.to_datetime(latest_idx["rcept_dt"], errors="coerce")
-        latest_idx["period_end"] = pd.to_datetime(latest_idx["period_end"], errors="coerce")
-        legacy.write_coverage(latest_idx)
 
     return {
         "legacy_target_docs": len(targets),
         "legacy_target_done": target_done,
         "legacy_target_completion_pct": round(100.0 * target_done / len(targets), 2) if len(targets) else 0.0,
         "legacy_run_docs": len(pending),
-        "legacy_rate_limited": rate_limited,
+        "legacy_rate_limited": False,
     }
 
 
-def main() -> None:
+def _collect(run) -> None:
     if not os.getenv("DART_API_KEY", "").strip():
         raise RuntimeError("DART_API_KEY is missing")
 
-    modern_result = modern_fast()
-    legacy_result = legacy_fast()
+    modern_result = modern_fast(run)
+    if modern_result["modern_rate_limited"]:
+        raise modern.RateLimitExceeded("quota exhausted in modern phase; legacy phase not dispatched")
+    legacy_result = legacy_fast(run)
 
     row = {
         "mode": "SUPER_VALUE_FAST_BACKFILL",
+        "collection_scope": COLLECTION_SCOPE,
+        "statement_scope": STATEMENT_SCOPE,
         **modern_result,
         **legacy_result,
         "updated_at_utc": datetime.now(timezone.utc).isoformat(),
     }
-    pd.DataFrame([row]).to_csv(STATUS_FILE, index=False, encoding="utf-8-sig")
+    atomic_csv(pd.DataFrame([row]), STATUS_FILE)
     print(pd.DataFrame([row]).to_string(index=False), flush=True)
+    run.finish("ok")
+
+
+def main() -> None:
+    # This accelerator shares both canonical state stores with their generic
+    # collectors; acquire the same locks rather than a separate ineffective lock.
+    with collector_lock(modern.STATUS_DIR / ".dart_full_collection.lock"), collector_lock(legacy.STATUS_DIR / ".dart_legacy_collection.lock"):
+        run = CollectionRun(RUN_FILE, "fast_backfill")
+        run.update(collection_scope=COLLECTION_SCOPE, statement_scope=STATEMENT_SCOPE)
+        try:
+            _collect(run)
+        except BaseException as exc:
+            limited = isinstance(exc, (modern.RateLimitExceeded, legacy.RateLimitExceeded))
+            run.finish("rate_limited" if limited else ("interrupted" if isinstance(exc, KeyboardInterrupt) else "failed"), type(exc).__name__)
+            raise
 
 
 if __name__ == "__main__":

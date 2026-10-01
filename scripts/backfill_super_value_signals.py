@@ -5,11 +5,11 @@ from __future__ import annotations
 import importlib.util
 import os
 import sys
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 import pandas as pd
+from dart_collection_storage import atomic_csv, collector_lock
 
 ROOT = Path(".")
 STATUS_FILE = ROOT / "data/status/super_value_signal_backfill_status.csv"
@@ -68,64 +68,17 @@ def terminal_keys(state: pd.DataFrame) -> set[tuple[str, str, int, str, str]]:
     )
 
 
-def factor_only(rows: list[dict]) -> list[dict]:
-    """Retain only rows that the v2-16 factor builder can actually consume."""
-    out: list[dict] = []
-    for row in rows:
-        metric, _ = bt.metric_priority(pd.Series(row))
-        if metric is not None:
-            out.append(row)
-    return out
-
-
-def error_state(task: dict, exc: Exception) -> dict:
-    return {
-        **task,
-        "status": "ERROR",
-        "rows_saved": 0,
-        "error": repr(exc),
-        "updated_at_utc": datetime.now(timezone.utc).isoformat(),
-    }
-
-
 def process_chunk(chunk: pd.DataFrame) -> tuple[int, bool]:
     if chunk.empty:
         return 0, False
 
-    states: list[dict] = []
-    saved_rows: list[dict] = []
-    rate_limited = False
-
-    with ThreadPoolExecutor(max_workers=WORKERS) as executor:
-        futures = {
-            executor.submit(modern.process_task, row.to_dict()): row.to_dict()
-            for _, row in chunk.iterrows()
-        }
-        completed = 0
-        for future in as_completed(futures):
-            task = futures[future]
-            try:
-                state, rows = future.result()
-                states.append(state)
-                saved_rows.extend(factor_only(rows))
-            except modern.RateLimitExceeded as exc:
-                rate_limited = True
-                states.append(error_state(task, exc))
-            except modern.FatalDartError:
-                raise
-            except Exception as exc:
-                states.append(error_state(task, exc))
-
-            completed += 1
-            if completed % 100 == 0 or completed == len(chunk):
-                print(f"signal accelerator progress {completed}/{len(chunk)}", flush=True)
-
-    if saved_rows:
-        modern.merge_full_rows(saved_rows)
-    if states:
-        modern.save_state(states)
-
-    return len(chunk), rate_limited
+    # Keep all accounts; collection scope must not depend on one strategy.
+    batch = modern.collect_task_batch(chunk, WORKERS)
+    if batch["fatal"]:
+        raise batch["fatal"]
+    if batch["errors"] and not batch["rate_limited"]:
+        raise RuntimeError("signal collection errors; checkpoint saved")
+    return batch["processed_tasks"], batch["rate_limited"]
 
 
 def run_tasks(pending: pd.DataFrame, budget_left: int) -> tuple[int, bool]:
@@ -330,13 +283,17 @@ def main() -> None:
             }
         )
 
-    pd.DataFrame(status_rows).to_csv(STATUS_FILE, index=False, encoding="utf-8-sig")
+    atomic_csv(pd.DataFrame(status_rows), STATUS_FILE)
     print(
         f"SUPER VALUE SIGNAL ACCELERATOR DONE total_used={total_used} "
         f"budget={TASK_BUDGET} rate_limited={hit_rate_limit}",
         flush=True,
     )
 
+    if hit_rate_limit:
+        raise modern.RateLimitExceeded("signal quota exhausted; checkpoint saved")
+
 
 if __name__ == "__main__":
-    main()
+    with collector_lock(modern.STATUS_DIR / ".dart_full_collection.lock"):
+        main()

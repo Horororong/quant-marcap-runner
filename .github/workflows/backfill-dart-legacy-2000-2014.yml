@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: dart-legacy-2000-2014-backfill
-  cancel-in-progress: true
+  group: dart-historical-collection
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -16,6 +16,7 @@ jobs:
     timeout-minutes: 180
     env:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
+      DART_COLLECTION_MAX_SECONDS: '9600'
       LEGACY_DART_START_YEAR: '2000'
       LEGACY_DART_END_YEAR: '2014'
       # 180 index tasks total (year x quarter x Y/K/E). At 36/day the
@@ -43,7 +44,12 @@ jobs:
       - name: Backfill legacy PIT financial statements
         run: python scripts/backfill_dart_legacy_2000_2014.py
 
+      - name: Snapshot authoritative collection health
+        if: always()
+        run: python scripts/dart_backfill_health.py > data/status/dart_collection_health.json
+
       - name: Commit legacy normalized data and status
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -52,6 +58,8 @@ jobs:
           git add data/status/dart_legacy_backfill_state.csv || true
           git add data/status/dart_legacy_backfill_status.csv || true
           git add data/status/dart_legacy_coverage_by_period.csv || true
+          git add data/financials/dart_raw/ || true
+          git add data/status/dart_legacy_collection_run.json data/status/dart_collection_health.json || true
           if git diff --cached --quiet; then
             echo "No legacy DART changes"
           else
@@ -70,4 +78,20 @@ jobs:
             data/status/dart_legacy_backfill_state.csv
             data/status/dart_legacy_backfill_status.csv
             data/status/dart_legacy_coverage_by_period.csv
+            data/status/dart_legacy_collection_run.json
+            data/status/dart_collection_health.json
+          if-no-files-found: warn
+
+      - name: Preserve raw sources and checkpoints after failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dart-raw-recovery-${{ github.run_id }}
+          compression-level: 0
+          retention-days: 90
+          path: |
+            data/financials/dart_raw/
+            data/financials/full_history/
+            data/financials/legacy_2000_2014/
+            data/status/dart*
           if-no-files-found: warn
