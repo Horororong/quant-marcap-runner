@@ -43,6 +43,26 @@
     "metrics_CURRENT.csv",
     "chat_manifest_CURRENT.json"
   ],
+  "canonical_performance": {
+    "benchmark_statistics_output": "benchmark_statistics_CURRENT.csv (only with explicit benchmark)",
+    "daily_coverage": "exact sessions; mismatch stops report before canonical outputs",
+    "dsl_market_calendar": "XKRX",
+    "metrics_added": [
+      "누적수익률",
+      "Sortino",
+      "Calmar",
+      "월간승률"
+    ],
+    "periods": [
+      "book_validation",
+      "from_2001",
+      "from_2021",
+      "longest"
+    ],
+    "source": "scripts/quant_backtest_template_CURRENT.py",
+    "template_version": "v2-17",
+    "zero_denominator_policy": "NaN; never fabricate infinity or zero"
+  },
   "corporate_action_reconciliation": {
     "candidate_policy": "retain every candidate; never change eligibility, holdings, NAV or registry; merger disposal reconciliation unsupported",
     "command": "python scripts/corporate_action_reconciliation.py --start YYYY-MM-DD --end YYYY-MM-DD --output-dir <audit_dir>",
@@ -104,7 +124,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "12",
+  "dsl_machine_contract_version": "13",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -816,6 +836,7 @@
       ]
     }
   ],
+  "performance_template_version": "v2-17",
   "portfolio_selections": [
     "deciles",
     "top_n"

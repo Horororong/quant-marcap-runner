@@ -496,6 +496,9 @@ def run_current_postprocess(spec: StrategySpec, repo_root: Path, out: Path, dail
         "--initial-capital", str(spec.initial_capital),
         "--as-of-date", spec.period.as_of_date or spec.period.end,
     ]
+    cmd.extend(["--market-calendar", "XKRX"])
+    if spec.benchmark is not None:
+        cmd.extend(["--benchmark-series", "NAV_Benchmark"])
     subprocess.run(cmd, cwd=repo_root, check=True)
 
 

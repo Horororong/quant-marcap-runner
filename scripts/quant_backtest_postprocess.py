@@ -26,6 +26,7 @@ python scripts/quant_backtest_postprocess.py \
 from pathlib import Path
 import argparse
 import json
+from importlib.metadata import version
 
 import numpy as np
 import pandas as pd
@@ -35,6 +36,8 @@ from quant_backtest_template_CURRENT import (
     TEMPLATE_VERSION,
     combine_period_payloads,
     run_four_periods,
+    assert_daily_session_coverage,
+    calculate_benchmark_statistics,
 )
 
 
@@ -169,6 +172,19 @@ def build_manifest(results: dict, combined_payload: dict, args: argparse.Namespa
         "book_start": args.book_start,
         "book_end": args.book_end,
         "as_of_date": args.as_of_date,
+        "market_calendar": args.market_calendar,
+        "calendar_package_version": version("exchange_calendars") if args.market_calendar else None,
+        "daily_coverage_policy": "exact named-exchange sessions; failure stops report" if args.market_calendar else "legacy weekday heuristic; monthly_fallback explicitly labeled",
+        "risk_free_rate_annual": args.risk_free_rate,
+        "benchmark_series": args.benchmark_series,
+        "benchmark_statistics_file": "benchmark_statistics_CURRENT.csv" if args.benchmark_series else None,
+        "benchmark_return_basis": "input NAV basis; DSL index benchmarks are price-only, without dividends",
+        "metric_definitions": {
+            "Sortino": "annual arithmetic monthly excess mean / annualized RMS of min(monthly excess, 0); MAR=monthly risk-free rate; zero downside => NaN",
+            "Calmar": "CAGR / abs(MDD); zero drawdown => NaN; see MDD_source",
+            "monthly_win_rate": "fraction of complete statistical months with return > 0; zero months are not wins",
+            "benchmark_statistics": "monthly TE, IR, covariance beta, arithmetic annual alpha, mean-return downside capture; partial inception month excluded",
+        },
         "periods": periods,
         "render_mode": "version_1_9_inline_charts",
         "render_order": [
@@ -189,6 +205,9 @@ def main() -> None:
     ap.add_argument("--output-dir", type=Path, required=True)
     ap.add_argument("--initial-capital", type=float, default=10_000_000.0)
     ap.add_argument("--as-of-date", default=None)
+    ap.add_argument("--market-calendar", default=None, help="e.g. XKRX or XNYS; exact daily session coverage required")
+    ap.add_argument("--risk-free-rate", type=float, default=0.0, help="annual decimal risk-free rate")
+    ap.add_argument("--benchmark-series", default=None, help="explicit NAV column used as benchmark; no inference")
     args = ap.parse_args()
 
     as_of = pd.Timestamp(args.as_of_date) if args.as_of_date else pd.Timestamp.today().normalize()
@@ -196,6 +215,12 @@ def main() -> None:
 
     daily_raw = load_daily_nav(args.daily_csv, args.date_col, args.series)
     daily, monthly = derive_complete_monthly(daily_raw, as_of)
+    if args.market_calendar:
+        # Full supplied history and formal ending month, before creating outputs.
+        assert_daily_session_coverage(daily_raw, daily_raw.index[0], daily_raw.index[-1], args.market_calendar)
+        assert_daily_session_coverage(daily, daily.index[0], monthly.index[-1], args.market_calendar)
+    if args.benchmark_series and args.benchmark_series not in daily.columns:
+        raise ValueError(f"benchmark NAV column is missing: {args.benchmark_series}")
 
     cfg = BacktestConfig(
         title=args.title,
@@ -203,6 +228,9 @@ def main() -> None:
         book_start=args.book_start,
         book_end=args.book_end,
         as_of_date=args.as_of_date,
+        standard_end_year=as_of.year,
+        market_calendar=args.market_calendar,
+        risk_free_rate=args.risk_free_rate,
     )
 
     results = run_four_periods(monthly, cfg, daily)
@@ -213,12 +241,26 @@ def main() -> None:
     combined = combine_period_payloads(*chart_payloads)
     metrics = flatten_metrics(results)
 
+    benchmark_rows = []
+    if args.benchmark_series:
+        for key, result in results.items():
+            for col in monthly.columns:
+                if col == args.benchmark_series:
+                    continue
+                stats = calculate_benchmark_statistics(result["monthly_nav"], col, args.benchmark_series, cfg)
+                benchmark_rows.append({"period": key, "strategy": col, "benchmark": args.benchmark_series, **stats})
+
     out = args.output_dir
     out.mkdir(parents=True, exist_ok=True)
 
     daily.to_csv(out / "daily_nav_canonical.csv", index_label="Date")
     monthly.to_csv(out / "monthly_nav_canonical.csv", index_label="Date")
     metrics.to_csv(out / "metrics_CURRENT.csv", index=False)
+
+    if args.benchmark_series:
+        pd.DataFrame(benchmark_rows, columns=["period", "strategy", "benchmark", "tracking_error", "information_ratio", "beta", "alpha_annualized_arithmetic", "downside_capture"]).to_csv(out / "benchmark_statistics_CURRENT.csv", index=False)
+    else:
+        (out / "benchmark_statistics_CURRENT.csv").unlink(missing_ok=True)
 
     manifest = build_manifest(results, combined, args)
     (out / "chat_manifest_CURRENT.json").write_text(

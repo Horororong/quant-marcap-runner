@@ -41,6 +41,11 @@ on:
       - 'config/strategies/**'
       - '.github/workflows/test-strategy-dsl.yml'
       - 'scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py'
+      - 'scripts/quant_backtest_template_CURRENT.py'
+      - 'scripts/quant_backtest_postprocess.py'
+      - 'scripts/test_canonical_performance.py'
+      - 'config/testing/canonical_performance_v215_baseline.json'
+      - 'docs/CANONICAL_PERFORMANCE.md'
 
 permissions:
   contents: read
@@ -64,9 +69,14 @@ jobs:
           pip install pandas numpy pyarrow exchange_calendars plotly jsonschema
       - name: Syntax check
         run: |
-          python -m py_compile scripts/execution_contract.py scripts/export_strategy_dsl_contract.py scripts/strategy_dsl_aliases.py scripts/strategy_dsl_preflight.py scripts/krx_technical_factor_adapter.py scripts/factor_registry.py scripts/corporate_action_registry.py scripts/strategy_dsl.py scripts/strategy_dsl_runner.py scripts/dart_value_factor_adapter.py scripts/test_factor_registry.py scripts/test_strategy_dsl_aliases.py scripts/test_strategy_dsl_preflight.py scripts/test_strategy_dsl_benchmark.py scripts/test_krx_technical_factor_adapter.py scripts/test_krx_volatility_factor_adapter.py scripts/test_corporate_action_execution.py scripts/test_strategy_dsl.py scripts/test_dart_dsl_super_value.py scripts/test_dsl_execution_e2e.py scripts/strategy_dsl_deciles.py scripts/test_strategy_dsl_deciles.py scripts/test_dsl_deciles_e2e.py scripts/krx_history_audit.py scripts/test_krx_history_audit.py scripts/test_held_return_guard.py scripts/corporate_action_reconciliation.py scripts/test_corporate_action_reconciliation.py
+          python -m py_compile scripts/execution_contract.py scripts/export_strategy_dsl_contract.py scripts/strategy_dsl_aliases.py scripts/strategy_dsl_preflight.py scripts/krx_technical_factor_adapter.py scripts/factor_registry.py scripts/corporate_action_registry.py scripts/strategy_dsl.py scripts/strategy_dsl_runner.py scripts/dart_value_factor_adapter.py scripts/test_factor_registry.py scripts/test_strategy_dsl_aliases.py scripts/test_strategy_dsl_preflight.py scripts/test_strategy_dsl_benchmark.py scripts/test_krx_technical_factor_adapter.py scripts/test_krx_volatility_factor_adapter.py scripts/test_corporate_action_execution.py scripts/test_strategy_dsl.py scripts/test_dart_dsl_super_value.py scripts/test_dsl_execution_e2e.py scripts/strategy_dsl_deciles.py scripts/test_strategy_dsl_deciles.py scripts/test_dsl_deciles_e2e.py scripts/krx_history_audit.py scripts/test_krx_history_audit.py scripts/test_held_return_guard.py scripts/corporate_action_reconciliation.py scripts/test_corporate_action_reconciliation.py scripts/quant_backtest_template_CURRENT.py scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py scripts/quant_backtest_postprocess.py scripts/test_canonical_performance.py
       - name: Check machine-readable DSL contract
         run: python scripts/export_strategy_dsl_contract.py --check
+      - name: Canonical performance and report E2E
+        run: python scripts/test_canonical_performance.py
+      - name: CURRENT and PROJECT compatibility self-tests
+        run: |
+          python -c "import sys; sys.path.insert(0, 'scripts'); import quant_backtest_template_CURRENT as c; c._self_test(); from strategy_dsl_runner import load_project_engine; from pathlib import Path; load_project_engine(Path.cwd())._self_test(); print('TEMPLATE SELF-TESTS: PASS')"
       - name: KRX session coverage and real history audit
         run: python scripts/test_krx_history_audit.py
       - name: Held return guard and real verified split E2E

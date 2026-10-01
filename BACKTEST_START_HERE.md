@@ -58,11 +58,20 @@ NAV 반영 전에 검증한다. 미확인 불일치·보유 참고수익률 누�
 python scripts/quant_backtest_postprocess.py \
   --daily-csv results/<strategy>/daily_nav.csv \
   --series NAV_Gross,NAV_Net,NAV_Benchmark \
+  --market-calendar XKRX \
+  --benchmark-series NAV_Benchmark \
   --title "<strategy title>" \
   --book-start YYYY-MM-DD \
   --book-end YYYY-MM-DD \
   --output-dir results/<strategy>
 ```
+
+성과분석 CURRENT는 v2-17이다. 한국주식 DSL은 `--market-calendar XKRX`를
+자동 전달하며 일별 NAV 거래일 누락/추가 시 정식 보고서 생성을 중단한다.
+다른 자산은 실제 NAV 생성 캘린더를 지정한다. 캘린더 생략 경로는 기존 휴리스틱과
+명시적 월별 fallback을 유지한다. `--benchmark-series`는 실제 벤치마크 열이 있을
+때만 지정하고, 없으면 위 예시에서 제거한다. 배당을 포함하지 않은 지수 NAV를
+총수익 지수로 해석하지 않는다. 지표 정의와 호환성은 `docs/CANONICAL_PERFORMANCE.md`를 따른다.
 
 `--series`는 실제 NAV 열 이름에 맞춰 조정한다. CSV에 `NAV` 또는 `NAV_*` 열만 있다면 생략 가능하다.
 

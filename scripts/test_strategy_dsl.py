@@ -64,11 +64,12 @@ def main() -> None:
     assert plan["factor_registry_version"] == "6"
     assert plan["execution_engine_version"] == "v2-16-exec-2"
     assert plan["corporate_action_registry_version"] == "3"
-    assert plan["dsl_machine_contract_version"] == "12"
+    assert plan["dsl_machine_contract_version"] == "13"
     assert plan["preflight_contract_version"] == "2"
     assert plan["history_audit_contract_version"] == "1"
     assert plan["benchmark"] is None
     assert plan["project_template_version"] == "v2-16"
+    assert plan["performance_template_version"] == "v2-17"
     assert [x["source"] for x in plan["factor_contracts"]] == ["krx", "krx"]
     assert [x["storage"] for x in plan["factor_contracts"]] == ["panel", "panel"]
     assert [x["source"] for x in plan["filter_contracts"]] == ["krx"]
