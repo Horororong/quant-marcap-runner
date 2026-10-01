@@ -119,7 +119,7 @@ def main() -> None:
     # 4) Real DART strategy preflight: check PIT coverage metadata, not raw factor calculation.
     dart = preflight_strategy(ROOT / "config/strategies/super_value_dart_dsl.json", ROOT)
     assert dart["status"] == "ok", dart
-    assert dart["factor_sources"] == ["dart"]
+    assert dart["factor_sources"] == ["dart", "krx"]
     assert len(dart["provider_coverage"]) == 4
     assert all(row["ratio"] == 1.0 and row["raw_ok"] for row in dart["provider_coverage"])
     assert len(dart["signal_dates"]) == 2
