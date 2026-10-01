@@ -14,7 +14,7 @@ import hashlib
 import json
 import re
 
-from factor_registry import FACTOR_REGISTRY_VERSION, get_factor_definition
+from factor_registry import FACTOR_REGISTRY_VERSION, get_factor_definition, validate_factor_strategy_constraints
 from execution_contract import (
     CORPORATE_ACTION_REGISTRY_VERSION,
     DSL_MACHINE_CONTRACT_VERSION,
@@ -234,6 +234,8 @@ class StrategySpec:
         names = [x.name for x in factors]
         if len(names) != len(set(names)):
             raise ValueError("factor names must be unique")
+        rebalance = RebalanceSpec.from_dict(raw.get("rebalance", {}))
+        validate_factor_strategy_constraints(factors, rebalance.months)
         costs_raw = raw.get("cost_scenarios", {})
         if not isinstance(costs_raw, Mapping) or not costs_raw:
             raise ValueError("cost_scenarios must be a non-empty object")
@@ -249,7 +251,7 @@ class StrategySpec:
             universe=UniverseSpec.from_dict(raw.get("universe", {})),
             factors=factors,
             portfolio=PortfolioSpec.from_dict(raw["portfolio"]),
-            rebalance=RebalanceSpec.from_dict(raw.get("rebalance", {})),
+            rebalance=rebalance,
             execution=ExecutionSpec.from_dict(raw.get("execution", {})),
             cost_scenarios=costs,
             period=PeriodSpec.from_dict(raw["period"]),
