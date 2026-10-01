@@ -24,7 +24,7 @@ must identify the missing capability instead of mapping to a similar strategy.
   (currently `v2-15`) and `scripts/quant_backtest_postprocess.py`.
   The execution and performance template versions are distinct; do not rename
   one to pretend it has the other's implementation.
-- Strategy schema: `1.0`; machine contract `8`; factor registry `6`;
+- Strategy schema: `1.0`; machine contract `9`; factor registry `6`;
   preflight contract `1`; corporate-action registry `1`.
 - Generated contracts: `config/strategy_dsl_schema_v1.json` and
   `config/strategy_dsl_capabilities_v1.json`. Regenerate with
@@ -32,32 +32,32 @@ must identify the missing capability instead of mapping to a similar strategy.
 
 ## Review units and resumption
 
-- PRs #7-#10 were merged before this Work continuation: aliases, preflight,
-  external universe filters and fixed-window KRX momentum.
-- PR #11 (quarterly profitability) was checked against its successful full CI
-  and merged in this continuation.
-- PR #12 (realized volatility) integrates #11, resolves shared alias/contract
-  conflicts, and uses registry 6 / machine contract 7. The local full suite passed.
-- PR #13 introduces optional price-index benchmarks, integrates #12, and advances
-  the machine contract to 8. This handoff ships in that review unit.
-- The prior benchmark branch failed because generated contracts were stale.
-  They have now been regenerated; strict benchmark and preflight regression
-  coverage was added.
+PRs #7-#13 are merged. The pre-decile main commit
+`7bb91b856e845b145d6668518302cec5739e3907` also passed its own full main CI:
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36807015029
 
-If reading from `main`, verify #12/#13 merge status and their full CI at GitHub
-before deciding that any work is outstanding. If reading from the PR branch,
-merge #12 only after its current head full E2E succeeds, then merge #13 only
-when its current head full E2E succeeds and it is mergeable. Never force-push main.
+The current Work milestone adds reusable factor-decile research through
+`portfolio.selection="deciles"`, sharing the top-N PIT/scoring and PROJECT
+execution paths. Its branch must pass the full Strategy DSL CI (including both
+real-data E2Es) before merging. Check GitHub's live refs, PRs and current-head
+checks; do not infer outstanding work from an old chat or branch snapshot.
+If reading this document on main, the milestone is already part of main.
+Never force-push main.
 
 Repository: https://github.com/Horororong/quant-marcap-runner
-PRs: https://github.com/Horororong/quant-marcap-runner/pull/11,
-https://github.com/Horororong/quant-marcap-runner/pull/12,
-https://github.com/Horororong/quant-marcap-runner/pull/13
 
 ## Supported contracts
 
 - PIT KOSPI/KOSDAQ equity universe; selected-month, last-session rebalance;
   equal-weight cross-sectional percentile ranking; explicit fixed-bps costs.
+- Portfolio selection defaults to `top_n` with a positive integer position
+  count. `deciles` partitions the full post-filter finite-factor universe into
+  ten balanced contiguous groups; position count is omitted/null. D01 is best,
+  D10 worst; tied scores are split explicitly by zero-padded Code order. Fewer
+  than ten eligible codes fails at execution. Every bucket is a separate
+  long-only portfolio with independent initial capital, same PROJECT execution
+  and costs. CURRENT remains the sole metrics/chart path. Full policy and
+  output schemas are in `docs/STRATEGY_DSL.md` and generated capabilities.
 - KRX panel factors: market cap, amount, volume, close, shares as registered.
 - DART value factors: standalone-quarter earnings/cashflow/sales yields,
   book-to-price. Profitability: `quarterly_roe`, `quarterly_net_margin`,
@@ -101,7 +101,11 @@ https://github.com/Horororong/quant-marcap-runner/pull/13
 Workflow: `.github/workflows/test-strategy-dsl.yml`. It includes syntax,
 contract sync, aliases, preflight, benchmark cases, momentum, volatility,
 provider extension, corporate-action continuity, synthetic PROJECT execution,
-real DART PIT selection/formulas and real-data execution E2E.
+real DART PIT selection/formulas and real-data execution E2E. The decile tests
+add independent partition/balance/disjointness, JSON Schema/runtime agreement,
+provider-backed filter/rank sharing, no-lookahead, missing-factor intersection,
+small-universe failure, t+1/cash timing, exact costs, blocked/missing prices,
+verified successor continuity and no new partial outputs on execution failure.
 
 Real DART/execution regression uses 2020-04-01 through 2020-11-30. This verifies
 that path, not a full 2001-present performance report. Technical provider tests
@@ -113,20 +117,24 @@ Validate, preflight, then run with `--execution-only` for its explicitly short
 research window. Request canonical performance only with actual source history
 sufficient for the required standard periods.
 
+Real KRX decile regression/example:
+`config/strategies/kr_equity_size_deciles_research.json`, 2020-04-01 through
+2020-05-08, explicitly signal-date Marcap >= KRW 10 trillion. It validates
+narrow-window selection, t+1, equal initial holdings, exact cost deductions,
+benchmark dates and artifacts against an independent raw-price oracle.
+It does not claim broad-universe/full-history investment performance.
+
 ## Next development sequence
 
-1. Confirm #11-#13 acceptance and current main CI before further work.
-2. Add reusable factor-decile research: deterministic ten-bucket partition,
-   explicit tie/small-universe rules, identical PIT providers and execution
-   contract, per-bucket weights/daily NAV, CURRENT-only metrics. Test future
-   mutations, missing data, partition disjointness, t+1 execution and costs;
-   document whether portfolios are independently investable and their scope.
-3. Expand verified corporate actions and history coverage before claiming
-   production-grade full-history results. Keep capability/data gaps distinct.
-4. Expand factors with explicit accounting-period definitions (annual/TTM,
-   quality/growth) and then supported assets/portfolio rules, through registries.
-5. Add a tested Korean request compilation interface using the generated schema,
+1. Confirm the decile milestone acceptance and current main CI.
+2. Expand verified corporate actions and history coverage before claiming
+   production-grade full-history top-N or broad-universe decile results.
+   Keep capability/data gaps distinct; do not screen by future survival.
+3. Expand factors with explicit accounting-period definitions (annual/TTM,
+   quality/growth) and supported portfolio/asset contracts through registries.
+4. Add a tested Korean request compilation interface using generated schema,
    preserving ambiguity/gap behavior. Benchmark total-return support requires
-   a separate verified data source and explicit return-basis contract.
+   a separate verified source and explicit return-basis contract.
 
-No decile implementation or broad arbitrary-language compiler is claimed here.
+Decile implementation is present; an arbitrary-language compiler/service and
+complete historical corporate-action coverage are still outstanding.

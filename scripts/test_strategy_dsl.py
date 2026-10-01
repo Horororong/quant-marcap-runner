@@ -57,13 +57,14 @@ def make_panel() -> pd.DataFrame:
 def main() -> None:
     spec = make_spec()
     assert spec.fingerprint() == StrategySpec.from_dict(spec.to_dict()).fingerprint()
+    assert spec.to_dict()["portfolio"] == {"number_of_positions": 2, "weighting": "equal"}
     plan = compile_execution_plan(spec)
     assert plan["project_engine"].endswith("v2-16_CURRENT.py")
     assert plan["strategy_fingerprint"] == spec.fingerprint()
     assert plan["factor_registry_version"] == "6"
     assert plan["execution_engine_version"] == "v2-16-exec-1"
     assert plan["corporate_action_registry_version"] == "1"
-    assert plan["dsl_machine_contract_version"] == "8"
+    assert plan["dsl_machine_contract_version"] == "9"
     assert plan["preflight_contract_version"] == "1"
     assert plan["benchmark"] is None
     assert plan["project_template_version"] == "v2-16"

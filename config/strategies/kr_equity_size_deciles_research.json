@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "strategy_id": "kr_equity_size_deciles_research",
+  "title": "KRX 시가총액 10분위 - 대형주 실행 경로 검증",
+  "asset_class": "kr_equity",
+  "universe": {
+    "markets": [
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "require_tradable_on_signal": true,
+    "filters": [
+      {
+        "field": "Marcap",
+        "op": "gte",
+        "value": 10000000000000
+      }
+    ]
+  },
+  "factors": [
+    {
+      "name": "size",
+      "source": "krx",
+      "field": "Marcap",
+      "direction": "low",
+      "weight": 1.0
+    }
+  ],
+  "portfolio": {
+    "selection": "deciles",
+    "weighting": "equal"
+  },
+  "rebalance": {
+    "frequency": "months",
+    "months": [
+      4
+    ],
+    "trading_day": "last"
+  },
+  "execution": {
+    "lag_sessions": 1,
+    "price": "next_close"
+  },
+  "cost_scenarios": {
+    "zero": {},
+    "fixed_cost": {
+      "commission_bps": 1.5,
+      "sell_tax_bps": 15.0,
+      "spread_bps": 3.0,
+      "slippage_bps": 5.0
+    }
+  },
+  "period": {
+    "start": "2020-04-01",
+    "end": "2020-05-08",
+    "book_start": "2020-04-01",
+    "book_end": "2020-05-08",
+    "as_of_date": "2020-05-08"
+  },
+  "initial_capital": 10000000,
+  "metadata": {
+    "validation_scope": "KRX PIT large-cap research-window execution regression, not full-history factor validation",
+    "universe_rule": "signal-date Marcap >= 10 trillion KRW; no present-day membership screen",
+    "benchmark_return_basis": "price_index_close_without_dividends",
+    "capital_basis": "initial_capital is independent for each decile"
+  },
+  "benchmark": {
+    "source": "index",
+    "symbol": "KOSPI"
+  }
+}

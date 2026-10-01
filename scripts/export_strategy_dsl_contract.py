@@ -8,6 +8,7 @@ import json
 
 from execution_contract import (
     CORPORATE_ACTION_REGISTRY_VERSION,
+    DECILE_RESEARCH_CONTRACT,
     DSL_MACHINE_CONTRACT_VERSION,
     EXECUTION_ENGINE_VERSION,
     PROJECT_TEMPLATE_VERSION,
@@ -26,6 +27,7 @@ from strategy_dsl import (
     SUPPORTED_EXECUTION_PRICES,
     SUPPORTED_FACTOR_TRANSFORMS,
     SUPPORTED_FILTER_OPS,
+    SUPPORTED_PORTFOLIO_SELECTIONS,
     SUPPORTED_REBALANCE_FREQUENCIES,
     SUPPORTED_TRADING_DAY_RULES,
     SUPPORTED_WEIGHTINGS,
@@ -136,11 +138,17 @@ def build_strategy_json_schema() -> dict:
             "portfolio": {
                 "type": "object",
                 "additionalProperties": False,
-                "required": ["number_of_positions", "weighting"],
+                "required": ["weighting"],
                 "properties": {
-                    "number_of_positions": {"type": "integer", "minimum": 1},
+                    "number_of_positions": {"type": ["integer", "null"], "minimum": 1},
                     "weighting": {"enum": sorted(SUPPORTED_WEIGHTINGS)},
+                    "selection": {"enum": sorted(SUPPORTED_PORTFOLIO_SELECTIONS), "default": "top_n"},
                 },
+                "allOf": [{
+                    "if": {"properties": {"selection": {"const": "deciles"}}, "required": ["selection"]},
+                    "then": {"properties": {"number_of_positions": {"const": None}}},
+                    "else": {"required": ["number_of_positions"], "properties": {"number_of_positions": {"type": "integer", "minimum": 1}}},
+                }],
             },
             "rebalance": {
                 "type": "object",
@@ -230,6 +238,16 @@ def build_capabilities() -> dict:
         "natural_language_factor_aliases": alias_catalog(),
         "natural_language_direction_aliases": direction_alias_catalog(),
         "portfolio_weightings": sorted(SUPPORTED_WEIGHTINGS),
+        "portfolio_selections": sorted(SUPPORTED_PORTFOLIO_SELECTIONS),
+        "decile_research": {
+            **DECILE_RESEARCH_CONTRACT,
+            "request": {"portfolio": {"selection": "deciles", "weighting": "equal"}},
+            "command": "python scripts/strategy_dsl_runner.py <decile_strategy.json>",
+            "outputs": ["daily_nav.csv", "decile_membership.csv", "decile_partition_audit.csv", "decile_contract.json", "target_weights.csv", "execution_schedule.csv", "execution_trades.csv", "D01..D10/daily_nav.csv", "D01..D10/target_weights.csv"],
+            "target_weights_layout": "root long format signal_date, decile, Code, target_weight; bucket directories wide format",
+            "population_check": "at execution after all filters and factor missing-value intersection; preflight checks source coverage only",
+            "research_window_command": "python scripts/strategy_dsl_runner.py <decile_strategy.json> --execution-only",
+        },
         "rebalance_frequencies": sorted(SUPPORTED_REBALANCE_FREQUENCIES),
         "trading_day_rules": sorted(SUPPORTED_TRADING_DAY_RULES),
         "execution_prices": sorted(SUPPORTED_EXECUTION_PRICES),

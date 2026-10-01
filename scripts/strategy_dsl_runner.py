@@ -198,12 +198,15 @@ def signal_dates_from_panel(panel: pd.DataFrame, spec: StrategySpec) -> list[pd.
     return sorted(set(out))
 
 
-def rank_cross_section(
+def score_cross_section(
     cross_section: pd.DataFrame,
     spec: StrategySpec,
     external_factors: pd.DataFrame | None = None,
-) -> tuple[pd.DataFrame, pd.DataFrame]:
+) -> pd.DataFrame:
     x = cross_section.copy()
+    x["Code"] = x["Code"].astype(str).str.zfill(6)
+    if x["Code"].duplicated().any():
+        raise AssertionError("cross_section must have one row per Code")
     if external_factors is not None and not external_factors.empty:
         f = external_factors.copy()
         f["Code"] = f["Code"].astype(str).str.zfill(6)
@@ -249,26 +252,41 @@ def rank_cross_section(
 
     x["composite_score"] = score
     x = x.sort_values(["composite_score", "Code"], ascending=[True, True]).copy()
-    n = spec.portfolio.number_of_positions
-    if len(x) < n:
-        raise RuntimeError(f"eligible universe {len(x)} is smaller than number_of_positions={n}")
-    selected = x.head(n).copy()
-    selected["target_weight"] = 1.0 / n
-    return selected, x[["Date", "Code", "Name", "Market", "composite_score", *factor_columns]].copy()
+    return x
 
-def build_target_weights_from_panel(
+
+def _select_top_n(ranked: pd.DataFrame, spec: StrategySpec) -> pd.DataFrame:
+    if spec.portfolio.selection != "top_n":
+        raise ValueError("top_n selection required; use the decile execution path for deciles")
+    n = spec.portfolio.number_of_positions
+    if n is None or len(ranked) < n:
+        raise RuntimeError(f"eligible universe {len(ranked)} is smaller than number_of_positions={n}")
+    selected = ranked.head(n).copy()
+    selected["target_weight"] = 1.0 / n
+    return selected
+
+
+def rank_cross_section(
+    cross_section: pd.DataFrame,
+    spec: StrategySpec,
+    external_factors: pd.DataFrame | None = None,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    ranked = score_cross_section(cross_section, spec, external_factors)
+    factor_columns = [f"factor_rank__{f.name}" for f in spec.factors]
+    return _select_top_n(ranked, spec), ranked[["Date", "Code", "Name", "Market", "composite_score", *factor_columns]].copy()
+
+
+def scored_signals_from_panel(
     panel: pd.DataFrame,
     spec: StrategySpec,
     repo_root: Path | None = None,
-) -> tuple[pd.DataFrame, pd.DataFrame]:
+):
+    """Share PIT providers, filters and composite ranks across selection modes."""
     p = panel.copy()
     p["Date"] = pd.to_datetime(p["Date"]).dt.normalize()
     p["Code"] = p["Code"].astype(str).str.zfill(6)
     if p.duplicated(["Date", "Code"]).any():
         raise AssertionError("panel contains duplicate Date+Code")
-    assets = sorted(p["Code"].unique())
-    rows: list[pd.Series] = []
-    selection_rows: list[pd.DataFrame] = []
     sources = sorted(
         set(external_sources(spec.factors))
         | set(external_filter_sources(spec.universe.filters))
@@ -302,7 +320,19 @@ def build_target_weights_from_panel(
                     raise ValueError(f"external provider column collision: {overlap}")
                 external = external.merge(frame, on="Code", how="outer", validate="one_to_one")
 
-        selected, _ = rank_cross_section(cs, spec, external_factors=external)
+        yield dt, score_cross_section(cs, spec, external_factors=external)
+
+
+def build_target_weights_from_panel(
+    panel: pd.DataFrame,
+    spec: StrategySpec,
+    repo_root: Path | None = None,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    assets = sorted(panel["Code"].astype(str).str.zfill(6).unique())
+    rows: list[pd.Series] = []
+    selection_rows: list[pd.DataFrame] = []
+    for dt, ranked in scored_signals_from_panel(panel, spec, repo_root):
+        selected = _select_top_n(ranked, spec)
         w = pd.Series(0.0, index=assets, name=dt)
         w.loc[selected["Code"].astype(str).str.zfill(6)] = selected["target_weight"].to_numpy(float)
         rows.append(w)
@@ -429,8 +459,27 @@ def execute_daily_nav(
     }
 
 
+def run_current_postprocess(spec: StrategySpec, repo_root: Path, out: Path, daily: pd.DataFrame) -> None:
+    series = ",".join(daily.columns)
+    cmd = [
+        sys.executable, str(repo_root / POSTPROCESS_FILE),
+        "--daily-csv", str(out / "daily_nav.csv"),
+        "--series", series,
+        "--title", spec.title,
+        "--book-start", spec.period.book_start,
+        "--book-end", spec.period.book_end,
+        "--output-dir", str(out),
+        "--initial-capital", str(spec.initial_capital),
+        "--as-of-date", spec.period.as_of_date or spec.period.end,
+    ]
+    subprocess.run(cmd, cwd=repo_root, check=True)
+
+
 def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = None, *, postprocess: bool = True) -> dict[str, Any]:
     spec = load_strategy_spec(spec_path)
+    if spec.portfolio.selection == "deciles":
+        from strategy_dsl_deciles import run_decile_strategy
+        return run_decile_strategy(spec, repo_root, output_dir, postprocess=postprocess)
     plan = compile_execution_plan(spec)
     engine = load_project_engine(repo_root)
     panel = engine.load_krx_equity_panel(
@@ -486,19 +535,7 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     (out / "strategy_fingerprint.txt").write_text(spec.fingerprint() + "\n", encoding="utf-8")
 
     if postprocess:
-        series = ",".join(daily.columns)
-        cmd = [
-            sys.executable, str(repo_root / POSTPROCESS_FILE),
-            "--daily-csv", str(out / "daily_nav.csv"),
-            "--series", series,
-            "--title", spec.title,
-            "--book-start", spec.period.book_start,
-            "--book-end", spec.period.book_end,
-            "--output-dir", str(out),
-            "--initial-capital", str(spec.initial_capital),
-            "--as-of-date", spec.period.as_of_date or spec.period.end,
-        ]
-        subprocess.run(cmd, cwd=repo_root, check=True)
+        run_current_postprocess(spec, repo_root, out, daily)
     return {
         "spec": spec,
         "plan": plan,

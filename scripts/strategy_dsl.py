@@ -17,6 +17,7 @@ import re
 from factor_registry import FACTOR_REGISTRY_VERSION, get_factor_definition, get_filter_definition, validate_factor_strategy_constraints
 from execution_contract import (
     CORPORATE_ACTION_REGISTRY_VERSION,
+    DECILE_RESEARCH_CONTRACT,
     DSL_MACHINE_CONTRACT_VERSION,
     EXECUTION_ENGINE_VERSION,
     PROJECT_TEMPLATE_VERSION,
@@ -33,6 +34,7 @@ SUPPORTED_FILTER_OPS = {
 SUPPORTED_FACTOR_TRANSFORMS = {"identity", "inverse", "log1p"}
 SUPPORTED_DIRECTIONS = {"high", "low"}
 SUPPORTED_WEIGHTINGS = {"equal"}
+SUPPORTED_PORTFOLIO_SELECTIONS = {"top_n", "deciles"}
 SUPPORTED_REBALANCE_FREQUENCIES = {"months"}
 SUPPORTED_TRADING_DAY_RULES = {"last"}
 SUPPORTED_EXECUTION_PRICES = {"next_close"}
@@ -120,14 +122,27 @@ class FactorSpec:
 
 @dataclass(frozen=True)
 class PortfolioSpec:
-    number_of_positions: int
+    number_of_positions: int | None
     weighting: str = "equal"
+    selection: str = "top_n"
 
     @classmethod
     def from_dict(cls, raw: Mapping[str, Any]) -> "PortfolioSpec":
-        obj = cls(number_of_positions=int(raw["number_of_positions"]), weighting=str(raw.get("weighting", "equal")).lower())
-        if obj.number_of_positions < 1:
-            raise ValueError("portfolio.number_of_positions must be >= 1")
+        if not isinstance(raw, Mapping):
+            raise TypeError("portfolio must be an object")
+        selection = str(raw.get("selection", "top_n")).strip().lower()
+        if selection not in SUPPORTED_PORTFOLIO_SELECTIONS:
+            raise ValueError(f"unsupported portfolio selection: {selection}")
+        number = raw.get("number_of_positions")
+        if selection == "deciles":
+            if number is not None:
+                raise ValueError("deciles uses the full eligible universe; number_of_positions must be omitted or null")
+        elif isinstance(number, bool) or not isinstance(number, int) or number < 1:
+            raise ValueError("portfolio.number_of_positions must be an integer >= 1 for top_n")
+        extra = set(raw) - {"number_of_positions", "weighting", "selection"}
+        if extra:
+            raise ValueError(f"unsupported portfolio fields: {sorted(extra)}")
+        obj = cls(number_of_positions=number, weighting=str(raw.get("weighting", "equal")).lower(), selection=selection)
         if obj.weighting not in SUPPORTED_WEIGHTINGS:
             raise ValueError(f"unsupported weighting in DSL v1: {obj.weighting}")
         return obj
@@ -299,6 +314,9 @@ class StrategySpec:
 
     def to_dict(self) -> dict[str, Any]:
         out = asdict(self)
+        # Retain normalized JSON/fingerprints of existing top-N strategies.
+        if self.portfolio.selection == "top_n":
+            out["portfolio"].pop("selection")
         out["cost_scenarios"] = {k: asdict(v) for k, v in self.cost_scenarios.items()}
         return out
 
@@ -363,6 +381,7 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         ],
         "benchmark": asdict(spec.benchmark) if spec.benchmark is not None else None,
         "portfolio": asdict(spec.portfolio),
+        "decile_contract": dict(DECILE_RESEARCH_CONTRACT) if spec.portfolio.selection == "deciles" else None,
         "rebalance": asdict(spec.rebalance),
         "execution": asdict(spec.execution),
         "cost_scenarios": {k: asdict(v) for k, v in spec.cost_scenarios.items()},

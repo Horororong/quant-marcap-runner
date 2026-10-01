@@ -19,6 +19,14 @@
 7. DSL이 지원하지 않는 팩터/자산/체결 규칙이면 임의 근사하지 않는다. 반복 사용 가능한 기능은 DSL/어댑터를 확장하고, 특수 체결이 필요한 경우에만 별도 엔진을 둔다.
 8. 같은 Strategy DSL JSON + 같은 데이터 + 같은 엔진/registry 버전은 항상 같은 결과를 내야 하며, `strategy_fingerprint`와 execution plan의 버전 필드를 재현성 키로 사용한다.
 
+팩터 10분위 연구를 요청하면 같은 JSON에서 `portfolio.selection="deciles"`,
+`portfolio.weighting="equal"`로 지정하고 `number_of_positions`는 생략/null로 둔다.
+일반 상위 N종목 전략의 기본값은 `selection="top_n"`이다. 10분위는 필터와
+팩터 결측 교집합 적용 후 전체 유효 종목을 D01(우수)~D10(하위)으로 나눈다.
+각 분위는 독립된 자본으로 동일 체결·비용 규칙을 적용한다. 10종목 미만이면
+중단하며, 실제 성과지표는 공통 일별 NAV를 CURRENT 후처리에 전달한다.
+짧은 실행 경로 검증은 `--execution-only`로 명시하고 장기 성과로 보고하지 않는다.
+
 ## 강제 실행 순서
 
 1. `scripts/quant_backtest_template_CURRENT.py`를 읽고 CURRENT 버전을 확인한다.
