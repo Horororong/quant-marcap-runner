@@ -51,7 +51,7 @@ def main() -> None:
     assert registry.get_factor_definition("dart", "earnings_yield").storage == "external"
     assert "dart" in registry.supported_sources()
     assert "book_to_price" in registry.supported_fields("dart")
-    assert registry.FACTOR_REGISTRY_VERSION == "2"
+    assert registry.FACTOR_REGISTRY_VERSION == "3"
     constraints = registry.factor_source_constraints()
     assert constraints["dart"]["rebalance_months"] == [4, 10]
 
