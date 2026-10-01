@@ -118,6 +118,8 @@ jobs:
 
       # 3) DART financial data.
       - name: Update DART financials
+        env:
+          DART_REFRESH_REPORT: ${{ runner.temp }}/dart-recent-refresh.json
         run: python update_dart_financials.py
 
       - name: Commit DART datasets
@@ -138,5 +140,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: quant-data-status
-          path: data/status/
+          path: |
+            data/status/
+            ${{ runner.temp }}/dart-recent-refresh.json
           if-no-files-found: warn

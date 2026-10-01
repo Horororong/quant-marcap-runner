@@ -5,6 +5,17 @@ Read `AGENTS.md` and `BACKTEST_START_HERE.md` before changing or running a backt
 GitHub refs, PR metadata and checks are authoritative for merge/CI status; this
 file is an architectural checkpoint, not a substitute for checking live status.
 
+## Git growth review
+
+`feature/deterministic-dart-storage` builds on the tested broad-collection head
+`2e6f95c85422629b26ef48ef57ae81ae247a9fba`. Its small recent-writer milestone
+fixes rotation filename drift, deterministic CSV/gzip output and timestamp-only
+churn while preserving real rotation state, correction updates and existing
+files/history. No main merge, deletion or history rewrite. Read
+`docs/GIT_STORAGE_AUDIT_20261001.md` for measured HEAD/packed sizes, annual
+scenarios, storage alternatives and verification scope. New regression is
+included in the full Strategy DSL workflow; require final-head CI before merge.
+
 ## Goal and architecture
 
 User goal: a Korean strategy request produces a Strategy DSL JSON and runs on

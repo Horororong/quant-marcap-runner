@@ -2,6 +2,10 @@ from __future__ import annotations
 
 import io
 import os
+import csv
+import gzip
+import json
+import tempfile
 import zipfile
 from pathlib import Path
 from datetime import datetime, timezone
@@ -22,6 +26,62 @@ STATUS_DIR.mkdir(parents=True, exist_ok=True)
 REPORT_CODES = {'Q1':'11013', 'H1':'11012', 'Q3':'11014', 'FY':'11011'}
 BASE = 'https://opendart.fss.or.kr/api'
 STATE_FILE = STATUS_DIR / 'dart_rotation_state.csv'
+
+
+def canonical_csv(payload: bytes, ignore_columns=()) -> bytes:
+    """Sort CSV fields/rows without interpreting amounts, codes or missing tokens."""
+    rows = list(csv.reader(io.StringIO(payload.decode('utf-8-sig'), newline='')))
+    if not rows:
+        return b''
+    header, data = rows[0], rows[1:]
+    order = sorted((i for i, name in enumerate(header) if name not in ignore_columns),
+                   key=lambda i: header[i])
+    if any(len(row) != len(header) for row in data):
+        raise ValueError('Malformed CSV row width')
+    stream = io.StringIO(newline='')
+    writer = csv.writer(stream, lineterminator='\n')
+    writer.writerow([header[i] for i in order])
+    writer.writerows(sorted(tuple(row[i] for i in order) for row in data))
+    return stream.getvalue().encode('utf-8-sig')
+
+
+def atomic_write_if_changed(frame: pd.DataFrame, path: Path, *, ignore_columns=()) -> bool:
+    """Keep old bytes on an equivalent refresh; atomically publish real changes."""
+    path = Path(path)
+    payload = canonical_csv(frame.to_csv(index=False, lineterminator='\n').encode('utf-8-sig'))
+    compressed = path.suffix == '.gz'
+    if path.exists():
+        previous = path.read_bytes()
+        previous_csv = gzip.decompress(previous) if compressed else previous
+        comparison = canonical_csv(payload, ignore_columns) if ignore_columns else payload
+        if canonical_csv(previous_csv, ignore_columns) == comparison:
+            return False
+    if compressed:
+        stream = io.BytesIO()
+        # Explicitly omit FNAME; using a destination path as filename changes bytes.
+        with gzip.GzipFile(filename='', mode='wb', fileobj=stream, mtime=0, compresslevel=9) as archive:
+            archive.write(payload)
+        payload = stream.getvalue()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    descriptor, temporary = tempfile.mkstemp(prefix='.pending-', dir=path.parent)
+    try:
+        with os.fdopen(descriptor, 'wb') as stream:
+            stream.write(payload)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+    finally:
+        Path(temporary).unlink(missing_ok=True)
+    return True
+
+
+def rotation_positions(total: int, start: int, batch_size: int) -> tuple[list[int], int]:
+    """Finish a cycle with a short tail; restart at zero instead of drifting."""
+    if total <= 0:
+        return [], 0
+    start %= total
+    stop = min(start + batch_size, total)
+    return list(range(start, stop)), (0 if stop == total else stop)
 
 
 def get_corp_codes() -> pd.DataFrame:
@@ -101,25 +161,41 @@ def collect_company(row: pd.Series, years: list[int]) -> tuple[list[dict], list[
 
 def main():
     now_utc = datetime.now(timezone.utc)
+    changed_paths = []
+
+    def save(frame, path, *, status=False):
+        if atomic_write_if_changed(frame, path,
+                                   ignore_columns=('updated_at_utc',) if status else ()):
+            changed_paths.append(str(path))
+
+    def report(status):
+        # Per-run heartbeat is an Actions artifact, not a tracked data timestamp.
+        record = {'status': status, 'checked_at_utc': now_utc.isoformat(),
+                  'changed_paths': changed_paths}
+        print(json.dumps(record, ensure_ascii=False), flush=True)
+        if os.getenv('DART_REFRESH_REPORT'):
+            Path(os.environ['DART_REFRESH_REPORT']).write_text(
+                json.dumps(record, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
     if not API_KEY:
-        pd.DataFrame([{'status':'SKIPPED','reason':'DART_API_KEY missing',
-                       'updated_at_utc':now_utc.isoformat()}]).to_csv(
-            STATUS_DIR/'dart_status.csv', index=False, encoding='utf-8-sig')
+        save(pd.DataFrame([{'status':'SKIPPED','reason':'DART_API_KEY missing',
+                           'updated_at_utc':now_utc.isoformat()}]),
+             STATUS_DIR/'dart_status.csv', status=True)
+        report('SKIPPED')
         return
 
     corp = get_corp_codes()
     master = corp[['corp_code','corp_name','stock_code','modify_date']].copy().sort_values('stock_code')
     master['stock_name'] = master['corp_name']
-    master.to_csv(ROOT/'corp_master.csv', index=False, encoding='utf-8-sig')
+    save(master, ROOT/'corp_master.csv')
 
     matched = master.dropna(subset=['corp_code']).drop_duplicates('stock_code').reset_index(drop=True)
     total = len(matched)
     batch_size = max(1, int(os.getenv('DART_MAX_COMPANIES', '300')))
     workers = max(1, min(8, int(os.getenv('DART_WORKERS', '6'))))
     start = read_next_offset(total)
-    positions = [(start + i) % total for i in range(min(batch_size, total))] if total else []
+    positions, next_offset = rotation_positions(total, start, batch_size)
     batch = matched.iloc[positions].copy() if positions else matched.iloc[0:0].copy()
-    next_offset = (start + len(batch)) % total if total else 0
 
     now = datetime.now()
     years = list(range(max(2015, now.year - 2), now.year + 1))
@@ -144,20 +220,19 @@ def main():
         keys = [c for c in ['rcept_no','corp_code','fs_div','sj_div','account_id','account_nm','thstrm_nm'] if c in df.columns]
         if keys:
             df = df.drop_duplicates(keys, keep='last')
-        df.to_csv(BATCH_DIR/f'dart_recent_{batch_tag}.csv.gz', index=False,
-                  encoding='utf-8-sig', compression='gzip')
+        save(df, BATCH_DIR/f'dart_recent_{batch_tag}.csv.gz')
 
-    pd.DataFrame(errors).to_csv(ROOT/f'dart_errors_{batch_tag}.csv', index=False, encoding='utf-8-sig')
-    pd.DataFrame([{
+    save(pd.DataFrame(errors), ROOT/f'dart_errors_{batch_tag}.csv')
+    save(pd.DataFrame([{
         'total_matched_companies':total,
         'batch_size':len(batch),
         'batch_start_offset':start,
         'next_offset':next_offset,
         'cycle_completed':bool(total and next_offset <= start),
         'updated_at_utc':now_utc.isoformat(),
-    }]).to_csv(STATE_FILE, index=False, encoding='utf-8-sig')
+    }]), STATE_FILE, status=True)
 
-    pd.DataFrame([{
+    save(pd.DataFrame([{
         'status':'OK',
         'total_matched_companies':total,
         'companies_attempted':len(batch),
@@ -167,7 +242,8 @@ def main():
         'errors':len(errors),
         'years':','.join(map(str, years)),
         'updated_at_utc':now_utc.isoformat(),
-    }]).to_csv(STATUS_DIR/'dart_status.csv', index=False, encoding='utf-8-sig')
+    }]), STATUS_DIR/'dart_status.csv', status=True)
+    report('OK')
 
 
 if __name__ == '__main__':
