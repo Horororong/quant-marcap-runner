@@ -8,6 +8,7 @@ import json
 
 from execution_contract import (
     CORPORATE_ACTION_REGISTRY_VERSION,
+    CORPORATE_ACTION_RECONCILIATION_VERSION,
     DECILE_RESEARCH_CONTRACT,
     DSL_MACHINE_CONTRACT_VERSION,
     EXECUTION_ENGINE_VERSION,
@@ -293,6 +294,14 @@ def build_capabilities() -> dict:
             "registry": "config/kr_corporate_actions.csv",
             "unregistered_held_price_gap_policy": "fail",
             "history_completeness": "unverified; presence of registered events is not a coverage certificate",
+        },
+        "corporate_action_reconciliation": {
+            "version": CORPORATE_ACTION_RECONCILIATION_VERSION,
+            "command": "python scripts/corporate_action_reconciliation.py --start YYYY-MM-DD --end YYYY-MM-DD --output-dir <audit_dir>",
+            "outputs": ["corporate_action_reconciliation.json", "registry_event_checks.csv", "candidate_reconciliation.csv"],
+            "match_policy": "exact Code and event date; manually evidenced same-code split, observed suspension and adjusted exchange return agreement within held tolerance",
+            "candidate_policy": "retain every candidate; never change eligibility, holdings, NAV or registry; merger disposal reconciliation unsupported",
+            "exit_codes": {"available_registered_split_checks_pass": 0, "data_gap_or_event_mismatch": 3},
         },
         "history_audit": {
             "command": "python scripts/krx_history_audit.py --start YYYY-MM-DD --end YYYY-MM-DD --output-dir <audit_dir>",

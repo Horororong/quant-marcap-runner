@@ -1,0 +1,59 @@
+{
+  "status": "ok",
+  "requested_start": "2024-01-01",
+  "requested_end": "2024-12-31",
+  "corporate_action_reconciliation_version": "1",
+  "corporate_action_registry_version": "3",
+  "files": [
+    {
+      "path": "data/krx_equities/yearly/marcap-2024.parquet",
+      "sha256": "4fff19ba16b229f50acef8e87b372f4492fac5f681d349a53a4073000f3e6a7f"
+    },
+    {
+      "path": "config/kr_corporate_actions.csv",
+      "sha256": "9d779e115eae6202142976226191ac916438279676b3f881d9a2240f920923cd"
+    }
+  ],
+  "session_coverage": {
+    "history_audit_contract_version": "1",
+    "status": "complete",
+    "calendar": "XKRX",
+    "calendar_package_version": "4.13.2",
+    "requested_start": "2024-01-01",
+    "requested_end": "2024-12-31",
+    "expected_first_session": "2024-01-02",
+    "expected_last_session": "2024-12-30",
+    "expected_sessions": 244,
+    "markets": {
+      "KOSDAQ": {
+        "status": "complete",
+        "observed_sessions": 244,
+        "missing_sessions": [],
+        "unexpected_dates": []
+      },
+      "KOSPI": {
+        "status": "complete",
+        "observed_sessions": 244,
+        "missing_sessions": [],
+        "unexpected_dates": []
+      }
+    },
+    "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+  },
+  "event_check_counts": {
+    "reference_consistent": 3
+  },
+  "price_candidate_status_counts": {
+    "registered_split_reference_consistent": 3,
+    "unresolved": 253
+  },
+  "source_candidate_counts": {
+    "close_reference_return_difference": 256,
+    "internal_observation_gap": 1,
+    "left_censored_observation_start": 150,
+    "right_censored_observation_end": 61
+  },
+  "tolerance_bps": 1.0,
+  "history_completeness": "unverified",
+  "scope": "source diagnostics only; exact code/date registered split agreement does not change candidates, eligibility, prices, holdings, NAV or registry. Merger disposal values require separate reconciliation."
+}

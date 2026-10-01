@@ -24,24 +24,23 @@ must identify the missing capability instead of mapping to a similar strategy.
   (currently `v2-15`) and `scripts/quant_backtest_postprocess.py`.
   The execution and performance template versions are distinct; do not rename
   one to pretend it has the other's implementation.
-- Strategy schema: `1.0`; machine contract `11`; factor registry `6`;
-  preflight contract `2`; history-audit contract `1`; corporate-action registry `2`.
+- Strategy schema: `1.0`; machine contract `12`; factor registry `6`;
+  preflight contract `2`; history-audit contract `1`; corporate-action registry `3`.
 - Generated contracts: `config/strategy_dsl_schema_v1.json` and
   `config/strategy_dsl_capabilities_v1.json`. Regenerate with
   `python scripts/export_strategy_dsl_contract.py --write`; CI uses `--check`.
 
 ## Review units and resumption
 
-PRs #7-#15 are merged. The post-history-audit main commit
-`b7dbdc5b6b8c699fd20a96d9c593da57d971930d` passed its own full main CI:
-https://github.com/Horororong/quant-marcap-runner/actions/runs/36813692858
+PRs #7-#16 are merged. The post-held-return main commit
+`40e64e79db5599f01b2e13950bfff8d32df3e620` passed its own full main CI:
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36817875070
 
-The current milestone adds mandatory held-return reference checks in both public
-DSL modes and verified same-code stock-split support in the PROJECT engine.
-Its branch must pass the full current-head CI including DART, real decile,
-existing execution and the real split E2E before merging. Check live GitHub refs
-and checks. When reading this version on main, this milestone is already merged.
-Never force-push main.
+The current milestone expands verified splits to BYC common/preferred securities
+and adds source-only corporate-action reconciliation. Its branch must pass full
+current-head CI, including both public share-class E2Es and existing DART/real
+execution paths, before merging. When this version is on main, the milestone is
+merged. GitHub refs/checks remain authoritative. Never force-push main.
 
 Repository: https://github.com/Horororong/quant-marcap-runner
 
@@ -76,7 +75,9 @@ Repository: https://github.com/Horororong/quant-marcap-runner
   Haesung Industrial 034810, ratio 1.6661460, successor listing 2020-07-13.
   Verified split: EcoPro 086520, five shares per old share, trading resumes
   2024-04-25 after suspension 2024-04-09..24. Evidence and independent test
-  are in `docs/HELD_RETURN_VALIDATION.md`. The registry is still incomplete.
+  are in `docs/HELD_RETURN_VALIDATION.md`. Registry version 3 also includes BYC
+  001460 and BYC preferred 001465, each ten shares per old share, resuming
+  2024-04-17. See `docs/CORPORATE_ACTION_RECONCILIATION.md`. The registry is incomplete.
 
 ## Non-negotiable correctness rules
 
@@ -138,8 +139,8 @@ observation gap (Code 287410; 89 missing sessions between observations).
 
 The source-history audit never removes stocks or fills values. First/last
 observations are window-censored, not automatically IPO/delisting dates.
-The archived snapshots describe registry version 1; after adding the verified
-EcoPro split, registry version 2 contains one registered event in 2024.
+The archived snapshots describe registry version 1; registry version 2 added EcoPro, and version 3 adds BYC common/preferred.
+The new reconciliation snapshot checks these three 2024 security events.
 Candidate counts are source observations and do not disappear after an event
 is verified; they are not counts of unresolved held returns.
 
@@ -161,8 +162,12 @@ verified handling. Do not silently exclude stocks that would fail the guard.
 
 ## Next development sequence
 
-1. Confirm the held-return/split milestone acceptance and current main CI.
-2. Audit remaining years with all actual source files, reconcile calendar
+1. Confirm the split-coverage/reconciliation milestone and current main CI.
+2. Use `scripts/corporate_action_reconciliation.py` and the recorded 2024 snapshot
+   to investigate the 253 price candidates still unmatched by supported, consistent
+   registered splits. The one internal gap remains unresolved. Keep all candidate
+   rows; do not infer events or strategy filters. Audit remaining years with actual
+   source files, reconcile calendar
    differences against official KRX history and investigate event candidates
    with primary disclosures. Expand verified split/rights/merger/delisting handling before broad or full-history
    investment-performance claims. Never use future survival or audit candidates

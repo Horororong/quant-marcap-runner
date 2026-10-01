@@ -332,3 +332,11 @@ KOSDAQ price on 2024-03-29, buys on 2024-04-01, and validates the registered Eco
 split without claiming investment merit or long-horizon performance. Use
 `--execution-only`. Evidence, formulas and limits are in
 [HELD_RETURN_VALIDATION.md](HELD_RETURN_VALIDATION.md).
+
+## Corporate-action source reconciliation
+
+The source-only command in [CORPORATE_ACTION_RECONCILIATION.md](CORPORATE_ACTION_RECONCILIATION.md)
+checks manually evidenced registered splits and preserves every review candidate.
+Registry version 3 adds BYC common/preferred as separate ten-for-one records.
+Reconciliation never feeds strategy eligibility or replaces the public held-return
+check. Its success is not whole-market history certification.
