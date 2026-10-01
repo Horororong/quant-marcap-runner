@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - 'scripts/git_storage_snapshot.py'
+      - 'scripts/test_git_storage_snapshot.py'
+      - 'config/git_storage_baseline_20261001.json'
+      - '.github/workflows/observe-git-storage.yml'
       - 'update_dart_financials.py'
       - 'scripts/test_dart_recent_storage.py'
       - '.github/workflows/update-dart-recent.yml'
@@ -93,6 +97,10 @@ jobs:
         run: |
           python -m py_compile update_dart_financials.py scripts/test_dart_recent_storage.py
           python scripts/test_dart_recent_storage.py
+      - name: Read-only Git storage growth measurement
+        run: |
+          python -m py_compile scripts/git_storage_snapshot.py scripts/test_git_storage_snapshot.py
+          python scripts/test_git_storage_snapshot.py
       - name: Canonical performance and report E2E
         run: python scripts/test_canonical_performance.py
       - name: CURRENT and PROJECT compatibility self-tests

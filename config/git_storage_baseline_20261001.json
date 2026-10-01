@@ -1,0 +1,139 @@
+{
+  "contract_version": 1,
+  "observed_at_utc": "2026-10-01T21:17:37.917117+00:00",
+  "head": "b763c5ca903d652a815bbdbff6df978843a45c86",
+  "git_version": "git version 2.52.0",
+  "history_scope": "unique blobs reachable from the sampled commit only",
+  "head_files": 853,
+  "head_bytes": 1305337466,
+  "head_by_category": {
+    "code_and_docs": {
+      "objects": 196,
+      "bytes": 2763629
+    },
+    "dart_full_history": {
+      "objects": 176,
+      "bytes": 343975059
+    },
+    "dart_other": {
+      "objects": 63,
+      "bytes": 32061796
+    },
+    "dart_recent": {
+      "objects": 36,
+      "bytes": 204433056
+    },
+    "krx_derived": {
+      "objects": 6,
+      "bytes": 30421870
+    },
+    "krx_yearly": {
+      "objects": 32,
+      "bytes": 551859269
+    },
+    "other_data": {
+      "objects": 89,
+      "bytes": 57804375
+    },
+    "results": {
+      "objects": 255,
+      "bytes": 82018412
+    }
+  },
+  "history_unique_blobs": 3760,
+  "history_logical_blob_bytes": 3331926677,
+  "history_by_category": {
+    "code_and_docs": {
+      "objects": 580,
+      "bytes": 7219537
+    },
+    "dart_full_history": {
+      "objects": 176,
+      "bytes": 343975059
+    },
+    "dart_other": {
+      "objects": 119,
+      "bytes": 87570137
+    },
+    "dart_recent": {
+      "objects": 36,
+      "bytes": 204433056
+    },
+    "krx_derived": {
+      "objects": 60,
+      "bytes": 279227180
+    },
+    "krx_yearly": {
+      "objects": 46,
+      "bytes": 797486001
+    },
+    "other_data": {
+      "objects": 2007,
+      "bytes": 1464006770
+    },
+    "results": {
+      "objects": 736,
+      "bytes": 148008937
+    }
+  },
+  "largest_head_files": [
+    {
+      "path": "data/krx_equities/yearly/marcap-2025.parquet",
+      "bytes": 25434255,
+      "oid": "89f517c2b6fe48aa0e536a3e5afb76c39f989aec"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2024.parquet",
+      "bytes": 24906850,
+      "oid": "75e3d269f359a908b31f73d15aebb64209e30f9e"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2023.parquet",
+      "bytes": 24152135,
+      "oid": "46e30207f5214da443fc3f3828218e56e1701297"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2022.parquet",
+      "bytes": 23137995,
+      "oid": "1959cae3467e224efc916b828f83518bab82b4a5"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2021.parquet",
+      "bytes": 23000593,
+      "oid": "7c8674d83be65011d55f39d61c9a14e615c369c4"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2020.parquet",
+      "bytes": 21987765,
+      "oid": "6e41b287991ee602e47bc92af1bc8f4fd9a218ec"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2019.parquet",
+      "bytes": 20548266,
+      "oid": "0a2ac8d55b1f6e4e10d1719155677013dc5f795c"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2018.parquet",
+      "bytes": 19948936,
+      "oid": "d83e029a250ea30aa376edfb32374fc685a5d5f7"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2026.parquet",
+      "bytes": 19398335,
+      "oid": "0d466211d598d88ead632306ec018f74eb5a2140"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2017.parquet",
+      "bytes": 18839233,
+      "oid": "7f34a6da9155f08ac364c2ba3ec455a657b2a20b"
+    }
+  ],
+  "clone_object_store": {
+    "pack_bytes": 1305725952,
+    "loose_bytes": 856064,
+    "packed_objects": 6658,
+    "loose_objects": 157,
+    "scope": "this clone including other fetched refs; not GitHub server storage or billing",
+    "comparison_limit": "pack compression/layout differs between clones; use logical history/category deltas for growth"
+  }
+}

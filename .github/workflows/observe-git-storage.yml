@@ -1,0 +1,65 @@
+name: Observe Git storage growth
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/git_storage_snapshot.py'
+      - 'config/git_storage_baseline_20261001.json'
+      - '.github/workflows/observe-git-storage.yml'
+  schedule:
+    # Four weekly samples after October 1: October 8, 15, 22, 29 at 11:20 KST.
+    - cron: '20 2 * * 4'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: git-storage-observation
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      observe: ${{ steps.window.outputs.observe }}
+    steps:
+      - name: Limit scheduled full-history downloads to four weeks
+        id: window
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python - <<'PY'
+          from datetime import datetime, timezone
+          import os
+          active = os.environ['EVENT_NAME'] != 'schedule' or datetime.now(timezone.utc).date().isoformat() < '2026-10-30'
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write(f'observe={str(active).lower()}\n')
+          print('Observation enabled' if active else 'Four-week window finished; manual observations remain available')
+          PY
+
+  observe:
+    needs: gate
+    if: needs.gate.outputs.observe == 'true' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Measure pinned main snapshot and history
+        run: |
+          python scripts/git_storage_snapshot.py \
+            --baseline config/git_storage_baseline_20261001.json \
+            --output "${RUNNER_TEMP}/git-storage.json"
+      - name: Publish measurement outside Git
+        uses: actions/upload-artifact@v4
+        with:
+          name: git-storage-${{ github.run_id }}
+          path: ${{ runner.temp }}/git-storage.json
+          retention-days: 90
+          if-no-files-found: error

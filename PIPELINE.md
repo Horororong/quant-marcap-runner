@@ -164,6 +164,12 @@ workflows retain a fresh `checked_at_utc`/changed-path heartbeat in a runner-tem
 JSON Actions artifact via `DART_REFRESH_REPORT`. See
 `docs/GIT_STORAGE_AUDIT_20261001.md` for measurements, limits and migration options.
 
+The read-only `Observe Git storage growth` workflow compares pinned snapshots
+with `config/git_storage_baseline_20261001.json` on deployment and four weekly
+observations. Reports remain in Actions storage; no recurring data/status Git
+commit is introduced. Full-history download is gated off after October 29;
+manual measurements remain available. See `docs/GIT_STORAGE_OBSERVATION.md`.
+
 ## Research rules
 
 1. Signal inputs must only use information available on the signal date.

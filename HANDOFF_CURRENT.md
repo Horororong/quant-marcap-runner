@@ -17,6 +17,14 @@ archive feature branches. Read `docs/GIT_STORAGE_AUDIT_20261001.md` for the audi
 The generated DSL/runtime contracts stay at main's versions below. Require the
 complete final-head Strategy DSL CI before integration.
 
+Four-week read-only growth observation uses
+`config/git_storage_baseline_20261001.json` and
+`.github/workflows/observe-git-storage.yml`. Reports go to 90-day Actions
+artifacts, never recurring Git commits; weekly full-history downloads stop
+after October 29. See `docs/GIT_STORAGE_OBSERVATION.md` for metric limitations
+and `docs/GPT_SANDBOX_ROADMAP.md` for the user's Codex-development/GPT-sandbox
+execution goal, missing deployment units and the proposed offline-kit milestone.
+
 ## Goal and architecture
 
 User goal: a Korean strategy request produces a Strategy DSL JSON and runs on
