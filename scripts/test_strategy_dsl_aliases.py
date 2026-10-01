@@ -45,6 +45,17 @@ def main() -> None:
     assert mom["field"] == "momentum_12_1"
     assert mom["direction"] == "high"
 
+    qroe = resolve_factor_alias("분기 ROE", "높은")
+    assert qroe["source"] == "dart"
+    assert qroe["field"] == "quarterly_roe"
+    assert qroe["direction"] == "high"
+
+    try:
+        resolve_factor_alias("ROE", "높은")
+        raise AssertionError("generic ROE was incorrectly mapped to quarterly ROE")
+    except ValueError:
+        pass
+
     try:
         resolve_factor_alias("PER", "낮은")
         raise AssertionError("generic PER was incorrectly mapped to standalone-quarter earnings yield")

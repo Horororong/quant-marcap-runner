@@ -30,7 +30,7 @@
     ],
     "unregistered_held_price_gap_policy": "fail"
   },
-  "dsl_machine_contract_version": "5",
+  "dsl_machine_contract_version": "6",
   "execution_constraints": {
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
@@ -43,7 +43,7 @@
     "high",
     "low"
   ],
-  "factor_registry_version": "4",
+  "factor_registry_version": "5",
   "factor_source_constraints": {
     "dart": {
       "reason": "current DART value adapter reconstructs standalone Q4 for April and Q2 for October signals only",
@@ -74,6 +74,24 @@
     {
       "description": "standalone-quarter net income / signal-date market cap",
       "field": "earnings_yield",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter net income / positive standalone-quarter revenue",
+      "field": "quarterly_net_margin",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter operating cash flow / positive standalone-quarter revenue",
+      "field": "quarterly_ocf_margin",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter net income / latest reported positive equity",
+      "field": "quarterly_roe",
       "source": "dart",
       "storage": "external"
     },
@@ -269,6 +287,24 @@
       "description": "compound KRX daily ChangesRatio over roughly 6 months, skipping the latest 1 month",
       "field": "momentum_6_1",
       "source": "technical",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter net income / positive standalone-quarter revenue",
+      "field": "quarterly_net_margin",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter operating cash flow / positive standalone-quarter revenue",
+      "field": "quarterly_ocf_margin",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter net income / latest reported positive equity",
+      "field": "quarterly_roe",
+      "source": "dart",
       "storage": "external"
     },
     {
@@ -543,6 +579,42 @@
         "12개월 스킵없음 모멘텀",
         "12-0 momentum",
         "12m momentum no skip"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "quarterly_roe",
+      "fixed_direction": null,
+      "note": "Standalone-quarter net income divided by latest reported positive equity.",
+      "source": "dart",
+      "terms": [
+        "분기 ROE",
+        "quarterly ROE",
+        "분기 자기자본이익률"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "quarterly_net_margin",
+      "fixed_direction": null,
+      "note": "Standalone-quarter net income divided by positive standalone-quarter revenue.",
+      "source": "dart",
+      "terms": [
+        "분기 순이익률",
+        "quarterly net margin",
+        "분기 net margin"
+      ]
+    },
+    {
+      "direction_relation": "same",
+      "field": "quarterly_ocf_margin",
+      "fixed_direction": null,
+      "note": "Standalone-quarter operating cash flow divided by positive standalone-quarter revenue.",
+      "source": "dart",
+      "terms": [
+        "분기 OCF 마진",
+        "분기 영업현금흐름률",
+        "quarterly OCF margin"
       ]
     }
   ],
