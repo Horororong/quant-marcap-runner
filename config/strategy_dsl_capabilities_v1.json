@@ -48,7 +48,42 @@
     ],
     "unregistered_held_price_gap_policy": "fail"
   },
-  "dsl_machine_contract_version": "8",
+  "decile_research": {
+    "bucket_count": 10,
+    "capital": "initial_capital applies independently to each of ten long-only portfolios",
+    "command": "python scripts/strategy_dsl_runner.py <decile_strategy.json>",
+    "execution": "same PROJECT engine, lag, tradability, costs and verified corporate actions",
+    "metrics": "CURRENT postprocess only; no synthetic long-short spread NAV",
+    "minimum_eligible_universe": 10,
+    "missing_factor_policy": "exclude intersection before ranking, same as top_n",
+    "ordering": "D01 best composite score, D10 worst",
+    "outputs": [
+      "daily_nav.csv",
+      "decile_membership.csv",
+      "decile_partition_audit.csv",
+      "decile_contract.json",
+      "target_weights.csv",
+      "execution_schedule.csv",
+      "execution_trades.csv",
+      "D01..D10/daily_nav.csv",
+      "D01..D10/target_weights.csv"
+    ],
+    "partition": "contiguous balanced buckets; remainder assigned to best buckets first",
+    "population_check": "at execution after all filters and factor missing-value intersection; preflight checks source coverage only",
+    "request": {
+      "portfolio": {
+        "selection": "deciles",
+        "weighting": "equal"
+      }
+    },
+    "research_window_command": "python scripts/strategy_dsl_runner.py <decile_strategy.json> --execution-only",
+    "small_universe_policy": "error",
+    "target_weights_layout": "root long format signal_date, decile, Code, target_weight; bucket directories wide format",
+    "tie_policy": "composite_score ascending, then zero-padded Code ascending; ties may split",
+    "version": "1",
+    "weighting": "equal within each bucket"
+  },
+  "dsl_machine_contract_version": "9",
   "execution_constraints": {
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
@@ -740,6 +775,10 @@
         "quarterly OCF margin"
       ]
     }
+  ],
+  "portfolio_selections": [
+    "deciles",
+    "top_n"
   ],
   "portfolio_weightings": [
     "equal"

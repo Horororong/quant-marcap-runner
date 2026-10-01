@@ -255,10 +255,52 @@
     },
     "portfolio": {
       "additionalProperties": false,
+      "allOf": [
+        {
+          "else": {
+            "properties": {
+              "number_of_positions": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "number_of_positions"
+            ]
+          },
+          "if": {
+            "properties": {
+              "selection": {
+                "const": "deciles"
+              }
+            },
+            "required": [
+              "selection"
+            ]
+          },
+          "then": {
+            "properties": {
+              "number_of_positions": {
+                "const": null
+              }
+            }
+          }
+        }
+      ],
       "properties": {
         "number_of_positions": {
           "minimum": 1,
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "selection": {
+          "default": "top_n",
+          "enum": [
+            "deciles",
+            "top_n"
+          ]
         },
         "weighting": {
           "enum": [
@@ -267,7 +309,6 @@
         }
       },
       "required": [
-        "number_of_positions",
         "weighting"
       ],
       "type": "object"

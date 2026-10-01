@@ -20,6 +20,55 @@ Flow:
 - Costs: explicit named fixed-bps scenarios
 - Metrics/charts: canonical CURRENT postprocessor only
 
+## Factor-decile research
+
+Set `"portfolio": {"selection": "deciles", "weighting": "equal"}` in the same
+Strategy DSL JSON and use the same validator, preflight and runner commands.
+Omit `number_of_positions` or set it to null: deciles partitions the **full**
+eligible universe, rather than the top N. The existing omitted-selection
+default remains `top_n`, which still requires a positive integer position count.
+
+After identical PIT providers, tradability/universe filters and the all-factor
+finite-value intersection, composite ranks are computed once. Sort by composite
+score ascending (best first), then zero-padded Code ascending. Divide this order
+into ten contiguous buckets `D01` (best) through `D10` (worst), whose sizes differ
+by at most one; remainder rows go to earlier buckets. Score ties may split at
+boundaries, explicitly by Code, and the split count is audited. Fewer than ten
+eligible codes is a hard execution error. Preflight checks source coverage;
+it does not calculate factors or guarantee the post-filter eligible count.
+
+Each bucket is an independent long-only, equal-weight portfolio. Each receives
+the full `initial_capital` independently; the ten outputs do not describe one
+account with the same total capital. They share PROJECT v2-16 t+1-or-later close
+execution, cash/holdings returns through the execution date, drift, cost
+scenarios and verified corporate actions. Successors are retained even when
+not selected by a bucket. An unregistered held-price gap or execution-day
+tradability failure aborts the research run before any new result is written.
+
+Outputs:
+
+- root `daily_nav.csv`: `NAV_D01_Gross`, `NAV_D01_Net_<scenario>`, ..., plus
+  optional `NAV_Benchmark`, on a common exact daily index.
+- `decile_membership.csv`: signal-date membership, factor ranks, composite
+  scores, bucket sizes and equal target weights.
+- root `target_weights.csv`: long format `signal_date,decile,Code,target_weight`;
+  each `D01`...`D10` directory also has wide target weights and its daily NAV.
+- `decile_partition_audit.csv`, `decile_contract.json`, `execution_schedule.csv`,
+  and `execution_trades.csv`: partition and execution evidence.
+- standard execution plan/fingerprint and applicable provider, benchmark and
+  corporate-action audit files.
+
+CAGR, MDD, Sharpe and charts are still delegated once to CURRENT postprocess
+over the combined daily NAV. No invented long-short spread NAV or alternate
+performance formulas are provided. For short research windows, use
+`--execution-only`; do not claim full standard-period performance coverage.
+
+Runnable example: `config/strategies/kr_equity_size_deciles_research.json`.
+Its KRX PIT universe is explicitly signal-date market cap >= KRW 10 trillion,
+April 2020 rebalance, 2020-04-01 through 2020-05-08. It is a narrow real-data
+execution regression, not validation of a complete small-cap/whole-market
+history or an investment performance result.
+
 ## Optional index benchmark
 
 Add `"benchmark": {"source": "index", "symbol": "KOSPI"}` to the same strategy JSON.
