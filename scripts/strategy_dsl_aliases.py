@@ -145,6 +145,30 @@ ALIAS_RULES: tuple[FactorAliasRule, ...] = (
         source="krx",
         field="Close",
     ),
+    FactorAliasRule(
+        terms=("12-1 모멘텀", "12개월-1개월 모멘텀", "12-1 momentum", "12m-1m momentum"),
+        source="technical",
+        field="momentum_12_1",
+        note="252-session lookback with the latest 21 sessions skipped.",
+    ),
+    FactorAliasRule(
+        terms=("6-1 모멘텀", "6개월-1개월 모멘텀", "6-1 momentum", "6m-1m momentum"),
+        source="technical",
+        field="momentum_6_1",
+        note="126-session lookback with the latest 21 sessions skipped.",
+    ),
+    FactorAliasRule(
+        terms=("3-1 모멘텀", "3개월-1개월 모멘텀", "3-1 momentum", "3m-1m momentum"),
+        source="technical",
+        field="momentum_3_1",
+        note="63-session lookback with the latest 21 sessions skipped.",
+    ),
+    FactorAliasRule(
+        terms=("12-0 모멘텀", "12개월 스킵없음 모멘텀", "12-0 momentum", "12m momentum no skip"),
+        source="technical",
+        field="momentum_12_0",
+        note="252-session lookback through the signal date.",
+    ),
 )
 
 
