@@ -36,12 +36,14 @@
     "execution_plan.json",
     "strategy_fingerprint.txt",
     "factor_provider_coverage.csv",
+    "history_coverage.json",
     "corporate_actions_applied.csv",
     "metrics_CURRENT.csv",
     "chat_manifest_CURRENT.json"
   ],
   "corporate_action_registry_version": "1",
   "corporate_actions": {
+    "history_completeness": "unverified; presence of registered events is not a coverage certificate",
     "registry": "config/kr_corporate_actions.csv",
     "supported_event_types": [
       "stock_merger"
@@ -83,7 +85,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "9",
+  "dsl_machine_contract_version": "10",
   "execution_constraints": {
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
@@ -418,6 +420,22 @@
     "notnull",
     "top_pct"
   ],
+  "history_audit": {
+    "candidate_policy": "diagnostics only; never infer events, cash flows or universe exclusions",
+    "command": "python scripts/krx_history_audit.py --start YYYY-MM-DD --end YYYY-MM-DD --output-dir <audit_dir>",
+    "completeness_scope": "market-session presence; registered corporate-action history remains unverified",
+    "exit_codes": {
+      "data_gap": 3,
+      "market_session_complete": 0
+    },
+    "outputs": [
+      "history_audit.json",
+      "security_observation_coverage.csv",
+      "history_review_candidates.csv"
+    ],
+    "price_difference_threshold_bps": 25.0
+  },
+  "history_audit_contract_version": "1",
   "markets": [
     "KOSPI",
     "KOSDAQ"
@@ -801,13 +819,14 @@
       "data_gap": 3,
       "ok": 0
     },
+    "history_coverage": "exact XKRX sessions for each requested market; does not certify security-level or corporate-action completeness",
     "statuses": [
       "ok",
       "capability_gap",
       "data_gap"
     ]
   },
-  "preflight_contract_version": "1",
+  "preflight_contract_version": "2",
   "project_template_version": "v2-16",
   "rebalance_frequencies": [
     "months"

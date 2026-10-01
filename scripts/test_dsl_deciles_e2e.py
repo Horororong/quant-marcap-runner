@@ -38,6 +38,8 @@ def main() -> None:
         assert contract["bucket_count"] == 10
         assert "independently" in contract["capital"]
         assert len(daily.columns) == 31
+        history = json.loads((out / "history_coverage.json").read_text())
+        assert history["status"] == "complete" and history["expected_sessions"] == 24
         assert np.isfinite(daily.to_numpy()).all() and (daily > 0).all().all()
         assert set(members["decile"]) == set(DECILE_LABELS)
         assert not members.duplicated(["signal_date", "Code"]).any()

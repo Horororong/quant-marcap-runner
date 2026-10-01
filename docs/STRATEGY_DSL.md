@@ -285,3 +285,25 @@ Every validated strategy has a SHA-256 `strategy_fingerprint` derived from canon
 `strategy_fingerprint + factor_registry_version + engine_version + data_version/as-of`.
 
 The registry version is stored in the compiled execution plan so a change in factor semantics is auditable even when the strategy JSON itself is unchanged.This is the basis for the future strategy-result database and natural-language research agent.
+
+
+## Historical source coverage
+
+Preflight contract 2 and both public execution modes require the exact XKRX
+sessions between `period.start` and `period.end` for **each** requested market.
+Missing first/interior/last sessions and unexpected non-session dates fail as
+`data_gap`; the full requested interval is preserved. Weekend/holiday request
+endpoints are valid. Calendar construction uses explicit requested bounds and
+records the exchange_calendars version, avoiding its moving default range.
+Preflight errors include `history_coverage` when date coverage fails. Successful
+runs save `history_coverage.json`; no factors or NAV are calculated by this gate.
+
+Calendar discrepancies must be reconciled against official history rather than
+filled or bypassed. This is a market-level date check. `complete` does not certify
+per-code history, held-price return correctness, dividends or corporate actions.
+
+Use `scripts/krx_history_audit.py` to export per-code observation spans and review
+candidates from actual source history. Its gap and price-reference checks do not
+alter the universe or execution; candidate events require independent evidence.
+Commands, threshold definitions, real-data snapshots and remaining scope are in
+[KRX_HISTORY_AUDIT.md](KRX_HISTORY_AUDIT.md).

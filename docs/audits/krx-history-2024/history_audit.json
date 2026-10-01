@@ -1,0 +1,70 @@
+{
+  "status": "complete",
+  "history_audit_contract_version": "1",
+  "source": {
+    "path_template": "data/krx_equities/yearly/marcap-YYYY.parquet",
+    "origin": "FinanceData/marcap via repository",
+    "markets": [
+      "KOSDAQ",
+      "KOSPI"
+    ],
+    "files": [
+      {
+        "path": "data/krx_equities/yearly/marcap-2024.parquet",
+        "sha256": "4fff19ba16b229f50acef8e87b372f4492fac5f681d349a53a4073000f3e6a7f"
+      },
+      {
+        "path": "config/kr_corporate_actions.csv",
+        "sha256": "0cc430b9152f72108a427a58da9951c4c9692f0a596ce52f6b3fa05548a03fdc"
+      }
+    ]
+  },
+  "session_coverage": {
+    "history_audit_contract_version": "1",
+    "status": "complete",
+    "calendar": "XKRX",
+    "calendar_package_version": "4.13.2",
+    "requested_start": "2024-01-01",
+    "requested_end": "2024-12-31",
+    "expected_first_session": "2024-01-02",
+    "expected_last_session": "2024-12-30",
+    "expected_sessions": 244,
+    "markets": {
+      "KOSDAQ": {
+        "status": "complete",
+        "observed_sessions": 244,
+        "missing_sessions": [],
+        "unexpected_dates": []
+      },
+      "KOSPI": {
+        "status": "complete",
+        "observed_sessions": 244,
+        "missing_sessions": [],
+        "unexpected_dates": []
+      }
+    },
+    "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+  },
+  "rows": 645711,
+  "distinct_codes": 2758,
+  "candidate_counts": {
+    "close_reference_return_difference": 256,
+    "internal_observation_gap": 1,
+    "left_censored_observation_start": 150,
+    "right_censored_observation_end": 61
+  },
+  "price_comparison": {
+    "changes_ratio_unit": "percent",
+    "absolute_difference_threshold_bps": 25.0,
+    "compared_consecutive_observations": 642952,
+    "policy": "review candidates only; no inferred split, merger, delisting or dividend"
+  },
+  "corporate_actions": {
+    "registry": "config/kr_corporate_actions.csv",
+    "registry_file_present": true,
+    "registered_events_in_period": 0,
+    "history_completeness": "unverified",
+    "events": []
+  },
+  "interpretation": "observed starts/ends are censored by the requested window; gaps can reflect source defects or security events. Candidates never change universe, weights, NAV or registry."
+}

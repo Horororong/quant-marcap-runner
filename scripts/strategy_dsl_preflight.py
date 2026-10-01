@@ -18,6 +18,7 @@ import traceback
 import pandas as pd
 
 from execution_contract import PREFLIGHT_CONTRACT_VERSION
+from krx_history_audit import require_session_coverage
 from strategy_dsl import compile_execution_plan, load_strategy_spec
 from strategy_dsl_runner import (
     benchmark_coverage_audit,
@@ -27,7 +28,6 @@ from strategy_dsl_runner import (
     signal_dates_from_panel,
 )
 
-PREFLIGHT_CONTRACT_VERSION = "1"
 EXIT_OK = 0
 EXIT_CAPABILITY_GAP = 2
 EXIT_DATA_GAP = 3
@@ -41,7 +41,7 @@ def _error_payload(
     strategy_id: str | None = None,
     strategy_fingerprint: str | None = None,
 ) -> dict[str, Any]:
-    return {
+    result = {
         "preflight_contract_version": PREFLIGHT_CONTRACT_VERSION,
         "status": status,
         "phase": phase,
@@ -52,6 +52,9 @@ def _error_payload(
             "message": str(exc),
         },
     }
+    if hasattr(exc, "history_coverage"):
+        result["history_coverage"] = exc.history_coverage
+    return result
 
 
 def preflight_strategy(
@@ -86,6 +89,7 @@ def preflight_strategy(
             repo_root=root,
         )
         panel = panel.copy()
+        history_coverage = require_session_coverage(panel, spec.period.start, spec.period.end, spec.universe.markets)
         panel["Date"] = pd.to_datetime(panel["Date"]).dt.normalize()
         dates = pd.DatetimeIndex(panel["Date"].dropna().unique()).sort_values()
         signal_dates = signal_dates_from_panel(panel, spec)
@@ -154,6 +158,7 @@ def preflight_strategy(
         "signal_dates": [pd.Timestamp(x).date().isoformat() for x in signal_dates],
         "factor_sources": list(plan["data_contract"]["factor_sources"]),
         "provider_coverage": coverage_rows,
+        "history_coverage": history_coverage,
         "benchmark": benchmark_coverage,
         "ready_for_execution": True,
     }

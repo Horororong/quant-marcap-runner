@@ -22,6 +22,7 @@ from execution_contract import (
     EXECUTION_ENGINE_VERSION,
     PROJECT_TEMPLATE_VERSION,
     PREFLIGHT_CONTRACT_VERSION,
+    HISTORY_AUDIT_CONTRACT_VERSION,
 )
 
 SCHEMA_VERSION = "1.0"
@@ -346,6 +347,7 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         "corporate_action_registry_version": CORPORATE_ACTION_REGISTRY_VERSION,
         "dsl_machine_contract_version": DSL_MACHINE_CONTRACT_VERSION,
         "preflight_contract_version": PREFLIGHT_CONTRACT_VERSION,
+        "history_audit_contract_version": HISTORY_AUDIT_CONTRACT_VERSION,
         "project_template_version": PROJECT_TEMPLATE_VERSION,
         "asset_class": spec.asset_class,
         "data_contract": {
@@ -355,6 +357,7 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
                 | {get_filter_definition(f.field).source for f in spec.universe.filters}
             ),
             "pit_required": True,
+            "session_coverage": "exact XKRX sessions in requested period for each requested market; fail on missing or unexpected dates",
         },
         "universe": asdict(spec.universe),
         "factors": [asdict(x) for x in spec.factors],

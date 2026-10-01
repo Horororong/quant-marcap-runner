@@ -16,6 +16,7 @@ import pandas as pd
 
 from corporate_action_registry import load_corporate_actions
 from execution_contract import DECILE_RESEARCH_CONTRACT
+from krx_history_audit import require_session_coverage
 from strategy_dsl import StrategySpec, compile_execution_plan
 from strategy_dsl_runner import (
     benchmark_coverage_audit,
@@ -152,6 +153,7 @@ def run_decile_strategy(
         markets=spec.universe.markets, columns=required_panel_columns(spec),
         repo_root=repo_root,
     )
+    history_coverage = require_session_coverage(panel, spec.period.start, spec.period.end, spec.universe.markets)
     targets, membership, audit = build_decile_target_weights_from_panel(panel, spec, repo_root)
     dates = pd.DatetimeIndex(pd.to_datetime(panel["Date"]).unique()).sort_values()
     benchmark_meta = benchmark_coverage_audit(repo_root, spec.benchmark, dates)
@@ -166,6 +168,7 @@ def run_decile_strategy(
     # Fail before writing a partial research result if any of the ten fails.
     out = output_dir or (repo_root / "results" / "dsl" / spec.strategy_id)
     out.mkdir(parents=True, exist_ok=True)
+    (out / "history_coverage.json").write_text(json.dumps(history_coverage, ensure_ascii=False, indent=2), encoding="utf-8")
     daily.to_csv(out / "daily_nav.csv", index_label="Date")
     membership.to_csv(out / "decile_membership.csv", index=False, encoding="utf-8-sig")
     audit.to_csv(out / "decile_partition_audit.csv", index=False)

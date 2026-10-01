@@ -24,24 +24,24 @@ must identify the missing capability instead of mapping to a similar strategy.
   (currently `v2-15`) and `scripts/quant_backtest_postprocess.py`.
   The execution and performance template versions are distinct; do not rename
   one to pretend it has the other's implementation.
-- Strategy schema: `1.0`; machine contract `9`; factor registry `6`;
-  preflight contract `1`; corporate-action registry `1`.
+- Strategy schema: `1.0`; machine contract `10`; factor registry `6`;
+  preflight contract `2`; history-audit contract `1`; corporate-action registry `1`.
 - Generated contracts: `config/strategy_dsl_schema_v1.json` and
   `config/strategy_dsl_capabilities_v1.json`. Regenerate with
   `python scripts/export_strategy_dsl_contract.py --write`; CI uses `--check`.
 
 ## Review units and resumption
 
-PRs #7-#13 are merged. The pre-decile main commit
-`7bb91b856e845b145d6668518302cec5739e3907` also passed its own full main CI:
-https://github.com/Horororong/quant-marcap-runner/actions/runs/36807015029
+PRs #7-#14 are merged. The post-decile main commit
+`4006bcc8b7d8ef077cd3a2f85a7ebf14e0edb3c2` passed its own full main CI:
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36809805639
 
-The current Work milestone adds reusable factor-decile research through
-`portfolio.selection="deciles"`, sharing the top-N PIT/scoring and PROJECT
-execution paths. Its branch must pass the full Strategy DSL CI (including both
-real-data E2Es) before merging. Check GitHub's live refs, PRs and current-head
-checks; do not infer outstanding work from an old chat or branch snapshot.
-If reading this document on main, the milestone is already part of main.
+The current Work milestone adds an exact XKRX market-session gate to preflight
+and both top-N/decile runners, plus an independent source-history audit tool.
+It does not certify security-level history or corporate-action completeness.
+Its branch must pass the full Strategy DSL CI (including both real-data E2Es)
+before merging. Check live GitHub refs/PR/current-head checks. When reading this
+version on main, the history-audit milestone is already part of main.
 Never force-push main.
 
 Repository: https://github.com/Horororong/quant-marcap-runner
@@ -124,17 +124,40 @@ narrow-window selection, t+1, equal initial holdings, exact cost deductions,
 benchmark dates and artifacts against an independent raw-price oracle.
 It does not claim broad-universe/full-history investment performance.
 
+## History-audit checkpoint
+
+Source diagnostics and reproducible commands are in `docs/KRX_HISTORY_AUDIT.md`.
+The committed snapshots in `docs/audits/krx-history-2020` and `krx-history-2024`
+record the source file SHA256 hashes, calendar package version and all review
+candidates. Market dates are complete for 2020 (248 sessions) and 2024 (244).
+Raw-close returns and ChangesRatio differ by more than 25 basis points in 290
+and 256 consecutive observations respectively. These are unverified candidates,
+not a count of splits/mergers or proven bad returns. 2024 also has one internal
+observation gap (Code 287410; 89 missing sessions between observations).
+
+The source-history audit never removes stocks or fills values. First/last
+observations are window-censored, not automatically IPO/delisting dates.
+A complete market-session audit still does not certify whole-market history,
+dividends, security events or the accuracy of held-price returns. Generic raw
+close discontinuities with finite prices remain a production-readiness gap;
+the current execution engine does not yet cross-check held returns against
+ChangesRatio. Do not present the audit as having repaired those events.
+
 ## Next development sequence
 
-1. Confirm the decile milestone acceptance and current main CI.
-2. Expand verified corporate actions and history coverage before claiming
-   production-grade full-history top-N or broad-universe decile results.
-   Keep capability/data gaps distinct; do not screen by future survival.
+1. Confirm the history-audit milestone acceptance and current main CI.
+2. Audit remaining years with all actual source files, reconcile calendar
+   differences against official KRX history and investigate event candidates
+   with primary disclosures. Prioritize held-return discrepancy detection and
+   verified split/rights/merger/delisting handling before broad or full-history
+   investment-performance claims. Never use future survival or audit candidates
+   as a retrospective strategy filter. The event registry remains incomplete.
 3. Expand factors with explicit accounting-period definitions (annual/TTM,
    quality/growth) and supported portfolio/asset contracts through registries.
 4. Add a tested Korean request compilation interface using generated schema,
    preserving ambiguity/gap behavior. Benchmark total-return support requires
    a separate verified source and explicit return-basis contract.
 
-Decile implementation is present; an arbitrary-language compiler/service and
-complete historical corporate-action coverage are still outstanding.
+Deciles and market-session validation are present. An arbitrary-language
+compiler/service and complete historical corporate-action coverage are still
+outstanding.
