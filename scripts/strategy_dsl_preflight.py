@@ -17,7 +17,8 @@ import traceback
 
 import pandas as pd
 
-from execution_contract import PREFLIGHT_CONTRACT_VERSION\nfrom strategy_dsl import compile_execution_plan, load_strategy_spec
+from execution_contract import PREFLIGHT_CONTRACT_VERSION
+from strategy_dsl import compile_execution_plan, load_strategy_spec
 from strategy_dsl_runner import (
     factor_provider_coverage_audit,
     load_project_engine,
