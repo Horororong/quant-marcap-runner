@@ -60,14 +60,16 @@ def main() -> None:
     plan = compile_execution_plan(spec)
     assert plan["project_engine"].endswith("v2-16_CURRENT.py")
     assert plan["strategy_fingerprint"] == spec.fingerprint()
-    assert plan["factor_registry_version"] == "2"
+    assert plan["factor_registry_version"] == "3"
     assert plan["execution_engine_version"] == "v2-16-exec-1"
     assert plan["corporate_action_registry_version"] == "1"
-    assert plan["dsl_machine_contract_version"] == "3"
+    assert plan["dsl_machine_contract_version"] == "4"
     assert plan["preflight_contract_version"] == "1"
     assert plan["project_template_version"] == "v2-16"
     assert [x["source"] for x in plan["factor_contracts"]] == ["krx", "krx"]
     assert [x["storage"] for x in plan["factor_contracts"]] == ["panel", "panel"]
+    assert [x["source"] for x in plan["filter_contracts"]] == ["krx"]
+    assert [x["field"] for x in plan["filter_contracts"]] == ["Amount"]
 
     panel = make_panel()
     tw, selections = build_target_weights_from_panel(panel, spec)
