@@ -6,7 +6,9 @@ The preflight separates two failure classes:
 - capability_gap: the requested strategy cannot be represented by the current DSL.
 - data_gap: the strategy is representable, but required PIT data is unavailable/incomplete.
 
-It deliberately does not calculate factors, holdings, or NAV.
+Known evidence gaps additionally trigger shared signal selection and a planned
+holding trace. The no-known-gap fast path stays source-only. NAV, return drift,
+trading costs and performance are never calculated here.
 """
 
 from pathlib import Path
@@ -17,6 +19,7 @@ import traceback
 
 import pandas as pd
 
+from corporate_action_preflight import check_known_action_exposure, CorporateActionEvidenceGap
 from execution_contract import PREFLIGHT_CONTRACT_VERSION
 from krx_history_audit import require_session_coverage
 from strategy_dsl import compile_execution_plan, load_strategy_spec
@@ -44,6 +47,7 @@ def _error_payload(
     result = {
         "preflight_contract_version": PREFLIGHT_CONTRACT_VERSION,
         "status": status,
+        "ready_for_execution": False,
         "phase": phase,
         "strategy_id": strategy_id,
         "strategy_fingerprint": strategy_fingerprint,
@@ -52,6 +56,8 @@ def _error_payload(
             "message": str(exc),
         },
     }
+    if hasattr(exc, "corporate_action_audit"):
+        result["corporate_action_audit"] = exc.corporate_action_audit
     if hasattr(exc, "history_coverage"):
         result["history_coverage"] = exc.history_coverage
     return result
@@ -113,6 +119,17 @@ def preflight_strategy(
             strategy_fingerprint=fingerprint,
         )
 
+    # Known events can be present in a universe yet absent from selected
+    # holdings. Trace the shared signal plan before reporting readiness.
+    try:
+        corporate_action_audit = check_known_action_exposure(panel, spec, root, engine)
+    except CorporateActionEvidenceGap as exc:
+        return _error_payload(status="data_gap", phase="corporate_actions", exc=exc,
+                              strategy_id=strategy_id, strategy_fingerprint=fingerprint)
+    except (FileNotFoundError, RuntimeError, OSError, KeyError, TypeError, ValueError, AssertionError) as exc:
+        return _error_payload(status="data_gap", phase="corporate_action_selection_contract", exc=exc,
+                              strategy_id=strategy_id, strategy_fingerprint=fingerprint)
+
     coverage_rows: list[dict[str, Any]] = []
     if not provider_coverage.empty:
         for row in provider_coverage.to_dict(orient="records"):
@@ -158,6 +175,7 @@ def preflight_strategy(
         "signal_dates": [pd.Timestamp(x).date().isoformat() for x in signal_dates],
         "factor_sources": list(plan["data_contract"]["factor_sources"]),
         "provider_coverage": coverage_rows,
+        "corporate_action_audit": corporate_action_audit,
         "history_coverage": history_coverage,
         "benchmark": benchmark_coverage,
         "ready_for_execution": True,
