@@ -46,6 +46,7 @@ def main() -> None:
         assert result["benchmark"]["observations"] == len(daily)
         assert result["benchmark"]["exact_date_alignment"] is True
         assert result["benchmark"]["return_basis"] == "price_index_close"
+        assert json.loads((out / "benchmark_coverage.json").read_text()) == result["benchmark"]
         index_close = pd.read_csv(ROOT / "data/indices/KOSPI.csv", parse_dates=["Date"]).set_index("Date")["Close"]
         aligned_close = index_close.reindex(pd.DatetimeIndex(daily["Date"]))
         assert np.allclose(daily["NAV_Benchmark"], aligned_close / aligned_close.iloc[0], rtol=0, atol=1e-12)
@@ -82,6 +83,7 @@ def main() -> None:
             "corporate_actions_applied.csv",
             "execution_plan.json",
             "strategy_fingerprint.txt",
+            "benchmark_coverage.json",
         ):
             assert (out / name).exists(), name
 

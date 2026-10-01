@@ -469,6 +469,9 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
         benchmark_nav = load_benchmark_nav(repo_root, spec.benchmark, daily.index)
         daily["NAV_Benchmark"] = benchmark_nav.reindex(daily.index).to_numpy(float)
         benchmark_meta = benchmark_coverage_audit(repo_root, spec.benchmark, daily.index)
+        (out / "benchmark_coverage.json").write_text(
+            json.dumps(benchmark_meta, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
     daily.to_csv(out / "daily_nav.csv", index_label="Date")
     target_weights.to_csv(out / "target_weights.csv", index_label="signal_date")
     selections.to_csv(out / "selections.csv", index=False, encoding="utf-8-sig")

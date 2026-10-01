@@ -215,6 +215,7 @@ def build_capabilities() -> dict:
             "path_template": "data/indices/{symbol}.csv",
             "alignment": "exact strategy daily dates; no forward fill",
             "output_series": "NAV_Benchmark",
+            "audit_output": "benchmark_coverage.json",
             "return_basis": "price_index_close",
             "includes_dividends": False,
             "normalization": "first exact strategy date = 1.0",

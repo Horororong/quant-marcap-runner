@@ -13,6 +13,7 @@
   ],
   "benchmarks": {
     "alignment": "exact strategy daily dates; no forward fill",
+    "audit_output": "benchmark_coverage.json",
     "includes_dividends": false,
     "normalization": "first exact strategy date = 1.0",
     "output_series": "NAV_Benchmark",

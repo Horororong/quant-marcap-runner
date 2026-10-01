@@ -36,8 +36,8 @@ Preflight checks source prices without calculating benchmark NAV. Missing files,
 missing strategy dates, duplicate/invalid dates, or invalid prices produce a
 `data_gap`; unsupported benchmark definitions produce a `capability_gap`.
 No filling, interpolation, or shortening of the requested period is allowed.
-The execution plan records the benchmark definition and the result includes
-coverage metadata and the return basis.
+The execution plan records the benchmark definition; `benchmark_coverage.json`
+records coverage metadata, the source path, and the return basis.
 
 ## Machine-readable contract for AI strategy generation
 
