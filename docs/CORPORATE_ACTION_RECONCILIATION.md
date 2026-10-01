@@ -80,15 +80,57 @@ original buy costs and zero split cost in both modes. It checks that removing
 only the preferred event stops execution before new outputs. This fixture is
 not a recommended strategy or a broad-history performance result.
 
+## Namyang share classes and APR autumn split evidence
+
+Reviewed on 2026-10-01. Namyang's [official 2024-10-25 shareholder notice](https://company.namyangi.com/ko/investment/board/elect/detail?bbsSn=392)
+specifies KRW 5,000 to 500 par value and ten shares per old share for both
+classes: common 679,731 to 6,797,310 and preferred 200,000 to 2,000,000.
+Its planned November 6 suspension start was subsequently revised. The
+[completed KIND timeline](https://kind.krx.co.kr/external/2025/03/07/001066/20250307002609/11335.htm)
+records actual suspension November 8–19, legal effectiveness November 12 and
+new listing November 20. Actual KRX prices/Volume independently confirm this
+trading interval. Register 003920 and 003925 separately on **November 20**.
+The later disclosure verifies historical events only; it is never a factor input.
+
+APR's [official shareholder notice dated 2024-09-20](https://www.apr-in.com/public-notice-view.php?page=1&wr_id=77)
+confirms five shares per old share, KRW 500 to 100 par value. Its current website
+reproduces that notice on 2025-03-28. The company's
+[2024-07-31 release](https://apr-blog.com/apr-stock-split) planned suspension
+October 18–30 and resumption October 31. Actual KRX source confirms those dates
+and the five-for-one share-value return. Register 278470 on **October 31**;
+the October 22 certificate-submission deadline is not trading resumption.
+
+| Security | Last actual trade | Last traded Close | Resumption Close | Share-value return | Exchange rounded return |
+| --- | --- | ---: | ---: | ---: | ---: |
+| APR 278470 | 2024-10-17 | 266,500 | 50,100 | −6.003752% | −6.00% |
+| Namyang 003920 | 2024-11-07 | 687,000 | 67,700 | −1.455604% | −1.46% |
+| Namyang preferred 003925 | 2024-11-07 | 399,500 | 38,100 | −4.630788% | −4.63% |
+
+These are event-day source checks, not portfolio or investment performance.
+The real losses remain after share-count adjustment.
+
+`config/strategies/kr_equity_autumn_splits_research.json` is a narrow actual-source
+execution regression for September 2–November 22. Its September 30 signal uses
+only then-observed KOSPI tradability and nominal prices (KRW 100,000–900,000),
+ranks Close high and selects 30 equal-weight holdings. The same filtered universe
+of 95 stocks is also run as ten independently capitalized deciles. The actual
+next session is October 2 because October 1 is an XKRX holiday. A separate
+raw-price/share-count oracle checks every gross/net daily NAV, the original buy
+cost and zero event turnover/cost in both public modes. Removing any of these
+three securities' own records, giving APR a wrong ratio or using Namyang's legal
+date must fail the held-return guard before new outputs. This fixture does not
+establish broad-history event coverage or recommend nominal-price investing.
+
 ## Recorded 2024 checkpoint
 
 [Summary](audits/corporate-actions-2024/corporate_action_reconciliation.json),
 [event checks](audits/corporate-actions-2024/registry_event_checks.csv) and
 [all candidates](audits/corporate-actions-2024/candidate_reconciliation.csv)
-record source/registry hashes and registry version 3. Three registered security
-events (BYC common, BYC preferred, EcoPro) agree with exchange references.
-All 256 original >25bp price candidates remain in the report: three match
-consistent registered splits and 253 remain unmatched by this audit. The one
+record source/registry hashes and registry version 4. Six registered security
+events (BYC common/preferred, EcoPro, Namyang common/preferred and APR) agree
+with exchange references.
+All 256 original >25bp price candidates remain in the report: six match
+consistent registered splits and 250 remain unmatched by this audit. The one
 internal gap and all censored endpoints also remain. These are source-observation
 counts, not counts of distinct events, proven defects or executed losses.
 

@@ -3,7 +3,8 @@
 The execution template remains PROJECT v2-16 and engine v2-16-exec-2.
 Performance/chart calculations live only in `quant_backtest_template_CURRENT.py`
 v2-17. PROJECT re-exports those exact functions for compatibility; no copied
-metric/chart implementations remain. The machine contract is 13 and execution
+metric/chart implementations remain. This milestone introduced machine contract
+13; the current value is defined in `scripts/execution_contract.py`. Execution
 plans record the performance version separately.
 
 ## Periods and compatibility

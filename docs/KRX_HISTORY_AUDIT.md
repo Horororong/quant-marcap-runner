@@ -68,7 +68,8 @@ Both markets match the calendar in both snapshots. Code 287410 has 89 missing
 sessions between 2024-06-13 and 2024-10-28 observations. This is a source fact,
 not a verified explanation. These archived snapshots used registry version 1, with one merger in 2020 and
 no registered events in 2024. Registry version 2 subsequently adds the verified
-EcoPro split in 2024, and version 3 adds BYC common/preferred. Neither snapshot
+EcoPro split in 2024, version 3 adds BYC common/preferred, and version 4 adds
+Namyang common/preferred and APR. Neither snapshot
 count certifies complete event history. The separate [corporate-action reconciliation](CORPORATE_ACTION_RECONCILIATION.md)
 retains all candidates and checks exact registered split matches against source data.
 

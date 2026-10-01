@@ -3,7 +3,7 @@
   "requested_start": "2024-01-01",
   "requested_end": "2024-12-31",
   "corporate_action_reconciliation_version": "1",
-  "corporate_action_registry_version": "3",
+  "corporate_action_registry_version": "4",
   "files": [
     {
       "path": "data/krx_equities/yearly/marcap-2024.parquet",
@@ -11,7 +11,7 @@
     },
     {
       "path": "config/kr_corporate_actions.csv",
-      "sha256": "9d779e115eae6202142976226191ac916438279676b3f881d9a2240f920923cd"
+      "sha256": "839eaf2945817fdb3459dae3ef287ce11d94da443df1668aa1a593c07a230662"
     }
   ],
   "session_coverage": {
@@ -41,11 +41,11 @@
     "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
   },
   "event_check_counts": {
-    "reference_consistent": 3
+    "reference_consistent": 6
   },
   "price_candidate_status_counts": {
-    "registered_split_reference_consistent": 3,
-    "unresolved": 253
+    "registered_split_reference_consistent": 6,
+    "unresolved": 250
   },
   "source_candidate_counts": {
     "close_reference_return_difference": 256,
