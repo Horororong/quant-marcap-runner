@@ -126,7 +126,7 @@
       "D01..D10/target_weights.csv"
     ],
     "partition": "contiguous balanced buckets; remainder assigned to best buckets first",
-    "population_check": "at execution after all filters and factor missing-value intersection; preflight checks source coverage only",
+    "population_check": "at execution after all filters and factor missing-value intersection; preflight normally checks sources only; relevant known event gaps trigger shared selection and a planned exposure gate",
     "request": {
       "portfolio": {
         "selection": "deciles",
@@ -140,7 +140,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "18",
+  "dsl_machine_contract_version": "19",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -905,9 +905,9 @@
     },
     "command": "python scripts/strategy_dsl_preflight.py <strategy.json>",
     "does_not_compute": [
-      "factor values",
-      "holdings",
       "NAV",
+      "return drift",
+      "trading costs",
       "performance metrics"
     ],
     "exit_codes": {
@@ -916,13 +916,15 @@
       "ok": 0
     },
     "history_coverage": "exact XKRX sessions for each requested market; does not certify security-level or corporate-action completeness",
+    "known_event_gate": "relevant config/kr_corporate_action_gaps.json entries trigger shared factor/target selection and exact lag/lineage trace; planned exposure is data_gap before NAV",
+    "known_event_scope": "known gaps only; does not certify unregistered events, drift, tradability, returns or costs",
     "statuses": [
       "ok",
       "capability_gap",
       "data_gap"
     ]
   },
-  "preflight_contract_version": "2",
+  "preflight_contract_version": "3",
   "project_template_version": "v2-16",
   "rebalance_frequencies": [
     "months"

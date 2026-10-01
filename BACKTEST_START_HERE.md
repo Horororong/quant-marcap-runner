@@ -21,6 +21,14 @@
 
 preflight와 범용 실행은 요청기간의 XKRX 거래일을 각 요청시장과 정확히 대조한다.
 시장 전체 날짜 누락은 중단한다. 이는 종목별 기업행동 이력의 완전성 인증이 아니다.
+preflight 계약 3은 관련된 미확인 기업행위가 있으면 실행과 같은 PIT 팩터·선정
+함수를 사용하고 실제 체결 지연에 맞춰 양의 목표비중 보유 계획을 추적한다.
+행사일 종가 매도로 그 이전 보유를 소급 제거하지 않는다. 해당 노출은
+`data_gap`, `phase="corporate_actions"`, `ready_for_execution=false`로 중단하며
+종목·분위·선정일을 `corporate_action_audit`에 기록한다. 관련 알려진 공백이
+없으면 원자료 검사만 수행한다. NAV·비중 드리프트·비용·성과는 계산하지 않으며,
+`ok`도 미등록 행사나 실제 가격 경로의 완전성 인증은 아니다.
+상세 범위는 `docs/CORPORATE_ACTION_PREFLIGHT.md`를 따른다.
 장기 실행의 원자료 검토에는 `docs/KRX_HISTORY_AUDIT.md`의 감사 절차를 사용하고,
 확인 후보를 전략 필터나 기업행동으로 자동 적용하지 않는다.
 시장 정규화와 검증된 과거 관측값 복원은 `docs/KRX_MARKET_NORMALIZATION.md`를
@@ -95,4 +103,4 @@ delisting date is never actual receipt. The generic contract keeps unpaid claims
 in NAV but outside settled Cash; insufficient settled cash rejects execution.
 Known unresolved events in `config/kr_corporate_action_gaps.json` stop affected
 holdings without historical-universe exclusion. Jeisys actual payment remains
-unverified and has no executable registry entry.
+unverified, as do applicable net proceeds, and has no executable registry entry.
