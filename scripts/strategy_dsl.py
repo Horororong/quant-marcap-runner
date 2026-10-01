@@ -12,9 +12,15 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 import hashlib
 import json
+import math
 import re
 
-from factor_registry import FACTOR_REGISTRY_VERSION, get_factor_definition, get_filter_definition, validate_factor_strategy_constraints
+from jsonschema import Draft202012Validator, FormatChecker, validators
+
+from factor_registry import (
+    FACTOR_REGISTRY_VERSION, get_factor_definition, get_filter_definition,
+    validate_factor_strategy_constraints, filterable_fields, supported_fields, supported_sources,
+)
 from execution_contract import (
     CORPORATE_ACTION_REGISTRY_VERSION,
     DECILE_RESEARCH_CONTRACT,
@@ -44,6 +50,293 @@ SUPPORTED_TRADING_DAY_RULES = {"last"}
 SUPPORTED_EXECUTION_PRICES = {"next_close"}
 SUPPORTED_BENCHMARK_SOURCES = {"index"}
 SUPPORTED_BENCHMARK_SYMBOLS = {"KOSPI", "KOSDAQ", "KOSPI200", "KOSDAQ150"}
+
+INPUT_VALIDATION_CONTRACT = {
+    "version": "1",
+    "entry_points": ["load_strategy_spec", "StrategySpec.from_dict"],
+    "schema_builder": "scripts/strategy_dsl.py:build_strategy_json_schema",
+    "unknown_fields": "reject at every strategy object; metadata permits arbitrary JSON properties",
+    "types": "reject numeric strings, booleans as numbers and non-integer tokens in integer fields",
+    "numbers": "finite and representable as a finite float; including metadata",
+    "dates": "real calendar dates in YYYY-MM-DD; start <= end and book_start <= book_end",
+    "duplicate_json_keys": "reject at every object, including metadata",
+    "runtime_semantics": ["strict integer tokens", "finite numbers and weight/cost totals", "ordered periods", "unique normalized factor names", "registry source constraints"],
+    "failure": "preflight capability_gap in compile phase before any data access or NAV",
+}
+
+
+def _factor_source_field_constraint() -> dict:
+    variants = []
+    for source in supported_sources():
+        variants.append({
+            "properties": {
+                "source": {"const": source},
+                "field": {"enum": supported_fields(source)},
+            },
+            "required": ["source", "field"],
+        })
+    return {"oneOf": variants}
+
+
+def build_strategy_json_schema() -> dict:
+    factor_item = {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["name", "source", "field", "direction"],
+        "properties": {
+            "name": {"type": "string", "minLength": 1, "pattern": r"\S"},
+            "source": {"type": "string"},
+            "field": {"type": "string"},
+            "direction": {"enum": sorted(SUPPORTED_DIRECTIONS)},
+            "weight": {"type": "number", "exclusiveMinimum": 0, "default": 1.0},
+            "transform": {"enum": sorted(SUPPORTED_FACTOR_TRANSFORMS), "default": "identity"},
+        },
+        "allOf": [_factor_source_field_constraint()],
+    }
+    filter_item = {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["field", "op"],
+        "properties": {
+            "field": {"enum": filterable_fields()},
+            "op": {"enum": sorted(SUPPORTED_FILTER_OPS)},
+            "value": {},
+        },
+        "allOf": [
+            {
+                "if": {"properties": {"op": {"const": "notnull"}}, "required": ["op"]},
+                "then": {"properties": {"value": {"type": "null"}}},
+                "else": {"required": ["value"]},
+            },
+            {
+                "if": {"properties": {"op": {"enum": ["gt", "gte", "lt", "lte"]}}, "required": ["op"]},
+                "then": {"properties": {"value": {"type": "number"}}},
+            },
+            {
+                "if": {"properties": {"op": {"enum": ["top_pct", "bottom_pct", "exclude_top_pct", "exclude_bottom_pct"]}}, "required": ["op"]},
+                "then": {"properties": {"value": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 100}}},
+            },
+            {
+                "if": {"properties": {"op": {"enum": ["eq", "ne"]}}, "required": ["op"]},
+                "then": {"properties": {"value": {"type": ["string", "number", "boolean"]}}},
+            },
+            {
+                "if": {"properties": {"op": {"enum": ["in", "not_in"]}}, "required": ["op"]},
+                "then": {"properties": {"value": {
+                    "type": "array", "minItems": 1,
+                    "items": {"type": ["string", "number", "boolean"]},
+                }}},
+            },
+        ],
+    }
+    cost_item = {
+        "type": "object",
+        "additionalProperties": False,
+        "properties": {
+            name: {"type": "number", "minimum": 0, "default": 0.0}
+            for name in (
+                "commission_bps",
+                "sell_tax_bps",
+                "spread_bps",
+                "slippage_bps",
+                "market_impact_bps",
+            )
+        },
+    }
+    return {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "strategy_dsl_schema_v1.json",
+        "title": "quant-marcap-runner Strategy DSL",
+        "description": "Machine contract for deterministic Korean-equity Strategy DSL generation.",
+        "x-input-validation": INPUT_VALIDATION_CONTRACT,
+        "type": "object",
+        "additionalProperties": False,
+        "required": [
+            "schema_version",
+            "strategy_id",
+            "title",
+            "asset_class",
+            "universe",
+            "factors",
+            "portfolio",
+            "rebalance",
+            "execution",
+            "cost_scenarios",
+            "period",
+        ],
+        "properties": {
+            "schema_version": {"const": SCHEMA_VERSION},
+            "strategy_id": {"type": "string", "pattern": STRATEGY_ID_RE.pattern},
+            "title": {"type": "string", "minLength": 1, "pattern": r"\S"},
+            "asset_class": {"enum": sorted(SUPPORTED_ASSET_CLASSES)},
+            "universe": {
+                "type": "object",
+                "additionalProperties": False,
+                "required": ["markets"],
+                "properties": {
+                    "markets": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": True,
+                        "items": {"enum": ["KOSPI", "KOSDAQ"]},
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": filter_item,
+                        "default": [],
+                    },
+                    "require_tradable_on_signal": {"type": "boolean", "default": True},
+                },
+            },
+            "factors": {"type": "array", "minItems": 1, "items": factor_item},
+            "portfolio": {
+                "type": "object",
+                "additionalProperties": False,
+                "required": ["weighting"],
+                "properties": {
+                    "number_of_positions": {"type": ["integer", "null"], "minimum": 1},
+                    "weighting": {"enum": sorted(SUPPORTED_WEIGHTINGS)},
+                    "selection": {"enum": sorted(SUPPORTED_PORTFOLIO_SELECTIONS), "default": "top_n"},
+                },
+                "allOf": [{
+                    "if": {"properties": {"selection": {"const": "deciles"}}, "required": ["selection"]},
+                    "then": {"properties": {"number_of_positions": {"const": None}}},
+                    "else": {"required": ["number_of_positions"], "properties": {"number_of_positions": {"type": "integer", "minimum": 1}}},
+                }],
+            },
+            "rebalance": {
+                "type": "object",
+                "additionalProperties": False,
+                "required": ["frequency", "months", "trading_day"],
+                "properties": {
+                    "frequency": {"enum": sorted(SUPPORTED_REBALANCE_FREQUENCIES)},
+                    "months": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": True,
+                        "items": {"type": "integer", "minimum": 1, "maximum": 12},
+                    },
+                    "trading_day": {"enum": sorted(SUPPORTED_TRADING_DAY_RULES)},
+                },
+            },
+            "execution": {
+                "type": "object",
+                "additionalProperties": False,
+                "required": ["lag_sessions", "price"],
+                "properties": {
+                    "lag_sessions": {"type": "integer", "minimum": 1},
+                    "price": {"enum": sorted(SUPPORTED_EXECUTION_PRICES)},
+                },
+            },
+            "cost_scenarios": {
+                "type": "object",
+                "minProperties": 1,
+                "propertyNames": {"type": "string", "minLength": 1, "pattern": r"\S"},
+                "additionalProperties": cost_item,
+            },
+            "benchmark": {
+                "type": ["object", "null"],
+                "additionalProperties": False,
+                "required": ["source", "symbol"],
+                "properties": {
+                    "source": {"enum": sorted(SUPPORTED_BENCHMARK_SOURCES)},
+                    "symbol": {"enum": sorted(SUPPORTED_BENCHMARK_SYMBOLS)},
+                },
+            },
+            "period": {
+                "type": "object",
+                "additionalProperties": False,
+                "required": ["start", "end", "book_start", "book_end"],
+                "properties": {
+                    key: {"type": ["string", "null"] if key == "as_of_date" else "string",
+                          "format": "date", "pattern": r"^\d{4}-\d{2}-\d{2}$"}
+                    for key in ("start", "end", "book_start", "book_end", "as_of_date")
+                },
+            },
+            "initial_capital": {"type": "number", "exclusiveMinimum": 0, "default": 10000000},
+            "metadata": {"type": "object", "additionalProperties": True},
+        },
+    }
+
+
+class StrategyInputError(ValueError):
+    """An input contract violation, with a stable path for preflight clients."""
+
+    def __init__(self, path: str, message: str):
+        self.validation_path = path
+        super().__init__(f"{path}: {message}")
+
+
+class StrategyInputTypeError(StrategyInputError, TypeError):
+    pass
+
+
+# JSON Schema considers 1.0 an integer. Execution intentionally requires integer
+# tokens, and accepts tuple arrays produced by StrategySpec.to_dict(). These
+# additional runtime semantics are advertised in x-input-validation/capabilities.
+_INPUT_VALIDATOR = validators.extend(Draft202012Validator, type_checker=Draft202012Validator.TYPE_CHECKER.redefine_many({
+    "integer": lambda checker, value: type(value) is int,
+    "array": lambda checker, value: isinstance(value, (list, tuple)),
+    "object": lambda checker, value: isinstance(value, Mapping),
+}))
+
+
+def _validate_json_values(value: Any, path: str = "$") -> None:
+    if isinstance(value, Mapping):
+        for key, item in value.items():
+            if not isinstance(key, str):
+                raise StrategyInputTypeError(path, "object keys must be strings")
+            _validate_json_values(item, f"{path}.{key}")
+    elif isinstance(value, (list, tuple)):
+        for index, item in enumerate(value):
+            _validate_json_values(item, f"{path}[{index}]")
+    elif type(value) in (int, float):
+        try:
+            finite = math.isfinite(value)
+        except OverflowError:
+            finite = False
+        if not finite:
+            raise StrategyInputError(path, "number must be finite and representable as a finite float")
+    elif value is not None and type(value) not in (str, bool):
+        raise StrategyInputTypeError(path, "value must be JSON-compatible")
+
+
+def validate_strategy_input(raw: Mapping[str, Any]) -> None:
+    """Shared input gate; validate before normalization, providers or execution."""
+    _validate_json_values(raw)
+    # Rebuild from the live registry, including providers registered by clients.
+    validator = _INPUT_VALIDATOR(build_strategy_json_schema(), format_checker=FormatChecker())
+    error = next(validator.iter_errors(raw), None)
+    if error is not None:
+        path = "$" + "".join(f"[{part}]" if isinstance(part, int) else f".{part}" for part in error.absolute_path)
+        if error.validator == "type":
+            expected = error.validator_value
+            if expected == "object":
+                message = f"{path.removeprefix('$.')} must be an object"
+            else:
+                message = f"must have type {expected!r}; no implicit coercion"
+            raise StrategyInputTypeError(path, message)
+        if error.validator == "oneOf" and path.startswith("$.factors["):
+            raise StrategyInputError(path, "unsupported factor source/field combination")
+        prefix = "unsupported input: " if error.validator in {"enum", "additionalProperties", "const"} else ""
+        raise StrategyInputError(path, prefix + error.message)
+    for start, end in (("start", "end"), ("book_start", "book_end")):
+        if raw["period"][start] > raw["period"][end]:
+            raise StrategyInputError(f"$.period.{start}", f"must be <= period.{end}")
+    if not math.isfinite(sum(float(factor.get("weight", 1.0)) for factor in raw["factors"])):
+        raise StrategyInputError("$.factors", "total factor weight must be finite")
+    for name, costs in raw["cost_scenarios"].items():
+        if not math.isfinite(sum(float(value) for value in costs.values())):
+            raise StrategyInputError(f"$.cost_scenarios.{name}", "total cost must be finite")
+
+
+def _unique_json_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise StrategyInputError("$", f"duplicate JSON key: {key!r}")
+        result[key] = value
+    return result
 
 
 def _as_tuple(value: Any, *, name: str) -> tuple:
@@ -267,6 +560,7 @@ class StrategySpec:
 
     @classmethod
     def from_dict(cls, raw: Mapping[str, Any]) -> "StrategySpec":
+        validate_strategy_input(raw)
         version = str(raw.get("schema_version", "")).strip()
         if version != SCHEMA_VERSION:
             raise ValueError(f"schema_version must be {SCHEMA_VERSION}; got {version!r}")
@@ -333,9 +627,7 @@ class StrategySpec:
 
 def load_strategy_spec(path: str | Path) -> StrategySpec:
     p = Path(path)
-    raw = json.loads(p.read_text(encoding="utf-8"))
-    if not isinstance(raw, Mapping):
-        raise TypeError("strategy JSON root must be an object")
+    raw = json.loads(p.read_text(encoding="utf-8"), object_pairs_hook=_unique_json_object)
     return StrategySpec.from_dict(raw)
 
 

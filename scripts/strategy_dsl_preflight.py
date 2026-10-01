@@ -60,6 +60,8 @@ def _error_payload(
         result["corporate_action_audit"] = exc.corporate_action_audit
     if hasattr(exc, "history_coverage"):
         result["history_coverage"] = exc.history_coverage
+    if hasattr(exc, "validation_path"):
+        result["error"]["path"] = exc.validation_path
     return result
 
 

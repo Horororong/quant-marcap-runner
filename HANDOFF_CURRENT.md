@@ -50,7 +50,7 @@ must identify the missing capability instead of mapping to a similar strategy.
   (currently `v2-17`) and `scripts/quant_backtest_postprocess.py`.
   The execution and performance template versions are distinct; do not rename
   one to pretend it has the other's implementation.
-- Strategy schema: `1.0`; machine contract `17`; factor registry `6`;
+- Strategy schema: `1.0`; machine contract `18`; input-validation contract `1`; factor registry `6`;
   preflight contract `3`; history-audit contract `1`; market-normalization contract `1`; corporate-action registry `5`.
 - Generated contracts: `config/strategy_dsl_schema_v1.json` and
   `config/strategy_dsl_capabilities_v1.json`. Regenerate with
