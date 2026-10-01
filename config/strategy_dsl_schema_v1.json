@@ -14,27 +14,27 @@
         "additionalProperties": false,
         "properties": {
           "commission_bps": {
-            "default": 0.0,
+            "default": 0,
             "minimum": 0,
             "type": "number"
           },
           "market_impact_bps": {
-            "default": 0.0,
+            "default": 0,
             "minimum": 0,
             "type": "number"
           },
           "sell_tax_bps": {
-            "default": 0.0,
+            "default": 0,
             "minimum": 0,
             "type": "number"
           },
           "slippage_bps": {
-            "default": 0.0,
+            "default": 0,
             "minimum": 0,
             "type": "number"
           },
           "spread_bps": {
-            "default": 0.0,
+            "default": 0,
             "minimum": 0,
             "type": "number"
           }
@@ -142,7 +142,7 @@
             ]
           },
           "weight": {
-            "default": 1.0,
+            "default": 1,
             "exclusiveMinimum": 0,
             "type": "number"
           }
@@ -272,8 +272,22 @@
             "additionalProperties": false,
             "properties": {
               "field": {
-                "minLength": 1,
-                "type": "string"
+                "enum": [
+                  "Amount",
+                  "Change",
+                  "ChangesRatio",
+                  "Close",
+                  "High",
+                  "Low",
+                  "Marcap",
+                  "Open",
+                  "Stocks",
+                  "Volume",
+                  "book_to_price",
+                  "cashflow_yield",
+                  "earnings_yield",
+                  "sales_yield"
+                ]
               },
               "op": {
                 "enum": [
