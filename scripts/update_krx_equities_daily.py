@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pandas as pd
 import requests
+from krx_market_normalization import normalize_markets
 
 # -----------------------------------------------------------------------------
 # KRX individual-stock panel updater for point-in-time backtests
@@ -38,7 +39,7 @@ START_YEAR = 1995
 BASE_URL = 'https://raw.githubusercontent.com/FinanceData/marcap/master/data/marcap-{year}.parquet'
 
 KEEP_COLUMNS = [
-    'Date', 'Rank', 'Code', 'Name', 'Market', 'Dept', 'MarketId',
+    'Date', 'Rank', 'Code', 'Name', 'Market', 'SourceMarket', 'Dept', 'MarketId',
     'Open', 'High', 'Low', 'Close',
     'Volume', 'Amount',
     'Changes', 'ChangeCode', 'ChangesRatio', 'ChagesRatio',
@@ -97,7 +98,7 @@ def _standardize(raw: bytes) -> pd.DataFrame:
 
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     df['Code'] = df['Code'].astype(str).str.zfill(6)
-    df['Market'] = df['Market'].astype(str).str.upper().str.strip()
+    df = normalize_markets(df)
 
     for c in STRING_COLUMNS:
         if c in df.columns:
@@ -108,7 +109,7 @@ def _standardize(raw: bytes) -> pd.DataFrame:
             df[c] = pd.to_numeric(df[c], errors='coerce')
 
     # KOSPI/KOSDAQ individual securities only. Preferred stocks are deliberately
-    # preserved. ETF/ETN/KONEX stay outside this base equity panel.
+    # preserved. KOSDAQ GLOBAL belongs to KOSDAQ; KONEX remains outside.
     df = df[df['Market'].isin(['KOSPI', 'KOSDAQ'])].copy()
     df = df[df['Date'].notna() & df['Code'].notna()].copy()
 

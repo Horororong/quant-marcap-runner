@@ -1,0 +1,80 @@
+{
+  "upstream_commit": "fbd246a94cf8a52a1637b8bce406532a8fd64124",
+  "years": [
+    {
+      "year": 2022,
+      "url": "https://raw.githubusercontent.com/FinanceData/marcap/fbd246a94cf8a52a1637b8bce406532a8fd64124/data/marcap-2022.parquet",
+      "upstream_sha256": "179650f5d1bd6abecb03d1b8eddf5f59c5ca6a0402e7bf2578635790b9ca811c",
+      "upstream_labels": {
+        "KOSDAQ": 385004,
+        "KOSPI": 231274,
+        "KONEX": 31190,
+        "KOSDAQ GLOBAL": 1479
+      },
+      "stored_rows": 616278,
+      "stored_first": "2022-01-03 00:00:00",
+      "stored_last": "2022-12-29 00:00:00",
+      "stored_sha256": "667503a6c16770a3f5cf3c6a23938f786109056970c7a74847dc7ace18a8f3f4"
+    },
+    {
+      "year": 2023,
+      "url": "https://raw.githubusercontent.com/FinanceData/marcap/fbd246a94cf8a52a1637b8bce406532a8fd64124/data/marcap-2023.parquet",
+      "upstream_sha256": "08f96990358f5afc4e17321613cef7126e2f0bd4290b82db952b7808d87f9c22",
+      "upstream_labels": {
+        "KOSDAQ": 392997,
+        "KOSPI": 232425,
+        "KONEX": 31783,
+        "KOSDAQ GLOBAL": 12332
+      },
+      "stored_rows": 625422,
+      "stored_first": "2023-01-02 00:00:00",
+      "stored_last": "2023-12-28 00:00:00",
+      "stored_sha256": "d7c246470239e7b82d41b975c0aeb5aab02d9758e92aa21485232ba0daf89dc6"
+    },
+    {
+      "year": 2024,
+      "url": "https://raw.githubusercontent.com/FinanceData/marcap/fbd246a94cf8a52a1637b8bce406532a8fd64124/data/marcap-2024.parquet",
+      "upstream_sha256": "b0c38943e67637d5faf88429880092cf0f46a394be39860dd3bcd0b04231bccb",
+      "upstream_labels": {
+        "KOSDAQ": 412544,
+        "KOSPI": 233167,
+        "KONEX": 30279,
+        "KOSDAQ GLOBAL": 11718
+      },
+      "stored_rows": 645711,
+      "stored_first": "2024-01-02 00:00:00",
+      "stored_last": "2024-12-30 00:00:00",
+      "stored_sha256": "4fff19ba16b229f50acef8e87b372f4492fac5f681d349a53a4073000f3e6a7f"
+    },
+    {
+      "year": 2025,
+      "url": "https://raw.githubusercontent.com/FinanceData/marcap/fbd246a94cf8a52a1637b8bce406532a8fd64124/data/marcap-2025.parquet",
+      "upstream_sha256": "2bfd93c217eb74263bc5020b23fa6debb6b02531c11eaccc2826639bc191559e",
+      "upstream_labels": {
+        "KOSDAQ": 423235,
+        "KOSPI": 232518,
+        "KONEX": 28611,
+        "KOSDAQ GLOBAL": 12160
+      },
+      "stored_rows": 655753,
+      "stored_first": "2025-01-02 00:00:00",
+      "stored_last": "2025-12-30 00:00:00",
+      "stored_sha256": "cebc836186c74542f7732c11eff3faec2b146e3ce36f5af475a9093c6587c163"
+    },
+    {
+      "year": 2026,
+      "url": "https://raw.githubusercontent.com/FinanceData/marcap/fbd246a94cf8a52a1637b8bce406532a8fd64124/data/marcap-2026.parquet",
+      "upstream_sha256": "7eb1d92bc3019ede9c75383a42b5c139dedca3745f417e65a85fb476744e3931",
+      "upstream_labels": {
+        "KOSDAQ": 320504,
+        "KOSPI": 171534,
+        "KONEX": 19780,
+        "KOSDAQ GLOBAL": 9264
+      },
+      "stored_rows": 481185,
+      "stored_first": "2026-01-02 00:00:00",
+      "stored_last": "2026-09-21 00:00:00",
+      "stored_sha256": "ea1a5229a3e257d174387a6385c8408a90f1d30c73ea2f527925627a44437037"
+    }
+  ]
+}

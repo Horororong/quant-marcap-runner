@@ -23,6 +23,10 @@ preflight와 범용 실행은 요청기간의 XKRX 거래일을 각 요청시장
 시장 전체 날짜 누락은 중단한다. 이는 종목별 기업행동 이력의 완전성 인증이 아니다.
 장기 실행의 원자료 검토에는 `docs/KRX_HISTORY_AUDIT.md`의 감사 절차를 사용하고,
 확인 후보를 전략 필터나 기업행동으로 자동 적용하지 않는다.
+시장 정규화와 검증된 과거 관측값 복원은 `docs/KRX_MARKET_NORMALIZATION.md`를
+따른다. `KOSDAQ GLOBAL`은 코스닥에 포함하며 당시 원본 구분은 `SourceMarket`에
+보존한다. 현재 구성종목으로 과거 유니버스를 재구성하지 않는다. 실행계획의
+`krx_market_normalization_version`도 재현성 키에 포함한다.
 등록 분할과 원자료 대조에는 `docs/CORPORATE_ACTION_RECONCILIATION.md`의 명령을
 사용한다. 종목코드·일자가 같은 행사도 자료와 일치해야 하며, 모든 후보를 보존한다.
 

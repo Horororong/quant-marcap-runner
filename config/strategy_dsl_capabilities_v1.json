@@ -124,7 +124,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "14",
+  "dsl_machine_contract_version": "15",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -478,6 +478,22 @@
     "price_difference_threshold_bps": 25.0
   },
   "history_audit_contract_version": "1",
+  "krx_market_normalization": {
+    "canonical_equity_markets": [
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "segment_membership": "historically observed provenance only; never an eligibility or survival filter",
+    "source_label_field": "SourceMarket",
+    "source_to_canonical": {
+      "KONEX": "KONEX",
+      "KOSDAQ": "KOSDAQ",
+      "KOSDAQ GLOBAL": "KOSDAQ",
+      "KOSPI": "KOSPI"
+    },
+    "unknown_label_policy": "fail before write; no prefix guessing"
+  },
+  "krx_market_normalization_version": "1",
   "markets": [
     "KOSPI",
     "KOSDAQ"

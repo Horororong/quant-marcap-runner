@@ -121,7 +121,7 @@ three securities' own records, giving APR a wrong ratio or using Namyang's legal
 date must fail the held-return guard before new outputs. This fixture does not
 establish broad-history event coverage or recommend nominal-price investing.
 
-## Recorded 2024 checkpoint
+## Archived 2024 checkpoint before segment repair
 
 [Summary](audits/corporate-actions-2024/corporate_action_reconciliation.json),
 [event checks](audits/corporate-actions-2024/registry_event_checks.csv) and
@@ -137,3 +137,14 @@ counts, not counts of distinct events, proven defects or executed losses.
 Continue primary-source investigation, other years, explicit rights/spin-off/
 delisting/dividend contracts and merger-value reconciliation. Never turn an
 unresolved candidate into a future-survival filter or an automatic correction.
+
+## Repaired 2024 checkpoint
+
+After the deliberate [KOSDAQ segment repair](KRX_MARKET_NORMALIZATION.md), the
+[new summary](audits/corporate-actions-2024-repaired/corporate_action_reconciliation.json),
+[event checks](audits/corporate-actions-2024-repaired/registry_event_checks.csv) and
+[all candidates](audits/corporate-actions-2024-repaired/candidate_reconciliation.csv)
+record the repaired source hash: 257 price candidates, six consistent registered
+splits, 251 unmatched price candidates and zero internal observation gaps.
+The original report above is retained. Repairing a segment omission does not
+verify a cash share exchange, delisting or the remaining event history.

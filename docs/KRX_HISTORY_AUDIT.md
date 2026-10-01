@@ -52,7 +52,7 @@ presence does not establish complete history. Candidates never change targets,
 prices, NAV, eligibility or the corporate-action registry. Future observations
 must never become a strategy's survival filter.
 
-## Recorded source snapshots
+## Archived source snapshots before segment repair
 
 The snapshots below were generated from the repository's actual yearly parquet
 files. Their JSON records source SHA256 hashes and exchange_calendars 4.13.2.
@@ -82,3 +82,15 @@ unresolved held-return discrepancies and support the registered EcoPro split;
 see [HELD_RETURN_VALIDATION.md](HELD_RETURN_VALIDATION.md). The audit candidates
 remain source observations, not automatic corrections or dividend/total returns.
 CURRENT remains the sole performance calculator.
+
+## Repaired 2024 checkpoint
+
+The explicit [segment repair](KRX_MARKET_NORMALIZATION.md) restores actual
+KOSDAQ GLOBAL observations without changing previously stored values. The
+[repaired summary](audits/krx-history-2024-repaired/history_audit.json) and
+[candidates](audits/krx-history-2024-repaired/history_review_candidates.csv)
+record 657,429 rows, 2,797 codes, 244 complete sessions, 257 >25bp price
+candidates, zero internal gaps and 140/52 censored starts/ends. Code 287410
+now has its 89 previously omitted GLOBAL sessions. Earlier snapshots above
+remain historical evidence; their old counts do not describe the repaired file.
+No candidate is a strategy filter or automatic corporate action.

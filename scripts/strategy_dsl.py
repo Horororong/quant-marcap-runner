@@ -24,6 +24,7 @@ from execution_contract import (
     PERFORMANCE_TEMPLATE_VERSION,
     PREFLIGHT_CONTRACT_VERSION,
     HISTORY_AUDIT_CONTRACT_VERSION,
+    KRX_MARKET_NORMALIZATION_VERSION,
     HELD_RETURN_TOLERANCE_BPS,
 )
 
@@ -350,6 +351,7 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         "dsl_machine_contract_version": DSL_MACHINE_CONTRACT_VERSION,
         "preflight_contract_version": PREFLIGHT_CONTRACT_VERSION,
         "history_audit_contract_version": HISTORY_AUDIT_CONTRACT_VERSION,
+        "krx_market_normalization_version": KRX_MARKET_NORMALIZATION_VERSION,
         "project_template_version": PROJECT_TEMPLATE_VERSION,
         "performance_template_version": PERFORMANCE_TEMPLATE_VERSION,
         "asset_class": spec.asset_class,

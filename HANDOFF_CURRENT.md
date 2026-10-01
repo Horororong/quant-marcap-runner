@@ -24,15 +24,15 @@ must identify the missing capability instead of mapping to a similar strategy.
   (currently `v2-17`) and `scripts/quant_backtest_postprocess.py`.
   The execution and performance template versions are distinct; do not rename
   one to pretend it has the other's implementation.
-- Strategy schema: `1.0`; machine contract `14`; factor registry `6`;
-  preflight contract `2`; history-audit contract `1`; corporate-action registry `4`.
+- Strategy schema: `1.0`; machine contract `15`; factor registry `6`;
+  preflight contract `2`; history-audit contract `1`; market-normalization contract `1`; corporate-action registry `4`.
 - Generated contracts: `config/strategy_dsl_schema_v1.json` and
   `config/strategy_dsl_capabilities_v1.json`. Regenerate with
   `python scripts/export_strategy_dsl_contract.py --write`; CI uses `--check`.
 
 ## Review units and resumption
 
-PRs #7-#18 are merged. The canonical-performance main commit is
+PRs #7-#19 are merged. The canonical-performance main commit is
 `ba6c3772a57de3276f31f23247395d1877b13b73`. PR #18 full CI passed:
 https://github.com/Horororong/quant-marcap-runner/actions/runs/36824544209
 Its own main workflow also passed:
@@ -44,14 +44,16 @@ exact daily calendar checks, Sortino, Calmar, complete-month win rate and explic
 benchmark statistics retain the four periods and nine charts. See
 `docs/CANONICAL_PERFORMANCE.md` for compatibility and verification scope.
 
-The current milestone adds verified autumn 2024 splits: Namyang common/preferred
-ten-for-one on November 20 and APR five-for-one on October 31. Registry version 4
-and machine contract 14 expose the new reproducibility boundary. Actual-source
-oracles verify daily NAV in both top-N and decile modes, preserve real event losses
-and block missing/wrong event records before outputs. See
-`docs/CORPORATE_ACTION_RECONCILIATION.md`. Require full current-head CI, including
-existing real DART/KRX E2Es, before merge. When this version is on main, the
-milestone is merged. Never force-push main.
+PR #19's tested head is `2585d24a26a88c9d4707e1beb79ec2a228cafb7c`; full CI
+passed at https://github.com/Horororong/quant-marcap-runner/actions/runs/36831237355
+It is merged on main at `b39d06ced5c85b17deb10747811d91f8a9364af3`.
+The current milestone fixes KOSDAQ GLOBAL classification and restores 46,753
+pinned original observations across 2022–2026, without revising existing values
+or extending stored windows. SourceMarket preserves then-observed membership.
+Machine contract 15 and market-normalization version 1 expose this boundary.
+See `docs/KRX_MARKET_NORMALIZATION.md` and its complete repair evidence. Require
+full current-head CI, including both real public modes and existing DART/KRX
+E2Es, before merge. Check live refs; never force-push main.
 
 Repository: https://github.com/Horororong/quant-marcap-runner
 
@@ -142,23 +144,19 @@ It does not claim broad-universe/full-history investment performance.
 ## History-audit checkpoint
 
 Source diagnostics and reproducible commands are in `docs/KRX_HISTORY_AUDIT.md`.
-The committed snapshots in `docs/audits/krx-history-2020` and `krx-history-2024`
-record the source file SHA256 hashes, calendar package version and all review
-candidates. Market dates are complete for 2020 (248 sessions) and 2024 (244).
-Raw-close returns and ChangesRatio differ by more than 25 basis points in 290
-and 256 consecutive observations respectively. These are unverified candidates,
-not a count of splits/mergers or proven bad returns. 2024 also has one internal
-observation gap (Code 287410; 89 missing sessions between observations).
+The original 2020/2024 snapshots and pre-repair reconciliation remain archived.
+The new snapshots in `docs/audits/krx-history-2024-repaired` and
+`docs/audits/corporate-actions-2024-repaired` record the repaired 2024 source
+hash, 657,429 observations and 2,797 codes. Both markets have all 244 sessions.
+There are 257 >25bp price/reference candidates: six match consistent registered
+splits and 251 remain unmatched. There are zero internal observation gaps and
+140/52 censored starts/ends. These are source observations, not proven losses,
+corporate-action counts or a completeness certificate.
 
-The source-history audit never removes stocks or fills values. First/last
-observations are window-censored, not automatically IPO/delisting dates.
-The archived history snapshots describe registry version 1. Version 2 added
-EcoPro, version 3 BYC common/preferred, and version 4 Namyang common/preferred
-and APR. The new reconciliation snapshot checks all six 2024 security events:
-six of 256 price candidates match consistent registered splits; 250 remain
-unmatched. The internal gap and all censored endpoints remain unresolved.
-Candidate counts are source observations and do not disappear after an event
-is verified; they are not counts of unresolved held returns.
+Code 287410's former 89-session gap was a KOSDAQ GLOBAL ingestion omission.
+The repair restores those actual rows and its 207 observations. Its later cash
+share exchange/delisting remains a separate, unsupported event, not a split.
+Do not treat restored history as proof that its cash proceeds are implemented.
 
 Public DSL runners now require ChangesRatio source data and validate each
 pre-rebalance held asset's effective return against ChangesRatio/100 within
@@ -178,16 +176,14 @@ verified handling. Do not silently exclude stocks that would fail the guard.
 
 ## Next development sequence
 
-1. Confirm this autumn split milestone and current main CI.
-2. Use `scripts/corporate_action_reconciliation.py` and the recorded 2024 snapshot
-   to investigate the 250 price candidates still unmatched by supported, consistent
-   registered splits. The one internal gap remains unresolved. Keep all candidate
-   rows; do not infer events or strategy filters. Audit remaining years with actual
-   source files, reconcile calendar
-   differences against official KRX history and investigate event candidates
-   with primary disclosures. Expand verified split/rights/merger/delisting handling before broad or full-history
-   investment-performance claims. Never use future survival or audit candidates
-   as a retrospective strategy filter. The event registry remains incomplete.
+1. Confirm this market-normalization milestone and full current-head CI on main.
+2. Continue exact primary-source investigation of the 251 unmatched 2024 price
+   candidates and remaining years. For 287410, verify actual cash-exchange
+   entitlement, payment and delisting evidence, then implement a distinct cash
+   event contract with independent proceeds/timing/held-return/cost tests in both
+   public modes. Do not reuse a stock split or merger approximation. Preserve
+   all audit candidates and never use future survival as a strategy filter.
+   The event registry, dividends and full historical coverage remain incomplete.
 3. Expand factors with explicit accounting-period definitions (annual/TTM,
    quality/growth) and supported portfolio/asset contracts through registries.
 4. Add a tested Korean request compilation interface using generated schema,

@@ -16,6 +16,7 @@ from execution_contract import (
     PERFORMANCE_TEMPLATE_VERSION,
     PREFLIGHT_CONTRACT_VERSION,
     HISTORY_AUDIT_CONTRACT_VERSION,
+    KRX_MARKET_NORMALIZATION_VERSION,
     HELD_RETURN_TOLERANCE_BPS,
 )
 from factor_registry import FACTOR_REGISTRY_VERSION, factor_catalog, factor_source_constraints, filter_field_catalog, filterable_fields, supported_fields, supported_sources
@@ -222,6 +223,14 @@ def build_capabilities() -> dict:
         "corporate_action_registry_version": CORPORATE_ACTION_REGISTRY_VERSION,
         "preflight_contract_version": PREFLIGHT_CONTRACT_VERSION,
         "history_audit_contract_version": HISTORY_AUDIT_CONTRACT_VERSION,
+        "krx_market_normalization_version": KRX_MARKET_NORMALIZATION_VERSION,
+        "krx_market_normalization": {
+            "source_to_canonical": {"KOSPI": "KOSPI", "KOSDAQ": "KOSDAQ", "KOSDAQ GLOBAL": "KOSDAQ", "KONEX": "KONEX"},
+            "source_label_field": "SourceMarket",
+            "unknown_label_policy": "fail before write; no prefix guessing",
+            "segment_membership": "historically observed provenance only; never an eligibility or survival filter",
+            "canonical_equity_markets": ["KOSPI", "KOSDAQ"],
+        },
         "asset_classes": sorted(SUPPORTED_ASSET_CLASSES),
         "markets": ["KOSPI", "KOSDAQ"],
         "benchmarks": {
