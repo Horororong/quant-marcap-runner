@@ -9,6 +9,32 @@
         "kr_equity"
       ]
     },
+    "benchmark": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "enum": [
+            "index"
+          ]
+        },
+        "symbol": {
+          "enum": [
+            "KOSDAQ",
+            "KOSDAQ150",
+            "KOSPI",
+            "KOSPI200"
+          ]
+        }
+      },
+      "required": [
+        "source",
+        "symbol"
+      ],
+      "type": [
+        "object",
+        "null"
+      ]
+    },
     "cost_scenarios": {
       "additionalProperties": {
         "additionalProperties": false,

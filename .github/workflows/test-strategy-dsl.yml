@@ -10,6 +10,7 @@ on:
       - 'scripts/test_krx_volatility_factor_adapter.py'
       - 'scripts/strategy_dsl_preflight.py'
       - 'scripts/test_strategy_dsl_preflight.py'
+      - 'scripts/test_strategy_dsl_benchmark.py'
       - 'scripts/strategy_dsl_aliases.py'
       - 'scripts/test_strategy_dsl_aliases.py'
       - 'scripts/execution_contract.py'
@@ -18,6 +19,7 @@ on:
       - 'config/strategy_dsl_capabilities_v1.json'
       - 'docs/STRATEGY_DSL.md'
       - 'BACKTEST_START_HERE.md'
+      - 'HANDOFF_CURRENT.md'
       - 'scripts/factor_registry.py'
       - 'scripts/corporate_action_registry.py'
       - 'scripts/test_corporate_action_execution.py'
@@ -54,7 +56,7 @@ jobs:
           pip install pandas numpy pyarrow exchange_calendars plotly
       - name: Syntax check
         run: |
-          python -m py_compile scripts/execution_contract.py scripts/export_strategy_dsl_contract.py scripts/strategy_dsl_aliases.py scripts/strategy_dsl_preflight.py scripts/krx_technical_factor_adapter.py scripts/factor_registry.py scripts/corporate_action_registry.py scripts/strategy_dsl.py scripts/strategy_dsl_runner.py scripts/dart_value_factor_adapter.py scripts/test_factor_registry.py scripts/test_strategy_dsl_aliases.py scripts/test_strategy_dsl_preflight.py scripts/test_krx_technical_factor_adapter.py scripts/test_krx_volatility_factor_adapter.py scripts/test_corporate_action_execution.py scripts/test_strategy_dsl.py scripts/test_dart_dsl_super_value.py scripts/test_dsl_execution_e2e.py
+          python -m py_compile scripts/execution_contract.py scripts/export_strategy_dsl_contract.py scripts/strategy_dsl_aliases.py scripts/strategy_dsl_preflight.py scripts/krx_technical_factor_adapter.py scripts/factor_registry.py scripts/corporate_action_registry.py scripts/strategy_dsl.py scripts/strategy_dsl_runner.py scripts/dart_value_factor_adapter.py scripts/test_factor_registry.py scripts/test_strategy_dsl_aliases.py scripts/test_strategy_dsl_preflight.py scripts/test_strategy_dsl_benchmark.py scripts/test_krx_technical_factor_adapter.py scripts/test_krx_volatility_factor_adapter.py scripts/test_corporate_action_execution.py scripts/test_strategy_dsl.py scripts/test_dart_dsl_super_value.py scripts/test_dsl_execution_e2e.py
       - name: Check machine-readable DSL contract
         run: python scripts/export_strategy_dsl_contract.py --check
       - name: Natural-language factor alias test
@@ -63,6 +65,8 @@ jobs:
         run: python scripts/strategy_dsl_runner.py config/strategies/kr_equity_rank_demo.json --validate-only
       - name: Strategy DSL preflight classification test
         run: python scripts/test_strategy_dsl_preflight.py
+      - name: Strategy DSL benchmark contract test
+        run: python scripts/test_strategy_dsl_benchmark.py
       - name: KRX technical factor adapter test
         run: python scripts/test_krx_technical_factor_adapter.py
       - name: KRX volatility factor adapter test

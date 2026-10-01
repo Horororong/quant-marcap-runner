@@ -36,6 +36,8 @@ SUPPORTED_WEIGHTINGS = {"equal"}
 SUPPORTED_REBALANCE_FREQUENCIES = {"months"}
 SUPPORTED_TRADING_DAY_RULES = {"last"}
 SUPPORTED_EXECUTION_PRICES = {"next_close"}
+SUPPORTED_BENCHMARK_SOURCES = {"index"}
+SUPPORTED_BENCHMARK_SYMBOLS = {"KOSPI", "KOSDAQ", "KOSPI200", "KOSDAQ150"}
 
 
 def _as_tuple(value: Any, *, name: str) -> tuple:
@@ -184,6 +186,33 @@ class CostScenarioSpec:
 
 
 @dataclass(frozen=True)
+class BenchmarkSpec:
+    source: str = "index"
+    symbol: str = "KOSPI"
+
+    @classmethod
+    def from_dict(cls, raw: Mapping[str, Any]) -> "BenchmarkSpec":
+        missing = {"source", "symbol"} - set(raw)
+        if missing:
+            raise ValueError(f"benchmark requires explicit fields: {sorted(missing)}")
+        extra = set(raw) - {"source", "symbol"}
+        if extra:
+            raise ValueError(f"unsupported benchmark fields: {sorted(extra)}")
+        obj = cls(
+            source=str(raw["source"]).strip().lower(),
+            symbol=str(raw["symbol"]).strip().upper(),
+        )
+        if obj.source not in SUPPORTED_BENCHMARK_SOURCES:
+            raise ValueError(f"unsupported benchmark source: {obj.source}")
+        if obj.symbol not in SUPPORTED_BENCHMARK_SYMBOLS:
+            raise ValueError(
+                f"unsupported benchmark symbol: {obj.symbol}; "
+                f"supported={sorted(SUPPORTED_BENCHMARK_SYMBOLS)}"
+            )
+        return obj
+
+
+@dataclass(frozen=True)
 class PeriodSpec:
     start: str
     end: str
@@ -213,6 +242,7 @@ class StrategySpec:
     execution: ExecutionSpec
     cost_scenarios: Mapping[str, CostScenarioSpec]
     period: PeriodSpec
+    benchmark: BenchmarkSpec | None = None
     initial_capital: float = 10_000_000.0
     metadata: Mapping[str, Any] = field(default_factory=dict)
 
@@ -243,6 +273,10 @@ class StrategySpec:
         if not isinstance(costs_raw, Mapping) or not costs_raw:
             raise ValueError("cost_scenarios must be a non-empty object")
         costs = {str(k): CostScenarioSpec.from_dict(v) for k, v in costs_raw.items()}
+        benchmark_raw = raw.get("benchmark")
+        if benchmark_raw is not None and not isinstance(benchmark_raw, Mapping):
+            raise TypeError("benchmark must be an object or null")
+        benchmark = BenchmarkSpec.from_dict(benchmark_raw) if benchmark_raw is not None else None
         initial_capital = float(raw.get("initial_capital", 10_000_000.0))
         if initial_capital <= 0:
             raise ValueError("initial_capital must be > 0")
@@ -258,6 +292,7 @@ class StrategySpec:
             execution=ExecutionSpec.from_dict(raw.get("execution", {})),
             cost_scenarios=costs,
             period=PeriodSpec.from_dict(raw["period"]),
+            benchmark=benchmark,
             initial_capital=initial_capital,
             metadata=dict(raw.get("metadata", {})),
         )
@@ -326,6 +361,7 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
             for flt in spec.universe.filters
             for definition in [get_filter_definition(flt.field)]
         ],
+        "benchmark": asdict(spec.benchmark) if spec.benchmark is not None else None,
         "portfolio": asdict(spec.portfolio),
         "rebalance": asdict(spec.rebalance),
         "execution": asdict(spec.execution),

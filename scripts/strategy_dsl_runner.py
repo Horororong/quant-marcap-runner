@@ -2,9 +2,9 @@ from __future__ import annotations
 
 """Generic Strategy DSL v1 runner.
 
-v1 runtime scope: KRX equity cross-sectional ranking strategies whose factor
-inputs are fields already present in the PIT KRX daily panel. DART/derived
-factor adapters are intentionally not faked here; they are the next extension.
+Runtime scope: KRX equity cross-sectional ranking strategies with registered
+KRX, DART PIT, and technical providers. Optional price-index benchmarks share
+the exact strategy dates; canonical performance remains in CURRENT postprocess.
 """
 
 from pathlib import Path
@@ -18,7 +18,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-from strategy_dsl import StrategySpec, compile_execution_plan, load_strategy_spec
+from strategy_dsl import BenchmarkSpec, StrategySpec, compile_execution_plan, load_strategy_spec
 from execution_contract import EXECUTION_ENGINE_VERSION, PROJECT_TEMPLATE_VERSION
 from corporate_action_registry import load_corporate_actions
 from factor_registry import (
@@ -34,6 +34,78 @@ from factor_registry import (
 ENGINE_FILE = "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py"
 POSTPROCESS_FILE = "scripts/quant_backtest_postprocess.py"
 BASE_PANEL_COLUMNS = ["Date", "Code", "Name", "Market", "Close", "Volume", "Amount", "Marcap"]
+BENCHMARK_INDEX_DIR = "data/indices"
+
+
+def _load_benchmark_close(
+    repo_root: Path,
+    benchmark: BenchmarkSpec,
+    dates: pd.DatetimeIndex,
+) -> pd.Series:
+    if benchmark is None:
+        raise ValueError("benchmark is required")
+    # Validate direct callers too; the symbol may never become an arbitrary path.
+    benchmark = BenchmarkSpec.from_dict({"source": benchmark.source, "symbol": benchmark.symbol})
+    symbol = benchmark.symbol
+    path = repo_root / BENCHMARK_INDEX_DIR / f"{symbol}.csv"
+    if not path.exists():
+        raise FileNotFoundError(f"benchmark index file not found: {path}")
+
+    x = pd.read_csv(path, usecols=["Date", "Close"])
+    x["Date"] = pd.to_datetime(x["Date"], errors="coerce").dt.normalize()
+    x["Close"] = pd.to_numeric(x["Close"], errors="coerce")
+    if x["Date"].isna().any():
+        raise ValueError(f"benchmark {symbol}: invalid Date rows")
+    x = x.sort_values("Date")
+    if x["Date"].duplicated().any():
+        raise AssertionError(f"benchmark {symbol}: duplicate Date rows")
+
+    s = x.set_index("Date")["Close"]
+    idx = pd.DatetimeIndex(dates).normalize()
+    if idx.empty or idx.hasnans or idx.has_duplicates or not idx.is_monotonic_increasing:
+        raise ValueError("benchmark strategy dates must be non-empty, valid, unique, and increasing")
+    aligned = s.reindex(idx)
+    if aligned.isna().any():
+        missing = [d.date().isoformat() for d in aligned.index[aligned.isna()][:12]]
+        raise RuntimeError(
+            f"benchmark {symbol}: missing exact strategy dates; examples={missing}"
+        )
+    if not np.isfinite(aligned.to_numpy(float)).all() or not (aligned > 0).all():
+        raise RuntimeError(f"benchmark {symbol}: non-positive or non-finite close values")
+
+    return aligned
+
+
+def load_benchmark_nav(
+    repo_root: Path,
+    benchmark: BenchmarkSpec,
+    dates: pd.DatetimeIndex,
+) -> pd.Series:
+    aligned = _load_benchmark_close(repo_root, benchmark, dates)
+    nav = aligned / float(aligned.iloc[0])
+    nav.name = "NAV_Benchmark"
+    return nav
+
+
+def benchmark_coverage_audit(
+    repo_root: Path,
+    benchmark: BenchmarkSpec | None,
+    dates: pd.DatetimeIndex,
+) -> dict[str, Any] | None:
+    if benchmark is None:
+        return None
+    close = _load_benchmark_close(repo_root, benchmark, dates)
+    return {
+        "source": benchmark.source,
+        "symbol": benchmark.symbol,
+        "start": close.index.min().date().isoformat(),
+        "end": close.index.max().date().isoformat(),
+        "observations": int(len(close)),
+        "exact_date_alignment": True,
+        "return_basis": "price_index_close",
+        "includes_dividends": False,
+        "path": f"{BENCHMARK_INDEX_DIR}/{benchmark.symbol}.csv",
+    }
 
 
 def load_project_engine(repo_root: Path):
@@ -392,6 +464,14 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     out = output_dir or (repo_root / "results" / "dsl" / spec.strategy_id)
     out.mkdir(parents=True, exist_ok=True)
     daily = result["daily_nav"].rename(columns=lambda c: f"NAV_{c}")
+    benchmark_meta = None
+    if spec.benchmark is not None:
+        benchmark_nav = load_benchmark_nav(repo_root, spec.benchmark, daily.index)
+        daily["NAV_Benchmark"] = benchmark_nav.reindex(daily.index).to_numpy(float)
+        benchmark_meta = benchmark_coverage_audit(repo_root, spec.benchmark, daily.index)
+        (out / "benchmark_coverage.json").write_text(
+            json.dumps(benchmark_meta, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
     daily.to_csv(out / "daily_nav.csv", index_label="Date")
     target_weights.to_csv(out / "target_weights.csv", index_label="signal_date")
     selections.to_csv(out / "selections.csv", index=False, encoding="utf-8-sig")
@@ -419,7 +499,13 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
             "--as-of-date", spec.period.as_of_date or spec.period.end,
         ]
         subprocess.run(cmd, cwd=repo_root, check=True)
-    return {"spec": spec, "plan": plan, "engine_result": result, "output_dir": out}
+    return {
+        "spec": spec,
+        "plan": plan,
+        "engine_result": result,
+        "benchmark": benchmark_meta,
+        "output_dir": out,
+    }
 
 
 def main() -> None:

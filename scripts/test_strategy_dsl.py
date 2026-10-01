@@ -63,8 +63,9 @@ def main() -> None:
     assert plan["factor_registry_version"] == "6"
     assert plan["execution_engine_version"] == "v2-16-exec-1"
     assert plan["corporate_action_registry_version"] == "1"
-    assert plan["dsl_machine_contract_version"] == "7"
+    assert plan["dsl_machine_contract_version"] == "8"
     assert plan["preflight_contract_version"] == "1"
+    assert plan["benchmark"] is None
     assert plan["project_template_version"] == "v2-16"
     assert [x["source"] for x in plan["factor_contracts"]] == ["krx", "krx"]
     assert [x["storage"] for x in plan["factor_contracts"]] == ["panel", "panel"]

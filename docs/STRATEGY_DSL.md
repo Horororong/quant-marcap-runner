@@ -20,6 +20,25 @@ Flow:
 - Costs: explicit named fixed-bps scenarios
 - Metrics/charts: canonical CURRENT postprocessor only
 
+## Optional index benchmark
+
+Add `"benchmark": {"source": "index", "symbol": "KOSPI"}` to the same strategy JSON.
+Supported symbols are `KOSPI`, `KOSDAQ`, `KOSPI200`, and `KOSDAQ150`; the source is
+`data/indices/{symbol}.csv`. Both source and symbol must be explicit. Omitting
+the benchmark leaves the existing strategy outputs unchanged.
+
+These are **price-index close** benchmarks, without dividends. They are not
+total-return indexes. The runner adds `NAV_Benchmark = Close / first Close` on
+the exact strategy daily dates and passes that series to CURRENT postprocess.
+It does not implement additional performance formulas.
+
+Preflight checks source prices without calculating benchmark NAV. Missing files,
+missing strategy dates, duplicate/invalid dates, or invalid prices produce a
+`data_gap`; unsupported benchmark definitions produce a `capability_gap`.
+No filling, interpolation, or shortening of the requested period is allowed.
+The execution plan records the benchmark definition; `benchmark_coverage.json`
+records coverage metadata, the source path, and the return basis.
+
 ## Machine-readable contract for AI strategy generation
 
 AI clients should not infer Strategy DSL support from Python source. Read these generated files first:
@@ -165,7 +184,7 @@ The first registered event is Korean Paper (002300) -> Haesung Industrial (03481
 
 The runner fails rather than inventing an answer for these cases:
 
-- DART financial factors beyond the four standardized value fields (ROE/GP-A/NCAV/EV-EBIT, etc.)
+- DART financial factors beyond the registered value and quarterly profitability fields (annual/TTM ROE, GP-A, NCAV, EV-EBIT, etc.)
 - parameterized/ad-hoc momentum lookbacks beyond the registered fixed technical fields
 - dynamic historical sell-tax schedules
 - next-open/VWAP execution

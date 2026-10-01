@@ -11,6 +11,24 @@
   "asset_classes": [
     "kr_equity"
   ],
+  "benchmarks": {
+    "alignment": "exact strategy daily dates; no forward fill",
+    "audit_output": "benchmark_coverage.json",
+    "includes_dividends": false,
+    "normalization": "first exact strategy date = 1.0",
+    "output_series": "NAV_Benchmark",
+    "path_template": "data/indices/{symbol}.csv",
+    "return_basis": "price_index_close",
+    "sources": [
+      "index"
+    ],
+    "symbols": [
+      "KOSDAQ",
+      "KOSDAQ150",
+      "KOSPI",
+      "KOSPI200"
+    ]
+  },
   "canonical_outputs": [
     "daily_nav.csv",
     "target_weights.csv",
@@ -30,7 +48,7 @@
     ],
     "unregistered_held_price_gap_policy": "fail"
   },
-  "dsl_machine_contract_version": "7",
+  "dsl_machine_contract_version": "8",
   "execution_constraints": {
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1

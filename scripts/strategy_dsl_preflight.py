@@ -20,6 +20,7 @@ import pandas as pd
 from execution_contract import PREFLIGHT_CONTRACT_VERSION
 from strategy_dsl import compile_execution_plan, load_strategy_spec
 from strategy_dsl_runner import (
+    benchmark_coverage_audit,
     factor_provider_coverage_audit,
     load_project_engine,
     required_panel_columns,
@@ -86,8 +87,10 @@ def preflight_strategy(
         )
         panel = panel.copy()
         panel["Date"] = pd.to_datetime(panel["Date"]).dt.normalize()
+        dates = pd.DatetimeIndex(panel["Date"].dropna().unique()).sort_values()
         signal_dates = signal_dates_from_panel(panel, spec)
         provider_coverage = factor_provider_coverage_audit(panel, spec, root)
+        benchmark_coverage = benchmark_coverage_audit(root, spec.benchmark, dates)
     except (FileNotFoundError, RuntimeError, OSError) as exc:
         return _error_payload(
             status="data_gap",
@@ -121,7 +124,6 @@ def preflight_strategy(
                     normalized[key] = value
             coverage_rows.append(normalized)
 
-    dates = pd.DatetimeIndex(panel["Date"].dropna().unique()).sort_values()
     codes = panel["Code"].astype(str).str.zfill(6)
 
     return {
@@ -152,6 +154,7 @@ def preflight_strategy(
         "signal_dates": [pd.Timestamp(x).date().isoformat() for x in signal_dates],
         "factor_sources": list(plan["data_contract"]["factor_sources"]),
         "provider_coverage": coverage_rows,
+        "benchmark": benchmark_coverage,
         "ready_for_execution": True,
     }
 
