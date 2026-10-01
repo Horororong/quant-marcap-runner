@@ -51,6 +51,17 @@ def main() -> None:
     assert registry.get_factor_definition("dart", "earnings_yield").storage == "external"
     assert "dart" in registry.supported_sources()
     assert "book_to_price" in registry.supported_fields("dart")
+    assert registry.FACTOR_REGISTRY_VERSION == "2"
+    constraints = registry.factor_source_constraints()
+    assert constraints["dart"]["rebalance_months"] == [4, 10]
+
+    dart_factor = type("F", (), {"source": "dart", "field": "book_to_price"})()
+    registry.validate_factor_strategy_constraints([dart_factor], [4, 10])
+    try:
+        registry.validate_factor_strategy_constraints([dart_factor], [1])
+        raise AssertionError("unsupported DART rebalance month was accepted")
+    except ValueError as exc:
+        assert "supports rebalance months" in str(exc)
 
     try:
         registry.get_factor_definition("dart", "not_a_factor")

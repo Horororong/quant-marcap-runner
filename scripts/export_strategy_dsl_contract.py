@@ -11,8 +11,9 @@ from execution_contract import (
     DSL_MACHINE_CONTRACT_VERSION,
     EXECUTION_ENGINE_VERSION,
     PROJECT_TEMPLATE_VERSION,
+    PREFLIGHT_CONTRACT_VERSION,
 )
-from factor_registry import FACTOR_REGISTRY_VERSION, factor_catalog, supported_fields, supported_sources
+from factor_registry import FACTOR_REGISTRY_VERSION, factor_catalog, factor_source_constraints, supported_fields, supported_sources
 from strategy_dsl_aliases import alias_catalog, direction_alias_catalog
 from strategy_dsl import (
     SCHEMA_VERSION,
@@ -193,12 +194,14 @@ def build_capabilities() -> dict:
         "execution_engine_version": EXECUTION_ENGINE_VERSION,
         "factor_registry_version": FACTOR_REGISTRY_VERSION,
         "corporate_action_registry_version": CORPORATE_ACTION_REGISTRY_VERSION,
+        "preflight_contract_version": PREFLIGHT_CONTRACT_VERSION,
         "asset_classes": sorted(SUPPORTED_ASSET_CLASSES),
         "markets": ["KOSPI", "KOSDAQ"],
         "filter_ops": sorted(SUPPORTED_FILTER_OPS),
         "factor_transforms": sorted(SUPPORTED_FACTOR_TRANSFORMS),
         "factor_directions": sorted(SUPPORTED_DIRECTIONS),
         "factors": factor_catalog(),
+        "factor_source_constraints": factor_source_constraints(),
         "natural_language_factor_aliases": alias_catalog(),
         "natural_language_direction_aliases": direction_alias_catalog(),
         "portfolio_weightings": sorted(SUPPORTED_WEIGHTINGS),
@@ -209,6 +212,30 @@ def build_capabilities() -> dict:
             "minimum_lag_sessions": 1,
             "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
         },
+        "preflight": {
+            "command": "python scripts/strategy_dsl_preflight.py <strategy.json>",
+            "always_zero_command": "python scripts/strategy_dsl_preflight.py <strategy.json> --always-zero",
+            "statuses": ["ok", "capability_gap", "data_gap"],
+            "exit_codes": {
+                "ok": 0,
+                "capability_gap": 2,
+                "data_gap": 3,
+            },
+            "classification": {
+                "capability_gap": "strategy cannot be represented by the current DSL/registry contract",
+                "data_gap": "strategy is representable but required PIT data is unavailable or incomplete",
+            },
+            "does_not_compute": ["factor values", "holdings", "NAV", "performance metrics"],
+        },
+        "ai_workflow": [
+            "read config/strategy_dsl_capabilities_v1.json",
+            "resolve registered natural-language aliases only",
+            "generate config/strategy_dsl_schema_v1.json-constrained Strategy DSL",
+            "run strategy_dsl_runner.py --validate-only",
+            "run strategy_dsl_preflight.py",
+            "execute only when preflight status is ok",
+            "run canonical CURRENT postprocess for formal metrics",
+        ],
         "corporate_actions": {
             "supported_event_types": ["stock_merger"],
             "registry": "config/kr_corporate_actions.csv",

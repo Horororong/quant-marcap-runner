@@ -14,7 +14,7 @@ from typing import Iterable, Protocol, Sequence, runtime_checkable
 
 import pandas as pd
 
-FACTOR_REGISTRY_VERSION = "1"
+FACTOR_REGISTRY_VERSION = "2"
 
 
 @dataclass(frozen=True)
@@ -30,6 +30,16 @@ class FactorDefinition:
 
 
 FACTOR_DEFINITIONS: dict[tuple[str, str], FactorDefinition] = {}
+
+FACTOR_SOURCE_CONSTRAINTS: dict[str, dict] = {
+    "dart": {
+        "rebalance_months": (4, 10),
+        "reason": (
+            "current DART value adapter reconstructs standalone Q4 for April "
+            "and Q2 for October signals only"
+        ),
+    },
+}
 
 
 def register_factor(definition: FactorDefinition) -> None:
@@ -95,6 +105,38 @@ def factor_catalog() -> list[dict[str, str]]:
 def supported_fields(source: str) -> list[str]:
     src = str(source).strip().lower()
     return sorted(field for (source_, field) in FACTOR_DEFINITIONS if source_ == src)
+
+
+def factor_source_constraints() -> dict[str, dict]:
+    out: dict[str, dict] = {}
+    for source, constraint in sorted(FACTOR_SOURCE_CONSTRAINTS.items()):
+        row = dict(constraint)
+        if "rebalance_months" in row:
+            row["rebalance_months"] = list(row["rebalance_months"])
+        out[source] = row
+    return out
+
+
+def validate_factor_strategy_constraints(
+    factors: Iterable[object],
+    rebalance_months: Iterable[int],
+) -> None:
+    sources = {str(getattr(f, "source")).strip().lower() for f in factors}
+    months = {int(m) for m in rebalance_months}
+    for source in sorted(sources):
+        constraint = FACTOR_SOURCE_CONSTRAINTS.get(source)
+        if not constraint:
+            continue
+        allowed = constraint.get("rebalance_months")
+        if allowed is not None:
+            allowed_set = {int(m) for m in allowed}
+            unsupported = sorted(months - allowed_set)
+            if unsupported:
+                raise ValueError(
+                    f"factor source {source!r} supports rebalance months "
+                    f"{sorted(allowed_set)} only; requested unsupported months={unsupported}. "
+                    f"{constraint.get('reason', '')}".strip()
+                )
 
 
 def is_external_factor(source: str, field: str) -> bool:

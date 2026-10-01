@@ -14,12 +14,13 @@ import hashlib
 import json
 import re
 
-from factor_registry import FACTOR_REGISTRY_VERSION, get_factor_definition
+from factor_registry import FACTOR_REGISTRY_VERSION, get_factor_definition, validate_factor_strategy_constraints
 from execution_contract import (
     CORPORATE_ACTION_REGISTRY_VERSION,
     DSL_MACHINE_CONTRACT_VERSION,
     EXECUTION_ENGINE_VERSION,
     PROJECT_TEMPLATE_VERSION,
+    PREFLIGHT_CONTRACT_VERSION,
 )
 
 SCHEMA_VERSION = "1.0"
@@ -234,6 +235,8 @@ class StrategySpec:
         names = [x.name for x in factors]
         if len(names) != len(set(names)):
             raise ValueError("factor names must be unique")
+        rebalance = RebalanceSpec.from_dict(raw.get("rebalance", {}))
+        validate_factor_strategy_constraints(factors, rebalance.months)
         costs_raw = raw.get("cost_scenarios", {})
         if not isinstance(costs_raw, Mapping) or not costs_raw:
             raise ValueError("cost_scenarios must be a non-empty object")
@@ -249,7 +252,7 @@ class StrategySpec:
             universe=UniverseSpec.from_dict(raw.get("universe", {})),
             factors=factors,
             portfolio=PortfolioSpec.from_dict(raw["portfolio"]),
-            rebalance=RebalanceSpec.from_dict(raw.get("rebalance", {})),
+            rebalance=rebalance,
             execution=ExecutionSpec.from_dict(raw.get("execution", {})),
             cost_scenarios=costs,
             period=PeriodSpec.from_dict(raw["period"]),
@@ -287,6 +290,7 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         "execution_engine_version": EXECUTION_ENGINE_VERSION,
         "corporate_action_registry_version": CORPORATE_ACTION_REGISTRY_VERSION,
         "dsl_machine_contract_version": DSL_MACHINE_CONTRACT_VERSION,
+        "preflight_contract_version": PREFLIGHT_CONTRACT_VERSION,
         "project_template_version": PROJECT_TEMPLATE_VERSION,
         "asset_class": spec.asset_class,
         "data_contract": {
