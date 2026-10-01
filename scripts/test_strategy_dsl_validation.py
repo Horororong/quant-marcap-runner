@@ -192,7 +192,14 @@ def duplicate_and_cli_test(directory: Path) -> None:
         proc = subprocess.run([sys.executable, str(ROOT / "scripts/strategy_dsl_runner.py"), str(path), flag, "--output-dir", str(out)], capture_output=True, text=True)
         assert proc.returncode != 0
         assert "stop_loss_pct" in proc.stderr
-        assert not out.exists()
+        if flag == "--validate-only":
+            assert not out.exists()
+        else:
+            # Checked execution persists a failed attempt, never a NAV/result.
+            status = json.loads((out / "run_status.json").read_text())
+            assert status["status"] == "capability_gap" and status["phase"] == "input"
+            assert not status["nav_ready"] and not status["report_ready"]
+            assert not (out / "artifacts").exists() and not (out / "report").exists()
     for flag, code in (([], EXIT_CAPABILITY_GAP), (["--always-zero"], 0)):
         proc = subprocess.run([sys.executable, str(ROOT / "scripts/strategy_dsl_preflight.py"), str(path), *flag], capture_output=True, text=True)
         assert proc.returncode == code, proc.stderr

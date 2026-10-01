@@ -24,7 +24,7 @@ must identify the missing capability instead of mapping to a similar strategy.
   (currently `v2-17`) and `scripts/quant_backtest_postprocess.py`.
   The execution and performance template versions are distinct; do not rename
   one to pretend it has the other's implementation.
-- Strategy schema: `1.0`; machine contract `19`; input-validation contract `1`; factor registry `6`;
+- Strategy schema: `1.0`; machine contract `20`; input-validation contract `1`; run orchestration `1`; factor registry `6`;
   preflight contract `3`; history-audit contract `1`; market-normalization contract `1`; corporate-action registry `5`.
 - Generated contracts: `config/strategy_dsl_schema_v1.json` and
   `config/strategy_dsl_capabilities_v1.json`. Regenerate with
@@ -32,24 +32,28 @@ must identify the missing capability instead of mapping to a similar strategy.
 
 ## Review units and resumption
 
-Strict DSL input validation is based on main `b763c5ca903d652a815bbdbff6df978843a45c86`.
-At the start of this milestone, PR #23 was open at
-`6bbfe22d8fa92383ae57e3d810d9bcd2e9af95cf`, with successful head CI:
+Checked execution is developed on a feature branch that combines strict input
+validation `88553d8e1994ba15a32d4adc3e6e6b7815418d88` and PR #23
+`6bbfe22d8fa92383ae57e3d810d9bcd2e9af95cf`. The prerequisite integration commit
+is `51f245cf4636190c2feb6357fe923d6019a37cdd` (machine contract 19 / preflight 3).
+Remote main was `b763c5ca903d652a815bbdbff6df978843a45c86` at implementation
+start; PR #23 was open. This is feature-branch integration, not a main merge.
+Prior exact-head CI passed for strict validation and PR #23 respectively:
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36866455753
 https://github.com/Horororong/quant-marcap-runner/actions/runs/36858609030
-Its corporate-action exposure preflight is separate; this branch does not
-implement that behavior. Machine contract 18 leaves 17 used by PR #23 distinct;
-regenerate the combined contracts and run full CI when integrating both branches.
-These are checked refs at implementation start, not a claim about future merges.
+These runs are not evidence for the new final-head workflow; check live refs/CI.
 
-`StrategySpec.from_dict()` and the file loader now share the live-registry schema
-input gate. Unknown nested conditions, wrong types, non-finite values, invalid
-dates/period order and duplicate JSON keys fail before data access. The exporter
-uses the same schema builder. See `docs/STRATEGY_DSL.md` for stricter input
-semantics and preserved defaults. `scripts/test_strategy_dsl_validation.py`
-checks 271 invalid file inputs, CLI/data guards and eight unchanged example
-fingerprints captured from the base main. The full Strategy DSL workflow now
-includes this test. Remote final-head CI remains a separate verification step;
-never treat the PR #23 run above as evidence for this milestone.
+Machine contract 20 / run orchestration 1 routes the public runner CLI through
+`run_checked_strategy()`: frozen input, automatic shared preflight, CURRENT
+formal-date readiness, existing top_n/decile execution and canonical reporting.
+Run status separates validated NAV and completed formal report, publishes
+checked stage directories and rejects output reuse. See
+`docs/STRATEGY_DSL_RUN.md`. Source hashes/package/code manifest and a Korean
+compiler remain later milestones. Component engine/provider/math is preserved.
+The full Strategy DSL workflow includes lifecycle failure/actual CURRENT tests
+and real CLI/KRX/DART/known-event E2E, as well as all prior regression contracts.
+Strict input tests still cover 271 invalid file cases and eight base fingerprints;
+failed execution attempts now persist diagnostics without publishing NAV.
 
 PRs #7-#19 are merged. The canonical-performance main commit is
 `ba6c3772a57de3276f31f23247395d1877b13b73`. PR #18 full CI passed:
@@ -86,8 +90,9 @@ https://github.com/Horororong/quant-marcap-runner/actions/runs/36849922237
 https://github.com/Horororong/quant-marcap-runner/actions/runs/36849922248
 The continuation base is `f77a4543d6e58e01c78bf234cc9347784b7b0e73`.
 
-The next review unit adds known-event planned-exposure preflight, machine
-contract 17 / preflight 3, with no NAV/metric change. Relevant known gaps invoke
+PR #23 introduced known-event planned-exposure preflight with machine
+contract 17 / preflight 3, with no NAV/metric change. Its implementation is
+included in the feature integration described above. Relevant known gaps invoke
 shared PIT selection and exact lag, including all ten deciles; unaffected
 strategies retain their historical universe. Timing/lineage and real KRX
 positive/negative tests are in `scripts/test_corporate_action_preflight.py`.

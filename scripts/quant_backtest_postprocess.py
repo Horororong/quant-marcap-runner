@@ -38,6 +38,7 @@ from quant_backtest_template_CURRENT import (
     run_four_periods,
     assert_daily_session_coverage,
     calculate_benchmark_statistics,
+    standard_period_windows_from_dates,
 )
 
 
@@ -117,6 +118,35 @@ def last_complete_month_end(as_of: pd.Timestamp) -> pd.Timestamp:
     if this_month_end <= as_of:
         return this_month_end
     return (as_of.to_period("M") - 1).to_timestamp("M").normalize()
+
+
+def canonical_report_readiness(dates: pd.DatetimeIndex, config: BacktestConfig) -> dict:
+    """Check canonical date/period requirements without fabricating a NAV."""
+    dates = pd.DatetimeIndex(dates).normalize()
+    if dates.empty or dates.hasnans or dates.has_duplicates or not dates.is_monotonic_increasing:
+        raise ValueError("report source dates must be nonempty, unique and ordered")
+    if config.as_of_date is None:
+        raise ValueError("report readiness requires an explicit as_of_date")
+    as_of = pd.Timestamp(config.as_of_date).normalize()
+    dates = dates[dates <= last_complete_month_end(as_of)]
+    if dates.empty:
+        raise ValueError("no source dates before the last complete month")
+    monthly_dates = dates.to_period("M").unique().to_timestamp("M")
+    windows = standard_period_windows_from_dates(monthly_dates, config)
+    for name, (start, end, _) in windows.items():
+        if start > end:
+            raise ValueError(f"canonical period {name} has no available source history")
+    if config.market_calendar:
+        # This frame contains only actual/coverage-verified dates, no NAV values.
+        assert_daily_session_coverage(pd.DataFrame(index=dates), dates[0], monthly_dates[-1], config.market_calendar)
+    return {
+        "ready": True,
+        "performance_template_version": TEMPLATE_VERSION,
+        "as_of_date": as_of.date().isoformat(),
+        "periods": {key: {"start": start.date().isoformat(), "end": end.date().isoformat()}
+                    for key, (start, end, _) in windows.items()},
+        "scope": "date requirements only; NAV and canonical report still require runtime validation",
+    }
 
 
 def derive_complete_monthly(daily: pd.DataFrame, as_of: pd.Timestamp) -> tuple[pd.DataFrame, pd.DataFrame]:
