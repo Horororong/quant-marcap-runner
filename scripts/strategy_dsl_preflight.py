@@ -54,6 +54,8 @@ def _error_payload(
     }
     if hasattr(exc, "history_coverage"):
         result["history_coverage"] = exc.history_coverage
+    if hasattr(exc, "validation_path"):
+        result["error"]["path"] = exc.validation_path
     return result
 
 

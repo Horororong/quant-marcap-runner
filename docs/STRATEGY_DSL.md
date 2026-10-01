@@ -103,6 +103,56 @@ Recommended AI flow:
 
 If the requested strategy uses an unsupported factor or execution rule, the compiler should return an explicit capability gap instead of silently substituting a different strategy.
 
+## Strict execution input contract
+
+Machine contract `18` adds input-validation contract `1`. `load_strategy_spec()`
+and `StrategySpec.from_dict()` validate against the same live-registry schema
+builder in `scripts/strategy_dsl.py` **before** normalization. The exporter uses
+that builder too; runtime does not rely on a potentially stale generated file.
+The existing Strategy DSL CI dependency `jsonschema` is also required at runtime.
+
+Unknown fields are rejected at the root and every nested strategy object.
+For example, `execution.stop_loss_pct` is a `capability_gap`; it cannot disappear
+while producing a strategy without a stop loss. Only `metadata` accepts arbitrary
+JSON properties, and metadata never adds executable strategy behavior.
+Inputs must satisfy the generated schema, including required fields and exact
+enum spellings. Previously accepted, schema-invalid coercions are now rejected:
+`"false"` is not a boolean, `"4"`/`4.5` are not rebalance months, and `"1"` is not
+a factor weight or transaction cost. Duplicate months/markets are rejected.
+Existing schema defaults (e.g. factor weight/transform, tradability, top-N
+selection, omitted cost components and initial capital) remain available.
+
+Filter operands are part of the schema: comparisons require a number;
+percentiles require `0 < value < 100`; `eq`/`ne` require a string, number or
+boolean; `in`/`not_in` require a nonempty array of those scalars. `notnull` permits
+only an omitted or null value. Unused operands cannot silently disappear.
+
+The schema's `x-input-validation` and capabilities' `input_validation` describe
+additional runtime rules that standard JSON Schema alone cannot enforce:
+
+- Integer fields require integer tokens: `1.0` is rejected, even though standard
+  JSON Schema considers it an integer. `from_dict()` also accepts tuple arrays
+  produced by `StrategySpec.to_dict()` for the existing normalized round trip.
+- All numbers, including metadata, must be finite and representable as a finite
+  float. Total factor weights and total scenario costs must also be finite.
+  JSON `NaN`, `Infinity`, overflow such as `1e400`, and boolean-as-number inputs
+  cannot reach execution.
+- Dates must be real `YYYY-MM-DD` calendar dates. `start <= end` and
+  `book_start <= book_end` are required. A report `as_of_date` may follow the
+  simulation window; validation does not silently alter any requested period.
+- Duplicate JSON keys are rejected at every object, including metadata.
+  Normalized factor names must remain unique, and registry source constraints
+  (including DART rebalance-month restrictions) still apply.
+
+Preflight reports violations as `status="capability_gap", phase="compile"`
+(exit 2), before loading the engine, PIT data, factors or NAV. Input-gate errors
+include an `error.path`; duplicate-key errors identify the key without claiming
+an exact nested location. Valid input with unavailable PIT data remains a
+`data_gap`. The runner and `--validate-only` use the same loader and fail before
+writing results. The new validation test covers both entry points, CLI failure
+and data-access guards, plus all eight pre-change example fingerprints.
+Execution, providers and canonical CURRENT performance calculations are unchanged.
+
 ## Preflight: capability gap vs data gap
 
 Before running factor calculation or NAV simulation, use:

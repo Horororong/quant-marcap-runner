@@ -24,13 +24,32 @@ must identify the missing capability instead of mapping to a similar strategy.
   (currently `v2-17`) and `scripts/quant_backtest_postprocess.py`.
   The execution and performance template versions are distinct; do not rename
   one to pretend it has the other's implementation.
-- Strategy schema: `1.0`; machine contract `16`; factor registry `6`;
+- Strategy schema: `1.0`; machine contract `18`; input-validation contract `1`; factor registry `6`;
   preflight contract `2`; history-audit contract `1`; market-normalization contract `1`; corporate-action registry `5`.
 - Generated contracts: `config/strategy_dsl_schema_v1.json` and
   `config/strategy_dsl_capabilities_v1.json`. Regenerate with
   `python scripts/export_strategy_dsl_contract.py --write`; CI uses `--check`.
 
 ## Review units and resumption
+
+Strict DSL input validation is based on main `b763c5ca903d652a815bbdbff6df978843a45c86`.
+At the start of this milestone, PR #23 was open at
+`6bbfe22d8fa92383ae57e3d810d9bcd2e9af95cf`, with successful head CI:
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36858609030
+Its corporate-action exposure preflight is separate; this branch does not
+implement that behavior. Machine contract 18 leaves 17 used by PR #23 distinct;
+regenerate the combined contracts and run full CI when integrating both branches.
+These are checked refs at implementation start, not a claim about future merges.
+
+`StrategySpec.from_dict()` and the file loader now share the live-registry schema
+input gate. Unknown nested conditions, wrong types, non-finite values, invalid
+dates/period order and duplicate JSON keys fail before data access. The exporter
+uses the same schema builder. See `docs/STRATEGY_DSL.md` for stricter input
+semantics and preserved defaults. `scripts/test_strategy_dsl_validation.py`
+checks 271 invalid file inputs, CLI/data guards and eight unchanged example
+fingerprints captured from the base main. The full Strategy DSL workflow now
+includes this test. Remote final-head CI remains a separate verification step;
+never treat the PR #23 run above as evidence for this milestone.
 
 PRs #7-#19 are merged. The canonical-performance main commit is
 `ba6c3772a57de3276f31f23247395d1877b13b73`. PR #18 full CI passed:

@@ -19,14 +19,15 @@ from execution_contract import (
     KRX_MARKET_NORMALIZATION_VERSION,
     HELD_RETURN_TOLERANCE_BPS,
 )
-from factor_registry import FACTOR_REGISTRY_VERSION, factor_catalog, factor_source_constraints, filter_field_catalog, filterable_fields, supported_fields, supported_sources
+from factor_registry import FACTOR_REGISTRY_VERSION, factor_catalog, factor_source_constraints, filter_field_catalog
 from krx_technical_factor_adapter import technical_factor_catalog
 from krx_history_audit import PRICE_DIFFERENCE_THRESHOLD_BPS
 from krx_market_normalization import MARKET_LABELS
 from strategy_dsl_aliases import alias_catalog, direction_alias_catalog
 from strategy_dsl import (
+    build_strategy_json_schema,
+    INPUT_VALIDATION_CONTRACT,
     SCHEMA_VERSION,
-    STRATEGY_ID_RE,
     SUPPORTED_ASSET_CLASSES,
     SUPPORTED_BENCHMARK_SOURCES,
     SUPPORTED_BENCHMARK_SYMBOLS,
@@ -45,178 +46,11 @@ SCHEMA_PATH = ROOT / "config/strategy_dsl_schema_v1.json"
 CAPABILITIES_PATH = ROOT / "config/strategy_dsl_capabilities_v1.json"
 
 
-def _factor_source_field_constraint() -> dict:
-    variants = []
-    for source in supported_sources():
-        variants.append({
-            "properties": {
-                "source": {"const": source},
-                "field": {"enum": supported_fields(source)},
-            },
-            "required": ["source", "field"],
-        })
-    return {"oneOf": variants}
-
-
-def build_strategy_json_schema() -> dict:
-    factor_item = {
-        "type": "object",
-        "additionalProperties": False,
-        "required": ["name", "source", "field", "direction"],
-        "properties": {
-            "name": {"type": "string", "minLength": 1},
-            "source": {"type": "string"},
-            "field": {"type": "string"},
-            "direction": {"enum": sorted(SUPPORTED_DIRECTIONS)},
-            "weight": {"type": "number", "exclusiveMinimum": 0, "default": 1.0},
-            "transform": {"enum": sorted(SUPPORTED_FACTOR_TRANSFORMS), "default": "identity"},
-        },
-        "allOf": [_factor_source_field_constraint()],
-    }
-    filter_item = {
-        "type": "object",
-        "additionalProperties": False,
-        "required": ["field", "op"],
-        "properties": {
-            "field": {"enum": filterable_fields()},
-            "op": {"enum": sorted(SUPPORTED_FILTER_OPS)},
-            "value": {},
-        },
-    }
-    cost_item = {
-        "type": "object",
-        "additionalProperties": False,
-        "properties": {
-            name: {"type": "number", "minimum": 0, "default": 0.0}
-            for name in (
-                "commission_bps",
-                "sell_tax_bps",
-                "spread_bps",
-                "slippage_bps",
-                "market_impact_bps",
-            )
-        },
-    }
-    return {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "$id": "strategy_dsl_schema_v1.json",
-        "title": "quant-marcap-runner Strategy DSL",
-        "description": "Machine contract for deterministic Korean-equity Strategy DSL generation.",
-        "type": "object",
-        "additionalProperties": False,
-        "required": [
-            "schema_version",
-            "strategy_id",
-            "title",
-            "asset_class",
-            "universe",
-            "factors",
-            "portfolio",
-            "rebalance",
-            "execution",
-            "cost_scenarios",
-            "period",
-        ],
-        "properties": {
-            "schema_version": {"const": SCHEMA_VERSION},
-            "strategy_id": {"type": "string", "pattern": STRATEGY_ID_RE.pattern},
-            "title": {"type": "string", "minLength": 1},
-            "asset_class": {"enum": sorted(SUPPORTED_ASSET_CLASSES)},
-            "universe": {
-                "type": "object",
-                "additionalProperties": False,
-                "required": ["markets"],
-                "properties": {
-                    "markets": {
-                        "type": "array",
-                        "minItems": 1,
-                        "uniqueItems": True,
-                        "items": {"enum": ["KOSPI", "KOSDAQ"]},
-                    },
-                    "filters": {
-                        "type": "array",
-                        "items": filter_item,
-                        "default": [],
-                    },
-                    "require_tradable_on_signal": {"type": "boolean", "default": True},
-                },
-            },
-            "factors": {"type": "array", "minItems": 1, "items": factor_item},
-            "portfolio": {
-                "type": "object",
-                "additionalProperties": False,
-                "required": ["weighting"],
-                "properties": {
-                    "number_of_positions": {"type": ["integer", "null"], "minimum": 1},
-                    "weighting": {"enum": sorted(SUPPORTED_WEIGHTINGS)},
-                    "selection": {"enum": sorted(SUPPORTED_PORTFOLIO_SELECTIONS), "default": "top_n"},
-                },
-                "allOf": [{
-                    "if": {"properties": {"selection": {"const": "deciles"}}, "required": ["selection"]},
-                    "then": {"properties": {"number_of_positions": {"const": None}}},
-                    "else": {"required": ["number_of_positions"], "properties": {"number_of_positions": {"type": "integer", "minimum": 1}}},
-                }],
-            },
-            "rebalance": {
-                "type": "object",
-                "additionalProperties": False,
-                "required": ["frequency", "months", "trading_day"],
-                "properties": {
-                    "frequency": {"enum": sorted(SUPPORTED_REBALANCE_FREQUENCIES)},
-                    "months": {
-                        "type": "array",
-                        "minItems": 1,
-                        "uniqueItems": True,
-                        "items": {"type": "integer", "minimum": 1, "maximum": 12},
-                    },
-                    "trading_day": {"enum": sorted(SUPPORTED_TRADING_DAY_RULES)},
-                },
-            },
-            "execution": {
-                "type": "object",
-                "additionalProperties": False,
-                "required": ["lag_sessions", "price"],
-                "properties": {
-                    "lag_sessions": {"type": "integer", "minimum": 1},
-                    "price": {"enum": sorted(SUPPORTED_EXECUTION_PRICES)},
-                },
-            },
-            "cost_scenarios": {
-                "type": "object",
-                "minProperties": 1,
-                "additionalProperties": cost_item,
-            },
-            "benchmark": {
-                "type": ["object", "null"],
-                "additionalProperties": False,
-                "required": ["source", "symbol"],
-                "properties": {
-                    "source": {"enum": sorted(SUPPORTED_BENCHMARK_SOURCES)},
-                    "symbol": {"enum": sorted(SUPPORTED_BENCHMARK_SYMBOLS)},
-                },
-            },
-            "period": {
-                "type": "object",
-                "additionalProperties": False,
-                "required": ["start", "end", "book_start", "book_end"],
-                "properties": {
-                    "start": {"type": "string", "format": "date"},
-                    "end": {"type": "string", "format": "date"},
-                    "book_start": {"type": "string", "format": "date"},
-                    "book_end": {"type": "string", "format": "date"},
-                    "as_of_date": {"type": ["string", "null"], "format": "date"},
-                },
-            },
-            "initial_capital": {"type": "number", "exclusiveMinimum": 0, "default": 10000000},
-            "metadata": {"type": "object", "additionalProperties": True},
-        },
-    }
-
-
 def build_capabilities() -> dict:
     return {
         "dsl_machine_contract_version": DSL_MACHINE_CONTRACT_VERSION,
         "schema_version": SCHEMA_VERSION,
+        "input_validation": INPUT_VALIDATION_CONTRACT,
         "project_template_version": PROJECT_TEMPLATE_VERSION,
         "performance_template_version": PERFORMANCE_TEMPLATE_VERSION,
         "execution_engine_version": EXECUTION_ENGINE_VERSION,

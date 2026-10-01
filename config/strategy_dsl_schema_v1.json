@@ -68,6 +68,11 @@
         "type": "object"
       },
       "minProperties": 1,
+      "propertyNames": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
       "type": "object"
     },
     "execution": {
@@ -179,6 +184,7 @@
           },
           "name": {
             "minLength": 1,
+            "pattern": "\\S",
             "type": "string"
           },
           "source": {
@@ -223,6 +229,7 @@
       "properties": {
         "as_of_date": {
           "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
           "type": [
             "string",
             "null"
@@ -230,18 +237,22 @@
         },
         "book_end": {
           "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
           "type": "string"
         },
         "book_start": {
           "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
           "type": "string"
         },
         "end": {
           "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
           "type": "string"
         },
         "start": {
           "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
           "type": "string"
         }
       },
@@ -353,6 +364,7 @@
     },
     "title": {
       "minLength": 1,
+      "pattern": "\\S",
       "type": "string"
     },
     "universe": {
@@ -362,6 +374,138 @@
           "default": [],
           "items": {
             "additionalProperties": false,
+            "allOf": [
+              {
+                "else": {
+                  "required": [
+                    "value"
+                  ]
+                },
+                "if": {
+                  "properties": {
+                    "op": {
+                      "const": "notnull"
+                    }
+                  },
+                  "required": [
+                    "op"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "type": "null"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "gt",
+                        "gte",
+                        "lt",
+                        "lte"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "op"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "top_pct",
+                        "bottom_pct",
+                        "exclude_top_pct",
+                        "exclude_bottom_pct"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "op"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "exclusiveMaximum": 100,
+                      "exclusiveMinimum": 0,
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "eq",
+                        "ne"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "op"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "type": [
+                        "string",
+                        "number",
+                        "boolean"
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "in",
+                        "not_in"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "op"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "items": {
+                        "type": [
+                          "string",
+                          "number",
+                          "boolean"
+                        ]
+                      },
+                      "minItems": 1,
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            ],
             "properties": {
               "field": {
                 "enum": [
@@ -454,5 +598,26 @@
     "period"
   ],
   "title": "quant-marcap-runner Strategy DSL",
-  "type": "object"
+  "type": "object",
+  "x-input-validation": {
+    "dates": "real calendar dates in YYYY-MM-DD; start <= end and book_start <= book_end",
+    "duplicate_json_keys": "reject at every object, including metadata",
+    "entry_points": [
+      "load_strategy_spec",
+      "StrategySpec.from_dict"
+    ],
+    "failure": "preflight capability_gap in compile phase before any data access or NAV",
+    "numbers": "finite and representable as a finite float; including metadata",
+    "runtime_semantics": [
+      "strict integer tokens",
+      "finite numbers and weight/cost totals",
+      "ordered periods",
+      "unique normalized factor names",
+      "registry source constraints"
+    ],
+    "schema_builder": "scripts/strategy_dsl.py:build_strategy_json_schema",
+    "types": "reject numeric strings, booleans as numbers and non-integer tokens in integer fields",
+    "unknown_fields": "reject at every strategy object; metadata permits arbitrary JSON properties",
+    "version": "1"
+  }
 }

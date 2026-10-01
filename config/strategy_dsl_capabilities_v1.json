@@ -140,7 +140,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "16",
+  "dsl_machine_contract_version": "18",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -494,6 +494,27 @@
     "price_difference_threshold_bps": 25.0
   },
   "history_audit_contract_version": "1",
+  "input_validation": {
+    "dates": "real calendar dates in YYYY-MM-DD; start <= end and book_start <= book_end",
+    "duplicate_json_keys": "reject at every object, including metadata",
+    "entry_points": [
+      "load_strategy_spec",
+      "StrategySpec.from_dict"
+    ],
+    "failure": "preflight capability_gap in compile phase before any data access or NAV",
+    "numbers": "finite and representable as a finite float; including metadata",
+    "runtime_semantics": [
+      "strict integer tokens",
+      "finite numbers and weight/cost totals",
+      "ordered periods",
+      "unique normalized factor names",
+      "registry source constraints"
+    ],
+    "schema_builder": "scripts/strategy_dsl.py:build_strategy_json_schema",
+    "types": "reject numeric strings, booleans as numbers and non-integer tokens in integer fields",
+    "unknown_fields": "reject at every strategy object; metadata permits arbitrary JSON properties",
+    "version": "1"
+  },
   "krx_market_normalization": {
     "canonical_equity_markets": [
       "KOSPI",
