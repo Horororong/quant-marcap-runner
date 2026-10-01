@@ -222,7 +222,7 @@ Execution does not silently replace missing held-stock returns with 0%. Verified
 For a registered stock merger the PROJECT execution engine:
 
 1. keeps the predecessor flat only during the verified post-last-trade suspension interval,
-2. calculates the merger-date economic return from `successor close × share ratio + cash`,
+2. calculates the merger-date economic return from `successor close × share ratio` (stock-only; nonzero cash is rejected),
 3. applies that return to NAV,
 4. transfers the post-event portfolio weight from predecessor to successor without turnover or trading cost,
 5. writes `corporate_actions_applied.csv` for audit.

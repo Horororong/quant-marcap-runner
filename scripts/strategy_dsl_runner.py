@@ -488,6 +488,12 @@ def execute_daily_nav(
 
 
 def save_cash_exchange_audits(result: dict[str, Any], out: Path) -> None:
+    # Clear only these generated artifacts after successful execution. A shorter
+    # rerun must not retain an old receipt or another scenario's cash balances.
+    for pattern in ("cash_entitlements.csv", "cash_payments.csv", "cash_balances_gross_*.csv", "cash_balances_net_*.csv"):
+        for path in out.glob(pattern):
+            if path.is_file():
+                path.unlink()
     for key in ("cash_entitlements", "cash_payments"):
         rows = [execution[key].assign(cost_scenario=scenario)
                 for scenario, execution in result["execution_scenarios"].items()

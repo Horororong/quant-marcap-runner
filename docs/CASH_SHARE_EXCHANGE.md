@@ -9,7 +9,8 @@ that Jeisys Medical cash proceeds or complete historical events are supported.
 `cash_share_exchange` requires completed legal `event_date`, predecessor code,
 empty successor code, `share_ratio=0`, positive finite `cash_per_share`, and a
 primary `source` HTTPS URL. Unlike a stock merger, it allocates no successor
-shares. Unlike a split, it retires the held security.
+shares. Unlike a split, it retires the held security. This contract is long-only; direct
+engine calls with allow_short=True and cash events are rejected.
 
 Payment requires `payment_date`, `payment_status=verified_actual`, and a primary
 `payment_source` HTTPS URL. Registry review must verify that evidence establishes
@@ -55,7 +56,8 @@ same PROJECT engine. Cash-event runs add CashReceivable alongside Cash. The
 engine returns separate gross/net weights, entitlements and receipts. Public
 outputs add `cash_entitlements.csv`, `cash_payments.csv` when received in-window,
 and `cash_balances_{gross|net}_{scenario}.csv`; deciles store these in each
-bucket directory. Amounts are in initial-capital currency units, not NAV units.
+bucket directory. Successful reruns clear prior cash artifacts so a shorter
+window cannot retain an old payment file. Amounts are in initial-capital currency units, not NAV units.
 Payment processing dates and evidence URLs are retained. Legacy turnover columns
 refer to Gross target changes; net_buy_turnover/net_sell_turnover expose actual
 Net cost calculation weights when the books diverge. Performance remains

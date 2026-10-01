@@ -130,6 +130,10 @@ def main():
     paid = run(corporate_action_events=same_day, target_weights=one, cost_assumptions=engine.TradingCostAssumptions())
     assert paid['cash_payments'].iloc[0].processing_date == d[3]
     assert paid['weights'].loc[d[3], 'Cash'] == 1. and paid['daily_nav'].loc[d[3], 'Gross'] == 1.2
+    fail(lambda: run(execution_assumptions=engine.ExecutionAssumptions(allow_short=True)), 'long-only execution')
+    # Legacy explicit leverage without cash events retains its separate contract.
+    levered = pd.DataFrame([[0., 1.5]], columns=px.columns, index=[d[0]])
+    assert not run(target_weights=levered, corporate_action_events=None, execution_assumptions=engine.ExecutionAssumptions(allow_short=True, max_gross_exposure=2.))['daily_nav'].empty
     fail(lambda: run(source_volumes=None), 'source volumes')
     for col, value in [('payment_status', 'planned'), ('payment_date', pd.NaT), ('payment_date', d[2]), ('payment_source', ''), ('successor_code', '000002'), ('share_ratio', 1.)]:
         bad = events.copy(); bad[col] = value
@@ -164,6 +168,10 @@ def main():
         assert len(pd.read_csv(Path(tmp) / 'cash_entitlements.csv')) == 2
         assert len(pd.read_csv(Path(tmp) / 'cash_payments.csv')) == 2
         assert (Path(tmp) / 'cash_balances_net_cost.csv').exists()
+        save_cash_exchange_audits({'execution_scenarios': {'partial': partial}}, Path(tmp))
+        assert not (Path(tmp) / 'cash_payments.csv').exists()
+        assert not (Path(tmp) / 'cash_balances_net_cost.csv').exists()
+        assert (Path(tmp) / 'cash_balances_net_partial.csv').exists()
         config = Path(tmp) / 'config'; config.mkdir()
         events.to_csv(config / 'kr_corporate_actions.csv', index=False)
         loaded = load_corporate_actions(tmp)
