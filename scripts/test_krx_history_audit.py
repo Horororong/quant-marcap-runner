@@ -32,7 +32,9 @@ def fixture() -> pd.DataFrame:
 def coverage_tests() -> None:
     panel = fixture()
     dates = pd.DatetimeIndex(panel["Date"].unique())
-    pd.testing.assert_index_equal(expected_krx_sessions("2024-04-01", "2024-04-30"), dates, check_names=False)
+    # pandas 3 can store the fixture in microseconds and the calendar in ns.
+    # Every actual date must match; storage resolution is not the contract.
+    assert expected_krx_sessions("2024-04-01", "2024-04-30").tolist() == dates.tolist()
     ok = require_session_coverage(panel, "2024-04-01", "2024-04-30", ["KOSPI", "KOSDAQ"])
     assert ok["expected_sessions"] == 21
     assert all(x["observed_sessions"] == 21 for x in ok["markets"].values())
