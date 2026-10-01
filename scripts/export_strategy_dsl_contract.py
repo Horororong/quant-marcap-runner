@@ -13,7 +13,7 @@ from execution_contract import (
     PROJECT_TEMPLATE_VERSION,
     PREFLIGHT_CONTRACT_VERSION,
 )
-from factor_registry import FACTOR_REGISTRY_VERSION, factor_catalog, factor_source_constraints, supported_fields, supported_sources
+from factor_registry import FACTOR_REGISTRY_VERSION, factor_catalog, factor_source_constraints, filter_field_catalog, filterable_fields, supported_fields, supported_sources
 from strategy_dsl_aliases import alias_catalog, direction_alias_catalog
 from strategy_dsl import (
     SCHEMA_VERSION,
@@ -66,7 +66,7 @@ def build_strategy_json_schema() -> dict:
         "additionalProperties": False,
         "required": ["field", "op"],
         "properties": {
-            "field": {"type": "string", "minLength": 1},
+            "field": {"enum": filterable_fields()},
             "op": {"enum": sorted(SUPPORTED_FILTER_OPS)},
             "value": {},
         },
@@ -198,6 +198,7 @@ def build_capabilities() -> dict:
         "asset_classes": sorted(SUPPORTED_ASSET_CLASSES),
         "markets": ["KOSPI", "KOSDAQ"],
         "filter_ops": sorted(SUPPORTED_FILTER_OPS),
+        "filter_fields": filter_field_catalog(),
         "factor_transforms": sorted(SUPPORTED_FACTOR_TRANSFORMS),
         "factor_directions": sorted(SUPPORTED_DIRECTIONS),
         "factors": factor_catalog(),
