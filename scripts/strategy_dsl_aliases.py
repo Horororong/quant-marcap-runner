@@ -169,6 +169,45 @@ ALIAS_RULES: tuple[FactorAliasRule, ...] = (
         field="momentum_12_0",
         note="252-session lookback through the signal date.",
     ),
+    FactorAliasRule(
+        terms=("3개월 변동성", "63일 변동성", "3m volatility"),
+        source="technical",
+        field="volatility_3m",
+        note="Annualized sample standard deviation of 63 daily KRX ChangesRatio observations.",
+    ),
+    FactorAliasRule(
+        terms=("3개월 저변동성", "3m low volatility"),
+        source="technical",
+        field="volatility_3m",
+        fixed_direction="low",
+        note="Lower 63-session annualized realized volatility is preferred.",
+    ),
+    FactorAliasRule(
+        terms=("6개월 변동성", "126일 변동성", "6m volatility"),
+        source="technical",
+        field="volatility_6m",
+        note="Annualized sample standard deviation of 126 daily KRX ChangesRatio observations.",
+    ),
+    FactorAliasRule(
+        terms=("6개월 저변동성", "6m low volatility"),
+        source="technical",
+        field="volatility_6m",
+        fixed_direction="low",
+        note="Lower 126-session annualized realized volatility is preferred.",
+    ),
+    FactorAliasRule(
+        terms=("12개월 변동성", "252일 변동성", "12m volatility"),
+        source="technical",
+        field="volatility_12m",
+        note="Annualized sample standard deviation of 252 daily KRX ChangesRatio observations.",
+    ),
+    FactorAliasRule(
+        terms=("12개월 저변동성", "12m low volatility"),
+        source="technical",
+        field="volatility_12m",
+        fixed_direction="low",
+        note="Lower 252-session annualized realized volatility is preferred.",
+    ),
 )
 
 
