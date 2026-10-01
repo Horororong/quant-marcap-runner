@@ -343,7 +343,7 @@ check. Its success is not whole-market history certification.
 
 ## Canonical performance v2-17
 
-PROJECT v2-16 / execution v2-16-exec-2 generates daily NAV. All performance
+PROJECT v2-16 / execution v2-16-exec-3 generates daily NAV. All performance
 calculations and charts delegate to CURRENT v2-17. Machine contract 13 exports
 the independent performance version. Both top-N and decile reporting paths
 pass XKRX into postprocess. Missing/extra sessions stop canonical report
@@ -353,3 +353,14 @@ The existing four periods and nine charts remain; short `--execution-only`
 regressions are not long-history performance reports. Definitions, optional
 CLI arguments and the legacy PROJECT period policy are in
 `docs/CANONICAL_PERFORMANCE.md`.
+
+## Cash-only exchanges and known evidence gaps
+
+The generic `cash_share_exchange` contract separates fixed nominal receivables
+from settled Cash and rejects targets/costs that would spend unpaid proceeds.
+It requires verified actual payment metadata and observed zero-volume suspension.
+Receipt has no second NAV gain or transaction costs. Gross and Net amounts are
+accounted for separately. See `docs/CASH_SHARE_EXCHANGE.md` for exact boundaries
+and audit outputs. No production cash event is registered yet. Jeisys 287410
+remains blocked for affected holdings from 2024-10-23 because actual payment
+evidence is unresolved; historical signal eligibility is preserved.

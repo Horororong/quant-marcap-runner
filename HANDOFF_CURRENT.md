@@ -19,13 +19,13 @@ Korean-language compiler/service is not implemented yet. Unsupported requests
 must identify the missing capability instead of mapping to a similar strategy.
 
 - Execution: `scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py`,
-  execution engine `v2-16-exec-2`.
+  execution engine `v2-16-exec-3`.
 - Canonical metrics/charts: `scripts/quant_backtest_template_CURRENT.py`
   (currently `v2-17`) and `scripts/quant_backtest_postprocess.py`.
   The execution and performance template versions are distinct; do not rename
   one to pretend it has the other's implementation.
-- Strategy schema: `1.0`; machine contract `15`; factor registry `6`;
-  preflight contract `2`; history-audit contract `1`; market-normalization contract `1`; corporate-action registry `4`.
+- Strategy schema: `1.0`; machine contract `16`; factor registry `6`;
+  preflight contract `2`; history-audit contract `1`; market-normalization contract `1`; corporate-action registry `5`.
 - Generated contracts: `config/strategy_dsl_schema_v1.json` and
   `config/strategy_dsl_capabilities_v1.json`. Regenerate with
   `python scripts/export_strategy_dsl_contract.py --write`; CI uses `--check`.
@@ -47,7 +47,10 @@ benchmark statistics retain the four periods and nine charts. See
 PR #19's tested head is `2585d24a26a88c9d4707e1beb79ec2a228cafb7c`; full CI
 passed at https://github.com/Horororong/quant-marcap-runner/actions/runs/36831237355
 It is merged on main at `b39d06ced5c85b17deb10747811d91f8a9364af3`.
-The current milestone fixes KOSDAQ GLOBAL classification and restores 46,753
+PR #21 is merged at `aae1bdde220aac2d519fcf845e544bb1f9fecebc`. Its full tested-head
+CI passed at https://github.com/Horororong/quant-marcap-runner/actions/runs/36837202267
+and main CI passed at https://github.com/Horororong/quant-marcap-runner/actions/runs/36839116922.
+That milestone fixes KOSDAQ GLOBAL classification and restores 46,753
 pinned original observations across 2022–2026, without revising existing values
 or extending stored windows. SourceMarket preserves then-observed membership.
 Machine contract 15 and market-normalization version 1 expose this boundary.
@@ -155,8 +158,12 @@ corporate-action counts or a completeness certificate.
 
 Code 287410's former 89-session gap was a KOSDAQ GLOBAL ingestion omission.
 The repair restores those actual rows and its 207 observations. Its later cash
-share exchange/delisting remains a separate, unsupported event, not a split.
-Do not treat restored history as proof that its cash proceeds are implemented.
+exchange has verified legal completion and delisting, but actual payment remains
+unverified. The new generic cash-only contract is tested with synthetic payment
+evidence; no production cash registry entry exists. The known gap blocks affected
+holdings from 2024-10-23 instead of inferring receipt or excluding the stock.
+See `docs/CASH_SHARE_EXCHANGE.md` and primary evidence there. Full current-head CI
+is required before merging this cash-contract milestone.
 
 Public DSL runners now require ChangesRatio source data and validate each
 pre-rebalance held asset's effective return against ChangesRatio/100 within
@@ -176,11 +183,12 @@ verified handling. Do not silently exclude stocks that would fail the guard.
 
 ## Next development sequence
 
-1. Confirm this market-normalization milestone and full current-head CI on main.
+1. Verify live main and full current-head CI for the cash-contract milestone.
 2. Continue exact primary-source investigation of the 251 unmatched 2024 price
    candidates and remaining years. For 287410, verify actual cash-exchange
-   entitlement, payment and delisting evidence, then implement a distinct cash
-   event contract with independent proceeds/timing/held-return/cost tests in both
+   actual payment and applicable cash-treatment evidence. The distinct cash
+   receivable/payment contract now exists; replace the blocker with a reviewed
+   executable entry only after evidence and actual proceeds/timing tests in both
    public modes. Do not reuse a stock split or merger approximation. Preserve
    all audit candidates and never use future survival as a strategy filter.
    The event registry, dividends and full historical coverage remain incomplete.

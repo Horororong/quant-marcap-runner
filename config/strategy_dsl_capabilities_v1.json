@@ -40,6 +40,9 @@
     "return_reference_audit.json",
     "held_return_checks.csv",
     "corporate_actions_applied.csv",
+    "cash_entitlements.csv (when held cash exchanges occur)",
+    "cash_payments.csv (when received within window)",
+    "cash_balances_{gross|net}_{scenario}.csv (cash exchange runs)",
     "metrics_CURRENT.csv",
     "chat_manifest_CURRENT.json"
   ],
@@ -78,14 +81,26 @@
     ],
     "version": "1"
   },
-  "corporate_action_registry_version": "4",
+  "corporate_action_registry_version": "5",
   "corporate_actions": {
+    "cash_exchange_contract": {
+      "actual_coverage": "no cash exchange in production registry; Jeisys actual payment evidence unresolved",
+      "entitlement": "completed legal exchange; no successor; share_ratio=0; fixed positive KRW cash_per_share",
+      "known_gap_policy": "config/kr_corporate_action_gaps.json blocks affected holdings from entitlement date; no survival exclusion",
+      "liquidity": "receivable contributes to NAV but cannot fund target weights or costs; reject rather than scale targets",
+      "payment": "payment_date and payment_source URL with payment_status=verified_actual; planned dates rejected",
+      "receipt": "first observed session close on/after actual payment; zero turnover/cost and no second return",
+      "reconciliation": "cash disposal candidate reconciliation remains unsupported",
+      "suspension": "observed flat closes, original Volume=0 and exchange reference=0 required",
+      "valuation": "nominal fixed receivable, no interest, discount, withholding, credit risk or partial settlement"
+    },
     "history_completeness": "unverified; presence of registered events is not a coverage certificate",
     "registry": "config/kr_corporate_actions.csv",
     "split_contract": "same code, shares_after/shares_before > 0, zero cash; event_date is trading resumption; adjusted event return still checked against exchange reference",
     "supported_event_types": [
       "stock_merger",
-      "stock_split"
+      "stock_split",
+      "cash_share_exchange"
     ],
     "unregistered_held_price_gap_policy": "fail"
   },
@@ -124,7 +139,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "15",
+  "dsl_machine_contract_version": "16",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -132,7 +147,7 @@
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
   },
-  "execution_engine_version": "v2-16-exec-2",
+  "execution_engine_version": "v2-16-exec-3",
   "execution_prices": [
     "next_close"
   ],

@@ -20,7 +20,7 @@ import pandas as pd
 
 from strategy_dsl import BenchmarkSpec, StrategySpec, compile_execution_plan, load_strategy_spec
 from execution_contract import EXECUTION_ENGINE_VERSION, PROJECT_TEMPLATE_VERSION
-from corporate_action_registry import load_corporate_actions
+from corporate_action_registry import load_corporate_actions, load_corporate_action_gaps
 from krx_history_audit import require_session_coverage
 from factor_registry import (
     build_external_provider,
@@ -436,6 +436,8 @@ def execute_daily_nav(
     tradable_mask: pd.DataFrame | None = None,
     corporate_action_events: pd.DataFrame | None = None,
     reference_returns: pd.DataFrame | None = None,
+    source_volumes: pd.DataFrame | None = None,
+    corporate_action_gaps: pd.DataFrame | None = None,
 ) -> dict[str, Any]:
     """Convert deterministic target weights into full daily NAV only.
 
@@ -460,6 +462,8 @@ def execute_daily_nav(
             initial_capital=initial_capital,
             corporate_action_events=corporate_action_events,
             reference_returns=reference_returns,
+            source_volumes=source_volumes,
+            corporate_action_gaps=corporate_action_gaps,
         )
         executions[name] = exout
         d = exout["daily_nav"]
@@ -481,6 +485,20 @@ def execute_daily_nav(
         "daily_nav": combined_daily,
         "execution_scenarios": executions,
     }
+
+
+def save_cash_exchange_audits(result: dict[str, Any], out: Path) -> None:
+    for key in ("cash_entitlements", "cash_payments"):
+        rows = [execution[key].assign(cost_scenario=scenario)
+                for scenario, execution in result["execution_scenarios"].items()
+                if not execution[key].empty]
+        if rows:
+            pd.concat(rows, ignore_index=True).to_csv(out / f"{key}.csv", index=False)
+    for scenario, execution in result["execution_scenarios"].items():
+        if "CashReceivable" in execution["weights"]:
+            for book, key in (("gross", "weights"), ("net", "net_weights")):
+                execution[key][["Cash", "CashReceivable"]].to_csv(
+                    out / f"cash_balances_{book}_{scenario}.csv", index_label="Date")
 
 
 def run_current_postprocess(spec: StrategySpec, repo_root: Path, out: Path, daily: pd.DataFrame) -> None:
@@ -536,7 +554,9 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
         initial_capital=cfg.initial_capital,
         tradable_mask=tradable,
         corporate_action_events=corporate_actions,
+        corporate_action_gaps=load_corporate_action_gaps(repo_root),
         reference_returns=return_reference_matrix(panel, assets),
+        source_volumes=panel.pivot(index="Date", columns="Code", values="Volume").reindex(index=close.index, columns=assets),
     )
 
     out = output_dir or (repo_root / "results" / "dsl" / spec.strategy_id)
@@ -559,6 +579,7 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     ca_applied = first_execution.get("corporate_actions", pd.DataFrame())
     if isinstance(ca_applied, pd.DataFrame) and not ca_applied.empty:
         ca_applied.to_csv(out / "corporate_actions_applied.csv", index=False, encoding="utf-8-sig")
+    save_cash_exchange_audits(result, out)
     coverage = factor_provider_coverage_audit(panel, spec, repo_root)
     if not coverage.empty:
         coverage.to_csv(out / "factor_provider_coverage.csv", index=False, encoding="utf-8-sig")

@@ -62,9 +62,9 @@ def main() -> None:
     assert plan["project_engine"].endswith("v2-16_CURRENT.py")
     assert plan["strategy_fingerprint"] == spec.fingerprint()
     assert plan["factor_registry_version"] == "6"
-    assert plan["execution_engine_version"] == "v2-16-exec-2"
-    assert plan["corporate_action_registry_version"] == "4"
-    assert plan["dsl_machine_contract_version"] == "15"
+    assert plan["execution_engine_version"] == "v2-16-exec-3"
+    assert plan["corporate_action_registry_version"] == "5"
+    assert plan["dsl_machine_contract_version"] == "16"
     assert plan["preflight_contract_version"] == "2"
     assert plan["history_audit_contract_version"] == "1"
     assert plan["krx_market_normalization_version"] == "1"
