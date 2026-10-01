@@ -20,7 +20,7 @@ on:
     - cron: '30 22 * * 2'
 
 concurrency:
-  group: update-quant-data
+  group: update-quant-data-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:

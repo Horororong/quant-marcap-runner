@@ -22,6 +22,7 @@ from execution_contract import (
 from factor_registry import FACTOR_REGISTRY_VERSION, factor_catalog, factor_source_constraints, filter_field_catalog, filterable_fields, supported_fields, supported_sources
 from krx_technical_factor_adapter import technical_factor_catalog
 from krx_history_audit import PRICE_DIFFERENCE_THRESHOLD_BPS
+from krx_market_normalization import MARKET_LABELS
 from strategy_dsl_aliases import alias_catalog, direction_alias_catalog
 from strategy_dsl import (
     SCHEMA_VERSION,
@@ -225,7 +226,7 @@ def build_capabilities() -> dict:
         "history_audit_contract_version": HISTORY_AUDIT_CONTRACT_VERSION,
         "krx_market_normalization_version": KRX_MARKET_NORMALIZATION_VERSION,
         "krx_market_normalization": {
-            "source_to_canonical": {"KOSPI": "KOSPI", "KOSDAQ": "KOSDAQ", "KOSDAQ GLOBAL": "KOSDAQ", "KONEX": "KONEX"},
+            "source_to_canonical": dict(MARKET_LABELS),
             "source_label_field": "SourceMarket",
             "unknown_label_policy": "fail before write; no prefix guessing",
             "segment_membership": "historically observed provenance only; never an eligibility or survival filter",
