@@ -14,7 +14,7 @@ from typing import Iterable, Protocol, Sequence, runtime_checkable
 
 import pandas as pd
 
-FACTOR_REGISTRY_VERSION = "2"
+FACTOR_REGISTRY_VERSION = "3"
 
 
 @dataclass(frozen=True)
@@ -86,6 +86,52 @@ def get_factor_definition(source: str, field: str) -> FactorDefinition:
         ) from exc
 
 
+def get_filter_definition(field: str) -> FactorDefinition:
+    """Resolve a filter field to exactly one registered source.
+
+    FilterSpec intentionally omits a source for backward compatibility. A field
+    is therefore filterable only while its name maps unambiguously to one
+    registered FactorDefinition.
+    """
+    key = str(field).strip()
+    matches = [
+        definition
+        for (source, field_), definition in FACTOR_DEFINITIONS.items()
+        if field_ == key
+    ]
+    if not matches:
+        raise ValueError(
+            f"unsupported filter field: {key!r}; "
+            f"filterable fields={filterable_fields()}"
+        )
+    if len(matches) != 1:
+        sources = sorted(x.source for x in matches)
+        raise ValueError(
+            f"ambiguous filter field {key!r}; registered sources={sources}. "
+            "A future schema version must require an explicit filter source."
+        )
+    return matches[0]
+
+
+def filterable_fields() -> list[str]:
+    counts: dict[str, int] = {}
+    for _, field in FACTOR_DEFINITIONS:
+        counts[field] = counts.get(field, 0) + 1
+    return sorted(field for field, count in counts.items() if count == 1)
+
+
+def filter_field_catalog() -> list[dict[str, str]]:
+    return [
+        {
+            "field": field,
+            "source": get_filter_definition(field).source,
+            "storage": get_filter_definition(field).storage,
+            "description": get_filter_definition(field).description,
+        }
+        for field in filterable_fields()
+    ]
+
+
 def supported_sources() -> list[str]:
     return sorted({source for source, _ in FACTOR_DEFINITIONS})
 
@@ -120,8 +166,10 @@ def factor_source_constraints() -> dict[str, dict]:
 def validate_factor_strategy_constraints(
     factors: Iterable[object],
     rebalance_months: Iterable[int],
+    filters: Iterable[object] = (),
 ) -> None:
     sources = {str(getattr(f, "source")).strip().lower() for f in factors}
+    sources.update(get_filter_definition(getattr(flt, "field")).source for flt in filters)
     months = {int(m) for m in rebalance_months}
     for source in sorted(sources):
         constraint = FACTOR_SOURCE_CONSTRAINTS.get(source)
@@ -150,6 +198,33 @@ def panel_factor_fields(factors: Iterable[object]) -> set[str]:
         if definition.storage == "panel":
             fields.add(definition.field)
     return fields
+
+
+def panel_filter_fields(filters: Iterable[object]) -> set[str]:
+    fields: set[str] = set()
+    for flt in filters:
+        definition = get_filter_definition(getattr(flt, "field"))
+        if definition.storage == "panel":
+            fields.add(definition.field)
+    return fields
+
+
+def external_filter_sources(filters: Iterable[object]) -> list[str]:
+    return sorted({
+        get_filter_definition(getattr(flt, "field")).source
+        for flt in filters
+        if get_filter_definition(getattr(flt, "field")).storage == "external"
+    })
+
+
+def filter_fields_for_source(filters: Iterable[object], source: str) -> list[str]:
+    src = str(source).strip().lower()
+    fields: list[str] = []
+    for flt in filters:
+        definition = get_filter_definition(getattr(flt, "field"))
+        if definition.source == src:
+            fields.append(definition.field)
+    return sorted(set(fields))
 
 
 def external_sources(factors: Iterable[object]) -> list[str]:
