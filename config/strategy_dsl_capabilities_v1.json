@@ -78,7 +78,7 @@
     ],
     "version": "1"
   },
-  "corporate_action_registry_version": "3",
+  "corporate_action_registry_version": "4",
   "corporate_actions": {
     "history_completeness": "unverified; presence of registered events is not a coverage certificate",
     "registry": "config/kr_corporate_actions.csv",
@@ -124,7 +124,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "13",
+  "dsl_machine_contract_version": "14",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",

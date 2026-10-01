@@ -24,30 +24,34 @@ must identify the missing capability instead of mapping to a similar strategy.
   (currently `v2-17`) and `scripts/quant_backtest_postprocess.py`.
   The execution and performance template versions are distinct; do not rename
   one to pretend it has the other's implementation.
-- Strategy schema: `1.0`; machine contract `13`; factor registry `6`;
-  preflight contract `2`; history-audit contract `1`; corporate-action registry `3`.
+- Strategy schema: `1.0`; machine contract `14`; factor registry `6`;
+  preflight contract `2`; history-audit contract `1`; corporate-action registry `4`.
 - Generated contracts: `config/strategy_dsl_schema_v1.json` and
   `config/strategy_dsl_capabilities_v1.json`. Regenerate with
   `python scripts/export_strategy_dsl_contract.py --write`; CI uses `--check`.
 
 ## Review units and resumption
 
-PRs #7-#17 are merged. The split-reconciliation main commit is
-`e429b9e33cb16437f46b08f6aba51b3221fb24f2`. Its PR #17 full CI passed:
-https://github.com/Horororong/quant-marcap-runner/actions/runs/36821245574
+PRs #7-#18 are merged. The canonical-performance main commit is
+`ba6c3772a57de3276f31f23247395d1877b13b73`. PR #18 full CI passed:
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36824544209
 Its own main workflow also passed:
-https://github.com/Horororong/quant-marcap-runner/actions/runs/36822276239
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36825497414
 Check live refs/checks again before merging further work.
 
-The current milestone is canonical performance v2-17: PROJECT imports CURRENT
-calculations instead of maintaining copies; exact daily calendar checks are wired
-into DSL reports; Sortino, Calmar, complete-month win rate and explicit benchmark
-statistics are exported. CURRENT retains its four periods and nine charts.
-Legacy direct PROJECT callers retain the explicit 2000 start policy through a
-configuration subclass, with all calculations delegated to CURRENT.
-See `docs/CANONICAL_PERFORMANCE.md`. Require full current-head CI and existing
-actual DART/KRX E2Es before merge. When this version is on main, the milestone is
-merged. Never force-push main.
+Canonical performance v2-17 is merged: PROJECT delegates metrics to CURRENT;
+exact daily calendar checks, Sortino, Calmar, complete-month win rate and explicit
+benchmark statistics retain the four periods and nine charts. See
+`docs/CANONICAL_PERFORMANCE.md` for compatibility and verification scope.
+
+The current milestone adds verified autumn 2024 splits: Namyang common/preferred
+ten-for-one on November 20 and APR five-for-one on October 31. Registry version 4
+and machine contract 14 expose the new reproducibility boundary. Actual-source
+oracles verify daily NAV in both top-N and decile modes, preserve real event losses
+and block missing/wrong event records before outputs. See
+`docs/CORPORATE_ACTION_RECONCILIATION.md`. Require full current-head CI, including
+existing real DART/KRX E2Es, before merge. When this version is on main, the
+milestone is merged. Never force-push main.
 
 Repository: https://github.com/Horororong/quant-marcap-runner
 
@@ -82,9 +86,11 @@ Repository: https://github.com/Horororong/quant-marcap-runner
   Haesung Industrial 034810, ratio 1.6661460, successor listing 2020-07-13.
   Verified split: EcoPro 086520, five shares per old share, trading resumes
   2024-04-25 after suspension 2024-04-09..24. Evidence and independent test
-  are in `docs/HELD_RETURN_VALIDATION.md`. Registry version 3 also includes BYC
+  are in `docs/HELD_RETURN_VALIDATION.md`. Registry version 4 also includes BYC
   001460 and BYC preferred 001465, each ten shares per old share, resuming
-  2024-04-17. See `docs/CORPORATE_ACTION_RECONCILIATION.md`. The registry is incomplete.
+  2024-04-17; Namyang common 003920/preferred 003925 ten-for-one on 2024-11-20;
+  APR 278470 five-for-one on 2024-10-31. See
+  `docs/CORPORATE_ACTION_RECONCILIATION.md`. The registry is incomplete.
 
 ## Non-negotiable correctness rules
 
@@ -146,8 +152,11 @@ observation gap (Code 287410; 89 missing sessions between observations).
 
 The source-history audit never removes stocks or fills values. First/last
 observations are window-censored, not automatically IPO/delisting dates.
-The archived snapshots describe registry version 1; registry version 2 added EcoPro, and version 3 adds BYC common/preferred.
-The new reconciliation snapshot checks these three 2024 security events.
+The archived history snapshots describe registry version 1. Version 2 added
+EcoPro, version 3 BYC common/preferred, and version 4 Namyang common/preferred
+and APR. The new reconciliation snapshot checks all six 2024 security events:
+six of 256 price candidates match consistent registered splits; 250 remain
+unmatched. The internal gap and all censored endpoints remain unresolved.
 Candidate counts are source observations and do not disappear after an event
 is verified; they are not counts of unresolved held returns.
 
@@ -169,9 +178,9 @@ verified handling. Do not silently exclude stocks that would fail the guard.
 
 ## Next development sequence
 
-1. Confirm the canonical performance milestone and current main CI.
+1. Confirm this autumn split milestone and current main CI.
 2. Use `scripts/corporate_action_reconciliation.py` and the recorded 2024 snapshot
-   to investigate the 253 price candidates still unmatched by supported, consistent
+   to investigate the 250 price candidates still unmatched by supported, consistent
    registered splits. The one internal gap remains unresolved. Keep all candidate
    rows; do not infer events or strategy filters. Audit remaining years with actual
    source files, reconcile calendar

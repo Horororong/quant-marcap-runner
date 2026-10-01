@@ -81,10 +81,10 @@ def real_source_and_public_modes() -> None:
     _, _, candidates = audit_source_history(panel, "2024-01-01", "2024-12-31", ["KOSPI", "KOSDAQ"], ROOT)
     checks, reviewed = reconcile_registered_events(panel, events, candidates)
     assert len(candidates[candidates.kind.eq("close_reference_return_difference")]) == 256
-    assert set(checks.Code) == {"001460", "001465", "086520"}
+    assert set(checks.Code) == {"001460", "001465", "086520", "003920", "003925", "278470"}
     assert checks.status.eq("reference_consistent").all()
-    assert reviewed.registry_match_status.eq("registered_split_reference_consistent").sum() == 3
-    assert (reviewed.kind.eq("close_reference_return_difference") & reviewed.registry_match_status.eq("unresolved")).sum() == 253
+    assert reviewed.registry_match_status.eq("registered_split_reference_consistent").sum() == 6
+    assert (reviewed.kind.eq("close_reference_return_difference") & reviewed.registry_match_status.eq("unresolved")).sum() == 250
     assert reviewed.kind.eq("internal_observation_gap").sum() == 1
     byc = checks[checks.Code.isin(["001460", "001465"])].set_index("Code")
     assert byc.last_trade_date.eq(pd.Timestamp("2024-04-08")).all()
