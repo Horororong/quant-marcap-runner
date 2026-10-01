@@ -53,6 +53,21 @@ For orchestration that must always receive JSON without a non-zero process exit,
 
 Preflight intentionally does **not** calculate factor values, holdings, NAV, or performance. For DART strategies it reads coverage metadata and required shard presence only. This keeps “the engine cannot express this strategy” separate from “the engine can express it, but the requested history is not ready yet.”
 
+## KRX technical momentum factors
+
+The `technical` provider derives fixed price-momentum factors from the historical KRX daily `ChangesRatio` series. It does not divide raw, unadjusted close prices and it never reads observations after the signal date.
+
+Registered fields:
+
+- `momentum_3_1`: 63-session lookback, skip the latest 21 sessions, compound the remaining 42 sessions.
+- `momentum_6_1`: 126-session lookback, skip the latest 21 sessions, compound the remaining 105 sessions.
+- `momentum_12_1`: 252-session lookback, skip the latest 21 sessions, compound the remaining 231 sessions.
+- `momentum_12_0`: 252-session lookback through the signal date with no skip.
+
+The adapter requires every daily `ChangesRatio` observation inside the requested window. A missing observation produces `NaN` for that code/factor instead of silently filling a zero return. Preflight coverage checks only whether enough historical trading sessions exist; factor execution performs the stricter per-code completeness check.
+
+Natural-language aliases are intentionally explicit: `12-1 모멘텀`, `6-1 모멘텀`, `3-1 모멘텀`, and `12-0 모멘텀`. Generic phrases such as “12개월 모멘텀” remain ambiguous and should not be silently compiled to a skip/no-skip definition.
+
 ## Registry-backed universe filters
 
 Universe filters use the same field registry as ranking factors. A filter field is valid only when its name resolves unambiguously to one registered source.
@@ -127,7 +142,7 @@ The first registered event is Korean Paper (002300) -> Haesung Industrial (03481
 The runner fails rather than inventing an answer for these cases:
 
 - DART financial factors beyond the four standardized value fields (ROE/GP-A/NCAV/EV-EBIT, etc.)
-- momentum lookbacks / technical derived factors
+- parameterized/ad-hoc momentum lookbacks beyond the registered fixed technical fields
 - dynamic historical sell-tax schedules
 - next-open/VWAP execution
 - market-cap/factor weighting
