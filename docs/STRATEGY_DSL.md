@@ -82,6 +82,8 @@ Inverse aliases encode direction inversion explicitly only when their accounting
 
 ## DART PIT value factors
 
+Current DART value-factor execution is a source-level capability with a fixed rebalance-month contract: **April and October only**. This constraint is exported as `factor_source_constraints.dart.rebalance_months=[4,10]` and is validated during DSL compilation. A DART strategy requesting another rebalance month is a `capability_gap`, not a `data_gap`.
+
 DSL v1 now supports these standardized DART fields:
 
 - `earnings_yield` = standalone-quarter net income / signal-date market cap
