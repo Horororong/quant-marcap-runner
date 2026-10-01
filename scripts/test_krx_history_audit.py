@@ -127,7 +127,7 @@ def integration_tests() -> None:
         path.write_text(json.dumps(raw))
         with patch("strategy_dsl_preflight.load_project_engine", return_value=PanelEngine()), patch("strategy_dsl_preflight.factor_provider_coverage_audit", side_effect=AssertionError("provider must not run")):
             result = preflight_strategy(path, ROOT)
-            assert result["status"] == "data_gap" and result["preflight_contract_version"] == "2"
+            assert result["status"] == "data_gap" and result["preflight_contract_version"] == "3"
             assert result["history_coverage"]["markets"]["KOSDAQ"]["missing_sessions"] == ["2024-04-09"]
         for selection, module in [("top_n", "strategy_dsl_runner"), ("deciles", "strategy_dsl_deciles")]:
             raw["portfolio"] = {"selection": selection, "weighting": "equal"}
