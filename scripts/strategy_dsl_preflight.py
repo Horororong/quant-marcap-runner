@@ -150,7 +150,7 @@ def preflight_strategy(
             "markets": sorted(panel["Market"].astype(str).unique().tolist()),
         },
         "signal_dates": [pd.Timestamp(x).date().isoformat() for x in signal_dates],
-        "factor_sources": sorted({f.source for f in spec.factors}),
+        "factor_sources": list(plan["data_contract"]["factor_sources"]),
         "provider_coverage": coverage_rows,
         "ready_for_execution": True,
     }
