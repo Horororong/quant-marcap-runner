@@ -34,6 +34,63 @@ from factor_registry import (
 ENGINE_FILE = "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py"
 POSTPROCESS_FILE = "scripts/quant_backtest_postprocess.py"
 BASE_PANEL_COLUMNS = ["Date", "Code", "Name", "Market", "Close", "Volume", "Amount", "Marcap"]
+BENCHMARK_INDEX_DIR = "data/indices"
+
+
+def load_benchmark_nav(
+    repo_root: Path,
+    benchmark: Any,
+    dates: pd.DatetimeIndex,
+) -> pd.Series:
+    if benchmark is None:
+        raise ValueError("benchmark is required")
+    if getattr(benchmark, "source", None) != "index":
+        raise ValueError(f"unsupported benchmark source: {getattr(benchmark, 'source', None)!r}")
+
+    symbol = str(getattr(benchmark, "symbol")).upper()
+    path = repo_root / BENCHMARK_INDEX_DIR / f"{symbol}.csv"
+    if not path.exists():
+        raise FileNotFoundError(f"benchmark index file not found: {path}")
+
+    x = pd.read_csv(path, usecols=["Date", "Close"])
+    x["Date"] = pd.to_datetime(x["Date"], errors="coerce").dt.normalize()
+    x["Close"] = pd.to_numeric(x["Close"], errors="coerce")
+    x = x[x["Date"].notna()].sort_values("Date")
+    if x["Date"].duplicated().any():
+        raise AssertionError(f"benchmark {symbol}: duplicate Date rows")
+
+    s = x.set_index("Date")["Close"]
+    idx = pd.DatetimeIndex(dates).normalize().sort_values()
+    aligned = s.reindex(idx)
+    if aligned.isna().any():
+        missing = [d.date().isoformat() for d in aligned.index[aligned.isna()][:12]]
+        raise RuntimeError(
+            f"benchmark {symbol}: missing exact strategy dates; examples={missing}"
+        )
+    if not np.isfinite(aligned.to_numpy(float)).all() or not (aligned > 0).all():
+        raise RuntimeError(f"benchmark {symbol}: non-positive or non-finite close values")
+
+    nav = aligned / float(aligned.iloc[0])
+    nav.name = "NAV_Benchmark"
+    return nav
+
+
+def benchmark_coverage_audit(
+    repo_root: Path,
+    benchmark: Any,
+    dates: pd.DatetimeIndex,
+) -> dict[str, Any] | None:
+    if benchmark is None:
+        return None
+    nav = load_benchmark_nav(repo_root, benchmark, dates)
+    return {
+        "source": benchmark.source,
+        "symbol": benchmark.symbol,
+        "start": nav.index.min().date().isoformat(),
+        "end": nav.index.max().date().isoformat(),
+        "observations": int(len(nav)),
+        "exact_date_alignment": True,
+    }
 
 
 def load_project_engine(repo_root: Path):
@@ -392,6 +449,11 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     out = output_dir or (repo_root / "results" / "dsl" / spec.strategy_id)
     out.mkdir(parents=True, exist_ok=True)
     daily = result["daily_nav"].rename(columns=lambda c: f"NAV_{c}")
+    benchmark_meta = None
+    if spec.benchmark is not None:
+        benchmark_nav = load_benchmark_nav(repo_root, spec.benchmark, daily.index)
+        daily["NAV_Benchmark"] = benchmark_nav.reindex(daily.index).to_numpy(float)
+        benchmark_meta = benchmark_coverage_audit(repo_root, spec.benchmark, daily.index)
     daily.to_csv(out / "daily_nav.csv", index_label="Date")
     target_weights.to_csv(out / "target_weights.csv", index_label="signal_date")
     selections.to_csv(out / "selections.csv", index=False, encoding="utf-8-sig")
@@ -419,7 +481,13 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
             "--as-of-date", spec.period.as_of_date or spec.period.end,
         ]
         subprocess.run(cmd, cwd=repo_root, check=True)
-    return {"spec": spec, "plan": plan, "engine_result": result, "output_dir": out}
+    return {
+        "spec": spec,
+        "plan": plan,
+        "engine_result": result,
+        "benchmark": benchmark_meta,
+        "output_dir": out,
+    }
 
 
 def main() -> None:
