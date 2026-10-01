@@ -112,6 +112,25 @@
                   "source",
                   "field"
                 ]
+              },
+              {
+                "properties": {
+                  "field": {
+                    "enum": [
+                      "momentum_12_0",
+                      "momentum_12_1",
+                      "momentum_3_1",
+                      "momentum_6_1"
+                    ]
+                  },
+                  "source": {
+                    "const": "technical"
+                  }
+                },
+                "required": [
+                  "source",
+                  "field"
+                ]
               }
             ]
           }
@@ -286,6 +305,10 @@
                   "book_to_price",
                   "cashflow_yield",
                   "earnings_yield",
+                  "momentum_12_0",
+                  "momentum_12_1",
+                  "momentum_3_1",
+                  "momentum_6_1",
                   "sales_yield"
                 ]
               },
