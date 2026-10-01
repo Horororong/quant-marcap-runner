@@ -99,6 +99,7 @@ def main() -> None:
         filter_month["universe"]["filters"] = [
             {"field": "book_to_price", "op": "gt", "value": 0}
         ]
+        filter_month["rebalance"] = {"frequency": "months", "months": [1], "trading_day": "last"}
         filter_month_path = td / "dart_filter_month_gap.json"
         write_spec(filter_month_path, filter_month)
         filter_gap = preflight_strategy(filter_month_path, ROOT)
