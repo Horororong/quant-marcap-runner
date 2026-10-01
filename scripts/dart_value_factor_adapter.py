@@ -24,6 +24,9 @@ VALUE_FACTOR_FIELDS = (
     "book_to_price",
     "cashflow_yield",
     "sales_yield",
+    "quarterly_roe",
+    "quarterly_net_margin",
+    "quarterly_ocf_margin",
 )
 
 
@@ -511,6 +514,18 @@ class DartValueFactorAdapter:
         out["book_to_price"] = np.where(valid_mc, out["equity"] / out["Marcap"], np.nan)
         out["cashflow_yield"] = np.where(valid_mc, out["ocf_q"] / out["Marcap"], np.nan)
         out["sales_yield"] = np.where(valid_mc, out["revenue_q"] / out["Marcap"], np.nan)
+
+        valid_equity = out["equity"].notna() & (out["equity"] > 0)
+        valid_revenue = out["revenue_q"].notna() & (out["revenue_q"] > 0)
+        out["quarterly_roe"] = np.where(
+            valid_equity, out["net_income_q"] / out["equity"], np.nan
+        )
+        out["quarterly_net_margin"] = np.where(
+            valid_revenue, out["net_income_q"] / out["revenue_q"], np.nan
+        )
+        out["quarterly_ocf_margin"] = np.where(
+            valid_revenue, out["ocf_q"] / out["revenue_q"], np.nan
+        )
         out["signal_date"] = signal
         return out[[
             "Code", "signal_date", "available_date", "fs_div",
