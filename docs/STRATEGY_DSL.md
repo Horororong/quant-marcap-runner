@@ -340,3 +340,16 @@ checks manually evidenced registered splits and preserves every review candidate
 Registry version 3 adds BYC common/preferred as separate ten-for-one records.
 Reconciliation never feeds strategy eligibility or replaces the public held-return
 check. Its success is not whole-market history certification.
+
+## Canonical performance v2-17
+
+PROJECT v2-16 / execution v2-16-exec-2 generates daily NAV. All performance
+calculations and charts delegate to CURRENT v2-17. Machine contract 13 exports
+the independent performance version. Both top-N and decile reporting paths
+pass XKRX into postprocess. Missing/extra sessions stop canonical report
+creation; no report silently labels incomplete daily NAV as daily risk.
+Explicit benchmarks also generate `benchmark_statistics_CURRENT.csv`.
+The existing four periods and nine charts remain; short `--execution-only`
+regressions are not long-history performance reports. Definitions, optional
+CLI arguments and the legacy PROJECT period policy are in
+`docs/CANONICAL_PERFORMANCE.md`.

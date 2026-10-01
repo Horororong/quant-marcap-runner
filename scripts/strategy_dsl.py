@@ -21,6 +21,7 @@ from execution_contract import (
     DSL_MACHINE_CONTRACT_VERSION,
     EXECUTION_ENGINE_VERSION,
     PROJECT_TEMPLATE_VERSION,
+    PERFORMANCE_TEMPLATE_VERSION,
     PREFLIGHT_CONTRACT_VERSION,
     HISTORY_AUDIT_CONTRACT_VERSION,
     HELD_RETURN_TOLERANCE_BPS,
@@ -350,6 +351,7 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         "preflight_contract_version": PREFLIGHT_CONTRACT_VERSION,
         "history_audit_contract_version": HISTORY_AUDIT_CONTRACT_VERSION,
         "project_template_version": PROJECT_TEMPLATE_VERSION,
+        "performance_template_version": PERFORMANCE_TEMPLATE_VERSION,
         "asset_class": spec.asset_class,
         "data_contract": {
             "price_universe": "data/krx_equities/yearly/marcap-YYYY.parquet",

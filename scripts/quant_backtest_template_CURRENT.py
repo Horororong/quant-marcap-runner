@@ -1,7 +1,7 @@
 """
 quant_backtest_template_CURRENT.py
 
-표준 퀀트 백테스트 템플릿 v2-15 / CURRENT (2026-09 업데이트)
+표준 퀀트 백테스트 템플릿 v2-17 / CURRENT (2026-10 canonical performance)
 
 핵심 원칙
 1) 성과 산출: 월별 NAV 기준
@@ -34,7 +34,8 @@ quant_backtest_template_CURRENT.py
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from functools import lru_cache
 from typing import Optional, Dict, Any, Tuple
 import json
 import math
@@ -42,7 +43,9 @@ import math
 import numpy as np
 import pandas as pd
 
-TEMPLATE_VERSION = "v2-15"
+from execution_contract import PERFORMANCE_TEMPLATE_VERSION
+
+TEMPLATE_VERSION = PERFORMANCE_TEMPLATE_VERSION
 CHAT_PAYLOAD_MAX_DRAWDOWN_POINTS = 480
 
 
@@ -73,7 +76,7 @@ PROJECT_COLLECTION_WORKFLOWS = {
 BACKTEST_EXECUTION_CONTRACT = """
 사용자가 '백테스트해줘', '백테스트', '전략 검증' 등 백테스트 실행을 요청하면 다음 순서를 기본 강제한다.
 
-1) 항상 이 CURRENT v2-15 템플릿의 계산/검증/출력 규칙을 사용한다.
+1) 항상 이 CURRENT v2-17 템플릿의 계산/검증/출력 규칙을 사용한다.
 2) 필요한 가격, 지수, 환율, 거시, 재무, 프록시 데이터가 이미 사용자 GitHub 저장소
    Horororong/quant-marcap-runner 에 존재하는지 먼저 탐색한다.
 3) GitHub에 존재하는 데이터가 충분하면 외부 데이터 제공업체를 우선 사용하지 않는다.
@@ -122,9 +125,13 @@ class BacktestConfig:
     expected_months: Optional[int] = None
 
     # 표준 분석의 마지막 연도. 실제 종료일은 데이터 최신일로 제한된다.
-    standard_end_year: int = 2026
+    standard_end_year: int = field(default_factory=lambda: pd.Timestamp.today().year)
     # 데이터 가용성 기준일. None이면 실행일을 사용한다.
     as_of_date: Optional[str] = None
+
+    market_calendar: Optional[str] = None
+    # CURRENT uses 2001; PROJECT compatibility callers can explicitly retain 2000.
+    standard_start_year: int = 2001
 
     def __post_init__(self) -> None:
         if not np.isfinite(float(self.initial_capital)) or self.initial_capital <= 0:
@@ -140,6 +147,10 @@ class BacktestConfig:
                 pd.Timestamp(self.as_of_date)
             except Exception as e:
                 raise ValueError("as_of_date는 pandas가 해석 가능한 날짜여야 합니다.") from e
+        if self.market_calendar is not None and not str(self.market_calendar).strip():
+            raise ValueError("market_calendar must be a nonempty calendar name")
+        if self.standard_start_year not in (2000, 2001):
+            raise ValueError("standard_start_year must be 2000 (legacy PROJECT) or 2001 (CURRENT)")
 
 
 # =========================================================
@@ -161,7 +172,6 @@ def _basic_nav_checks(df: pd.DataFrame, name: str) -> None:
         raise AssertionError(f"{name}: 무한대/비정상 값이 있습니다.")
     if not (df > 0).all().all():
         raise AssertionError(f"{name}: NAV는 0보다 커야 합니다.")
-
 
 def validate_monthly_nav(nav: pd.DataFrame, config: BacktestConfig, enforce_expected: bool = True) -> pd.DataFrame:
     df = nav.copy()
@@ -231,7 +241,6 @@ def validate_monthly_nav(nav: pd.DataFrame, config: BacktestConfig, enforce_expe
         )
     return df
 
-
 def validate_daily_nav(nav: pd.DataFrame) -> pd.DataFrame:
     """거래일 NAV 검증. 주말/휴일이 있으므로 달력상 연속일을 강제하지 않는다."""
     df = nav.copy()
@@ -285,17 +294,17 @@ def standard_period_windows(
 
     starts = {
         "book_validation": book_start,
-        "from_2001": pd.Timestamp("2001-01-01"),
+        f"from_{config.standard_start_year}": pd.Timestamp(f"{config.standard_start_year}-01-01"),
         "from_2021": pd.Timestamp("2021-01-01"),
         "longest": data_start,
     }
 
     # 고정 기간은 데이터가 부족하다고 조용히 뒤로 당기지 않는다.
     # 필요한 과거 자료가 없으면 프록시/백필을 먼저 준비하도록 명시적으로 실패한다.
-    if data_start.to_period("M") > pd.Period("2001-01", freq="M"):
+    if data_start.to_period("M") > pd.Period(f"{config.standard_start_year}-01", freq="M"):
         raise ValueError(
-            f"2001~기간 고정 조건을 충족할 수 없습니다. 데이터 시작월={data_start:%Y-%m}. "
-            "2001-01부터의 프록시/백필 데이터를 준비하십시오."
+            f"{config.standard_start_year}~기간 고정 조건을 충족할 수 없습니다. 데이터 시작월={data_start:%Y-%m}. "
+            f"{config.standard_start_year}-01부터의 프록시/백필 데이터를 준비하십시오."
         )
     if data_start.to_period("M") > pd.Period("2021-01", freq="M"):
         raise ValueError(
@@ -305,7 +314,7 @@ def standard_period_windows(
 
     return {
         "book_validation": (book_start, book_end, f"책 검증 {book_start:%Y-%m}~{book_end:%Y-%m}"),
-        "from_2001": (starts["from_2001"], data_end, f"2001~{data_end:%Y-%m}"),
+        f"from_{config.standard_start_year}": (starts[f"from_{config.standard_start_year}"], data_end, f"{config.standard_start_year}~{data_end:%Y-%m}"),
         "from_2021": (starts["from_2021"], data_end, f"2021~{data_end:%Y-%m}"),
         "longest": (data_start, data_end, f"최장 {data_start:%Y-%m}~{data_end:%Y-%m}"),
     }
@@ -340,11 +349,9 @@ def monthly_returns_from_nav(nav: pd.Series) -> pd.Series:
     extended = pd.concat([pd.Series([1.0], index=[prior_date]), nav.astype(float)])
     return extended.pct_change().dropna()
 
-
 def drawdown_series(nav: pd.Series) -> pd.Series:
     running_peak = np.maximum.accumulate(np.r_[1.0, nav.to_numpy(dtype=float)])[1:]
     return pd.Series(nav.to_numpy(dtype=float) / running_peak - 1.0, index=nav.index)
-
 
 def max_recovery_duration(nav: pd.Series) -> Dict[str, Any]:
     """
@@ -392,26 +399,62 @@ def max_recovery_duration(nav: pd.Series) -> Dict[str, Any]:
         "months": round(longest_days / 30.4375, 1),
     }
 
+@lru_cache(maxsize=16)
+def _market_calendar(market_calendar: str, start_year: int, end_year: int):
+    import exchange_calendars as xcals
+    return xcals.get_calendar(market_calendar, start=f"{start_year-1}-01-01", end=f"{end_year+1}-12-31")
+
+
+def expected_market_sessions(start: pd.Timestamp, end: pd.Timestamp, market_calendar: str) -> pd.DatetimeIndex:
+    """Exact named-exchange sessions; explicit bounds also support historical reports."""
+    start, end = pd.Timestamp(start).normalize(), pd.Timestamp(end).normalize()
+    cal = _market_calendar(str(market_calendar), start.year, end.year)
+    dates = pd.DatetimeIndex(cal.sessions_in_range(start, end))
+    return dates.tz_localize(None) if dates.tz is not None else dates
+
+def assert_daily_session_coverage(daily: pd.DataFrame, start: pd.Timestamp, end: pd.Timestamp, market_calendar: str) -> None:
+    expected = expected_market_sessions(start, end, market_calendar)
+    actual = pd.DatetimeIndex(daily.loc[start:end].index).normalize()
+    missing, extra = expected.difference(actual), actual.difference(expected)
+    if len(missing) or len(extra):
+        raise ValueError(f"daily NAV session mismatch ({market_calendar}): "
+                         f"missing={len(missing)} {missing[:5].strftime('%Y-%m-%d').tolist()}, "
+                         f"extra={len(extra)} {extra[:5].strftime('%Y-%m-%d').tolist()}")
 
 def _daily_full_coverage(
     dnav: pd.DataFrame,
     start: pd.Timestamp,
     end: pd.Timestamp,
     allow_partial_first_month: bool = False,
+    market_calendar: Optional[str] = None,
 ) -> bool:
-    """일별 자료가 시작/종료월과 모든 중간월을 실질적으로 덮는지 보수적으로 확인.
+    """일별 자료가 위험측정 구간을 충분히 덮는지 확인한다.
 
-    최장기간이 실제 데이터 inception 월에서 시작하는 경우에만 첫 달의 부분월을 허용한다.
-    그 외 고정 시작기간(책/2000/2021)은 시작월 전체 커버리지를 요구한다.
+    우선순위:
+    1) market_calendar(XKRX/XNYS 등)가 주어지면 exchange_calendars의 실제 세션과 정확히 대조한다.
+    2) 캘린더가 없을 때만 평일 수 기반 보수적 휴리스틱으로 fallback한다.
+
+    이렇게 해야 한국의 추석/설 연휴처럼 정상적인 장기 휴장을 데이터 누락으로 오판하지 않는다.
     """
     effective_start = start if allow_partial_first_month else start.to_period("M").start_time
-    x = dnav.loc[(dnav.index >= effective_start) & (dnav.index <= end.to_period("M").end_time)]
+    effective_end = end.to_period("M").end_time
+    x = dnav.loc[(dnav.index >= effective_start) & (dnav.index <= effective_end)]
     if x.empty:
         return False
     sm, em = start.to_period("M"), end.to_period("M")
     if x.index[0].to_period("M") != sm or x.index[-1].to_period("M") != em:
         return False
 
+    calendar_name = market_calendar or dnav.attrs.get("market_calendar")
+    if calendar_name:
+        expected = expected_market_sessions(effective_start, effective_end, str(calendar_name))
+        actual = pd.DatetimeIndex(x.index).normalize().unique().sort_values()
+        missing = expected.difference(actual)
+        # 명시한 거래소 캘린더에 없는 추가 날짜도 일별 NAV 생성 로직 오류 가능성이 있으므로 차단한다.
+        extra = actual.difference(expected)
+        return len(missing) == 0 and len(extra) == 0
+
+    # 캘린더를 지정하지 않은 경우에만 휴리스틱을 사용한다.
     if not allow_partial_first_month and x.index[0].day > 7:
         return False
     if (x.index[-1].to_period("M").end_time.normalize() - x.index[-1]).days > 7:
@@ -420,18 +463,11 @@ def _daily_full_coverage(
     counts = pd.Series(1, index=x.index.to_period("M")).groupby(level=0).sum()
     months = pd.period_range(sm, em, freq="M")
     counts = counts.reindex(months, fill_value=0)
-
-    # 달력의 평일 수를 보수적인 상한으로 사용한다. 거래소 휴일 때문에 100% 일치는
-    # 요구하지 않지만, 평일의 85% 미만이면 MDD 저점을 놓칠 위험이 있어 fallback한다.
-    # 또한 관측치 사이 달력일 간격이 7일을 넘으면 장기간 데이터 공백으로 간주한다.
     weekday_counts = pd.Series(
         {m: len(pd.bdate_range(m.start_time, m.end_time)) for m in months}, dtype=float
     )
     coverage_ratio = counts.astype(float) / weekday_counts
-    if allow_partial_first_month:
-        coverage_to_check = coverage_ratio.iloc[1:]
-    else:
-        coverage_to_check = coverage_ratio
+    coverage_to_check = coverage_ratio.iloc[1:] if allow_partial_first_month else coverage_ratio
     if (coverage_to_check < 0.85).any():
         return False
 
@@ -465,7 +501,6 @@ def _check_daily_monthly_consistency(mnav: pd.DataFrame, dnav: pd.DataFrame, tol
                 "성과와 위험지표에 서로 다른 NAV를 사용하고 있을 가능성이 있습니다."
             )
 
-
 def calculate_metrics(
     monthly_nav: pd.DataFrame,
     config: BacktestConfig,
@@ -485,9 +520,12 @@ def calculate_metrics(
 
         # 공개 함수 calculate_metrics()를 직접 호출하더라도 월/일 NAV를
         # 서로 다른 전략에서 섞어 쓰지 못하게 한다.
-        if dnav.attrs.get("coverage_verified", False):
+        if dnav.attrs.get("coverage_verified", False) and config.market_calendar is None:
             _check_daily_monthly_consistency(mnav, dnav)
-        elif not _daily_full_coverage(dnav, mnav.index[0], mnav.index[-1]):
+        elif not _daily_full_coverage(
+            dnav, dnav.index[0] if dnav.attrs.get("allow_partial_first_month", False) else mnav.index[0], mnav.index[-1], market_calendar=config.market_calendar,
+            allow_partial_first_month=bool(dnav.attrs.get("allow_partial_first_month", False))
+        ):
             dnav = None
         else:
             _check_daily_monthly_consistency(mnav, dnav)
@@ -538,13 +576,24 @@ def calculate_metrics(
 
         dd = drawdown_series(risk_s)
         recovery = max_recovery_duration(risk_s)
+        downside = np.minimum(excess.to_numpy(dtype=float), 0.0) if len(stats_r) >= 2 else np.array([])
+        downside_dev = float(np.sqrt(np.mean(np.square(downside))) * np.sqrt(config.periods_per_year)) if len(downside) else np.nan
+        annual_excess_mean = float(excess.mean() * config.periods_per_year) if len(stats_r) >= 2 else np.nan
+        sortino = annual_excess_mean / downside_dev if np.isfinite(downside_dev) and downside_dev > 0 else np.nan
+        mdd_value = float(dd.min())
+        calmar = cagr / abs(mdd_value) if mdd_value < 0 else np.nan
+        monthly_win_rate = float((stats_r > 0).mean()) if len(stats_r) else np.nan
 
         rows.append({
             "전략": name,
             "CAGR": cagr,
-            "MDD": float(dd.min()),
+            "누적수익률": final_multiple - 1.0,
+            "MDD": mdd_value,
             "MDD_source": risk_source,
             "Sharpe": sharpe,
+            "Sortino": sortino,
+            "Calmar": calmar,
+            "월간승률": monthly_win_rate,
             "연환산_표준편차": annual_std,
             "최대회복기간_개월": recovery["months"],
             "최대회복기간_일": recovery["days"],
@@ -555,9 +604,44 @@ def calculate_metrics(
     return pd.DataFrame(rows).set_index("전략")
 
 
+
+
 # =========================================================
 # 5. 표준 4기간 실행
 # =========================================================
+
+def calculate_benchmark_statistics(
+    monthly_nav: pd.DataFrame,
+    strategy_col: str,
+    benchmark_col: str,
+    config: BacktestConfig,
+) -> Dict[str, float]:
+    """월별 NAV 기준 tracking error / IR / alpha / beta / downside capture를 계산한다."""
+    m = validate_monthly_nav(monthly_nav[[strategy_col, benchmark_col]], config, enforce_expected=False)
+    if strategy_col == benchmark_col:
+        raise ValueError("strategy and benchmark columns must differ")
+    rs = monthly_returns_from_nav(m[strategy_col])
+    rb = monthly_returns_from_nav(m[benchmark_col])
+    x = pd.concat([rs.rename("s"), rb.rename("b")], axis=1).dropna()
+    baseline = m.attrs.get("performance_baseline_date")
+    if baseline is not None and pd.Timestamp(baseline).to_period("M") == m.index[0].to_period("M"):
+        x = x.iloc[1:]
+    active = x["s"] - x["b"]
+    te = float(active.std(ddof=1) * np.sqrt(config.periods_per_year)) if len(active) > 1 else np.nan
+    ir = float(active.mean() / active.std(ddof=1) * np.sqrt(config.periods_per_year)) if len(active) > 1 and active.std(ddof=1) > 0 else np.nan
+    beta = float(x["s"].cov(x["b"]) / x["b"].var(ddof=1)) if len(x) > 1 and x["b"].var(ddof=1) > 0 else np.nan
+    rf_m = (1.0 + config.risk_free_rate) ** (1.0 / config.periods_per_year) - 1.0
+    alpha = float(((x["s"] - rf_m).mean() - beta * (x["b"] - rf_m).mean()) * config.periods_per_year) if np.isfinite(beta) else np.nan
+    down = x[x["b"] < 0]
+    downside_capture = float(down["s"].mean() / down["b"].mean()) if len(down) and down["b"].mean() != 0 else np.nan
+    return {
+        "tracking_error": te,
+        "information_ratio": ir,
+        "beta": beta,
+        "alpha_annualized_arithmetic": alpha,
+        "downside_capture": downside_capture,
+    }
+
 
 def _enforce_input_nav_scale(monthly_nav: pd.DataFrame) -> None:
     """원본 monthly NAV는 inception 직전 1.0 기준 누적배수여야 한다.
@@ -574,7 +658,6 @@ def _enforce_input_nav_scale(monthly_nav: pd.DataFrame) -> None:
             f"첫 관측 NAV 범위={first.min():.6g}~{first.max():.6g}. "
             "2/100/1000 기준 wealth index나 임의 스케일은 먼저 1.0 기준으로 변환하십시오."
         )
-
 
 def run_four_periods(
     monthly_nav: pd.DataFrame,
@@ -611,15 +694,21 @@ def run_four_periods(
 
             has_prior_daily = bool((dnav.index < risk_start).any())
             if _daily_full_coverage(
-                dnav, risk_start, risk_end, allow_partial_first_month=allow_partial_first
+                dnav, risk_start, risk_end, allow_partial_first_month=allow_partial_first,
+                market_calendar=config.market_calendar,
             ) and (has_prior_daily or is_global_start):
                 d_slice = _slice_and_rebase(dnav, risk_start, risk_end)
                 d_slice.attrs["coverage_verified"] = True
+                d_slice.attrs["allow_partial_first_month"] = allow_partial_first
                 _check_daily_monthly_consistency(m_slice, d_slice)
                 # 월별 시계열에 직전 기준월이 없는 inception 구간은 일별 첫 관측일로
                 # 실제 성과 시작 직전 기준일을 복원해 partial-month CAGR 왜곡을 막는다.
                 if m_slice.attrs.get("baseline_date") is None:
-                    m_slice.attrs["performance_baseline_date"] = d_slice.index[0] - pd.offsets.BDay(1)
+                    if config.market_calendar:
+                        prior = expected_market_sessions(d_slice.index[0] - pd.Timedelta(days=31), d_slice.index[0], config.market_calendar)
+                        m_slice.attrs["performance_baseline_date"] = prior[prior < d_slice.index[0]][-1]
+                    else:
+                        m_slice.attrs["performance_baseline_date"] = d_slice.index[0] - pd.offsets.BDay(1)
 
         metrics = calculate_metrics(m_slice, config, d_slice)
         payload = build_chat_payload(m_slice, config, key, label, d_slice)
@@ -633,6 +722,7 @@ def run_four_periods(
             "chat_payload": payload,
         }
     return results
+
 
 
 # =========================================================
@@ -670,7 +760,6 @@ def _compress_drawdown_for_chat(dd: pd.Series, max_points: int = CHAT_PAYLOAD_MA
         out = out.iloc[np.unique(pos)]
     return out
 
-
 def build_chat_payload(
     monthly_nav: pd.DataFrame,
     config: BacktestConfig,
@@ -688,9 +777,11 @@ def build_chat_payload(
         missing = [c for c in mnav.columns if c not in dnav.columns]
         if missing:
             raise AssertionError(f"daily_nav에 전략 열이 없습니다: {missing}")
-        if dnav.attrs.get("coverage_verified", False):
+        if dnav.attrs.get("coverage_verified", False) and config.market_calendar is None:
             _check_daily_monthly_consistency(mnav, dnav)
-        elif not _daily_full_coverage(dnav, mnav.index[0], mnav.index[-1]):
+        elif not _daily_full_coverage(
+            dnav, dnav.index[0] if dnav.attrs.get("allow_partial_first_month", False) else mnav.index[0], mnav.index[-1], market_calendar=config.market_calendar,
+            allow_partial_first_month=bool(dnav.attrs.get("allow_partial_first_month", False))):
             dnav = None
         else:
             _check_daily_monthly_consistency(mnav, dnav)
@@ -722,7 +813,11 @@ def build_chat_payload(
                 "MDD_pct": round(float(m["MDD"] * 100.0), 4),
                 "MDD_source": str(m["MDD_source"]),
                 "Sharpe": None if pd.isna(m["Sharpe"]) else round(float(m["Sharpe"]), 4),
-                "annual_std_pct": round(float(m["연환산_표준편차"] * 100.0), 4),
+                "Sortino": None if pd.isna(m["Sortino"]) else round(float(m["Sortino"]), 4),
+                "Calmar": None if pd.isna(m["Calmar"]) else round(float(m["Calmar"]), 4),
+                "monthly_win_rate_pct": None if pd.isna(m["월간승률"]) else round(float(m["월간승률"] * 100), 4),
+                "cumulative_return_pct": round(float(m["누적수익률"] * 100), 4),
+                "annual_std_pct": None if pd.isna(m["연환산_표준편차"]) else round(float(m["연환산_표준편차"] * 100.0), 4),
                 "max_recovery_months": float(m["최대회복기간_개월"]),
                 "max_recovery_days": int(m["최대회복기간_일"]),
                 "final_multiple": round(float(m["최종배수"]), 6),
@@ -779,16 +874,18 @@ def combine_period_payloads(*payloads: Dict[str, Any]) -> Dict[str, Any]:
         raise ValueError("최소 1개의 payload가 필요합니다.")
 
     periods = {p["period_key"]: p for p in payloads}
+    historical_key = "from_2001" if "from_2001" in periods else "from_2000"
     selector_labels = {
+        "from_2000": "2000~현재",
         "from_2001": "2001~현재",
         "from_2021": "2021~현재",
         "longest": "최장~현재",
     }
-    selector_order = [k for k in ("from_2001", "from_2021", "longest") if k in periods]
+    selector_order = [k for k in (historical_key, "from_2021", "longest") if k in periods]
     if not selector_order:
         raise ValueError("기간 선택용 payload(longest/from_2001/from_2021)가 최소 1개 필요합니다.")
 
-    default_period = "from_2001" if "from_2001" in periods else selector_order[0]
+    default_period = selector_order[0]
     selector_options = [{"key": k, "label": selector_labels[k]} for k in selector_order]
 
     chart_defs = [
@@ -830,7 +927,7 @@ def combine_period_payloads(*payloads: Dict[str, Any]) -> Dict[str, Any]:
                 "priority": 1,
                 "inline_chart_count": 9,
                 "use_when": "default",
-                "period_order": ["from_2001", "from_2021", "longest"],
+                "period_order": [historical_key, "from_2021", "longest"],
                 "chart_order_per_period": ["cumulative_wealth", "log2_wealth", "drawdown"],
             },
         },
@@ -866,7 +963,7 @@ def combine_period_payloads(*payloads: Dict[str, Any]) -> Dict[str, Any]:
             "version_1": {
                 "priority": "nine_inline_charts_no_period_selector",
                 "inline_chart_count": 9,
-                "period_order": [k for k in ("from_2001", "from_2021", "longest") if k in periods],
+                "period_order": [k for k in (historical_key, "from_2021", "longest") if k in periods],
                 "chart_order_per_period": [c["chart_key"] for c in chart_defs],
                 "render_all_periods": True,
                 "trigger": "default",
@@ -963,7 +1060,7 @@ CHATGPT_RENDERING_RULES = """
 18. Log2 차트는 log2(NAV)를 직접 그려 1배, 2배, 4배, 8배...가 동일 간격이어야 한다.
 19. 그래프 렌더링 전에 기간, 관측치, 누락치, 열 정렬을 검증한다.
 20. 한글 제목, 범례, 축 라벨을 기본으로 사용한다.
-21. 새 대화에서도 사용자가 단순히 '백테스트해줘'라고 요청하면 별도 지시 없이 이 CURRENT v2-15 템플릿의 계산 및 출력 규칙을 적용한다.
+21. 새 대화에서도 사용자가 단순히 '백테스트해줘'라고 요청하면 별도 지시 없이 이 CURRENT v2-17 템플릿의 계산 및 출력 규칙을 적용한다.
 22. 백테스트에 필요한 데이터는 사용자 GitHub 저장소 Horororong/quant-marcap-runner 를 최우선으로 탐색한다.
 23. GitHub에 필요한 데이터가 없거나 기간이 부족하면 임의 데이터로 대체하지 않는다.
 24. 반복 수집 가능한 누락 데이터는 config/etf_universe.csv, config/kr_etf_universe.csv 또는 config/strategy_data_collection.csv 중 적절한 자동수집 레지스트리에 추가한다.

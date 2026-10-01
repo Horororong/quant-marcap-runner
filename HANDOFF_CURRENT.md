@@ -21,10 +21,10 @@ must identify the missing capability instead of mapping to a similar strategy.
 - Execution: `scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py`,
   execution engine `v2-16-exec-2`.
 - Canonical metrics/charts: `scripts/quant_backtest_template_CURRENT.py`
-  (currently `v2-15`) and `scripts/quant_backtest_postprocess.py`.
+  (currently `v2-17`) and `scripts/quant_backtest_postprocess.py`.
   The execution and performance template versions are distinct; do not rename
   one to pretend it has the other's implementation.
-- Strategy schema: `1.0`; machine contract `12`; factor registry `6`;
+- Strategy schema: `1.0`; machine contract `13`; factor registry `6`;
   preflight contract `2`; history-audit contract `1`; corporate-action registry `3`.
 - Generated contracts: `config/strategy_dsl_schema_v1.json` and
   `config/strategy_dsl_capabilities_v1.json`. Regenerate with
@@ -32,15 +32,22 @@ must identify the missing capability instead of mapping to a similar strategy.
 
 ## Review units and resumption
 
-PRs #7-#16 are merged. The post-held-return main commit
-`40e64e79db5599f01b2e13950bfff8d32df3e620` passed its own full main CI:
-https://github.com/Horororong/quant-marcap-runner/actions/runs/36817875070
+PRs #7-#17 are merged. The split-reconciliation main commit is
+`e429b9e33cb16437f46b08f6aba51b3221fb24f2`. Its PR #17 full CI passed:
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36821245574
+Its own main workflow also passed:
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36822276239
+Check live refs/checks again before merging further work.
 
-The current milestone expands verified splits to BYC common/preferred securities
-and adds source-only corporate-action reconciliation. Its branch must pass full
-current-head CI, including both public share-class E2Es and existing DART/real
-execution paths, before merging. When this version is on main, the milestone is
-merged. GitHub refs/checks remain authoritative. Never force-push main.
+The current milestone is canonical performance v2-17: PROJECT imports CURRENT
+calculations instead of maintaining copies; exact daily calendar checks are wired
+into DSL reports; Sortino, Calmar, complete-month win rate and explicit benchmark
+statistics are exported. CURRENT retains its four periods and nine charts.
+Legacy direct PROJECT callers retain the explicit 2000 start policy through a
+configuration subclass, with all calculations delegated to CURRENT.
+See `docs/CANONICAL_PERFORMANCE.md`. Require full current-head CI and existing
+actual DART/KRX E2Es before merge. When this version is on main, the milestone is
+merged. Never force-push main.
 
 Repository: https://github.com/Horororong/quant-marcap-runner
 
@@ -162,7 +169,7 @@ verified handling. Do not silently exclude stocks that would fail the guard.
 
 ## Next development sequence
 
-1. Confirm the split-coverage/reconciliation milestone and current main CI.
+1. Confirm the canonical performance milestone and current main CI.
 2. Use `scripts/corporate_action_reconciliation.py` and the recorded 2024 snapshot
    to investigate the 253 price candidates still unmatched by supported, consistent
    registered splits. The one internal gap remains unresolved. Keep all candidate
@@ -181,3 +188,6 @@ verified handling. Do not silently exclude stocks that would fail the guard.
 Deciles, market-session validation and held-return checks are present. An arbitrary-language
 compiler/service and complete historical corporate-action coverage are still
 outstanding.
+
+Annual/rolling performance and evaluated OOS reports remain follow-up work;
+this milestone does not claim full-history corporate-action correctness.
