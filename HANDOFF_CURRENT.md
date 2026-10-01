@@ -24,8 +24,8 @@ must identify the missing capability instead of mapping to a similar strategy.
   (currently `v2-17`) and `scripts/quant_backtest_postprocess.py`.
   The execution and performance template versions are distinct; do not rename
   one to pretend it has the other's implementation.
-- Strategy schema: `1.0`; machine contract `16`; factor registry `6`;
-  preflight contract `2`; history-audit contract `1`; market-normalization contract `1`; corporate-action registry `5`.
+- Strategy schema: `1.0`; machine contract `17`; factor registry `6`;
+  preflight contract `3`; history-audit contract `1`; market-normalization contract `1`; corporate-action registry `5`.
 - Generated contracts: `config/strategy_dsl_schema_v1.json` and
   `config/strategy_dsl_capabilities_v1.json`. Regenerate with
   `python scripts/export_strategy_dsl_contract.py --write`; CI uses `--check`.
@@ -57,6 +57,24 @@ Machine contract 15 and market-normalization version 1 expose this boundary.
 See `docs/KRX_MARKET_NORMALIZATION.md` and its complete repair evidence. Require
 full current-head CI, including both real public modes and existing DART/KRX
 E2Es, before merge. Check live refs; never force-push main.
+
+PR #22 is merged at `b4c2b4ab7a6fec794766b447dc9470372dcab539`.
+Its tested head `587733f7c3e1c5497d36cbb74b8bcb78b4a5bbca` passed all 30
+workflow lifecycle steps at:
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36847851288
+Its own main CI and subsequent data-update workflow passed at:
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36849922237
+https://github.com/Horororong/quant-marcap-runner/actions/runs/36849922248
+The continuation base is `f77a4543d6e58e01c78bf234cc9347784b7b0e73`.
+
+The next review unit adds known-event planned-exposure preflight, machine
+contract 17 / preflight 3, with no NAV/metric change. Relevant known gaps invoke
+shared PIT selection and exact lag, including all ten deciles; unaffected
+strategies retain their historical universe. Timing/lineage and real KRX
+positive/negative tests are in `scripts/test_corporate_action_preflight.py`.
+Require full current-head CI including that new step and existing DART/KRX
+E2Es before merge. Read live PR/checks for its eventual merge status.
+See `docs/CORPORATE_ACTION_PREFLIGHT.md` for scope.
 
 Repository: https://github.com/Horororong/quant-marcap-runner
 
@@ -158,12 +176,13 @@ corporate-action counts or a completeness certificate.
 
 Code 287410's former 89-session gap was a KOSDAQ GLOBAL ingestion omission.
 The repair restores those actual rows and its 207 observations. Its later cash
-exchange has verified legal completion and delisting, but actual payment remains
-unverified. The new generic cash-only contract is tested with synthetic payment
+exchange has verified legal completion and delisting, but actual payment and
+applicable net proceeds remain unverified. The new generic cash-only contract is tested with synthetic payment
 evidence; no production cash registry entry exists. The known gap blocks affected
 holdings from 2024-10-23 instead of inferring receipt or excluding the stock.
-See `docs/CASH_SHARE_EXCHANGE.md` and primary evidence there. Full current-head CI
-is required before merging this cash-contract milestone.
+See `docs/CASH_SHARE_EXCHANGE.md` and primary evidence there. The Aug 19 tax
+disclosure is historical guidance, not proof of actual deduction or universal
+net receipt. No production event or automatic tax model is added.
 
 Public DSL runners now require ChangesRatio source data and validate each
 pre-rebalance held asset's effective return against ChangesRatio/100 within
@@ -183,10 +202,10 @@ verified handling. Do not silently exclude stocks that would fail the guard.
 
 ## Next development sequence
 
-1. Verify live main and full current-head CI for the cash-contract milestone.
+1. Verify live main and full current-head CI for the known-event preflight milestone.
 2. Continue exact primary-source investigation of the 251 unmatched 2024 price
    candidates and remaining years. For 287410, verify actual cash-exchange
-   actual payment and applicable cash-treatment evidence. The distinct cash
+   actual payment and applicable net-proceeds evidence. The distinct cash
    receivable/payment contract now exists; replace the blocker with a reviewed
    executable entry only after evidence and actual proceeds/timing tests in both
    public modes. Do not reuse a stock split or merger approximation. Preserve

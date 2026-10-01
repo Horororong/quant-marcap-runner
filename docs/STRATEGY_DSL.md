@@ -34,8 +34,9 @@ score ascending (best first), then zero-padded Code ascending. Divide this order
 into ten contiguous buckets `D01` (best) through `D10` (worst), whose sizes differ
 by at most one; remainder rows go to earlier buckets. Score ties may split at
 boundaries, explicitly by Code, and the split count is audited. Fewer than ten
-eligible codes is a hard execution error. Preflight checks source coverage;
-it does not calculate factors or guarantee the post-filter eligible count.
+eligible codes is a hard execution error. Preflight normally checks sources only.
+Relevant known corporate-action gaps additionally trigger the shared selection
+builder, including the eligible-population check, before planned exposure is traced.
 
 Each bucket is an independent long-only, equal-weight portfolio. Each receives
 the full `initial_capital` independently; the ten outputs do not describe one
@@ -105,7 +106,7 @@ If the requested strategy uses an unsupported factor or execution rule, the comp
 
 ## Preflight: capability gap vs data gap
 
-Before running factor calculation or NAV simulation, use:
+Before NAV simulation, use:
 
 ```bash
 python scripts/strategy_dsl_preflight.py config/strategies/<strategy>.json
@@ -119,7 +120,7 @@ The command prints structured JSON and classifies readiness as:
 
 For orchestration that must always receive JSON without a non-zero process exit, add `--always-zero`.
 
-Preflight intentionally does **not** calculate factor values, holdings, NAV, or performance. For DART strategies it reads coverage metadata and required shard presence only. This keeps “the engine cannot express this strategy” separate from “the engine can express it, but the requested history is not ready yet.”
+Preflight never calculates NAV, return drift, trading costs or performance. Its default fast path checks source coverage and DART metadata/shard presence. If a known corporate-action evidence gap is relevant to the requested dates and potential codes, it additionally uses the same PIT factor/target builders as execution and traces positive planned holdings with the exact execution lag. A planned exposure returns `data_gap`, `phase="corporate_actions"`, `ready_for_execution=false`, and an auditable `corporate_action_audit`. This checks known gaps only; `ok` is not a certificate of complete events or executable price paths. See [CORPORATE_ACTION_PREFLIGHT.md](CORPORATE_ACTION_PREFLIGHT.md).
 
 ## KRX realized-volatility factors
 
@@ -144,7 +145,7 @@ Registered fields:
 - `momentum_12_1`: 252-session lookback, skip the latest 21 sessions, compound the remaining 231 sessions.
 - `momentum_12_0`: 252-session lookback through the signal date with no skip.
 
-The adapter requires every daily `ChangesRatio` observation inside the requested window. A missing observation produces `NaN` for that code/factor instead of silently filling a zero return. Preflight coverage checks only whether enough historical trading sessions exist; factor execution performs the stricter per-code completeness check.
+The adapter requires every daily `ChangesRatio` observation inside the requested window. A missing observation produces `NaN` for that code/factor instead of silently filling a zero return. The source-coverage gate checks whether enough historical trading sessions exist; factor construction performs the stricter per-code completeness check, also when relevant known events trigger shared preflight selection.
 
 Natural-language aliases are intentionally explicit: `12-1 모멘텀`, `6-1 모멘텀`, `3-1 모멘텀`, and `12-0 모멘텀`. Generic phrases such as “12개월 모멘텀” remain ambiguous and should not be silently compiled to a skip/no-skip definition.
 
@@ -289,7 +290,7 @@ The registry version is stored in the compiled execution plan so a change in fac
 
 ## Historical source coverage
 
-Preflight contract 2 and both public execution modes require the exact XKRX
+Preflight contract 3 and both public execution modes require the exact XKRX
 sessions between `period.start` and `period.end` for **each** requested market.
 Missing first/interior/last sessions and unexpected non-session dates fail as
 `data_gap`; the full requested interval is preserved. Weekend/holiday request
@@ -363,4 +364,6 @@ Receipt has no second NAV gain or transaction costs. Gross and Net amounts are
 accounted for separately. See `docs/CASH_SHARE_EXCHANGE.md` for exact boundaries
 and audit outputs. No production cash event is registered yet. Jeisys 287410
 remains blocked for affected holdings from 2024-10-23 because actual payment
-evidence is unresolved; historical signal eligibility is preserved.
+and applicable net-proceeds evidence are unresolved; historical signal eligibility is preserved.
+Preflight also checks positive planned exposure through the shared selection/lag
+contract; see `docs/CORPORATE_ACTION_PREFLIGHT.md`.

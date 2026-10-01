@@ -31,7 +31,26 @@
     "planned payment is not actual receipt",
     "delisting date is not payment date",
     "12910 KRW appraisal-right payment is not 13000 KRW exchange cash",
-    "statutory 1:1.3575606 exchange ratio is not delivered successor shares"
+    "statutory 1:1.3575606 exchange ratio is not delivered successor shares",
+    "gross contractual KRW 13000 is not verified net cash receipt for every shareholder"
   ],
-  "required_to_unblock": "primary evidence confirming actual cash exchange payment date and applicable fixed net cash treatment"
+  "required_to_unblock": "primary evidence confirming actual cash exchange payment date and applicable fixed net cash treatment",
+  "net_proceeds_status": "unverified",
+  "tax_disclosure": {
+    "source": "https://kind.krx.co.kr/external/2024/08/19/000507/20240819001229/11347.htm",
+    "raw_html_sha256": "b42e39be5a15e74449b695b9a07ed72eb831ee003599fd3248c816142e667b98",
+    "disclosure_date": "2024-08-19",
+    "disclosed_transaction_tax_percent": 0.35,
+    "shareholder_dependent_withholding_notice": true,
+    "scope": "disclosure terms only; not actual payment, applicable investor tax classification or net receipt evidence; no automatic deduction applied"
+  },
+  "followup_review": {
+    "review_date": "2026-10-01",
+    "official_shareholder_notice_index": "https://www.jeisys.com/ir/announcement.php",
+    "reviewed_notice_urls": [
+      "https://www.jeisys.com/ir/announcement.php?boardid=notice&mode=view&idx=20",
+      "https://www.jeisys.com/ir/announcement.php?boardid=notice&mode=view&idx=19"
+    ],
+    "result": "reviewed notices predate legal exchange; no confirming actual payment receipt found in reviewed public pages; not evidence of nonpayment"
+  }
 }

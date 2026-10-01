@@ -1,6 +1,6 @@
 # Cash-only share exchange execution
 
-Execution `v2-16-exec-3`, machine contract 16, registry contract 5.
+Execution `v2-16-exec-3`, machine contract 17, registry contract 5.
 This is a generic, bounded fixed-KRW cash-exchange contract. It is not a claim
 that Jeisys Medical cash proceeds or complete historical events are supported.
 
@@ -78,12 +78,21 @@ Primary-source references and the annual-report HTML checksum are recorded in
 
 - KRX Aug 19 decision specifies cash only, KRW 13,000 per ordinary share.
   Its statutory 1:1.3575606 exchange ratio is not delivered successor shares.
+- The Aug 19 disclosure also describes a 0.35% securities transaction tax and
+  shareholder-dependent withholding/documentation. This is historical disclosed
+  guidance, not proof of actual deductions or a universal verified net amount.
+  No automatic tax subtraction or tax model is added to the cash contract.
 - KRX Oct 16 notice establishes trading suspension starting Oct 21, 2024.
 - KRX Oct 23 completed-exchange report establishes legal completion Oct 23.
   It explicitly identifies Nov 7 payment as expected and subject to change.
 - The 2024 annual report filed Apr 7, 2025 confirms actual Oct 23 exchange and
   Nov 7 delisting. Those statements do not confirm actual cash receipt Nov 7.
   Appraisal-right cash KRW 12,910 is a different entitlement.
+
+A follow-up review of the official shareholder-announcement index found the
+Sep 3 and Sep 20 notices predate legal completion; they do not establish later
+actual payment. This limited review is not evidence of nonpayment. Source links,
+review scope and the original decision HTML hash are recorded in the evidence JSON.
 
 No cash exchange is added to the production executable registry. The known gap
 in `config/kr_corporate_action_gaps.json` instead rejects an affected existing
@@ -95,6 +104,9 @@ with Sep 30 Close in [12000,14000], Jeisys ranks third by descending signal-day
 Marcap. top_n=3 and D01 both stop at the known Oct 23 evidence gap before writing
 partial reports. top_n=1 succeeds without globally excluding Jeisys. This is
 actual-source rejection coverage, not a verified actual cash-payment backtest.
+Preflight contract 3 now rejects these same planned exposures before NAV in both
+modes; [CORPORATE_ACTION_PREFLIGHT.md](CORPORATE_ACTION_PREFLIGHT.md) explains the
+conditional shared-selection gate and its limits.
 
 Next: obtain primary evidence of actual exchange payment and applicable net
 amount treatment, independently reconcile actual share quantities and cash,
