@@ -49,10 +49,13 @@ def make_panel() -> pd.DataFrame:
 def main() -> None:
     assert registry.get_factor_definition("krx", "Marcap").storage == "panel"
     assert registry.get_factor_definition("dart", "earnings_yield").storage == "external"
+    assert registry.get_factor_definition("dart", "quarterly_roe").storage == "external"
+    assert registry.get_factor_definition("dart", "quarterly_net_margin").storage == "external"
+    assert registry.get_factor_definition("dart", "quarterly_ocf_margin").storage == "external"
     assert registry.get_factor_definition("technical", "momentum_12_1").storage == "external"
     assert "dart" in registry.supported_sources()
     assert "book_to_price" in registry.supported_fields("dart")
-    assert registry.FACTOR_REGISTRY_VERSION == "4"
+    assert registry.FACTOR_REGISTRY_VERSION == "5"
     constraints = registry.factor_source_constraints()
     assert constraints["dart"]["rebalance_months"] == [4, 10]
 
