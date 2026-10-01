@@ -313,6 +313,7 @@ def build_capabilities() -> dict:
                 "actual_coverage": "no cash exchange in production registry; Jeisys actual payment evidence unresolved",
                 "known_gap_policy": "config/kr_corporate_action_gaps.json blocks affected holdings from entitlement date; no survival exclusion",
             },
+            "merger_contract": "stock-only succession with zero cash_per_share; mixed stock/cash mergers rejected",
             "split_contract": "same code, shares_after/shares_before > 0, zero cash; event_date is trading resumption; adjusted event return still checked against exchange reference",
             "registry": "config/kr_corporate_actions.csv",
             "unregistered_held_price_gap_policy": "fail",

@@ -123,6 +123,13 @@ def main():
     tight = tw.iloc[:2].copy()
     tight.loc[d[3], '000002'] = 1 - float(out['weights'].loc[d[4], 'CashReceivable'])
     fail(lambda: run(target_weights=tight), 'insufficient settled cash after costs')
+    mixed = events.copy()
+    mixed['event_type'] = 'stock_merger'; mixed['successor_code'] = '000002'; mixed['share_ratio'] = 1.
+    fail(lambda: run(corporate_action_events=mixed), 'mixed stock/cash merger is unsupported')
+    same_day = events.copy(); same_day.payment_date = d[3]
+    paid = run(corporate_action_events=same_day, target_weights=one, cost_assumptions=engine.TradingCostAssumptions())
+    assert paid['cash_payments'].iloc[0].processing_date == d[3]
+    assert paid['weights'].loc[d[3], 'Cash'] == 1. and paid['daily_nav'].loc[d[3], 'Gross'] == 1.2
     fail(lambda: run(source_volumes=None), 'source volumes')
     for col, value in [('payment_status', 'planned'), ('payment_date', pd.NaT), ('payment_date', d[2]), ('payment_source', ''), ('successor_code', '000002'), ('share_ratio', 1.)]:
         bad = events.copy(); bad[col] = value
@@ -161,6 +168,8 @@ def main():
         events.to_csv(config / 'kr_corporate_actions.csv', index=False)
         loaded = load_corporate_actions(tmp)
         assert loaded.iloc[0].successor_code == ''
+        mixed.to_csv(config / 'kr_corporate_actions.csv', index=False)
+        fail(lambda: load_corporate_actions(tmp), 'mixed stock/cash merger is unsupported')
         planned = events.copy(); planned.payment_status = 'planned'
         planned.to_csv(config / 'kr_corporate_actions.csv', index=False)
         fail(lambda: load_corporate_actions(tmp), 'planned dates are forbidden')

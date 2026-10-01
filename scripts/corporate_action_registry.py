@@ -71,6 +71,8 @@ def load_corporate_actions(
         raise ValueError("stock_merger share_ratio must be > 0")
     if not np.isfinite(x["cash_per_share"]).all() or (x["cash_per_share"] < 0).any():
         raise ValueError("cash_per_share must be >= 0")
+    if x.loc[x["event_type"].eq("stock_merger"), "cash_per_share"].ne(0).any():
+        raise ValueError("mixed stock/cash merger is unsupported; cash must not be converted to successor shares")
     split = x["event_type"].eq("stock_split")
     if (x.loc[split, "predecessor_code"] != x.loc[split, "successor_code"]).any() or x.loc[split, "cash_per_share"].ne(0).any():
         raise ValueError("stock_split requires the same security code and zero cash_per_share")

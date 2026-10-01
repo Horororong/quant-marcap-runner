@@ -42,7 +42,10 @@ A converted security cannot be repurchased after entitlement.
 
 No discounting, interest, default, disputed amount, withholding, appraisal
 rights, fractional successor shares, mixed stock/cash merger or partial receipt
-is implemented by this cash-only contract. Such cases need their own evidence
+is implemented by this cash-only contract. Both registry and engine explicitly
+reject nonzero cash_per_share on a stock_merger instead of treating cash as
+additional successor stock. Existing verified stock-only merger behavior stays
+unchanged. Such cases need their own evidence
 and explicit supported contract.
 
 ## Audit outputs and test scope

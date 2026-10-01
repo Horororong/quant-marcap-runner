@@ -966,6 +966,8 @@ def _normalize_corporate_action_events(
         raise ValueError("stock_merger share_ratio는 0보다 커야 합니다.")
     if not np.isfinite(ca["cash_per_share"]).all() or (ca["cash_per_share"] < 0).any():
         raise ValueError("cash_per_share는 음수일 수 없습니다.")
+    if ca.loc[ca["event_type"].eq("stock_merger"), "cash_per_share"].ne(0).any():
+        raise ValueError("mixed stock/cash merger is unsupported; cash must not be converted to successor shares")
     split = ca["event_type"].eq("stock_split")
     if (ca.loc[split, "predecessor_code"] != ca.loc[split, "successor_code"]).any() or ca.loc[split, "cash_per_share"].ne(0).any():
         raise ValueError("stock_split은 같은 종목코드와 현금 0을 요구합니다.")

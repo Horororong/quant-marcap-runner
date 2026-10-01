@@ -95,6 +95,7 @@
       "valuation": "nominal fixed receivable, no interest, discount, withholding, credit risk or partial settlement"
     },
     "history_completeness": "unverified; presence of registered events is not a coverage certificate",
+    "merger_contract": "stock-only succession with zero cash_per_share; mixed stock/cash mergers rejected",
     "registry": "config/kr_corporate_actions.csv",
     "split_contract": "same code, shares_after/shares_before > 0, zero cash; event_date is trading resumption; adjusted event return still checked against exchange reference",
     "supported_event_types": [
