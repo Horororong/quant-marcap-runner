@@ -72,7 +72,9 @@ checked held observations and explicit override counts by cost scenario.
 `held_return_checks.csv` records those counts and the maximum validated difference
 for each day. Deciles add a group label at the root and retain per-bucket audits.
 
-Registry version 2 includes the existing Korean Paper merger and this EcoPro
-split. Other split/rights/spin-off/delisting events and dividend/total-return
+Registry version 3 includes the existing Korean Paper merger, this EcoPro
+split and BYC common/preferred splits. The BYC tests preserve negative actual
+price returns, independently value every holding in both public modes, and fail
+if the preferred event is missing. See [CORPORATE_ACTION_RECONCILIATION.md](CORPORATE_ACTION_RECONCILIATION.md). Other split/rights/spin-off/delisting events and dividend/total-return
 sources remain incomplete. Expand verified records and explicit event types;
 never bypass the guard, fill prices, infer cash flows, or screen out future failures.

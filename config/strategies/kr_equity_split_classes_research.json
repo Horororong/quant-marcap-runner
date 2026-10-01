@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "strategy_id": "kr_equity_split_classes_research",
+  "title": "KRX common and preferred split execution regression",
+  "asset_class": "kr_equity",
+  "universe": {
+    "markets": [
+      "KOSPI"
+    ],
+    "require_tradable_on_signal": true,
+    "filters": [
+      {
+        "field": "Close",
+        "op": "gte",
+        "value": 100000
+      },
+      {
+        "field": "Close",
+        "op": "lte",
+        "value": 600000
+      }
+    ]
+  },
+  "factors": [
+    {
+      "name": "nominal_price",
+      "source": "krx",
+      "field": "Close",
+      "direction": "high"
+    }
+  ],
+  "portfolio": {
+    "selection": "top_n",
+    "number_of_positions": 40,
+    "weighting": "equal"
+  },
+  "rebalance": {
+    "frequency": "months",
+    "months": [
+      3
+    ],
+    "trading_day": "last"
+  },
+  "execution": {
+    "lag_sessions": 1,
+    "price": "next_close"
+  },
+  "cost_scenarios": {
+    "zero": {},
+    "fixed": {
+      "commission_bps": 1.5,
+      "spread_bps": 3,
+      "slippage_bps": 5
+    }
+  },
+  "period": {
+    "start": "2024-03-01",
+    "end": "2024-04-19",
+    "book_start": "2024-03-01",
+    "book_end": "2024-04-19",
+    "as_of_date": "2024-04-19"
+  },
+  "initial_capital": 10000000,
+  "metadata": {
+    "purpose": "narrow source regression: signal-date nominal price filters and rank; includes BYC common/preferred; not an investment strategy or full-history result"
+  }
+}

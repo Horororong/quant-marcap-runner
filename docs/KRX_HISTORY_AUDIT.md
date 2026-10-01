@@ -68,7 +68,9 @@ Both markets match the calendar in both snapshots. Code 287410 has 89 missing
 sessions between 2024-06-13 and 2024-10-28 observations. This is a source fact,
 not a verified explanation. These archived snapshots used registry version 1, with one merger in 2020 and
 no registered events in 2024. Registry version 2 subsequently adds the verified
-EcoPro split in 2024; neither snapshot count certifies complete event history.
+EcoPro split in 2024, and version 3 adds BYC common/preferred. Neither snapshot
+count certifies complete event history. The separate [corporate-action reconciliation](CORPORATE_ACTION_RECONCILIATION.md)
+retains all candidates and checks exact registered split matches against source data.
 
 - [2020 summary](audits/krx-history-2020/history_audit.json) and [candidates](audits/krx-history-2020/history_review_candidates.csv)
 - [2024 summary](audits/krx-history-2024/history_audit.json) and [candidates](audits/krx-history-2024/history_review_candidates.csv)
