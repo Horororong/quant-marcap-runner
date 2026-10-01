@@ -53,6 +53,19 @@ For orchestration that must always receive JSON without a non-zero process exit,
 
 Preflight intentionally does **not** calculate factor values, holdings, NAV, or performance. For DART strategies it reads coverage metadata and required shard presence only. This keeps “the engine cannot express this strategy” separate from “the engine can express it, but the requested history is not ready yet.”
 
+## Registry-backed universe filters
+
+Universe filters use the same field registry as ranking factors. A filter field is valid only when its name resolves unambiguously to one registered source.
+
+Examples:
+
+- `{"field":"Marcap","op":"exclude_bottom_pct","value":20}` is loaded directly from the KRX PIT panel.
+- `{"field":"book_to_price","op":"gt","value":0}` automatically activates the DART provider before the filter is applied.
+
+External filter fields are included in provider coverage/preflight checks and source-level constraints. Therefore a DART-backed filter also inherits the current April/October rebalance limitation. The runner no longer tries to request external filter columns from the KRX parquet loader.
+
+The machine-readable contract exports the valid set as `filter_fields`, and the JSON Schema constrains `universe.filters[].field` to that registry-backed set.
+
 ## Factor registry / provider contract
 
 The ranking engine does not branch on source names. Factor validation and data sourcing are centralized in `scripts/factor_registry.py`.

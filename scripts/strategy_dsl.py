@@ -14,7 +14,7 @@ import hashlib
 import json
 import re
 
-from factor_registry import FACTOR_REGISTRY_VERSION, get_factor_definition, validate_factor_strategy_constraints
+from factor_registry import FACTOR_REGISTRY_VERSION, get_factor_definition, get_filter_definition, validate_factor_strategy_constraints
 from execution_contract import (
     CORPORATE_ACTION_REGISTRY_VERSION,
     DSL_MACHINE_CONTRACT_VERSION,
@@ -55,6 +55,7 @@ class FilterSpec:
         obj = cls(field=str(raw["field"]).strip(), op=str(raw["op"]).strip(), value=raw.get("value"))
         if not obj.field:
             raise ValueError("filter.field cannot be empty")
+        get_filter_definition(obj.field)
         if obj.op not in SUPPORTED_FILTER_OPS:
             raise ValueError(f"unsupported filter op: {obj.op}")
         if obj.op != "notnull" and obj.value is None:
@@ -235,8 +236,9 @@ class StrategySpec:
         names = [x.name for x in factors]
         if len(names) != len(set(names)):
             raise ValueError("factor names must be unique")
+        universe = UniverseSpec.from_dict(raw.get("universe", {}))
         rebalance = RebalanceSpec.from_dict(raw.get("rebalance", {}))
-        validate_factor_strategy_constraints(factors, rebalance.months)
+        validate_factor_strategy_constraints(factors, rebalance.months, universe.filters)
         costs_raw = raw.get("cost_scenarios", {})
         if not isinstance(costs_raw, Mapping) or not costs_raw:
             raise ValueError("cost_scenarios must be a non-empty object")
@@ -249,7 +251,7 @@ class StrategySpec:
             strategy_id=strategy_id,
             title=title,
             asset_class=asset_class,
-            universe=UniverseSpec.from_dict(raw.get("universe", {})),
+            universe=universe,
             factors=factors,
             portfolio=PortfolioSpec.from_dict(raw["portfolio"]),
             rebalance=rebalance,
@@ -295,7 +297,10 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         "asset_class": spec.asset_class,
         "data_contract": {
             "price_universe": "data/krx_equities/yearly/marcap-YYYY.parquet",
-            "factor_sources": sorted({f.source for f in spec.factors}),
+            "factor_sources": sorted(
+                {f.source for f in spec.factors}
+                | {get_filter_definition(f.field).source for f in spec.universe.filters}
+            ),
             "pit_required": True,
         },
         "universe": asdict(spec.universe),
@@ -310,6 +315,16 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
             }
             for factor in spec.factors
             for definition in [get_factor_definition(factor.source, factor.field)]
+        ],
+        "filter_contracts": [
+            {
+                "field": flt.field,
+                "source": definition.source,
+                "storage": definition.storage,
+                "description": definition.description,
+            }
+            for flt in spec.universe.filters
+            for definition in [get_filter_definition(flt.field)]
         ],
         "portfolio": asdict(spec.portfolio),
         "rebalance": asdict(spec.rebalance),

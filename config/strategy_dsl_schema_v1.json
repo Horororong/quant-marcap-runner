@@ -272,8 +272,22 @@
             "additionalProperties": false,
             "properties": {
               "field": {
-                "minLength": 1,
-                "type": "string"
+                "enum": [
+                  "Amount",
+                  "Change",
+                  "ChangesRatio",
+                  "Close",
+                  "High",
+                  "Low",
+                  "Marcap",
+                  "Open",
+                  "Stocks",
+                  "Volume",
+                  "book_to_price",
+                  "cashflow_yield",
+                  "earnings_yield",
+                  "sales_yield"
+                ]
               },
               "op": {
                 "enum": [

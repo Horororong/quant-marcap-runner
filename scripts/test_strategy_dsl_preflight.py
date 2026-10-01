@@ -92,6 +92,20 @@ def main() -> None:
         assert "supports rebalance months" in month_gap["error"]["message"]
         assert exit_code_for(month_gap) == EXIT_CAPABILITY_GAP
 
+        # 2-C) A DART-backed universe filter carries the same source constraint,
+        # even when the ranking factor itself is KRX-native.
+        filter_month = base_spec("2024-01-01", "2024-01-31")
+        filter_month["strategy_id"] = "preflight_dart_filter_month_gap"
+        filter_month["universe"]["filters"] = [
+            {"field": "book_to_price", "op": "gt", "value": 0}
+        ]
+        filter_month["rebalance"] = {"frequency": "months", "months": [1], "trading_day": "last"}
+        filter_month_path = td / "dart_filter_month_gap.json"
+        write_spec(filter_month_path, filter_month)
+        filter_gap = preflight_strategy(filter_month_path, ROOT)
+        assert filter_gap["status"] == "capability_gap", filter_gap
+        assert "supports rebalance months" in filter_gap["error"]["message"]
+
         # 3) Valid DSL but unavailable historical KRX file => data gap.
         missing_data = base_spec("1990-04-01", "1990-04-30")
         missing_data["strategy_id"] = "preflight_data_gap"
@@ -106,7 +120,7 @@ def main() -> None:
     # 4) Real DART strategy preflight: check PIT coverage metadata, not raw factor calculation.
     dart = preflight_strategy(ROOT / "config/strategies/super_value_dart_dsl.json", ROOT)
     assert dart["status"] == "ok", dart
-    assert dart["factor_sources"] == ["dart"]
+    assert dart["factor_sources"] == ["dart", "krx"]
     assert len(dart["provider_coverage"]) == 4
     assert all(row["ratio"] == 1.0 and row["raw_ok"] for row in dart["provider_coverage"])
     assert len(dart["signal_dates"]) == 2
