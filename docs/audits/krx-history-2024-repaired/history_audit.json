@@ -1,0 +1,112 @@
+{
+  "status": "complete",
+  "history_audit_contract_version": "1",
+  "source": {
+    "path_template": "data/krx_equities/yearly/marcap-YYYY.parquet",
+    "origin": "FinanceData/marcap via repository",
+    "markets": [
+      "KOSDAQ",
+      "KOSPI"
+    ],
+    "files": [
+      {
+        "path": "data/krx_equities/yearly/marcap-2024.parquet",
+        "sha256": "aa1c1f7546fd17bcc4adb997b7e02a62b0f7a41199db99ea1784c0cb5e42f329"
+      },
+      {
+        "path": "config/kr_corporate_actions.csv",
+        "sha256": "839eaf2945817fdb3459dae3ef287ce11d94da443df1668aa1a593c07a230662"
+      }
+    ]
+  },
+  "session_coverage": {
+    "history_audit_contract_version": "1",
+    "status": "complete",
+    "calendar": "XKRX",
+    "calendar_package_version": "4.13.2",
+    "requested_start": "2024-01-01",
+    "requested_end": "2024-12-31",
+    "expected_first_session": "2024-01-02",
+    "expected_last_session": "2024-12-30",
+    "expected_sessions": 244,
+    "markets": {
+      "KOSDAQ": {
+        "status": "complete",
+        "observed_sessions": 244,
+        "missing_sessions": [],
+        "unexpected_dates": []
+      },
+      "KOSPI": {
+        "status": "complete",
+        "observed_sessions": 244,
+        "missing_sessions": [],
+        "unexpected_dates": []
+      }
+    },
+    "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+  },
+  "rows": 657429,
+  "distinct_codes": 2797,
+  "candidate_counts": {
+    "close_reference_return_difference": 257,
+    "left_censored_observation_start": 140,
+    "right_censored_observation_end": 52
+  },
+  "price_comparison": {
+    "changes_ratio_unit": "percent",
+    "absolute_difference_threshold_bps": 25.0,
+    "compared_consecutive_observations": 654632,
+    "policy": "review candidates only; no inferred split, merger, delisting or dividend"
+  },
+  "corporate_actions": {
+    "registry": "config/kr_corporate_actions.csv",
+    "registry_file_present": true,
+    "registered_events_in_period": 6,
+    "history_completeness": "unverified",
+    "events": [
+      {
+        "event_date": "2024-04-17",
+        "event_type": "stock_split",
+        "predecessor_code": "001460",
+        "successor_code": "001460",
+        "source": "BYC KIND split decision 2024-03-04 and subsequent half-year report 2024-08-14"
+      },
+      {
+        "event_date": "2024-04-17",
+        "event_type": "stock_split",
+        "predecessor_code": "001465",
+        "successor_code": "001465",
+        "source": "BYC KIND split decision 2024-03-04 and subsequent half-year report 2024-08-14"
+      },
+      {
+        "event_date": "2024-04-25",
+        "event_type": "stock_split",
+        "predecessor_code": "086520",
+        "successor_code": "086520",
+        "source": "EcoPro AGM announcement 2024-03-29"
+      },
+      {
+        "event_date": "2024-10-31",
+        "event_type": "stock_split",
+        "predecessor_code": "278470",
+        "successor_code": "278470",
+        "source": "APR official shareholder split notice 2024-09-20 and official release 2024-07-31"
+      },
+      {
+        "event_date": "2024-11-20",
+        "event_type": "stock_split",
+        "predecessor_code": "003920",
+        "successor_code": "003920",
+        "source": "Namyang official shareholder split notice 2024-10-25 and KIND completed timeline 2025-03-07"
+      },
+      {
+        "event_date": "2024-11-20",
+        "event_type": "stock_split",
+        "predecessor_code": "003925",
+        "successor_code": "003925",
+        "source": "Namyang official shareholder split notice 2024-10-25 and KIND completed timeline 2025-03-07"
+      }
+    ]
+  },
+  "interpretation": "observed starts/ends are censored by the requested window; gaps can reflect source defects or security events. Candidates never change universe, weights, NAV or registry."
+}

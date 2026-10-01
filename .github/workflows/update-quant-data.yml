@@ -3,8 +3,11 @@ name: Update quant data
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - 'scripts/update_krx_equities_daily.py'
+      - 'scripts/krx_market_normalization.py'
+      - 'scripts/execution_contract.py'
       - 'scripts/export_krx_symbol_csv.py'
       - 'scripts/krx_backtest_data.py'
       - 'update_public_data.py'
@@ -17,7 +20,7 @@ on:
     - cron: '30 22 * * 2'
 
 concurrency:
-  group: update-quant-data
+  group: update-quant-data-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -52,7 +55,7 @@ jobs:
 
   update:
     needs: gate
-    if: needs.gate.outputs.run_update == 'true'
+    if: needs.gate.outputs.run_update == 'true' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 240
     env:

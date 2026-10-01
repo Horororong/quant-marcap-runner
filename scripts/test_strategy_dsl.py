@@ -64,9 +64,10 @@ def main() -> None:
     assert plan["factor_registry_version"] == "6"
     assert plan["execution_engine_version"] == "v2-16-exec-2"
     assert plan["corporate_action_registry_version"] == "4"
-    assert plan["dsl_machine_contract_version"] == "14"
+    assert plan["dsl_machine_contract_version"] == "15"
     assert plan["preflight_contract_version"] == "2"
     assert plan["history_audit_contract_version"] == "1"
+    assert plan["krx_market_normalization_version"] == "1"
     assert plan["benchmark"] is None
     assert plan["project_template_version"] == "v2-16"
     assert plan["performance_template_version"] == "v2-17"
