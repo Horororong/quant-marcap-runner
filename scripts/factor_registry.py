@@ -16,7 +16,7 @@ import pandas as pd
 
 from krx_technical_factor_adapter import TECHNICAL_FACTOR_SPECS
 
-FACTOR_REGISTRY_VERSION = "4"
+FACTOR_REGISTRY_VERSION = "5"
 
 
 @dataclass(frozen=True)
