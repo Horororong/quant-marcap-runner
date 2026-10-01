@@ -267,8 +267,22 @@ def standard_period_windows(
     4. longest         : 가능한 최장기간~가용 최신일(최대 2026년)
     """
     m = validate_monthly_nav(monthly_nav, config)
-    data_start = m.index[0]
-    data_end = min(m.index[-1], pd.Timestamp(f"{config.standard_end_year}-12-31"))
+    return standard_period_windows_from_dates(m.index, config)
+
+
+def standard_period_windows_from_dates(
+    monthly_dates: pd.DatetimeIndex,
+    config: BacktestConfig,
+) -> Dict[str, Tuple[pd.Timestamp, pd.Timestamp, str]]:
+    """The same canonical period policy, usable before any NAV is computed."""
+    dates = pd.DatetimeIndex(monthly_dates).normalize()
+    if dates.empty or dates.hasnans or dates.has_duplicates or not dates.is_monotonic_increasing:
+        raise ValueError("canonical monthly dates must be nonempty, unique and ordered")
+    months = dates.to_period("M")
+    if not dates.equals(months.to_timestamp("M")) or not months.equals(pd.period_range(months[0], months[-1], freq="M")):
+        raise ValueError("canonical monthly dates must be consecutive month ends")
+    data_start = dates[0]
+    data_end = min(dates[-1], pd.Timestamp(f"{config.standard_end_year}-12-31"))
 
     if config.book_start is None or config.book_end is None:
         raise ValueError("책 기간 검증을 위해 config.book_start와 config.book_end를 지정해야 합니다.")

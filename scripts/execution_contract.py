@@ -6,7 +6,32 @@ PROJECT_TEMPLATE_VERSION = "v2-16"
 PERFORMANCE_TEMPLATE_VERSION = "v2-17"
 EXECUTION_ENGINE_VERSION = "v2-16-exec-3"
 CORPORATE_ACTION_REGISTRY_VERSION = "5"
-DSL_MACHINE_CONTRACT_VERSION = "18"
+DSL_MACHINE_CONTRACT_VERSION = "20"
+RUN_ORCHESTRATION_CONTRACT_VERSION = "1"
+RUN_EXIT_CODES = {"ok": 0, "capability_gap": 2, "data_gap": 3, "failed": 4, "interrupted": 130}
+RUN_ORCHESTRATION_CONTRACT = {
+    "version": RUN_ORCHESTRATION_CONTRACT_VERSION,
+    "command": "python scripts/strategy_dsl_runner.py <strategy.json>",
+    "execution_only_command": "python scripts/strategy_dsl_runner.py <strategy.json> --execution-only",
+    "python_entry_point": "scripts/strategy_dsl_run.py:run_checked_strategy",
+    "automatic_preflight": True,
+    "default_output": "results/dsl/runs/{unique_run_id}",
+    "explicit_output": "--output-dir must name a new directory; existing runs are never overwritten",
+    "status_file": "run_status.json",
+    "statuses": ["running", *RUN_EXIT_CODES],
+    "exit_codes": RUN_EXIT_CODES,
+    "stages": ["input", "preflight", "report_readiness", "execution", "postprocess", "complete"],
+    "input": "raw and canonical DSL snapshots; same canonical snapshot used for preflight and execution",
+    "success": "ok requires validated NAV; canonical_report mode additionally requires validated CURRENT four-period/nine-chart outputs",
+    "execution_only": "ok with nav_ready=true and report_ready=false; research NAV, no standard performance claim",
+    "report_readiness": "CURRENT date/period policy checked before NAV; insufficient formal history is data_gap, never automatic research fallback",
+    "failure": "stage and typed error persist; postprocess failure can retain nav_ready=true while report_ready=false and status=failed",
+    "publication": "execution and report directories renamed from private staging only after their checks pass",
+    "outputs": ["run_status.json", "strategy_input.json", "strategy_normalized.json", "execution_plan.json", "preflight.json",
+                "report_readiness.json (formal mode)", "artifacts/daily_nav.csv", "artifacts/target_weights.csv",
+                "report/metrics_CURRENT.csv (formal success)", "report/chat_manifest_CURRENT.json (formal success)"],
+    "reproducibility_scope": "strategy snapshot and component contract versions; full source hashes/package manifest are a follow-up",
+}
 KRX_MARKET_NORMALIZATION_VERSION = "1"
 PREFLIGHT_CONTRACT_VERSION = "3"
 HISTORY_AUDIT_CONTRACT_VERSION = "1"

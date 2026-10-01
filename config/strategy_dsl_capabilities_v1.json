@@ -4,9 +4,9 @@
     "resolve registered natural-language aliases only",
     "generate config/strategy_dsl_schema_v1.json-constrained Strategy DSL",
     "run strategy_dsl_runner.py --validate-only",
-    "run strategy_dsl_preflight.py",
-    "execute only when preflight status is ok",
-    "run canonical CURRENT postprocess for formal metrics"
+    "optionally inspect strategy_dsl_preflight.py readiness",
+    "execute via strategy_dsl_runner.py: mandatory automatic preflight and CURRENT date/period readiness",
+    "read run_status.json; formal success requires nav_ready and report_ready; --execution-only requests research NAV explicitly"
   ],
   "asset_classes": [
     "kr_equity"
@@ -140,7 +140,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "18",
+  "dsl_machine_contract_version": "20",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -929,6 +929,58 @@
   "rebalance_frequencies": [
     "months"
   ],
+  "run_orchestration": {
+    "automatic_preflight": true,
+    "command": "python scripts/strategy_dsl_runner.py <strategy.json>",
+    "default_output": "results/dsl/runs/{unique_run_id}",
+    "execution_only": "ok with nav_ready=true and report_ready=false; research NAV, no standard performance claim",
+    "execution_only_command": "python scripts/strategy_dsl_runner.py <strategy.json> --execution-only",
+    "exit_codes": {
+      "capability_gap": 2,
+      "data_gap": 3,
+      "failed": 4,
+      "interrupted": 130,
+      "ok": 0
+    },
+    "explicit_output": "--output-dir must name a new directory; existing runs are never overwritten",
+    "failure": "stage and typed error persist; postprocess failure can retain nav_ready=true while report_ready=false and status=failed",
+    "input": "raw and canonical DSL snapshots; same canonical snapshot used for preflight and execution",
+    "outputs": [
+      "run_status.json",
+      "strategy_input.json",
+      "strategy_normalized.json",
+      "execution_plan.json",
+      "preflight.json",
+      "report_readiness.json (formal mode)",
+      "artifacts/daily_nav.csv",
+      "artifacts/target_weights.csv",
+      "report/metrics_CURRENT.csv (formal success)",
+      "report/chat_manifest_CURRENT.json (formal success)"
+    ],
+    "publication": "execution and report directories renamed from private staging only after their checks pass",
+    "python_entry_point": "scripts/strategy_dsl_run.py:run_checked_strategy",
+    "report_readiness": "CURRENT date/period policy checked before NAV; insufficient formal history is data_gap, never automatic research fallback",
+    "reproducibility_scope": "strategy snapshot and component contract versions; full source hashes/package manifest are a follow-up",
+    "stages": [
+      "input",
+      "preflight",
+      "report_readiness",
+      "execution",
+      "postprocess",
+      "complete"
+    ],
+    "status_file": "run_status.json",
+    "statuses": [
+      "running",
+      "ok",
+      "capability_gap",
+      "data_gap",
+      "failed",
+      "interrupted"
+    ],
+    "success": "ok requires validated NAV; canonical_report mode additionally requires validated CURRENT four-period/nine-chart outputs",
+    "version": "1"
+  },
   "schema_version": "1.0",
   "technical_factors": [
     {

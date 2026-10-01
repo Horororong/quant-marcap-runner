@@ -1,6 +1,7 @@
 # Canonical performance v2-17
 
-The execution template remains PROJECT v2-16 and engine v2-16-exec-2.
+The execution template remains PROJECT v2-16; current engine versions are
+defined in `scripts/execution_contract.py` (currently v2-16-exec-3).
 Performance/chart calculations live only in `quant_backtest_template_CURRENT.py`
 v2-17. PROJECT re-exports those exact functions for compatibility; no copied
 metric/chart implementations remain. This milestone introduced machine contract
@@ -48,6 +49,15 @@ With a named calendar, inception CAGR uses the actual prior exchange session;
 without one, the old business-day baseline remains for compatibility.
 
 ## Additional metrics
+
+The checked DSL run lifecycle reuses CURRENT's date-window policy through
+`standard_period_windows_from_dates()` and the postprocessor's
+`canonical_report_readiness()`. Readiness inspects verified session dates and
+explicit as_of before any NAV, without constructing placeholder values or
+calculating metrics. Existing `standard_period_windows()` still validates its
+actual monthly NAV and delegates to that same date policy. Short history cannot
+silently become a four-period report. Actual postprocess coverage/NAV checks
+remain mandatory after readiness; formulas and outputs are unchanged.
 
 Monthly sample policy matches existing Sharpe/volatility: exclude an incomplete
 inception month when its explicit baseline date is in that same month.

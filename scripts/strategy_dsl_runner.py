@@ -507,11 +507,12 @@ def save_cash_exchange_audits(result: dict[str, Any], out: Path) -> None:
                     out / f"cash_balances_{book}_{scenario}.csv", index_label="Date")
 
 
-def run_current_postprocess(spec: StrategySpec, repo_root: Path, out: Path, daily: pd.DataFrame) -> None:
+def run_current_postprocess(spec: StrategySpec, repo_root: Path, out: Path, daily: pd.DataFrame, *,
+                            capture_output: bool = False, daily_csv: Path | None = None):
     series = ",".join(daily.columns)
     cmd = [
         sys.executable, str(repo_root / POSTPROCESS_FILE),
-        "--daily-csv", str(out / "daily_nav.csv"),
+        "--daily-csv", str(daily_csv if daily_csv is not None else out / "daily_nav.csv"),
         "--series", series,
         "--title", spec.title,
         "--book-start", spec.period.book_start,
@@ -523,7 +524,7 @@ def run_current_postprocess(spec: StrategySpec, repo_root: Path, out: Path, dail
     cmd.extend(["--market-calendar", "XKRX"])
     if spec.benchmark is not None:
         cmd.extend(["--benchmark-series", "NAV_Benchmark"])
-    subprocess.run(cmd, cwd=repo_root, check=True)
+    return subprocess.run(cmd, cwd=repo_root, check=True, capture_output=capture_output, text=capture_output)
 
 
 def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = None, *, postprocess: bool = True) -> dict[str, Any]:
@@ -615,17 +616,24 @@ def main() -> None:
         help="build selections and daily NAV but skip canonical performance postprocess",
     )
     args = ap.parse_args()
-    spec = load_strategy_spec(args.strategy_json)
-    plan = compile_execution_plan(spec)
     if args.validate_only:
+        spec = load_strategy_spec(args.strategy_json)
+        plan = compile_execution_plan(spec)
         print(json.dumps(plan, ensure_ascii=False, indent=2))
         return
-    run_strategy(
-        args.strategy_json,
-        args.repo_root.resolve(),
-        args.output_dir,
-        postprocess=not args.execution_only,
-    )
+    from strategy_dsl_run import run_checked_strategy, exit_code_for_run
+    try:
+        result = run_checked_strategy(args.strategy_json, args.repo_root, args.output_dir,
+                                      postprocess=not args.execution_only)
+    except OSError as exc:
+        # Output reservation errors must never modify a previous run.
+        result = {"status": "failed", "phase": "output", "nav_ready": False, "report_ready": False,
+                  "error": {"type": type(exc).__name__, "message": str(exc)}}
+    print(json.dumps({key: value for key, value in result.items() if key != "artifacts"},
+                     ensure_ascii=False, indent=2, allow_nan=False))
+    if result["status"] != "ok":
+        print(result["error"]["message"], file=sys.stderr)
+    raise SystemExit(exit_code_for_run(result))
 
 
 if __name__ == "__main__":

@@ -13,9 +13,9 @@
 1. 먼저 `config/strategy_dsl_capabilities_v1.json`에서 요청한 팩터·시장·리밸런싱·체결 규칙이 지원되는지 확인한다. 자연어 팩터명은 `natural_language_factor_aliases`와 `natural_language_direction_aliases`만 사용해 canonical factor/direction으로 변환한다. 등록되지 않은 표현이나 회계기간 정의가 다른 PER/PCR/PSR 등은 임의 근사하지 않고 capability gap으로 중단한다.
 2. `config/strategy_dsl_schema_v1.json` 계약에 맞춰 자연어 조건을 `config/strategies/*.json` Strategy DSL로 변환한다.
 3. `python scripts/strategy_dsl_runner.py <strategy.json> --validate-only`로 스키마/실행계획을 다시 검증한다.
-4. `python scripts/strategy_dsl_preflight.py <strategy.json>`를 실행한다. `capability_gap`이면 전략 표현력 문제, `data_gap`이면 PIT 원자료/완결성 문제로 구분하고 실행하지 않는다.
-5. preflight가 `ok`일 때만 같은 JSON을 범용 러너로 실행해 목표비중과 일별 NAV를 만든다.
-6. 성과/위험지표와 채팅 차트는 기존과 동일하게 `quant_backtest_postprocess.py`만 사용한다.
+4. `python scripts/strategy_dsl_runner.py <strategy.json>`를 실행한다. 공통 경로가 입력 snapshot, shared preflight, 표준 보고 기간 준비도, NAV 실행, CURRENT 후처리를 자동 수행한다. 원자료 준비도만 별도 조회하려면 `strategy_dsl_preflight.py`를 사용할 수 있다.
+5. `run_status.json`의 `status`, `phase`, `nav_ready`, `report_ready`를 확인한다. `capability_gap`이면 전략 표현력 문제, `data_gap`이면 PIT 자료/표준 기간 문제다. `failed`이면 실패 단계와 오류를 확인한다. 표준 보고 성공은 두 readiness 플래그가 모두 true여야 한다.
+6. 기본 결과는 `results/dsl/runs/<run_id>/artifacts/`의 NAV·감사 자료와 `report/`의 CURRENT 성과표·차트다. 명시한 `--output-dir`은 새 실행 디렉터리여야 하며 기존 결과를 덮어쓰지 않는다. 짧은 연구 NAV만 요청하면 `--execution-only`를 명시하고 표준 성과 보고로 소개하지 않는다. 상세 계약은 `docs/STRATEGY_DSL_RUN.md`를 따른다.
 7. DSL이 지원하지 않는 팩터/자산/체결 규칙이면 임의 근사하지 않는다. 반복 사용 가능한 기능은 DSL/어댑터를 확장하고, 특수 체결이 필요한 경우에만 별도 엔진을 둔다.
 8. 같은 Strategy DSL JSON + 같은 데이터 + 같은 엔진/registry 버전은 항상 같은 결과를 내야 하며, `strategy_fingerprint`와 execution plan의 버전 필드를 재현성 키로 사용한다.
 

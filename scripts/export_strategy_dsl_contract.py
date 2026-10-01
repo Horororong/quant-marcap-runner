@@ -18,6 +18,7 @@ from execution_contract import (
     HISTORY_AUDIT_CONTRACT_VERSION,
     KRX_MARKET_NORMALIZATION_VERSION,
     HELD_RETURN_TOLERANCE_BPS,
+    RUN_ORCHESTRATION_CONTRACT,
 )
 from factor_registry import FACTOR_REGISTRY_VERSION, factor_catalog, factor_source_constraints, filter_field_catalog
 from krx_technical_factor_adapter import technical_factor_catalog
@@ -51,6 +52,7 @@ def build_capabilities() -> dict:
         "dsl_machine_contract_version": DSL_MACHINE_CONTRACT_VERSION,
         "schema_version": SCHEMA_VERSION,
         "input_validation": INPUT_VALIDATION_CONTRACT,
+        "run_orchestration": RUN_ORCHESTRATION_CONTRACT,
         "project_template_version": PROJECT_TEMPLATE_VERSION,
         "performance_template_version": PERFORMANCE_TEMPLATE_VERSION,
         "execution_engine_version": EXECUTION_ENGINE_VERSION,
@@ -132,9 +134,9 @@ def build_capabilities() -> dict:
             "resolve registered natural-language aliases only",
             "generate config/strategy_dsl_schema_v1.json-constrained Strategy DSL",
             "run strategy_dsl_runner.py --validate-only",
-            "run strategy_dsl_preflight.py",
-            "execute only when preflight status is ok",
-            "run canonical CURRENT postprocess for formal metrics",
+            "optionally inspect strategy_dsl_preflight.py readiness",
+            "execute via strategy_dsl_runner.py: mandatory automatic preflight and CURRENT date/period readiness",
+            "read run_status.json; formal success requires nav_ready and report_ready; --execution-only requests research NAV explicitly",
         ],
         "corporate_actions": {
             "supported_event_types": ["stock_merger", "stock_split", "cash_share_exchange"],
