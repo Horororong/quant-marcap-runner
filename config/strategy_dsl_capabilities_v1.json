@@ -176,18 +176,6 @@
       "storage": "panel"
     },
     {
-      "description": "latest reported equity / signal-date market cap",
-      "field": "book_to_price",
-      "source": "dart",
-      "storage": "external"
-    },
-    {
-      "description": "standalone-quarter operating cash flow / signal-date market cap",
-      "field": "cashflow_yield",
-      "source": "dart",
-      "storage": "external"
-    },
-    {
       "description": "signal-date decimal price change",
       "field": "Change",
       "source": "krx",
@@ -206,12 +194,6 @@
       "storage": "panel"
     },
     {
-      "description": "standalone-quarter net income / signal-date market cap",
-      "field": "earnings_yield",
-      "source": "dart",
-      "storage": "external"
-    },
-    {
       "description": "signal-date high price",
       "field": "High",
       "source": "krx",
@@ -228,6 +210,42 @@
       "field": "Marcap",
       "source": "krx",
       "storage": "panel"
+    },
+    {
+      "description": "signal-date open price",
+      "field": "Open",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date listed share count",
+      "field": "Stocks",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "signal-date traded volume",
+      "field": "Volume",
+      "source": "krx",
+      "storage": "panel"
+    },
+    {
+      "description": "latest reported equity / signal-date market cap",
+      "field": "book_to_price",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter operating cash flow / signal-date market cap",
+      "field": "cashflow_yield",
+      "source": "dart",
+      "storage": "external"
+    },
+    {
+      "description": "standalone-quarter net income / signal-date market cap",
+      "field": "earnings_yield",
+      "source": "dart",
+      "storage": "external"
     },
     {
       "description": "compound KRX daily ChangesRatio over roughly 12 months through the signal date",
@@ -254,28 +272,10 @@
       "storage": "external"
     },
     {
-      "description": "signal-date open price",
-      "field": "Open",
-      "source": "krx",
-      "storage": "panel"
-    },
-    {
       "description": "standalone-quarter revenue / signal-date market cap",
       "field": "sales_yield",
       "source": "dart",
       "storage": "external"
-    },
-    {
-      "description": "signal-date listed share count",
-      "field": "Stocks",
-      "source": "krx",
-      "storage": "panel"
-    },
-    {
-      "description": "signal-date traded volume",
-      "field": "Volume",
-      "source": "krx",
-      "storage": "panel"
     }
   ],
   "filter_ops": [
