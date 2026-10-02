@@ -346,3 +346,17 @@ integration, then inspect actual section evidence and record the live result.
 Legacy pytest in both existing CI workflows now runs each file with a 60-second
 limit and a 15-second faulthandler dump. See the legacy handover for budgets,
 resume rules, exact source hashes and the remaining independent-audit scope.
+
+## October legacy collection acceleration (2026-10-02)
+
+The owner requested an October queue-processing target. The existing fast
+workflow now proposes three bounded 2,000-receipt batches per day: 00:30,
+08:30 and 16:30 KST. Extra batches run legacy only and skip dependencies/API
+work when automatic pending is zero or actual start is November 1 KST or later.
+Daily modern collection and all existing request/deadline/checkpoint/lock
+boundaries remain intact. The 113,719 pending receipts imply at least 19
+full-capacity days; this is capacity arithmetic, not observed throughput or
+independent financial-quality completion. Gate boundary tests pass locally;
+require complete feature CI and live main confirmation before deployment is
+recorded as complete. Follow the final section of the legacy handover for
+actual commit/run IDs and the remaining parser/source/independent-audit work.

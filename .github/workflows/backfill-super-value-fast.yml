@@ -8,11 +8,15 @@ on:
       - 'scripts/backfill_dart_legacy_2000_2014.py'
       - 'scripts/legacy_backfill_runtime.py'
       - 'scripts/backfill_super_value_fast.py'
+      - 'scripts/legacy_schedule_gate.py'
       - '.github/workflows/backfill-super-value-fast.yml'
   schedule:
     # 00:30 KST daily = 15:30 UTC previous day.
     # Reuse this existing schedule; legacy covers all mapped receipts.
     - cron: '30 15 * * *'
+    # October-only legacy catch-up: 08:30 / 16:30 KST, 2,000 receipts each.
+    # The gate skips API/dependency work after October or when the queue is empty.
+    - cron: '30 7,23 * * *'
 
 concurrency:
   group: super-value-fast-pit-backfill
@@ -29,7 +33,7 @@ jobs:
     env:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
       # Deployment verifies a small batch; daily data commits cannot recurse.
-      SUPER_VALUE_FAST_MODERN_TASKS: ${{ github.event_name == 'push' && '0' || '1000' }}
+      SUPER_VALUE_FAST_MODERN_TASKS: ${{ (github.event_name == 'push' || (github.event_name == 'schedule' && github.event.schedule != '30 15 * * *')) && '0' || '1000' }}
       SUPER_VALUE_FAST_LEGACY_DOCS: ${{ github.event_name == 'push' && '100' || '2000' }}
       SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: '6'
       SUPER_VALUE_FAST_MODERN_WORKERS: '3'
@@ -46,24 +50,33 @@ jobs:
         with:
           ref: main
 
+      - name: Gate temporary October legacy batches
+        id: batch
+        env:
+          BATCH_SCHEDULE: ${{ github.event.schedule }}
+        run: python scripts/legacy_schedule_gate.py
+
       - name: Set up Python
+        if: steps.batch.outputs.run == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
       - name: Install dependencies
+        if: steps.batch.outputs.run == 'true'
         run: |
           python -m pip install --upgrade pip
           pip install pandas requests pyarrow beautifulsoup4 lxml
 
       - name: Prioritize super-value PIT inputs
+        if: steps.batch.outputs.run == 'true'
         env:
           LEGACY_DART_RUN_REPORT: ${{ runner.temp }}/legacy-collection-run.json
         timeout-minutes: 75
         run: python scripts/backfill_super_value_fast.py
 
       - name: Commit fast-backfill datasets and status
-        if: always() && steps.checkout.outcome == 'success'
+        if: always() && steps.checkout.outcome == 'success' && steps.batch.outputs.run == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -82,7 +95,7 @@ jobs:
           fi
 
       - name: Upload fast-backfill status
-        if: always()
+        if: always() && steps.batch.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: super-value-fast-backfill-status
@@ -95,7 +108,7 @@ jobs:
           retention-days: 14
 
       - name: Preserve unpublished legacy checkpoint on failure
-        if: failure() && steps.checkout.outcome == 'success'
+        if: failure() && steps.checkout.outcome == 'success' && steps.batch.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: legacy-recovery-checkpoint
