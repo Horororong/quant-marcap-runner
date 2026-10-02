@@ -1,0 +1,419 @@
+{
+  "artifact_id": 11205027337,
+  "actions_run_id": 36953686608,
+  "artifact_sha256": "b05296686ac4d155495b6f121d0f401c08acf0e4d839a2be492a8612a4d8e4fb",
+  "artifact_expires_at": "2026-12-31T02:01:32Z",
+  "evidence_type": "Offline inspection of previously captured original ZIP and viewer responses; no new HTTP requests",
+  "independent_financial_amount_audit": "NOT_RUN",
+  "receipts": [
+    {
+      "rcept_no": "20010103000052",
+      "index_metadata": {
+        "report_nm": "분기보고서 (2000.09)",
+        "rcept_dt": "2001-01-03",
+        "fiscal_year": "2000",
+        "period": "Q3",
+        "period_end": "2000-09-01",
+        "stock_code": "000200"
+      },
+      "document_sha256": "18b57d1788ec26371c763b1b2d0ac85625897dcdd6a33aeac30860a80095d460",
+      "viewer_sha256": "2b58727233622ddfe499c87a3ba947f9ba36db2be9e946d4102fa3ce24a05e24",
+      "native_members": [
+        {
+          "member_name": "20010103000052.xml",
+          "member_sha256": "93b4122e18ce31a9f361820f1d3d88d126e315320724607c401361e88d2dd7b8",
+          "source_bytes": 399536,
+          "source_characters": 335987,
+          "replacement_characters": 22691,
+          "has_document_closing_tag": false,
+          "xml_parse_error": "no element found: line 4, column 335943",
+          "literal_last_250_characters": "ALIGN=\"LEFT\" VALIGN=\"MIDDLE\" WIDTH=\"228\" HEIGHT=\"60\" AUPDATECONT=\"UPDATECONT\"> </TD></TR><TR ACOPY=\"COPY\" ADELETE=\"DELETE\"><TD ROWSPAN=\"1\" COLSPAN=\"1\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"175\" HEIGHT=\"42\" AUPDATECONT=\"UPDATECONT\">MITSUI Engineering ",
+          "cover_period_attributes": {
+            "PERIODFROM": "20000101",
+            "PERIODTO": "20000930"
+          },
+          "financial_section_offsets_exceed_downloaded_byte_length": false
+        }
+      ],
+      "financial_section_pointers": [
+        {
+          "heading": "3. 재무제표",
+          "parameters": {
+            "rcpNo": "20010103000052",
+            "dcmNo": "126853",
+            "eleId": "3618",
+            "offset": "392377",
+            "length": "738954",
+            "dtd": "dart2.dtd"
+          },
+          "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20010103000052&dcmNo=126853&eleId=3618&offset=392377&length=738954&dtd=dart2.dtd",
+          "viewer_start_character": 17365,
+          "literal_pointer_block": "var node2 = {};\r\n\t\t\tnode2['text'] = \"3. 재무제표\";\r\n\t\t\tnode2['id'] = \"3618\"; \t\r\n\t\t\tnode2['rcpNo'] = \"20010103000052\";\r\n\t\t\tnode2['dcmNo'] = \"126853\";\r\n\t\t\tnode2['eleId'] = \"3618\";\r\n\t\t\tnode2['offset'] = \"392377\";\r\n\t\t\tnode2['length'] = \"738954\";\r\n\t\t\tnode2['dtd'] = \"dart2.dtd\";",
+          "financial_body_fetch_status": "NOT_RUN",
+          "financial_amount_audit": "NOT_RUN"
+        },
+        {
+          "heading": "4. 연결재무제표",
+          "parameters": {
+            "rcpNo": "20010103000052",
+            "dcmNo": "126853",
+            "eleId": "10627",
+            "offset": "1131331",
+            "length": "223927",
+            "dtd": "dart2.dtd"
+          },
+          "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20010103000052&dcmNo=126853&eleId=10627&offset=1131331&length=223927&dtd=dart2.dtd",
+          "viewer_start_character": 17833,
+          "literal_pointer_block": "var node2 = {};\r\n\t\t\tnode2['text'] = \"4. 연결재무제표\";\r\n\t\t\tnode2['id'] = \"10627\"; \t\r\n\t\t\tnode2['rcpNo'] = \"20010103000052\";\r\n\t\t\tnode2['dcmNo'] = \"126853\";\r\n\t\t\tnode2['eleId'] = \"10627\";\r\n\t\t\tnode2['offset'] = \"1131331\";\r\n\t\t\tnode2['length'] = \"223927\";\r\n\t\t\tnode2['dtd'] = \"dart2.dtd\";",
+          "financial_body_fetch_status": "NOT_RUN",
+          "financial_amount_audit": "NOT_RUN"
+        }
+      ],
+      "attachment_selection_entries": [
+        "null"
+      ],
+      "conclusion": "Downloaded XML is truncated before its closing DOCUMENT tag. Viewer TOC supplies financial-body routes; those route offsets are not assumed to be offsets in the transformed UTF-8 ZIP member. Financial-body fetch and financial amount audit remain NOT_RUN."
+    },
+    {
+      "rcept_no": "20010104000076",
+      "index_metadata": {
+        "report_nm": "분기보고서 (2000.09)",
+        "rcept_dt": "2001-01-04",
+        "fiscal_year": "2000",
+        "period": "Q3",
+        "period_end": "2000-09-01",
+        "stock_code": "002130"
+      },
+      "document_sha256": "bfe89bd98ab68f2841dd48781f2d011d35a71c0c198e75bc08746e9bf117d13c",
+      "viewer_sha256": "3f814c84a0deb59f328cdef17dfe62fc61532981adf526c492b07365bc68ae34",
+      "native_members": [
+        {
+          "member_name": "20010104000076.xml",
+          "member_sha256": "6246bf681c298b171582822f5496ab46cdf887ebeee1f57ddf4d0538f3b1e48b",
+          "source_bytes": 193835,
+          "source_characters": 172280,
+          "replacement_characters": 7797,
+          "has_document_closing_tag": false,
+          "xml_parse_error": "no element found: line 4, column 172236",
+          "literal_last_250_characters": "FT\" VALIGN=\"TOP\" WIDTH=\"67\" HEIGHT=\"24\" AUPDATECONT=\"UPDATECONT\">-</TD></TR><TR ALIGN=\"LEFT\" VALIGN=\"TOP\" ACOPY=\"COPY\" ADELETE=\"DELETE\"><TD ROWSPAN=\"1\" COLSPAN=\"1\" ALIGN=\"LEFT\" VALIGN=\"TOP\" WIDTH=\"164\" HEIGHT=\"42\" AUPDATECONT=\"UPDATECONT\">쨌Buy(�명��) ",
+          "cover_period_attributes": {
+            "PERIODFROM": "20000101",
+            "PERIODTO": "20000930"
+          },
+          "financial_section_offsets_exceed_downloaded_byte_length": true
+        }
+      ],
+      "financial_section_pointers": [
+        {
+          "heading": "3. 재무제표",
+          "parameters": {
+            "rcpNo": "20010104000076",
+            "dcmNo": "127163",
+            "eleId": "2417",
+            "offset": "272092",
+            "length": "54340",
+            "dtd": "dart2.dtd"
+          },
+          "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20010104000076&dcmNo=127163&eleId=2417&offset=272092&length=54340&dtd=dart2.dtd",
+          "viewer_start_character": 17338,
+          "literal_pointer_block": "var node2 = {};\r\n\t\t\tnode2['text'] = \"3. 재무제표\";\r\n\t\t\tnode2['id'] = \"2417\"; \t\r\n\t\t\tnode2['rcpNo'] = \"20010104000076\";\r\n\t\t\tnode2['dcmNo'] = \"127163\";\r\n\t\t\tnode2['eleId'] = \"2417\";\r\n\t\t\tnode2['offset'] = \"272092\";\r\n\t\t\tnode2['length'] = \"54340\";\r\n\t\t\tnode2['dtd'] = \"dart2.dtd\";",
+          "financial_body_fetch_status": "NOT_RUN",
+          "financial_amount_audit": "NOT_RUN"
+        },
+        {
+          "heading": "4. 연결재무제표",
+          "parameters": {
+            "rcpNo": "20010104000076",
+            "dcmNo": "127163",
+            "eleId": "2603",
+            "offset": "326432",
+            "length": "69077",
+            "dtd": "dart2.dtd"
+          },
+          "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20010104000076&dcmNo=127163&eleId=2603&offset=326432&length=69077&dtd=dart2.dtd",
+          "viewer_start_character": 17805,
+          "literal_pointer_block": "var node2 = {};\r\n\t\t\tnode2['text'] = \"4. 연결재무제표\";\r\n\t\t\tnode2['id'] = \"2603\"; \t\r\n\t\t\tnode2['rcpNo'] = \"20010104000076\";\r\n\t\t\tnode2['dcmNo'] = \"127163\";\r\n\t\t\tnode2['eleId'] = \"2603\";\r\n\t\t\tnode2['offset'] = \"326432\";\r\n\t\t\tnode2['length'] = \"69077\";\r\n\t\t\tnode2['dtd'] = \"dart2.dtd\";",
+          "financial_body_fetch_status": "NOT_RUN",
+          "financial_amount_audit": "NOT_RUN"
+        }
+      ],
+      "attachment_selection_entries": [
+        "null"
+      ],
+      "conclusion": "Downloaded XML is truncated before its closing DOCUMENT tag. Viewer TOC supplies financial-body routes; those route offsets are not assumed to be offsets in the transformed UTF-8 ZIP member. Financial-body fetch and financial amount audit remain NOT_RUN."
+    },
+    {
+      "rcept_no": "20000814000085",
+      "index_metadata": {
+        "report_nm": "반기보고서 (2000.06)",
+        "rcept_dt": "2000-08-14",
+        "fiscal_year": "2001",
+        "period": "H1",
+        "period_end": "2000-06-01",
+        "stock_code": "042370"
+      },
+      "document_sha256": "139cc793e025958d5f8af6529af0d2a9f76b2e21acbf871dd3f35cb511e3f32c",
+      "viewer_sha256": "796ca6de55e24362c00796693b7c4bddf81e7cd4b004e495dc21b4d8c725599f",
+      "native_members": [
+        {
+          "member_name": "20000814000085.xml",
+          "member_sha256": "87cf75e10320b5bd955ea347e08b77362c92dfebb29df6ac233c058a06c7b896",
+          "source_bytes": 22198,
+          "source_characters": 18508,
+          "replacement_characters": 0,
+          "has_document_closing_tag": false,
+          "xml_parse_error": "no element found: line 4, column 18464",
+          "literal_last_250_characters": "061993.061994.011994.021995.091995.121996.121997.091998.061998.091998.091998.121999.021999.061999.082000.022000.03</TD><TD ROWSPAN=\"1\" COLSPAN=\"1\" ALIGN=\"LEFT\" VALIGN=\"TOP\" WIDTH=\"492\" HEIGHT=\"582\" AUPDATECONT=\"UPDATECONT\">중립전기 제작소로 발족일본 AICHI사와 VSS ",
+          "cover_period_attributes": {
+            "PERIODFROM": "20000101",
+            "PERIODTO": "20000630"
+          },
+          "financial_section_offsets_exceed_downloaded_byte_length": true
+        }
+      ],
+      "financial_section_pointers": [
+        {
+          "heading": "3. 재무제표",
+          "parameters": {
+            "rcpNo": "20000814000085",
+            "dcmNo": "89064",
+            "eleId": "3439",
+            "offset": "406813",
+            "length": "24896",
+            "dtd": "dart2.dtd"
+          },
+          "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20000814000085&dcmNo=89064&eleId=3439&offset=406813&length=24896&dtd=dart2.dtd",
+          "viewer_start_character": 17335,
+          "literal_pointer_block": "var node2 = {};\r\n\t\t\tnode2['text'] = \"3. 재무제표\";\r\n\t\t\tnode2['id'] = \"3439\"; \t\r\n\t\t\tnode2['rcpNo'] = \"20000814000085\";\r\n\t\t\tnode2['dcmNo'] = \"89064\";\r\n\t\t\tnode2['eleId'] = \"3439\";\r\n\t\t\tnode2['offset'] = \"406813\";\r\n\t\t\tnode2['length'] = \"24896\";\r\n\t\t\tnode2['dtd'] = \"dart2.dtd\";",
+          "financial_body_fetch_status": "NOT_RUN",
+          "financial_amount_audit": "NOT_RUN"
+        },
+        {
+          "heading": "4. 연결재무제표",
+          "parameters": {
+            "rcpNo": "20000814000085",
+            "dcmNo": "89064",
+            "eleId": "3564",
+            "offset": "431709",
+            "length": "23911",
+            "dtd": "dart2.dtd"
+          },
+          "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20000814000085&dcmNo=89064&eleId=3564&offset=431709&length=23911&dtd=dart2.dtd",
+          "viewer_start_character": 17801,
+          "literal_pointer_block": "var node2 = {};\r\n\t\t\tnode2['text'] = \"4. 연결재무제표\";\r\n\t\t\tnode2['id'] = \"3564\"; \t\r\n\t\t\tnode2['rcpNo'] = \"20000814000085\";\r\n\t\t\tnode2['dcmNo'] = \"89064\";\r\n\t\t\tnode2['eleId'] = \"3564\";\r\n\t\t\tnode2['offset'] = \"431709\";\r\n\t\t\tnode2['length'] = \"23911\";\r\n\t\t\tnode2['dtd'] = \"dart2.dtd\";",
+          "financial_body_fetch_status": "NOT_RUN",
+          "financial_amount_audit": "NOT_RUN"
+        }
+      ],
+      "attachment_selection_entries": [
+        "null",
+        "rcpNo=20000814000085&amp;dcmNo=89076"
+      ],
+      "conclusion": "Downloaded XML is truncated before its closing DOCUMENT tag. Viewer TOC supplies financial-body routes; those route offsets are not assumed to be offsets in the transformed UTF-8 ZIP member. Financial-body fetch and financial amount audit remain NOT_RUN."
+    },
+    {
+      "rcept_no": "20000809000052",
+      "index_metadata": {
+        "report_nm": "분기보고서 (2000.06)",
+        "rcept_dt": "2000-08-09",
+        "fiscal_year": "2001",
+        "period": "Q1",
+        "period_end": "2000-06-01",
+        "stock_code": "033270"
+      },
+      "document_sha256": "277e476d297966c173d233f260b2c6199f992ff3dfc3a17ada3cdca87e70c436",
+      "viewer_sha256": "bcd3330d5bfd7fe0f9a4a4c8ead1e7179a6a7f2a9f576b1b120a456b3e05dc1f",
+      "native_members": [
+        {
+          "member_name": "20000809000052.xml",
+          "member_sha256": "077cc7764fbc5435b543ea7fcf2e378878e40e7083f92c8dc8951e7becbbf196",
+          "source_bytes": 58632,
+          "source_characters": 54240,
+          "replacement_characters": 0,
+          "has_document_closing_tag": false,
+          "xml_parse_error": "no element found: line 4, column 54196",
+          "literal_last_250_characters": " 생산설비의 변동</P><P>1990. 03. 05 : 경기도 광주군 실촌면 곤지암리 166-5 에서 충남 연기군 전동면                      노장리 404-10 으로 본사 이전1995. 04. 11  : 경기도 광주군 오포면 양벌리 물류창고 신축 (147평)1997. 08. 30  : 충남 연기군 전동면 노장리 404-29 공장 증축 (860평)</P><P>(5) 경영활동과 관련된 중요한 사실의 발생</P><P>① 특허권 취득",
+          "cover_period_attributes": {
+            "PERIODFROM": "20000401",
+            "PERIODTO": "20000630"
+          },
+          "financial_section_offsets_exceed_downloaded_byte_length": true
+        }
+      ],
+      "financial_section_pointers": [
+        {
+          "heading": "3. 재무제표",
+          "parameters": {
+            "rcpNo": "20000809000052",
+            "dcmNo": "86557",
+            "eleId": "3778",
+            "offset": "412000",
+            "length": "124804",
+            "dtd": "dart2.dtd"
+          },
+          "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20000809000052&dcmNo=86557&eleId=3778&offset=412000&length=124804&dtd=dart2.dtd",
+          "viewer_start_character": 17343,
+          "literal_pointer_block": "var node2 = {};\r\n\t\t\tnode2['text'] = \"3. 재무제표\";\r\n\t\t\tnode2['id'] = \"3778\"; \t\r\n\t\t\tnode2['rcpNo'] = \"20000809000052\";\r\n\t\t\tnode2['dcmNo'] = \"86557\";\r\n\t\t\tnode2['eleId'] = \"3778\";\r\n\t\t\tnode2['offset'] = \"412000\";\r\n\t\t\tnode2['length'] = \"124804\";\r\n\t\t\tnode2['dtd'] = \"dart2.dtd\";",
+          "financial_body_fetch_status": "NOT_RUN",
+          "financial_amount_audit": "NOT_RUN"
+        },
+        {
+          "heading": "4. 연결재무제표",
+          "parameters": {
+            "rcpNo": "20000809000052",
+            "dcmNo": "86557",
+            "eleId": "4805",
+            "offset": "536804",
+            "length": "23861",
+            "dtd": "dart2.dtd"
+          },
+          "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20000809000052&dcmNo=86557&eleId=4805&offset=536804&length=23861&dtd=dart2.dtd",
+          "viewer_start_character": 17810,
+          "literal_pointer_block": "var node2 = {};\r\n\t\t\tnode2['text'] = \"4. 연결재무제표\";\r\n\t\t\tnode2['id'] = \"4805\"; \t\r\n\t\t\tnode2['rcpNo'] = \"20000809000052\";\r\n\t\t\tnode2['dcmNo'] = \"86557\";\r\n\t\t\tnode2['eleId'] = \"4805\";\r\n\t\t\tnode2['offset'] = \"536804\";\r\n\t\t\tnode2['length'] = \"23861\";\r\n\t\t\tnode2['dtd'] = \"dart2.dtd\";",
+          "financial_body_fetch_status": "NOT_RUN",
+          "financial_amount_audit": "NOT_RUN"
+        }
+      ],
+      "attachment_selection_entries": [
+        "null"
+      ],
+      "conclusion": "Downloaded XML is truncated before its closing DOCUMENT tag. Viewer TOC supplies financial-body routes; those route offsets are not assumed to be offsets in the transformed UTF-8 ZIP member. Financial-body fetch and financial amount audit remain NOT_RUN."
+    },
+    {
+      "rcept_no": "20010213000010",
+      "index_metadata": {
+        "report_nm": "분기보고서 (2000.12)",
+        "rcept_dt": "2001-02-13",
+        "fiscal_year": "2001",
+        "period": "Q3",
+        "period_end": "2000-12-01",
+        "stock_code": "000230"
+      },
+      "document_sha256": "8f1275517c4c7282c3536e3b90de971707181b460409563bd3c6acce9e456546",
+      "viewer_sha256": "8f0454ea8b234dff46158441fe6d3ad9a397c2d9b57d9449703842da48fc4453",
+      "native_members": [
+        {
+          "member_name": "20010213000010.xml",
+          "member_sha256": "03bc36d70c622f6d4dc52d365c46f629ea1fb4dae395ade557bec453c0413d7c",
+          "source_bytes": 1330989,
+          "source_characters": 1221258,
+          "replacement_characters": 39374,
+          "has_document_closing_tag": true,
+          "xml_parse_error": "",
+          "literal_last_250_characters": "OP\" WIDTH=\"170\" HEIGHT=\"24\" AUPDATECONT=\"UPDATECONT\">�대�뱀�ы������</TD><TD ROWSPAN=\"1\" COLSPAN=\"1\" ALIGN=\"CENTER\" VALIGN=\"TOP\" WIDTH=\"170\" HEIGHT=\"24\" AUPDATECONT=\"UPDATECONT\"></TD></TR></TBODY></TABLE><P></P></SECTION-2></SECTION-1></BODY></DOCUMENT>",
+          "cover_period_attributes": {
+            "PERIODFROM": "20000401",
+            "PERIODTO": "20001231"
+          },
+          "financial_section_offsets_exceed_downloaded_byte_length": false
+        }
+      ],
+      "financial_section_pointers": [
+        {
+          "heading": "3. 재무제표",
+          "parameters": {
+            "rcpNo": "20010213000010",
+            "dcmNo": "136292",
+            "eleId": "3163",
+            "offset": "329772",
+            "length": "442090",
+            "dtd": "dart2.dtd"
+          },
+          "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20010213000010&dcmNo=136292&eleId=3163&offset=329772&length=442090&dtd=dart2.dtd",
+          "viewer_start_character": 17354,
+          "literal_pointer_block": "var node2 = {};\r\n\t\t\tnode2['text'] = \"3. 재무제표\";\r\n\t\t\tnode2['id'] = \"3163\"; \t\r\n\t\t\tnode2['rcpNo'] = \"20010213000010\";\r\n\t\t\tnode2['dcmNo'] = \"136292\";\r\n\t\t\tnode2['eleId'] = \"3163\";\r\n\t\t\tnode2['offset'] = \"329772\";\r\n\t\t\tnode2['length'] = \"442090\";\r\n\t\t\tnode2['dtd'] = \"dart2.dtd\";",
+          "financial_body_fetch_status": "NOT_RUN",
+          "financial_amount_audit": "NOT_RUN"
+        },
+        {
+          "heading": "4. 연결재무제표",
+          "parameters": {
+            "rcpNo": "20010213000010",
+            "dcmNo": "136292",
+            "eleId": "7333",
+            "offset": "771862",
+            "length": "172222",
+            "dtd": "dart2.dtd"
+          },
+          "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20010213000010&dcmNo=136292&eleId=7333&offset=771862&length=172222&dtd=dart2.dtd",
+          "viewer_start_character": 17822,
+          "literal_pointer_block": "var node2 = {};\r\n\t\t\tnode2['text'] = \"4. 연결재무제표\";\r\n\t\t\tnode2['id'] = \"7333\"; \t\r\n\t\t\tnode2['rcpNo'] = \"20010213000010\";\r\n\t\t\tnode2['dcmNo'] = \"136292\";\r\n\t\t\tnode2['eleId'] = \"7333\";\r\n\t\t\tnode2['offset'] = \"771862\";\r\n\t\t\tnode2['length'] = \"172222\";\r\n\t\t\tnode2['dtd'] = \"dart2.dtd\";",
+          "financial_body_fetch_status": "NOT_RUN",
+          "financial_amount_audit": "NOT_RUN"
+        }
+      ],
+      "attachment_selection_entries": [
+        "null"
+      ],
+      "conclusion": "Downloaded XML is structurally complete but already contains replacement characters in its UTF-8 text. Viewer TOC supplies financial-body routes; those route offsets are not assumed to be offsets in the transformed UTF-8 ZIP member. Financial-body fetch and financial amount audit remain NOT_RUN."
+    },
+    {
+      "rcept_no": "20010213000014",
+      "index_metadata": {
+        "report_nm": "분기보고서 (2000.12)",
+        "rcept_dt": "2001-02-13",
+        "fiscal_year": "2001",
+        "period": "Q3",
+        "period_end": "2000-12-01",
+        "stock_code": "006370"
+      },
+      "document_sha256": "7bf0778d7abeace7e8140f128ffb2a9c1b98b7b1d87bc7247d820b1a829f93be",
+      "viewer_sha256": "d2997aa25e3cfda0f069293ecced029f4ab7af5034409cfc84995b8cd028462b",
+      "native_members": [
+        {
+          "member_name": "20010213000014.xml",
+          "member_sha256": "e7ae198fc6dbfcd3a182ed7b7b80dc90e9abc76693173174547cd9ee18003a98",
+          "source_bytes": 334027,
+          "source_characters": 298380,
+          "replacement_characters": 12692,
+          "has_document_closing_tag": false,
+          "xml_parse_error": "no element found: line 4, column 298336",
+          "literal_last_250_characters": "EFT\" VALIGN=\"TOP\" WIDTH=\"67\" HEIGHT=\"24\" AUPDATECONT=\"UPDATECONT\"></TD></TR><TR ALIGN=\"LEFT\" VALIGN=\"TOP\" ACOPY=\"COPY\" ADELETE=\"DELETE\"><TD ROWSPAN=\"1\" COLSPAN=\"1\" ALIGN=\"LEFT\" VALIGN=\"TOP\" WIDTH=\"164\" HEIGHT=\"42\" AUPDATECONT=\"UPDATECONT\">쨌Buy(�명��) ",
+          "cover_period_attributes": {
+            "PERIODFROM": "20000401",
+            "PERIODTO": "20001231"
+          },
+          "financial_section_offsets_exceed_downloaded_byte_length": true
+        }
+      ],
+      "financial_section_pointers": [
+        {
+          "heading": "3. 재무제표",
+          "parameters": {
+            "rcpNo": "20010213000014",
+            "dcmNo": "136300",
+            "eleId": "3380",
+            "offset": "372370",
+            "length": "191641",
+            "dtd": "dart2.dtd"
+          },
+          "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20010213000014&dcmNo=136300&eleId=3380&offset=372370&length=191641&dtd=dart2.dtd",
+          "viewer_start_character": 16884,
+          "literal_pointer_block": "var node2 = {};\r\n\t\t\tnode2['text'] = \"3. 재무제표\";\r\n\t\t\tnode2['id'] = \"3380\"; \t\r\n\t\t\tnode2['rcpNo'] = \"20010213000014\";\r\n\t\t\tnode2['dcmNo'] = \"136300\";\r\n\t\t\tnode2['eleId'] = \"3380\";\r\n\t\t\tnode2['offset'] = \"372370\";\r\n\t\t\tnode2['length'] = \"191641\";\r\n\t\t\tnode2['dtd'] = \"dart2.dtd\";",
+          "financial_body_fetch_status": "NOT_RUN",
+          "financial_amount_audit": "NOT_RUN"
+        },
+        {
+          "heading": "4. 연결재무제표",
+          "parameters": {
+            "rcpNo": "20010213000014",
+            "dcmNo": "136300",
+            "eleId": "5229",
+            "offset": "564011",
+            "length": "120590",
+            "dtd": "dart2.dtd"
+          },
+          "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20010213000014&dcmNo=136300&eleId=5229&offset=564011&length=120590&dtd=dart2.dtd",
+          "viewer_start_character": 17352,
+          "literal_pointer_block": "var node2 = {};\r\n\t\t\tnode2['text'] = \"4. 연결재무제표\";\r\n\t\t\tnode2['id'] = \"5229\"; \t\r\n\t\t\tnode2['rcpNo'] = \"20010213000014\";\r\n\t\t\tnode2['dcmNo'] = \"136300\";\r\n\t\t\tnode2['eleId'] = \"5229\";\r\n\t\t\tnode2['offset'] = \"564011\";\r\n\t\t\tnode2['length'] = \"120590\";\r\n\t\t\tnode2['dtd'] = \"dart2.dtd\";",
+          "financial_body_fetch_status": "NOT_RUN",
+          "financial_amount_audit": "NOT_RUN"
+        }
+      ],
+      "attachment_selection_entries": [
+        "null"
+      ],
+      "conclusion": "Downloaded XML is truncated before its closing DOCUMENT tag. Viewer TOC supplies financial-body routes; those route offsets are not assumed to be offsets in the transformed UTF-8 ZIP member. Financial-body fetch and financial amount audit remain NOT_RUN."
+    }
+  ]
+}

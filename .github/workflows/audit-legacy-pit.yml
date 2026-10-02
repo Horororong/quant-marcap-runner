@@ -7,6 +7,7 @@ on:
     paths:
       - 'scripts/probe_dart_legacy_sources.py'
       - 'scripts/audit_legacy_pit_sample.py'
+      - 'scripts/capture_legacy_viewer_sections.py'
       - '.github/workflows/audit-legacy-pit.yml'
 
 concurrency:
@@ -20,7 +21,7 @@ jobs:
   audit:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 55
     env:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
       LEGACY_AUDIT_SAMPLE: '24'
@@ -55,6 +56,12 @@ jobs:
         timeout-minutes: 20
         run: python scripts/audit_legacy_pit_sample.py
 
+      - name: Capture previously identified financial-body viewer routes
+        timeout-minutes: 7
+        env:
+          LEGACY_SOURCE_ARTIFACT_DIR: ${{ runner.temp }}/legacy-original-sources
+        run: python -u scripts/capture_legacy_viewer_sections.py
+
       - name: Commit audit report
         if: always() && steps.checkout.outcome == 'success'
         run: |
@@ -62,6 +69,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/status/legacy_pit_audit_sample.csv data/status/legacy_pit_audit_summary.csv
           git add 'docs/audits/legacy/source_probes/*.json' || true
+          git add 'docs/audits/legacy/viewer_sections/*.json' || true
           if ! git diff --cached --quiet; then
             git commit -m "Capture legacy source evidence and reparse consistency"
             git pull --rebase origin main
@@ -76,6 +84,7 @@ jobs:
           path: |
             ${{ runner.temp }}/legacy-original-sources/
             docs/audits/legacy/source_probes/*.json
+            docs/audits/legacy/viewer_sections/*.json
             data/status/legacy_pit_audit_sample.csv
             data/status/legacy_pit_audit_summary.csv
           retention-days: 90
