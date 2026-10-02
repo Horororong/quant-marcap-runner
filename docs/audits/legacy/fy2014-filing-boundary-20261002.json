@@ -1,0 +1,21 @@
+{
+  "source_file": "data/financials/legacy_2000_2014/legacy_filings.csv.gz",
+  "index_receipt_date_min": "2000-01-10",
+  "index_receipt_date_max": "2014-12-30",
+  "receipts_filed_in_2015": 0,
+  "FY2014_indexed_records": 216,
+  "FY2014_mapped_records": 158,
+  "FY2014_inferred_year_end_month_counts": {
+    "5": 4,
+    "9": 26,
+    "3": 135,
+    "6": 37,
+    "11": 2,
+    "8": 3,
+    "1": 1,
+    "2": 1,
+    "12": 5,
+    "10": 2
+  },
+  "interpretation": "Filing-year coverage stops in 2014; it does not certify fiscal-year-2014 completeness. Fiscal labels use inferred month metadata, not independent period verification."
+}

@@ -1,0 +1,101 @@
+{
+  "rcept_no": "20010103000052",
+  "eleId": "3618",
+  "source_url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20010103000052&dcmNo=126853&eleId=3618&offset=392377&length=738954&dtd=dart2.dtd",
+  "source_body_sha256": "f49747cf8b66deffddb6afc2bce7bf18689a2e861f935cbe488d6e723055a15f",
+  "source_encoding": "utf-8",
+  "offset_contract": "Offsets address raw response bytes decoded strictly as UTF-8 with CRLF retained; no DOM serialization or newline normalization.",
+  "artifact_id": 11221241095,
+  "actions_run_id": 36994245000,
+  "evidence_status": "SOURCE_OBSERVATIONS_RECORDED; normalized ingestion and full receipt audit remain pending",
+  "authenticated_normalized_receipts": 0,
+  "balance_sheet_period_and_unit": {
+    "start_character": 508,
+    "end_character": 1100,
+    "source_text": "<P class='section-3'>가. 대차대조표</P>\r\n<P class='table-group'></P>\r\n<P><BR/></P>\r\n<P>대 차 대 조 표</P>\r\n<TABLE class='nb' width='600'>\r\n<TBODY>\r\n<TR>\r\n  <TD width='600' height='24' align='CENTER'>제 38 기 3분기 2000. 09. 30 현재</TD>\r\n</TR>\r\n<TR>\r\n  <TD width='600' height='24' align='CENTER'>제 37 기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1999. 12. 31 현재</TD>\r\n</TR>\r\n<TR>\r\n  <TD width='600' height='24' align='CENTER'>제 36 기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1998. 12. 31 현재</TD>\r\n</TR>\r\n<TR>\r\n  <TD width='600' height='24' align='RIGHT' valign='BOTTOM'>(단위 : 원)</TD>\r\n</TR>\r\n</TBODY>\r\n</TABLE>"
+  },
+  "income_statement_period_and_unit": {
+    "start_character": 99851,
+    "end_character": 100351,
+    "source_text": "<P class='section-3'>나. 손익계산서</P>\r\n<P class='table-group'></P>\r\n<P><BR/></P>\r\n<P>손 익 계 산 서</P>\r\n<TABLE class='nb' width='600'>\r\n<TBODY>\r\n<TR>\r\n  <TD width='600' height='24' align='CENTER'>제 38 기 3분기 (2000. 01. 01 부터 2000. 09. 30 까지)</TD>\r\n</TR>\r\n<TR>\r\n  <TD width='600' height='24' align='CENTER'>제 37 기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1999. 01. 01 부터 1999. 12. 31 까지)</TD>\r\n</TR>\r\n<TR>\r\n  <TD width='600' height='24' align='RIGHT' valign='BOTTOM'>(단위 : 원 )</TD>\r\n</TR>\r\n</TBODY>\r\n</TABLE>"
+  },
+  "observations": [
+    {
+      "metric": "equity",
+      "statement": "BS",
+      "as_of_date": "2000-09-30",
+      "raw_amount": "(-)4,316,453,759,135",
+      "expected_amount_krw": -4316453759135,
+      "scope": "OFS",
+      "unit": "원",
+      "current_money_cell_zero_based": 2,
+      "literal_row": {
+        "start_character": 29196,
+        "end_character": 29425,
+        "source_text": "<TR>\r\n  <TD width='293' height='24' valign='TOP'>&nbsp;자본총계</TD>\r\n  <TD width='152' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>\r\n  <TD width='165' height='24' align='RIGHT' valign='TOP'>(-)4,316,453,759,135</TD>\r\n</TR>"
+      }
+    },
+    {
+      "metric": "revenue",
+      "statement": "IS",
+      "reported_period_start": "2000-01-01",
+      "reported_period_end": "2000-09-30",
+      "amount_basis": "reported nine-month cumulative, not standalone Q3",
+      "raw_amount": "3,150,518,514,093",
+      "expected_amount_krw": 3150518514093,
+      "prior_annual_amount_to_exclude": "5,016,825,180,320",
+      "scope": "OFS",
+      "unit": "원",
+      "current_money_cell_zero_based": 2,
+      "literal_row": {
+        "start_character": 100961,
+        "end_character": 101355,
+        "source_text": "<TR>\r\n  <TD width='281' height='24' valign='TOP'>Ⅰ. 매출액 (주 2, 7, 24, 29)</TD>\r\n  <TD width='166' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>\r\n  <TD width='162' height='24' align='RIGHT' valign='TOP'>3,150,518,514,093</TD>\r\n  <TD width='155' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>\r\n  <TD width='155' height='24' align='RIGHT' valign='TOP'>5,016,825,180,320</TD>\r\n</TR>"
+      }
+    },
+    {
+      "metric": "net_income",
+      "statement": "IS",
+      "reported_period_start": "2000-01-01",
+      "reported_period_end": "2000-09-30",
+      "amount_basis": "reported nine-month cumulative, not standalone Q3",
+      "account_label": "당분기순손실",
+      "raw_amount": "(-)3,423,467,689,539",
+      "expected_amount_krw": -3423467689539,
+      "prior_annual_amount_to_exclude": "(-)3,971,936,004,142",
+      "per_share_loss_in_account_cell_to_exclude": "(-)9,834원",
+      "scope": "OFS",
+      "unit": "원",
+      "current_money_cell_zero_based": 2,
+      "literal_row": {
+        "start_character": 120684,
+        "end_character": 121112,
+        "source_text": "<TR>\r\n  <TD width='281' height='32' valign='TOP'>ⅩⅢ. 당분기순손실 (주 27)<BR/>(기본주당분기순손실 : &nbsp;(-)9,834원)</TD>\r\n  <TD width='166' height='32' align='RIGHT' valign='TOP'><BR/><BR/></TD>\r\n  <TD width='162' height='32' align='RIGHT' valign='TOP'>(-)3,423,467,689,539</TD>\r\n  <TD width='155' height='32' align='RIGHT' valign='TOP'><BR/><BR/></TD>\r\n  <TD width='155' height='32' align='RIGHT' valign='TOP'>(-)3,971,936,004,142</TD>\r\n</TR>"
+      }
+    }
+  ],
+  "prior_cashflow_exclusion": {
+    "source_period_start": "1999-01-01",
+    "source_period_end": "1999-12-31",
+    "raw_annual_ocf": "(-)198,014,822,042",
+    "must_not_be_assigned_to_current_2000_Q3": true,
+    "current_Q3_ocf_authenticated": false,
+    "literal_period_and_unit": {
+      "start_character": 152907,
+      "end_character": 153415,
+      "source_text": "<P class='section-3'>라. 현금흐름표</P>\r\n<P class='table-group'></P>\r\n<P><BR/></P>\r\n<P><BR/></P>\r\n<TABLE class='nb' width='600'>\r\n<TBODY>\r\n<TR>\r\n  <TD width='600' height='24' colspan='2' align='CENTER'>제 37 기 1999년 1월 1일부터 1999년 12월 31일까지</TD>\r\n</TR>\r\n<TR>\r\n  <TD width='600' height='24' colspan='2' align='CENTER'><BR/><BR/></TD>\r\n</TR>\r\n<TR>\r\n  <TD width='300' height='24' valign='BOTTOM'>대우중공업 주식회사&nbsp;</TD>\r\n  <TD width='300' height='24' align='RIGHT' valign='BOTTOM'>(단위 : 원)</TD>\r\n</TR>\r\n</TBODY>\r\n</TABLE>"
+    },
+    "literal_annual_row": {
+      "start_character": 153890,
+      "end_character": 154124,
+      "source_text": "<TR>\r\n  <TD width='285' height='24' valign='TOP'>Ⅰ. 영업활동으로 인한 현금흐름</TD>\r\n  <TD width='165' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>\r\n  <TD width='150' height='24' align='RIGHT' valign='TOP'>(-)198,014,822,042</TD>\r\n</TR>"
+    }
+  },
+  "current_parser_numeric_reproduction": {
+    "parser_version": "legacy-v5-single-amount",
+    "function": "parse_number, exact AST extracted from committed repository function; not a full parser test",
+    "input": "(-)4,316,453,759,135",
+    "returns_nan": true,
+    "next_required_change": "Source-proven sign annotation support must be combined with validated source acquisition and current-period/column/alias regressions before certifying ingestion."
+  }
+}

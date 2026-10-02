@@ -1,0 +1,145 @@
+{
+  "code_merge_commit": "56b13f38d0185c015d7f1473a396d8e7afdd6e57",
+  "evidence_data_commit": "6411d24f952a757322722d9461c5109cd2f338bc",
+  "actions_run_id": 36994245000,
+  "artifact_id": 11221241095,
+  "artifact_expires_at": "2026-12-31T10:13:08Z",
+  "requests": 12,
+  "captured_sections": 12,
+  "total_response_bytes": 1416717,
+  "all_saved_response_sha_and_length_match": true,
+  "sections": [
+    {
+      "rcept_no": "20000809000052",
+      "eleId": "3778",
+      "heading": "3. 재무제표",
+      "http_status": 200,
+      "body_bytes": 89446,
+      "body_sha256": "34ae9d43fc7e6755b1ce72604c4c1b5091d08711b25709231ec3b90d9161fcb8",
+      "source_encoding": "utf-8",
+      "replacement_characters_in_source": 0
+    },
+    {
+      "rcept_no": "20000809000052",
+      "eleId": "4805",
+      "heading": "4. 연결재무제표",
+      "http_status": 200,
+      "body_bytes": 14743,
+      "body_sha256": "7b2bdab65dbc1fcad7876444ecdba1aaa0a40f1d45a1c35495b3eb90b1d56d92",
+      "source_encoding": "utf-8",
+      "replacement_characters_in_source": 0
+    },
+    {
+      "rcept_no": "20000814000085",
+      "eleId": "3439",
+      "heading": "3. 재무제표",
+      "http_status": 200,
+      "body_bytes": 24516,
+      "body_sha256": "3c53825a5ae9b589851dba6d53a5b6f670676b47cbd90c7e23279bc16e841091",
+      "source_encoding": "utf-8",
+      "replacement_characters_in_source": 0
+    },
+    {
+      "rcept_no": "20000814000085",
+      "eleId": "3564",
+      "heading": "4. 연결재무제표",
+      "http_status": 200,
+      "body_bytes": 14845,
+      "body_sha256": "ad972432cedcaa81c70c3f1f349174ef4cc4da00f6290795cc22bba2eb672181",
+      "source_encoding": "utf-8",
+      "replacement_characters_in_source": 0
+    },
+    {
+      "rcept_no": "20010103000052",
+      "eleId": "10627",
+      "heading": "4. 연결재무제표",
+      "http_status": 200,
+      "body_bytes": 135067,
+      "body_sha256": "7b14c373616cc88d5c570a83072c3ff45c604c27d6d6aa58c7b1da1afea2cf80",
+      "source_encoding": "utf-8",
+      "replacement_characters_in_source": 0
+    },
+    {
+      "rcept_no": "20010103000052",
+      "eleId": "3618",
+      "heading": "3. 재무제표",
+      "http_status": 200,
+      "body_bytes": 469619,
+      "body_sha256": "f49747cf8b66deffddb6afc2bce7bf18689a2e861f935cbe488d6e723055a15f",
+      "source_encoding": "utf-8",
+      "replacement_characters_in_source": 0
+    },
+    {
+      "rcept_no": "20010104000076",
+      "eleId": "2417",
+      "heading": "3. 재무제표",
+      "http_status": 200,
+      "body_bytes": 55542,
+      "body_sha256": "f9cc8a723d53da9f27177c6af1caa2119d54142cf3a8163037b58932c503a5f2",
+      "source_encoding": "utf-8",
+      "replacement_characters_in_source": 0
+    },
+    {
+      "rcept_no": "20010104000076",
+      "eleId": "2603",
+      "heading": "4. 연결재무제표",
+      "http_status": 200,
+      "body_bytes": 54905,
+      "body_sha256": "bafb173662e448af732599de4944b74c91150778fd69a70ede82a5f8dbe713d1",
+      "source_encoding": "utf-8",
+      "replacement_characters_in_source": 0
+    },
+    {
+      "rcept_no": "20010213000010",
+      "eleId": "3163",
+      "heading": "3. 재무제표",
+      "http_status": 200,
+      "body_bytes": 261223,
+      "body_sha256": "c24959a83d276b240e52800f2b4421ee945db9a354e5db9c09627ce35b4b3246",
+      "source_encoding": "utf-8",
+      "replacement_characters_in_source": 0
+    },
+    {
+      "rcept_no": "20010213000010",
+      "eleId": "7333",
+      "heading": "4. 연결재무제표",
+      "http_status": 200,
+      "body_bytes": 103167,
+      "body_sha256": "5f9ad002b42decd3bb67c63bbe6770585d5b26c5463490f00dd2092bcf11efaf",
+      "source_encoding": "utf-8",
+      "replacement_characters_in_source": 0
+    },
+    {
+      "rcept_no": "20010213000014",
+      "eleId": "3380",
+      "heading": "3. 재무제표",
+      "http_status": 200,
+      "body_bytes": 117935,
+      "body_sha256": "d51a64d69cf25b6061fdf6daaed895bd13b5c5121e570a490a0ab5729984ca1c",
+      "source_encoding": "utf-8",
+      "replacement_characters_in_source": 0
+    },
+    {
+      "rcept_no": "20010213000014",
+      "eleId": "5229",
+      "heading": "4. 연결재무제표",
+      "http_status": 200,
+      "body_bytes": 75709,
+      "body_sha256": "15e94774dd92da4766422adf9e10f8962ed1e75684d81c2cde9e29940b03e0dd",
+      "source_encoding": "utf-8",
+      "replacement_characters_in_source": 0
+    }
+  ],
+  "collection_complete": false,
+  "quality_complete": false,
+  "independent_full_receipt_audit": "NOT_RUN; one receipt has manually inspected source observations only",
+  "same_parser_reparse_summary": {
+    "sampled_filings": 28,
+    "fresh_reparse_pass_pct": 100.0,
+    "structural_and_reparse_consistency_pass": 26,
+    "structural_and_reparse_consistency_pass_pct": 92.86,
+    "independent_audit_pending": 28,
+    "independent_audit_pass": 0,
+    "independent_audit_fail": 0
+  }
+}
