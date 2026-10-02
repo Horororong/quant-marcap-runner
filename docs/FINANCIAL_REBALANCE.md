@@ -42,3 +42,10 @@
 매월은 months=[1,2,3,4,5,6,7,8,9,10,11,12], 5·11월 반기는 [5,11], 매년 7월은 [7]이다. 선택한 월 외에 신호를 임의 추가하지 않는다. 예시 파일 config/strategies/kr_equity_dart_custom_month_research.json은 **시총 10조 이상 대형주 10개**라는 명시적 연구 유니버스에서 2020년 5월 신호를 검증하기 위한 짧은 실행 예다. 사용자의 다른 시장·종목 조건에 이 필터를 자동 부과하지 않는다.
 
 ChatGPT용 runtime kit는 새 code commit과 요청에 필요한 whole-period shards로 다시 빌드·verify/replay해야 한다. 기존 kit에 이 기능이나 새로운 연도가 자동으로 설치되지는 않는다. 기본 배포 kit의 3개 starter coverage가 임의의 월·기간을 보장하지 않는다. 월 중 특정 날짜/공시 이벤트, 연간·TTM 정의, legacy 2000–2014 품질 인증은 별도 미완료다.
+
+## 단계 3: main 통합 및 검증 상태
+
+- PR #26 최종 code `140bbdfaa8a0974229092667580e8998868d8af3`의 전체 CI <https://github.com/Horororong/quant-marcap-runner/actions/runs/37022042125> **test / sandbox replay 3.11 / sandbox replay 3.12 모두 success**를 직접 확인했다. 실제 새 5월 checked NAV는 30초 heartbeat와 함께 약 197초 뒤 통과했다. Q1 PIT/10개 선정/유한 양의 NAV/2020-06-01 체결/정식 report_ready=False를 확인했으며, 기존 4·10월 DART·실제 KRX·CLI와 8개 fingerprint 회귀도 모두 통과했다.
+- Native merge `573b6bdc91af6d713b55364e2072fe23d2fd507f`의 tree `e48820095ee8ee5e39fc95b78a5dfb6745cd24e0`가 feature의 검증된 tree와 **정확히 동일**하다. Main의 기존 데이터·수집 일정과 legacy 품질 상태를 보존했다. 새 기능은 main에 통합됐고 자동 main CI의 완료 상태를 추가 확인 중이다.
+- 최초 exit 139의 native 원인을 독립적으로 규명했다고 주장하지 않는다. 고정 numpy/pandas 계산 환경과 periodic frame inspection 대신 persisted-phase heartbeat를 사용하는 최종 run은 segfault 없이 전체 통과했다. 동일한 수치·PIT·체결·source completeness 검증을 유지했다.
+- Machine checkpoint: docs/audits/financial-rebalance-checkpoint-20261002.json. 마지막 main CI 결과와 최신 commit은 이 문서의 다음 checkpoint에서 확인한다. 기존 ChatGPT runtime kit는 새 code와 실제 선택 기간의 source를 넣어 재생성해야 하며 자동으로 변경되지 않는다.

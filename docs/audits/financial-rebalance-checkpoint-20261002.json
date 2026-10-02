@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "feature": "custom_financial_rebalance_months",
+  "checked_at_utc": "2026-10-02 19:39:52 UTC",
+  "base_main": "5d627feaf8532e33963af047785ca78aeb1ffdc5",
+  "design_commit": "0ceb9d0c77f1e1db8da52ac3fe17c4735b91a504",
+  "feature_commit": "140bbdfaa8a0974229092667580e8998868d8af3",
+  "feature_ci": {
+    "run_id": 37022042125,
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 110887279895,
+        "name": "sandbox-replay (3.11)",
+        "conclusion": "success"
+      },
+      {
+        "id": 110887280431,
+        "name": "test",
+        "conclusion": "success"
+      },
+      {
+        "id": 110887280439,
+        "name": "sandbox-replay (3.12)",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "merge_commit": "573b6bdc91af6d713b55364e2072fe23d2fd507f",
+  "source_tree": "e48820095ee8ee5e39fc95b78a5dfb6745cd24e0",
+  "merge_tree_identical_to_tested_feature": true,
+  "main_ci": {
+    "state": "PENDING_VERIFICATION"
+  },
+  "contracts": {
+    "dsl_machine": "22",
+    "factor_registry": "7",
+    "execution_engine": "v2-16-exec-3",
+    "performance": "v2-17"
+  },
+  "supported": {
+    "dart_period_policy": "latest_disclosed_quarter",
+    "months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "trading_day": "last",
+    "candidates": "four most recently ended calendar quarters",
+    "availability": "actual filing date of target and used difference operands",
+    "legacy_default": "legacy_april_october"
+  },
+  "evidence": {
+    "new_tests": 14,
+    "invalid_input_cases": 271,
+    "unchanged_fingerprints": 8,
+    "original_q1_receipt": "20200515001451",
+    "signal_date": "2020-05-29",
+    "execution_date": "2020-06-01",
+    "real_nav_ready": true,
+    "real_report_ready": false
+  },
+  "limits": [
+    "specific day or filing-event rebalance schedules are not implemented",
+    "annual/TTM metrics and noncalendar fiscal mapping are not certified",
+    "2000-2014 independent source quality remains incomplete",
+    "GPT runtime kits require rebuilding and actual source-coverage verification"
+  ],
+  "local": {
+    "head": "ab62836",
+    "source_data_not_fully_synced_to_main": true,
+    "missing_execution_dependencies": [
+      "pyarrow",
+      "exchange_calendars"
+    ]
+  }
+}
