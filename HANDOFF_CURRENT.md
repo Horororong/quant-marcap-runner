@@ -334,3 +334,15 @@ and 15-second faulthandler dumps after installing the required dependencies.
 Inspect the existing original-source artifact/viewer pointers next; do not
 re-download captured source merely because the session resumed. Full evidence
 and continuation commands are in `docs/LEGACY_BACKFILL_HANDOVER.md`.
+
+Initial source inspection now preserves twelve financial-body viewer routes
+from the existing six-response artifact. Five downloaded native XML members
+are truncated; the remaining member is structurally complete but already has
+replacement characters. The additive bounded section capture uses the existing
+audit workflow/lock, makes no repeated ZIP/TOC requests, and never certifies
+financial amounts from HTTP success. Its eight offline transport tests pass
+under a 30-second process limit. Require complete feature CI before main
+integration, then inspect actual section evidence and record the live result.
+Legacy pytest in both existing CI workflows now runs each file with a 60-second
+limit and a 15-second faulthandler dump. See the legacy handover for budgets,
+resume rules, exact source hashes and the remaining independent-audit scope.
