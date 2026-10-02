@@ -257,8 +257,9 @@ def test_real_saved_index_noop_preserves_mapped_queue_and_leading_zero_codes(mon
     monkeypatch.setattr(legacy, "build_index_tasks", lambda: pd.DataFrame(columns=["task_key"]))
     loaded = legacy.update_filing_index()
     assert loaded["stock_code"].equals(saved["stock_code"])
-    pending, _ = legacy.pending_receipts(loaded, legacy.current_state())
-    assert len(pending) > 100_000
+    empty_state = pd.DataFrame(columns=["rcept_no", "status", "metric_rows", "document_sha256", "attempt_count"])
+    pending, _ = legacy.pending_receipts(loaded, empty_state)
+    assert len(pending) == saved.loc[expected, "rcept_no"].nunique()
     assert pending["stock_code"].str.startswith("0").any()
 
 

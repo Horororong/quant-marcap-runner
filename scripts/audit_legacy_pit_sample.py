@@ -7,7 +7,12 @@ from pathlib import Path
 
 import pandas as pd
 
-import backfill_dart_legacy_2000_2014 as legacy
+try:
+    from scripts import backfill_dart_legacy_2000_2014 as legacy
+except ModuleNotFoundError as error:
+    if error.name != "scripts":
+        raise
+    import backfill_dart_legacy_2000_2014 as legacy
 
 OUT_DETAIL = Path("data/status/legacy_pit_audit_sample.csv")
 OUT_SUMMARY = Path("data/status/legacy_pit_audit_summary.csv")
@@ -58,14 +63,8 @@ def close_enough(a: float, b: float) -> bool:
 def load_normalized() -> pd.DataFrame:
     frames = []
     for p in sorted(legacy.NORM_DIR.glob("legacy_metrics_*.csv.gz")):
-        try:
-            f = pd.read_csv(
-                p,
-                dtype={"rcept_no": str, "stock_code": str, "corp_code": str},
-                low_memory=False,
-            )
-        except Exception:
-            continue
+        # Corrupt committed inputs must fail explicitly, never silently vanish.
+        f = pd.read_csv(p, dtype={"rcept_no": str, "stock_code": str, "corp_code": str}, low_memory=False)
         if not f.empty:
             f["_source_file"] = p.name
             frames.append(f)
@@ -97,6 +96,8 @@ def audit_one(meta: dict, stored: pd.DataFrame, state_row: pd.Series) -> dict:
             "structural_checks_ok": False,
             "fresh_reparse_ok": False,
             "mapping_ok": False,
+            "reparse_consistency_ok": False,
+            "independent_source_audit_status": "NOT_RUN",
             "audit_ok": False,
             "issues": "no stored normalized rows",
         }
@@ -185,7 +186,7 @@ def audit_one(meta: dict, stored: pd.DataFrame, state_row: pd.Series) -> dict:
         else:
             reasons.append(f"fresh fetch/reparse status:{fresh_state.get('status')}")
     except Exception as e:
-        reasons.append(f"fresh fetch exception:{type(e).__name__}:{e}")
+        reasons.append(f"fresh fetch exception:{legacy.safe_error(e)}")
 
     detail_parts = []
     for _, rr in stored.sort_values(["scope", "metric"]).iterrows():
@@ -195,7 +196,10 @@ def audit_one(meta: dict, stored: pd.DataFrame, state_row: pd.Series) -> dict:
             f"unit={rr.get('unit')}|krw={rr.get('amount_krw')}"
         )
 
-    audit_ok = bool(structural_ok and fresh_reparse_ok and mapping_ok)
+    consistency_ok = bool(structural_ok and fresh_reparse_ok and mapping_ok)
+    # The fresh comparison reuses this same parser. It cannot certify the
+    # original column/heading/scope/account interpretation independently.
+    audit_ok = False
     return {
         "rcept_no": rcept,
         "fiscal_year": meta.get("fiscal_year"),
@@ -209,6 +213,8 @@ def audit_one(meta: dict, stored: pd.DataFrame, state_row: pd.Series) -> dict:
         "structural_checks_ok": structural_ok,
         "fresh_reparse_ok": fresh_reparse_ok,
         "mapping_ok": mapping_ok,
+        "reparse_consistency_ok": consistency_ok,
+        "independent_source_audit_status": "NOT_RUN",
         "audit_ok": audit_ok,
         "issues": " | ".join(dict.fromkeys(reasons)),
         "stored_metric_details": " || ".join(detail_parts),
@@ -241,14 +247,22 @@ def main() -> None:
     sample = pd.concat([full, partial], ignore_index=True).drop_duplicates("rcept_no")
 
     details = []
-    for _, row in sample.iterrows():
-        rcept = str(row["rcept_no"])
-        stored = norm[norm["rcept_no"].astype(str).eq(rcept)].copy()
-        details.append(audit_one(row.to_dict(), stored, row))
+    legacy.RUN_CONTROL = legacy.new_control()
+    with legacy.RUN_CONTROL.signals():
+        for _, row in sample.iterrows():
+            if legacy.RUN_CONTROL.should_stop():
+                break
+            rcept = str(row["rcept_no"])
+            stored = norm[norm["rcept_no"].astype(str).eq(rcept)].copy()
+            details.append(audit_one(row.to_dict(), stored, row))
+    if not details:
+        raise RuntimeError("No audit sample was checked; previous audit reports preserved")
 
     out = pd.DataFrame(details)
+    out["parser_version"] = legacy.PARSER_VERSION
+    out["audit_contract_version"] = 2
     OUT_DETAIL.parent.mkdir(parents=True, exist_ok=True)
-    out.to_csv(OUT_DETAIL, index=False, encoding="utf-8-sig")
+    legacy.atomic_write_if_changed(out, OUT_DETAIL)
 
     summary_rows = []
     for label, g in [("ALL", out)] + [(k, v) for k, v in out.groupby("status")]:
@@ -256,18 +270,22 @@ def main() -> None:
             "group": label,
             "sampled_filings": len(g),
             "audit_pass": int(g["audit_ok"].sum()) if len(g) else 0,
-            "audit_fail": int((~g["audit_ok"]).sum()) if len(g) else 0,
-            "pass_pct": round(100.0 * g["audit_ok"].mean(), 2) if len(g) else math.nan,
+            "audit_fail": 0,
+            "audit_pending": len(g),
+            "reparse_consistency_pass": int(g["reparse_consistency_ok"].sum()) if len(g) else 0,
+            "pass_pct": math.nan,
+            "reparse_consistency_pass_pct": round(100.0 * g["reparse_consistency_ok"].mean(), 2) if len(g) else math.nan,
             "structural_pass_pct": round(100.0 * g["structural_checks_ok"].mean(), 2) if len(g) else math.nan,
             "fresh_reparse_pass_pct": round(100.0 * g["fresh_reparse_ok"].mean(), 2) if len(g) else math.nan,
             "mapping_pass_pct": round(100.0 * g["mapping_ok"].mean(), 2) if len(g) else math.nan,
         })
 
-    pd.DataFrame(summary_rows).to_csv(OUT_SUMMARY, index=False, encoding="utf-8-sig")
+    legacy.atomic_write_if_changed(pd.DataFrame(summary_rows), OUT_SUMMARY)
     print(pd.DataFrame(summary_rows).to_string(index=False))
-    if (~out["audit_ok"]).any():
-        print("\nFAILURES")
-        print(out.loc[~out["audit_ok"], ["rcept_no", "fiscal_year", "status", "issues"]].to_string(index=False))
+    print("INDEPENDENT_SOURCE_AUDIT_NOT_RUN: reparse consistency is not correctness certification")
+    if (~out["reparse_consistency_ok"]).any():
+        print("\nREPARSE/STRUCTURAL FAILURES")
+        print(out.loc[~out["reparse_consistency_ok"], ["rcept_no", "fiscal_year", "status", "issues"]].to_string(index=False))
 
 
 if __name__ == "__main__":

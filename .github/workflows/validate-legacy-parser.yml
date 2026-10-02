@@ -8,6 +8,8 @@ on:
       - 'scripts/backfill_super_value_fast.py'
       - 'scripts/legacy_backfill_runtime.py'
       - 'scripts/csv_storage.py'
+      - 'scripts/probe_dart_legacy_sources.py'
+      - 'scripts/audit_legacy_pit_sample.py'
       - 'tests/test_legacy*.py'
       - '.github/workflows/backfill-super-value-fast.yml'
       - '.github/workflows/backfill-dart-legacy-2000-2014.yml'
@@ -27,7 +29,7 @@ jobs:
       - name: Install parser dependencies
         run: pip install pandas requests beautifulsoup4 lxml pytest pyyaml
       - name: Legacy parser and resume regressions
-        run: python -m pytest tests/test_legacy_dart_parser.py tests/test_legacy_backfill_resume.py tests/test_legacy_backfill_automation.py -q
+        run: python -m pytest tests/test_legacy_dart_parser.py tests/test_legacy_backfill_resume.py tests/test_legacy_backfill_automation.py tests/test_legacy_source_evidence.py -q
       - name: Compile parser
         run: python -m py_compile scripts/backfill_dart_legacy_2000_2014.py scripts/backfill_super_value_fast.py
       - name: Schema sanity

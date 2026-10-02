@@ -83,3 +83,16 @@ def test_workflow_saves_checkpoint_after_failure_and_has_time_to_publish(name):
     assert float(job["env"]["LEGACY_DART_REQUEST_INTERVAL"]) >= 0.5
     assert job["env"]["LEGACY_DART_CHECKPOINT_SIZE"] == "25"
     assert any(step.get("with", {}).get("name") == "legacy-recovery-checkpoint" for step in job["steps"])
+
+
+def test_source_capture_reuses_existing_audit_workflow_without_new_schedule():
+    spec = workflow("audit-legacy-pit.yml")
+    assert "schedule" not in spec["on"]
+    assert spec["concurrency"] == workflow("backfill-super-value-fast.yml")["concurrency"]
+    assert spec["on"]["push"]["branches"] == ["main"]
+    assert not any(path.startswith(("data/", "docs/audits/")) for path in spec["on"]["push"]["paths"])
+    job = spec["jobs"]["audit"]
+    artifact = next(step for step in job["steps"] if step.get("with", {}).get("name") == "legacy-original-source-evidence")
+    assert artifact["with"]["retention-days"] == "90"
+    commit = next(step for step in job["steps"] if step.get("name") == "Commit audit report")
+    assert "always()" in commit["if"]

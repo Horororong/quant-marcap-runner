@@ -2,7 +2,7 @@
 
 ## 최신 작업 checkpoint (2026-10-01)
 
-현재 단계: **1. 지침/main 반영 완료**, **2. 조사 완료**, **3. generic resume 검증 완료**, **4. 기존 daily Actions 연결·전체 CI 검증 완료**. 5. main 배포와 실제 100건 bootstrap 확인 진행 중.
+현재 단계: **1~4 저장·구현·검증 완료**, **5. main 배포 후 실제 100건 수집 확인 완료**. 6. 대표 원문 증거 확보와 독립 audit 경계 수정 진행 중. 최종 CI/추가 live 확인은 아래 최신 checkpoint를 따른다.
 기준 main: `7be2003c18998f6b12747a0e187a0b40cf6ad7d6`. 이 값은 checkpoint이며 다음 세션에서는 원격 상태를 다시 확인한다.
 
 `PROJECT_CHARTER.md`는 소유자의 지속적인 상위 지침이며 `AGENTS.md` 필수 읽기에 연결했다. 이후 단계별로 구현·검증·GitHub commit·인계를 남긴다.
@@ -33,11 +33,12 @@
 ## 다음 세션 / 다음 단계
 
 1. 원격 main/작업 branch/Actions 상태와 이 문서의 최신 변경을 확인한다.
-2. Generic legacy 및 fast wrapper의 안전한 incremental checkpoint, parser-version별 resume, rate-limit/deadline 동작을 재현하고 테스트한다. 이미 정상인 현재 버전 receipt는 다시 수집하지 않는다.
-3. 기존 daily workflow를 재사용하여 중복 실행 방지·시간/API 예산·항상 checkpoint 보존·완료 후 no-op을 검증한다. 새 중복 scheduler는 만들지 않는다.
-4. 단계별 commit 후 실제 Actions의 저장된 진행을 확인한다. GitHub API 제한으로 확인하지 못한 실행을 성공으로 보고하지 않는다.
-5. 2000 Q3/2001 Q1/H1/Q3 대표 원문을 확인한 뒤에만 parser 수정과 version invalidation을 실시한다. 원문 fixture와 독립 expected amount, 음수 기호/손실 회귀 테스트를 추가한다.
-6. 독립 source audit를 완료 판정에 분리하고 전체 품질을 검증한다. 실행 engine/DSL의 기존 정상 결과와 전체 Strategy DSL CI를 보존한다.
+2. 최신 bootstrap의 actual request/receipt 수와 normalized/state SHA/row count, 완료된 final code CI를 확인한다. 상위 단계는 재구현하지 않는다. 이미 정상인 현재 버전 receipt는 다시 수집하지 않는다.
+3. `docs/audits/legacy/source_probes/*.json`의 원문 excerpt·hash·offset과 audit workflow의 90일 original ZIP artifact를 확인한다. API 014/HTTP 403과 실제 source absence를 혼동하지 않는다.
+4. 2000 Q3/2001 Q1/H1/Q3 원문에서 heading, native cell tag, CFS/OFS, unit, current/prior columns, OCF/account aliases를 독립적으로 확인한 뒤 parser 수정과 version invalidation을 실시한다. 동일 parser 재파싱을 정답으로 사용하지 않는다.
+5. 저장된 비정상적으로 큰 finite amount의 raw cell과 실제 공시를 대조한다. 독립 expected amount·실제 fixture와 음수 기호/손실 회귀를 추가한다. 백필 완료가 아니라 source-quality 문제 해결을 우선한다.
+6. Filing-date query end=2014와 fiscal-period end=2014는 다르다. FY2014의 2015년 접수 공시 누락 가능성, 비12월 결산 변경, historical mapping coverage를 검증하고 필요 구간만 index 확장한다. 180 OK를 전체 2000~2014 PIT completeness로 인증하지 않는다.
+7. 독립 source audit를 완료 판정에 연결하고 전체 품질을 검증한다. 각 완료 단계마다 GitHub commit·이 문서 갱신을 남기며, engine/DSL 결과와 전체 Strategy DSL CI를 보존한다.
 
 ## 단계 3: generic collector resume 계약
 
@@ -89,3 +90,12 @@
 - 보존 수정: normalized append 시 기존 관측값은 `dtype=str, keep_default_na=False`로 읽는다. `a3e4473`의 저장 관측값 18,090행을 모든 field의 원래 문자열로 복구하고 **새 관측값 969행은 전부 유지**했다. 이전 parser version도 삭제하지 않았다. 복구는 기존 Git source와 exact textual equality로 검증했으며 history rewrite/delete는 하지 않았다.
 - Regression: old scientific-notation amount token·`NA` 문자열의 exact preservation 검사 포함 parser/resume/automation **28 passed**. Financial parser와 version은 그대로다.
 - 다음: 같은 기존 audit workflow에서 대표 실패의 원문 ZIP/원문 일부·SHA를 확보하고 reparse consistency와 독립적인 audit를 명확히 분리한다. 전체 CI와 최종 live checkpoint를 다시 기록한다.
+
+## 단계 6 준비: 원문 증거 확보 / audit 경계
+
+- 기존 `audit-legacy-pit.yml`을 재사용한다. 새 schedule은 없고 main의 probe/audit code push 또는 수동 실행에만 동작한다. Daily collector와 같은 lock을 사용하여 중복 API 호출/상태 쓰기를 방지한다.
+- 대표 6 receipt(위 초기 이상 구간에서 확인한 NO_METRICS 사례)의 OpenDART 원문 ZIP과 공개 viewer 응답을 확보한다. Probe budget은 모든 retries/viewer calls를 합쳐 36 attempts / 10분 / 0.5초 간격이다. 확장 ZIP 총 20MB, artifact ZIP 합계 40MB, excerpt는 receipt당 최대 40,000 characters로 제한한다.
+- 원문 ZIP은 Git에 넣지 않고 기존 audit의 **90일 Actions artifact**에 보관한다. 작은 literal statement excerpt, source character offsets, file/ZIP SHA, encoding, clipped 여부는 Git JSON에 보존한다. 이것은 독립 audit를 위한 증거 준비이며 값의 인증이 아니다. Artifact 만료 전에 실제 fixture/검증 기대값을 만들고 장기 원문 저장 정책을 결정해야 한다.
+- `API_014`, viewer HTTP 200/403, 다운로드 성공을 실제 source absence/금융적 정확성으로 인증하지 않는다. 실패 probe를 계속 매일 반복하지 않는다. 재조사는 별도 명시적인 후속 실행으로 관리한다.
+- 기존 sample audit의 `audit_ok`를 같은 parser 재파싱으로 True로 만드는 것을 차단했다. 별도 `reparse_consistency_ok`를 제공하고 독립 audit는 `NOT_RUN`/pending, `audit_ok=False`이다. Corrupt input을 조용히 제외하지 않는다. Original amount 기대값 검증은 아직 구현하지 않았으며 재파싱 통과율과 분리한다.
+- 기존 음수/손실 회귀 유지. 금융 parser는 아직 `legacy-v4-book`이며 원문 확인 없이 숫자 해석을 바꾸지 않았다. 테스트와 actionlint 후 원격 실행/실제 source 확인 및 최종 전체 CI를 기록한다.

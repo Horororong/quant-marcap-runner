@@ -877,6 +877,8 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
         return [],{"rcept_no":rcept,"status":"DEFERRED","metric_rows":0,"best_scope":"",
                    "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":safe_error(e)}
     except RateLimitExceeded as e:
+        if RUN_CONTROL is not None:
+            RUN_CONTROL.stop("RATE_LIMIT")
         return [],{"rcept_no":rcept,"status":"RATE_LIMIT","metric_rows":0,"best_scope":"",
                    "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":safe_error(e)}
     except Exception as e:
