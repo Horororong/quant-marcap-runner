@@ -49,3 +49,14 @@ ChatGPT용 runtime kit는 새 code commit과 요청에 필요한 whole-period sh
 - Native merge `573b6bdc91af6d713b55364e2072fe23d2fd507f`의 tree `e48820095ee8ee5e39fc95b78a5dfb6745cd24e0`가 feature의 검증된 tree와 **정확히 동일**하다. Main의 기존 데이터·수집 일정과 legacy 품질 상태를 보존했다. 새 기능은 main에 통합됐고 자동 main CI의 완료 상태를 추가 확인 중이다.
 - 최초 exit 139의 native 원인을 독립적으로 규명했다고 주장하지 않는다. 고정 numpy/pandas 계산 환경과 periodic frame inspection 대신 persisted-phase heartbeat를 사용하는 최종 run은 segfault 없이 전체 통과했다. 동일한 수치·PIT·체결·source completeness 검증을 유지했다.
 - Machine checkpoint: docs/audits/financial-rebalance-checkpoint-20261002.json. 마지막 main CI 결과와 최신 commit은 이 문서의 다음 checkpoint에서 확인한다. 기존 ChatGPT runtime kit는 새 code와 실제 선택 기간의 source를 넣어 재생성해야 하며 자동으로 변경되지 않는다.
+
+## 최종 완료: main CI·데이터 갱신·재개 인계
+
+- Main code `573b6bdc91af6d713b55364e2072fe23d2fd507f`의 전체 CI <https://github.com/Horororong/quant-marcap-runner/actions/runs/37055474711> **test / sandbox replay 3.11 / sandbox replay 3.12 모두 success**로 종료한 것을 직접 확인했다. 실제 custom May checked NAV와 기존 DART/실데이터/CLI 마지막 PASS 로그를 확인했다. 신규 source/PIT/체결 검증과 기존 8개 fingerprint가 main에서도 통과했다.
+- `scripts/execution_contract.py`가 기존 Update quant data의 push path에 들어 있어 <https://github.com/Horororong/quant-marcap-runner/actions/runs/37055474556>가 함께 실행됐고 **success**였다. 기존 KRX/current-year, public market/macro, recent DART 갱신을 보존했다. 후속 data-only 최신 commit은 `94cabcd4d000bb46eaed87bed8fcf2164f029a95`이다. Merge 이후 변경 파일을 직접 비교해 코드·DART full_history·KRX 2020/2024·KOSPI는 바뀌지 않았음을 확인했다. 현재 2026 자료·다른 지수/FX/macro·recent DART/status가 갱신됐으며, 이 후속 data-only commit에 별도 전체 CI가 있었다고 주장하지 않는다.
+- Legacy 상태도 다시 직접 읽었다: durable **1,401 / pending 113,619**, collection/independent quality 완료 모두 False, parser/source version은 그대로다. 이 기능 작업에서 legacy 정상 receipt·원문 capture를 다시 수집하거나 처리 완료를 품질 인증으로 승격하지 않았다.
+- 완료 기능: 선택 월 1..12의 마지막 거래일, monthly/quarterly/semiannual/annual 월 목록, 명시적 latest_disclosed_quarter, PIT 차분·정정·scope·최신 보고 결측 guard, provider/선정/coverage/kit 연결, generated contracts와 전체 CI. `rebalance.dart_period_policy`를 생략하면 기존 4·10월 정의를 유지한다.
+- 월 중 특정 일자·공시 직후 일정, annual/TTM 팩터, noncalendar fiscal mapping 인증, legacy 품질 완료는 후속이다. 다운로드 가능한 새로운 GPT kit ZIP을 이 기능 작업에서 생성했다고 주장하지 않는다. **ChatGPT 퀀트 프로젝트에 적용하려면 이 버전과 실제 요청에 필요한 source를 넣어 kit build/verify/offline replay 후 첨부·설치해야 한다.** 기존 kernel/kit를 조용히 수정하거나 GitHub main의 코드가 ChatGPT에 자동 설치됐다고 소개하지 않는다.
+- Local implementation commit은 `ab62836f098269180fa2b02451982b6ad7b95d87`다. 최신 remote gzip/2026 데이터의 binary 전달 제한과 local KRX 실행 의존성 부재를 구분하며, local이 최신 main과 같다고 주장하지 않는다. 이 최종 인계와 machine checkpoint는 local에도 mirror하고 별도 commit한다. 재개 시 GitHub main·최신 상태/CI를 다시 직접 확인한다.
+
+**다음 작업:** 사용자의 구체적인 리밸런싱 월·전략·기간에 맞는 GPT offline kit 구성·실제 다운로드/설치 전달. 특정 일자/공시 event 규칙을 요청하면 별도 DSL 일정 계약과 거래일·PIT 회귀로 확장한다. 기존 legacy 자동 수집·확보 원문의 source/당기 기간·단위·loss guard·독립 audit 후속은 legacy handover의 순서를 따른다.

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "feature": "custom_financial_rebalance_months",
-  "checked_at_utc": "2026-10-02 19:39:52 UTC",
+  "checked_at_utc": "2026-10-02T20:04:46Z",
   "base_main": "5d627feaf8532e33963af047785ca78aeb1ffdc5",
   "design_commit": "0ceb9d0c77f1e1db8da52ac3fe17c4735b91a504",
   "feature_commit": "140bbdfaa8a0974229092667580e8998868d8af3",
@@ -30,7 +30,26 @@
   "source_tree": "e48820095ee8ee5e39fc95b78a5dfb6745cd24e0",
   "merge_tree_identical_to_tested_feature": true,
   "main_ci": {
-    "state": "PENDING_VERIFICATION"
+    "run_id": 37055474711,
+    "code_sha": "573b6bdc91af6d713b55364e2072fe23d2fd507f",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 110998989339,
+        "name": "test",
+        "conclusion": "success"
+      },
+      {
+        "id": 110998989573,
+        "name": "sandbox-replay (3.11)",
+        "conclusion": "success"
+      },
+      {
+        "id": 110998989690,
+        "name": "sandbox-replay (3.12)",
+        "conclusion": "success"
+      }
+    ]
   },
   "contracts": {
     "dsl_machine": "22",
@@ -76,11 +95,54 @@
     "GPT runtime kits require rebuilding and actual source-coverage verification"
   ],
   "local": {
-    "head": "ab62836",
+    "implementation_head": "ab62836f098269180fa2b02451982b6ad7b95d87",
     "source_data_not_fully_synced_to_main": true,
     "missing_execution_dependencies": [
       "pyarrow",
       "exchange_calendars"
-    ]
+    ],
+    "documentation_mirrored_after_remote_checkpoint": true
+  },
+  "update_quant_data": {
+    "run_id": 37055474556,
+    "conclusion": "success",
+    "latest_data_commit": "94cabcd4d000bb46eaed87bed8fcf2164f029a95",
+    "changed_paths_since_merge": [
+      "data/financials/recent_batches/dart_recent_00300_00599.csv.gz",
+      "data/fx/USDKRW.csv",
+      "data/indices/DOW.csv",
+      "data/indices/NASDAQ_COMPOSITE.csv",
+      "data/indices/SP500.csv",
+      "data/indices/VIX.csv",
+      "data/krx_equities/derived/amount_daily.csv",
+      "data/krx_equities/derived/close_daily.csv",
+      "data/krx_equities/derived/marcap_daily.csv",
+      "data/krx_equities/derived/open_daily.csv",
+      "data/krx_equities/derived/shares_daily.csv",
+      "data/krx_equities/derived/volume_daily.csv",
+      "data/krx_equities/yearly/marcap-2026.parquet",
+      "data/macro/US_UNEMPLOYMENT.csv",
+      "data/status/dart_rotation_state.csv",
+      "data/status/dart_status.csv",
+      "data/status/krx_equities_manifest.csv",
+      "data/status/krx_equities_status.csv",
+      "data/status/public_data_status.csv",
+      "docs/FINANCIAL_REBALANCE.md",
+      "docs/audits/financial-rebalance-checkpoint-20261002.json"
+    ],
+    "no_postmerge_code_change": true,
+    "financial_factor_full_history_unchanged": true,
+    "krx_2020_2024_unchanged": true,
+    "kospi_unchanged": true,
+    "latest_data_changes_have_no_separate_full_ci": true
+  },
+  "legacy_backfill": {
+    "processed_filings": 1401,
+    "automatic_pending_filings": 113619,
+    "quality_complete": false,
+    "collection_complete": false,
+    "parser_version": "legacy-v5-single-amount",
+    "source_version": "opendart-document-v1",
+    "not_reprocessed_by_this_feature": true
   }
 }
