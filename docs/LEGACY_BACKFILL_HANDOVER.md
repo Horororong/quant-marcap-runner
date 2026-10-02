@@ -2,7 +2,7 @@
 
 ## 최신 작업 checkpoint (2026-10-01)
 
-현재 단계: **1. 지침/main 반영 완료**, **2. 조사 완료**, **3. generic resume 구현·검증 완료**, **4. 기존 daily Actions 연결·로컬 검증 완료**. 원격 배포·전체 CI·실제 백필 확인은 진행 중이다.
+현재 단계: **1. 지침/main 반영 완료**, **2. 조사 완료**, **3. generic resume 검증 완료**, **4. 기존 daily Actions 연결·전체 CI 검증 완료**. 5. main 배포와 실제 100건 bootstrap 확인 진행 중.
 기준 main: `7be2003c18998f6b12747a0e187a0b40cf6ad7d6`. 이 값은 checkpoint이며 다음 세션에서는 원격 상태를 다시 확인한다.
 
 `PROJECT_CHARTER.md`는 소유자의 지속적인 상위 지침이며 `AGENTS.md` 필수 읽기에 연결했다. 이후 단계별로 구현·검증·GitHub commit·인계를 남긴다.
@@ -62,4 +62,11 @@
 - `validate-legacy-parser.yml`과 전체 Strategy DSL CI에 실제 pytest를 연결했다. 로컬 parser/resume/automation **26 passed**, 변경한 여섯 workflow **actionlint 통과**. Auth/service 오류는 DEFERRED로 기록하고 신규 요청과 뒤따르는 modern API 작업도 차단한다.
 - 다음: 전체 CI 통과 후 main에 반영하고 push bootstrap의 실제 Actions 결과·state 증가·원문 접근을 확인한다. API 접근 제한 때문에 GitHub 성공을 추정하지 않는다. 2000 Q3/2001 Q1/H1/Q3 원문 증거를 확보한 뒤에만 parser 수정한다.
 
-단계 1 commit `e26637b`, 지침 main 통합 `3c98f39`, 단계 2 `3e571ce`, 단계 3 `1d44474`. 단계 4 commit은 이 문서와 함께 저장된다. **상위 지침을 제외한 구현 변경은 아직 main 배포 전이다.** 백필 완료나 원문 정확성 검증을 선언하지 않는다.
+## 배포 전 검증 checkpoint (2026-10-02)
+
+- 구현 commit `3d8e044e7c280b367e8370d818ec6de88683b8eb`.
+- Local Strategy DSL workflow의 실행 검사 **31/31 통과**. 실제 DART Super Value PIT, real KRX/decile/held-return, CURRENT 성과, strict DSL, CLI lifecycle 및 recent deterministic storage 포함.
+- 같은 구현 commit의 GitHub 전체 CI **Success**: <https://github.com/Horororong/quant-marcap-runner/actions/runs/36945219803> (19m15s). Python 3.11/3.12 sandbox replay matrix 포함.
+- 다음은 검증된 code를 main에 non-force fast-forward push하고 bootstrap의 실제 run, committed state의 증가와 dataset/state 일치를 확인하는 것이다. 실패하면 기존 checkpoint/14일 recovery artifact에서 재개하고 이 문서를 갱신한다.
+
+단계 1 commit `e26637b`, 지침 main 통합 `3c98f39`, 단계 2 `3e571ce`, 단계 3 `1d44474`, 단계 4 `3d8e044`. **이 checkpoint 작성 시점은 구현 main 배포 전이다.** 백필 완료나 원문 정확성 검증을 선언하지 않는다.
