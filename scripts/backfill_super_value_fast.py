@@ -252,79 +252,42 @@ def legacy_target_index(idx: pd.DataFrame) -> pd.DataFrame:
 
 
 def legacy_done_set() -> set[str]:
-    if not legacy.STATE_FILE.exists():
-        return set()
-    s = pd.read_csv(legacy.STATE_FILE, dtype={"rcept_no": str})
-    if s.empty:
-        return set()
-    terminal = {"PARSED_4F", "PARSED_PARTIAL", "NO_METRICS", "NO_DOCUMENT"}
-    if "parser_version" in s.columns:
-        s = s[s["parser_version"].eq(legacy.PARSER_VERSION)]
-    return set(s.loc[s["status"].isin(terminal), "rcept_no"].astype(str))
+    return legacy.durable_done_receipts(legacy.current_state())
 
 
 def legacy_fast() -> dict:
-    # update_filing_index resumes from the existing index-state file; with INDEX_TASKS=180
-    # it can finish all remaining list-query buckets in one run, subject to DART limits.
-    idx = legacy.update_filing_index()
-    if idx.empty and legacy.INDEX_FILE.exists():
-        idx = legacy.load_csv(legacy.INDEX_FILE, dtype={"rcept_no": str, "stock_code": str, "corp_code": str})
-    if idx.empty:
-        return {"legacy_target_docs": 0, "legacy_target_done": 0, "legacy_run_docs": 0,
-                "legacy_target_completion_pct": 0.0}
-
-    targets = legacy_target_index(idx)
-    done = legacy_done_set()
-    pending = targets[~targets["rcept_no"].astype(str).isin(done)].copy()
-    pending = pending.sort_values(["signal_cutoff", "stock_code", "period", "rcept_dt"]).head(LEGACY_LIMIT)
-
-    metric_rows: list[dict] = []
-    state_rows: list[dict] = []
-    rate_limited = False
-    if not pending.empty:
-        with ThreadPoolExecutor(max_workers=LEGACY_WORKERS) as ex:
-            futs = {ex.submit(legacy.process_filing, r.to_dict()): str(r["rcept_no"]) for _, r in pending.iterrows()}
-            n = 0
-            for fut in as_completed(futs):
-                rows, st = fut.result()
-                metric_rows.extend(rows)
-                state_rows.append(st)
-                if st.get("status") == "RATE_LIMIT":
-                    rate_limited = True
-                n += 1
-                if n % 250 == 0 or n == len(pending):
-                    print(f"super-value legacy fast progress {n}/{len(pending)}", flush=True)
-
-    if metric_rows:
-        legacy.append_normalized(metric_rows)
-    if state_rows:
-        legacy.upsert_state(legacy.STATE_FILE, state_rows, "rcept_no")
-
-    done_after = legacy_done_set()
-    target_done = int(targets["rcept_no"].astype(str).isin(done_after).sum())
-
-    # Keep the generic legacy coverage report current too.
-    latest_idx = legacy.load_csv(legacy.INDEX_FILE, dtype={"rcept_no": str, "stock_code": str, "corp_code": str})
-    if not latest_idx.empty:
-        latest_idx["rcept_dt"] = pd.to_datetime(latest_idx["rcept_dt"], errors="coerce")
-        latest_idx["period_end"] = pd.to_datetime(latest_idx["period_end"], errors="coerce")
-        legacy.write_coverage(latest_idx)
-
-    return {
-        "legacy_target_docs": len(targets),
-        "legacy_target_done": target_done,
-        "legacy_target_completion_pct": round(100.0 * target_done / len(targets), 2) if len(targets) else 0.0,
-        "legacy_run_docs": len(pending),
-        "legacy_rate_limited": rate_limited,
-    }
+    # Reuse the generic queue/checkpoints. All mapped historical receipts,
+    # including corrections, are collected rather than a strategy-specific subset.
+    if LEGACY_LIMIT == 0:
+        return {"legacy_run_docs": 0, "legacy_scope": "DISABLED_BY_BATCH_LIMIT"}
+    guard = legacy.new_control()
+    legacy.RUN_CONTROL = guard
+    try:
+        with guard.signals():
+            idx = legacy.update_filing_index()
+            result = legacy.process_pending(idx, max_docs=LEGACY_LIMIT,
+                                            workers=LEGACY_WORKERS, control=guard)
+        return {"legacy_scope": "ALL_MAPPED_RECEIPTS", "legacy_run_docs": result["completed"],
+                "legacy_pending_before_run": result["eligible_before_run"],
+                "legacy_rate_limited": result["rate_limited"],
+                "legacy_stop_reason": result["stop_reason"],
+                "legacy_requests": result["requests"],
+                "legacy_quarantined_errors": result["quarantined_errors"]}
+    finally:
+        latest = legacy.load_csv(legacy.INDEX_FILE, dtype={"rcept_no": str, "stock_code": str, "corp_code": str})
+        legacy.write_coverage(latest)
+        legacy.RUN_CONTROL = None
 
 
 def main() -> None:
     if not os.getenv("DART_API_KEY", "").strip():
         raise RuntimeError("DART_API_KEY is missing")
 
-    modern_result = modern_fast()
     legacy_result = legacy_fast()
+    # Legacy gets its bounded quota first. Never continue API calls after 020.
+    modern_result = (modern_fast() if MODERN_LIMIT > 0 and not legacy_result.get("legacy_rate_limited")
+                     and legacy_result.get("legacy_stop_reason") != "FATAL_API"
+                     else {"modern_run_tasks": 0, "modern_skipped": True})
 
     row = {
         "mode": "SUPER_VALUE_FAST_BACKFILL",
@@ -332,8 +295,10 @@ def main() -> None:
         **legacy_result,
         "updated_at_utc": datetime.now(timezone.utc).isoformat(),
     }
-    pd.DataFrame([row]).to_csv(STATUS_FILE, index=False, encoding="utf-8-sig")
+    legacy.atomic_write_if_changed(pd.DataFrame([row]), STATUS_FILE, ignore_columns=("updated_at_utc",))
     print(pd.DataFrame([row]).to_string(index=False), flush=True)
+    if legacy_result.get("legacy_stop_reason") == "FATAL_API":
+        raise RuntimeError("DART authentication/service failure; saved progress preserved")
 
 
 if __name__ == "__main__":

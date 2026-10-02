@@ -130,6 +130,6 @@ def collect_bounded(metas, process, checkpoint, control, *, workers=3, checkpoin
             # Unread results remain pending on next run; committed rows are saved.
             control.stop("ERROR") if pending and not control.stop_reason else None
             flush()
-    return {"completed": completed, "rate_limited": limited,
+    return {"completed": completed, "rate_limited": limited or control.stop_reason == "RATE_LIMIT",
             "stop_reason": control.stop_reason or "BATCH_COMPLETE",
             "requests": control.requests}

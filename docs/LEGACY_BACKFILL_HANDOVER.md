@@ -2,7 +2,7 @@
 
 ## 최신 작업 checkpoint (2026-10-01)
 
-현재 단계: **1. 지침/main 반영 완료**, **2. 조사 완료**, **3. generic collector의 안전한 resume 구현·로컬 검증 완료**, 4. 기존 daily Actions에 적용·검증 진행.
+현재 단계: **1. 지침/main 반영 완료**, **2. 조사 완료**, **3. generic resume 구현·검증 완료**, **4. 기존 daily Actions 연결·로컬 검증 완료**. 원격 배포·전체 CI·실제 백필 확인은 진행 중이다.
 기준 main: `7be2003c18998f6b12747a0e187a0b40cf6ad7d6`. 이 값은 checkpoint이며 다음 세션에서는 원격 상태를 다시 확인한다.
 
 `PROJECT_CHARTER.md`는 소유자의 지속적인 상위 지침이며 `AGENTS.md` 필수 읽기에 연결했다. 이후 단계별로 구현·검증·GitHub commit·인계를 남긴다.
@@ -51,4 +51,15 @@
 - 검증: parser+resume pytest **18 passed**, 기존 recent storage **9 passed**(실제 저장 317,165행 deterministic 검사 포함), generated DSL contract 검사. 저장소 데이터는 수정하지 않았다. 실제 live Actions 검증과 전체 DSL CI는 다음 단계에서 수행한다.
 - 재검증 명령: `python -m pytest tests/test_legacy_dart_parser.py tests/test_legacy_backfill_resume.py -q`, `python scripts/test_dart_recent_storage.py`, `python scripts/export_strategy_dsl_contract.py --check`.
 
-단계 1 commit `e26637b`, 기존 DART 갱신을 보존한 main 통합 commit `3c98f39`, 단계 2 commit `3e571ce`. 단계 3 commit은 이 문서와 함께 저장된다. Daily fast wrapper는 아직 이전 수집 루프이므로 **단계 4 이전에는 새 resume 계약을 daily 실행에 적용했다고 주장하지 않는다.** 백필 완료나 원문 정확성 검증을 선언하지 않는다.
+## 단계 4: 기존 daily workflow의 안전한 인계
+
+- 새로운 scheduler 없이 `backfill-super-value-fast.yml`의 기존 `30 15 * * *` UTC 일일 실행을 재사용했다. Fast wrapper도 generic collector의 **전체 mapped receipts** 큐를 쓰며 정정공시·특정 전략 cutoff 외 공시도 수집한다.
+- Daily와 수동 legacy, 공통 modern 데이터에 쓰는 full-history 및 super-value signal 작업이 기존 `super-value-fast-pit-backfill` concurrency group을 공유한다. `cancel-in-progress: false`로 진행 중 수집을 취소하지 않는다.
+- Daily legacy: 2,000 docs / 2,500 request attempts / 3 workers / 55분 API 제출 deadline. Index 6 tasks, request start interval 0.5초. Modern 기존 수집도 유지하되 legacy 다음에 최대 1,000 tasks / 3 workers로 수행한다. 단일 계정의 전 workflow 공통 quota는 중앙화하지 않았으며 API 020은 즉시 중단한다.
+- Main code push는 100 docs / 150 attempts / 10분 제출 예산으로 한 번 live 검증한다. Push paths는 code/workflow뿐이므로 data commit이 무한 실행을 만들지 않는다. 두 legacy entry point는 main에서만 실행하고 실행 시 최신 main을 checkout한다.
+- Collector step timeout(75분 daily, 65분 manual)보다 job timeout을 길게 두어 commit 여유를 확보한다. Collector 실패 뒤에도 `always()`로 coherent checkpoint를 commit하며, publish 실패 시 14일 recovery artifact로 normalized+state를 보존한다. Artifact는 Git storage와 별도이고 기존 history/data는 삭제하지 않는다.
+- 전체 queue가 소진되면 legacy의 API/document 요청은 no-op이다. 오류 보류·NO_METRICS/NO_DOCUMENT와 독립 audit 미완료는 완료로 인증하지 않는다. Daily schedule 자체는 modern 잔여 catch-up을 계속 지원하므로 그 완료 여부와 정상 운영 전환도 별도 확인한다.
+- `validate-legacy-parser.yml`과 전체 Strategy DSL CI에 실제 pytest를 연결했다. 로컬 parser/resume/automation **26 passed**, 변경한 여섯 workflow **actionlint 통과**. Auth/service 오류는 DEFERRED로 기록하고 신규 요청과 뒤따르는 modern API 작업도 차단한다.
+- 다음: 전체 CI 통과 후 main에 반영하고 push bootstrap의 실제 Actions 결과·state 증가·원문 접근을 확인한다. API 접근 제한 때문에 GitHub 성공을 추정하지 않는다. 2000 Q3/2001 Q1/H1/Q3 원문 증거를 확보한 뒤에만 parser 수정한다.
+
+단계 1 commit `e26637b`, 지침 main 통합 `3c98f39`, 단계 2 `3e571ce`, 단계 3 `1d44474`. 단계 4 commit은 이 문서와 함께 저장된다. **상위 지침을 제외한 구현 변경은 아직 main 배포 전이다.** 백필 완료나 원문 정확성 검증을 선언하지 않는다.

@@ -2,33 +2,49 @@ name: Fast-backfill super-value PIT inputs
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/backfill_dart_legacy_2000_2014.py'
+      - 'scripts/legacy_backfill_runtime.py'
+      - 'scripts/backfill_super_value_fast.py'
+      - '.github/workflows/backfill-super-value-fast.yml'
   schedule:
     # 00:30 KST daily = 15:30 UTC previous day.
-    # Dedicated catch-up path for the super-value strategy.
+    # Reuse this existing schedule; legacy covers all mapped receipts.
     - cron: '30 15 * * *'
 
 concurrency:
   group: super-value-fast-pit-backfill
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: write
 
 jobs:
   fast:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 100
     env:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
-      SUPER_VALUE_FAST_MODERN_TASKS: '4500'
-      SUPER_VALUE_FAST_LEGACY_DOCS: '6000'
-      SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: '119'
-      SUPER_VALUE_FAST_MODERN_WORKERS: '6'
-      SUPER_VALUE_FAST_LEGACY_WORKERS: '6'
+      # Deployment verifies a small batch; daily data commits cannot recurse.
+      SUPER_VALUE_FAST_MODERN_TASKS: ${{ github.event_name == 'push' && '0' || '1000' }}
+      SUPER_VALUE_FAST_LEGACY_DOCS: ${{ github.event_name == 'push' && '100' || '2000' }}
+      SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: '6'
+      SUPER_VALUE_FAST_MODERN_WORKERS: '3'
+      SUPER_VALUE_FAST_LEGACY_WORKERS: '3'
+      LEGACY_DART_MAX_REQUESTS: ${{ github.event_name == 'push' && '150' || '2500' }}
+      LEGACY_DART_MAX_SECONDS: ${{ github.event_name == 'push' && '600' || '3300' }}
+      LEGACY_DART_REQUEST_INTERVAL: '0.5'
+      LEGACY_DART_CHECKPOINT_SIZE: '25'
 
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -41,9 +57,13 @@ jobs:
           pip install pandas requests pyarrow beautifulsoup4 lxml
 
       - name: Prioritize super-value PIT inputs
+        env:
+          LEGACY_DART_RUN_REPORT: ${{ runner.temp }}/legacy-collection-run.json
+        timeout-minutes: 75
         run: python scripts/backfill_super_value_fast.py
 
       - name: Commit fast-backfill datasets and status
+        if: always() && steps.checkout.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -58,7 +78,7 @@ jobs:
           else
             git commit -m "Fast-backfill super-value PIT inputs"
             git pull --rebase origin main
-            git push
+            git push origin HEAD:main
           fi
 
       - name: Upload fast-backfill status
@@ -67,7 +87,19 @@ jobs:
         with:
           name: super-value-fast-backfill-status
           path: |
+            ${{ runner.temp }}/legacy-collection-run.json
             data/status/super_value_fast_backfill_status.csv
             data/status/dart_legacy_backfill_status.csv
             data/status/dart_full_backfill_status.csv
           if-no-files-found: warn
+          retention-days: 14
+
+      - name: Preserve unpublished legacy checkpoint on failure
+        if: failure() && steps.checkout.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: legacy-recovery-checkpoint
+          path: |
+            data/financials/legacy_2000_2014/
+            data/status/dart_legacy_*.csv
+          retention-days: 14

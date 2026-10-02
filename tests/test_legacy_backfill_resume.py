@@ -221,3 +221,27 @@ def test_missing_key_does_not_overwrite_progress(store, monkeypatch):
     with pytest.raises(RuntimeError, match="DART_API_KEY missing"):
         legacy.main()
     assert legacy.STATUS_FILE.read_text() == "existing checkpoint"
+
+
+def test_index_rate_limit_blocks_following_document_requests(store, monkeypatch):
+    guard = control()
+    guard.stop("RATE_LIMIT")
+    monkeypatch.setattr(legacy, "process_filing", lambda *args: pytest.fail("call after index API 020"))
+    summary = legacy.process_pending(index(1), control=guard)
+    assert summary["completed"] == 0 and summary["rate_limited"]
+
+
+def test_authentication_failure_stops_without_classifying_source_as_missing(store, monkeypatch):
+    guard = control()
+    monkeypatch.setattr(legacy, "RUN_CONTROL", guard)
+
+    class Response:
+        content = b"<result><status>010</status></result>"
+        text = content.decode()
+        def raise_for_status(self):
+            pass
+
+    monkeypatch.setattr(legacy.requests, "get", lambda *args, **kwargs: Response())
+    _, state = legacy.process_filing(index(1).iloc[0].to_dict())
+    assert state["status"] == "DEFERRED" and guard.stop_reason == "FATAL_API"
+    assert guard.requests == 1

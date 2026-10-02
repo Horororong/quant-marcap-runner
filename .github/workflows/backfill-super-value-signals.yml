@@ -8,7 +8,7 @@ on:
 
 concurrency:
   group: super-value-fast-pit-backfill
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: write

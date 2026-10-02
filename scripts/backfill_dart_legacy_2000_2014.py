@@ -197,8 +197,12 @@ class RateLimitExceeded(RuntimeError):
 
 
 class DocumentUnavailable(RuntimeError):
-    """DART confirmed that the original filing document does not exist (status 014)."""
+    """OpenDART download returned 014; this is not proof of public-source absence."""
     pass
+
+
+class FatalDartError(RuntimeError):
+    """Authentication/service failure; stop collection without fabricating gaps."""
 
 
 def now_utc() -> str:
@@ -252,6 +256,10 @@ def dart_get_json(path: str, params: dict, timeout: int = 30) -> dict:
             status = str(obj.get("status", ""))
             if status == "020":
                 raise RateLimitExceeded(obj.get("message", "DART request limit exceeded"))
+            if status in {"010", "011", "012", "901"}:
+                if RUN_CONTROL is not None:
+                    RUN_CONTROL.stop("FATAL_API")
+                raise FatalDartError(f"DART status={status}")
             return obj
         except RateLimitExceeded:
             raise
@@ -796,6 +804,11 @@ def fetch_document(rcept_no: str) -> tuple[bytes, str]:
             r.raise_for_status()
             if r.content[:2] != b"PK":
                 txt=r.text[:500]
+                status_match = re.search(r"<status>\s*(\d+)\s*</status>", txt)
+                if status_match and status_match.group(1) in {"010", "011", "012", "901"}:
+                    if RUN_CONTROL is not None:
+                        RUN_CONTROL.stop("FATAL_API")
+                    raise FatalDartError(f"DART status={status_match.group(1)}")
                 if "<status>020</status>" in txt or "요청 제한을 초과" in txt:
                     raise RateLimitExceeded(txt)
                 if "<status>014</status>" in txt or "파일이 존재하지 않습니다" in txt:
@@ -860,7 +873,7 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
     except DocumentUnavailable as e:
         return [],{"rcept_no":rcept,"status":"NO_DOCUMENT","metric_rows":0,"best_scope":"",
                    "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":safe_error(e)}
-    except CollectionPaused as e:
+    except (CollectionPaused, FatalDartError) as e:
         return [],{"rcept_no":rcept,"status":"DEFERRED","metric_rows":0,"best_scope":"",
                    "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":safe_error(e)}
     except RateLimitExceeded as e:
@@ -1062,6 +1075,9 @@ def main() -> None:
         idx["rcept_dt"]=pd.to_datetime(idx["rcept_dt"],errors="coerce")
         idx["period_end"]=pd.to_datetime(idx["period_end"],errors="coerce")
     write_coverage(idx)
+
+    if result["stop_reason"] == "FATAL_API":
+        raise RuntimeError("DART authentication/service failure; saved progress preserved")
 
     if STATUS_FILE.exists():
         print(pd.read_csv(STATUS_FILE).to_string(index=False),flush=True)

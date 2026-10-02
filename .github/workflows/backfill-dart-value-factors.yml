@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: dart-full-history-backfill
-  cancel-in-progress: true
+  group: super-value-fast-pit-backfill
+  cancel-in-progress: false
 
 permissions:
   contents: write

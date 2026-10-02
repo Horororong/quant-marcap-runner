@@ -4,31 +4,36 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: dart-legacy-2000-2014-backfill
-  cancel-in-progress: true
+  group: super-value-fast-pit-backfill
+  cancel-in-progress: false
 
 permissions:
   contents: write
 
 jobs:
   backfill:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 80
     env:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
       LEGACY_DART_START_YEAR: '2000'
       LEGACY_DART_END_YEAR: '2014'
-      # 180 index tasks total (year x quarter x Y/K/E). At 36/day the
-      # disclosure index is normally built in roughly eight scheduled runs.
-      LEGACY_DART_INDEX_TASKS: '36'
-      # Original-document downloads are the expensive phase. 3,000/day keeps
-      # ample headroom under DART request limits alongside the other workflows.
-      LEGACY_DART_MAX_DOCS: '3000'
-      LEGACY_DART_WORKERS: '6'
+      # Manual entry point shares the daily job's lock and bounded resume path.
+      LEGACY_DART_INDEX_TASKS: '6'
+      LEGACY_DART_MAX_DOCS: '2000'
+      LEGACY_DART_WORKERS: '3'
+      LEGACY_DART_MAX_REQUESTS: '2500'
+      LEGACY_DART_MAX_SECONDS: '3300'
+      LEGACY_DART_REQUEST_INTERVAL: '0.5'
+      LEGACY_DART_CHECKPOINT_SIZE: '25'
 
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -41,9 +46,13 @@ jobs:
           pip install pandas requests pyarrow beautifulsoup4 lxml
 
       - name: Backfill legacy PIT financial statements
+        env:
+          LEGACY_DART_RUN_REPORT: ${{ runner.temp }}/legacy-collection-run.json
+        timeout-minutes: 65
         run: python scripts/backfill_dart_legacy_2000_2014.py
 
       - name: Commit legacy normalized data and status
+        if: always() && steps.checkout.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -57,7 +66,7 @@ jobs:
           else
             git commit -m "Backfill legacy DART 2000-2014 PIT history"
             git pull --rebase origin main
-            git push
+            git push origin HEAD:main
           fi
 
       - name: Upload legacy DART status
@@ -66,8 +75,20 @@ jobs:
         with:
           name: dart-legacy-2000-2014-status
           path: |
+            ${{ runner.temp }}/legacy-collection-run.json
             data/status/dart_legacy_index_state.csv
             data/status/dart_legacy_backfill_state.csv
             data/status/dart_legacy_backfill_status.csv
             data/status/dart_legacy_coverage_by_period.csv
           if-no-files-found: warn
+          retention-days: 14
+
+      - name: Preserve unpublished legacy checkpoint on failure
+        if: failure() && steps.checkout.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: legacy-recovery-checkpoint
+          path: |
+            data/financials/legacy_2000_2014/
+            data/status/dart_legacy_*.csv
+          retention-days: 14
