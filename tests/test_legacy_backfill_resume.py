@@ -260,3 +260,18 @@ def test_real_saved_index_noop_preserves_mapped_queue_and_leading_zero_codes(mon
     pending, _ = legacy.pending_receipts(loaded, legacy.current_state())
     assert len(pending) > 100_000
     assert pending["stock_code"].str.startswith("0").any()
+
+
+def test_append_preserves_all_old_numeric_tokens_and_missing_strings_verbatim(store):
+    rows, _ = result(index(1).iloc[0], version="legacy-v3-book")
+    rows[0]["amount_krw"] = "1.2431421104738549e+23"
+    rows[0]["amount_reported"] = "4.621540057200055e+46"
+    rows[0]["account_name"] = "NA"
+    legacy.append_normalized(rows)
+    path = next(legacy.NORM_DIR.glob("*.gz"))
+    old = pd.read_csv(path, dtype=str, keep_default_na=False).iloc[0].to_dict()
+    new, _ = result(index(2).iloc[1])
+    legacy.append_normalized(new)
+    after = pd.read_csv(path, dtype=str, keep_default_na=False)
+    kept = after[after.parser_version.eq("legacy-v3-book")].iloc[0].to_dict()
+    assert old == kept

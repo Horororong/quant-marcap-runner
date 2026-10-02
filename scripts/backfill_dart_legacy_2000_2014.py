@@ -892,7 +892,9 @@ def append_normalized(rows: list[dict]) -> None:
     for y,g in add.groupby("fiscal_year",dropna=False):
         label="unknown" if pd.isna(y) else str(int(y))
         p=NORM_DIR/f"legacy_metrics_{label}.csv.gz"
-        old=load_csv(p,dtype={"rcept_no":str,"stock_code":str,"corp_code":str})
+        # Existing observations are immutable textual source records. Reading
+        # them as floats can change amounts when a later batch is appended.
+        old=load_csv(p,dtype=str,keep_default_na=False)
         out=pd.concat([old,g],ignore_index=True,sort=False) if not old.empty else g
         # Keep earlier parser-version observations for audit rather than mixing
         # them with, or deleting them in favour of, the current interpretation.

@@ -80,3 +80,12 @@
 - Local parser/resume/automation **27 passed**. 금융적 parsing·version은 변경하지 않았다. 이 수정 commit은 main에 반영하여 새 bounded bootstrap을 확인한다. 성공 판정은 Actions 표시뿐 아니라 receipt state 변경·실제 requests·normalized/state 일치로 한다.
 
 다음은 수정 bootstrap의 live 결과와 최종 CI 확인이며, 이어서 원문 증거 확보와 parser 이상 구간 조사다. 현재 데이터 품질은 계속 미인증 상태다.
+
+## 단계 5 live 수집 확인 및 기존 관측값 보존 (2026-10-02)
+
+- Code fix `7c7eb39`, 기존 macro 갱신을 보존한 main 통합 `a3e4473`.
+- 수정 bootstrap <https://github.com/Horororong/quant-marcap-runner/actions/runs/36951779362>: **Success**, 3m22s. Commit `79b8323`의 보고서에서 **API attempts 100 / receipts 100 / rate-limit False**를 직접 확인했다. 이전 parser receipt의 v4 재처리도 진척에 포함하며 신규 unique receipt 100건 증가라고 주장하지 않는다.
+- 실제 결과 대조에서 기존 CSV를 float로 읽고 다시 저장하면서 일부 과거 금액 token의 마지막 자리가 바뀌는 것을 발견했다(1999년 18개 field, 2000년 11개 field). 기존 parser는 큰 문자열을 숫자로 합치는 의심 값도 이미 저장하고 있었다. 원문 확인 없이 이 값 자체를 교정하지 않는다.
+- 보존 수정: normalized append 시 기존 관측값은 `dtype=str, keep_default_na=False`로 읽는다. `a3e4473`의 저장 관측값 18,090행을 모든 field의 원래 문자열로 복구하고 **새 관측값 969행은 전부 유지**했다. 이전 parser version도 삭제하지 않았다. 복구는 기존 Git source와 exact textual equality로 검증했으며 history rewrite/delete는 하지 않았다.
+- Regression: old scientific-notation amount token·`NA` 문자열의 exact preservation 검사 포함 parser/resume/automation **28 passed**. Financial parser와 version은 그대로다.
+- 다음: 같은 기존 audit workflow에서 대표 실패의 원문 ZIP/원문 일부·SHA를 확보하고 reparse consistency와 독립적인 audit를 명확히 분리한다. 전체 CI와 최종 live checkpoint를 다시 기록한다.
