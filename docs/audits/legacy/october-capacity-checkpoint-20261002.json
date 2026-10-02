@@ -1,0 +1,103 @@
+{
+  "date_utc": "2026-10-02",
+  "objective": "Process the existing automatic legacy queue by October 31; financial quality is a separate requirement",
+  "feature_commits": [
+    "3adb7d354280001643e7243ae947afe2be100318",
+    "e0fc32db5e5bfc9d6e175f1daa4a985f2b82ae8f"
+  ],
+  "pr": 25,
+  "merge_commit": "aa6c8722a0842d717468d855606b7ab76208eac4",
+  "live_data_commit": "07bf21a92d4f33ee8797560a66e4cf9f2b929ff8",
+  "scheduled_crons_utc": [
+    "30 15 * * *",
+    "30 7,23 * 10 *"
+  ],
+  "scheduled_times_kst": [
+    "00:30",
+    "08:30",
+    "16:30"
+  ],
+  "extra_batches_expire_kst": "2026-11-01T00:00:00+09:00",
+  "per_scheduled_batch": {
+    "max_receipts": 2000,
+    "max_legacy_request_attempts": 2500,
+    "max_submit_seconds": 3300,
+    "workers": 3,
+    "min_request_interval_seconds": 0.5,
+    "checkpoint_receipts": 25,
+    "collection_step_minutes": 75,
+    "job_minutes": 100
+  },
+  "extra_batches_modern_tasks": 0,
+  "max_daily_legacy_receipts": 6000,
+  "max_daily_legacy_request_attempts": 7500,
+  "verified_api_account_daily_quota": null,
+  "coverage_before": {
+    "durable_processed": 1301,
+    "automatic_pending": 113719
+  },
+  "coverage_after": {
+    "durable_processed": 1401,
+    "automatic_pending": 113619,
+    "mapped": 115020,
+    "indexed": 138540,
+    "usable_4f": 31,
+    "collection_complete": false,
+    "quality_complete": false,
+    "quality_status": "INDEPENDENT_SOURCE_AUDIT_REQUIRED",
+    "updated_at_utc": "2026-10-02T11:44:55.429535+00:00"
+  },
+  "bootstrap": {
+    "run_id": 37002402985,
+    "requests": 100,
+    "completed": 100,
+    "selected": 100,
+    "eligible_before_run": 113719,
+    "rate_limited": false,
+    "stop_reason": "BATCH_COMPLETE",
+    "parser_version": "legacy-v5-single-amount",
+    "source_version": "opendart-document-v1",
+    "modern_run_tasks": 0,
+    "artifact_id": 11223389756,
+    "artifact_sha256": "528ae547a40f7b3d67462e9996e267db325fe7b50e6bcbad00f9b76ebff08b16",
+    "artifact_expires_at_utc": "2026-10-16T11:44:58Z"
+  },
+  "feature_ci": {
+    "dsl_run_id": 37000310336,
+    "validator_run_id": 37000310360,
+    "conclusion": "success",
+    "test_and_both_replays": "success",
+    "legacy_pytest_passed": 56,
+    "gate_unittest_passed": 6
+  },
+  "main_ci": {
+    "dsl_run_id": 37002403185,
+    "validator_run_id": 37002403064,
+    "dsl_conclusion": "success",
+    "validator_conclusion": "success",
+    "test_and_both_replays": "success",
+    "verified_head_sha": "aa6c8722a0842d717468d855606b7ab76208eac4"
+  },
+  "forecast": {
+    "minimum_full_capacity_batches": 57,
+    "minimum_full_capacity_days": 19,
+    "first_full_capacity_day_kst": "2026-10-03",
+    "ideal_last_full_capacity_day_kst": "2026-10-21",
+    "measured_scheduled_daily_throughput": null,
+    "assumptions": "All three 2,000-receipt daily batches complete; no quota/deadline/Actions delay losses or queue expansion/version reprocessing",
+    "required_average_daily_receipts_to_october_31_ceiling": 3918
+  },
+  "financial_quality_limitations": [
+    "Financial source adapter/period-column/unit/sign guards remain unfinished",
+    "FY2014 filings submitted in 2015 are outside the current index",
+    "Independent source accuracy audit remains incomplete",
+    "PARSED_4F counts and durable queue processing do not certify financial accuracy"
+  ],
+  "local_checkout_note": {
+    "head": "e0fc32db5e5bfc9d6e175f1daa4a985f2b82ae8f",
+    "clean": true,
+    "remote_state_authoritative": true,
+    "limitation": "Git fetch fails immediately at sandbox proxy. Connector reads support UTF-8 but reject gzip blobs; recent and normalized gzip changes on main have not been hydrated locally. Do not reset or fabricate local data to claim matching main. Use remote handover/status/CI until usable Git transport is available."
+  },
+  "checkpoint_parent_main_sha": "07bf21a92d4f33ee8797560a66e4cf9f2b929ff8"
+}
