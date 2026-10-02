@@ -313,3 +313,24 @@ safe resume and existing scheduled automation for the 2000–2014 legacy DART
 backfill, followed by original-source parser investigation and independent audit.
 The current stage, measured progress, workflow risks and exact next steps are in
 `docs/LEGACY_BACKFILL_HANDOVER.md`. Earlier checkpoints below are historical.
+
+## Legacy v5 live continuation (2026-10-02 UTC)
+
+Remote main was verified at `df1ef362617d2fc9d89064dec56a7cf852cfe9a2`.
+V5 deployment and its bounded 100-receipt bootstrap are complete; do not repeat
+them. Code `993e13f` passed the full Strategy DSL CI (test and both sandbox replay
+jobs) at <https://github.com/Horororong/quant-marcap-runner/actions/runs/36957000605>;
+legacy pytest passed 55 tests in 2.66s. The subsequent data-only main commit had
+no separate full CI run. Live verification preserves all 92,449 preceding
+normalized rows literally and confirms 581 v5 rows against 32 parsed state
+records. Mapped durable coverage is 1,301/115,020, pending 113,719; collection
+and independent financial quality remain incomplete.
+
+The interrupted local multi-tool call is not evidence of a pytest hang. An
+isolated 45-second bounded parser test exits immediately because pytest is
+missing; dependency installation did not complete. Do not wait indefinitely or
+claim a local pass. Use per-file 60-second process limits, verbose node output
+and 15-second faulthandler dumps after installing the required dependencies.
+Inspect the existing original-source artifact/viewer pointers next; do not
+re-download captured source merely because the session resumed. Full evidence
+and continuation commands are in `docs/LEGACY_BACKFILL_HANDOVER.md`.

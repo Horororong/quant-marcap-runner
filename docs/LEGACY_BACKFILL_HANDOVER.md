@@ -134,3 +134,19 @@
 - 기존 v4 raw amount 19,444행을 오프라인 비교했다. 단일 numeric token 16,563행 중 3행은 괄호와 음수기호가 함께 있어 v4가 double flip하던 사례다(`20000330000422` 두 손익, `20000330000363` 자본). v5에서는 음수 표기를 다시 양수로 뒤집지 않는다. 나머지 허용 numeric token의 수치는 동일했다. 기존 관측값은 수정하지 않으며 두 공시 원문 금액·unit·column의 독립 audit는 아직 pending이다. 숫자 token 회귀와 공시 정확성 인증을 구분한다.
 - 거부 token 2,881행에는 dash/missing·비정상 grouping·복합 금액 등이 포함된다. 이 중 과거 `abs(amount_krw)>1e20` 관측값 57행의 raw token은 거부된다. 이 수치는 전체 receipt를 정확하게 다시 해석했다는 인증이나 모든 대형 금액 오류를 해결했다는 뜻이 아니다.
 - 추가 sign/empty-state 회귀 후 전체 legacy 관련 pytest와 generated-contract/actionlint를 다시 실행한다. Main 배포 후 실제 requests·v5 state/normalized의 SHA/row count와 이전 버전 모든 field의 textual equality, 최종 GitHub CI를 확인해 마지막 checkpoint에 기록한다.
+
+## 단계 6 v5 배포·live 검증 완료 / 재개 확인 (2026-10-02 UTC)
+
+- 원격 GitHub API로 main `df1ef362617d2fc9d89064dec56a7cf852cfe9a2`와 로컬 HEAD의 일치를 확인했다. 작업 트리는 깨끗했고 v5 재배포·bootstrap을 반복하지 않았다. Code integration은 `993e13fb1abac8da05d2c9ea43808c2a13566f13`이다.
+- 해당 code의 전체 Strategy DSL CI <https://github.com/Horororong/quant-marcap-runner/actions/runs/36957000605>에서 test 및 Python 3.11/3.12 sandbox replay **모두 success**를 직접 확인했다. Legacy pytest는 로그상 **55 passed in 2.66s**. Parser validation <https://github.com/Horororong/quant-marcap-runner/actions/runs/36957000579>도 success다. Data-only `df1ef36`에는 별도 전체 CI가 자동 실행되지 않았으므로 code CI와 data commit을 구분한다.
+- Live bootstrap <https://github.com/Horororong/quant-marcap-runner/actions/runs/36957000576>는 success이며 저장된 보고서의 **100 requests / 100 receipts / rate-limit False**를 확인했다. `993e13f` 대비 실제 receipt 변경 100건은 **NO_METRICS 68 / PARSED_PARTIAL 16 / PARSED_4F 16**이다. 신규 unique receipt 100건으로 해석하지 않는다.
+- Parsed 32 receipts의 v5 normalized **581행**은 state의 document SHA와 metric_rows에 전부 일치한다. 직전 normalized **92,449행의 모든 field 문자열·중복 multiplicity가 그대로 보존**됐고 v5 581행만 추가됐다. State의 빈 source_version column 추가는 재처리 건수로 세지 않는다. 검증 snapshot: `docs/audits/legacy/v5-live-checkpoint-20261002.json`.
+- 현재 mapped 115,020 / durable processed **1,301** / pending **113,719** / 4F **16**. Compatible source-only NO_DOCUMENT는 전체 state 1,203건(그 중 mapped 1,201)이다. V4 6,293을 v5 유효 데이터로 합산하지 않는다. Collection/quality complete는 모두 False, 독립 금융 audit는 아직 NOT_RUN이다.
+
+### 무출력 대기 조사 및 bounded 재개
+
+- 중단된 호출은 GitHub 조회·pytest·추가 network 권한을 요청하는 shell 실행을 `Promise.allSettled`로 묶었다. 모든 호출 종료 전 출력이 반환되지 않아 한 작업의 대기가 전체 결과를 가렸다. 정확히 어느 미완료 호출에서 대기했는지는 중단 당시 trace가 없어 단정하지 않는다.
+- 재개 환경에서 `timeout -k 5s 45s python -u -m pytest tests/test_legacy_dart_parser.py -vv -s -o faulthandler_timeout=15`는 즉시 **No module named pytest**로 종료됐다. 살아 있는 pytest/pip 프로세스가 없고 설치 대상 `/tmp/legacy-test-deps`도 없다. 이것은 테스트 실행/통과의 증거가 아니며, pytest 자체의 90분 hang으로 재현되지 않았다. 원격의 동일 suite는 위 2.66초 통과가 직접 증거다.
+- 이 환경에는 pytest/requests/beautifulsoup4/pyarrow가 부족하다. 의존성 설치를 요청한 추가-network shell 호출도 완료 결과를 반환하지 못했다. 설치 성공을 가정하거나 동일 설치를 무기한 재시도하지 않는다. Local Git/gh network도 sandbox socket/proxy 단계에서 실패했다. GitHub 조회와 원문 artifact 다운로드는 연결된 GitHub connector로 수행했다.
+- 이후 shell 명령은 process timeout + 짧은 yield를 쓰고, 원격 도구 조회 결과는 개별 출력한다. 의존성이 준비되면 테스트 파일을 하나씩 `timeout -k 5s 60s python -u -m pytest <file> -vv -s -o faulthandler_timeout=15`로 실행한다. 15초 stack dump와 마지막 test node를 보존하고, 60초 timeout 시 해당 node만 분리해 조사한다. 의존성 없는 실패를 test hang으로 분류하지 않는다.
+- 현재 다음 단계는 이미 확보된 원문 artifact의 viewer 목차에서 재무 본문 경로를 확인하는 것이다. API 재수집·금융 parser 변경 없이 기존 source evidence부터 조사한다.

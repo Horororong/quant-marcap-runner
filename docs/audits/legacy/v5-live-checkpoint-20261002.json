@@ -1,0 +1,24 @@
+{
+  "base_commit": "993e13fb1abac8da05d2c9ea43808c2a13566f13",
+  "live_data_commit": "df1ef362617d2fc9d89064dec56a7cf852cfe9a2",
+  "parser_version": "legacy-v5-single-amount",
+  "source_version": "opendart-document-v1",
+  "changed_receipts": 100,
+  "changed_status_counts": {
+    "NO_METRICS": 68,
+    "PARSED_PARTIAL": 16,
+    "PARSED_4F": 16
+  },
+  "v5_normalized_rows": 581,
+  "parsed_receipts_with_matching_sha_and_row_count": 32,
+  "previous_normalized_rows_preserved_exactly": 92449,
+  "added_normalized_rows": 581,
+  "mapped_receipts": 115020,
+  "durable_mapped_receipts_including_compatible_transport_only": 1301,
+  "pending_mapped_receipts": 113719,
+  "carried_forward_source_only_records": 1203,
+  "collection_complete": false,
+  "quality_complete": false,
+  "independent_financial_audit": "NOT_RUN",
+  "verification": "Literal field preservation and state/normalized SHA-row-count checks; not an audit of financial amounts"
+}
