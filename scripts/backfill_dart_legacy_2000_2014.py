@@ -902,7 +902,8 @@ def append_normalized(rows: list[dict]) -> None:
 def current_state() -> pd.DataFrame:
     state = load_csv(STATE_FILE, dtype=str)
     if state.empty or "parser_version" not in state:
-        return pd.DataFrame(columns=["rcept_no", "status", "metric_rows", "document_sha256", "attempt_count"])
+        return pd.DataFrame(columns=["rcept_no", "status", "metric_rows", "document_sha256",
+                                     "attempt_count", "parser_version", "source_version"])
     state = state.fillna("")
     source = state.get("source_version", pd.Series("", index=state.index))
     compatible = source.eq(SOURCE_VERSION)

@@ -56,3 +56,12 @@ def test_nonfinite_scaled_value_cannot_be_usable_money():
     amount = "1" + "0" * 308
     rows = table_candidates("<h2>손익계산서</h2><p>단위: 백만원</p><table><tr><td>당기순이익</td><td>" + amount + "</td></tr></table>")
     assert rows and math.isnan(rows[0]["amount_krw"])
+
+
+@pytest.mark.parametrize("text,expected", [
+    ("(-1,170,019,230)", -1_170_019_230),
+    ("(-482,479,885)", -482_479_885),
+    ("(△62,175,514)", -62_175_514),
+])
+def test_parentheses_and_negative_sign_do_not_double_flip(text, expected):
+    assert parse_number(text) == expected

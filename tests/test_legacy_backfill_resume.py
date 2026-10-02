@@ -299,3 +299,13 @@ def test_source_adapter_change_invalidates_previous_no_document_result(store, mo
     monkeypatch.setattr(legacy, "SOURCE_VERSION", "source-v2-test")
     pending, _ = legacy.pending_receipts(index(1), legacy.current_state())
     assert len(pending) == 1
+
+
+def test_initial_coverage_without_state_does_not_invent_completed_receipts(store, monkeypatch):
+    monkeypatch.setattr(legacy.requests, "get", lambda *args, **kwargs: pytest.fail("coverage requested DART"))
+    legacy.write_coverage(index(2))
+    status = pd.read_csv(legacy.STATUS_FILE).iloc[0]
+    assert status["processed_filings"] == 0 and status["automatic_pending_filings"] == 2
+    assert status["source_only_filings_carried_forward"] == 0
+    assert not status["collection_complete"] and not status["quality_complete"]
+    assert not legacy.STATE_FILE.exists()

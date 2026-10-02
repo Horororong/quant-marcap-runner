@@ -1,6 +1,10 @@
 # DART legacy 2000~2014 — 단계별 인계
 
-## 최신 작업 checkpoint (2026-10-01)
+## 최신 작업 checkpoint (2026-10-02 UTC)
+
+상위 지침·resume·기존 daily 자동화는 main에 배포되어 실제로 동작한다. 대표 8개 원문 확보 후 첫 source-proven parser guard `legacy-v5-single-amount`를 작업 branch commit `16bf1cb`에 저장하고 local 전체 Strategy DSL **31/31**을 통과했다. 첫 실행의 empty-state coverage 오류도 재현해 배포 전 보완한다. 현재 단계는 **v5 배포·live 재처리·최종 CI 확인**이다. 아래의 단계별 기록과 마지막 checkpoint가 최신 상태이며 이전 수치는 당시 버전의 이력이다. 다음 세션은 원격 main과 현재 parser/source version을 먼저 다시 확인한다.
+
+## 최초 인계 checkpoint (2026-10-01, 역사 기록)
 
 현재 단계: **1~4 저장·구현·검증 완료**, **5. main 배포 후 실제 100건 수집 확인 완료**. 6. 대표 원문 증거 확보와 독립 audit 경계 수정 진행 중. 최종 CI/추가 live 확인은 아래 최신 checkpoint를 따른다.
 기준 main: `7be2003c18998f6b12747a0e187a0b40cf6ad7d6`. 이 값은 checkpoint이며 다음 세션에서는 원격 상태를 다시 확인한다.
@@ -122,3 +126,11 @@
 - 네 초기 XML(`20010103000052`, `20010104000076`, `20010213000010`, `20010213000014`)은 원본 UTF-8 내용에 이미 replacement character와 깨진 한글이 있다. Decoder만 바꾸거나 계정명을 추측해 복구하지 않는다. 한글이 읽히는 `20000809000052`, `20000814000085`도 확보한 주 문서에서 재무 계정을 확인하지 못했다. Public viewer 200을 재무 본문 확인으로 해석하지 않고 financial statement/첨부 원문 경로를 다음 단계에서 조사한다.
 
 **현재 완료 단계:** 지침 저장, 안전한 resume·기존 daily 자동화, 실제 300건 수집/재처리, 대표 8개 원문 확보 및 첫 source-proven parser guard. **현재 진행 단계:** v5 전체 regression 후 배포·bounded live 재처리. **다음 단계:** 초기 공시의 재무 본문/첨부 원천 확인 → 기간·scope·unit·당기 column의 독립 기대값 → 필요한 parser 수정·재처리 → FY2014의 2015 접수 coverage와 mapping 검증 → 독립 audit. 2000~2014 수집·품질 검증 완료는 계속 False이며 legacy 실행 capability는 공개하지 않는다.
+
+## v5 배포 직전 추가 경계 검증
+
+- `16bf1cb`의 local 전체 Strategy DSL **31/31 통과**. 실제 DART PIT·KRX top-N/10분위·공통 CLI·CURRENT·기업행동·held-return을 포함한다. 최신 main의 source evidence 데이터 변경은 이후 normal merge로 보존한다.
+- 새 source-version coverage 필드가 아직 state 파일이 없는 첫 실행에서 `KeyError('parser_version')`를 내는 것을 별도 재현했다. Empty state의 명시적인 columns를 보완하고, API 호출·가짜 완료 없이 pending/품질 미완료를 보고하는 회귀를 추가했다.
+- 기존 v4 raw amount 19,444행을 오프라인 비교했다. 단일 numeric token 16,563행 중 3행은 괄호와 음수기호가 함께 있어 v4가 double flip하던 사례다(`20000330000422` 두 손익, `20000330000363` 자본). v5에서는 음수 표기를 다시 양수로 뒤집지 않는다. 나머지 허용 numeric token의 수치는 동일했다. 기존 관측값은 수정하지 않으며 두 공시 원문 금액·unit·column의 독립 audit는 아직 pending이다. 숫자 token 회귀와 공시 정확성 인증을 구분한다.
+- 거부 token 2,881행에는 dash/missing·비정상 grouping·복합 금액 등이 포함된다. 이 중 과거 `abs(amount_krw)>1e20` 관측값 57행의 raw token은 거부된다. 이 수치는 전체 receipt를 정확하게 다시 해석했다는 인증이나 모든 대형 금액 오류를 해결했다는 뜻이 아니다.
+- 추가 sign/empty-state 회귀 후 전체 legacy 관련 pytest와 generated-contract/actionlint를 다시 실행한다. Main 배포 후 실제 requests·v5 state/normalized의 SHA/row count와 이전 버전 모든 field의 textual equality, 최종 GitHub CI를 확인해 마지막 checkpoint에 기록한다.
