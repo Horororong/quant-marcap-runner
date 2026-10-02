@@ -16,7 +16,7 @@ import pandas as pd
 
 from krx_technical_factor_adapter import TECHNICAL_FACTOR_SPECS
 
-FACTOR_REGISTRY_VERSION = "6"
+FACTOR_REGISTRY_VERSION = "7"
 
 
 @dataclass(frozen=True)
@@ -36,9 +36,18 @@ FACTOR_DEFINITIONS: dict[tuple[str, str], FactorDefinition] = {}
 FACTOR_SOURCE_CONSTRAINTS: dict[str, dict] = {
     "dart": {
         "rebalance_months": (4, 10),
+        "period_policies": {
+            "legacy_april_october": {"rebalance_months": [4, 10]},
+            "latest_disclosed_quarter": {
+                "rebalance_months": list(range(1, 13)),
+                "candidate_window": "four most recently ended calendar quarters",
+                "selection": "newest report period disclosed by signal date per code; no stale fallback for missing metrics",
+                "completeness": "all candidate periods and cumulative-difference dependencies; fail on missing sources",
+            },
+        },
         "reason": (
-            "current DART value adapter reconstructs standalone Q4 for April "
-            "and Q2 for October signals only"
+            "legacy policy reconstructs Q4 for April and Q2 for October; "
+            "set rebalance.dart_period_policy=latest_disclosed_quarter for other months"
         ),
     },
 }
@@ -177,7 +186,10 @@ def validate_factor_strategy_constraints(
     factors: Iterable[object],
     rebalance_months: Iterable[int],
     filters: Iterable[object] = (),
+    dart_period_policy: str = "legacy_april_october",
 ) -> None:
+    from dart_value_factor_adapter import validate_period_policy
+    validate_period_policy(dart_period_policy)
     sources = {str(getattr(f, "source")).strip().lower() for f in factors}
     sources.update(get_filter_definition(getattr(flt, "field")).source for flt in filters)
     months = {int(m) for m in rebalance_months}
@@ -186,6 +198,8 @@ def validate_factor_strategy_constraints(
         if not constraint:
             continue
         allowed = constraint.get("rebalance_months")
+        if source == "dart":
+            allowed = constraint["period_policies"][dart_period_policy]["rebalance_months"]
         if allowed is not None:
             allowed_set = {int(m) for m in allowed}
             unsupported = sorted(months - allowed_set)
@@ -276,10 +290,10 @@ class ExternalFactorProvider(Protocol):
 class DartFactorProvider:
     source = "dart"
 
-    def __init__(self, repo_root: str | Path):
+    def __init__(self, repo_root: str | Path, period_policy: str = "legacy_april_october"):
         from dart_value_factor_adapter import DartValueFactorAdapter
 
-        self._adapter = DartValueFactorAdapter(repo_root)
+        self._adapter = DartValueFactorAdapter(repo_root, period_policy)
 
     def factor_frame(
         self,
@@ -293,6 +307,10 @@ class DartFactorProvider:
             raise ValueError(f"unsupported DART factor fields: {invalid}")
         frame = self._adapter.factor_frame(signal, cross_section)
         keep = ["Code", *requested]
+        if self._adapter.period_policy == "latest_disclosed_quarter":
+            keep += ["dart_report_year", "dart_report_period", "dart_available_date", "dart_fs_div"]
+            frame = frame.rename(columns={"report_year": "dart_report_year", "report_period": "dart_report_period",
+                                          "available_date": "dart_available_date", "fs_div": "dart_fs_div"})
         missing = [c for c in keep if c not in frame.columns]
         if missing:
             raise KeyError(f"DART provider output missing fields: {missing}")
@@ -330,13 +348,15 @@ PROVIDER_FACTORIES = {
 }
 
 
-def build_external_provider(source: str, repo_root: str | Path) -> ExternalFactorProvider:
+def build_external_provider(source: str, repo_root: str | Path,
+                            dart_period_policy: str = "legacy_april_october") -> ExternalFactorProvider:
     src = str(source).strip().lower()
     try:
         factory = PROVIDER_FACTORIES[src]
     except KeyError as exc:
         raise ValueError(f"no external factor provider registered for source={src!r}") from exc
-    provider = factory(repo_root)
+    provider = (factory(repo_root, period_policy=dart_period_policy)
+                if src == "dart" else factory(repo_root))
     if not isinstance(provider, ExternalFactorProvider):
         raise TypeError(f"provider for {src!r} does not satisfy ExternalFactorProvider contract")
     return provider

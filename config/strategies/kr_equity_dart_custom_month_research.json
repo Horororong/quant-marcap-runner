@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "strategy_id": "kr_equity_dart_custom_month_research",
+  "title": "2020년 5월 최신 공시 분기 기반 대형주 연구",
+  "asset_class": "kr_equity",
+  "universe": {
+    "markets": ["KOSPI", "KOSDAQ"],
+    "require_tradable_on_signal": true,
+    "filters": [{"field": "Marcap", "op": "gte", "value": 10000000000000}]
+  },
+  "factors": [{"name": "BP", "source": "dart", "field": "book_to_price", "direction": "high"}],
+  "portfolio": {"number_of_positions": 10, "weighting": "equal"},
+  "rebalance": {
+    "frequency": "months",
+    "months": [5],
+    "trading_day": "last",
+    "dart_period_policy": "latest_disclosed_quarter"
+  },
+  "execution": {"lag_sessions": 1, "price": "next_close"},
+  "cost_scenarios": {
+    "gross": {},
+    "fixed_cost": {"commission_bps": 1.5, "sell_tax_bps": 15, "spread_bps": 3, "slippage_bps": 5}
+  },
+  "benchmark": {"source": "index", "symbol": "KOSPI"},
+  "period": {
+    "start": "2020-05-01",
+    "end": "2020-06-02",
+    "book_start": "2020-05-01",
+    "book_end": "2020-06-02",
+    "as_of_date": "2020-06-02"
+  },
+  "metadata": {"purpose": "explicit large-cap short research example; execution-only NAV, not full-history performance"}
+}

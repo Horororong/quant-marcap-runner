@@ -140,7 +140,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "21",
+  "dsl_machine_contract_version": "22",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -156,10 +156,37 @@
     "high",
     "low"
   ],
-  "factor_registry_version": "6",
+  "factor_registry_version": "7",
   "factor_source_constraints": {
     "dart": {
-      "reason": "current DART value adapter reconstructs standalone Q4 for April and Q2 for October signals only",
+      "period_policies": {
+        "latest_disclosed_quarter": {
+          "candidate_window": "four most recently ended calendar quarters",
+          "completeness": "all candidate periods and cumulative-difference dependencies; fail on missing sources",
+          "rebalance_months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "selection": "newest report period disclosed by signal date per code; no stale fallback for missing metrics"
+        },
+        "legacy_april_october": {
+          "rebalance_months": [
+            4,
+            10
+          ]
+        }
+      },
+      "reason": "legacy policy reconstructs Q4 for April and Q2 for October; set rebalance.dart_period_policy=latest_disclosed_quarter for other months",
       "rebalance_months": [
         4,
         10

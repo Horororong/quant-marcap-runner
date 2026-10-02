@@ -16,6 +16,7 @@ import math
 import re
 
 from jsonschema import Draft202012Validator, FormatChecker, validators
+from dart_value_factor_adapter import DART_PERIOD_POLICIES
 
 from factor_registry import (
     FACTOR_REGISTRY_VERSION, get_factor_definition, get_filter_definition,
@@ -217,6 +218,7 @@ def build_strategy_json_schema() -> dict:
                         "items": {"type": "integer", "minimum": 1, "maximum": 12},
                     },
                     "trading_day": {"enum": sorted(SUPPORTED_TRADING_DAY_RULES)},
+                    "dart_period_policy": {"enum": list(DART_PERIOD_POLICIES), "default": "legacy_april_october"},
                 },
             },
             "execution": {
@@ -450,19 +452,30 @@ class RebalanceSpec:
     frequency: str = "months"
     months: tuple[int, ...] = (4, 10)
     trading_day: str = "last"
+    dart_period_policy: str = "legacy_april_october"
+
+    def to_dict(self) -> dict[str, Any]:
+        out = asdict(self)
+        if self.dart_period_policy == "legacy_april_october":
+            out.pop("dart_period_policy")
+        return out
 
     @classmethod
     def from_dict(cls, raw: Mapping[str, Any]) -> "RebalanceSpec":
         frequency = str(raw.get("frequency", "months")).lower()
         months = tuple(sorted(set(int(x) for x in _as_tuple(raw.get("months", [4, 10]), name="rebalance.months"))))
         trading_day = str(raw.get("trading_day", "last")).lower()
+        policy = raw.get("dart_period_policy", "legacy_april_october")
+        if policy not in DART_PERIOD_POLICIES:
+            raise ValueError(f"unsupported DART period policy: {policy!r}")
         if frequency not in SUPPORTED_REBALANCE_FREQUENCIES:
             raise ValueError(f"unsupported rebalance frequency: {frequency}")
         if any(m < 1 or m > 12 for m in months) or not months:
             raise ValueError("rebalance.months must contain months 1..12")
         if trading_day not in SUPPORTED_TRADING_DAY_RULES:
             raise ValueError(f"unsupported trading_day rule: {trading_day}")
-        return cls(frequency=frequency, months=months, trading_day=trading_day)
+        return cls(frequency=frequency, months=months, trading_day=trading_day,
+                   dart_period_policy=policy)
 
 
 @dataclass(frozen=True)
@@ -581,7 +594,8 @@ class StrategySpec:
             raise ValueError("factor names must be unique")
         universe = UniverseSpec.from_dict(raw.get("universe", {}))
         rebalance = RebalanceSpec.from_dict(raw.get("rebalance", {}))
-        validate_factor_strategy_constraints(factors, rebalance.months, universe.filters)
+        validate_factor_strategy_constraints(factors, rebalance.months, universe.filters,
+                                            rebalance.dart_period_policy)
         costs_raw = raw.get("cost_scenarios", {})
         if not isinstance(costs_raw, Mapping) or not costs_raw:
             raise ValueError("cost_scenarios must be a non-empty object")
@@ -612,6 +626,7 @@ class StrategySpec:
 
     def to_dict(self) -> dict[str, Any]:
         out = asdict(self)
+        out["rebalance"] = self.rebalance.to_dict()
         # Retain normalized JSON/fingerprints of existing top-N strategies.
         if self.portfolio.selection == "top_n":
             out["portfolio"].pop("selection")
@@ -684,7 +699,7 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         "benchmark": asdict(spec.benchmark) if spec.benchmark is not None else None,
         "portfolio": asdict(spec.portfolio),
         "decile_contract": dict(DECILE_RESEARCH_CONTRACT) if spec.portfolio.selection == "deciles" else None,
-        "rebalance": asdict(spec.rebalance),
+        "rebalance": spec.rebalance.to_dict(),
         "execution": asdict(spec.execution),
         "cost_scenarios": {k: asdict(v) for k, v in spec.cost_scenarios.items()},
         "period": asdict(spec.period),

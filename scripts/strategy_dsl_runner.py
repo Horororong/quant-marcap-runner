@@ -295,7 +295,7 @@ def scored_signals_from_panel(
     if sources and repo_root is None:
         raise ValueError("repo_root is required when external factor providers are used")
     providers = {
-        source: build_external_provider(source, repo_root)
+        source: build_external_provider(source, repo_root, spec.rebalance.dart_period_policy)
         for source in sources
     }
 
@@ -360,7 +360,7 @@ def factor_provider_coverage_audit(
     if not sources:
         return pd.DataFrame()
     providers = {
-        source: build_external_provider(source, repo_root)
+        source: build_external_provider(source, repo_root, spec.rebalance.dart_period_policy)
         for source in sources
     }
     rows: list[dict[str, Any]] = []

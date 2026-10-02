@@ -1,5 +1,25 @@
 # Current Strategy DSL handoff
 
+## Custom financial rebalance continuation (2026-10-02 UTC)
+
+Owner requests user-selected financial rebalance timing in the ChatGPT quant
+project. New explicit `rebalance.dart_period_policy=latest_disclosed_quarter`
+supports selected months 1..12 with last-session signals and unchanged next-close
+lag. Default legacy policy preserves April/Q4, October/Q2 and existing strategy
+fingerprints. New policy selects the latest disclosed report quarter per code,
+with PIT differences/corrections, no cross-scope subtraction and no older-quarter
+replacement for missing latest values. Source candidate/dependency completeness
+remains mandatory; legacy financial quality is still incomplete.
+
+Machine contract 22 / factor registry 7; local contract and synthetic routing tests
+pass, including the unchanged eight strategy fingerprints and a real Samsung
+Q1 original-source oracle for May 2020. Full checked NAV and complete remote CI
+are required before deployment is declared complete. Local lacks KRX execution
+dependencies; do not claim local full E2E. The current remote base is 5d627fe;
+local data remains at e0fc32d. See `docs/FINANCIAL_REBALANCE.md` for exact staged
+progress and final run/merge evidence. Existing ChatGPT runtime kits require
+rebuilding with the new code and actual requested source coverage.
+
 This handoff accompanies the Work continuation on 2026-10-01 (Asia/Seoul).
 Read `AGENTS.md` and `BACKTEST_START_HERE.md` before changing or running a backtest.
 GitHub refs, PR metadata and checks are authoritative for merge/CI status; this
