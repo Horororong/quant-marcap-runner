@@ -1,4 +1,4 @@
-## Current Strategy DSL handoff
+# Current Strategy DSL handoff
 
 ## Custom financial rebalance continuation (2026-10-02 UTC)
 
@@ -380,3 +380,28 @@ independent financial-quality completion. Gate boundary tests pass locally;
 require complete feature CI and live main confirmation before deployment is
 recorded as complete. Follow the final section of the legacy handover for
 actual commit/run IDs and the remaining parser/source/independent-audit work.
+
+
+# 사용자 실행 묶음 전달 — 진행 checkpoint (2026-10-02)
+
+최신 사용자 요청은 실제 `quant-sandbox-*.zip` 전달이다. 현재 기준 원격 main은
+`61250b33d84b02338bef4037f19169b336bb2185`; 기존 리밸런싱 전체 CI는 success다.
+기존 3예제+custom May, CPython 3.11/3.12, 고정 wheels와 원본 데이터를 묶는
+기존 CI의 명시적 export 경로를 준비했다. 생성·offline replay·다운로드는 아직
+미완료다. `docs/SANDBOX_DELIVERY_CHECKPOINT.md`부터 재개하고 완료한 기능·백필을
+반복하지 않는다. 최신 legacy processed 3,401/pending 111,619이며 품질 완료는 False다.
+
+
+## 단계 2 완료: 실제 ZIP 생성·양 ABI offline replay (2026-10-02 UTC)
+
+- 원격 source commit `b350b61e4db0c626e8533645a1a76d61d6ba0ae6`, PR #27, CI run `37075642412`.
+- Kit ID `ee212da3e4a71bb7fa2261b45771156e2bf49b563419c8e639db45449cf694db`; `quant-sandbox-ee212da3e4a7.zip`, **291308667 bytes**.
+  전체 SHA256: `533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587`.
+- **CPython 3.11/3.12 모두 성공**. 각 ABI에서 4예제 **83개 artifact**가 원본 checked
+  runner와 byte-identical이다. 두 ABI 간 fingerprint·NAV SHA256도 모두 일치한다.
+  6개 missing/corruption/readiness 경계도 모두 통과했다.
+- 12개 24MiB download segment와 ledger를 실제로 내려받았다. 전달 artifacts는
+  30일 보관한다. 전체 Strategy DSL test job은 아직 실행 중이며 success로 기록하지 않는다.
+- 다음: 저장된 ledger의 모든 SHA/길이로 ZIP 복원·무결성 검증, 로컬 offline
+  bootstrap/verify, 전체 CI/PR 최종 확인, 실제 ZIP 링크 전달.
+- Machine checkpoint: `docs/audits/sandbox-delivery-checkpoint-20261002.json`.

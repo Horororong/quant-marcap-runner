@@ -1,0 +1,216 @@
+{
+  "status": "offline_validation_complete_zip_reassembly_pending",
+  "date_utc": "2026-10-02",
+  "source_revision": "b350b61e4db0c626e8533645a1a76d61d6ba0ae6",
+  "kit_id": "ee212da3e4a71bb7fa2261b45771156e2bf49b563419c8e639db45449cf694db",
+  "zip": {
+    "zip_name": "quant-sandbox-ee212da3e4a7.zip",
+    "zip_bytes": 291308667,
+    "zip_sha256": "533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587",
+    "segments": [
+      {
+        "name": "download.part001",
+        "bytes": 25165824,
+        "sha256": "0a94a0fda713f58f85e885c070042c9e1bdffb11f43e8117971123c0bd8e384f"
+      },
+      {
+        "name": "download.part002",
+        "bytes": 25165824,
+        "sha256": "057355ad17bb441f06986e26191de7ba2eea0beecdc32657c20352e42e5ae64f"
+      },
+      {
+        "name": "download.part003",
+        "bytes": 25165824,
+        "sha256": "583a7fa672a489093eee596ccc8feea2ed2ea39ae243ca3d5e579abd4fffd261"
+      },
+      {
+        "name": "download.part004",
+        "bytes": 25165824,
+        "sha256": "4fd2c5e7c3934553df4f539d5f742c189e89a11b3e82408afaa20c9f63756287"
+      },
+      {
+        "name": "download.part005",
+        "bytes": 25165824,
+        "sha256": "d3a217444bfda0060acc0ef42a0593d0929e398b419c95dffb20294c693abb97"
+      },
+      {
+        "name": "download.part006",
+        "bytes": 25165824,
+        "sha256": "def10cccd6e0099a3e8bcc7d5968fb8694887bc2e4df0700bb600dfef197b49b"
+      },
+      {
+        "name": "download.part007",
+        "bytes": 25165824,
+        "sha256": "3d1aae8bb3bbc4d074ce24a945645897aa1d91fc32c1008047c329091468c2f3"
+      },
+      {
+        "name": "download.part008",
+        "bytes": 25165824,
+        "sha256": "fd21023063bc6e903b81123d42e174d4141827c4137927361c7fc73197975ed8"
+      },
+      {
+        "name": "download.part009",
+        "bytes": 25165824,
+        "sha256": "bb84baf20bb0cdb14326dc9aca40797ac79c35fec91ac1eb99ae669b33a2598a"
+      },
+      {
+        "name": "download.part010",
+        "bytes": 25165824,
+        "sha256": "f35cebb2ed410f6720779a5de03e7cd786c5ce704a48d361719688af56f43e6b"
+      },
+      {
+        "name": "download.part011",
+        "bytes": 25165824,
+        "sha256": "f65e634ca70043aa10602850c271188d645c44adac3e2030354f52874f030475"
+      },
+      {
+        "name": "download.part012",
+        "bytes": 14484603,
+        "sha256": "11cf1027ece71c2da5ba1a331e35b191d91c0828898081b52775dd48765994d0"
+      }
+    ]
+  },
+  "profile": "three starters plus custom May",
+  "runtime_targets": [
+    "cp311-linux-x86_64",
+    "cp312-linux-x86_64"
+  ],
+  "cross_abi_fingerprints_and_nav_sha256_identical": true,
+  "identical_artifact_counts": {
+    "super_value_dart_benchmark_dsl": 11,
+    "kr_equity_size_deciles_research": 53,
+    "kr_equity_split_research": 9,
+    "kr_equity_dart_custom_month_research": 10
+  },
+  "ci": {
+    "run_id": 37075642412,
+    "jobs": [
+      {
+        "id": 111064819139,
+        "name": "sandbox-replay (3.11)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 111064819425,
+        "name": "sandbox-replay (3.12)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 111064819455,
+        "name": "test",
+        "status": "in_progress",
+        "conclusion": null
+      }
+    ]
+  },
+  "artifacts": [
+    {
+      "id": 11257500964,
+      "name": "sandbox-replay-3.11",
+      "bytes": 1351,
+      "digest": "sha256:163df9793b7f9024c530b0e0d5cc1d2b9482b776bc76d35959ab5d8e2df94daa",
+      "expires_at": "2026-10-09T23:20:17Z"
+    },
+    {
+      "id": 11257013266,
+      "name": "quant-kit-download-004",
+      "bytes": 25165970,
+      "digest": "sha256:a1d9a9e0c2f603f246d22e2412602169643bd945d188f4da895ff69db5fb9493",
+      "expires_at": "2026-11-01T23:21:39Z"
+    },
+    {
+      "id": 11257013250,
+      "name": "quant-kit-download-ledger",
+      "bytes": 14764,
+      "digest": "sha256:8ba4745a0d2eac77c55febfb32c2395ac5c77669f6cbf45ced6a912ac0ff2c62",
+      "expires_at": "2026-11-01T23:21:32Z"
+    },
+    {
+      "id": 11256993327,
+      "name": "quant-kit-download-001",
+      "bytes": 25165970,
+      "digest": "sha256:4b6a16ca8e9b0aee7d8c9443c337c3502de3574c63cab22f343aab27a64dc8d7",
+      "expires_at": "2026-11-01T23:21:33Z"
+    },
+    {
+      "id": 11256958396,
+      "name": "quant-kit-download-012",
+      "bytes": 14484749,
+      "digest": "sha256:236853801e305233623984de77d2105e3b3e470d489ed29418dfb5262a81bcbc",
+      "expires_at": "2026-11-01T23:21:53Z"
+    },
+    {
+      "id": 11256958391,
+      "name": "quant-kit-download-011",
+      "bytes": 25165970,
+      "digest": "sha256:b11f25871da75c8fe836021be8ebff0cb5463d86944a35e4c22cdd3ccff9571b",
+      "expires_at": "2026-11-01T23:21:51Z"
+    },
+    {
+      "id": 11256893473,
+      "name": "quant-kit-download-003",
+      "bytes": 25165970,
+      "digest": "sha256:a663ceb7cee1e23b0cacdcbaa4f5476c36a0fab0eca1e663c0a5e358972631ac",
+      "expires_at": "2026-11-01T23:21:37Z"
+    },
+    {
+      "id": 11256813830,
+      "name": "quant-kit-download-005",
+      "bytes": 25165970,
+      "digest": "sha256:c8cd286cb68de903917a58a357f871467130b768a94796022bb2e881bd2ec129",
+      "expires_at": "2026-11-01T23:21:40Z"
+    },
+    {
+      "id": 11256723962,
+      "name": "quant-kit-download-007",
+      "bytes": 25165970,
+      "digest": "sha256:f3b638d1a298bfbfe574fb5e2d3219c2bd2196e5dffb6716af206ead309b2431",
+      "expires_at": "2026-11-01T23:21:44Z"
+    },
+    {
+      "id": 11256708936,
+      "name": "sandbox-replay-3.12",
+      "bytes": 1351,
+      "digest": "sha256:428c73c1434e6fce0cfb0cfa4e6239887b73201c340aceda082e20ff13df0b64",
+      "expires_at": "2026-10-09T23:21:31Z"
+    },
+    {
+      "id": 11256653915,
+      "name": "quant-kit-download-008",
+      "bytes": 25165970,
+      "digest": "sha256:448366730f0b15f613c0a23be6d4a6bfbb7d9ab106156106059b412a21e16b28",
+      "expires_at": "2026-11-01T23:21:46Z"
+    },
+    {
+      "id": 11256564150,
+      "name": "quant-kit-download-010",
+      "bytes": 25165970,
+      "digest": "sha256:3cc036af75c127d46444915c14ef165b5668f30563b5fe63ffd96fd2dee0f649",
+      "expires_at": "2026-11-01T23:21:49Z"
+    },
+    {
+      "id": 11256509117,
+      "name": "quant-kit-download-002",
+      "bytes": 25165970,
+      "digest": "sha256:8ef30ad458ce0ed75682177ec27efc74de945e9597a3dd801a3e6a845c8f47af",
+      "expires_at": "2026-11-01T23:21:35Z"
+    },
+    {
+      "id": 11256449314,
+      "name": "quant-kit-download-006",
+      "bytes": 25165970,
+      "digest": "sha256:df8cbca47918533696338df18147dc693137daf62fa66c025f165fa776bf293b",
+      "expires_at": "2026-11-01T23:21:42Z"
+    },
+    {
+      "id": 11256329446,
+      "name": "quant-kit-download-009",
+      "bytes": 25165970,
+      "digest": "sha256:fc9979351bfbb28c5ec4c60f0c73ac332b78b1ba4671fb6f4d18674f71d55d10",
+      "expires_at": "2026-11-01T23:21:48Z"
+    }
+  ],
+  "next": "Reassemble downloaded ZIP; verify lengths/hashes/ZIP members; bootstrap and verify offline locally; finish full CI and native PR; deliver ZIP."
+}

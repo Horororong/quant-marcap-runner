@@ -34,3 +34,18 @@ ZIP 생성 완료를 안내만으로 대신하지 않는다. 생성 파일은 Gi
 artifact IDs·만료를 기록한다. 전달 segment를 내려받아 각 SHA/길이를 대조하고
 ZIP을 복원한 뒤 전체 SHA와 member 무결성을 확인하여 대화에 다운로드 링크를 준다.
 실제 검증·다운로드 전에는 ZIP 전달 완료로 표시하지 않는다.
+
+
+## 단계 2 완료: 실제 ZIP 생성·양 ABI offline replay (2026-10-02 UTC)
+
+- 원격 source commit `b350b61e4db0c626e8533645a1a76d61d6ba0ae6`, PR #27, CI run `37075642412`.
+- Kit ID `ee212da3e4a71bb7fa2261b45771156e2bf49b563419c8e639db45449cf694db`; `quant-sandbox-ee212da3e4a7.zip`, **291308667 bytes**.
+  전체 SHA256: `533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587`.
+- **CPython 3.11/3.12 모두 성공**. 각 ABI에서 4예제 **83개 artifact**가 원본 checked
+  runner와 byte-identical이다. 두 ABI 간 fingerprint·NAV SHA256도 모두 일치한다.
+  6개 missing/corruption/readiness 경계도 모두 통과했다.
+- 12개 24MiB download segment와 ledger를 실제로 내려받았다. 전달 artifacts는
+  30일 보관한다. 전체 Strategy DSL test job은 아직 실행 중이며 success로 기록하지 않는다.
+- 다음: 저장된 ledger의 모든 SHA/길이로 ZIP 복원·무결성 검증, 로컬 offline
+  bootstrap/verify, 전체 CI/PR 최종 확인, 실제 ZIP 링크 전달.
+- Machine checkpoint: `docs/audits/sandbox-delivery-checkpoint-20261002.json`.
