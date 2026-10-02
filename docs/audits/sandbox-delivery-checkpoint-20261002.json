@@ -1,5 +1,5 @@
 {
-  "status": "offline_validation_complete_zip_reassembly_pending",
+  "status": "zip_verified_ready_for_user",
   "date_utc": "2026-10-02",
   "source_revision": "b350b61e4db0c626e8533645a1a76d61d6ba0ae6",
   "kit_id": "ee212da3e4a71bb7fa2261b45771156e2bf49b563419c8e639db45449cf694db",
@@ -100,10 +100,11 @@
       {
         "id": 111064819455,
         "name": "test",
-        "status": "in_progress",
-        "conclusion": null
+        "status": "completed",
+        "conclusion": "success"
       }
-    ]
+    ],
+    "conclusion": "success"
   },
   "artifacts": [
     {
@@ -212,5 +213,18 @@
       "expires_at": "2026-11-01T23:21:48Z"
     }
   ],
-  "next": "Reassemble downloaded ZIP; verify lengths/hashes/ZIP members; bootstrap and verify offline locally; finish full CI and native PR; deliver ZIP."
+  "next": "Native PR merge and record main status; deliver the verified ZIP. Main default-profile CI is distinct from the completed four-example delivery verification.",
+  "local_delivery": {
+    "status": "verified",
+    "zip": "/workspace/attachments/quant-sandbox-delivery/quant-sandbox-ee212da3e4a7.zip",
+    "bytes": 291308667,
+    "sha256": "533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587",
+    "kit_id": "ee212da3e4a71bb7fa2261b45771156e2bf49b563419c8e639db45449cf694db",
+    "source_revision": "b350b61e4db0c626e8533645a1a76d61d6ba0ae6",
+    "members": 16
+  },
+  "local_offline_install": {
+    "status": "passed",
+    "network": "IP sockets and DNS blocked by inherited libc guard"
+  }
 }
