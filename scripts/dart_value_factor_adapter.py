@@ -29,6 +29,28 @@ VALUE_FACTOR_FIELDS = (
     "quarterly_ocf_margin",
 )
 
+DART_PERIOD_POLICIES = ("legacy_april_october", "latest_disclosed_quarter")
+
+
+def validate_period_policy(policy: str) -> None:
+    if policy not in DART_PERIOD_POLICIES:
+        raise ValueError(f"unsupported DART period policy: {policy!r}")
+
+
+def candidate_quarters(signal: pd.Timestamp) -> list[tuple[int, str]]:
+    """Four most recently ended calendar quarters; no unbounded stale fallback."""
+    signal = pd.Timestamp(signal).normalize()
+    quarter = signal.to_period("Q")
+    if quarter.end_time.normalize() > signal:
+        quarter -= 1
+    labels = {1: "Q1", 2: "H1", 3: "Q3", 4: "FY"}
+    return [((quarter - i).year, labels[(quarter - i).quarter]) for i in range(4)]
+
+
+def quarter_dependencies(year: int, period: str) -> list[tuple[int, str]]:
+    previous = {"H1": "Q1", "Q3": "H1", "FY": "Q3"}
+    return ([(year, previous[period])] if period in previous else []) + [(year, period)]
+
 
 def _to_num(x) -> float:
     if x is None or (isinstance(x, float) and np.isnan(x)):
@@ -166,11 +188,12 @@ def signal_completeness_report(
     signal: pd.Timestamp,
     mapping: pd.DataFrame | None = None,
     state: pd.DataFrame | None = None,
+    period_policy: str = "legacy_april_october",
 ) -> list[dict]:
     mapping = load_historical_code_map(repo_root) if mapping is None else mapping
     state = load_backfill_state(repo_root) if state is None else state
     rows = []
-    for year, period in required_periods(pd.Timestamp(signal)):
+    for year, period in required_periods(pd.Timestamp(signal), period_policy):
         row = period_completeness(repo_root, mapping, state, year, period)
         row["signal_date"] = pd.Timestamp(signal).normalize()
         rows.append(row)
@@ -182,8 +205,10 @@ def assert_signal_complete(
     signal: pd.Timestamp,
     mapping: pd.DataFrame | None = None,
     state: pd.DataFrame | None = None,
+    period_policy: str = "legacy_april_october",
 ) -> list[dict]:
-    rows = signal_completeness_report(repo_root, signal, mapping=mapping, state=state)
+    rows = signal_completeness_report(repo_root, signal, mapping=mapping, state=state,
+                                      period_policy=period_policy)
     bad = [r for r in rows if r["ratio"] < 1.0 or not r["raw_ok"]]
     if bad:
         detail = "; ".join(
@@ -198,8 +223,12 @@ def assert_signal_complete(
     return rows
 
 
-def required_periods(signal: pd.Timestamp) -> list[tuple[int, str]]:
+def required_periods(signal: pd.Timestamp, period_policy: str = "legacy_april_october") -> list[tuple[int, str]]:
+    validate_period_policy(period_policy)
     signal = pd.Timestamp(signal)
+    if period_policy == "latest_disclosed_quarter":
+        return sorted({dependency for year, period in candidate_quarters(signal)
+                       for dependency in quarter_dependencies(year, period)})
     y = signal.year
     if signal.month == 10:
         return [(y, "Q1"), (y, "H1")]
@@ -208,7 +237,8 @@ def required_periods(signal: pd.Timestamp) -> list[tuple[int, str]]:
     raise ValueError(f"value-factor adapter currently supports April/October signals only: {signal.date()}")
 
 
-def load_financial_raw(repo_root: Path, year: int, period: str) -> pd.DataFrame:
+def load_financial_raw(repo_root: Path, year: int, period: str,
+                       preserve_reports: bool = False) -> pd.DataFrame:
     root = Path(repo_root)
     base = root / DART_HISTORY_DIR
     files: list[Path] = []
@@ -277,6 +307,14 @@ def load_financial_raw(repo_root: Path, year: int, period: str) -> pd.DataFrame:
                 "영업활동으로부터의현금흐름", "영업활동에의한현금흐름",
             ])
         )
+        if preserve_reports:
+            # Keep the receipt even if none of its accounts match the registry.
+            # Otherwise a newly disclosed, unusable report can disappear and
+            # incorrectly expose an older complete quarter.
+            markers = x[["stock_code", "fs_div_requested", "rcept_no", "filing_date"]].drop_duplicates().copy()
+            for column in ("sj_div", "account_id", "account_nm", "thstrm_amount", "thstrm_add_amount"):
+                markers[column] = ""
+            chunks.append(markers)
         x = x[is_equity | is_revenue | is_profit | is_ocf].copy()
         if len(x):
             chunks.append(x)
@@ -338,7 +376,7 @@ def _metric_priority(row: pd.Series) -> tuple[Optional[str], int]:
 
     return None, 99
 
-def report_snapshots(raw: pd.DataFrame) -> pd.DataFrame:
+def report_snapshots(raw: pd.DataFrame, keep_empty_reports: bool = False) -> pd.DataFrame:
     if "rcept_no" not in raw.columns:
         raise KeyError("rcept_no missing")
     rows = []
@@ -358,9 +396,9 @@ def report_snapshots(raw: pd.DataFrame) -> pd.DataFrame:
                 "account_nm": row.get("account_nm", ""),
                 "account_id": row.get("account_id", ""),
             })
-        if not cand:
+        if not cand and not keep_empty_reports:
             continue
-        c = pd.DataFrame(cand)
+        c = pd.DataFrame(cand, columns=["metric", "priority", "current", "cumulative", "account_nm", "account_id"])
         rec = {
             "Code": str(code).zfill(6),
             "fs_div": str(fs),
@@ -392,11 +430,71 @@ def report_snapshots(raw: pd.DataFrame) -> pd.DataFrame:
 
 
 def latest_snapshot(snap: pd.DataFrame, signal: pd.Timestamp) -> pd.DataFrame:
+    if snap.empty:
+        return snap.copy()
     x = snap[snap["filing_date"].notna() & (snap["filing_date"] <= pd.Timestamp(signal))].copy()
     if x.empty:
         return x
     x = x.sort_values(["Code", "fs_div", "filing_date", "rcept_no"])
     return x.groupby(["Code", "fs_div"], as_index=False).tail(1)
+
+
+def build_latest_quarter_inputs(signal: pd.Timestamp,
+                               period_cache: dict[tuple[int, str], pd.DataFrame]) -> pd.DataFrame:
+    """Select report period before completeness: missing latest values stay missing.
+
+    Corrections and both difference operands are selected as-of the signal.
+    Dependencies never cross financial-statement scope. Availability is the
+    later date of the report and any actually used predecessor operand.
+    """
+    rows = []
+    for year, period in candidate_quarters(signal):
+        target = latest_snapshot(period_cache[(year, period)], signal)
+        dependencies = quarter_dependencies(year, period)
+        prior = (latest_snapshot(period_cache[dependencies[0]], signal)
+                 if len(dependencies) == 2 else pd.DataFrame())
+        prior_by_key = {(r["Code"], r["fs_div"]): r for _, r in prior.iterrows()}
+        for _, report in target.iterrows():
+            predecessor = prior_by_key.get((report["Code"], report["fs_div"]))
+            availability = [report["filing_date"]]
+            rec = {"Code": report["Code"], "fs_div": report["fs_div"],
+                   "report_year": year, "report_period": period,
+                   "quarter_order": year * 4 + {"Q1": 1, "H1": 2, "Q3": 3, "FY": 4}[period],
+                   "equity": report.get("equity_current", np.nan)}
+            for metric, output in (("revenue", "revenue_q"), ("net_income", "net_income_q"),
+                                   ("ocf", "ocf_q")):
+                current = report.get(f"{metric}_current", np.nan)
+                cumulative = report.get(f"{metric}_cum", np.nan)
+                if period == "Q1":
+                    value = current if pd.notna(current) else cumulative
+                elif period != "FY" and metric != "ocf" and pd.notna(current):
+                    value = current
+                else:
+                    # IS FY current is annual; CF current is cumulative.
+                    total = (current if period == "FY" and metric != "ocf" and pd.notna(current)
+                             else cumulative if pd.notna(cumulative) else current if metric == "ocf"
+                             else np.nan)
+                    previous = np.nan
+                    if predecessor is not None:
+                        previous = predecessor.get(f"{metric}_cum", np.nan)
+                        if pd.isna(previous) and (metric == "ocf" or dependencies[0][1] == "Q1"):
+                            previous = predecessor.get(f"{metric}_current", np.nan)
+                    value = total - previous if pd.notna(total) and pd.notna(previous) else np.nan
+                    if pd.notna(value):
+                        availability.append(predecessor["filing_date"])
+                rec[output] = value
+            rec["available_date"] = max(availability)
+            rows.append(rec)
+    columns = ["Code", "fs_div", "report_year", "report_period", "equity",
+               "revenue_q", "net_income_q", "ocf_q", "available_date"]
+    out = pd.DataFrame(rows)
+    if out.empty:
+        return pd.DataFrame(columns=columns)
+    out["complete"] = out[["equity", "revenue_q", "net_income_q", "ocf_q"]].notna().all(axis=1)
+    out["fs_priority"] = out["fs_div"].map({"CFS": 0, "OFS": 1}).fillna(9)
+    out = out.sort_values(["Code", "quarter_order", "complete", "fs_priority"],
+                          ascending=[True, False, False, True], kind="mergesort")
+    return out.groupby("Code", as_index=False).head(1)[columns].reset_index(drop=True)
 
 
 def build_raw_value_inputs(signal: pd.Timestamp, period_cache: dict[tuple[int, str], pd.DataFrame]) -> pd.DataFrame:
@@ -470,7 +568,9 @@ def build_raw_value_inputs(signal: pd.Timestamp, period_cache: dict[tuple[int, s
 
 
 class DartValueFactorAdapter:
-    def __init__(self, repo_root: str | Path):
+    def __init__(self, repo_root: str | Path, period_policy: str = "legacy_april_october"):
+        validate_period_policy(period_policy)
+        self.period_policy = period_policy
         self.repo_root = Path(repo_root)
         self._period_cache: dict[tuple[int, str], pd.DataFrame] = {}
         self._mapping: pd.DataFrame | None = None
@@ -485,23 +585,27 @@ class DartValueFactorAdapter:
             self._state = load_backfill_state(self.repo_root)
         if signal not in self._coverage_cache:
             self._coverage_cache[signal] = assert_signal_complete(
-                self.repo_root, signal, mapping=self._mapping, state=self._state
+                self.repo_root, signal, mapping=self._mapping, state=self._state,
+                period_policy=self.period_policy,
             )
         return self._coverage_cache[signal]
 
     def _snapshot(self, year: int, period: str) -> pd.DataFrame:
         key = (int(year), str(period))
         if key not in self._period_cache:
-            raw = load_financial_raw(self.repo_root, *key)
-            self._period_cache[key] = report_snapshots(raw)
+            preserve = self.period_policy == "latest_disclosed_quarter"
+            raw = load_financial_raw(self.repo_root, *key, preserve_reports=preserve)
+            self._period_cache[key] = report_snapshots(raw, keep_empty_reports=preserve)
         return self._period_cache[key]
 
     def factor_frame(self, signal: pd.Timestamp, cross_section: pd.DataFrame) -> pd.DataFrame:
         signal = pd.Timestamp(signal).normalize()
         self.coverage_report(signal)
-        periods = required_periods(signal)
+        periods = required_periods(signal, self.period_policy)
         cache = {k: self._snapshot(*k) for k in periods}
-        raw = build_raw_value_inputs(signal, cache)
+        raw = (build_latest_quarter_inputs(signal, cache)
+               if self.period_policy == "latest_disclosed_quarter"
+               else build_raw_value_inputs(signal, cache))
         if raw.empty:
             return raw
 
@@ -527,8 +631,11 @@ class DartValueFactorAdapter:
             valid_revenue, out["ocf_q"] / out["revenue_q"], np.nan
         )
         out["signal_date"] = signal
+        period_columns = (["report_year", "report_period"]
+                          if self.period_policy == "latest_disclosed_quarter" else [])
         return out[[
             "Code", "signal_date", "available_date", "fs_div",
             "equity", "revenue_q", "net_income_q", "ocf_q",
             *VALUE_FACTOR_FIELDS,
+            *period_columns,
         ]].copy()

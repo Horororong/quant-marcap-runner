@@ -190,7 +190,7 @@ def external_provider_and_merger_test() -> None:
             return pd.DataFrame({"Code": cross_section["Code"], "book_to_price": 1.0 / codes, "quarterly_roe": np.where(codes <= 3, -1.0, 1.0)})
     with patch("strategy_dsl_runner.build_external_provider", return_value=Provider()) as factory:
         _, members, _ = build_decile_target_weights_from_panel(make_panel(), spec, ROOT)
-        factory.assert_called_once_with("dart", ROOT)
+        factory.assert_called_once_with("dart", ROOT, "legacy_april_october")
     first = members[members["signal_date"] == pd.Timestamp("2024-04-30")]
     assert first["Code"].tolist() == [f"{i:06d}" for i in range(4, 21)]
 

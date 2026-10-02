@@ -103,7 +103,7 @@ def selected_sources(root, strategies, extra_years=()):
         sources.update(get_filter_definition(f.field).source for f in spec.universe.filters)
         for signal in signals:
             if 'dart' in sources:
-                periods.update(required_periods(signal))
+                periods.update(required_periods(signal, spec.rebalance.dart_period_policy))
             if 'technical' in sources:
                 years.update(range(signal.year - 2, signal.year + 1))
     files = {f'data/krx_equities/yearly/marcap-{year}.parquet' for year in years}

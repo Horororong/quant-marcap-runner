@@ -15,7 +15,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-import exchange_calendars as xcals
 
 from corporate_action_registry import CORPORATE_ACTION_FILE, load_corporate_actions
 from execution_contract import HISTORY_AUDIT_CONTRACT_VERSION
@@ -36,6 +35,7 @@ class HistoryCoverageError(RuntimeError):
 
 
 def expected_krx_sessions(start: str, end: str) -> pd.DatetimeIndex:
+    import exchange_calendars as xcals
     left, right = pd.Timestamp(start), pd.Timestamp(end)
     if left.tzinfo is not None or right.tzinfo is not None or left > right:
         raise ValueError("history audit requires ordered timezone-naive dates")

@@ -327,6 +327,13 @@
     "rebalance": {
       "additionalProperties": false,
       "properties": {
+        "dart_period_policy": {
+          "default": "legacy_april_october",
+          "enum": [
+            "legacy_april_october",
+            "latest_disclosed_quarter"
+          ]
+        },
         "frequency": {
           "enum": [
             "months"

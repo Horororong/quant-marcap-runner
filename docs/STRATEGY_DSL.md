@@ -220,7 +220,7 @@ Examples:
 - `{"field":"Marcap","op":"exclude_bottom_pct","value":20}` is loaded directly from the KRX PIT panel.
 - `{"field":"book_to_price","op":"gt","value":0}` automatically activates the DART provider before the filter is applied.
 
-External filter fields are included in provider coverage/preflight checks and source-level constraints. Therefore a DART-backed filter also inherits the current April/October rebalance limitation. The runner no longer tries to request external filter columns from the KRX parquet loader.
+External filter fields are included in provider coverage/preflight checks and source-level constraints. A DART-backed filter inherits the selected `rebalance.dart_period_policy`, including its completeness gate. The runner does not request external filter columns from the KRX parquet loader.
 
 The machine-readable contract exports the valid set as `filter_fields`, and the JSON Schema constrains `universe.filters[].field` to that registry-backed set.
 
@@ -259,13 +259,30 @@ The DART provider also exposes three profitability fields whose accounting perio
 - `quarterly_net_margin`: standalone-quarter net income / standalone-quarter revenue, only when revenue is positive.
 - `quarterly_ocf_margin`: standalone-quarter operating cash flow / standalone-quarter revenue, only when revenue is positive.
 
-These fields inherit the current DART source contract: April and October signal months only, PIT filing-date enforcement, CFS-first/OFS-fallback logic, and full-source completeness gating.
+These fields inherit the selected DART reporting-period policy, PIT filing-date enforcement, CFS-first/OFS-fallback logic, and full-source completeness gating.
 
 Natural-language aliases are likewise explicit: `분기 ROE`, `분기 순이익률`, and `분기 OCF 마진`. Generic `ROE` is intentionally **not** mapped to `quarterly_roe`; annual/TTM ROE requires a separate definition.
 
 ## DART PIT value factors
 
-Current DART value-factor execution is a source-level capability with a fixed rebalance-month contract: **April and October only**. This constraint is exported as `factor_source_constraints.dart.rebalance_months=[4,10]` and is validated during DSL compilation. A DART strategy requesting another rebalance month is a `capability_gap`, not a `data_gap`.
+The default `rebalance.dart_period_policy="legacy_april_october"` preserves the original April/Q4 and October/Q2 definition, normalized JSON and strategy fingerprint. It still rejects other months as `capability_gap`.
+
+For user-selected months, explicitly set `rebalance.dart_period_policy="latest_disclosed_quarter"` and choose `months` from 1..12. Every selected month uses its last observed trading session and the existing next-close lag. For example:
+
+```json
+"rebalance": {
+  "frequency": "months",
+  "months": [3, 6, 9, 12],
+  "trading_day": "last",
+  "dart_period_policy": "latest_disclosed_quarter"
+}
+```
+
+Monthly uses all twelve months; semiannual and annual use two months and one month respectively. Specific days within a month and filing-event schedules remain capability gaps.
+
+The new policy considers the four most recently ended calendar quarters and their cumulative-difference dependencies. Per security, it selects the latest report period actually disclosed by the signal date. Corrections and predecessor operands are also PIT-filtered; subtraction never mixes CFS/OFS. Missing metrics in a newly disclosed report remain missing, rather than promoting an older complete quarter. A complete OFS can replace an incomplete CFS for the same quarter. No report older than this candidate window is automatically used. Q1 uses direct quarter values; Q2/Q3 prefer standalone IS amounts or cumulative differences; CF uses cumulative differences; Q4 is FY minus Q3. Availability is the later filing date of the target and any used difference operand.
+
+The entire candidate/dependency population retains the historical-map, terminal-state and original-shard completeness gate. An uncollected candidate period is `data_gap`, even if some old report values are present. The generated `factor_source_constraints.dart.period_policies` exports both policies. This extension does not certify legacy 2000–2014 data, arbitrary annual/TTM factors or noncalendar fiscal-period mapping. See `docs/FINANCIAL_REBALANCE.md` for the checkpoint and ChatGPT request examples.
 
 DSL v1 now supports these standardized DART fields:
 

@@ -189,6 +189,7 @@ class KitTests(unittest.TestCase):
             (history / f'dart_full_2019_{period}_CFS_00000.csv.gz').write_bytes(b'fixture')
         spec = SimpleNamespace(period=SimpleNamespace(start='2020-04-01', end='2020-04-29'),
                                factors=[SimpleNamespace(source='dart')], benchmark=None,
+                               rebalance=SimpleNamespace(dart_period_policy='legacy_april_october'),
                                universe=SimpleNamespace(filters=[]))
         audit = {'status': 'ok', 'signal_dates': ['2020-04-29']}
         with patch('strategy_dsl.load_strategy_spec', return_value=spec), \
