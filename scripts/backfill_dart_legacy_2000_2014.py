@@ -34,8 +34,10 @@ MAX_INDEX_TASKS = max(1, int(os.getenv("LEGACY_DART_INDEX_TASKS", "6")))
 MAX_DOCS = max(1, int(os.getenv("LEGACY_DART_MAX_DOCS", "20")))
 WORKERS = max(1, min(8, int(os.getenv("LEGACY_DART_WORKERS", "4"))))
 BASE = "https://opendart.fss.or.kr/api"
-PARSER_VERSION = "legacy-v4-book"
-# Runtime changes do not change financial parsing or invalidate valid v4 data.
+PARSER_VERSION = "legacy-v5-single-amount"
+SOURCE_VERSION = "opendart-document-v1"
+# Financial parsing v5 rejects ambiguous cells; transport failures are keyed by
+# SOURCE_VERSION and need not be downloaded again for a numeric-parser change.
 RUN_CONTROL = None
 TERMINAL_STATUSES = {"PARSED_4F", "PARSED_PARTIAL", "NO_METRICS", "NO_DOCUMENT"}
 MAX_ERROR_ATTEMPTS = 3
@@ -155,9 +157,8 @@ ALIASES = {
     ],
 }
 
-# Accepted financial-statement context for each canonical input.  An empty
-# inferred context is still allowed for old filings whose HTML headings are
-# malformed; parser_confidence records that limitation for later quality gates.
+# Explicit statement context is required. Unknown/malformed headings are data
+# gaps; do not promote annual dividend/business summaries to current-period IS.
 METRIC_STATEMENTS = {
     "equity": {"BS"},
     "total_assets": {"BS"},
@@ -225,23 +226,18 @@ def norm_account(x: str) -> str:
 
 def parse_number(x: str) -> float:
     s = str(x or "").strip()
-    if not s:
-        return math.nan
-    s = s.replace(",", "").replace(" ", "")
     s = s.replace("△", "-").replace("▲", "-").replace("Δ", "-").replace("－", "-")
-    if s in {"-", "—", "–"}:
-        return 0.0
-    neg = s.startswith("(") and s.endswith(")")
-    if neg:
-        s = s[1:-1]
-    s = re.sub(r"[^0-9.+\-]", "", s)
-    if s in {"", ".", "+", "-"}:
+    negative_parentheses = s.startswith("(") and s.endswith(")")
+    if negative_parentheses:
+        s = s[1:-1].strip()
+    # One complete numeric token. Commas must separate groups of three;
+    # whitespace between numbers, footnotes and concatenated amounts are gaps.
+    if not re.fullmatch(r"[+-]?(?:[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)(?:\.[0-9]+)?", s):
         return math.nan
-    try:
-        v = float(s)
-        return -v if neg else v
-    except Exception:
+    value = float(s.replace(",", ""))
+    if not math.isfinite(value):
         return math.nan
+    return -abs(value) if negative_parentheses else value
 
 
 def dart_get_json(path: str, params: dict, timeout: int = 30) -> dict:
@@ -693,16 +689,13 @@ def choose_metric(account: str, statement: str) -> tuple[str, int] | tuple[None,
     best = None
     best_score = 999
     for metric, aliases in ALIASES.items():
-        if statement:
-            allowed = METRIC_STATEMENTS.get(metric, set())
-            if allowed and statement not in allowed:
-                continue
+        allowed = METRIC_STATEMENTS.get(metric, set())
+        if not statement or statement not in allowed:
+            continue
         for rank, alias in enumerate(aliases):
             na = norm_account(alias)
             if a == na:
                 score = rank
-            elif na and na in a and len(a) <= len(na) + 8:
-                score = 20 + rank
             else:
                 continue
             if score < best_score:
@@ -763,6 +756,8 @@ def table_candidates(text: str) -> list[dict]:
                 use_unit = unit or row_unit
                 use_mult = mult if not math.isnan(mult) else row_mult
                 amount_krw = val * use_mult if not math.isnan(use_mult) else math.nan
+                if not math.isfinite(amount_krw):
+                    amount_krw = math.nan
                 conf = 0.45
                 if statement: conf += 0.20
                 if priority < 10: conf += 0.15
@@ -859,7 +854,7 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
 
         scopes={}
         for scope in ("CFS","OFS"):
-            have={r["metric"] for r in rows if r["scope"]==scope and not math.isnan(float(r["amount_krw"]))}
+            have={r["metric"] for r in rows if r["scope"]==scope and math.isfinite(float(r["amount_krw"]))}
             scopes[scope]=len(have & CORE_4F)
         usable=max(scopes.values()) if scopes else 0
         best_scope=max(scopes,key=scopes.get) if usable > 0 else ""
@@ -908,7 +903,16 @@ def current_state() -> pd.DataFrame:
     state = load_csv(STATE_FILE, dtype=str)
     if state.empty or "parser_version" not in state:
         return pd.DataFrame(columns=["rcept_no", "status", "metric_rows", "document_sha256", "attempt_count"])
-    return state[state["parser_version"].eq(PARSER_VERSION)].fillna("").drop_duplicates("rcept_no", keep="last")
+    state = state.fillna("")
+    source = state.get("source_version", pd.Series("", index=state.index))
+    compatible = source.eq(SOURCE_VERSION)
+    # The inspected v4 code used this exact OpenDART document endpoint. Its
+    # API-014 results are transport observations, not financial-parser outputs.
+    if SOURCE_VERSION == "opendart-document-v1":
+        compatible |= source.eq("") & state["parser_version"].eq("legacy-v4-book")
+    current = state["parser_version"].eq(PARSER_VERSION) & compatible
+    transport_only = state["status"].eq("NO_DOCUMENT") & compatible
+    return state[current | transport_only].drop_duplicates("rcept_no", keep="last")
 
 
 def durable_done_receipts(state: pd.DataFrame) -> set[str]:
@@ -975,6 +979,7 @@ def process_pending(idx: pd.DataFrame, *, max_docs=None, workers=None, control=N
 
     def checkpoint(rows, states):
         for record in states:
+            record["source_version"] = SOURCE_VERSION
             record["attempt_count"] = old_attempts.get(record["rcept_no"], 0) + (record["status"] == "ERROR")
         append_normalized(rows)
         # Never mark a receipt done before all of its metric files are published.
@@ -1041,6 +1046,8 @@ def write_coverage(idx: pd.DataFrame) -> None:
     status=pd.DataFrame([{
         "mode": mode,
         "parser_version": PARSER_VERSION,
+        "source_version": SOURCE_VERSION,
+        "source_only_filings_carried_forward": int((state["status"].eq("NO_DOCUMENT") & state["parser_version"].ne(PARSER_VERSION)).sum()),
         "collection_complete": collection_complete,
         "quality_status": "INDEPENDENT_SOURCE_AUDIT_REQUIRED",
         "quality_complete": False,

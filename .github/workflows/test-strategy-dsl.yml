@@ -12,6 +12,7 @@ on:
       - 'scripts/backfill_dart_legacy_2000_2014.py'
       - 'scripts/backfill_super_value_fast.py'
       - 'tests/test_legacy*.py'
+      - 'tests/fixtures/legacy_dart/**'
       - '.github/workflows/backfill-super-value-fast.yml'
       - '.github/workflows/backfill-dart-legacy-2000-2014.yml'
       - 'scripts/*sandbox*.py'

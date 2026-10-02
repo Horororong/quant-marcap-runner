@@ -110,3 +110,15 @@
 - `c0c6ac0`의 세 번째 bootstrap commit `2bc35be`: current durable mapped processed 6,293 / remaining 108,727 / 4F 464. Source-quality 완료는 False다. 세 번의 100건은 일부 이전 버전 재처리이며 unique receipt 수 증가와 구분한다.
 
 다음 작업은 capture v2의 실제 원문 구조와 native numeric column/heading/scope/unit을 읽고 독립 기대값을 만드는 것이다. 자료가 없다는 가정이나 숫자 크기를 맞추기 위한 임시 교정은 금지한다.
+
+## 단계 6: 원문으로 재현한 복합 셀 오류 차단 / parser v5
+
+- Capture v2 run <https://github.com/Horororong/quant-marcap-runner/actions/runs/36953686608> **Success**, 8개 원문 evidence는 main commit `610fd4e`에 저장됐다. 직전 code `2b0cbea`의 local 전체 Strategy DSL 검사 **31/31 통과**, 같은 commit의 GitHub CI <https://github.com/Horororong/quant-marcap-runner/actions/runs/36953686599> **Success**(19m14s, Python 3.11/3.12 replay 포함)를 확인했다.
+- 데이콤 `20000515000887`의 literal source character 107588–110724에서 `매출액·영업이익·당기순이익`이 한 account cell에, `751,637 22,35416,940`이 한 amount cell에 들어 있다. 표는 1999~1994 연간 사업실적이며 현재 분기 손익계산서가 아니다. v4는 이를 `net_income=7.51637223541694e21 KRW`, statement 빈 값으로 반환했다. 이 source를 직접 재현했으며 `tests/fixtures/legacy_dart/merged_annual_stats_20000515000887.json`에 ZIP/member SHA·offset·원문·독립 거부 기대값을 보존했다.
+- `legacy-v5-single-amount`는 완전한 단일 숫자 token만 허용하고 comma grouping을 검증한다. 복합 금액·주석·비율·비정상 grouping을 숫자로 합치지 않으며 standalone dash는 0이 아니라 missing이다. 실제 `0`, decimal, Δ/▲/△/괄호 음수와 손실계정 정규화는 유지한다. Nonfinite 숫자나 단위 환산 overflow는 usable metric으로 인정하지 않는다.
+- 등록한 exact account alias와 해당 metric의 명시적인 statement heading이 있어야 후보가 된다. 짧은 substring이나 unknown statement로 사업요약을 현재 재무정보로 승격하지 않는다. 이 변경이 모든 heading/scope/당기 column 오류를 해결했다는 뜻은 아니다.
+- Financial parser version 변경으로 이전의 PARSED/NO_METRICS는 v5에서 재처리하며 기존 normalized version 관측값은 그대로 보존한다. 원문 download adapter는 `source_version=opendart-document-v1`로 별도 관리한다. 같은 source adapter의 API 014 `NO_DOCUMENT`는 numeric parser 수정만으로 재요청하지 않는다. 기존 v4에서 source field가 없던 014도 확인된 동일 endpoint이므로 이 범위에 한해 carry forward한다. Source adapter가 바뀌면 그 상태는 재검토 대상이며, API 014는 실제 원문 부재의 인증이 아니다.
+- Parser/resume/automation/source-evidence **51 passed**. 실제 source fixture, strict numeric failure boundary, unit overflow, 기존 음수·손실, 정상 데이터 resume, source-version invalidation을 검증했다. Fixture-only 변경도 두 기존 CI에서 검증되도록 paths를 추가했다. 전체 v5 CI와 live 재처리 결과는 다음 checkpoint에 기록한다.
+- 네 초기 XML(`20010103000052`, `20010104000076`, `20010213000010`, `20010213000014`)은 원본 UTF-8 내용에 이미 replacement character와 깨진 한글이 있다. Decoder만 바꾸거나 계정명을 추측해 복구하지 않는다. 한글이 읽히는 `20000809000052`, `20000814000085`도 확보한 주 문서에서 재무 계정을 확인하지 못했다. Public viewer 200을 재무 본문 확인으로 해석하지 않고 financial statement/첨부 원문 경로를 다음 단계에서 조사한다.
+
+**현재 완료 단계:** 지침 저장, 안전한 resume·기존 daily 자동화, 실제 300건 수집/재처리, 대표 8개 원문 확보 및 첫 source-proven parser guard. **현재 진행 단계:** v5 전체 regression 후 배포·bounded live 재처리. **다음 단계:** 초기 공시의 재무 본문/첨부 원천 확인 → 기간·scope·unit·당기 column의 독립 기대값 → 필요한 parser 수정·재처리 → FY2014의 2015 접수 coverage와 mapping 검증 → 독립 audit. 2000~2014 수집·품질 검증 완료는 계속 False이며 legacy 실행 capability는 공개하지 않는다.

@@ -36,7 +36,8 @@ def result(meta, *, version=None, status="PARSED_PARTIAL"):
         rows = []
     state = {"rcept_no": meta["rcept_no"], "status": status, "metric_rows": len(rows),
              "usable_metric_count": 1, "best_scope": "OFS", "document_sha256": "source-hash",
-             "parser_version": version, "updated_at_utc": "2001-01-01T00:00:00Z", "error": ""}
+             "parser_version": version, "source_version": legacy.SOURCE_VERSION,
+             "updated_at_utc": "2001-01-01T00:00:00Z", "error": ""}
     return rows, state
 
 
@@ -276,3 +277,25 @@ def test_append_preserves_all_old_numeric_tokens_and_missing_strings_verbatim(st
     after = pd.read_csv(path, dtype=str, keep_default_na=False)
     kept = after[after.parser_version.eq("legacy-v3-book")].iloc[0].to_dict()
     assert old == kept
+
+
+def test_numeric_parser_change_preserves_transport_only_no_document_state(store, monkeypatch):
+    _, state = result(index(2).iloc[0], version="legacy-v4-book", status="NO_DOCUMENT")
+    # Historical v4 schema did not yet record a separate source-version field.
+    state.pop("source_version")
+    legacy.upsert_state(legacy.STATE_FILE, [state], "rcept_no")
+    calls = []
+    monkeypatch.setattr(legacy, "process_filing", lambda meta: (calls.append(meta["rcept_no"]) or result(meta)))
+    legacy.process_pending(index(2), workers=1, control=control())
+    assert calls == [index(2).iloc[1].rcept_no]
+    legacy.write_coverage(index(2))
+    status = pd.read_csv(legacy.STATUS_FILE).iloc[0]
+    assert status["source_only_filings_carried_forward"] == 1
+
+
+def test_source_adapter_change_invalidates_previous_no_document_result(store, monkeypatch):
+    _, state = result(index(1).iloc[0], version="legacy-v4-book", status="NO_DOCUMENT")
+    legacy.upsert_state(legacy.STATE_FILE, [state], "rcept_no")
+    monkeypatch.setattr(legacy, "SOURCE_VERSION", "source-v2-test")
+    pending, _ = legacy.pending_receipts(index(1), legacy.current_state())
+    assert len(pending) == 1
