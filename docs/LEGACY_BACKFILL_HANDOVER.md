@@ -99,3 +99,14 @@
 - `API_014`, viewer HTTP 200/403, 다운로드 성공을 실제 source absence/금융적 정확성으로 인증하지 않는다. 실패 probe를 계속 매일 반복하지 않는다. 재조사는 별도 명시적인 후속 실행으로 관리한다.
 - 기존 sample audit의 `audit_ok`를 같은 parser 재파싱으로 True로 만드는 것을 차단했다. 별도 `reparse_consistency_ok`를 제공하고 독립 audit는 `NOT_RUN`/pending, `audit_ok=False`이다. Corrupt input을 조용히 제외하지 않는다. Original amount 기대값 검증은 아직 구현하지 않았으며 재파싱 통과율과 분리한다.
 - 기존 음수/손실 회귀 유지. 금융 parser는 아직 `legacy-v4-book`이며 원문 확인 없이 숫자 해석을 바꾸지 않았다. 테스트와 actionlint 후 원격 실행/실제 source 확인 및 최종 전체 CI를 기록한다.
+
+## 실제 원문 확보 checkpoint / capture v2
+
+- Audit run <https://github.com/Horororong/quant-marcap-runner/actions/runs/36952781646>가 기존 lock 뒤에 실행됐으며 commit `2d4e4a3`에 대표 6개 receipt 원문 ZIP SHA/member SHA가 저장됐다. **6개 모두 OpenDART DOWNLOADED, public viewer HTTP 200**이다. 따라서 이 사례의 NO_METRICS를 실제 원문 부재라고 결론낼 수 없다.
+- Initial capture의 HTML TABLE 기반 발췌는 6개 모두 0개였다. Original ZIP은 90일 artifact `legacy-original-source-evidence`(258KB)에 보존됐다. 원문 형식 확인을 위해 capture v2에 literal document head·native tag counts·table 외 계정 주변 원문을 추가한다. 원래 format을 추정해 금융 parser를 먼저 바꾸지 않는다.
+- v2는 기존 6개의 marker가 없는 source report만 재확보하며, 비정상 raw cell 대표 `20000515000887`(net_income), `20000214000011`(short_term_borrowings) 2개를 더 조사한다. 총 8 receipts / 48 API+viewer attempts / 10분 / Git excerpt 40,000 characters per receipt. Parser version과 별개의 `evidence_capture_version=2`로 수집 증거 변경을 관리한다.
+- 현재 v4에서 `abs(amount_krw)>1e20`인 관측값 55개/53 receipts를 진단했다. threshold는 **조사 대상 선정**이며 금액을 바꾸거나 정확성을 판정하는 금융 규칙이 아니다. 예: `raw_amount='751,637 22,35416,940'`이 하나의 net-income 값으로 저장돼 있었다. 실제 공시 원문과 대조해야 한다.
+- 같은 parser sample reparse 36개는 100% 일치했지만 structural/reparse consistency는 31/36(86.11%)이고 독립 audit는 **36개 전부 pending / audit_pass 0 / audit_fail 0**이다. 재파싱 성공을 금융 정확성으로 인증하지 않는다.
+- `c0c6ac0`의 세 번째 bootstrap commit `2bc35be`: current durable mapped processed 6,293 / remaining 108,727 / 4F 464. Source-quality 완료는 False다. 세 번의 100건은 일부 이전 버전 재처리이며 unique receipt 수 증가와 구분한다.
+
+다음 작업은 capture v2의 실제 원문 구조와 native numeric column/heading/scope/unit을 읽고 독립 기대값을 만드는 것이다. 자료가 없다는 가정이나 숫자 크기를 맞추기 위한 임시 교정은 금지한다.

@@ -14,6 +14,7 @@ from pathlib import Path
 import re
 import tempfile
 import zipfile
+from collections import Counter
 
 try:
     from scripts import backfill_dart_legacy_2000_2014 as legacy
@@ -26,7 +27,9 @@ except ModuleNotFoundError as error:
 # Representative failures from the committed index/state; fiscal labels do not
 # prove report-period interpretation (several companies had non-December FYs).
 RECEIPTS = ("20010103000052", "20010104000076", "20000814000085",
-            "20000809000052", "20010213000010", "20010213000014")
+            "20000809000052", "20010213000010", "20010213000014",
+            "20000515000887", "20000214000011")
+EVIDENCE_CAPTURE_VERSION = 2
 REPORT_DIR = Path("docs/audits/legacy/source_probes")
 MAX_EXCERPT_CHARS = 40_000
 MAX_MEMBER_BYTES = 20_000_000
@@ -71,8 +74,26 @@ def source_excerpts(blob):
                 spans.append({"start_character": start, "end_character": start + take,
                               "clipped": take < end - start, "source_text": text[start:start + take]})
                 remaining -= take
+            # Keep inspectable evidence even when the financial content uses a
+            # different native structure than HTML TABLE (e.g. encoded payload).
+            # No-table / no-matching-account is NOT proof of missing statements.
+            head_size = min(2000, remaining)
+            remaining -= head_size
+            contexts = []
+            for token in ("자본총계", "매출액", "순이익", "순손실", "영업활동"):
+                pattern = r"(?:\s|<[^>]*>)*".join(map(re.escape, token))
+                match = re.search(pattern, text)
+                if match and remaining:
+                    start = max(0, match.start() - 1200)
+                    end = min(len(text), match.end() + 3000, start + remaining)
+                    contexts.append({"matched_token": token, "start_character": start,
+                                     "end_character": end, "source_text": text[start:end]})
+                    remaining -= end - start
             result.append({"member_name": entry.filename, "member_sha256": hashlib.sha256(raw).hexdigest(),
-                           "source_encoding": encoding, "source_characters": len(text), "excerpts": spans})
+                           "source_encoding": encoding, "source_characters": len(text),
+                           "source_head": text[:head_size],
+                           "tag_counts": dict(Counter(re.findall(r"<([\w:-]+)\b", text)).most_common(30)),
+                           "account_contexts": contexts, "excerpts": spans})
             if remaining <= 0:
                 break
     return result
@@ -82,6 +103,7 @@ def probe(receipt, artifact_dir, guard):
     record = {"rcept_no": receipt,
               "public_viewer_url": f"https://dart.fss.or.kr/dsaf001/main.do?rcpNo={receipt}",
               "parser_version_at_probe": legacy.PARSER_VERSION,
+              "evidence_capture_version": EVIDENCE_CAPTURE_VERSION,
               "independent_source_audit_status": "NOT_RUN",
               "source_absence_confirmed": False,
               "actions_run_id": os.getenv("GITHUB_RUN_ID", ""),
@@ -125,7 +147,7 @@ def main():
     artifact_dir = Path(os.environ["LEGACY_SOURCE_ARTIFACT_DIR"])
     artifact_dir.mkdir(parents=True, exist_ok=True)
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
-    guard = legacy.CollectionControl(max_requests=36, max_seconds=600, min_interval=0.5)
+    guard = legacy.CollectionControl(max_requests=48, max_seconds=600, min_interval=0.5)
     previous = legacy.RUN_CONTROL
     legacy.RUN_CONTROL = guard
     try:
@@ -134,8 +156,12 @@ def main():
                 path = REPORT_DIR / f"{receipt}.json"
                 # Original-source reports are immutable evidence, independent of
                 # parser version. Retry a failed probe only on an explicit run.
-                if path.exists() or guard.should_stop():
+                if guard.should_stop():
                     continue
+                if path.exists():
+                    previous_report = json.loads(path.read_text(encoding="utf-8"))
+                    if previous_report.get("evidence_capture_version") == EVIDENCE_CAPTURE_VERSION:
+                        continue
                 record = probe(receipt, artifact_dir, guard)
                 descriptor, temporary = tempfile.mkstemp(prefix=".pending-", dir=REPORT_DIR)
                 try:

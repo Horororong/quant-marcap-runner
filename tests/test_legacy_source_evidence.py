@@ -37,6 +37,17 @@ def test_excerpt_budget_marks_clipping_without_changing_source(monkeypatch):
     assert span["clipped"] and span["source_text"] == text[:100]
 
 
+def test_non_html_document_still_preserves_inspectable_literal_evidence():
+    text = '<?xml version="1.0" encoding="euc-kr"?><DOCUMENT><BODY><P>매 출 액 10,000</P></BODY></DOCUMENT>'
+    member = probe.source_excerpts(archive(text))[0]
+    assert not member["excerpts"]
+    assert member["source_head"] == text
+    assert member["tag_counts"]["DOCUMENT"] == 1
+    span = member["account_contexts"][0]
+    assert span["source_text"] == text[span["start_character"]:span["end_character"]]
+    assert "10,000" in span["source_text"]
+
+
 def test_probe_api_014_and_viewer_403_do_not_certify_source_absence(tmp_path, monkeypatch):
     def unavailable(receipt):
         raise probe.legacy.DocumentUnavailable("API status 014")
