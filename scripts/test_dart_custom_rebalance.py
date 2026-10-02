@@ -256,14 +256,27 @@ def real_source_check():
 
 def real_execution_check():
     from strategy_dsl_run import run_checked_strategy
+    from strategy_dsl_runner import run_strategy
     print("REAL CUSTOM-MONTH CHECKED NAV: START", flush=True)
     faulthandler.dump_traceback_later(60, repeat=True)
     try:
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "run"
-            result = run_checked_strategy(
-                ROOT / "config/strategies/kr_equity_dart_custom_month_research.json",
-                ROOT, output, postprocess=False)
+            actual_execution = {}
+
+            def capture_execution(*args, **kwargs):
+                actual = run_strategy(*args, **kwargs)
+                actual_execution.update(actual["engine_result"])
+                return actual
+
+            # Transparently capture the real engine return. The checked runner
+            # publishes NAV/selection artifacts, not an execution_schedule CSV.
+            with patch("strategy_dsl_run.run_strategy", side_effect=capture_execution) as execution:
+                result = run_checked_strategy(
+                    ROOT / "config/strategies/kr_equity_dart_custom_month_research.json",
+                    ROOT, output, postprocess=False)
+                self_calls = execution.call_count
+            assert self_calls == 1
             assert result["status"] == "ok" and result["nav_ready"] and not result["report_ready"], result
             selections = pd.read_csv(output / "artifacts/selections.csv", dtype={"Code": str})
             assert len(selections) == 10
@@ -272,8 +285,8 @@ def real_execution_check():
             assert selections.dart_report_period.eq("Q1").all()
             nav = pd.read_csv(output / "artifacts/daily_nav.csv").drop(columns="Date")
             assert np.isfinite(nav.to_numpy()).all() and (nav.to_numpy() > 0).all()
-            schedule = pd.read_csv(output / "artifacts/execution_schedule.csv")
-            assert set(schedule.execution_date) == {"2020-06-01"}, schedule
+            schedule = actual_execution["execution_scenarios"]["gross"]["execution_schedule"]
+            assert set(pd.to_datetime(schedule.execution_date)) == {pd.Timestamp("2020-06-01")}, schedule
             assert not (output / "report").exists()
             print("REAL CUSTOM-MONTH CHECKED NAV: PASS (May signal, June t+1, Q1 PIT, validated NAV)", flush=True)
     finally:

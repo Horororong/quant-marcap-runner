@@ -23,6 +23,12 @@
 
 다음: 구현 PR의 모든 required CI 확인 → native merge → main CI 확인. 아직 main 배포 완료로 소개하지 않는다.
 
+### 첫 원격 실거래 검사 경로 수정
+
+- 구현 remote commit 901a3631ce390557f3c139e26478268fd390c0c1 / PR #26. CI 37019745246에서 새 14개 회귀와 실제 삼성전자 원문 oracle가 통과했다. 실제 checked 실행은 status=ok / nav_ready=True / report_ready=False였고 10개 종목의 Q1/PIT 선정과 유한 양의 NAV까지 확인했다.
+- 테스트가 기존 publisher에서 저장하지 않는 artifacts/execution_schedule.csv를 읽어 FileNotFoundError로 실패했다. 실행 실패나 hang이 아니었다. 60초 stack dump는 report_snapshots의 원자료 처리 위치를 보여 주고 전체 실제 실행은 약 142초 뒤 정상 반환했다.
+- 체결 지연 검증을 삭제하지 않고, 실제 공통 run_strategy를 그대로 호출하는 transparent wrapper로 engine_result.execution_scenarios.gross.execution_schedule을 확인하도록 수정했다. 수정 commit의 전체 CI와 기존 실데이터 회귀를 다시 확인한다. 첫 실패 run을 성공으로 기록하지 않는다.
+
 ## ChatGPT에서 요청하는 예
 
 > 재무 팩터 리밸런싱을 3·6·9·12월 마지막 거래일로 해줘. 각 종목은 그날까지 공시된 최신 분기의 수치를 사용하고 최신 보고의 결측을 과거 분기로 대체하지 마. next-close 1거래일 지연으로 실행해줘. 필요한 데이터가 부족하면 정확한 data_gap을 알려줘.
@@ -30,4 +36,3 @@
 매월은 months=[1,2,3,4,5,6,7,8,9,10,11,12], 5·11월 반기는 [5,11], 매년 7월은 [7]이다. 선택한 월 외에 신호를 임의 추가하지 않는다. 예시 파일 config/strategies/kr_equity_dart_custom_month_research.json은 **시총 10조 이상 대형주 10개**라는 명시적 연구 유니버스에서 2020년 5월 신호를 검증하기 위한 짧은 실행 예다. 사용자의 다른 시장·종목 조건에 이 필터를 자동 부과하지 않는다.
 
 ChatGPT용 runtime kit는 새 code commit과 요청에 필요한 whole-period shards로 다시 빌드·verify/replay해야 한다. 기존 kit에 이 기능이나 새로운 연도가 자동으로 설치되지는 않는다. 기본 배포 kit의 3개 starter coverage가 임의의 월·기간을 보장하지 않는다. 월 중 특정 날짜/공시 이벤트, 연간·TTM 정의, legacy 2000–2014 품질 인증은 별도 미완료다.
-
