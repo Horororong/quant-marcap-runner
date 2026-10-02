@@ -2,19 +2,28 @@ from __future__ import annotations
 
 import hashlib
 import io
+import json
 import math
 import os
 import re
 import time
 import zipfile
 import warnings
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
+
+try:
+    from scripts.csv_storage import atomic_write_if_changed
+    from scripts.legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
+except ModuleNotFoundError as error:
+    if error.name != "scripts":
+        raise
+    from csv_storage import atomic_write_if_changed
+    from legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
 
 warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
@@ -26,6 +35,10 @@ MAX_DOCS = max(1, int(os.getenv("LEGACY_DART_MAX_DOCS", "20")))
 WORKERS = max(1, min(8, int(os.getenv("LEGACY_DART_WORKERS", "4"))))
 BASE = "https://opendart.fss.or.kr/api"
 PARSER_VERSION = "legacy-v4-book"
+# Runtime changes do not change financial parsing or invalidate valid v4 data.
+RUN_CONTROL = None
+TERMINAL_STATUSES = {"PARSED_4F", "PARSED_PARTIAL", "NO_METRICS", "NO_DOCUMENT"}
+MAX_ERROR_ATTEMPTS = 3
 
 ROOT = Path("data/financials/legacy_2000_2014")
 NORM_DIR = ROOT / "normalized"
@@ -231,6 +244,8 @@ def dart_get_json(path: str, params: dict, timeout: int = 30) -> dict:
     last = None
     for attempt in range(4):
         try:
+            if RUN_CONTROL is not None:
+                RUN_CONTROL.before_request()
             r = requests.get(f"{BASE}/{path}", params=params, timeout=timeout)
             r.raise_for_status()
             obj = r.json()
@@ -257,7 +272,7 @@ def save_index(df: pd.DataFrame) -> None:
     if df.empty:
         return
     df = df.drop_duplicates("rcept_no", keep="last").sort_values(["rcept_dt", "rcept_no"])
-    df.to_csv(INDEX_FILE, index=False, encoding="utf-8-sig", compression="gzip")
+    atomic_write_if_changed(df, INDEX_FILE)
 
 
 def infer_report_fields(report_nm: str, filing_date: pd.Timestamp) -> dict:
@@ -313,6 +328,8 @@ def load_index_state() -> pd.DataFrame:
 
 
 def upsert_state(path: Path, rows: list[dict], key: str) -> None:
+    if not rows:
+        return
     old = load_csv(path, dtype=str)
     new = pd.DataFrame(rows)
     if old.empty:
@@ -320,7 +337,14 @@ def upsert_state(path: Path, rows: list[dict], key: str) -> None:
     else:
         out = pd.concat([old, new], ignore_index=True, sort=False)
     out = out.drop_duplicates(key, keep="last")
-    out.to_csv(path, index=False, encoding="utf-8-sig")
+    atomic_write_if_changed(out, path)
+
+
+def safe_error(error: Exception) -> str:
+    message = repr(error)
+    if API_KEY:
+        message = message.replace(API_KEY, "[REDACTED]")
+    return re.sub(r"(crtfc_key=)[^&\s'\"]+", r"\1[REDACTED]", message)
 
 
 def fetch_index_task(row: pd.Series) -> tuple[list[dict], dict]:
@@ -368,7 +392,7 @@ def fetch_index_task(row: pd.Series) -> tuple[list[dict], dict]:
     except Exception as e:
         state = {
             "task_key": row["task_key"], "status": "ERROR", "rows_found": len(found),
-            "updated_at_utc": now_utc(), "error": repr(e),
+            "updated_at_utc": now_utc(), "error": safe_error(e),
         }
         return found, state
 
@@ -379,25 +403,30 @@ def update_filing_index() -> pd.DataFrame:
     st = load_index_state()
     done = set(st.loc[st["status"] == "OK", "task_key"].astype(str)) if not st.empty else set()
     todo = tasks[~tasks["task_key"].isin(done)].head(MAX_INDEX_TASKS)
-
-    new_rows: list[dict] = []
-    state_rows: list[dict] = []
+    if todo.empty:
+        # No list calls, historical remapping or gzip regeneration on a no-op.
+        return existing
+    all_idx = existing
     for _, task in todo.iterrows():
-        rows, state = fetch_index_task(task)
-        new_rows.extend(rows)
-        state_rows.append(state)
-        if state["status"] == "ERROR" and "RateLimitExceeded" in state["error"]:
+        if RUN_CONTROL is not None and RUN_CONTROL.should_stop():
             break
+        rows, state = fetch_index_task(task)
+        if rows:
+            add = pd.DataFrame(rows)
+            all_idx = pd.concat([all_idx, add], ignore_index=True, sort=False) if not all_idx.empty else add
+            all_idx = prepare_filing_index(all_idx)
+            save_index(all_idx)
+        # Publish index data before OK. If interrupted here the task is fetched
+        # again and receipt deduplication makes that replay safe.
+        upsert_state(INDEX_STATE_FILE, [state], "task_key")
+        if "RateLimitExceeded" in state["error"]:
+            if RUN_CONTROL is not None:
+                RUN_CONTROL.stop("RATE_LIMIT")
+            break
+    return all_idx
 
-    if state_rows:
-        upsert_state(INDEX_STATE_FILE, state_rows, "task_key")
 
-    if new_rows:
-        add = pd.DataFrame(new_rows)
-        all_idx = pd.concat([existing, add], ignore_index=True, sort=False) if not existing.empty else add
-    else:
-        all_idx = existing
-
+def prepare_filing_index(all_idx: pd.DataFrame) -> pd.DataFrame:
     if all_idx.empty:
         return all_idx
 
@@ -427,7 +456,6 @@ def update_filing_index() -> pd.DataFrame:
         all_idx[c] = inferred[c]
     all_idx = assign_fiscal_periods(all_idx)
     all_idx = map_filings_to_krx(all_idx)
-    save_index(all_idx)
     return all_idx
 
 
@@ -457,7 +485,7 @@ def build_krx_name_intervals() -> pd.DataFrame:
         first_date=("first_date","min"), last_date=("last_date","max")
     )
     out["norm_name"] = out["stock_name"].map(norm_name)
-    out.to_csv(NAME_MAP_FILE, index=False, encoding="utf-8-sig", compression="gzip")
+    atomic_write_if_changed(out, NAME_MAP_FILE)
     return out
 
 
@@ -762,6 +790,8 @@ def fetch_document(rcept_no: str) -> tuple[bytes, str]:
     last=None
     for attempt in range(4):
         try:
+            if RUN_CONTROL is not None:
+                RUN_CONTROL.before_request()
             r=requests.get(f"{BASE}/document.xml",params={"crtfc_key":API_KEY,"rcept_no":rcept_no},timeout=90)
             r.raise_for_status()
             if r.content[:2] != b"PK":
@@ -829,13 +859,16 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
         return rows,state
     except DocumentUnavailable as e:
         return [],{"rcept_no":rcept,"status":"NO_DOCUMENT","metric_rows":0,"best_scope":"",
-                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":repr(e)}
+                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":safe_error(e)}
+    except CollectionPaused as e:
+        return [],{"rcept_no":rcept,"status":"DEFERRED","metric_rows":0,"best_scope":"",
+                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":safe_error(e)}
     except RateLimitExceeded as e:
         return [],{"rcept_no":rcept,"status":"RATE_LIMIT","metric_rows":0,"best_scope":"",
-                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":repr(e)}
+                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":safe_error(e)}
     except Exception as e:
         return [],{"rcept_no":rcept,"status":"ERROR","metric_rows":0,"best_scope":"",
-                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":repr(e)}
+                   "usable_metric_count":0,"document_sha256":"","parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":safe_error(e)}
 
 
 def append_normalized(rows: list[dict]) -> None:
@@ -848,62 +881,118 @@ def append_normalized(rows: list[dict]) -> None:
         p=NORM_DIR/f"legacy_metrics_{label}.csv.gz"
         old=load_csv(p,dtype={"rcept_no":str,"stock_code":str,"corp_code":str})
         out=pd.concat([old,g],ignore_index=True,sort=False) if not old.empty else g
-        out=out.drop_duplicates(["rcept_no","metric","scope"],keep="last")
-        out.to_csv(p,index=False,encoding="utf-8-sig",compression="gzip")
+        # Keep earlier parser-version observations for audit rather than mixing
+        # them with, or deleting them in favour of, the current interpretation.
+        out=out.drop_duplicates(["rcept_no","metric","scope","parser_version"],keep="last")
+        atomic_write_if_changed(out, p)
 
 
-def process_pending(idx: pd.DataFrame) -> None:
+def current_state() -> pd.DataFrame:
+    state = load_csv(STATE_FILE, dtype=str)
+    if state.empty or "parser_version" not in state:
+        return pd.DataFrame(columns=["rcept_no", "status", "metric_rows", "document_sha256", "attempt_count"])
+    return state[state["parser_version"].eq(PARSER_VERSION)].fillna("").drop_duplicates("rcept_no", keep="last")
+
+
+def durable_done_receipts(state: pd.DataFrame) -> set[str]:
+    """Terminal parse state alone is insufficient if its normalized data was lost."""
+    done = set(state.loc[state["status"].isin(["NO_METRICS", "NO_DOCUMENT"]), "rcept_no"])
+    parsed = state[state["status"].isin(["PARSED_4F", "PARSED_PARTIAL"])]
+    if parsed.empty:
+        return done
+    frames = []
+    for path in sorted(NORM_DIR.glob("legacy_metrics_*.csv.gz")):
+        frame = load_csv(path, dtype=str)
+        if not frame.empty and "parser_version" in frame:
+            frames.append(frame[frame["parser_version"].eq(PARSER_VERSION)])
+    if not frames:
+        return done
+    metrics = pd.concat(frames, ignore_index=True).fillna("")
+    groups = metrics.groupby("rcept_no")
+    for row in parsed.to_dict("records"):
+        receipt = row["rcept_no"]
+        if receipt not in groups.groups:
+            continue
+        stored = groups.get_group(receipt)
+        expected = pd.to_numeric(row.get("metric_rows"), errors="coerce")
+        sha = str(row.get("document_sha256", ""))
+        if sha and len(stored) == expected and stored["document_sha256"].eq(sha).all():
+            done.add(receipt)
+    return done
+
+
+def pending_receipts(idx: pd.DataFrame, state: pd.DataFrame):
     if idx.empty:
-        return
-    state=load_csv(STATE_FILE,dtype={"rcept_no":str})
-    terminal={"PARSED_4F","PARSED_PARTIAL","NO_METRICS","NO_DOCUMENT"}
-    if not state.empty and "parser_version" in state.columns:
-        done=set(state.loc[state["status"].isin(terminal) & state["parser_version"].eq(PARSER_VERSION),"rcept_no"].astype(str))
-    else:
-        done=set()
-    eligible=idx[
-        idx["stock_code"].fillna("").astype(str).str.fullmatch(r"\d{6}")
-        & idx["rcept_no"].astype(str).ne("")
-        & ~idx["rcept_no"].astype(str).isin(done)
-    ].copy()
-    eligible=eligible.sort_values(["rcept_dt","rcept_no"]).head(MAX_DOCS)
-    if eligible.empty:
-        return
+        return idx.copy(), 0
+    done = durable_done_receipts(state)
+    attempts = pd.to_numeric(state.get("attempt_count", pd.Series(0, index=state.index)), errors="coerce").fillna(0)
+    held = set(state.loc[state["status"].eq("ERROR") & attempts.ge(MAX_ERROR_ATTEMPTS), "rcept_no"])
+    eligible = idx[idx["stock_code"].fillna("").astype(str).str.fullmatch(r"\d{6}")
+                   & idx["rcept_no"].fillna("").astype(str).ne("")].drop_duplicates("rcept_no").copy()
+    held_count = int(eligible["rcept_no"].isin(held).sum())
+    eligible = eligible[~eligible["rcept_no"].astype(str).isin(done | held)]
+    return eligible.sort_values(["rcept_dt", "rcept_no"]), held_count
 
-    metric_rows=[]
-    state_rows=[]
-    with ThreadPoolExecutor(max_workers=WORKERS) as ex:
-        futs={ex.submit(process_filing,r.to_dict()):str(r["rcept_no"]) for _,r in eligible.iterrows()}
-        rate_limited=False
-        for fut in as_completed(futs):
-            rows,st=fut.result()
-            metric_rows.extend(rows); state_rows.append(st)
-            if st["status"]=="RATE_LIMIT":
-                rate_limited=True
-        # already submitted requests cannot be cancelled reliably; next run resumes safely.
 
-    append_normalized(metric_rows)
-    if state_rows:
-        upsert_state(STATE_FILE,state_rows,"rcept_no")
+def new_control() -> CollectionControl:
+    return CollectionControl(
+        max_requests=int(os.getenv("LEGACY_DART_MAX_REQUESTS", "2500")),
+        max_seconds=float(os.getenv("LEGACY_DART_MAX_SECONDS", "3300")),
+        min_interval=float(os.getenv("LEGACY_DART_REQUEST_INTERVAL", "0.5")),
+    )
+
+
+def process_pending(idx: pd.DataFrame, *, max_docs=None, workers=None, control=None) -> dict:
+    global RUN_CONTROL
+    control = control or new_control()
+    previous_control = RUN_CONTROL
+    RUN_CONTROL = control
+    state = current_state()
+    eligible, held = pending_receipts(idx, state)
+    limit = MAX_DOCS if max_docs is None else max_docs
+    if limit < 0:
+        raise ValueError("max_docs must be non-negative")
+    selected = eligible.head(limit)
+    attempts = pd.to_numeric(state.get("attempt_count", pd.Series(0, index=state.index)), errors="coerce").fillna(0).astype(int)
+    old_attempts = dict(zip(state["rcept_no"], attempts))
+
+    def checkpoint(rows, states):
+        for record in states:
+            record["attempt_count"] = old_attempts.get(record["rcept_no"], 0) + (record["status"] == "ERROR")
+        append_normalized(rows)
+        # Never mark a receipt done before all of its metric files are published.
+        upsert_state(STATE_FILE, states, "rcept_no")
+
+    try:
+        with control.signals():
+            result = collect_bounded(selected.to_dict("records"), process_filing, checkpoint, control,
+                                     workers=WORKERS if workers is None else workers,
+                                     checkpoint_size=int(os.getenv("LEGACY_DART_CHECKPOINT_SIZE", "25")))
+    finally:
+        RUN_CONTROL = previous_control
+    result.update({"eligible_before_run": len(eligible), "quarantined_errors": held,
+                   "selected": len(selected), "parser_version": PARSER_VERSION})
+    if os.getenv("LEGACY_DART_RUN_REPORT"):
+        Path(os.environ["LEGACY_DART_RUN_REPORT"]).write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    return result
 
 
 def write_coverage(idx: pd.DataFrame) -> None:
-    state=load_csv(STATE_FILE,dtype={"rcept_no":str})
+    state=current_state()
     if idx.empty:
-        pd.DataFrame().to_csv(COVERAGE_FILE,index=False,encoding="utf-8-sig")
+        atomic_write_if_changed(pd.DataFrame(), COVERAGE_FILE)
         return
 
     x=idx.copy()
     x["mapped"]=x["stock_code"].fillna("").astype(str).str.fullmatch(r"\d{6}")
     if not state.empty:
-        if "parser_version" in state.columns:
-            state = state[state["parser_version"].eq(PARSER_VERSION)].copy()
         keep=[c for c in ["rcept_no","status","usable_metric_count"] if c in state.columns]
         x=x.merge(state[keep].drop_duplicates("rcept_no",keep="last"),on="rcept_no",how="left")
     else:
         x["status"]=""; x["usable_metric_count"]=0
-    x["processed"]=x["status"].isin(["PARSED_4F","PARSED_PARTIAL","NO_METRICS","NO_DOCUMENT"])
-    x["usable_4f"]=x["status"].eq("PARSED_4F")
+    durable = durable_done_receipts(state)
+    x["processed"] = x["mapped"] & x["rcept_no"].astype(str).isin(durable)
+    x["usable_4f"] = x["processed"] & x["status"].eq("PARSED_4F")
 
     cov=x.groupby(["fiscal_year","period"],dropna=False).agg(
         indexed_filings=("rcept_no","nunique"),
@@ -917,20 +1006,33 @@ def write_coverage(idx: pd.DataFrame) -> None:
     cov["processing_pct"] = (100.0 * pd.to_numeric(cov["processed_filings"], errors="coerce").astype(float) / mapped_den).round(2)
     cov["usable_pct_of_processed"] = (100.0 * pd.to_numeric(cov["usable_four_factor_filings"], errors="coerce").astype(float) / processed_den).round(2)
     cov["generated_at_utc"]=now_utc()
-    cov.to_csv(COVERAGE_FILE,index=False,encoding="utf-8-sig")
+    atomic_write_if_changed(cov, COVERAGE_FILE, ignore_columns=("generated_at_utc",))
 
     tasks=build_index_tasks()
     ist=load_index_state()
     done=set(ist.loc[ist["status"]=="OK","task_key"].astype(str)) if not ist.empty else set()
-    indexed_complete=len(done)==len(tasks)
+    indexed_complete=set(tasks["task_key"]).issubset(done)
 
     total_mapped=int(x["mapped"].sum())
     processed=int(x["processed"].sum())
     usable=int(x["usable_4f"].sum())
+    pending, quarantined = pending_receipts(idx, state)
+    collection_complete = indexed_complete and processed == total_mapped
+    mode = "BACKFILL_ACTIVE" if not indexed_complete or len(pending) else "REVIEW_REQUIRED"
+    if collection_complete:
+        mode = "COLLECTION_COMPLETE_REVIEW_REQUIRED"
     status=pd.DataFrame([{
-        "mode":"BACKFILL_ACTIVE" if not indexed_complete or processed<total_mapped else "COMPLETE",
+        "mode": mode,
+        "parser_version": PARSER_VERSION,
+        "collection_complete": collection_complete,
+        "quality_status": "INDEPENDENT_SOURCE_AUDIT_REQUIRED",
+        "quality_complete": False,
+        "automatic_pending_filings": len(pending),
+        "quarantined_error_filings": quarantined,
+        "no_metrics_filings": int((x["mapped"] & x["status"].eq("NO_METRICS")).sum()),
+        "no_document_filings": int((x["mapped"] & x["status"].eq("NO_DOCUMENT")).sum()),
         "index_tasks_total":len(tasks),
-        "index_tasks_completed":len(done),
+        "index_tasks_completed":len(done & set(tasks["task_key"])),
         "index_complete":indexed_complete,
         "indexed_filings":int(x["rcept_no"].nunique()),
         "mapped_filings":total_mapped,
@@ -941,18 +1043,19 @@ def write_coverage(idx: pd.DataFrame) -> None:
         "workers":WORKERS,
         "updated_at_utc":now_utc(),
     }])
-    status.to_csv(STATUS_FILE,index=False,encoding="utf-8-sig")
+    atomic_write_if_changed(status, STATUS_FILE, ignore_columns=("updated_at_utc",))
 
 
 def main() -> None:
+    global RUN_CONTROL
     if not API_KEY:
-        pd.DataFrame([{"mode":"SKIPPED","reason":"DART_API_KEY missing","updated_at_utc":now_utc()}]).to_csv(
-            STATUS_FILE,index=False,encoding="utf-8-sig"
-        )
-        return
+        raise RuntimeError("DART_API_KEY missing; stored progress was preserved")
 
-    idx=update_filing_index()
-    process_pending(idx)
+    RUN_CONTROL = new_control()
+    with RUN_CONTROL.signals():
+        idx=update_filing_index()
+        result = process_pending(idx, control=RUN_CONTROL)
+    print(json.dumps(result, ensure_ascii=False), flush=True)
     # Reload index/state after writes for accurate status.
     idx=load_csv(INDEX_FILE,dtype={"rcept_no":str,"corp_code":str,"stock_code":str})
     if not idx.empty:

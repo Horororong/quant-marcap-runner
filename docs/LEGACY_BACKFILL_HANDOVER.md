@@ -2,7 +2,7 @@
 
 ## 최신 작업 checkpoint (2026-10-01)
 
-현재 단계: **1. 상위 프로젝트 지침 저장·GitHub/main 반영 완료**, **2. 코드·데이터·workflow 조사 완료**, 3. 안전한 resume 구현·검증 진행.
+현재 단계: **1. 지침/main 반영 완료**, **2. 조사 완료**, **3. generic collector의 안전한 resume 구현·로컬 검증 완료**, 4. 기존 daily Actions에 적용·검증 진행.
 기준 main: `7be2003c18998f6b12747a0e187a0b40cf6ad7d6`. 이 값은 checkpoint이며 다음 세션에서는 원격 상태를 다시 확인한다.
 
 `PROJECT_CHARTER.md`는 소유자의 지속적인 상위 지침이며 `AGENTS.md` 필수 읽기에 연결했다. 이후 단계별로 구현·검증·GitHub commit·인계를 남긴다.
@@ -39,4 +39,16 @@
 5. 2000 Q3/2001 Q1/H1/Q3 대표 원문을 확인한 뒤에만 parser 수정과 version invalidation을 실시한다. 원문 fixture와 독립 expected amount, 음수 기호/손실 회귀 테스트를 추가한다.
 6. 독립 source audit를 완료 판정에 분리하고 전체 품질을 검증한다. 실행 engine/DSL의 기존 정상 결과와 전체 Strategy DSL CI를 보존한다.
 
-단계 1 commit `e26637b`, 기존 DART 갱신을 보존한 main 통합 commit `3c98f39`. 단계 2는 이 문서의 다음 commit이다. 지금까지 collector/parser/workflow의 구현은 변경하지 않았다. 백필 완료나 원문 정확성 검증을 선언하지 않는다.
+## 단계 3: generic collector resume 계약
+
+- 동시에 worker 수만큼만 제출한다. 기본 25 receipts마다 data → state 순서로 checkpoint하고 종료 시 남은 완료 결과를 flush한다. SIGTERM/SIGINT는 새 작업 제출을 멈춘다. SIGKILL은 cleanup이 불가능하므로 마지막 checkpoint 이후 최대 24개 완료 receipt와 진행 중 worker 작업은 재요청될 수 있다. 이미 저장한 정상 receipt는 재요청하지 않는다.
+- Index는 query task마다 공시 데이터를 먼저 저장한 뒤 OK를 기록한다. 이미 OK인 전체 index는 API 요청·remapping·gzip 재생성 없이 재사용한다.
+- Requests budget은 index pages와 document download 및 retry를 포함한다. 기본 2,500 attempts / 3,300초 / 요청 시작 간격 0.5초이며 env로 명시적으로 설정한다. Deadline 뒤 in-flight 요청의 종료를 기다릴 workflow 여유 시간이 필요하다.
+- `DEFERRED`는 로컬 예산/중단이며 원문 부재가 아니다. API 020은 RATE_LIMIT로 저장하고 신규 요청을 중단한다. ERROR 3회는 자동 재시도 보류이며 실패 상태를 보존하고 다른 receipt는 계속 처리한다. Parser version이 바뀌면 이전 오류 횟수를 물려받지 않는다.
+- 현재 version의 PARSED 상태를 skip하려면 normalized row count와 document SHA가 상태 기록과 일치해야 한다. 이전 parser version metric은 보존한다. **Financial parser는 변경하지 않아 `legacy-v4-book`을 유지한다.**
+- 기존 deterministic CSV writer를 `scripts/csv_storage.py` 공통 소유자로 옮겨 recent와 legacy에서 재사용한다. 동등한 데이터/상태 timestamp만 변경되면 기존 bytes를 보존한다.
+- 수집 완료 표시는 `COLLECTION_COMPLETE_REVIEW_REQUIRED`이며 `quality_complete=False`다. 같은 parser의 reparse나 4F 유무를 독립 audit로 인증하지 않는다.
+- 검증: parser+resume pytest **18 passed**, 기존 recent storage **9 passed**(실제 저장 317,165행 deterministic 검사 포함), generated DSL contract 검사. 저장소 데이터는 수정하지 않았다. 실제 live Actions 검증과 전체 DSL CI는 다음 단계에서 수행한다.
+- 재검증 명령: `python -m pytest tests/test_legacy_dart_parser.py tests/test_legacy_backfill_resume.py -q`, `python scripts/test_dart_recent_storage.py`, `python scripts/export_strategy_dsl_contract.py --check`.
+
+단계 1 commit `e26637b`, 기존 DART 갱신을 보존한 main 통합 commit `3c98f39`, 단계 2 commit `3e571ce`. 단계 3 commit은 이 문서와 함께 저장된다. Daily fast wrapper는 아직 이전 수집 루프이므로 **단계 4 이전에는 새 resume 계약을 daily 실행에 적용했다고 주장하지 않는다.** 백필 완료나 원문 정확성 검증을 선언하지 않는다.

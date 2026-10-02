@@ -2,10 +2,7 @@ from __future__ import annotations
 
 import io
 import os
-import csv
-import gzip
 import json
-import tempfile
 import zipfile
 from pathlib import Path
 from datetime import datetime, timezone
@@ -14,6 +11,8 @@ import xml.etree.ElementTree as ET
 
 import requests
 import pandas as pd
+
+from scripts.csv_storage import canonical_csv, atomic_write_if_changed
 
 API_KEY = os.getenv('DART_API_KEY', '').strip()
 ROOT = Path('data/financials')
@@ -26,53 +25,6 @@ STATUS_DIR.mkdir(parents=True, exist_ok=True)
 REPORT_CODES = {'Q1':'11013', 'H1':'11012', 'Q3':'11014', 'FY':'11011'}
 BASE = 'https://opendart.fss.or.kr/api'
 STATE_FILE = STATUS_DIR / 'dart_rotation_state.csv'
-
-
-def canonical_csv(payload: bytes, ignore_columns=()) -> bytes:
-    """Sort CSV fields/rows without interpreting amounts, codes or missing tokens."""
-    rows = list(csv.reader(io.StringIO(payload.decode('utf-8-sig'), newline='')))
-    if not rows:
-        return b''
-    header, data = rows[0], rows[1:]
-    order = sorted((i for i, name in enumerate(header) if name not in ignore_columns),
-                   key=lambda i: header[i])
-    if any(len(row) != len(header) for row in data):
-        raise ValueError('Malformed CSV row width')
-    stream = io.StringIO(newline='')
-    writer = csv.writer(stream, lineterminator='\n')
-    writer.writerow([header[i] for i in order])
-    writer.writerows(sorted(tuple(row[i] for i in order) for row in data))
-    return stream.getvalue().encode('utf-8-sig')
-
-
-def atomic_write_if_changed(frame: pd.DataFrame, path: Path, *, ignore_columns=()) -> bool:
-    """Keep old bytes on an equivalent refresh; atomically publish real changes."""
-    path = Path(path)
-    payload = canonical_csv(frame.to_csv(index=False, lineterminator='\n').encode('utf-8-sig'))
-    compressed = path.suffix == '.gz'
-    if path.exists():
-        previous = path.read_bytes()
-        previous_csv = gzip.decompress(previous) if compressed else previous
-        comparison = canonical_csv(payload, ignore_columns) if ignore_columns else payload
-        if canonical_csv(previous_csv, ignore_columns) == comparison:
-            return False
-    if compressed:
-        stream = io.BytesIO()
-        # Explicitly omit FNAME; using a destination path as filename changes bytes.
-        with gzip.GzipFile(filename='', mode='wb', fileobj=stream, mtime=0, compresslevel=9) as archive:
-            archive.write(payload)
-        payload = stream.getvalue()
-    path.parent.mkdir(parents=True, exist_ok=True)
-    descriptor, temporary = tempfile.mkstemp(prefix='.pending-', dir=path.parent)
-    try:
-        with os.fdopen(descriptor, 'wb') as stream:
-            stream.write(payload)
-            stream.flush()
-            os.fsync(stream.fileno())
-        os.replace(temporary, path)
-    finally:
-        Path(temporary).unlink(missing_ok=True)
-    return True
 
 
 def rotation_positions(total: int, start: int, batch_size: int) -> tuple[list[int], int]:
