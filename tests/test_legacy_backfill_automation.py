@@ -64,7 +64,7 @@ def test_scheduled_and_manual_writers_share_lock_without_cancellation():
     assert len({spec["concurrency"]["group"] for spec in specs}) == 1
     assert all(spec["concurrency"]["cancel-in-progress"] == "false" for spec in specs)
     daily = specs[0]
-    assert daily["on"]["schedule"] == [{"cron": "30 15 * * *"}, {"cron": "30 7,23 * * *"}]
+    assert daily["on"]["schedule"] == [{"cron": "30 15 * * *"}, {"cron": "30 7,23 * 10 *"}]
     assert "schedule" not in specs[1]["on"]
     assert daily["on"]["push"]["branches"] == ["main"]
     # Self-generated data commits must not trigger catch-up again.

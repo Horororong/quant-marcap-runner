@@ -7,7 +7,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 DAILY_CRON = "30 15 * * *"
-BURST_CRON = "30 7,23 * * *"
+BURST_CRON = "30 7,23 * 10 *"
 BURST_END_KST = date(2026, 10, 31)
 KST = timezone(timedelta(hours=9))
 STATUS_FILE = Path("data/status/dart_legacy_backfill_status.csv")
