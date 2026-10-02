@@ -11,6 +11,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+import time
 
 from build_sandbox_kit import ROOT, STARTER, build_kit
 from sandbox_bootstrap import hash_file
@@ -34,8 +35,11 @@ int getaddrinfo(const char *node, const char *service, const struct addrinfo *hi
 
 
 def call(command, env=None, expected=0):
-    process = subprocess.run([str(x) for x in command], capture_output=True, text=True, env=env)
+    started = time.monotonic()
+    print('Running: ' + ' '.join(str(x) for x in command), flush=True)
+    process = subprocess.run([str(x) for x in command], capture_output=True, text=True, env=env, timeout=900)
     assert process.returncode == expected, (command, process.returncode, process.stdout[-5000:], process.stderr[-5000:])
+    print(f'Completed in {time.monotonic() - started:.1f}s', flush=True)
     return process
 
 
@@ -44,6 +48,9 @@ def main():
     parser.add_argument('--wheels-dir', type=Path, required=True)
     parser.add_argument('--python', type=Path, default=Path(sys.executable))
     parser.add_argument('--work-dir', type=Path)
+    parser.add_argument('--strategy', action='append', help='Repository DSL path; repeat for a custom kit profile')
+    parser.add_argument('--runtime-target', action='append', choices=('cp311', 'cp312'))
+    parser.add_argument('--part-size-mib', type=int, default=32)
     args = parser.parse_args()
     minor = call([args.python, '-c', 'import sys;print(f"cp{sys.version_info.major}{sys.version_info.minor}")']).stdout.strip()
     if args.work_dir:
@@ -56,7 +63,9 @@ def main():
 
 def run_test(work, args, abi):
     kit = work / 'parts'
-    built = build_kit(ROOT, kit, args.wheels_dir, targets=(abi,))
+    strategies = args.strategy or [f'config/strategies/{name}.json' for name in STARTER]
+    built = build_kit(ROOT, kit, args.wheels_dir, targets=args.runtime_target or (abi,),
+                      strategies=strategies, part_bytes=args.part_size_mib * 1024**2)
     cfile, guard = work / 'offline.c', work / 'offline.so'
     cfile.write_text(GUARD)
     call(['cc', '-shared', '-fPIC', '-o', guard, cfile, '-ldl'])
@@ -74,8 +83,9 @@ def run_test(work, args, abi):
     python, runner = Path(ready['python']), installed / 'scripts/sandbox_runtime.py'
     call([python, '-I', runner, 'verify'], env)
     results = []
-    for name in STARTER:
-        original, replay = ROOT / f'config/strategies/{name}.json', installed / f'config/strategies/{name}.json'
+    for strategy in strategies:
+        name = Path(strategy).stem
+        original, replay = ROOT / strategy, installed / strategy
         # Baseline uses the existing checked entry point and the caller's
         # development packages. The isolated replay uses its pinned wheels.
         baseline, output = work / f'{name}-baseline', work / f'{name}-replay'

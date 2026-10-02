@@ -113,6 +113,20 @@ GPT 묶음을 바꾸지 않는다. 자료 범위를 넓히려면 Codex에서 새
 
 ## Codex에서 새 묶음 만들기
 
+사용자에게 전달하는 4예제 profile은 위 3개 예제에
+`kr_equity_dart_custom_month_research.json` (2020-05~06, 5월 말 신호·다음 거래일
+체결)을 추가한다. 이 profile은 DART **2019 Q1/H1** 원본 shard도 포함한다.
+선택 월 1~12의 마지막 거래일 재무 리밸런싱은 `docs/FINANCIAL_REBALANCE.md`를
+따른다. 포함 데이터 밖의 기간에는 새 묶음이 필요하며 `data_gap`을 우회하지 않는다.
+
+기존 Strategy DSL CI를 수동 실행할 때 `export_kit=true`를 선택하면 두 Python
+ABI의 고정 wheel을 포함한 동일 kit를 만들고 **3.11/3.12 각각** 네 예제를
+인터넷 차단 환경에서 원본 checked runner와 비교한다. `deliver/quant-sandbox-*`
+branch push도 같은 일회성 전달 경로를 사용한다. 새 schedule이나 collector는 없다.
+전달 artifact는 다운로드 도구의 32MiB 한도보다 작은 24MiB segment로 저장한다.
+`download_manifest.json`의 순서·길이·SHA256을 검증한 뒤 원래 ZIP을 복원한다.
+사용자는 복원된 `quant-sandbox-*.zip` 하나를 첨부하면 된다.
+
 코드 변경을 테스트하고 commit한 **깨끗한 tree**에서 수행한다. 수집기나 결과
 history를 묶지 않는다. 생성 파일은 Git에 저장하지 않는다.
 
