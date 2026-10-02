@@ -174,7 +174,7 @@ def build_kit(root, output, wheels, targets=('cp311', 'cp312'), strategies=None,
     code = local_module_closure(root, ('scripts/sandbox_runtime.py', 'scripts/sandbox_bootstrap.py',
                                      'scripts/strategy_dsl_run.py', 'scripts/strategy_dsl_aliases.py',
                                      'scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py'))
-    code.update(('SANDBOX_START_HERE.md', 'docs/STRATEGY_DSL.md', 'docs/STRATEGY_DSL_RUN.md',
+    code.update(('SANDBOX_START_HERE.md', 'docs/FINANCIAL_REBALANCE.md', 'docs/STRATEGY_DSL.md', 'docs/STRATEGY_DSL_RUN.md',
                  'docs/CANONICAL_PERFORMANCE.md', 'config/strategy_dsl_schema_v1.json',
                  'config/strategy_dsl_capabilities_v1.json', 'config/kr_corporate_actions.csv',
                  'config/kr_corporate_action_gaps.json', *strategies))

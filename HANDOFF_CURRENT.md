@@ -1,4 +1,4 @@
-# Current Strategy DSL handoff
+## Current Strategy DSL handoff
 
 ## Custom financial rebalance continuation (2026-10-02 UTC)
 
