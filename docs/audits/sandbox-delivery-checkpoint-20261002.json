@@ -1,5 +1,5 @@
 {
-  "status": "zip_verified_ready_for_user",
+  "status": "verified_zip_ready_for_user_pr_open",
   "date_utc": "2026-10-02",
   "source_revision": "b350b61e4db0c626e8533645a1a76d61d6ba0ae6",
   "kit_id": "ee212da3e4a71bb7fa2261b45771156e2bf49b563419c8e639db45449cf694db",
@@ -213,7 +213,7 @@
       "expires_at": "2026-11-01T23:21:48Z"
     }
   ],
-  "next": "Native PR merge and record main status; deliver the verified ZIP. Main default-profile CI is distinct from the completed four-example delivery verification.",
+  "next": "Provide the verified ZIP. PR #27 remains open after the cancelled GitHub call; do not claim main deployment or repeat kit generation/replay.",
   "local_delivery": {
     "status": "verified",
     "zip": "/workspace/attachments/quant-sandbox-delivery/quant-sandbox-ee212da3e4a7.zip",
@@ -226,5 +226,12 @@
   "local_offline_install": {
     "status": "passed",
     "network": "IP sockets and DNS blocked by inherited libc guard"
+  },
+  "repository": {
+    "main_sha": "61250b33d84b02338bef4037f19169b336bb2185",
+    "pr_number": 27,
+    "pr_merged": false,
+    "merge_attempt": "user_cancelled_tool_call_no_remote_merge",
+    "packaged_repository_files_unchanged_after_verified_source": true
   }
 }

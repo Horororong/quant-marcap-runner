@@ -428,3 +428,14 @@ actual commit/run IDs and the remaining parser/source/independent-audit work.
 - 사용자 전달 준비 완료. 다음은 PR #27 native merge와 원격 main 상태를 별도 기록하고
   이 실제 ZIP의 다운로드 링크를 제공하는 것이다. 생성 source revision은 이후 docs/main
   commit과 구분하며 이미 검증한 kit ID/bytes를 변경하지 않는다.
+
+
+## 최종 전달 상태 / 중단된 원격 호출
+
+실제 ZIP은 환경 재시작 후에도 보존됐다. 전체 SHA256을 다시 대조해 일치했다.
+다운로드 파일: `/workspace/attachments/quant-sandbox-delivery/quant-sandbox-ee212da3e4a7.zip` (278 MiB).
+GitHub 반영 호출은 `user cancelled MCP tool call`로 중단됐다. 직접 재조회한 PR #27은
+**open / merged=false**, main은 `61250b33d84b02338bef4037f19169b336bb2185`다.
+원격 main 반영 완료로 표시하지 않는다. 취소된 merge는 자동 재호출하지 않는다.
+생성·전체 source CI·양 ABI 4예제 재현·ZIP SHA·로컬 offline 설치/검증은 완료됐으며
+해당 실제 파일을 사용자에게 전달한다. 완료한 생성/검증/백필을 다시 실행하지 않는다.
