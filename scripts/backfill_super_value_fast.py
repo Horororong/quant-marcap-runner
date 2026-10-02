@@ -22,7 +22,7 @@ LEGACY_WORKERS = max(1, min(8, int(os.getenv("SUPER_VALUE_FAST_LEGACY_WORKERS", 
 
 # Make the legacy index finish quickly. The imported module reads these at import time.
 os.environ.setdefault("LEGACY_DART_INDEX_TASKS", os.getenv("SUPER_VALUE_FAST_LEGACY_INDEX_TASKS", "180"))
-os.environ.setdefault("LEGACY_DART_MAX_DOCS", "1")
+os.environ.setdefault("LEGACY_DART_MAX_DOCS", str(LEGACY_LIMIT))
 os.environ.setdefault("LEGACY_DART_WORKERS", str(LEGACY_WORKERS))
 
 

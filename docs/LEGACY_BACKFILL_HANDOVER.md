@@ -70,3 +70,13 @@
 - 다음은 검증된 code를 main에 non-force fast-forward push하고 bootstrap의 실제 run, committed state의 증가와 dataset/state 일치를 확인하는 것이다. 실패하면 기존 checkpoint/14일 recovery artifact에서 재개하고 이 문서를 갱신한다.
 
 단계 1 commit `e26637b`, 지침 main 통합 `3c98f39`, 단계 2 `3e571ce`, 단계 3 `1d44474`, 단계 4 `3d8e044`. **이 checkpoint 작성 시점은 구현 main 배포 전이다.** 백필 완료나 원문 정확성 검증을 선언하지 않는다.
+
+## 단계 5 첫 live bootstrap: 진행 0건 원인 확인 및 수정
+
+- `611eb66`으로 main 배포 완료. Bootstrap run <https://github.com/Horororong/quant-marcap-runner/actions/runs/36951346712>는 Actions **Success**였지만 `legacy_run_docs=0`, `legacy_requests=0`이므로 백필 진척으로 인정하지 않는다.
+- 자동 commit `84df0c8`은 coverage/status만 바꿨다. 실제 coverage의 mapped/current durable processed는 115,020/5,993, pending 109,027건이다. v4 6,000 records 중 7건은 현재 index에서 mapped 대상이 아니어서 전체 current-record 수와 대상 coverage가 다르다.
+- 원인: `update_filing_index()`의 no-op return에서 `stock_code` dtype을 지정하지 않았다. CSV의 missing code와 앞자리 0 때문에 숫자로 읽힌 code가 6자리 정규식에 모두 실패했다. Stored index 자체는 손상되지 않았으며 API 요청도 없었다.
+- 수정: 기존 index 읽기에 `stock_code: str` 명시. 실제 138,540 receipt index를 직접 읽어 leading zeros/100,000건 이상 pending queue 보존을 검증하는 regression을 추가했다. Fast status의 batch limit도 실제 env limit을 반영한다.
+- Local parser/resume/automation **27 passed**. 금융적 parsing·version은 변경하지 않았다. 이 수정 commit은 main에 반영하여 새 bounded bootstrap을 확인한다. 성공 판정은 Actions 표시뿐 아니라 receipt state 변경·실제 requests·normalized/state 일치로 한다.
+
+다음은 수정 bootstrap의 live 결과와 최종 CI 확인이며, 이어서 원문 증거 확보와 parser 이상 구간 조사다. 현재 데이터 품질은 계속 미인증 상태다.

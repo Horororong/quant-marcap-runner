@@ -197,7 +197,8 @@ def test_collection_complete_requires_independent_audit_and_noop_preserves_bytes
     legacy.save_index(index(1))
     monkeypatch.setattr(legacy.requests, "get", lambda *a, **k: pytest.fail("no-op called DART"))
     before_index = legacy.INDEX_FILE.read_bytes()
-    legacy.update_filing_index()
+    loaded = legacy.update_filing_index()
+    assert loaded.iloc[0]["stock_code"] == "000001"
     legacy.write_coverage(index(1))
     saved = legacy.STATUS_FILE.read_bytes(), legacy.COVERAGE_FILE.read_bytes()
     legacy.write_coverage(index(1))
@@ -245,3 +246,17 @@ def test_authentication_failure_stops_without_classifying_source_as_missing(stor
     _, state = legacy.process_filing(index(1).iloc[0].to_dict())
     assert state["status"] == "DEFERRED" and guard.stop_reason == "FATAL_API"
     assert guard.requests == 1
+
+
+def test_real_saved_index_noop_preserves_mapped_queue_and_leading_zero_codes(monkeypatch):
+    # Reuse the actual repository file. Parsing a mixed/missing code column as
+    # float silently made the no-op queue empty on the first live bootstrap.
+    saved = legacy.load_csv(legacy.INDEX_FILE, dtype={"rcept_no": str, "corp_code": str, "stock_code": str})
+    expected = saved["stock_code"].fillna("").str.fullmatch(r"\d{6}")
+    assert expected.sum() > 100_000
+    monkeypatch.setattr(legacy, "build_index_tasks", lambda: pd.DataFrame(columns=["task_key"]))
+    loaded = legacy.update_filing_index()
+    assert loaded["stock_code"].equals(saved["stock_code"])
+    pending, _ = legacy.pending_receipts(loaded, legacy.current_state())
+    assert len(pending) > 100_000
+    assert pending["stock_code"].str.startswith("0").any()

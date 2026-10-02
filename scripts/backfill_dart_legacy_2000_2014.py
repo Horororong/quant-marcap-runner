@@ -406,7 +406,7 @@ def fetch_index_task(row: pd.Series) -> tuple[list[dict], dict]:
 
 
 def update_filing_index() -> pd.DataFrame:
-    existing = load_csv(INDEX_FILE, dtype={"rcept_no": str, "corp_code": str})
+    existing = load_csv(INDEX_FILE, dtype={"rcept_no": str, "corp_code": str, "stock_code": str})
     tasks = build_index_tasks()
     st = load_index_state()
     done = set(st.loc[st["status"] == "OK", "task_key"].astype(str)) if not st.empty else set()
