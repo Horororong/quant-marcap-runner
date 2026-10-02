@@ -64,11 +64,30 @@ def test_scheduled_and_manual_writers_share_lock_without_cancellation():
     assert len({spec["concurrency"]["group"] for spec in specs}) == 1
     assert all(spec["concurrency"]["cancel-in-progress"] == "false" for spec in specs)
     daily = specs[0]
-    assert daily["on"]["schedule"] == [{"cron": "30 15 * * *"}]
+    assert daily["on"]["schedule"] == [{"cron": "30 15 * * *"}, {"cron": "30 7,23 * 10 *"}]
     assert "schedule" not in specs[1]["on"]
     assert daily["on"]["push"]["branches"] == ["main"]
     # Self-generated data commits must not trigger catch-up again.
     assert not any(path.startswith("data/") for path in daily["on"]["push"]["paths"])
+
+
+def test_extra_batches_gate_all_api_and_publish_steps_and_skip_modern():
+    daily = workflow("backfill-super-value-fast.yml")
+    job = daily["jobs"]["fast"]
+    steps = job["steps"]
+    gate = next(step for step in steps if step.get("id") == "batch")
+    assert steps.index(gate) == 1  # Immediately after the checkout of current main.
+    assert gate["run"] == "python scripts/legacy_schedule_gate.py"
+    assert gate["env"]["BATCH_SCHEDULE"] == "${{ github.event.schedule }}"
+    for step in steps[2:]:
+        assert "steps.batch.outputs.run == 'true'" in step["if"]
+    modern = job["env"]["SUPER_VALUE_FAST_MODERN_TASKS"]
+    assert "github.event_name == 'schedule'" in modern
+    assert "github.event.schedule != '30 15 * * *'" in modern
+    # Increase batches, preserving per-run throttling and deployment size.
+    assert "'2000'" in job["env"]["SUPER_VALUE_FAST_LEGACY_DOCS"]
+    assert "'100'" in job["env"]["SUPER_VALUE_FAST_LEGACY_DOCS"]
+    assert job["env"]["SUPER_VALUE_FAST_LEGACY_WORKERS"] == "3"
 
 
 @pytest.mark.parametrize("name", ["backfill-super-value-fast.yml", "backfill-dart-legacy-2000-2014.yml"])
