@@ -7,6 +7,8 @@ import json
 import sys
 import faulthandler
 import tempfile
+from threading import Event, Thread
+import time
 import unittest
 from unittest.mock import patch
 
@@ -258,10 +260,23 @@ def real_execution_check():
     from strategy_dsl_run import run_checked_strategy
     from strategy_dsl_runner import run_strategy
     print("REAL CUSTOM-MONTH CHECKED NAV: START", flush=True)
-    faulthandler.dump_traceback_later(60, repeat=True)
-    try:
-        with tempfile.TemporaryDirectory() as directory:
-            output = Path(directory) / "run"
+    faulthandler.enable()
+    with tempfile.TemporaryDirectory() as directory:
+        output = Path(directory) / "run"
+        stop = Event()
+        started = time.monotonic()
+
+        def heartbeat():
+            while not stop.wait(30):
+                try:
+                    phase = json.loads((output / "run_status.json").read_text())["phase"]
+                except (FileNotFoundError, json.JSONDecodeError):
+                    phase = "initializing"
+                print(f"REAL CUSTOM-MONTH CHECKED NAV: RUNNING {time.monotonic() - started:.0f}s phase={phase}", flush=True)
+
+        monitor = Thread(target=heartbeat, daemon=True)
+        monitor.start()
+        try:
             actual_execution = {}
 
             def capture_execution(*args, **kwargs):
@@ -289,8 +304,9 @@ def real_execution_check():
             assert set(pd.to_datetime(schedule.execution_date)) == {pd.Timestamp("2020-06-01")}, schedule
             assert not (output / "report").exists()
             print("REAL CUSTOM-MONTH CHECKED NAV: PASS (May signal, June t+1, Q1 PIT, validated NAV)", flush=True)
-    finally:
-        faulthandler.cancel_dump_traceback_later()
+        finally:
+            stop.set()
+            monitor.join(timeout=2)
 
 
 if __name__ == "__main__":

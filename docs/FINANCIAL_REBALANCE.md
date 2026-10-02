@@ -29,6 +29,12 @@
 - 테스트가 기존 publisher에서 저장하지 않는 artifacts/execution_schedule.csv를 읽어 FileNotFoundError로 실패했다. 실행 실패나 hang이 아니었다. 60초 stack dump는 report_snapshots의 원자료 처리 위치를 보여 주고 전체 실제 실행은 약 142초 뒤 정상 반환했다.
 - 체결 지연 검증을 삭제하지 않고, 실제 공통 run_strategy를 그대로 호출하는 transparent wrapper로 engine_result.execution_scenarios.gross.execution_schedule을 확인하도록 수정했다. 수정 commit의 전체 CI와 기존 실데이터 회귀를 다시 확인한다. 첫 실패 run을 성공으로 기록하지 않는다.
 
+### Native crash를 구분한 bounded 진단
+
+- 다음 CI 37020801380 / code 4a24ff82972890f6c4fdc82b9fe4e75ffefa4fb7은 input/기존 KRX 회귀와 새 14개 경계·삼성전자 원문 oracle 이후 첫 timed stack 출력 중 pandas/core/dtypes/generic.py 위치에서 exit 139 (Segmentation fault)로 종료됐다. 840초 timeout이나 보통 assertion 실패가 아니다. 로그만으로 native crash의 근본 원인을 인증하지 않는다.
+- 비동기 timed frame inspection을 제거하고 30초마다 persisted run_status의 phase와 monotonic 경과시간을 출력한다. Fatal crash의 faulthandler는 유지한다. External timeout 840초/step 15분, 기존 pytest 60초 process limit/15초 stack dump, 모든 PIT·NAV·t+1 assertions는 유지한다.
+- 실패 CI의 numpy 2.5.3은 기존 offline lock의 2.4.6과 달랐다. CI test job도 기존 cp312 sandbox requirements의 exact versions/SHA hashes로 계산 환경을 설치하여 offline replay와 맞춘다. pytest/requests/bs4/lxml/YAML은 보조 테스트 의존성으로 설치한다. Numpy 차이가 원인이라고 단정하거나 정상 결과를 위해 검증을 삭제하지 않는다. 이 수정의 전체 CI를 다시 확인한다.
+
 ## ChatGPT에서 요청하는 예
 
 > 재무 팩터 리밸런싱을 3·6·9·12월 마지막 거래일로 해줘. 각 종목은 그날까지 공시된 최신 분기의 수치를 사용하고 최신 보고의 결측을 과거 분기로 대체하지 마. next-close 1거래일 지연으로 실행해줘. 필요한 데이터가 부족하면 정확한 data_gap을 알려줘.
