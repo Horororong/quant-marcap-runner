@@ -1,3 +1,9 @@
+## 2026-10-03 main 병합 및 본문 그래프 표시
+
+보고 기능 PR #28을 d442e07bd4df2358cc31141143945fc5e56c0f9a로 main에 정상 병합했다. 최신 백필 data/map/state를 보존했다. 새 main CI 37159959636은 별도로 확인하며 검증 전 성공으로 표시하지 않는다.
+사용자는 결과 본문에 세 그래프를 바로 표시하고 링크만 주지 말라고 지정했다. docs/INLINE_RESULTS_STATUS.md의 renderer capability 경계를 따른다. 현재 메시지에서는 명확히 표시한 정적 미리보기를 추가하며 기존 인터랙티브 보고를 유지한다. 다른 대화로 자동 파일 배치는 지원 도구가 없어 미완료다.
+현재 Work 설치/실행과 원래 검증 ZIP은 이미 완료되어 재설치하지 않는다. 아래 역사적 기록의 main 미병합 문구는 이 checkpoint로 대체된다.
+
 ## 2026-10-03 requested-report kit delivery COMPLETE
 
 Read docs/REPORT_DELIVERY_COMPLETION.md for the final evidence and resume paths.
