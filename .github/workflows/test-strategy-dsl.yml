@@ -193,7 +193,7 @@ jobs:
           path: |
             ${{ runner.temp }}/requested-report/report/
             ${{ runner.temp }}/requested-report/run_status.json
-            ${{ runner.temp }}/requested-report/report-preview.png
+            ${{ runner.temp }}/requested-report/report-preview*.png
             ${{ runner.temp }}/requested-report/browser-verification.json
             ${{ runner.temp }}/requested-report/browser-verification.log
           retention-days: 30

@@ -72,6 +72,24 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     const legend=page.locator('#wealth .legendtoggle').first();await legend.click();
     await page.waitForFunction(()=>document.getElementById('wealth').data[0].visible==='legendonly');await legend.click();
     await page.waitForFunction(()=>document.getElementById('wealth').data[0].visible!=='legendonly');
+    // Move the real pointer over a plotted Log2 point and inspect its rendered popup.
+    const hover=await page.evaluate(()=>{
+      const g=document.getElementById('log2'),t=g.data[0],i=Math.floor(t.x.length*.65),r=g.getBoundingClientRect();
+      return {x:r.left+g._fullLayout.xaxis._offset+g._fullLayout.xaxis.d2p(t.x[i]),
+        y:r.top+g._fullLayout.yaxis._offset+g._fullLayout.yaxis.d2p(t.y[i]),
+        date:t.x[i].slice(0,10),multiple:t.customdata[i][0].toFixed(6)+'배',
+        asset:'$'+new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).format(t.customdata[i][1])};
+    });
+    await page.locator('#log2').scrollIntoViewIfNeeded();
+    // Scrolling changes page-relative coordinates; measure the chart again.
+    const bounds=await page.locator('#log2').boundingBox();
+    const pointer=await page.evaluate(()=>{const g=document.getElementById('log2'),t=g.data[0],i=Math.floor(t.x.length*.65);return {x:g._fullLayout.xaxis._offset+g._fullLayout.xaxis.d2p(t.x[i]),y:g._fullLayout.yaxis._offset+g._fullLayout.yaxis.d2p(t.y[i])};});
+    await page.mouse.move(bounds.x+pointer.x,bounds.y+pointer.y);
+    await page.waitForFunction(h=>{const v=document.querySelector('#log2 .hoverlayer').textContent;return v.includes(h.date)&&v.includes(h.multiple)&&v.includes(h.asset);},hover);
+    const hoverText=await page.locator('#log2 .hoverlayer').textContent();
+    const hoverScreen=screen&&screen.replace(/\.png$/,'-hover.png');
+    if(hoverScreen)await page.screenshot({path:hoverScreen,fullPage:true});
+    await page.mouse.move(5,5);
     if(screen)await page.screenshot({path:screen,fullPage:true});
     await page.setViewportSize({width:390,height:844});
     await page.waitForTimeout(300);
@@ -79,6 +97,6 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     assert(widths.body<=widths.viewport+2);assert(widths.charts.every(w=>w<=widths.viewport));
     assert.deepEqual(errors,[]);
     console.log(JSON.stringify({status:'passed',source,ready_periods_checked:checked,cost_options:contract.costs,
-      checks:['period/table/three charts','ending wealth','true logarithmic axis/ticks/actual hover values','drawdown/MDD','shared zoom','cost/benchmark','legend','mobile width','missing periods'],period_evidence:evidence,screenshot:screen||null}));
+      checks:['period/table/three charts','ending wealth','true logarithmic axis/ticks/actual hover values','real pointer rendered Log2 hover popup','drawdown/MDD','shared zoom','cost/benchmark','legend','mobile width','missing periods'],period_evidence:evidence,rendered_hover:{expected:hover,text:hoverText,screenshot:hoverScreen||null},screenshot:screen||null}));
   } finally {await browser.close();}
 })().catch(e=>{console.error(e);console.log(JSON.stringify({status:'failed',error:e.message}));process.exit(1);});

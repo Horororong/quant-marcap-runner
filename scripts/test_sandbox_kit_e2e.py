@@ -140,8 +140,9 @@ def run_test(work, args, abi):
                            'nav_sha256':hash_file(validation_nav),'all_main_metrics_available':True}
     raw = json.loads((installed / 'config/strategies/kr_equity_split_research.json').read_text())
     request = work / 'request.json'
-    # Valid DSL, missing year: data_gap, never truncate the user's dates.
-    raw['period'] = {k: ('2019-04-01' if 'start' in k else '2019-04-30') for k in raw['period']}
+    # 2019 is now bundled by the two-year reporting profile. Use 2018,
+    # which remains absent, to preserve the missing-year failure contract.
+    raw['period'] = {k: ('2018-04-01' if 'start' in k else '2018-04-30') for k in raw['period']}
     raw['rebalance']['months'] = [4]
     request.write_text(json.dumps(raw))
     missing = json.loads(call([python, '-I', runner, 'run', request, '--execution-only', '--output-dir', work / 'missing-year'], env, 3).stdout)
