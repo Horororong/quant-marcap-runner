@@ -11,6 +11,8 @@
 현재 결과는 기존에 검증된 KRX 대형주 1종목 2019-01-02~2020-12-30 실행·보고 검증 예제이며 투자 가설/OOS 인증이 아니다. 소스는 822c435f의 검증된 설치 묶음이다. 원래 manifest·ZIP·설치 파일은 수정하지 않았다.
 현재 Work의 미리보기: /workspace/attachments/quant-inline-results/{wealth,log2,drawdown}.png.
 
-PR #28 정상 merge: d442e07bd4df2358cc31141143945fc5e56c0f9a. 최신 main의 백필 변경 7개 파일을 유지. 기존 data mapping/state가 달라져 새 main CI 37159959636은 별도 확인 대상이며 실행 중인 것을 pass로 표시하지 않는다.
+PR #28 정상 merge: d442e07bd4df2358cc31141143945fc5e56c0f9a. 최신 main의 백필 변경 7개 파일을 유지. 기존 data mapping/state가 달라져 새 main CI 37159959636도 2026-10-03 23:13:31 UTC에 success로 완료됐다. test 및 CPython 3.11/3.12 clean offline replay 모두 success다.
 기존 소스 전체 CI 37157470156과 배포 CI 37158824033 및 새 Work bootstrap/verify/checked 보고는 이미 완료되어 반복하지 않는다.
 미완료 데이터 작업은 독립 legacy 금융 품질 audit와 누락 장기 자료다. 예약 수집을 중복 수동 실행하거나 현재 처리량을 최종 품질 완료로 바꾸지 않는다.
+
+실제 main artifact requested-report-preview (11287338015, SHA256 b540440a7e9360da2acd2b5a39add3b8620070787b1e62717854a9170541a299)를 다운로드해 ZIP CRC, 실제 화면/hover PNG, browser-verification.json의 passed를 확인했다. 3개 기간의 표·세 차트 동기화, 종료자산, Log2 실제 hover, 비용·벤치마크·모바일·자료 부족 처리가 실제 브라우저에서 통과했다. metrics_CURRENT.csv, daily_nav_canonical.csv, benchmark_statistics_CURRENT.csv는 기존 Work의 검증 결과와 byte-identical이다. Machine evidence: docs/audits/merged-report-inline-checkpoint-20261003.json.

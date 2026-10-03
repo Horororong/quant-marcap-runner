@@ -1,0 +1,42 @@
+{
+  "contract": "merged-report-inline-evidence/1",
+  "merge_commit": "d442e07bd4df2358cc31141143945fc5e56c0f9a",
+  "workflow_run_id": 37159959636,
+  "full_ci": "success",
+  "browser_artifact": {
+    "id": 11287338015,
+    "name": "requested-report-preview",
+    "size_bytes": 2510412,
+    "digest": "sha256:b540440a7e9360da2acd2b5a39add3b8620070787b1e62717854a9170541a299",
+    "downloaded_and_inspected": true,
+    "zip_crc": "passed",
+    "screen_png_present": true,
+    "hover_png_present": true,
+    "browser_verification": "passed",
+    "ready_periods_checked": 3,
+    "period_table_three_charts_synchronized": true,
+    "canonical_csv_byte_identical_to_verified_work_report": true
+  },
+  "inline_presentation": {
+    "charts": [
+      "wealth",
+      "log2",
+      "drawdown"
+    ],
+    "source": "CURRENT precomputed points",
+    "metrics_recalculated": false,
+    "actual_start": "2019-01-02",
+    "actual_end": "2020-12-30",
+    "mode": "explicitly labelled static previews",
+    "interactive_html_retained": true,
+    "native_interactive_chat_renderer_available": false,
+    "cross_project_file_transfer_available": false
+  },
+  "scope": "실제 데이터를 사용한 소프트웨어 검증 예제이며 투자전략 성과 인증이 아님",
+  "ci_completed_at": "2026-10-03T23:13:31Z",
+  "required_jobs": {
+    "test": "success",
+    "sandbox-replay (3.11)": "success",
+    "sandbox-replay (3.12)": "success"
+  }
+}
