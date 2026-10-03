@@ -519,15 +519,28 @@ def calculate_metrics(
     monthly_nav: pd.DataFrame,
     config: BacktestConfig,
     daily_nav: Optional[pd.DataFrame] = None,
+    *, requested_period: bool = False,
 ) -> pd.DataFrame:
     """
     CAGR/Sharpe/변동성 = 월별 NAV
     MDD/회복기간 = 일별 NAV 우선, 없으면 월별 fallback
     """
-    mnav = validate_monthly_nav(monthly_nav, config, enforce_expected=False)
-    dnav = validate_daily_nav(daily_nav) if daily_nav is not None else None
+    if requested_period:
+        if daily_nav is None or not config.market_calendar:
+            raise ValueError("requested-period metrics require daily NAV and an explicit exchange calendar")
+        dnav = validate_daily_nav(daily_nav)
+        assert_daily_session_coverage(dnav, dnav.index[0], dnav.index[-1], config.market_calendar)
+        if dnav.index[-1] > pd.Timestamp(config.as_of_date).normalize():
+            raise ValueError("requested NAV extends beyond as_of_date")
+        baseline = dnav.attrs.get("baseline_date")
+        if baseline is None or pd.Timestamp(baseline) > dnav.index[0]:
+            raise ValueError("requested metrics require an explicit observed/inception baseline")
+        mnav = dnav
+    else:
+        mnav = validate_monthly_nav(monthly_nav, config, enforce_expected=False)
+        dnav = validate_daily_nav(daily_nav) if daily_nav is not None else None
 
-    if dnav is not None:
+    if dnav is not None and not requested_period:
         missing = [c for c in mnav.columns if c not in dnav.columns]
         if missing:
             raise AssertionError(f"daily_nav에 전략 열이 없습니다: {missing}")
@@ -547,27 +560,29 @@ def calculate_metrics(
     rows = []
     for name in mnav.columns:
         s_month = mnav[name].astype(float)
-        r = monthly_returns_from_nav(s_month)
+        r = requested_complete_month_returns(s_month, config) if requested_period else monthly_returns_from_nav(s_month)
         # 일반적인 완전월 자료는 월수/12가 정확하고 재현성이 높다.
         # 다만 데이터 inception이 월 중간인 최장기간처럼 실제 기준일을 알고 있는 경우에는
         # 짧은 첫 달을 1개월로 과대계상하지 않도록 실제 경과일수로 CAGR을 연환산한다.
         # 완전월 구간은 월수/periods_per_year로 연환산한다. 실제 일수 연환산은
         # 월중 inception처럼 명시적으로 performance_baseline_date를 복원한 경우에만 사용한다.
-        performance_baseline = mnav.attrs.get("performance_baseline_date")
+        performance_baseline = mnav.attrs.get("baseline_date") if requested_period else mnav.attrs.get("performance_baseline_date")
         if performance_baseline is not None:
             elapsed_days = (s_month.index[-1] - pd.Timestamp(performance_baseline)).days
-            if elapsed_days <= 0:
+            if elapsed_days <= 0 and not requested_period:
                 raise AssertionError("CAGR 기준일이 종료일보다 늦거나 같습니다.")
             years = elapsed_days / 365.2425
         else:
             years = len(r) / config.periods_per_year
         final_multiple = float(s_month.iloc[-1])
-        cagr = final_multiple ** (1.0 / years) - 1.0
+        cagr = final_multiple ** (1.0 / years) - 1.0 if years > 0 else np.nan
+        if requested_period and elapsed_days < 365:
+            cagr = np.nan
 
         # inception이 월중이면 첫 월 수익은 완전한 한 달 수익이 아니다.
         # CAGR에는 실제 경과일수로 반영하되 Sharpe/변동성의 월별 표본에서는 제외한다.
         stats_r = r
-        if performance_baseline is not None and len(r) > 0:
+        if performance_baseline is not None and len(r) > 0 and not requested_period:
             pb = pd.Timestamp(performance_baseline)
             if pb.to_period("M") == s_month.index[0].to_period("M"):
                 stats_r = r.iloc[1:]
@@ -595,6 +610,9 @@ def calculate_metrics(
         annual_excess_mean = float(excess.mean() * config.periods_per_year) if len(stats_r) >= 2 else np.nan
         sortino = annual_excess_mean / downside_dev if np.isfinite(downside_dev) and downside_dev > 0 else np.nan
         mdd_value = float(dd.min())
+        if requested_period and len(risk_s) < 2:
+            mdd_value = np.nan
+            recovery = {"days": np.nan, "months": np.nan}
         calmar = cagr / abs(mdd_value) if mdd_value < 0 else np.nan
         monthly_win_rate = float((stats_r > 0).mean()) if len(stats_r) else np.nan
 
@@ -618,6 +636,166 @@ def calculate_metrics(
     return pd.DataFrame(rows).set_index("전략")
 
 
+REQUESTED_REPORT_CONTRACT_VERSION = "1"
+
+
+def validate_report_periods(raw: Any) -> list[dict]:
+    """Strict report specification, separate from strategy semantics/fingerprint."""
+    import re
+    if not isinstance(raw, list) or not 1 <= len(raw) <= 32:
+        raise ValueError("report periods must be a list of 1..32 objects")
+    out, ids = [], set()
+    for item in raw:
+        if not isinstance(item, dict) or set(item) - {"id", "label", "start", "end"}:
+            raise ValueError("report period has unknown fields")
+        if not {"id", "start", "end"} <= set(item):
+            raise ValueError("report period requires id/start/end")
+        key = item["id"]
+        if not isinstance(key, str) or not re.fullmatch(r"[A-Za-z][A-Za-z0-9_-]{0,63}", key) or key in ids:
+            raise ValueError("report period id must be unique and safe")
+        ids.add(key)
+        for field, token in (("start", "longest"), ("end", "latest")):
+            value = item[field]
+            if value == token:
+                continue
+            if not isinstance(value, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+                raise ValueError("report dates require YYYY-MM-DD or explicit longest/latest")
+            if pd.Timestamp(value).date().isoformat() != value:
+                raise ValueError("invalid report date")
+        if item["start"] != "longest" and item["end"] != "latest" and item["start"] > item["end"]:
+            raise ValueError("report period start must not exceed end")
+        label = item.get("label", key)
+        if not isinstance(label, str) or not label.strip() or len(label) > 160:
+            raise ValueError("report label must be a nonempty string up to 160 characters")
+        out.append({**item, "label": label})
+    return out
+
+
+def requested_period_readiness(dates: pd.DatetimeIndex, periods: list[dict], config: BacktestConfig) -> dict:
+    periods = validate_report_periods(periods)
+    dates = pd.DatetimeIndex(dates).normalize()
+    if dates.empty or dates.hasnans or dates.has_duplicates or not dates.is_monotonic_increasing:
+        raise ValueError("requested report source dates must be nonempty, unique and ordered")
+    if not config.market_calendar or config.as_of_date is None:
+        raise ValueError("requested reports require an explicit calendar and as_of_date")
+    as_of = pd.Timestamp(config.as_of_date).normalize()
+    available = dates[dates <= as_of]
+    rows = {}
+    for item in periods:
+        row = {**item, "status": "data_gap", "reason": "데이터 부족", "ready": False}
+        rows[item["id"]] = row
+        if available.empty:
+            row["reason"] = "기준일까지 검증된 NAV가 없습니다."
+            continue
+        start = available[0] if item["start"] == "longest" else pd.Timestamp(item["start"])
+        end = available[-1] if item["end"] == "latest" else pd.Timestamp(item["end"])
+        row.update(requested_start=start.date().isoformat(), requested_end=end.date().isoformat())
+        expected = expected_market_sessions(start, end, config.market_calendar) if start <= end else pd.DatetimeIndex([])
+        if end > as_of:
+            row["reason"] = "요청 종료일이 자료 기준일보다 늦습니다."
+        elif expected.empty:
+            row["reason"] = "요청 기간에 거래일이 없습니다."
+        elif len(expected.difference(available)):
+            missing = expected.difference(available)
+            row["reason"] = f"요청 기간의 거래일 NAV {len(missing)}개 부족 (첫 누락 {missing[0]:%Y-%m-%d}). 시작일을 이동하지 않습니다."
+        else:
+            row.update(status="ready", ready=True, reason=None, actual_start=expected[0].date().isoformat(),
+                       actual_end=expected[-1].date().isoformat(), observations=len(expected))
+    return {"contract_version": REQUESTED_REPORT_CONTRACT_VERSION, "mode": "requested_period_report",
+            "ready": any(p["ready"] for p in rows.values()), "complete": all(p["ready"] for p in rows.values()),
+            "as_of_date": as_of.date().isoformat(), "periods": rows}
+
+
+def requested_complete_month_returns(nav: pd.Series, config: BacktestConfig) -> pd.Series:
+    """Only full exchange months; partial boundary months never enter monthly ratios."""
+    baseline_date = pd.Timestamp(nav.attrs["baseline_date"])
+    extended = nav.copy()
+    if baseline_date < nav.index[0]:
+        extended = pd.concat([pd.Series([1.0], index=[baseline_date]), extended])
+    values = {}
+    for month in nav.index.to_period("M").unique():
+        sessions = expected_market_sessions(month.start_time, month.end_time.normalize(), config.market_calendar)
+        prior = expected_market_sessions(sessions[0] - pd.Timedelta(days=31), sessions[0], config.market_calendar)
+        prior_date = prior[prior < sessions[0]][-1]
+        if len(sessions.difference(nav.index)) == 0 and prior_date in extended.index:
+            values[month.to_timestamp("M")] = float(extended.loc[sessions[-1]] / extended.loc[prior_date] - 1)
+    return pd.Series(values, dtype=float)
+
+
+def _finite_metric(value):
+    return float(value) if pd.notna(value) and np.isfinite(value) else None
+
+
+def dashboard_period_data(daily: pd.DataFrame, metrics: pd.DataFrame, label: str, *, baseline_date=None,
+                          requested_start=None, requested_end=None, calendar=None, monthly_samples=None) -> dict:
+    """One standard owner for monetary normalization, multiples, DD and log ticks."""
+    rows = {}
+    for name in daily.columns:
+        s = daily[name]
+        dd = drawdown_series(s)
+        compact = _compress_drawdown_for_chat(dd)
+        # Preserve extrema, boundaries and exactly the same dates in all three charts.
+        chosen = compact.index.union(pd.DatetimeIndex([s.index[0], s.index[-1]])).sort_values()
+        anchor = pd.Timestamp(baseline_date) if baseline_date is not None else None
+        points = []
+        if anchor is not None and anchor < s.index[0]:
+            points.append({"date": anchor.date().isoformat(), "multiple": 1.0, "asset": 10000.0,
+                           "log2": 0.0, "drawdown_pct": 0.0, "baseline": True})
+        points += [{"date": dt.date().isoformat(), "multiple": float(s.loc[dt]), "asset": float(s.loc[dt] * 10000),
+                    "log2": float(np.log2(s.loc[dt])), "drawdown_pct": float(dd.loc[dt] * 100), "baseline": False}
+                   for dt in chosen]
+        m = metrics.loc[name]
+        row = {key: _finite_metric(m[col]) for key, col in {
+            "cagr": "CAGR", "cumulative_return": "누적수익률", "mdd": "MDD", "annual_volatility": "연환산_표준편차",
+            "sharpe": "Sharpe", "recovery_days": "최대회복기간_일", "final_multiple": "최종배수"}.items()}
+        row["final_asset"] = float(m["최종배수"] * 10000)
+        if row["final_asset"] != points[-1]["asset"]:
+            if not np.isclose(row["final_asset"], points[-1]["asset"], rtol=1e-12, atol=1e-8):
+                raise AssertionError("dashboard ending wealth differs from canonical metrics")
+        row["mdd_source"] = str(m["MDD_source"])
+        row["unavailable"] = {key: ("샤프 분모 0 또는 완결 월 표본 부족" if key == "sharpe" else
+                                    "표본 부족: CAGR는 365일 이상, 월별 통계는 완결 월 2개 이상 필요" if key in ("cagr", "annual_volatility") else "계산 불가/표본 부족")
+                              for key, value in row.items() if value is None}
+        rows[name] = {"metrics": row, "points": points}
+    logs = [p["log2"] for value in rows.values() for p in value["points"]]
+    ticks = list(range(min(0, math.floor(min(logs))), max(1, math.ceil(max(logs))) + 1))
+    return {"status": "ready", "ready": True, "label": label,
+            "actual_start": daily.index[0].date().isoformat(), "actual_end": daily.index[-1].date().isoformat(),
+            "requested_start": requested_start, "requested_end": requested_end,
+            "baseline_date": pd.Timestamp(baseline_date).date().isoformat() if baseline_date is not None else None,
+            "ending_asset_label": "해당 기간 종료자산", "ending_asset_date": daily.index[-1].date().isoformat(),
+            "initial_capital": 10000, "currency": "USD standardized", "fx_applied": False, "additional_contributions": 0,
+            "risk_observations_full": len(daily), "monthly_statistical_samples": monthly_samples,
+            "series": rows, "log_ticks": {"values": [2.0 ** k for k in ticks], "labels": [f"{2.0 ** k:g}배" for k in ticks]},
+            "calendar": calendar, "risk_frequency": "daily" if all(m["metrics"]["mdd_source"] == "daily" for m in rows.values()) else "monthly_fallback"}
+
+
+def run_requested_periods(daily_nav: pd.DataFrame, config: BacktestConfig, periods: list[dict]) -> dict:
+    dnav = validate_daily_nav(daily_nav)
+    if not np.allclose(dnav.iloc[0].to_numpy(float), 1.0, atol=1e-12, rtol=0):
+        raise ValueError("requested report NAV must start at observed initial capital (1.0); no silent rescaling")
+    assert_daily_session_coverage(dnav, dnav.index[0], dnav.index[-1], config.market_calendar)
+    readiness = requested_period_readiness(dnav.index, periods, config)
+    results = {}
+    for key, row in readiness["periods"].items():
+        if not row["ready"]:
+            results[key] = dict(row)
+            continue
+        selected = _slice_and_rebase(dnav, pd.Timestamp(row["actual_start"]), pd.Timestamp(row["actual_end"]))
+        if selected.attrs["baseline_date"] is None:
+            selected.attrs["baseline_date"] = selected.index[0]  # observed cash/inception anchor
+        metrics = calculate_metrics(selected, config, selected, requested_period=True)
+        samples = len(requested_complete_month_returns(selected.iloc[:, 0], config))
+        data = dashboard_period_data(selected, metrics, row["label"], baseline_date=selected.attrs["baseline_date"],
+                                     requested_start=row["requested_start"], requested_end=row["requested_end"],
+                                     calendar=config.market_calendar, monthly_samples=samples)
+        data["limitations"] = (["짧은 표본의 실행·보고 검증입니다. 장기 투자 검증 결과가 아닙니다."] if samples < 12 else [])
+        data["metrics_frame"] = metrics
+        data["daily_nav_frame"] = selected
+        results[key] = data
+    return {"contract_version": REQUESTED_REPORT_CONTRACT_VERSION, "readiness": readiness, "periods": results}
+
+
 
 
 # =========================================================
@@ -629,16 +807,18 @@ def calculate_benchmark_statistics(
     strategy_col: str,
     benchmark_col: str,
     config: BacktestConfig,
+    *, requested_period: bool = False,
 ) -> Dict[str, float]:
     """월별 NAV 기준 tracking error / IR / alpha / beta / downside capture를 계산한다."""
-    m = validate_monthly_nav(monthly_nav[[strategy_col, benchmark_col]], config, enforce_expected=False)
+    m = (validate_daily_nav(monthly_nav[[strategy_col, benchmark_col]]) if requested_period else
+         validate_monthly_nav(monthly_nav[[strategy_col, benchmark_col]], config, enforce_expected=False))
     if strategy_col == benchmark_col:
         raise ValueError("strategy and benchmark columns must differ")
-    rs = monthly_returns_from_nav(m[strategy_col])
-    rb = monthly_returns_from_nav(m[benchmark_col])
+    rs = requested_complete_month_returns(m[strategy_col], config) if requested_period else monthly_returns_from_nav(m[strategy_col])
+    rb = requested_complete_month_returns(m[benchmark_col], config) if requested_period else monthly_returns_from_nav(m[benchmark_col])
     x = pd.concat([rs.rename("s"), rb.rename("b")], axis=1).dropna()
     baseline = m.attrs.get("performance_baseline_date")
-    if baseline is not None and pd.Timestamp(baseline).to_period("M") == m.index[0].to_period("M"):
+    if baseline is not None and pd.Timestamp(baseline).to_period("M") == m.index[0].to_period("M") and not requested_period:
         x = x.iloc[1:]
     active = x["s"] - x["b"]
     te = float(active.std(ddof=1) * np.sqrt(config.periods_per_year)) if len(active) > 1 else np.nan

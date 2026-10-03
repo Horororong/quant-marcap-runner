@@ -184,6 +184,8 @@ def build_capabilities() -> dict:
             "benchmark_statistics_output": "benchmark_statistics_CURRENT.csv (only with explicit benchmark)",
             "metrics_added": ["누적수익률", "Sortino", "Calmar", "월간승률"],
             "zero_denominator_policy": "NaN; never fabricate infinity or zero",
+            "requested_period_report": RUN_ORCHESTRATION_CONTRACT["requested_period_report"],
+            "dashboard_output": "report_CURRENT.html (offline interactive, common period selector)",
         },
         "canonical_outputs": [
             "daily_nav.csv",

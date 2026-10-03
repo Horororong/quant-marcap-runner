@@ -39,7 +39,7 @@ def main():
         import quant_backtest_template_CURRENT as current
         assert getattr(engine, name) is getattr(current, name), name
     assert engine.TEMPLATE_VERSION == 'v2-16'
-    assert engine.PERFORMANCE_TEMPLATE_VERSION == 'v2-17'
+    assert engine.PERFORMANCE_TEMPLATE_VERSION == 'v2-18'
     assert engine.BacktestConfig().standard_start_year == 2000
     assert BacktestConfig().standard_start_year == 2001
 
@@ -129,7 +129,7 @@ def main():
         assert len(metrics) == 12 and set(metrics.MDD_source) == {'daily'}
         assert {'Sortino','Calmar','월간승률','누적수익률'} <= set(metrics.columns)
         manifest = json.loads((out/'chat_manifest_CURRENT.json').read_text())
-        assert len(manifest['render_order']) == 9 and manifest['template_version'] == 'v2-17'
+        assert len(manifest['render_order']) == 9 and manifest['template_version'] == 'v2-18'
         assert [x['period'] for x in manifest['render_order']] == ['from_2001']*3+['from_2021']*3+['longest']*3
         stats = pd.read_csv(out/'benchmark_statistics_CURRENT.csv')
         assert len(stats) == 8 and set(stats.strategy) == {'NAV_Gross','NAV_Net'}
