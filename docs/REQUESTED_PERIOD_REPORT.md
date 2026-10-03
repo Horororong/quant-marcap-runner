@@ -44,3 +44,36 @@ hover는 배수·달러 비교값을 보인다. 낙폭 축약은 표시 전용�
 결측/날짜/범위·오프라인 HTML을 확인한다. 합성 자료는 소프트웨어 테스트일 뿐이다.
 다음 단계: checked lifecycle/kit CLI 연결, 실제 자료 실행·기존 NAV 회귀·브라우저 검증,
 전체 원격 CI, 새 clean-source kit 생성·bootstrap/verify·공개 전체/분할 다운로드.
+
+## 단계 2 — checked 실행 연결과 실제 NAV 검증
+
+단계 1 원격 commit `8b8aa51e7fb2f5dd0a524c5710294ef685e7d76c`, 로컬 `ac08b1d`.
+`strategy_dsl_runner.py`와 `sandbox_runtime.py run`의 새 `--report-periods` 옵션은
+입력 기간을 snapshot하고, 실행 전 CURRENT 날짜 준비도를 점검한 뒤 기존 shared
+preflight/기업행동/held-return guards로 NAV를 만든다. 기존 execution-only와 동시에
+요청하면 실패한다. 기존 기본 정식 4기간 readiness는 변경하지 않는다.
+
+요청 기간의 최소 하나가 준비되면 나머지 gap을 그대로 등록한 부분 보고를 만든다.
+`report_ready=true`는 준비된 기간만 공식 계산·검증한 보고라는 뜻이다.
+`report_complete=false`와 `period_readiness`로 전체 요청 완료 여부를 구분한다.
+모든 요청 기간이 gap이면 실행 전에 `data_gap`이며 보고 수치를 만들지 않는다.
+실패·gap에는 `diagnostic_CURRENT.html`을 남기고 지표를 추가하지 않는다.
+보고 staging은 기간/캘린더/벤치마크/전체 NAV/metrics/HTML의 embedded payload를
+CURRENT 결과와 대조한 후에만 publish한다. Postprocess subprocess는 300초 제한이다.
+
+실제 로컬 KRX 대형주 10분위 checked 실행 성공: 2020-04-01~2020-05-08.
+Fingerprint `fc1db45bda8afee95fb05681c4500176ebcb4fc699094de182e89da6b17873c8`,
+전체 daily NAV SHA256 `fcba76a621a97095396fefad9695f19d363b79eb791fc9a3d6c0bfead20d4c32`.
+기존 ee212da3e4a7 묶음의 검증 ledger와 byte-identical이다. Cost/selection/execution
+수식을 바꾸지 않았으며 performance/machine version metadata만 달라진다.
+2020년 5월의 정확한 하위기간은 직전 NAV 기준으로 보고한다. 2000/2010/2021 기간은
+gap으로 남고 CAGR/Sharpe 등 표본 부족은 null/계산 불가 표시다. 이는 실행 및
+보고 검증이며 장기 투자 가설의 검증은 아니다.
+
+기존 checked lifecycle 회귀와 kit 실패 경계, 새 합성 검사 5개를 수행한다.
+로컬 Chromium은 sandbox의 setsockopt 차단으로 시작하지 못했다. 이를 브라우저
+검증 통과로 주장하지 않는다. CI에는 pinned Playwright 1.57.0을 사용한 실제 HTML
+기간/표/3차트·종료값·로그축/hover 값·비용/벤치마크·공통 zoom·범례·모바일 너비
+검사를 추가하고 실제 report HTML/PNG/검증 ledger를 artifact로 보존한다.
+두 ABI의 offline kit E2E에도 새로운 기간 보고/원래 NAV 일치/결과 export 검사를
+추가했다. 다음: 최종 원격 CI와 실제 브라우저 결과 확인, 새 묶음/공개 전달.

@@ -12,6 +12,9 @@ from quant_backtest_template_CURRENT import (
     calculate_metrics, requested_period_readiness,
 )
 from quant_backtest_postprocess import write_requested_report, load_daily_nav
+from unittest.mock import patch
+from strategy_dsl_run import run_checked_strategy
+from test_strategy_dsl_run import artificial_execution, fake_preflight, ROOT, EXAMPLE
 
 
 class RequestedReportTests(unittest.TestCase):
@@ -116,6 +119,31 @@ class RequestedReportTests(unittest.TestCase):
             metrics=pd.read_csv(root/'report/metrics_CURRENT.csv')
             self.assertNotIn('missing',set(metrics.period))
             self.assertEqual(set(metrics.period),{'all','subset','mid','short'})
+
+    def test_checked_lifecycle_and_missing_period_diagnosis(self):
+        raw = json.loads(EXAMPLE.read_text())
+        periods = [{'id':'short','start':'longest','end':'latest'},
+                   {'id':'missing','start':'2000-01-01','end':'latest'}]
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);source=root/'strategy.json';source.write_text(json.dumps(raw))
+            def fake_with_observed_anchor(path,repo,out,**kwargs):
+                result=artificial_execution(path,repo,out,**kwargs)
+                csv=out/'daily_nav.csv';frame=pd.read_csv(csv);columns=[c for c in frame if c!='Date']
+                frame[columns]=frame[columns].div(frame[columns].iloc[0]);frame.to_csv(csv,index=False)
+                return result
+            with patch('strategy_dsl_run.preflight_strategy',side_effect=fake_preflight),patch('strategy_dsl_run.run_strategy',side_effect=fake_with_observed_anchor):
+                good=run_checked_strategy(source,ROOT,root/'valid',report_periods=periods)
+            self.assertEqual(good['status'],'ok',good)
+            self.assertTrue(good['nav_ready']);self.assertTrue(good['report_ready']);self.assertFalse(good['report_complete'])
+            self.assertEqual(good['period_readiness']['missing']['status'],'data_gap')
+            with patch('strategy_dsl_run.preflight_strategy',side_effect=fake_preflight),patch('strategy_dsl_run.run_strategy') as execution:
+                gap=run_checked_strategy(source,ROOT,root/'gap',report_periods=periods[1:])
+                execution.assert_not_called()
+            self.assertEqual(gap['status'],'data_gap');self.assertFalse(gap['report_ready'])
+            self.assertIn('2000', (root/'gap/diagnostic_CURRENT.html').read_text())
+            self.assertFalse((root/'gap/report/metrics_CURRENT.csv').exists())
+            invalid=run_checked_strategy(source,ROOT,root/'invalid',postprocess=False,report_periods=periods)
+            self.assertEqual(invalid['status'],'capability_gap');self.assertFalse(invalid['nav_ready'])
 
 
 if __name__=='__main__':unittest.main(verbosity=2)

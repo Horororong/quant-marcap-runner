@@ -42,6 +42,35 @@ subprocess.run([python, '-I', runner, 'verify'], check=True)
 
 ## 한국어 요청을 실행하는 규칙
 
+### 사용자 지정 기간 성과보고 · CURRENT v2-18
+
+짧은 연구 NAV와 공식 요청 기간 보고는 별도 모드다. `--execution-only`는 지금도
+`report_ready=false`이며 지표를 붙이지 않는다. 요청 기간을 명시적으로 보고하려면
+`config/reports/kr_equity_report_periods.json` 또는 같은 계약의 새 JSON을 사용한다.
+현재 manifest의 `requested_report_contract_version=1`을 먼저 확인한다.
+
+```python
+p = subprocess.run([python, '-I', runner, 'run', '/mnt/data/requests/strategy.json',
+    '--report-periods', '/mnt/data/requests/periods.json',
+    '--output-dir', '/mnt/data/run_report_001'], capture_output=True, text=True, timeout=840)
+result = json.loads(p.stdout)
+```
+
+기간 JSON은 `[{"id":"longest","label":"최장","start":"longest","end":"latest"}]`
+처럼 만든다. 정확한 날짜의 시작/종료도 지원한다. latest는 검증된 NAV의 마지막
+날짜다. 전략 DSL의 실행기간 밖을 보고에 추가한다고 새 NAV가 생기지 않는다.
+요청한 모든 기간을 계산하려면 실행 DSL 자체의 원자료·공시·체결 준비도가 필요하다.
+표본이나 데이터가 부족한 결과는 그대로 표시하고 기간을 축소하지 않는다.
+
+성공 시 `report/report_CURRENT.html`을 실제 인터랙티브 화면으로 열거나 UI가
+지원하면 동일 manifest의 `dashboard_payload`를 네이티브로 표시한다. 기본은 공통
+기간/비용 선택기와 3차트다. HTML은 Plotly 내장으로 오프라인 동작하며 PNG로
+대체하지 않는다. 채팅이 HTML 실행을 지원하지 않으면 내려받아 브라우저에서 열고,
+그 상황을 명확히 알려준다. 보고 성공은 `report_ready=true`일 때만 선언한다.
+일부 기간 부족은 `report_complete=false`와 개별 `data_gap`으로 남는다. 정식 기존
+4기간 보고는 이 옵션 없이 실행하며 종전 준비도를 유지한다. 계약·표본·환율 및
+달러 표준화 기준은 `docs/REQUESTED_PERIOD_REPORT.md`를 읽는다.
+
 1. `config/strategy_dsl_capabilities_v1.json`, `config/strategy_dsl_schema_v1.json`,
    `scripts/strategy_dsl_aliases.py`와 manifest의 coverage를 먼저 읽는다.
 2. 지원하지 않는 조건은 `capability_gap`으로 설명한다. 일반 PER·ROE를 기존
@@ -67,8 +96,8 @@ result = json.loads(p.stdout)
 `--execution-only`는 명시적인 연구 NAV 실행이다. 현재 기본 예제처럼 짧은
 구간에는 이 옵션을 사용하고 **CAGR·MDD·Sharpe 등을 GPT나 별도 코드로 계산하지
 않는다**. 옵션을 생략하면 기존 CURRENT 4기간·9차트 정식 보고 경로를 사용하며,
-필요한 기간이 부족하면 실행 전에 `data_gap`으로 실패한다. 요청 기간 전용
-CURRENT 연구 보고는 다음 milestone이다. 실행 디렉터리는 매번 새로 만들며,
+필요한 기간이 부족하면 실행 전에 `data_gap`으로 실패한다. 요청 기간 공식 보고는
+위의 `--report-periods` 모드에서 지원한다. 실행 디렉터리는 매번 새로 만들며,
 기존 결과를 덮어쓰지 않는다.
 
 ## 기본 포함 범위와 한계
@@ -112,6 +141,20 @@ GPT 묶음을 바꾸지 않는다. 자료 범위를 넓히려면 Codex에서 새
 > 대체하지 말고 설명해. 짧은 구간은 검증된 연구 NAV만 보고하고 결과 ZIP을 줘.
 
 ## Codex에서 새 묶음 만들기
+
+사용자에게 전달하는 4예제 profile은 위 3개 예제에
+`kr_equity_dart_custom_month_research.json` (2020-05~06, 5월 말 신호·다음 거래일
+체결)을 추가한다. 이 profile은 DART **2019 Q1/H1** 원본 shard도 포함한다.
+선택 월 1~12의 마지막 거래일 재무 리밸런싱은 `docs/FINANCIAL_REBALANCE.md`를
+따른다. 포함 데이터 밖의 기간에는 새 묶음이 필요하며 `data_gap`을 우회하지 않는다.
+
+기존 Strategy DSL CI를 수동 실행할 때 `export_kit=true`를 선택하면 두 Python
+ABI의 고정 wheel을 포함한 동일 kit를 만들고 **3.11/3.12 각각** 네 예제를
+인터넷 차단 환경에서 원본 checked runner와 비교한다. `deliver/quant-sandbox-*`
+branch push도 같은 일회성 전달 경로를 사용한다. 새 schedule이나 collector는 없다.
+전달 artifact는 다운로드 도구의 32MiB 한도보다 작은 24MiB segment로 저장한다.
+`download_manifest.json`의 순서·길이·SHA256을 검증한 뒤 원래 ZIP을 복원한다.
+사용자는 복원된 `quant-sandbox-*.zip` 하나를 첨부하면 된다.
 
 코드 변경을 테스트하고 commit한 **깨끗한 tree**에서 수행한다. 수집기나 결과
 history를 묶지 않는다. 생성 파일은 Git에 저장하지 않는다.

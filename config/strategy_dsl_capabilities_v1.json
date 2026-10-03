@@ -973,6 +973,7 @@
   "rebalance_frequencies": [
     "months"
   ],
+  "requested_report_contract_version": "1",
   "run_orchestration": {
     "automatic_preflight": true,
     "command": "python scripts/strategy_dsl_runner.py <strategy.json>",

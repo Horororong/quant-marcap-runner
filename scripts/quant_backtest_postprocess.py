@@ -42,6 +42,7 @@ from quant_backtest_template_CURRENT import (
     standard_period_windows_from_dates,
     run_requested_periods, validate_report_periods, dashboard_period_data,
     REQUESTED_REPORT_CONTRACT_VERSION,
+    load_report_periods,
 )
 from quant_report_dashboard import write_dashboard
 
@@ -221,8 +222,8 @@ def dashboard_payload(periods: dict, columns: list[str], config: BacktestConfig,
         portfolio = short.split('_', 1)[0] if short.startswith('D') and short[:3][1:].isdigit() else 'strategy'
         if portfolio != 'strategy':
             short = short[4:]
-        cost = 'gross' if short == 'Gross' else short.removeprefix('Net_')
-        label = '비용 전' if cost == 'gross' else '비용 후: ' + cost
+        cost = 'gross' if short == 'Gross' else 'net:' + short.removeprefix('Net_')
+        label = '비용 전' if cost == 'gross' else '비용 후: ' + cost.removeprefix('net:')
         costs[cost] = label
         portfolios.add(portfolio)
         meta[name] = {'kind': 'strategy', 'portfolio': portfolio, 'cost': cost,
@@ -232,6 +233,8 @@ def dashboard_payload(periods: dict, columns: list[str], config: BacktestConfig,
             'requested_report_contract_version': REQUESTED_REPORT_CONTRACT_VERSION, 'mode': mode,
             'title': config.title, 'strategy_summary': summary, 'periods': periods, 'series_meta': meta,
             'portfolios': sorted(portfolios), 'cost_options': costs, 'report_complete': complete,
+            'risk_free_rate_annual': config.risk_free_rate, 'statistical_frequency': 'complete_monthly',
+            'periods_per_year': 12, 'volatility_ddof': 1,
             'limitations': limits, 'diagnostics': diagnostics,
             'calculation_notes': [f"CURRENT {TEMPLATE_VERSION} · 무위험 연이율 {config.risk_free_rate:.2%}",
                                   "Sharpe: 완결 월 수익률의 평균 초과수익 / 표본 표준편차 × √12; 월 무위험수익=(1+연이율)^(1/12)-1",
@@ -354,7 +357,7 @@ def main() -> None:
                              risk_free_rate=args.risk_free_rate)
         if args.benchmark_series and args.benchmark_series not in daily_raw.columns:
             raise ValueError('explicit benchmark column missing')
-        manifest = write_requested_report(daily_raw, cfg, validate_report_periods(json.loads(args.report_periods.read_text())),
+        manifest = write_requested_report(daily_raw, cfg, load_report_periods(args.report_periods),
                                           args.output_dir, benchmark=args.benchmark_series, daily_csv=args.daily_csv,
                                           repo_root=Path(__file__).resolve().parents[1])
         print(json.dumps({'mode': manifest['mode'], 'ready': manifest['readiness']['ready'],
@@ -412,8 +415,13 @@ def main() -> None:
     dashboard_periods = {}
     for key, row in results.items():
         nav = row['daily_nav'] if row['daily_nav'] is not None else row['monthly_nav']
+        baseline = nav.attrs.get('baseline_date')
+        if baseline is None:
+            baseline = row['monthly_nav'].attrs.get('performance_baseline_date')
+        if baseline is None:
+            baseline = nav.index[0] - pd.offsets.MonthEnd(1)
         dashboard_periods[key] = dashboard_period_data(nav, row['metrics'], row['label'],
-                                                       baseline_date=nav.attrs.get('baseline_date'), calendar=cfg.market_calendar)
+                                                       baseline_date=baseline, calendar=cfg.market_calendar)
     dashboard = dashboard_payload(dashboard_periods, list(daily.columns), cfg, benchmark=args.benchmark_series,
                                   mode='canonical_report', complete=True, daily_csv=args.daily_csv,
                                   repo_root=Path(__file__).resolve().parents[1])

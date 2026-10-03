@@ -103,3 +103,12 @@ def write_dashboard(payload: dict, output: Path) -> None:
     data = json.dumps(payload, ensure_ascii=False, allow_nan=False).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
     page = PAGE.replace('__TITLE__', html.escape(payload['title'])).replace('__DATA__', data).replace('__PLOTLY__', get_plotlyjs())
     Path(output).write_text(page, encoding='utf-8')
+
+
+def write_failure_dashboard(record: dict, output: Path, readiness: dict | None = None) -> None:
+    """A diagnosis, not a ready performance report; never adds metrics to a gap."""
+    message = (record.get('error') or {}).get('message', '실행 또는 검증이 완료되지 않았습니다.')
+    rows = ''.join('<li>' + html.escape(p.get('label',key) + ': ' + str(p.get('reason') or p.get('status') or '날짜 준비도 확인')) + '</li>'
+                   for key,p in (readiness or {}).get('periods', {}).items())
+    content = '<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>실행 진단</title><body style="font:16px/1.6 system-ui;max-width:900px;margin:32px auto;padding:16px"><h1>성과보고를 만들지 못했습니다</h1><p>' + html.escape(message) + '</p><ul>' + rows + '</ul><p>검증되지 않은 성과지표를 계산하지 않았습니다.</p><details><summary>재현성·상세 진단</summary><pre style="white-space:pre-wrap;overflow-wrap:anywhere">' + html.escape(json.dumps(record, ensure_ascii=False, indent=2)) + '</pre></details></body></html>'
+    Path(output).write_text(content,encoding='utf-8')

@@ -11,6 +11,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+import time
 
 from build_sandbox_kit import ROOT, STARTER, build_kit
 from sandbox_bootstrap import hash_file
@@ -34,8 +35,11 @@ int getaddrinfo(const char *node, const char *service, const struct addrinfo *hi
 
 
 def call(command, env=None, expected=0):
-    process = subprocess.run([str(x) for x in command], capture_output=True, text=True, env=env)
+    started = time.monotonic()
+    print('Running: ' + ' '.join(str(x) for x in command), flush=True)
+    process = subprocess.run([str(x) for x in command], capture_output=True, text=True, env=env, timeout=900)
     assert process.returncode == expected, (command, process.returncode, process.stdout[-5000:], process.stderr[-5000:])
+    print(f'Completed in {time.monotonic() - started:.1f}s', flush=True)
     return process
 
 
@@ -44,6 +48,9 @@ def main():
     parser.add_argument('--wheels-dir', type=Path, required=True)
     parser.add_argument('--python', type=Path, default=Path(sys.executable))
     parser.add_argument('--work-dir', type=Path)
+    parser.add_argument('--strategy', action='append', help='Repository DSL path; repeat for a custom kit profile')
+    parser.add_argument('--runtime-target', action='append', choices=('cp311', 'cp312'))
+    parser.add_argument('--part-size-mib', type=int, default=32)
     args = parser.parse_args()
     minor = call([args.python, '-c', 'import sys;print(f"cp{sys.version_info.major}{sys.version_info.minor}")']).stdout.strip()
     if args.work_dir:
@@ -56,7 +63,9 @@ def main():
 
 def run_test(work, args, abi):
     kit = work / 'parts'
-    built = build_kit(ROOT, kit, args.wheels_dir, targets=(abi,))
+    strategies = args.strategy or [f'config/strategies/{name}.json' for name in STARTER]
+    built = build_kit(ROOT, kit, args.wheels_dir, targets=args.runtime_target or (abi,),
+                      strategies=strategies, part_bytes=args.part_size_mib * 1024**2)
     cfile, guard = work / 'offline.c', work / 'offline.so'
     cfile.write_text(GUARD)
     call(['cc', '-shared', '-fPIC', '-o', guard, cfile, '-ldl'])
@@ -74,8 +83,9 @@ def run_test(work, args, abi):
     python, runner = Path(ready['python']), installed / 'scripts/sandbox_runtime.py'
     call([python, '-I', runner, 'verify'], env)
     results = []
-    for name in STARTER:
-        original, replay = ROOT / f'config/strategies/{name}.json', installed / f'config/strategies/{name}.json'
+    for strategy in strategies:
+        name = Path(strategy).stem
+        original, replay = ROOT / strategy, installed / strategy
         # Baseline uses the existing checked entry point and the caller's
         # development packages. The isolated replay uses its pinned wheels.
         baseline, output = work / f'{name}-baseline', work / f'{name}-replay'
@@ -99,6 +109,21 @@ def run_test(work, args, abi):
         results.append({'strategy': name, 'fingerprint': result['strategy_fingerprint'],
                         'daily_nav_sha256': hash_file(output / 'artifacts/daily_nav.csv'), 'identical_artifacts': artifacts})
         print(f'{abi}: {name}: all {len(artifacts)} real artifacts byte-identical', flush=True)
+    reported = work / 'requested-period-report'
+    strategy = installed / 'config/strategies/kr_equity_size_deciles_research.json'
+    report_result = json.loads(call([python,'-I',runner,'run',strategy,'--report-periods',installed / 'config/reports/kr_equity_report_periods.json',
+                                     '--output-dir',reported],env).stdout)
+    assert report_result['status']=='ok' and report_result['nav_ready'] and report_result['report_ready']
+    assert not report_result['report_complete']
+    original_nav = work / 'kr_equity_size_deciles_research-replay/artifacts/daily_nav.csv'
+    assert (reported / 'artifacts/daily_nav.csv').read_bytes()==original_nav.read_bytes()
+    report_manifest = json.loads((reported / 'report/chat_manifest_CURRENT.json').read_text())
+    assert report_manifest['requested_report_contract_version']=='1'
+    assert report_manifest['periods']['from_2000']['status']=='data_gap'
+    assert report_manifest['periods']['longest']['ready']
+    assert (reported / 'report/report_CURRENT.html').is_file()
+    report_export = json.loads(call([python,'-I',runner,'export',reported,'--output',work / 'requested-period-result.zip'],env).stdout)
+    assert report_export['report_ready']
     raw = json.loads((installed / 'config/strategies/kr_equity_split_research.json').read_text())
     request = work / 'request.json'
     # Valid DSL, missing year: data_gap, never truncate the user's dates.
@@ -135,7 +160,9 @@ def run_test(work, args, abi):
     finally:
         renamed.rename(source)
     (work / 'verification.json').write_text(json.dumps({'status':'passed','runtime':abi,'network':'IP sockets and DNS blocked in inherited libc guard',
-                                                      'kit':built,'replays':results,'gap_checks':['missing_year','known_event_top_n','known_event_deciles','formal_readiness','wrong_package','missing_source']}, indent=2))
+                                                      'kit':built,'replays':results,
+                                                      'requested_report': {'status':'passed','periods':list(report_manifest['periods']), 'nav_unchanged':True,'export':report_export},
+                                                      'gap_checks':['missing_year','known_event_top_n','known_event_deciles','formal_readiness','wrong_package','missing_source']}, indent=2))
     print(f'{abi}: OFFLINE REAL-DATA REPLAY AND FAILURE BOUNDARIES PASS', flush=True)
 
 

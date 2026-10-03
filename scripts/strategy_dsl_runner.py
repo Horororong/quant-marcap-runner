@@ -508,7 +508,7 @@ def save_cash_exchange_audits(result: dict[str, Any], out: Path) -> None:
 
 
 def run_current_postprocess(spec: StrategySpec, repo_root: Path, out: Path, daily: pd.DataFrame, *,
-                            capture_output: bool = False, daily_csv: Path | None = None):
+                            capture_output: bool = False, daily_csv: Path | None = None, report_periods: Path | None = None):
     series = ",".join(daily.columns)
     cmd = [
         sys.executable, str(repo_root / POSTPROCESS_FILE),
@@ -522,9 +522,11 @@ def run_current_postprocess(spec: StrategySpec, repo_root: Path, out: Path, dail
         "--as-of-date", spec.period.as_of_date or spec.period.end,
     ]
     cmd.extend(["--market-calendar", "XKRX"])
+    if report_periods is not None:
+        cmd.extend(["--report-periods", str(report_periods)])
     if spec.benchmark is not None:
         cmd.extend(["--benchmark-series", "NAV_Benchmark"])
-    return subprocess.run(cmd, cwd=repo_root, check=True, capture_output=capture_output, text=capture_output)
+    return subprocess.run(cmd, cwd=repo_root, check=True, capture_output=capture_output, text=capture_output, timeout=300)
 
 
 def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = None, *, postprocess: bool = True) -> dict[str, Any]:
@@ -615,6 +617,7 @@ def main() -> None:
         action="store_true",
         help="build selections and daily NAV but skip canonical performance postprocess",
     )
+    ap.add_argument("--report-periods", type=Path, help="official requested-period report JSON; incompatible with --execution-only")
     args = ap.parse_args()
     if args.validate_only:
         spec = load_strategy_spec(args.strategy_json)
@@ -624,7 +627,7 @@ def main() -> None:
     from strategy_dsl_run import run_checked_strategy, exit_code_for_run
     try:
         result = run_checked_strategy(args.strategy_json, args.repo_root, args.output_dir,
-                                      postprocess=not args.execution_only)
+                                      postprocess=not args.execution_only, report_periods=args.report_periods)
     except OSError as exc:
         # Output reservation errors must never modify a previous run.
         result = {"status": "failed", "phase": "output", "nav_ready": False, "report_ready": False,

@@ -27,11 +27,12 @@ def verify_kit(root, *, data=True):
         raise KitEnvironmentError(f'kit has no runtime target: {key}')
     packages = check_environment(manifest['runtime_targets'][key])
     verify_inventory(root, manifest, ('code', 'data') if data else ('code',))
-    from execution_contract import DSL_MACHINE_CONTRACT_VERSION, EXECUTION_ENGINE_VERSION, PERFORMANCE_TEMPLATE_VERSION
+    from execution_contract import DSL_MACHINE_CONTRACT_VERSION, EXECUTION_ENGINE_VERSION, PERFORMANCE_TEMPLATE_VERSION, REQUESTED_REPORT_CONTRACT_VERSION
     from factor_registry import FACTOR_REGISTRY_VERSION
     for name, actual in [('dsl_machine_contract_version', DSL_MACHINE_CONTRACT_VERSION),
                          ('execution_engine_version', EXECUTION_ENGINE_VERSION),
                          ('performance_template_version', PERFORMANCE_TEMPLATE_VERSION),
+                         ('requested_report_contract_version', REQUESTED_REPORT_CONTRACT_VERSION),
                          ('factor_registry_version', FACTOR_REGISTRY_VERSION)]:
         if manifest['versions'][name] != actual:
             raise KitIntegrityError(f'contract mismatch: {name}')
@@ -44,7 +45,7 @@ def published_files(root):
             and p.name not in {'sandbox_execution_manifest.json', 'run_status.json'}}
 
 
-def run_in_kit(root, strategy, output=None, *, postprocess=True):
+def run_in_kit(root, strategy, output=None, *, postprocess=True, report_periods=None):
     root, strategy = Path(root).resolve(), Path(strategy).resolve()
     manifest, packages = verify_kit(root, data=False)
     from strategy_dsl import load_strategy_spec
@@ -60,7 +61,7 @@ def run_in_kit(root, strategy, output=None, *, postprocess=True):
         else:
             verify_inventory(root, manifest)
             data_verified = True
-        result = run_checked_strategy(frozen, root, output, postprocess=postprocess)
+        result = run_checked_strategy(frozen, root, output, postprocess=postprocess, report_periods=report_periods)
     out = Path(result['output_dir'])
     result['input_path'] = str(strategy)
     result['kit_id'] = manifest['kit_id']
@@ -125,6 +126,7 @@ def main():
     run.add_argument('strategy', type=Path)
     run.add_argument('--output-dir', type=Path)
     run.add_argument('--execution-only', action='store_true')
+    run.add_argument('--report-periods', type=Path)
     export = sub.add_parser('export')
     export.add_argument('run_dir', type=Path)
     export.add_argument('--output', type=Path, required=True)
@@ -137,7 +139,7 @@ def main():
                 result = {'status': 'ok', 'kit_id': manifest['kit_id'], 'source_revision': manifest['source_revision'],
                           'runtime': runtime_key(), 'packages': packages, 'coverage': manifest['coverage']}
             elif args.command == 'run':
-                result = run_in_kit(ROOT, args.strategy, args.output_dir, postprocess=not args.execution_only)
+                result = run_in_kit(ROOT, args.strategy, args.output_dir, postprocess=not args.execution_only, report_periods=args.report_periods)
             else:
                 result = export_run(args.run_dir, args.output)
         if log.getvalue():

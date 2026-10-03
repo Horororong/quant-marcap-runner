@@ -43,7 +43,7 @@ import math
 import numpy as np
 import pandas as pd
 
-from execution_contract import PERFORMANCE_TEMPLATE_VERSION
+from execution_contract import PERFORMANCE_TEMPLATE_VERSION, REQUESTED_REPORT_CONTRACT_VERSION
 
 TEMPLATE_VERSION = PERFORMANCE_TEMPLATE_VERSION
 CHAT_PAYLOAD_MAX_DRAWDOWN_POINTS = 480
@@ -636,9 +636,6 @@ def calculate_metrics(
     return pd.DataFrame(rows).set_index("전략")
 
 
-REQUESTED_REPORT_CONTRACT_VERSION = "1"
-
-
 def validate_report_periods(raw: Any) -> list[dict]:
     """Strict report specification, separate from strategy semantics/fingerprint."""
     import re
@@ -669,6 +666,18 @@ def validate_report_periods(raw: Any) -> list[dict]:
             raise ValueError("report label must be a nonempty string up to 160 characters")
         out.append({**item, "label": label})
     return out
+
+
+def load_report_periods(path) -> list[dict]:
+    from pathlib import Path
+    def unique(pairs):
+        row = {}
+        for key, value in pairs:
+            if key in row:
+                raise ValueError(f"duplicate report field: {key}")
+            row[key] = value
+        return row
+    return validate_report_periods(json.loads(Path(path).read_text(), object_pairs_hook=unique))
 
 
 def requested_period_readiness(dates: pd.DatetimeIndex, periods: list[dict], config: BacktestConfig) -> dict:
