@@ -3,6 +3,10 @@ name: Test Strategy DSL v1
 on:
   workflow_dispatch:
     inputs:
+      download_existing_kit:
+        description: Restore the already verified kit for a mobile HTTPS download
+        type: boolean
+        default: false
       export_kit:
         description: Build and publish the four-example offline execution kit
         type: boolean
@@ -111,6 +115,7 @@ concurrency:
 
 jobs:
   test:
+    if: ${{ !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && inputs.download_existing_kit) }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -202,6 +207,7 @@ jobs:
         run: python scripts/test_dsl_run_e2e.py
 
   sandbox-replay:
+    if: ${{ !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && inputs.download_existing_kit) }}
     runs-on: ubuntu-latest
     timeout-minutes: 40
     env:
@@ -544,5 +550,66 @@ jobs:
         with:
           name: quant-kit-download-032
           path: ${{ runner.temp }}/quant-replay/delivery/download.part032
+          compression-level: 0
+          retention-days: 30
+
+  download-verified-kit:
+    if: ${{ startsWith(github.ref_name, 'deliver/mobile-download-') || (github.event_name == 'workflow_dispatch' && inputs.download_existing_kit) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+    steps:
+      - name: Download retained segments from the successful delivery run
+        timeout-minutes: 5
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 37075642412
+          pattern: quant-kit-download-*
+          merge-multiple: true
+          path: ${{ runner.temp }}/verified-kit-source
+      - name: Restore and verify the exact original ZIP
+        timeout-minutes: 2
+        shell: python
+        run: |
+          import hashlib, json, os, pathlib, shutil, zipfile
+          source = pathlib.Path(os.environ['RUNNER_TEMP']) / 'verified-kit-source'
+          ledger_path, = source.rglob('download_manifest.json')
+          ledger = json.loads(ledger_path.read_text())
+          expected_name = 'quant-sandbox-ee212da3e4a7.zip'
+          expected_hash = '533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587'
+          assert ledger['zip_name'] == expected_name
+          assert ledger['zip_bytes'] == 291308667 and ledger['zip_sha256'] == expected_hash
+          output_dir = pathlib.Path(os.environ['RUNNER_TEMP']) / 'mobile-download'
+          output_dir.mkdir()
+          output = output_dir / expected_name
+          full_hash = hashlib.sha256()
+          total = 0
+          with output.open('xb') as stream:
+              for segment in ledger['segments']:
+                  name = segment['name']
+                  assert pathlib.Path(name).name == name
+                  path, = source.rglob(name)
+                  data = path.read_bytes()
+                  assert len(data) == segment['bytes'], name
+                  assert hashlib.sha256(data).hexdigest() == segment['sha256'], name
+                  stream.write(data)
+                  full_hash.update(data)
+                  total += len(data)
+          assert total == 291308667 and full_hash.hexdigest() == expected_hash
+          with zipfile.ZipFile(output) as archive:
+              assert archive.testzip() is None
+              manifest = json.loads(archive.read('kit_manifest.json'))
+              assert manifest['source_revision'] == 'b350b61e4db0c626e8533645a1a76d61d6ba0ae6'
+              assert manifest['kit_id'] == 'ee212da3e4a71bb7fa2261b45771156e2bf49b563419c8e639db45449cf694db'
+          print(json.dumps({'zip': expected_name, 'bytes': total, 'sha256': full_hash.hexdigest(),
+                            'source_run': 37075642412, 'status': 'verified_original_zip'}, indent=2))
+      - name: Publish one mobile-downloadable artifact containing the original ZIP
+        timeout-minutes: 3
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-sandbox-mobile-download
+          path: ${{ runner.temp }}/mobile-download/quant-sandbox-ee212da3e4a7.zip
           compression-level: 0
           retention-days: 30
