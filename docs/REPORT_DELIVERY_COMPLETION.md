@@ -25,3 +25,21 @@ main의 데이터/백필 자동 갱신을 보고 feature로 덮어쓰지 않음.
 
 최종 소스 전체 CI 37157470156: test / sandbox-replay(3.11/3.12) 모두 success (22:31 UTC 직접 확인). 두 ABI의 새 bootstrap/verify/5개 실제 예제 바이트 동일 및 공식 기간 보고 검사 통과.
 다운로드 ledger의 실제 archive 경로는 delivery/download_manifest.json, parts/kit_manifest.json. 공개 전달 helper가 각 metadata를 재귀적으로 정확히 1개 식별하도록 수정; 원래 ZIP·manifest·part hash 검사는 유지. Kit 내부 파일 변경 없음.
+
+새 kit ID 26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd.
+원본 quant-sandbox-26e4ec02e569.zip: 311,922,550 bytes / SHA256 f76f38e1c9ed9401cd3607db67100cf6211d8c96fc5dadcbda13eff940984784.
+현재 Work로 13개 원본 ZIP transport 조각을 에이전트가 직접 다운로드/CRC/hash 검사/복원. 15개 30MB 미만 업로드 ZIP도 original archives의 원래 bytes로 로컬 준비 검증 성공.
+현재 Work fresh runtime: /workspace/attachments/quant-report-kit-822c435f/runtime.
+bootstrap, verify, 실제 2년 checked report 전부 성공. report_ready=true / report_complete=false (from_2000 data_gap 유지).
+현재 Work의 metrics_CURRENT.csv, daily_nav_canonical.csv, benchmark_statistics_CURRENT.csv가 실제 browser-tested CI 보고와 바이트 동일. fingerprint 455268d0fd7f2c4330e2592f021098af0c0d81ae101a67c34265c54064fec352 유지.
+공개 배포 run 37158824033, publication source 2cb9ed9a78dcea11e2ab5246d119068640ea959c. 익명 다운로드 hash 검증 완료.
+
+## 완료 · 2026-10-03 22:37 UTC
+
+요청한 보고 소프트웨어·실제 브라우저·최종 전체 CI·두 ABI fresh bootstrap/verify·원본 hash 연결 새 ZIP·익명 다운로드·현재 Work 자동 설치/checked 보고까지 완료.
+public proof artifact 11287201003 내려받아 CRC/SHA와 24개 파일 모두 실제 익명 HTTP 200 / Authorization 없음 / 원본 SHA256 동일을 확인.
+https://github.com/Horororong/quant-marcap-runner/releases/tag/quant-report-26e4ec02e569
+전체 ZIP과 setup+001~014 업로드 ZIP, interactive HTML, 실제 PNG/hover PNG, 두 ABI/browser/공개 delivery manifest 증거 제공. 모든 업로드 ZIP <30,000,000 bytes.
+사용자는 현재 Work에 설치된 runtime을 바로 사용할 수 있음. 다른 ChatGPT 프로젝트 대화로 자동 파일 공유하는 권한/도구는 없으며 그 환경의 외부 다운로드 또는 첨부 기능 확인이 필요함.
+미완료 별도 데이터/연구: legacy 독립 품질 audit, 누락 장기 주가/재무 기간, 전체시장 기업행동/배당 완결성, 전략의 경제적 가설·OOS·운용성 인증. 부족한 기간은 명시적 data_gap이며 예제는 투자성과 인증이 아님.
+main으로 병합한 상태는 아님. source 822c435f가 검증/배포된 고정 코드 기준. main 백필/데이터 갱신을 덮어쓰지 않음.

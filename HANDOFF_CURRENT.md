@@ -1,3 +1,13 @@
+## 2026-10-03 requested-report kit delivery COMPLETE
+
+Read docs/REPORT_DELIVERY_COMPLETION.md for the final evidence and resume paths.
+Verified code: 822c435f4b6148c2832e12370a6ccb324a9e875f; full CI 37157470156 (test + offline CP311/CP312 passed).
+Public delivery CI 37158824033 passed; all 24 assets anonymously downloaded with matching full-byte hashes.
+Release: https://github.com/Horororong/quant-marcap-runner/releases/tag/quant-report-26e4ec02e569
+Kit 26e4ec02e569, original ZIP SHA256 f76f38e1c9ed9401cd3607db67100cf6211d8c96fc5dadcbda13eff940984784.
+Current Work runtime /workspace/attachments/quant-report-kit-822c435f/runtime is already freshly bootstrapped, verified and checked-report tested. Do not reinstall/replay completed work unless integrity or input changes justify it.
+Main merge remains separate; preserve ongoing backfill/data updates. Long-history missing data and legacy independent audit remain gaps, not completed investment research.
+
 # Current Strategy DSL handoff
 
 ## Custom financial rebalance continuation (2026-10-02 UTC)
@@ -380,3 +390,86 @@ independent financial-quality completion. Gate boundary tests pass locally;
 require complete feature CI and live main confirmation before deployment is
 recorded as complete. Follow the final section of the legacy handover for
 actual commit/run IDs and the remaining parser/source/independent-audit work.
+# 사용자 실행 묶음 전달 — 진행 checkpoint (2026-10-02)
+
+최신 사용자 요청은 실제 `quant-sandbox-*.zip` 전달이다. 현재 기준 원격 main은
+`61250b33d84b02338bef4037f19169b336bb2185`; 기존 리밸런싱 전체 CI는 success다.
+기존 3예제+custom May, CPython 3.11/3.12, 고정 wheels와 원본 데이터를 묶는
+기존 CI의 명시적 export 경로를 준비했다. 생성·offline replay·다운로드는 아직
+미완료다. `docs/SANDBOX_DELIVERY_CHECKPOINT.md`부터 재개하고 완료한 기능·백필을
+반복하지 않는다. 최신 legacy processed 3,401/pending 111,619이며 품질 완료는 False다.
+
+
+## 단계 2 완료: 실제 ZIP 생성·양 ABI offline replay (2026-10-02 UTC)
+
+- 원격 source commit `b350b61e4db0c626e8533645a1a76d61d6ba0ae6`, PR #27, CI run `37075642412`.
+- Kit ID `ee212da3e4a71bb7fa2261b45771156e2bf49b563419c8e639db45449cf694db`; `quant-sandbox-ee212da3e4a7.zip`, **291308667 bytes**.
+  전체 SHA256: `533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587`.
+- **CPython 3.11/3.12 모두 성공**. 각 ABI에서 4예제 **83개 artifact**가 원본 checked
+  runner와 byte-identical이다. 두 ABI 간 fingerprint·NAV SHA256도 모두 일치한다.
+  6개 missing/corruption/readiness 경계도 모두 통과했다.
+- 12개 24MiB download segment와 ledger를 실제로 내려받았다. 전달 artifacts는
+  30일 보관한다. 전체 Strategy DSL test job은 아직 실행 중이며 success로 기록하지 않는다.
+- 다음: 저장된 ledger의 모든 SHA/길이로 ZIP 복원·무결성 검증, 로컬 offline
+  bootstrap/verify, 전체 CI/PR 최종 확인, 실제 ZIP 링크 전달.
+- Machine checkpoint: `docs/audits/sandbox-delivery-checkpoint-20261002.json`.
+
+
+## 단계 3 완료: 다운로드 ZIP 복원·로컬 설치·전체 CI (2026-10-02 UTC)
+
+- 12개 download segment의 길이·SHA256을 전부 직접 대조하고 원래 ZIP을 복원했다.
+  전체 **291,308,667 bytes / SHA256 `533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587`**가
+  원격 생성 ledger와 일치한다. ZIP CRC/중복·안전한 이름, bootstrap, 모든 내부 part 및
+  code/data/wheel archive의 길이·SHA256도 통과했다.
+- 실제 파일: `/workspace/attachments/quant-sandbox-delivery/quant-sandbox-ee212da3e4a7.zip`.
+  Binary는 Git에 저장하지 않는다. 새 workspace라면 machine checkpoint의 artifact IDs와
+  `download_manifest.json`을 사용해 이 ZIP을 복원한다. 임의로 재생성/재백필하지 않는다.
+- 현재 로컬 CPython 3.12에서도 **IP socket/DNS를 차단한 상태로** 다운로드 ZIP의
+  bootstrap 설치와 isolated `sandbox_runtime.py verify`를 실제로 실행해 모두 통과했다.
+  원격의 양 ABI 4예제 replay를 로컬에서 중복 실행하지 않았다.
+- 원격 source `b350b61e4db0c626e8533645a1a76d61d6ba0ae6`의 전체 CI **`37075642412` success**:
+  test `111064819455`, 3.11 `111064819139`, 3.12 `111064819425` 모두 success다.
+  원문 quarter oracle, 기존 DART/KRX/top-N/10분위/CURRENT/legacy regressions를 보존했다.
+- ZIP은 코드·원본 데이터·고정 wheel과 4예제를 포함한다. CPython 3.11/3.12 Linux
+  x86_64 glibc≥2.28용이며, 가격 연도는 2020/2024, DART는 예제용 2019/2020 기간이다.
+  연구 NAV와 정식 CURRENT report readiness를 구분하고 필요한 자료가 없으면 data_gap이다.
+- 사용자 전달 준비 완료. 다음은 PR #27 native merge와 원격 main 상태를 별도 기록하고
+  이 실제 ZIP의 다운로드 링크를 제공하는 것이다. 생성 source revision은 이후 docs/main
+  commit과 구분하며 이미 검증한 kit ID/bytes를 변경하지 않는다.
+
+
+## 최종 전달 상태 / 중단된 원격 호출
+
+실제 ZIP은 환경 재시작 후에도 보존됐다. 전체 SHA256을 다시 대조해 일치했다.
+다운로드 파일: `/workspace/attachments/quant-sandbox-delivery/quant-sandbox-ee212da3e4a7.zip` (278 MiB).
+GitHub 반영 호출은 `user cancelled MCP tool call`로 중단됐다. 직접 재조회한 PR #27은
+**open / merged=false**, main은 `61250b33d84b02338bef4037f19169b336bb2185`다.
+원격 main 반영 완료로 표시하지 않는다. 취소된 merge는 자동 재호출하지 않는다.
+생성·전체 source CI·양 ABI 4예제 재현·ZIP SHA·로컬 offline 설치/검증은 완료됐으며
+해당 실제 파일을 사용자에게 전달한다. 완료한 생성/검증/백필을 다시 실행하지 않는다.
+
+## 모바일 다운로드 복구 (2026-10-03)
+
+사용자의 모바일 screenshot에서 작업환경 경로의 다운로드 실패를 확인했다.
+기존 ZIP을 재생성하지 않고 전달-only run `37080822925`에서 복원·SHA/CRC 검증해
+artifact `11259265188`로 올렸다. 실제 HTTPS 다운로드와 내부 원본 ZIP 처리법은
+`docs/MOBILE_SANDBOX_DOWNLOAD.md`를 따른다. 기존 test/sandbox replay는 skipped다.
+취소된 PR #27 merge는 재호출하지 않았다. 이전 workspace 경로를 다운로드 링크로
+반복 제공하지 않는다.
+
+
+## 최종 완료: 실제 익명 다운로드 검증
+
+- 전달 구현 commit `6d99daeff656042277bf75abff7adf73ce2a6f2d`, run `37081967124` / job `111084242487`
+  **success**. Test/sandbox-replay jobs는 **skipped**다. 생성/백테스트/패키지 재현/백필을
+  다시 하지 않았으며, 취소된 PR #27 merge도 재시도하지 않았다.
+- 공개 release `quant-sandbox-ee212da3e4a7` (ID `402239704`, draft=false),
+  원본 ZIP asset ID `606780546`, **291308667 bytes**.
+- **Authorization header 없는 실제 GET**이 HTTP **200**을 반환했고, 전체 다운로드
+  SHA256 `533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587`가 원본과 일치했다.
+- 최종 고정 다운로드 주소: https://github.com/Horororong/quant-marcap-runner/releases/download/quant-sandbox-ee212da3e4a7/quant-sandbox-ee212da3e4a7.zip
+  로그인이나 단기 서명 URL이 필요 없다. Actions artifact의 30일 만료와 별도인
+  공개 release asset이다. 기존 workspace/서명/artifact 링크를 최종 전달로 재사용하지 않는다.
+- 이 파일은 안쪽 ZIP wrapper가 없는 원래 실행 ZIP이다. ChatGPT 퀀트 프로젝트의
+  Python 실행 가능한 대화에 **그대로 첨부**하고 기존 bootstrap/verify를 사용한다.
+- Machine checkpoint: `docs/audits/public-sandbox-download-checkpoint-20261003.json`.
