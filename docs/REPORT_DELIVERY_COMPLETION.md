@@ -22,3 +22,6 @@ main의 데이터/백필 자동 갱신을 보고 feature로 덮어쓰지 않음.
 현재 main legacy 상태 2026-10-03 19:13:51 UTC: 9,401 processed, 105,619 pending, collection_complete/quality_complete False, independent audit required. 기존 schedule/수집/원문은 이번 보고 작업에서 수정·반복하지 않음.
 
 22:26 UTC checkpoint: actual browser/PNG/hover passed. Full CI final real execution regression progressing; both clean offline ABI E2E are still running under existing 30-minute step limit. No publication claim until exact source run is complete.
+
+최종 소스 전체 CI 37157470156: test / sandbox-replay(3.11/3.12) 모두 success (22:31 UTC 직접 확인). 두 ABI의 새 bootstrap/verify/5개 실제 예제 바이트 동일 및 공식 기간 보고 검사 통과.
+다운로드 ledger의 실제 archive 경로는 delivery/download_manifest.json, parts/kit_manifest.json. 공개 전달 helper가 각 metadata를 재귀적으로 정확히 1개 식별하도록 수정; 원래 ZIP·manifest·part hash 검사는 유지. Kit 내부 파일 변경 없음.

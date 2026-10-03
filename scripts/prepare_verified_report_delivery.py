@@ -18,7 +18,14 @@ from sandbox_bootstrap import load_manifest, hash_file, verify_file, safe_relati
 def prepare(download: Path, preview: Path, proof311: Path, proof312: Path, output: Path, source_revision: str) -> dict:
     if output.exists():
         raise FileExistsError('public delivery directory must be new')
-    manifest = load_manifest(download / 'kit_manifest.json')
+    # upload-artifact retains the ledger's delivery/ and parts/ parent folders.
+    def unique_file(name):
+        matches = [p for p in download.rglob(name) if p.is_file() and not p.is_symlink()]
+        if len(matches) != 1:
+            raise ValueError(f'expected exactly one verified transport metadata file: {name}')
+        return matches[0]
+    manifest_path = unique_file('kit_manifest.json')
+    manifest = load_manifest(manifest_path)
     if manifest['source_revision'] != source_revision or manifest['versions']['performance_template_version'] != 'v2-18':
         raise ValueError('source/performance version does not match verified requested-report commit')
     if manifest['versions']['requested_report_contract_version'] != '1':
@@ -35,7 +42,7 @@ def prepare(download: Path, preview: Path, proof311: Path, proof312: Path, outpu
     run = json.loads((preview/'run_status.json').read_text())
     if run['status']!='ok' or not run['nav_ready'] or not run['report_ready']:
         raise ValueError('preview must be a checked real-data report')
-    ledger = json.loads((download/'download_manifest.json').read_text())
+    ledger = json.loads(unique_file('download_manifest.json').read_text())
     if not re.fullmatch(r'quant-sandbox-[0-9a-f]{12}\.zip',ledger['zip_name']) or not 1<=len(ledger['segments'])<=32:
         raise ValueError('invalid delivery ledger')
     for entry in ledger['segments']:
@@ -65,7 +72,7 @@ def prepare(download: Path, preview: Path, proof311: Path, proof312: Path, outpu
                 raise ValueError('unsafe transport ZIP')
             with archive.open(info) as source,(parts/info.filename).open('xb') as target:
                 shutil.copyfileobj(source,target,1024**2)
-    if (parts/'kit_manifest.json').read_bytes()!=(download/'kit_manifest.json').read_bytes():
+    if (parts/'kit_manifest.json').read_bytes()!=manifest_path.read_bytes():
         raise ValueError('embedded kit manifest differs from replay ledger')
     verify_file(parts,manifest['bootstrap'])
     entries=[]
