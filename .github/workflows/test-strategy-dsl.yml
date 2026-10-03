@@ -111,6 +111,7 @@ on:
       - 'scripts/quant_report_dashboard.py'
       - 'scripts/test_requested_period_report.py'
       - 'scripts/test_report_dashboard.cjs'
+      - 'scripts/verify_report_browser.sh'
       - 'config/reports/**'
       - 'docs/REQUESTED_PERIOD_REPORT.md'
       - 'config/testing/canonical_performance_v215_baseline.json'
