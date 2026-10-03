@@ -171,7 +171,7 @@ jobs:
         run: timeout -k 5s 90s python -u scripts/test_requested_period_report.py
       - name: Real checked NAV and requested-period report
         timeout-minutes: 3
-        run: timeout -k 5s 150s python -u scripts/strategy_dsl_runner.py config/strategies/kr_equity_size_deciles_research.json --report-periods config/reports/kr_equity_report_periods.json --output-dir "$RUNNER_TEMP/requested-report"
+        run: timeout -k 5s 150s python -u scripts/strategy_dsl_runner.py config/strategies/kr_equity_report_validation_2019_2020.json --report-periods config/reports/report_validation_periods.json --output-dir "$RUNNER_TEMP/requested-report"
       - name: Install pinned browser test tooling
         timeout-minutes: 6
         run: |
@@ -285,7 +285,8 @@ jobs:
               --strategy config/strategies/super_value_dart_benchmark_dsl.json
               --strategy config/strategies/kr_equity_size_deciles_research.json
               --strategy config/strategies/kr_equity_split_research.json
-              --strategy config/strategies/kr_equity_dart_custom_month_research.json)
+              --strategy config/strategies/kr_equity_dart_custom_month_research.json
+              --strategy config/strategies/kr_equity_report_validation_2019_2020.json)
           fi
           timeout -k 10s 1750s python -u scripts/test_sandbox_kit_e2e.py --wheels-dir "$RUNNER_TEMP/quant-wheels" --work-dir "$RUNNER_TEMP/quant-replay" "${EXTRA[@]}"
       - name: Upload small verification ledger

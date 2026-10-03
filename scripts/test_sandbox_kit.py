@@ -35,6 +35,7 @@ class KitTests(unittest.TestCase):
             'docs/STRATEGY_DSL_RUN.md': 'run', 'docs/CANONICAL_PERFORMANCE.md': 'current',
             'docs/REQUESTED_PERIOD_REPORT.md': 'requested report',
             'config/reports/kr_equity_report_periods.json': '[{"id":"longest","start":"longest","end":"latest"}]',
+            'config/reports/report_validation_periods.json': '[{"id":"longest","start":"longest","end":"latest"}]',
             'config/strategy_dsl_schema_v1.json': '{}',
             'config/strategy_dsl_capabilities_v1.json': '{"dsl_machine_contract_version":"21"}',
             'config/kr_corporate_actions.csv': 'code,event\n', 'config/kr_corporate_action_gaps.json': '{}',

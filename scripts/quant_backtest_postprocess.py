@@ -206,6 +206,8 @@ def report_context(daily_csv: Path, repo_root: Path, title: str) -> tuple[str, d
         limits.append("고정 비용은 요청 DSL의 가정이며 실제 과거 세율·시장충격을 모두 검증한 결과가 아닙니다.")
         if raw.get('metadata'):
             diagnostics['strategy_scope'] = raw['metadata']
+        if raw.get('metadata', {}).get('report_validation_only'):
+            limits.insert(0,"이 예제는 실행·보고 소프트웨어 검증용입니다. 알파·OOS·시장 전체·장기 투자 검증 결과가 아닙니다.")
     else:
         summary = title
     return summary, diagnostics, limits
@@ -242,6 +244,7 @@ def dashboard_payload(periods: dict, columns: list[str], config: BacktestConfig,
                                   "CAGR: 사용자 기간은 실제 기준일~종료일 경과일/365.2425, 최소 365일; 정식 4기간은 기존 CURRENT 기준",
                                   "MDD·회복기간: 축약 전 전체 NAV; 회복기간은 달력일, 미회복 구간은 종료일까지 포함",
                                   "선택 기간의 수익은 시작 직전 NAV 기준; 최장기간의 최초 행은 검증된 초기자산",
+                                  "차트 확대·구간 선택은 표시범위만 변경하며 성과표는 공통 기간 선택기의 분석기간 기준",
                                   "벤치마크: 한국 지수 Close는 가격지수·배당 미반영" if benchmark else "벤치마크 미지정"]}
 
 
@@ -323,7 +326,8 @@ def build_manifest(results: dict, combined_payload: dict, args: argparse.Namespa
             "benchmark_statistics": "monthly TE, IR, covariance beta, arithmetic annual alpha, mean-return downside capture; partial inception month excluded",
         },
         "periods": periods,
-        "render_mode": "version_1_9_inline_charts",
+        "render_mode": "three_interactive_charts_shared_period_selector",
+        "legacy_render_mode": "version_1_9_inline_charts",
         "render_order": [
             {"period": p, "chart": c} for p, c in PERIOD_CHART_ORDER
         ],

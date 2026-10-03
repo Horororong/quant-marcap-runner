@@ -1,7 +1,7 @@
 """
 quant_backtest_template_CURRENT.py
 
-표준 퀀트 백테스트 템플릿 v2-17 / CURRENT (2026-10 canonical performance)
+표준 퀀트 백테스트 템플릿 v2-18 / CURRENT (canonical + requested-period performance)
 
 핵심 원칙
 1) 성과 산출: 월별 NAV 기준
@@ -76,7 +76,7 @@ PROJECT_COLLECTION_WORKFLOWS = {
 BACKTEST_EXECUTION_CONTRACT = """
 사용자가 '백테스트해줘', '백테스트', '전략 검증' 등 백테스트 실행을 요청하면 다음 순서를 기본 강제한다.
 
-1) 항상 이 CURRENT v2-17 템플릿의 계산/검증/출력 규칙을 사용한다.
+1) 항상 이 CURRENT v2-18 템플릿의 계산/검증/출력 규칙을 사용한다.
 2) 필요한 가격, 지수, 환율, 거시, 재무, 프록시 데이터가 이미 사용자 GitHub 저장소
    Horororong/quant-marcap-runner 에 존재하는지 먼저 탐색한다.
 3) GitHub에 존재하는 데이터가 충분하면 외부 데이터 제공업체를 우선 사용하지 않는다.
@@ -526,6 +526,8 @@ def calculate_metrics(
     MDD/회복기간 = 일별 NAV 우선, 없으면 월별 fallback
     """
     if requested_period:
+        if config.periods_per_year != 12:
+            raise ValueError("requested-period statistics use complete monthly returns and P=12")
         if daily_nav is None or not config.market_calendar:
             raise ValueError("requested-period metrics require daily NAV and an explicit exchange calendar")
         dnav = validate_daily_nav(daily_nav)
@@ -699,7 +701,11 @@ def requested_period_readiness(dates: pd.DatetimeIndex, periods: list[dict], con
         start = available[0] if item["start"] == "longest" else pd.Timestamp(item["start"])
         end = available[-1] if item["end"] == "latest" else pd.Timestamp(item["end"])
         row.update(requested_start=start.date().isoformat(), requested_end=end.date().isoformat())
-        expected = expected_market_sessions(start, end, config.market_calendar) if start <= end else pd.DatetimeIndex([])
+        try:
+            expected = expected_market_sessions(start, end, config.market_calendar) if start <= end else pd.DatetimeIndex([])
+        except (ValueError, OverflowError) as exc:
+            row['reason'] = f"요청 기간의 거래소 캘린더를 확인할 수 없습니다: {exc}"
+            continue
         if end > as_of:
             row["reason"] = "요청 종료일이 자료 기준일보다 늦습니다."
         elif expected.empty:

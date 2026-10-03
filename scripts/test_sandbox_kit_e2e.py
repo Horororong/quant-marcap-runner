@@ -124,6 +124,20 @@ def run_test(work, args, abi):
     assert (reported / 'report/report_CURRENT.html').is_file()
     report_export = json.loads(call([python,'-I',runner,'export',reported,'--output',work / 'requested-period-result.zip'],env).stdout)
     assert report_export['report_ready']
+    report_validation = None
+    if 'config/strategies/kr_equity_report_validation_2019_2020.json' in strategies:
+        validation_dir = work / 'two-year-report-validation'
+        validation_run = json.loads(call([python,'-I',runner,'run',installed / 'config/strategies/kr_equity_report_validation_2019_2020.json',
+                                         '--report-periods',installed / 'config/reports/report_validation_periods.json',
+                                         '--output-dir',validation_dir],env).stdout)
+        assert validation_run['report_ready'] and validation_run['nav_ready'] and validation_run['status']=='ok'
+        validation_manifest = json.loads((validation_dir / 'report/chat_manifest_CURRENT.json').read_text())
+        assert validation_manifest['periods']['longest']['series']['NAV_Gross']['metrics']['cagr'] is not None
+        assert validation_manifest['periods']['longest']['series']['NAV_Gross']['metrics']['sharpe'] is not None
+        validation_nav = work / 'kr_equity_report_validation_2019_2020-replay/artifacts/daily_nav.csv'
+        assert (validation_dir / 'artifacts/daily_nav.csv').read_bytes()==validation_nav.read_bytes()
+        report_validation={'status':'passed','scope':'real-source two-year execution/report software validation, not investment hypothesis validation',
+                           'nav_sha256':hash_file(validation_nav),'all_main_metrics_available':True}
     raw = json.loads((installed / 'config/strategies/kr_equity_split_research.json').read_text())
     request = work / 'request.json'
     # Valid DSL, missing year: data_gap, never truncate the user's dates.
@@ -162,6 +176,7 @@ def run_test(work, args, abi):
     (work / 'verification.json').write_text(json.dumps({'status':'passed','runtime':abi,'network':'IP sockets and DNS blocked in inherited libc guard',
                                                       'kit':built,'replays':results,
                                                       'requested_report': {'status':'passed','periods':list(report_manifest['periods']), 'nav_unchanged':True,'export':report_export},
+                                                      'two_year_report_validation':report_validation,
                                                       'gap_checks':['missing_year','known_event_top_n','known_event_deciles','formal_readiness','wrong_package','missing_source']}, indent=2))
     print(f'{abi}: OFFLINE REAL-DATA REPLAY AND FAILURE BOUNDARIES PASS', flush=True)
 
