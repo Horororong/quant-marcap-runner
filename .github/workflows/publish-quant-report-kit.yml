@@ -1,0 +1,127 @@
+name: Publish verified CURRENT report kit and Work upload parts
+
+on:
+  push:
+    branches: ['publish/requested-report-kit-*']
+    paths: ['.github/workflows/publish-quant-report-kit.yml']
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: verified-report-kit-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SOURCE_RUN_ID: '37157470156'
+      SOURCE_SHA: '822c435f4b6148c2832e12370a6ccb324a9e875f'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require final complete CI and both offline replay jobs
+        timeout-minutes: 2
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner=context.repo.owner,repo=context.repo.repo;
+            const run=(await github.rest.actions.getWorkflowRun({owner,repo,run_id:Number(process.env.SOURCE_RUN_ID)})).data;
+            if(run.head_sha!==process.env.SOURCE_SHA || run.status!=='completed' || run.conclusion!=='success')
+              throw Error('Final source CI is not successful; publication blocked');
+            if(run.path!=='.github/workflows/test-strategy-dsl.yml')throw Error('Unexpected source workflow');
+            const jobs=await github.paginate(github.rest.actions.listJobsForWorkflowRun,{owner,repo,run_id:run.id});
+            for(const name of ['test','sandbox-replay (3.11)','sandbox-replay (3.12)'])
+              if(!jobs.some(j=>j.name===name && j.conclusion==='success'))throw Error('Required verification job missing: '+name);
+            console.log(JSON.stringify({source_run:run.id,source_sha:run.head_sha,complete_ci_verified:true}));
+      - name: Download verified original ZIP transport
+        timeout-minutes: 5
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+          pattern: quant-kit-download-*
+          merge-multiple: true
+          path: ${{ runner.temp }}/verified-transport
+      - name: Download actual report and browser evidence
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+          name: requested-report-preview
+          path: ${{ runner.temp }}/verified-preview
+      - name: Download CPython 3.11 proof
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+          name: sandbox-replay-3.11
+          path: ${{ runner.temp }}/verified-cp311
+      - name: Download CPython 3.12 proof
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+          name: sandbox-replay-3.12
+          path: ${{ runner.temp }}/verified-cp312
+      - name: Validate unchanged kit and prepare bounded upload ZIPs
+        timeout-minutes: 3
+        run: |
+          timeout -k 5s 150s python scripts/prepare_verified_report_delivery.py \
+            --download "$RUNNER_TEMP/verified-transport" --preview "$RUNNER_TEMP/verified-preview" \
+            --proof311 "$RUNNER_TEMP/verified-cp311/verification.json" --proof312 "$RUNNER_TEMP/verified-cp312/verification.json" \
+            --output "$RUNNER_TEMP/public-report-kit" --source-revision "$SOURCE_SHA"
+      - name: Publish permanent assets and verify anonymous full downloads
+        timeout-minutes: 8
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs=require('fs'),path=require('path'),crypto=require('crypto');
+            const root=path.join(process.env.RUNNER_TEMP,'public-report-kit');
+            const manifest=JSON.parse(fs.readFileSync(path.join(root,'public_delivery_manifest.json'),'utf8'));
+            const owner=context.repo.owner,repo=context.repo.repo,tag=manifest.tag;
+            let release;
+            try{release=(await github.rest.repos.getReleaseByTag({owner,repo,tag})).data;}
+            catch(e){if(e.status!==404)throw e;
+              release=(await github.rest.repos.createRelease({owner,repo,tag_name:tag,target_commitish:process.env.SOURCE_SHA,
+                name:'CURRENT v2-18 requested-period report kit '+manifest.kit_id.slice(0,12),draft:false,prerelease:true,make_latest:'false',
+                body:'Verified CURRENT v2-18, PROJECT v2-16 execution unchanged. Both Python 3.11/3.12 clean offline bootstrap, verify, five real-source replays and official requested-period reporting passed. Actual browser period/cost/three-chart/hover/zoom/legend/mobile checks passed.\n\nThe original quant-sandbox ZIP is the whole kit. For a 32MiB file-transfer limit, download quant-upload-setup.zip and every quant-upload-NNN.zip (each below 30MB), extract together, then follow INSTALL_IN_WORK.txt.\n\nreport_CURRENT.html is the actual offline interactive report; report-preview.png is only the actual browser screenshot. The example is software execution/report validation, not investment-strategy, OOS or market-wide validation. USD $10000 is normalized NAV without FX conversion or contributions. Included KRX original years: 2019/2020/2024; absent long history remains data_gap.'})).data;
+            }
+            if(release.draft||release.tag_name!==tag)throw Error('Release is not public');
+            const files=[...manifest.files];
+            const extraName='public_delivery_manifest.json',extra=fs.readFileSync(path.join(root,extraName));
+            files.push({name:extraName,bytes:extra.length,sha256:crypto.createHash('sha256').update(extra).digest('hex'),kind:'delivery_manifest'});
+            const existing=await github.paginate(github.rest.repos.listReleaseAssets,{owner,repo,release_id:release.id});
+            const verified=[];
+            for(const entry of files){
+              const buffer=fs.readFileSync(path.join(root,entry.name));
+              if(buffer.length!==entry.bytes||crypto.createHash('sha256').update(buffer).digest('hex')!==entry.sha256)throw Error('Local asset changed: '+entry.name);
+              let asset=existing.find(a=>a.name===entry.name);
+              if(asset && asset.size!==entry.bytes)throw Error('Existing asset size differs; never overwrite');
+              if(!asset)asset=(await github.rest.repos.uploadReleaseAsset({owner,repo,release_id:release.id,name:entry.name,data:buffer,
+                headers:{'content-type':entry.name.endsWith('.zip')?'application/zip':'application/octet-stream','content-length':buffer.length}})).data;
+              // Deliberately no Authorization header. Verify every byte, not just HEAD.
+              const response=await fetch(asset.browser_download_url,{redirect:'follow',signal:AbortSignal.timeout(180000)});
+              if(!response.ok)throw Error('Anonymous download failed: '+entry.name+' HTTP '+response.status);
+              const hash=crypto.createHash('sha256');let bytes=0;
+              for await(const chunk of response.body){bytes+=chunk.length;hash.update(chunk);}
+              if(bytes!==entry.bytes||hash.digest('hex')!==entry.sha256)throw Error('Anonymous bytes/hash mismatch: '+entry.name);
+              verified.push({...entry,url:asset.browser_download_url,http_status:response.status,authorization_header:false,asset_id:asset.id});
+              console.log(JSON.stringify({name:entry.name,bytes,anonymous_download_verified:true}));
+            }
+            const proof={status:'public_anonymous_download_verified',source_run:Number(process.env.SOURCE_RUN_ID),source_revision:process.env.SOURCE_SHA,
+              kit_id:manifest.kit_id,release_id:release.id,release_url:release.html_url,tag,files:verified};
+            fs.writeFileSync(path.join(process.env.RUNNER_TEMP,'public-report-download-verification.json'),JSON.stringify(proof,null,2));
+            console.log(JSON.stringify({status:proof.status,kit_id:proof.kit_id,tag,release_url:proof.release_url,verified_assets:verified.length}));
+      - name: Preserve public download and source integrity ledger
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-report-download-proof
+          path: |
+            ${{ runner.temp }}/public-report-download-verification.json
+            ${{ runner.temp }}/public-report-kit/public_delivery_manifest.json
+          retention-days: 90

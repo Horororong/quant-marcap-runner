@@ -174,7 +174,9 @@ def build_kit(root, output, wheels, targets=('cp311', 'cp312'), strategies=None,
     code = local_module_closure(root, ('scripts/sandbox_runtime.py', 'scripts/sandbox_bootstrap.py',
                                      'scripts/strategy_dsl_run.py', 'scripts/strategy_dsl_aliases.py',
                                      'scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py'))
-    code.update(('SANDBOX_START_HERE.md', 'docs/STRATEGY_DSL.md', 'docs/STRATEGY_DSL_RUN.md',
+    code.update(('SANDBOX_START_HERE.md', 'docs/FINANCIAL_REBALANCE.md', 'docs/STRATEGY_DSL.md', 'docs/STRATEGY_DSL_RUN.md',
+                 'docs/REQUESTED_PERIOD_REPORT.md', 'config/reports/kr_equity_report_periods.json',
+                 'config/reports/report_validation_periods.json',
                  'docs/CANONICAL_PERFORMANCE.md', 'config/strategy_dsl_schema_v1.json',
                  'config/strategy_dsl_capabilities_v1.json', 'config/kr_corporate_actions.csv',
                  'config/kr_corporate_action_gaps.json', *strategies))
@@ -249,7 +251,8 @@ def build_kit(root, output, wheels, targets=('cp311', 'cp312'), strategies=None,
         caps = json.loads((stage / 'config/strategy_dsl_capabilities_v1.json').read_text())
         versions = {key: value for key, value in caps.items() if key.endswith('_version')}
         manifest = {'kit_contract_version': KIT_CONTRACT_VERSION, 'source_repository': 'Horororong/quant-marcap-runner',
-                    'source_revision': revision, 'versions': versions, 'profile': {'strategies': strategies, 'mode': 'execution_only'},
+                    'source_revision': revision, 'versions': versions, 'profile': {'strategies': strategies, 'mode': 'execution_only',
+                    'available_report_modes': ['execution_only','requested_period_report','canonical_report']},
                     'coverage': coverage, 'runtime_targets': runtime_targets, 'files': inventory,
                     'archives': archives, 'bootstrap': entry(bootstrap_path, bootstrap_path.name)}
         manifest['kit_id'] = manifest_id(manifest)

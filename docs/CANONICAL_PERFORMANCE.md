@@ -1,9 +1,9 @@
-# Canonical performance v2-17
+# Canonical performance v2-18 · v2-17 compatibility
 
 The execution template remains PROJECT v2-16; current engine versions are
 defined in `scripts/execution_contract.py` (currently v2-16-exec-3).
 Performance/chart calculations live only in `quant_backtest_template_CURRENT.py`
-v2-17. PROJECT re-exports those exact functions for compatibility; no copied
+v2-18. PROJECT re-exports those exact functions for compatibility; no copied
 metric/chart implementations remain. This milestone introduced machine contract
 13; the current value is defined in `scripts/execution_contract.py`. Execution
 plans record the performance version separately.
@@ -110,3 +110,17 @@ remain in the full CI. Artificial NAV is labeled software validation only.
 Annual/rolling report exports and evaluated walk-forward/OOS reporting are
 follow-up work. Full-market events, dividends, rights, delisting cashflows and
 long-history investment validation remain separate source/execution work.
+
+## Explicit requested-period reporting (v2-18)
+
+Read `docs/REQUESTED_PERIOD_REPORT.md`. The new `--report-periods` mode has its
+own versioned readiness/sample contract; it does not relax four-period dates or
+execution-only restrictions. CURRENT `calculate_metrics(requested_period=True)`
+uses actual elapsed dates, full daily risk and complete monthly statistical
+samples. Insufficient samples are null; unavailable requested periods stay gaps.
+The default dashboard has three interactive plots and one shared period selector.
+The legacy four-period metric outputs/nine-chart payload and render order remain
+available, with the latter explicitly marked as legacy compatibility. Display
+capital $10000 is normalized NAV, not a currency conversion or added contribution.
+The offline HTML contains pinned Plotly and canonical data only; JS formats and
+selects values without implementing investment metric formulas.

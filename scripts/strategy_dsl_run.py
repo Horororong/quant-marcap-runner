@@ -22,6 +22,8 @@ from execution_contract import (
 from quant_backtest_postprocess import canonical_report_readiness, PERIOD_CHART_ORDER
 from quant_backtest_template_CURRENT import (
     BacktestConfig, expected_market_sessions, validate_daily_nav,
+    load_report_periods, validate_report_periods, requested_period_readiness, run_requested_periods,
+    REQUESTED_REPORT_CONTRACT_VERSION,
 )
 from strategy_dsl import StrategySpec, compile_execution_plan, load_strategy_spec
 from strategy_dsl_preflight import preflight_strategy
@@ -130,12 +132,58 @@ def _inventory(out: Path) -> list[dict[str, Any]]:
             for path in sorted(out.rglob("*")) if path.is_file()]
 
 
+def _check_requested_report_artifacts(out: Path, daily: pd.DataFrame, spec: StrategySpec, periods: list[dict]) -> dict:
+    names = ['metrics_CURRENT.csv','chat_manifest_CURRENT.json','daily_nav_canonical.csv','report_CURRENT.html']
+    if spec.benchmark is not None:
+        names.append('benchmark_statistics_CURRENT.csv')
+    _require_files(out, names)
+    manifest = json.loads((out / 'chat_manifest_CURRENT.json').read_text())
+    if manifest['template_version'] != PERFORMANCE_TEMPLATE_VERSION or manifest['requested_report_contract_version'] != REQUESTED_REPORT_CONTRACT_VERSION:
+        raise ValueError('requested report version mismatch')
+    if manifest['mode'] != 'requested_period_report' or manifest['market_calendar'] != 'XKRX':
+        raise ValueError('requested report mode/calendar mismatch')
+    if Path(manifest['source_daily_csv']).resolve() != out.parent / 'artifacts/daily_nav.csv':
+        raise ValueError('requested report must use the published checked NAV')
+    if manifest['benchmark_series'] != ('NAV_Benchmark' if spec.benchmark is not None else None):
+        raise ValueError('requested benchmark mismatch')
+    cfg = BacktestConfig(initial_capital=10000,market_calendar='XKRX',as_of_date=spec.period.as_of_date or spec.period.end)
+    expected = run_requested_periods(daily,cfg,periods)
+    if manifest['readiness'] != expected['readiness'] or set(manifest['periods']) != {p['id'] for p in periods}:
+        raise ValueError('requested report readiness/periods mismatch')
+    dashboard = manifest['dashboard_payload']
+    if dashboard['periods'] != manifest['periods'] or dashboard['report_complete'] != expected['readiness']['complete']:
+        raise ValueError('dashboard period selector and report periods must share the same canonical data')
+    if dashboard['risk_free_rate_annual'] != cfg.risk_free_rate or dashboard['periods_per_year'] != 12:
+        raise ValueError('dashboard statistical assumptions differ from CURRENT')
+    metrics = pd.read_csv(out / 'metrics_CURRENT.csv')
+    pairs = list(zip(metrics['period'],metrics['전략']))
+    ready = {k for k,p in expected['periods'].items() if p['ready']}
+    if len(pairs) != len(set(pairs)) or set(pairs) != {(p,s) for p in ready for s in daily.columns}:
+        raise ValueError('requested metrics must include exactly ready periods and every NAV series')
+    for key, row in expected['periods'].items():
+        public = {k:v for k,v in row.items() if k not in ('metrics_frame','daily_nav_frame')}
+        if manifest['periods'][key] != public:
+            raise ValueError('requested chart/metrics payload differs from CURRENT')
+        if row['ready']:
+            actual = metrics.loc[metrics.period==key].set_index('전략')[row['metrics_frame'].columns]
+            pd.testing.assert_frame_equal(actual,row['metrics_frame'],check_exact=False,rtol=1e-12,atol=1e-12,check_dtype=False)
+    canonical = pd.read_csv(out / 'daily_nav_canonical.csv',index_col='Date')
+    canonical.index = pd.to_datetime(canonical.index)
+    pd.testing.assert_frame_equal(canonical,daily,check_names=False,check_exact=False,rtol=1e-12,atol=1e-12)
+    page = (out / 'report_CURRENT.html').read_text()
+    embedded = page.split('<script id="report-data" type="application/json">',1)[1].split('</script>',1)[0]
+    if json.loads(embedded) != manifest['dashboard_payload']:
+        raise ValueError('rendered report payload differs from canonical manifest')
+    return manifest['readiness']
+
+
 def run_checked_strategy(
     strategy_json: str | Path,
     repo_root: str | Path,
     output_dir: str | Path | None = None,
     *,
     postprocess: bool = True,
+    report_periods: str | Path | list[dict] | None = None,
 ) -> dict[str, Any]:
     """Run a frozen DSL through preflight and publish only validated outputs.
 
@@ -152,7 +200,7 @@ def run_checked_strategy(
         "run_id": run_id, "status": "running", "phase": "input",
         "started_at": _utc_now(), "finished_at": None,
         "strategy_id": None, "strategy_fingerprint": None, "versions": {},
-        "mode": "canonical_report" if postprocess else "execution_only",
+        "mode": "requested_period_report" if report_periods is not None else ("canonical_report" if postprocess else "execution_only"),
         "nav_ready": False, "report_ready": False,
         "input_path": str(Path(strategy_json).resolve()),
         "output_dir": str(out), "status_file": str(out / "run_status.json"),
@@ -172,6 +220,12 @@ def run_checked_strategy(
         record["status"] = status
         record["error"] = error
         record["finished_at"] = _utc_now()
+        if status not in ('ok','running'):
+            from quant_report_dashboard import write_failure_dashboard
+            readiness_path = out / 'report_readiness.json'
+            readiness = json.loads(readiness_path.read_text()) if readiness_path.is_file() else None
+            record['outputs']['diagnostic_dashboard'] = 'diagnostic_CURRENT.html'
+            write_failure_dashboard(record,out / 'diagnostic_CURRENT.html',readiness)
         _save_status(out, record)
         return record
 
@@ -179,6 +233,16 @@ def run_checked_strategy(
         raw_path = out / "strategy_input.json"
         raw_path.write_bytes(Path(strategy_json).read_bytes())
         spec = load_strategy_spec(raw_path)
+        requested = None
+        if report_periods is not None:
+            if not postprocess:
+                raise ValueError('--report-periods and --execution-only are mutually exclusive')
+            if isinstance(report_periods, (str, Path)):
+                _save_json(out / 'report_periods.json', load_report_periods(report_periods))
+            else:
+                _save_json(out / 'report_periods.json', validate_report_periods(report_periods))
+            requested = load_report_periods(out / 'report_periods.json')
+            record['requested_report_contract_version'] = REQUESTED_REPORT_CONTRACT_VERSION
         plan = compile_execution_plan(spec)
         record.update(strategy_id=spec.strategy_id, strategy_fingerprint=spec.fingerprint(),
                       versions={key: value for key, value in plan.items() if key.endswith("_version")})
@@ -206,17 +270,21 @@ def run_checked_strategy(
             try:
                 dates = expected_market_sessions(pd.Timestamp(preflight["krx_panel"]["actual_start"]),
                                                  pd.Timestamp(preflight["krx_panel"]["actual_end"]), "XKRX")
-                readiness = canonical_report_readiness(dates, BacktestConfig(
+                report_config = BacktestConfig(
                     book_start=spec.period.book_start, book_end=spec.period.book_end,
                     as_of_date=spec.period.as_of_date or spec.period.end,
                     standard_end_year=pd.Timestamp(spec.period.as_of_date or spec.period.end).year,
                     market_calendar="XKRX", initial_capital=spec.initial_capital,
-                ))
+                )
+                readiness = (requested_period_readiness(expected_market_sessions(pd.Timestamp(spec.period.start),pd.Timestamp(spec.period.end),'XKRX'),requested,report_config)
+                             if requested is not None else canonical_report_readiness(dates, report_config))
             except (ValueError, AssertionError) as exc:
                 error = {"type": type(exc).__name__, "message": str(exc)}
                 _save_json(out / "report_readiness.json", {"ready": False, "error": error})
                 return finish("data_gap", error)
             _save_json(out / "report_readiness.json", readiness)
+            if not readiness['ready']:
+                return finish('data_gap', {'type':'RequestedPeriodDataGap','message':'요청한 모든 기간에 데이터가 부족합니다. report_readiness.json의 기간별 원인을 확인하세요.'})
             complete("report_readiness")
 
         phase("execution")
@@ -237,18 +305,25 @@ def run_checked_strategy(
             report_work = out / "_report"
             report_work.mkdir()
             try:
+                extra = {'report_periods':out / 'report_periods.json'} if requested is not None else {}
                 process = run_current_postprocess(spec, root, report_work, daily, capture_output=True,
-                                                  daily_csv=out / "artifacts/daily_nav.csv")
+                                                  daily_csv=out / "artifacts/daily_nav.csv", **extra)
             except subprocess.CalledProcessError as exc:
                 (out / "postprocess.log").write_text((exc.stdout or "") + (exc.stderr or ""), encoding="utf-8")
                 raise
             if process is not None:
                 (out / "postprocess.log").write_text((process.stdout or "") + (process.stderr or ""), encoding="utf-8")
-            _check_report_artifacts(report_work, daily, spec)
+            if requested is not None:
+                checked_readiness = _check_requested_report_artifacts(report_work,daily,spec,requested)
+                record['report_complete'] = checked_readiness['complete']
+                record['period_readiness'] = checked_readiness['periods']
+            else:
+                _check_report_artifacts(report_work, daily, spec)
             report_work.rename(out / "report")
             record["report_ready"] = True
             record["outputs"]["metrics"] = "report/metrics_CURRENT.csv"
             record["outputs"]["chat_manifest"] = "report/chat_manifest_CURRENT.json"
+            record['outputs']['dashboard'] = 'report/report_CURRENT.html'
             record["artifacts"]["report"] = _inventory(out / "report")
             complete("postprocess")
         phase("complete")

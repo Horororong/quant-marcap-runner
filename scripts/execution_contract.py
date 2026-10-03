@@ -3,16 +3,25 @@ from __future__ import annotations
 """Versioned machine contracts shared by Strategy DSL and execution modules."""
 
 PROJECT_TEMPLATE_VERSION = "v2-16"
-PERFORMANCE_TEMPLATE_VERSION = "v2-17"
+PERFORMANCE_TEMPLATE_VERSION = "v2-18"
 EXECUTION_ENGINE_VERSION = "v2-16-exec-3"
 CORPORATE_ACTION_REGISTRY_VERSION = "5"
-DSL_MACHINE_CONTRACT_VERSION = "22"
-RUN_ORCHESTRATION_CONTRACT_VERSION = "1"
+DSL_MACHINE_CONTRACT_VERSION = "23"
+RUN_ORCHESTRATION_CONTRACT_VERSION = "2"
+REQUESTED_REPORT_CONTRACT_VERSION = "1"
 RUN_EXIT_CODES = {"ok": 0, "capability_gap": 2, "data_gap": 3, "failed": 4, "interrupted": 130}
 RUN_ORCHESTRATION_CONTRACT = {
     "version": RUN_ORCHESTRATION_CONTRACT_VERSION,
     "command": "python scripts/strategy_dsl_runner.py <strategy.json>",
     "execution_only_command": "python scripts/strategy_dsl_runner.py <strategy.json> --execution-only",
+    "requested_period_command": "python scripts/strategy_dsl_runner.py <strategy.json> --report-periods <periods.json>",
+    "requested_period_report": {"contract_version": REQUESTED_REPORT_CONTRACT_VERSION, "period_fields": ["id", "label (optional)", "start", "end"],
+                                "start": "YYYY-MM-DD or longest", "end": "YYYY-MM-DD or latest (last verified NAV, never wall-clock current)",
+                                "metrics_owner": "CURRENT calculate_metrics(requested_period=True)",
+                                "sample_policy": "CAGR >=365 elapsed days; volatility/Sharpe >=2 full exchange months; daily risk >=2 observations",
+                                "partial_reports": "report_ready requires at least one verified available period; report_complete=false and each missing period remains data_gap",
+                                "dashboard": "three interactive Plotly charts + shared period/cost selectors + canonical table; offline embedded renderer",
+                                "capital": "$10000 standardized NAV; no FX conversion or additional contributions"},
     "python_entry_point": "scripts/strategy_dsl_run.py:run_checked_strategy",
     "automatic_preflight": True,
     "default_output": "results/dsl/runs/{unique_run_id}",

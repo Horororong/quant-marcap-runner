@@ -1,0 +1,63 @@
+name: Recover report browser evidence
+on:
+  push:
+    branches: ['recover/report-browser-*']
+    paths: ['scripts/quant_report_dashboard.py', 'scripts/test_report_dashboard.cjs', 'scripts/verify_report_browser.sh', '.github/workflows/recover-report-browser.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore existing checked report, without rerunning the engine
+        uses: actions/download-artifact@v4
+        with:
+          name: requested-report-preview
+          run-id: 37142451567
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/recovery
+      - name: Render repaired presentation from unchanged canonical results
+        timeout-minutes: 2
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout -k 5s 75s python -m pip install plotly==7.1.0
+          timeout 30s python - <<'PYTHON'
+          import sys, json, os, hashlib
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          from quant_report_dashboard import write_dashboard
+          root=Path(os.environ['RUNNER_TEMP'])/'recovery'
+          manifest=root/'report/chat_manifest_CURRENT.json'
+          payload=json.loads(manifest.read_text())['dashboard_payload']
+          write_dashboard(payload, root/'report/report_CURRENT.html')
+          proof={'source_run':37142451567,'source_revision':'edcda2d990e40343d179b5ccbeceeb9b19dd04a7','recovery_revision':os.environ['GITHUB_SHA'],'engine_rerun':False,'canonical_files_sha256':{str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (root/'report').glob('*.csv')}}
+          (root/'recovery-provenance.json').write_text(json.dumps(proof,indent=2))
+          PYTHON
+      - name: Install pinned browser
+        timeout-minutes: 3
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout -k 5s 90s npm --prefix "$RUNNER_TEMP/report-browser" install --save-exact --no-audit --no-fund playwright@1.57.0
+          timeout -k 5s 90s "$RUNNER_TEMP/report-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Verify actual interactions and required evidence
+        timeout-minutes: 3
+        shell: bash
+        env:
+          PLAYWRIGHT_MODULE: ${{ runner.temp }}/report-browser/node_modules/playwright
+        run: timeout -k 5s 160s bash scripts/verify_report_browser.sh "$RUNNER_TEMP/recovery/report/report_CURRENT.html" "$RUNNER_TEMP/recovery"
+      - name: Preserve report, PNG and browser record including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-recovery-results
+          path: ${{ runner.temp }}/recovery/
+          retention-days: 30
+          if-no-files-found: error

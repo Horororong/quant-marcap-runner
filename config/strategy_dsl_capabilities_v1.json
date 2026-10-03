@@ -49,6 +49,7 @@
   "canonical_performance": {
     "benchmark_statistics_output": "benchmark_statistics_CURRENT.csv (only with explicit benchmark)",
     "daily_coverage": "exact sessions; mismatch stops report before canonical outputs",
+    "dashboard_output": "report_CURRENT.html (offline interactive, common period selector)",
     "dsl_market_calendar": "XKRX",
     "metrics_added": [
       "누적수익률",
@@ -62,8 +63,24 @@
       "from_2021",
       "longest"
     ],
+    "requested_period_report": {
+      "capital": "$10000 standardized NAV; no FX conversion or additional contributions",
+      "contract_version": "1",
+      "dashboard": "three interactive Plotly charts + shared period/cost selectors + canonical table; offline embedded renderer",
+      "end": "YYYY-MM-DD or latest (last verified NAV, never wall-clock current)",
+      "metrics_owner": "CURRENT calculate_metrics(requested_period=True)",
+      "partial_reports": "report_ready requires at least one verified available period; report_complete=false and each missing period remains data_gap",
+      "period_fields": [
+        "id",
+        "label (optional)",
+        "start",
+        "end"
+      ],
+      "sample_policy": "CAGR >=365 elapsed days; volatility/Sharpe >=2 full exchange months; daily risk >=2 observations",
+      "start": "YYYY-MM-DD or longest"
+    },
     "source": "scripts/quant_backtest_template_CURRENT.py",
-    "template_version": "v2-17",
+    "template_version": "v2-18",
     "zero_denominator_policy": "NaN; never fabricate infinity or zero"
   },
   "corporate_action_reconciliation": {
@@ -140,7 +157,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "22",
+  "dsl_machine_contract_version": "23",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -916,7 +933,7 @@
       ]
     }
   ],
-  "performance_template_version": "v2-17",
+  "performance_template_version": "v2-18",
   "portfolio_selections": [
     "deciles",
     "top_n"
@@ -956,6 +973,7 @@
   "rebalance_frequencies": [
     "months"
   ],
+  "requested_report_contract_version": "1",
   "run_orchestration": {
     "automatic_preflight": true,
     "command": "python scripts/strategy_dsl_runner.py <strategy.json>",
@@ -988,6 +1006,23 @@
     "python_entry_point": "scripts/strategy_dsl_run.py:run_checked_strategy",
     "report_readiness": "CURRENT date/period policy checked before NAV; insufficient formal history is data_gap, never automatic research fallback",
     "reproducibility_scope": "strategy snapshot and component contract versions; full source hashes/package manifest are a follow-up",
+    "requested_period_command": "python scripts/strategy_dsl_runner.py <strategy.json> --report-periods <periods.json>",
+    "requested_period_report": {
+      "capital": "$10000 standardized NAV; no FX conversion or additional contributions",
+      "contract_version": "1",
+      "dashboard": "three interactive Plotly charts + shared period/cost selectors + canonical table; offline embedded renderer",
+      "end": "YYYY-MM-DD or latest (last verified NAV, never wall-clock current)",
+      "metrics_owner": "CURRENT calculate_metrics(requested_period=True)",
+      "partial_reports": "report_ready requires at least one verified available period; report_complete=false and each missing period remains data_gap",
+      "period_fields": [
+        "id",
+        "label (optional)",
+        "start",
+        "end"
+      ],
+      "sample_policy": "CAGR >=365 elapsed days; volatility/Sharpe >=2 full exchange months; daily risk >=2 observations",
+      "start": "YYYY-MM-DD or longest"
+    },
     "stages": [
       "input",
       "preflight",
@@ -1006,7 +1041,7 @@
       "interrupted"
     ],
     "success": "ok requires validated NAV; canonical_report mode additionally requires validated CURRENT four-period/nine-chart outputs",
-    "version": "1"
+    "version": "2"
   },
   "sandbox_distribution": {
     "bootstrap": "bootstrap_quant.py --destination <new-directory>",

@@ -2,7 +2,21 @@ name: Test Strategy DSL v1
 
 on:
   workflow_dispatch:
+    inputs:
+      publish_public_download:
+        description: Publish the existing verified kit as a public release download
+        type: boolean
+        default: false
+      download_existing_kit:
+        description: Restore the already verified kit for a mobile HTTPS download
+        type: boolean
+        default: false
+      export_kit:
+        description: Build and publish the four-example offline execution kit
+        type: boolean
+        default: false
   push:
+    branches-ignore: ['recover/report-browser-*']
     paths:
       - 'scripts/csv_storage.py'
       - 'scripts/probe_dart_legacy_sources.py'
@@ -94,6 +108,12 @@ on:
       - 'scripts/quant_backtest_template_CURRENT.py'
       - 'scripts/quant_backtest_postprocess.py'
       - 'scripts/test_canonical_performance.py'
+      - 'scripts/quant_report_dashboard.py'
+      - 'scripts/test_requested_period_report.py'
+      - 'scripts/test_report_dashboard.cjs'
+      - 'scripts/verify_report_browser.sh'
+      - 'config/reports/**'
+      - 'docs/REQUESTED_PERIOD_REPORT.md'
       - 'config/testing/canonical_performance_v215_baseline.json'
       - 'docs/CANONICAL_PERFORMANCE.md'
 
@@ -106,6 +126,7 @@ concurrency:
 
 jobs:
   test:
+    if: ${{ !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && (inputs.download_existing_kit || inputs.publish_public_download)) }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -147,6 +168,35 @@ jobs:
         run: python scripts/test_strategy_dsl_run.py
       - name: Canonical performance and report E2E
         run: python scripts/test_canonical_performance.py
+      - name: Requested period metrics and checked lifecycle boundaries
+        timeout-minutes: 2
+        run: timeout -k 5s 90s python -u scripts/test_requested_period_report.py
+      - name: Real checked NAV and requested-period report
+        timeout-minutes: 3
+        run: timeout -k 5s 150s python -u scripts/strategy_dsl_runner.py config/strategies/kr_equity_report_validation_2019_2020.json --report-periods config/reports/report_validation_periods.json --output-dir "$RUNNER_TEMP/requested-report"
+      - name: Install pinned browser test tooling
+        timeout-minutes: 6
+        run: |
+          npm --prefix "$RUNNER_TEMP/report-browser" install --save-exact --no-audit --no-fund playwright@1.57.0
+          "$RUNNER_TEMP/report-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Real report period, table, charts and mobile browser interactions
+        timeout-minutes: 3
+        env:
+          PLAYWRIGHT_MODULE: ${{ runner.temp }}/report-browser/node_modules/playwright
+        shell: bash
+        run: timeout -k 5s 160s bash scripts/verify_report_browser.sh "$RUNNER_TEMP/requested-report/report/report_CURRENT.html" "$RUNNER_TEMP/requested-report"
+      - name: Preserve actual report screen and interaction evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: requested-report-preview
+          path: |
+            ${{ runner.temp }}/requested-report/report/
+            ${{ runner.temp }}/requested-report/run_status.json
+            ${{ runner.temp }}/requested-report/report-preview*.png
+            ${{ runner.temp }}/requested-report/browser-verification.json
+            ${{ runner.temp }}/requested-report/browser-verification.log
+          retention-days: 30
       - name: CURRENT and PROJECT compatibility self-tests
         run: |
           python -c "import sys; sys.path.insert(0, 'scripts'); import quant_backtest_template_CURRENT as c; c._self_test(); from strategy_dsl_runner import load_project_engine; from pathlib import Path; load_project_engine(Path.cwd())._self_test(); print('TEMPLATE SELF-TESTS: PASS')"
@@ -197,8 +247,11 @@ jobs:
         run: python scripts/test_dsl_run_e2e.py
 
   sandbox-replay:
+    if: ${{ !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && (inputs.download_existing_kit || inputs.publish_public_download)) }}
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
+    env:
+      DELIVER_KIT: ${{ startsWith(github.ref_name, 'deliver/quant-sandbox-') || startsWith(github.ref_name, 'feature/requested-period-reports-') || (github.event_name == 'workflow_dispatch' && inputs.export_kit) }}
     strategy:
       fail-fast: false
       matrix:
@@ -209,14 +262,37 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - name: Install build and baseline dependencies
-        run: python -m pip install pandas numpy pyarrow exchange_calendars plotly jsonschema
+        shell: bash
+        run: |
+          if [ "$DELIVER_KIT" = "true" ]; then
+            ABI=$(python -c 'import sys; print(f"cp{sys.version_info.major}{sys.version_info.minor}")')
+            python -m pip install --require-hashes -r "config/sandbox/requirements-$ABI-linux-x86_64.lock"
+          else
+            python -m pip install pandas numpy pyarrow exchange_calendars plotly jsonschema
+          fi
       - name: Prepare checksum-locked offline wheels
         shell: bash
         run: |
           ABI=$(python -c 'import sys; print(f"cp{sys.version_info.major}{sys.version_info.minor}")')
-          python scripts/prepare_sandbox_wheels.py --output-dir "$RUNNER_TEMP/quant-wheels" --runtime-target "$ABI"
+          if [ "$DELIVER_KIT" = "true" ]; then
+            python scripts/prepare_sandbox_wheels.py --output-dir "$RUNNER_TEMP/quant-wheels"
+          else
+            python scripts/prepare_sandbox_wheels.py --output-dir "$RUNNER_TEMP/quant-wheels" --runtime-target "$ABI"
+          fi
       - name: Clean venv real-data replay with network blocked
-        run: python scripts/test_sandbox_kit_e2e.py --wheels-dir "$RUNNER_TEMP/quant-wheels" --work-dir "$RUNNER_TEMP/quant-replay"
+        timeout-minutes: 30
+        shell: bash
+        run: |
+          EXTRA=()
+          if [ "$DELIVER_KIT" = "true" ]; then
+            EXTRA=(--runtime-target cp311 --runtime-target cp312 --part-size-mib 24
+              --strategy config/strategies/super_value_dart_benchmark_dsl.json
+              --strategy config/strategies/kr_equity_size_deciles_research.json
+              --strategy config/strategies/kr_equity_split_research.json
+              --strategy config/strategies/kr_equity_dart_custom_month_research.json
+              --strategy config/strategies/kr_equity_report_validation_2019_2020.json)
+          fi
+          timeout -k 10s 1750s python -u scripts/test_sandbox_kit_e2e.py --wheels-dir "$RUNNER_TEMP/quant-wheels" --work-dir "$RUNNER_TEMP/quant-replay" "${EXTRA[@]}"
       - name: Upload small verification ledger
         if: success()
         uses: actions/upload-artifact@v4
@@ -224,3 +300,436 @@ jobs:
           name: sandbox-replay-${{ matrix.python }}
           path: ${{ runner.temp }}/quant-replay/verification.json
           retention-days: 7
+      - name: Prepare bounded download segments after verified replay
+        id: delivery
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12'
+        shell: python
+        run: |
+          import hashlib, json, os, pathlib
+          root = pathlib.Path(os.environ['RUNNER_TEMP']) / 'quant-replay'
+          source, = (root / 'parts').glob('quant-sandbox-*.zip')
+          dest = root / 'delivery'
+          dest.mkdir()
+          ledger = {'zip_name': source.name, 'zip_bytes': source.stat().st_size,
+                    'zip_sha256': hashlib.sha256(source.read_bytes()).hexdigest(), 'segments': []}
+          with source.open('rb') as stream:
+              for number in range(1, 33):
+                  chunk = stream.read(24 * 1024**2)
+                  if not chunk:
+                      break
+                  name = f'download.part{number:03d}'
+                  (dest / name).write_bytes(chunk)
+                  ledger['segments'].append({'name': name, 'bytes': len(chunk),
+                                             'sha256': hashlib.sha256(chunk).hexdigest()})
+              if stream.read(1):
+                  raise RuntimeError('Kit exceeds the bounded 32-segment delivery budget')
+          (dest / 'download_manifest.json').write_text(json.dumps(ledger, indent=2))
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f"segment_count={len(ledger['segments'])}\n")
+          print(json.dumps(ledger, indent=2))
+      - name: Upload delivery integrity ledger
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12'
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-ledger
+          path: |
+            ${{ runner.temp }}/quant-replay/delivery/download_manifest.json
+            ${{ runner.temp }}/quant-replay/verification.json
+            ${{ runner.temp }}/quant-replay/parts/kit_manifest.json
+          retention-days: 30
+      - name: Upload download segment 001
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 1
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-001
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part001
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 002
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 2
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-002
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part002
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 003
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 3
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-003
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part003
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 004
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 4
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-004
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part004
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 005
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 5
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-005
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part005
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 006
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 6
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-006
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part006
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 007
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 7
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-007
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part007
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 008
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 8
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-008
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part008
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 009
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 9
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-009
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part009
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 010
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 10
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-010
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part010
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 011
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 11
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-011
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part011
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 012
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 12
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-012
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part012
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 013
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 13
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-013
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part013
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 014
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 14
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-014
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part014
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 015
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 15
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-015
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part015
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 016
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 16
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-016
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part016
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 017
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 17
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-017
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part017
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 018
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 18
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-018
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part018
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 019
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 19
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-019
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part019
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 020
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 20
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-020
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part020
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 021
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 21
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-021
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part021
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 022
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 22
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-022
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part022
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 023
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 23
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-023
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part023
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 024
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 24
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-024
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part024
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 025
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 25
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-025
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part025
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 026
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 26
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-026
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part026
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 027
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 27
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-027
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part027
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 028
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 28
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-028
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part028
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 029
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 29
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-029
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part029
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 030
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 30
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-030
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part030
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 031
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 31
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-031
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part031
+          compression-level: 0
+          retention-days: 30
+      - name: Upload download segment 032
+        if: success() && env.DELIVER_KIT == 'true' && matrix.python == '3.12' && fromJSON(steps.delivery.outputs.segment_count) >= 32
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-kit-download-032
+          path: ${{ runner.temp }}/quant-replay/delivery/download.part032
+          compression-level: 0
+          retention-days: 30
+
+  download-verified-kit:
+    if: ${{ startsWith(github.ref_name, 'deliver/mobile-download-') || (github.event_name == 'workflow_dispatch' && (inputs.download_existing_kit || inputs.publish_public_download)) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      actions: read
+      contents: write
+    env:
+      PUBLIC_DOWNLOAD: ${{ startsWith(github.ref_name, 'deliver/mobile-download-public-') || (github.event_name == 'workflow_dispatch' && inputs.publish_public_download) }}
+    steps:
+      - name: Download retained segments from the successful delivery run
+        if: env.PUBLIC_DOWNLOAD != 'true'
+        timeout-minutes: 5
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 37075642412
+          pattern: quant-kit-download-*
+          merge-multiple: true
+          path: ${{ runner.temp }}/verified-kit-source
+      - name: Download the already verified complete ZIP
+        if: env.PUBLIC_DOWNLOAD == 'true'
+        timeout-minutes: 5
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 37080822925
+          name: quant-sandbox-mobile-download
+          path: ${{ runner.temp }}/verified-kit-source
+      - name: Restore and verify the exact original ZIP
+        timeout-minutes: 2
+        shell: python
+        run: |
+          import hashlib, json, os, pathlib, zipfile
+          source = pathlib.Path(os.environ['RUNNER_TEMP']) / 'verified-kit-source'
+          expected_name = 'quant-sandbox-ee212da3e4a7.zip'
+          expected_hash = '533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587'
+          output_dir = pathlib.Path(os.environ['RUNNER_TEMP']) / 'mobile-download'
+          output_dir.mkdir()
+          output = output_dir / expected_name
+          full_hash = hashlib.sha256()
+          total = 0
+          originals = list(source.rglob(expected_name))
+          with output.open('xb') as stream:
+              if originals:
+                  assert len(originals) == 1
+                  with originals[0].open('rb') as original:
+                      while data := original.read(1024**2):
+                          stream.write(data)
+                          full_hash.update(data)
+                          total += len(data)
+              else:
+                  ledger_path, = source.rglob('download_manifest.json')
+                  ledger = json.loads(ledger_path.read_text())
+                  assert ledger['zip_name'] == expected_name
+                  assert ledger['zip_bytes'] == 291308667 and ledger['zip_sha256'] == expected_hash
+                  for segment in ledger['segments']:
+                      name = segment['name']
+                      assert pathlib.Path(name).name == name
+                      path, = source.rglob(name)
+                      data = path.read_bytes()
+                      assert len(data) == segment['bytes'], name
+                      assert hashlib.sha256(data).hexdigest() == segment['sha256'], name
+                      stream.write(data)
+                      full_hash.update(data)
+                      total += len(data)
+          assert total == 291308667 and full_hash.hexdigest() == expected_hash
+          with zipfile.ZipFile(output) as archive:
+              assert archive.testzip() is None
+              manifest = json.loads(archive.read('kit_manifest.json'))
+              assert manifest['source_revision'] == 'b350b61e4db0c626e8533645a1a76d61d6ba0ae6'
+              assert manifest['kit_id'] == 'ee212da3e4a71bb7fa2261b45771156e2bf49b563419c8e639db45449cf694db'
+          print(json.dumps({'zip': expected_name, 'bytes': total, 'sha256': full_hash.hexdigest(),
+                            'source_run': 37075642412, 'status': 'verified_original_zip'}, indent=2))
+      - name: Publish one mobile-downloadable artifact containing the original ZIP
+        if: env.PUBLIC_DOWNLOAD != 'true'
+        timeout-minutes: 3
+        uses: actions/upload-artifact@v4
+        with:
+          name: quant-sandbox-mobile-download
+          path: ${{ runner.temp }}/mobile-download/quant-sandbox-ee212da3e4a7.zip
+          compression-level: 0
+          retention-days: 30
+      - name: Publish original ZIP and prove anonymous download integrity
+        if: env.PUBLIC_DOWNLOAD == 'true'
+        timeout-minutes: 8
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const crypto = require('crypto');
+            const { owner, repo } = context.repo;
+            const tag = 'quant-sandbox-ee212da3e4a7';
+            const name = 'quant-sandbox-ee212da3e4a7.zip';
+            const expectedHash = '533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587';
+            const file = path.join(process.env.RUNNER_TEMP, 'mobile-download', name);
+            const data = fs.readFileSync(file);
+            if (data.length !== 291308667 || crypto.createHash('sha256').update(data).digest('hex') !== expectedHash) {
+              throw new Error('Refusing to publish a different ZIP');
+            }
+            let release;
+            try {
+              release = (await github.rest.repos.getReleaseByTag({owner, repo, tag})).data;
+              if (release.draft) throw new Error('Existing release is draft; do not change its visibility');
+            } catch (error) {
+              if (error.status !== 404) throw error;
+              release = (await github.rest.repos.createRelease({owner, repo, tag_name: tag,
+                target_commitish: 'b350b61e4db0c626e8533645a1a76d61d6ba0ae6',
+                name: 'Offline quant sandbox ee212da3e4a7', draft: false, prerelease: true, make_latest: 'false',
+                body: 'Verified offline execution kit for CPython 3.11/3.12 Linux x86_64. Includes the existing three examples and custom May financial rebalance. Source commit b350b61e4db0c626e8533645a1a76d61d6ba0ae6; SHA256 ' + expectedHash + '. Both ABI replays and full source CI passed (37075642412). Original code/data/wheels are preserved. KRX 2020/2024 and example-required DART 2019/2020; other periods require appropriate source data.'
+              })).data;
+            }
+            const assets = await github.paginate(github.rest.repos.listReleaseAssets, {owner, repo, release_id: release.id});
+            let asset = assets.find(item => item.name === name);
+            if (!asset) {
+              asset = (await github.rest.repos.uploadReleaseAsset({owner, repo, release_id: release.id,
+                name, data, headers: {'content-type': 'application/zip', 'content-length': data.length}
+              })).data;
+            }
+            if (asset.size !== 291308667) throw new Error('Existing release asset differs; do not overwrite it');
+            if (asset.digest && asset.digest !== 'sha256:' + expectedHash) throw new Error('Release asset digest mismatch');
+            // No Authorization header: verify the exact logged-out/mobile path.
+            const response = await fetch(asset.browser_download_url, {
+              redirect: 'follow', signal: AbortSignal.timeout(180000),
+              headers: {'user-agent': 'quant-kit-anonymous-download-check'}
+            });
+            if (!response.ok) throw new Error('Anonymous release download failed: HTTP ' + response.status);
+            const digest = crypto.createHash('sha256');
+            let downloaded = 0;
+            for await (const chunk of response.body) {
+              digest.update(chunk);
+              downloaded += chunk.length;
+            }
+            const actualHash = digest.digest('hex');
+            if (downloaded !== 291308667 || actualHash !== expectedHash) throw new Error('Anonymous download bytes/hash mismatch');
+            core.info(JSON.stringify({status: 'anonymous_download_verified', url: asset.browser_download_url,
+              authorization_header: false, http_status: response.status, bytes: downloaded, sha256: actualHash,
+              release_id: release.id, asset_id: asset.id}));

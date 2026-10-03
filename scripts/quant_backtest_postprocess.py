@@ -26,6 +26,7 @@ python scripts/quant_backtest_postprocess.py \
 from pathlib import Path
 import argparse
 import json
+from dataclasses import replace
 from importlib.metadata import version
 
 import numpy as np
@@ -39,7 +40,11 @@ from quant_backtest_template_CURRENT import (
     assert_daily_session_coverage,
     calculate_benchmark_statistics,
     standard_period_windows_from_dates,
+    run_requested_periods, validate_report_periods, dashboard_period_data,
+    REQUESTED_REPORT_CONTRACT_VERSION,
+    load_report_periods,
 )
+from quant_report_dashboard import write_dashboard
 
 
 PERIOD_CHART_ORDER = [
@@ -71,7 +76,7 @@ def _parse_series_arg(raw: str | None, columns: list[str]) -> list[str]:
     return cols
 
 
-def load_daily_nav(path: Path, date_col: str, series_arg: str | None) -> pd.DataFrame:
+def load_daily_nav(path: Path, date_col: str, series_arg: str | None, *, preserve_origin: bool = False) -> pd.DataFrame:
     df = pd.read_csv(path)
     if date_col not in df.columns:
         raise ValueError(f"날짜 열 '{date_col}'이 없습니다. 실제 열={list(df.columns)}")
@@ -89,6 +94,8 @@ def load_daily_nav(path: Path, date_col: str, series_arg: str | None) -> pd.Data
     x = df[cols].apply(pd.to_numeric, errors="coerce")
 
     # 모든 비교 시리즈가 실제로 동시에 존재하는 첫 날부터 사용한다.
+    if preserve_origin and x.isna().any().any():
+        raise ValueError("requested report NAV has missing values; no silent common-start shift")
     common = x.dropna(how="any")
     if common.empty:
         raise ValueError("모든 NAV 시리즈가 동시에 존재하는 구간이 없습니다.")
@@ -107,7 +114,8 @@ def load_daily_nav(path: Path, date_col: str, series_arg: str | None) -> pd.Data
     # 전략별 스크립트의 10,000/100/1 등 임의 기준을 제거한다.
     # 이후 성과 계산은 CURRENT 템플릿의 1.0 누적배수 계약만 사용한다.
     base = x.iloc[0].astype(float)
-    x = x.div(base, axis=1)
+    if not preserve_origin:
+        x = x.div(base, axis=1)
     x.index = pd.to_datetime(x.index).normalize()
     return x
 
@@ -178,6 +186,108 @@ def flatten_metrics(results: dict) -> pd.DataFrame:
     return pd.concat(rows, ignore_index=True)
 
 
+def report_context(daily_csv: Path, repo_root: Path, title: str) -> tuple[str, dict, list[str]]:
+    run_dir = daily_csv.parent.parent
+    diagnostics = {}
+    for name in ("strategy_normalized.json", "execution_plan.json", "preflight.json", "report_readiness.json"):
+        path = run_dir / name
+        if path.is_file():
+            diagnostics[name] = json.loads(path.read_text())
+    kit = repo_root / "kit_manifest.json"
+    if kit.is_file():
+        manifest = json.loads(kit.read_text())
+        diagnostics.update(kit_id=manifest['kit_id'], source_revision=manifest['source_revision'])
+    raw = diagnostics.get("strategy_normalized.json")
+    limits = ["$10,000은 NAV에 적용한 표준화 비교값입니다. 환율 미반영이며 추가 납입은 없습니다.",
+              "벤치마크와 기업행동의 반영 범위는 입력 자료 계약을 따릅니다. 과거 성과는 미래 수익을 보장하지 않습니다."]
+    if raw:
+        factors = ', '.join(f"{f['name']}({f['direction']})" for f in raw['factors'])
+        summary = f"{', '.join(raw['universe']['markets'])} · {factors} · {raw['portfolio'].get('number_of_positions', '10분위')} · 선택 월 {raw['rebalance']['months']} 말 신호 · {raw['execution']['lag_sessions']} 거래일 뒤 {raw['execution']['price']} 체결"
+        limits.append("고정 비용은 요청 DSL의 가정이며 실제 과거 세율·시장충격을 모두 검증한 결과가 아닙니다.")
+        if raw.get('metadata'):
+            diagnostics['strategy_scope'] = raw['metadata']
+        if raw.get('metadata', {}).get('report_validation_only'):
+            limits.insert(0,"이 예제는 실행·보고 소프트웨어 검증용입니다. 알파·OOS·시장 전체·장기 투자 검증 결과가 아닙니다.")
+    else:
+        summary = title
+    return summary, diagnostics, limits
+
+
+def dashboard_payload(periods: dict, columns: list[str], config: BacktestConfig, *, benchmark: str | None,
+                      mode: str, complete: bool, daily_csv: Path, repo_root: Path) -> dict:
+    meta, portfolios, costs = {}, set(), {'gross': '비용 전'}
+    for name in columns:
+        if name == benchmark:
+            meta[name] = {'kind': 'benchmark', 'portfolio': None, 'cost': None, 'label': '벤치마크'}
+            continue
+        short = name.removeprefix('NAV_')
+        portfolio = short.split('_', 1)[0] if short.startswith('D') and short[:3][1:].isdigit() else 'strategy'
+        if portfolio != 'strategy':
+            short = short[4:]
+        cost = 'gross' if short == 'Gross' else 'net:' + short.removeprefix('Net_')
+        label = '비용 전' if cost == 'gross' else '비용 후: ' + cost.removeprefix('net:')
+        costs[cost] = label
+        portfolios.add(portfolio)
+        meta[name] = {'kind': 'strategy', 'portfolio': portfolio, 'cost': cost,
+                      'label': (portfolio + ' · ' if portfolio != 'strategy' else '') + label}
+    summary, diagnostics, limits = report_context(daily_csv, repo_root, config.title)
+    return {'schema_version': 1, 'performance_template_version': TEMPLATE_VERSION,
+            'requested_report_contract_version': REQUESTED_REPORT_CONTRACT_VERSION, 'mode': mode,
+            'title': config.title, 'strategy_summary': summary, 'periods': periods, 'series_meta': meta,
+            'portfolios': sorted(portfolios), 'cost_options': costs, 'report_complete': complete,
+            'risk_free_rate_annual': config.risk_free_rate, 'statistical_frequency': 'complete_monthly',
+            'periods_per_year': 12, 'volatility_ddof': 1,
+            'limitations': limits, 'diagnostics': diagnostics,
+            'calculation_notes': [f"CURRENT {TEMPLATE_VERSION} · 무위험 연이율 {config.risk_free_rate:.2%}",
+                                  "Sharpe: 완결 월 수익률의 평균 초과수익 / 표본 표준편차 × √12; 월 무위험수익=(1+연이율)^(1/12)-1",
+                                  "변동성: 완결 월 표본 표준편차 × √12; 표본 2개 이상",
+                                  "CAGR: 사용자 기간은 실제 기준일~종료일 경과일/365.2425, 최소 365일; 정식 4기간은 기존 CURRENT 기준",
+                                  "MDD·회복기간: 축약 전 전체 NAV; 회복기간은 달력일, 미회복 구간은 종료일까지 포함",
+                                  "선택 기간의 수익은 시작 직전 NAV 기준; 최장기간의 최초 행은 검증된 초기자산",
+                                  "차트 확대·구간 선택은 표시범위만 변경하며 성과표는 공통 기간 선택기의 분석기간 기준",
+                                  "벤치마크: 한국 지수 Close는 가격지수·배당 미반영" if benchmark else "벤치마크 미지정"]}
+
+
+def write_requested_report(daily: pd.DataFrame, config: BacktestConfig, periods: list[dict], out: Path,
+                           *, benchmark: str | None, daily_csv: Path, repo_root: Path) -> dict:
+    cfg = replace(config, initial_capital=10000.0)
+    result = run_requested_periods(daily, cfg, periods)
+    public, metric_rows, stats_rows = {}, [], []
+    for key, row in result['periods'].items():
+        public[key] = {k: v for k, v in row.items() if k not in ('metrics_frame', 'daily_nav_frame')}
+        if not row['ready']:
+            continue
+        m = row['metrics_frame'].reset_index()
+        m.insert(0, 'period', key)
+        m.insert(1, 'period_label', row['label'])
+        m['actual_start'], m['actual_end'] = row['actual_start'], row['actual_end']
+        metric_rows.append(m)
+        if benchmark:
+            for col in daily.columns:
+                if col != benchmark:
+                    stats = calculate_benchmark_statistics(row['daily_nav_frame'], col, benchmark, cfg, requested_period=True)
+                    stats_rows.append({'period': key, 'strategy': col, 'benchmark': benchmark, **stats})
+    payload = dashboard_payload(public, list(daily.columns), cfg, benchmark=benchmark,
+                                mode='requested_period_report', complete=result['readiness']['complete'],
+                                daily_csv=daily_csv, repo_root=repo_root)
+    out.mkdir(parents=True, exist_ok=True)
+    daily.to_csv(out / 'daily_nav_canonical.csv', index_label='Date')
+    metrics = pd.concat(metric_rows, ignore_index=True) if metric_rows else pd.DataFrame(columns=['period', 'period_label', '전략'])
+    metrics.to_csv(out / 'metrics_CURRENT.csv', index=False)
+    if benchmark:
+        pd.DataFrame(stats_rows, columns=['period','strategy','benchmark','tracking_error','information_ratio','beta','alpha_annualized_arithmetic','downside_capture']).to_csv(out / 'benchmark_statistics_CURRENT.csv', index=False)
+    manifest = {'template_version': TEMPLATE_VERSION, 'mode': 'requested_period_report',
+                'requested_report_contract_version': REQUESTED_REPORT_CONTRACT_VERSION,
+                'single_source_of_truth': 'scripts/quant_backtest_template_CURRENT.py',
+                'source_daily_csv': str(daily_csv), 'market_calendar': cfg.market_calendar,
+                'benchmark_series': benchmark, 'readiness': result['readiness'], 'periods': public,
+                'dashboard_payload': payload, 'render_mode': 'three_interactive_charts_shared_period_selector',
+                'dashboard_file': 'report_CURRENT.html'}
+    (out / 'chat_manifest_CURRENT.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2, allow_nan=False))
+    write_dashboard(payload, out / 'report_CURRENT.html')
+    return manifest
+
+
 def build_manifest(results: dict, combined_payload: dict, args: argparse.Namespace) -> dict:
     periods = {}
     for key, result in results.items():
@@ -216,7 +326,8 @@ def build_manifest(results: dict, combined_payload: dict, args: argparse.Namespa
             "benchmark_statistics": "monthly TE, IR, covariance beta, arithmetic annual alpha, mean-return downside capture; partial inception month excluded",
         },
         "periods": periods,
-        "render_mode": "version_1_9_inline_charts",
+        "render_mode": "three_interactive_charts_shared_period_selector",
+        "legacy_render_mode": "version_1_9_inline_charts",
         "render_order": [
             {"period": p, "chart": c} for p, c in PERIOD_CHART_ORDER
         ],
@@ -238,12 +349,24 @@ def main() -> None:
     ap.add_argument("--market-calendar", default=None, help="e.g. XKRX or XNYS; exact daily session coverage required")
     ap.add_argument("--risk-free-rate", type=float, default=0.0, help="annual decimal risk-free rate")
     ap.add_argument("--benchmark-series", default=None, help="explicit NAV column used as benchmark; no inference")
+    ap.add_argument("--report-periods", type=Path, help="explicit requested-period report specification JSON; default preserves formal four periods")
     args = ap.parse_args()
 
     as_of = pd.Timestamp(args.as_of_date) if args.as_of_date else pd.Timestamp.today().normalize()
     args.as_of_date = as_of.strftime("%Y-%m-%d")
 
-    daily_raw = load_daily_nav(args.daily_csv, args.date_col, args.series)
+    daily_raw = load_daily_nav(args.daily_csv, args.date_col, args.series, preserve_origin=bool(args.report_periods))
+    if args.report_periods:
+        cfg = BacktestConfig(title=args.title, as_of_date=args.as_of_date, market_calendar=args.market_calendar,
+                             risk_free_rate=args.risk_free_rate)
+        if args.benchmark_series and args.benchmark_series not in daily_raw.columns:
+            raise ValueError('explicit benchmark column missing')
+        manifest = write_requested_report(daily_raw, cfg, load_report_periods(args.report_periods),
+                                          args.output_dir, benchmark=args.benchmark_series, daily_csv=args.daily_csv,
+                                          repo_root=Path(__file__).resolve().parents[1])
+        print(json.dumps({'mode': manifest['mode'], 'ready': manifest['readiness']['ready'],
+                          'complete': manifest['readiness']['complete'], 'dashboard': str(args.output_dir / 'report_CURRENT.html')}))
+        return
     daily, monthly = derive_complete_monthly(daily_raw, as_of)
     if args.market_calendar:
         # Full supplied history and formal ending month, before creating outputs.
@@ -293,6 +416,22 @@ def main() -> None:
         (out / "benchmark_statistics_CURRENT.csv").unlink(missing_ok=True)
 
     manifest = build_manifest(results, combined, args)
+    dashboard_periods = {}
+    for key, row in results.items():
+        nav = row['daily_nav'] if row['daily_nav'] is not None else row['monthly_nav']
+        baseline = nav.attrs.get('baseline_date')
+        if baseline is None:
+            baseline = row['monthly_nav'].attrs.get('performance_baseline_date')
+        if baseline is None:
+            baseline = nav.index[0] - pd.offsets.MonthEnd(1)
+        dashboard_periods[key] = dashboard_period_data(nav, row['metrics'], row['label'],
+                                                       baseline_date=baseline, calendar=cfg.market_calendar)
+    dashboard = dashboard_payload(dashboard_periods, list(daily.columns), cfg, benchmark=args.benchmark_series,
+                                  mode='canonical_report', complete=True, daily_csv=args.daily_csv,
+                                  repo_root=Path(__file__).resolve().parents[1])
+    manifest['dashboard_payload'] = dashboard
+    manifest['dashboard_file'] = 'report_CURRENT.html'
+    write_dashboard(dashboard, out / 'report_CURRENT.html')
     (out / "chat_manifest_CURRENT.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2),
         encoding="utf-8",
