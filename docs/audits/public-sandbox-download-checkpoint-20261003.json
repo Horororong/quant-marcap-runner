@@ -1,0 +1,47 @@
+{
+  "status": "public_anonymous_download_verified",
+  "date_utc": "2026-10-03",
+  "source_revision": "b350b61e4db0c626e8533645a1a76d61d6ba0ae6",
+  "kit_id": "ee212da3e4a71bb7fa2261b45771156e2bf49b563419c8e639db45449cf694db",
+  "transport_commit": "6d99daeff656042277bf75abff7adf73ce2a6f2d",
+  "delivery_run_id": 37081967124,
+  "delivery_job_id": 111084242487,
+  "jobs": [
+    {
+      "id": 111084242487,
+      "name": "download-verified-kit",
+      "conclusion": "success"
+    },
+    {
+      "id": 111084243261,
+      "name": "test",
+      "conclusion": "skipped"
+    },
+    {
+      "id": 111084243639,
+      "name": "sandbox-replay",
+      "conclusion": "skipped"
+    }
+  ],
+  "release_id": 402239704,
+  "asset_id": 606780546,
+  "release_tag": "quant-sandbox-ee212da3e4a7",
+  "download": {
+    "status": "anonymous_download_verified",
+    "url": "https://github.com/Horororong/quant-marcap-runner/releases/download/quant-sandbox-ee212da3e4a7/quant-sandbox-ee212da3e4a7.zip",
+    "authorization_header": false,
+    "http_status": 200,
+    "bytes": 291308667,
+    "sha256": "533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587",
+    "release_id": 402239704,
+    "asset_id": 606780546
+  },
+  "tests_and_backfills_repeated": false,
+  "pr27_merge_retried": false,
+  "failed_delivery_channels": [
+    "workspace path on mobile",
+    "short-lived signed oaiusercontent URL",
+    "GitHub Actions artifact without login"
+  ],
+  "next": "Give the public release asset URL to the user; attach that original ZIP directly in the ChatGPT quant-project conversation."
+}

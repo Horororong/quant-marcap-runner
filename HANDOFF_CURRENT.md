@@ -439,3 +439,20 @@ GitHub 반영 호출은 `user cancelled MCP tool call`로 중단됐다. 직접 �
 원격 main 반영 완료로 표시하지 않는다. 취소된 merge는 자동 재호출하지 않는다.
 생성·전체 source CI·양 ABI 4예제 재현·ZIP SHA·로컬 offline 설치/검증은 완료됐으며
 해당 실제 파일을 사용자에게 전달한다. 완료한 생성/검증/백필을 다시 실행하지 않는다.
+
+
+## 최종 완료: 실제 익명 다운로드 검증
+
+- 전달 구현 commit `6d99daeff656042277bf75abff7adf73ce2a6f2d`, run `37081967124` / job `111084242487`
+  **success**. Test/sandbox-replay jobs는 **skipped**다. 생성/백테스트/패키지 재현/백필을
+  다시 하지 않았으며, 취소된 PR #27 merge도 재시도하지 않았다.
+- 공개 release `quant-sandbox-ee212da3e4a7` (ID `402239704`, draft=false),
+  원본 ZIP asset ID `606780546`, **291308667 bytes**.
+- **Authorization header 없는 실제 GET**이 HTTP **200**을 반환했고, 전체 다운로드
+  SHA256 `533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587`가 원본과 일치했다.
+- 최종 고정 다운로드 주소: https://github.com/Horororong/quant-marcap-runner/releases/download/quant-sandbox-ee212da3e4a7/quant-sandbox-ee212da3e4a7.zip
+  로그인이나 단기 서명 URL이 필요 없다. Actions artifact의 30일 만료와 별도인
+  공개 release asset이다. 기존 workspace/서명/artifact 링크를 최종 전달로 재사용하지 않는다.
+- 이 파일은 안쪽 ZIP wrapper가 없는 원래 실행 ZIP이다. ChatGPT 퀀트 프로젝트의
+  Python 실행 가능한 대화에 **그대로 첨부**하고 기존 bootstrap/verify를 사용한다.
+- Machine checkpoint: `docs/audits/public-sandbox-download-checkpoint-20261003.json`.
