@@ -1,0 +1,17 @@
+{
+  "scope": "software failure-boundary tests; not investment data certification",
+  "checks": [
+    {
+      "name": "wrong manually recorded source literal rejected",
+      "status": "passed"
+    },
+    {
+      "name": "original body hash drift rejected",
+      "status": "passed"
+    },
+    {
+      "name": "changed state cannot retain stale missing-value verdict",
+      "status": "passed"
+    }
+  ]
+}

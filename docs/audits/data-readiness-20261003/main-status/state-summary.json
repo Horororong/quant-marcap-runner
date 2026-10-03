@@ -1,0 +1,524 @@
+{
+  "main": "49afdcab324c2b778e21456e70a4e306feec4c0a",
+  "legacy_total_rows": 14603,
+  "legacy_by_parser_status": {
+    "legacy-v2:NO_DOCUMENT": 2,
+    "legacy-v3-book:NO_DOCUMENT": 12,
+    "legacy-v4-book:NO_DOCUMENT": 1203,
+    "legacy-v1:ERROR": 25,
+    "legacy-v3-book:NO_METRICS": 1024,
+    "legacy-v2:NO_METRICS": 7,
+    "legacy-v4-book:NO_METRICS": 3,
+    "legacy-v3-book:PARSED_PARTIAL": 741,
+    "legacy-v3-book:PARSED_4F": 2184,
+    "legacy-v1:PARSED_PARTIAL": 176,
+    "legacy-v2:PARSED_PARTIAL": 168,
+    "legacy-v4-book:PARSED_PARTIAL": 2,
+    "legacy-v1:PARSED_4F": 452,
+    "legacy-v2:PARSED_4F": 404,
+    "legacy-v5-single-amount:NO_DOCUMENT": 361,
+    "legacy-v5-single-amount:NO_METRICS": 7243,
+    "legacy-v5-single-amount:PARSED_PARTIAL": 283,
+    "legacy-v5-single-amount:PARSED_4F": 313
+  },
+  "legacy_current_parser_status": {
+    "NO_DOCUMENT": 361,
+    "NO_METRICS": 7243,
+    "PARSED_PARTIAL": 283,
+    "PARSED_4F": 313
+  },
+  "modern_total_rows": 136914,
+  "modern_by_period": [
+    {
+      "year": 2015,
+      "period": "FY",
+      "CFS": {
+        "NO_DATA": 818,
+        "OK": 1387
+      },
+      "OFS": {
+        "NO_DATA": 390,
+        "OK": 1815
+      },
+      "codes": 2205,
+      "last_update": "2026-09-02T01:35:41.398584+00:00"
+    },
+    {
+      "year": 2015,
+      "period": "H1",
+      "CFS": {
+        "NO_DATA": 2077
+      },
+      "OFS": {},
+      "codes": 2077,
+      "last_update": "2026-09-23T19:11:16.493090+00:00"
+    },
+    {
+      "year": 2015,
+      "period": "Q1",
+      "CFS": {
+        "NO_DATA": 2077
+      },
+      "OFS": {
+        "NO_DATA": 923
+      },
+      "codes": 2077,
+      "last_update": "2026-08-31T21:18:24.958427+00:00"
+    },
+    {
+      "year": 2015,
+      "period": "Q3",
+      "CFS": {
+        "NO_DATA": 2077
+      },
+      "OFS": {},
+      "codes": 2077,
+      "last_update": "2026-09-23T21:27:32.659342+00:00"
+    },
+    {
+      "year": 2016,
+      "period": "FY",
+      "CFS": {
+        "NO_DATA": 820,
+        "OK": 1464
+      },
+      "OFS": {
+        "NO_DATA": 436,
+        "OK": 1848
+      },
+      "codes": 2284,
+      "last_update": "2026-09-08T01:32:17.583803+00:00"
+    },
+    {
+      "year": 2016,
+      "period": "H1",
+      "CFS": {
+        "NO_DATA": 758,
+        "OK": 1404
+      },
+      "OFS": {
+        "NO_DATA": 363,
+        "OK": 1799
+      },
+      "codes": 2162,
+      "last_update": "2026-09-05T01:29:06.977338+00:00"
+    },
+    {
+      "year": 2016,
+      "period": "Q1",
+      "CFS": {
+        "NO_DATA": 800,
+        "OK": 1362
+      },
+      "OFS": {
+        "NO_DATA": 403,
+        "OK": 1759
+      },
+      "codes": 2162,
+      "last_update": "2026-09-04T01:09:09.866640+00:00"
+    },
+    {
+      "year": 2016,
+      "period": "Q3",
+      "CFS": {
+        "NO_DATA": 740,
+        "OK": 1422
+      },
+      "OFS": {
+        "NO_DATA": 350,
+        "OK": 1812
+      },
+      "codes": 2162,
+      "last_update": "2026-09-06T01:39:26.423304+00:00"
+    },
+    {
+      "year": 2017,
+      "period": "FY",
+      "CFS": {
+        "NO_DATA": 821,
+        "OK": 1554
+      },
+      "OFS": {
+        "NO_DATA": 441,
+        "OK": 1934
+      },
+      "codes": 2375,
+      "last_update": "2026-09-14T01:41:10.490551+00:00"
+    },
+    {
+      "year": 2017,
+      "period": "H1",
+      "CFS": {
+        "NO_DATA": 768,
+        "OK": 1486
+      },
+      "OFS": {
+        "NO_DATA": 395,
+        "OK": 1859
+      },
+      "codes": 2254,
+      "last_update": "2026-09-11T01:31:42.898311+00:00"
+    },
+    {
+      "year": 2017,
+      "period": "Q1",
+      "CFS": {
+        "NO_DATA": 811,
+        "OK": 1443
+      },
+      "OFS": {
+        "NO_DATA": 435,
+        "OK": 1819
+      },
+      "codes": 2254,
+      "last_update": "2026-09-09T01:57:39.048686+00:00"
+    },
+    {
+      "year": 2017,
+      "period": "Q3",
+      "CFS": {
+        "NO_DATA": 748,
+        "OK": 1506
+      },
+      "OFS": {
+        "NO_DATA": 374,
+        "OK": 1880
+      },
+      "codes": 2254,
+      "last_update": "2026-09-12T01:27:43.387830+00:00"
+    },
+    {
+      "year": 2018,
+      "period": "FY",
+      "CFS": {
+        "NO_DATA": 805,
+        "OK": 1636
+      },
+      "OFS": {
+        "NO_DATA": 419,
+        "OK": 2022
+      },
+      "codes": 2441,
+      "last_update": "2026-09-20T01:47:42.354157+00:00"
+    },
+    {
+      "year": 2018,
+      "period": "H1",
+      "CFS": {
+        "NO_DATA": 746,
+        "OK": 1575
+      },
+      "OFS": {
+        "NO_DATA": 386,
+        "OK": 1935
+      },
+      "codes": 2321,
+      "last_update": "2026-09-17T01:40:07.534098+00:00"
+    },
+    {
+      "year": 2018,
+      "period": "Q1",
+      "CFS": {
+        "NO_DATA": 766,
+        "OK": 1555
+      },
+      "OFS": {
+        "NO_DATA": 396,
+        "OK": 1925
+      },
+      "codes": 2321,
+      "last_update": "2026-09-16T01:36:57.746370+00:00"
+    },
+    {
+      "year": 2018,
+      "period": "Q3",
+      "CFS": {
+        "NO_DATA": 733,
+        "OK": 1588
+      },
+      "OFS": {
+        "NO_DATA": 369,
+        "OK": 1952
+      },
+      "codes": 2321,
+      "last_update": "2026-09-19T01:22:55.653742+00:00"
+    },
+    {
+      "year": 2019,
+      "period": "FY",
+      "CFS": {
+        "NO_DATA": 791,
+        "OK": 1699
+      },
+      "OFS": {
+        "NO_DATA": 289,
+        "OK": 403
+      },
+      "codes": 2490,
+      "last_update": "2026-09-24T00:58:12.686115+00:00"
+    },
+    {
+      "year": 2019,
+      "period": "H1",
+      "CFS": {
+        "NO_DATA": 750,
+        "OK": 1637
+      },
+      "OFS": {
+        "NO_DATA": 382,
+        "OK": 2005
+      },
+      "codes": 2387,
+      "last_update": "2026-09-23T11:16:02.215927+00:00"
+    },
+    {
+      "year": 2019,
+      "period": "Q1",
+      "CFS": {
+        "NO_DATA": 761,
+        "OK": 1626
+      },
+      "OFS": {
+        "NO_DATA": 391,
+        "OK": 1996
+      },
+      "codes": 2387,
+      "last_update": "2026-09-22T01:45:15.253134+00:00"
+    },
+    {
+      "year": 2019,
+      "period": "Q3",
+      "CFS": {
+        "NO_DATA": 719,
+        "OK": 1668
+      },
+      "OFS": {
+        "NO_DATA": 359,
+        "OK": 2028
+      },
+      "codes": 2387,
+      "last_update": "2026-09-23T11:58:05.676949+00:00"
+    },
+    {
+      "year": 2020,
+      "period": "FY",
+      "CFS": {
+        "NO_DATA": 798,
+        "OK": 1785
+      },
+      "OFS": {
+        "NO_DATA": 277,
+        "OK": 412
+      },
+      "codes": 2583,
+      "last_update": "2026-09-24T09:50:10.321282+00:00"
+    },
+    {
+      "year": 2020,
+      "period": "H1",
+      "CFS": {
+        "OK": 1718,
+        "NO_DATA": 743
+      },
+      "OFS": {
+        "NO_DATA": 364,
+        "OK": 379
+      },
+      "codes": 2461,
+      "last_update": "2026-09-24T01:10:52.485728+00:00"
+    },
+    {
+      "year": 2020,
+      "period": "Q1",
+      "CFS": {
+        "NO_DATA": 758,
+        "OK": 1703
+      },
+      "OFS": {
+        "NO_DATA": 372,
+        "OK": 386
+      },
+      "codes": 2461,
+      "last_update": "2026-09-24T01:15:32.055087+00:00"
+    },
+    {
+      "year": 2020,
+      "period": "Q3",
+      "CFS": {
+        "NO_DATA": 726,
+        "OK": 1735
+      },
+      "OFS": {
+        "NO_DATA": 342,
+        "OK": 384
+      },
+      "codes": 2461,
+      "last_update": "2026-09-24T09:54:27.995869+00:00"
+    },
+    {
+      "year": 2021,
+      "period": "FY",
+      "CFS": {
+        "NO_DATA": 826,
+        "OK": 1843
+      },
+      "OFS": {},
+      "codes": 2669,
+      "last_update": "2026-09-25T19:34:44.108992+00:00"
+    },
+    {
+      "year": 2021,
+      "period": "H1",
+      "CFS": {
+        "NO_DATA": 755,
+        "OK": 1781
+      },
+      "OFS": {},
+      "codes": 2536,
+      "last_update": "2026-09-24T19:54:26.048359+00:00"
+    },
+    {
+      "year": 2021,
+      "period": "Q1",
+      "CFS": {
+        "NO_DATA": 768,
+        "OK": 1768
+      },
+      "OFS": {},
+      "codes": 2536,
+      "last_update": "2026-09-24T19:53:24.043410+00:00"
+    },
+    {
+      "year": 2021,
+      "period": "Q3",
+      "CFS": {
+        "NO_DATA": 732,
+        "OK": 1804
+      },
+      "OFS": {},
+      "codes": 2536,
+      "last_update": "2026-09-25T19:27:37.384524+00:00"
+    },
+    {
+      "year": 2022,
+      "period": "FY",
+      "CFS": {
+        "NO_DATA": 857,
+        "OK": 1915
+      },
+      "OFS": {},
+      "codes": 2772,
+      "last_update": "2026-09-28T22:31:23.328404+00:00"
+    },
+    {
+      "year": 2022,
+      "period": "H1",
+      "CFS": {
+        "OK": 1861,
+        "NO_DATA": 761
+      },
+      "OFS": {},
+      "codes": 2622,
+      "last_update": "2026-09-26T18:53:05.453017+00:00"
+    },
+    {
+      "year": 2022,
+      "period": "Q1",
+      "CFS": {
+        "NO_DATA": 791,
+        "OK": 1831
+      },
+      "OFS": {},
+      "codes": 2622,
+      "last_update": "2026-09-26T18:45:33.171881+00:00"
+    },
+    {
+      "year": 2022,
+      "period": "Q3",
+      "CFS": {
+        "NO_DATA": 751,
+        "OK": 1871
+      },
+      "OFS": {},
+      "codes": 2622,
+      "last_update": "2026-09-27T19:38:06.482611+00:00"
+    },
+    {
+      "year": 2023,
+      "period": "FY",
+      "CFS": {
+        "OK": 2029,
+        "NO_DATA": 834
+      },
+      "OFS": {},
+      "codes": 2863,
+      "last_update": "2026-09-30T20:20:24.420050+00:00"
+    },
+    {
+      "year": 2023,
+      "period": "H1",
+      "CFS": {
+        "NO_DATA": 805,
+        "OK": 1917
+      },
+      "OFS": {},
+      "codes": 2722,
+      "last_update": "2026-09-29T20:23:53.555900+00:00"
+    },
+    {
+      "year": 2023,
+      "period": "Q1",
+      "CFS": {
+        "NO_DATA": 825,
+        "OK": 1897
+      },
+      "OFS": {},
+      "codes": 2722,
+      "last_update": "2026-09-28T22:51:51.411017+00:00"
+    },
+    {
+      "year": 2023,
+      "period": "Q3",
+      "CFS": {
+        "OK": 1995,
+        "NO_DATA": 727
+      },
+      "OFS": {},
+      "codes": 2722,
+      "last_update": "2026-09-29T20:52:46.376535+00:00"
+    },
+    {
+      "year": 2024,
+      "period": "H1",
+      "CFS": {
+        "OK": 2035,
+        "NO_DATA": 777
+      },
+      "OFS": {},
+      "codes": 2812,
+      "last_update": "2026-10-01T20:36:26.545712+00:00"
+    },
+    {
+      "year": 2024,
+      "period": "Q1",
+      "CFS": {
+        "OK": 2008,
+        "NO_DATA": 804
+      },
+      "OFS": {},
+      "codes": 2812,
+      "last_update": "2026-10-01T20:29:00.850003+00:00"
+    },
+    {
+      "year": 2024,
+      "period": "Q3",
+      "CFS": {
+        "OK": 2017,
+        "NO_DATA": 757
+      },
+      "OFS": {},
+      "codes": 2774,
+      "last_update": "2026-10-03T19:33:30.834260+00:00"
+    }
+  ]
+}

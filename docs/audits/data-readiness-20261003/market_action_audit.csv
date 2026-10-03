@@ -1,0 +1,12 @@
+﻿항목,분류,확인 내용,근거,한계/필요 자료
+과거 유니버스,실제 자료로 검증됨(관측 범위),Date/Code의 당시 KRX panel 사용. 1995~2025 파일은 기준 main blob과 일치. 현재 상장 목록으로 과거 가격 universe를 재구성하는 경로는 확인되지 않음,scripts/krx_backtest_data.py:load_krx_equity_panel,상폐 완전성/코드 재사용·모든 신규상장 인증은 아님
+DART 기업 매핑,구현됨; 독립 전수 검증 미완료,과거 life-table을 현재 DART corpCode 목록과 종목코드/unique name으로 연결. 현재 신규 회사는 올해 첫 관측일부터 추가,scripts/backfill_dart_full_financials.py:build_historical_code_map,현재 corp 목록과 과거 코드 재사용/명칭 변경 검증 필요. 미매핑 회사를 전체 재무 유니버스 완전성으로 인증하지 않음
+재무 결측 종목,구현됨; 제외 내용의 감사 필요,랭킹은 모든 팩터 finite 교집합을 사용. source NO_DATA/미매핑 회사의 eligibility 상실은 표본 선택에 영향을 줌,scripts/strategy_dsl_runner.py:rank_cross_section,결측 교집합은 알려진 전략 규칙. 완전한 과거 재무 유니버스라는 주장 금지
+거래정지·비유동성,구현됨; 기존 실제 자료 회귀 통과,"Close>0, Volume>0 체결 가능성; missing held return·reference discrepancy 중단",scripts/strategy_dsl_runner.py:close_and_tradable_matrices,상하한가/주문장/시장충격의 실제 체결 제약 완전 지원 아님
+분할,실제 자료로 검증됨(등록 6건),등록된 same-code share ratio 보정과 ChangesRatio 1bp 검증; 2024 real-source checks 6개,config/kr_corporate_actions.csv,전체 기업행위 이력 미인증. 2024 unmatched candidates 251건 보존
+주식 합병,구현됨; 실제 자료 검증 제한,한국제지→해성산업 1건. successor price/share ratio 승계,config/kr_corporate_actions.csv,소수주 현금 제외; 혼합 주식/현금·일반 합병 전수 검증 미지원
+현금 교환·상폐,자료 부족,generic receivable/payment contract 있으나 실제 등록 현금 event 0개. 제이시스 287410 관련 노출 data_gap,config/kr_corporate_action_gaps.json,실제 지급일·순수령액 1차 증거 필요; 상폐 손실을 전체 종목에 현실적으로 반영했다고 인증하지 않음
+배당·권리·증자,미지원/자료 부족,KRX Close/ChangesRatio 경로에 전수 배당 현금흐름/권리 event ledger 없음,docs/CANONICAL_PERFORMANCE.md,가격 Close를 total return으로 표기하지 않음
+수정주가 중복 반영,구현 경로 점검; 등록 행사 검증,원본 Close와 등록 split ratio 사용. 임의 adjusted close나 추가 배당금 경로 없음. split/reference 불일치 시 중단,scripts/strategy_dsl_runner.py; corporate_action_registry.py,임의 provider 수정주가를 삽입하면 이중 분할 위험. source return basis 전수 인증 아님
+벤치마크,실제 자료/코드로 확인,KOSPI/KOSDAQ/KOSPI200/KOSDAQ150 Close 가격지수; includes_dividends=false,scripts/strategy_dsl_runner.py:benchmark_coverage_audit,총수익지수 비교 미지원. KOSPI/KOSDAQ/KOSPI200은 2026-09-17까지; KOSDAQ150은 2026-10-01까지
+캘린더,자료 부족/대조 차이,XKRX 4.13.2 대비 1995/1996/1998 및 로컬 2026 일부 날짜 차이,price_inventory.json,선거일/거래소 휴장일 공식 자료 확인 전 실제 데이터 누락과 캘린더 오류를 구분하지 않음; 임의 채움/완화 금지
