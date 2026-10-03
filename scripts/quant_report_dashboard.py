@@ -19,8 +19,8 @@ main{max-width:1180px;margin:auto;padding:24px}h1{font-size:27px;margin:0 0 8px}
 .controls{display:flex;gap:18px;flex-wrap:wrap}label{display:grid;gap:5px;font-weight:600}select{padding:9px;border:1px solid #b7c3d5;border-radius:7px;max-width:100%;font:inherit}
 .note{color:#52617a;font-size:13px}.status{font-size:18px;font-weight:700}.gap{background:#fff4dc;color:#754b00;padding:14px;border-radius:8px}
 .table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;white-space:nowrap}th,td{padding:10px;text-align:right;border-bottom:1px solid #e7ebf2}th:first-child,td:first-child{text-align:left}
-th{font-size:12px;color:#52617a}.chart{width:100%;height:350px}.chart-card{padding:18px 8px 2px}.chart-card h2{padding:0 12px}summary{cursor:pointer;font-weight:600}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
-@media(max-width:600px){main{padding:12px}h1{font-size:23px}.card{padding:14px}.chart-card{padding:12px 0}.chart{height:320px}.controls{gap:12px}label{width:100%}}
+th{font-size:12px;color:#52617a}.chart{width:100%;height:440px}.chart-card{padding:18px 8px 2px}.chart-card h2{padding:0 12px}summary{cursor:pointer;font-weight:600}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+@media(max-width:600px){main{padding:12px}h1{font-size:23px}.card{padding:14px}.chart-card{padding:12px 0}.chart{height:460px}.controls{gap:12px}label{width:100%}}
 </style></head><body><main>
 <h1>__TITLE__</h1><div class="card"><div id="conclusion" class="status"></div><div id="dates"></div><div id="summary"></div></div>
 <div class="card controls"><label>분석기간<select id="period"></select></label><label>비용 비교<select id="cost"></select></label><label id="portfolio-label">포트폴리오<select id="portfolio"></select></label></div>
@@ -63,9 +63,9 @@ function traces(p,kind){return selectedSeries(p).map(([key,s],i)=>{
  hovertemplate:kind==='drawdown'?'%{x|%Y-%m-%d}<br>%{y:.2f}%<extra>%{fullData.name}</extra>':
  '%{x|%Y-%m-%d}<br>%{customdata[0]:.6f}배<br>$%{customdata[1]:,.2f}<br>%{customdata[2]}<extra>%{fullData.name}</extra>'};
 });}
-function layout(p,kind){return {paper_bgcolor:'white',plot_bgcolor:'white',margin:{l:70,r:25,t:20,b:85},hovermode:'x unified',dragmode:'zoom',
+function layout(p,kind){return {paper_bgcolor:'white',plot_bgcolor:'white',margin:{l:70,r:25,t:130,b:100},hovermode:'x unified',dragmode:'zoom',
  uirevision:$('period').value+':'+$('cost').value+':'+$('portfolio').value,
- legend:{orientation:'h',y:-.32},xaxis:{type:'date',rangeslider:{visible:true,thickness:.1},rangeselector:{buttons:[{count:1,label:'1개월',step:'month',stepmode:'backward'},{count:1,label:'1년',step:'year',stepmode:'backward'},{step:'all',label:'전체'}]}},
+ legend:{orientation:'h',y:1.2,yanchor:'bottom',x:0,xanchor:'left'},xaxis:{type:'date',rangeslider:{visible:true,thickness:.1},rangeselector:{buttons:[{count:1,label:'1개월',step:'month',stepmode:'backward'},{count:1,label:'1년',step:'year',stepmode:'backward'},{step:'all',label:'전체'}]}},
  yaxis:kind==='log2'?{type:'log',tickmode:'array',tickvals:p.log_ticks.values,ticktext:p.log_ticks.labels,title:{text:'시작자산 대비 배수'}}:
  kind==='drawdown'?{ticksuffix:'%',rangemode:'tozero',range:[null,0],zeroline:true,title:{text:'고점 대비 하락률'}}:{tickprefix:'$',title:{text:'표준화 자산 · 환율 미반영'}}};}
 async function render(){

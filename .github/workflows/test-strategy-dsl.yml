@@ -16,6 +16,7 @@ on:
         type: boolean
         default: false
   push:
+    branches-ignore: ['recover/report-browser-*']
     paths:
       - 'scripts/csv_storage.py'
       - 'scripts/probe_dart_legacy_sources.py'
@@ -181,7 +182,8 @@ jobs:
         timeout-minutes: 3
         env:
           PLAYWRIGHT_MODULE: ${{ runner.temp }}/report-browser/node_modules/playwright
-        run: timeout -k 5s 150s node scripts/test_report_dashboard.cjs "$RUNNER_TEMP/requested-report/report/report_CURRENT.html" "$RUNNER_TEMP/requested-report/report-preview.png" | tee "$RUNNER_TEMP/requested-report/browser-verification.json"
+        shell: bash
+        run: timeout -k 5s 160s bash scripts/verify_report_browser.sh "$RUNNER_TEMP/requested-report/report/report_CURRENT.html" "$RUNNER_TEMP/requested-report"
       - name: Preserve actual report screen and interaction evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -192,6 +194,7 @@ jobs:
             ${{ runner.temp }}/requested-report/run_status.json
             ${{ runner.temp }}/requested-report/report-preview.png
             ${{ runner.temp }}/requested-report/browser-verification.json
+            ${{ runner.temp }}/requested-report/browser-verification.log
           retention-days: 30
       - name: CURRENT and PROJECT compatibility self-tests
         run: |

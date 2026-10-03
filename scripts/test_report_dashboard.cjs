@@ -11,6 +11,8 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     args:['--no-sandbox'],timeout:20000});
   try {
     const page = await browser.newPage({viewport:{width:1280,height:980}});
+    page.setDefaultTimeout(10000);
+    const evidence=[];
     const errors = [];page.on('pageerror',e=>errors.push(e.message));
     await page.goto('file://'+source,{waitUntil:'load',timeout:30000});
     await page.waitForFunction(()=>window.reportRenderComplete===true,{timeout:30000});
@@ -51,6 +53,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
       await page.evaluate(async()=>{await Plotly.relayout(document.getElementById('wealth'),{'xaxis.range[0]':'2020-04-10','xaxis.range[1]':'2020-04-24'});});
       await page.waitForFunction(()=>document.getElementById('log2').layout.xaxis.range?.[0]==='2020-04-10');
       assert.equal(await page.evaluate(()=>document.getElementById('drawdown').layout.xaxis.range[1]),'2020-04-24');
+      evidence.push({period:p.id,actual_start:out.period.actual_start,actual_end:out.period.actual_end,ending:out.ending,table:out.rows,chart_end_values:out.traces.map(t=>t.map(x=>x.y.at(-1)))});
       checked++;
     }
     const ready=contract.periods.find(p=>p.ready);assert(ready);
@@ -68,6 +71,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     // Plotly legend click actually hides the corresponding plotted line.
     const legend=page.locator('#wealth .legendtoggle').first();await legend.click();
     await page.waitForFunction(()=>document.getElementById('wealth').data[0].visible==='legendonly');await legend.click();
+    await page.waitForFunction(()=>document.getElementById('wealth').data[0].visible!=='legendonly');
     if(screen)await page.screenshot({path:screen,fullPage:true});
     await page.setViewportSize({width:390,height:844});
     await page.waitForTimeout(300);
@@ -75,6 +79,6 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     assert(widths.body<=widths.viewport+2);assert(widths.charts.every(w=>w<=widths.viewport));
     assert.deepEqual(errors,[]);
     console.log(JSON.stringify({status:'passed',source,ready_periods_checked:checked,cost_options:contract.costs,
-      checks:['period/table/three charts','ending wealth','true logarithmic axis/ticks/actual hover values','drawdown/MDD','shared zoom','cost/benchmark','legend','mobile width','missing periods'],screenshot:screen||null}));
+      checks:['period/table/three charts','ending wealth','true logarithmic axis/ticks/actual hover values','drawdown/MDD','shared zoom','cost/benchmark','legend','mobile width','missing periods'],period_evidence:evidence,screenshot:screen||null}));
   } finally {await browser.close();}
-})().catch(e=>{console.error(e);process.exit(1);});
+})().catch(e=>{console.error(e);console.log(JSON.stringify({status:'failed',error:e.message}));process.exit(1);});
