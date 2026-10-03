@@ -15,3 +15,10 @@ main의 데이터/백필 자동 갱신을 보고 feature로 덮어쓰지 않음.
 최종 소스 822c435f4b6148c2832e12370a6ccb324a9e875f / 전체 CI 37157470156 실행 중.
 기존 묶음에서 새 2018 결측 입력을 bounded 실행: data_gap / exit 3 / nav_ready=false 확인. 이는 새 ABI bootstrap 성공 증거가 아니며, 새 묶음 결과는 CI에서 별도 확인.
 공개 배포는 이 정확한 소스 run의 test·sandbox-replay(3.11/3.12)가 모두 success일 때만 허용. manifest/ABI 증거/실제 hover PNG 확인 없이 배포하지 않음.
+
+실제 최종 browser artifact 11286413643 다운로드/CRC/SHA 검사 완료.
+실제 마우스 팝업: 2020-04-21, 1.062567배, $10,625.67. 별도 hover PNG와 기본 PNG 실물 확인.
+사용자는 수동 다운로드 없이 현재 Work에 에이전트가 설치하도록 요청. 새 source manifest/parts를 직접 복원하고 새 로컬 runtime에 bootstrap/verify/checked report를 수행할 예정. 별도 ChatGPT 프로젝트에 자동 파일 배치 권한은 없음.
+현재 main legacy 상태 2026-10-03 19:13:51 UTC: 9,401 processed, 105,619 pending, collection_complete/quality_complete False, independent audit required. 기존 schedule/수집/원문은 이번 보고 작업에서 수정·반복하지 않음.
+
+22:26 UTC checkpoint: actual browser/PNG/hover passed. Full CI final real execution regression progressing; both clean offline ABI E2E are still running under existing 30-minute step limit. No publication claim until exact source run is complete.
