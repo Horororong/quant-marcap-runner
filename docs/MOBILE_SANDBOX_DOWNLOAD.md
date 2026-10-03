@@ -26,3 +26,22 @@ GitHub artifact URL은 로그인한 저장소 접근 권한으로 내려받는�
 원본 `quant-sandbox-ee212da3e4a7.zip`을 안에 담는다. 다운로드 파일을 ChatGPT에
 올린 뒤 내부 ZIP까지 풀어 bootstrap/verify하도록 요청하면 된다.
 PR #27은 이전 취소 후 여전히 open이며, 이 복구 작업에서 취소된 merge를 재호출하지 않는다.
+
+
+## 전달-only 실행 완료
+
+- 원격 구현 commit `0ef9dac1075b775975b0132b6a3b537ecbe0d352`.
+  Run `37080822925`, 전달 job `111080724876` **success**.
+  기존 test와 sandbox-replay는 모두 **skipped**로 확인했다.
+- 보존된 원본 ZIP을 복원한 실제 출력의 bytes/SHA/CRC/source revision/kit ID가 통과했다.
+  생성·백테스트·패키지 재현을 반복하지 않았다.
+- Artifact `11259265188` (`quant-sandbox-mobile-download`), **291308841 bytes**,
+  outer ZIP digest `sha256:4b66c5a0612813ff1ae419ca79a31de68f9efd36a0db9784aa3d5238a46367b6`, 만료 `2026-11-02T00:09:16Z`.
+  내부 원본 ZIP은 앞서 검증한 291,308,667 bytes / SHA256 `533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587` 그대로다.
+- 실제 HTTPS 다운로드: https://github.com/Horororong/quant-marcap-runner/actions/runs/37080822925/artifacts/11259265188
+  GitHub 로그인과 repository 접근이 필요하다. Native artifact download tool에서도
+  전체 278MiB 파일의 호스팅 file reference/HTTPS URL 생성을 실제 확인했다.
+  이 URL은 단기 서명 URL이므로 Git/docs에 저장하지 않고 대화에서 직접 전달한다.
+- 휴대폰에서는 작업환경 경로를 다운로드 링크로 사용하지 않는다. 다운로드된 ZIP을
+  실행할 ChatGPT 대화에 첨부하고 내부 `quant-sandbox-ee212da3e4a7.zip`까지 해제한 뒤
+  기존 bootstrap/verify를 사용한다. PR #27 merge는 재호출하지 않았다.
