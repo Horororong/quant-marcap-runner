@@ -3,6 +3,10 @@ name: Test Strategy DSL v1
 on:
   workflow_dispatch:
     inputs:
+      publish_public_download:
+        description: Publish the existing verified kit as a public release download
+        type: boolean
+        default: false
       download_existing_kit:
         description: Restore the already verified kit for a mobile HTTPS download
         type: boolean
@@ -115,7 +119,7 @@ concurrency:
 
 jobs:
   test:
-    if: ${{ !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && inputs.download_existing_kit) }}
+    if: ${{ !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && (inputs.download_existing_kit || inputs.publish_public_download)) }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -207,7 +211,7 @@ jobs:
         run: python scripts/test_dsl_run_e2e.py
 
   sandbox-replay:
-    if: ${{ !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && inputs.download_existing_kit) }}
+    if: ${{ !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && (inputs.download_existing_kit || inputs.publish_public_download)) }}
     runs-on: ubuntu-latest
     timeout-minutes: 40
     env:
@@ -554,13 +558,17 @@ jobs:
           retention-days: 30
 
   download-verified-kit:
-    if: ${{ startsWith(github.ref_name, 'deliver/mobile-download-') || (github.event_name == 'workflow_dispatch' && inputs.download_existing_kit) }}
+    if: ${{ startsWith(github.ref_name, 'deliver/mobile-download-') || (github.event_name == 'workflow_dispatch' && (inputs.download_existing_kit || inputs.publish_public_download)) }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     permissions:
       actions: read
+      contents: write
+    env:
+      PUBLIC_DOWNLOAD: ${{ startsWith(github.ref_name, 'deliver/mobile-download-public-') || (github.event_name == 'workflow_dispatch' && inputs.publish_public_download) }}
     steps:
       - name: Download retained segments from the successful delivery run
+        if: env.PUBLIC_DOWNLOAD != 'true'
         timeout-minutes: 5
         uses: actions/download-artifact@v4
         with:
@@ -569,34 +577,52 @@ jobs:
           pattern: quant-kit-download-*
           merge-multiple: true
           path: ${{ runner.temp }}/verified-kit-source
+      - name: Download the already verified complete ZIP
+        if: env.PUBLIC_DOWNLOAD == 'true'
+        timeout-minutes: 5
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 37080822925
+          name: quant-sandbox-mobile-download
+          path: ${{ runner.temp }}/verified-kit-source
       - name: Restore and verify the exact original ZIP
         timeout-minutes: 2
         shell: python
         run: |
-          import hashlib, json, os, pathlib, shutil, zipfile
+          import hashlib, json, os, pathlib, zipfile
           source = pathlib.Path(os.environ['RUNNER_TEMP']) / 'verified-kit-source'
-          ledger_path, = source.rglob('download_manifest.json')
-          ledger = json.loads(ledger_path.read_text())
           expected_name = 'quant-sandbox-ee212da3e4a7.zip'
           expected_hash = '533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587'
-          assert ledger['zip_name'] == expected_name
-          assert ledger['zip_bytes'] == 291308667 and ledger['zip_sha256'] == expected_hash
           output_dir = pathlib.Path(os.environ['RUNNER_TEMP']) / 'mobile-download'
           output_dir.mkdir()
           output = output_dir / expected_name
           full_hash = hashlib.sha256()
           total = 0
+          originals = list(source.rglob(expected_name))
           with output.open('xb') as stream:
-              for segment in ledger['segments']:
-                  name = segment['name']
-                  assert pathlib.Path(name).name == name
-                  path, = source.rglob(name)
-                  data = path.read_bytes()
-                  assert len(data) == segment['bytes'], name
-                  assert hashlib.sha256(data).hexdigest() == segment['sha256'], name
-                  stream.write(data)
-                  full_hash.update(data)
-                  total += len(data)
+              if originals:
+                  assert len(originals) == 1
+                  with originals[0].open('rb') as original:
+                      while data := original.read(1024**2):
+                          stream.write(data)
+                          full_hash.update(data)
+                          total += len(data)
+              else:
+                  ledger_path, = source.rglob('download_manifest.json')
+                  ledger = json.loads(ledger_path.read_text())
+                  assert ledger['zip_name'] == expected_name
+                  assert ledger['zip_bytes'] == 291308667 and ledger['zip_sha256'] == expected_hash
+                  for segment in ledger['segments']:
+                      name = segment['name']
+                      assert pathlib.Path(name).name == name
+                      path, = source.rglob(name)
+                      data = path.read_bytes()
+                      assert len(data) == segment['bytes'], name
+                      assert hashlib.sha256(data).hexdigest() == segment['sha256'], name
+                      stream.write(data)
+                      full_hash.update(data)
+                      total += len(data)
           assert total == 291308667 and full_hash.hexdigest() == expected_hash
           with zipfile.ZipFile(output) as archive:
               assert archive.testzip() is None
@@ -606,6 +632,7 @@ jobs:
           print(json.dumps({'zip': expected_name, 'bytes': total, 'sha256': full_hash.hexdigest(),
                             'source_run': 37075642412, 'status': 'verified_original_zip'}, indent=2))
       - name: Publish one mobile-downloadable artifact containing the original ZIP
+        if: env.PUBLIC_DOWNLOAD != 'true'
         timeout-minutes: 3
         uses: actions/upload-artifact@v4
         with:
@@ -613,3 +640,59 @@ jobs:
           path: ${{ runner.temp }}/mobile-download/quant-sandbox-ee212da3e4a7.zip
           compression-level: 0
           retention-days: 30
+      - name: Publish original ZIP and prove anonymous download integrity
+        if: env.PUBLIC_DOWNLOAD == 'true'
+        timeout-minutes: 8
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const crypto = require('crypto');
+            const { owner, repo } = context.repo;
+            const tag = 'quant-sandbox-ee212da3e4a7';
+            const name = 'quant-sandbox-ee212da3e4a7.zip';
+            const expectedHash = '533530e8ab97192574f53fc05cd6125abd3452e5978abdae9c08c512c78e2587';
+            const file = path.join(process.env.RUNNER_TEMP, 'mobile-download', name);
+            const data = fs.readFileSync(file);
+            if (data.length !== 291308667 || crypto.createHash('sha256').update(data).digest('hex') !== expectedHash) {
+              throw new Error('Refusing to publish a different ZIP');
+            }
+            let release;
+            try {
+              release = (await github.rest.repos.getReleaseByTag({owner, repo, tag})).data;
+              if (release.draft) throw new Error('Existing release is draft; do not change its visibility');
+            } catch (error) {
+              if (error.status !== 404) throw error;
+              release = (await github.rest.repos.createRelease({owner, repo, tag_name: tag,
+                target_commitish: 'b350b61e4db0c626e8533645a1a76d61d6ba0ae6',
+                name: 'Offline quant sandbox ee212da3e4a7', draft: false, prerelease: true, make_latest: 'false',
+                body: 'Verified offline execution kit for CPython 3.11/3.12 Linux x86_64. Includes the existing three examples and custom May financial rebalance. Source commit b350b61e4db0c626e8533645a1a76d61d6ba0ae6; SHA256 ' + expectedHash + '. Both ABI replays and full source CI passed (37075642412). Original code/data/wheels are preserved. KRX 2020/2024 and example-required DART 2019/2020; other periods require appropriate source data.'
+              })).data;
+            }
+            const assets = await github.paginate(github.rest.repos.listReleaseAssets, {owner, repo, release_id: release.id});
+            let asset = assets.find(item => item.name === name);
+            if (!asset) {
+              asset = (await github.rest.repos.uploadReleaseAsset({owner, repo, release_id: release.id,
+                name, data, headers: {'content-type': 'application/zip', 'content-length': data.length}
+              })).data;
+            }
+            if (asset.size !== 291308667) throw new Error('Existing release asset differs; do not overwrite it');
+            if (asset.digest && asset.digest !== 'sha256:' + expectedHash) throw new Error('Release asset digest mismatch');
+            // No Authorization header: verify the exact logged-out/mobile path.
+            const response = await fetch(asset.browser_download_url, {
+              redirect: 'follow', signal: AbortSignal.timeout(180000),
+              headers: {'user-agent': 'quant-kit-anonymous-download-check'}
+            });
+            if (!response.ok) throw new Error('Anonymous release download failed: HTTP ' + response.status);
+            const digest = crypto.createHash('sha256');
+            let downloaded = 0;
+            for await (const chunk of response.body) {
+              digest.update(chunk);
+              downloaded += chunk.length;
+            }
+            const actualHash = digest.digest('hex');
+            if (downloaded !== 291308667 || actualHash !== expectedHash) throw new Error('Anonymous download bytes/hash mismatch');
+            core.info(JSON.stringify({status: 'anonymous_download_verified', url: asset.browser_download_url,
+              authorization_header: false, http_status: response.status, bytes: downloaded, sha256: actualHash,
+              release_id: release.id, asset_id: asset.id}));
