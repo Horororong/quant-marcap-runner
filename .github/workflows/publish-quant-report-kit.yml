@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      SOURCE_RUN_ID: '37142451567'
-      SOURCE_SHA: 'edcda2d990e40343d179b5ccbeceeb9b19dd04a7'
+      SOURCE_RUN_ID: '37157470156'
+      SOURCE_SHA: '822c435f4b6148c2832e12370a6ccb324a9e875f'
     steps:
       - uses: actions/checkout@v4
       - name: Require final complete CI and both offline replay jobs

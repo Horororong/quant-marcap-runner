@@ -11,3 +11,7 @@ main의 데이터/백필 자동 갱신을 보고 feature로 덮어쓰지 않음.
 
 기존 소스/데이터/예제의 계산 결과를 임의 수정하지 않음. 기존 kit 파일/manifest 수정 및 hash 검사 우회 금지.
 2000년 이후 장기 시장 자료, legacy 금융 품질, 투자 가설/OOS 인증은 미완료이며 보고 예제를 그 증거로 사용하지 않음.
+
+최종 소스 822c435f4b6148c2832e12370a6ccb324a9e875f / 전체 CI 37157470156 실행 중.
+기존 묶음에서 새 2018 결측 입력을 bounded 실행: data_gap / exit 3 / nav_ready=false 확인. 이는 새 ABI bootstrap 성공 증거가 아니며, 새 묶음 결과는 CI에서 별도 확인.
+공개 배포는 이 정확한 소스 run의 test·sandbox-replay(3.11/3.12)가 모두 success일 때만 허용. manifest/ABI 증거/실제 hover PNG 확인 없이 배포하지 않음.
