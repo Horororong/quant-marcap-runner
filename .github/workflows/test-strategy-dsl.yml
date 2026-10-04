@@ -26,6 +26,7 @@ on:
       - 'scripts/legacy_viewer_source.py'
       - 'scripts/test_legacy_viewer_source.py'
       - 'scripts/replay_legacy_viewer_sources.py'
+      - 'scripts/recheck_legacy_primary_audit.py'
       - 'docs/audits/legacy/initial-financial-body-routes-20261002.json'
       - 'scripts/audit_legacy_pit_sample.py'
       - '.github/workflows/audit-legacy-pit.yml'
@@ -152,13 +153,16 @@ jobs:
           timeout -k 5s 30s python -u scripts/test_legacy_viewer_sections.py
           timeout -k 5s 30s python -u scripts/test_legacy_viewer_source.py
           timeout -k 5s 30s python -u scripts/replay_legacy_viewer_sources.py --output-dir "$RUNNER_TEMP/legacy-viewer-source-replay"
+          timeout -k 5s 60s python -u scripts/recheck_legacy_primary_audit.py --output-dir "$RUNNER_TEMP/legacy-primary-72-recheck"
           timeout -k 5s 30s python -u scripts/test_legacy_schedule_gate.py
       - name: Preserve offline primary viewer replay and guard audit
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: legacy-viewer-source-replay
-          path: ${{ runner.temp }}/legacy-viewer-source-replay
+          path: |
+            ${{ runner.temp }}/legacy-viewer-source-replay
+            ${{ runner.temp }}/legacy-primary-72-recheck
           if-no-files-found: error
           retention-days: 90
       - name: Syntax check

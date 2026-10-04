@@ -19,7 +19,7 @@ contracts are unchanged. Viewer-specific `(-)` signs and the exact Ildong
 `당기순이(손)익` label belong to the separate adapter version
 `dart-viewer-period-scope-unit-column-v1`.
 
-31 local regression tests passed. Standard full Strategy DSL CI is required
+33 local regression tests passed. Standard full Strategy DSL CI is required
 before this change is considered complete; its actual status will be appended
 after the run finishes. No new execution kit is required for this source-only
 change: no bundled runtime/provider/engine code changed, and legacy remains an
@@ -56,6 +56,34 @@ production/PIT ready. Real filing availability and correction chains are not
 verified. `strategy_usable_date=null`, `pit_ready=false`, `production_ready=false`.
 No financial metrics or native collector state were written under `data/`.
 
+## Reproducible independent 72-item recheck against current checkout
+
+The two complete original OpenDART ZIP files (artifact **11205027337**, run
+**36953686608**) are preserved losslessly in `tests/fixtures/legacy_dart/native_primary`
+(72,515 bytes). Both document SHA and member SHA match the original source-probe
+records. `scripts/recheck_legacy_primary_audit.py` verifies all fourteen primary
+bodies and invokes the pre-existing independent source comparator in a bounded
+subprocess. It neither imports the collector nor derives expected values using
+this adapter. Input file hashes are checked before/after; repeated/differing
+output directories are rejected.
+
+Local recheck against the earlier checkout reproduced the 72-item results:
+49 stored-missing, 18 period mismatches, 3 amount mismatches, 2 semantic
+mismatches. These preserved v4 errors have not been rewritten, and legacy
+remains unavailable to production DSL requests. This adds reproducibility and
+CI checking of the **same** independent sample, not 72 new samples or full-data
+certification. The legacy-validation CI and full Strategy DSL CI now also run
+this audit against the actual remote checkout, including main's later backfill
+files. Current remote input hashes and findings must be inspected in their
+`legacy-primary-72-recheck` / `legacy-viewer-source-replay` artifacts after the
+new CI completes; local baseline results cannot substitute for those findings.
+
+GitHub's blob-fetch connector returned a `UnicodeDecodeError` for a gzip
+financial blob; its generic fetch returned HTTP 400 saying only UTF-8 text is
+accepted. These are binary-content limitations, not established authorization
+denials. The CI checkout path avoids that content limitation using the existing
+repository's own files, without any alternate data supplier or network bypass.
+
 ## Data preparation and actual-strategy validation remain open
 
 The existing native scheduled collector and checkpoints are preserved. Latest
@@ -83,12 +111,36 @@ Legacy annual PER/ROE/TTM remain unsupported; existing quarterly definitions
 cannot substitute for them. Broad financial PIT/correction-chain audit and
 corporate-action/dividend/benchmark gaps from the prior audit still apply.
 
+## Actual frozen-kit strategy readiness checks (no NAV)
+
+The already installed dedicated Python invoked `sandbox_runtime.py verify`
+with a 60-second subprocess timeout: status=ok, kit 26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd,
+source 822c435f4b6148c2832e12370a6ccb324a9e875f, CP312 pinned runtime.
+Read-only canonical preflight ran with the same installed Python and a
+120-second timeout, without importing engine modules into the ambient kernel.
+
+| Existing definition / request | Checked result | Investment report / OOS |
+|---|---|---|
+| Existing standalone-quarter super-value DSL, 2020-04-01–2020-11-30 | preflight `ok`, ready_for_execution=true; signal dates 2020-04-29/2020-10-30; fingerprint ae45125a95e513c4996f4111355297bfc3c53ed65b072138e435857a9e093159 | no new NAV/report; original gross-only cost configuration is not investable cost validation |
+| Same factors/universe, requested start 2000 (through existing 2020 endpoint) | `data_gap`, missing kit KRX 2000–2018; period not shortened | blocked |
+| Same factors/universe, 2021-01-01–2026-10-01 | `data_gap`, missing kit KRX 2021/2022/2023/2025/2026 | blocked |
+| Annual PER/ROE/TTM or 2000–2014 legacy PIT factors | existing capability/source-quality gaps unchanged | blocked; no quarterly proxy substitution |
+
+The date-adjusted JSON files are read-only readiness probes, not newly selected
+strategies, optimization or book-validation periods. They produce no NAV and
+no performance numbers. Kit coverage and repository coverage remain separate.
+The prior CURRENT report-validation example's formal 2019–2020 path remains
+software evidence; this source task adds no investment-performance claim.
+`preflight status=ok` is not `nav_ready=true` or `report_ready=true`.
+
 ## Reproduce / resume without collecting or overwriting
 
 From a normal development checkout (not inside the frozen installed kit):
 
 ```bash
 timeout -k 5s 30s python scripts/test_legacy_viewer_source.py
+timeout -k 5s 60s python scripts/recheck_legacy_primary_audit.py \
+  --output-dir /tmp/legacy-primary-72-review-new
 timeout -k 5s 30s python scripts/replay_legacy_viewer_sources.py \
   --output-dir /tmp/legacy-viewer-source-review-new
 ```

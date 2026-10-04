@@ -11,12 +11,14 @@ try:
     from scripts.legacy_viewer_source import adapt_viewer, viewer_amount
     from scripts.replay_legacy_viewer_sources import replay, write_once, FIXTURES
     from scripts.legacy_financial_fields import parse_number
+    from scripts.recheck_legacy_primary_audit import materialize_sources
 except ModuleNotFoundError as error:
     if error.name != "scripts":
         raise
     from legacy_viewer_source import adapt_viewer, viewer_amount
     from replay_legacy_viewer_sources import replay, write_once, FIXTURES
     from legacy_financial_fields import parse_number
+    from recheck_legacy_primary_audit import materialize_sources
 
 
 def synthetic(html):
@@ -210,6 +212,23 @@ class ViewerGuardTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 write_once(path, "second")
             self.assertEqual(path.read_text(), "first")
+
+    def test_native_archives_and_viewer_bodies_recover_exact_14_primary_sources(self):
+        with tempfile.TemporaryDirectory() as directory:
+            evidence = materialize_sources(directory)
+            self.assertEqual(len(evidence), 14)
+            for item in evidence:
+                raw = (Path(directory) / item["file"]).read_bytes()
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), item["source_sha256"])
+
+    def test_primary_native_sha_chain_matches_preexisting_probe(self):
+        root = Path(__file__).resolve().parents[1]
+        manifest = json.loads((root / "tests/fixtures/legacy_dart/native_primary/manifest.json").read_text())
+        for item in manifest["records"]:
+            probe = json.loads((root / f"docs/audits/legacy/source_probes/{item['rcept_no']}.json").read_text())
+            self.assertEqual(item["document_sha256"], probe["document_sha256"])
+            member = next(m for m in probe["members"] if m["member_name"] == item["member_name"])
+            self.assertEqual(item["member_sha256"], member["member_sha256"])
 
 
 if __name__ == "__main__":
