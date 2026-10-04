@@ -1,5 +1,7 @@
 ## 2026-10-04 데이터 준비·독립 원문 감사 checkpoint
 
+검토용 [draft PR #29](https://github.com/Horororong/quant-marcap-runner/pull/29)를 실제 생성했다. 생성 시 head35b19fc5d192a4cf81f3d8e12569180ce97e6172, base4833fb5, 감사33 blobs 로컬과동일/최신main 데이터6 blobs 보존을 확인했다. main 감사 병합은 하지 않았다. 이후 head는 PR 실제 상태를 확인한다.
+
 이번 새 채팅의 실제 확인 결과와 재개 명령: [감사 README](docs/audits/data-readiness-20261004/README.md).
 보고 기능은 별도 runtime bootstrap/verify 및 기존 DSL CURRENT 재실행으로 확인했다. 보고 CSV/NAV/benchmark statistics는 실제 main browser artifact와 바이트 일치했다. 새 browser 실행은 하지 않았다. 현재 machine23/factor7/engine v2-16-exec-3/PROJECT v2-16/CURRENT v2-18; kit coverage는 KRX2019/2020/2024이며 저장소 전체 32년 coverage와 다르다.
 

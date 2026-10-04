@@ -2,6 +2,8 @@
 
 이번 범위는 기존 백필 상태, 저장된 1차 원문과 재무 수치 대조, 실행·보고 가능 범위 확인이다. 새 전략·최적화·보고 UI 변경은 없다. 보고 기능은 재현됐지만 데이터 준비·독립 품질검증·실제 전략 검증은 각각 미완료다.
 
+검토용 [draft PR #29](https://github.com/Horororong/quant-marcap-runner/pull/29), 생성 시 remote head `35b19fc5d192a4cf81f3d8e12569180ce97e6172`. 감사 변경은 main에 병합하지 않았다. 로컬 감사 commit `46dbbac`과 remote checkpoint는 commit 생성자/부모가 다르며 33개의 감사 blob SHA는 동일함을 확인했다.
+
 ## 확인한 저장소 및 실행 상태
 
 - 시작 시 clean local `work`, main 기준 `40fe72e420f12e069eb1ba07ef712e61684d8a78`. 다른 작업자의 미커밋 변경 없음. 감사 브랜치 `audit/data-source-readiness-20261004`.
@@ -9,7 +11,7 @@
 - `live_state.json`의 최초 스냅샷과 `backfill-job-*.log`의 실제 성공 로그를 구분한다. 새 main의 status/coverage는 `latest_*.csv`에 별도 보존했다. 새 main의 두 binary normalized shard는 이 세션에서 전량 다시 읽지 못했다. 따라서 `coverage_snapshot.json`과 72건 대조는 **40fe72e 파일 기준**이며 새 2,000건의 품질 인증이 아니다.
 - 초기 및 이후 GitHub Actions 조회에서 실행·대기 중인 collector는 없었다. 이전 채팅 실행 환경의 로컬 프로세스는 **확인 불가**다. 새 환경에 프로세스가 없다는 사실로 이전 환경 중단을 추정하지 않는다.
 - 기존 fast/full/signal/legacy/audit 작업은 `super-value-fast-pit-backfill`, `cancel-in-progress: false`를 사용한다. 구형 `backfill-dart-legacy-quarterly.yml`는 별도 lock이므로 동시에 시작하면 안 된다. 이 감사에서는 모든 수집·dispatch를 추가로 실행하지 않았다.
-- PR #28과 main merge d442e07, main CI **37159959636**의 test 및 CP311/CP312 offline replay 성공을 실제 조회했다. PR #27은 이전 open 상태이며 재시도하지 않았다. 새 데이터 커밋을 마지막 코드 CI와 혼동하지 않는다.
+- PR #28과 main merge d442e07, main CI **37159959636**의 test 및 CP311/CP312 offline replay 성공을 실제 조회했다. PR #27은 이전 open 상태이며 재시도하지 않았다. 새 데이터 커밋을 마지막 코드 CI와 혼동하지 않는다. HANDOFF_CURRENT.md는 CI trigger 대상이므로 감사 브랜치에도 실제 전체 test/sandbox-replay CI가 시작됐다. 최종 head의 check-runs가 모두 완료됐는지는 GitHub에서 별도로 확인한다. 진행 중인 CI를 통과로 표시하지 않는다.
 
 ## 백필 및 실제 coverage
 
