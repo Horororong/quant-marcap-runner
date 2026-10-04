@@ -1,0 +1,89 @@
+2026-10-04T05:38:02.9347437Z tests/test_legacy_dart_parser.py::test_legacy_negative_symbols PASSED
+2026-10-04T05:38:02.9371903Z tests/test_legacy_dart_parser.py::test_loss_label_normalizes_positive_magnitude PASSED
+2026-10-04T05:38:02.9377602Z tests/test_legacy_dart_parser.py::test_parser_version_requires_reprocessing PASSED
+2026-10-04T05:38:02.9385560Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[751,637 22,35416,940] PASSED
+2026-10-04T05:38:02.9392668Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[670,000200,0001,500,000] PASSED
+2026-10-04T05:38:02.9399077Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[83 15,787 13,418 100] PASSED
+2026-10-04T05:38:02.9405834Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[12,34] PASSED
+2026-10-04T05:38:02.9412528Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[1.5%] PASSED
+2026-10-04T05:38:02.9418941Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[1 (\uc8fc2)] PASSED
+2026-10-04T05:38:02.9425719Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[-] PASSED
+2026-10-04T05:38:02.9432962Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[\u2014] PASSED
+2026-10-04T05:38:02.9439777Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[\u2013] PASSED
+2026-10-04T05:38:02.9462994Z tests/test_legacy_dart_parser.py::test_real_source_combined_annual_summary_is_not_current_quarter_income PASSED
+2026-10-04T05:38:02.9468764Z tests/test_legacy_dart_parser.py::test_explicit_valid_amounts_and_zero_remain_supported PASSED
+2026-10-04T05:38:02.9496872Z tests/test_legacy_dart_parser.py::test_unknown_statement_and_partial_alias_do_not_become_financial_metrics PASSED
+2026-10-04T05:38:02.9509918Z tests/test_legacy_dart_parser.py::test_nonfinite_scaled_value_cannot_be_usable_money PASSED
+2026-10-04T05:38:02.9517356Z tests/test_legacy_dart_parser.py::test_parentheses_and_negative_sign_do_not_double_flip[(-1,170,019,230)--1170019230] PASSED
+2026-10-04T05:38:02.9524903Z tests/test_legacy_dart_parser.py::test_parentheses_and_negative_sign_do_not_double_flip[(-482,479,885)--482479885] PASSED
+2026-10-04T05:38:02.9538748Z tests/test_legacy_dart_parser.py::test_parentheses_and_negative_sign_do_not_double_flip[(\u25b362,175,514)--62175514] PASSED
+2026-10-04T05:38:02.9540244Z ============================== 19 passed in 0.60s ==============================
+2026-10-04T05:38:03.8104553Z PASSED
+2026-10-04T05:38:03.8197385Z tests/test_legacy_backfill_resume.py::test_data_publication_failure_never_marks_receipt_complete PASSED
+2026-10-04T05:38:03.8360086Z tests/test_legacy_backfill_resume.py::test_state_cannot_skip_missing_or_mismatched_normalized_data[missing_file] PASSED
+2026-10-04T05:38:03.8606726Z tests/test_legacy_backfill_resume.py::test_state_cannot_skip_missing_or_mismatched_normalized_data[wrong_hash] PASSED
+2026-10-04T05:38:03.8807759Z tests/test_legacy_backfill_resume.py::test_state_cannot_skip_missing_or_mismatched_normalized_data[wrong_row_count] PASSED
+2026-10-04T05:38:03.9294656Z PASSED
+2026-10-04T05:38:03.9304122Z tests/test_legacy_backfill_resume.py::test_rate_limit_stops_replenishment_and_flushes_completed_work PASSED
+2026-10-04T05:38:03.9325812Z tests/test_legacy_backfill_resume.py::test_request_budget_counts_every_attempt_and_deferred_is_not_source_gap PASSED
+2026-10-04T05:38:03.9335796Z tests/test_legacy_backfill_resume.py::test_deadline_and_signal_stop_have_no_new_requests_and_flush_work PASSED
+2026-10-04T05:38:04.0227865Z PASSED
+2026-10-04T05:38:04.0883911Z PASSED
+2026-10-04T05:38:04.0942651Z tests/test_legacy_backfill_resume.py::test_index_data_is_published_before_ok_state PASSED
+2026-10-04T05:38:04.1753139Z tests/test_legacy_backfill_resume.py::test_collection_complete_requires_independent_audit_and_noop_preserves_bytes PASSED
+2026-10-04T05:38:04.1760342Z tests/test_legacy_backfill_resume.py::test_error_diagnostics_never_persist_api_key PASSED
+2026-10-04T05:38:04.1776412Z tests/test_legacy_backfill_resume.py::test_missing_key_does_not_overwrite_progress PASSED
+2026-10-04T05:38:04.1845793Z tests/test_legacy_backfill_resume.py::test_index_rate_limit_blocks_following_document_requests PASSED
+2026-10-04T05:38:04.1867412Z tests/test_legacy_backfill_resume.py::test_authentication_failure_stops_without_classifying_source_as_missing PASSED
+2026-10-04T05:38:05.2660334Z tests/test_legacy_backfill_resume.py::test_real_saved_index_noop_preserves_mapped_queue_and_leading_zero_codes PASSED
+2026-10-04T05:38:05.3557908Z PASSED
+2026-10-04T05:38:05.3680325Z tests/test_legacy_backfill_resume.py::test_source_adapter_change_invalidates_previous_no_document_result PASSED
+2026-10-04T05:38:05.3974520Z tests/test_legacy_backfill_resume.py::test_initial_coverage_without_state_does_not_invent_completed_receipts PASSED
+2026-10-04T05:38:05.3975730Z ============================== 22 passed in 2.17s ==============================
+2026-10-04T05:38:06.1766592Z tests/test_legacy_backfill_automation.py::test_daily_wrapper_uses_whole_index_and_generic_checkpoint PASSED
+2026-10-04T05:38:06.1861761Z PASSED
+2026-10-04T05:38:06.1871064Z tests/test_legacy_backfill_automation.py::test_zero_legacy_limit_makes_no_api_or_index_calls PASSED
+2026-10-04T05:38:06.2077252Z tests/test_legacy_backfill_automation.py::test_scheduled_and_manual_writers_share_lock_without_cancellation PASSED
+2026-10-04T05:38:06.2150942Z tests/test_legacy_backfill_automation.py::test_extra_batches_gate_all_api_and_publish_steps_and_skip_modern PASSED
+2026-10-04T05:38:06.2224558Z tests/test_legacy_backfill_automation.py::test_workflow_saves_checkpoint_after_failure_and_has_time_to_publish[backfill-super-value-fast.yml] PASSED
+2026-10-04T05:38:06.2279450Z tests/test_legacy_backfill_automation.py::test_workflow_saves_checkpoint_after_failure_and_has_time_to_publish[backfill-dart-legacy-2000-2014.yml] PASSED
+2026-10-04T05:38:06.2423489Z tests/test_legacy_backfill_automation.py::test_source_capture_reuses_existing_audit_workflow_without_new_schedule PASSED
+2026-10-04T05:38:06.2425025Z ============================== 8 passed in 0.56s ===============================
+2026-10-04T05:38:07.0104775Z tests/test_legacy_source_evidence.py::test_literal_source_spans_preserve_native_tags_heading_unit_and_column_order PASSED
+2026-10-04T05:38:07.0115509Z tests/test_legacy_source_evidence.py::test_excerpt_budget_marks_clipping_without_changing_source PASSED
+2026-10-04T05:38:07.0124468Z tests/test_legacy_source_evidence.py::test_non_html_document_still_preserves_inspectable_literal_evidence PASSED
+2026-10-04T05:38:07.0150432Z tests/test_legacy_source_evidence.py::test_probe_api_014_and_viewer_403_do_not_certify_source_absence PASSED
+2026-10-04T05:38:07.0162402Z tests/test_legacy_source_evidence.py::test_rate_limit_stops_public_probe_too PASSED
+2026-10-04T05:38:07.0337589Z tests/test_legacy_source_evidence.py::test_same_parser_reparse_success_cannot_certify_financial_correctness PASSED
+2026-10-04T05:38:07.0374651Z tests/test_legacy_source_evidence.py::test_corrupt_normalized_data_is_an_explicit_audit_failure PASSED
+2026-10-04T05:38:07.0376151Z ============================== 7 passed in 0.51s ===============================
+2026-10-04T05:38:09.9668955Z STRATEGY DSL MACHINE CONTRACT: PASS
+2026-10-04T05:38:43.0070412Z STRATEGY DSL INPUT CONTRACT: PASS (271 invalid cases; 8 unchanged fingerprints; CLI/data guards)
+2026-10-04T05:39:03.9591984Z CHECKED DSL RUN LIFECYCLE: PASS (gaps, readiness, frozen input, distinct runs, atomic outputs, failures/interruption, actual CURRENT report)
+2026-10-04T05:39:51.6880369Z CANONICAL PERFORMANCE: PASS (synthetic formulas/report; no investment claims)
+2026-10-04T05:41:25.5610978Z Browser evidence: passed JSON and actual PNG verified
+2026-10-04T05:41:27.4255879Z ##[group]Run python -c "import sys; sys.path.insert(0, 'scripts'); import quant_backtest_template_CURRENT as c; c._self_test(); from strategy_dsl_runner import load_project_engine; from pathlib import Path; load_project_engine(Path.cwd())._self_test(); print('TEMPLATE SELF-TESTS: PASS')"
+2026-10-04T05:41:27.4257774Z [36;1mpython -c "import sys; sys.path.insert(0, 'scripts'); import quant_backtest_template_CURRENT as c; c._self_test(); from strategy_dsl_runner import load_project_engine; from pathlib import Path; load_project_engine(Path.cwd())._self_test(); print('TEMPLATE SELF-TESTS: PASS')"[0m
+2026-10-04T05:41:40.2807373Z TEMPLATE SELF-TESTS: PASS
+2026-10-04T05:41:49.1028773Z KRX HISTORY COVERAGE AND DIAGNOSTICS: PASS
+2026-10-04T05:41:57.4970729Z HELD RETURN GUARD AND REAL ECOPRO SPLIT E2E: PASS
+2026-10-04T05:42:15.9208558Z CORPORATE ACTION RECONCILIATION AND REAL SHARE-CLASS E2E: PASS
+2026-10-04T05:42:26.2979250Z KRX MARKET NORMALIZATION, EXACT RESTORATION AND BOTH PUBLIC MODES: PASS
+2026-10-04T05:42:52.4304998Z VERIFIED AUTUMN SPLITS AND BOTH PUBLIC KRX MODES: PASS
+2026-10-04T05:42:52.9050904Z STRATEGY DSL ALIAS TEST: PASS
+2026-10-04T05:42:59.0001997Z STRATEGY DSL PREFLIGHT TEST: PASS
+2026-10-04T05:43:17.3766060Z KNOWN CORPORATE-ACTION PREFLIGHT: PASS — real top_n/decile selection, exact lag, event-day order, successor lineage, source-only fast path and no NAV
+2026-10-04T05:43:20.4994809Z STRATEGY DSL BENCHMARK TEST: PASS
+2026-10-04T05:43:29.5206437Z STRATEGY DSL DECILE CONTRACT AND EXECUTION: PASS
+2026-10-04T05:43:36.1258476Z STRATEGY DSL REAL KRX DECILE E2E: PASS
+2026-10-04T05:43:36.8222295Z KRX TECHNICAL FACTOR ADAPTER TEST: PASS
+2026-10-04T05:43:37.4787076Z KRX VOLATILITY FACTOR ADAPTER TEST: PASS
+2026-10-04T05:43:38.0444370Z FACTOR PROVIDER REGISTRY TEST: PASS
+2026-10-04T05:43:48.0377343Z REAL MAY 2020 DART Q1 SOURCE ORACLE: PASS 20200515001451
+2026-10-04T05:48:37.3447042Z REAL CUSTOM-MONTH CHECKED NAV: PASS (May signal, June t+1, Q1 PIT, validated NAV)
+2026-10-04T05:48:47.5765083Z CASH EXCHANGE: PASS — independent two-book share/cash oracle, costs, pending liquidity, multiple claims, payment timing, public cost/decile modes and actual evidence gap
+2026-10-04T05:48:48.0941319Z CORPORATE ACTION EXECUTION TEST: PASS
+2026-10-04T05:48:48.8607825Z STRATEGY DSL TEST: PASS
+2026-10-04T05:57:59.1403026Z DART DSL SUPER VALUE INTEGRATION: PASS
+2026-10-04T06:01:10.4932875Z STRATEGY DSL EXECUTION E2E: PASS
+2026-10-04T06:04:46.2197388Z CHECKED DSL REAL E2E: PASS (CLI top_n/deciles unchanged, no overwrite, known-event/data gaps before NAV, DART/benchmark/audits)

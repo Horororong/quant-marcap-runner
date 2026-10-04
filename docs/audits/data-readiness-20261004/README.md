@@ -11,7 +11,7 @@
 - `live_state.json`의 최초 스냅샷과 `backfill-job-*.log`의 실제 성공 로그를 구분한다. 새 main의 status/coverage는 `latest_*.csv`에 별도 보존했다. 새 main의 두 binary normalized shard는 이 세션에서 전량 다시 읽지 못했다. 따라서 `coverage_snapshot.json`과 72건 대조는 **40fe72e 파일 기준**이며 새 2,000건의 품질 인증이 아니다.
 - 초기 및 이후 GitHub Actions 조회에서 실행·대기 중인 collector는 없었다. 이전 채팅 실행 환경의 로컬 프로세스는 **확인 불가**다. 새 환경에 프로세스가 없다는 사실로 이전 환경 중단을 추정하지 않는다.
 - 기존 fast/full/signal/legacy/audit 작업은 `super-value-fast-pit-backfill`, `cancel-in-progress: false`를 사용한다. 구형 `backfill-dart-legacy-quarterly.yml`는 별도 lock이므로 동시에 시작하면 안 된다. 이 감사에서는 모든 수집·dispatch를 추가로 실행하지 않았다.
-- PR #28과 main merge d442e07, main CI **37159959636**의 test 및 CP311/CP312 offline replay 성공을 실제 조회했다. PR #27은 이전 open 상태이며 재시도하지 않았다. 새 데이터 커밋을 마지막 코드 CI와 혼동하지 않는다. HANDOFF_CURRENT.md는 CI trigger 대상이므로 감사 브랜치에도 실제 전체 test/sandbox-replay CI가 시작됐다. 최종 head의 check-runs가 모두 완료됐는지는 GitHub에서 별도로 확인한다. 진행 중인 CI를 통과로 표시하지 않는다.
+- PR #28과 main merge d442e07, main CI **37159959636**의 test 및 CP311/CP312 offline replay 성공을 실제 조회했다. PR #27은 이전 open 상태이며 재시도하지 않았다. 새 데이터 커밋을 마지막 코드 CI와 혼동하지 않는다. HANDOFF_CURRENT.md는 CI trigger 대상이므로 감사 브랜치에도 실제 전체 test/sandbox-replay CI가 시작됐다. 최종 head의 check-runs가 모두 완료됐는지는 GitHub에서 별도로 확인한다. 이후 감사 검증 checkpoint `3ecb706`의 **CI37180360537가 completed/success**로 완료됐다. 전체 test와 CP311/CP312 sandbox-replay가 success, download-verified-kit는 skipped. 실제 job/step 상태·성공 로그는 `ci_verification.json`과 `ci-test-completion.log`. 최종 evidence 문서 추가 및 표본문서 끝 개행 정리는 engine/DSL/원자료/감사 verifier를 바꾸지 않는다.
 
 ## 백필 및 실제 coverage
 
@@ -96,7 +96,7 @@ Capabilities는 표현/실행 계약, coverage는 실제 data manifest다. main�
 
 원래 report-validation periods 재실행의 metrics/NAV/benchmark statistics는 main browser artifact와 **바이트 단위 일치**. 이번 사용자 시작연도 확인에는 새 period config만 사용했고 기존 전략은 그대로 실행했다. CURRENT 기본 네 기간 경로는 2001 시작 요건 부족으로 **report_readiness data_gap / nav_ready=false / report_ready=false**, diagnostics만 생성했다. 이를 사용자 요청의 2000 시작 보고로 오인하지 않는다.
 
-누적자산·Log2·Drawdown은 기존 표준 HTML에 포함된다. 새 HTML `requested-report/report/report_CURRENT.html`, 공식 export `requested-report-verified.zip`, SHA/bytes는 `export_result.json`. 브라우저 period/cost/legend/sync/mobile 검증 JSON과 PNG는 실제 기존 main CI artifact에서 확인했다. **이번 새 browser rerun은 하지 않았다**. 대화 본문에서 interactive 실행 및 다른 ChatGPT 프로젝트 자동 파일 공유는 지원이 확인되지 않았으므로 미완료다.
+누적자산·Log2·Drawdown은 기존 표준 HTML에 포함된다. 새 HTML `requested-report/report/report_CURRENT.html`, 공식 export `requested-report-verified.zip`, SHA/bytes는 `export_result.json`. 브라우저 period/cost/legend/sync/mobile 검증 JSON과 PNG는 실제 기존 main CI artifact에서 확인했다. **로컬 별도 browser는 실행하지 않았으나 새 감사 CI37180360537의 browser 검증은 실제 passed**였다. artifact11294544096을 내려받아 ZIP SHA/CRC·3 ready periods·cost 옵션 및 로컬 replay와 세 CSV byte-identical을 확인했다. 대화 본문에서 interactive 실행 및 다른 ChatGPT 프로젝트 자동 파일 공유는 지원이 확인되지 않았으므로 미완료다.
 
 ## 재현·재개 명령과 보존
 
