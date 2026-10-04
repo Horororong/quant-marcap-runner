@@ -34,6 +34,7 @@ jobs:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
       # Deployment verifies100; an explicit verified operator commit may use2000.
       # Existing schedules/lock are unchanged; daily data commits cannot recurse.
+      # V2 operator promotion follows an observed successful100-receipt source replay.
       SUPER_VALUE_FAST_MODERN_TASKS: ${{ (github.event_name == 'push' || (github.event_name == 'schedule' && github.event.schedule != '30 15 * * *')) && '0' || '1000' }}
       SUPER_VALUE_FAST_LEGACY_DOCS: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '[legacy-verified-batch-2000]') && '100' || '2000' }}
       SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: '6'
