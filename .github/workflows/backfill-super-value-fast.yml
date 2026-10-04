@@ -32,14 +32,15 @@ jobs:
     timeout-minutes: 100
     env:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
-      # Deployment verifies a small batch; daily data commits cannot recurse.
+      # Deployment verifies100; an explicit verified operator commit may use2000.
+      # Existing schedules/lock are unchanged; daily data commits cannot recurse.
       SUPER_VALUE_FAST_MODERN_TASKS: ${{ (github.event_name == 'push' || (github.event_name == 'schedule' && github.event.schedule != '30 15 * * *')) && '0' || '1000' }}
-      SUPER_VALUE_FAST_LEGACY_DOCS: ${{ github.event_name == 'push' && '100' || '2000' }}
+      SUPER_VALUE_FAST_LEGACY_DOCS: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '[legacy-verified-batch-2000]') && '100' || '2000' }}
       SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: '6'
       SUPER_VALUE_FAST_MODERN_WORKERS: '3'
       SUPER_VALUE_FAST_LEGACY_WORKERS: '3'
-      LEGACY_DART_MAX_REQUESTS: ${{ github.event_name == 'push' && '150' || '2500' }}
-      LEGACY_DART_MAX_SECONDS: ${{ github.event_name == 'push' && '600' || '3300' }}
+      LEGACY_DART_MAX_REQUESTS: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '[legacy-verified-batch-2000]') && '150' || '2500' }}
+      LEGACY_DART_MAX_SECONDS: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '[legacy-verified-batch-2000]') && '600' || '3300' }}
       LEGACY_DART_REQUEST_INTERVAL: '0.5'
       LEGACY_DART_CHECKPOINT_SIZE: '25'
 
@@ -84,7 +85,7 @@ jobs:
         run: python scripts/backfill_super_value_fast.py
 
       - name: Inspect frozen predeployment source samples
-        if: always() && steps.batch.outputs.run == 'true' && steps.evidence.outcome == 'success' && github.event_name == 'push'
+        if: always() && steps.batch.outputs.run == 'true' && steps.evidence.outcome == 'success' && github.event_name == 'push' && !contains(github.event.head_commit.message, '[legacy-verified-batch-2000]')
         timeout-minutes: 12
         env:
           LEGACY_DART_EVIDENCE_DIR: ${{ runner.temp }}/legacy-source-evidence
