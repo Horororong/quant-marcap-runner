@@ -43,9 +43,50 @@
     "corrections": "archived family lists single receipt; original publication version and complete amendment history unverified"
   },
   "runtime": {
-    "kit_manifest_found": false,
-    "installed_runtime_found": false,
-    "local_verify_executed": false,
+    "kit_manifest_found": true,
+    "installed_runtime_found": true,
+    "local_verify_executed": true,
+    "verify_status": "ok",
+    "kit_id": "26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd",
+    "source_revision": "822c435f4b6148c2832e12370a6ccb324a9e875f",
+    "python_abi": "cp312-linux-x86_64",
+    "packages": {
+      "attrs": "26.1.0",
+      "exchange-calendars": "4.13.2",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "korean-lunar-calendar": "0.4.0",
+      "narwhals": "2.26.0",
+      "numpy": "2.4.6",
+      "packaging": "26.3",
+      "pandas": "3.0.6",
+      "pip": "25.0.1",
+      "plotly": "7.1.0",
+      "pyarrow": "25.0.1",
+      "pyluach": "2.3.0",
+      "python-dateutil": "2.9.0.post0",
+      "referencing": "0.37.0",
+      "rpds-py": "2026.6.3",
+      "six": "1.17.0",
+      "toolz": "1.1.0",
+      "typing-extensions": "4.16.0",
+      "tzdata": "2026.4"
+    },
+    "versions": {
+      "corporate_action_registry_version": "5",
+      "dsl_machine_contract_version": "23",
+      "execution_engine_version": "v2-16-exec-3",
+      "factor_registry_version": "7",
+      "history_audit_contract_version": "1",
+      "krx_market_normalization_version": "1",
+      "performance_template_version": "v2-18",
+      "preflight_contract_version": "3",
+      "project_template_version": "v2-16",
+      "requested_report_contract_version": "1",
+      "schema_version": "1.0"
+    },
+    "original_zip_sha256": "f76f38e1c9ed9401cd3607db67100cf6211d8c96fc5dadcbda13eff940984784",
+    "backtest_run": false,
     "package_install_bypass": false
   },
   "work_status": {
@@ -54,7 +95,8 @@
     "remote_backfill_run": 37172051500,
     "remote_backfill_attempt": 2,
     "remote_job_id": 111425020146,
-    "remote_last_observed_status": "in_progress"
+    "remote_last_observed_status": "COMPLETED",
+    "remote_data_commit": "778b02b9b3b7373ece88fd4bb61453308bcd70c3"
   },
   "state_categories_all": {
     "NO_DOCUMENT": 1572,
@@ -82,5 +124,9 @@
     "project_template_version": "v2-16",
     "requested_report_contract_version": "1",
     "schema_version": "1.0"
+  },
+  "initial_observed_runtime": {
+    "kit_manifest_found": false,
+    "installed_runtime_found": false
   }
 }

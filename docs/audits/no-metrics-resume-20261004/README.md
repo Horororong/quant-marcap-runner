@@ -116,14 +116,19 @@ timing and period/mapping reconciliation remain prerequisites.
 
 ## Runtime and scope
 
-No kit_manifest.json or installed old runtime was found in this new workspace.
-The previous installation/verify is prior-agent evidence, not a direct local
-verification here. No engine import/backtest or internet kit-package bypass was
-used. This collector-only change is excluded from the sandbox kit source
+No old installed runtime was initially found. Subsequently restored the exact
+original 311,922,550-byte report ZIP from all 13 existing artifact segments;
+every segment SHA/length, full original SHA and ZIP CRC were checked. Original
+bootstrap installed offline into `/workspace/scratch/quant-original-kit/runtime`;
+its isolated Python subprocess `sandbox_runtime.py verify` returned status=ok.
+Kit26e4ec02e569, source822c435, CPython3.12.14; pinned packages include
+pandas3.0.6/numpy2.4.6/pyarrow25.0.1/exchange-calendars4.13.2. Actual
+`bootstrap-result.json`/`kit-verify.json` retain all contracts/packages/coverage.
+No engine import/backtest or internet kit-package bypass was used. This collector-only change is excluded from the sandbox kit source
 profile; a strategy runtime integrity/coverage check remains required before
 future strategy execution. Engine/registry/report calculations were not edited.
-CI checks the pinned clean kit replay; do not conflate that with local install
-or investment validation. Full-data numeric quality, PIT and strategy
+CI separately checks pinned clean kit replay; neither local verify nor CI is
+investment validation. Full-data numeric quality, PIT and strategy
 cost/OOS/robustness/operability validation remain incomplete independently.
 
 ## Reproduce/resume safely
@@ -148,3 +153,41 @@ the final live evidence. Do not reset states, force-push or replace latest main
 datasets with this local initial snapshot. Review source patch with complete CI
 before deployment; then explicitly plan remaining NO_METRICS source diagnosis
 and online fallback separately from PIT promotion.
+
+## Source-code publication and native CI
+
+Remote source commit `1af7b8952d1d346129b2eae1ccde67f105ca1eae`, draft
+[PR #33](https://github.com/Horororong/quant-marcap-runner/pull/33), stacked on
+#32. Latest main `06b90b5` recent-data blobs were preserved exactly through a
+second parent and three data-blob overlays, not reconstructed. Local commits
+`bc76477`/`99ebbbe` include SHA-verified prior source rehydration; remote review
+contains the same new source blobs on prior #32 ancestry. Native validator
+[37199649781](https://github.com/Horororong/quant-marcap-runner/actions/runs/37199649781)
+completed success. Actual log `native-ci.log` shows seven new collector tests,
+six source-quality tests, four recovery tests, existing parser/resume suites,
+48 adapter and 11 independent audit guards; all pass. Historical independent
+72-cell failures and 46-cell/78-population evidence remain unchanged. Full
+CI37199649791 remains pending until its actual completion evidence is captured.
+
+## Completed live bounded batch (direct final evidence)
+
+Run37172051500 attempt2/job111425020146 completed success at 11:48:32 UTC.
+Actual collection report: selected/completed/requests2000; BATCH_COMPLETE;
+rate_limited=false; 25-receipt checkpoint logs through2000. Artifact11302815319
+was downloaded and full ZIP SHA273fbd2b45953157cb2828aa480834fad795d1af5013f8035b27af011051f84a
+verified. Data commit778b02b9b3b7373ece88fd4bb61453308bcd70c3 is on main.
+
+Mapped pending103619→101619; processed11401→13401; 4F616→1523 (+907);
+partial595→1341 (+746); NO_METRICS8620→8943 (+323); NO_DOCUMENT1570→1594
+(+24); quarantined errors0→0. Technical parsed receipt recovery1653 is not
+independent numeric/PIT certification. These counts come from the actual
+artifact/current status and execution report, not an assumed background run.
+Overall collection/quality remains false. No second batch was launched.
+
+New normalized2001/2002 blobs and state are confirmed in the data commit, but
+the current connector returns empty content for >1MiB files and rejects binary
+GitHub Fetch. Independent literal-preservation/new-row re-audit of those remote
+blobs is therefore not completed; see live-durability-check.json. Local original
+state/index/all normalized hashes remain unchanged. Latest remote data was not
+replaced by the initial local snapshot. The resumed run used deployed v5; this
+review-only SOURCE_GAP patch has not been merged/deployed.

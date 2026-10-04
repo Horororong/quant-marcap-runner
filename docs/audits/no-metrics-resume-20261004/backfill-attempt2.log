@@ -1,0 +1,511 @@
+﻿2026-10-04T11:21:17.3105737Z Current runner version: '2.337.0'
+2026-10-04T11:21:17.3123805Z ##[group]Runner Image Provisioner
+2026-10-04T11:21:17.3124545Z Hosted Compute Agent
+2026-10-04T11:21:17.3125125Z Version: 20260901.588
+2026-10-04T11:21:17.3125667Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-04T11:21:17.3126496Z Build Date: 2026-09-01T19:56:44Z
+2026-10-04T11:21:17.3127137Z Worker ID: {2a2ef041-00c4-4437-954b-7eb46a19a6ed}
+2026-10-04T11:21:17.3127765Z Azure Region: westus3
+2026-10-04T11:21:17.3128292Z ##[endgroup]
+2026-10-04T11:21:17.3129486Z ##[group]Operating System
+2026-10-04T11:21:17.3130022Z Ubuntu
+2026-10-04T11:21:17.3130515Z 24.04.5
+2026-10-04T11:21:17.3130960Z LTS
+2026-10-04T11:21:17.3131453Z ##[endgroup]
+2026-10-04T11:21:17.3131934Z ##[group]Runner Image
+2026-10-04T11:21:17.3132453Z Image: ubuntu-24.04
+2026-10-04T11:21:17.3132983Z Version: 20260927.320.1
+2026-10-04T11:21:17.3134416Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-04T11:21:17.3135777Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-04T11:21:17.3136935Z ##[endgroup]
+2026-10-04T11:21:17.3138018Z ##[group]GITHUB_TOKEN Permissions
+2026-10-04T11:21:17.3140094Z Contents: write
+2026-10-04T11:21:17.3140637Z Metadata: read
+2026-10-04T11:21:17.3141191Z ##[endgroup]
+2026-10-04T11:21:17.3143031Z Secret source: Actions
+2026-10-04T11:21:17.3143798Z Cache mode: write
+2026-10-04T11:21:17.3144441Z Prepare workflow directory
+2026-10-04T11:21:17.3577884Z Prepare all required actions
+2026-10-04T11:21:17.3618853Z Getting action download info
+2026-10-04T11:21:17.6906897Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-04T11:21:17.8036845Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-04T11:21:17.9090618Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-04T11:21:18.1641930Z Complete job name: fast
+2026-10-04T11:21:18.2194256Z ##[group]Run actions/checkout@v4
+2026-10-04T11:21:18.2194966Z with:
+2026-10-04T11:21:18.2195397Z   ref: main
+2026-10-04T11:21:18.2195956Z   repository: Horororong/quant-marcap-runner
+2026-10-04T11:21:18.2199616Z   token: ***
+2026-10-04T11:21:18.2200060Z   ssh-strict: true
+2026-10-04T11:21:18.2200512Z   ssh-user: git
+2026-10-04T11:21:18.2200977Z   persist-credentials: true
+2026-10-04T11:21:18.2201511Z   clean: true
+2026-10-04T11:21:18.2201969Z   sparse-checkout-cone-mode: true
+2026-10-04T11:21:18.2202481Z   fetch-depth: 1
+2026-10-04T11:21:18.2202926Z   fetch-tags: false
+2026-10-04T11:21:18.2203376Z   show-progress: true
+2026-10-04T11:21:18.2203887Z   lfs: false
+2026-10-04T11:21:18.2204308Z   submodules: false
+2026-10-04T11:21:18.2204762Z   set-safe-directory: true
+2026-10-04T11:21:18.2205274Z   allow-unsafe-pr-checkout: false
+2026-10-04T11:21:18.2205903Z env:
+2026-10-04T11:21:18.2206574Z   DART_API_KEY: ***
+2026-10-04T11:21:18.2207057Z   SUPER_VALUE_FAST_MODERN_TASKS: 0
+2026-10-04T11:21:18.2207700Z   SUPER_VALUE_FAST_LEGACY_DOCS: 2000
+2026-10-04T11:21:18.2208237Z   SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: 6
+2026-10-04T11:21:18.2208803Z   SUPER_VALUE_FAST_MODERN_WORKERS: 3
+2026-10-04T11:21:18.2209350Z   SUPER_VALUE_FAST_LEGACY_WORKERS: 3
+2026-10-04T11:21:18.2209887Z   LEGACY_DART_MAX_REQUESTS: 2500
+2026-10-04T11:21:18.2210452Z   LEGACY_DART_MAX_SECONDS: 3300
+2026-10-04T11:21:18.2210968Z   LEGACY_DART_REQUEST_INTERVAL: 0.5
+2026-10-04T11:21:18.2211542Z   LEGACY_DART_CHECKPOINT_SIZE: 25
+2026-10-04T11:21:18.2212059Z ##[endgroup]
+2026-10-04T11:21:18.3095943Z Syncing repository: Horororong/quant-marcap-runner
+2026-10-04T11:21:18.3098664Z ##[group]Getting Git version info
+2026-10-04T11:21:18.3099788Z Working directory is '/home/runner/work/quant-marcap-runner/quant-marcap-runner'
+2026-10-04T11:21:18.3101565Z [command]/usr/bin/git version
+2026-10-04T11:21:18.3140766Z git version 2.55.0
+2026-10-04T11:21:18.3157052Z ##[endgroup]
+2026-10-04T11:21:18.3168686Z Temporarily overriding HOME='/home/runner/work/_temp/e6d77496-cbb3-413d-a98c-370e02dd39a3' before making global git config changes
+2026-10-04T11:21:18.3170819Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-04T11:21:18.3174821Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/quant-marcap-runner/quant-marcap-runner
+2026-10-04T11:21:18.3236883Z Deleting the contents of '/home/runner/work/quant-marcap-runner/quant-marcap-runner'
+2026-10-04T11:21:18.3239511Z ##[group]Initializing the repository
+2026-10-04T11:21:18.3246065Z [command]/usr/bin/git init /home/runner/work/quant-marcap-runner/quant-marcap-runner
+2026-10-04T11:21:18.3323357Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-04T11:21:18.3324896Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-04T11:21:18.3326161Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-04T11:21:18.3327811Z hint: call:
+2026-10-04T11:21:18.3328694Z hint:
+2026-10-04T11:21:18.3329706Z hint: 	git config --global init.defaultBranch <name>
+2026-10-04T11:21:18.3330733Z hint:
+2026-10-04T11:21:18.3331757Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-04T11:21:18.3333509Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-04T11:21:18.3334766Z hint:
+2026-10-04T11:21:18.3335540Z hint: 	git branch -m <name>
+2026-10-04T11:21:18.3336552Z hint:
+2026-10-04T11:21:18.3337781Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-04T11:21:18.3339608Z Initialized empty Git repository in /home/runner/work/quant-marcap-runner/quant-marcap-runner/.git/
+2026-10-04T11:21:18.3342570Z [command]/usr/bin/git remote add origin https://github.com/Horororong/quant-marcap-runner
+2026-10-04T11:21:18.3384273Z ##[endgroup]
+2026-10-04T11:21:18.3385492Z ##[group]Disabling automatic garbage collection
+2026-10-04T11:21:18.3387593Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-04T11:21:18.3415018Z ##[endgroup]
+2026-10-04T11:21:18.3416083Z ##[group]Setting up auth
+2026-10-04T11:21:18.3421518Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-04T11:21:18.3447975Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-04T11:21:18.3810010Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-04T11:21:18.3841038Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-04T11:21:18.4084782Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-04T11:21:18.4117361Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-04T11:21:18.4316740Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-04T11:21:18.4347221Z ##[endgroup]
+2026-10-04T11:21:18.4348486Z ##[group]Fetching the repository
+2026-10-04T11:21:18.4356690Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main*:refs/remotes/origin/main* +refs/tags/main*:refs/tags/main*
+2026-10-04T11:22:22.1032009Z From https://github.com/Horororong/quant-marcap-runner
+2026-10-04T11:22:22.1033588Z  * [new branch]      main       -> origin/main
+2026-10-04T11:22:22.1038082Z ##[endgroup]
+2026-10-04T11:22:22.1039295Z ##[group]Determining the checkout info
+2026-10-04T11:22:22.1045268Z [command]/usr/bin/git branch --list --remote origin/main
+2026-10-04T11:22:22.1069838Z   origin/main
+2026-10-04T11:22:22.1078975Z ##[endgroup]
+2026-10-04T11:22:22.1081254Z [command]/usr/bin/git sparse-checkout disable
+2026-10-04T11:22:22.1125725Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-04T11:22:22.1155576Z ##[group]Checking out the ref
+2026-10-04T11:22:22.1159642Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-04T11:22:23.1851460Z Updating files:  40% (385/953)
+2026-10-04T11:22:23.2406496Z Updating files:  41% (391/953)
+2026-10-04T11:22:23.2869488Z Updating files:  42% (401/953)
+2026-10-04T11:22:23.3759231Z Updating files:  43% (410/953)
+2026-10-04T11:22:23.7648904Z Updating files:  44% (420/953)
+2026-10-04T11:22:24.1885902Z Updating files:  45% (429/953)
+2026-10-04T11:22:24.6701865Z Updating files:  45% (434/953)
+2026-10-04T11:22:25.1678089Z Updating files:  46% (439/953)
+2026-10-04T11:22:25.6176936Z Updating files:  46% (444/953)
+2026-10-04T11:22:26.1551460Z Updating files:  47% (448/953)
+2026-10-04T11:22:26.5734207Z Updating files:  47% (452/953)
+2026-10-04T11:22:26.5813651Z Updating files:  48% (458/953)
+2026-10-04T11:22:26.6252220Z Updating files:  49% (467/953)
+2026-10-04T11:22:26.6279522Z Updating files:  50% (477/953)
+2026-10-04T11:22:26.6284455Z Updating files:  51% (487/953)
+2026-10-04T11:22:26.6291557Z Updating files:  52% (496/953)
+2026-10-04T11:22:26.6301309Z Updating files:  53% (506/953)
+2026-10-04T11:22:26.6318203Z Updating files:  54% (515/953)
+2026-10-04T11:22:26.6348956Z Updating files:  55% (525/953)
+2026-10-04T11:22:26.6355637Z Updating files:  56% (534/953)
+2026-10-04T11:22:26.6361077Z Updating files:  57% (544/953)
+2026-10-04T11:22:26.6367004Z Updating files:  58% (553/953)
+2026-10-04T11:22:26.6404258Z Updating files:  59% (563/953)
+2026-10-04T11:22:26.6418600Z Updating files:  60% (572/953)
+2026-10-04T11:22:26.6666500Z Updating files:  61% (582/953)
+2026-10-04T11:22:26.6679280Z Updating files:  62% (591/953)
+2026-10-04T11:22:26.7240055Z Updating files:  63% (601/953)
+2026-10-04T11:22:26.7325406Z Updating files:  64% (610/953)
+2026-10-04T11:22:26.7405225Z Updating files:  65% (620/953)
+2026-10-04T11:22:26.7449442Z Updating files:  66% (629/953)
+2026-10-04T11:22:26.7498841Z Updating files:  67% (639/953)
+2026-10-04T11:22:26.7531649Z Updating files:  68% (649/953)
+2026-10-04T11:22:26.7538598Z Updating files:  69% (658/953)
+2026-10-04T11:22:26.7596373Z Updating files:  70% (668/953)
+2026-10-04T11:22:26.7636026Z Updating files:  71% (677/953)
+2026-10-04T11:22:26.7667295Z Updating files:  72% (687/953)
+2026-10-04T11:22:26.7673924Z Updating files:  73% (696/953)
+2026-10-04T11:22:26.7695028Z Updating files:  74% (706/953)
+2026-10-04T11:22:26.7740686Z Updating files:  75% (715/953)
+2026-10-04T11:22:26.7746169Z Updating files:  76% (725/953)
+2026-10-04T11:22:26.7781374Z Updating files:  77% (734/953)
+2026-10-04T11:22:26.7794641Z Updating files:  78% (744/953)
+2026-10-04T11:22:26.7828878Z Updating files:  79% (753/953)
+2026-10-04T11:22:26.7896568Z Updating files:  80% (763/953)
+2026-10-04T11:22:26.8524986Z Updating files:  81% (772/953)
+2026-10-04T11:22:26.8543994Z Updating files:  82% (782/953)
+2026-10-04T11:22:26.8568309Z Updating files:  83% (791/953)
+2026-10-04T11:22:26.8588335Z Updating files:  84% (801/953)
+2026-10-04T11:22:26.8602127Z Updating files:  85% (811/953)
+2026-10-04T11:22:26.8609603Z Updating files:  86% (820/953)
+2026-10-04T11:22:26.8614908Z Updating files:  87% (830/953)
+2026-10-04T11:22:26.8621582Z Updating files:  88% (839/953)
+2026-10-04T11:22:26.8630535Z Updating files:  89% (849/953)
+2026-10-04T11:22:26.8635603Z Updating files:  90% (858/953)
+2026-10-04T11:22:26.8641320Z Updating files:  91% (868/953)
+2026-10-04T11:22:26.8645559Z Updating files:  92% (877/953)
+2026-10-04T11:22:26.8661200Z Updating files:  93% (887/953)
+2026-10-04T11:22:26.8671515Z Updating files:  94% (896/953)
+2026-10-04T11:22:26.8677438Z Updating files:  95% (906/953)
+2026-10-04T11:22:26.8683008Z Updating files:  96% (915/953)
+2026-10-04T11:22:26.8688232Z Updating files:  97% (925/953)
+2026-10-04T11:22:26.8693829Z Updating files:  98% (934/953)
+2026-10-04T11:22:26.8699181Z Updating files:  99% (944/953)
+2026-10-04T11:22:26.8699943Z Updating files: 100% (953/953)
+2026-10-04T11:22:26.8700480Z Updating files: 100% (953/953), done.
+2026-10-04T11:22:26.8719998Z Switched to a new branch 'main'
+2026-10-04T11:22:26.8720584Z branch 'main' set up to track 'origin/main'.
+2026-10-04T11:22:26.8815202Z ##[endgroup]
+2026-10-04T11:22:26.8860601Z [command]/usr/bin/git log -1 --format=%H
+2026-10-04T11:22:26.8881663Z 06b90b5c41f56118f896d3aa60e932d757ba6502
+2026-10-04T11:22:26.9072022Z ##[group]Run python scripts/legacy_schedule_gate.py
+2026-10-04T11:22:26.9072562Z [36;1mpython scripts/legacy_schedule_gate.py[0m
+2026-10-04T11:22:26.9228635Z shell: /usr/bin/bash -e {0}
+2026-10-04T11:22:26.9228960Z env:
+2026-10-04T11:22:26.9229613Z   DART_API_KEY: ***
+2026-10-04T11:22:26.9229906Z   SUPER_VALUE_FAST_MODERN_TASKS: 0
+2026-10-04T11:22:26.9230266Z   SUPER_VALUE_FAST_LEGACY_DOCS: 2000
+2026-10-04T11:22:26.9230589Z   SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: 6
+2026-10-04T11:22:26.9230900Z   SUPER_VALUE_FAST_MODERN_WORKERS: 3
+2026-10-04T11:22:26.9231235Z   SUPER_VALUE_FAST_LEGACY_WORKERS: 3
+2026-10-04T11:22:26.9231547Z   LEGACY_DART_MAX_REQUESTS: 2500
+2026-10-04T11:22:26.9231871Z   LEGACY_DART_MAX_SECONDS: 3300
+2026-10-04T11:22:26.9232169Z   LEGACY_DART_REQUEST_INTERVAL: 0.5
+2026-10-04T11:22:26.9232478Z   LEGACY_DART_CHECKPOINT_SIZE: 25
+2026-10-04T11:22:26.9232803Z   BATCH_SCHEDULE: 30 7,23 * 10 *
+2026-10-04T11:22:26.9233077Z ##[endgroup]
+2026-10-04T11:22:26.9557977Z Legacy batch: OCTOBER_LEGACY_BATCH; run=True
+2026-10-04T11:22:26.9660825Z ##[group]Run actions/setup-python@v5
+2026-10-04T11:22:26.9661171Z with:
+2026-10-04T11:22:26.9661428Z   python-version: 3.12
+2026-10-04T11:22:26.9661717Z   check-latest: false
+2026-10-04T11:22:26.9663894Z   token: ***
+2026-10-04T11:22:26.9664135Z   update-environment: true
+2026-10-04T11:22:26.9664438Z   allow-prereleases: false
+2026-10-04T11:22:26.9664704Z   freethreaded: false
+2026-10-04T11:22:26.9664973Z env:
+2026-10-04T11:22:26.9665296Z   DART_API_KEY: ***
+2026-10-04T11:22:26.9665549Z   SUPER_VALUE_FAST_MODERN_TASKS: 0
+2026-10-04T11:22:26.9665900Z   SUPER_VALUE_FAST_LEGACY_DOCS: 2000
+2026-10-04T11:22:26.9666349Z   SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: 6
+2026-10-04T11:22:26.9666792Z   SUPER_VALUE_FAST_MODERN_WORKERS: 3
+2026-10-04T11:22:26.9667098Z   SUPER_VALUE_FAST_LEGACY_WORKERS: 3
+2026-10-04T11:22:26.9667409Z   LEGACY_DART_MAX_REQUESTS: 2500
+2026-10-04T11:22:26.9667727Z   LEGACY_DART_MAX_SECONDS: 3300
+2026-10-04T11:22:26.9668040Z   LEGACY_DART_REQUEST_INTERVAL: 0.5
+2026-10-04T11:22:26.9668457Z   LEGACY_DART_CHECKPOINT_SIZE: 25
+2026-10-04T11:22:26.9668745Z ##[endgroup]
+2026-10-04T11:22:27.0788349Z ##[group]Installed versions
+2026-10-04T11:22:27.0862425Z (node:2100) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-04T11:22:27.0863125Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-04T11:22:27.0863698Z Successfully set up CPython (3.12.14)
+2026-10-04T11:22:27.0864570Z ##[endgroup]
+2026-10-04T11:22:27.0948489Z ##[group]Run python -m pip install --upgrade pip
+2026-10-04T11:22:27.0949067Z [36;1mpython -m pip install --upgrade pip[0m
+2026-10-04T11:22:27.0949618Z [36;1mpip install pandas requests pyarrow beautifulsoup4 lxml[0m
+2026-10-04T11:22:27.0992717Z shell: /usr/bin/bash -e {0}
+2026-10-04T11:22:27.0993047Z env:
+2026-10-04T11:22:27.0993483Z   DART_API_KEY: ***
+2026-10-04T11:22:27.0993788Z   SUPER_VALUE_FAST_MODERN_TASKS: 0
+2026-10-04T11:22:27.0994101Z   SUPER_VALUE_FAST_LEGACY_DOCS: 2000
+2026-10-04T11:22:27.0994400Z   SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: 6
+2026-10-04T11:22:27.0994768Z   SUPER_VALUE_FAST_MODERN_WORKERS: 3
+2026-10-04T11:22:27.0995090Z   SUPER_VALUE_FAST_LEGACY_WORKERS: 3
+2026-10-04T11:22:27.0995408Z   LEGACY_DART_MAX_REQUESTS: 2500
+2026-10-04T11:22:27.0995695Z   LEGACY_DART_MAX_SECONDS: 3300
+2026-10-04T11:22:27.0995971Z   LEGACY_DART_REQUEST_INTERVAL: 0.5
+2026-10-04T11:22:27.0996599Z   LEGACY_DART_CHECKPOINT_SIZE: 25
+2026-10-04T11:22:27.0997075Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:22:27.0997637Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-10-04T11:22:27.0998056Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:22:27.0998499Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:22:27.0999009Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:22:27.0999524Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-10-04T11:22:27.0999937Z ##[endgroup]
+2026-10-04T11:22:28.3604358Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages (26.2.1)
+2026-10-04T11:22:28.9958026Z Collecting pandas
+2026-10-04T11:22:29.0644418Z   Downloading pandas-3.0.6-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+2026-10-04T11:22:29.1370510Z Collecting requests
+2026-10-04T11:22:29.1467072Z   Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+2026-10-04T11:22:29.2032545Z Collecting pyarrow
+2026-10-04T11:22:29.2127010Z   Downloading pyarrow-25.0.1-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (3.0 kB)
+2026-10-04T11:22:29.2243648Z Collecting beautifulsoup4
+2026-10-04T11:22:29.2339359Z   Downloading beautifulsoup4-4.15.0-py3-none-any.whl.metadata (3.8 kB)
+2026-10-04T11:22:29.3884448Z Collecting lxml
+2026-10-04T11:22:29.3981376Z   Downloading lxml-6.1.3-cp312-cp312-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.3 kB)
+2026-10-04T11:22:29.5268825Z Collecting numpy>=1.26.0 (from pandas)
+2026-10-04T11:22:29.5364492Z   Downloading numpy-2.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+2026-10-04T11:22:29.5674668Z Collecting python-dateutil>=2.8.2 (from pandas)
+2026-10-04T11:22:29.5769756Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2026-10-04T11:22:29.6610299Z Collecting charset_normalizer<4,>=2 (from requests)
+2026-10-04T11:22:29.6705743Z   Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+2026-10-04T11:22:29.6880253Z Collecting idna<4,>=2.5 (from requests)
+2026-10-04T11:22:29.6977027Z   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+2026-10-04T11:22:29.7278306Z Collecting urllib3<3,>=1.26 (from requests)
+2026-10-04T11:22:29.7374681Z   Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+2026-10-04T11:22:29.7504482Z Collecting certifi>=2023.5.7 (from requests)
+2026-10-04T11:22:29.7600435Z   Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+2026-10-04T11:22:29.7728045Z Collecting soupsieve>=1.6.1 (from beautifulsoup4)
+2026-10-04T11:22:29.7823927Z   Downloading soupsieve-2.10-py3-none-any.whl.metadata (4.4 kB)
+2026-10-04T11:22:29.8014527Z Collecting typing-extensions>=4.0.0 (from beautifulsoup4)
+2026-10-04T11:22:29.8109426Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-10-04T11:22:29.8218834Z Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas)
+2026-10-04T11:22:29.8314371Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2026-10-04T11:22:29.8441393Z Downloading pandas-3.0.6-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (10.8 MB)
+2026-10-04T11:22:30.3017598Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.8/10.8 MB 24.6 MB/s  0:00:00
+2026-10-04T11:22:30.3115374Z Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+2026-10-04T11:22:30.3232185Z Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (257 kB)
+2026-10-04T11:22:30.3373508Z Downloading idna-3.20-py3-none-any.whl (69 kB)
+2026-10-04T11:22:30.3489409Z Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+2026-10-04T11:22:30.3614073Z Downloading pyarrow-25.0.1-cp312-cp312-manylinux_2_28_x86_64.whl (50.1 MB)
+2026-10-04T11:22:30.9302916Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.1/50.1 MB 88.3 MB/s  0:00:00
+2026-10-04T11:22:30.9403084Z Downloading beautifulsoup4-4.15.0-py3-none-any.whl (109 kB)
+2026-10-04T11:22:30.9525871Z Downloading lxml-6.1.3-cp312-cp312-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.2 MB)
+2026-10-04T11:22:30.9971190Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 117.1 MB/s  0:00:00
+2026-10-04T11:22:31.0068649Z Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+2026-10-04T11:22:31.0183351Z Downloading numpy-2.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+2026-10-04T11:22:31.1667296Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 112.5 MB/s  0:00:00
+2026-10-04T11:22:31.1765103Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2026-10-04T11:22:31.1889779Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+2026-10-04T11:22:31.2002633Z Downloading soupsieve-2.10-py3-none-any.whl (38 kB)
+2026-10-04T11:22:31.2114743Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-10-04T11:22:31.3714008Z Installing collected packages: urllib3, typing-extensions, soupsieve, six, pyarrow, numpy, lxml, idna, charset_normalizer, certifi, requests, python-dateutil, beautifulsoup4, pandas
+2026-10-04T11:22:38.4261089Z 
+2026-10-04T11:22:38.4278006Z Successfully installed beautifulsoup4-4.15.0 certifi-2026.7.22 charset_normalizer-3.5.2 idna-3.20 lxml-6.1.3 numpy-2.5.3 pandas-3.0.6 pyarrow-25.0.1 python-dateutil-2.9.0.post0 requests-2.34.2 six-1.17.0 soupsieve-2.10 typing-extensions-4.16.0 urllib3-2.8.0
+2026-10-04T11:22:38.5494587Z ##[group]Run python scripts/backfill_super_value_fast.py
+2026-10-04T11:22:38.5495001Z [36;1mpython scripts/backfill_super_value_fast.py[0m
+2026-10-04T11:22:38.5533293Z shell: /usr/bin/bash -e {0}
+2026-10-04T11:22:38.5533607Z env:
+2026-10-04T11:22:38.5534185Z   DART_API_KEY: ***
+2026-10-04T11:22:38.5534479Z   SUPER_VALUE_FAST_MODERN_TASKS: 0
+2026-10-04T11:22:38.5534828Z   SUPER_VALUE_FAST_LEGACY_DOCS: 2000
+2026-10-04T11:22:38.5535124Z   SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: 6
+2026-10-04T11:22:38.5535409Z   SUPER_VALUE_FAST_MODERN_WORKERS: 3
+2026-10-04T11:22:38.5535724Z   SUPER_VALUE_FAST_LEGACY_WORKERS: 3
+2026-10-04T11:22:38.5536031Z   LEGACY_DART_MAX_REQUESTS: 2500
+2026-10-04T11:22:38.5536435Z   LEGACY_DART_MAX_SECONDS: 3300
+2026-10-04T11:22:38.5536731Z   LEGACY_DART_REQUEST_INTERVAL: 0.5
+2026-10-04T11:22:38.5537007Z   LEGACY_DART_CHECKPOINT_SIZE: 25
+2026-10-04T11:22:38.5537369Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:22:38.5537851Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-10-04T11:22:38.5538338Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:22:38.5538719Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:22:38.5539099Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:22:38.5539468Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-10-04T11:22:38.5539869Z   LEGACY_DART_RUN_REPORT: /home/runner/work/_temp/legacy-collection-run.json
+2026-10-04T11:22:38.5540299Z ##[endgroup]
+2026-10-04T11:23:03.7982190Z legacy checkpoint: 25 receipts persisted
+2026-10-04T11:23:21.4346810Z legacy checkpoint: 50 receipts persisted
+2026-10-04T11:23:39.2984963Z legacy checkpoint: 75 receipts persisted
+2026-10-04T11:23:58.5421374Z legacy checkpoint: 100 receipts persisted
+2026-10-04T11:24:17.2938805Z legacy checkpoint: 125 receipts persisted
+2026-10-04T11:24:35.2365717Z legacy checkpoint: 150 receipts persisted
+2026-10-04T11:24:54.4574783Z legacy checkpoint: 175 receipts persisted
+2026-10-04T11:25:11.1413579Z legacy checkpoint: 200 receipts persisted
+2026-10-04T11:25:29.6650929Z legacy checkpoint: 225 receipts persisted
+2026-10-04T11:25:51.0412688Z legacy checkpoint: 250 receipts persisted
+2026-10-04T11:26:08.6956760Z legacy checkpoint: 275 receipts persisted
+2026-10-04T11:26:26.0907753Z legacy checkpoint: 300 receipts persisted
+2026-10-04T11:26:45.1713509Z legacy checkpoint: 325 receipts persisted
+2026-10-04T11:27:03.7542773Z legacy checkpoint: 350 receipts persisted
+2026-10-04T11:27:24.9976941Z legacy checkpoint: 375 receipts persisted
+2026-10-04T11:27:44.6464788Z legacy checkpoint: 400 receipts persisted
+2026-10-04T11:28:02.6686722Z legacy checkpoint: 425 receipts persisted
+2026-10-04T11:28:23.3582290Z legacy checkpoint: 450 receipts persisted
+2026-10-04T11:28:40.4805728Z legacy checkpoint: 475 receipts persisted
+2026-10-04T11:28:59.7244822Z legacy checkpoint: 500 receipts persisted
+2026-10-04T11:29:18.3365018Z legacy checkpoint: 525 receipts persisted
+2026-10-04T11:29:41.4097400Z legacy checkpoint: 550 receipts persisted
+2026-10-04T11:30:03.9377596Z legacy checkpoint: 575 receipts persisted
+2026-10-04T11:30:23.4854934Z legacy checkpoint: 600 receipts persisted
+2026-10-04T11:30:41.7252766Z legacy checkpoint: 625 receipts persisted
+2026-10-04T11:31:03.4271971Z legacy checkpoint: 650 receipts persisted
+2026-10-04T11:31:23.0473036Z legacy checkpoint: 675 receipts persisted
+2026-10-04T11:31:43.3537828Z legacy checkpoint: 700 receipts persisted
+2026-10-04T11:32:01.7960925Z legacy checkpoint: 725 receipts persisted
+2026-10-04T11:32:22.3682474Z legacy checkpoint: 750 receipts persisted
+2026-10-04T11:32:43.3888555Z legacy checkpoint: 775 receipts persisted
+2026-10-04T11:33:02.4585599Z legacy checkpoint: 800 receipts persisted
+2026-10-04T11:33:19.9297755Z legacy checkpoint: 825 receipts persisted
+2026-10-04T11:33:38.5638531Z legacy checkpoint: 850 receipts persisted
+2026-10-04T11:34:00.1337467Z legacy checkpoint: 875 receipts persisted
+2026-10-04T11:34:18.3170201Z legacy checkpoint: 900 receipts persisted
+2026-10-04T11:34:37.5289697Z legacy checkpoint: 925 receipts persisted
+2026-10-04T11:34:55.0178989Z legacy checkpoint: 950 receipts persisted
+2026-10-04T11:35:11.5751871Z legacy checkpoint: 975 receipts persisted
+2026-10-04T11:35:27.6194190Z legacy checkpoint: 1000 receipts persisted
+2026-10-04T11:35:46.8139762Z legacy checkpoint: 1025 receipts persisted
+2026-10-04T11:36:04.7818867Z legacy checkpoint: 1050 receipts persisted
+2026-10-04T11:36:22.6292038Z legacy checkpoint: 1075 receipts persisted
+2026-10-04T11:36:41.9673818Z legacy checkpoint: 1100 receipts persisted
+2026-10-04T11:36:59.4751323Z legacy checkpoint: 1125 receipts persisted
+2026-10-04T11:37:16.7999708Z legacy checkpoint: 1150 receipts persisted
+2026-10-04T11:37:35.7157384Z legacy checkpoint: 1175 receipts persisted
+2026-10-04T11:37:55.0773607Z legacy checkpoint: 1200 receipts persisted
+2026-10-04T11:38:16.3724854Z legacy checkpoint: 1225 receipts persisted
+2026-10-04T11:38:34.8208051Z legacy checkpoint: 1250 receipts persisted
+2026-10-04T11:38:54.5935743Z legacy checkpoint: 1275 receipts persisted
+2026-10-04T11:39:12.3372549Z legacy checkpoint: 1300 receipts persisted
+2026-10-04T11:39:31.6264808Z legacy checkpoint: 1325 receipts persisted
+2026-10-04T11:39:50.8531639Z legacy checkpoint: 1350 receipts persisted
+2026-10-04T11:40:08.5946714Z legacy checkpoint: 1375 receipts persisted
+2026-10-04T11:40:30.0460444Z legacy checkpoint: 1400 receipts persisted
+2026-10-04T11:40:47.6908390Z legacy checkpoint: 1425 receipts persisted
+2026-10-04T11:41:04.0037974Z legacy checkpoint: 1450 receipts persisted
+2026-10-04T11:41:22.3731857Z legacy checkpoint: 1475 receipts persisted
+2026-10-04T11:41:40.5449906Z legacy checkpoint: 1500 receipts persisted
+2026-10-04T11:41:59.0500517Z legacy checkpoint: 1525 receipts persisted
+2026-10-04T11:42:18.0522038Z legacy checkpoint: 1550 receipts persisted
+2026-10-04T11:42:36.0780405Z legacy checkpoint: 1575 receipts persisted
+2026-10-04T11:42:54.4964559Z legacy checkpoint: 1600 receipts persisted
+2026-10-04T11:43:12.6473629Z legacy checkpoint: 1625 receipts persisted
+2026-10-04T11:43:33.1420385Z legacy checkpoint: 1650 receipts persisted
+2026-10-04T11:43:49.8214690Z legacy checkpoint: 1675 receipts persisted
+2026-10-04T11:44:09.5085937Z legacy checkpoint: 1700 receipts persisted
+2026-10-04T11:44:27.2310180Z legacy checkpoint: 1725 receipts persisted
+2026-10-04T11:44:46.9272211Z legacy checkpoint: 1750 receipts persisted
+2026-10-04T11:45:06.3296544Z legacy checkpoint: 1775 receipts persisted
+2026-10-04T11:45:26.7304835Z legacy checkpoint: 1800 receipts persisted
+2026-10-04T11:45:44.6664970Z legacy checkpoint: 1825 receipts persisted
+2026-10-04T11:46:05.7963976Z legacy checkpoint: 1850 receipts persisted
+2026-10-04T11:46:25.8415094Z legacy checkpoint: 1875 receipts persisted
+2026-10-04T11:46:44.0034604Z legacy checkpoint: 1900 receipts persisted
+2026-10-04T11:47:02.2221558Z legacy checkpoint: 1925 receipts persisted
+2026-10-04T11:47:24.2735527Z legacy checkpoint: 1950 receipts persisted
+2026-10-04T11:47:44.5592883Z legacy checkpoint: 1975 receipts persisted
+2026-10-04T11:48:05.2343561Z legacy checkpoint: 2000 receipts persisted
+2026-10-04T11:48:24.6188490Z                      mode  modern_run_tasks  modern_skipped        legacy_scope  legacy_run_docs  legacy_pending_before_run  legacy_rate_limited legacy_stop_reason  legacy_requests  legacy_quarantined_errors                   updated_at_utc
+2026-10-04T11:48:24.6189969Z SUPER_VALUE_FAST_BACKFILL                 0            True ALL_MAPPED_RECEIPTS             2000                     103619                False     BATCH_COMPLETE             2000                          0 2026-10-04T11:48:24.614731+00:00
+2026-10-04T11:48:24.6875479Z ##[group]Run git config user.name "github-actions[bot]"
+2026-10-04T11:48:24.6875926Z [36;1mgit config user.name "github-actions[bot]"[0m
+2026-10-04T11:48:24.6876612Z [36;1mgit config user.email "41898282+github-actions[bot]@users.noreply.github.com"[0m
+2026-10-04T11:48:24.6877192Z [36;1mgit add data/financials/dart_historical_code_map.csv || true[0m
+2026-10-04T11:48:24.6877740Z [36;1mgit add data/financials/full_history/*.csv.gz || true[0m
+2026-10-04T11:48:24.6878194Z [36;1mgit add data/financials/legacy_2000_2014/ || true[0m
+2026-10-04T11:48:24.6878634Z [36;1mgit add data/status/dart_full_backfill_state.csv || true[0m
+2026-10-04T11:48:24.6879108Z [36;1mgit add data/status/dart_legacy_*.csv || true[0m
+2026-10-04T11:48:24.6879585Z [36;1mgit add data/status/super_value_fast_backfill_status.csv || true[0m
+2026-10-04T11:48:24.6880073Z [36;1mif git diff --cached --quiet; then[0m
+2026-10-04T11:48:24.6880468Z [36;1m  echo "No super-value fast-backfill changes"[0m
+2026-10-04T11:48:24.6880948Z [36;1melse[0m
+2026-10-04T11:48:24.6881329Z [36;1m  git commit -m "Fast-backfill super-value PIT inputs"[0m
+2026-10-04T11:48:24.6881738Z [36;1m  git pull --rebase origin main[0m
+2026-10-04T11:48:24.6882107Z [36;1m  git push origin HEAD:main[0m
+2026-10-04T11:48:24.6882459Z [36;1mfi[0m
+2026-10-04T11:48:24.6924300Z shell: /usr/bin/bash -e {0}
+2026-10-04T11:48:24.6924706Z env:
+2026-10-04T11:48:24.6925195Z   DART_API_KEY: ***
+2026-10-04T11:48:24.6925489Z   SUPER_VALUE_FAST_MODERN_TASKS: 0
+2026-10-04T11:48:24.6925880Z   SUPER_VALUE_FAST_LEGACY_DOCS: 2000
+2026-10-04T11:48:24.6926540Z   SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: 6
+2026-10-04T11:48:24.6926920Z   SUPER_VALUE_FAST_MODERN_WORKERS: 3
+2026-10-04T11:48:24.6927250Z   SUPER_VALUE_FAST_LEGACY_WORKERS: 3
+2026-10-04T11:48:24.6927615Z   LEGACY_DART_MAX_REQUESTS: 2500
+2026-10-04T11:48:24.6927972Z   LEGACY_DART_MAX_SECONDS: 3300
+2026-10-04T11:48:24.6928363Z   LEGACY_DART_REQUEST_INTERVAL: 0.5
+2026-10-04T11:48:24.6928719Z   LEGACY_DART_CHECKPOINT_SIZE: 25
+2026-10-04T11:48:24.6929116Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:48:24.6929581Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-10-04T11:48:24.6930070Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:48:24.6930548Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:48:24.6931001Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:48:24.6931440Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-10-04T11:48:24.6931829Z ##[endgroup]
+2026-10-04T11:48:25.4680166Z [main 778b02b] Fast-backfill super-value PIT inputs
+2026-10-04T11:48:25.4680936Z  6 files changed, 2088 insertions(+), 2088 deletions(-)
+2026-10-04T11:48:25.8150881Z From https://github.com/Horororong/quant-marcap-runner
+2026-10-04T11:48:25.8151707Z  * branch            main       -> FETCH_HEAD
+2026-10-04T11:48:25.8208893Z Current branch main is up to date.
+2026-10-04T11:48:28.6759690Z To https://github.com/Horororong/quant-marcap-runner
+2026-10-04T11:48:28.6799767Z    06b90b5..778b02b  HEAD -> main
+2026-10-04T11:48:28.6867849Z ##[group]Run actions/upload-artifact@v4
+2026-10-04T11:48:28.6868245Z with:
+2026-10-04T11:48:28.6868563Z   name: super-value-fast-backfill-status
+2026-10-04T11:48:28.6869387Z   path: /home/runner/work/_temp/legacy-collection-run.json
+data/status/super_value_fast_backfill_status.csv
+data/status/dart_legacy_backfill_status.csv
+data/status/dart_full_backfill_status.csv
+
+2026-10-04T11:48:28.6870224Z   if-no-files-found: warn
+2026-10-04T11:48:28.6870550Z   retention-days: 14
+2026-10-04T11:48:28.6870894Z   compression-level: 6
+2026-10-04T11:48:28.6871203Z   overwrite: false
+2026-10-04T11:48:28.6871519Z   include-hidden-files: false
+2026-10-04T11:48:28.6871838Z env:
+2026-10-04T11:48:28.6872320Z   DART_API_KEY: ***
+2026-10-04T11:48:28.6872670Z   SUPER_VALUE_FAST_MODERN_TASKS: 0
+2026-10-04T11:48:28.6873022Z   SUPER_VALUE_FAST_LEGACY_DOCS: 2000
+2026-10-04T11:48:28.6873400Z   SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: 6
+2026-10-04T11:48:28.6873812Z   SUPER_VALUE_FAST_MODERN_WORKERS: 3
+2026-10-04T11:48:28.6874326Z   SUPER_VALUE_FAST_LEGACY_WORKERS: 3
+2026-10-04T11:48:28.6874724Z   LEGACY_DART_MAX_REQUESTS: 2500
+2026-10-04T11:48:28.6875055Z   LEGACY_DART_MAX_SECONDS: 3300
+2026-10-04T11:48:28.6875399Z   LEGACY_DART_REQUEST_INTERVAL: 0.5
+2026-10-04T11:48:28.6875747Z   LEGACY_DART_CHECKPOINT_SIZE: 25
+2026-10-04T11:48:28.6876175Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:48:28.6876879Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-10-04T11:48:28.6877435Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:48:28.6877921Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:48:28.6878387Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T11:48:28.6878898Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-10-04T11:48:28.6879308Z ##[endgroup]
+2026-10-04T11:48:28.8316654Z (node:2520) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-04T11:48:28.8317516Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-04T11:48:28.8388185Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-04T11:48:28.8398631Z The least common ancestor is /home/runner/work. This will be the root directory of the artifact
+2026-10-04T11:48:28.8399489Z With the provided path, there will be 4 files uploaded
+2026-10-04T11:48:28.8400469Z Artifact name is valid!
+2026-10-04T11:48:28.8400953Z Root directory input is valid!
+2026-10-04T11:48:29.1808554Z Beginning upload of artifact content to blob storage
+2026-10-04T11:48:29.1990759Z (node:2520) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-04T11:48:29.4213418Z Uploaded bytes 1956
+2026-10-04T11:48:29.4834699Z Finished uploading artifact content to blob storage!
+2026-10-04T11:48:29.4835597Z SHA256 digest of uploaded artifact zip is 273fbd2b45953157cb2828aa480834fad795d1af5013f8035b27af011051f84a
+2026-10-04T11:48:29.4837110Z Finalizing artifact upload
+2026-10-04T11:48:29.7411947Z Artifact super-value-fast-backfill-status.zip successfully finalized. Artifact ID 11302815319
+2026-10-04T11:48:29.7413179Z Artifact super-value-fast-backfill-status has been successfully uploaded! Final size is 1956 bytes. Artifact ID is 11302815319
+2026-10-04T11:48:29.7417888Z Artifact download URL: https://github.com/Horororong/quant-marcap-runner/actions/runs/37172051500/artifacts/11302815319
+2026-10-04T11:48:29.7558839Z Post job cleanup.
+2026-10-04T11:48:29.8579307Z (node:2533) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-04T11:48:29.8580079Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-04T11:48:29.8691642Z Post job cleanup.
+2026-10-04T11:48:29.9414602Z [command]/usr/bin/git version
+2026-10-04T11:48:29.9451405Z git version 2.55.0
+2026-10-04T11:48:29.9484646Z Temporarily overriding HOME='/home/runner/work/_temp/67f5b7b4-dc77-4ee3-8893-542446d07f07' before making global git config changes
+2026-10-04T11:48:29.9485398Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-04T11:48:29.9490418Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/quant-marcap-runner/quant-marcap-runner
+2026-10-04T11:48:29.9564767Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-04T11:48:29.9598149Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-04T11:48:29.9830229Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-04T11:48:29.9852847Z http.https://github.com/.extraheader
+2026-10-04T11:48:29.9868637Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-04T11:48:29.9901866Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-04T11:48:30.0128862Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-04T11:48:30.0166077Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-04T11:48:30.0524988Z Cleaning up orphan processes
+2026-10-04T11:48:30.0942175Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
