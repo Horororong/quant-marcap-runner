@@ -103,7 +103,7 @@ def test_source_gap_prevents_collection_and_quality_completion(monkeypatch, tmp_
     assert result.processed_filings == 1 and result.source_gap_filings == 1
     assert result.usable_four_factor_filings == 0 and result.automatic_pending_filings == 0
     assert not result.collection_complete and not result.quality_complete
-    assert result.mode == "REVIEW_REQUIRED"
+    assert result["mode"] == "REVIEW_REQUIRED"
 
 
 def test_original_download_is_preserved_before_parsing(monkeypatch, tmp_path):
@@ -167,3 +167,51 @@ def test_source_sample_selection_is_frozen_diverse_and_excludes_original_seven()
     assert a == selected_samples(state.iloc[::-1], index.iloc[::-1])
     assert len(a) == 24 and len({r["corp_code"] for r in a}) == 24
     assert len({r["period"] for r in a}) > 1 and len({r["fiscal_year"] for r in a}) > 1
+
+
+def test_evidence_snapshot_subset_preserves_exact_originals_and_checkpoint(monkeypatch, tmp_path):
+    import json
+    import hashlib
+    from scripts import legacy_batch_evidence as evidence
+    monkeypatch.setenv('LEGACY_DART_EVIDENCE_DIR', str(tmp_path / 'evidence'))
+    from pathlib import Path
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(evidence.subprocess, 'check_output', lambda *a, **k: 'test-source\n')
+    norm = Path('norm')
+    norm.mkdir()
+    for key, path in [('STATE_FILE', Path('state.csv')), ('INDEX_FILE', Path('index.csv')),
+                      ('STATUS_FILE', Path('status.csv')), ('QUARANTINE_FILE', Path('ledger.csv')),
+                      ('COVERAGE_FILE', Path('coverage.csv')), ('NORM_DIR', norm)]:
+        monkeypatch.setattr(evidence.legacy, key, path)
+    index = pd.DataFrame([{'rcept_no': 'old', 'corp_code': 'corp-old', 'stock_code': '000001',
+                          'fiscal_year': '2001', 'period': 'Q1', 'rcept_dt': '2001-05-01'},
+                         {'rcept_no': 'new', 'corp_code': 'corp-new', 'stock_code': '000002',
+                          'fiscal_year': '2002', 'period': 'H1', 'rcept_dt': '2002-08-01'}])
+    index.to_csv(evidence.legacy.INDEX_FILE, index=False)
+    old = {'rcept_no': 'old', 'status': 'NO_METRICS', 'metric_rows': '0',
+           'document_sha256': 'old-sha', 'updated_at_utc': 'before',
+           'parser_version': legacy.PARSER_VERSION, 'source_version': legacy.SOURCE_VERSION}
+    pd.DataFrame([old]).to_csv(evidence.legacy.STATE_FILE, index=False)
+    original = evidence.legacy.STATE_FILE.read_bytes()
+    evidence.begin()
+    assert (tmp_path / 'evidence' / 'before' / evidence.legacy.STATE_FILE).read_bytes() == original
+    # Path joins must preserve an evidence copy inside the snapshot root.
+    plan = json.loads((tmp_path / 'evidence' / 'plan.json').read_text())
+    assert next(x for x in plan['inputs'] if x['path'] == str(evidence.legacy.STATE_FILE))['sha256'] == hashlib.sha256(original).hexdigest()
+    new = dict(old, rcept_no='new', status='PARSED_PARTIAL', metric_rows='1', document_sha256='new-sha', updated_at_utc='after')
+    pd.DataFrame([old, new]).to_csv(evidence.legacy.STATE_FILE, index=False)
+    metric = {'rcept_no': 'new', 'corp_code': 'corp-new', 'metric': 'revenue', 'scope': 'OFS',
+              'fiscal_year': '2002', 'period': 'H1', 'document_sha256': 'new-sha',
+              'parser_version': legacy.PARSER_VERSION, 'amount_krw': '123000'}
+    pd.DataFrame([metric]).to_csv(norm / 'legacy_metrics_2002.csv.gz', index=False)
+    monkeypatch.setattr(evidence.legacy, 'build_index_tasks', lambda: pd.DataFrame([{'task_key': 'complete'}]))
+    monkeypatch.setattr(evidence.legacy, 'load_index_state', lambda: pd.DataFrame([{'task_key': 'complete', 'status': 'OK'}]))
+    source = tmp_path / 'evidence' / 'native'
+    source.mkdir()
+    (source / 'new-new-sha.zip').write_bytes(b'exact-original-bytes')
+    evidence.end()
+    subset = tmp_path / 'evidence' / 'audit-subset'
+    assert (subset / 'new-new-sha.zip').read_bytes() == b'exact-original-bytes'
+    assert json.loads((subset / 'numeric-selection.json').read_text())['receipt_order'] == ['new']
+    assert pd.read_csv(subset / 'new-metrics.csv').amount_krw.tolist() == [123000]
+    assert json.loads((subset / 'summary.json').read_text())['changed_receipts'] == 1
