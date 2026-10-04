@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "strategy_id": "audit_annual_per",
+  "title": "슈퍼 가치 전략 + KOSPI 가격지수 벤치마크 - DSL",
+  "asset_class": "kr_equity",
+  "universe": {
+    "markets": [
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "require_tradable_on_signal": false,
+    "filters": [
+      {
+        "field": "Marcap",
+        "op": "gt",
+        "value": 0
+      }
+    ]
+  },
+  "factors": [
+    {
+      "name": "annual_per",
+      "source": "dart",
+      "field": "annual_per",
+      "direction": "high",
+      "weight": 1.0
+    }
+  ],
+  "portfolio": {
+    "number_of_positions": 20,
+    "weighting": "equal"
+  },
+  "rebalance": {
+    "frequency": "months",
+    "months": [
+      4,
+      10
+    ],
+    "trading_day": "last"
+  },
+  "execution": {
+    "lag_sessions": 1,
+    "price": "next_close"
+  },
+  "cost_scenarios": {
+    "gross": {
+      "commission_bps": 0.0,
+      "sell_tax_bps": 0.0,
+      "spread_bps": 0.0,
+      "slippage_bps": 0.0,
+      "market_impact_bps": 0.0
+    }
+  },
+  "period": {
+    "start": "2020-04-01",
+    "end": "2020-11-30",
+    "book_start": "2020-04-01",
+    "book_end": "2020-11-30",
+    "as_of_date": "2020-11-30"
+  },
+  "initial_capital": 10000000,
+  "metadata": {
+    "legacy_reference": "scripts/backtest_super_value_v216.py",
+    "factor_definition": "standalone-quarter earnings/cashflow/sales yield plus book-to-price, PIT as of signal date",
+    "validation_scope": "2020-04 and 2020-10 completed DART signals",
+    "benchmark_return_basis": "price_index_close_without_dividends"
+  },
+  "benchmark": {
+    "source": "index",
+    "symbol": "KOSPI"
+  }
+}

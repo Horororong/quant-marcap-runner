@@ -1,0 +1,145 @@
+{
+  "benchmark": {
+    "end": "2017-11-30",
+    "exact_date_alignment": true,
+    "includes_dividends": false,
+    "observations": 162,
+    "path": "data/indices/KOSPI.csv",
+    "return_basis": "price_index_close",
+    "source": "index",
+    "start": "2017-04-03",
+    "symbol": "KOSPI"
+  },
+  "corporate_action_audit": {
+    "coverage": "known evidence gaps only; historical corporate-action completeness remains unverified",
+    "executed_target_count": 0,
+    "exposures": [],
+    "known_gap_count": 0,
+    "policy": "shared signal selection and lag; positive planned holdings; no NAV, drift or cost calculation",
+    "selection_performed": false
+  },
+  "factor_sources": [
+    "dart",
+    "krx"
+  ],
+  "history_coverage": {
+    "calendar": "XKRX",
+    "calendar_package_version": "4.13.2",
+    "expected_first_session": "2017-04-03",
+    "expected_last_session": "2017-11-30",
+    "expected_sessions": 162,
+    "history_audit_contract_version": "1",
+    "markets": {
+      "KOSDAQ": {
+        "missing_sessions": [],
+        "observed_sessions": 162,
+        "status": "complete",
+        "unexpected_dates": []
+      },
+      "KOSPI": {
+        "missing_sessions": [],
+        "observed_sessions": 162,
+        "status": "complete",
+        "unexpected_dates": []
+      }
+    },
+    "requested_end": "2017-11-30",
+    "requested_start": "2017-04-01",
+    "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified",
+    "status": "complete"
+  },
+  "krx_panel": {
+    "actual_end": "2017-11-30",
+    "actual_start": "2017-04-03",
+    "distinct_codes": 2183,
+    "markets": [
+      "KOSDAQ",
+      "KOSPI"
+    ],
+    "rows": 344169
+  },
+  "phase": "ready",
+  "preflight_contract_version": "3",
+  "provider_coverage": [
+    {
+      "cfs_no_data_codes": 740,
+      "cfs_ok_codes": 1422,
+      "cfs_raw_shards": 3,
+      "completed_codes": 2162,
+      "expected_codes": 2162,
+      "ofs_fallback_terminal_codes": 740,
+      "ofs_raw_shards": 3,
+      "period": "Q3",
+      "ratio": 1.0,
+      "raw_ok": true,
+      "signal_date": "2017-04-28",
+      "source": "dart",
+      "year": 2016
+    },
+    {
+      "cfs_no_data_codes": 706,
+      "cfs_ok_codes": 1456,
+      "cfs_raw_shards": 3,
+      "completed_codes": 2162,
+      "expected_codes": 2162,
+      "ofs_fallback_terminal_codes": 706,
+      "ofs_raw_shards": 3,
+      "period": "FY",
+      "ratio": 1.0,
+      "raw_ok": true,
+      "signal_date": "2017-04-28",
+      "source": "dart",
+      "year": 2016
+    },
+    {
+      "cfs_no_data_codes": 811,
+      "cfs_ok_codes": 1443,
+      "cfs_raw_shards": 3,
+      "completed_codes": 2254,
+      "expected_codes": 2254,
+      "ofs_fallback_terminal_codes": 811,
+      "ofs_raw_shards": 3,
+      "period": "Q1",
+      "ratio": 1.0,
+      "raw_ok": true,
+      "signal_date": "2017-10-31",
+      "source": "dart",
+      "year": 2017
+    },
+    {
+      "cfs_no_data_codes": 768,
+      "cfs_ok_codes": 1486,
+      "cfs_raw_shards": 3,
+      "completed_codes": 2254,
+      "expected_codes": 2254,
+      "ofs_fallback_terminal_codes": 768,
+      "ofs_raw_shards": 3,
+      "period": "H1",
+      "ratio": 1.0,
+      "raw_ok": true,
+      "signal_date": "2017-10-31",
+      "source": "dart",
+      "year": 2017
+    }
+  ],
+  "ready_for_execution": true,
+  "requested_period": {
+    "end": "2017-11-30",
+    "start": "2017-04-01"
+  },
+  "signal_dates": [
+    "2017-04-28",
+    "2017-10-31"
+  ],
+  "status": "ok",
+  "strategy_fingerprint": "d2861cebaedb1693249aebf706518a903832337c33213498265bbd16de8e7ff1",
+  "strategy_id": "audit_financial_2017",
+  "versions": {
+    "corporate_action_registry_version": "5",
+    "dsl_machine_contract_version": "23",
+    "execution_engine_version": "v2-16-exec-3",
+    "factor_registry_version": "7",
+    "project_template_version": "v2-16",
+    "schema_version": "1.0"
+  }
+}

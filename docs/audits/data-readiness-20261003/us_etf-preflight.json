@@ -1,0 +1,13 @@
+{
+  "error": {
+    "message": "$.asset_class: unsupported input: 'us_etf' is not one of ['kr_equity']",
+    "path": "$.asset_class",
+    "type": "StrategyInputError"
+  },
+  "phase": "compile",
+  "preflight_contract_version": "3",
+  "ready_for_execution": false,
+  "status": "capability_gap",
+  "strategy_fingerprint": null,
+  "strategy_id": null
+}

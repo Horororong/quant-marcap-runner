@@ -1,0 +1,42 @@
+{
+  "error": {
+    "message": "KRX session coverage failed; no period shortening or filling: {'KOSDAQ': {'missing': ['1998-06-04'], 'unexpected': []}, 'KOSPI': {'missing': ['1998-06-04'], 'unexpected': []}}",
+    "type": "HistoryCoverageError"
+  },
+  "history_coverage": {
+    "calendar": "XKRX",
+    "calendar_package_version": "4.13.2",
+    "expected_first_session": "1998-01-03",
+    "expected_last_session": "1998-12-28",
+    "expected_sessions": 293,
+    "history_audit_contract_version": "1",
+    "markets": {
+      "KOSDAQ": {
+        "missing_sessions": [
+          "1998-06-04"
+        ],
+        "observed_sessions": 292,
+        "status": "data_gap",
+        "unexpected_dates": []
+      },
+      "KOSPI": {
+        "missing_sessions": [
+          "1998-06-04"
+        ],
+        "observed_sessions": 292,
+        "status": "data_gap",
+        "unexpected_dates": []
+      }
+    },
+    "requested_end": "1998-12-31",
+    "requested_start": "1998-01-01",
+    "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified",
+    "status": "data_gap"
+  },
+  "phase": "data",
+  "preflight_contract_version": "3",
+  "ready_for_execution": false,
+  "status": "data_gap",
+  "strategy_fingerprint": "20c5ed634c8c2441e48fd358efbb2d31301f7f2de582191bd660af0f0d254706",
+  "strategy_id": "audit_size_1998"
+}

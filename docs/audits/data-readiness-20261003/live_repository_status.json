@@ -1,0 +1,140 @@
+{
+  "observed_at_utc": "2026-10-03 23:58:55 UTC",
+  "main": {
+    "ref": "refs/heads/main",
+    "node_id": "REF_kwDOT80f3K9yZWZzL2hlYWRzL21haW4",
+    "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/refs/heads/main",
+    "object": {
+      "sha": "40fe72e420f12e069eb1ba07ef712e61684d8a78",
+      "type": "commit",
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/commits/40fe72e420f12e069eb1ba07ef712e61684d8a78"
+    }
+  },
+  "workflow_runs": [
+    {
+      "id": 37159959647,
+      "name": "Update quant data",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "created_at": "2026-10-03T22:53:40Z",
+      "head_sha": "d442e07bd4df2358cc31141143945fc5e56c0f9a",
+      "head_branch": "main"
+    },
+    {
+      "id": 37159959636,
+      "name": "Test Strategy DSL v1",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "created_at": "2026-10-03T22:53:40Z",
+      "head_sha": "d442e07bd4df2358cc31141143945fc5e56c0f9a",
+      "head_branch": "main"
+    },
+    {
+      "id": 37159088410,
+      "name": "Test Strategy DSL v1",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "created_at": "2026-10-03T22:37:46Z",
+      "head_sha": "af758297b8ae82f4a268c836c5287b38c409d838",
+      "head_branch": "publish/requested-report-kit-20261003-final"
+    },
+    {
+      "id": 37158824033,
+      "name": "Publish verified CURRENT report kit and Work upload parts",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "created_at": "2026-10-03T22:32:58Z",
+      "head_sha": "2cb9ed9a78dcea11e2ab5246d119068640ea959c",
+      "head_branch": "publish/requested-report-kit-20261003-final"
+    },
+    {
+      "id": 37157470156,
+      "name": "Test Strategy DSL v1",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "created_at": "2026-10-03T22:09:23Z",
+      "head_sha": "822c435f4b6148c2832e12370a6ccb324a9e875f",
+      "head_branch": "feature/requested-period-reports-final-20261003"
+    },
+    {
+      "id": 37156156488,
+      "name": "Recover report browser evidence",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "created_at": "2026-10-03T21:44:26Z",
+      "head_sha": "58359b13aa2abe76b6bd25d6f27109f63a5e0198",
+      "head_branch": "recover/report-browser-20261003"
+    },
+    {
+      "id": 37145419881,
+      "name": "Fast-backfill super-value PIT inputs",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "schedule",
+      "created_at": "2026-10-03T18:45:44Z",
+      "head_sha": "12aaa86dbef54aa846f7afa6b2145094c407a09b",
+      "head_branch": "main"
+    },
+    {
+      "id": 37142451567,
+      "name": "Test Strategy DSL v1",
+      "status": "completed",
+      "conclusion": "failure",
+      "event": "push",
+      "created_at": "2026-10-03T17:58:12Z",
+      "head_sha": "edcda2d990e40343d179b5ccbeceeb9b19dd04a7",
+      "head_branch": "feature/requested-period-reports-20261003"
+    },
+    {
+      "id": 37141811158,
+      "name": "Test Strategy DSL v1",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "event": "push",
+      "created_at": "2026-10-03T17:47:36Z",
+      "head_sha": "41c65f195ff2390c8f383d9f69dbeb581f8a154d",
+      "head_branch": "feature/requested-period-reports-20261003"
+    },
+    {
+      "id": 37132720984,
+      "name": "Test Strategy DSL v1",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "created_at": "2026-10-03T15:17:26Z",
+      "head_sha": "8b8aa51e7fb2f5dd0a524c5710294ef685e7d76c",
+      "head_branch": "feature/requested-period-reports-20261003"
+    },
+    {
+      "id": 37123517762,
+      "name": "Fast-backfill super-value PIT inputs",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "schedule",
+      "created_at": "2026-10-03T12:38:20Z",
+      "head_sha": "d5201fdf9b9ec74e76808b8bb9f9606903a98cd4",
+      "head_branch": "main"
+    },
+    {
+      "id": 37114897863,
+      "name": "Refresh recent DART financials",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "schedule",
+      "created_at": "2026-10-03T09:59:45Z",
+      "head_sha": "acd66ccc7313053f1b64b8963fb5a2d23cacec4e",
+      "head_branch": "main"
+    }
+  ],
+  "backfill_latest_completed_run": 37145419881,
+  "active_backfill_observed": false,
+  "schedule_execution_is_not_guaranteed": true,
+  "collector_started_this_task": false,
+  "original_checkpoint_preserved": true
+}

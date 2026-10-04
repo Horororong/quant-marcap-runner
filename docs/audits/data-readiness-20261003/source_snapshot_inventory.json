@@ -1,0 +1,37 @@
+{
+  "main": "49afdcab324c2b778e21456e70a4e306feec4c0a",
+  "source_files": [
+    {
+      "path": "data/financials/dart_historical_code_map.csv",
+      "sha": "66e16adf3a143354761195821eb2ead11f4929e9",
+      "size": 339962
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/legacy_filings.csv.gz",
+      "sha": "6f4da4ad9a4671a5f38ee6c2e6e876497710ae17",
+      "size": 3221691
+    },
+    {
+      "path": "data/status/dart_full_backfill_state.csv",
+      "sha": "28cf504d5006527b90a74ab40e31fd19673ab021",
+      "size": 11898918
+    },
+    {
+      "path": "data/status/dart_legacy_backfill_state.csv",
+      "sha": "c59324d0c834a9933e9f09030081a1af0dee8184",
+      "size": 2590660
+    }
+  ],
+  "artifact_files": [
+    {
+      "path": "/workspace/attachments/90cac99e-cd0b-4ab4-8552-734b4c6c9dc1/legacy-financial-body-evidence.zip",
+      "sha256": "63416ef30250a6d65e470cc2030fa9af11b7a1b997510212b09d39b3412205df",
+      "bytes": 246301
+    },
+    {
+      "path": "/workspace/attachments/c15f0ef0-f065-4deb-a0cf-2cc18e723fd9/legacy-original-source-evidence.zip",
+      "sha256": "b05296686ac4d155495b6f121d0f401c08acf0e4d839a2be492a8612a4d8e4fb",
+      "bytes": 354651
+    }
+  ]
+}

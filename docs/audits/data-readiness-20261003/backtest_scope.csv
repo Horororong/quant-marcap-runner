@@ -1,0 +1,19 @@
+﻿classification,case,actual_start_or_request,actual_end,conditions,evidence,limits
+formal_requested_report,kr_equity_report_validation_2019_2020,2019-01-02,2020-12-30,시총 10조 이상 중 1위 1종목; 동일비중; 1/4/7/10월말 신호; 다음종가,이전 checked 보고 보존; 이번 preflight 확인,KOSPI 가격지수; zero/fixed_cost; OOS/투자 채택 인증 아님
+formal_requested_report,super_value_dart_benchmark_dsl,2020-04-01,2020-11-30,분기 EP/CFP/SP 및 BP; 20종목 동일비중; 4/10월말; 다음종가,이번 checked report_complete; 기존 daily NAV SHA 동일,365일 미만 CAGR 계산불가; 원본 zero cost; 전체 PIT 인증 아님
+verified_nav_only,size_decile_existing,2020-04-01,2020-05-08,기존 size decile fixture,기존 CP311/CP312 replay,이번 execution-only 없음; 보고지표 추가 안 함
+verified_nav_only,kr_equity_dart_custom_month_research,2020-05-01,2020-06-02,사용자 선택 5월 최신 공시 분기; 다음종가,기존 CP311/CP312 replay; 이번 preflight 확인,새 전략/기간 확대 아님
+verified_nav_only,kr_equity_split_research,2024-03-01,2024-04-26,기존 EcoPro 등록 split fixture,기존 CP311/CP312 replay; 이번 preflight 확인,모든 split/전체 기업행위 인증 아님
+data_gap,financial_2000,2000,,기존 분기 재무 예제,preflight exit 3,1999 Q3/FY PIT source gate 0/717
+data_gap,financial_2016_april,2016-04,,기존 분기 재무 예제,preflight exit 3,2015 Q3 gate 0/2077
+data_gap,financial_2021_october,2021-10,,기존 분기 재무 예제,preflight exit 3,2021 Q1 1768/2536; H1 1781/2536; OFS 미수집
+data_gap,size_2000_in_fixed_kit,2000,,가격 기반 기존 size 예제,checked exit 3; NAV/report false,저장소 preflight는 통과하나 kit 가격2000 파일 없음
+data_gap,canonical_four_period_report,,,기존 size 보고 예제의 정식 4기간 모드,checked report_readiness exit 3,2019 시작 자료로 2001 고정기간을 충족 못 함
+data_gap,size_1998,1998,,가격 기반 size 예제,preflight exit 3,XKRX/source 1998-06-04 차이; 공식 calendar 미확인
+data_gap,size_2026_latest_local,2026,2026-10-01,로컬 가격 기반 size 예제,preflight exit 3,로컬/원격 2026 다름; source/calendar 차이; benchmark 종료일 제한
+capability_gap,annual_per,,,연간 PER,compile exit 2,분기 대체 안 함
+capability_gap,annual_roe,,,연간 ROE,compile exit 2,분기 대체 안 함
+capability_gap,ttm_earnings_yield,,,TTM earnings yield,compile exit 2,분기 대체 안 함
+capability_gap,us_etf,,,미국 ETF,compile exit 2,kr_equity만 지원
+preflight_only_not_report_certified,financial_2017,2017,,기존 재무 예제의 진단 입력,preflight ok,NAV/보고 미실행; 정식 범위에 포함하지 않음
+preflight_only_not_report_certified,size_2000_repository,2000,,저장소 가격 진단 입력,preflight ok,kit 부재와 구별; NAV/보고 미실행

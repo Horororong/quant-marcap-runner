@@ -1,0 +1,65 @@
+{
+  "benchmark": null,
+  "corporate_action_audit": {
+    "coverage": "known evidence gaps only; historical corporate-action completeness remains unverified",
+    "executed_target_count": 0,
+    "exposures": [],
+    "known_gap_count": 0,
+    "policy": "shared signal selection and lag; positive planned holdings; no NAV, drift or cost calculation",
+    "selection_performed": false
+  },
+  "factor_sources": [
+    "krx"
+  ],
+  "history_coverage": {
+    "calendar": "XKRX",
+    "calendar_package_version": "4.13.2",
+    "expected_first_session": "2024-03-04",
+    "expected_last_session": "2024-04-26",
+    "expected_sessions": 39,
+    "history_audit_contract_version": "1",
+    "markets": {
+      "KOSDAQ": {
+        "missing_sessions": [],
+        "observed_sessions": 39,
+        "status": "complete",
+        "unexpected_dates": []
+      }
+    },
+    "requested_end": "2024-04-26",
+    "requested_start": "2024-03-01",
+    "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified",
+    "status": "complete"
+  },
+  "krx_panel": {
+    "actual_end": "2024-04-26",
+    "actual_start": "2024-03-04",
+    "distinct_codes": 1728,
+    "markets": [
+      "KOSDAQ"
+    ],
+    "rows": 67098
+  },
+  "phase": "ready",
+  "preflight_contract_version": "3",
+  "provider_coverage": [],
+  "ready_for_execution": true,
+  "requested_period": {
+    "end": "2024-04-26",
+    "start": "2024-03-01"
+  },
+  "signal_dates": [
+    "2024-03-29"
+  ],
+  "status": "ok",
+  "strategy_fingerprint": "08f6ddfbd5ba39575ca71cb66dc4173e423e0e00879acdd91a9a3317f1eaa0e3",
+  "strategy_id": "kr_equity_split_research",
+  "versions": {
+    "corporate_action_registry_version": "5",
+    "dsl_machine_contract_version": "23",
+    "execution_engine_version": "v2-16-exec-3",
+    "factor_registry_version": "7",
+    "project_template_version": "v2-16",
+    "schema_version": "1.0"
+  }
+}

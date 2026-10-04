@@ -1,0 +1,212 @@
+[
+  {
+    "id": "size_1998",
+    "returncode": 3,
+    "seconds": 2.43,
+    "status": "data_gap",
+    "phase": "data",
+    "error": "KRX session coverage failed; no period shortening or filling: {'KOSDAQ': {'missing': ['1998-06-04'], 'unexpected': []}, 'KOSPI': {'missing': ['1998-06-04'], 'unexpected': []}}",
+    "command": [
+      "/workspace/attachments/quant-report-kit-822c435f/runtime/.venv/bin/python",
+      "scripts/strategy_dsl_preflight.py",
+      "docs/audits/data-readiness-20261003/inputs/size_1998.json",
+      "--repo-root",
+      "/workspace/quant-marcap-runner"
+    ]
+  },
+  {
+    "id": "size_2000",
+    "returncode": 0,
+    "seconds": 2.56,
+    "status": "ok",
+    "phase": "ready",
+    "error": null,
+    "command": [
+      "/workspace/attachments/quant-report-kit-822c435f/runtime/.venv/bin/python",
+      "scripts/strategy_dsl_preflight.py",
+      "docs/audits/data-readiness-20261003/inputs/size_2000.json",
+      "--repo-root",
+      "/workspace/quant-marcap-runner"
+    ]
+  },
+  {
+    "id": "size_2026_latest",
+    "returncode": 3,
+    "seconds": 2.57,
+    "status": "data_gap",
+    "phase": "data",
+    "error": "KRX session coverage failed; no period shortening or filling: {'KOSDAQ': {'missing': ['2026-06-03', '2026-07-17', '2026-09-30', '2026-10-01'], 'unexpected': []}, 'KOSPI': {'missing': ['2026-06-03', '2026-07-17', '2026-09-30', '2026-10-01'], 'unexpected': []}}",
+    "command": [
+      "/workspace/attachments/quant-report-kit-822c435f/runtime/.venv/bin/python",
+      "scripts/strategy_dsl_preflight.py",
+      "docs/audits/data-readiness-20261003/inputs/size_2026_latest.json",
+      "--repo-root",
+      "/workspace/quant-marcap-runner"
+    ]
+  },
+  {
+    "id": "financial_2000",
+    "returncode": 3,
+    "seconds": 2.44,
+    "status": "data_gap",
+    "phase": "data",
+    "error": "2000-04-28: DART PIT source is incomplete; refusing partial-universe backtest. 1999-Q3: 0/717 (0.00%), raw_ok=True; 1999-FY: 0/717 (0.00%), raw_ok=True",
+    "command": [
+      "/workspace/attachments/quant-report-kit-822c435f/runtime/.venv/bin/python",
+      "scripts/strategy_dsl_preflight.py",
+      "docs/audits/data-readiness-20261003/inputs/financial_2000.json",
+      "--repo-root",
+      "/workspace/quant-marcap-runner"
+    ]
+  },
+  {
+    "id": "financial_2016_april",
+    "returncode": 3,
+    "seconds": 2.29,
+    "status": "data_gap",
+    "phase": "data",
+    "error": "2016-04-29: DART PIT source is incomplete; refusing partial-universe backtest. 2015-Q3: 0/2077 (0.00%), raw_ok=True",
+    "command": [
+      "/workspace/attachments/quant-report-kit-822c435f/runtime/.venv/bin/python",
+      "scripts/strategy_dsl_preflight.py",
+      "docs/audits/data-readiness-20261003/inputs/financial_2016_april.json",
+      "--repo-root",
+      "/workspace/quant-marcap-runner"
+    ]
+  },
+  {
+    "id": "financial_2017",
+    "returncode": 0,
+    "seconds": 2.73,
+    "status": "ok",
+    "phase": "ready",
+    "error": null,
+    "command": [
+      "/workspace/attachments/quant-report-kit-822c435f/runtime/.venv/bin/python",
+      "scripts/strategy_dsl_preflight.py",
+      "docs/audits/data-readiness-20261003/inputs/financial_2017.json",
+      "--repo-root",
+      "/workspace/quant-marcap-runner"
+    ]
+  },
+  {
+    "id": "financial_2021_october",
+    "returncode": 3,
+    "seconds": 2.39,
+    "status": "data_gap",
+    "phase": "data",
+    "error": "2021-10-29: DART PIT source is incomplete; refusing partial-universe backtest. 2021-Q1: 1768/2536 (69.72%), raw_ok=True; 2021-H1: 1781/2536 (70.23%), raw_ok=True",
+    "command": [
+      "/workspace/attachments/quant-report-kit-822c435f/runtime/.venv/bin/python",
+      "scripts/strategy_dsl_preflight.py",
+      "docs/audits/data-readiness-20261003/inputs/financial_2021_october.json",
+      "--repo-root",
+      "/workspace/quant-marcap-runner"
+    ]
+  },
+  {
+    "id": "annual_per",
+    "returncode": 2,
+    "seconds": 0.35,
+    "status": "capability_gap",
+    "phase": "compile",
+    "error": "$.factors[0]: unsupported factor source/field combination",
+    "command": [
+      "/workspace/attachments/quant-report-kit-822c435f/runtime/.venv/bin/python",
+      "scripts/strategy_dsl_preflight.py",
+      "docs/audits/data-readiness-20261003/inputs/annual_per.json",
+      "--repo-root",
+      "/workspace/quant-marcap-runner"
+    ]
+  },
+  {
+    "id": "annual_roe",
+    "returncode": 2,
+    "seconds": 0.37,
+    "status": "capability_gap",
+    "phase": "compile",
+    "error": "$.factors[0]: unsupported factor source/field combination",
+    "command": [
+      "/workspace/attachments/quant-report-kit-822c435f/runtime/.venv/bin/python",
+      "scripts/strategy_dsl_preflight.py",
+      "docs/audits/data-readiness-20261003/inputs/annual_roe.json",
+      "--repo-root",
+      "/workspace/quant-marcap-runner"
+    ]
+  },
+  {
+    "id": "ttm_earnings_yield",
+    "returncode": 2,
+    "seconds": 0.36,
+    "status": "capability_gap",
+    "phase": "compile",
+    "error": "$.factors[0]: unsupported factor source/field combination",
+    "command": [
+      "/workspace/attachments/quant-report-kit-822c435f/runtime/.venv/bin/python",
+      "scripts/strategy_dsl_preflight.py",
+      "docs/audits/data-readiness-20261003/inputs/ttm_earnings_yield.json",
+      "--repo-root",
+      "/workspace/quant-marcap-runner"
+    ]
+  },
+  {
+    "id": "us_etf",
+    "returncode": 2,
+    "seconds": 0.39,
+    "status": "capability_gap",
+    "phase": "compile",
+    "error": "$.asset_class: unsupported input: 'us_etf' is not one of ['kr_equity']",
+    "command": [
+      "/workspace/attachments/quant-report-kit-822c435f/runtime/.venv/bin/python",
+      "scripts/strategy_dsl_preflight.py",
+      "docs/audits/data-readiness-20261003/inputs/us_etf.json",
+      "--repo-root",
+      "/workspace/quant-marcap-runner"
+    ]
+  },
+  {
+    "id": "original_size",
+    "returncode": 0,
+    "seconds": 3.48,
+    "status": "ok",
+    "phase": "ready",
+    "error": null,
+    "command": [
+      "/workspace/attachments/quant-report-kit-822c435f/runtime/.venv/bin/python",
+      "scripts/strategy_dsl_preflight.py",
+      "config/strategies/kr_equity_report_validation_2019_2020.json",
+      "--repo-root",
+      "/workspace/quant-marcap-runner"
+    ]
+  },
+  {
+    "id": "original_custom_month",
+    "returncode": 0,
+    "seconds": 2.37,
+    "status": "ok",
+    "phase": "ready",
+    "error": null,
+    "command": [
+      "/workspace/attachments/quant-report-kit-822c435f/runtime/.venv/bin/python",
+      "scripts/strategy_dsl_preflight.py",
+      "config/strategies/kr_equity_dart_custom_month_research.json",
+      "--repo-root",
+      "/workspace/quant-marcap-runner"
+    ]
+  },
+  {
+    "id": "original_split",
+    "returncode": 0,
+    "seconds": 2.27,
+    "status": "ok",
+    "phase": "ready",
+    "error": null,
+    "command": [
+      "/workspace/attachments/quant-report-kit-822c435f/runtime/.venv/bin/python",
+      "scripts/strategy_dsl_preflight.py",
+      "config/strategies/kr_equity_split_research.json",
+      "--repo-root",
+      "/workspace/quant-marcap-runner"
+    ]
+  }
+]

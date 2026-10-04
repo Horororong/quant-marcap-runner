@@ -1,0 +1,43 @@
+{
+  "artifacts": {},
+  "completed_stages": [
+    "input"
+  ],
+  "error": {
+    "message": "요구기간의 KRX 연도 파일이 누락되었습니다: [2000]. 기간을 조용히 축약하지 않습니다.",
+    "type": "FileNotFoundError"
+  },
+  "finished_at": "2026-10-03T23:47:07.454505+00:00",
+  "gap_phase": "data",
+  "input_path": "/workspace/quant-marcap-runner/docs/audits/data-readiness-20261003/inputs/size_2000.json",
+  "kit_id": "26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd",
+  "mode": "requested_period_report",
+  "nav_ready": false,
+  "output_dir": "/workspace/attachments/data-readiness-20261003/kit-missing-year",
+  "outputs": {
+    "diagnostic_dashboard": "diagnostic_CURRENT.html"
+  },
+  "phase": "preflight",
+  "report_ready": false,
+  "requested_report_contract_version": "1",
+  "run_contract_version": "2",
+  "run_id": "20261003T234707447442Z-66cfbcdf",
+  "sandbox_manifest": "sandbox_execution_manifest.json",
+  "started_at": "2026-10-03T23:47:07.447601+00:00",
+  "status": "data_gap",
+  "status_file": "/workspace/attachments/data-readiness-20261003/kit-missing-year/run_status.json",
+  "strategy_fingerprint": "604edf5f36e43e6e38d9ab69bbcac415954d37df3cdfa0d2b38bcd08ccc024c9",
+  "strategy_id": "audit_size_2000",
+  "versions": {
+    "corporate_action_registry_version": "5",
+    "dsl_machine_contract_version": "23",
+    "execution_engine_version": "v2-16-exec-3",
+    "factor_registry_version": "7",
+    "history_audit_contract_version": "1",
+    "krx_market_normalization_version": "1",
+    "performance_template_version": "v2-18",
+    "preflight_contract_version": "3",
+    "project_template_version": "v2-16",
+    "schema_version": "1.0"
+  }
+}

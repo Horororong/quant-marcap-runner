@@ -1,0 +1,48 @@
+{
+  "error": {
+    "message": "KRX session coverage failed; no period shortening or filling: {'KOSDAQ': {'missing': ['2026-06-03', '2026-07-17', '2026-09-30', '2026-10-01'], 'unexpected': []}, 'KOSPI': {'missing': ['2026-06-03', '2026-07-17', '2026-09-30', '2026-10-01'], 'unexpected': []}}",
+    "type": "HistoryCoverageError"
+  },
+  "history_coverage": {
+    "calendar": "XKRX",
+    "calendar_package_version": "4.13.2",
+    "expected_first_session": "2026-01-02",
+    "expected_last_session": "2026-10-01",
+    "expected_sessions": 185,
+    "history_audit_contract_version": "1",
+    "markets": {
+      "KOSDAQ": {
+        "missing_sessions": [
+          "2026-06-03",
+          "2026-07-17",
+          "2026-09-30",
+          "2026-10-01"
+        ],
+        "observed_sessions": 181,
+        "status": "data_gap",
+        "unexpected_dates": []
+      },
+      "KOSPI": {
+        "missing_sessions": [
+          "2026-06-03",
+          "2026-07-17",
+          "2026-09-30",
+          "2026-10-01"
+        ],
+        "observed_sessions": 181,
+        "status": "data_gap",
+        "unexpected_dates": []
+      }
+    },
+    "requested_end": "2026-10-01",
+    "requested_start": "2026-01-01",
+    "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified",
+    "status": "data_gap"
+  },
+  "phase": "data",
+  "preflight_contract_version": "3",
+  "ready_for_execution": false,
+  "status": "data_gap",
+  "strategy_fingerprint": "7c3b5a2bdcce83d5de7b8d870b91634e4a27299650b1df18d0bf2433209cebef",
+  "strategy_id": "audit_size_2026_latest"
+}

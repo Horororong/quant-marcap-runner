@@ -1,0 +1,160 @@
+{
+  "checks": [
+    {
+      "check": "fixed kit verify",
+      "result": "passed",
+      "timeout_seconds": 30
+    },
+    {
+      "check": "requested report regression",
+      "result": "5 passed",
+      "seconds": 17.358,
+      "timeout_seconds": 120,
+      "scope": "software incl. synthetic NAV, not primary-data certification"
+    },
+    {
+      "check": "generated machine contract",
+      "result": "PASS",
+      "timeout_seconds": 60
+    },
+    {
+      "check": "primary audit fail-closed boundaries",
+      "result": "3 passed",
+      "scope": "software mutation tests, not investment certification"
+    },
+    {
+      "check": "existing financial checked official requested report",
+      "result": "passed; nav_ready/report_ready/report_complete true",
+      "timeout_seconds": 180,
+      "actual_seconds": 125.591
+    },
+    {
+      "check": "existing daily NAV SHA unchanged",
+      "result": "passed",
+      "sha256": "cea3c5b9274b4a5d457cb993d3f9740617cb821a30e63ef3cd96f8003776db21"
+    },
+    {
+      "check": "capability/data preflight matrix",
+      "result": "14/14 reproduced with same status and exit code",
+      "timeout_seconds_per_case": 60,
+      "total_timeout_seconds": 420
+    },
+    {
+      "check": "canonical four-period readiness gap",
+      "result": "expected data_gap exit3; no NAV/report",
+      "timeout_seconds": 60
+    },
+    {
+      "check": "fixed kit missing 2000 prices",
+      "result": "expected data_gap exit3; no NAV/report",
+      "timeout_seconds": 60
+    },
+    {
+      "check": "new browser verification",
+      "result": "not repeated; production rendering unchanged; prior main CI evidence preserved"
+    }
+  ],
+  "preserved_logs": [
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/checked-financial-v2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/checked-financial-v2.stdout",
+      "bytes": 3648,
+      "sha256": "536cb3f3291e704d0280b29d856c61dd8820732eb2e36c7d0402312af27085da"
+    },
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/checked-financial.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/checked-financial.stdout",
+      "bytes": 1153,
+      "sha256": "74f75a5d4389bd9cbb30aa0eb6bd67857420837ee8d983434fbb79eeb4214d39"
+    },
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/contract-check.log",
+      "bytes": 36,
+      "sha256": "bdb90d50bd169f5de18f6a858635f7da08647763aaab17ca8790e005dbaddd8a"
+    },
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/four-period-readiness.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/four-period-readiness.stdout",
+      "bytes": 1736,
+      "sha256": "7b69e55b423bca4cbdb346f294acf6257c79088579ff06728a6880ac359e84e7"
+    },
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/kit-missing-year.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/kit-missing-year.stdout",
+      "bytes": 1694,
+      "sha256": "1a4510f6c962ac26da08dff6bb64d9e387d4c5f3d01e979c9d4aa0bb87d67c89"
+    },
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/kit-verify.json",
+      "bytes": 21113,
+      "sha256": "a2776816a1db5c3a67a035d2985185c1bbf03a3e3d566b1e9e29efbfe57e2de4"
+    },
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/kit-verify.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/latest-backfill.log",
+      "bytes": 39810,
+      "sha256": "759fa33583f6e0218167dbd9a96e2ae076c878cbce38e4689ac40f628e5d6ec8"
+    },
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/preflight-matrix.log",
+      "bytes": 6039,
+      "sha256": "6ee0c6da987c3f5adf555666b2aa776566a69ac53ab23d4361f377be66ccce00"
+    },
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/preflight-replay.json",
+      "bytes": 29674,
+      "sha256": "a01728fdeddcb9fbec1c74d738c6f916d035c2ccd68e9a22259b22021faeac11"
+    },
+    {
+      "path": "/workspace/attachments/data-readiness-20261003/requested-report-regression.log",
+      "bytes": 740,
+      "sha256": "f1cbb6cf594a5feecbf489e2960bd166bebb3ff81186d790f131b5f47a20a177"
+    }
+  ],
+  "failed_attempts_preserved": [
+    {
+      "attempt": "checked-financial",
+      "exitcode": 4,
+      "reason": "period config did not yet exist; input stage failed; second run new output dir success"
+    },
+    {
+      "attempt": "DART shell access",
+      "exitcode": 7,
+      "reason": "proxy8080 connect failed; no fresh primary source downloaded"
+    },
+    {
+      "attempt": "git fetch",
+      "exitcode": 128,
+      "reason": "same blocked shell proxy; native GitHub connector used"
+    },
+    {
+      "attempt": "GitHub blob parse",
+      "reason": "connector returned decoded CSV not JSON; corrected once"
+    }
+  ],
+  "production_code_changed": false,
+  "fixed_kit_rebuilt": false,
+  "raw_data_overwritten": false,
+  "checkpoint_overwritten": false,
+  "research_nav_run_this_task": false
+}

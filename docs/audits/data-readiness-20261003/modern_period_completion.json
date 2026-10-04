@@ -1,0 +1,555 @@
+{
+  "main": "49afdcab324c2b778e21456e70a4e306feec4c0a",
+  "rule": "CFS OK or CFS NO_DATA with OFS terminal; expected mapped calendar-year population; no numerical/PIT certification",
+  "periods": [
+    {
+      "year": 2015,
+      "period": "FY",
+      "expected_codes": 2077,
+      "terminal_codes": 2077,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2015,
+      "period": "H1",
+      "expected_codes": 2077,
+      "terminal_codes": 0,
+      "pending_codes": 2077,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000020",
+        "000030",
+        "000040",
+        "000050",
+        "000060",
+        "000070",
+        "000080",
+        "000100",
+        "000120",
+        "000140"
+      ]
+    },
+    {
+      "year": 2015,
+      "period": "Q1",
+      "expected_codes": 2077,
+      "terminal_codes": 923,
+      "pending_codes": 1154,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "043340",
+        "043360",
+        "043370",
+        "043580",
+        "043590",
+        "043610",
+        "043650",
+        "043710",
+        "043910",
+        "044060"
+      ]
+    },
+    {
+      "year": 2015,
+      "period": "Q3",
+      "expected_codes": 2077,
+      "terminal_codes": 0,
+      "pending_codes": 2077,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000020",
+        "000030",
+        "000040",
+        "000050",
+        "000060",
+        "000070",
+        "000080",
+        "000100",
+        "000120",
+        "000140"
+      ]
+    },
+    {
+      "year": 2016,
+      "period": "FY",
+      "expected_codes": 2162,
+      "terminal_codes": 2162,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2016,
+      "period": "H1",
+      "expected_codes": 2162,
+      "terminal_codes": 2162,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2016,
+      "period": "Q1",
+      "expected_codes": 2162,
+      "terminal_codes": 2162,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2016,
+      "period": "Q3",
+      "expected_codes": 2162,
+      "terminal_codes": 2162,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2017,
+      "period": "FY",
+      "expected_codes": 2254,
+      "terminal_codes": 2254,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2017,
+      "period": "H1",
+      "expected_codes": 2254,
+      "terminal_codes": 2254,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2017,
+      "period": "Q1",
+      "expected_codes": 2254,
+      "terminal_codes": 2254,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2017,
+      "period": "Q3",
+      "expected_codes": 2254,
+      "terminal_codes": 2254,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2018,
+      "period": "FY",
+      "expected_codes": 2321,
+      "terminal_codes": 2321,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2018,
+      "period": "H1",
+      "expected_codes": 2321,
+      "terminal_codes": 2321,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2018,
+      "period": "Q1",
+      "expected_codes": 2321,
+      "terminal_codes": 2321,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2018,
+      "period": "Q3",
+      "expected_codes": 2321,
+      "terminal_codes": 2321,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2019,
+      "period": "FY",
+      "expected_codes": 2387,
+      "terminal_codes": 2387,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2019,
+      "period": "H1",
+      "expected_codes": 2387,
+      "terminal_codes": 2387,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2019,
+      "period": "Q1",
+      "expected_codes": 2387,
+      "terminal_codes": 2387,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2019,
+      "period": "Q3",
+      "expected_codes": 2387,
+      "terminal_codes": 2387,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2020,
+      "period": "FY",
+      "expected_codes": 2461,
+      "terminal_codes": 2461,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2020,
+      "period": "H1",
+      "expected_codes": 2461,
+      "terminal_codes": 2461,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2020,
+      "period": "Q1",
+      "expected_codes": 2461,
+      "terminal_codes": 2461,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2020,
+      "period": "Q3",
+      "expected_codes": 2461,
+      "terminal_codes": 2461,
+      "pending_codes": 0,
+      "terminal_complete": true,
+      "first_pending_codes": []
+    },
+    {
+      "year": 2021,
+      "period": "FY",
+      "expected_codes": 2536,
+      "terminal_codes": 1831,
+      "pending_codes": 705,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000060",
+        "000140",
+        "000370",
+        "000400",
+        "000540",
+        "000650",
+        "000810",
+        "001000",
+        "001200",
+        "001270"
+      ]
+    },
+    {
+      "year": 2021,
+      "period": "H1",
+      "expected_codes": 2536,
+      "terminal_codes": 1781,
+      "pending_codes": 755,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000060",
+        "000370",
+        "000400",
+        "000540",
+        "000650",
+        "000810",
+        "001000",
+        "001080",
+        "001200",
+        "001270"
+      ]
+    },
+    {
+      "year": 2021,
+      "period": "Q1",
+      "expected_codes": 2536,
+      "terminal_codes": 1768,
+      "pending_codes": 768,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000060",
+        "000370",
+        "000400",
+        "000540",
+        "000650",
+        "000810",
+        "001000",
+        "001080",
+        "001200",
+        "001270"
+      ]
+    },
+    {
+      "year": 2021,
+      "period": "Q3",
+      "expected_codes": 2536,
+      "terminal_codes": 1804,
+      "pending_codes": 732,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000060",
+        "000370",
+        "000400",
+        "000540",
+        "000650",
+        "000810",
+        "001000",
+        "001200",
+        "001270",
+        "001290"
+      ]
+    },
+    {
+      "year": 2022,
+      "period": "FY",
+      "expected_codes": 2622,
+      "terminal_codes": 1907,
+      "pending_codes": 715,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000060",
+        "000370",
+        "000400",
+        "000540",
+        "000650",
+        "000810",
+        "001000",
+        "001080",
+        "001200",
+        "001270"
+      ]
+    },
+    {
+      "year": 2022,
+      "period": "H1",
+      "expected_codes": 2622,
+      "terminal_codes": 1861,
+      "pending_codes": 761,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000060",
+        "000140",
+        "000370",
+        "000400",
+        "000540",
+        "000650",
+        "000810",
+        "001000",
+        "001080",
+        "001200"
+      ]
+    },
+    {
+      "year": 2022,
+      "period": "Q1",
+      "expected_codes": 2622,
+      "terminal_codes": 1831,
+      "pending_codes": 791,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000060",
+        "000140",
+        "000370",
+        "000400",
+        "000540",
+        "000650",
+        "000810",
+        "001000",
+        "001080",
+        "001200"
+      ]
+    },
+    {
+      "year": 2022,
+      "period": "Q3",
+      "expected_codes": 2622,
+      "terminal_codes": 1871,
+      "pending_codes": 751,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000060",
+        "000140",
+        "000370",
+        "000400",
+        "000540",
+        "000650",
+        "000810",
+        "001000",
+        "001080",
+        "001200"
+      ]
+    },
+    {
+      "year": 2023,
+      "period": "FY",
+      "expected_codes": 2722,
+      "terminal_codes": 2014,
+      "pending_codes": 708,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000400",
+        "000540",
+        "000650",
+        "001000",
+        "001080",
+        "001360",
+        "001420",
+        "001550",
+        "001720",
+        "001750"
+      ]
+    },
+    {
+      "year": 2023,
+      "period": "H1",
+      "expected_codes": 2722,
+      "terminal_codes": 1917,
+      "pending_codes": 805,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000060",
+        "000370",
+        "000400",
+        "000540",
+        "000650",
+        "000810",
+        "001000",
+        "001080",
+        "001200",
+        "001270"
+      ]
+    },
+    {
+      "year": 2023,
+      "period": "Q1",
+      "expected_codes": 2722,
+      "terminal_codes": 1897,
+      "pending_codes": 825,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000060",
+        "000370",
+        "000400",
+        "000540",
+        "000650",
+        "000810",
+        "001000",
+        "001080",
+        "001200",
+        "001270"
+      ]
+    },
+    {
+      "year": 2023,
+      "period": "Q3",
+      "expected_codes": 2722,
+      "terminal_codes": 1995,
+      "pending_codes": 727,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000400",
+        "000540",
+        "000650",
+        "001000",
+        "001080",
+        "001360",
+        "001420",
+        "001550",
+        "001750",
+        "001770"
+      ]
+    },
+    {
+      "year": 2024,
+      "period": "H1",
+      "expected_codes": 2812,
+      "terminal_codes": 2035,
+      "pending_codes": 777,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000400",
+        "000540",
+        "000650",
+        "001000",
+        "001080",
+        "001360",
+        "001420",
+        "001550",
+        "001750",
+        "001770"
+      ]
+    },
+    {
+      "year": 2024,
+      "period": "Q1",
+      "expected_codes": 2812,
+      "terminal_codes": 2008,
+      "pending_codes": 804,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000400",
+        "000540",
+        "000650",
+        "001000",
+        "001080",
+        "001360",
+        "001420",
+        "001550",
+        "001750",
+        "001770"
+      ]
+    },
+    {
+      "year": 2024,
+      "period": "Q3",
+      "expected_codes": 2812,
+      "terminal_codes": 2017,
+      "pending_codes": 795,
+      "terminal_complete": false,
+      "first_pending_codes": [
+        "000400",
+        "000540",
+        "000650",
+        "001000",
+        "001080",
+        "001360",
+        "001420",
+        "001550",
+        "001750",
+        "001770"
+      ]
+    }
+  ]
+}

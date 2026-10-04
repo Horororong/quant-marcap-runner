@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "strategy_id": "audit_size_2000",
+  "title": "KRX 대형주 1종목 · 2년 실행·보고 검증 예제",
+  "asset_class": "kr_equity",
+  "universe": {
+    "markets": [
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "require_tradable_on_signal": true,
+    "filters": [
+      {
+        "field": "Marcap",
+        "op": "gte",
+        "value": 10000000000000
+      }
+    ]
+  },
+  "factors": [
+    {
+      "name": "size",
+      "source": "krx",
+      "field": "Marcap",
+      "direction": "high",
+      "weight": 1.0
+    }
+  ],
+  "portfolio": {
+    "selection": "top_n",
+    "number_of_positions": 1,
+    "weighting": "equal"
+  },
+  "rebalance": {
+    "frequency": "months",
+    "months": [
+      1,
+      4,
+      7,
+      10
+    ],
+    "trading_day": "last"
+  },
+  "execution": {
+    "lag_sessions": 1,
+    "price": "next_close"
+  },
+  "cost_scenarios": {
+    "zero": {},
+    "fixed_cost": {
+      "commission_bps": 1.5,
+      "sell_tax_bps": 15.0,
+      "spread_bps": 3.0,
+      "slippage_bps": 5.0
+    }
+  },
+  "period": {
+    "start": "2000-01-01",
+    "end": "2000-12-31",
+    "book_start": "2000-01-01",
+    "book_end": "2000-12-31",
+    "as_of_date": "2000-12-31"
+  },
+  "initial_capital": 10000000,
+  "metadata": {
+    "report_validation_only": true,
+    "validation_scope": "original KRX source checked execution and report integration; not alpha, broad-market, OOS or long-history investment validation",
+    "universe_rule": "signal-date Marcap >= 10 trillion KRW; highest size top 1, no present-day membership screen",
+    "rebalance_rule": "January/April/July/October last-session signals; next-session close execution; no December signal requiring out-of-window January prices"
+  },
+  "benchmark": {
+    "source": "index",
+    "symbol": "KOSPI"
+  }
+}

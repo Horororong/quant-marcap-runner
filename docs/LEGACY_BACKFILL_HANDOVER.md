@@ -2,9 +2,7 @@
 
 ## 최신 작업 checkpoint (2026-10-02 UTC)
 
-**단계 8 main 배포·live 확인 완료.** 기존 fast 예약을 00:30 / 08:30 / 16:30 KST, 회당 최대 2,000건으로 10월 한시 증량했다. 최종 code merge `aa6c8722a0842d717468d855606b7ab76208eac4`의 전체 CI와 validator가 success이며, 배포 확인 100 requests / 100 receipts / rate-limit False를 직접 확인했다. 자동 data commit `07bf21a92d4f33ee8797560a66e4cf9f2b929ff8` 기준 durable processed 1,401 / pending 113,619다. 금융 parser/source는 기존 v5/v1이고 수집·독립 품질 완료는 모두 False다.
-
-이 수치와 commit은 checkpoint이며 원격 main·현재 CI·status를 다시 확인한다. 아래 단계별 기록은 이력을 보존하며 **마지막 단계 8 live 완료 기록**이 현재 재개 지점이다. 다음은 예약 batch 실측과 기존 source evidence를 재사용한 기간·column·단위/음수 guard 및 source adapter 보완이다. 로컬 최신 gzip 동기화 제한도 마지막 기록에 명시했다.
+상위 지침·resume·기존 daily 자동화는 main에 배포되어 실제로 동작한다. 대표 8개 원문 확보 후 첫 source-proven parser guard `legacy-v5-single-amount`를 작업 branch commit `16bf1cb`에 저장하고 local 전체 Strategy DSL **31/31**을 통과했다. 첫 실행의 empty-state coverage 오류도 재현해 배포 전 보완한다. 현재 단계는 **v5 배포·live 재처리·최종 CI 확인**이다. 아래의 단계별 기록과 마지막 checkpoint가 최신 상태이며 이전 수치는 당시 버전의 이력이다. 다음 세션은 원격 main과 현재 parser/source version을 먼저 다시 확인한다.
 
 ## 최초 인계 checkpoint (2026-10-01, 역사 기록)
 
@@ -191,15 +189,10 @@
 - Local stdlib 경계 테스트 **6 passed**: KST 만료 직전/직후, queue 소진, 기본 daily/push/manual 보존, status 누락/손상, 알 수 없는 cron/naive datetime. 세 workflow YAML parse, syntax compile, git diff check 통과. 기존 automation regression에 schedule/gate/modern 예산 경계를 추가했다. 두 기존 CI는 새 gate 회귀를 30초 이내 실행하며 기존 파일별 pytest 60초 제한도 유지한다.
 - 113,719 / 6,000은 **최소 19일(57개 full batch)**이다. 10월 3일부터 세 배치를 전부 처리하면 10월 21일 전후가 이론적 queue 처리 예상이다. 실측 일일 처리량·API 제한·Actions 지연·parser/source version 변경에 따른 필요한 재처리를 반영하지 않은 best case다. **10월 말은 수집 목표이며 금융적으로 검증된 최종 완료를 보장하지 않는다.** Parser/source adapter·FY2014 범위·독립 audit는 별도 미완료다.
 - 다음: feature PR의 전체 CI + legacy validator를 확인하고 main으로 normal merge → 제한된 live push 결과와 실제 요청·pending 감소를 기록한다. 배포 전 이미 완료한 source evidence·독립 기대값·정상 receipt를 재수집하지 않는다.
+## 2026-10-03 독립 품질감사 추가 기록
 
-## 단계 8 live 완료: 10월 한시 증량 main 배포·수집 확인
+기존 수집 상태/체크포인트를 변경하지 않고 `docs/audits/data-readiness-20261003/`에 감사 자료를 추가했다. 원격 표본계획 56c8020e, 원문 감사 59c6cdf5. 최신 main receipt 6건이 모두 v5 NO_METRICS/metric_rows=0인 반면 실제 본문에는 당기 별도 재무 30항목이 확인된다. 최신 원격 normalized 실물 확인은 차단돼 state 증거와 로컬 파일 검사를 구분했다. 독립 저장 수치 일치 인증은 0건이다. 추가 15항목은 전기 연결 연간으로 당기 분기 값을 대체할 수 없다.
 
-- Feature commits `3adb7d354280001643e7243ae947afe2be100318`, `e0fc32db5e5bfc9d6e175f1daa4a985f2b82ae8f`는 PR #25로 normal merge `aa6c8722a0842d717468d855606b7ab76208eac4`에 반영했다. 최종 feature 전체 CI <https://github.com/Horororong/quant-marcap-runner/actions/runs/37000310336>와 validator <https://github.com/Horororong/quant-marcap-runner/actions/runs/37000310360> 모두 success였다. 전체 test + sandbox replay 3.11/3.12, legacy pytest 56개 및 별도 gate 회귀 6개를 확인했다.
-- 병합 직전에 recent DART 자동 commit `23bdabcbfa6da63ec722e4b8e1632dd85e8db718`이 갱신된 recent gzip과 rotation/status를 main에 저장했다. 이를 normal merge로 보존했다. 따라서 main의 데이터 tree는 feature snapshot과 다르며, main 전체 CI <https://github.com/Horororong/quant-marcap-runner/actions/runs/37002403185>에서 **test + sandbox replay 3.11/3.12 모두 success**를 별도로 확인했다. Main validator <https://github.com/Horororong/quant-marcap-runner/actions/runs/37002403064>도 success다. 수집 대상·금융 parser/source/DSL/provider/capability 변경은 없고 source 품질을 처리 건수로 인증하지 않는다.
-- 실제 배포 확인 <https://github.com/Horororong/quant-marcap-runner/actions/runs/37002402985> success; GitHub 보고서와 내려받은 artifact에서 **100 selected / 100 completed / 100 requests / BATCH_COMPLETE / rate_limited False**를 대조했다. Modern tasks는 0이다. 25/50/75/100건 checkpoint가 실제 로그에 남았다. 원래 100건을 재배포하여 반복 수집한 것이 아니라 durable receipt를 제외한 다음 pending 100건을 처리한 것이다.
-- 자동 데이터 commit `07bf21a92d4f33ee8797560a66e4cf9f2b929ff8`에 이 결과가 저장됐다. Durable processed는 **1,301 → 1,401**, automatic pending은 **113,719 → 113,619**, 4F 표기는 16 → 31이다. 새 100건의 분류는 NO_METRICS 74 / PARSED_PARTIAL 11 / PARSED_4F 15다. Collection/quality complete는 계속 False이며 독립 금융 정확성을 뜻하지 않는다. 이 단계에서 전체 normalized 과거 field/row를 새로 독립 대조했다고 주장하지 않는다.
-- Artifact `11223389756`의 실제 ZIP SHA256은 `528ae547a40f7b3d67462e9996e267db325fe7b50e6bcbad00f9b76ebff08b16`, 만료 2026-10-16T11:44:58Z다. Machine checkpoint: `docs/audits/legacy/october-capacity-checkpoint-20261002.json`. 금융 원문 12개 section과 기존 독립 기대값은 재수집하지 않았다.
-- **배포된 예약:** 매일 00:30 KST, 10월 중 추가 08:30 / 16:30 KST. 각 최대 2,000건, 하루 최대 6,000건으로 동일 shared lock 안에서 실행된다. 추가 두 배치는 legacy only이며 pending 0 또는 2026-11-01 KST 이후 실제 시작이면 API·설치·publish를 건너뛴다. GitHub scheduling 지연을 감안해야 하며 현재까지는 100건 배포 확인만 실측했다. 113,619건은 최소 57개 full batch / 19일; 10월 3일부터 full capacity이면 10월 21일 전후다. 10월 말은 현재 대기열 처리 목표이며 요청 한도·deadline·필요한 version 재처리·FY2014 범위 확장은 예측을 바꾼다.
-- **Local/GitHub 상태 구분:** sandbox Git fetch는 proxy 8080 연결 실패로 즉시 종료됐고 connector의 repository fetch/blob는 gzip을 UTF-8로 읽을 수 없어 거부했다. 로컬 work HEAD는 테스트한 `e0fc32d`에 clean 상태로 유지하고, 최신 recent/normalized gzip을 받지 못한 채 main과 같다고 주장하거나 데이터를 추정 재생성하지 않았다. Main code·live 상태·최종 인계는 GitHub가 SSOT다. 다음 세션은 GitHub의 최신 handover/status/CI를 먼저 읽고, Git 전송 경로가 준비되면 fetch/normal fast-forward로 로컬도 맞춘다. 로컬의 1,301 상태를 최신 진행량으로 쓰거나 이미 처리된 100건을 반복하지 않는다.
+실제 main viewer 제목과 공시일 6건은 대조했으나 정정 관계/전체 결산기 이력/사용가능 날짜는 미확인, PIT 인증 false. 단위 5건과 BS 괄호 부호 3건은 추가 확인 필요. 신규 raw 다운로드는 환경 proxy 차단이므로 기존 원문 캡처를 SHA 검증 후 재사용했다. collection_complete/quality_complete를 true로 바꾸지 않았다.
 
-**다음 단계:** 첫 세 예약 배치의 실제 processed 증가·requests·stop reason·API 020 및 ERROR quarantine을 관찰해 평균 일일 처리량으로 10월 예측을 갱신한다. 동시에 기존 재무 본문·독립 기대값을 재사용하여 source adapter 완결성/인코딩 및 당기 기간/column·단위·음수/loss guard를 검증·보완하고 필요한 receipt만 reprocess한다. Source/parser version이나 FY2014 index 범위를 바꾸면 이 19일 capacity 예상은 다시 계산한다. 독립 금융 audit와 품질 기준을 만족하기 전 legacy 실행 capability를 공개하지 않는다.
+마지막 배치 37145419881은 2,000문서 정상 완료, v5 usable 313건, 전체 processed 9,401 및 pending 105,619. 기존 자동 schedule/concurrency/checkpoint 재개를 유지하며 collector를 중복 실행하지 않았다. 다음 단계는 더 많은 원문을 무조건 파싱하는 것이 아니라 기존 6개 viewer fixture에서 당기열/scope/단위/부호와 전기 연간 OCF 배제 계약을 먼저 검증하는 것이다. 감사 README의 범위 제한과 재현 명령을 따른다.

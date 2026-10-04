@@ -1,0 +1,41 @@
+{
+  "scope": "local physical rows inspected; nonmatching main files are not certified as current remote numeric state",
+  "files": [
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_1998.csv.gz",
+      "main_blob_match": true,
+      "local_git_blob": "fb57f1820d89dffb50bca728e3356a2171a7dc9a",
+      "main_git_blob": "fb57f1820d89dffb50bca728e3356a2171a7dc9a",
+      "local_sample_rows": 0
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_1999.csv.gz",
+      "main_blob_match": false,
+      "local_git_blob": "abaac4537df6117b088b21c0a76cbd61ce923448",
+      "main_git_blob": "9855069705f74a03b1b9cbc44b88e1fe7bab924b",
+      "local_sample_rows": 0
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2000.csv.gz",
+      "main_blob_match": false,
+      "local_git_blob": "ac4ac3975e81ee156e0345e5998f350151b4ac8d",
+      "main_git_blob": "45296f496caf3ae12583ac962e1fef08102c775c",
+      "local_sample_rows": 0
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2001.csv.gz",
+      "main_blob_match": false,
+      "local_git_blob": "d3fe5c9823b41a3bbc9aaf8cc6bb179f1e83a71e",
+      "main_git_blob": "c4f2be1a77cc29948d0bf82a0fd8ba7085eaf7f4",
+      "local_sample_rows": 0
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2002.csv.gz",
+      "main_blob_match": true,
+      "local_git_blob": "60c56d7d514e90a29a19aba29627a1b19375bc05",
+      "main_git_blob": "60c56d7d514e90a29a19aba29627a1b19375bc05",
+      "local_sample_rows": 0
+    }
+  ],
+  "local_sample_rows": 0
+}

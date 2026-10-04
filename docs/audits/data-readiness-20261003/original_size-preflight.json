@@ -1,0 +1,89 @@
+{
+  "benchmark": {
+    "end": "2020-12-30",
+    "exact_date_alignment": true,
+    "includes_dividends": false,
+    "observations": 494,
+    "path": "data/indices/KOSPI.csv",
+    "return_basis": "price_index_close",
+    "source": "index",
+    "start": "2019-01-02",
+    "symbol": "KOSPI"
+  },
+  "corporate_action_audit": {
+    "coverage": "known evidence gaps only; historical corporate-action completeness remains unverified",
+    "executed_target_count": 0,
+    "exposures": [],
+    "known_gap_count": 0,
+    "policy": "shared signal selection and lag; positive planned holdings; no NAV, drift or cost calculation",
+    "selection_performed": false
+  },
+  "factor_sources": [
+    "krx"
+  ],
+  "history_coverage": {
+    "calendar": "XKRX",
+    "calendar_package_version": "4.13.2",
+    "expected_first_session": "2019-01-02",
+    "expected_last_session": "2020-12-30",
+    "expected_sessions": 494,
+    "history_audit_contract_version": "1",
+    "markets": {
+      "KOSDAQ": {
+        "missing_sessions": [],
+        "observed_sessions": 494,
+        "status": "complete",
+        "unexpected_dates": []
+      },
+      "KOSPI": {
+        "missing_sessions": [],
+        "observed_sessions": 494,
+        "status": "complete",
+        "unexpected_dates": []
+      }
+    },
+    "requested_end": "2020-12-31",
+    "requested_start": "2019-01-01",
+    "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified",
+    "status": "complete"
+  },
+  "krx_panel": {
+    "actual_end": "2020-12-30",
+    "actual_start": "2019-01-02",
+    "distinct_codes": 2443,
+    "markets": [
+      "KOSDAQ",
+      "KOSPI"
+    ],
+    "rows": 1135539
+  },
+  "phase": "ready",
+  "preflight_contract_version": "3",
+  "provider_coverage": [],
+  "ready_for_execution": true,
+  "requested_period": {
+    "end": "2020-12-31",
+    "start": "2019-01-01"
+  },
+  "signal_dates": [
+    "2019-01-31",
+    "2019-04-30",
+    "2019-07-31",
+    "2019-10-31",
+    "2020-01-31",
+    "2020-04-29",
+    "2020-07-31",
+    "2020-10-30"
+  ],
+  "status": "ok",
+  "strategy_fingerprint": "455268d0fd7f2c4330e2592f021098af0c0d81ae101a67c34265c54064fec352",
+  "strategy_id": "kr_equity_report_validation_2019_2020",
+  "versions": {
+    "corporate_action_registry_version": "5",
+    "dsl_machine_contract_version": "23",
+    "execution_engine_version": "v2-16-exec-3",
+    "factor_registry_version": "7",
+    "project_template_version": "v2-16",
+    "schema_version": "1.0"
+  }
+}

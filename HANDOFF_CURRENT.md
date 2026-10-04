@@ -1,3 +1,11 @@
+## 2026-10-03 장기 데이터 준비상태 감사
+
+`docs/audits/data-readiness-20261003/README.md`를 우선 읽는다. 감사 작업브랜치는 `audit/data-readiness-20261003`, 기준 main 49afdcab, 종료 전 main 40fe72e4다. 자동 수집의 recent batch/state 변경을 보존했다. 기존 kit verify, 포함 재무 예제 checked 요청기간 보고, 기존 NAV 해시 동일성, 요청기간 회귀 5개와 contract check를 확인했다. 보고 구현과 kit를 재생성하지 않았다.
+
+표본계획은 원문 감사 전에 56c8020e로 원격 커밋, 45개 원문 셀과 시장 감사는 59c6cdf5로 원격 커밋했다. 6개 회사 당기 별도 30개는 최신 receipt state NO_METRICS/0행이며 독립 저장 수치 일치 0건, 15개는 전기 연결 연간 원문이다. 현대/정정 공시 확대 및 최신 원격 normalized 실물 다운로드는 차단됨. PIT/전체 데이터 인증 false다.
+
+legacy 마지막 배치 37145419881은 2,000건 정상 완료. 처리 9,401, 미처리 105,619, v5 usable 313, 품질 미완료. 현재 실행 중인 배치는 조회되지 않았고 기존 schedule/checkpoint 재개 경로를 보존했다. 장기 완료 날짜는 미확정이다. 이번에는 연구 NAV 모드를 새로 실행하지 않았다. 다음 작업 하나: 기존 6개 원문 fixture로 viewer fallback의 당기열/scope/단위/부호 및 전기 연간 OCF 배제 계약 검증. 자세한 가능/차단 기간과 미해결 목록은 감사 README/CSV에 있다.
+
 ## 2026-10-03 main 병합 및 본문 그래프 표시
 
 보고 기능 PR #28을 d442e07bd4df2358cc31141143945fc5e56c0f9a로 main에 정상 병합했다. 최신 백필 data/map/state를 보존했다. 새 main CI 37159959636은 2026-10-03 23:13:31 UTC success로 완료됐다. test 및 양 ABI clean offline replay 모두 success다. 실제 PNG/hover PNG/브라우저 passed 기록과 canonical CSV 일치를 직접 확인했다. Machine evidence: docs/audits/merged-report-inline-checkpoint-20261003.json.
