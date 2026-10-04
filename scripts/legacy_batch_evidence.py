@@ -139,7 +139,7 @@ def probe():
             records.append(record)
             (folder / "old-source-probes.json").write_text(json.dumps(records, ensure_ascii=False, indent=2) + "\n")
     if ledger:
-        out = pd.DataFrame(ledger).drop_duplicates(["rcept_no", "document_sha256"], keep="last")
+        out = pd.DataFrame(ledger).drop_duplicates(["rcept_no", "document_sha256", "diagnostic_version"], keep="last")
         legacy.atomic_write_if_changed(out, legacy.QUARANTINE_FILE)
     legacy.RUN_CONTROL = None
 

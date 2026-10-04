@@ -247,3 +247,66 @@ def test_evidence_import_inherits_existing_fast_job_limits():
     code = "import json;from scripts import legacy_batch_evidence as e;print(json.dumps([e.legacy.MAX_DOCS,e.legacy.WORKERS]))"
     result = subprocess.check_output([sys.executable, "-c", code], env=env, text=True)
     assert json.loads(result) == [100, 3]
+
+
+def test_lossless_cp949_and_literal_ampersand_are_supported_legacy_source(monkeypatch):
+    import hashlib
+    text = '<?xml version="1.0" encoding="utf-8"?><DOCUMENT><P>M&A</P><H2>손익계산서</H2><P>단위: 천원</P><TABLE><TR><TD>매출액</TD><TD>1,234</TD></TR></TABLE></DOCUMENT>'
+    stream = io.BytesIO()
+    with zipfile.ZipFile(stream, 'w') as archive:
+        archive.writestr('complete.xml', text.encode('cp949'))
+    blob = stream.getvalue(); sha = hashlib.sha256(blob).hexdigest()
+    monkeypatch.setattr(legacy, 'fetch_document', lambda receipt: (blob, sha))
+    rows, state = legacy.process_filing({'rcept_no': 'receipt', 'rcept_dt': '2002-09-26', 'period_end': '2002-06-30'})
+    assert state['status'] == 'PARSED_PARTIAL' and rows[0]['amount_krw'] == 1234000
+    assert rows[0]['document_sha256'] == sha and state['source_diagnostic_version'] == 'legacy-document-quality-v2'
+
+
+def test_encoding_recheck_is_version_bounded_not_blanket_retry():
+    from scripts.legacy_document_quality import needs_encoding_recheck
+    row = {'status': 'SOURCE_GAP', 'source_diagnostic_version': 'legacy-document-quality-v1',
+           'error': '[{"issues":["SOURCE_ENCODING_INVALID"]}]'}
+    assert needs_encoding_recheck(row)
+    assert not needs_encoding_recheck(dict(row, source_diagnostic_version='legacy-document-quality-v2'))
+    assert not needs_encoding_recheck(dict(row, status='NO_METRICS'))
+    assert not needs_encoding_recheck(dict(row, error='SOURCE_XML_INCOMPLETE_OR_INVALID'))
+    state = pd.DataFrame([dict(row, rcept_no='recheck'),
+                          dict(row, rcept_no='v2', source_diagnostic_version='legacy-document-quality-v2'),
+                          dict(row, rcept_no='truncated', error='SOURCE_XML_INCOMPLETE_OR_INVALID')])
+    assert legacy.durable_done_receipts(state) == {'v2', 'truncated'}
+
+
+def test_current_diagnostic_revision_can_release_false_hold_without_deleting_evidence(monkeypatch, tmp_path):
+    state = tmp_path / 'state.csv'; ledger = tmp_path / 'ledger.csv'
+    pd.DataFrame([{'rcept_no':'receipt','status':'PARSED_PARTIAL','document_sha256':'sha','metric_rows':'1',
+                   'parser_version':legacy.PARSER_VERSION,'source_version':legacy.SOURCE_VERSION}]).to_csv(state,index=False)
+    pd.DataFrame([{'rcept_no':'receipt','document_sha256':'sha','issues':'old diagnosis','diagnostic_version':'legacy-document-quality-v1','active':'True'},
+                  {'rcept_no':'receipt','document_sha256':'sha','issues':'[]','diagnostic_version':'legacy-document-quality-v2','active':'False'}]).to_csv(ledger,index=False)
+    original = ledger.read_bytes()
+    monkeypatch.setattr(legacy,'STATE_FILE',state);monkeypatch.setattr(legacy,'QUARANTINE_FILE',ledger)
+    assert legacy.current_state().iloc[0]['status'] == 'PARSED_PARTIAL'
+    assert ledger.read_bytes() == original and len(pd.read_csv(ledger)) == 2
+
+
+def test_five_actual_misdeclared_native_sources_distinguish_three_complete_from_two_broken(monkeypatch):
+    import json, hashlib
+    from pathlib import Path
+    from scripts.legacy_document_quality import inspect_member
+    root = Path('tests/fixtures/legacy_dart/production_encoding')
+    accepted = withheld = 0
+    for item in json.loads((root/'manifest.json').read_text()):
+        blob = (root/item['path']).read_bytes()
+        assert hashlib.sha256(blob).hexdigest() == item['sha256']
+        with zipfile.ZipFile(io.BytesIO(blob)) as archive:
+            ds = [inspect_member(archive.read(n),n) for n in archive.namelist()]
+        assert all(d.get('resolved_encoding') == 'cp949' for d in ds)
+        monkeypatch.setattr(legacy,'fetch_document',lambda receipt,blob=blob,sha=item['sha256']:(blob,sha))
+        rows,state = legacy.process_filing(item['meta'])
+        if item['expected_source_gap']:
+            withheld += 1
+            assert not rows and state['status'] == 'SOURCE_GAP'
+        else:
+            accepted += 1
+            assert state['status'] in {'PARSED_4F','PARSED_PARTIAL','NO_METRICS'}
+            assert all(r['source_quality'] == 'PASS' for r in rows)
+    assert accepted == 3 and withheld == 2
