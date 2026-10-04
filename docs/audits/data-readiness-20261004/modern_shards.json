@@ -1,0 +1,3328 @@
+{
+  "summary": {
+    "shards": 184,
+    "rows": 10591081,
+    "missing_filing_dates": 0,
+    "missing_receipts": 0,
+    "requested_period_min": "2015-12-31",
+    "requested_period_max": "2024-09-30",
+    "filing_date_min": "20150624",
+    "filing_date_max": "20260911",
+    "independent_primary_amount_audit": false,
+    "scope": "original shard structural coverage only; receipt/filing presence does not verify revision history"
+  },
+  "files": [
+    {
+      "file": "data/financials/full_history/dart_full_2015_FY_CFS_11322b6902a4b96e.csv.gz",
+      "sha256": "9d8347509df913a9e017ec4d0744bcbb6db039bbbe144f8f376dbc61a65e6368",
+      "rows": 89796,
+      "requested_period_min": "2015-12-31",
+      "requested_period_max": "2015-12-31",
+      "filing_date_min": "20150624",
+      "filing_date_max": "20230118",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 695,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2015_FY_CFS_d736fc0577b01af7.csv.gz",
+      "sha256": "a306a64e8f92ca8d3e7811d5825f8fb78b23ec95497fa0acc30f4d8268ce4177",
+      "rows": 100000,
+      "requested_period_min": "2015-12-31",
+      "requested_period_max": "2015-12-31",
+      "filing_date_min": "20150626",
+      "filing_date_max": "20230502",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 693,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2015_FY_OFS_91ba2ed1195f22e7.csv.gz",
+      "sha256": "039924c54b2866834da3ca99a9ee14ad8db94041a9a9fdeff3a0092bb149c5ea",
+      "rows": 30705,
+      "requested_period_min": "2015-12-31",
+      "requested_period_max": "2015-12-31",
+      "filing_date_min": "20150626",
+      "filing_date_max": "20230309",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 246,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2015_FY_OFS_a862d06f617ed703.csv.gz",
+      "sha256": "6c4b56c3c03830702eb91a0073e3bece0dab15d4e213595385c1660b979dc60f",
+      "rows": 100000,
+      "requested_period_min": "2015-12-31",
+      "requested_period_max": "2015-12-31",
+      "filing_date_min": "20150626",
+      "filing_date_max": "20230523",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 804,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2015_FY_OFS_ef9c67e1495f19aa.csv.gz",
+      "sha256": "08f12eeed221a18bac2a838b7e448cb14d79632c64c28a9c8daba1dc47754deb",
+      "rows": 84978,
+      "requested_period_min": "2015-12-31",
+      "requested_period_max": "2015-12-31",
+      "filing_date_min": "20150629",
+      "filing_date_max": "20230320",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 765,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_FY_CFS_244018d534b3ec4e.csv.gz",
+      "sha256": "9fa85d3d519ae27941825231260150686e2019c6bdff15c1661cd99c1cd97552",
+      "rows": 10701,
+      "requested_period_min": "2016-12-31",
+      "requested_period_max": "2016-12-31",
+      "filing_date_min": "20160629",
+      "filing_date_max": "20211210",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 73,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_FY_CFS_4fc620f38ff162e8.csv.gz",
+      "sha256": "0e76df8fc88c47e02f314ae5397e9d85aef5526345844923ec8d5ada973af29a",
+      "rows": 88102,
+      "requested_period_min": "2016-12-31",
+      "requested_period_max": "2016-12-31",
+      "filing_date_min": "20160624",
+      "filing_date_max": "20241025",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 692,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_FY_CFS_e30fb3b726df27ea.csv.gz",
+      "sha256": "f19edd846f32edd2a2268a97894dc8ca1195601ac4e55949f8986fa2d6d5275b",
+      "rows": 100000,
+      "requested_period_min": "2016-12-31",
+      "requested_period_max": "2016-12-31",
+      "filing_date_min": "20160624",
+      "filing_date_max": "20241114",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 700,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_FY_OFS_07f0fc85f46d8ff1.csv.gz",
+      "sha256": "1c0ac7f4e210f2d386f40388995b99c98f8088c4fc7538b8747851bd8c60a5aa",
+      "rows": 93854,
+      "requested_period_min": "2016-12-31",
+      "requested_period_max": "2016-12-31",
+      "filing_date_min": "20160624",
+      "filing_date_max": "20241114",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 754,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_FY_OFS_2bde1ec353ce7ae6.csv.gz",
+      "sha256": "9892a025ef26a77bc72aee16c962f91550008467c9fa543fe4422e9dcc62d527",
+      "rows": 24337,
+      "requested_period_min": "2016-12-31",
+      "requested_period_max": "2016-12-31",
+      "filing_date_min": "20160928",
+      "filing_date_max": "20210317",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 233,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_FY_OFS_e30b5b39f5720ecc.csv.gz",
+      "sha256": "84ee1d3f9bee6974e897e82ad6f8836c8d22610de8d26de6603bfa22af549e19",
+      "rows": 100000,
+      "requested_period_min": "2016-12-31",
+      "requested_period_max": "2016-12-31",
+      "filing_date_min": "20160628",
+      "filing_date_max": "20241025",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 862,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_H1_CFS_8f711d6ba6ab6d87.csv.gz",
+      "sha256": "ba6cd796ceefd2cebfb421e4bd49bcbac791866f820dc7019642ee7e4215797d",
+      "rows": 88994,
+      "requested_period_min": "2016-06-30",
+      "requested_period_max": "2016-06-30",
+      "filing_date_min": "20160414",
+      "filing_date_max": "20230118",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 703,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_H1_CFS_9b984c79454c1d67.csv.gz",
+      "sha256": "eab3af5adb17f04d4c91a22c057aca126016cc44c6d8da987f32f872b0247171",
+      "rows": 100000,
+      "requested_period_min": "2016-06-30",
+      "requested_period_max": "2016-06-30",
+      "filing_date_min": "20160516",
+      "filing_date_max": "20220211",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 702,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_H1_OFS_96035d4cabc30611.csv.gz",
+      "sha256": "3e5c5c7477f2da6812f70bffaff2f580ee3de0e3bbc01bfa975ac962b0b1b4cf",
+      "rows": 65816,
+      "requested_period_min": "2016-06-30",
+      "requested_period_max": "2016-06-30",
+      "filing_date_min": "20160516",
+      "filing_date_max": "20210210",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 540,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_H1_OFS_9e91b1be2f4e0466.csv.gz",
+      "sha256": "873482c3593ec19dd8499617ad28a27c6e63e4af3ff80bc3f525de7dc9e8145c",
+      "rows": 100000,
+      "requested_period_min": "2016-06-30",
+      "requested_period_max": "2016-06-30",
+      "filing_date_min": "20160414",
+      "filing_date_max": "20230118",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 855,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_H1_OFS_d0590143decd772a.csv.gz",
+      "sha256": "ae948b60749297d47dfb16dd77528ff2143f8c1a2a58c06c43de16cb0446265a",
+      "rows": 43964,
+      "requested_period_min": "2016-06-30",
+      "requested_period_max": "2016-06-30",
+      "filing_date_min": "20160803",
+      "filing_date_max": "20201231",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 404,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_Q1_CFS_3c571137a5d9bf75.csv.gz",
+      "sha256": "8dbe748a78e1cbe364e5fdf42034fee64a9d1a9aebd91156dc8e8fd5d77f51c3",
+      "rows": 11580,
+      "requested_period_min": "2016-03-31",
+      "requested_period_max": "2016-03-31",
+      "filing_date_min": "20160509",
+      "filing_date_max": "20160519",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 89,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_Q1_CFS_ed64a1fe9142e567.csv.gz",
+      "sha256": "cee3e9e151cf5cd5e9123eaca60fd5d1502329b7fa118a786173d6afb4cae0e7",
+      "rows": 71185,
+      "requested_period_min": "2016-03-31",
+      "requested_period_max": "2016-03-31",
+      "filing_date_min": "20160427",
+      "filing_date_max": "20201231",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 568,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_Q1_CFS_f736df178947e36c.csv.gz",
+      "sha256": "d4b0a1a5a9e009fdce0aed7bc592d7bbfa185611d9a49e57828c6414b2b28cb3",
+      "rows": 100000,
+      "requested_period_min": "2016-03-31",
+      "requested_period_max": "2016-03-31",
+      "filing_date_min": "20160427",
+      "filing_date_max": "20230118",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 706,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_Q1_OFS_61e5f9b6ce0e84b7.csv.gz",
+      "sha256": "a802690b2c0d5efdf57c4f7d4e22f22a3648c82f94d837e9f77cd19a5e3665be",
+      "rows": 100000,
+      "requested_period_min": "2016-03-31",
+      "requested_period_max": "2016-03-31",
+      "filing_date_min": "20160414",
+      "filing_date_max": "20220211",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 820,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_Q1_OFS_ace8595718c38460.csv.gz",
+      "sha256": "603b0de0c478eead8b2d401ebe7c77f4ecefa8d3b4eac5eef406065e00e79aeb",
+      "rows": 6228,
+      "requested_period_min": "2016-03-31",
+      "requested_period_max": "2016-03-31",
+      "filing_date_min": "20160509",
+      "filing_date_max": "20160616",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 65,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_Q1_OFS_eb7d09a1de7cc518.csv.gz",
+      "sha256": "30ee4f8d81e89521583925e79a70e267f2e8f1cdfe6f99c649015201b4043118",
+      "rows": 98391,
+      "requested_period_min": "2016-03-31",
+      "requested_period_max": "2016-03-31",
+      "filing_date_min": "20160427",
+      "filing_date_max": "20230118",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 875,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_Q3_CFS_3391d0a53a9cdc9f.csv.gz",
+      "sha256": "e56fcdee99dbf2c4ac07790135e714643dc48c9588e74a8ce76fdc39a9c464fb",
+      "rows": 45573,
+      "requested_period_min": "2016-09-30",
+      "requested_period_max": "2016-09-30",
+      "filing_date_min": "20160516",
+      "filing_date_max": "20201231",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 369,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_Q3_CFS_42859b11266e967f.csv.gz",
+      "sha256": "495c15753db1675ef78ddad0e193ba893d11be1fc6660d8925d402cc0b8c43e5",
+      "rows": 100000,
+      "requested_period_min": "2016-09-30",
+      "requested_period_max": "2016-09-30",
+      "filing_date_min": "20160516",
+      "filing_date_max": "20220211",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 697,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_Q3_CFS_63c76766135184a1.csv.gz",
+      "sha256": "3ba70808fc7accd3b65f5dc2c1c3712d951655d448adb2b6be383333609d54d3",
+      "rows": 46914,
+      "requested_period_min": "2016-09-30",
+      "requested_period_max": "2016-09-30",
+      "filing_date_min": "20160516",
+      "filing_date_max": "20230118",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 357,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_Q3_OFS_68fd085399f0f015.csv.gz",
+      "sha256": "0f220cca2b9a007c769dddcf39f5017507816a4172ec7ffadfa0f73b1df57ed7",
+      "rows": 100000,
+      "requested_period_min": "2016-09-30",
+      "requested_period_max": "2016-09-30",
+      "filing_date_min": "20160516",
+      "filing_date_max": "20220211",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 812,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_Q3_OFS_8dc0db2b610c3484.csv.gz",
+      "sha256": "ea11a862347009685614bc4550d7886fedd0a27b867a6faa54e95010f2a8d944",
+      "rows": 100000,
+      "requested_period_min": "2016-09-30",
+      "requested_period_max": "2016-09-30",
+      "filing_date_min": "20160412",
+      "filing_date_max": "20230118",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 877,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2016_Q3_OFS_938dbf659a598f98.csv.gz",
+      "sha256": "25a533899fd96b37bf7c009571188a2731cb5e62ce36be3b082742e27a7bc705",
+      "rows": 12573,
+      "requested_period_min": "2016-09-30",
+      "requested_period_max": "2016-09-30",
+      "filing_date_min": "20160516",
+      "filing_date_max": "20190222",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 125,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_FY_CFS_ae7dd44639706cdd.csv.gz",
+      "sha256": "3b9624c1e94687ab27d154ffcea50b2c0b0b3fa7da80714100336df55818a990",
+      "rows": 100000,
+      "requested_period_min": "2017-12-31",
+      "requested_period_max": "2017-12-31",
+      "filing_date_min": "20170629",
+      "filing_date_max": "20241025",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 756,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_FY_CFS_b50224f285aca4df.csv.gz",
+      "sha256": "190c19b59144c3d1818d5c1bb028238e209cf0a46b0d1bfc856376d599352960",
+      "rows": 11736,
+      "requested_period_min": "2017-12-31",
+      "requested_period_max": "2017-12-31",
+      "filing_date_min": "20170623",
+      "filing_date_max": "20190430",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 100,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_FY_CFS_e50b3ce6b1c62e0e.csv.gz",
+      "sha256": "321c0da09e98f3b4f74f6d879e96a1be619dea87e71587e9a45c853908c144b9",
+      "rows": 375,
+      "requested_period_min": "2017-12-31",
+      "requested_period_max": "2017-12-31",
+      "filing_date_min": "20180330",
+      "filing_date_max": "20180402",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 2,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_FY_CFS_e9c2fdcbf7d36f30.csv.gz",
+      "sha256": "c548e3a99bfeb635a83546ca8519a1ee23074150002e22468aa8426325527933",
+      "rows": 100000,
+      "requested_period_min": "2017-12-31",
+      "requested_period_max": "2017-12-31",
+      "filing_date_min": "20170628",
+      "filing_date_max": "20241114",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 698,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_FY_OFS_502be1945cc00fc6.csv.gz",
+      "sha256": "19381949d74c9319131d06c052c80ba3457a96ba0fdd3cba8064db39757d0995",
+      "rows": 71989,
+      "requested_period_min": "2017-12-31",
+      "requested_period_max": "2017-12-31",
+      "filing_date_min": "20170628",
+      "filing_date_max": "20241114",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 585,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_FY_OFS_b25135285709940b.csv.gz",
+      "sha256": "3cf9221cf66c303ea423043f5ac3bf5e125b7871f1c6e4d86646bd268724b0a2",
+      "rows": 57786,
+      "requested_period_min": "2017-12-31",
+      "requested_period_max": "2017-12-31",
+      "filing_date_min": "20170928",
+      "filing_date_max": "20240516",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 514,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_FY_OFS_f0766cb122a984f9.csv.gz",
+      "sha256": "0665f8568dac4589aead4ebe3dfc082b13b1b7de250ffb4a188090c8188f253a",
+      "rows": 100000,
+      "requested_period_min": "2017-12-31",
+      "requested_period_max": "2017-12-31",
+      "filing_date_min": "20170629",
+      "filing_date_max": "20241025",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 836,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_H1_CFS_10b795d17579e98b.csv.gz",
+      "sha256": "4eb7649c15ef1b7cc4fe106583d447cfbb93bf74f0bf73b8e36066c9703f23ba",
+      "rows": 82501,
+      "requested_period_min": "2017-06-30",
+      "requested_period_max": "2017-06-30",
+      "filing_date_min": "20170413",
+      "filing_date_max": "20210709",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 705,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_H1_CFS_6f786d7e53263fcf.csv.gz",
+      "sha256": "314f3bae5fda71d2d8a3ba2f1406e188d59648078053049adfd09f886bf650b9",
+      "rows": 2432,
+      "requested_period_min": "2017-06-30",
+      "requested_period_max": "2017-06-30",
+      "filing_date_min": "20170810",
+      "filing_date_max": "20210210",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 17,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_H1_CFS_ca2d7a3f372f36b1.csv.gz",
+      "sha256": "cb672fa2f9641e8cbf26572b55a6d9b9cecd7165f935bc78f4282c2ac1d6b79b",
+      "rows": 100000,
+      "requested_period_min": "2017-06-30",
+      "requested_period_max": "2017-06-30",
+      "filing_date_min": "20170515",
+      "filing_date_max": "20230228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 765,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_H1_OFS_2d3484a93b5a81fe.csv.gz",
+      "sha256": "57034470025cab18070ce5c49234800342a6a6af30849bae6b4bc2bd6edc2b0f",
+      "rows": 100000,
+      "requested_period_min": "2017-06-30",
+      "requested_period_max": "2017-06-30",
+      "filing_date_min": "20170413",
+      "filing_date_max": "20230118",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 944,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_H1_OFS_944bbee8632861c4.csv.gz",
+      "sha256": "1edddf2cd597ed009720fdfe3ee1d609b2330683e76f78537e397577727a5b38",
+      "rows": 18837,
+      "requested_period_min": "2017-06-30",
+      "requested_period_max": "2017-06-30",
+      "filing_date_min": "20170807",
+      "filing_date_max": "20201231",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 199,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_H1_OFS_f6330998fdc26fd4.csv.gz",
+      "sha256": "e5816d7d931cf607753501169efd92ece21102dd6ab1f5eb46aa675c2ae79715",
+      "rows": 81120,
+      "requested_period_min": "2017-06-30",
+      "requested_period_max": "2017-06-30",
+      "filing_date_min": "20170515",
+      "filing_date_max": "20230228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 717,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_Q1_CFS_63ad2d10e4b4252f.csv.gz",
+      "sha256": "79568abe3ddb04d323559eece17e22e77e0954dbe3170d9b24a8fbfaaad30c27",
+      "rows": 53857,
+      "requested_period_min": "2017-03-31",
+      "requested_period_max": "2017-03-31",
+      "filing_date_min": "20170425",
+      "filing_date_max": "20190712",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 418,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_Q1_CFS_7c4f1cf1cfc54784.csv.gz",
+      "sha256": "3e3e9e200c2ed6b09ba9d9d1c5e4bfa66b93bf7b94e67532a43efa404d0f72d7",
+      "rows": 100000,
+      "requested_period_min": "2017-03-31",
+      "requested_period_max": "2017-03-31",
+      "filing_date_min": "20170418",
+      "filing_date_max": "20230118",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 711,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_Q1_CFS_b993953b84283a48.csv.gz",
+      "sha256": "ee260a04e8dc9db8c29c5c4eec97c3ca060776e41495f0ab30f40d360d9415e3",
+      "rows": 37987,
+      "requested_period_min": "2017-03-31",
+      "requested_period_max": "2017-03-31",
+      "filing_date_min": "20170420",
+      "filing_date_max": "20201231",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 315,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_Q1_OFS_35a87be31255f785.csv.gz",
+      "sha256": "bb887fc2e129224a71dec5897727b1db0fe812daa8f3bdbc274d41ff4464c28c",
+      "rows": 9473,
+      "requested_period_min": "2017-03-31",
+      "requested_period_max": "2017-03-31",
+      "filing_date_min": "20170502",
+      "filing_date_max": "20170704",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 97,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_Q1_OFS_a41355ee11878239.csv.gz",
+      "sha256": "e34e2a3c99861ac934f770969efe7b2fb000783e2dfddb1c5c2c3962401a12a7",
+      "rows": 100000,
+      "requested_period_min": "2017-03-31",
+      "requested_period_max": "2017-03-31",
+      "filing_date_min": "20170414",
+      "filing_date_max": "20220211",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 828,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_Q1_OFS_a8a0069b55a20b08.csv.gz",
+      "sha256": "20c3ff2b59b4c89dee7f8122ae54b53af7588cb9a465b03cc98340d545b9ffcd",
+      "rows": 100000,
+      "requested_period_min": "2017-03-31",
+      "requested_period_max": "2017-03-31",
+      "filing_date_min": "20170420",
+      "filing_date_max": "20230118",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 896,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_Q3_CFS_3fc06ca764574932.csv.gz",
+      "sha256": "26fb6d2951903ceb68816a8ab1d3c820241fa7a7ee3309335e21c53ca3c330f9",
+      "rows": 100000,
+      "requested_period_min": "2017-09-30",
+      "requested_period_max": "2017-09-30",
+      "filing_date_min": "20170515",
+      "filing_date_max": "20230118",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 741,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_Q3_CFS_bed5778e57ebcce5.csv.gz",
+      "sha256": "f92d46d70414b28a70f9f05264ac7d6a822de4731f44c75dfe019608586aeeda",
+      "rows": 43356,
+      "requested_period_min": "2017-09-30",
+      "requested_period_max": "2017-09-30",
+      "filing_date_min": "20170515",
+      "filing_date_max": "20201231",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 367,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_Q3_CFS_f4092f3020003997.csv.gz",
+      "sha256": "d711de0c6e869129a4902f9a7837ce9db55bce1f906ae51e0f2db08ef2baacc3",
+      "rows": 49541,
+      "requested_period_min": "2017-09-30",
+      "requested_period_max": "2017-09-30",
+      "filing_date_min": "20170515",
+      "filing_date_max": "20210709",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 399,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_Q3_OFS_320361cecf84e85f.csv.gz",
+      "sha256": "84e9e6f7a27aa60fbd20d2fab4bfa2c13a112a3cce6da30e9b841b427bc5322f",
+      "rows": 100000,
+      "requested_period_min": "2017-09-30",
+      "requested_period_max": "2017-09-30",
+      "filing_date_min": "20170515",
+      "filing_date_max": "20220818",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 860,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_Q3_OFS_56849a31db523d49.csv.gz",
+      "sha256": "2976f480c8cd59a04bbf5c777ed8cca3b9598d8895acbd915cab5c2aac2b1ff2",
+      "rows": 9806,
+      "requested_period_min": "2017-09-30",
+      "requested_period_max": "2017-09-30",
+      "filing_date_min": "20171110",
+      "filing_date_max": "20180312",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 96,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2017_Q3_OFS_625f3b6b0f9b7276.csv.gz",
+      "sha256": "f7c6eaadeeb00026b6f6325c7b3c4bbeb7fcb6fd854d845b918a0c9bcff78499",
+      "rows": 100000,
+      "requested_period_min": "2017-09-30",
+      "requested_period_max": "2017-09-30",
+      "filing_date_min": "20170515",
+      "filing_date_max": "20230118",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 926,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_FY_CFS_18d785617002a4ac.csv.gz",
+      "sha256": "3b0a4455fd277e97d515ad2c2d9c73cb899a8e3a4cde9afe11ede0ed5dc489b9",
+      "rows": 24381,
+      "requested_period_min": "2018-12-31",
+      "requested_period_max": "2018-12-31",
+      "filing_date_min": "20190327",
+      "filing_date_max": "20230630",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 199,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_FY_CFS_a23f313ee8ae38d0.csv.gz",
+      "sha256": "c4d9292c5f14fbf5ba83a7d6f0c71ee5ade405d5fdbb679a96831941845cb200",
+      "rows": 100000,
+      "requested_period_min": "2018-12-31",
+      "requested_period_max": "2018-12-31",
+      "filing_date_min": "20180628",
+      "filing_date_max": "20260429",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 736,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_FY_CFS_bd4dafc49297d58d.csv.gz",
+      "sha256": "028e10e3a147a994202331d53bc9a095ef36f4378d7971789a9b7875756bb9c4",
+      "rows": 2102,
+      "requested_period_min": "2018-12-31",
+      "requested_period_max": "2018-12-31",
+      "filing_date_min": "20181025",
+      "filing_date_max": "20210517",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 19,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_FY_CFS_dc4cae0a6fd47432.csv.gz",
+      "sha256": "3f285c18140b5b0a5a493516f0d269f8eeee7cfe9589f878f0e7e679c5e9e819",
+      "rows": 100000,
+      "requested_period_min": "2018-12-31",
+      "requested_period_max": "2018-12-31",
+      "filing_date_min": "20180628",
+      "filing_date_max": "20250205",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 684,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_FY_OFS_52e9001e76fc1b30.csv.gz",
+      "sha256": "b05a291d7c325a2229f4425b063d93f794c0cbf1c68b1a0b0a910f4c39c55da5",
+      "rows": 100000,
+      "requested_period_min": "2018-12-31",
+      "requested_period_max": "2018-12-31",
+      "filing_date_min": "20180628",
+      "filing_date_max": "20250205",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 800,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_FY_OFS_8edaec4161078e17.csv.gz",
+      "sha256": "560c2ed28feb3c206ee4904f0c22cb0306db1e1ee278368cde8c7823d4ddd826",
+      "rows": 100000,
+      "requested_period_min": "2018-12-31",
+      "requested_period_max": "2018-12-31",
+      "filing_date_min": "20180628",
+      "filing_date_max": "20250530",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 835,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_FY_OFS_d530774fc470a520.csv.gz",
+      "sha256": "545fd901e291ea8b2cf6f72dc1f098a78a9fc15534266ba80e176d27bb98d67d",
+      "rows": 42754,
+      "requested_period_min": "2018-12-31",
+      "requested_period_max": "2018-12-31",
+      "filing_date_min": "20180628",
+      "filing_date_max": "20260429",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 389,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_H1_CFS_4426d27aafa94a76.csv.gz",
+      "sha256": "04fddfb8c497b54d7f612025f69bd6105f14a40d75c0443e2069baef8dac0144",
+      "rows": 97839,
+      "requested_period_min": "2018-06-30",
+      "requested_period_max": "2018-06-30",
+      "filing_date_min": "20180807",
+      "filing_date_max": "20221111",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 818,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_H1_CFS_98d57e3beaea9541.csv.gz",
+      "sha256": "0675d10389e5d2fc3b7635a2081fc95c72e6ac2144d72a5880cfb96e3c831df5",
+      "rows": 100000,
+      "requested_period_min": "2018-06-30",
+      "requested_period_max": "2018-06-30",
+      "filing_date_min": "20180803",
+      "filing_date_max": "20230228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 758,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_H1_OFS_2dea0be8fcffa959.csv.gz",
+      "sha256": "3c53cdca943bcafff09f7fe1fa03b342991dc92b84d190101eaf2b78778f1914",
+      "rows": 80766,
+      "requested_period_min": "2018-06-30",
+      "requested_period_max": "2018-06-30",
+      "filing_date_min": "20180807",
+      "filing_date_max": "20221111",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 778,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_H1_OFS_6b58da9d25b8bd7c.csv.gz",
+      "sha256": "11b772328d24ce1afcaea1ebf31ff2782f6c5ef84d501effcae67fc42a08b7d7",
+      "rows": 100000,
+      "requested_period_min": "2018-06-30",
+      "requested_period_max": "2018-06-30",
+      "filing_date_min": "20180803",
+      "filing_date_max": "20230228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 891,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_H1_OFS_de89f7bbdfd91de6.csv.gz",
+      "sha256": "e1f0f624d342b0ddc81d26c906b1756b7e5cba72019bec195eb816446e0ba3aa",
+      "rows": 29799,
+      "requested_period_min": "2018-06-30",
+      "requested_period_max": "2018-06-30",
+      "filing_date_min": "20180713",
+      "filing_date_max": "20210831",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 267,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_Q1_CFS_51f7443be2b737e6.csv.gz",
+      "sha256": "8fdb56c42a83b6906c8fd0a660451f4ca23f9c7025a2f96f30422de0c0bc02b4",
+      "rows": 22136,
+      "requested_period_min": "2018-03-31",
+      "requested_period_max": "2018-03-31",
+      "filing_date_min": "20180508",
+      "filing_date_max": "20191108",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 187,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_Q1_CFS_60777fba35e6921c.csv.gz",
+      "sha256": "d6ccbdb73a3f99637cb679572225dd2b5bc3cb349cc3141320d6196fbe5e0579",
+      "rows": 67105,
+      "requested_period_min": "2018-03-31",
+      "requested_period_max": "2018-03-31",
+      "filing_date_min": "20180430",
+      "filing_date_max": "20210924",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 582,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_Q1_CFS_eae323f0390236d9.csv.gz",
+      "sha256": "dfec7218637cdb5298ab1fbba014e24ff9f2ab500c8f579ef721f63a4cefa55a",
+      "rows": 100000,
+      "requested_period_min": "2018-03-31",
+      "requested_period_max": "2018-03-31",
+      "filing_date_min": "20180430",
+      "filing_date_max": "20230228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 787,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_Q1_OFS_d88051797f140261.csv.gz",
+      "sha256": "c85f75f7f9ccf5cf3e41c5f082e913e92ddcdf954f5bd795ed1a852119fdcf0b",
+      "rows": 100000,
+      "requested_period_min": "2018-03-31",
+      "requested_period_max": "2018-03-31",
+      "filing_date_min": "20180416",
+      "filing_date_max": "20230228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 919,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_Q1_OFS_ee695f8627952e9a.csv.gz",
+      "sha256": "67ebc6e246611d2d4f50c0a53e5f829fefeb1e7afef56f749a99ed11dfd21efc",
+      "rows": 15457,
+      "requested_period_min": "2018-03-31",
+      "requested_period_max": "2018-03-31",
+      "filing_date_min": "20180503",
+      "filing_date_max": "20191115",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 160,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_Q1_OFS_fcb5cd5e667414d5.csv.gz",
+      "sha256": "d9159755ffee246c4847dd062e0a69713d17f06e7cb55461299f8e252ecfa4de",
+      "rows": 86410,
+      "requested_period_min": "2018-03-31",
+      "requested_period_max": "2018-03-31",
+      "filing_date_min": "20180426",
+      "filing_date_max": "20210924",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 847,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_Q3_CFS_3af0cf763554510f.csv.gz",
+      "sha256": "4b2d9dd2c0d0b8d3bb793d95a1a3bd967d7c0d1aa72d64f2677fb3296a8bc01f",
+      "rows": 2039,
+      "requested_period_min": "2018-09-30",
+      "requested_period_max": "2018-09-30",
+      "filing_date_min": "20181106",
+      "filing_date_max": "20190715",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 16,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_Q3_CFS_3d45b6bb2dd6e938.csv.gz",
+      "sha256": "04a218baab24b961a7ac7086a347ca22d45adf47fa6ee22285aca6d99cf9d0f3",
+      "rows": 100000,
+      "requested_period_min": "2018-09-30",
+      "requested_period_max": "2018-09-30",
+      "filing_date_min": "20180713",
+      "filing_date_max": "20210608",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 819,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_Q3_CFS_96b8e80256a906c2.csv.gz",
+      "sha256": "d9e8943abb5940c10fa4c4cfed3dcd96408be184611dd5528d370e0729708ae0",
+      "rows": 100000,
+      "requested_period_min": "2018-09-30",
+      "requested_period_max": "2018-09-30",
+      "filing_date_min": "20180814",
+      "filing_date_max": "20230228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 741,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_Q3_CFS_f93aed1bf1e89a61.csv.gz",
+      "sha256": "30bb697a29f427f506d10686f63b9abf6d40e75f1b72c682ed4b9a09d5b3482b",
+      "rows": 1420,
+      "requested_period_min": "2018-09-30",
+      "requested_period_max": "2018-09-30",
+      "filing_date_min": "20181114",
+      "filing_date_max": "20190711",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 14,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_Q3_OFS_28b0c087637d2a68.csv.gz",
+      "sha256": "2a7b44daf7ecf56405d846c1085d08ca23b366e4cc01e7b6b1cd0598637bc251",
+      "rows": 100000,
+      "requested_period_min": "2018-09-30",
+      "requested_period_max": "2018-09-30",
+      "filing_date_min": "20180814",
+      "filing_date_max": "20230228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 867,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_Q3_OFS_665f56153d9949da.csv.gz",
+      "sha256": "42275372000e085c62b59ab55a8b3b6e0167eb1ea7fe0f5c9a60de687c45fa6d",
+      "rows": 42230,
+      "requested_period_min": "2018-09-30",
+      "requested_period_max": "2018-09-30",
+      "filing_date_min": "20180814",
+      "filing_date_max": "20210608",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 410,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2018_Q3_OFS_6d30e745b298b76b.csv.gz",
+      "sha256": "0a3afe84ffa2ab3021134e45ee8ddf96ddcf7a38259cfa64e0f7dacbd386c8cd",
+      "rows": 73820,
+      "requested_period_min": "2018-09-30",
+      "requested_period_max": "2018-09-30",
+      "filing_date_min": "20180713",
+      "filing_date_max": "20230118",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 676,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_FY_CFS_3ecc706ad7ba6e21.csv.gz",
+      "sha256": "44977e048d3980c562fa2e126d298beb748888002c4c917799a5b5b267a592e6",
+      "rows": 24212,
+      "requested_period_min": "2019-12-31",
+      "requested_period_max": "2019-12-31",
+      "filing_date_min": "20191216",
+      "filing_date_max": "20260429",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 190,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_FY_CFS_68adf0f319460d0c.csv.gz",
+      "sha256": "2d0a46074031864db9410b04af8ebb7d553a3533443e179a9a0ca6c7e7ad447f",
+      "rows": 13783,
+      "requested_period_min": "2019-12-31",
+      "requested_period_max": "2019-12-31",
+      "filing_date_min": "20190624",
+      "filing_date_max": "20221202",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 117,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_FY_CFS_7ec60103534e6e2c.csv.gz",
+      "sha256": "124ca8122fa135c25ee0864fe23a6ce726ed16057e42f35e8c079600bed701d2",
+      "rows": 100000,
+      "requested_period_min": "2019-12-31",
+      "requested_period_max": "2019-12-31",
+      "filing_date_min": "20190701",
+      "filing_date_max": "20250310",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 724,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_FY_CFS_d68c3aee7fae6c67.csv.gz",
+      "sha256": "734e312700ce342e80fa466172cd04695d63a738165d3f1609c0725ba77815dd",
+      "rows": 100000,
+      "requested_period_min": "2019-12-31",
+      "requested_period_max": "2019-12-31",
+      "filing_date_min": "20190628",
+      "filing_date_max": "20260911",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 670,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_FY_OFS_3913e1026fd12d1a.csv.gz",
+      "sha256": "edd59ef08e8655282dfe8ed2027d14d1afe93c01dc6820d3775ea553b2223d73",
+      "rows": 494,
+      "requested_period_min": "2019-12-31",
+      "requested_period_max": "2019-12-31",
+      "filing_date_min": "20200228",
+      "filing_date_max": "20240731",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 72,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_FY_OFS_eb0aba954088c8d8.csv.gz",
+      "sha256": "60fd80f9f5a9122db26bc96959c8fd8f7230a94abc5f8f5b961fbaa3eb25f128",
+      "rows": 2459,
+      "requested_period_min": "2019-12-31",
+      "requested_period_max": "2019-12-31",
+      "filing_date_min": "20190628",
+      "filing_date_max": "20230831",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 331,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_H1_CFS_8c92a13ea6fcf9ce.csv.gz",
+      "sha256": "3ed6d9240a464d9c7a073e48aae48b003c33d8a18c712cb429001d22379ca9f3",
+      "rows": 37039,
+      "requested_period_min": "2019-06-30",
+      "requested_period_max": "2019-06-30",
+      "filing_date_min": "20190515",
+      "filing_date_max": "20210608",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 330,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_H1_CFS_8daf4cdc9f2868f9.csv.gz",
+      "sha256": "5350b953dc4c5e865e2d42a69b668b11d9f84407b15b694b0a9e3e19d948e4f5",
+      "rows": 67757,
+      "requested_period_min": "2019-06-30",
+      "requested_period_max": "2019-06-30",
+      "filing_date_min": "20190412",
+      "filing_date_max": "20250530",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 552,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_H1_CFS_a7582d6553f13976.csv.gz",
+      "sha256": "241ec2f141dcead744337de74848aa8359a1908b7575afdb99546491fbb72432",
+      "rows": 100000,
+      "requested_period_min": "2019-06-30",
+      "requested_period_max": "2019-06-30",
+      "filing_date_min": "20190515",
+      "filing_date_max": "20230228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 756,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_H1_OFS_06c3a91b33f291e2.csv.gz",
+      "sha256": "8f765fb164494965c8482b1151330e14ba7d9ff321298b743d01fd9a59e46c43",
+      "rows": 100000,
+      "requested_period_min": "2019-06-30",
+      "requested_period_max": "2019-06-30",
+      "filing_date_min": "20190315",
+      "filing_date_max": "20250530",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 949,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_H1_OFS_3479306132e703e6.csv.gz",
+      "sha256": "52a85ec3835f3bc3eb784ecd3cecaf26ae5815eb6f0be59d1bb83bea8d23f2c6",
+      "rows": 910,
+      "requested_period_min": "2019-06-30",
+      "requested_period_max": "2019-06-30",
+      "filing_date_min": "20190812",
+      "filing_date_max": "20191029",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 10,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_H1_OFS_bb01a77dd97bff66.csv.gz",
+      "sha256": "290ef4d7e1ea2c3ce415335c8ad0e1d0ba59a7d31200d80249a8d5b6698ffac8",
+      "rows": 100000,
+      "requested_period_min": "2019-06-30",
+      "requested_period_max": "2019-06-30",
+      "filing_date_min": "20190515",
+      "filing_date_max": "20230228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 886,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_H1_OFS_e4c938ea50a4e8da.csv.gz",
+      "sha256": "845606d8f9fbe423c449127a51497f9bb8a5202a5e44fed89bb777e217410fef",
+      "rows": 15628,
+      "requested_period_min": "2019-06-30",
+      "requested_period_max": "2019-06-30",
+      "filing_date_min": "20190809",
+      "filing_date_max": "20240731",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 162,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_Q1_CFS_55e1386abd19e2fb.csv.gz",
+      "sha256": "4d650cbc1405eecb42eaca803e8cad332a51c2fb7cb9c0d00ae40b2e7f57e421",
+      "rows": 43860,
+      "requested_period_min": "2019-03-31",
+      "requested_period_max": "2019-03-31",
+      "filing_date_min": "20190430",
+      "filing_date_max": "20210831",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 345,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_Q1_CFS_b899ff3c053cc655.csv.gz",
+      "sha256": "c2f6747a5719e86eaf20db8df8f5f0bdee335ee82749110f1d7b28fd969889d1",
+      "rows": 52062,
+      "requested_period_min": "2019-03-31",
+      "requested_period_max": "2019-03-31",
+      "filing_date_min": "20190502",
+      "filing_date_max": "20210608",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 469,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_Q1_CFS_c7261421cf3860c2.csv.gz",
+      "sha256": "2de0175fd8d60aefcfaa3b290c479f5f6f76b5283c9c1a1f13a9159af0574971",
+      "rows": 100000,
+      "requested_period_min": "2019-03-31",
+      "requested_period_max": "2019-03-31",
+      "filing_date_min": "20190430",
+      "filing_date_max": "20251218",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 813,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_Q1_OFS_98364b634ad0d040.csv.gz",
+      "sha256": "eed63c139333302d91c9c179fb0a1e7c9a7534ef85a445f1145e85b3524eb5f8",
+      "rows": 97850,
+      "requested_period_min": "2019-03-31",
+      "requested_period_max": "2019-03-31",
+      "filing_date_min": "20190502",
+      "filing_date_max": "20250530",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 984,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_Q1_OFS_ce5cbedbe4e70626.csv.gz",
+      "sha256": "5ea49da81cce43c3a1d976ddd34e19f49ef6300096a1ec4f433ba523d8f0dcce",
+      "rows": 100000,
+      "requested_period_min": "2019-03-31",
+      "requested_period_max": "2019-03-31",
+      "filing_date_min": "20190415",
+      "filing_date_max": "20251218",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 928,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_Q1_OFS_e6469e71a7ac2b7a.csv.gz",
+      "sha256": "25667102ca9b3f2bb14c3075e4207255684ecd0683971e49f5ed9669f3494005",
+      "rows": 8909,
+      "requested_period_min": "2019-03-31",
+      "requested_period_max": "2019-03-31",
+      "filing_date_min": "20190510",
+      "filing_date_max": "20200217",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 85,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_Q3_CFS_7f14fbd204ae418b.csv.gz",
+      "sha256": "c5a34c18927996ac20a3277115b60e70c2eb7b7018f5cac1dd1086514eba9f3d",
+      "rows": 12906,
+      "requested_period_min": "2019-09-30",
+      "requested_period_max": "2019-09-30",
+      "filing_date_min": "20190521",
+      "filing_date_max": "20200327",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 118,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_Q3_CFS_c7082436accf076c.csv.gz",
+      "sha256": "f4606bc8e5ee6780771819a9564f6fd8d893c0d06c7dad49cae9c496def6b601",
+      "rows": 100000,
+      "requested_period_min": "2019-09-30",
+      "requested_period_max": "2019-09-30",
+      "filing_date_min": "20190513",
+      "filing_date_max": "20250530",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 810,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_Q3_CFS_e342bce4c0889fb1.csv.gz",
+      "sha256": "4f101a8d9d5a7e33d9d6d9206bb28ee414a646365b06695f7209064084c24d89",
+      "rows": 100000,
+      "requested_period_min": "2019-09-30",
+      "requested_period_max": "2019-09-30",
+      "filing_date_min": "20190515",
+      "filing_date_max": "20230228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 742,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_Q3_OFS_7acd143d8963afe1.csv.gz",
+      "sha256": "2d42c5908d438d91be956a780c42c351f08cc1a390a9fe678592de5f761eaff3",
+      "rows": 23875,
+      "requested_period_min": "2019-09-30",
+      "requested_period_max": "2019-09-30",
+      "filing_date_min": "20190723",
+      "filing_date_max": "20240731",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 240,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_Q3_OFS_b9db430476682654.csv.gz",
+      "sha256": "12af16c6845c5f1da4c4c14db7cfc65253b33007997af117dc90edff67dbf4d0",
+      "rows": 100000,
+      "requested_period_min": "2019-09-30",
+      "requested_period_max": "2019-09-30",
+      "filing_date_min": "20190515",
+      "filing_date_max": "20230228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 868,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2019_Q3_OFS_c3f79ac82fc13078.csv.gz",
+      "sha256": "68eeef14e18233e4ff5943b47021d2f6efe8ba06d5c6569aa9d8a63f65db0600",
+      "rows": 100000,
+      "requested_period_min": "2019-09-30",
+      "requested_period_max": "2019-09-30",
+      "filing_date_min": "20190513",
+      "filing_date_max": "20250530",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 922,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_FY_CFS_0e3049c20bed20cd.csv.gz",
+      "sha256": "5d30b524bbc7a1a5b6a360e18b4561591b09cbb6c6d5ffdd6c196fa319e5a972",
+      "rows": 4075,
+      "requested_period_min": "2020-12-31",
+      "requested_period_max": "2020-12-31",
+      "filing_date_min": "20200626",
+      "filing_date_max": "20250929",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 404,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_FY_CFS_3c4e96a779e835a3.csv.gz",
+      "sha256": "b1dea81dffe22ab29fba55a55fbf308ea9e4006c756205fbb30f7767200dddd1",
+      "rows": 2145,
+      "requested_period_min": "2020-12-31",
+      "requested_period_max": "2020-12-31",
+      "filing_date_min": "20200928",
+      "filing_date_max": "20240105",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 227,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_FY_CFS_58b3cfeaed009e67.csv.gz",
+      "sha256": "25b2ebfb9bc54026644d34625aff6ef1fc4ff6f3d1824e6f33f5b00fc6ca2981",
+      "rows": 187,
+      "requested_period_min": "2020-12-31",
+      "requested_period_max": "2020-12-31",
+      "filing_date_min": "20200622",
+      "filing_date_max": "20210720",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 20,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_FY_CFS_7776a320f889c566.csv.gz",
+      "sha256": "3d00a4590a72c22d12cfc9e0c53bc88f3f391f83ea7600115604f31eed3bd6b9",
+      "rows": 4136,
+      "requested_period_min": "2020-12-31",
+      "requested_period_max": "2020-12-31",
+      "filing_date_min": "20200629",
+      "filing_date_max": "20260402",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 397,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_FY_CFS_7ddcabff22540225.csv.gz",
+      "sha256": "a9a26236acd28b8f3f849880d0d782cea4db37f3499486f36dac869ff3ff6740",
+      "rows": 3357,
+      "requested_period_min": "2020-12-31",
+      "requested_period_max": "2020-12-31",
+      "filing_date_min": "20200928",
+      "filing_date_max": "20260429",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 337,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_FY_CFS_a2a3188331578c80.csv.gz",
+      "sha256": "d7c683eef6021cd726e1ff927e40bc8dcb872f813988af4665b2d690b4309a19",
+      "rows": 4130,
+      "requested_period_min": "2020-12-31",
+      "requested_period_max": "2020-12-31",
+      "filing_date_min": "20200626",
+      "filing_date_max": "20260113",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 400,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_FY_OFS_08ea5edddff149e0.csv.gz",
+      "sha256": "e7ebfb66d12408ab3632553c608a772b65e37e904859fc3f151d8c388298a0d1",
+      "rows": 2458,
+      "requested_period_min": "2020-12-31",
+      "requested_period_max": "2020-12-31",
+      "filing_date_min": "20200629",
+      "filing_date_max": "20230228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 332,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_FY_OFS_52640fe5dfb851be.csv.gz",
+      "sha256": "7fce41f564f08e85f701c9855f0689c54dcf69c6207228e1acf3a27303af8b1b",
+      "rows": 535,
+      "requested_period_min": "2020-12-31",
+      "requested_period_max": "2020-12-31",
+      "filing_date_min": "20201130",
+      "filing_date_max": "20220831",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 80,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_H1_CFS_3db21a1f4efb0804.csv.gz",
+      "sha256": "397f03e528cc99376809003707ad347127f3f2110e8e4ff22853b004eef50919",
+      "rows": 49723,
+      "requested_period_min": "2020-06-30",
+      "requested_period_max": "2020-06-30",
+      "filing_date_min": "20200413",
+      "filing_date_max": "20221111",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 410,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_H1_CFS_65ed944a35e9ca26.csv.gz",
+      "sha256": "7278a37a3d9dd978a5e87e1be2ac7ce53e0148ab6f97350070920ba4ba5628ef",
+      "rows": 1883,
+      "requested_period_min": "2020-06-30",
+      "requested_period_max": "2020-06-30",
+      "filing_date_min": "20200807",
+      "filing_date_max": "20211228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 198,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_H1_CFS_a082b47d99f08491.csv.gz",
+      "sha256": "5d545ffc5a382b9a976a665e44c2804e241d91d4db35e5a393952eb046e7d011",
+      "rows": 100000,
+      "requested_period_min": "2020-06-30",
+      "requested_period_max": "2020-06-30",
+      "filing_date_min": "20200515",
+      "filing_date_max": "20231116",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 762,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_H1_CFS_b6eddfd8e32cfdf9.csv.gz",
+      "sha256": "bf3afdcded974b4c514e223c09b0ceb9e16fd7123a863a2d288ae4ccec42fe55",
+      "rows": 3379,
+      "requested_period_min": "2020-06-30",
+      "requested_period_max": "2020-06-30",
+      "filing_date_min": "20200515",
+      "filing_date_max": "20210618",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 346,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_H1_CFS_ce44cc1dcf6eef54.csv.gz",
+      "sha256": "41eef0db2274821f177e4630207b148d8d2219a51affe93c594f951aa23e8006",
+      "rows": 24,
+      "requested_period_min": "2020-06-30",
+      "requested_period_max": "2020-06-30",
+      "filing_date_min": "20200330",
+      "filing_date_max": "20201030",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 3,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_H1_OFS_360ff932a1be8b4e.csv.gz",
+      "sha256": "f94c3c03add675c978dffa3a8f76bd8cf9803669cdebbdc4a06c89c80292eb68",
+      "rows": 2294,
+      "requested_period_min": "2020-06-30",
+      "requested_period_max": "2020-06-30",
+      "filing_date_min": "20200715",
+      "filing_date_max": "20220818",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 315,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_H1_OFS_b270ad7ac27c06b7.csv.gz",
+      "sha256": "822d613375c208442d940c396d272715ff11dac9115157067494fd7ee2f22ebc",
+      "rows": 424,
+      "requested_period_min": "2020-06-30",
+      "requested_period_max": "2020-06-30",
+      "filing_date_min": "20200807",
+      "filing_date_max": "20210721",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 64,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_Q1_CFS_4f24e9983e7e168d.csv.gz",
+      "sha256": "d9b8eccc82928c86555ebe016c8f2451e0271f672c9218c60a8badd97f5f081e",
+      "rows": 3906,
+      "requested_period_min": "2020-03-31",
+      "requested_period_max": "2020-03-31",
+      "filing_date_min": "20200514",
+      "filing_date_max": "20201224",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 39,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_Q1_CFS_9c187f4a189bdf98.csv.gz",
+      "sha256": "23fe1d266b51b76024d69dc2e695ded3e35d00e320a76a659703aadcc860c4fe",
+      "rows": 100000,
+      "requested_period_min": "2020-03-31",
+      "requested_period_max": "2020-03-31",
+      "filing_date_min": "20200427",
+      "filing_date_max": "20211228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 875,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_Q1_CFS_d33500806e39dca3.csv.gz",
+      "sha256": "d973b8920e32d0cfd6dd089e52317a96b7b9656ba323b80dce11151355ab141a",
+      "rows": 100000,
+      "requested_period_min": "2020-03-31",
+      "requested_period_max": "2020-03-31",
+      "filing_date_min": "20200427",
+      "filing_date_max": "20231116",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 791,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_Q1_OFS_9185b28ca4dc35a6.csv.gz",
+      "sha256": "13bef104d3a58d029c5aacbe83f9da56132b3b1e9abd9c24bb89b9f9adbeca03",
+      "rows": 1466,
+      "requested_period_min": "2020-03-31",
+      "requested_period_max": "2020-03-31",
+      "filing_date_min": "20200414",
+      "filing_date_max": "20220818",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 198,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_Q1_OFS_b2713a12950c57c7.csv.gz",
+      "sha256": "1af5a5957e547a25f48906e80576651963ce890478b5332e607a00dca4f60efe",
+      "rows": 1320,
+      "requested_period_min": "2020-03-31",
+      "requested_period_max": "2020-03-31",
+      "filing_date_min": "20200507",
+      "filing_date_max": "20210405",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 188,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_Q3_CFS_0e0ba13a2c36cc25.csv.gz",
+      "sha256": "9d50679e4ffa01c9ee21be0cf03a71896c00410da3ea712a030f72bce997ae1c",
+      "rows": 783,
+      "requested_period_min": "2020-09-30",
+      "requested_period_max": "2020-09-30",
+      "filing_date_min": "20200601",
+      "filing_date_max": "20210210",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 84,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_Q3_CFS_3fbc6a03bcf48ca8.csv.gz",
+      "sha256": "5d254ce017d054653726ebe5db178ad1b6d142e00cf1a7c444ab00e7d110ea6b",
+      "rows": 1757,
+      "requested_period_min": "2020-09-30",
+      "requested_period_max": "2020-09-30",
+      "filing_date_min": "20200515",
+      "filing_date_max": "20210416",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 169,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_Q3_CFS_452725e01a38e5a3.csv.gz",
+      "sha256": "04201cb38660fc5bcb9017d44d8e024b370b33926f479b381aee7926597b4970",
+      "rows": 3846,
+      "requested_period_min": "2020-09-30",
+      "requested_period_max": "2020-09-30",
+      "filing_date_min": "20200515",
+      "filing_date_max": "20221214",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 387,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_Q3_CFS_b069d50bdfed83b9.csv.gz",
+      "sha256": "cdf374def6b2a5ecc89fb27d5d560674ff08ba1b7126036179b7d15e04758604",
+      "rows": 4182,
+      "requested_period_min": "2020-09-30",
+      "requested_period_max": "2020-09-30",
+      "filing_date_min": "20200515",
+      "filing_date_max": "20240516",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 415,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_Q3_CFS_b898e4e18eac6957.csv.gz",
+      "sha256": "32a621a4e043828b4f735d8db5f5186b05c2d50bfa077082dd7ef8307c1517d7",
+      "rows": 3967,
+      "requested_period_min": "2020-09-30",
+      "requested_period_max": "2020-09-30",
+      "filing_date_min": "20200515",
+      "filing_date_max": "20231116",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 385,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_Q3_CFS_fa4675c69ee204d9.csv.gz",
+      "sha256": "23490ef1af3d88dc1cd31d1008e60db1632dcec63fb5ea76ac99d69a49744b00",
+      "rows": 2814,
+      "requested_period_min": "2020-09-30",
+      "requested_period_max": "2020-09-30",
+      "filing_date_min": "20200514",
+      "filing_date_max": "20211228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 295,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_Q3_OFS_d8301834845f7633.csv.gz",
+      "sha256": "01abecd4b709deae07d0427983afb715ef62d296f35d838b2dc195855b37d1f8",
+      "rows": 1673,
+      "requested_period_min": "2020-09-30",
+      "requested_period_max": "2020-09-30",
+      "filing_date_min": "20200515",
+      "filing_date_max": "20220818",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 228,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2020_Q3_OFS_d9340255c6a4bc16.csv.gz",
+      "sha256": "7c2f4db2b7cb79a14cfd76b1c2c397318bcd5eec615424d00699b851dc405bed",
+      "rows": 1079,
+      "requested_period_min": "2020-09-30",
+      "requested_period_max": "2020-09-30",
+      "filing_date_min": "20201015",
+      "filing_date_max": "20210721",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 156,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "OFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_FY_CFS_0b414334821ffd4b.csv.gz",
+      "sha256": "20a6966b8c0bf1b83babcb0dfd348ccf9ee521c0ed5bc7e1da0f02dd07cac314",
+      "rows": 100000,
+      "requested_period_min": "2021-12-31",
+      "requested_period_max": "2021-12-31",
+      "filing_date_min": "20210610",
+      "filing_date_max": "20260324",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 738,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_FY_CFS_4175ce8f2ddcc0d1.csv.gz",
+      "sha256": "19f3bfe7ddffffb8e0870df05c3a70a370dd73beefd35e2135bb9666f9680811",
+      "rows": 50972,
+      "requested_period_min": "2021-12-31",
+      "requested_period_max": "2021-12-31",
+      "filing_date_min": "20210528",
+      "filing_date_max": "20260429",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 418,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_FY_CFS_afa6051d0b35eb4c.csv.gz",
+      "sha256": "f35618471e63bb7a3e3e6629d15c1ea698bd8f94848d878f67c1a3120c4d31a3",
+      "rows": 100000,
+      "requested_period_min": "2021-12-31",
+      "requested_period_max": "2021-12-31",
+      "filing_date_min": "20210617",
+      "filing_date_max": "20260625",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 689,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_H1_CFS_030b3dbb3265f417.csv.gz",
+      "sha256": "a141a66b562f47719af2d85b03d85de0c54f92f3e3c8001c2ad98e5cbb351b88",
+      "rows": 4049,
+      "requested_period_min": "2021-06-30",
+      "requested_period_max": "2021-06-30",
+      "filing_date_min": "20210514",
+      "filing_date_max": "20240610",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 398,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_H1_CFS_8d383e03c1427106.csv.gz",
+      "sha256": "b8929e42ed5162b3f9dbf6145dee557f0f31410460dd38d27b63c8604b3bc2c2",
+      "rows": 6494,
+      "requested_period_min": "2021-06-30",
+      "requested_period_max": "2021-06-30",
+      "filing_date_min": "20210330",
+      "filing_date_max": "20220302",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 62,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_H1_CFS_9515679000a1fc73.csv.gz",
+      "sha256": "0459173a9654f536fabbbb3f0d70373f5e2e9f6361597f1dec17bbb764903314",
+      "rows": 3335,
+      "requested_period_min": "2021-06-30",
+      "requested_period_max": "2021-06-30",
+      "filing_date_min": "20210517",
+      "filing_date_max": "20240712",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 339,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_H1_CFS_9e2068663cdae2b6.csv.gz",
+      "sha256": "67f4def2e5a41705e988f6cd0c571ab73008d71e2a2f4bdbdf04eb8e12f19e69",
+      "rows": 1742,
+      "requested_period_min": "2021-06-30",
+      "requested_period_max": "2021-06-30",
+      "filing_date_min": "20210809",
+      "filing_date_max": "20220603",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 186,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_H1_CFS_ed7039b76e8e1916.csv.gz",
+      "sha256": "2e9a3accad803cab32393f34e69e09ed6a312f92c36bcb6c8efbd016ecd4b543",
+      "rows": 4072,
+      "requested_period_min": "2021-06-30",
+      "requested_period_max": "2021-06-30",
+      "filing_date_min": "20210517",
+      "filing_date_max": "20220316",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 395,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_H1_CFS_fe5dc386df67e546.csv.gz",
+      "sha256": "167e096f8b358a268c03ffaacf63d6595a514fc389165a14ad4f3b7ce21be765",
+      "rows": 3967,
+      "requested_period_min": "2021-06-30",
+      "requested_period_max": "2021-06-30",
+      "filing_date_min": "20210414",
+      "filing_date_max": "20231020",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 401,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_Q1_CFS_2b2e42be00bf4fcd.csv.gz",
+      "sha256": "988b6ffc71e0d2ffa4a7f4e89cfb33cb838d31a518c65f34bd95c9f6d4ce65cf",
+      "rows": 100000,
+      "requested_period_min": "2021-03-31",
+      "requested_period_max": "2021-03-31",
+      "filing_date_min": "20210427",
+      "filing_date_max": "20240712",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 879,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_Q1_CFS_b4a8af6d3b3fe0e8.csv.gz",
+      "sha256": "703065090749d7959d97c15eeaed3f07cb842aa63b63454a77a0c1aabfdbf076",
+      "rows": 100000,
+      "requested_period_min": "2021-03-31",
+      "requested_period_max": "2021-03-31",
+      "filing_date_min": "20210429",
+      "filing_date_max": "20230228",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 797,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_Q1_CFS_c1a7714eaebce204.csv.gz",
+      "sha256": "1f462166515a86a431e153949bf1057dbe2e684e79fea93ed21db4fc6f609c7f",
+      "rows": 9590,
+      "requested_period_min": "2021-03-31",
+      "requested_period_max": "2021-03-31",
+      "filing_date_min": "20210507",
+      "filing_date_max": "20211216",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 94,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_Q3_CFS_422cb41fa4939b41.csv.gz",
+      "sha256": "da3d4e0ca069978a430e43a8372ce7c3d31a8fa8a091ff9e1b2fd178512af248",
+      "rows": 100000,
+      "requested_period_min": "2021-09-30",
+      "requested_period_max": "2021-09-30",
+      "filing_date_min": "20210517",
+      "filing_date_max": "20240610",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 745,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_Q3_CFS_5d499fc370c074e1.csv.gz",
+      "sha256": "304ae50acdc8f89b0570bc5ac4a50673136a735d49cb001a23e20a4490c3cbb0",
+      "rows": 46267,
+      "requested_period_min": "2021-09-30",
+      "requested_period_max": "2021-09-30",
+      "filing_date_min": "20210514",
+      "filing_date_max": "20220906",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 407,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2021_Q3_CFS_ca9ed3ec527a7a3b.csv.gz",
+      "sha256": "4aa9b0a35ae14c62281fffda7a34140a1c07166762fc5dd22e3a54e15f18a1b0",
+      "rows": 81495,
+      "requested_period_min": "2021-09-30",
+      "requested_period_max": "2021-09-30",
+      "filing_date_min": "20210513",
+      "filing_date_max": "20240712",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 653,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2022_FY_CFS_48245802becfce18.csv.gz",
+      "sha256": "214f8db3da8f8a1b9c1a88f024259bde0f9019b38b2a9e2ff9c410563b88d153",
+      "rows": 26246,
+      "requested_period_min": "2022-12-31",
+      "requested_period_max": "2022-12-31",
+      "filing_date_min": "20220530",
+      "filing_date_max": "20250529",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 223,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2022_FY_CFS_729160611edd231e.csv.gz",
+      "sha256": "7877eb1c398bb26ee60b3c526aa60d27c94584d171112a7cf6c24b276b9a63b8",
+      "rows": 32726,
+      "requested_period_min": "2022-12-31",
+      "requested_period_max": "2022-12-31",
+      "filing_date_min": "20220616",
+      "filing_date_max": "20260429",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 259,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2022_FY_CFS_776e240296dda632.csv.gz",
+      "sha256": "c1459d953eb32a588e8152b4d269d36025ff8b37317c006c0e19c375eef6b68f",
+      "rows": 100000,
+      "requested_period_min": "2022-12-31",
+      "requested_period_max": "2022-12-31",
+      "filing_date_min": "20220616",
+      "filing_date_max": "20260813",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 690,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2022_FY_CFS_d7dca91a8806302d.csv.gz",
+      "sha256": "a91d06c73634dffeac8b366e8a46a64acf3e3ca2fae52e3daf1a62bfc36ef081",
+      "rows": 100000,
+      "requested_period_min": "2022-12-31",
+      "requested_period_max": "2022-12-31",
+      "filing_date_min": "20220609",
+      "filing_date_max": "20260707",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 745,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2022_H1_CFS_c39fd8f5f94484a6.csv.gz",
+      "sha256": "9552b3f713c2bbc92d2eed36cf688be8a0e20d5a36b1491b00034835f1f090ea",
+      "rows": 27822,
+      "requested_period_min": "2022-06-30",
+      "requested_period_max": "2022-06-30",
+      "filing_date_min": "20220329",
+      "filing_date_max": "20240126",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 258,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2022_H1_CFS_c3ef1efa5c5bd4d5.csv.gz",
+      "sha256": "f650614b544aa159c3e48016b4bb5b8cebd6ff567b0ca2fc667ec8efcb576178",
+      "rows": 100000,
+      "requested_period_min": "2022-06-30",
+      "requested_period_max": "2022-06-30",
+      "filing_date_min": "20220414",
+      "filing_date_max": "20250109",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 839,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2022_H1_CFS_d06c3e772fa04cdd.csv.gz",
+      "sha256": "d14af78edca1557f402d58ab3184b484abcbeee39d6bdecd66f3962895a238c1",
+      "rows": 100000,
+      "requested_period_min": "2022-06-30",
+      "requested_period_max": "2022-06-30",
+      "filing_date_min": "20220516",
+      "filing_date_max": "20241209",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 766,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2022_Q1_CFS_0743bb5eb024763a.csv.gz",
+      "sha256": "56c047cbfcd39c086344b6f43a6848686121c16530d7dc250cc78a668f8f09d3",
+      "rows": 9005,
+      "requested_period_min": "2022-03-31",
+      "requested_period_max": "2022-03-31",
+      "filing_date_min": "20220506",
+      "filing_date_max": "20221129",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 89,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2022_Q1_CFS_871d4794f940e0be.csv.gz",
+      "sha256": "1e5893ca95d5b5987ec82027961bf763b50e5e3ae5838168ebea8c0f9b074dc6",
+      "rows": 100000,
+      "requested_period_min": "2022-03-31",
+      "requested_period_max": "2022-03-31",
+      "filing_date_min": "20220502",
+      "filing_date_max": "20241209",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 799,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2022_Q1_CFS_a002ed1103d44ff0.csv.gz",
+      "sha256": "d5b0ca8d012be73d2f415a43421815edcdd3a730ada0bbbe26107f02f10abef8",
+      "rows": 100000,
+      "requested_period_min": "2022-03-31",
+      "requested_period_max": "2022-03-31",
+      "filing_date_min": "20220427",
+      "filing_date_max": "20240712",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 890,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2022_Q1_CFS_fd6bf8159536f7d9.csv.gz",
+      "sha256": "dc72886bc1ae86440433cd1b06590a62c1bd6dda26f33e6eeb6c8fd7ff442738",
+      "rows": 6364,
+      "requested_period_min": "2022-03-31",
+      "requested_period_max": "2022-03-31",
+      "filing_date_min": "20220513",
+      "filing_date_max": "20220816",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 55,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2022_Q3_CFS_1fa9f4304d5b1740.csv.gz",
+      "sha256": "29df796253ff02a8b9ee0477980dcd8fbb66290ca28b6ed879329042e3de7f11",
+      "rows": 34584,
+      "requested_period_min": "2022-09-30",
+      "requested_period_max": "2022-09-30",
+      "filing_date_min": "20220516",
+      "filing_date_max": "20230322",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 251,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2022_Q3_CFS_3ff7da0263de5571.csv.gz",
+      "sha256": "e4bd46bc8e713e830266204f5114d719d54756d5250f3e00d60008c974c8ff5c",
+      "rows": 99447,
+      "requested_period_min": "2022-09-30",
+      "requested_period_max": "2022-09-30",
+      "filing_date_min": "20220512",
+      "filing_date_max": "20250109",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 845,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2022_Q3_CFS_96a07a5dd36246f4.csv.gz",
+      "sha256": "a10af9189565acbedc41e943a72ccbf049c54afa53727c96dfa8d3bb5f171c08",
+      "rows": 100000,
+      "requested_period_min": "2022-09-30",
+      "requested_period_max": "2022-09-30",
+      "filing_date_min": "20220516",
+      "filing_date_max": "20241209",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 776,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2023_FY_CFS_2b41ea06a0089c1c.csv.gz",
+      "sha256": "765dfa37e086d5286e04877a46a4d6847e5e50465fdcf5aa96104bca54fdd45a",
+      "rows": 40028,
+      "requested_period_min": "2023-12-31",
+      "requested_period_max": "2023-12-31",
+      "filing_date_min": "20230526",
+      "filing_date_max": "20260326",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 338,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2023_FY_CFS_82b7e115494ea36e.csv.gz",
+      "sha256": "4e925275bcae6225b9db54cf86c8f563b27f73a6167e01b418a483702ec4f054",
+      "rows": 100000,
+      "requested_period_min": "2023-12-31",
+      "requested_period_max": "2023-12-31",
+      "filing_date_min": "20230608",
+      "filing_date_max": "20260429",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 760,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2023_FY_CFS_a897cce209bbbfa0.csv.gz",
+      "sha256": "23275c7a8d80c1372ede00b0a0d7fae18e45502303ac826bec94c7a37c9b8baf",
+      "rows": 33124,
+      "requested_period_min": "2023-12-31",
+      "requested_period_max": "2023-12-31",
+      "filing_date_min": "20230919",
+      "filing_date_max": "20260602",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 222,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2023_FY_CFS_ff1452769242952c.csv.gz",
+      "sha256": "ac90aa35a2803cc095f712214fb594f5ee8eda4f0fc71b14dc7787759b24c7af",
+      "rows": 100000,
+      "requested_period_min": "2023-12-31",
+      "requested_period_max": "2023-12-31",
+      "filing_date_min": "20230619",
+      "filing_date_max": "20260813",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 711,
+      "periods": [
+        "FY"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2023_H1_CFS_33b5fb6f81336829.csv.gz",
+      "sha256": "f57af86b59245a32ba8577bf2ea43c4fcafcb5fe0eb5896fd3acb33ab1d3b7c5",
+      "rows": 9118,
+      "requested_period_min": "2023-06-30",
+      "requested_period_max": "2023-06-30",
+      "filing_date_min": "20230810",
+      "filing_date_max": "20241218",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 88,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2023_H1_CFS_85f26f6a40b762e2.csv.gz",
+      "sha256": "1e62610a9faea7cc51c228c9a39bba07c378a9c2c539f3996efae725bb8de261",
+      "rows": 23574,
+      "requested_period_min": "2023-06-30",
+      "requested_period_max": "2023-06-30",
+      "filing_date_min": "20230810",
+      "filing_date_max": "20231128",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 194,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2023_H1_CFS_ea2fe70a84e8678b.csv.gz",
+      "sha256": "b2358b024f8e856f6b425b7800faf431ac90c04e4c0750d4b0dc074eaa078b83",
+      "rows": 100000,
+      "requested_period_min": "2023-06-30",
+      "requested_period_max": "2023-06-30",
+      "filing_date_min": "20230515",
+      "filing_date_max": "20260813",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 772,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2023_H1_CFS_fd4800904cac3704.csv.gz",
+      "sha256": "9e8646d465618463b87fe7f78f56323e45283022ca1d8e089f57ce31df980c7c",
+      "rows": 100000,
+      "requested_period_min": "2023-06-30",
+      "requested_period_max": "2023-06-30",
+      "filing_date_min": "20230414",
+      "filing_date_max": "20241230",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 865,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2023_Q1_CFS_82011cd3deb95b6b.csv.gz",
+      "sha256": "be613f99620b2d00e35badd57f5a08f32e5bb58c482d1785026f2f4183e59571",
+      "rows": 21227,
+      "requested_period_min": "2023-03-31",
+      "requested_period_max": "2023-03-31",
+      "filing_date_min": "20230509",
+      "filing_date_max": "20240809",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 207,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2023_Q1_CFS_fcfe363efa6ed535.csv.gz",
+      "sha256": "aff1a28e90c62cf0c765c36a06bc41fc0552215ec24ee9a08d2a48175603db98",
+      "rows": 100000,
+      "requested_period_min": "2023-03-31",
+      "requested_period_max": "2023-03-31",
+      "filing_date_min": "20230425",
+      "filing_date_max": "20240712",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 887,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2023_Q1_CFS_fdc0b72a342055bc.csv.gz",
+      "sha256": "a908544e1386d2c09abfce3ab5f37d1cd8fb6cef784d55fb67c0ca30d94db2a3",
+      "rows": 100000,
+      "requested_period_min": "2023-03-31",
+      "requested_period_max": "2023-03-31",
+      "filing_date_min": "20230504",
+      "filing_date_max": "20260813",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 805,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2023_Q3_CFS_64dcb22c756d191c.csv.gz",
+      "sha256": "86a4e5081ce1413b1e4bf00fc42a220c47fd5f5b22b880d8c1d66ef10a7646ec",
+      "rows": 48375,
+      "requested_period_min": "2023-09-30",
+      "requested_period_max": "2023-09-30",
+      "filing_date_min": "20230530",
+      "filing_date_max": "20240809",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 431,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2023_Q3_CFS_a24d36556e1999eb.csv.gz",
+      "sha256": "54fbc1b755410735313eea323125638dc1a4f13b5033a5df6a0cdabed5818779",
+      "rows": 100000,
+      "requested_period_min": "2023-09-30",
+      "requested_period_max": "2023-09-30",
+      "filing_date_min": "20230512",
+      "filing_date_max": "20260813",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 747,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2023_Q3_CFS_df6852d19976c0c4.csv.gz",
+      "sha256": "220119b13b5b061f9aa413183a53ad398d18562279d4a1b8d90d5c215c5c2866",
+      "rows": 100000,
+      "requested_period_min": "2023-09-30",
+      "requested_period_max": "2023-09-30",
+      "filing_date_min": "20230512",
+      "filing_date_max": "20241230",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 819,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2024_H1_CFS_679f64996bce4164.csv.gz",
+      "sha256": "2418cbfe31524e7273bd260cddfa29aae16196cd1828c19ac40339dfda7ba080",
+      "rows": 100000,
+      "requested_period_min": "2024-06-30",
+      "requested_period_max": "2024-06-30",
+      "filing_date_min": "20240514",
+      "filing_date_max": "20260813",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 773,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2024_H1_CFS_e28d94d72188703d.csv.gz",
+      "sha256": "84bb0a7b9cf6ca2a72722b917140c4627b5246dd91e58af0e205cf362f1935a8",
+      "rows": 100000,
+      "requested_period_min": "2024-06-30",
+      "requested_period_max": "2024-06-30",
+      "filing_date_min": "20240415",
+      "filing_date_max": "20260324",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 842,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2024_H1_CFS_e345bef042fdf3fa.csv.gz",
+      "sha256": "92cb07562f1e928794426e9a5495fef062fa14f4f7ff3fcffd05908a6807a792",
+      "rows": 45674,
+      "requested_period_min": "2024-06-30",
+      "requested_period_max": "2024-06-30",
+      "filing_date_min": "20240808",
+      "filing_date_max": "20250904",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 422,
+      "periods": [
+        "H1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2024_Q1_CFS_2b8419c7067ca747.csv.gz",
+      "sha256": "5c8af78ce7e3480da69b23ddede157fe9ad057541c72c3c437d969fe9c81fd83",
+      "rows": 47815,
+      "requested_period_min": "2024-03-31",
+      "requested_period_max": "2024-03-31",
+      "filing_date_min": "20240502",
+      "filing_date_max": "20250904",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 459,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2024_Q1_CFS_af9a39e73b7f430e.csv.gz",
+      "sha256": "6abcc59c8001e074c999188991c902837d37176e7975ddeab69d58bee000b90e",
+      "rows": 100000,
+      "requested_period_min": "2024-03-31",
+      "requested_period_max": "2024-03-31",
+      "filing_date_min": "20240508",
+      "filing_date_max": "20260813",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 806,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2024_Q1_CFS_b668fee2b5809700.csv.gz",
+      "sha256": "41be59ffd0aa59b483f91d6686c262e6f6ac64ba54c1ccb344002866d7dd8aff",
+      "rows": 84569,
+      "requested_period_min": "2024-03-31",
+      "requested_period_max": "2024-03-31",
+      "filing_date_min": "20240507",
+      "filing_date_max": "20250814",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 744,
+      "periods": [
+        "Q1"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2024_Q3_CFS_7b687c53489d0de3.csv.gz",
+      "sha256": "f5e82543ffeb5c08edb8fdd7a412cd14c5f3122e4bd3ea6f823da846f9b6c474",
+      "rows": 100000,
+      "requested_period_min": "2024-09-30",
+      "requested_period_max": "2024-09-30",
+      "filing_date_min": "20240514",
+      "filing_date_max": "20250319",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 810,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2024_Q3_CFS_8c41d084788cc967.csv.gz",
+      "sha256": "3beb0cddc4082601d45f0893f502efbdbfec44c1b8eb73bdc16a4e3b34e0fbab",
+      "rows": 546,
+      "requested_period_min": "2024-09-30",
+      "requested_period_max": "2024-09-30",
+      "filing_date_min": "20241114",
+      "filing_date_max": "20241114",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 5,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2024_Q3_CFS_99dc43c61fd5d873.csv.gz",
+      "sha256": "07c2a721382957f9831521d8a9e5a4f285fab0007cb114bfe70cf35b33321a33",
+      "rows": 62861,
+      "requested_period_min": "2024-09-30",
+      "requested_period_max": "2024-09-30",
+      "filing_date_min": "20240516",
+      "filing_date_max": "20260731",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 557,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    },
+    {
+      "file": "data/financials/full_history/dart_full_2024_Q3_CFS_9f8a8f195605d155.csv.gz",
+      "sha256": "1aa9164598665d76b33ac52ef6d2524862d8b3b31ac08b066aa4b51235923dfc",
+      "rows": 85961,
+      "requested_period_min": "2024-09-30",
+      "requested_period_max": "2024-09-30",
+      "filing_date_min": "20240514",
+      "filing_date_max": "20260813",
+      "missing_filing_date": 0,
+      "missing_receipt": 0,
+      "companies": 646,
+      "periods": [
+        "Q3"
+      ],
+      "scopes": [
+        "CFS"
+      ]
+    }
+  ]
+}

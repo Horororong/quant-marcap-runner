@@ -1,0 +1,31 @@
+{
+  "kit_id": "26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd",
+  "source_revision": "822c435f4b6148c2832e12370a6ccb324a9e875f",
+  "versions": {
+    "corporate_action_registry_version": "5",
+    "dsl_machine_contract_version": "23",
+    "execution_engine_version": "v2-16-exec-3",
+    "factor_registry_version": "7",
+    "history_audit_contract_version": "1",
+    "krx_market_normalization_version": "1",
+    "performance_template_version": "v2-18",
+    "preflight_contract_version": "3",
+    "project_template_version": "v2-16",
+    "requested_report_contract_version": "1",
+    "schema_version": "1.0"
+  },
+  "kit_zip_sha256": "f76f38e1c9ed9401cd3607db67100cf6211d8c96fc5dadcbda13eff940984784",
+  "source_run": 37157470156,
+  "merged_main_ci": 37159959636,
+  "merged_report_pr": 28,
+  "browser_artifact": 11287338015,
+  "primary_viewer_artifact": 11221241095,
+  "primary_native_artifact": 11205027337,
+  "archived_browser_rerun_in_this_session": false,
+  "kit_verify_in_this_session": true,
+  "contract_export_check": "PASS",
+  "metrics_replay_byte_identical": true,
+  "metrics_replay_sha256": "e8f9b8762ce08f9feead9d4bd49db4baa05a829e3d57953baed4ea103e2eb737",
+  "nav_replay_sha256": "7d55e736de57598b65c51b9af684ac7a27257401fd69e26904030a1a69d9856b",
+  "benchmark_statistics_replay_sha256": "7dfc3bedfb984e6fff1cc6a207d4a3a1aee5274d14070a9d9faffd67e98786cc"
+}

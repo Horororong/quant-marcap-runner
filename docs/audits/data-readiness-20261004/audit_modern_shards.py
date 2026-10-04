@@ -1,0 +1,9 @@
+from pathlib import Path
+import pandas as pd,json,collections,hashlib
+R=Path(__file__).resolve().parents[3];O=Path(__file__).resolve().parent;rows=[]
+for i,p in enumerate(sorted((R/'data/financials/full_history').glob('*.gz'))):
+ d=pd.read_csv(p,compression='gzip',dtype=str,keep_default_na=False,usecols=['_period_end','_filing_date','_fs_div_requested','_requested_year','_period','_stock_code','rcept_no'])
+ nonblank=d.loc[d._filing_date.ne(''),'_filing_date'];rows.append(dict(file=str(p.relative_to(R)),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),rows=len(d),requested_period_min=d._period_end.min(),requested_period_max=d._period_end.max(),filing_date_min=nonblank.min() if len(nonblank) else None,filing_date_max=nonblank.max() if len(nonblank) else None,missing_filing_date=int(d._filing_date.eq('').sum()),missing_receipt=int(d.rcept_no.eq('').sum()),companies=int(d._stock_code.nunique()),periods=d._period.unique().tolist(),scopes=d._fs_div_requested.unique().tolist()))
+ if i%20==0:print('shards read',i+1,flush=True)
+summary=dict(shards=len(rows),rows=sum(r['rows'] for r in rows),missing_filing_dates=sum(r['missing_filing_date'] for r in rows),missing_receipts=sum(r['missing_receipt'] for r in rows),requested_period_min=min(r['requested_period_min'] for r in rows),requested_period_max=max(r['requested_period_max'] for r in rows),filing_date_min=min(r['filing_date_min'] for r in rows if r['filing_date_min']),filing_date_max=max(r['filing_date_max'] for r in rows if r['filing_date_max']),independent_primary_amount_audit=False,scope='original shard structural coverage only; receipt/filing presence does not verify revision history')
+(O/'modern_shards.json').write_text(json.dumps(dict(summary=summary,files=rows),ensure_ascii=False,indent=2)+'\n');print(json.dumps(summary,indent=2))

@@ -1,3 +1,20 @@
+## 2026-10-04 데이터 준비·독립 원문 감사 checkpoint
+
+이번 새 채팅의 실제 확인 결과와 재개 명령: [감사 README](docs/audits/data-readiness-20261004/README.md).
+보고 기능은 별도 runtime bootstrap/verify 및 기존 DSL CURRENT 재실행으로 확인했다. 보고 CSV/NAV/benchmark statistics는 실제 main browser artifact와 바이트 일치했다. 새 browser 실행은 하지 않았다. 현재 machine23/factor7/engine v2-16-exec-3/PROJECT v2-16/CURRENT v2-18; kit coverage는 KRX2019/2020/2024이며 저장소 전체 32년 coverage와 다르다.
+
+원문 8기업·8공시·72항목을 고정 표본 선정 후 독립 대조했다. 저장값 있음23/없음49, 기간오류18/금액오류3/의미오류2. numeric_equal19도 기간/의미 문제가 있어 완전한 PIT 인증0, 정정chain 인증0이다. 기존 v4 관측 오류를 current public factor/NAV 오류로 표현하지 않는다. 기존 원문 artifact와 immutable checkpoint를 보존했다. source adapter 당기기간/scope/unit guard가 다음 작업이다.
+
+시작 source main40fe72e, 작업 중 기존 자동 백필 run37172051500이 2000 receipts를 더 처리하고 main4833fb503105d810ea6e8e905d914f1ab3c28632에 저장했다. 최신 처리11401/대기103619/4factor616, collection_complete=false/quality_complete=false. 새 binary shards 전량 재감사는 미실행이며 72건 대조/coverage_snapshot은 시작 파일 기준이다. modern actual checkpoint136914 tasks, current map expected235352/pending98438;184 original shards/10591081 raw rows를 구조 점검했다. filing/receipt 빈칸0은 원문 수치·정정 이력 인증이 아니다.
+
+가격32parquet 1995-05-02~2026-10-01,15257282행/duplicate0/missing close2(1997 preferred015545).2026 캘린더와 원자료 사이6월3일/7월17일 차이는 휴장 원문 미확보로 미해결이며 값을 채우거나 calendar/registry를 수정하지 않았다. KOSPI/KOSDAQ/KOSPI200 price benchmark는9월17일까지만 있고 TR 미확보다.
+
+이전 실행 환경 collector는 확인 불가. 새 collector/dispatch를 시작하지 않았고 기존 scheduled main workflow와 checkpoint/lock을 유지했다. 수동 재개는 감사 README의 active/queued/old-worker 확인 후 기존 같은 workflow/main 경로만 사용한다. 다른 데이터 변경을 덮어쓰지 않는다.
+
+이번 requested-period 예제는 status=ok/nav_ready=true/report_ready=true/report_complete=false, 준비된2019~2020만 성과 생성.2000/2021 시작 구간data_gap, 책기간미지정. 기본 CURRENT 네기간 경로는 report_readiness data_gap/nav_ready=false/report_ready=false. 새 execution-only 연구NAV는 실행하지 않았다. 데이터 준비·전체 독립품질검증·실제 OOS/운용전략 검증은 미완료다.
+
+변경은 감사 문서·증거·검증 도구에 한정하며 작업브랜치 `audit/data-source-readiness-20261004`에서 검토한다. main에 감사 변경을 병합하지 않았다. 기존 PR#27의 취소된 요청을 재시도하지 않는다. 다른 ChatGPT 프로젝트 자동 공유와 대화 본문 interactive 실행은 이번 연결에서 확인/해결되지 않았다.
+
 ## 2026-10-03 main 병합 및 본문 그래프 표시
 
 보고 기능 PR #28을 d442e07bd4df2358cc31141143945fc5e56c0f9a로 main에 정상 병합했다. 최신 백필 data/map/state를 보존했다. 새 main CI 37159959636은 2026-10-03 23:13:31 UTC success로 완료됐다. test 및 양 ABI clean offline replay 모두 success다. 실제 PNG/hover PNG/브라우저 passed 기록과 canonical CSV 일치를 직접 확인했다. Machine evidence: docs/audits/merged-report-inline-checkpoint-20261003.json.
