@@ -1,0 +1,23 @@
+{
+  "small": {
+    "file": "primary/live-small-v2-subset.zip",
+    "git_blob": "7ab2870e6cd9241281372ae2367f96030dba930e",
+    "sha256": "f4f96899071c39ee74002e7fd47fb398bffcdef8fd19f74b78b2214d93b145d5",
+    "bytes": 3352517,
+    "artifact_id": 11307484514,
+    "run": 37214492414
+  },
+  "large": {
+    "file": "primary/live-large-v2-subset.zip",
+    "git_blob": "d12733fa7884ac4059ee1238462bace8bdead7df",
+    "sha256": "1f16088502b5299c3ebb7be8cf5b25134387a614279a5934c5fd42f27e5fd553",
+    "bytes": 2165240,
+    "artifact_id": 11308679201,
+    "run": 37215324227
+  },
+  "crc_checked": true,
+  "original_bytes_modified": false,
+  "full_raw_artifact_retention_days": 90,
+  "full_raw_artifacts_independently_downloaded": false,
+  "full_archive_download_limit": "32MiB per authorized uploaded-file download; full source archives exceed it"
+}

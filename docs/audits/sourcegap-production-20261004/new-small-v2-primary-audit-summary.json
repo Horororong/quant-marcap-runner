@@ -1,0 +1,29 @@
+{
+  "selection_commit": "8f16bf38adf986fd8f06a5439ad0ec8f63c9a048",
+  "selection_rule": "pre-value fixed12 receipt plan, ordered unique receipt IDs, lexical metric/scope, one item per receipt per round until30",
+  "audit_kind": "additional small-v2 pilot; the preferred large-v2 cohort remains separately planned",
+  "source_run": 37214492414,
+  "actual_independently_compared_items": 30,
+  "distinct_primary_company_ciks": 10,
+  "periods": [
+    "FY",
+    "H1",
+    "Q1",
+    "Q3"
+  ],
+  "stored_scopes": [
+    "CFS",
+    "OFS"
+  ],
+  "selected_literal_number_unit_matches": 30,
+  "financial_current_component_issues": 14,
+  "components_matched_pending_fiscal_pit": 16,
+  "scope_mismatches": 3,
+  "past_period_cases": 8,
+  "wrong_current_column_cases": 2,
+  "conflicting_primary_date_cases": 2,
+  "issue_counts_overlap": true,
+  "dash_expected_current_amount": "UNKNOWN, not zero",
+  "fiscal_label_full_pit_investment_verified": 0,
+  "source_date_note": "month-first period_end is title metadata. Independent literal report ranges are retained; do not derive PIT or fiscal labels from it."
+}

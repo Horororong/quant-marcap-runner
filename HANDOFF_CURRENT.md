@@ -1,3 +1,13 @@
+## 2026-10-04 PR33/34/35 실제 운영 배치·신규 감사 최종 checkpoint
+
+PR33 main6e2ee6c 실제병합, v1실제100건의 정상CP949차단 결함은 PR34 main967dae08(v2)에서 수정했다. 각최종source native/fullCI통과. 수정된운영 경로의동일100건SHA재처리 run37214492414/dataed5232c는581새candidate/31공시. 그 gate통과후 PR35 mainf81ca8db의기존fastjobmarker로신규2000건 run37215324227/job111474535668을실제완료했다. data mainbce2d91b;2000requests/BATCH_COMPLETE/modern0/rate0/error0,2476새candidate/136공시. 처리17476/대기97544/4F2468/partial2216/NO_METRICS9263/mappedNO_DOCUMENT1610/SOURCE_GAP1919. SOURCE_GAP은추출성공·데이터준비가아니다. collection/quality_complete=false.
+
+신규2000의12기업30항목 독립원문감사:13확인오류+2미확정,15구성요소일치하나fiscal/PIT미검증;부호1/기간9/연결2/과거열3등중복. pilot30항목도14문제. 동일원문내영향표small54/large66후보를보존. nativelegacy/staging전체는현재등록provider입력이아니므로전략사용차단유지;ledger가새collector필터는아니다. 원본삭제/registry·fixedkit우회0. 기존78 staging 운영승격0/완전PIT0,신규PIT0. 공개시각·과거버전·완전정정값chain 부족.
+
+다음한가지: 검증된당기기간/열·연결·양수소계괄호사례로nativefinancialparser guard를회귀수정하고정확한영향자료만버전재처리한다. 기존예약/공유lock유지,중복예약0;최종batch완료,최종관측active/queued0,이전환경확인불가. 비용/OOS/강건성/운용가능성/실제전략검증미수행. 현재repo/Actions를다시조회한후재개한다. 결과·원문·재개명령: [운영 감사 checkpoint](docs/audits/sourcegap-production-20261004/README.md).
+
+이하 이전시점의역사적checkpoint는보존하며위실행결과가최신상태를대체한다.
+
 ## 2026-10-04 PR33 operational source quarantine deployment
 
 PR33 passed final nativeCI37204637739 and completeCI37204637742 at exact18857483 and actually merged main6e2ee6c. Seven SHA-specific source-gap overlays preserve original checkpoint/candidate records;29 older-v2/v4 rows from two native sources are retained and already excluded from current/provider inputs. Distinguish unsupported/unbalanced wrappers from confirmed source truncation. Legacy/provider/PIT preparation is incomplete; do not promote viewer staging or infer investment correctness from CI.

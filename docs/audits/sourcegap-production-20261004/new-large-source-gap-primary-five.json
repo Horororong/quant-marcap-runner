@@ -1,0 +1,80 @@
+{
+  "rule": "First five lexical SOURCE_GAP IDs of actual new2000 cohort; no extrapolation to1830",
+  "samples": [
+    {
+      "rcept_no": "20021105000108",
+      "document_sha256": "227a5fa635f51aecd3fdc021b109cebeb31ddca468b19e0a655e3ea222102a6b",
+      "member": "20021105000108.xml",
+      "member_sha256": "87cf33f5a06aa309078566877e6bb5960d5616f324731ea59d8dea00411dfb13",
+      "bytes": 262813,
+      "encoding": "cp949; declaration utf-8",
+      "replacement_characters": 0,
+      "literal_last500": "=\"1\" COLSPAN=\"1\" ALIGN=\"LEFT\" VALIGN=\"TOP\" WIDTH=\"155\" HEIGHT=\"24\" AUPDATECONT=\"UPDATECONT\">·주식관련 옵션 매입</TD><TD ROWSPAN=\"1\" COLSPAN=\"1\" ALIGN=\"LEFT\" VALIGN=\"TOP\" WIDTH=\"69\" HEIGHT=\"24\" AUPDATECONT=\"UPDATECONT\"></TD><TD ROWSPAN=\"1\" COLSPAN=\"1\" ALIGN=\"LEFT\" VALIGN=\"TOP\" WIDTH=\"128\" HEIGHT=\"24\" AUPDATECONT=\"UPDATECONT\"></TD></TR><TR ALIGN=\"LEFT\" VALIGN=\"TOP\" ACOPY=\"COPY\" ADELETE=\"DELETE\"><TD ROWSPAN=\"1\" COLSPAN=\"1\" ALIGN=\"LEFT\" VALIGN=\"TOP\" WIDTH=\"164\" HEIGHT=\"42\" AUPDATECONT=\"UPDATECONT\">·Buy(외화) ",
+      "body_close_present": false,
+      "document_close_present": false,
+      "observed_cause": "Official returned member ends mid-sentence/table without body/document close; ZIP CRC valid",
+      "classification": "CONFIRMED_RETURNED_SOURCE_TRUNCATION",
+      "provider_upstream_truncation_cause": "UNVERIFIED"
+    },
+    {
+      "rcept_no": "20021106000024",
+      "document_sha256": "316b383e57ba566662ddcf687513a2d382a0b50dfd88e4901df41f6d51498612",
+      "member": "20021106000024.xml",
+      "member_sha256": "56cde099bef2bc7cce8639e3716792861d23ec604bbc16db18348c03b39344e5",
+      "bytes": 22734,
+      "encoding": "cp949; declaration utf-8",
+      "replacement_characters": 0,
+      "literal_last500": ".12  진공차단기KS표시허가취득     1991.12.31  품질관리우수공장선정     1992. 3.26  Gas-Insulated Switchgear 제조기술도입(일본.일신전기(주))                      승인(상공부)     1992. 3.26  A N S I 규격진공차단기제조기술도입(일본(주)동지)승인(상공부)     1993. 5.    25.8KV Gas-Insulated Switchgear한전채택개발시험합격 및                      사용결정     1993. 6.    25.8KV 옥외VCB한전채택개발시험합격 및 사용결정     1993.12.    지중선 개폐기(LBS) 기술제휴 ( 독일 KARL PFISTERER )     1994. 7.    154/345KV 전력계통보호계전장치(DIGITAL방식)기술제휴연장                    (일본 (주)동지)     1994.10.    ISO 9001 인증획득 (독일 TUV사 ",
+      "body_close_present": false,
+      "document_close_present": false,
+      "observed_cause": "Official returned member ends mid-sentence/table without body/document close; ZIP CRC valid",
+      "classification": "CONFIRMED_RETURNED_SOURCE_TRUNCATION",
+      "provider_upstream_truncation_cause": "UNVERIFIED"
+    },
+    {
+      "rcept_no": "20021106000048",
+      "document_sha256": "079b8703a75c9fbaddb36455a46952747f4791d6ff363a6ddc9295d1980903db",
+      "member": "20021106000048.xml",
+      "member_sha256": "0034557197e56eba2b9ea83a2852258576e0c6292f8a43c72b37faae25ff8433",
+      "bytes": 24622,
+      "encoding": "cp949; declaration utf-8",
+      "replacement_characters": 0,
+      "literal_last500": ".12  진공차단기KS표시허가취득     1991.12.31  품질관리우수공장선정     1992. 3.26  Gas-Insulated Switchgear 제조기술도입(일본.일신전기(주))                      승인(상공부)     1992. 3.26  A N S I 규격진공차단기제조기술도입(일본(주)동지)승인(상공부)     1993. 5.    25.8KV Gas-Insulated Switchgear한전채택개발시험합격 및                      사용결정     1993. 6.    25.8KV 옥외VCB한전채택개발시험합격 및 사용결정     1993.12.    지중선 개폐기(LBS) 기술제휴 ( 독일 KARL PFISTERER )     1994. 7.    154/345KV 전력계통보호계전장치(DIGITAL방식)기술제휴연장                    (일본 (주)동지)     1994.10.    ISO 9001 인증획득 (독일 TUV사 ",
+      "body_close_present": false,
+      "document_close_present": false,
+      "observed_cause": "Official returned member ends mid-sentence/table without body/document close; ZIP CRC valid",
+      "classification": "CONFIRMED_RETURNED_SOURCE_TRUNCATION",
+      "provider_upstream_truncation_cause": "UNVERIFIED"
+    },
+    {
+      "rcept_no": "20021106000062",
+      "document_sha256": "2bd42f506d7149d6cf4e9513c327accd32a220a36798e5f306d722f0d88be3b7",
+      "member": "20021106000062.xml",
+      "member_sha256": "4b3afcd1915aae6d5ff28ae0e8764a5b7274b1a5704e98836f5edf39440f467c",
+      "bytes": 14997,
+      "encoding": "cp949; declaration utf-8",
+      "replacement_characters": 0,
+      "literal_last500": "DDLE\" WIDTH=\"70\" HEIGHT=\"24\" AUPDATECONT=\"UPDATECONT\">1984. 11</TD><TD ROWSPAN=\"1\" COLSPAN=\"1\" ALIGN=\"LEFT\" VALIGN=\"MIDDLE\" WIDTH=\"606\" HEIGHT=\"24\" AUPDATECONT=\"UPDATECONT\">상호, 상표 등록(특허청)</TD></TR><TR ALIGN=\"LEFT\" VALIGN=\"TOP\" ACOPY=\"COPY\" ADELETE=\"DELETE\"><TD ROWSPAN=\"1\" COLSPAN=\"1\" ALIGN=\"LEFT\" VALIGN=\"MIDDLE\" WIDTH=\"70\" HEIGHT=\"24\" AUPDATECONT=\"UPDATECONT\">1985. 03</TD><TD ROWSPAN=\"1\" COLSPAN=\"1\" ALIGN=\"LEFT\" VALIGN=\"MIDDLE\" WIDTH=\"606\" HEIGHT=\"24\" AUPDATECONT=\"UPDATECONT\">CITIES SERVICE OIL ",
+      "body_close_present": false,
+      "document_close_present": false,
+      "observed_cause": "Official returned member ends mid-sentence/table without body/document close; ZIP CRC valid",
+      "classification": "CONFIRMED_RETURNED_SOURCE_TRUNCATION",
+      "provider_upstream_truncation_cause": "UNVERIFIED"
+    },
+    {
+      "rcept_no": "20021106000076",
+      "document_sha256": "42d9c723df5ec8658a3e405158fef7908915d448b5b6f069d3d5a5c091c388aa",
+      "member": "20021106000076.xml",
+      "member_sha256": "bf47cea8c686c5ac1ab3fd6ff9295def7ae1d2f5694575f0e0e2256e8c9003de",
+      "bytes": 133533,
+      "encoding": "cp949; declaration utf-8",
+      "replacement_characters": 0,
+      "literal_last500": "=\"1\" COLSPAN=\"1\" ALIGN=\"LEFT\" VALIGN=\"TOP\" WIDTH=\"102\" HEIGHT=\"24\" AUPDATECONT=\"UPDATECONT\">ANA(미)</TD><TD ROWSPAN=\"1\" COLSPAN=\"1\" ALIGN=\"RIGHT\" VALIGN=\"TOP\" WIDTH=\"67\" HEIGHT=\"24\" AUPDATECONT=\"UPDATECONT\">15% </TD><TD ROWSPAN=\"1\" COLSPAN=\"1\" ALIGN=\"LEFT\" VALIGN=\"TOP\" WIDTH=\"53\" HEIGHT=\"24\" AUPDATECONT=\"UPDATECONT\"></TD></TR><TR ALIGN=\"LEFT\" VALIGN=\"TOP\" ACOPY=\"COPY\" ADELETE=\"DELETE\"><TD ROWSPAN=\"1\" COLSPAN=\"1\" ALIGN=\"LEFT\" VALIGN=\"TOP\" WIDTH=\"112\" HEIGHT=\"42\" AUPDATECONT=\"UPDATECONT\">SUMMER(미) ",
+      "body_close_present": false,
+      "document_close_present": false,
+      "observed_cause": "Official returned member ends mid-sentence/table without body/document close; ZIP CRC valid",
+      "classification": "CONFIRMED_RETURNED_SOURCE_TRUNCATION",
+      "provider_upstream_truncation_cause": "UNVERIFIED"
+    }
+  ]
+}
