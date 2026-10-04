@@ -215,3 +215,35 @@ def test_evidence_snapshot_subset_preserves_exact_originals_and_checkpoint(monke
     assert json.loads((subset / 'numeric-selection.json').read_text())['receipt_order'] == ['new']
     assert pd.read_csv(subset / 'new-metrics.csv').amount_krw.tolist() == [123000]
     assert json.loads((subset / 'summary.json').read_text())['changed_receipts'] == 1
+
+
+def test_twelve_actual_deployment_controls_preserve_normal_parses_and_block_two_gaps(monkeypatch):
+    import json, hashlib
+    from pathlib import Path
+    root = Path("tests/fixtures/legacy_dart/production_controls")
+    manifest = json.loads((root / "manifest.json").read_text())
+    accepted = blocked = 0
+    for item in manifest:
+        blob = (root / item["path"]).read_bytes()
+        assert hashlib.sha256(blob).hexdigest() == item["sha256"]
+        monkeypatch.setattr(legacy, "fetch_document", lambda receipt, blob=blob, sha=item["sha256"]: (blob, sha))
+        rows, state = legacy.process_filing(item["meta"])
+        if item["expected_source_gap"]:
+            blocked += 1
+            assert rows == [] and state["status"] == "SOURCE_GAP"
+        else:
+            accepted += 1
+            assert state["status"] == item["prior_status"]
+            assert len(rows) == item["prior_metric_rows"]
+            assert all(r["source_quality"] == "PASS" for r in rows)
+    assert accepted == 10 and blocked == 2
+
+def test_evidence_import_inherits_existing_fast_job_limits():
+    import subprocess, sys, os, json
+    env = dict(os.environ)
+    env.pop("LEGACY_DART_MAX_DOCS", None)
+    env.pop("LEGACY_DART_WORKERS", None)
+    env.update(SUPER_VALUE_FAST_LEGACY_DOCS="100", SUPER_VALUE_FAST_LEGACY_WORKERS="3")
+    code = "import json;from scripts import legacy_batch_evidence as e;print(json.dumps([e.legacy.MAX_DOCS,e.legacy.WORKERS]))"
+    result = subprocess.check_output([sys.executable, "-c", code], env=env, text=True)
+    assert json.loads(result) == [100, 3]
