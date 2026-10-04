@@ -7,12 +7,26 @@ on:
       - 'scripts/backfill_dart_legacy_2000_2014.py'
       - 'scripts/backfill_super_value_fast.py'
       - 'scripts/legacy_backfill_runtime.py'
+      - 'scripts/legacy_document_quality.py'
+      - 'scripts/legacy_batch_evidence.py'
+      - 'scripts/test_legacy_document_quality.py'
+      - 'scripts/recover_legacy_no_metrics.py'
       - 'scripts/legacy_schedule_gate.py'
       - 'scripts/test_legacy_schedule_gate.py'
       - 'scripts/csv_storage.py'
       - 'scripts/probe_dart_legacy_sources.py'
       - 'scripts/capture_legacy_viewer_sections.py'
       - 'scripts/test_legacy_viewer_sections.py'
+      - 'scripts/legacy_financial_fields.py'
+      - 'scripts/legacy_viewer_source.py'
+      - 'scripts/test_legacy_viewer_source.py'
+      - 'scripts/replay_legacy_viewer_sources.py'
+      - 'scripts/recheck_legacy_primary_audit.py'
+      - 'docs/audits/viewer-staging46-20261004/verify_remaining_cells.py'
+      - 'docs/audits/viewer-staging46-20261004/test_audit_guards.py'
+      - 'docs/audits/viewer-staging46-20261004/SAMPLE_PLAN.json'
+      - 'docs/audits/viewer-staging46-20261004/EXPECTED_PRIMARY_CELLS.json'
+      - 'docs/audits/viewer-staging46-20261004/PRIMARY_CELL_EVIDENCE.json'
       - 'docs/audits/legacy/initial-financial-body-routes-20261002.json'
       - 'scripts/audit_legacy_pit_sample.py'
       - 'tests/test_legacy*.py'
@@ -37,11 +51,33 @@ jobs:
       - name: Legacy parser and resume regressions
         timeout-minutes: 5
         run: |
-          for test_file in tests/test_legacy_dart_parser.py tests/test_legacy_backfill_resume.py tests/test_legacy_backfill_automation.py tests/test_legacy_source_evidence.py; do
+          for test_file in tests/test_legacy_dart_parser.py tests/test_legacy_backfill_resume.py tests/test_legacy_backfill_automation.py tests/test_legacy_source_evidence.py tests/test_legacy_document_quality.py; do
             timeout -k 5s 60s python -u -m pytest "$test_file" -vv -s -o faulthandler_timeout=15 || exit $?
           done
+          timeout -k 5s 30s python -u scripts/test_legacy_no_metrics_recovery.py
+          timeout -k 5s 30s python -u scripts/test_legacy_document_quality.py
           timeout -k 5s 30s python -u scripts/test_legacy_viewer_sections.py
+          timeout -k 5s 30s python -u scripts/test_legacy_viewer_source.py
+          timeout -k 5s 60s python -u scripts/recheck_legacy_primary_audit.py --output-dir "$RUNNER_TEMP/legacy-primary-72-recheck"
+          timeout -k 5s 60s python -u docs/audits/viewer-staging46-20261004/test_audit_guards.py
+          timeout -k 5s 60s python -u docs/audits/viewer-staging46-20261004/verify_remaining_cells.py --output-dir "$RUNNER_TEMP/legacy-staging-46-audit"
           timeout -k 5s 30s python -u scripts/test_legacy_schedule_gate.py
+      - name: Preserve actual-checkout independent source audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: legacy-primary-72-recheck
+          path: ${{ runner.temp }}/legacy-primary-72-recheck
+          if-no-files-found: error
+          retention-days: 90
+      - name: Preserve fixed 46-item independent primary/stored audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: legacy-staging-46-audit
+          path: ${{ runner.temp }}/legacy-staging-46-audit
+          if-no-files-found: error
+          retention-days: 90
       - name: Compile parser
         run: python -m py_compile scripts/backfill_dart_legacy_2000_2014.py scripts/backfill_super_value_fast.py
       - name: Schema sanity

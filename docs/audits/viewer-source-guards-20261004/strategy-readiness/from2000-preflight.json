@@ -1,0 +1,12 @@
+{
+  "error": {
+    "message": "요구기간의 KRX 연도 파일이 누락되었습니다: [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]. 기간을 조용히 축약하지 않습니다.",
+    "type": "FileNotFoundError"
+  },
+  "phase": "data",
+  "preflight_contract_version": "3",
+  "ready_for_execution": false,
+  "status": "data_gap",
+  "strategy_fingerprint": "f951fdee4b055c8d580c6ea9e663699acbfb3a36e9d4c2d6e1c023e91b2a4948",
+  "strategy_id": "super_value_dart_benchmark_dsl"
+}

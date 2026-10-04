@@ -1,0 +1,29 @@
+{
+  "samples": 72,
+  "companies": 8,
+  "receipts": 8,
+  "source_period_end_years": [
+    "1999",
+    "2000"
+  ],
+  "scope_counts": {
+    "OFS": 46,
+    "CFS": 26
+  },
+  "results": {
+    "stored_missing": 49,
+    "period_mismatch": 18,
+    "amount_mismatch": 3,
+    "semantic_mismatch": 2
+  },
+  "numeric_equal": 19,
+  "numeric_unequal": 3,
+  "stored_present": 23,
+  "stored_missing": 49,
+  "unit_unverified": 5,
+  "correction_chain_verified": 0,
+  "verified_pit_items": 0,
+  "expected_sha256": "e95e0c4199905d7d59a27ed9a12b72ec4b698961f33a1c29c495819a49992240",
+  "source_verification": "full archived primary body SHA and original literal cell offsets",
+  "interpretation": "failure-oriented sample; not full-data certification; preserved v4 observations are not current provider inputs"
+}

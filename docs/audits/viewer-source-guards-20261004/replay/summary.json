@@ -1,0 +1,24 @@
+{
+  "adapter_version": "dart-viewer-period-scope-unit-column-v1",
+  "primary_bodies": 12,
+  "receipts": 6,
+  "independent_golden_items": 49,
+  "results": {
+    "MATCH": 17,
+    "WITHHELD_LAYOUT_GUARD": 5,
+    "WITHHELD_PRIOR_PERIOD": 22,
+    "WITHHELD_UNKNOWN_UNIT": 5
+  },
+  "staging_rows": 63,
+  "independently_matched_staging_rows": 17,
+  "unreviewed_staging_rows": 46,
+  "production_rows_written": 0,
+  "checkpoint_rows_changed": 0,
+  "verified_pit_items": 0,
+  "collection_complete": false,
+  "financial_quality_complete": false,
+  "strategy_validation_complete": false,
+  "source_verification": "archived primary body SHA, original cell spans, independent manual golden values",
+  "manifest_sha256": "b5de27af7fe694630edd77542dad20a2268fe9f741cde1dc85276718124ac47a",
+  "golden_sha256": "046bc73f2ff21233e2cff9dba2ac20b2bc9cd38e0c553c6f53a0600d825fd373"
+}

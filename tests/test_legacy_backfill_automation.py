@@ -115,3 +115,14 @@ def test_source_capture_reuses_existing_audit_workflow_without_new_schedule():
     assert artifact["with"]["retention-days"] == "90"
     commit = next(step for step in job["steps"] if step.get("name") == "Commit audit report")
     assert "always()" in commit["if"]
+
+
+def test_verified_operator_batch_is_explicit_and_uses_existing_bounded_job():
+    spec = workflow("backfill-super-value-fast.yml")
+    job = spec["jobs"]["fast"]
+    for key in ("SUPER_VALUE_FAST_LEGACY_DOCS", "LEGACY_DART_MAX_REQUESTS", "LEGACY_DART_MAX_SECONDS"):
+        assert "[legacy-verified-batch-2000]" in job["env"][key]
+    assert "'100'" in job["env"]["SUPER_VALUE_FAST_LEGACY_DOCS"]
+    assert "'2500'" in job["env"]["LEGACY_DART_MAX_REQUESTS"]
+    assert "'3300'" in job["env"]["LEGACY_DART_MAX_SECONDS"]
+    assert spec["on"]["schedule"] == [{"cron": "30 15 * * *"}, {"cron": "30 7,23 * 10 *"}]

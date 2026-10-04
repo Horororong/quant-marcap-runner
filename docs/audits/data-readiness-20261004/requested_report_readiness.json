@@ -1,0 +1,45 @@
+{
+  "contract_version": "1",
+  "mode": "requested_period_report",
+  "ready": true,
+  "complete": false,
+  "as_of_date": "2020-12-31",
+  "periods": {
+    "from_2000": {
+      "id": "from_2000",
+      "label": "2000년~실행 NAV 최신: 자료 부족",
+      "start": "2000-01-01",
+      "end": "latest",
+      "status": "data_gap",
+      "reason": "요청 기간의 거래일 NAV 4690개 부족 (첫 누락 2000-01-04). 시작일을 이동하지 않습니다.",
+      "ready": false,
+      "requested_start": "2000-01-01",
+      "requested_end": "2020-12-30"
+    },
+    "from_2021": {
+      "id": "from_2021",
+      "label": "2021년~실행 NAV 최신: 자료 부족",
+      "start": "2021-01-01",
+      "end": "latest",
+      "status": "data_gap",
+      "reason": "요청 기간에 거래일이 없습니다.",
+      "ready": false,
+      "requested_start": "2021-01-01",
+      "requested_end": "2020-12-30"
+    },
+    "longest": {
+      "id": "longest",
+      "label": "기존 검증 예제 NAV 범위 2019~2020",
+      "start": "longest",
+      "end": "latest",
+      "status": "ready",
+      "reason": null,
+      "ready": true,
+      "requested_start": "2019-01-02",
+      "requested_end": "2020-12-30",
+      "actual_start": "2019-01-02",
+      "actual_end": "2020-12-30",
+      "observations": 494
+    }
+  }
+}

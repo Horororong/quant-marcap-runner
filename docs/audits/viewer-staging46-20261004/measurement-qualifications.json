@@ -1,0 +1,113 @@
+{
+  "items_this_task": [
+    {
+      "audit": "remaining-46",
+      "sample_id": "R008",
+      "receipt": "20010103000052",
+      "company": "대우중공업",
+      "metric": "bonds_payable",
+      "source_account": "사채 (주 2, 13, 18)",
+      "source_amount_krw": "3487092840000",
+      "original_table": 1,
+      "original_row": 85,
+      "original_cell": 1,
+      "original_line": 0,
+      "measurement_basis": "named_bond_gross_before_discounts",
+      "limitation": "Printed named bond line before separately shown discounts; cannot substitute for net carrying value, all bonds or total debt. Daegu also separately reports convertible bonds.",
+      "original_body_sha256": "f49747cf8b66deffddb6afc2bce7bf18689a2e861f935cbe488d6e723055a15f"
+    },
+    {
+      "audit": "remaining-46",
+      "sample_id": "R026",
+      "receipt": "20010213000010",
+      "company": "당시 일동제약 (현재 코드 일동홀딩스)",
+      "metric": "bonds_payable",
+      "source_account": "1. 사 채",
+      "source_amount_krw": "10000000000",
+      "original_table": 1,
+      "original_row": 68,
+      "original_cell": 1,
+      "original_line": 0,
+      "measurement_basis": "named_bond_gross_before_discounts",
+      "limitation": "Printed named bond line before separately shown discounts; cannot substitute for net carrying value, all bonds or total debt. Daegu also separately reports convertible bonds.",
+      "original_body_sha256": "c24959a83d276b240e52800f2b4421ee945db9a354e5db9c09627ce35b4b3246"
+    },
+    {
+      "audit": "remaining-46",
+      "sample_id": "R034",
+      "receipt": "20010213000010",
+      "company": "당시 일동제약 (현재 코드 일동홀딩스)",
+      "metric": "depreciation",
+      "source_account": "12.감 가 상 각 비",
+      "source_amount_krw": "591873922",
+      "original_table": 7,
+      "original_row": 30,
+      "original_cell": 1,
+      "original_line": 0,
+      "measurement_basis": "sga_expense_component",
+      "limitation": "Selling/general/administrative expense component, not independently established total-company D&A or cash-flow adjustment; not an EBITDA proxy.",
+      "original_body_sha256": "c24959a83d276b240e52800f2b4421ee945db9a354e5db9c09627ce35b4b3246"
+    },
+    {
+      "audit": "remaining-46",
+      "sample_id": "R037",
+      "receipt": "20010213000014",
+      "company": "대구백화점",
+      "metric": "bonds_payable",
+      "source_account": "1. 사채",
+      "source_amount_krw": "22762718508",
+      "original_table": 1,
+      "original_row": 70,
+      "original_cell": 1,
+      "original_line": 0,
+      "measurement_basis": "named_bond_gross_before_discounts",
+      "limitation": "Printed named bond line before separately shown discounts; cannot substitute for net carrying value, all bonds or total debt. Daegu also separately reports convertible bonds.",
+      "original_body_sha256": "d51a64d69cf25b6061fdf6daaed895bd13b5c5121e570a490a0ab5729984ca1c"
+    },
+    {
+      "audit": "remaining-46",
+      "sample_id": "R042",
+      "receipt": "20010213000014",
+      "company": "대구백화점",
+      "metric": "amortization",
+      "source_account": "24.무형자산상각비",
+      "source_amount_krw": "17604826",
+      "original_table": 3,
+      "original_row": 33,
+      "original_cell": 1,
+      "original_line": 0,
+      "measurement_basis": "sga_expense_component",
+      "limitation": "Selling/general/administrative expense component, not independently established total-company D&A or cash-flow adjustment; not an EBITDA proxy.",
+      "original_body_sha256": "d51a64d69cf25b6061fdf6daaed895bd13b5c5121e570a490a0ab5729984ca1c"
+    },
+    {
+      "audit": "remaining-46",
+      "sample_id": "R044",
+      "receipt": "20010213000014",
+      "company": "대구백화점",
+      "metric": "depreciation",
+      "source_account": "7.감가상각비",
+      "source_amount_krw": "3407270581",
+      "original_table": 3,
+      "original_row": 16,
+      "original_cell": 1,
+      "original_line": 0,
+      "measurement_basis": "sga_expense_component",
+      "limitation": "Selling/general/administrative expense component, not independently established total-company D&A or cash-flow adjustment; not an EBITDA proxy.",
+      "original_body_sha256": "d51a64d69cf25b6061fdf6daaed895bd13b5c5121e570a490a0ab5729984ca1c"
+    }
+  ],
+  "previous_numeric_matched_sga_components": [
+    "A001",
+    "A003",
+    "A006",
+    "A008"
+  ],
+  "previous_primary_account_contexts": {
+    "20000809000052": "IS table 5, row 1 account BRs: IV.판매비와 관리비; 6.감가상각비 and 25.무형자산상각비 before V. 영업이익. Original lossless viewer body and previous audit preserve coordinates.",
+    "20010104000076": "IS table 5, row 1 account BRs: Ⅳ.판매비와관리비; 10.감가상각비 and 11.무형자산상각비 before Ⅴ.영업이익. Original lossless viewer body and previous audit preserve coordinates."
+  },
+  "total_qualified_staging_items": 10,
+  "no_company_wide_DA_or_EBITDA_or_total_debt_factor_certified": true,
+  "production_promoted": false
+}

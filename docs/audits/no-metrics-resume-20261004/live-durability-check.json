@@ -1,0 +1,4 @@
+{
+  "normalized_literal_preservation_independently_checked": false,
+  "reason": "GitHub contents API returns empty content for >1MiB blobs; binary GitHub Fetch rejects UTF-8 decoding; current tool cannot retrieve updated gzip bytes. Existing local originals remain hash-identical. Remote repo blob SHAs are captured, but new numeric rows were not independently audited."
+}

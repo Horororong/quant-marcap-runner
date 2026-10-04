@@ -7,6 +7,7 @@ import math
 import os
 import re
 import time
+import threading
 import zipfile
 import warnings
 from datetime import datetime, timezone
@@ -17,13 +18,17 @@ import requests
 from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
 
 try:
+    from scripts.legacy_financial_fields import (ALIASES, METRIC_STATEMENTS, UNIT_MULTIPLIERS, norm_account, parse_number, choose_metric)
     from scripts.csv_storage import atomic_write_if_changed
     from scripts.legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
+    from scripts.legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION
 except ModuleNotFoundError as error:
     if error.name != "scripts":
         raise
+    from legacy_financial_fields import (ALIASES, METRIC_STATEMENTS, UNIT_MULTIPLIERS, norm_account, parse_number, choose_metric)
     from csv_storage import atomic_write_if_changed
     from legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
+    from legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION
 
 warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
@@ -39,7 +44,7 @@ SOURCE_VERSION = "opendart-document-v1"
 # Financial parsing v5 rejects ambiguous cells; transport failures are keyed by
 # SOURCE_VERSION and need not be downloaded again for a numeric-parser change.
 RUN_CONTROL = None
-TERMINAL_STATUSES = {"PARSED_4F", "PARSED_PARTIAL", "NO_METRICS", "NO_DOCUMENT"}
+TERMINAL_STATUSES = {"PARSED_4F", "PARSED_PARTIAL", "NO_METRICS", "NO_DOCUMENT", "SOURCE_GAP"}
 MAX_ERROR_ATTEMPTS = 3
 
 ROOT = Path("data/financials/legacy_2000_2014")
@@ -50,6 +55,8 @@ INDEX_STATE_FILE = STATUS_DIR / "dart_legacy_index_state.csv"
 STATE_FILE = STATUS_DIR / "dart_legacy_backfill_state.csv"
 STATUS_FILE = STATUS_DIR / "dart_legacy_backfill_status.csv"
 COVERAGE_FILE = STATUS_DIR / "dart_legacy_coverage_by_period.csv"
+QUARANTINE_FILE = STATUS_DIR / "dart_legacy_source_quarantine.csv"
+_SOURCE_LOCK = threading.Lock()
 NAME_MAP_FILE = ROOT / "krx_name_intervals.csv.gz"
 LIFE_FILE = Path("results/security_life_table.csv")
 MODERN_MAP_FILE = Path("data/financials/dart_historical_code_map.csv")
@@ -75,122 +82,6 @@ CORE_4F = {"equity", "revenue", "net_income", "ocf"}
 # Kang Hwan-kuk's "하면 된다! 퀀트 투자".  Derived factors (PER/PBR/PFCR,
 # GP/A, NCAV, ROC, F-score, growth, etc.) are intentionally calculated later
 # from point-in-time raw values rather than stored here.
-ALIASES = {
-    "equity": [
-        "자본총계", "자본합계", "자기자본", "자본총액",
-    ],
-    "revenue": [
-        "매출액", "매출", "영업수익", "영업수익합계", "수익(매출액)",
-    ],
-    "net_income": [
-        "당기순이익", "당기순이익(손실)", "당기순손익", "분기순이익", "분기순이익(손실)",
-        "분기순손익", "분기순손실", "반기순이익", "반기순이익(손실)", "반기순손익", "반기순손실", "당기순손실",
-    ],
-    "ocf": [
-        "영업활동으로인한현금흐름", "영업활동현금흐름", "영업활동으로부터의현금흐름",
-        "영업활동에의한현금흐름", "영업활동으로부터의순현금흐름",
-    ],
-    "total_assets": [
-        "자산총계", "총자산", "자산합계",
-    ],
-    "total_liabilities": [
-        "부채총계", "총부채", "부채합계",
-    ],
-    "current_assets": [
-        "유동자산", "유동자산총계", "유동자산합계",
-    ],
-    "current_liabilities": [
-        "유동부채", "유동부채총계", "유동부채합계",
-    ],
-    "cash_and_equivalents": [
-        "현금및현금성자산", "현금및현금등가물", "현금및현금성자산합계",
-    ],
-    "short_term_borrowings": [
-        "단기차입금", "단기차입금합계", "단기금융부채",
-    ],
-    "current_portion_long_term_debt": [
-        "유동성장기부채", "유동성장기차입금", "유동성사채",
-    ],
-    "long_term_borrowings": [
-        "장기차입금", "장기차입금합계", "장기금융부채",
-    ],
-    "bonds_payable": [
-        "사채", "회사채", "사채합계",
-    ],
-    "operating_income": [
-        "영업이익", "영업이익(손실)", "영업손익", "영업손실",
-    ],
-    "gross_profit": [
-        "매출총이익", "매출총이익(손실)", "매출총손익", "매출총손실",
-    ],
-    "cost_of_sales": [
-        "매출원가", "영업비용",
-    ],
-    "ppe": [
-        "유형자산", "유형자산합계", "유형자산순액",
-    ],
-    "capex_ppe": [
-        "유형자산의취득", "유형자산취득", "유형자산의취득으로인한현금유출",
-        "유형자산취득으로인한현금유출",
-    ],
-    "capex_intangibles": [
-        "무형자산의취득", "무형자산취득", "무형자산의취득으로인한현금유출",
-        "무형자산취득으로인한현금유출",
-    ],
-    "depreciation": [
-        "감가상각비", "유형자산감가상각비",
-    ],
-    "amortization": [
-        "무형자산상각비", "무형자산감가상각비",
-    ],
-    "ebitda": [
-        "EBITDA", "상각전영업이익",
-    ],
-    "dividends_paid": [
-        "배당금의지급", "배당금지급", "현금배당금의지급", "현금배당금지급",
-    ],
-    "cash_dividend_total": [
-        "현금배당금총액", "현금배당금합계", "배당금총액",
-    ],
-    "dividend_per_share": [
-        "주당현금배당금", "주당배당금", "보통주주당현금배당금",
-    ],
-}
-
-# Explicit statement context is required. Unknown/malformed headings are data
-# gaps; do not promote annual dividend/business summaries to current-period IS.
-METRIC_STATEMENTS = {
-    "equity": {"BS"},
-    "total_assets": {"BS"},
-    "total_liabilities": {"BS"},
-    "current_assets": {"BS"},
-    "current_liabilities": {"BS"},
-    "cash_and_equivalents": {"BS"},
-    "short_term_borrowings": {"BS"},
-    "current_portion_long_term_debt": {"BS"},
-    "long_term_borrowings": {"BS"},
-    "bonds_payable": {"BS"},
-    "ppe": {"BS"},
-    "revenue": {"IS"},
-    "net_income": {"IS"},
-    "operating_income": {"IS"},
-    "gross_profit": {"IS"},
-    "cost_of_sales": {"IS"},
-    "ebitda": {"IS"},
-    "ocf": {"CF"},
-    "capex_ppe": {"CF"},
-    "capex_intangibles": {"CF"},
-    "depreciation": {"CF", "IS"},
-    "amortization": {"CF", "IS"},
-    "dividends_paid": {"CF"},
-}
-
-UNIT_MULTIPLIERS = {
-    "원": 1.0,
-    "천원": 1_000.0,
-    "백만원": 1_000_000.0,
-    "억원": 100_000_000.0,
-}
 
 
 class RateLimitExceeded(RuntimeError):
@@ -216,28 +107,6 @@ def norm_name(x: str) -> str:
     return re.sub(r"[^0-9a-z가-힣]", "", s)
 
 
-def norm_account(x: str) -> str:
-    s = str(x or "").strip()
-    s = re.sub(r"\s+", "", s)
-    s = s.replace("ㆍ", "").replace("·", "").replace("*", "")
-    s = re.sub(r"^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩIVXLC0-9.()\-]+", "", s)
-    return s
-
-
-def parse_number(x: str) -> float:
-    s = str(x or "").strip()
-    s = s.replace("△", "-").replace("▲", "-").replace("Δ", "-").replace("－", "-")
-    negative_parentheses = s.startswith("(") and s.endswith(")")
-    if negative_parentheses:
-        s = s[1:-1].strip()
-    # One complete numeric token. Commas must separate groups of three;
-    # whitespace between numbers, footnotes and concatenated amounts are gaps.
-    if not re.fullmatch(r"[+-]?(?:[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)(?:\.[0-9]+)?", s):
-        return math.nan
-    value = float(s.replace(",", ""))
-    if not math.isfinite(value):
-        return math.nan
-    return -abs(value) if negative_parentheses else value
 
 
 def dart_get_json(path: str, params: dict, timeout: int = 30) -> dict:
@@ -684,23 +553,6 @@ def previous_context(table) -> str:
     return " ".join(reversed(parts))[-1400:]
 
 
-def choose_metric(account: str, statement: str) -> tuple[str, int] | tuple[None, int]:
-    a = norm_account(account)
-    best = None
-    best_score = 999
-    for metric, aliases in ALIASES.items():
-        allowed = METRIC_STATEMENTS.get(metric, set())
-        if not statement or statement not in allowed:
-            continue
-        for rank, alias in enumerate(aliases):
-            na = norm_account(alias)
-            if a == na:
-                score = rank
-            else:
-                continue
-            if score < best_score:
-                best = metric; best_score = score
-    return best, best_score
 
 
 def table_candidates(text: str) -> list[dict]:
@@ -819,21 +671,55 @@ def fetch_document(rcept_no: str) -> tuple[bytes, str]:
     raise RuntimeError(f"document fetch failed {last!r}")
 
 
+def preserve_document(blob: bytes, receipt: str, sha: str) -> None:
+    """Keep exact downloads in the run artifact, before checkpoint publication."""
+    target = os.getenv("LEGACY_DART_SOURCE_DIR")
+    if not target:
+        return
+    folder = Path(target)
+    folder.mkdir(parents=True, exist_ok=True)
+    path = folder / f"{receipt}-{sha}.zip"
+    with _SOURCE_LOCK:
+        if path.exists():
+            if hashlib.sha256(path.read_bytes()).hexdigest() != sha:
+                raise ValueError("Preserved source identity conflict")
+            return
+        used = sum(p.stat().st_size for p in folder.glob("*.zip"))
+        limit = int(os.getenv("LEGACY_DART_SOURCE_MAX_BYTES", "300000000"))
+        if used + len(blob) > limit:
+            if RUN_CONTROL is not None:
+                RUN_CONTROL.stop("SOURCE_EVIDENCE_BUDGET")
+            raise CollectionPaused("SOURCE_EVIDENCE_BUDGET")
+        with path.open("xb") as stream:
+            stream.write(blob)
+
+
 def process_filing(meta: dict) -> tuple[list[dict], dict]:
     rcept=str(meta["rcept_no"])
     try:
         blob, sha=fetch_document(rcept)
+        preserve_document(blob, rcept, sha)
         all_cands=[]
+        diagnostics=[]
         with zipfile.ZipFile(io.BytesIO(blob)) as z:
             names=[n for n in z.namelist() if not n.endswith("/")]
             for n in names:
                 try:
                     data=z.read(n)
+                    diagnostics.append(inspect_member(data, n))
                     text=decode_legacy(data)
                     all_cands.extend(table_candidates(text))
-                except Exception:
+                except Exception as error:
+                    diagnostics.append({"member": n, "issues": ["MEMBER_READ_OR_PARSE_ERROR"],
+                                        "error": type(error).__name__})
                     continue
+        if not diagnostics:
+            diagnostics.append({"member": "", "issues": ["SOURCE_EMPTY_ARCHIVE"]})
         best=select_best_candidates(all_cands)
+        # Damaged sources are evidence gaps even if tolerant HTML parsing finds
+        # a few values. Preserve prior observations; do not publish new amounts.
+        if empty_parse_status(diagnostics) == "SOURCE_GAP":
+            best=[]
         rows=[]
         for rec in best:
             rec.update({
@@ -848,6 +734,8 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
                 "period":meta.get("period",""),
                 "document_sha256":sha,
                 "parser_version":PARSER_VERSION,
+                "source_diagnostic_version":DIAGNOSTIC_VERSION,
+                "source_quality":"PASS",
                 "value_basis":"first current-period amount column in the filed statement",
             })
             rows.append(rec)
@@ -858,11 +746,13 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
             scopes[scope]=len(have & CORE_4F)
         usable=max(scopes.values()) if scopes else 0
         best_scope=max(scopes,key=scopes.get) if usable > 0 else ""
-        status="PARSED_4F" if usable>=4 else ("PARSED_PARTIAL" if rows else "NO_METRICS")
+        status="PARSED_4F" if usable>=4 else ("PARSED_PARTIAL" if rows else empty_parse_status(diagnostics))
         state={
             "rcept_no":rcept,"status":status,"metric_rows":len(rows),
             "best_scope":best_scope,"usable_metric_count":usable,
-            "document_sha256":sha,"parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":""
+            "document_sha256":sha,"parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),
+            "source_diagnostic_version":DIAGNOSTIC_VERSION,
+            "error":json.dumps(diagnostics, ensure_ascii=False) if status == "SOURCE_GAP" else ""
         }
         return rows,state
     except DocumentUnavailable as e:
@@ -913,12 +803,28 @@ def current_state() -> pd.DataFrame:
         compatible |= source.eq("") & state["parser_version"].eq("legacy-v4-book")
     current = state["parser_version"].eq(PARSER_VERSION) & compatible
     transport_only = state["status"].eq("NO_DOCUMENT") & compatible
-    return state[current | transport_only].drop_duplicates("rcept_no", keep="last")
+    out = state[current | transport_only].drop_duplicates("rcept_no", keep="last").copy()
+    quarantine = load_csv(QUARANTINE_FILE, dtype=str).fillna("")
+    if not quarantine.empty:
+        for row in quarantine.to_dict("records"):
+            mask = out["rcept_no"].eq(row["rcept_no"]) & out["document_sha256"].eq(row["document_sha256"])
+            if not mask.any():
+                continue
+            out.loc[mask, "prior_status"] = out.loc[mask, "status"]
+            out.loc[mask, "status"] = "SOURCE_GAP"
+            out.loc[mask, "best_scope"] = ""
+            out.loc[mask, "metric_rows"] = "0"
+            out.loc[mask, "usable_metric_count"] = "0"
+            out.loc[mask, "source_diagnostic_version"] = DIAGNOSTIC_VERSION
+            out.loc[mask, "error"] = row["issues"]
+    return out
 
 
 def durable_done_receipts(state: pd.DataFrame) -> set[str]:
     """Terminal parse state alone is insufficient if its normalized data was lost."""
-    done = set(state.loc[state["status"].isin(["NO_METRICS", "NO_DOCUMENT"]), "rcept_no"])
+    # A source gap is quarantined for evidence-based recovery, never retried
+    # indefinitely and never reported as proof that financial items are absent.
+    done = set(state.loc[state["status"].isin(["NO_METRICS", "NO_DOCUMENT", "SOURCE_GAP"]), "rcept_no"])
     parsed = state[state["status"].isin(["PARSED_4F", "PARSED_PARTIAL"])]
     if parsed.empty:
         return done
@@ -994,7 +900,8 @@ def process_pending(idx: pd.DataFrame, *, max_docs=None, workers=None, control=N
     finally:
         RUN_CONTROL = previous_control
     result.update({"eligible_before_run": len(eligible), "quarantined_errors": held,
-                   "selected": len(selected), "parser_version": PARSER_VERSION})
+                   "selected": len(selected), "parser_version": PARSER_VERSION,
+                   "source_version": SOURCE_VERSION, "source_diagnostic_version": DIAGNOSTIC_VERSION})
     if os.getenv("LEGACY_DART_RUN_REPORT"):
         Path(os.environ["LEGACY_DART_RUN_REPORT"]).write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     return result
@@ -1040,7 +947,8 @@ def write_coverage(idx: pd.DataFrame) -> None:
     processed=int(x["processed"].sum())
     usable=int(x["usable_4f"].sum())
     pending, quarantined = pending_receipts(idx, state)
-    collection_complete = indexed_complete and processed == total_mapped
+    source_gaps = int((x["mapped"] & x["status"].eq("SOURCE_GAP")).sum())
+    collection_complete = indexed_complete and processed == total_mapped and source_gaps == 0
     mode = "BACKFILL_ACTIVE" if not indexed_complete or len(pending) else "REVIEW_REQUIRED"
     if collection_complete:
         mode = "COLLECTION_COMPLETE_REVIEW_REQUIRED"
@@ -1056,12 +964,16 @@ def write_coverage(idx: pd.DataFrame) -> None:
         "quarantined_error_filings": quarantined,
         "no_metrics_filings": int((x["mapped"] & x["status"].eq("NO_METRICS")).sum()),
         "no_document_filings": int((x["mapped"] & x["status"].eq("NO_DOCUMENT")).sum()),
+        "source_gap_filings": source_gaps,
         "index_tasks_total":len(tasks),
         "index_tasks_completed":len(done & set(tasks["task_key"])),
         "index_complete":indexed_complete,
         "indexed_filings":int(x["rcept_no"].nunique()),
         "mapped_filings":total_mapped,
         "processed_filings":processed,
+        "parsed_partial_filings": int((x["mapped"] & x["status"].eq("PARSED_PARTIAL")).sum()),
+        "source_diagnostic_version": DIAGNOSTIC_VERSION,
+        "processed_definition": "durably_classified_not_financial_success",
         "usable_four_factor_filings":usable,
         "remaining_mapped_filings":max(total_mapped-processed,0),
         "document_batch_limit":MAX_DOCS,

@@ -1,0 +1,89 @@
+{
+  "returncode": 0,
+  "stdout": "{\n  \"samples\": 72,\n  \"companies\": 8,\n  \"receipts\": 8,\n  \"source_period_end_years\": [\n    \"1999\",\n    \"2000\"\n  ],\n  \"scope_counts\": {\n    \"OFS\": 46,\n    \"CFS\": 26\n  },\n  \"results\": {\n    \"stored_missing\": 49,\n    \"period_mismatch\": 18,\n    \"amount_mismatch\": 3,\n    \"semantic_mismatch\": 2\n  },\n  \"numeric_equal\": 19,\n  \"numeric_unequal\": 3,\n  \"stored_present\": 23,\n  \"stored_missing\": 49,\n  \"unit_unverified\": 5,\n  \"correction_chain_verified\": 0,\n  \"verified_pit_items\": 0,\n  \"expected_sha256\": \"e95e0c4199905d7d59a27ed9a12b72ec4b698961f33a1c29c495819a49992240\",\n  \"source_verification\": \"full archived primary body SHA and original literal cell offsets\",\n  \"interpretation\": \"failure-oriented sample; not full-data certification; preserved v4 observations are not current provider inputs\"\n}\n",
+  "stderr": "",
+  "input_sha256": {
+    "data/financials/legacy_2000_2014/legacy_filings.csv.gz": "310001c3e9ed429684da5008983ccfa8d27cd92a16659dd18a1060c6e112406c",
+    "data/status/dart_legacy_backfill_state.csv": "55895effbb2ac7a031ef0f55a3daf6785c85da15d3f8fd85887a76fe6bd2eaef",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_1998.csv.gz": "18d986873b426d6a7a69d76694722481666948c5d68dc7d442439bbd1167ff91",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_1999.csv.gz": "5dd3c67cb7bb6ba094cbeae9232ac35e48ce3a456ff4678bb9e46e41adf23ac4",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_2000.csv.gz": "7c6cc453d9890b2065cf908a9d411646abb0e04fa99ddd0f2d000e1ac2d2b998",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_2001.csv.gz": "63dfed0cc3443c2a97a2fe70f39a0d64440cf03fc640f41afbd0fdadcd5f44d0",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_2002.csv.gz": "eaa36a006e41888403216e1fd767442678ae3ccc3f5d018543eaab4dd95e87d8"
+  },
+  "inputs_unchanged": true,
+  "primary_sources": [
+    {
+      "file": "viewer-section-20000809000052-3778.html",
+      "source_sha256": "34ae9d43fc7e6755b1ce72604c4c1b5091d08711b25709231ec3b90d9161fcb8",
+      "artifact_id": 11221241095
+    },
+    {
+      "file": "viewer-section-20000809000052-4805.html",
+      "source_sha256": "7b2bdab65dbc1fcad7876444ecdba1aaa0a40f1d45a1c35495b3eb90b1d56d92",
+      "artifact_id": 11221241095
+    },
+    {
+      "file": "viewer-section-20000814000085-3439.html",
+      "source_sha256": "3c53825a5ae9b589851dba6d53a5b6f670676b47cbd90c7e23279bc16e841091",
+      "artifact_id": 11221241095
+    },
+    {
+      "file": "viewer-section-20000814000085-3564.html",
+      "source_sha256": "ad972432cedcaa81c70c3f1f349174ef4cc4da00f6290795cc22bba2eb672181",
+      "artifact_id": 11221241095
+    },
+    {
+      "file": "viewer-section-20010103000052-10627.html",
+      "source_sha256": "7b14c373616cc88d5c570a83072c3ff45c604c27d6d6aa58c7b1da1afea2cf80",
+      "artifact_id": 11221241095
+    },
+    {
+      "file": "viewer-section-20010103000052-3618.html",
+      "source_sha256": "f49747cf8b66deffddb6afc2bce7bf18689a2e861f935cbe488d6e723055a15f",
+      "artifact_id": 11221241095
+    },
+    {
+      "file": "viewer-section-20010104000076-2417.html",
+      "source_sha256": "f9cc8a723d53da9f27177c6af1caa2119d54142cf3a8163037b58932c503a5f2",
+      "artifact_id": 11221241095
+    },
+    {
+      "file": "viewer-section-20010104000076-2603.html",
+      "source_sha256": "bafb173662e448af732599de4944b74c91150778fd69a70ede82a5f8dbe713d1",
+      "artifact_id": 11221241095
+    },
+    {
+      "file": "viewer-section-20010213000010-3163.html",
+      "source_sha256": "c24959a83d276b240e52800f2b4421ee945db9a354e5db9c09627ce35b4b3246",
+      "artifact_id": 11221241095
+    },
+    {
+      "file": "viewer-section-20010213000010-7333.html",
+      "source_sha256": "5f9ad002b42decd3bb67c63bbe6770585d5b26c5463490f00dd2092bcf11efaf",
+      "artifact_id": 11221241095
+    },
+    {
+      "file": "viewer-section-20010213000014-3380.html",
+      "source_sha256": "d51a64d69cf25b6061fdf6daaed895bd13b5c5121e570a490a0ab5729984ca1c",
+      "artifact_id": 11221241095
+    },
+    {
+      "file": "viewer-section-20010213000014-5229.html",
+      "source_sha256": "15e94774dd92da4766422adf9e10f8962ed1e75684d81c2cde9e29940b03e0dd",
+      "artifact_id": 11221241095
+    },
+    {
+      "file": "20000214000011.xml",
+      "source_sha256": "37072ded41b815c7eda9194a4dfb6522970dc8b33e6a2d5443475e2e02c20c82",
+      "document_sha256": "7624fba43683d2d0eaf4b16e12f9c6dc94009d65478a4960f4469055e3445d40",
+      "artifact_id": 11205027337
+    },
+    {
+      "file": "20000515000887.xml",
+      "source_sha256": "274259d223bc8eaa7fa47808029c3d67afe3e51ac49c671775985bc8e604ca0f",
+      "document_sha256": "cdd8827647408729002930e2c6bd5288988e91635b9fcaff3e0f26b2763e8c16",
+      "artifact_id": 11205027337
+    }
+  ]
+}

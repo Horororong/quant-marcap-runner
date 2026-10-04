@@ -1,0 +1,9 @@
+2026-10-04T07:05:20.7984679Z ============================== 19 passed in 0.90s ==============================
+2026-10-04T07:05:25.6599779Z ============================== 22 passed in 4.69s ==============================
+2026-10-04T07:05:26.1251840Z ============================== 8 passed in 0.29s ===============================
+2026-10-04T07:05:26.5577963Z ============================== 7 passed in 0.26s ===============================
+2026-10-04T07:05:27.9053406Z Ran 33 tests in 1.067s
+2026-10-04T07:05:29.2420212Z {"samples": 72, "companies": 8, "receipts": 8, "source_period_end_years": ["1999", "2000"], "scope_counts": {"OFS": 46, "CFS": 26}, "results": {"stored_missing": 49, "period_mismatch": 18, "amount_mismatch": 3, "semantic_mismatch": 2}, "numeric_equal": 19, "numeric_unequal": 3, "stored_present": 23, "stored_missing": 49, "unit_unverified": 5, "correction_chain_verified": 0, "verified_pit_items": 0, "expected_sha256": "e95e0c4199905d7d59a27ed9a12b72ec4b698961f33a1c29c495819a49992240", "source_verification": "full archived primary body SHA and original literal cell offsets", "interpretation": "failure-oriented sample; not full-data certification; preserved v4 observations are not current provider inputs"}
+2026-10-04T07:05:30.3897567Z Artifact legacy-primary-72-recheck.zip successfully finalized. Artifact ID 11296975611
+2026-10-04T07:05:30.4467291Z [36;1mprint("legacy schema OK:", m.PARSER_VERSION, len(m.ALIASES), "canonical metrics")[0m
+2026-10-04T07:05:30.7008477Z legacy schema OK: legacy-v5-single-amount 25 canonical metrics

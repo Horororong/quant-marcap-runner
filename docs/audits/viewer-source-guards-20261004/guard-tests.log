@@ -1,0 +1,38 @@
+test_ambiguous_parentheses_do_not_guess_sign (__main__.ViewerGuardTests.test_ambiguous_parentheses_do_not_guess_sign) ... ok
+test_annual_flow_is_not_quarter_even_if_end_matches (__main__.ViewerGuardTests.test_annual_flow_is_not_quarter_even_if_end_matches) ... ok
+test_br_empty_lines_are_preserved_without_concatenation (__main__.ViewerGuardTests.test_br_empty_lines_are_preserved_without_concatenation) ... ok
+test_br_missing_line_is_not_shifted_or_padded (__main__.ViewerGuardTests.test_br_missing_line_is_not_shifted_or_padded) ... ok
+test_colspan_group_requires_one_unambiguous_amount (__main__.ViewerGuardTests.test_colspan_group_requires_one_unambiguous_amount) ... ok
+test_conflicting_units_and_future_table_unit_do_not_fill (__main__.ViewerGuardTests.test_conflicting_units_and_future_table_unit_do_not_fill) ... ok
+test_contrary_statement_scope_cannot_inherit_ofs (__main__.ViewerGuardTests.test_contrary_statement_scope_cannot_inherit_ofs) ... ok
+test_current_column_is_selected_after_previous_column (__main__.ViewerGuardTests.test_current_column_is_selected_after_previous_column) ... ok
+test_current_term_or_date_mismatch_is_a_gap (__main__.ViewerGuardTests.test_current_term_or_date_mismatch_is_a_gap) ... ok
+test_current_unit_date_are_not_inherited_by_following_table (__main__.ViewerGuardTests.test_current_unit_date_are_not_inherited_by_following_table) ... ok
+test_duplicate_current_alias_is_not_resolved_by_priority (__main__.ViewerGuardTests.test_duplicate_current_alias_is_not_resolved_by_priority) ... ok
+test_explicit_unit_multiplier (__main__.ViewerGuardTests.test_explicit_unit_multiplier) ... ok
+test_explicit_zero_remains_a_source_observation (__main__.ViewerGuardTests.test_explicit_zero_remains_a_source_observation) ... ok
+test_first_of_month_and_missing_scope_are_invalid_requests (__main__.ViewerGuardTests.test_first_of_month_and_missing_scope_are_invalid_requests) ... ok
+test_generic_quarter_requires_source_date_range_proof (__main__.ViewerGuardTests.test_generic_quarter_requires_source_date_range_proof) ... ok
+test_missing_blank_or_unsupported_unit_is_a_gap (__main__.ViewerGuardTests.test_missing_blank_or_unsupported_unit_is_a_gap) ... ok
+test_missing_current_cell_never_falls_back_to_previous_value (__main__.ViewerGuardTests.test_missing_current_cell_never_falls_back_to_previous_value) ... ok
+test_multiple_numeric_tokens_are_rejected (__main__.ViewerGuardTests.test_multiple_numeric_tokens_are_rejected) ... ok
+test_native_archives_and_viewer_bodies_recover_exact_14_primary_sources (__main__.ViewerGuardTests.test_native_archives_and_viewer_bodies_recover_exact_14_primary_sources) ... ok
+test_nested_tables_and_budget_overflow_are_gaps (__main__.ViewerGuardTests.test_nested_tables_and_budget_overflow_are_gaps) ... ok
+test_non_200_or_unknown_encoding_is_a_gap (__main__.ViewerGuardTests.test_non_200_or_unknown_encoding_is_a_gap) ... ok
+test_non_dart_or_mismatched_receipt_is_rejected (__main__.ViewerGuardTests.test_non_dart_or_mismatched_receipt_is_rejected) ... ok
+test_note_column_cannot_be_a_numeric_amount (__main__.ViewerGuardTests.test_note_column_cannot_be_a_numeric_amount) ... ok
+test_primary_all_49_cells_and_12_bodies (__main__.ViewerGuardTests.test_primary_all_49_cells_and_12_bodies) ... ok
+test_primary_body_sha_detects_corruption (__main__.ViewerGuardTests.test_primary_body_sha_detects_corruption) ... ok
+test_primary_cfs_prior_annual_is_not_current_ofs (__main__.ViewerGuardTests.test_primary_cfs_prior_annual_is_not_current_ofs) ... ok
+test_primary_native_sha_chain_matches_preexisting_probe (__main__.ViewerGuardTests.test_primary_native_sha_chain_matches_preexisting_probe) ... ok
+test_primary_previous_annual_ocf_never_becomes_current_quarter (__main__.ViewerGuardTests.test_primary_previous_annual_ocf_never_becomes_current_quarter) ... ok
+test_primary_unknown_vitz_unit_cannot_inherit_later_cf_unit (__main__.ViewerGuardTests.test_primary_unknown_vitz_unit_cannot_inherit_later_cf_unit) ... ok
+test_replay_preserves_existing_outputs (__main__.ViewerGuardTests.test_replay_preserves_existing_outputs) ... ok
+test_scope_requires_matching_route_and_body_heading (__main__.ViewerGuardTests.test_scope_requires_matching_route_and_body_heading) ... ok
+test_source_negative_prefix_triangles_and_loss_labels (__main__.ViewerGuardTests.test_source_negative_prefix_triangles_and_loss_labels) ... ok
+test_unknown_statement_is_not_inferred_from_account (__main__.ViewerGuardTests.test_unknown_statement_is_not_inferred_from_account) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 1.528s
+
+OK
