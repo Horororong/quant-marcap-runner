@@ -1,0 +1,130 @@
+{
+  "selection": "All ten newly exposed non-golden IS staging metrics, with no choice by value, return or performance. Additional independent evidence only; frozen original 49-item golden remains unchanged.",
+  "source_basis": "Manual reading of complete original account/current-amount BR lines recorded in SOURCE_REVIEW_BEFORE_CHANGE before adapter v2 changes. Literal token/account expectations below are entered from those primary lines, not calculated by the adapter.",
+  "verification_method": "Separate stdlib raw-cell slicing/BR splitting/HTML text decoding and Decimal comparison; no collector or adapter import, account alias discovery, period inference, or availability lag.",
+  "sample_count": 10,
+  "primary_receipts": 2,
+  "remaining_existing_staging_unreviewed": 46,
+  "records": [
+    {
+      "sample_id": "A001",
+      "rcept_no": "20000809000052",
+      "metric": "amortization",
+      "source_account": "25.무형자산상각비",
+      "table_index": 5,
+      "row_index": 1,
+      "cell_index": 1,
+      "line_index": 48,
+      "source_token": "2,791,203",
+      "unit": "원"
+    },
+    {
+      "sample_id": "A002",
+      "rcept_no": "20000809000052",
+      "metric": "cost_of_sales",
+      "source_account": "II.매출원가",
+      "table_index": 5,
+      "row_index": 1,
+      "cell_index": 1,
+      "line_index": 5,
+      "source_token": "4,177,649,022",
+      "unit": "원"
+    },
+    {
+      "sample_id": "A003",
+      "rcept_no": "20000809000052",
+      "metric": "depreciation",
+      "source_account": "6.감가상각비",
+      "table_index": 5,
+      "row_index": 1,
+      "cell_index": 1,
+      "line_index": 29,
+      "source_token": "66,211,967",
+      "unit": "원"
+    },
+    {
+      "sample_id": "A004",
+      "rcept_no": "20000809000052",
+      "metric": "gross_profit",
+      "source_account": "III.매출총이익",
+      "table_index": 5,
+      "row_index": 1,
+      "cell_index": 1,
+      "line_index": 21,
+      "source_token": "3,845,602,707",
+      "unit": "원"
+    },
+    {
+      "sample_id": "A005",
+      "rcept_no": "20000809000052",
+      "metric": "operating_income",
+      "source_account": "V. 영업이익",
+      "table_index": 5,
+      "row_index": 1,
+      "cell_index": 1,
+      "line_index": 52,
+      "source_token": "731,190,128",
+      "unit": "원"
+    },
+    {
+      "sample_id": "A006",
+      "rcept_no": "20010104000076",
+      "metric": "amortization",
+      "source_account": "11. 무형자산상각비",
+      "table_index": 5,
+      "row_index": 1,
+      "cell_index": 1,
+      "line_index": 33,
+      "source_token": "32,131,966",
+      "unit": "원"
+    },
+    {
+      "sample_id": "A007",
+      "rcept_no": "20010104000076",
+      "metric": "cost_of_sales",
+      "source_account": "Ⅱ. 매 출 원 가",
+      "table_index": 5,
+      "row_index": 1,
+      "cell_index": 1,
+      "line_index": 6,
+      "source_token": "9,837,274,214",
+      "unit": "원"
+    },
+    {
+      "sample_id": "A008",
+      "rcept_no": "20010104000076",
+      "metric": "depreciation",
+      "source_account": "10. 감가상각비",
+      "table_index": 5,
+      "row_index": 1,
+      "cell_index": 1,
+      "line_index": 32,
+      "source_token": "370,012,757",
+      "unit": "원"
+    },
+    {
+      "sample_id": "A009",
+      "rcept_no": "20010104000076",
+      "metric": "gross_profit",
+      "source_account": "Ⅲ. 매 출 총 이 익",
+      "table_index": 5,
+      "row_index": 1,
+      "cell_index": 1,
+      "line_index": 20,
+      "source_token": "10,054,430,541",
+      "unit": "원"
+    },
+    {
+      "sample_id": "A010",
+      "rcept_no": "20010104000076",
+      "metric": "operating_income",
+      "source_account": "Ⅴ. 영 업 이 익",
+      "table_index": 5,
+      "row_index": 1,
+      "cell_index": 1,
+      "line_index": 52,
+      "source_token": "-3,535,355,458",
+      "unit": "원"
+    }
+  ]
+}

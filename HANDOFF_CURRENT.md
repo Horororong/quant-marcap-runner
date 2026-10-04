@@ -1,3 +1,14 @@
+## 2026-10-04 terminal per-share note alignment follow-up
+
+- Branch `feature/legacy-viewer-line-alignment-20261004` follows draft PR #30; no main merge.
+- Independently inspected all five current-period, known-unit layout-withheld cells using original bodies and pre-existing manual golden values. Adapter v2 recognizes only proven financial prefixes followed by explicit terminal per-share notes, with unchanged BR indices and a viewer-only exact Daewoo loss alias.
+- 48 local regressions pass; full final-code CI is pending until the actual remote run is complete. Current CI/evidence status must be read from the linked checkpoint.
+- Original 49-cell replay: 22 match, 22 prior-period withheld, 5 unknown-unit withheld, zero accepted disagreement. All previous 63 staging rows are preserved; 78 total rows include 56 unaudited rows (10 newly exposed). No production/PIT promotion.
+- Original independent 72-item baseline findings remain 49 missing/18 period/3 amount/2 semantic; no stored data or native checkpoint changed. No collector, new research NAV or investment-strategy run was launched.
+- Data preparation, full-data independent quality and actual strategy verification remain incomplete. Availability/correction chains and current OCF are still gaps.
+- Evidence, source decision, bounded replay/recheck commands and final CI/PR status: [line-alignment checkpoint](docs/audits/viewer-line-alignment-20261004/README.md).
+- Next: independently inspect the ten newly exposed non-golden rows against original primary cells before calling them verified.
+
 ## 2026-10-04 viewer source guard work (new working branch)
 
 - Branch: `feature/legacy-viewer-period-guards-20261004`; based on the prior audit PR #29, not merged into main.

@@ -10,14 +10,14 @@ import unittest
 try:
     from scripts.legacy_viewer_source import adapt_viewer, viewer_amount
     from scripts.replay_legacy_viewer_sources import replay, write_once, FIXTURES
-    from scripts.legacy_financial_fields import parse_number
+    from scripts.legacy_financial_fields import parse_number, choose_metric
     from scripts.recheck_legacy_primary_audit import materialize_sources
 except ModuleNotFoundError as error:
     if error.name != "scripts":
         raise
     from legacy_viewer_source import adapt_viewer, viewer_amount
     from replay_legacy_viewer_sources import replay, write_once, FIXTURES
-    from legacy_financial_fields import parse_number
+    from legacy_financial_fields import parse_number, choose_metric
     from recheck_legacy_primary_audit import materialize_sources
 
 
@@ -47,10 +47,10 @@ class ViewerGuardTests(unittest.TestCase):
 
     def test_primary_all_49_cells_and_12_bodies(self):
         summary, captures, audited = replay()
-        self.assertEqual(summary["results"], {"MATCH": 17, "WITHHELD_LAYOUT_GUARD": 5,
+        self.assertEqual(summary["results"], {"MATCH": 22,
                                             "WITHHELD_PRIOR_PERIOD": 22, "WITHHELD_UNKNOWN_UNIT": 5})
-        self.assertEqual(summary["staging_rows"], 63)
-        self.assertEqual(summary["unreviewed_staging_rows"], 46)
+        self.assertEqual(summary["staging_rows"], 78)
+        self.assertEqual(summary["unreviewed_staging_rows"], 56)
         self.assertEqual(len(captures), 12)
         self.assertEqual(len(audited), 49)
         self.assertEqual(summary["verified_pit_items"], 0)
@@ -160,6 +160,110 @@ class ViewerGuardTests(unittest.TestCase):
     def test_br_missing_line_is_not_shifted_or_padded(self):
         row = "<tr><td>매출액<br/><br/>당기순이익</td><td>10,000<br/>500</td><td>20,000<br/><br/>600</td></tr>"
         self.assertFalse(self.parse(statement(row=row))["rows"])
+
+    def per_share_row(self, accounts=None, current=None, prior=None):
+        return ("<tr><td>" + (accounts or "매출액<br/><br/>당기순이익<br/>(기본주당순이익: 25원)")
+                + "</td><td>" + (current if current is not None else "10,000<br/><br/>500<br/><br/>")
+                + "</td><td>" + (prior if prior is not None else "20,000<br/><br/>600") + "</td></tr>")
+
+    def test_primary_five_previously_withheld_values_and_original_indices(self):
+        _, captures, audited = replay()
+        expected = {"F004": (8023251729, 1), "F005": (625811634, 88),
+                    "F017": (-3423467689539, 0), "F022": (19891704755, 0), "F023": (-6516196541, 94)}
+        for sample in audited:
+            if sample["sample_id"] not in expected:
+                continue
+            value, index = expected[sample["sample_id"]]
+            self.assertEqual(sample["status"], "MATCH")
+            self.assertEqual(sample["extracted_amount_krw"], value)
+            source = next(c for c in captures if c["file"] == sample["file"] + ".gz")
+            row = next(r for r in source["rows"] if r["metric"] == sample["metric"])
+            self.assertEqual(row["line_index"], index)
+            self.assertEqual(row["table_index"], sample["table_index"])
+            self.assertEqual(row["cell_index"], sample["cell_index"])
+            self.assertIn("line_alignment_evidence", row)
+            self.assertFalse(source["pit_ready"])
+            self.assertFalse(source["production_ready"])
+
+    def test_explicit_per_share_tail_retains_prefix_empty_lines(self):
+        rows = self.parse(statement(row=self.per_share_row()))["rows"]
+        self.assertEqual({r["metric"]: (r["amount_krw"], r["line_index"]) for r in rows},
+                         {"revenue": (10000, 0), "net_income": (500, 2)})
+        self.assertEqual(rows[0]["line_alignment_evidence"]["original_line_counts"], [4, 5, 3])
+
+    def test_wrapped_explicit_per_share_notes_are_supported(self):
+        accounts = "매출액<br/><br/>당기순이익<br/><br/>(주당순이익:<br/>분기 25원)<br/>(주당경상이익:<br/>13(전)기 30원)<br/>"
+        rows = self.parse(statement(row=self.per_share_row(accounts=accounts)))["rows"]
+        profit = next(r for r in rows if r["metric"] == "net_income")
+        self.assertEqual(profit["amount_krw"], 500)
+        self.assertEqual(profit["line_alignment_evidence"]["per_share_note_count"], 2)
+
+    def test_per_share_tail_does_not_repair_an_interior_missing_br(self):
+        for current in ("10,000<br/>500<br/><br/>", "10,000<br/>500<br/><br/><br/>"):
+            self.assertFalse(self.parse(statement(row=self.per_share_row(current=current)))["rows"])
+
+    def test_per_share_tail_does_not_shift_amount_on_blank_account_line(self):
+        row = self.per_share_row(current="10,000<br/>999<br/>500<br/>")
+        self.assertFalse(self.parse(statement(row=row))["rows"])
+
+    def test_per_share_tail_cannot_supply_missing_current_profit(self):
+        for current in ("10,000<br/><br/><br/>", "", "10,000<br/><br/>-<br/>"):
+            self.assertFalse(self.parse(statement(row=self.per_share_row(current=current)))["rows"])
+
+    def test_per_share_tail_amount_column_notes_are_not_financial_amounts(self):
+        for current in ("10,000<br/><br/>500<br/>25", "10,000<br/><br/>500<br/>(주당순이익:25원)"):
+            self.assertFalse(self.parse(statement(row=self.per_share_row(current=current)))["rows"])
+
+    def test_per_share_tail_rejects_unknown_or_additional_account_text(self):
+        for tail in ("(기본주당순이익:25원)추가설명", "(기본주당순이익:25원)<br/>매출액",
+                     "(기본주당순이익:25원)<br/>(주당순이익:단위불명)", "(주당순이익:12,34원)"):
+            accounts = "매출액<br/><br/>당기순이익<br/>" + tail
+            self.assertFalse(self.parse(statement(row=self.per_share_row(accounts=accounts)))["rows"])
+
+    def test_ragged_rows_without_explicit_per_share_tail_still_fail(self):
+        for accounts in ("매출액<br/><br/>당기순이익<br/>", "매출액<br/><br/>당기순이익<br/>(주석2)"):
+            self.assertFalse(self.parse(statement(row=self.per_share_row(accounts=accounts)))["rows"])
+
+    def test_per_share_boundary_must_follow_net_income(self):
+        accounts = "매출액<br/><br/>영업이익<br/>(주당경상이익:25원)"
+        self.assertFalse(self.parse(statement(row=self.per_share_row(accounts=accounts)))["rows"])
+
+    def test_per_share_alignment_is_not_a_balance_sheet_rule(self):
+        html = statement(row=self.per_share_row()).replace("손익계산서", "대차대조표")
+        self.assertFalse(self.parse(html)["rows"])
+
+    def test_per_share_tail_also_rejects_shifted_prior_column(self):
+        row = self.per_share_row(prior="20,000<br/>600")
+        self.assertFalse(self.parse(statement(row=row))["rows"])
+
+    def test_daewoo_loss_note_group_requires_exact_one_current_token(self):
+        columns = "<th>과목</th><th colspan='2'>제38기3분기</th><th>제37기연간</th>"
+        accounts = "ⅩⅢ. 당분기순손실 (주 27)<br/>(기본주당분기순손실: (-)9,834원)"
+        for detail, value, expected in (("<br/><br/>", "(-)5,000", -5000),
+                                       ("<br/><br/>", "5,000", -5000),
+                                       ("99<br/><br/>", "(-)5,000", None),
+                                       ("<br/><br/>", "", None)):
+            row = f"<tr><td>{accounts}</td><td>{detail}</td><td>{value}</td><td>(-)6,000</td></tr>"
+            rows = self.parse(statement(columns=columns, row=row))["rows"]
+            if expected is None:
+                self.assertFalse(rows)
+            else:
+                self.assertEqual(rows[0]["amount_krw"], expected)
+                self.assertEqual(rows[0]["raw_amount"], value)
+                self.assertEqual(rows[0]["line_index"], 0)
+
+    def test_viewer_loss_alias_is_exact_and_does_not_change_native(self):
+        self.assertFalse(choose_metric("당분기순손실", "IS")[0])
+        for account in ("당분기순손실추정", "기본주당분기순손실", "당분기순손실률"):
+            row = f"<tr><td>{account}</td><td>5,000</td><td>6,000</td></tr>"
+            self.assertFalse(self.parse(statement(row=row))["rows"])
+
+    def test_per_share_notes_do_not_bypass_period_scope_or_unit_guard(self):
+        row = self.per_share_row()
+        for html, request in ((statement(row=row, unit=""), self.request),
+                              (statement(row=row, dates="제38기3분기 1999.10.1부터2000.9.30까지"), self.request),
+                              (statement(row=row), dict(self.request, scope="CFS"))):
+            self.assertFalse(self.parse(html, request)["rows"])
 
     def test_multiple_numeric_tokens_are_rejected(self):
         for token in ("10,000 5,000", "751,637 22,35416,940", "1,234<br/>567", "12,34", "1.5%", "1" + "0" * 309):

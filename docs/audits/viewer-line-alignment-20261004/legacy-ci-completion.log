@@ -1,0 +1,26 @@
+2026-10-04T07:51:58.0106758Z collecting ... collected 19 items
+2026-10-04T07:51:58.0323870Z ============================== 19 passed in 2.58s ==============================
+2026-10-04T07:51:58.7591371Z collecting ... collected 22 items
+2026-10-04T07:52:00.2532025Z ============================== 22 passed in 1.92s ==============================
+2026-10-04T07:52:00.9612725Z collecting ... collected 8 items
+2026-10-04T07:52:01.0209884Z ============================== 8 passed in 0.47s ===============================
+2026-10-04T07:52:01.7216505Z collecting ... collected 7 items
+2026-10-04T07:52:01.7713109Z ============================== 7 passed in 0.46s ===============================
+2026-10-04T07:52:02.1222837Z Ran 8 tests in 0.016s
+2026-10-04T07:52:02.2252809Z test_br_missing_line_is_not_shifted_or_padded (__main__.ViewerGuardTests.test_br_missing_line_is_not_shifted_or_padded) ... ok
+2026-10-04T07:52:02.2665396Z test_per_share_alignment_is_not_a_balance_sheet_rule (__main__.ViewerGuardTests.test_per_share_alignment_is_not_a_balance_sheet_rule) ... ok
+2026-10-04T07:52:02.2672009Z test_per_share_boundary_must_follow_net_income (__main__.ViewerGuardTests.test_per_share_boundary_must_follow_net_income) ... ok
+2026-10-04T07:52:02.2682281Z test_per_share_notes_do_not_bypass_period_scope_or_unit_guard (__main__.ViewerGuardTests.test_per_share_notes_do_not_bypass_period_scope_or_unit_guard) ... ok
+2026-10-04T07:52:02.2688763Z test_per_share_tail_also_rejects_shifted_prior_column (__main__.ViewerGuardTests.test_per_share_tail_also_rejects_shifted_prior_column) ... ok
+2026-10-04T07:52:02.2700876Z test_per_share_tail_amount_column_notes_are_not_financial_amounts (__main__.ViewerGuardTests.test_per_share_tail_amount_column_notes_are_not_financial_amounts) ... ok
+2026-10-04T07:52:02.2719683Z test_per_share_tail_cannot_supply_missing_current_profit (__main__.ViewerGuardTests.test_per_share_tail_cannot_supply_missing_current_profit) ... ok
+2026-10-04T07:52:02.2731049Z test_per_share_tail_does_not_repair_an_interior_missing_br (__main__.ViewerGuardTests.test_per_share_tail_does_not_repair_an_interior_missing_br) ... ok
+2026-10-04T07:52:02.2737764Z test_per_share_tail_does_not_shift_amount_on_blank_account_line (__main__.ViewerGuardTests.test_per_share_tail_does_not_shift_amount_on_blank_account_line) ... ok
+2026-10-04T07:52:02.2755167Z test_per_share_tail_rejects_unknown_or_additional_account_text (__main__.ViewerGuardTests.test_per_share_tail_rejects_unknown_or_additional_account_text) ... ok
+2026-10-04T07:52:03.7295028Z test_primary_five_previously_withheld_values_and_original_indices (__main__.ViewerGuardTests.test_primary_five_previously_withheld_values_and_original_indices) ... ok
+2026-10-04T07:52:04.6849004Z test_viewer_loss_alias_is_exact_and_does_not_change_native (__main__.ViewerGuardTests.test_viewer_loss_alias_is_exact_and_does_not_change_native) ... ok
+2026-10-04T07:52:04.6859775Z Ran 48 tests in 2.464s
+2026-10-04T07:52:06.8857557Z {"samples": 72, "companies": 8, "receipts": 8, "source_period_end_years": ["1999", "2000"], "scope_counts": {"OFS": 46, "CFS": 26}, "results": {"stored_missing": 49, "period_mismatch": 18, "amount_mismatch": 3, "semantic_mismatch": 2}, "numeric_equal": 19, "numeric_unequal": 3, "stored_present": 23, "stored_missing": 49, "unit_unverified": 5, "correction_chain_verified": 0, "verified_pit_items": 0, "expected_sha256": "e95e0c4199905d7d59a27ed9a12b72ec4b698961f33a1c29c495819a49992240", "source_verification": "full archived primary body SHA and original literal cell offsets", "interpretation": "failure-oriented sample; not full-data certification; preserved v4 observations are not current provider inputs"}
+2026-10-04T07:52:06.9500216Z Ran 6 tests in 0.004s
+2026-10-04T07:52:07.9144157Z [36;1mprint("legacy schema OK:", m.PARSER_VERSION, len(m.ALIASES), "canonical metrics")[0m
+2026-10-04T07:52:08.3471140Z legacy schema OK: legacy-v5-single-amount 25 canonical metrics
