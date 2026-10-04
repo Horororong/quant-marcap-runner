@@ -1,0 +1,145 @@
+{
+  "benchmark": {
+    "end": "2020-11-30",
+    "exact_date_alignment": true,
+    "includes_dividends": false,
+    "observations": 165,
+    "path": "data/indices/KOSPI.csv",
+    "return_basis": "price_index_close",
+    "source": "index",
+    "start": "2020-04-01",
+    "symbol": "KOSPI"
+  },
+  "corporate_action_audit": {
+    "coverage": "known evidence gaps only; historical corporate-action completeness remains unverified",
+    "executed_target_count": 0,
+    "exposures": [],
+    "known_gap_count": 0,
+    "policy": "shared signal selection and lag; positive planned holdings; no NAV, drift or cost calculation",
+    "selection_performed": false
+  },
+  "factor_sources": [
+    "dart",
+    "krx"
+  ],
+  "history_coverage": {
+    "calendar": "XKRX",
+    "calendar_package_version": "4.13.2",
+    "expected_first_session": "2020-04-01",
+    "expected_last_session": "2020-11-30",
+    "expected_sessions": 165,
+    "history_audit_contract_version": "1",
+    "markets": {
+      "KOSDAQ": {
+        "missing_sessions": [],
+        "observed_sessions": 165,
+        "status": "complete",
+        "unexpected_dates": []
+      },
+      "KOSPI": {
+        "missing_sessions": [],
+        "observed_sessions": 165,
+        "status": "complete",
+        "unexpected_dates": []
+      }
+    },
+    "requested_end": "2020-11-30",
+    "requested_start": "2020-04-01",
+    "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified",
+    "status": "complete"
+  },
+  "krx_panel": {
+    "actual_end": "2020-11-30",
+    "actual_start": "2020-04-01",
+    "distinct_codes": 2399,
+    "markets": [
+      "KOSDAQ",
+      "KOSPI"
+    ],
+    "rows": 386074
+  },
+  "phase": "ready",
+  "preflight_contract_version": "3",
+  "provider_coverage": [
+    {
+      "cfs_no_data_codes": 719,
+      "cfs_ok_codes": 1668,
+      "cfs_raw_shards": 3,
+      "completed_codes": 2387,
+      "expected_codes": 2387,
+      "ofs_fallback_terminal_codes": 719,
+      "ofs_raw_shards": 3,
+      "period": "Q3",
+      "ratio": 1.0,
+      "raw_ok": true,
+      "signal_date": "2020-04-29",
+      "source": "dart",
+      "year": 2019
+    },
+    {
+      "cfs_no_data_codes": 692,
+      "cfs_ok_codes": 1695,
+      "cfs_raw_shards": 4,
+      "completed_codes": 2387,
+      "expected_codes": 2387,
+      "ofs_fallback_terminal_codes": 692,
+      "ofs_raw_shards": 2,
+      "period": "FY",
+      "ratio": 1.0,
+      "raw_ok": true,
+      "signal_date": "2020-04-29",
+      "source": "dart",
+      "year": 2019
+    },
+    {
+      "cfs_no_data_codes": 758,
+      "cfs_ok_codes": 1703,
+      "cfs_raw_shards": 3,
+      "completed_codes": 2461,
+      "expected_codes": 2461,
+      "ofs_fallback_terminal_codes": 758,
+      "ofs_raw_shards": 2,
+      "period": "Q1",
+      "ratio": 1.0,
+      "raw_ok": true,
+      "signal_date": "2020-10-30",
+      "source": "dart",
+      "year": 2020
+    },
+    {
+      "cfs_no_data_codes": 743,
+      "cfs_ok_codes": 1718,
+      "cfs_raw_shards": 5,
+      "completed_codes": 2461,
+      "expected_codes": 2461,
+      "ofs_fallback_terminal_codes": 743,
+      "ofs_raw_shards": 2,
+      "period": "H1",
+      "ratio": 1.0,
+      "raw_ok": true,
+      "signal_date": "2020-10-30",
+      "source": "dart",
+      "year": 2020
+    }
+  ],
+  "ready_for_execution": true,
+  "requested_period": {
+    "end": "2020-11-30",
+    "start": "2020-04-01"
+  },
+  "signal_dates": [
+    "2020-04-29",
+    "2020-10-30"
+  ],
+  "status": "ok",
+  "strategy_fingerprint": "ae45125a95e513c4996f4111355297bfc3c53ed65b072138e435857a9e093159",
+  "strategy_id": "super_value_dart_benchmark_dsl",
+  "versions": {
+    "corporate_action_registry_version": "5",
+    "dsl_machine_contract_version": "23",
+    "execution_engine_version": "v2-16-exec-3",
+    "factor_registry_version": "7",
+    "project_template_version": "v2-16",
+    "schema_version": "1.0"
+  }
+}

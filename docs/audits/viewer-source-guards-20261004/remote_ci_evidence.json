@@ -1,0 +1,33 @@
+{
+  "verified_code_commit": "be450e9f9f38909f60d354edad07012e3604b2bd",
+  "local_code_commit": "9b830bd",
+  "main_data_revision": "4833fb503105d810ea6e8e905d914f1ab3c28632",
+  "legacy_validation_run": 37184664255,
+  "legacy_validation_job": 111383987779,
+  "legacy_validation_conclusion": "success",
+  "legacy_primary_artifact_id": 11296975611,
+  "legacy_primary_artifact_sha256": "c8fec202587348c3a47b6fa010bbe9493d697fcdcd6d06c972984b81d0a24666",
+  "full_ci_source_artifact_id": 11296566580,
+  "full_ci_source_artifact_sha256": "ce7d05c13d5968220b6ca8fa04868871e331559a761fcd0a23f38e666ee65718",
+  "source_artifact_zip_crcs_ok": true,
+  "inputs_unchanged": true,
+  "changed_vs_local_baseline": [
+    "data/status/dart_legacy_backfill_state.csv",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_2001.csv.gz",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_2002.csv.gz"
+  ],
+  "full_strategy_ci_run": 37184664330,
+  "full_strategy_ci_status": "completed",
+  "new_research_nav_executed": false,
+  "legacy_provider_published": false,
+  "production_data_modified": false,
+  "financial_quality_certification": false,
+  "full_strategy_ci_conclusion": "success",
+  "full_strategy_ci_code_commit": "be450e9f9f38909f60d354edad07012e3604b2bd",
+  "sandbox_replay_311": "success",
+  "sandbox_replay_312": "success",
+  "browser_regression": "passed",
+  "canonical_report_csv_byte_identical": true,
+  "unique_independent_audit_items": 72,
+  "viewer_audit_items_subset_of_72": 49
+}

@@ -1,0 +1,707 @@
+{
+  "run_id": 37184664330,
+  "head_sha": "be450e9f9f38909f60d354edad07012e3604b2bd",
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/37184664330",
+  "created_at": "2026-10-04T07:03:55Z",
+  "updated_at": "2026-10-04T07:24:03Z",
+  "jobs": [
+    {
+      "id": 111384022492,
+      "name": "sandbox-replay (3.11)",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install build and baseline dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare checksum-locked offline wheels",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Clean venv real-data replay with network blocked",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Upload small verification ledger",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare bounded download segments after verified replay",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload delivery integrity ledger",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 001",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 002",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 003",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 004",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 005",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 006",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 007",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 008",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 009",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 010",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 011",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 012",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 013",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 014",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 015",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 016",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 017",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 018",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 019",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 020",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 021",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 022",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 023",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 024",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 025",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 026",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 027",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 028",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 029",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 030",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 031",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 032",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 111384022512,
+      "name": "sandbox-replay (3.12)",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install build and baseline dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare checksum-locked offline wheels",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Clean venv real-data replay with network blocked",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Upload small verification ledger",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare bounded download segments after verified replay",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload delivery integrity ledger",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 001",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 002",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 003",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 004",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 005",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 006",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 007",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 008",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 009",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 010",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 011",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 012",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 013",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 014",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 015",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 016",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 017",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 018",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 019",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 020",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 021",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 022",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 023",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 024",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 025",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 026",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 027",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 028",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 029",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 030",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 031",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Upload download segment 032",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 111384022543,
+      "name": "test",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Legacy parser, resume and scheduled automation regressions",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Preserve offline primary viewer replay and guard audit",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Syntax check",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Offline sandbox kit failure boundaries",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check machine-readable DSL contract",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Recent DART deterministic storage and commit regression",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Read-only Git storage growth measurement",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Strict DSL input validation and normalization compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checked execution lifecycle and CURRENT readiness",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Canonical performance and report E2E",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Requested period metrics and checked lifecycle boundaries",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Real checked NAV and requested-period report",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install pinned browser test tooling",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Real report period, table, charts and mobile browser interactions",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Preserve actual report screen and interaction evidence",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "CURRENT and PROJECT compatibility self-tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "KRX session coverage and real history audit",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Held return guard and real verified split E2E",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Corporate-action reconciliation and real share-class E2E",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "KRX market normalization and segment restoration E2E",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verified autumn splits and real public KRX modes",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Natural-language factor alias test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate example DSL",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Strategy DSL preflight classification test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Known corporate-action preflight exposure and real modes",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Strategy DSL benchmark contract test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Decile partition and execution contract test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Real KRX decile execution E2E",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "KRX technical factor adapter test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "KRX volatility factor adapter test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Factor provider registry extension test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Custom financial rebalance and original DART quarter oracle",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Cash entitlement, liquidity and settlement execution",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Corporate action execution regression",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Integration smoke test against PROJECT v2-16",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "DART Super Value PIT integration",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Real-data DSL execution E2E",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checked CLI and real KRX DART execution lifecycle",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 111384023119,
+      "name": "download-verified-kit",
+      "status": "completed",
+      "conclusion": "skipped",
+      "steps": []
+    }
+  ]
+}

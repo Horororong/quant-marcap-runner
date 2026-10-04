@@ -13,6 +13,11 @@ on:
       - 'scripts/probe_dart_legacy_sources.py'
       - 'scripts/capture_legacy_viewer_sections.py'
       - 'scripts/test_legacy_viewer_sections.py'
+      - 'scripts/legacy_financial_fields.py'
+      - 'scripts/legacy_viewer_source.py'
+      - 'scripts/test_legacy_viewer_source.py'
+      - 'scripts/replay_legacy_viewer_sources.py'
+      - 'scripts/recheck_legacy_primary_audit.py'
       - 'docs/audits/legacy/initial-financial-body-routes-20261002.json'
       - 'scripts/audit_legacy_pit_sample.py'
       - 'tests/test_legacy*.py'
@@ -41,7 +46,17 @@ jobs:
             timeout -k 5s 60s python -u -m pytest "$test_file" -vv -s -o faulthandler_timeout=15 || exit $?
           done
           timeout -k 5s 30s python -u scripts/test_legacy_viewer_sections.py
+          timeout -k 5s 30s python -u scripts/test_legacy_viewer_source.py
+          timeout -k 5s 60s python -u scripts/recheck_legacy_primary_audit.py --output-dir "$RUNNER_TEMP/legacy-primary-72-recheck"
           timeout -k 5s 30s python -u scripts/test_legacy_schedule_gate.py
+      - name: Preserve actual-checkout independent source audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: legacy-primary-72-recheck
+          path: ${{ runner.temp }}/legacy-primary-72-recheck
+          if-no-files-found: error
+          retention-days: 90
       - name: Compile parser
         run: python -m py_compile scripts/backfill_dart_legacy_2000_2014.py scripts/backfill_super_value_fast.py
       - name: Schema sanity

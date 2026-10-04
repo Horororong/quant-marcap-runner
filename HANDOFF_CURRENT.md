@@ -1,3 +1,14 @@
+## 2026-10-04 viewer source guard work (new working branch)
+
+- Branch: `feature/legacy-viewer-period-guards-20261004`; based on the prior audit PR #29, not merged into main.
+- Added offline primary-source period/scope/unit/current-column guards and 33 passing local regressions; full required CI status must be checked on the actual remote commit.
+- Replayed 12 archived primary viewer bodies against all 49 prior independent golden cells: 17 match, 22 prior-period withheld, 5 unknown-unit withheld, 5 layout withheld, 0 accepted disagreement. These 17 are existing audit samples, not new independent samples. 46 additional staging rows remain unaudited.
+- No production financial rows/checkpoints changed; source availability and correction chains remain unverified, so no new PIT capability is published. Native v5 amount/account definitions were extracted unchanged into a shared pure module.
+- Data preparation, full-data quality certification and actual investment strategy verification remain incomplete. No new research NAV or collector was launched.
+- Original OpenDART ZIP fixtures now make the existing independent 72-cell comparator reproducible in CI against actual remote data; local baseline recheck preserved 49 missing/18 period/3 amount/2 semantic findings. These are the same existing samples, not additional independent samples.
+- PR #30: https://github.com/Horororong/quant-marcap-runner/pull/30 (stacked on #29); main remains unmerged.
+- Details, constraints, evidence and bounded replay commands: [viewer guard checkpoint](docs/audits/viewer-source-guards-20261004/README.md).
+
 ## 2026-10-04 데이터 준비·독립 원문 감사 checkpoint
 
 검토용 [draft PR #29](https://github.com/Horororong/quant-marcap-runner/pull/29)를 실제 생성했다. 생성 시 head35b19fc5d192a4cf81f3d8e12569180ce97e6172, base4833fb5, 감사33 blobs 로컬과동일/최신main 데이터6 blobs 보존을 확인했다. main 감사 병합은 하지 않았다. 이후 head는 PR 실제 상태를 확인한다.

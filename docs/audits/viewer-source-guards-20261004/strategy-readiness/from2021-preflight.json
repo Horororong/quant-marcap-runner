@@ -1,0 +1,12 @@
+{
+  "error": {
+    "message": "요구기간의 KRX 연도 파일이 누락되었습니다: [2021, 2022, 2023, 2025, 2026]. 기간을 조용히 축약하지 않습니다.",
+    "type": "FileNotFoundError"
+  },
+  "phase": "data",
+  "preflight_contract_version": "3",
+  "ready_for_execution": false,
+  "status": "data_gap",
+  "strategy_fingerprint": "78b06471c525790b6c9394a6cc7f746543c1a745dea947932853366148341579",
+  "strategy_id": "super_value_dart_benchmark_dsl"
+}
