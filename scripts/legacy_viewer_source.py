@@ -21,7 +21,7 @@ except ModuleNotFoundError as error:
         raise
     from legacy_financial_fields import choose_metric, norm_account, parse_number, UNIT_MULTIPLIERS
 
-ADAPTER_VERSION = "dart-viewer-period-scope-unit-column-v1"
+ADAPTER_VERSION = "dart-viewer-period-scope-unit-column-v2"
 MAX_BODY_BYTES = 2_000_000
 DATE_RE = re.compile(r"(\d{4})\s*[.년/-]\s*(\d{1,2})\s*[.월/-]\s*(\d{1,2})(?:\s*[.일])?")
 TERM_RE = re.compile(r"제\s*(\d+)\s*기")
@@ -182,6 +182,64 @@ def viewer_amount(token):
     return parse_number(token)
 
 
+def viewer_metric(account, statement):
+    clean = re.sub(r"\s*\(주\s*\d+(?:\s*,\s*\d+)*\)\s*$", "", account)
+    metric, _ = choose_metric(clean, statement)
+    # Exact source-backed viewer spellings; native v5 aliases stay unchanged.
+    if not metric and statement == "IS" and norm_account(clean) in {"당기순이(손)익", "당분기순손실"}:
+        metric = "net_income"
+    return metric, clean
+
+
+# Full parenthetical per-share notes in the inspected United/Peerless/Daewoo
+# originals, including BR-wrapped notes. Arbitrary footnotes are not supported.
+PER_SHARE_NOTE = re.compile(
+    r"\((?:(?:당분기|\d+전기))?(?:기본)?주당(?:분기)?(?:경상|순)(?:이익|손실):"
+    r"(?:(?:분기|\d+\((?:전전|전)\)기))?(?:\(-\)|[-△▲Δ])?"
+    r"(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?원\)"
+)
+
+
+def financial_prefix_before_per_share_tail(row, statement):
+    """Prove a ragged row's financial prefix without padding or shifting lines.
+
+    Only an IS prefix ending in net income followed solely by explicit per-share
+    notes is supported. All numeric columns must end at that same original
+    BR index (or be entirely empty), with no amount on a blank account line.
+    Prior columns are checked too, but never supply a missing current value.
+    """
+    if statement != "IS":
+        return None
+    accounts = row[0]["lines"]
+    boundary = next((i for i, line in enumerate(accounts) if compact(line).startswith("(") and "주당" in line), None)
+    if boundary is None:
+        return None
+    suffix = compact("".join(accounts[boundary:]))
+    position, notes = 0, 0
+    while position < len(suffix):
+        match = PER_SHARE_NOTE.match(suffix, position)
+        if match is None:
+            return None
+        position, notes = match.end(), notes + 1
+    if not notes:
+        return None
+    end = boundary
+    while end and not accounts[end - 1]:
+        end -= 1
+    if not end or viewer_metric(accounts[end - 1], statement)[0] != "net_income":
+        return None
+    for cell in row[1:]:
+        nonblank = [i for i, line in enumerate(cell["lines"]) if line]
+        if nonblank and nonblank[-1] != end - 1:
+            return None
+        for i in nonblank:
+            if not accounts[i] or not math.isfinite(viewer_amount(cell["lines"][i])):
+                return None
+    return {"contract": "is-prefix-before-explicit-per-share-tail-v2", "financial_prefix_lines": end,
+            "original_line_counts": [len(c["lines"]) for c in row], "per_share_note_count": notes,
+            "account_note_lines": accounts[end:]}
+
+
 def adapt_viewer(body: bytes, capture: dict, request: dict) -> dict:
     """Return guarded staging rows and gaps. No inferred filing/availability date.
 
@@ -304,18 +362,18 @@ def adapt_viewer(body: bytes, capture: dict, request: dict) -> dict:
                 gap("BODY_COLUMN_ALIGNMENT_UNPROVEN", table=table["index"], row=ri)
                 continue
             counts = [len(c["lines"]) for c in row]
+            alignment = None
             if len(row[0]["lines"]) == 1 and any(sum(bool(line) for line in row[ci]["lines"]) > 1 for ci in range(left, right)):
                 gap("BR_LINE_ALIGNMENT_UNPROVEN", table=table["index"], row=ri)
                 continue
             if len(row[0]["lines"]) > 1 and len(set(counts)) != 1:
-                gap("BR_LINE_ALIGNMENT_UNPROVEN", table=table["index"], row=ri)
-                continue
-            for li, account in enumerate(row[0]["lines"]):
-                account_clean = re.sub(r"\s*\(주\s*\d+(?:\s*,\s*\d+)*\)\s*$", "", account)
-                metric, _ = choose_metric(account_clean, statement)
-                # Exact source-backed spelling; do not use substring aliases.
-                if not metric and statement == "IS" and norm_account(account_clean) == "당기순이(손)익":
-                    metric = "net_income"
+                alignment = financial_prefix_before_per_share_tail(row, statement)
+                if alignment is None:
+                    gap("BR_LINE_ALIGNMENT_UNPROVEN", table=table["index"], row=ri)
+                    continue
+            accounts = row[0]["lines"][:alignment["financial_prefix_lines"]] if alignment else row[0]["lines"]
+            for li, account in enumerate(accounts):
+                metric, account_clean = viewer_metric(account, statement)
                 if not metric:
                     continue
                 tokens = [(ci, row[ci]["lines"][li] if li < len(row[ci]["lines"]) else "") for ci in range(left, right)]
@@ -345,6 +403,8 @@ def adapt_viewer(body: bytes, capture: dict, request: dict) -> dict:
                                    "cell_start_character": cell["start_character"], "cell_end_character": cell["end_character"],
                                    "current_column_header": label, "adapter_version": ADAPTER_VERSION,
                                    "filing_date_verified": False, "strategy_usable_date": None})
+                if alignment:
+                    table_rows[-1]["line_alignment_evidence"] = alignment
         # Conflicting duplicates are rejected, not selected by alias priority.
         for metric in sorted({r["metric"] for r in table_rows}):
             selected = [r for r in table_rows if r["metric"] == metric]
