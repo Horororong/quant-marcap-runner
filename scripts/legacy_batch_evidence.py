@@ -164,10 +164,52 @@ def end():
         metrics[metrics.rcept_no.isin(changed.rcept_no) & metrics.parser_version.eq(legacy.PARSER_VERSION)].to_csv(folder / "new-metrics.csv", index=False)
         samples = {r["rcept_no"] for r in json.loads((folder / "plan.json").read_text())["old_source_samples"]}
         metrics[metrics.rcept_no.isin(samples)].to_csv(folder / "old-sample-metrics.csv", index=False)
+    # Small downloadable review subset; the full original artifact remains intact.
+    # Selection criteria were fixed in plan.json before collection/value inspection.
+    subset = folder / "audit-subset"
+    subset.mkdir(exist_ok=True)
+    for name in ("plan.json", "old-source-probes.json", "new-metrics.csv", "old-sample-metrics.csv", "changed-state.csv", "effective-state.csv"):
+        path = folder / name
+        if path.exists():
+            shutil.copyfile(path, subset / name)
+    receipts = {r["rcept_no"] for r in json.loads((folder / "plan.json").read_text())["old_source_samples"]}
+    fresh = metrics[metrics.rcept_no.isin(changed.rcept_no) & metrics.parser_version.eq(legacy.PARSER_VERSION)] if not metrics.empty else pd.DataFrame()
+    selected = []
+    if not fresh.empty:
+        queues = [g.sort_values(["corp_code", "rcept_no", "metric"]).to_dict("records")
+                  for _, g in fresh.groupby(["fiscal_year", "period", "scope"], dropna=False, sort=True)]
+        seen = set()
+        while queues and len(selected) < 12:
+            rest = []
+            for queue in queues:
+                while queue and (queue[0]["corp_code"], queue[0]["scope"]) in seen:
+                    queue.pop(0)
+                if queue and len(selected) < 12:
+                    item = queue.pop(0)
+                    selected.append(item["rcept_no"])
+                    seen.add((item["corp_code"], item["scope"]))
+                if queue:
+                    rest.append(queue)
+            queues = rest
+    receipts.update(selected)
+    # Inspect representative blocked NEW downloads too, without assigning
+    # financial absence or generalizing these findings to the full population.
+    receipts.update(changed[changed.status.eq("SOURCE_GAP")].sort_values("rcept_no").head(5).rcept_no)
+    source_manifest = []
+    for receipt in sorted(receipts):
+        for path in sorted((folder / "native").glob(receipt + "-*.zip")):
+            shutil.copyfile(path, subset / path.name)
+            source_manifest.append(identity(path))
+        viewer = folder / f"{receipt}-viewer.html"
+        if viewer.exists():
+            shutil.copyfile(viewer, subset / viewer.name)
+    (subset / "numeric-selection.json").write_text(json.dumps({"receipt_order": selected, "source_identities": source_manifest,
+        "selection": "round-robin fiscal_year/period/scope, lexical corp_code/rcept_no, unique company/scope, at most12 receipts; independent audit required"}, indent=2) + "\n")
     summary = {"changed_receipts": len(changed), "changed_status_counts": changed.status.value_counts().to_dict(),
                "effective_status_counts": effective.status.value_counts().to_dict(),
                "numeric_audit_complete": False, "pit_complete": False}
     (folder / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+    shutil.copyfile(folder / "summary.json", subset / "summary.json")
 
 
 if __name__ == "__main__":

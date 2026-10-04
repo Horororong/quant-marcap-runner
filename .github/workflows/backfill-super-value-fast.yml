@@ -89,6 +89,7 @@ jobs:
         env:
           LEGACY_DART_EVIDENCE_DIR: ${{ runner.temp }}/legacy-source-evidence
           LEGACY_DART_SOURCE_DIR: ${{ runner.temp }}/legacy-source-evidence/native
+          LEGACY_DART_RUN_REPORT: ${{ runner.temp }}/legacy-collection-run.json
         run: python scripts/legacy_batch_evidence.py probe
 
       - name: Preserve source-audit output checkpoint
@@ -135,6 +136,15 @@ jobs:
         with:
           name: legacy-source-evidence-${{ github.run_attempt }}
           path: ${{ runner.temp }}/legacy-source-evidence
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Preserve bounded independent-audit source subset
+        if: always() && steps.batch.outputs.run == 'true' && steps.evidence.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: legacy-source-audit-subset-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/legacy-source-evidence/audit-subset
           if-no-files-found: error
           retention-days: 90
 

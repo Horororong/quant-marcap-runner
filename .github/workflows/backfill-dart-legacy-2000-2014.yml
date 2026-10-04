@@ -106,6 +106,15 @@ jobs:
           if-no-files-found: error
           retention-days: 90
 
+      - name: Preserve bounded independent-audit source subset
+        if: always() && steps.evidence.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: legacy-source-audit-subset-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/legacy-source-evidence/audit-subset
+          if-no-files-found: error
+          retention-days: 90
+
       - name: Preserve unpublished legacy checkpoint on failure
         if: failure() && steps.checkout.outcome == 'success'
         uses: actions/upload-artifact@v4
