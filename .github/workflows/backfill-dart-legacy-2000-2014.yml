@@ -45,11 +45,24 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas requests pyarrow beautifulsoup4 lxml
 
+      - name: Freeze source-audit plan and input checkpoint
+        id: evidence
+        env:
+          LEGACY_DART_EVIDENCE_DIR: ${{ runner.temp }}/legacy-source-evidence
+        run: python scripts/legacy_batch_evidence.py begin
+
       - name: Backfill legacy PIT financial statements
         env:
           LEGACY_DART_RUN_REPORT: ${{ runner.temp }}/legacy-collection-run.json
+          LEGACY_DART_SOURCE_DIR: ${{ runner.temp }}/legacy-source-evidence/native
         timeout-minutes: 65
         run: python scripts/backfill_dart_legacy_2000_2014.py
+
+      - name: Preserve source-audit output checkpoint
+        if: always() && steps.evidence.outcome == 'success'
+        env:
+          LEGACY_DART_EVIDENCE_DIR: ${{ runner.temp }}/legacy-source-evidence
+        run: python scripts/legacy_batch_evidence.py end
 
       - name: Commit legacy normalized data and status
         if: always() && steps.checkout.outcome == 'success'
@@ -59,6 +72,7 @@ jobs:
           git add data/financials/legacy_2000_2014/ || true
           git add data/status/dart_legacy_index_state.csv || true
           git add data/status/dart_legacy_backfill_state.csv || true
+          git add data/status/dart_legacy_source_quarantine.csv || true
           git add data/status/dart_legacy_backfill_status.csv || true
           git add data/status/dart_legacy_coverage_by_period.csv || true
           if git diff --cached --quiet; then
@@ -82,6 +96,15 @@ jobs:
             data/status/dart_legacy_coverage_by_period.csv
           if-no-files-found: warn
           retention-days: 14
+
+      - name: Preserve original batch documents and audit checkpoints
+        if: always() && steps.evidence.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: legacy-source-evidence-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/legacy-source-evidence
+          if-no-files-found: error
+          retention-days: 90
 
       - name: Preserve unpublished legacy checkpoint on failure
         if: failure() && steps.checkout.outcome == 'success'

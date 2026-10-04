@@ -8,6 +8,7 @@ on:
       - 'scripts/backfill_super_value_fast.py'
       - 'scripts/legacy_backfill_runtime.py'
       - 'scripts/legacy_document_quality.py'
+      - 'scripts/legacy_batch_evidence.py'
       - 'scripts/test_legacy_document_quality.py'
       - 'scripts/recover_legacy_no_metrics.py'
       - 'scripts/legacy_schedule_gate.py'

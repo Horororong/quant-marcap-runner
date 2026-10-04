@@ -64,3 +64,64 @@ def test_real_native_archives_reproduce_source_gaps():
         with zipfile.ZipFile(path) as archive:
             diagnostics = [inspect_member(archive.read(n), n) for n in archive.namelist()]
         assert empty_parse_status(diagnostics) == "SOURCE_GAP"
+
+
+def test_quarantine_overlay_preserves_original_state_and_old_values(monkeypatch, tmp_path):
+    import hashlib
+    state = tmp_path / "state.csv"
+    ledger = tmp_path / "quarantine.csv"
+    pd.DataFrame([{"rcept_no": "receipt", "status": "PARSED_PARTIAL", "metric_rows": "1",
+                   "usable_metric_count": "1", "document_sha256": "damaged-sha",
+                   "parser_version": legacy.PARSER_VERSION, "source_version": legacy.SOURCE_VERSION}]).to_csv(state, index=False)
+    pd.DataFrame([{"rcept_no": "receipt", "document_sha256": "damaged-sha", "issues": "truncated",
+                   "prior_status": "PARSED_PARTIAL"}]).to_csv(ledger, index=False)
+    monkeypatch.setattr(legacy, "STATE_FILE", state)
+    monkeypatch.setattr(legacy, "QUARANTINE_FILE", ledger)
+    original = hashlib.sha256(state.read_bytes()).hexdigest()
+    for _ in range(2):
+        effective = legacy.current_state().iloc[0]
+        assert effective.status == "SOURCE_GAP" and effective.prior_status == "PARSED_PARTIAL"
+        assert effective.metric_rows == "0" and effective.usable_metric_count == "0"
+    assert hashlib.sha256(state.read_bytes()).hexdigest() == original
+    # A different, independently downloaded document is not blocked by stale evidence.
+    pd.DataFrame([{"rcept_no": "receipt", "document_sha256": "other-sha", "issues": "truncated"}]).to_csv(ledger, index=False)
+    assert legacy.current_state().iloc[0].status == "PARSED_PARTIAL"
+
+
+def test_source_gap_prevents_collection_and_quality_completion(monkeypatch, tmp_path):
+    monkeypatch.setattr(legacy, "STATUS_FILE", tmp_path / "status.csv")
+    monkeypatch.setattr(legacy, "COVERAGE_FILE", tmp_path / "coverage.csv")
+    monkeypatch.setattr(legacy, "build_index_tasks", lambda: pd.DataFrame([{"task_key": "complete"}]))
+    monkeypatch.setattr(legacy, "load_index_state", lambda: pd.DataFrame([{"task_key": "complete", "status": "OK"}]))
+    state = pd.DataFrame([{"rcept_no": "receipt", "status": "SOURCE_GAP", "usable_metric_count": "0",
+                           "parser_version": legacy.PARSER_VERSION}])
+    monkeypatch.setattr(legacy, "current_state", lambda: state)
+    index = pd.DataFrame([{"rcept_no": "receipt", "stock_code": "000001", "fiscal_year": 2000,
+                          "period": "FY", "rcept_dt": "2001-03-01"}])
+    legacy.write_coverage(index)
+    result = pd.read_csv(legacy.STATUS_FILE).iloc[0]
+    assert result.processed_filings == 1 and result.source_gap_filings == 1
+    assert result.usable_four_factor_filings == 0 and result.automatic_pending_filings == 0
+    assert not result.collection_complete and not result.quality_complete
+    assert result.mode == "REVIEW_REQUIRED"
+
+
+def test_original_download_is_preserved_before_parsing(monkeypatch, tmp_path):
+    import hashlib
+    monkeypatch.setenv("LEGACY_DART_SOURCE_DIR", str(tmp_path))
+    blob = b"immutable original"
+    sha = hashlib.sha256(blob).hexdigest()
+    legacy.preserve_document(blob, "receipt", sha)
+    legacy.preserve_document(blob, "receipt", sha)
+    assert (tmp_path / f"receipt-{sha}.zip").read_bytes() == blob
+    assert len(list(tmp_path.iterdir())) == 1
+
+
+def test_evidence_budget_stops_before_new_publication(monkeypatch, tmp_path):
+    import pytest
+    from scripts.legacy_backfill_runtime import CollectionPaused
+    monkeypatch.setenv("LEGACY_DART_SOURCE_DIR", str(tmp_path))
+    monkeypatch.setenv("LEGACY_DART_SOURCE_MAX_BYTES", "1")
+    with pytest.raises(CollectionPaused):
+        legacy.preserve_document(b"too large", "receipt", "sha")
+    assert list(tmp_path.iterdir()) == []

@@ -1,0 +1,19 @@
+# SOURCE_GAP production review and fixed audit plan
+
+Starting remote main: 778b02b9b3b7373ece88fd4bb61453308bcd70c3. PR33 head0bd49086 is still draft, stacked on32. Original source CI37199649781/37199649791 passed at1af7b895. No running/queued Actions at inspection. Branch API says main protected=false; rulesets empty; protection details403 are not independently accessible. Current DART secret is not installed in this cloud executor. Previous environment is not observable.
+
+## Review findings and corrective boundary
+
+- Source damage becomes SOURCE_GAP, not evidence of actual item absence. Clean empty extraction still means NO_METRICS, NOT independently proven absent items.
+- Tolerant partial amounts from damaged XML are withheld. Normal valid XML and valid partial extraction are preserved by regression boundaries. Receipt-level quarantine conservatively withholds all metrics if any inspected native member is damaged; it does not repair an invalid native source.
+- Existing PR33 omitted migration of historical classifications and original batch-source preservation. Add document-SHA-specific quarantine overlay. Original checkpoints/normalized candidate observations remain unchanged. Overlay zeroes effective metric/usable counts; SOURCE_GAP is durably classified but not financial success or collection/quality completion. A changed download SHA requires fresh evidence and is not blocked by an old SHA ledger.
+- Seven already archived NO_METRICS receipts (including two beyond prior five) match the actual current-main checkpoint SHA. Their original state is preserved, reclassified through overlay. These seven contain zero current-v5 stored metric rows. Broader prior parsed influence is not inferred: freeze12 distinct-company parsed-source probes before inspection; quarantine only actually damaged identical SHA documents.
+- Registered DART provider reads full_history, not legacy_2000_2014 or staging. Legacy financial factor capability remains unavailable. A SOURCE_GAP ledger is not an eligibility filter to make preflight pass. Existing old legacy candidate observations cannot be promoted as validated financial/provider input. Neither all historical numeric correctness nor full PIT is certified.
+- Existing daily15:30UTC and October07:30/23:30UTC cron expressions and shared concurrency lock are retained. Existing push deployment100-receipt small batch is reused. No new schedules. Bounded100/2000, requests150/2500, seconds600/3300, interval0.5, worker3, checkpoint25; fixed four transport attempts and three exhausted-error quarantine threshold remain.
+- Freeze current code/input identities and selection BEFORE amounts/downloads. Save exact source ZIPs (300MB finite artifact budget), before/after states/normalized inputs, current changed receipt cohort, and separately12 NO_METRICS/12 prior parsed samples. Source capture and comparison are NOT independent number audits.
+- Numeric audit selection: from newly extracted receipts only, fiscal_year/period/scope strata in sorted order, distinct companies where possible, minimum30 fields if source coverage allows. Audit literal source/header/unit/current column/period/scope against stored values independently, not merely rerunning native parser. Shortfall is explicit.
+- PIT record actual public family/date evidence where obtainable; no assumed lag, receipt-derived date, same-day clock, no-amendment claim or staging promotion.
+
+## Verification and operational state
+
+Pending completion of new final-code CI, PR33 retarget/main merge, actual push100 deployment evidence, and one bounded2000 legacy-only batch. Sources are unmerged until GitHub confirms merge. Original fixed kit remains untouched; collector/evidence helpers are outside its code profile. No strategy optimization/UI work/cost/OOS/robustness/operability study.

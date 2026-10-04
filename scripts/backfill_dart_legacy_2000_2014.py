@@ -7,6 +7,7 @@ import math
 import os
 import re
 import time
+import threading
 import zipfile
 import warnings
 from datetime import datetime, timezone
@@ -54,6 +55,8 @@ INDEX_STATE_FILE = STATUS_DIR / "dart_legacy_index_state.csv"
 STATE_FILE = STATUS_DIR / "dart_legacy_backfill_state.csv"
 STATUS_FILE = STATUS_DIR / "dart_legacy_backfill_status.csv"
 COVERAGE_FILE = STATUS_DIR / "dart_legacy_coverage_by_period.csv"
+QUARANTINE_FILE = STATUS_DIR / "dart_legacy_source_quarantine.csv"
+_SOURCE_LOCK = threading.Lock()
 NAME_MAP_FILE = ROOT / "krx_name_intervals.csv.gz"
 LIFE_FILE = Path("results/security_life_table.csv")
 MODERN_MAP_FILE = Path("data/financials/dart_historical_code_map.csv")
@@ -668,10 +671,34 @@ def fetch_document(rcept_no: str) -> tuple[bytes, str]:
     raise RuntimeError(f"document fetch failed {last!r}")
 
 
+def preserve_document(blob: bytes, receipt: str, sha: str) -> None:
+    """Keep exact downloads in the run artifact, before checkpoint publication."""
+    target = os.getenv("LEGACY_DART_SOURCE_DIR")
+    if not target:
+        return
+    folder = Path(target)
+    folder.mkdir(parents=True, exist_ok=True)
+    path = folder / f"{receipt}-{sha}.zip"
+    with _SOURCE_LOCK:
+        if path.exists():
+            if hashlib.sha256(path.read_bytes()).hexdigest() != sha:
+                raise ValueError("Preserved source identity conflict")
+            return
+        used = sum(p.stat().st_size for p in folder.glob("*.zip"))
+        limit = int(os.getenv("LEGACY_DART_SOURCE_MAX_BYTES", "300000000"))
+        if used + len(blob) > limit:
+            if RUN_CONTROL is not None:
+                RUN_CONTROL.stop("SOURCE_EVIDENCE_BUDGET")
+            raise CollectionPaused("SOURCE_EVIDENCE_BUDGET")
+        with path.open("xb") as stream:
+            stream.write(blob)
+
+
 def process_filing(meta: dict) -> tuple[list[dict], dict]:
     rcept=str(meta["rcept_no"])
     try:
         blob, sha=fetch_document(rcept)
+        preserve_document(blob, rcept, sha)
         all_cands=[]
         diagnostics=[]
         with zipfile.ZipFile(io.BytesIO(blob)) as z:
@@ -686,6 +713,8 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
                     diagnostics.append({"member": n, "issues": ["MEMBER_READ_OR_PARSE_ERROR"],
                                         "error": type(error).__name__})
                     continue
+        if not diagnostics:
+            diagnostics.append({"member": "", "issues": ["SOURCE_EMPTY_ARCHIVE"]})
         best=select_best_candidates(all_cands)
         # Damaged sources are evidence gaps even if tolerant HTML parsing finds
         # a few values. Preserve prior observations; do not publish new amounts.
@@ -705,6 +734,8 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
                 "period":meta.get("period",""),
                 "document_sha256":sha,
                 "parser_version":PARSER_VERSION,
+                "source_diagnostic_version":DIAGNOSTIC_VERSION,
+                "source_quality":"PASS",
                 "value_basis":"first current-period amount column in the filed statement",
             })
             rows.append(rec)
@@ -772,7 +803,19 @@ def current_state() -> pd.DataFrame:
         compatible |= source.eq("") & state["parser_version"].eq("legacy-v4-book")
     current = state["parser_version"].eq(PARSER_VERSION) & compatible
     transport_only = state["status"].eq("NO_DOCUMENT") & compatible
-    return state[current | transport_only].drop_duplicates("rcept_no", keep="last")
+    out = state[current | transport_only].drop_duplicates("rcept_no", keep="last").copy()
+    quarantine = load_csv(QUARANTINE_FILE, dtype=str).fillna("")
+    if not quarantine.empty:
+        for row in quarantine.to_dict("records"):
+            mask = out["rcept_no"].eq(row["rcept_no"]) & out["document_sha256"].eq(row["document_sha256"])
+            out.loc[mask, "prior_status"] = out.loc[mask, "status"]
+            out.loc[mask, "status"] = "SOURCE_GAP"
+            out.loc[mask, "best_scope"] = ""
+            out.loc[mask, "metric_rows"] = "0"
+            out.loc[mask, "usable_metric_count"] = "0"
+            out.loc[mask, "source_diagnostic_version"] = DIAGNOSTIC_VERSION
+            out.loc[mask, "error"] = row["issues"]
+    return out
 
 
 def durable_done_receipts(state: pd.DataFrame) -> set[str]:
@@ -855,7 +898,8 @@ def process_pending(idx: pd.DataFrame, *, max_docs=None, workers=None, control=N
     finally:
         RUN_CONTROL = previous_control
     result.update({"eligible_before_run": len(eligible), "quarantined_errors": held,
-                   "selected": len(selected), "parser_version": PARSER_VERSION})
+                   "selected": len(selected), "parser_version": PARSER_VERSION,
+                   "source_version": SOURCE_VERSION, "source_diagnostic_version": DIAGNOSTIC_VERSION})
     if os.getenv("LEGACY_DART_RUN_REPORT"):
         Path(os.environ["LEGACY_DART_RUN_REPORT"]).write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     return result
@@ -925,6 +969,9 @@ def write_coverage(idx: pd.DataFrame) -> None:
         "indexed_filings":int(x["rcept_no"].nunique()),
         "mapped_filings":total_mapped,
         "processed_filings":processed,
+        "parsed_partial_filings": int((x["mapped"] & x["status"].eq("PARSED_PARTIAL")).sum()),
+        "source_diagnostic_version": DIAGNOSTIC_VERSION,
+        "processed_definition": "durably_classified_not_financial_success",
         "usable_four_factor_filings":usable,
         "remaining_mapped_filings":max(total_mapped-processed,0),
         "document_batch_limit":MAX_DOCS,
