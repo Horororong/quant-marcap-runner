@@ -1,0 +1,86 @@
+{
+  "index_rows": 138540,
+  "unique_receipts": 138540,
+  "mapped_unique_receipts": 115020,
+  "previous_versions_excluded_from_metric_success": true,
+  "official_status": {
+    "automatic_pending_filings": "103619",
+    "collection_complete": "False",
+    "document_batch_limit": "2000",
+    "index_complete": "True",
+    "index_tasks_completed": "180",
+    "index_tasks_total": "180",
+    "indexed_filings": "138540",
+    "mapped_filings": "115020",
+    "mode": "BACKFILL_ACTIVE",
+    "no_document_filings": "1570",
+    "no_metrics_filings": "8620",
+    "parser_version": "legacy-v5-single-amount",
+    "processed_filings": "11401",
+    "quality_complete": "False",
+    "quality_status": "INDEPENDENT_SOURCE_AUDIT_REQUIRED",
+    "quarantined_error_filings": "0",
+    "remaining_mapped_filings": "103619",
+    "source_only_filings_carried_forward": "1203",
+    "source_version": "opendart-document-v1",
+    "updated_at_utc": "2026-10-04T03:11:09.318966+00:00",
+    "usable_four_factor_filings": "616",
+    "workers": "3"
+  },
+  "attempt_max": 3,
+  "actual_item_absence_verified": 0,
+  "no_metrics_unresolved": 8620,
+  "unsupported_or_damaged_source_verified_receipts": 5,
+  "access_restriction_verified_receipts": 0,
+  "pit_items_examined": 78,
+  "displayed_date_correlated_items": 78,
+  "full_pit_verified": 0,
+  "provider_contract": {
+    "current_provider": "full_history modern source only; legacy staging is not loaded",
+    "filing_gate": "filing_date <= normalized signal date",
+    "execution": "lag_sessions >=1 next-close",
+    "intraday_availability": "not proved by date-only legacy viewer",
+    "corrections": "archived family lists single receipt; original publication version and complete amendment history unverified"
+  },
+  "runtime": {
+    "kit_manifest_found": false,
+    "installed_runtime_found": false,
+    "local_verify_executed": false,
+    "package_install_bypass": false
+  },
+  "work_status": {
+    "offline_recovery": "COMPLETED",
+    "previous_environment": "UNVERIFIABLE",
+    "remote_backfill_run": 37172051500,
+    "remote_backfill_attempt": 2,
+    "remote_job_id": 111425020146,
+    "remote_last_observed_status": "in_progress"
+  },
+  "state_categories_all": {
+    "NO_DOCUMENT": 1572,
+    "NO_METRICS": 8620,
+    "PARSED_PARTIAL": 595,
+    "PARSED_4F": 616
+  },
+  "mapped_current_categories": {
+    "NO_DOCUMENT": 1570,
+    "NO_METRICS": 8620,
+    "PARSED_PARTIAL": 595,
+    "PARSED_4F": 616
+  },
+  "processing_success_not_quality": 1211,
+  "production_independently_pit_certified_recovery": 0,
+  "engine_contracts": {
+    "corporate_action_registry_version": "5",
+    "dsl_machine_contract_version": "23",
+    "execution_engine_version": "v2-16-exec-3",
+    "factor_registry_version": "7",
+    "history_audit_contract_version": "1",
+    "krx_market_normalization_version": "1",
+    "performance_template_version": "v2-18",
+    "preflight_contract_version": "3",
+    "project_template_version": "v2-16",
+    "requested_report_contract_version": "1",
+    "schema_version": "1.0"
+  }
+}

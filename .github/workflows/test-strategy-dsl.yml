@@ -31,6 +31,9 @@ on:
       - 'scripts/audit_legacy_pit_sample.py'
       - '.github/workflows/audit-legacy-pit.yml'
       - 'scripts/legacy_backfill_runtime.py'
+      - 'scripts/legacy_document_quality.py'
+      - 'scripts/test_legacy_document_quality.py'
+      - 'scripts/recover_legacy_no_metrics.py'
       - 'scripts/legacy_schedule_gate.py'
       - 'scripts/test_legacy_schedule_gate.py'
       - 'scripts/backfill_dart_legacy_2000_2014.py'
@@ -147,9 +150,11 @@ jobs:
       - name: Legacy parser, resume and scheduled automation regressions
         timeout-minutes: 5
         run: |
-          for test_file in tests/test_legacy_dart_parser.py tests/test_legacy_backfill_resume.py tests/test_legacy_backfill_automation.py tests/test_legacy_source_evidence.py; do
+          for test_file in tests/test_legacy_dart_parser.py tests/test_legacy_backfill_resume.py tests/test_legacy_backfill_automation.py tests/test_legacy_source_evidence.py tests/test_legacy_document_quality.py; do
             timeout -k 5s 60s python -u -m pytest "$test_file" -vv -s -o faulthandler_timeout=15 || exit $?
           done
+          timeout -k 5s 30s python -u scripts/test_legacy_no_metrics_recovery.py
+          timeout -k 5s 30s python -u scripts/test_legacy_document_quality.py
           timeout -k 5s 30s python -u scripts/test_legacy_viewer_sections.py
           timeout -k 5s 30s python -u scripts/test_legacy_viewer_source.py
           timeout -k 5s 30s python -u scripts/replay_legacy_viewer_sources.py --output-dir "$RUNNER_TEMP/legacy-viewer-source-replay"

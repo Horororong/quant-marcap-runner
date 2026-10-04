@@ -1,53 +1,6 @@
-## 2026-10-04 fixed remaining-46 primary audit
+## 2026-10-04 NO_METRICS recovery and actual legacy resume
 
-- Branch `audit/viewer-staging46-20261004` follows PR #31; no main merge.
-- Fixed before value inspection: all remaining 46 staging cells. Independent original-body/cell/header checks find 46 numeric and period/scope/unit/current-column matches, zero numerical disagreement, six measurement-qualified source components. All 78 staging cells now have primary numeric checks; this is not full dataset certification.
-- Actual publication/correction chains remain unverified, so verified PIT items remain zero. All local selected production values are absent; actual remote production/CI evidence is recorded in the checkpoint below.
-- Eleven independent audit guards pass locally; collector, source adapter, DSL, production data/checkpoints and installed kit remain unchanged. Existing validation workflow preserves the remote-checkout audit. Final CI/PR status must be read from the current linked checkpoint.
-- Data preparation, full-data independent quality and actual strategy verification remain incomplete. No duplicate collection, new strategy or research NAV launched.
-- Evidence, limitations, safe reproduction, actual final CI and next task: [remaining-46 checkpoint](docs/audits/viewer-staging46-20261004/README.md). This supersedes earlier ten-row/46-row next-task statements below.
-- Next: independently verify actual publication dates and correction chains of these five primary receipts; do not infer PIT dates from receipt IDs or fixed lags.
-
-## 2026-10-04 terminal per-share note alignment follow-up
-
-- Branch `feature/legacy-viewer-line-alignment-20261004` follows draft PR #30; no main merge.
-- Independently inspected all five current-period, known-unit layout-withheld cells using original bodies and pre-existing manual golden values. Adapter v2 recognizes only proven financial prefixes followed by explicit terminal per-share notes, with unchanged BR indices and a viewer-only exact Daewoo loss alias.
-- 48 local regressions pass; full final-code CI is pending until the actual remote run is complete. Current CI/evidence status must be read from the linked checkpoint.
-- Original 49-cell replay: 22 match, 22 prior-period withheld, 5 unknown-unit withheld, zero accepted disagreement. All previous 63 staging rows are preserved; 78 total rows include 56 unaudited rows (10 newly exposed). No production/PIT promotion.
-- Original independent 72-item baseline findings remain 49 missing/18 period/3 amount/2 semantic; no stored data or native checkpoint changed. No collector, new research NAV or investment-strategy run was launched.
-- Data preparation, full-data independent quality and actual strategy verification remain incomplete. Availability/correction chains and current OCF are still gaps.
-- Evidence, source decision, bounded replay/recheck commands and final CI/PR status: [line-alignment checkpoint](docs/audits/viewer-line-alignment-20261004/README.md).
-- Next: independently inspect the ten newly exposed non-golden rows against original primary cells before calling them verified.
-
-## 2026-10-04 viewer source guard work (new working branch)
-
-- Branch: `feature/legacy-viewer-period-guards-20261004`; based on the prior audit PR #29, not merged into main.
-- Added offline primary-source period/scope/unit/current-column guards and 33 passing local regressions; full required CI status must be checked on the actual remote commit.
-- Replayed 12 archived primary viewer bodies against all 49 prior independent golden cells: 17 match, 22 prior-period withheld, 5 unknown-unit withheld, 5 layout withheld, 0 accepted disagreement. These 17 are existing audit samples, not new independent samples. 46 additional staging rows remain unaudited.
-- No production financial rows/checkpoints changed; source availability and correction chains remain unverified, so no new PIT capability is published. Native v5 amount/account definitions were extracted unchanged into a shared pure module.
-- Data preparation, full-data quality certification and actual investment strategy verification remain incomplete. No new research NAV or collector was launched.
-- Original OpenDART ZIP fixtures now make the existing independent 72-cell comparator reproducible in CI against actual remote data; local baseline recheck preserved 49 missing/18 period/3 amount/2 semantic findings. These are the same existing samples, not additional independent samples.
-- PR #30: https://github.com/Horororong/quant-marcap-runner/pull/30 (stacked on #29); main remains unmerged.
-- Details, constraints, evidence and bounded replay commands: [viewer guard checkpoint](docs/audits/viewer-source-guards-20261004/README.md).
-
-## 2026-10-04 데이터 준비·독립 원문 감사 checkpoint
-
-검토용 [draft PR #29](https://github.com/Horororong/quant-marcap-runner/pull/29)를 실제 생성했다. 생성 시 head35b19fc5d192a4cf81f3d8e12569180ce97e6172, base4833fb5, 감사33 blobs 로컬과동일/최신main 데이터6 blobs 보존을 확인했다. main 감사 병합은 하지 않았다. 이후 head는 PR 실제 상태를 확인한다.
-
-이번 새 채팅의 실제 확인 결과와 재개 명령: [감사 README](docs/audits/data-readiness-20261004/README.md).
-보고 기능은 별도 runtime bootstrap/verify 및 기존 DSL CURRENT 재실행으로 확인했다. 보고 CSV/NAV/benchmark statistics는 실제 main browser artifact와 바이트 일치했다. 새 browser 실행은 하지 않았다. 현재 machine23/factor7/engine v2-16-exec-3/PROJECT v2-16/CURRENT v2-18; kit coverage는 KRX2019/2020/2024이며 저장소 전체 32년 coverage와 다르다.
-
-원문 8기업·8공시·72항목을 고정 표본 선정 후 독립 대조했다. 저장값 있음23/없음49, 기간오류18/금액오류3/의미오류2. numeric_equal19도 기간/의미 문제가 있어 완전한 PIT 인증0, 정정chain 인증0이다. 기존 v4 관측 오류를 current public factor/NAV 오류로 표현하지 않는다. 기존 원문 artifact와 immutable checkpoint를 보존했다. source adapter 당기기간/scope/unit guard가 다음 작업이다.
-
-시작 source main40fe72e, 작업 중 기존 자동 백필 run37172051500이 2000 receipts를 더 처리하고 main4833fb503105d810ea6e8e905d914f1ab3c28632에 저장했다. 최신 처리11401/대기103619/4factor616, collection_complete=false/quality_complete=false. 새 binary shards 전량 재감사는 미실행이며 72건 대조/coverage_snapshot은 시작 파일 기준이다. modern actual checkpoint136914 tasks, current map expected235352/pending98438;184 original shards/10591081 raw rows를 구조 점검했다. filing/receipt 빈칸0은 원문 수치·정정 이력 인증이 아니다.
-
-가격32parquet 1995-05-02~2026-10-01,15257282행/duplicate0/missing close2(1997 preferred015545).2026 캘린더와 원자료 사이6월3일/7월17일 차이는 휴장 원문 미확보로 미해결이며 값을 채우거나 calendar/registry를 수정하지 않았다. KOSPI/KOSDAQ/KOSPI200 price benchmark는9월17일까지만 있고 TR 미확보다.
-
-이전 실행 환경 collector는 확인 불가. 새 collector/dispatch를 시작하지 않았고 기존 scheduled main workflow와 checkpoint/lock을 유지했다. 수동 재개는 감사 README의 active/queued/old-worker 확인 후 기존 같은 workflow/main 경로만 사용한다. 다른 데이터 변경을 덮어쓰지 않는다.
-
-이번 requested-period 예제는 status=ok/nav_ready=true/report_ready=true/report_complete=false, 준비된2019~2020만 성과 생성.2000/2021 시작 구간data_gap, 책기간미지정. 기본 CURRENT 네기간 경로는 report_readiness data_gap/nav_ready=false/report_ready=false. 새 execution-only 연구NAV는 실행하지 않았다. 데이터 준비·전체 독립품질검증·실제 OOS/운용전략 검증은 미완료다.
-
-변경은 감사 문서·증거·검증 도구에 한정하며 작업브랜치 `audit/data-source-readiness-20261004`에서 검토한다. main에 감사 변경을 병합하지 않았다. 기존 PR#27의 취소된 요청을 재시도하지 않는다. 다른 ChatGPT 프로젝트 자동 공유와 대화 본문 interactive 실행은 이번 연결에서 확인/해결되지 않았다.
+Current task directly recovered five archived source-backed failures into 78 staging rows in 2/3/no-op batches; production valid recovery and full PIT remain zero. Native collector source-diagnostic patch separates damaged XML from NO_METRICS and quarantines SOURCE_GAP; it is review-only, not deployed main. Original data/checkpoints are untouched. Actual existing legacy run37172051500 attempt2 job111425020146 was started and observed in the collector step. Final live/CI/count evidence and commands: [resume checkpoint](docs/audits/no-metrics-resume-20261004/README.md). Previous environment remains unverifiable; new workspace contains no prior installed kit. Do not infer old runtime verify or investment validation.
 
 ## 2026-10-03 main 병합 및 본문 그래프 표시
 

@@ -20,12 +20,14 @@ try:
     from scripts.legacy_financial_fields import (ALIASES, METRIC_STATEMENTS, UNIT_MULTIPLIERS, norm_account, parse_number, choose_metric)
     from scripts.csv_storage import atomic_write_if_changed
     from scripts.legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
+    from scripts.legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION
 except ModuleNotFoundError as error:
     if error.name != "scripts":
         raise
     from legacy_financial_fields import (ALIASES, METRIC_STATEMENTS, UNIT_MULTIPLIERS, norm_account, parse_number, choose_metric)
     from csv_storage import atomic_write_if_changed
     from legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
+    from legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION
 
 warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
@@ -41,7 +43,7 @@ SOURCE_VERSION = "opendart-document-v1"
 # Financial parsing v5 rejects ambiguous cells; transport failures are keyed by
 # SOURCE_VERSION and need not be downloaded again for a numeric-parser change.
 RUN_CONTROL = None
-TERMINAL_STATUSES = {"PARSED_4F", "PARSED_PARTIAL", "NO_METRICS", "NO_DOCUMENT"}
+TERMINAL_STATUSES = {"PARSED_4F", "PARSED_PARTIAL", "NO_METRICS", "NO_DOCUMENT", "SOURCE_GAP"}
 MAX_ERROR_ATTEMPTS = 3
 
 ROOT = Path("data/financials/legacy_2000_2014")
@@ -671,16 +673,24 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
     try:
         blob, sha=fetch_document(rcept)
         all_cands=[]
+        diagnostics=[]
         with zipfile.ZipFile(io.BytesIO(blob)) as z:
             names=[n for n in z.namelist() if not n.endswith("/")]
             for n in names:
                 try:
                     data=z.read(n)
+                    diagnostics.append(inspect_member(data, n))
                     text=decode_legacy(data)
                     all_cands.extend(table_candidates(text))
-                except Exception:
+                except Exception as error:
+                    diagnostics.append({"member": n, "issues": ["MEMBER_READ_OR_PARSE_ERROR"],
+                                        "error": type(error).__name__})
                     continue
         best=select_best_candidates(all_cands)
+        # Damaged sources are evidence gaps even if tolerant HTML parsing finds
+        # a few values. Preserve prior observations; do not publish new amounts.
+        if empty_parse_status(diagnostics) == "SOURCE_GAP":
+            best=[]
         rows=[]
         for rec in best:
             rec.update({
@@ -705,11 +715,13 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
             scopes[scope]=len(have & CORE_4F)
         usable=max(scopes.values()) if scopes else 0
         best_scope=max(scopes,key=scopes.get) if usable > 0 else ""
-        status="PARSED_4F" if usable>=4 else ("PARSED_PARTIAL" if rows else "NO_METRICS")
+        status="PARSED_4F" if usable>=4 else ("PARSED_PARTIAL" if rows else empty_parse_status(diagnostics))
         state={
             "rcept_no":rcept,"status":status,"metric_rows":len(rows),
             "best_scope":best_scope,"usable_metric_count":usable,
-            "document_sha256":sha,"parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),"error":""
+            "document_sha256":sha,"parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),
+            "source_diagnostic_version":DIAGNOSTIC_VERSION,
+            "error":json.dumps(diagnostics, ensure_ascii=False) if status == "SOURCE_GAP" else ""
         }
         return rows,state
     except DocumentUnavailable as e:
@@ -765,7 +777,9 @@ def current_state() -> pd.DataFrame:
 
 def durable_done_receipts(state: pd.DataFrame) -> set[str]:
     """Terminal parse state alone is insufficient if its normalized data was lost."""
-    done = set(state.loc[state["status"].isin(["NO_METRICS", "NO_DOCUMENT"]), "rcept_no"])
+    # A source gap is quarantined for evidence-based recovery, never retried
+    # indefinitely and never reported as proof that financial items are absent.
+    done = set(state.loc[state["status"].isin(["NO_METRICS", "NO_DOCUMENT", "SOURCE_GAP"]), "rcept_no"])
     parsed = state[state["status"].isin(["PARSED_4F", "PARSED_PARTIAL"])]
     if parsed.empty:
         return done
@@ -887,7 +901,8 @@ def write_coverage(idx: pd.DataFrame) -> None:
     processed=int(x["processed"].sum())
     usable=int(x["usable_4f"].sum())
     pending, quarantined = pending_receipts(idx, state)
-    collection_complete = indexed_complete and processed == total_mapped
+    source_gaps = int((x["mapped"] & x["status"].eq("SOURCE_GAP")).sum())
+    collection_complete = indexed_complete and processed == total_mapped and source_gaps == 0
     mode = "BACKFILL_ACTIVE" if not indexed_complete or len(pending) else "REVIEW_REQUIRED"
     if collection_complete:
         mode = "COLLECTION_COMPLETE_REVIEW_REQUIRED"
@@ -903,6 +918,7 @@ def write_coverage(idx: pd.DataFrame) -> None:
         "quarantined_error_filings": quarantined,
         "no_metrics_filings": int((x["mapped"] & x["status"].eq("NO_METRICS")).sum()),
         "no_document_filings": int((x["mapped"] & x["status"].eq("NO_DOCUMENT")).sum()),
+        "source_gap_filings": source_gaps,
         "index_tasks_total":len(tasks),
         "index_tasks_completed":len(done & set(tasks["task_key"])),
         "index_complete":indexed_complete,

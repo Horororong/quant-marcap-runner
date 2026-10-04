@@ -1,0 +1,20 @@
+{
+  "receipts": [
+    "20000809000052",
+    "20010103000052",
+    "20010104000076",
+    "20010213000010",
+    "20010213000014"
+  ],
+  "source_diagnostic_version": "legacy-document-quality-v1",
+  "adapter_version": "dart-viewer-period-scope-unit-column-v2",
+  "input_sha256": {
+    "data/status/dart_legacy_backfill_state.csv": "042e3debdbce7a2014257185e091dc172f7d11be829f2681b36357a112e4e103",
+    "data/financials/legacy_2000_2014/legacy_filings.csv.gz": "310001c3e9ed429684da5008983ccfa8d27cd92a16659dd18a1060c6e112406c",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_1998.csv.gz": "18d986873b426d6a7a69d76694722481666948c5d68dc7d442439bbd1167ff91",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_1999.csv.gz": "5dd3c67cb7bb6ba094cbeae9232ac35e48ce3a456ff4678bb9e46e41adf23ac4",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_2000.csv.gz": "7c6cc453d9890b2065cf908a9d411646abb0e04fa99ddd0f2d000e1ac2d2b998",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_2001.csv.gz": "6dd2fed2e7ce892ce502e82c458d469dfb94721cc5aa05eb8f66c4033e35cb3f",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_2002.csv.gz": "0f4fac1b54b7c14af82198cdebf3c7fee1dcbc52ec2e2840b0ffda1a4b4421d1"
+  }
+}
