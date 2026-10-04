@@ -1,0 +1,355 @@
+{
+  "selection_version": "sourcegap-production-v1",
+  "pre_value_selection": true,
+  "new_numeric_selection": "first available distinct-company receipts by sorted fiscal_year/period/scope; >=30 items if available; independent literal/header comparison required",
+  "old_source_samples": [
+    {
+      "rcept_no": "20000330000447",
+      "status": "NO_METRICS",
+      "document_sha256": "fd48b509b179feb99318ade3fca809b70e55f4d76fdac5f32815c759c8ffb60a",
+      "metric_rows": "0",
+      "corp_code": "00119724",
+      "corp_name": "두원중공업",
+      "fiscal_year": "1999",
+      "period": "FY",
+      "rcept_dt": "2000-03-30",
+      "report_nm": "사업보고서 (1999.12)"
+    },
+    {
+      "rcept_no": "20000215000003",
+      "status": "NO_METRICS",
+      "document_sha256": "ac69bcf4778e678f999957ff1784f42284512f3975113ecd29c38dc62ae5feb8",
+      "metric_rows": "0",
+      "corp_code": "00130091",
+      "corp_name": "샘표",
+      "fiscal_year": "1999",
+      "period": "H1",
+      "rcept_dt": "2000-02-15",
+      "report_nm": "반기보고서 (1999.12)"
+    },
+    {
+      "rcept_no": "20010330001533",
+      "status": "NO_METRICS",
+      "document_sha256": "5f1d6c63abe3724b636013294a7b5b76cca9d53a9adbafb9ef20e920a31344b6",
+      "metric_rows": "0",
+      "corp_code": "00258801",
+      "corp_name": "카카오",
+      "fiscal_year": "2000",
+      "period": "FY",
+      "rcept_dt": "2001-03-30",
+      "report_nm": "사업보고서 (2000.12)"
+    },
+    {
+      "rcept_no": "20000814000485",
+      "status": "NO_METRICS",
+      "document_sha256": "df36a3faf53f7ef1a60e05c2cc94bf66d5e69c244ce6e31af35cc0c0c3b41335",
+      "metric_rows": "0",
+      "corp_code": "00101752",
+      "corp_name": "케이씨피드",
+      "fiscal_year": "2000",
+      "period": "H1",
+      "rcept_dt": "2000-08-14",
+      "report_nm": "[기재정정]반기보고서 (2000.06)"
+    },
+    {
+      "rcept_no": "20000515000556",
+      "status": "NO_METRICS",
+      "document_sha256": "8a11837e7bda080dac0bdae933e920f7bccde5f4f141e5914dbc6f58ac9ffd32",
+      "metric_rows": "0",
+      "corp_code": "00199252",
+      "corp_name": "HLB",
+      "fiscal_year": "2000",
+      "period": "Q1",
+      "rcept_dt": "2000-05-15",
+      "report_nm": "분기보고서 (2000.03)"
+    },
+    {
+      "rcept_no": "20000515000178",
+      "status": "NO_METRICS",
+      "document_sha256": "fce780964908e229a4d7cc8c2205aaba54c9ff6451d004a2d7bada5238f0394a",
+      "metric_rows": "0",
+      "corp_code": "00139685",
+      "corp_name": "양지사",
+      "fiscal_year": "2000",
+      "period": "Q3",
+      "rcept_dt": "2000-05-15",
+      "report_nm": "분기보고서 (2000.03)"
+    },
+    {
+      "rcept_no": "20010214000151",
+      "status": "NO_METRICS",
+      "document_sha256": "22c35749c52e2f6a63cbc04e599334b5156c9ba64c82e1c0d4e90430b02f4f29",
+      "metric_rows": "0",
+      "corp_code": "00231442",
+      "corp_name": "디지틀조선",
+      "fiscal_year": "2000",
+      "period": "QX",
+      "rcept_dt": "2001-02-14",
+      "report_nm": "분기보고서 (2000.12)"
+    },
+    {
+      "rcept_no": "20020330000187",
+      "status": "NO_METRICS",
+      "document_sha256": "90c335772fd3830f908a10e5ea3d6ae781095ddbe73b8d4ac396aba25362a519",
+      "metric_rows": "0",
+      "corp_code": "00135467",
+      "corp_name": "승일",
+      "fiscal_year": "2001",
+      "period": "FY",
+      "rcept_dt": "2002-03-30",
+      "report_nm": "[기재정정]사업보고서 (2001.12)"
+    },
+    {
+      "rcept_no": "20010813000171",
+      "status": "NO_METRICS",
+      "document_sha256": "0ac4037795f70e9512f797b29078a23dc7191140d6ce0c7661796996d81097fb",
+      "metric_rows": "0",
+      "corp_code": "00128731",
+      "corp_name": "유리이에스",
+      "fiscal_year": "2001",
+      "period": "H1",
+      "rcept_dt": "2001-08-13",
+      "report_nm": "반기보고서 (2001.06)"
+    },
+    {
+      "rcept_no": "20010515000145",
+      "status": "NO_METRICS",
+      "document_sha256": "0d7cef3fd6cd96ffa5b3d788b29ca2511a0a5b7b1a8e80663c23fb2a78800bbe",
+      "metric_rows": "0",
+      "corp_code": "00122898",
+      "corp_name": "벽산",
+      "fiscal_year": "2001",
+      "period": "Q1",
+      "rcept_dt": "2001-05-15",
+      "report_nm": "분기보고서 (2001.03)"
+    },
+    {
+      "rcept_no": "20011114000493",
+      "status": "NO_METRICS",
+      "document_sha256": "5a018c2afbdd6f391390d8866ad66eeb4153330079d23d65025ca7641a455c72",
+      "metric_rows": "0",
+      "corp_code": "00138695",
+      "corp_name": "뉴아세아",
+      "fiscal_year": "2001",
+      "period": "Q3",
+      "rcept_dt": "2001-11-14",
+      "report_nm": "분기보고서 (2001.09)"
+    },
+    {
+      "rcept_no": "20010214000193",
+      "status": "NO_METRICS",
+      "document_sha256": "eab435223e25eb804d315be17f6062753df1e53b75c0f008eed2a3959f0cbb4e",
+      "metric_rows": "0",
+      "corp_code": "00105509",
+      "corp_name": "금강화섬",
+      "fiscal_year": "2001",
+      "period": "QX",
+      "rcept_dt": "2001-02-14",
+      "report_nm": "분기보고서 (2001.09)"
+    },
+    {
+      "rcept_no": "20000131000001",
+      "status": "PARSED_4F",
+      "document_sha256": "b3c540cdc9bfe015025b7ebde0e60f47e017f765f21afbe2ec1fff7a8c15b594",
+      "metric_rows": "17",
+      "corp_code": "00126885",
+      "corp_name": "에스와이코퍼레이션",
+      "fiscal_year": "1998",
+      "period": "FY",
+      "rcept_dt": "2000-01-31",
+      "report_nm": "사업보고서 (1998.10)"
+    },
+    {
+      "rcept_no": "20000330000124",
+      "status": "PARSED_4F",
+      "document_sha256": "11be21fe475d47f7a98132cc6a78feb4974c856a7ef24391bdb4068ed8f1c24f",
+      "metric_rows": "14",
+      "corp_code": "00261054",
+      "corp_name": "EG",
+      "fiscal_year": "1999",
+      "period": "FY",
+      "rcept_dt": "2000-03-30",
+      "report_nm": "사업보고서 (1999.12)"
+    },
+    {
+      "rcept_no": "20000330000121",
+      "status": "PARSED_PARTIAL",
+      "document_sha256": "9f7945db67e29e8f9289a1a76a646778723c4ed9a3b937953a7baef51807ed1e",
+      "metric_rows": "9",
+      "corp_code": "00261355",
+      "corp_name": "레드캡투어",
+      "fiscal_year": "1999",
+      "period": "FY",
+      "rcept_dt": "2000-03-30",
+      "report_nm": "사업보고서 (1999.12)"
+    },
+    {
+      "rcept_no": "20000113000001",
+      "status": "PARSED_4F",
+      "document_sha256": "02ae98809aac262ef6d649edaaa3e14aa875dd4aad7dc26fe554864382014d73",
+      "metric_rows": "34",
+      "corp_code": "00136776",
+      "corp_name": "차AI헬스케어",
+      "fiscal_year": "1999",
+      "period": "H1",
+      "rcept_dt": "2000-01-13",
+      "report_nm": "[기재정정]반기보고서 (1999.06)"
+    },
+    {
+      "rcept_no": "20000329000068",
+      "status": "PARSED_PARTIAL",
+      "document_sha256": "eddf60f49a73b0660917a8572c912c5f0cd408d48faab8c3f78b3138e41205ee",
+      "metric_rows": "3",
+      "corp_code": "00172033",
+      "corp_name": "경동산업",
+      "fiscal_year": "1999",
+      "period": "H1",
+      "rcept_dt": "2000-03-29",
+      "report_nm": "반기보고서 (1999.09)"
+    },
+    {
+      "rcept_no": "20000429000023",
+      "status": "PARSED_4F",
+      "document_sha256": "72b345111d16f8b970c6ad46518bc6a3ac46320b6f7ad30f8285ade74a9fb53d",
+      "metric_rows": "19",
+      "corp_code": "00154189",
+      "corp_name": "케이비물산",
+      "fiscal_year": "2000",
+      "period": "FY",
+      "rcept_dt": "2000-04-29",
+      "report_nm": "사업보고서 (2000.01)"
+    },
+    {
+      "rcept_no": "20000629000132",
+      "status": "PARSED_PARTIAL",
+      "document_sha256": "8a576d752c15e9b51780fca73341ac0300dd79830f42686cca746b379d3c7b37",
+      "metric_rows": "5",
+      "corp_code": "00116860",
+      "corp_name": "NH농협증권",
+      "fiscal_year": "2000",
+      "period": "FY",
+      "rcept_dt": "2000-06-29",
+      "report_nm": "[첨부추가]사업보고서 (2000.03)"
+    },
+    {
+      "rcept_no": "20000811000019",
+      "status": "PARSED_4F",
+      "document_sha256": "981e270e0b367c4d73f7db68eb61b14d1e3b65fae33156797056e56c28040968",
+      "metric_rows": "30",
+      "corp_code": "00130772",
+      "corp_name": "SBS",
+      "fiscal_year": "2000",
+      "period": "H1",
+      "rcept_dt": "2000-08-11",
+      "report_nm": "반기보고서 (2000.06)"
+    },
+    {
+      "rcept_no": "20000814000240",
+      "status": "PARSED_PARTIAL",
+      "document_sha256": "f858c0b022a77bd76464ed31ff80bfeefb9ff18d8e6bb86022697a4ef0fec884",
+      "metric_rows": "18",
+      "corp_code": "00154392",
+      "corp_name": "에스트라",
+      "fiscal_year": "2000",
+      "period": "H1",
+      "rcept_dt": "2000-08-14",
+      "report_nm": "반기보고서 (2000.06)"
+    },
+    {
+      "rcept_no": "20000513000171",
+      "status": "PARSED_4F",
+      "document_sha256": "ba609f051816306f85f640dfa280afd2843f48b4a688ca6ff23ec2c54f72d13f",
+      "metric_rows": "17",
+      "corp_code": "00138260",
+      "corp_name": "SIMPAC",
+      "fiscal_year": "2000",
+      "period": "Q1",
+      "rcept_dt": "2000-05-13",
+      "report_nm": "분기보고서 (2000.03)"
+    },
+    {
+      "rcept_no": "20000515000042",
+      "status": "PARSED_PARTIAL",
+      "document_sha256": "97498df16b6d65457da81c787ad4c6c6df630400a2654e64cf6e01e3aa26d8c1",
+      "metric_rows": "6",
+      "corp_code": "00145260",
+      "corp_name": "율촌화학",
+      "fiscal_year": "2000",
+      "period": "Q1",
+      "rcept_dt": "2000-05-15",
+      "report_nm": "분기보고서 (2000.03)"
+    },
+    {
+      "rcept_no": "20000812000050",
+      "status": "PARSED_4F",
+      "document_sha256": "2c9d73b431e42ce640df86432e6b072eed4b53630d52cf5f35af2229546f37bb",
+      "metric_rows": "18",
+      "corp_code": "00203315",
+      "corp_name": "콘텐트리중앙",
+      "fiscal_year": "2000",
+      "period": "QX",
+      "rcept_dt": "2000-08-12",
+      "report_nm": "분기보고서 (2000.06)"
+    }
+  ],
+  "code_commit": "6e2ee6c9dfc377453b3664fb546d482d52bd09f9",
+  "actions_run_id": "37210246868",
+  "actions_attempt": "1",
+  "parser_version": "legacy-v5-single-amount",
+  "source_version": "opendart-document-v1",
+  "diagnostic_version": "legacy-document-quality-v1",
+  "inputs": [
+    {
+      "path": "data/status/dart_legacy_backfill_state.csv",
+      "bytes": 2896256,
+      "sha256": "517f9a05807358b8615e77bea05241831e400871052f25a48670232360708e4a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/legacy_filings.csv.gz",
+      "bytes": 3221691,
+      "sha256": "310001c3e9ed429684da5008983ccfa8d27cd92a16659dd18a1060c6e112406c"
+    },
+    {
+      "path": "data/status/dart_legacy_backfill_status.csv",
+      "bytes": 631,
+      "sha256": "1ea40f04e4a3e49c8deb8dad900a569f1d6ced20ebe84bc1527088c7f387b928"
+    },
+    {
+      "path": "data/status/dart_legacy_source_quarantine.csv",
+      "bytes": 3689,
+      "sha256": "ced5c81d1ad3b63fb6c0b98de3f6872df1a0d4d3a7fb89ab0ecc6f76d51dcb20"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_1998.csv.gz",
+      "bytes": 1577,
+      "sha256": "18d986873b426d6a7a69d76694722481666948c5d68dc7d442439bbd1167ff91"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_1999.csv.gz",
+      "bytes": 808863,
+      "sha256": "5dd3c67cb7bb6ba094cbeae9232ac35e48ce3a456ff4678bb9e46e41adf23ac4"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2000.csv.gz",
+      "bytes": 853962,
+      "sha256": "7c6cc453d9890b2065cf908a9d411646abb0e04fa99ddd0f2d000e1ac2d2b998"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2001.csv.gz",
+      "bytes": 2625092,
+      "sha256": "64dc9be820beaeba1bb651ee10a1d968292092fdbd38bb5e6881dd40e5656bc6"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2002.csv.gz",
+      "bytes": 5484459,
+      "sha256": "aafe29b19c87874132e392352e83f9bd37530abea1576edbb164fc44b5390553"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2003.csv.gz",
+      "bytes": 60208,
+      "sha256": "6e89cabd2443862b7a7cfae3e0e932ea648e2df8db21fdbf5c7116e8e2f12afc"
+    }
+  ],
+  "numeric_audit_complete": false,
+  "pit_complete": false
+}

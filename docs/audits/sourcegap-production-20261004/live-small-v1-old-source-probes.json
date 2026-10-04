@@ -1,0 +1,746 @@
+[
+  {
+    "rcept_no": "20000330000447",
+    "status": "NO_METRICS",
+    "document_sha256": "fd48b509b179feb99318ade3fca809b70e55f4d76fdac5f32815c759c8ffb60a",
+    "metric_rows": "0",
+    "corp_code": "00119724",
+    "corp_name": "두원중공업",
+    "fiscal_year": "1999",
+    "period": "FY",
+    "rcept_dt": "2000-03-30",
+    "report_nm": "사업보고서 (1999.12)",
+    "download_sha256": "fd48b509b179feb99318ade3fca809b70e55f4d76fdac5f32815c759c8ffb60a",
+    "diagnostics": [
+      {
+        "member": "20000330000447.xml",
+        "bytes": 26933,
+        "sha256": "8a7c334e9748e5881a58d35360aac871a754167ec027ce4e0e8cd738257ba084",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "encoding": "utf-8",
+        "replacement_characters": 0,
+        "xml_error": "no element found: line 4, column 23035"
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20000330000447-viewer.html",
+      "bytes": 74309,
+      "sha256": "764d8a1d7ceb1e863c09769e4f8191e62898a4363a9c6d0dc6fbdb7e715a14e7"
+    }
+  },
+  {
+    "rcept_no": "20000215000003",
+    "status": "NO_METRICS",
+    "document_sha256": "ac69bcf4778e678f999957ff1784f42284512f3975113ecd29c38dc62ae5feb8",
+    "metric_rows": "0",
+    "corp_code": "00130091",
+    "corp_name": "샘표",
+    "fiscal_year": "1999",
+    "period": "H1",
+    "rcept_dt": "2000-02-15",
+    "report_nm": "반기보고서 (1999.12)",
+    "download_sha256": "ac69bcf4778e678f999957ff1784f42284512f3975113ecd29c38dc62ae5feb8",
+    "diagnostics": [
+      {
+        "member": "20000215000003.xml",
+        "bytes": 601796,
+        "sha256": "1ad44a6f8c08e521e39576bf5054dbf1a310f028eacd0a0a4742403c8908bb66",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "encoding": "utf-8",
+        "replacement_characters": 0,
+        "xml_error": "no element found: line 4, column 569914"
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20000215000003-viewer.html",
+      "bytes": 68189,
+      "sha256": "cf7f156b621b9fea98f7f42290d9b427d9f23d8c4b52a6bba5ee24be238782f7"
+    }
+  },
+  {
+    "rcept_no": "20010330001533",
+    "status": "NO_METRICS",
+    "document_sha256": "5f1d6c63abe3724b636013294a7b5b76cca9d53a9adbafb9ef20e920a31344b6",
+    "metric_rows": "0",
+    "corp_code": "00258801",
+    "corp_name": "카카오",
+    "fiscal_year": "2000",
+    "period": "FY",
+    "rcept_dt": "2001-03-30",
+    "report_nm": "사업보고서 (2000.12)",
+    "download_sha256": "5f1d6c63abe3724b636013294a7b5b76cca9d53a9adbafb9ef20e920a31344b6",
+    "diagnostics": [
+      {
+        "member": "20010330001533.xml",
+        "bytes": 902408,
+        "sha256": "a06cf66679cf1dfb56cd81252b2b89115501ba896d17f898e2913e11593169fe",
+        "issues": [
+          "SOURCE_REPLACEMENT_CHARACTERS"
+        ],
+        "encoding": "utf-8",
+        "replacement_characters": 34492
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20010330001533-viewer.html",
+      "bytes": 70242,
+      "sha256": "a9266cec225219de2fed63d897edc55fa702b4fc69a5bc3eb5aac0832e2c162a"
+    }
+  },
+  {
+    "rcept_no": "20000814000485",
+    "status": "NO_METRICS",
+    "document_sha256": "df36a3faf53f7ef1a60e05c2cc94bf66d5e69c244ce6e31af35cc0c0c3b41335",
+    "metric_rows": "0",
+    "corp_code": "00101752",
+    "corp_name": "케이씨피드",
+    "fiscal_year": "2000",
+    "period": "H1",
+    "rcept_dt": "2000-08-14",
+    "report_nm": "[기재정정]반기보고서 (2000.06)",
+    "download_sha256": "df36a3faf53f7ef1a60e05c2cc94bf66d5e69c244ce6e31af35cc0c0c3b41335",
+    "diagnostics": [
+      {
+        "member": "20000814000485.xml",
+        "bytes": 17617,
+        "sha256": "edd9c44e27f24fee1bec2f65fd84632e623bac2fbd21fc65db5a8ba125776bbf",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "encoding": "utf-8",
+        "replacement_characters": 0,
+        "xml_error": "no element found: line 4, column 14088"
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20000814000485-viewer.html",
+      "bytes": 70573,
+      "sha256": "575eedb373f7cfa33f46898feecca12a29c7620d06b174b1ed99357e04008f9b"
+    }
+  },
+  {
+    "rcept_no": "20000515000556",
+    "status": "NO_METRICS",
+    "document_sha256": "8a11837e7bda080dac0bdae933e920f7bccde5f4f141e5914dbc6f58ac9ffd32",
+    "metric_rows": "0",
+    "corp_code": "00199252",
+    "corp_name": "HLB",
+    "fiscal_year": "2000",
+    "period": "Q1",
+    "rcept_dt": "2000-05-15",
+    "report_nm": "분기보고서 (2000.03)",
+    "download_sha256": "8a11837e7bda080dac0bdae933e920f7bccde5f4f141e5914dbc6f58ac9ffd32",
+    "diagnostics": [
+      {
+        "member": "20000515000556.xml",
+        "bytes": 226264,
+        "sha256": "2b1360261497957e5e80cb23c3d1cb67f70fc736d76d8d0e0356c6259f51e8c6",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "encoding": "utf-8",
+        "replacement_characters": 0,
+        "xml_error": "no element found: line 4, column 211682"
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20000515000556-viewer.html",
+      "bytes": 62053,
+      "sha256": "82371928fbabe8794a8c58d8845b6530d41ffe0daabcd85c60ab38a1b2309381"
+    }
+  },
+  {
+    "rcept_no": "20000515000178",
+    "status": "NO_METRICS",
+    "document_sha256": "fce780964908e229a4d7cc8c2205aaba54c9ff6451d004a2d7bada5238f0394a",
+    "metric_rows": "0",
+    "corp_code": "00139685",
+    "corp_name": "양지사",
+    "fiscal_year": "2000",
+    "period": "Q3",
+    "rcept_dt": "2000-05-15",
+    "report_nm": "분기보고서 (2000.03)",
+    "download_sha256": "fce780964908e229a4d7cc8c2205aaba54c9ff6451d004a2d7bada5238f0394a",
+    "diagnostics": [
+      {
+        "member": "20000515000178.xml",
+        "bytes": 231545,
+        "sha256": "fe49b26a0f087db4637dfd5e7948b1fdfd6cec4c6640315b4aa9ab814ad514ae",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "encoding": "utf-8",
+        "replacement_characters": 0,
+        "xml_error": "no element found: line 4, column 220623"
+      }
+    ],
+    "same_as_checkpoint": true,
+    "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='dart.fss.or.kr', port=443): Max retries exceeded with url: /dsaf001/main.do?rcpNo=20000515000178 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))\"))"
+  },
+  {
+    "rcept_no": "20010214000151",
+    "status": "NO_METRICS",
+    "document_sha256": "22c35749c52e2f6a63cbc04e599334b5156c9ba64c82e1c0d4e90430b02f4f29",
+    "metric_rows": "0",
+    "corp_code": "00231442",
+    "corp_name": "디지틀조선",
+    "fiscal_year": "2000",
+    "period": "QX",
+    "rcept_dt": "2001-02-14",
+    "report_nm": "분기보고서 (2000.12)",
+    "download_sha256": "22c35749c52e2f6a63cbc04e599334b5156c9ba64c82e1c0d4e90430b02f4f29",
+    "diagnostics": [
+      {
+        "member": "20010214000151.xml",
+        "bytes": 535743,
+        "sha256": "380f44f7af72beccfacd91564300243760158aa580d1ab5b63149a1b0dd7496f",
+        "issues": [
+          "SOURCE_REPLACEMENT_CHARACTERS",
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "encoding": "utf-8",
+        "replacement_characters": 30214,
+        "xml_error": "no element found: line 4, column 451493"
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20010214000151-viewer.html",
+      "bytes": 57603,
+      "sha256": "f760e5dd523a5f6b50fbc26c5c76fbbe0e76d357703fd939a544cf396fc4e2a2"
+    }
+  },
+  {
+    "rcept_no": "20020330000187",
+    "status": "NO_METRICS",
+    "document_sha256": "90c335772fd3830f908a10e5ea3d6ae781095ddbe73b8d4ac396aba25362a519",
+    "metric_rows": "0",
+    "corp_code": "00135467",
+    "corp_name": "승일",
+    "fiscal_year": "2001",
+    "period": "FY",
+    "rcept_dt": "2002-03-30",
+    "report_nm": "[기재정정]사업보고서 (2001.12)",
+    "download_sha256": "90c335772fd3830f908a10e5ea3d6ae781095ddbe73b8d4ac396aba25362a519",
+    "diagnostics": [
+      {
+        "member": "20020330000187.xml",
+        "bytes": 927587,
+        "sha256": "ca9ec0ddd700b542bebbe0c53d0b9030797eacf1cc96e1c55f7fcd4291e772ce",
+        "issues": [
+          "SOURCE_ENCODING_INVALID"
+        ],
+        "encoding": "utf-8"
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20020330000187-viewer.html",
+      "bytes": 77556,
+      "sha256": "a0de93f4ca1a5b537af2f864326eee51ea32455fcf7cd5bc9b9e63cb1b2130d1"
+    }
+  },
+  {
+    "rcept_no": "20010813000171",
+    "status": "NO_METRICS",
+    "document_sha256": "0ac4037795f70e9512f797b29078a23dc7191140d6ce0c7661796996d81097fb",
+    "metric_rows": "0",
+    "corp_code": "00128731",
+    "corp_name": "유리이에스",
+    "fiscal_year": "2001",
+    "period": "H1",
+    "rcept_dt": "2001-08-13",
+    "report_nm": "반기보고서 (2001.06)",
+    "download_sha256": "0ac4037795f70e9512f797b29078a23dc7191140d6ce0c7661796996d81097fb",
+    "diagnostics": [
+      {
+        "member": "20010813000171.xml",
+        "bytes": 310144,
+        "sha256": "d64382a559681610909658920d79f3eb9009ccc1dd52f62e27a9a49aca1987f0",
+        "issues": [
+          "SOURCE_REPLACEMENT_CHARACTERS",
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "encoding": "utf-8",
+        "replacement_characters": 18598,
+        "xml_error": "not well-formed (invalid token): line 4, column 95693"
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20010813000171-viewer.html",
+      "bytes": 68252,
+      "sha256": "28ecc66704dcd5778a8e6d2d75b6b9ca2774cab636941a3763f5b856669bfe6b"
+    }
+  },
+  {
+    "rcept_no": "20010515000145",
+    "status": "NO_METRICS",
+    "document_sha256": "0d7cef3fd6cd96ffa5b3d788b29ca2511a0a5b7b1a8e80663c23fb2a78800bbe",
+    "metric_rows": "0",
+    "corp_code": "00122898",
+    "corp_name": "벽산",
+    "fiscal_year": "2001",
+    "period": "Q1",
+    "rcept_dt": "2001-05-15",
+    "report_nm": "분기보고서 (2001.03)",
+    "download_sha256": "0d7cef3fd6cd96ffa5b3d788b29ca2511a0a5b7b1a8e80663c23fb2a78800bbe",
+    "diagnostics": [
+      {
+        "member": "20010515000145.xml",
+        "bytes": 267696,
+        "sha256": "6e9dcaf4b905b2b6e66352eab849c35ea5ef89e9a2d7bd242f673abae96bcb04",
+        "issues": [
+          "SOURCE_REPLACEMENT_CHARACTERS",
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "encoding": "utf-8",
+        "replacement_characters": 12197,
+        "xml_error": "no element found: line 4, column 233377"
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20010515000145-viewer.html",
+      "bytes": 62829,
+      "sha256": "ae6eb018f4db91e303792e7a9cb20c7dd697e338972a0eed22b6695fe8307469"
+    }
+  },
+  {
+    "rcept_no": "20011114000493",
+    "status": "NO_METRICS",
+    "document_sha256": "5a018c2afbdd6f391390d8866ad66eeb4153330079d23d65025ca7641a455c72",
+    "metric_rows": "0",
+    "corp_code": "00138695",
+    "corp_name": "뉴아세아",
+    "fiscal_year": "2001",
+    "period": "Q3",
+    "rcept_dt": "2001-11-14",
+    "report_nm": "분기보고서 (2001.09)",
+    "download_sha256": "5a018c2afbdd6f391390d8866ad66eeb4153330079d23d65025ca7641a455c72",
+    "diagnostics": [
+      {
+        "member": "20011114000493.xml",
+        "bytes": 206222,
+        "sha256": "a2a4d6e3d0df547acd34c46ba5003898d945e5ed83d39969a3a5ae2b4c6ffc35",
+        "issues": [
+          "SOURCE_REPLACEMENT_CHARACTERS",
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "encoding": "utf-8",
+        "replacement_characters": 7526,
+        "xml_error": "no element found: line 4, column 184926"
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20011114000493-viewer.html",
+      "bytes": 63521,
+      "sha256": "d00fb5559ce94cfa3f44de5c872454ebcab995e55ac563cd25e338d24005c522"
+    }
+  },
+  {
+    "rcept_no": "20010214000193",
+    "status": "NO_METRICS",
+    "document_sha256": "eab435223e25eb804d315be17f6062753df1e53b75c0f008eed2a3959f0cbb4e",
+    "metric_rows": "0",
+    "corp_code": "00105509",
+    "corp_name": "금강화섬",
+    "fiscal_year": "2001",
+    "period": "QX",
+    "rcept_dt": "2001-02-14",
+    "report_nm": "분기보고서 (2001.09)",
+    "download_sha256": "eab435223e25eb804d315be17f6062753df1e53b75c0f008eed2a3959f0cbb4e",
+    "diagnostics": [
+      {
+        "member": "20010214000193.xml",
+        "bytes": 393941,
+        "sha256": "e4df10c5a09548d7469c865d57c9e491ecf0cb87755e762608226cb88970fe3c",
+        "issues": [
+          "SOURCE_REPLACEMENT_CHARACTERS",
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "encoding": "utf-8",
+        "replacement_characters": 13919,
+        "xml_error": "not well-formed (invalid token): line 4, column 33294"
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20010214000193-viewer.html",
+      "bytes": 62845,
+      "sha256": "12c6e47b350f7b869f2468e95378aa58c5d1eee7b5d1ea8327f5790071bfeee2"
+    }
+  },
+  {
+    "rcept_no": "20000131000001",
+    "status": "PARSED_4F",
+    "document_sha256": "b3c540cdc9bfe015025b7ebde0e60f47e017f765f21afbe2ec1fff7a8c15b594",
+    "metric_rows": "17",
+    "corp_code": "00126885",
+    "corp_name": "에스와이코퍼레이션",
+    "fiscal_year": "1998",
+    "period": "FY",
+    "rcept_dt": "2000-01-31",
+    "report_nm": "사업보고서 (1998.10)",
+    "download_sha256": "b3c540cdc9bfe015025b7ebde0e60f47e017f765f21afbe2ec1fff7a8c15b594",
+    "diagnostics": [
+      {
+        "member": "20000131000001.xml",
+        "bytes": 883580,
+        "sha256": "0e297c720a1436c373ad7c6ffa631b562b769688be6ce6bef42110e7d2e36a63",
+        "issues": [],
+        "encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20000131000001-viewer.html",
+      "bytes": 73757,
+      "sha256": "a744aae06ad6962d4036b6a0f5415005fd04849391ffd7b56485b4fe335bf307"
+    }
+  },
+  {
+    "rcept_no": "20000330000124",
+    "status": "PARSED_4F",
+    "document_sha256": "11be21fe475d47f7a98132cc6a78feb4974c856a7ef24391bdb4068ed8f1c24f",
+    "metric_rows": "14",
+    "corp_code": "00261054",
+    "corp_name": "EG",
+    "fiscal_year": "1999",
+    "period": "FY",
+    "rcept_dt": "2000-03-30",
+    "report_nm": "사업보고서 (1999.12)",
+    "download_sha256": "11be21fe475d47f7a98132cc6a78feb4974c856a7ef24391bdb4068ed8f1c24f",
+    "diagnostics": [
+      {
+        "member": "20000330000124.xml",
+        "bytes": 562089,
+        "sha256": "59cca3fbbca8ff308101e0e1d4456ac75c5abcb239fb78a240775db07b2191b2",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "encoding": "utf-8",
+        "replacement_characters": 0,
+        "xml_error": "no element found: line 4, column 533158"
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20000330000124-viewer.html",
+      "bytes": 73291,
+      "sha256": "eda0223ab03275f517927fcdff92900d453724c32cd3b86a958acdc83dddacd3"
+    }
+  },
+  {
+    "rcept_no": "20000330000121",
+    "status": "PARSED_PARTIAL",
+    "document_sha256": "9f7945db67e29e8f9289a1a76a646778723c4ed9a3b937953a7baef51807ed1e",
+    "metric_rows": "9",
+    "corp_code": "00261355",
+    "corp_name": "레드캡투어",
+    "fiscal_year": "1999",
+    "period": "FY",
+    "rcept_dt": "2000-03-30",
+    "report_nm": "사업보고서 (1999.12)",
+    "download_sha256": "9f7945db67e29e8f9289a1a76a646778723c4ed9a3b937953a7baef51807ed1e",
+    "diagnostics": [
+      {
+        "member": "20000330000121.xml",
+        "bytes": 778257,
+        "sha256": "a633427c5bedcfb298fee58e82cfd01c8f4db4f41a37e2ecfe853a29f766c01d",
+        "issues": [],
+        "encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20000330000121-viewer.html",
+      "bytes": 73547,
+      "sha256": "6491cb1e7bd94830f2d073043dec56e0471525cb5d1e0f2a1413b9c5331e60b9"
+    }
+  },
+  {
+    "rcept_no": "20000113000001",
+    "status": "PARSED_4F",
+    "document_sha256": "02ae98809aac262ef6d649edaaa3e14aa875dd4aad7dc26fe554864382014d73",
+    "metric_rows": "34",
+    "corp_code": "00136776",
+    "corp_name": "차AI헬스케어",
+    "fiscal_year": "1999",
+    "period": "H1",
+    "rcept_dt": "2000-01-13",
+    "report_nm": "[기재정정]반기보고서 (1999.06)",
+    "download_sha256": "02ae98809aac262ef6d649edaaa3e14aa875dd4aad7dc26fe554864382014d73",
+    "diagnostics": [
+      {
+        "member": "20000113000001.xml",
+        "bytes": 1110039,
+        "sha256": "cc7e91e12df76631661f81390b4ee1d70f3b5bbdf4c585492e2371028b9be6bf",
+        "issues": [],
+        "encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20000113000001-viewer.html",
+      "bytes": 68213,
+      "sha256": "2c08c34d51874b530e76e3266f223698e995d9a163d0ab558736e5e19d4be993"
+    }
+  },
+  {
+    "rcept_no": "20000329000068",
+    "status": "PARSED_PARTIAL",
+    "document_sha256": "eddf60f49a73b0660917a8572c912c5f0cd408d48faab8c3f78b3138e41205ee",
+    "metric_rows": "3",
+    "corp_code": "00172033",
+    "corp_name": "경동산업",
+    "fiscal_year": "1999",
+    "period": "H1",
+    "rcept_dt": "2000-03-29",
+    "report_nm": "반기보고서 (1999.09)",
+    "download_sha256": "eddf60f49a73b0660917a8572c912c5f0cd408d48faab8c3f78b3138e41205ee",
+    "diagnostics": [
+      {
+        "member": "20000329000068.xml",
+        "bytes": 513042,
+        "sha256": "6c00e90ea74de04fb9a8af7e2eccde880fe80083d281995dcd34cafe539d3ca9",
+        "issues": [],
+        "encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20000329000068-viewer.html",
+      "bytes": 67681,
+      "sha256": "aeb9f8d5139deab96db3cc21ef8836cd53b19864699b00816baa0e4474db6f80"
+    }
+  },
+  {
+    "rcept_no": "20000429000023",
+    "status": "PARSED_4F",
+    "document_sha256": "72b345111d16f8b970c6ad46518bc6a3ac46320b6f7ad30f8285ade74a9fb53d",
+    "metric_rows": "19",
+    "corp_code": "00154189",
+    "corp_name": "케이비물산",
+    "fiscal_year": "2000",
+    "period": "FY",
+    "rcept_dt": "2000-04-29",
+    "report_nm": "사업보고서 (2000.01)",
+    "download_sha256": "72b345111d16f8b970c6ad46518bc6a3ac46320b6f7ad30f8285ade74a9fb53d",
+    "diagnostics": [
+      {
+        "member": "20000429000023.xml",
+        "bytes": 1104667,
+        "sha256": "9b3a77099accfbf919f13b24b96398652021f0ead4985fe4744a0db0daf59cea",
+        "issues": [],
+        "encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20000429000023-viewer.html",
+      "bytes": 74357,
+      "sha256": "8d25089aa97d5f958435a25ec44aad8f4110d089c02282586bc46fd92f2d7a3c"
+    }
+  },
+  {
+    "rcept_no": "20000629000132",
+    "status": "PARSED_PARTIAL",
+    "document_sha256": "8a576d752c15e9b51780fca73341ac0300dd79830f42686cca746b379d3c7b37",
+    "metric_rows": "5",
+    "corp_code": "00116860",
+    "corp_name": "NH농협증권",
+    "fiscal_year": "2000",
+    "period": "FY",
+    "rcept_dt": "2000-06-29",
+    "report_nm": "[첨부추가]사업보고서 (2000.03)",
+    "download_sha256": "8a576d752c15e9b51780fca73341ac0300dd79830f42686cca746b379d3c7b37",
+    "diagnostics": [
+      {
+        "member": "20000629000132.xml",
+        "bytes": 717694,
+        "sha256": "c06435e141505da25209fd35bafe45e05d01ea74ed60645e0cfcaa01608f50df",
+        "issues": [],
+        "encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "same_as_checkpoint": true,
+    "error": "ConnectionError(ReadTimeoutError(\"HTTPSConnectionPool(host='dart.fss.or.kr', port=443): Read timed out.\"))"
+  },
+  {
+    "rcept_no": "20000811000019",
+    "status": "PARSED_4F",
+    "document_sha256": "981e270e0b367c4d73f7db68eb61b14d1e3b65fae33156797056e56c28040968",
+    "metric_rows": "30",
+    "corp_code": "00130772",
+    "corp_name": "SBS",
+    "fiscal_year": "2000",
+    "period": "H1",
+    "rcept_dt": "2000-08-11",
+    "report_nm": "반기보고서 (2000.06)",
+    "download_sha256": "981e270e0b367c4d73f7db68eb61b14d1e3b65fae33156797056e56c28040968",
+    "diagnostics": [
+      {
+        "member": "20000811000019.xml",
+        "bytes": 740486,
+        "sha256": "b5e15b37c27d546acf483cca4f932dbb1faa4e1b1a5e037bf9bc7f2f34577b88",
+        "issues": [],
+        "encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20000811000019-viewer.html",
+      "bytes": 67622,
+      "sha256": "3a7272656f316891895628dc86e2332bb86b544b5c6ef2a2e69226ee6916560b"
+    }
+  },
+  {
+    "rcept_no": "20000814000240",
+    "status": "PARSED_PARTIAL",
+    "document_sha256": "f858c0b022a77bd76464ed31ff80bfeefb9ff18d8e6bb86022697a4ef0fec884",
+    "metric_rows": "18",
+    "corp_code": "00154392",
+    "corp_name": "에스트라",
+    "fiscal_year": "2000",
+    "period": "H1",
+    "rcept_dt": "2000-08-14",
+    "report_nm": "반기보고서 (2000.06)",
+    "download_sha256": "f858c0b022a77bd76464ed31ff80bfeefb9ff18d8e6bb86022697a4ef0fec884",
+    "diagnostics": [
+      {
+        "member": "20000814000240.xml",
+        "bytes": 491698,
+        "sha256": "1d813ca95cf7ed8a4580dc4a362488fcfb5fbfd9b93d33b71644fc8aae3fca17",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "encoding": "utf-8",
+        "replacement_characters": 0,
+        "xml_error": "no element found: line 4, column 469319"
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20000814000240-viewer.html",
+      "bytes": 67638,
+      "sha256": "a7c5572b089cd71ff310723b85b87f9a9ee0b523c6117100e762edcec1fe8f5a"
+    }
+  },
+  {
+    "rcept_no": "20000513000171",
+    "status": "PARSED_4F",
+    "document_sha256": "ba609f051816306f85f640dfa280afd2843f48b4a688ca6ff23ec2c54f72d13f",
+    "metric_rows": "17",
+    "corp_code": "00138260",
+    "corp_name": "SIMPAC",
+    "fiscal_year": "2000",
+    "period": "Q1",
+    "rcept_dt": "2000-05-13",
+    "report_nm": "분기보고서 (2000.03)",
+    "download_sha256": "ba609f051816306f85f640dfa280afd2843f48b4a688ca6ff23ec2c54f72d13f",
+    "diagnostics": [
+      {
+        "member": "20000513000171.xml",
+        "bytes": 680798,
+        "sha256": "0f8bb9c4a7347334d724b5771c712621eeba1a3e13ee59d4f983a7bf5ac6908e",
+        "issues": [],
+        "encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "same_as_checkpoint": true,
+    "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='dart.fss.or.kr', port=443): Max retries exceeded with url: /dsaf001/main.do?rcpNo=20000513000171 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))\"))"
+  },
+  {
+    "rcept_no": "20000515000042",
+    "status": "PARSED_PARTIAL",
+    "document_sha256": "97498df16b6d65457da81c787ad4c6c6df630400a2654e64cf6e01e3aa26d8c1",
+    "metric_rows": "6",
+    "corp_code": "00145260",
+    "corp_name": "율촌화학",
+    "fiscal_year": "2000",
+    "period": "Q1",
+    "rcept_dt": "2000-05-15",
+    "report_nm": "분기보고서 (2000.03)",
+    "download_sha256": "97498df16b6d65457da81c787ad4c6c6df630400a2654e64cf6e01e3aa26d8c1",
+    "diagnostics": [
+      {
+        "member": "20000515000042.xml",
+        "bytes": 626146,
+        "sha256": "c3e6011bd5f98ceeb7a6cc222974e3e5d1e708a1b830d283309e40ebdeb1b194",
+        "issues": [],
+        "encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "same_as_checkpoint": true,
+    "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='dart.fss.or.kr', port=443): Max retries exceeded with url: /dsaf001/main.do?rcpNo=20000515000042 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))\"))"
+  },
+  {
+    "rcept_no": "20000812000050",
+    "status": "PARSED_4F",
+    "document_sha256": "2c9d73b431e42ce640df86432e6b072eed4b53630d52cf5f35af2229546f37bb",
+    "metric_rows": "18",
+    "corp_code": "00203315",
+    "corp_name": "콘텐트리중앙",
+    "fiscal_year": "2000",
+    "period": "QX",
+    "rcept_dt": "2000-08-12",
+    "report_nm": "분기보고서 (2000.06)",
+    "download_sha256": "2c9d73b431e42ce640df86432e6b072eed4b53630d52cf5f35af2229546f37bb",
+    "diagnostics": [
+      {
+        "member": "20000812000050.xml",
+        "bytes": 559996,
+        "sha256": "46e449db9d0dcf49bd097572098fd8119e8cb586e586625131f5e16dfec0dd7b",
+        "issues": [],
+        "encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "same_as_checkpoint": true,
+    "viewer_http_status": 200,
+    "viewer": {
+      "path": "/home/runner/work/_temp/legacy-source-evidence/20000812000050-viewer.html",
+      "bytes": 61329,
+      "sha256": "6fd1b5ab6009479fff09fa052a8c290a8426083a8bf3f83c24f20d09e495a12f"
+    }
+  }
+]

@@ -1,0 +1,453 @@
+{
+  "source_run": 37210246868,
+  "sample_selection": "plan.json frozen before actual collection/value inspection",
+  "records": [
+    {
+      "rcept_no": "20000330000447",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "764d8a1d7ceb1e863c09769e4f8191e62898a4363a9c6d0dc6fbdb7e715a14e7",
+      "options": [
+        {
+          "rcept_no": "20000330000447",
+          "literal_label": "2000.03.30 사업보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2000-03-30",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000215000003",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "cf7f156b621b9fea98f7f42290d9b427d9f23d8c4b52a6bba5ee24be238782f7",
+      "options": [
+        {
+          "rcept_no": "20000215000003",
+          "literal_label": "2000.02.15 반기보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2000-02-15",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20010330001533",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "a9266cec225219de2fed63d897edc55fa702b4fc69a5bc3eb5aac0832e2c162a",
+      "options": [
+        {
+          "rcept_no": "20010330001533",
+          "literal_label": "2001.03.31 사업보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2001-03-30",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000814000485",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "575eedb373f7cfa33f46898feecca12a29c7620d06b174b1ed99357e04008f9b",
+      "options": [
+        {
+          "rcept_no": "20000817000019",
+          "literal_label": "2000.08.17 [정정] 반기보고서",
+          "selected": false,
+          "correction_label": true
+        },
+        {
+          "rcept_no": "20000814000485",
+          "literal_label": "2000.08.14 [정정] 반기보고서",
+          "selected": true,
+          "correction_label": true
+        },
+        {
+          "rcept_no": "20000812000060",
+          "literal_label": "2000.08.12 반기보고서",
+          "selected": false,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2000-08-14",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000515000556",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "82371928fbabe8794a8c58d8845b6530d41ffe0daabcd85c60ab38a1b2309381",
+      "options": [
+        {
+          "rcept_no": "20000515000556",
+          "literal_label": "2000.05.15 분기보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2000-05-15",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000515000178",
+      "status": "UNAVAILABLE",
+      "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='dart.fss.or.kr', port=443): Max retries exceeded with url: /dsaf001/main.do?rcpNo=20000515000178 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))\"))",
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20010214000151",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "f760e5dd523a5f6b50fbc26c5c76fbbe0e76d357703fd939a544cf396fc4e2a2",
+      "options": [
+        {
+          "rcept_no": "20010214000151",
+          "literal_label": "2001.02.14 분기보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2001-02-14",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20020330000187",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "a0de93f4ca1a5b537af2f864326eee51ea32455fcf7cd5bc9b9e63cb1b2130d1",
+      "options": [
+        {
+          "rcept_no": "20020330000187",
+          "literal_label": "2002.03.30 [정정] 사업보고서",
+          "selected": true,
+          "correction_label": true
+        },
+        {
+          "rcept_no": "20020330000015",
+          "literal_label": "2002.03.30 사업보고서",
+          "selected": false,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2002-03-30",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20010813000171",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "28ecc66704dcd5778a8e6d2d75b6b9ca2774cab636941a3763f5b856669bfe6b",
+      "options": [
+        {
+          "rcept_no": "20010813000171",
+          "literal_label": "2001.08.13 반기보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2001-08-13",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20010515000145",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "ae6eb018f4db91e303792e7a9cb20c7dd697e338972a0eed22b6695fe8307469",
+      "options": [
+        {
+          "rcept_no": "20010516000203",
+          "literal_label": "2001.05.16 [정정] 분기보고서",
+          "selected": false,
+          "correction_label": true
+        },
+        {
+          "rcept_no": "20010515000145",
+          "literal_label": "2001.05.15 분기보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2001-05-15",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20011114000493",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "d00fb5559ce94cfa3f44de5c872454ebcab995e55ac563cd25e338d24005c522",
+      "options": [
+        {
+          "rcept_no": "20011114000493",
+          "literal_label": "2001.11.14 분기보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2001-11-14",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20010214000193",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "12c6e47b350f7b869f2468e95378aa58c5d1eee7b5d1ea8327f5790071bfeee2",
+      "options": [
+        {
+          "rcept_no": "20010814000800",
+          "literal_label": "2001.08.14 [정정] 분기보고서",
+          "selected": false,
+          "correction_label": true
+        },
+        {
+          "rcept_no": "20010214000193",
+          "literal_label": "2001.02.14 분기보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2001-02-14",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000131000001",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "a744aae06ad6962d4036b6a0f5415005fd04849391ffd7b56485b4fe335bf307",
+      "options": [
+        {
+          "rcept_no": "20000131000001",
+          "literal_label": "2000.01.31 사업보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2000-01-31",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000330000124",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "eda0223ab03275f517927fcdff92900d453724c32cd3b86a958acdc83dddacd3",
+      "options": [
+        {
+          "rcept_no": "20000330000124",
+          "literal_label": "2000.03.30 사업보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2000-03-30",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000330000121",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "6491cb1e7bd94830f2d073043dec56e0471525cb5d1e0f2a1413b9c5331e60b9",
+      "options": [
+        {
+          "rcept_no": "20000330000121",
+          "literal_label": "2000.03.30 사업보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2000-03-30",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000113000001",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "2c08c34d51874b530e76e3266f223698e995d9a163d0ab558736e5e19d4be993",
+      "options": [
+        {
+          "rcept_no": "20000113000001",
+          "literal_label": "2000.01.13 [정정] 반기보고서",
+          "selected": true,
+          "correction_label": true
+        },
+        {
+          "rcept_no": "19990814000029",
+          "literal_label": "1999.08.14 반기보고서",
+          "selected": false,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2000-01-13",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000329000068",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "aeb9f8d5139deab96db3cc21ef8836cd53b19864699b00816baa0e4474db6f80",
+      "options": [
+        {
+          "rcept_no": "20000329000068",
+          "literal_label": "2000.03.29 반기보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2000-03-29",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000429000023",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "8d25089aa97d5f958435a25ec44aad8f4110d089c02282586bc46fd92f2d7a3c",
+      "options": [
+        {
+          "rcept_no": "20000429000023",
+          "literal_label": "2000.04.29 사업보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2000-04-29",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000629000132",
+      "status": "UNAVAILABLE",
+      "error": "ConnectionError(ReadTimeoutError(\"HTTPSConnectionPool(host='dart.fss.or.kr', port=443): Read timed out.\"))",
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000811000019",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "3a7272656f316891895628dc86e2332bb86b544b5c6ef2a2e69226ee6916560b",
+      "options": [
+        {
+          "rcept_no": "20000811000019",
+          "literal_label": "2000.08.11 반기보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2000-08-11",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000814000240",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "a7c5572b089cd71ff310723b85b87f9a9ee0b523c6117100e762edcec1fe8f5a",
+      "options": [
+        {
+          "rcept_no": "20000814000240",
+          "literal_label": "2000.08.14 반기보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2000-08-14",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000513000171",
+      "status": "UNAVAILABLE",
+      "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='dart.fss.or.kr', port=443): Max retries exceeded with url: /dsaf001/main.do?rcpNo=20000513000171 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))\"))",
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000515000042",
+      "status": "UNAVAILABLE",
+      "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='dart.fss.or.kr', port=443): Max retries exceeded with url: /dsaf001/main.do?rcpNo=20000515000042 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))\"))",
+      "pit_verified": false
+    },
+    {
+      "rcept_no": "20000812000050",
+      "status": "SAVED_PUBLIC_FAMILY",
+      "viewer_sha256": "6fd1b5ab6009479fff09fa052a8c290a8426083a8bf3f83c24f20d09e495a12f",
+      "options": [
+        {
+          "rcept_no": "20000812000050",
+          "literal_label": "2000.08.12 분기보고서",
+          "selected": true,
+          "correction_label": false
+        }
+      ],
+      "index_rcept_dt": "2000-08-12",
+      "publication_date_evidence": "literal public family display, not receipt-prefix inferred",
+      "publication_time": null,
+      "past_content_versions_verified": false,
+      "changed_financial_values_verified": false,
+      "pit_verified": false
+    }
+  ],
+  "complete_pit_items": 0,
+  "limitations": [
+    "family dates are displayed public metadata, no intraday release clock",
+    "family options are not a complete correction-chain certificate",
+    "correction content differences and historical value availability remain unverified",
+    "no arbitrary lag or viewer-to-production promotion"
+  ]
+}
