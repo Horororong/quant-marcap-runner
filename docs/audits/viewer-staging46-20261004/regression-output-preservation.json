@@ -1,0 +1,44 @@
+{
+  "source_replay": {
+    "golden_audit.csv": {
+      "byte_identical_previous": true,
+      "sha256": "ec3383736cef753d0c552764a1d0c9d4213f4a9861b6067046034748af36d60c"
+    },
+    "golden_audit.json": {
+      "byte_identical_previous": true,
+      "sha256": "0881dd489ab071b12a9ef033754894e26b648d2fffa92395389cd35b448b9f30"
+    },
+    "source_replay.json": {
+      "byte_identical_previous": true,
+      "sha256": "1a94d3ad30f7a470124acfd88bad5a18e07b30ad44ff2dec636795cb188eac30"
+    },
+    "summary.json": {
+      "byte_identical_previous": true,
+      "sha256": "211a19f54d56837ba78c2c5fbcc2729bd46a1e5b09474af5980007a6255c866f"
+    }
+  },
+  "report": {
+    "metrics_CURRENT.csv": {
+      "sha256": "e8f9b8762ce08f9feead9d4bd49db4baa05a829e3d57953baed4ea103e2eb737",
+      "byte_identical_previous": true
+    },
+    "daily_nav_canonical.csv": {
+      "sha256": "7d55e736de57598b65c51b9af684ac7a27257401fd69e26904030a1a69d9856b",
+      "byte_identical_previous": true
+    },
+    "benchmark_statistics_CURRENT.csv": {
+      "sha256": "7dfc3bedfb984e6fff1cc6a207d4a3a1aee5274d14070a9d9faffd67e98786cc",
+      "byte_identical_previous": true
+    }
+  },
+  "new_investment_strategy_execution": false,
+  "scope": "CI regression outputs only; no new investment-performance computation or report UI change.",
+  "source_artifact": {
+    "id": 11299607288,
+    "zip_sha256": "6371207ad9f01257cfc33d374e502aef3ca97c32ed6f9f36750d6da8d1f3d71d"
+  },
+  "report_artifact": {
+    "id": 11299567952,
+    "zip_sha256": "4db6274952cc99e11444eaa880719d579a1596fed629d855339dc9b4a14027ec"
+  }
+}

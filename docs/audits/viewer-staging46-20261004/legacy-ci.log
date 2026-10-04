@@ -1,0 +1,606 @@
+﻿2026-10-04T09:35:57.9443547Z Current runner version: '2.337.0'
+2026-10-04T09:35:57.9469260Z ##[group]Runner Image Provisioner
+2026-10-04T09:35:57.9470544Z Hosted Compute Agent
+2026-10-04T09:35:57.9471660Z Version: 20260901.588
+2026-10-04T09:35:57.9472896Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-04T09:35:57.9474261Z Build Date: 2026-09-01T19:56:44Z
+2026-10-04T09:35:57.9475615Z Worker ID: {d57254a3-fb87-4277-b9f7-2b6012980e86}
+2026-10-04T09:35:57.9477247Z Azure Region: centralus
+2026-10-04T09:35:57.9478987Z ##[endgroup]
+2026-10-04T09:35:57.9481807Z ##[group]Operating System
+2026-10-04T09:35:57.9482978Z Ubuntu
+2026-10-04T09:35:57.9484039Z 24.04.5
+2026-10-04T09:35:57.9484906Z LTS
+2026-10-04T09:35:57.9485809Z ##[endgroup]
+2026-10-04T09:35:57.9487390Z ##[group]Runner Image
+2026-10-04T09:35:57.9488452Z Image: ubuntu-24.04
+2026-10-04T09:35:57.9489587Z Version: 20260927.320.1
+2026-10-04T09:35:57.9491806Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-04T09:35:57.9494784Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-04T09:35:57.9497023Z ##[endgroup]
+2026-10-04T09:35:57.9499352Z ##[group]GITHUB_TOKEN Permissions
+2026-10-04T09:35:57.9502200Z Contents: read
+2026-10-04T09:35:57.9503380Z Metadata: read
+2026-10-04T09:35:57.9504489Z Packages: read
+2026-10-04T09:35:57.9505482Z ##[endgroup]
+2026-10-04T09:35:57.9509312Z Secret source: Actions
+2026-10-04T09:35:57.9510882Z Cache mode: write
+2026-10-04T09:35:57.9512342Z Prepare workflow directory
+2026-10-04T09:35:57.9902379Z Prepare all required actions
+2026-10-04T09:35:57.9970864Z Getting action download info
+2026-10-04T09:35:58.2916419Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-04T09:35:58.4054844Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-04T09:35:58.4870042Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-04T09:35:58.7083905Z Complete job name: validate
+2026-10-04T09:35:58.7856881Z ##[group]Run actions/checkout@v4
+2026-10-04T09:35:58.7857832Z with:
+2026-10-04T09:35:58.7858312Z   repository: Horororong/quant-marcap-runner
+2026-10-04T09:35:58.7862325Z   token: ***
+2026-10-04T09:35:58.7862759Z   ssh-strict: true
+2026-10-04T09:35:58.7863190Z   ssh-user: git
+2026-10-04T09:35:58.7863630Z   persist-credentials: true
+2026-10-04T09:35:58.7864112Z   clean: true
+2026-10-04T09:35:58.7864553Z   sparse-checkout-cone-mode: true
+2026-10-04T09:35:58.7865064Z   fetch-depth: 1
+2026-10-04T09:35:58.7865485Z   fetch-tags: false
+2026-10-04T09:35:58.7865923Z   show-progress: true
+2026-10-04T09:35:58.7866376Z   lfs: false
+2026-10-04T09:35:58.7866974Z   submodules: false
+2026-10-04T09:35:58.7867427Z   set-safe-directory: true
+2026-10-04T09:35:58.7867931Z   allow-unsafe-pr-checkout: false
+2026-10-04T09:35:58.7868703Z ##[endgroup]
+2026-10-04T09:35:58.8865403Z Syncing repository: Horororong/quant-marcap-runner
+2026-10-04T09:35:58.8868431Z ##[group]Getting Git version info
+2026-10-04T09:35:58.8869888Z Working directory is '/home/runner/work/quant-marcap-runner/quant-marcap-runner'
+2026-10-04T09:35:58.8871747Z [command]/usr/bin/git version
+2026-10-04T09:35:58.8946908Z git version 2.55.0
+2026-10-04T09:35:58.8969497Z ##[endgroup]
+2026-10-04T09:35:58.8988750Z Temporarily overriding HOME='/home/runner/work/_temp/9fa0af14-d23c-4047-90a8-7992c3c85dd2' before making global git config changes
+2026-10-04T09:35:58.8991746Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-04T09:35:58.8996937Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/quant-marcap-runner/quant-marcap-runner
+2026-10-04T09:35:58.9047787Z Deleting the contents of '/home/runner/work/quant-marcap-runner/quant-marcap-runner'
+2026-10-04T09:35:58.9051934Z ##[group]Initializing the repository
+2026-10-04T09:35:58.9055919Z [command]/usr/bin/git init /home/runner/work/quant-marcap-runner/quant-marcap-runner
+2026-10-04T09:35:58.9190491Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-04T09:35:58.9193268Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-04T09:35:58.9196996Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-04T09:35:58.9198721Z hint: call:
+2026-10-04T09:35:58.9199873Z hint:
+2026-10-04T09:35:58.9200967Z hint: 	git config --global init.defaultBranch <name>
+2026-10-04T09:35:58.9202290Z hint:
+2026-10-04T09:35:58.9203364Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-04T09:35:58.9205077Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-04T09:35:58.9214852Z hint:
+2026-10-04T09:35:58.9215329Z hint: 	git branch -m <name>
+2026-10-04T09:35:58.9215906Z hint:
+2026-10-04T09:35:58.9216941Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-04T09:35:58.9218920Z Initialized empty Git repository in /home/runner/work/quant-marcap-runner/quant-marcap-runner/.git/
+2026-10-04T09:35:58.9221893Z [command]/usr/bin/git remote add origin https://github.com/Horororong/quant-marcap-runner
+2026-10-04T09:35:58.9259725Z ##[endgroup]
+2026-10-04T09:35:58.9261073Z ##[group]Disabling automatic garbage collection
+2026-10-04T09:35:58.9263103Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-04T09:35:58.9300436Z ##[endgroup]
+2026-10-04T09:35:58.9301618Z ##[group]Setting up auth
+2026-10-04T09:35:58.9303405Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-04T09:35:58.9337071Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-04T09:35:58.9764663Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-04T09:35:58.9814064Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-04T09:35:59.0079377Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-04T09:35:59.0119088Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-04T09:35:59.0370571Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-04T09:35:59.0410200Z ##[endgroup]
+2026-10-04T09:35:59.0411137Z ##[group]Fetching the repository
+2026-10-04T09:35:59.0421280Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +c908a9e1923f20004df7ebf8c8dafcc89ed3fc35:refs/remotes/origin/audit/viewer-staging46-20261004
+2026-10-04T09:36:56.9920495Z From https://github.com/Horororong/quant-marcap-runner
+2026-10-04T09:36:56.9921992Z  * [new ref]         c908a9e1923f20004df7ebf8c8dafcc89ed3fc35 -> origin/audit/viewer-staging46-20261004
+2026-10-04T09:36:56.9925291Z ##[endgroup]
+2026-10-04T09:36:56.9926166Z ##[group]Determining the checkout info
+2026-10-04T09:36:56.9927811Z ##[endgroup]
+2026-10-04T09:36:56.9935769Z [command]/usr/bin/git sparse-checkout disable
+2026-10-04T09:36:57.0007958Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-04T09:36:57.0035578Z ##[group]Checking out the ref
+2026-10-04T09:36:57.0040564Z [command]/usr/bin/git checkout --progress --force -B audit/viewer-staging46-20261004 refs/remotes/origin/audit/viewer-staging46-20261004
+2026-10-04T09:36:58.0822964Z Updating files:  36% (390/1080)
+2026-10-04T09:36:58.1286626Z Updating files:  37% (400/1080)
+2026-10-04T09:36:58.2222637Z Updating files:  38% (411/1080)
+2026-10-04T09:36:58.7355821Z Updating files:  39% (422/1080)
+2026-10-04T09:36:59.0431034Z Updating files:  40% (432/1080)
+2026-10-04T09:36:59.6391802Z Updating files:  40% (436/1080)
+2026-10-04T09:37:00.1185030Z Updating files:  41% (443/1080)
+2026-10-04T09:37:00.8128688Z Updating files:  41% (448/1080)
+2026-10-04T09:37:00.9159128Z Updating files:  42% (454/1080)
+2026-10-04T09:37:00.9517736Z Updating files:  43% (465/1080)
+2026-10-04T09:37:00.9651836Z Updating files:  44% (476/1080)
+2026-10-04T09:37:00.9658937Z Updating files:  45% (486/1080)
+2026-10-04T09:37:00.9667972Z Updating files:  46% (497/1080)
+2026-10-04T09:37:00.9682055Z Updating files:  47% (508/1080)
+2026-10-04T09:37:00.9689781Z Updating files:  48% (519/1080)
+2026-10-04T09:37:00.9701381Z Updating files:  49% (530/1080)
+2026-10-04T09:37:00.9709708Z Updating files:  50% (540/1080)
+2026-10-04T09:37:00.9741489Z Updating files:  51% (551/1080)
+2026-10-04T09:37:00.9750666Z Updating files:  52% (562/1080)
+2026-10-04T09:37:00.9758163Z Updating files:  53% (573/1080)
+2026-10-04T09:37:00.9769171Z Updating files:  54% (584/1080)
+2026-10-04T09:37:00.9779252Z Updating files:  55% (594/1080)
+2026-10-04T09:37:00.9785162Z Updating files:  56% (605/1080)
+2026-10-04T09:37:00.9794539Z Updating files:  57% (616/1080)
+2026-10-04T09:37:00.9801448Z Updating files:  58% (627/1080)
+2026-10-04T09:37:00.9809100Z Updating files:  59% (638/1080)
+2026-10-04T09:37:00.9815568Z Updating files:  60% (648/1080)
+2026-10-04T09:37:00.9841790Z Updating files:  61% (659/1080)
+2026-10-04T09:37:00.9858886Z Updating files:  62% (670/1080)
+2026-10-04T09:37:00.9871138Z Updating files:  63% (681/1080)
+2026-10-04T09:37:01.0124951Z Updating files:  64% (692/1080)
+2026-10-04T09:37:01.0369517Z Updating files:  65% (702/1080)
+2026-10-04T09:37:01.0685217Z Updating files:  65% (709/1080)
+2026-10-04T09:37:01.0759433Z Updating files:  66% (713/1080)
+2026-10-04T09:37:01.0881199Z Updating files:  67% (724/1080)
+2026-10-04T09:37:01.0887780Z Updating files:  68% (735/1080)
+2026-10-04T09:37:01.0954800Z Updating files:  69% (746/1080)
+2026-10-04T09:37:01.1041686Z Updating files:  70% (756/1080)
+2026-10-04T09:37:01.1060324Z Updating files:  71% (767/1080)
+2026-10-04T09:37:01.1063346Z Updating files:  72% (778/1080)
+2026-10-04T09:37:01.1095683Z Updating files:  73% (789/1080)
+2026-10-04T09:37:01.1104864Z Updating files:  74% (800/1080)
+2026-10-04T09:37:01.1128385Z Updating files:  75% (810/1080)
+2026-10-04T09:37:01.1173604Z Updating files:  76% (821/1080)
+2026-10-04T09:37:01.1186141Z Updating files:  77% (832/1080)
+2026-10-04T09:37:01.1217900Z Updating files:  78% (843/1080)
+2026-10-04T09:37:01.1240348Z Updating files:  79% (854/1080)
+2026-10-04T09:37:01.1321917Z Updating files:  80% (864/1080)
+2026-10-04T09:37:01.1927827Z Updating files:  81% (875/1080)
+2026-10-04T09:37:01.1950756Z Updating files:  82% (886/1080)
+2026-10-04T09:37:01.1977308Z Updating files:  83% (897/1080)
+2026-10-04T09:37:01.2001553Z Updating files:  84% (908/1080)
+2026-10-04T09:37:01.2014415Z Updating files:  85% (918/1080)
+2026-10-04T09:37:01.2025606Z Updating files:  86% (929/1080)
+2026-10-04T09:37:01.2035556Z Updating files:  87% (940/1080)
+2026-10-04T09:37:01.2046766Z Updating files:  88% (951/1080)
+2026-10-04T09:37:01.2053964Z Updating files:  89% (962/1080)
+2026-10-04T09:37:01.2062267Z Updating files:  90% (972/1080)
+2026-10-04T09:37:01.2070013Z Updating files:  91% (983/1080)
+2026-10-04T09:37:01.2090660Z Updating files:  92% (994/1080)
+2026-10-04T09:37:01.2099205Z Updating files:  93% (1005/1080)
+2026-10-04T09:37:01.2108487Z Updating files:  94% (1016/1080)
+2026-10-04T09:37:01.2117255Z Updating files:  95% (1026/1080)
+2026-10-04T09:37:01.2125076Z Updating files:  96% (1037/1080)
+2026-10-04T09:37:01.2135864Z Updating files:  97% (1048/1080)
+2026-10-04T09:37:01.2142356Z Updating files:  98% (1059/1080)
+2026-10-04T09:37:01.2148554Z Updating files:  99% (1070/1080)
+2026-10-04T09:37:01.2149137Z Updating files: 100% (1080/1080)
+2026-10-04T09:37:01.2149589Z Updating files: 100% (1080/1080), done.
+2026-10-04T09:37:01.2175222Z Switched to a new branch 'audit/viewer-staging46-20261004'
+2026-10-04T09:37:01.2179037Z branch 'audit/viewer-staging46-20261004' set up to track 'origin/audit/viewer-staging46-20261004'.
+2026-10-04T09:37:01.2331162Z ##[endgroup]
+2026-10-04T09:37:01.2377722Z [command]/usr/bin/git log -1 --format=%H
+2026-10-04T09:37:01.2415650Z c908a9e1923f20004df7ebf8c8dafcc89ed3fc35
+2026-10-04T09:37:01.2690385Z ##[group]Run actions/setup-python@v5
+2026-10-04T09:37:01.2690697Z with:
+2026-10-04T09:37:01.2690906Z   python-version: 3.12
+2026-10-04T09:37:01.2691142Z   check-latest: false
+2026-10-04T09:37:01.2693858Z   token: ***
+2026-10-04T09:37:01.2694093Z   update-environment: true
+2026-10-04T09:37:01.2694356Z   allow-prereleases: false
+2026-10-04T09:37:01.2694592Z   freethreaded: false
+2026-10-04T09:37:01.2694808Z ##[endgroup]
+2026-10-04T09:37:01.4009647Z ##[group]Installed versions
+2026-10-04T09:37:01.4094863Z (node:2382) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-04T09:37:01.4096175Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-04T09:37:01.4097354Z Successfully set up CPython (3.12.14)
+2026-10-04T09:37:01.4098150Z ##[endgroup]
+2026-10-04T09:37:01.4287039Z ##[group]Run pip install pandas requests beautifulsoup4 lxml pytest pyyaml
+2026-10-04T09:37:01.4287682Z [36;1mpip install pandas requests beautifulsoup4 lxml pytest pyyaml[0m
+2026-10-04T09:37:01.4606604Z shell: /usr/bin/bash -e {0}
+2026-10-04T09:37:01.4607144Z env:
+2026-10-04T09:37:01.4607445Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:01.4607929Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-10-04T09:37:01.4608391Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:01.4608791Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:01.4609255Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:01.4609715Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-10-04T09:37:01.4610071Z ##[endgroup]
+2026-10-04T09:37:02.8812369Z Collecting pandas
+2026-10-04T09:37:02.9486025Z   Downloading pandas-3.0.6-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+2026-10-04T09:37:03.0372398Z Collecting requests
+2026-10-04T09:37:03.0476237Z   Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+2026-10-04T09:37:03.0768089Z Collecting beautifulsoup4
+2026-10-04T09:37:03.0868342Z   Downloading beautifulsoup4-4.15.0-py3-none-any.whl.metadata (3.8 kB)
+2026-10-04T09:37:03.3775892Z Collecting lxml
+2026-10-04T09:37:03.3881766Z   Downloading lxml-6.1.3-cp312-cp312-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.3 kB)
+2026-10-04T09:37:03.4327349Z Collecting pytest
+2026-10-04T09:37:03.4430822Z   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+2026-10-04T09:37:03.4926371Z Collecting pyyaml
+2026-10-04T09:37:03.5029370Z   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2026-10-04T09:37:03.7268825Z Collecting numpy>=1.26.0 (from pandas)
+2026-10-04T09:37:03.7373399Z   Downloading numpy-2.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+2026-10-04T09:37:03.7618404Z Collecting python-dateutil>=2.8.2 (from pandas)
+2026-10-04T09:37:03.7719690Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2026-10-04T09:37:03.9125340Z Collecting charset_normalizer<4,>=2 (from requests)
+2026-10-04T09:37:03.9232431Z   Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+2026-10-04T09:37:03.9548779Z Collecting idna<4,>=2.5 (from requests)
+2026-10-04T09:37:03.9648976Z   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+2026-10-04T09:37:03.9968669Z Collecting urllib3<3,>=1.26 (from requests)
+2026-10-04T09:37:04.0069334Z   Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+2026-10-04T09:37:04.0364070Z Collecting certifi>=2023.5.7 (from requests)
+2026-10-04T09:37:04.0466688Z   Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+2026-10-04T09:37:04.0759397Z Collecting soupsieve>=1.6.1 (from beautifulsoup4)
+2026-10-04T09:37:04.1004637Z   Downloading soupsieve-2.10-py3-none-any.whl.metadata (4.4 kB)
+2026-10-04T09:37:04.1288055Z Collecting typing-extensions>=4.0.0 (from beautifulsoup4)
+2026-10-04T09:37:04.1388862Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-10-04T09:37:04.1613759Z Collecting iniconfig>=1.0.1 (from pytest)
+2026-10-04T09:37:04.1715763Z   Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+2026-10-04T09:37:04.1982475Z Collecting packaging>=22 (from pytest)
+2026-10-04T09:37:04.2085576Z   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+2026-10-04T09:37:04.2316494Z Collecting pluggy<2,>=1.5 (from pytest)
+2026-10-04T09:37:04.2420452Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+2026-10-04T09:37:04.2729766Z Collecting pygments>=2.7.2 (from pytest)
+2026-10-04T09:37:04.2831501Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+2026-10-04T09:37:04.3102271Z Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas)
+2026-10-04T09:37:04.3202813Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2026-10-04T09:37:04.3346548Z Downloading pandas-3.0.6-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (10.8 MB)
+2026-10-04T09:37:04.7412929Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.8/10.8 MB 28.1 MB/s  0:00:00
+2026-10-04T09:37:04.7523892Z Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+2026-10-04T09:37:04.7647481Z Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (257 kB)
+2026-10-04T09:37:04.7787361Z Downloading idna-3.20-py3-none-any.whl (69 kB)
+2026-10-04T09:37:04.7908635Z Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+2026-10-04T09:37:04.8038521Z Downloading beautifulsoup4-4.15.0-py3-none-any.whl (109 kB)
+2026-10-04T09:37:04.8161874Z Downloading lxml-6.1.3-cp312-cp312-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.2 MB)
+2026-10-04T09:37:04.8884514Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 73.1 MB/s  0:00:00
+2026-10-04T09:37:04.8988069Z Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+2026-10-04T09:37:04.9132673Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+2026-10-04T09:37:04.9255133Z Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+2026-10-04T09:37:04.9353010Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 82.0 MB/s  0:00:00
+2026-10-04T09:37:04.9454369Z Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+2026-10-04T09:37:04.9577824Z Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+2026-10-04T09:37:04.9695689Z Downloading numpy-2.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+2026-10-04T09:37:05.1084991Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 121.6 MB/s  0:00:00
+2026-10-04T09:37:05.1188407Z Downloading packaging-26.3-py3-none-any.whl (129 kB)
+2026-10-04T09:37:05.1311560Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+2026-10-04T09:37:05.1399666Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 152.2 MB/s  0:00:00
+2026-10-04T09:37:05.1501897Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2026-10-04T09:37:05.1626480Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+2026-10-04T09:37:05.1745667Z Downloading soupsieve-2.10-py3-none-any.whl (38 kB)
+2026-10-04T09:37:05.1866930Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-10-04T09:37:05.3658820Z Installing collected packages: urllib3, typing-extensions, soupsieve, six, pyyaml, pygments, pluggy, packaging, numpy, lxml, iniconfig, idna, charset_normalizer, certifi, requests, python-dateutil, pytest, beautifulsoup4, pandas
+2026-10-04T09:37:13.8819397Z 
+2026-10-04T09:37:13.8842963Z Successfully installed beautifulsoup4-4.15.0 certifi-2026.7.22 charset_normalizer-3.5.2 idna-3.20 iniconfig-2.3.0 lxml-6.1.3 numpy-2.5.3 packaging-26.3 pandas-3.0.6 pluggy-1.6.0 pygments-2.21.0 pytest-9.1.1 python-dateutil-2.9.0.post0 pyyaml-6.0.3 requests-2.34.2 six-1.17.0 soupsieve-2.10 typing-extensions-4.16.0 urllib3-2.8.0
+2026-10-04T09:37:13.9612534Z ##[group]Run for test_file in tests/test_legacy_dart_parser.py tests/test_legacy_backfill_resume.py tests/test_legacy_backfill_automation.py tests/test_legacy_source_evidence.py; do
+2026-10-04T09:37:13.9613823Z [36;1mfor test_file in tests/test_legacy_dart_parser.py tests/test_legacy_backfill_resume.py tests/test_legacy_backfill_automation.py tests/test_legacy_source_evidence.py; do[0m
+2026-10-04T09:37:13.9614759Z [36;1m  timeout -k 5s 60s python -u -m pytest "$test_file" -vv -s -o faulthandler_timeout=15 || exit $?[0m
+2026-10-04T09:37:13.9615217Z [36;1mdone[0m
+2026-10-04T09:37:13.9615547Z [36;1mtimeout -k 5s 30s python -u scripts/test_legacy_viewer_sections.py[0m
+2026-10-04T09:37:13.9616041Z [36;1mtimeout -k 5s 30s python -u scripts/test_legacy_viewer_source.py[0m
+2026-10-04T09:37:13.9617020Z [36;1mtimeout -k 5s 60s python -u scripts/recheck_legacy_primary_audit.py --output-dir "$RUNNER_TEMP/legacy-primary-72-recheck"[0m
+2026-10-04T09:37:13.9617819Z [36;1mtimeout -k 5s 60s python -u docs/audits/viewer-staging46-20261004/test_audit_guards.py[0m
+2026-10-04T09:37:13.9618628Z [36;1mtimeout -k 5s 60s python -u docs/audits/viewer-staging46-20261004/verify_remaining_cells.py --output-dir "$RUNNER_TEMP/legacy-staging-46-audit"[0m
+2026-10-04T09:37:13.9619364Z [36;1mtimeout -k 5s 30s python -u scripts/test_legacy_schedule_gate.py[0m
+2026-10-04T09:37:13.9685762Z shell: /usr/bin/bash -e {0}
+2026-10-04T09:37:13.9686020Z env:
+2026-10-04T09:37:13.9686292Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:13.9687034Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-10-04T09:37:13.9687474Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:13.9687864Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:13.9688256Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:13.9688638Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-10-04T09:37:13.9688978Z ##[endgroup]
+2026-10-04T09:37:14.4502484Z ============================= test session starts ==============================
+2026-10-04T09:37:14.4505476Z platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /opt/hostedtoolcache/Python/3.12.14/x64/bin/python
+2026-10-04T09:37:14.4507013Z cachedir: .pytest_cache
+2026-10-04T09:37:14.4507749Z rootdir: /home/runner/work/quant-marcap-runner/quant-marcap-runner
+2026-10-04T09:37:16.9969617Z collecting ... collected 19 items
+2026-10-04T09:37:16.9975190Z 
+2026-10-04T09:37:16.9985878Z tests/test_legacy_dart_parser.py::test_legacy_negative_symbols PASSED
+2026-10-04T09:37:17.0010217Z tests/test_legacy_dart_parser.py::test_loss_label_normalizes_positive_magnitude PASSED
+2026-10-04T09:37:17.0016049Z tests/test_legacy_dart_parser.py::test_parser_version_requires_reprocessing PASSED
+2026-10-04T09:37:17.0023930Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[751,637 22,35416,940] PASSED
+2026-10-04T09:37:17.0031366Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[670,000200,0001,500,000] PASSED
+2026-10-04T09:37:17.0038369Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[83 15,787 13,418 100] PASSED
+2026-10-04T09:37:17.0044937Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[12,34] PASSED
+2026-10-04T09:37:17.0051675Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[1.5%] PASSED
+2026-10-04T09:37:17.0058751Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[1 (\uc8fc2)] PASSED
+2026-10-04T09:37:17.0065402Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[-] PASSED
+2026-10-04T09:37:17.0072941Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[\u2014] PASSED
+2026-10-04T09:37:17.0080017Z tests/test_legacy_dart_parser.py::test_ambiguous_or_missing_numeric_cells_are_not_invented_amounts[\u2013] PASSED
+2026-10-04T09:37:17.0114338Z tests/test_legacy_dart_parser.py::test_real_source_combined_annual_summary_is_not_current_quarter_income PASSED
+2026-10-04T09:37:17.0120933Z tests/test_legacy_dart_parser.py::test_explicit_valid_amounts_and_zero_remain_supported PASSED
+2026-10-04T09:37:17.0138465Z tests/test_legacy_dart_parser.py::test_unknown_statement_and_partial_alias_do_not_become_financial_metrics PASSED
+2026-10-04T09:37:17.0150854Z tests/test_legacy_dart_parser.py::test_nonfinite_scaled_value_cannot_be_usable_money PASSED
+2026-10-04T09:37:17.0158973Z tests/test_legacy_dart_parser.py::test_parentheses_and_negative_sign_do_not_double_flip[(-1,170,019,230)--1170019230] PASSED
+2026-10-04T09:37:17.0167171Z tests/test_legacy_dart_parser.py::test_parentheses_and_negative_sign_do_not_double_flip[(-482,479,885)--482479885] PASSED
+2026-10-04T09:37:17.0182374Z tests/test_legacy_dart_parser.py::test_parentheses_and_negative_sign_do_not_double_flip[(\u25b362,175,514)--62175514] PASSED
+2026-10-04T09:37:17.0182950Z 
+2026-10-04T09:37:17.0183295Z ============================== 19 passed in 2.57s ==============================
+2026-10-04T09:37:17.2903664Z ============================= test session starts ==============================
+2026-10-04T09:37:17.2906867Z platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /opt/hostedtoolcache/Python/3.12.14/x64/bin/python
+2026-10-04T09:37:17.2917646Z cachedir: .pytest_cache
+2026-10-04T09:37:17.2928103Z rootdir: /home/runner/work/quant-marcap-runner/quant-marcap-runner
+2026-10-04T09:37:17.7085499Z collecting ... collected 22 items
+2026-10-04T09:37:17.7089970Z 
+2026-10-04T09:37:17.7309106Z tests/test_legacy_backfill_resume.py::test_checkpoint_survives_interruption_and_resume_skips_durable_receipt legacy checkpoint: 1 receipts persisted
+2026-10-04T09:37:17.7556359Z legacy checkpoint: 1 receipts persisted
+2026-10-04T09:37:17.7635860Z legacy checkpoint: 2 receipts persisted
+2026-10-04T09:37:17.7709937Z PASSED
+2026-10-04T09:37:17.7768497Z tests/test_legacy_backfill_resume.py::test_data_publication_failure_never_marks_receipt_complete PASSED
+2026-10-04T09:37:17.7859567Z tests/test_legacy_backfill_resume.py::test_state_cannot_skip_missing_or_mismatched_normalized_data[missing_file] PASSED
+2026-10-04T09:37:17.8002300Z tests/test_legacy_backfill_resume.py::test_state_cannot_skip_missing_or_mismatched_normalized_data[wrong_hash] PASSED
+2026-10-04T09:37:17.8144557Z tests/test_legacy_backfill_resume.py::test_state_cannot_skip_missing_or_mismatched_normalized_data[wrong_row_count] PASSED
+2026-10-04T09:37:17.8455102Z tests/test_legacy_backfill_resume.py::test_parser_version_resume_keeps_old_observations_and_does_not_reparse_current legacy checkpoint: 1 receipts persisted
+2026-10-04T09:37:17.8470998Z PASSED
+2026-10-04T09:37:17.8480258Z tests/test_legacy_backfill_resume.py::test_rate_limit_stops_replenishment_and_flushes_completed_work PASSED
+2026-10-04T09:37:17.8499327Z tests/test_legacy_backfill_resume.py::test_request_budget_counts_every_attempt_and_deferred_is_not_source_gap PASSED
+2026-10-04T09:37:17.8511009Z tests/test_legacy_backfill_resume.py::test_deadline_and_signal_stop_have_no_new_requests_and_flush_work PASSED
+2026-10-04T09:37:17.8611083Z tests/test_legacy_backfill_resume.py::test_error_retry_quarantine_does_not_starve_other_receipts legacy checkpoint: 1 receipts persisted
+2026-10-04T09:37:17.8715502Z legacy checkpoint: 1 receipts persisted
+2026-10-04T09:37:17.8817674Z legacy checkpoint: 1 receipts persisted
+2026-10-04T09:37:17.9125975Z PASSED
+2026-10-04T09:37:17.9259375Z tests/test_legacy_backfill_resume.py::test_retry_count_survives_state_migration_and_mixed_empty_attempts legacy checkpoint: 1 receipts persisted
+2026-10-04T09:37:17.9386955Z legacy checkpoint: 1 receipts persisted
+2026-10-04T09:37:17.9489942Z legacy checkpoint: 1 receipts persisted
+2026-10-04T09:37:17.9558252Z PASSED
+2026-10-04T09:37:17.9603509Z tests/test_legacy_backfill_resume.py::test_index_data_is_published_before_ok_state PASSED
+2026-10-04T09:37:18.0153162Z tests/test_legacy_backfill_resume.py::test_collection_complete_requires_independent_audit_and_noop_preserves_bytes PASSED
+2026-10-04T09:37:18.0159944Z tests/test_legacy_backfill_resume.py::test_error_diagnostics_never_persist_api_key PASSED
+2026-10-04T09:37:18.0177227Z tests/test_legacy_backfill_resume.py::test_missing_key_does_not_overwrite_progress PASSED
+2026-10-04T09:37:18.0230651Z tests/test_legacy_backfill_resume.py::test_index_rate_limit_blocks_following_document_requests PASSED
+2026-10-04T09:37:18.0249681Z tests/test_legacy_backfill_resume.py::test_authentication_failure_stops_without_classifying_source_as_missing PASSED
+2026-10-04T09:37:19.0680325Z tests/test_legacy_backfill_resume.py::test_real_saved_index_noop_preserves_mapped_queue_and_leading_zero_codes PASSED
+2026-10-04T09:37:19.0816317Z tests/test_legacy_backfill_resume.py::test_append_preserves_all_old_numeric_tokens_and_missing_strings_verbatim PASSED
+2026-10-04T09:37:19.0981091Z tests/test_legacy_backfill_resume.py::test_numeric_parser_change_preserves_transport_only_no_document_state legacy checkpoint: 1 receipts persisted
+2026-10-04T09:37:19.1271915Z PASSED
+2026-10-04T09:37:19.1355820Z tests/test_legacy_backfill_resume.py::test_source_adapter_change_invalidates_previous_no_document_result PASSED
+2026-10-04T09:37:19.1572171Z tests/test_legacy_backfill_resume.py::test_initial_coverage_without_state_does_not_invent_completed_receipts PASSED
+2026-10-04T09:37:19.1573022Z 
+2026-10-04T09:37:19.1573303Z ============================== 22 passed in 1.87s ==============================
+2026-10-04T09:37:19.4038690Z ============================= test session starts ==============================
+2026-10-04T09:37:19.4041218Z platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /opt/hostedtoolcache/Python/3.12.14/x64/bin/python
+2026-10-04T09:37:19.4042224Z cachedir: .pytest_cache
+2026-10-04T09:37:19.4042956Z rootdir: /home/runner/work/quant-marcap-runner/quant-marcap-runner
+2026-10-04T09:37:19.8063768Z collecting ... collected 8 items
+2026-10-04T09:37:19.8069544Z 
+2026-10-04T09:37:19.8106257Z tests/test_legacy_backfill_automation.py::test_daily_wrapper_uses_whole_index_and_generic_checkpoint PASSED
+2026-10-04T09:37:19.8155547Z tests/test_legacy_backfill_automation.py::test_legacy_runs_first_and_rate_limit_blocks_modern_calls                      mode  modern_run_tasks  modern_skipped  legacy_rate_limited                   updated_at_utc
+2026-10-04T09:37:19.8156563Z SUPER_VALUE_FAST_BACKFILL                 0            True                 True 2026-10-04T09:37:19.811203+00:00
+2026-10-04T09:37:19.8179446Z PASSED
+2026-10-04T09:37:19.8186943Z tests/test_legacy_backfill_automation.py::test_zero_legacy_limit_makes_no_api_or_index_calls PASSED
+2026-10-04T09:37:19.8371502Z tests/test_legacy_backfill_automation.py::test_scheduled_and_manual_writers_share_lock_without_cancellation PASSED
+2026-10-04T09:37:19.8441890Z tests/test_legacy_backfill_automation.py::test_extra_batches_gate_all_api_and_publish_steps_and_skip_modern PASSED
+2026-10-04T09:37:19.8513010Z tests/test_legacy_backfill_automation.py::test_workflow_saves_checkpoint_after_failure_and_has_time_to_publish[backfill-super-value-fast.yml] PASSED
+2026-10-04T09:37:19.8567042Z tests/test_legacy_backfill_automation.py::test_workflow_saves_checkpoint_after_failure_and_has_time_to_publish[backfill-dart-legacy-2000-2014.yml] PASSED
+2026-10-04T09:37:19.8690515Z tests/test_legacy_backfill_automation.py::test_source_capture_reuses_existing_audit_workflow_without_new_schedule PASSED
+2026-10-04T09:37:19.8691423Z 
+2026-10-04T09:37:19.8691686Z ============================== 8 passed in 0.47s ===============================
+2026-10-04T09:37:20.1181203Z ============================= test session starts ==============================
+2026-10-04T09:37:20.1183663Z platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /opt/hostedtoolcache/Python/3.12.14/x64/bin/python
+2026-10-04T09:37:20.1185085Z cachedir: .pytest_cache
+2026-10-04T09:37:20.1185949Z rootdir: /home/runner/work/quant-marcap-runner/quant-marcap-runner
+2026-10-04T09:37:20.5114328Z collecting ... collected 7 items
+2026-10-04T09:37:20.5119261Z 
+2026-10-04T09:37:20.5396185Z tests/test_legacy_source_evidence.py::test_literal_source_spans_preserve_native_tags_heading_unit_and_column_order PASSED
+2026-10-04T09:37:20.5406557Z tests/test_legacy_source_evidence.py::test_excerpt_budget_marks_clipping_without_changing_source PASSED
+2026-10-04T09:37:20.5415082Z tests/test_legacy_source_evidence.py::test_non_html_document_still_preserves_inspectable_literal_evidence PASSED
+2026-10-04T09:37:20.5440559Z tests/test_legacy_source_evidence.py::test_probe_api_014_and_viewer_403_do_not_certify_source_absence PASSED
+2026-10-04T09:37:20.5452201Z tests/test_legacy_source_evidence.py::test_rate_limit_stops_public_probe_too PASSED
+2026-10-04T09:37:20.5537267Z tests/test_legacy_source_evidence.py::test_same_parser_reparse_success_cannot_certify_financial_correctness PASSED
+2026-10-04T09:37:20.5567553Z tests/test_legacy_source_evidence.py::test_corrupt_normalized_data_is_an_explicit_audit_failure PASSED
+2026-10-04T09:37:20.5568622Z 
+2026-10-04T09:37:20.5569019Z ============================== 7 passed in 0.44s ===============================
+2026-10-04T09:37:21.0478322Z test_body_limit_and_request_deadline_bound_reads (__main__.ViewerEvidenceTests.test_body_limit_and_request_deadline_bound_reads) ... ok
+2026-10-04T09:37:21.0494838Z test_mismatched_receipt_url_and_duplicate_route_are_rejected (__main__.ViewerEvidenceTests.test_mismatched_receipt_url_and_duplicate_route_are_rejected) ... ok
+2026-10-04T09:37:21.0510157Z test_publication_failure_cannot_leave_complete_report (__main__.ViewerEvidenceTests.test_publication_failure_cannot_leave_complete_report) ... ok
+2026-10-04T09:37:21.0540726Z viewer section 20010103000052/3618: HTTP_RESPONSE_CAPTURED HTTP=200 audit=NOT_RUN
+2026-10-04T09:37:21.0549410Z test_raw_bytes_precede_report_and_second_run_is_noop (__main__.ViewerEvidenceTests.test_raw_bytes_precede_report_and_second_run_is_noop) ... ok
+2026-10-04T09:37:21.0560162Z test_real_artifact_supplies_twelve_routes_without_reinventing_offsets (__main__.ViewerEvidenceTests.test_real_artifact_supplies_twelve_routes_without_reinventing_offsets) ... ok
+2026-10-04T09:37:21.0580295Z viewer section 20010103000052/3618: HTTP_RESPONSE_CAPTURED HTTP=403 audit=NOT_RUN
+2026-10-04T09:37:21.0586937Z test_redirect_is_not_followed_and_http_error_is_source_evidence_only (__main__.ViewerEvidenceTests.test_redirect_is_not_followed_and_http_error_is_source_evidence_only) ... ok
+2026-10-04T09:37:21.0607305Z viewer section 20010103000052/3618: HTTP_RESPONSE_CAPTURED HTTP=200 audit=NOT_RUN
+2026-10-04T09:37:21.0612681Z viewer section 20010103000052/10627: DEFERRED HTTP=None audit=NOT_RUN
+2026-10-04T09:37:21.0619111Z test_request_budget_never_submits_additional_calls (__main__.ViewerEvidenceTests.test_request_budget_never_submits_additional_calls) ... ok
+2026-10-04T09:37:21.0632271Z viewer section 20010103000052/3618: TRANSPORT_ERROR HTTP=None audit=NOT_RUN
+2026-10-04T09:37:21.0638597Z test_transport_failure_stops_and_is_not_automatically_retried (__main__.ViewerEvidenceTests.test_transport_failure_stops_and_is_not_automatically_retried) ... ok
+2026-10-04T09:37:21.0639265Z 
+2026-10-04T09:37:21.0639631Z ----------------------------------------------------------------------
+2026-10-04T09:37:21.0640251Z Ran 8 tests in 0.017s
+2026-10-04T09:37:21.0640495Z 
+2026-10-04T09:37:21.0640641Z OK
+2026-10-04T09:37:21.1549253Z test_ambiguous_parentheses_do_not_guess_sign (__main__.ViewerGuardTests.test_ambiguous_parentheses_do_not_guess_sign) ... ok
+2026-10-04T09:37:21.1561637Z test_annual_flow_is_not_quarter_even_if_end_matches (__main__.ViewerGuardTests.test_annual_flow_is_not_quarter_even_if_end_matches) ... ok
+2026-10-04T09:37:21.1574396Z test_br_empty_lines_are_preserved_without_concatenation (__main__.ViewerGuardTests.test_br_empty_lines_are_preserved_without_concatenation) ... ok
+2026-10-04T09:37:21.1580761Z test_br_missing_line_is_not_shifted_or_padded (__main__.ViewerGuardTests.test_br_missing_line_is_not_shifted_or_padded) ... ok
+2026-10-04T09:37:21.1592889Z test_colspan_group_requires_one_unambiguous_amount (__main__.ViewerGuardTests.test_colspan_group_requires_one_unambiguous_amount) ... ok
+2026-10-04T09:37:21.1603064Z test_conflicting_units_and_future_table_unit_do_not_fill (__main__.ViewerGuardTests.test_conflicting_units_and_future_table_unit_do_not_fill) ... ok
+2026-10-04T09:37:21.1608214Z test_contrary_statement_scope_cannot_inherit_ofs (__main__.ViewerGuardTests.test_contrary_statement_scope_cannot_inherit_ofs) ... ok
+2026-10-04T09:37:21.1614840Z test_current_column_is_selected_after_previous_column (__main__.ViewerGuardTests.test_current_column_is_selected_after_previous_column) ... ok
+2026-10-04T09:37:21.1627390Z test_current_term_or_date_mismatch_is_a_gap (__main__.ViewerGuardTests.test_current_term_or_date_mismatch_is_a_gap) ... ok
+2026-10-04T09:37:21.1635141Z test_current_unit_date_are_not_inherited_by_following_table (__main__.ViewerGuardTests.test_current_unit_date_are_not_inherited_by_following_table) ... ok
+2026-10-04T09:37:21.1663490Z test_daewoo_loss_note_group_requires_exact_one_current_token (__main__.ViewerGuardTests.test_daewoo_loss_note_group_requires_exact_one_current_token) ... ok
+2026-10-04T09:37:21.1671712Z test_duplicate_current_alias_is_not_resolved_by_priority (__main__.ViewerGuardTests.test_duplicate_current_alias_is_not_resolved_by_priority) ... ok
+2026-10-04T09:37:21.1681815Z test_explicit_per_share_tail_retains_prefix_empty_lines (__main__.ViewerGuardTests.test_explicit_per_share_tail_retains_prefix_empty_lines) ... ok
+2026-10-04T09:37:21.1702172Z test_explicit_unit_multiplier (__main__.ViewerGuardTests.test_explicit_unit_multiplier) ... ok
+2026-10-04T09:37:21.1708958Z test_explicit_zero_remains_a_source_observation (__main__.ViewerGuardTests.test_explicit_zero_remains_a_source_observation) ... ok
+2026-10-04T09:37:21.1710813Z test_first_of_month_and_missing_scope_are_invalid_requests (__main__.ViewerGuardTests.test_first_of_month_and_missing_scope_are_invalid_requests) ... ok
+2026-10-04T09:37:21.1720789Z test_generic_quarter_requires_source_date_range_proof (__main__.ViewerGuardTests.test_generic_quarter_requires_source_date_range_proof) ... ok
+2026-10-04T09:37:21.1737424Z test_missing_blank_or_unsupported_unit_is_a_gap (__main__.ViewerGuardTests.test_missing_blank_or_unsupported_unit_is_a_gap) ... ok
+2026-10-04T09:37:21.1763484Z test_missing_current_cell_never_falls_back_to_previous_value (__main__.ViewerGuardTests.test_missing_current_cell_never_falls_back_to_previous_value) ... ok
+2026-10-04T09:37:21.1792333Z test_multiple_numeric_tokens_are_rejected (__main__.ViewerGuardTests.test_multiple_numeric_tokens_are_rejected) ... ok
+2026-10-04T09:37:21.1948283Z test_native_archives_and_viewer_bodies_recover_exact_14_primary_sources (__main__.ViewerGuardTests.test_native_archives_and_viewer_bodies_recover_exact_14_primary_sources) ... ok
+2026-10-04T09:37:21.1985580Z test_nested_tables_and_budget_overflow_are_gaps (__main__.ViewerGuardTests.test_nested_tables_and_budget_overflow_are_gaps) ... ok
+2026-10-04T09:37:21.1987571Z test_non_200_or_unknown_encoding_is_a_gap (__main__.ViewerGuardTests.test_non_200_or_unknown_encoding_is_a_gap) ... ok
+2026-10-04T09:37:21.1989605Z test_non_dart_or_mismatched_receipt_is_rejected (__main__.ViewerGuardTests.test_non_dart_or_mismatched_receipt_is_rejected) ... ok
+2026-10-04T09:37:21.1997055Z test_note_column_cannot_be_a_numeric_amount (__main__.ViewerGuardTests.test_note_column_cannot_be_a_numeric_amount) ... ok
+2026-10-04T09:37:21.2003496Z test_per_share_alignment_is_not_a_balance_sheet_rule (__main__.ViewerGuardTests.test_per_share_alignment_is_not_a_balance_sheet_rule) ... ok
+2026-10-04T09:37:21.2010928Z test_per_share_boundary_must_follow_net_income (__main__.ViewerGuardTests.test_per_share_boundary_must_follow_net_income) ... ok
+2026-10-04T09:37:21.2022630Z test_per_share_notes_do_not_bypass_period_scope_or_unit_guard (__main__.ViewerGuardTests.test_per_share_notes_do_not_bypass_period_scope_or_unit_guard) ... ok
+2026-10-04T09:37:21.2030109Z test_per_share_tail_also_rejects_shifted_prior_column (__main__.ViewerGuardTests.test_per_share_tail_also_rejects_shifted_prior_column) ... ok
+2026-10-04T09:37:21.2042943Z test_per_share_tail_amount_column_notes_are_not_financial_amounts (__main__.ViewerGuardTests.test_per_share_tail_amount_column_notes_are_not_financial_amounts) ... ok
+2026-10-04T09:37:21.2063361Z test_per_share_tail_cannot_supply_missing_current_profit (__main__.ViewerGuardTests.test_per_share_tail_cannot_supply_missing_current_profit) ... ok
+2026-10-04T09:37:21.2076183Z test_per_share_tail_does_not_repair_an_interior_missing_br (__main__.ViewerGuardTests.test_per_share_tail_does_not_repair_an_interior_missing_br) ... ok
+2026-10-04T09:37:21.2083816Z test_per_share_tail_does_not_shift_amount_on_blank_account_line (__main__.ViewerGuardTests.test_per_share_tail_does_not_shift_amount_on_blank_account_line) ... ok
+2026-10-04T09:37:21.2103625Z test_per_share_tail_rejects_unknown_or_additional_account_text (__main__.ViewerGuardTests.test_per_share_tail_rejects_unknown_or_additional_account_text) ... ok
+2026-10-04T09:37:21.7530521Z test_primary_all_49_cells_and_12_bodies (__main__.ViewerGuardTests.test_primary_all_49_cells_and_12_bodies) ... ok
+2026-10-04T09:37:21.7536735Z test_primary_body_sha_detects_corruption (__main__.ViewerGuardTests.test_primary_body_sha_detects_corruption) ... ok
+2026-10-04T09:37:22.2905151Z test_primary_cfs_prior_annual_is_not_current_ofs (__main__.ViewerGuardTests.test_primary_cfs_prior_annual_is_not_current_ofs) ... ok
+2026-10-04T09:37:22.8332424Z test_primary_five_previously_withheld_values_and_original_indices (__main__.ViewerGuardTests.test_primary_five_previously_withheld_values_and_original_indices) ... ok
+2026-10-04T09:37:22.8340186Z test_primary_native_sha_chain_matches_preexisting_probe (__main__.ViewerGuardTests.test_primary_native_sha_chain_matches_preexisting_probe) ... ok
+2026-10-04T09:37:23.3900818Z test_primary_previous_annual_ocf_never_becomes_current_quarter (__main__.ViewerGuardTests.test_primary_previous_annual_ocf_never_becomes_current_quarter) ... ok
+2026-10-04T09:37:23.9622394Z test_primary_unknown_vitz_unit_cannot_inherit_later_cf_unit (__main__.ViewerGuardTests.test_primary_unknown_vitz_unit_cannot_inherit_later_cf_unit) ... ok
+2026-10-04T09:37:23.9633832Z test_ragged_rows_without_explicit_per_share_tail_still_fail (__main__.ViewerGuardTests.test_ragged_rows_without_explicit_per_share_tail_still_fail) ... ok
+2026-10-04T09:37:23.9639585Z test_replay_preserves_existing_outputs (__main__.ViewerGuardTests.test_replay_preserves_existing_outputs) ... ok
+2026-10-04T09:37:23.9641889Z test_scope_requires_matching_route_and_body_heading (__main__.ViewerGuardTests.test_scope_requires_matching_route_and_body_heading) ... ok
+2026-10-04T09:37:23.9648501Z test_source_negative_prefix_triangles_and_loss_labels (__main__.ViewerGuardTests.test_source_negative_prefix_triangles_and_loss_labels) ... ok
+2026-10-04T09:37:23.9653158Z test_unknown_statement_is_not_inferred_from_account (__main__.ViewerGuardTests.test_unknown_statement_is_not_inferred_from_account) ... ok
+2026-10-04T09:37:23.9669736Z test_viewer_loss_alias_is_exact_and_does_not_change_native (__main__.ViewerGuardTests.test_viewer_loss_alias_is_exact_and_does_not_change_native) ... ok
+2026-10-04T09:37:23.9679679Z test_wrapped_explicit_per_share_notes_are_supported (__main__.ViewerGuardTests.test_wrapped_explicit_per_share_notes_are_supported) ... ok
+2026-10-04T09:37:23.9680457Z 
+2026-10-04T09:37:23.9680614Z ----------------------------------------------------------------------
+2026-10-04T09:37:23.9680970Z Ran 48 tests in 2.814s
+2026-10-04T09:37:23.9681117Z 
+2026-10-04T09:37:23.9681193Z OK
+2026-10-04T09:37:26.0802767Z {"samples": 72, "companies": 8, "receipts": 8, "source_period_end_years": ["1999", "2000"], "scope_counts": {"OFS": 46, "CFS": 26}, "results": {"stored_missing": 49, "period_mismatch": 18, "amount_mismatch": 3, "semantic_mismatch": 2}, "numeric_equal": 19, "numeric_unequal": 3, "stored_present": 23, "stored_missing": 49, "unit_unverified": 5, "correction_chain_verified": 0, "verified_pit_items": 0, "expected_sha256": "e95e0c4199905d7d59a27ed9a12b72ec4b698961f33a1c29c495819a49992240", "source_verification": "full archived primary body SHA and original literal cell offsets", "interpretation": "failure-oriented sample; not full-data certification; preserved v4 observations are not current provider inputs"}
+2026-10-04T09:37:27.7953590Z test_changed_literal_span_cannot_pass_hash (__main__.AuditGuards.test_changed_literal_span_cannot_pass_hash) ... ok
+2026-10-04T09:37:29.4260029Z test_changed_manual_token_disagrees_with_primary (__main__.AuditGuards.test_changed_manual_token_disagrees_with_primary) ... ok
+2026-10-04T09:37:29.4289237Z test_changed_selection_is_rejected (__main__.AuditGuards.test_changed_selection_is_rejected) ... ok
+2026-10-04T09:37:31.1149411Z test_changed_staging_amount_is_compared_to_primary (__main__.AuditGuards.test_changed_staging_amount_is_compared_to_primary) ... ok
+2026-10-04T09:37:32.7872832Z test_complete_primary_population_and_measurement_limits (__main__.AuditGuards.test_complete_primary_population_and_measurement_limits) ... ok
+2026-10-04T09:37:34.4099618Z test_consolidated_heading_cannot_supply_separate_values (__main__.AuditGuards.test_consolidated_heading_cannot_supply_separate_values) ... ok
+2026-10-04T09:37:34.4592567Z test_existing_output_is_preserved (__main__.AuditGuards.test_existing_output_is_preserved) ... ok
+2026-10-04T09:37:36.0740043Z test_quarter_span_cannot_be_relabelled_as_annual (__main__.AuditGuards.test_quarter_span_cannot_be_relabelled_as_annual) ... ok
+2026-10-04T09:37:37.7077378Z test_unknown_unit_is_never_filled (__main__.AuditGuards.test_unknown_unit_is_never_filled) ... ok
+2026-10-04T09:37:39.3334865Z test_wrong_period_end_is_rejected_by_original_header (__main__.AuditGuards.test_wrong_period_end_is_rejected_by_original_header) ... ok
+2026-10-04T09:37:40.9823842Z test_wrong_previous_numeric_column_is_rejected (__main__.AuditGuards.test_wrong_previous_numeric_column_is_rejected) ... ok
+2026-10-04T09:37:40.9824534Z 
+2026-10-04T09:37:40.9824733Z ----------------------------------------------------------------------
+2026-10-04T09:37:40.9825164Z Ran 11 tests in 14.828s
+2026-10-04T09:37:40.9825345Z 
+2026-10-04T09:37:40.9825445Z OK
+2026-10-04T09:37:42.7390324Z {"selected_items": 46, "companies": 5, "numeric_matches": 46, "source_contract_matches": 46, "results": {"MATCH": 40, "MATCH_SOURCE_COMPONENT": 6}, "production_results": {"stored_missing": 46}, "previously_matched_staging_rows": 32, "total_numeric_matched_staging_rows": 78, "total_staging_rows": 78, "remaining_selected_staging_unreviewed": 0, "verified_pit_items": 0, "full_data_quality_complete": false, "production_rows_changed": 0, "inputs_unchanged": true, "sample_plan_sha256": "a34001b3d3b9930a06581c2a96ddc5cca403a86ec93be4c5e7cb47a7f4cdfc38"}
+2026-10-04T09:37:42.7949204Z test_kst_expiry_skips_even_without_status (__main__.ScheduleGateTests.test_kst_expiry_skips_even_without_status) ... ok
+2026-10-04T09:37:42.7956174Z test_last_second_of_october_allows_pending_batch (__main__.ScheduleGateTests.test_last_second_of_october_allows_pending_batch) ... ok
+2026-10-04T09:37:42.7973119Z test_missing_or_corrupt_status_fails_before_collection (__main__.ScheduleGateTests.test_missing_or_corrupt_status_fails_before_collection) ... ok
+2026-10-04T09:37:42.7977384Z test_queue_completion_skips_extra_batch (__main__.ScheduleGateTests.test_queue_completion_skips_extra_batch) ... ok
+2026-10-04T09:37:42.7980841Z test_regular_daily_push_and_manual_do_not_depend_on_coverage (__main__.ScheduleGateTests.test_regular_daily_push_and_manual_do_not_depend_on_coverage) ... ok
+2026-10-04T09:37:42.7982779Z test_unknown_schedule_and_naive_time_fail_closed (__main__.ScheduleGateTests.test_unknown_schedule_and_naive_time_fail_closed) ... ok
+2026-10-04T09:37:42.7983694Z 
+2026-10-04T09:37:42.7983949Z ----------------------------------------------------------------------
+2026-10-04T09:37:42.7984505Z Ran 6 tests in 0.004s
+2026-10-04T09:37:42.7985025Z 
+2026-10-04T09:37:42.7985341Z OK
+2026-10-04T09:37:42.8138677Z ##[group]Run actions/upload-artifact@v4
+2026-10-04T09:37:42.8138982Z with:
+2026-10-04T09:37:42.8139190Z   name: legacy-primary-72-recheck
+2026-10-04T09:37:42.8139509Z   path: /home/runner/work/_temp/legacy-primary-72-recheck
+2026-10-04T09:37:42.8139839Z   if-no-files-found: error
+2026-10-04T09:37:42.8140070Z   retention-days: 90
+2026-10-04T09:37:42.8140289Z   compression-level: 6
+2026-10-04T09:37:42.8140499Z   overwrite: false
+2026-10-04T09:37:42.8140708Z   include-hidden-files: false
+2026-10-04T09:37:42.8140937Z env:
+2026-10-04T09:37:42.8141183Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:42.8141602Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-10-04T09:37:42.8142021Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:42.8142399Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:42.8142777Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:42.8143217Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-10-04T09:37:42.8143541Z ##[endgroup]
+2026-10-04T09:37:42.9806838Z (node:2531) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-04T09:37:42.9807805Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-04T09:37:42.9878296Z With the provided path, there will be 4 files uploaded
+2026-10-04T09:37:42.9885069Z Artifact name is valid!
+2026-10-04T09:37:42.9885677Z Root directory input is valid!
+2026-10-04T09:37:43.2728968Z Beginning upload of artifact content to blob storage
+2026-10-04T09:37:43.3009082Z (node:2531) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-04T09:37:43.4643226Z Uploaded bytes 14298
+2026-10-04T09:37:43.5039535Z Finished uploading artifact content to blob storage!
+2026-10-04T09:37:43.5040691Z SHA256 digest of uploaded artifact zip is ffa647285bdd06ab0cff614b133deb8753b061c1f8897c2b86eaaf608b6168f4
+2026-10-04T09:37:43.5042525Z Finalizing artifact upload
+2026-10-04T09:37:43.7432069Z Artifact legacy-primary-72-recheck.zip successfully finalized. Artifact ID 11300025470
+2026-10-04T09:37:43.7433207Z Artifact legacy-primary-72-recheck has been successfully uploaded! Final size is 14298 bytes. Artifact ID is 11300025470
+2026-10-04T09:37:43.7439624Z Artifact download URL: https://github.com/Horororong/quant-marcap-runner/actions/runs/37192667866/artifacts/11300025470
+2026-10-04T09:37:43.7582033Z ##[group]Run actions/upload-artifact@v4
+2026-10-04T09:37:43.7582345Z with:
+2026-10-04T09:37:43.7582560Z   name: legacy-staging-46-audit
+2026-10-04T09:37:43.7582882Z   path: /home/runner/work/_temp/legacy-staging-46-audit
+2026-10-04T09:37:43.7583217Z   if-no-files-found: error
+2026-10-04T09:37:43.7583457Z   retention-days: 90
+2026-10-04T09:37:43.7583697Z   compression-level: 6
+2026-10-04T09:37:43.7583913Z   overwrite: false
+2026-10-04T09:37:43.7584133Z   include-hidden-files: false
+2026-10-04T09:37:43.7584369Z env:
+2026-10-04T09:37:43.7584624Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:43.7585076Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-10-04T09:37:43.7585509Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:43.7585901Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:43.7586294Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:43.7587165Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-10-04T09:37:43.7587531Z ##[endgroup]
+2026-10-04T09:37:43.9288565Z (node:2543) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-04T09:37:43.9289863Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-04T09:37:43.9372991Z With the provided path, there will be 4 files uploaded
+2026-10-04T09:37:43.9374902Z Artifact name is valid!
+2026-10-04T09:37:43.9375747Z Root directory input is valid!
+2026-10-04T09:37:44.2111452Z Beginning upload of artifact content to blob storage
+2026-10-04T09:37:44.2385161Z (node:2543) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-04T09:37:44.3784521Z Uploaded bytes 11100
+2026-10-04T09:37:44.4216576Z Finished uploading artifact content to blob storage!
+2026-10-04T09:37:44.4217680Z SHA256 digest of uploaded artifact zip is 571e2a7cc7a5a62ef9e2bcb4700985bda1268e1cc403812e52e2579b36d6a11a
+2026-10-04T09:37:44.4219033Z Finalizing artifact upload
+2026-10-04T09:37:44.6587954Z Artifact legacy-staging-46-audit.zip successfully finalized. Artifact ID 11299761244
+2026-10-04T09:37:44.6588750Z Artifact legacy-staging-46-audit has been successfully uploaded! Final size is 11100 bytes. Artifact ID is 11299761244
+2026-10-04T09:37:44.6592287Z Artifact download URL: https://github.com/Horororong/quant-marcap-runner/actions/runs/37192667866/artifacts/11299761244
+2026-10-04T09:37:44.6715113Z ##[group]Run python -m py_compile scripts/backfill_dart_legacy_2000_2014.py scripts/backfill_super_value_fast.py
+2026-10-04T09:37:44.6715952Z [36;1mpython -m py_compile scripts/backfill_dart_legacy_2000_2014.py scripts/backfill_super_value_fast.py[0m
+2026-10-04T09:37:44.6780860Z shell: /usr/bin/bash -e {0}
+2026-10-04T09:37:44.6781126Z env:
+2026-10-04T09:37:44.6781404Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:44.6781861Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-10-04T09:37:44.6782305Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:44.6782695Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:44.6783117Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:44.6783527Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-10-04T09:37:44.6783863Z ##[endgroup]
+2026-10-04T09:37:44.7390818Z ##[group]Run python - <<'PY'
+2026-10-04T09:37:44.7391182Z [36;1mpython - <<'PY'[0m
+2026-10-04T09:37:44.7391422Z [36;1mimport sys[0m
+2026-10-04T09:37:44.7391666Z [36;1msys.path.insert(0, "scripts")[0m
+2026-10-04T09:37:44.7391986Z [36;1mimport backfill_dart_legacy_2000_2014 as m[0m
+2026-10-04T09:37:44.7392302Z [36;1mrequired = {[0m
+2026-10-04T09:37:44.7392561Z [36;1m    "equity","revenue","net_income","ocf",[0m
+2026-10-04T09:37:44.7392993Z [36;1m    "total_assets","total_liabilities","current_assets","current_liabilities",[0m
+2026-10-04T09:37:44.7393532Z [36;1m    "cash_and_equivalents","short_term_borrowings","long_term_borrowings",[0m
+2026-10-04T09:37:44.7394006Z [36;1m    "operating_income","gross_profit","ppe","capex_ppe",[0m
+2026-10-04T09:37:44.7394417Z [36;1m    "depreciation","amortization","dividends_paid",[0m
+2026-10-04T09:37:44.7394809Z [36;1m    "cash_dividend_total","dividend_per_share",[0m
+2026-10-04T09:37:44.7395112Z [36;1m}[0m
+2026-10-04T09:37:44.7395370Z [36;1mmissing = required - set(m.ALIASES)[0m
+2026-10-04T09:37:44.7395782Z [36;1massert not missing, f"missing canonical metrics: {sorted(missing)}"[0m
+2026-10-04T09:37:44.7396253Z [36;1massert m.CORE_4F == {"equity","revenue","net_income","ocf"}[0m
+2026-10-04T09:37:44.7397019Z [36;1mprint("legacy schema OK:", m.PARSER_VERSION, len(m.ALIASES), "canonical metrics")[0m
+2026-10-04T09:37:44.7397451Z [36;1mPY[0m
+2026-10-04T09:37:44.7461426Z shell: /usr/bin/bash -e {0}
+2026-10-04T09:37:44.7461696Z env:
+2026-10-04T09:37:44.7461982Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:44.7462439Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+2026-10-04T09:37:44.7462911Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:44.7463547Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:44.7463967Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+2026-10-04T09:37:44.7464381Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+2026-10-04T09:37:44.7464721Z ##[endgroup]
+2026-10-04T09:37:45.1554039Z legacy schema OK: legacy-v5-single-amount 25 canonical metrics
+2026-10-04T09:37:45.2243991Z Post job cleanup.
+2026-10-04T09:37:45.3454398Z (node:2563) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-04T09:37:45.3455309Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-04T09:37:45.3677417Z Post job cleanup.
+2026-10-04T09:37:45.4677543Z [command]/usr/bin/git version
+2026-10-04T09:37:45.4727528Z git version 2.55.0
+2026-10-04T09:37:45.4769544Z Temporarily overriding HOME='/home/runner/work/_temp/0c36f473-07fe-46c5-b87e-99becb4b5b60' before making global git config changes
+2026-10-04T09:37:45.4770975Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-04T09:37:45.4772188Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/quant-marcap-runner/quant-marcap-runner
+2026-10-04T09:37:45.4857660Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-04T09:37:45.4860233Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-04T09:37:45.5165544Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-04T09:37:45.5201955Z http.https://github.com/.extraheader
+2026-10-04T09:37:45.5217466Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-04T09:37:45.5288572Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-04T09:37:45.5563321Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-04T09:37:45.5653248Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-04T09:37:45.6119205Z Cleaning up orphan processes
+2026-10-04T09:37:45.6394529Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

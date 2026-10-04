@@ -28,7 +28,8 @@ observed separately; no financial value or collection checkpoint is changed.
 - **46/46 numeric matches and 46/46 source-contract matches; zero numerical
   disagreements.** Forty source account/subtotal matches and six measurement
   qualifications are kept distinct. No production/parser correction is warranted
-  from these matches.
+  from these matches. Measurement details and the previous four SG&A
+  components are recorded in `measurement-qualifications.json`.
 - R008/R026/R037 are the printed gross named bonds lines, before separately
   printed discounts; Daegu convertible bonds are also separate. These lines do
   not certify net carrying value or a complete definition of total debt.
@@ -37,8 +38,15 @@ observed separately; no financial value or collection checkpoint is changed.
   contains four such SG&A components. Across all 78 staging cells, **10 require
   measurement qualifications**; numeric matching does not authorize new factors.
 - Local older-baseline production lookup finds all 46 selected items absent.
-  This is separate from matching staged values. The remote checkout will be
-  audited through the existing legacy CI and preserved as its own evidence.
+  This is separate from matching staged values. The actual remote checkout
+  also finds all 46 absent; its audit is preserved separately. Three remote
+  production/checkpoint hashes differ from the older local baseline; the 46
+  audit records, CSV and summary nevertheless match byte-for-byte. All five
+  native states are `NO_METRICS` under `legacy-v5-single-amount`, while the
+  archived primary viewer bodies demonstrably contain these 46 values. This
+  separates a native extraction/source-route gap from absence of the financial
+  amounts; it does not by itself isolate the native root cause or solve PIT.
+  No newer remote input was replaced by the older local copy.
 - Together with the original 22 golden matches and the previous ten-item audit,
   all **78 staging cells** now have primary numeric checks. The original
   72-item audit findings are preserved; this result does not convert those
@@ -67,12 +75,13 @@ without changing the adapter/native parser or weakening their guards.
 A first test-run diagnostic failed because a newly stronger flow-date guard
 rejected the wrong end date before the table-date guard. The expected failure
 message was aligned with that earlier rejection; the erroneous date still fails.
-The diagnostic log is preserved, not mistaken for a production discrepancy.
+The final passing log records the corrected regression; this was not a production discrepancy.
 
 The existing legacy validation workflow runs the fixed audit against its actual
 checkout and uploads a separate `legacy-staging-46-audit` artifact. No collection
-workflow/lock/schedule was added or changed. Full Strategy DSL CI is triggered by
-the handoff update; its actual result remains pending at initial publication.
+workflow/lock/schedule was added or changed. Full Strategy DSL CI was triggered by
+the handoff update. Legacy CI37192667866 passed at code c908a9e; full final-code
+CI37192667867 completion evidence is recorded in the final section below.
 
 Dedicated installed-kit Python subprocess `sandbox_runtime.py verify` succeeded;
 kit `26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd`,
@@ -125,3 +134,57 @@ collector, publish the staged metrics as PIT, or introduce research NAV without
 confirmed consent. Next source-quality task: verify actual publication dates
 and correction chains for these five receipts using authorized primary sources;
 unavailable originals must remain explicitly unverified.
+
+## Actual remote legacy evidence
+
+- Draft PR [#32](https://github.com/Horororong/quant-marcap-runner/pull/32), stacked
+  on PR #31. Remote code commit `c908a9e1923f20004df7ebf8c8dafcc89ed3fc35`
+  corresponds byte-for-byte to all 16 changed files at local `4e5dfdf`.
+- [Legacy CI37192667866](https://github.com/Horororong/quant-marcap-runner/actions/runs/37192667866),
+  job111407971401, passed against that exact code and actual remote data. Logs
+  include all 11 audit regressions, 48 adapter tests and existing native suites.
+- Downloaded artifact `legacy-staging-46-audit`, ID11299761244, 11,100 bytes,
+  verified ZIP SHA256 `571e2a7cc7a5a62ef9e2bcb4700985bda1268e1cc403812e52e2579b36d6a11a`.
+  All 46 staged numeric/contract matches, 46 production missing, zero PIT items,
+  original input hashes unchanged during audit. `remote-audit/` is the actual
+  extracted artifact, not a local rerun represented as remote evidence.
+- Original 72-item artifact ID11300025470, 14,298 bytes, verified ZIP SHA256
+  `ffa647285bdd06ab0cff614b133deb8753b061c1f8897c2b86eaaf608b6168f4`. Findings
+  remain 49 missing / 18 period / 3 amount / 2 semantic. Summary exactly matches
+  the prior remote audit; historical failures remain unresolved.
+- Live main coverage file SHA256
+  `1f9a7b168160b1a5a633d3695023f30d0b2468ab69d91ca4eb3dc001403830a2`
+  matches prior live-main evidence. `collection-status.json` is derived from
+  this newly fetched file, not from an assumed local collector state.
+- Shared lock `super-value-fast-pit-backfill`, daily 15:30 UTC and October
+  07:30/23:30 UTC scheduled bounded batches remain unchanged. The manual legacy
+  entry point shares that lock and resumes existing checkpoints; no dispatch
+  occurred in this task. Earlier-machine collection remains unobservable.
+
+## Preserved report and adapter regression artifacts
+
+Full-code CI generated the existing requested-period report with
+`status=ok`, `nav_ready=true`, `report_ready=true`, `report_complete=false`.
+Its original fingerprint remains
+`455268d0fd7f2c4330e2592f021098af0c0d81ae101a67c34265c54064fec352`.
+Unavailable book/from-2000/from-2021 periods are not invented. This CI example
+is a software regression, not a newly selected or validated investment strategy.
+
+Downloaded source replay artifact ID11299607288 (28,311 bytes) and report preview
+artifact ID11299567952 (2,509,299 bytes); ZIP digests and file checks are recorded
+in `regression-output-preservation.json`. The four original replay files and
+CURRENT metrics/NAV/benchmark CSVs are byte-identical to prior verified outputs.
+The real browser result is `passed`, covering three available periods, ending
+wealth, true logarithmic ticks/hover, drawdown, shared zoom, costs, benchmark,
+legend, mobile layout and missing periods. It is preserved in
+`report-browser-regression.json`; HTML/PNG/CSV remain in the actual artifact.
+No plot was rendered inline in this conversation and no cross-project automatic
+file-sharing capability was assumed.
+
+## Final-code full CI checkpoint
+
+At intermediate evidence publication, full CI37192667867 is still running at
+DART Super Value integration; CPython 3.11/3.12 replay jobs and legacy CI passed.
+No full-CI success is claimed until actual completed evidence replaces this
+checkpoint. Workflow job limit is 45 minutes; the original-quarter command is
+bounded to 840 seconds/15 minutes. Do not restart the running checks.

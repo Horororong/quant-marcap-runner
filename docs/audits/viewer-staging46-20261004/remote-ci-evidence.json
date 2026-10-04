@@ -1,0 +1,1923 @@
+{
+  "code_remote_sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35",
+  "code_local_sha": "4e5dfdf",
+  "pr": 32,
+  "merged": false,
+  "legacy_run": {
+    "id": 37192667866,
+    "name": "Validate legacy parser schema",
+    "node_id": "WFR_kwLOT80f3M8AAAAIqNsS2g",
+    "head_branch": "audit/viewer-staging46-20261004",
+    "head_sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35",
+    "path": ".github/workflows/validate-legacy-parser.yml",
+    "display_title": "audit: independently verify remaining 46 viewer staging cells",
+    "run_number": 21,
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "workflow_id": 369621728,
+    "check_suite_id": 100742167074,
+    "check_suite_node_id": "CS_kwDOT80f3M8AAAAXdLN6Ig",
+    "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667866",
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/37192667866",
+    "pull_requests": [
+      {
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/pulls/32",
+        "id": 4733334914,
+        "number": 32,
+        "head": {
+          "ref": "audit/viewer-staging46-20261004",
+          "sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35",
+          "repo": {
+            "id": 1338843100,
+            "url": "https://api.github.com/repos/Horororong/quant-marcap-runner",
+            "name": "quant-marcap-runner"
+          }
+        },
+        "base": {
+          "ref": "feature/legacy-viewer-line-alignment-20261004",
+          "sha": "885b4c5c22b944f56545d90d6c2f3c6758fee0a9",
+          "repo": {
+            "id": 1338843100,
+            "url": "https://api.github.com/repos/Horororong/quant-marcap-runner",
+            "name": "quant-marcap-runner"
+          }
+        }
+      }
+    ],
+    "created_at": "2026-10-04T09:35:54Z",
+    "updated_at": "2026-10-04T09:37:47Z",
+    "actor": {
+      "login": "Horororong",
+      "id": 43639259,
+      "node_id": "MDQ6VXNlcjQzNjM5MjU5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43639259?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Horororong",
+      "html_url": "https://github.com/Horororong",
+      "followers_url": "https://api.github.com/users/Horororong/followers",
+      "following_url": "https://api.github.com/users/Horororong/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Horororong/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Horororong/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Horororong/subscriptions",
+      "organizations_url": "https://api.github.com/users/Horororong/orgs",
+      "repos_url": "https://api.github.com/users/Horororong/repos",
+      "events_url": "https://api.github.com/users/Horororong/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Horororong/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "run_attempt": 1,
+    "referenced_workflows": [],
+    "run_started_at": "2026-10-04T09:35:54Z",
+    "triggering_actor": {
+      "login": "Horororong",
+      "id": 43639259,
+      "node_id": "MDQ6VXNlcjQzNjM5MjU5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43639259?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Horororong",
+      "html_url": "https://github.com/Horororong",
+      "followers_url": "https://api.github.com/users/Horororong/followers",
+      "following_url": "https://api.github.com/users/Horororong/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Horororong/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Horororong/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Horororong/subscriptions",
+      "organizations_url": "https://api.github.com/users/Horororong/orgs",
+      "repos_url": "https://api.github.com/users/Horororong/repos",
+      "events_url": "https://api.github.com/users/Horororong/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Horororong/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "jobs_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667866/jobs",
+    "logs_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667866/logs",
+    "check_suite_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-suites/100742167074",
+    "artifacts_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667866/artifacts",
+    "cancel_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667866/cancel",
+    "rerun_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667866/rerun",
+    "previous_attempt_url": null,
+    "workflow_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/workflows/369621728",
+    "head_commit": {
+      "id": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35",
+      "tree_id": "536a98c6142936393fdbf535ae9bfdd30132ee03",
+      "message": "audit: independently verify remaining 46 viewer staging cells",
+      "timestamp": "2026-10-04T09:35:38Z",
+      "author": {
+        "name": "Horororong",
+        "email": "43639259+Horororong@users.noreply.github.com"
+      },
+      "committer": {
+        "name": "Horororong",
+        "email": "43639259+Horororong@users.noreply.github.com"
+      }
+    },
+    "repository": {
+      "id": 1338843100,
+      "node_id": "R_kgDOT80f3A",
+      "name": "quant-marcap-runner",
+      "full_name": "Horororong/quant-marcap-runner",
+      "private": false,
+      "owner": {
+        "login": "Horororong",
+        "id": 43639259,
+        "node_id": "MDQ6VXNlcjQzNjM5MjU5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/43639259?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Horororong",
+        "html_url": "https://github.com/Horororong",
+        "followers_url": "https://api.github.com/users/Horororong/followers",
+        "following_url": "https://api.github.com/users/Horororong/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Horororong/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Horororong/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Horororong/subscriptions",
+        "organizations_url": "https://api.github.com/users/Horororong/orgs",
+        "repos_url": "https://api.github.com/users/Horororong/repos",
+        "events_url": "https://api.github.com/users/Horororong/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Horororong/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/Horororong/quant-marcap-runner",
+      "description": "quant-marcap-runner",
+      "fork": false,
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner",
+      "forks_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/forks",
+      "keys_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/teams",
+      "hooks_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/hooks",
+      "issue_events_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/events",
+      "assignees_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/tags",
+      "blobs_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/languages",
+      "stargazers_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/stargazers",
+      "contributors_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/contributors",
+      "subscribers_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/subscribers",
+      "subscription_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/subscription",
+      "commits_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/merges",
+      "archive_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/downloads",
+      "issues_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/labels{/name}",
+      "releases_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/deployments"
+    },
+    "head_repository": {
+      "id": 1338843100,
+      "node_id": "R_kgDOT80f3A",
+      "name": "quant-marcap-runner",
+      "full_name": "Horororong/quant-marcap-runner",
+      "private": false,
+      "owner": {
+        "login": "Horororong",
+        "id": 43639259,
+        "node_id": "MDQ6VXNlcjQzNjM5MjU5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/43639259?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Horororong",
+        "html_url": "https://github.com/Horororong",
+        "followers_url": "https://api.github.com/users/Horororong/followers",
+        "following_url": "https://api.github.com/users/Horororong/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Horororong/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Horororong/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Horororong/subscriptions",
+        "organizations_url": "https://api.github.com/users/Horororong/orgs",
+        "repos_url": "https://api.github.com/users/Horororong/repos",
+        "events_url": "https://api.github.com/users/Horororong/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Horororong/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/Horororong/quant-marcap-runner",
+      "description": "quant-marcap-runner",
+      "fork": false,
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner",
+      "forks_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/forks",
+      "keys_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/teams",
+      "hooks_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/hooks",
+      "issue_events_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/events",
+      "assignees_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/tags",
+      "blobs_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/languages",
+      "stargazers_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/stargazers",
+      "contributors_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/contributors",
+      "subscribers_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/subscribers",
+      "subscription_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/subscription",
+      "commits_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/merges",
+      "archive_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/downloads",
+      "issues_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/labels{/name}",
+      "releases_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/deployments"
+    }
+  },
+  "full_run": {
+    "id": 37192667867,
+    "name": "Test Strategy DSL v1",
+    "node_id": "WFR_kwLOT80f3M8AAAAIqNsS2w",
+    "head_branch": "audit/viewer-staging46-20261004",
+    "head_sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35",
+    "path": ".github/workflows/test-strategy-dsl.yml",
+    "display_title": "audit: independently verify remaining 46 viewer staging cells",
+    "run_number": 286,
+    "event": "push",
+    "status": "in_progress",
+    "conclusion": null,
+    "workflow_id": 371222529,
+    "check_suite_id": 100742167079,
+    "check_suite_node_id": "CS_kwDOT80f3M8AAAAXdLN6Jw",
+    "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667867",
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/37192667867",
+    "pull_requests": [
+      {
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/pulls/32",
+        "id": 4733334914,
+        "number": 32,
+        "head": {
+          "ref": "audit/viewer-staging46-20261004",
+          "sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35",
+          "repo": {
+            "id": 1338843100,
+            "url": "https://api.github.com/repos/Horororong/quant-marcap-runner",
+            "name": "quant-marcap-runner"
+          }
+        },
+        "base": {
+          "ref": "feature/legacy-viewer-line-alignment-20261004",
+          "sha": "885b4c5c22b944f56545d90d6c2f3c6758fee0a9",
+          "repo": {
+            "id": 1338843100,
+            "url": "https://api.github.com/repos/Horororong/quant-marcap-runner",
+            "name": "quant-marcap-runner"
+          }
+        }
+      }
+    ],
+    "created_at": "2026-10-04T09:35:54Z",
+    "updated_at": "2026-10-04T09:35:58Z",
+    "actor": {
+      "login": "Horororong",
+      "id": 43639259,
+      "node_id": "MDQ6VXNlcjQzNjM5MjU5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43639259?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Horororong",
+      "html_url": "https://github.com/Horororong",
+      "followers_url": "https://api.github.com/users/Horororong/followers",
+      "following_url": "https://api.github.com/users/Horororong/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Horororong/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Horororong/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Horororong/subscriptions",
+      "organizations_url": "https://api.github.com/users/Horororong/orgs",
+      "repos_url": "https://api.github.com/users/Horororong/repos",
+      "events_url": "https://api.github.com/users/Horororong/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Horororong/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "run_attempt": 1,
+    "referenced_workflows": [],
+    "run_started_at": "2026-10-04T09:35:54Z",
+    "triggering_actor": {
+      "login": "Horororong",
+      "id": 43639259,
+      "node_id": "MDQ6VXNlcjQzNjM5MjU5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43639259?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Horororong",
+      "html_url": "https://github.com/Horororong",
+      "followers_url": "https://api.github.com/users/Horororong/followers",
+      "following_url": "https://api.github.com/users/Horororong/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Horororong/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Horororong/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Horororong/subscriptions",
+      "organizations_url": "https://api.github.com/users/Horororong/orgs",
+      "repos_url": "https://api.github.com/users/Horororong/repos",
+      "events_url": "https://api.github.com/users/Horororong/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Horororong/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "jobs_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667867/jobs",
+    "logs_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667867/logs",
+    "check_suite_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-suites/100742167079",
+    "artifacts_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667867/artifacts",
+    "cancel_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667867/cancel",
+    "rerun_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667867/rerun",
+    "previous_attempt_url": null,
+    "workflow_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/workflows/371222529",
+    "head_commit": {
+      "id": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35",
+      "tree_id": "536a98c6142936393fdbf535ae9bfdd30132ee03",
+      "message": "audit: independently verify remaining 46 viewer staging cells",
+      "timestamp": "2026-10-04T09:35:38Z",
+      "author": {
+        "name": "Horororong",
+        "email": "43639259+Horororong@users.noreply.github.com"
+      },
+      "committer": {
+        "name": "Horororong",
+        "email": "43639259+Horororong@users.noreply.github.com"
+      }
+    },
+    "repository": {
+      "id": 1338843100,
+      "node_id": "R_kgDOT80f3A",
+      "name": "quant-marcap-runner",
+      "full_name": "Horororong/quant-marcap-runner",
+      "private": false,
+      "owner": {
+        "login": "Horororong",
+        "id": 43639259,
+        "node_id": "MDQ6VXNlcjQzNjM5MjU5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/43639259?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Horororong",
+        "html_url": "https://github.com/Horororong",
+        "followers_url": "https://api.github.com/users/Horororong/followers",
+        "following_url": "https://api.github.com/users/Horororong/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Horororong/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Horororong/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Horororong/subscriptions",
+        "organizations_url": "https://api.github.com/users/Horororong/orgs",
+        "repos_url": "https://api.github.com/users/Horororong/repos",
+        "events_url": "https://api.github.com/users/Horororong/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Horororong/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/Horororong/quant-marcap-runner",
+      "description": "quant-marcap-runner",
+      "fork": false,
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner",
+      "forks_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/forks",
+      "keys_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/teams",
+      "hooks_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/hooks",
+      "issue_events_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/events",
+      "assignees_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/tags",
+      "blobs_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/languages",
+      "stargazers_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/stargazers",
+      "contributors_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/contributors",
+      "subscribers_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/subscribers",
+      "subscription_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/subscription",
+      "commits_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/merges",
+      "archive_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/downloads",
+      "issues_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/labels{/name}",
+      "releases_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/deployments"
+    },
+    "head_repository": {
+      "id": 1338843100,
+      "node_id": "R_kgDOT80f3A",
+      "name": "quant-marcap-runner",
+      "full_name": "Horororong/quant-marcap-runner",
+      "private": false,
+      "owner": {
+        "login": "Horororong",
+        "id": 43639259,
+        "node_id": "MDQ6VXNlcjQzNjM5MjU5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/43639259?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Horororong",
+        "html_url": "https://github.com/Horororong",
+        "followers_url": "https://api.github.com/users/Horororong/followers",
+        "following_url": "https://api.github.com/users/Horororong/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Horororong/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Horororong/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Horororong/subscriptions",
+        "organizations_url": "https://api.github.com/users/Horororong/orgs",
+        "repos_url": "https://api.github.com/users/Horororong/repos",
+        "events_url": "https://api.github.com/users/Horororong/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Horororong/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/Horororong/quant-marcap-runner",
+      "description": "quant-marcap-runner",
+      "fork": false,
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner",
+      "forks_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/forks",
+      "keys_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/teams",
+      "hooks_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/hooks",
+      "issue_events_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/events",
+      "assignees_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/tags",
+      "blobs_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/languages",
+      "stargazers_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/stargazers",
+      "contributors_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/contributors",
+      "subscribers_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/subscribers",
+      "subscription_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/subscription",
+      "commits_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/merges",
+      "archive_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/downloads",
+      "issues_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/labels{/name}",
+      "releases_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/deployments"
+    }
+  },
+  "full_jobs": {
+    "total_count": 4,
+    "jobs": [
+      {
+        "id": 111407971640,
+        "run_id": 37192667867,
+        "workflow_name": "Test Strategy DSL v1",
+        "head_branch": "audit/viewer-staging46-20261004",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667867",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAZ8G69OA",
+        "head_sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/111407971640",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/37192667867/job/111407971640",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-10-04T09:35:54Z",
+        "started_at": "2026-10-04T09:35:57Z",
+        "completed_at": null,
+        "name": "test",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-04T09:35:57Z",
+            "completed_at": "2026-10-04T09:35:58Z"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-04T09:35:58Z",
+            "completed_at": "2026-10-04T09:37:03Z"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-04T09:37:03Z",
+            "completed_at": "2026-10-04T09:37:03Z"
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-04T09:37:03Z",
+            "completed_at": "2026-10-04T09:37:26Z"
+          },
+          {
+            "name": "Legacy parser, resume and scheduled automation regressions",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-04T09:37:26Z",
+            "completed_at": "2026-10-04T09:37:38Z"
+          },
+          {
+            "name": "Preserve offline primary viewer replay and guard audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-04T09:37:38Z",
+            "completed_at": "2026-10-04T09:37:38Z"
+          },
+          {
+            "name": "Syntax check",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-04T09:37:38Z",
+            "completed_at": "2026-10-04T09:37:39Z"
+          },
+          {
+            "name": "Offline sandbox kit failure boundaries",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-10-04T09:37:39Z",
+            "completed_at": "2026-10-04T09:37:40Z"
+          },
+          {
+            "name": "Check machine-readable DSL contract",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-04T09:37:40Z",
+            "completed_at": "2026-10-04T09:37:41Z"
+          },
+          {
+            "name": "Recent DART deterministic storage and commit regression",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-04T09:37:41Z",
+            "completed_at": "2026-10-04T09:38:09Z"
+          },
+          {
+            "name": "Read-only Git storage growth measurement",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-10-04T09:38:09Z",
+            "completed_at": "2026-10-04T09:38:09Z"
+          },
+          {
+            "name": "Strict DSL input validation and normalization compatibility",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-10-04T09:38:09Z",
+            "completed_at": "2026-10-04T09:38:13Z"
+          },
+          {
+            "name": "Checked execution lifecycle and CURRENT readiness",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-10-04T09:38:13Z",
+            "completed_at": "2026-10-04T09:38:34Z"
+          },
+          {
+            "name": "Canonical performance and report E2E",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14,
+            "started_at": "2026-10-04T09:38:34Z",
+            "completed_at": "2026-10-04T09:39:21Z"
+          },
+          {
+            "name": "Requested period metrics and checked lifecycle boundaries",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15,
+            "started_at": "2026-10-04T09:39:21Z",
+            "completed_at": "2026-10-04T09:39:49Z"
+          },
+          {
+            "name": "Real checked NAV and requested-period report",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16,
+            "started_at": "2026-10-04T09:39:49Z",
+            "completed_at": "2026-10-04T09:40:25Z"
+          },
+          {
+            "name": "Install pinned browser test tooling",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17,
+            "started_at": "2026-10-04T09:40:25Z",
+            "completed_at": "2026-10-04T09:40:57Z"
+          },
+          {
+            "name": "Real report period, table, charts and mobile browser interactions",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18,
+            "started_at": "2026-10-04T09:40:57Z",
+            "completed_at": "2026-10-04T09:41:03Z"
+          },
+          {
+            "name": "Preserve actual report screen and interaction evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19,
+            "started_at": "2026-10-04T09:41:03Z",
+            "completed_at": "2026-10-04T09:41:04Z"
+          },
+          {
+            "name": "CURRENT and PROJECT compatibility self-tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 20,
+            "started_at": "2026-10-04T09:41:04Z",
+            "completed_at": "2026-10-04T09:41:17Z"
+          },
+          {
+            "name": "KRX session coverage and real history audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21,
+            "started_at": "2026-10-04T09:41:17Z",
+            "completed_at": "2026-10-04T09:41:26Z"
+          },
+          {
+            "name": "Held return guard and real verified split E2E",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 22,
+            "started_at": "2026-10-04T09:41:26Z",
+            "completed_at": "2026-10-04T09:41:34Z"
+          },
+          {
+            "name": "Corporate-action reconciliation and real share-class E2E",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23,
+            "started_at": "2026-10-04T09:41:34Z",
+            "completed_at": "2026-10-04T09:41:52Z"
+          },
+          {
+            "name": "KRX market normalization and segment restoration E2E",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24,
+            "started_at": "2026-10-04T09:41:52Z",
+            "completed_at": "2026-10-04T09:42:02Z"
+          },
+          {
+            "name": "Verified autumn splits and real public KRX modes",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25,
+            "started_at": "2026-10-04T09:42:02Z",
+            "completed_at": "2026-10-04T09:42:28Z"
+          },
+          {
+            "name": "Natural-language factor alias test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 26,
+            "started_at": "2026-10-04T09:42:28Z",
+            "completed_at": "2026-10-04T09:42:28Z"
+          },
+          {
+            "name": "Validate example DSL",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27,
+            "started_at": "2026-10-04T09:42:28Z",
+            "completed_at": "2026-10-04T09:42:29Z"
+          },
+          {
+            "name": "Strategy DSL preflight classification test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28,
+            "started_at": "2026-10-04T09:42:29Z",
+            "completed_at": "2026-10-04T09:42:34Z"
+          },
+          {
+            "name": "Known corporate-action preflight exposure and real modes",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29,
+            "started_at": "2026-10-04T09:42:34Z",
+            "completed_at": "2026-10-04T09:42:53Z"
+          },
+          {
+            "name": "Strategy DSL benchmark contract test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 30,
+            "started_at": "2026-10-04T09:42:53Z",
+            "completed_at": "2026-10-04T09:42:56Z"
+          },
+          {
+            "name": "Decile partition and execution contract test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 31,
+            "started_at": "2026-10-04T09:42:56Z",
+            "completed_at": "2026-10-04T09:43:05Z"
+          },
+          {
+            "name": "Real KRX decile execution E2E",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 32,
+            "started_at": "2026-10-04T09:43:05Z",
+            "completed_at": "2026-10-04T09:43:11Z"
+          },
+          {
+            "name": "KRX technical factor adapter test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 33,
+            "started_at": "2026-10-04T09:43:11Z",
+            "completed_at": "2026-10-04T09:43:12Z"
+          },
+          {
+            "name": "KRX volatility factor adapter test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 34,
+            "started_at": "2026-10-04T09:43:12Z",
+            "completed_at": "2026-10-04T09:43:12Z"
+          },
+          {
+            "name": "Factor provider registry extension test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 35,
+            "started_at": "2026-10-04T09:43:12Z",
+            "completed_at": "2026-10-04T09:43:13Z"
+          },
+          {
+            "name": "Custom financial rebalance and original DART quarter oracle",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 36,
+            "started_at": "2026-10-04T09:43:13Z",
+            "completed_at": "2026-10-04T09:48:14Z"
+          },
+          {
+            "name": "Cash entitlement, liquidity and settlement execution",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 37,
+            "started_at": "2026-10-04T09:48:14Z",
+            "completed_at": "2026-10-04T09:48:25Z"
+          },
+          {
+            "name": "Corporate action execution regression",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 38,
+            "started_at": "2026-10-04T09:48:25Z",
+            "completed_at": "2026-10-04T09:48:25Z"
+          },
+          {
+            "name": "Integration smoke test against PROJECT v2-16",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 39,
+            "started_at": "2026-10-04T09:48:25Z",
+            "completed_at": "2026-10-04T09:48:26Z"
+          },
+          {
+            "name": "DART Super Value PIT integration",
+            "status": "in_progress",
+            "conclusion": null,
+            "number": 40,
+            "started_at": "2026-10-04T09:48:26Z",
+            "completed_at": null
+          },
+          {
+            "name": "Real-data DSL execution E2E",
+            "status": "pending",
+            "conclusion": null,
+            "number": 41,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Checked CLI and real KRX DART execution lifecycle",
+            "status": "pending",
+            "conclusion": null,
+            "number": 42,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "pending",
+            "conclusion": null,
+            "number": 83,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "pending",
+            "conclusion": null,
+            "number": 84,
+            "started_at": null,
+            "completed_at": null
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/111407971640",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000000991,
+        "runner_name": "GitHub Actions 1000000991",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      },
+      {
+        "id": 111407971730,
+        "run_id": 37192667867,
+        "workflow_name": "Test Strategy DSL v1",
+        "head_branch": "audit/viewer-staging46-20261004",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667867",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAZ8G69kg",
+        "head_sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/111407971730",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/37192667867/job/111407971730",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-04T09:35:54Z",
+        "started_at": "2026-10-04T09:35:57Z",
+        "completed_at": "2026-10-04T09:44:08Z",
+        "name": "sandbox-replay (3.11)",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-04T09:35:58Z",
+            "completed_at": "2026-10-04T09:35:59Z"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-04T09:35:59Z",
+            "completed_at": "2026-10-04T09:37:05Z"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-04T09:37:05Z",
+            "completed_at": "2026-10-04T09:37:05Z"
+          },
+          {
+            "name": "Install build and baseline dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-04T09:37:05Z",
+            "completed_at": "2026-10-04T09:37:19Z"
+          },
+          {
+            "name": "Prepare checksum-locked offline wheels",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-04T09:37:19Z",
+            "completed_at": "2026-10-04T09:37:21Z"
+          },
+          {
+            "name": "Clean venv real-data replay with network blocked",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-04T09:37:21Z",
+            "completed_at": "2026-10-04T09:44:04Z"
+          },
+          {
+            "name": "Upload small verification ledger",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-04T09:44:04Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Prepare bounded download segments after verified replay",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload delivery integrity ledger",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 9,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 001",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 10,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 002",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 11,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 003",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 12,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 004",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 13,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 005",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 14,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 006",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 15,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 007",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 16,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 008",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 17,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 009",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 18,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 010",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 19,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 011",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 20,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 012",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 21,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 013",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 22,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 014",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 23,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 015",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 24,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 016",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 25,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 017",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 26,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 018",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 27,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 019",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 28,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 020",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 29,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 021",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 30,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 022",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 31,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 023",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 32,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 024",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 33,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 025",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 34,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 026",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 35,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 027",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 36,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 028",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 37,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 029",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 38,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 030",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 39,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 031",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 40,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Upload download segment 032",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 41,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 81,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 82,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:05Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 83,
+            "started_at": "2026-10-04T09:44:05Z",
+            "completed_at": "2026-10-04T09:44:06Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/111407971730",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000000992,
+        "runner_name": "GitHub Actions 1000000992",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      },
+      {
+        "id": 111407972010,
+        "run_id": 37192667867,
+        "workflow_name": "Test Strategy DSL v1",
+        "head_branch": "audit/viewer-staging46-20261004",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667867",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAZ8G6-qg",
+        "head_sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/111407972010",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/37192667867/job/111407972010",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-04T09:35:54Z",
+        "started_at": "2026-10-04T09:35:57Z",
+        "completed_at": "2026-10-04T09:41:58Z",
+        "name": "sandbox-replay (3.12)",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-04T09:35:58Z",
+            "completed_at": "2026-10-04T09:35:58Z"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-04T09:35:58Z",
+            "completed_at": "2026-10-04T09:37:03Z"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-04T09:37:03Z",
+            "completed_at": "2026-10-04T09:37:03Z"
+          },
+          {
+            "name": "Install build and baseline dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-04T09:37:03Z",
+            "completed_at": "2026-10-04T09:37:15Z"
+          },
+          {
+            "name": "Prepare checksum-locked offline wheels",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-04T09:37:15Z",
+            "completed_at": "2026-10-04T09:37:17Z"
+          },
+          {
+            "name": "Clean venv real-data replay with network blocked",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-04T09:37:17Z",
+            "completed_at": "2026-10-04T09:41:53Z"
+          },
+          {
+            "name": "Upload small verification ledger",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-04T09:41:53Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Prepare bounded download segments after verified replay",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload delivery integrity ledger",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 9,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 001",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 10,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 002",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 11,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 003",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 12,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 004",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 13,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 005",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 14,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 006",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 15,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 007",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 16,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 008",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 17,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 009",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 18,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 010",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 19,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 011",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 20,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 012",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 21,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 013",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 22,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 014",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 23,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 015",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 24,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 016",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 25,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 017",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 26,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 018",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 27,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 019",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 28,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 020",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 29,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 021",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 30,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 022",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 31,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 023",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 32,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 024",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 33,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 025",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 34,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 026",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 35,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 027",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 36,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 028",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 37,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 029",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 38,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 030",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 39,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 031",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 40,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Upload download segment 032",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 41,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 81,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 82,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 83,
+            "started_at": "2026-10-04T09:41:54Z",
+            "completed_at": "2026-10-04T09:41:54Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/111407972010",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000000993,
+        "runner_name": "GitHub Actions 1000000993",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      },
+      {
+        "id": 111407972311,
+        "run_id": 37192667867,
+        "workflow_name": "Test Strategy DSL v1",
+        "head_branch": "audit/viewer-staging46-20261004",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667867",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAZ8G6_1w",
+        "head_sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/111407972311",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/37192667867/job/111407972311",
+        "status": "completed",
+        "conclusion": "skipped",
+        "created_at": "2026-10-04T09:35:54Z",
+        "started_at": "2026-10-04T09:35:54Z",
+        "completed_at": "2026-10-04T09:35:54Z",
+        "name": "download-verified-kit",
+        "steps": [],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/111407972311",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": null,
+        "runner_name": null,
+        "runner_group_id": null,
+        "runner_group_name": null
+      }
+    ]
+  },
+  "legacy_jobs": {
+    "total_count": 1,
+    "jobs": [
+      {
+        "id": 111407971401,
+        "run_id": 37192667866,
+        "workflow_name": "Validate legacy parser schema",
+        "head_branch": "audit/viewer-staging46-20261004",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/37192667866",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAZ8G68SQ",
+        "head_sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/111407971401",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/37192667866/job/111407971401",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-04T09:35:54Z",
+        "started_at": "2026-10-04T09:35:57Z",
+        "completed_at": "2026-10-04T09:37:47Z",
+        "name": "validate",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-04T09:35:57Z",
+            "completed_at": "2026-10-04T09:35:58Z"
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-04T09:35:58Z",
+            "completed_at": "2026-10-04T09:37:01Z"
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-04T09:37:01Z",
+            "completed_at": "2026-10-04T09:37:01Z"
+          },
+          {
+            "name": "Install parser dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-04T09:37:01Z",
+            "completed_at": "2026-10-04T09:37:13Z"
+          },
+          {
+            "name": "Legacy parser and resume regressions",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-04T09:37:13Z",
+            "completed_at": "2026-10-04T09:37:42Z"
+          },
+          {
+            "name": "Preserve actual-checkout independent source audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-04T09:37:42Z",
+            "completed_at": "2026-10-04T09:37:43Z"
+          },
+          {
+            "name": "Preserve fixed 46-item independent primary/stored audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-04T09:37:43Z",
+            "completed_at": "2026-10-04T09:37:44Z"
+          },
+          {
+            "name": "Compile parser",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-10-04T09:37:44Z",
+            "completed_at": "2026-10-04T09:37:44Z"
+          },
+          {
+            "name": "Schema sanity",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-04T09:37:44Z",
+            "completed_at": "2026-10-04T09:37:45Z"
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17,
+            "started_at": "2026-10-04T09:37:45Z",
+            "completed_at": "2026-10-04T09:37:45Z"
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18,
+            "started_at": "2026-10-04T09:37:45Z",
+            "completed_at": "2026-10-04T09:37:45Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19,
+            "started_at": "2026-10-04T09:37:45Z",
+            "completed_at": "2026-10-04T09:37:45Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/111407971401",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000000990,
+        "runner_name": "GitHub Actions 1000000990",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ]
+  },
+  "legacy_artifacts": [
+    {
+      "id": 11300025470,
+      "name": "legacy-primary-72-recheck",
+      "size_in_bytes": 14298,
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11300025470",
+      "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11300025470/zip",
+      "expired": false,
+      "created_at": "2026-10-04T09:37:43Z",
+      "expires_at": "2027-01-02T09:35:54Z",
+      "updated_at": "2026-10-04T09:37:43Z",
+      "digest": "sha256:ffa647285bdd06ab0cff614b133deb8753b061c1f8897c2b86eaaf608b6168f4",
+      "workflow_run": {
+        "id": 37192667866,
+        "repository_id": 1338843100,
+        "head_repository_id": 1338843100,
+        "head_branch": "audit/viewer-staging46-20261004",
+        "head_sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35"
+      }
+    },
+    {
+      "id": 11299761244,
+      "name": "legacy-staging-46-audit",
+      "size_in_bytes": 11100,
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11299761244",
+      "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11299761244/zip",
+      "expired": false,
+      "created_at": "2026-10-04T09:37:44Z",
+      "expires_at": "2027-01-02T09:35:54Z",
+      "updated_at": "2026-10-04T09:37:44Z",
+      "digest": "sha256:571e2a7cc7a5a62ef9e2bcb4700985bda1268e1cc403812e52e2579b36d6a11a",
+      "workflow_run": {
+        "id": 37192667866,
+        "repository_id": 1338843100,
+        "head_repository_id": 1338843100,
+        "head_branch": "audit/viewer-staging46-20261004",
+        "head_sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35"
+      }
+    }
+  ],
+  "full_artifacts_observed": [
+    {
+      "id": 11299931467,
+      "name": "sandbox-replay-3.11",
+      "size_in_bytes": 1425,
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11299931467",
+      "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11299931467/zip",
+      "expired": false,
+      "created_at": "2026-10-04T09:44:05Z",
+      "expires_at": "2026-10-11T09:44:04Z",
+      "updated_at": "2026-10-04T09:44:05Z",
+      "digest": "sha256:4400ed6570260c7ea79c225ce0fc60570969e37d857e8a60b3ce45ab2f1f874d",
+      "workflow_run": {
+        "id": 37192667867,
+        "repository_id": 1338843100,
+        "head_repository_id": 1338843100,
+        "head_branch": "audit/viewer-staging46-20261004",
+        "head_sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35"
+      }
+    },
+    {
+      "id": 11299607288,
+      "name": "legacy-viewer-source-replay",
+      "size_in_bytes": 28311,
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11299607288",
+      "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11299607288/zip",
+      "expired": false,
+      "created_at": "2026-10-04T09:37:38Z",
+      "expires_at": "2027-01-02T09:35:54Z",
+      "updated_at": "2026-10-04T09:37:38Z",
+      "digest": "sha256:6371207ad9f01257cfc33d374e502aef3ca97c32ed6f9f36750d6da8d1f3d71d",
+      "workflow_run": {
+        "id": 37192667867,
+        "repository_id": 1338843100,
+        "head_repository_id": 1338843100,
+        "head_branch": "audit/viewer-staging46-20261004",
+        "head_sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35"
+      }
+    },
+    {
+      "id": 11299567952,
+      "name": "requested-report-preview",
+      "size_in_bytes": 2509299,
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11299567952",
+      "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11299567952/zip",
+      "expired": false,
+      "created_at": "2026-10-04T09:41:04Z",
+      "expires_at": "2026-11-03T09:41:03Z",
+      "updated_at": "2026-10-04T09:41:04Z",
+      "digest": "sha256:4db6274952cc99e11444eaa880719d579a1596fed629d855339dc9b4a14027ec",
+      "workflow_run": {
+        "id": 37192667867,
+        "repository_id": 1338843100,
+        "head_repository_id": 1338843100,
+        "head_branch": "audit/viewer-staging46-20261004",
+        "head_sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35"
+      }
+    },
+    {
+      "id": 11299363506,
+      "name": "sandbox-replay-3.12",
+      "size_in_bytes": 1427,
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11299363506",
+      "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11299363506/zip",
+      "expired": false,
+      "created_at": "2026-10-04T09:41:54Z",
+      "expires_at": "2026-10-11T09:41:53Z",
+      "updated_at": "2026-10-04T09:41:54Z",
+      "digest": "sha256:5781338ca21eb59d50451a72a48be8be7cc224e82a9d14e2273b6b9f50219304",
+      "workflow_run": {
+        "id": 37192667867,
+        "repository_id": 1338843100,
+        "head_repository_id": 1338843100,
+        "head_branch": "audit/viewer-staging46-20261004",
+        "head_sha": "c908a9e1923f20004df7ebf8c8dafcc89ed3fc35"
+      }
+    }
+  ],
+  "ci_deadline": "2026-10-04T10:20:58Z",
+  "scope": "Actual remote snapshots; running CI is not passed. No engine/source/registry/kit changes after tested code."
+}
