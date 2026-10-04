@@ -16,5 +16,9 @@
     "1999_blob": "9855069705f74a03b1b9cbc44b88e1fe7bab924b",
     "2000_blob": "45296f496caf3ae12583ac962e1fef08102c775c",
     "all_affected_blobs_equal_actual_main": true
+  },
+  "source_cause_qualifications": {
+    "20000515000887": "Literal EOF cuts narrative mid-sentence; strict XML incomplete. Native truncation confirmed, not corrected.",
+    "20000214000011": "Duplicate DOCUMENT open and only one final close; unsupported/unbalanced native container. Financial-body truncation cannot be inferred from strict XML error alone."
   }
 }
