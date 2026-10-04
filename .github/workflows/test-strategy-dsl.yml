@@ -22,6 +22,10 @@ on:
       - 'scripts/probe_dart_legacy_sources.py'
       - 'scripts/capture_legacy_viewer_sections.py'
       - 'scripts/test_legacy_viewer_sections.py'
+      - 'scripts/legacy_financial_fields.py'
+      - 'scripts/legacy_viewer_source.py'
+      - 'scripts/test_legacy_viewer_source.py'
+      - 'scripts/replay_legacy_viewer_sources.py'
       - 'docs/audits/legacy/initial-financial-body-routes-20261002.json'
       - 'scripts/audit_legacy_pit_sample.py'
       - '.github/workflows/audit-legacy-pit.yml'
@@ -146,7 +150,17 @@ jobs:
             timeout -k 5s 60s python -u -m pytest "$test_file" -vv -s -o faulthandler_timeout=15 || exit $?
           done
           timeout -k 5s 30s python -u scripts/test_legacy_viewer_sections.py
+          timeout -k 5s 30s python -u scripts/test_legacy_viewer_source.py
+          timeout -k 5s 30s python -u scripts/replay_legacy_viewer_sources.py --output-dir "$RUNNER_TEMP/legacy-viewer-source-replay"
           timeout -k 5s 30s python -u scripts/test_legacy_schedule_gate.py
+      - name: Preserve offline primary viewer replay and guard audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: legacy-viewer-source-replay
+          path: ${{ runner.temp }}/legacy-viewer-source-replay
+          if-no-files-found: error
+          retention-days: 90
       - name: Syntax check
         run: |
           python -m py_compile scripts/strategy_dsl_run.py scripts/test_strategy_dsl_run.py scripts/test_dsl_run_e2e.py scripts/test_strategy_dsl_validation.py scripts/corporate_action_preflight.py scripts/test_corporate_action_preflight.py scripts/cash_share_exchange.py scripts/test_cash_share_exchange.py scripts/execution_contract.py scripts/export_strategy_dsl_contract.py scripts/strategy_dsl_aliases.py scripts/strategy_dsl_preflight.py scripts/krx_technical_factor_adapter.py scripts/factor_registry.py scripts/corporate_action_registry.py scripts/strategy_dsl.py scripts/strategy_dsl_runner.py scripts/dart_value_factor_adapter.py scripts/test_factor_registry.py scripts/test_strategy_dsl_aliases.py scripts/test_strategy_dsl_preflight.py scripts/test_strategy_dsl_benchmark.py scripts/test_krx_technical_factor_adapter.py scripts/test_krx_volatility_factor_adapter.py scripts/test_corporate_action_execution.py scripts/test_strategy_dsl.py scripts/test_dart_dsl_super_value.py scripts/test_dsl_execution_e2e.py scripts/strategy_dsl_deciles.py scripts/test_strategy_dsl_deciles.py scripts/test_dsl_deciles_e2e.py scripts/krx_history_audit.py scripts/test_krx_history_audit.py scripts/test_held_return_guard.py scripts/corporate_action_reconciliation.py scripts/test_corporate_action_reconciliation.py scripts/quant_backtest_template_CURRENT.py scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py scripts/quant_backtest_postprocess.py scripts/test_canonical_performance.py scripts/test_verified_autumn_splits.py scripts/krx_market_normalization.py scripts/repair_krx_market_segments.py scripts/update_krx_equities_daily.py scripts/test_krx_market_normalization.py
