@@ -11,5 +11,17 @@
   "previous_machine_collector": "unobservable",
   "current_local_collector_count": 0,
   "new_collector_launched": false,
-  "interpretation": "Index fiscal labels and parser status totals are not independently verified source periods or PIT quality."
+  "interpretation": "Index fiscal labels and parser status totals are not independently verified source periods or PIT quality.",
+  "final_github_running_total": 0,
+  "final_github_queued_total": 0,
+  "last_observed_collector_run": 37172051500,
+  "last_observed_collector_result": "completed_success",
+  "last_observed_collector_start_utc": "2026-10-04T02:45:56Z",
+  "last_observed_collector_end_utc": "2026-10-04T03:11:16Z",
+  "main_schedule_verified": true,
+  "shared_lock": "super-value-fast-pit-backfill",
+  "scheduled_crons_utc": [
+    "30 15 * * *",
+    "30 7,23 * 10 *"
+  ]
 }

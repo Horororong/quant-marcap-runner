@@ -4,8 +4,7 @@
 
 Branch `audit/viewer-staging46-20261004` follows draft PR #31. Main has not been
 merged or modified. This checkpoint supersedes the earlier ten-item and
-remaining-46 next-task statements in previous handoffs. Remote CI/publication
-status will be recorded below only after actual completion.
+remaining-46 next-task statements in previous handoffs. Actual completed CI and publication evidence is recorded below.
 
 The fixed plan selected **all 46 remaining cells** before examining their
 amounts; plan SHA256 is
@@ -181,10 +180,51 @@ legend, mobile layout and missing periods. It is preserved in
 No plot was rendered inline in this conversation and no cross-project automatic
 file-sharing capability was assumed.
 
-## Final-code full CI checkpoint
+## Final-code full CI completion and next handoff
 
-At intermediate evidence publication, full CI37192667867 is still running at
-DART Super Value integration; CPython 3.11/3.12 replay jobs and legacy CI passed.
-No full-CI success is claimed until actual completed evidence replaces this
-checkpoint. Workflow job limit is 45 minutes; the original-quarter command is
-bounded to 840 seconds/15 minutes. Do not restart the running checks.
+[Full CI37192667867](https://github.com/Horororong/quant-marcap-runner/actions/runs/37192667867)
+completed **success** at 2026-10-04 10:04:13 UTC against exact final code commit
+`c908a9e1923f20004df7ebf8c8dafcc89ed3fc35`.
+
+- Main test job111407971640 passed all 45 steps, including strict DSL/generated
+  contracts, CURRENT/PROJECT, requested reports/browser, original DART quarter
+  oracle, factor/registry, corporate-action, DART Super Value, real-data DSL E2E
+  and checked CLI. Actual decoded log is `full-ci.log`.
+- CPython 3.11 job111407971730 and CPython 3.12 job111407972010 passed the clean
+  environment/network-blocked real-data replay jobs. The unrelated
+  `download-verified-kit` conditional job was skipped, not falsely counted as
+  an executed verification.
+- Legacy CI37192667866 separately completed success at 09:37:47 UTC. Actual
+  logs, job/run metadata and artifact digests are preserved in
+  `legacy-ci.log` and `remote-ci-evidence.json`.
+- Intermediate evidence local commit `1001e64`, remote
+  `8e8a5dea628f089343231df1f782eeb4fcd8aa62`, changed documentation/results only.
+  Final evidence publication likewise changes only docs/logs/metadata. Tested
+  executable code/plan/manual source evidence, original source bodies, all 418
+  remote data blobs and all production collection checkpoints are preserved.
+- Final live main remained `4833fb503105d810ea6e8e905d914f1ab3c28632`; PR #32 was
+  open, draft and unmerged. Final running/queued Actions lists were empty.
+  Latest observed collector run37172051500 was a successful scheduled run,
+  started 02:45:56 UTC and completed 03:11:16 UTC; its input head was
+  `40fe72e420f12e069eb1ba07ef712e61684d8a78`. Main coverage confirms the last
+  2,000-record progress to 11,401 processed, not collection completion.
+- The connector rejects `/actions/workflows/<filename>/runs` with
+  HTTP400 `INVALID_ARGUMENT` (unsupported Fetch URL); approved repository-wide
+  `/actions/runs` successfully provided the actual collector history. A first
+  mistyped coverage filename returned404 and was corrected to the existing
+  `dart_legacy_coverage_by_period.csv`. Neither error proves permission denial;
+  no permission or network-policy bypass was attempted.
+
+| Project part | Actual judgement |
+|---|---|
+| Report software | Implemented; current final-code CI/browser regression passed; prior metrics/NAV/benchmark outputs preserved |
+| Data preparation | Incomplete; 103,619 mapped legacy receipts pending and financial/PIT/long-history gaps remain |
+| Independent quality | This fixed 46-cell batch complete, all 78 staged cells numerically checked; full dataset/corrections/availability certification incomplete |
+| Actual strategy validation | Incomplete; no new selected strategy, research NAV, OOS or robustness study performed |
+
+Next one task: verify actual publication dates and correction chains for the
+five receipts against authorized primary originals, with a pre-recorded plan.
+Retain unknowns when material cannot be obtained. Do not promote the staging
+snapshot, guess availability lags or dispatch collection over an unobservable
+previous-machine run. The existing shared-lock workflow remains the supported
+bounded collector resume route; this task did not start a new collector.
