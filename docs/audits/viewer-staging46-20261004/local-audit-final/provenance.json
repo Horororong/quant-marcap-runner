@@ -1,0 +1,23 @@
+{
+  "input_sha256": {
+    "data/financials/legacy_2000_2014/legacy_filings.csv.gz": "310001c3e9ed429684da5008983ccfa8d27cd92a16659dd18a1060c6e112406c",
+    "data/status/dart_legacy_backfill_state.csv": "55895effbb2ac7a031ef0f55a3daf6785c85da15d3f8fd85887a76fe6bd2eaef",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_1998.csv.gz": "18d986873b426d6a7a69d76694722481666948c5d68dc7d442439bbd1167ff91",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_1999.csv.gz": "5dd3c67cb7bb6ba094cbeae9232ac35e48ce3a456ff4678bb9e46e41adf23ac4",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_2000.csv.gz": "7c6cc453d9890b2065cf908a9d411646abb0e04fa99ddd0f2d000e1ac2d2b998",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_2001.csv.gz": "63dfed0cc3443c2a97a2fe70f39a0d64440cf03fc640f41afbd0fdadcd5f44d0",
+    "data/financials/legacy_2000_2014/normalized/legacy_metrics_2002.csv.gz": "eaa36a006e41888403216e1fd767442678ae3ccc3f5d018543eaab4dd95e87d8"
+  },
+  "inputs_unchanged": true,
+  "staging_sha256": "1a94d3ad30f7a470124acfd88bad5a18e07b30ad44ff2dec636795cb188eac30",
+  "primary_bodies": {
+    "20000809000052": "34ae9d43fc7e6755b1ce72604c4c1b5091d08711b25709231ec3b90d9161fcb8",
+    "20010103000052": "f49747cf8b66deffddb6afc2bce7bf18689a2e861f935cbe488d6e723055a15f",
+    "20010104000076": "f9cc8a723d53da9f27177c6af1caa2119d54142cf3a8163037b58932c503a5f2",
+    "20010213000010": "c24959a83d276b240e52800f2b4421ee945db9a354e5db9c09627ce35b4b3246",
+    "20010213000014": "d51a64d69cf25b6061fdf6daaed895bd13b5c5121e570a490a0ab5729984ca1c"
+  },
+  "expected_sha256": "48acd2acf3e7ce178d1d83842ca5cdecb9c01d02b82620a32e3696871b6bafee",
+  "primary_cell_evidence_sha256": "69f46296e606fd57afb0b592e6adfc9f87bc1b83b532bce1c0373479e0207d01",
+  "method": "manual primary literals, independent BR decoding/Decimal comparison; no collector/adapter imports; parser versions preserved"
+}

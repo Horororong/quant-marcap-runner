@@ -18,6 +18,11 @@ on:
       - 'scripts/test_legacy_viewer_source.py'
       - 'scripts/replay_legacy_viewer_sources.py'
       - 'scripts/recheck_legacy_primary_audit.py'
+      - 'docs/audits/viewer-staging46-20261004/verify_remaining_cells.py'
+      - 'docs/audits/viewer-staging46-20261004/test_audit_guards.py'
+      - 'docs/audits/viewer-staging46-20261004/SAMPLE_PLAN.json'
+      - 'docs/audits/viewer-staging46-20261004/EXPECTED_PRIMARY_CELLS.json'
+      - 'docs/audits/viewer-staging46-20261004/PRIMARY_CELL_EVIDENCE.json'
       - 'docs/audits/legacy/initial-financial-body-routes-20261002.json'
       - 'scripts/audit_legacy_pit_sample.py'
       - 'tests/test_legacy*.py'
@@ -48,6 +53,8 @@ jobs:
           timeout -k 5s 30s python -u scripts/test_legacy_viewer_sections.py
           timeout -k 5s 30s python -u scripts/test_legacy_viewer_source.py
           timeout -k 5s 60s python -u scripts/recheck_legacy_primary_audit.py --output-dir "$RUNNER_TEMP/legacy-primary-72-recheck"
+          timeout -k 5s 60s python -u docs/audits/viewer-staging46-20261004/test_audit_guards.py
+          timeout -k 5s 60s python -u docs/audits/viewer-staging46-20261004/verify_remaining_cells.py --output-dir "$RUNNER_TEMP/legacy-staging-46-audit"
           timeout -k 5s 30s python -u scripts/test_legacy_schedule_gate.py
       - name: Preserve actual-checkout independent source audit
         if: always()
@@ -55,6 +62,14 @@ jobs:
         with:
           name: legacy-primary-72-recheck
           path: ${{ runner.temp }}/legacy-primary-72-recheck
+          if-no-files-found: error
+          retention-days: 90
+      - name: Preserve fixed 46-item independent primary/stored audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: legacy-staging-46-audit
+          path: ${{ runner.temp }}/legacy-staging-46-audit
           if-no-files-found: error
           retention-days: 90
       - name: Compile parser
