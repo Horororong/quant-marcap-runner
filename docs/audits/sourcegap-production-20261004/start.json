@@ -37,11 +37,27 @@
     "native_run": 37204637739,
     "native_result": "success",
     "full_run": 37204637742,
-    "full_result": "pending"
+    "full_result": "success"
   },
   "index_readback": {
     "git_blob_sha": "6f4da4ad9a4671a5f38ee6c2e6e876497710ae17",
     "bytes": 3221691,
     "local_file_equals_actual_main": true
+  },
+  "pr33_merge": "6e2ee6c9dfc377453b3664fb546d482d52bd09f9",
+  "intervening_schedule": {
+    "run": 37205264164,
+    "data_commit": "c767fb6c2b2984c6285683c0463edb7948e8b969",
+    "processed": 1975,
+    "requests": 1975,
+    "stop": "DEADLINE",
+    "modern": 0,
+    "main_merge_preserves_all_changed_blobs": true
+  },
+  "small_live": {
+    "run": 37210246868,
+    "job": 111459784422,
+    "code": "6e2ee6c9dfc377453b3664fb546d482d52bd09f9",
+    "status": "RUNNING_AT_LAST_OBSERVATION"
   }
 }
