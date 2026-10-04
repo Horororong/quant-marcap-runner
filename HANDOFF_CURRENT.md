@@ -1,3 +1,13 @@
+## 2026-10-04 fixed remaining-46 primary audit
+
+- Branch `audit/viewer-staging46-20261004` follows PR #31; no main merge.
+- Fixed before value inspection: all remaining 46 staging cells. Independent original-body/cell/header checks find 46 numeric and period/scope/unit/current-column matches, zero numerical disagreement, six measurement-qualified source components. All 78 staging cells now have primary numeric checks; this is not full dataset certification.
+- Actual publication/correction chains remain unverified, so verified PIT items remain zero. All local selected production values are absent; actual remote production/CI evidence is recorded in the checkpoint below.
+- Eleven independent audit guards pass locally; collector, source adapter, DSL, production data/checkpoints and installed kit remain unchanged. Existing validation workflow preserves the remote-checkout audit. Final CI/PR status must be read from the current linked checkpoint.
+- Data preparation, full-data independent quality and actual strategy verification remain incomplete. No duplicate collection, new strategy or research NAV launched.
+- Evidence, limitations, safe reproduction, actual final CI and next task: [remaining-46 checkpoint](docs/audits/viewer-staging46-20261004/README.md). This supersedes earlier ten-row/46-row next-task statements below.
+- Next: independently verify actual publication dates and correction chains of these five primary receipts; do not infer PIT dates from receipt IDs or fixed lags.
+
 ## 2026-10-04 terminal per-share note alignment follow-up
 
 - Branch `feature/legacy-viewer-line-alignment-20261004` follows draft PR #30; no main merge.

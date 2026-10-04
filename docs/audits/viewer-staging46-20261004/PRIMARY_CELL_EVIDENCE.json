@@ -1,0 +1,3467 @@
+{
+  "method": "Pre-existing independent primary table coordinates, raw body/literal SHA and separate stdlib BR text decoding. No collection/source-adapter import or metric/amount inference.",
+  "coordinate_origin": "/workspace/quant-audit-20261004/source_tables.json, preserved raw cells eliminate dependency on that external helper at replay",
+  "sources": {
+    "20000809000052": {
+      "file": "viewer-section-20000809000052-3778.html.gz",
+      "capture": {
+        "rcept_no": "20000809000052",
+        "eleId": "3778",
+        "heading": "3. 재무제표",
+        "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20000809000052&dcmNo=86557&eleId=3778&offset=412000&length=124804&dtd=dart2.dtd",
+        "body_sha256": "34ae9d43fc7e6755b1ce72604c4c1b5091d08711b25709231ec3b90d9161fcb8",
+        "body_bytes": 89446,
+        "source_encoding": "utf-8",
+        "pointer_sha256": "2a5c8a8e50b88eadb16f82e1f9e4f93538c7d8423fe5003730a20385217d556d",
+        "actions_run_id": "36994245000",
+        "http_status": 200
+      },
+      "gzip_sha256": "6c03d7ed17978b2b86c7604222c0efc946f8ec4d6fa51c15943a10f8875dd11b",
+      "cells": {
+        "1/1/0": {
+          "start_character": 1216,
+          "end_character": 2649,
+          "literal_sha256": "ea95cf87d3ba5a643a480af1b2d618d7e5ef775f77d3260e560aa2d05684bd3b",
+          "literal_cell": "<TD width='164' height='2084' valign='TOP'><BR/>I. 유동자산<BR/><BR/>(1)당좌자산<BR/>1.현금 및 현금등가물<BR/>2.단기금융상품<BR/>3.유가증권<BR/>4.매출채권<BR/> &nbsp;&nbsp;대손충당금<BR/><BR/>5.단기대여금<BR/>6.미 &nbsp;&nbsp;수 &nbsp;&nbsp;금<BR/>7.미 수 수 익<BR/>8.선 &nbsp;&nbsp;급 &nbsp;&nbsp;금<BR/>9.선 급 &nbsp;비 용<BR/><BR/>(2)재고자산<BR/>1.상품<BR/>2.제품<BR/>3.재공품<BR/>4.원재료<BR/>5.미착원재료<BR/>6.부재료<BR/>7.저장품<BR/><BR/>II. 고정자산<BR/><BR/>(1)투자자산<BR/>1.장기금융상품<BR/>2.투자유가증권<BR/>3.보증금<BR/>4.시설이용권<BR/>5.단체퇴직보험예치금<BR/><BR/>(2)유형자산<BR/>1.토지<BR/>2.건물<BR/> &nbsp;감가상각누계액<BR/><BR/>3.건물부속설비<BR/> &nbsp;감가상각누계액<BR/><BR/>4.구축물<BR/> &nbsp;감가상각누계액<BR/><BR/>5.기계장치<BR/> &nbsp;감가상각누계액<BR/><BR/>6.차량운반구<BR/> &nbsp;감가상각누계액<BR/><BR/>7.공구와 기구<BR/> &nbsp;감가상각누계액<BR/><BR/>8.비품<BR/> &nbsp;감가상각누계액<BR/><BR/>9.건설중인자산<BR/><BR/>(3)무형자산<BR/>1.산업재산권<BR/><BR/>자산총계<BR/><BR/>I. 유동부채<BR/>1.매입채무<BR/>2.단기차입금<BR/>3.미지급금<BR/>4.선수금<BR/>5.미지급비용<BR/>6.예수금<BR/>7.미지급법인세<BR/>8.미지급배당금<BR/>9.유동성장기부채<BR/>10.수입보증금<BR/>11.임대보증금<BR/><BR/>II. 고정부채<BR/>1.전환사채<BR/>2.장기차입금<BR/>3.퇴직급여충당금<BR/> &nbsp;국민연금전환금<BR/><BR/>4.단체퇴직급여충당금<BR/>5.이연법인세대<BR/><BR/>부채총계<BR/><BR/>I.자본금<BR/>1.보통주 자본금<BR/><BR/>II.자본잉여금<BR/>1.주식발행초과금<BR/>2.재평가적립금<BR/><BR/>III.이익잉여금<BR/>1.이익준비금<BR/>2.기업합리화적립금<BR/>3.투자준비금<BR/>4.기술개발준비금<BR/>5.수출손실준비금<BR/>6.해외시장개척준비금<BR/>7.사업손실준비금<BR/>8.차기이월이익잉여금<BR/>(당기순이익<BR/> 분기 : &nbsp;&nbsp;&nbsp;625,811,634)<BR/> 전기 : 4,315,225,419)<BR/><BR/>IV.자본조정<BR/>1.자기주식<BR/>2.투자유가증권평가손실<BR/>3.해외사업환산차<BR/><BR/>자본총계<BR/><BR/>부채와 자본총계</TD>",
+          "lines": [
+            "",
+            "I. 유동자산",
+            "",
+            "(1)당좌자산",
+            "1.현금 및 현금등가물",
+            "2.단기금융상품",
+            "3.유가증권",
+            "4.매출채권",
+            "대손충당금",
+            "",
+            "5.단기대여금",
+            "6.미 수 금",
+            "7.미 수 수 익",
+            "8.선 급 금",
+            "9.선 급 비 용",
+            "",
+            "(2)재고자산",
+            "1.상품",
+            "2.제품",
+            "3.재공품",
+            "4.원재료",
+            "5.미착원재료",
+            "6.부재료",
+            "7.저장품",
+            "",
+            "II. 고정자산",
+            "",
+            "(1)투자자산",
+            "1.장기금융상품",
+            "2.투자유가증권",
+            "3.보증금",
+            "4.시설이용권",
+            "5.단체퇴직보험예치금",
+            "",
+            "(2)유형자산",
+            "1.토지",
+            "2.건물",
+            "감가상각누계액",
+            "",
+            "3.건물부속설비",
+            "감가상각누계액",
+            "",
+            "4.구축물",
+            "감가상각누계액",
+            "",
+            "5.기계장치",
+            "감가상각누계액",
+            "",
+            "6.차량운반구",
+            "감가상각누계액",
+            "",
+            "7.공구와 기구",
+            "감가상각누계액",
+            "",
+            "8.비품",
+            "감가상각누계액",
+            "",
+            "9.건설중인자산",
+            "",
+            "(3)무형자산",
+            "1.산업재산권",
+            "",
+            "자산총계",
+            "",
+            "I. 유동부채",
+            "1.매입채무",
+            "2.단기차입금",
+            "3.미지급금",
+            "4.선수금",
+            "5.미지급비용",
+            "6.예수금",
+            "7.미지급법인세",
+            "8.미지급배당금",
+            "9.유동성장기부채",
+            "10.수입보증금",
+            "11.임대보증금",
+            "",
+            "II. 고정부채",
+            "1.전환사채",
+            "2.장기차입금",
+            "3.퇴직급여충당금",
+            "국민연금전환금",
+            "",
+            "4.단체퇴직급여충당금",
+            "5.이연법인세대",
+            "",
+            "부채총계",
+            "",
+            "I.자본금",
+            "1.보통주 자본금",
+            "",
+            "II.자본잉여금",
+            "1.주식발행초과금",
+            "2.재평가적립금",
+            "",
+            "III.이익잉여금",
+            "1.이익준비금",
+            "2.기업합리화적립금",
+            "3.투자준비금",
+            "4.기술개발준비금",
+            "5.수출손실준비금",
+            "6.해외시장개척준비금",
+            "7.사업손실준비금",
+            "8.차기이월이익잉여금",
+            "(당기순이익",
+            "분기 : 625,811,634)",
+            "전기 : 4,315,225,419)",
+            "",
+            "IV.자본조정",
+            "1.자기주식",
+            "2.투자유가증권평가손실",
+            "3.해외사업환산차",
+            "",
+            "자본총계",
+            "",
+            "부채와 자본총계"
+          ],
+          "attrs": {
+            "width": "164",
+            "height": "2084",
+            "valign": "TOP"
+          }
+        },
+        "1/1/1": {
+          "start_character": 2653,
+          "end_character": 4442,
+          "literal_sha256": "86edd96f8ad8ef445065ef2b3f25cbd227e900dc056f680f0ecf23664cb22ea5",
+          "literal_cell": "<TD width='226' height='2084' align='RIGHT' valign='TOP'><BR/>39,877,530,949<BR/><BR/>31,340,937,775<BR/>7,499,733,958<BR/>7,090,320,740<BR/>60,625,000<BR/>15,091,079,032<BR/>(201,740,951)<BR/>14,889,338,081<BR/>113,596,466<BR/>373,077,433<BR/>295,381,978<BR/>948,695,374<BR/>70,168,745<BR/><BR/>8,536,593,174<BR/>55,101,141<BR/>3,002,929,702<BR/>1,076,756,885<BR/>3,201,559,881<BR/>81,944,287<BR/>1,117,437,278<BR/>864,000<BR/><BR/>16,405,642,796<BR/><BR/>2,784,561,996<BR/>233,476,392<BR/>1,309,752,544<BR/>477,520,604<BR/>148,850,100<BR/>624,962,356<BR/><BR/>13,577,555,747<BR/>1,600,335,876<BR/>4,605,354,436<BR/>224,691,599<BR/>4,380,662,837<BR/>1,704,376,172<BR/>303,026,232<BR/>1,401,349,940<BR/>175,421,427<BR/>31,092,001<BR/>144,329,426<BR/>5,332,424,270<BR/>3,875,975,136<BR/>1,456,449,134<BR/>213,958,853<BR/>151,021,776<BR/>62,937,077<BR/>123,320,882<BR/>108,195,307<BR/>15,125,575<BR/>1,169,136,054<BR/>748,894,797<BR/>420,241,257<BR/>4,096,124,625<BR/><BR/>43,525,053<BR/>43,525,053<BR/><BR/>56,283,173,745<BR/><BR/>13,725,969,059<BR/>1,751,709,130<BR/>8,190,091,182<BR/>572,286,151<BR/>66,425,080<BR/>760,480,996<BR/>2,551,850<BR/>447,288,190<BR/>714,355,200<BR/>1,039,781,280<BR/>70,000,000<BR/>111,000,000<BR/><BR/>21,454,567,079<BR/>14,461,200,000<BR/>5,061,316,920<BR/>757,114,776<BR/>91,400,920<BR/>665,713,856<BR/>624,962,356<BR/>641,373,947<BR/><BR/>35,180,536,138<BR/><BR/>6,250,000,000<BR/>6,250,000,000<BR/><BR/>8,386,722,175<BR/>5,993,852,688<BR/>2,392,869,487<BR/><BR/>8,475,225,263<BR/>500,000,000<BR/>1,221,357,368<BR/>719,999,999<BR/>1,520,000,000<BR/>190,666,667<BR/>242,666,667<BR/>200,000,000<BR/>3,880,534,562<BR/><BR/><BR/><BR/><BR/>(2,009,309,831)<BR/>(1,983,605,860)<BR/>(7,557,838)<BR/>(18,146,133)<BR/><BR/>21,102,637,607<BR/><BR/>56,283,173,745</TD>",
+          "lines": [
+            "",
+            "39,877,530,949",
+            "",
+            "31,340,937,775",
+            "7,499,733,958",
+            "7,090,320,740",
+            "60,625,000",
+            "15,091,079,032",
+            "(201,740,951)",
+            "14,889,338,081",
+            "113,596,466",
+            "373,077,433",
+            "295,381,978",
+            "948,695,374",
+            "70,168,745",
+            "",
+            "8,536,593,174",
+            "55,101,141",
+            "3,002,929,702",
+            "1,076,756,885",
+            "3,201,559,881",
+            "81,944,287",
+            "1,117,437,278",
+            "864,000",
+            "",
+            "16,405,642,796",
+            "",
+            "2,784,561,996",
+            "233,476,392",
+            "1,309,752,544",
+            "477,520,604",
+            "148,850,100",
+            "624,962,356",
+            "",
+            "13,577,555,747",
+            "1,600,335,876",
+            "4,605,354,436",
+            "224,691,599",
+            "4,380,662,837",
+            "1,704,376,172",
+            "303,026,232",
+            "1,401,349,940",
+            "175,421,427",
+            "31,092,001",
+            "144,329,426",
+            "5,332,424,270",
+            "3,875,975,136",
+            "1,456,449,134",
+            "213,958,853",
+            "151,021,776",
+            "62,937,077",
+            "123,320,882",
+            "108,195,307",
+            "15,125,575",
+            "1,169,136,054",
+            "748,894,797",
+            "420,241,257",
+            "4,096,124,625",
+            "",
+            "43,525,053",
+            "43,525,053",
+            "",
+            "56,283,173,745",
+            "",
+            "13,725,969,059",
+            "1,751,709,130",
+            "8,190,091,182",
+            "572,286,151",
+            "66,425,080",
+            "760,480,996",
+            "2,551,850",
+            "447,288,190",
+            "714,355,200",
+            "1,039,781,280",
+            "70,000,000",
+            "111,000,000",
+            "",
+            "21,454,567,079",
+            "14,461,200,000",
+            "5,061,316,920",
+            "757,114,776",
+            "91,400,920",
+            "665,713,856",
+            "624,962,356",
+            "641,373,947",
+            "",
+            "35,180,536,138",
+            "",
+            "6,250,000,000",
+            "6,250,000,000",
+            "",
+            "8,386,722,175",
+            "5,993,852,688",
+            "2,392,869,487",
+            "",
+            "8,475,225,263",
+            "500,000,000",
+            "1,221,357,368",
+            "719,999,999",
+            "1,520,000,000",
+            "190,666,667",
+            "242,666,667",
+            "200,000,000",
+            "3,880,534,562",
+            "",
+            "",
+            "",
+            "",
+            "(2,009,309,831)",
+            "(1,983,605,860)",
+            "(7,557,838)",
+            "(18,146,133)",
+            "",
+            "21,102,637,607",
+            "",
+            "56,283,173,745"
+          ],
+          "attrs": {
+            "width": "226",
+            "height": "2084",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/1/2": {
+          "start_character": 4446,
+          "end_character": 6209,
+          "literal_sha256": "63e9fb11771884e7d398c190e88d370b9c121800bd7567f1abaf8bdeef32fdeb",
+          "literal_cell": "<TD width='225' height='2084' align='RIGHT' valign='TOP'><BR/>23,551,722,916<BR/><BR/>17,147,086,354<BR/>1,289,679,178<BR/>1,408,104,539<BR/>29,250,000<BR/>14,028,370,881<BR/>(228,894,523)<BR/>13,799,476,358<BR/>146,744,704<BR/>158,417,633<BR/>98,367,317<BR/>159,829,865<BR/>59,216,760<BR/><BR/>6,404,636,562<BR/>79,452,866<BR/>2,642,035,617<BR/>799,123,814<BR/>1,733,675,401<BR/>141,139,930<BR/>999,699,934<BR/>9,509,000<BR/><BR/>12,911,311,895<BR/><BR/>1,658,759,773<BR/>228,071,977<BR/>261,368,904<BR/>405,956,033<BR/>148,850,100<BR/>614,512,759<BR/><BR/>11,213,351,166<BR/>1,241,555,864<BR/>4,134,894,683<BR/>192,788,137<BR/>3,942,106,546<BR/>1,704,376,172<BR/>267,479,485<BR/>1,436,896,687<BR/>175,421,427<BR/>27,870,214<BR/>147,551,213<BR/>4,624,061,604<BR/>3,647,419,856<BR/>976,641,748<BR/>213,958,853<BR/>140,987,687<BR/>72,971,166<BR/>123,320,882<BR/>105,750,133<BR/>17,570,749<BR/>946,514,708<BR/>683,912,565<BR/>262,602,143<BR/>3,115,455,050<BR/><BR/>39,200,956<BR/>39,200,956<BR/><BR/>36,463,034,811<BR/><BR/>9,878,685,966<BR/>575,344,228<BR/>5,753,290,720<BR/>194,076,059<BR/>9,679,028<BR/>812,326,461<BR/>4,046,600<BR/>592,127,290<BR/>714,355,200<BR/>1,002,440,380<BR/>110,000,000<BR/>111,000,000<BR/><BR/>6,011,678,783<BR/><BR/>4,156,300,760<BR/>681,952,734<BR/>92,718,720<BR/>589,234,014<BR/>614,512,759<BR/>651,631,250<BR/><BR/>15,890,364,749<BR/><BR/>6,250,000,000<BR/>6,250,000,000<BR/><BR/>8,386,722,175<BR/>5,993,852,688<BR/>2,392,869,487<BR/><BR/>7,849,413,629<BR/>500,000,000<BR/>1,221,357,368<BR/>719,999,999<BR/>1,520,000,000<BR/>190,666,667<BR/>242,666,667<BR/>200,000,000<BR/>3,254,722,928<BR/><BR/><BR/><BR/><BR/>(1,913,465,742)<BR/>(1,887,380,500)<BR/>(7,557,838)<BR/>(18,527,404)<BR/><BR/>20,572,670,062<BR/><BR/>36,463,034,811</TD>",
+          "lines": [
+            "",
+            "23,551,722,916",
+            "",
+            "17,147,086,354",
+            "1,289,679,178",
+            "1,408,104,539",
+            "29,250,000",
+            "14,028,370,881",
+            "(228,894,523)",
+            "13,799,476,358",
+            "146,744,704",
+            "158,417,633",
+            "98,367,317",
+            "159,829,865",
+            "59,216,760",
+            "",
+            "6,404,636,562",
+            "79,452,866",
+            "2,642,035,617",
+            "799,123,814",
+            "1,733,675,401",
+            "141,139,930",
+            "999,699,934",
+            "9,509,000",
+            "",
+            "12,911,311,895",
+            "",
+            "1,658,759,773",
+            "228,071,977",
+            "261,368,904",
+            "405,956,033",
+            "148,850,100",
+            "614,512,759",
+            "",
+            "11,213,351,166",
+            "1,241,555,864",
+            "4,134,894,683",
+            "192,788,137",
+            "3,942,106,546",
+            "1,704,376,172",
+            "267,479,485",
+            "1,436,896,687",
+            "175,421,427",
+            "27,870,214",
+            "147,551,213",
+            "4,624,061,604",
+            "3,647,419,856",
+            "976,641,748",
+            "213,958,853",
+            "140,987,687",
+            "72,971,166",
+            "123,320,882",
+            "105,750,133",
+            "17,570,749",
+            "946,514,708",
+            "683,912,565",
+            "262,602,143",
+            "3,115,455,050",
+            "",
+            "39,200,956",
+            "39,200,956",
+            "",
+            "36,463,034,811",
+            "",
+            "9,878,685,966",
+            "575,344,228",
+            "5,753,290,720",
+            "194,076,059",
+            "9,679,028",
+            "812,326,461",
+            "4,046,600",
+            "592,127,290",
+            "714,355,200",
+            "1,002,440,380",
+            "110,000,000",
+            "111,000,000",
+            "",
+            "6,011,678,783",
+            "",
+            "4,156,300,760",
+            "681,952,734",
+            "92,718,720",
+            "589,234,014",
+            "614,512,759",
+            "651,631,250",
+            "",
+            "15,890,364,749",
+            "",
+            "6,250,000,000",
+            "6,250,000,000",
+            "",
+            "8,386,722,175",
+            "5,993,852,688",
+            "2,392,869,487",
+            "",
+            "7,849,413,629",
+            "500,000,000",
+            "1,221,357,368",
+            "719,999,999",
+            "1,520,000,000",
+            "190,666,667",
+            "242,666,667",
+            "200,000,000",
+            "3,254,722,928",
+            "",
+            "",
+            "",
+            "",
+            "(1,913,465,742)",
+            "(1,887,380,500)",
+            "(7,557,838)",
+            "(18,527,404)",
+            "",
+            "20,572,670,062",
+            "",
+            "36,463,034,811"
+          ],
+          "attrs": {
+            "width": "225",
+            "height": "2084",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        }
+      },
+      "headers": {
+        "1": {
+          "date_unit_rows": [
+            [
+              "제 14 기 1분기 2000. 6. 30 현재"
+            ],
+            [
+              "제 13 기        2000. 3. 31 "
+            ],
+            [
+              "(단위 : 원)"
+            ]
+          ],
+          "numeric_column_cells": [
+            {
+              "text": "과 목",
+              "attrs": {
+                "width": "164",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TH width='164' height='24' align='CENTER'>과 목</TH>",
+              "start_character": 1006,
+              "end_character": 1057
+            },
+            {
+              "text": "제 14 기 1분기",
+              "attrs": {
+                "width": "226",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TH width='226' height='24' align='CENTER'>제 14 기 1분기</TH>",
+              "start_character": 1061,
+              "end_character": 1119
+            },
+            {
+              "text": "제 13 기 연간",
+              "attrs": {
+                "width": "225",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TH width='225' height='24' align='CENTER'>제 13 기 연간</TH>",
+              "start_character": 1123,
+              "end_character": 1180
+            }
+          ],
+          "date_unit_cells": [
+            {
+              "start_character": 636,
+              "end_character": 709,
+              "literal_cell": "<TD width='619' height='24' align='CENTER'>제 14 기 1분기 2000. 6. 30 현재</TD>",
+              "literal_sha256": "23f21025295765b2f9acf53069727ad9ef51a455e9c5c246d540dbd6ce1b61e2"
+            },
+            {
+              "start_character": 726,
+              "end_character": 840,
+              "literal_cell": "<TD width='619' height='24' align='CENTER'>제 13 기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2000. 3. 31&nbsp;</TD>",
+              "literal_sha256": "f9688c879c966f2cfb27b84edcada6e139e2df6ad8f9e258fa82f2b26acf3270"
+            },
+            {
+              "start_character": 857,
+              "end_character": 928,
+              "literal_cell": "<TD width='619' height='24' align='RIGHT' valign='BOTTOM'>(단위 : 원)</TD>",
+              "literal_sha256": "5786da19d9f70c0d45507d9314476584ffd6f8c688eec15277b02bca98a94c6c"
+            }
+          ]
+        },
+        "5": {
+          "date_unit_rows": [
+            [
+              "제 14 기 1분기 (2000. 4. 1 부터 2000. 6. 30 까지)"
+            ],
+            [
+              "제 13 기        (1999. 4. 1 부터 2000. 3. 31 까지)"
+            ],
+            [
+              "제 12 기        (1998. 4. 1 부터 1999. 3. 31 까지)"
+            ],
+            [
+              "(단위 : 원)"
+            ]
+          ],
+          "date_unit_cells": [
+            {
+              "start_character": 10347,
+              "end_character": 10436,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 14 기 1분기 (2000. 4. 1 부터 2000. 6. 30 까지)</TD>",
+              "literal_sha256": "0ae1d64104b285c69e06b0207acc6d6b2b309dab1c144521ccf77361527cfd69"
+            },
+            {
+              "start_character": 10453,
+              "end_character": 10580,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 13 기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1999. 4. 1 부터 2000. 3. 31 까지)</TD>",
+              "literal_sha256": "e844640356ee68a0e70c155cd1f2b2b00071a7c32390816db507b20e17b536ec"
+            },
+            {
+              "start_character": 10597,
+              "end_character": 10724,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 12 기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1998. 4. 1 부터 1999. 3. 31 까지)</TD>",
+              "literal_sha256": "d1058590a66a7ba6a6ddee666da028f8b9e578549be23b43abd9ba6643ae96ff"
+            },
+            {
+              "start_character": 10741,
+              "end_character": 10812,
+              "literal_cell": "<TD width='600' height='24' align='RIGHT' valign='BOTTOM'>(단위 : 원)</TD>",
+              "literal_sha256": "fb5f24ba266303705e018b9b4b68d2091ea9f17a13f5f8b89692bf4d90ac6293"
+            }
+          ],
+          "numeric_column_cells": [
+            {
+              "text": "과 목",
+              "attrs": {
+                "width": "150",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TH width='150' height='24' align='CENTER'>과 목</TH>",
+              "start_character": 10890,
+              "end_character": 10941
+            },
+            {
+              "text": "제 14 기 1분기",
+              "attrs": {
+                "width": "150",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TH width='150' height='24' align='CENTER'>제 14 기 1분기</TH>",
+              "start_character": 10945,
+              "end_character": 11003
+            },
+            {
+              "text": "제 13 기 연간",
+              "attrs": {
+                "width": "150",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TH width='150' height='24' align='CENTER'>제 13 기 연간</TH>",
+              "start_character": 11007,
+              "end_character": 11064
+            },
+            {
+              "text": "제12 기 연간",
+              "attrs": {
+                "width": "149",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TH width='149' height='24' align='CENTER'>제12 기 연간</TH>",
+              "start_character": 11068,
+              "end_character": 11124
+            }
+          ]
+        }
+      },
+      "semantic_context": {}
+    },
+    "20010103000052": {
+      "file": "viewer-section-20010103000052-3618.html.gz",
+      "capture": {
+        "rcept_no": "20010103000052",
+        "eleId": "3618",
+        "heading": "3. 재무제표",
+        "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20010103000052&dcmNo=126853&eleId=3618&offset=392377&length=738954&dtd=dart2.dtd",
+        "body_sha256": "f49747cf8b66deffddb6afc2bce7bf18689a2e861f935cbe488d6e723055a15f",
+        "body_bytes": 469619,
+        "source_encoding": "utf-8",
+        "pointer_sha256": "d029dcacf21e3acf5e1ed2175778c029e69cc37b15a6a8c39ead6f4435d5c959",
+        "actions_run_id": "36994245000",
+        "http_status": 200
+      },
+      "gzip_sha256": "20dc5a8a1af7fc86f16bfd0780d1f9308629f4d084144670bf587ed11d696204",
+      "cells": {
+        "1/85/0": {
+          "start_character": 21163,
+          "end_character": 21237,
+          "literal_sha256": "215505cfdcace2d55908c229f82b67b7b1d71439a00c8c46950e0815afc5bbcf",
+          "literal_cell": "<TD width='293' height='24' valign='TOP'>&nbsp;&nbsp;사채 (주 2, 13, 18)</TD>",
+          "lines": [
+            "사채 (주 2, 13, 18)"
+          ],
+          "attrs": {
+            "width": "293",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/85/1": {
+          "start_character": 21241,
+          "end_character": 21318,
+          "literal_sha256": "16ca62025b892863dd511b476c4a9743791dc62d7390d2232f7feb3d02ba4c6e",
+          "literal_cell": "<TD width='152' height='24' align='RIGHT' valign='TOP'>3,487,092,840,000</TD>",
+          "lines": [
+            "3,487,092,840,000"
+          ],
+          "attrs": {
+            "width": "152",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/85/2": {
+          "start_character": 21322,
+          "end_character": 21392,
+          "literal_sha256": "0427a05ebbeb1d37ab9de752269d8309c1e14e266b59dad843d49c9866b909b9",
+          "literal_cell": "<TD width='165' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "165",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/5/0": {
+          "start_character": 2247,
+          "end_character": 2329,
+          "literal_sha256": "b144fe19b16197cb5a6f129f1ea4f10ae7dd4287f6a46bfc03d7e424e8377ad9",
+          "literal_cell": "<TD width='293' height='24' valign='TOP'>&nbsp;&nbsp;현금및현금등가물 (주 2, 3, 8, 16)</TD>",
+          "lines": [
+            "현금및현금등가물 (주 2, 3, 8, 16)"
+          ],
+          "attrs": {
+            "width": "293",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/5/1": {
+          "start_character": 2333,
+          "end_character": 2403,
+          "literal_sha256": "96654020d6dc9bb0c34aec49ac831ff2788676aa6a44a10cc032b64edd090def",
+          "literal_cell": "<TD width='152' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "152",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/5/2": {
+          "start_character": 2407,
+          "end_character": 2481,
+          "literal_sha256": "3b8301295c4847bcedfa72a0edce01bf6cdf57276d2387f65f5e8eaabf3230e6",
+          "literal_cell": "<TD width='165' height='24' align='RIGHT' valign='TOP'>72,845,173,977</TD>",
+          "lines": [
+            "72,845,173,977"
+          ],
+          "attrs": {
+            "width": "165",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/3/0": {
+          "start_character": 1784,
+          "end_character": 1843,
+          "literal_sha256": "fc0f70fcf8b651ff9deb7cfe76a4bf9db2132d4c08f18c9cd97b32c7c9c4bbd8",
+          "literal_cell": "<TD width='293' height='24' valign='TOP'>Ⅰ. &nbsp;유동자산</TD>",
+          "lines": [
+            "Ⅰ. 유동자산"
+          ],
+          "attrs": {
+            "width": "293",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/3/1": {
+          "start_character": 1847,
+          "end_character": 1917,
+          "literal_sha256": "96654020d6dc9bb0c34aec49ac831ff2788676aa6a44a10cc032b64edd090def",
+          "literal_cell": "<TD width='152' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "152",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/3/2": {
+          "start_character": 1921,
+          "end_character": 1998,
+          "literal_sha256": "db5fdd8085e358719a8fe68c3acd1b5fc7f5d021136fb46ae7097ba7e215f993",
+          "literal_cell": "<TD width='165' height='24' align='RIGHT' valign='TOP'>2,795,056,496,893</TD>",
+          "lines": [
+            "2,795,056,496,893"
+          ],
+          "attrs": {
+            "width": "165",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/69/0": {
+          "start_character": 17410,
+          "end_character": 17463,
+          "literal_sha256": "6d58119f579c21e0741a664be44d32449d1981841108da66eacb9581c83c2500",
+          "literal_cell": "<TD width='293' height='24' valign='TOP'>Ⅰ. 유동부채</TD>",
+          "lines": [
+            "Ⅰ. 유동부채"
+          ],
+          "attrs": {
+            "width": "293",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/69/1": {
+          "start_character": 17467,
+          "end_character": 17537,
+          "literal_sha256": "96654020d6dc9bb0c34aec49ac831ff2788676aa6a44a10cc032b64edd090def",
+          "literal_cell": "<TD width='152' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "152",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/69/2": {
+          "start_character": 17541,
+          "end_character": 17618,
+          "literal_sha256": "e8d01cbc3e8009170615ee7db476158c244c4542acbcabd264897c77601de5c2",
+          "literal_cell": "<TD width='165' height='24' align='RIGHT' valign='TOP'>3,185,606,250,583</TD>",
+          "lines": [
+            "3,185,606,250,583"
+          ],
+          "attrs": {
+            "width": "165",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/79/0": {
+          "start_character": 19758,
+          "end_character": 19837,
+          "literal_sha256": "29414d35298555a8acf4c7c01d0fdb07e1184e800b89ddc30f99a4a65b0a8b01",
+          "literal_cell": "<TD width='293' height='24' valign='TOP'>&nbsp;&nbsp;유동성장기부채 (주 2, 15, 16)</TD>",
+          "lines": [
+            "유동성장기부채 (주 2, 15, 16)"
+          ],
+          "attrs": {
+            "width": "293",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/79/1": {
+          "start_character": 19841,
+          "end_character": 19911,
+          "literal_sha256": "96654020d6dc9bb0c34aec49ac831ff2788676aa6a44a10cc032b64edd090def",
+          "literal_cell": "<TD width='152' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "152",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/79/2": {
+          "start_character": 19915,
+          "end_character": 19990,
+          "literal_sha256": "be4904fc48f27464422f2a0149888639e1e112a52b70e996466cf067fee378f3",
+          "literal_cell": "<TD width='165' height='24' align='RIGHT' valign='TOP'>161,442,315,119</TD>",
+          "lines": [
+            "161,442,315,119"
+          ],
+          "attrs": {
+            "width": "165",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/91/0": {
+          "start_character": 22613,
+          "end_character": 22702,
+          "literal_sha256": "d7d9b1dd254f697b948c69b9f9e3469160e4986ceb6d0c02e2e4e3800de32216",
+          "literal_cell": "<TD width='293' height='24' valign='TOP'>&nbsp;&nbsp;장기차입금 (주 2, 15, 16, 18, 19, 25)</TD>",
+          "lines": [
+            "장기차입금 (주 2, 15, 16, 18, 19, 25)"
+          ],
+          "attrs": {
+            "width": "293",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/91/1": {
+          "start_character": 22706,
+          "end_character": 22783,
+          "literal_sha256": "080d2ee890477f0cd1a4617fba2217e79eb7ec70ab90a4ca4e8ba8577bf705d2",
+          "literal_cell": "<TD width='152' height='24' align='RIGHT' valign='TOP'>4,195,494,558,639</TD>",
+          "lines": [
+            "4,195,494,558,639"
+          ],
+          "attrs": {
+            "width": "152",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/91/2": {
+          "start_character": 22787,
+          "end_character": 22857,
+          "literal_sha256": "0427a05ebbeb1d37ab9de752269d8309c1e14e266b59dad843d49c9866b909b9",
+          "literal_cell": "<TD width='165' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "165",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/45/0": {
+          "start_character": 11769,
+          "end_character": 11853,
+          "literal_sha256": "905dfe7dd0da0fc57498b62a8c57a0110871e8202d88dd0ddf07a1e7b313d481",
+          "literal_cell": "<TD width='293' height='24' valign='TOP'>&nbsp;(2) 유형자산 (주 2, 8, 9, 10, 11, 29)</TD>",
+          "lines": [
+            "(2) 유형자산 (주 2, 8, 9, 10, 11, 29)"
+          ],
+          "attrs": {
+            "width": "293",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/45/1": {
+          "start_character": 11857,
+          "end_character": 11927,
+          "literal_sha256": "96654020d6dc9bb0c34aec49ac831ff2788676aa6a44a10cc032b64edd090def",
+          "literal_cell": "<TD width='152' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "152",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/45/2": {
+          "start_character": 11931,
+          "end_character": 12008,
+          "literal_sha256": "9d7fcd15eaa0a122a731fec8b0b6cd538a171a0b32885a3235626da1a987b5c8",
+          "literal_cell": "<TD width='165' height='24' align='RIGHT' valign='TOP'>2,460,321,225,944</TD>",
+          "lines": [
+            "2,460,321,225,944"
+          ],
+          "attrs": {
+            "width": "165",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/71/0": {
+          "start_character": 17880,
+          "end_character": 17959,
+          "literal_sha256": "9043a46aa17f8b68e91cf206bd6c237bfa1b5ebd09d6665d58dce6d42f7ffd62",
+          "literal_cell": "<TD width='293' height='24' valign='TOP'>&nbsp;&nbsp;단기차입금 (주 2, 16)&nbsp;</TD>",
+          "lines": [
+            "단기차입금 (주 2, 16)"
+          ],
+          "attrs": {
+            "width": "293",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/71/1": {
+          "start_character": 17963,
+          "end_character": 18033,
+          "literal_sha256": "96654020d6dc9bb0c34aec49ac831ff2788676aa6a44a10cc032b64edd090def",
+          "literal_cell": "<TD width='152' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "152",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/71/2": {
+          "start_character": 18037,
+          "end_character": 18112,
+          "literal_sha256": "e0831b649a27b50cadfd3a6bf7c85b1855bece4521bb2fb7bd93941f0aa1bcef",
+          "literal_cell": "<TD width='165' height='24' align='RIGHT' valign='TOP'>641,600,821,228</TD>",
+          "lines": [
+            "641,600,821,228"
+          ],
+          "attrs": {
+            "width": "165",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "6/3/0": {
+          "start_character": 101365,
+          "end_character": 101435,
+          "literal_sha256": "7c443d52ea2c2c9c7242388dc22aa80666e4983d408d4022a6adfa376daf4939",
+          "literal_cell": "<TD width='281' height='24' valign='TOP'>Ⅱ. 매출원가 (주 2, 7, 12, 24)</TD>",
+          "lines": [
+            "Ⅱ. 매출원가 (주 2, 7, 12, 24)"
+          ],
+          "attrs": {
+            "width": "281",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "6/3/1": {
+          "start_character": 101439,
+          "end_character": 101509,
+          "literal_sha256": "9f61e219fa4fd8a94e853076690b612d79600e81c506bb7bda718f2b9ee5b037",
+          "literal_cell": "<TD width='166' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "166",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "6/3/2": {
+          "start_character": 101513,
+          "end_character": 101590,
+          "literal_sha256": "ddbca5161ebec10c89bc7d4a408ed9bc65a61561a631c3029fb9afbc11bd2281",
+          "literal_cell": "<TD width='162' height='24' align='RIGHT' valign='TOP'>2,595,895,918,173</TD>",
+          "lines": [
+            "2,595,895,918,173"
+          ],
+          "attrs": {
+            "width": "162",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "6/3/3": {
+          "start_character": 101594,
+          "end_character": 101664,
+          "literal_sha256": "392337a099ee4862976cbdb9d39132e29efff7c0cd2e03bc38ebbd4a66e12a83",
+          "literal_cell": "<TD width='155' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "155",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "6/3/4": {
+          "start_character": 101668,
+          "end_character": 101745,
+          "literal_sha256": "f673747f1821e8a958b5385e861bd381cb8b5c5c5fc1c9a4d60484e30cccff11",
+          "literal_cell": "<TD width='155' height='24' align='RIGHT' valign='TOP'>4,291,410,842,258</TD>",
+          "lines": [
+            "4,291,410,842,258"
+          ],
+          "attrs": {
+            "width": "155",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "6/4/0": {
+          "start_character": 101762,
+          "end_character": 101816,
+          "literal_sha256": "a50931552eddb9c105042c6549e7ef61a9519a8e9ca40313589a389e71a79cd4",
+          "literal_cell": "<TD width='281' height='24' valign='TOP'>Ⅲ. 매출총이익</TD>",
+          "lines": [
+            "Ⅲ. 매출총이익"
+          ],
+          "attrs": {
+            "width": "281",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "6/4/1": {
+          "start_character": 101820,
+          "end_character": 101890,
+          "literal_sha256": "9f61e219fa4fd8a94e853076690b612d79600e81c506bb7bda718f2b9ee5b037",
+          "literal_cell": "<TD width='166' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "166",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "6/4/2": {
+          "start_character": 101894,
+          "end_character": 101969,
+          "literal_sha256": "b43d67cb76f9834c4eb798c1f46985ba5f719677fe23e2bca6e8c775f4809cc1",
+          "literal_cell": "<TD width='162' height='24' align='RIGHT' valign='TOP'>554,622,595,920</TD>",
+          "lines": [
+            "554,622,595,920"
+          ],
+          "attrs": {
+            "width": "162",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "6/4/3": {
+          "start_character": 101973,
+          "end_character": 102043,
+          "literal_sha256": "392337a099ee4862976cbdb9d39132e29efff7c0cd2e03bc38ebbd4a66e12a83",
+          "literal_cell": "<TD width='155' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "155",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "6/4/4": {
+          "start_character": 102047,
+          "end_character": 102122,
+          "literal_sha256": "cf308d251167f87de43bb8f6ab2875ab3f0130aee5eaae2b046961f20e67153d",
+          "literal_cell": "<TD width='155' height='24' align='RIGHT' valign='TOP'>725,414,338,062</TD>",
+          "lines": [
+            "725,414,338,062"
+          ],
+          "attrs": {
+            "width": "155",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "6/6/0": {
+          "start_character": 102529,
+          "end_character": 102589,
+          "literal_sha256": "8bc409f17215f8a64ffa1db9d8836271992c4022cb74621e4bb08fe05102d42f",
+          "literal_cell": "<TD width='281' height='24' valign='TOP'>Ⅴ. 영업이익 (주 29)</TD>",
+          "lines": [
+            "Ⅴ. 영업이익 (주 29)"
+          ],
+          "attrs": {
+            "width": "281",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "6/6/1": {
+          "start_character": 102593,
+          "end_character": 102663,
+          "literal_sha256": "9f61e219fa4fd8a94e853076690b612d79600e81c506bb7bda718f2b9ee5b037",
+          "literal_cell": "<TD width='166' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "166",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "6/6/2": {
+          "start_character": 102667,
+          "end_character": 102745,
+          "literal_sha256": "33675ee0ba2dc55d1dd19f804adae7e619f1d4d5b02e3947eeb14dec507d8678",
+          "literal_cell": "<TD width='162' height='24' align='RIGHT' valign='TOP'>(-)112,165,454,689</TD>",
+          "lines": [
+            "(-)112,165,454,689"
+          ],
+          "attrs": {
+            "width": "162",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "6/6/3": {
+          "start_character": 102749,
+          "end_character": 102819,
+          "literal_sha256": "392337a099ee4862976cbdb9d39132e29efff7c0cd2e03bc38ebbd4a66e12a83",
+          "literal_cell": "<TD width='155' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "155",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "6/6/4": {
+          "start_character": 102823,
+          "end_character": 102897,
+          "literal_sha256": "4f6a8147e64143c8e576a604e0e87628c97728c60f650c16c8b680b5a99acebe",
+          "literal_cell": "<TD width='155' height='24' align='RIGHT' valign='TOP'>27,200,840,964</TD>",
+          "lines": [
+            "27,200,840,964"
+          ],
+          "attrs": {
+            "width": "155",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        }
+      },
+      "headers": {
+        "1": {
+          "date_unit_rows": [
+            [
+              "제 38 기 3분기 2000. 09. 30 현재"
+            ],
+            [
+              "제 37 기        1999. 12. 31 현재"
+            ],
+            [
+              "제 36 기        1998. 12. 31 현재"
+            ],
+            [
+              "(단위 : 원)"
+            ]
+          ],
+          "numeric_column_cells": [
+            {
+              "text": "과                        목",
+              "attrs": {
+                "width": "293",
+                "height": "38",
+                "rowspan": "2"
+              },
+              "literal_cell": "<TH width='293' height='38' rowspan='2'>과 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목</TH>",
+              "start_character": 1165,
+              "end_character": 1351
+            },
+            {
+              "text": "제 38 기 3분기",
+              "attrs": {
+                "width": "317",
+                "height": "24",
+                "colspan": "2"
+              },
+              "literal_cell": "<TH width='317' height='24' colspan='2'>제 38 기 3분기</TH>",
+              "start_character": 1355,
+              "end_character": 1410
+            }
+          ],
+          "date_unit_cells": [
+            {
+              "start_character": 653,
+              "end_character": 727,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 38 기 3분기 2000. 09. 30 현재</TD>",
+              "literal_sha256": "3c94086ede61dd85069ebead8622df1d25a8cc3677be87a8a58dc706021badd1"
+            },
+            {
+              "start_character": 744,
+              "end_character": 856,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 37 기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1999. 12. 31 현재</TD>",
+              "literal_sha256": "55e90d1b25f07ef698da4d43a205f21204ef67faf1c54bd0fc121675229f313a"
+            },
+            {
+              "start_character": 873,
+              "end_character": 985,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 36 기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1998. 12. 31 현재</TD>",
+              "literal_sha256": "7207e155ba0cf9c8b79ecd3d8eb7e6b270edc99adb857f64b5ebbb017cf295e4"
+            },
+            {
+              "start_character": 1002,
+              "end_character": 1073,
+              "literal_cell": "<TD width='600' height='24' align='RIGHT' valign='BOTTOM'>(단위 : 원)</TD>",
+              "literal_sha256": "fb5f24ba266303705e018b9b4b68d2091ea9f17a13f5f8b89692bf4d90ac6293"
+            }
+          ]
+        },
+        "6": {
+          "date_unit_rows": [
+            [
+              "제 38 기 3분기 (2000. 01. 01 부터 2000. 09. 30 까지)"
+            ],
+            [
+              "제 37 기        (1999. 01. 01 부터 1999. 12. 31 까지)"
+            ],
+            [
+              "(단위 : 원 )"
+            ]
+          ],
+          "numeric_column_cells": [
+            {
+              "text": "과                        목",
+              "attrs": {
+                "width": "281",
+                "height": "38",
+                "rowspan": "2"
+              },
+              "literal_cell": "<TH width='281' height='38' rowspan='2'>과 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목</TH>",
+              "start_character": 100416,
+              "end_character": 100602
+            },
+            {
+              "text": "제38기 3분기",
+              "attrs": {
+                "width": "328",
+                "height": "24",
+                "colspan": "2"
+              },
+              "literal_cell": "<TH width='328' height='24' colspan='2'>제38기 3분기</TH>",
+              "start_character": 100606,
+              "end_character": 100659
+            },
+            {
+              "text": "제   37    기",
+              "attrs": {
+                "width": "310",
+                "height": "24",
+                "colspan": "2"
+              },
+              "literal_cell": "<TH width='310' height='24' colspan='2'>제 &nbsp;&nbsp;37 &nbsp;&nbsp;&nbsp;기</TH>",
+              "start_character": 100663,
+              "end_character": 100744
+            }
+          ],
+          "date_unit_cells": [
+            {
+              "start_character": 99996,
+              "end_character": 100088,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 38 기 3분기 (2000. 01. 01 부터 2000. 09. 30 까지)</TD>",
+              "literal_sha256": "2216c1a61df4d68dde1b387f28b10592cc5cc2d0c0b6adbe955d7229c347b86a"
+            },
+            {
+              "start_character": 100105,
+              "end_character": 100235,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 37 기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1999. 01. 01 부터 1999. 12. 31 까지)</TD>",
+              "literal_sha256": "22de7eba26f3bcf7de25cc2f36eda482e52c5a99e7a9d3af100c1ed354fc65c0"
+            },
+            {
+              "start_character": 100252,
+              "end_character": 100324,
+              "literal_cell": "<TD width='600' height='24' align='RIGHT' valign='BOTTOM'>(단위 : 원 )</TD>",
+              "literal_sha256": "70ad7d3ff7cde59d697ecdf0e8c5f29d71c732f614cd6ddbef304c59aa92379b"
+            }
+          ]
+        }
+      },
+      "semantic_context": {
+        "1/84": [
+          {
+            "start_character": 20938,
+            "end_character": 20991,
+            "literal_cell": "<TD width='293' height='24' valign='TOP'>Ⅱ. 고정부채</TD>",
+            "literal_sha256": "2554b5a0058dc1d45d8b5c8474f5c2e116938c63d05019ddc3ce6ff130c32259",
+            "text": "Ⅱ. 고정부채"
+          },
+          {
+            "start_character": 20995,
+            "end_character": 21065,
+            "literal_cell": "<TD width='152' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+            "literal_sha256": "96654020d6dc9bb0c34aec49ac831ff2788676aa6a44a10cc032b64edd090def",
+            "text": " |  | "
+          },
+          {
+            "start_character": 21069,
+            "end_character": 21146,
+            "literal_cell": "<TD width='165' height='24' align='RIGHT' valign='TOP'>7,293,328,199,035</TD>",
+            "literal_sha256": "13e9ee6b6e773b2c743d2a43d44fdf41730822293a57e66540f064b7ee8fe469",
+            "text": "7,293,328,199,035"
+          }
+        ],
+        "1/86": [
+          {
+            "start_character": 21409,
+            "end_character": 21475,
+            "literal_cell": "<TD width='293' height='24' valign='TOP'>&nbsp;&nbsp;사채할인발행차금</TD>",
+            "literal_sha256": "c4669dd50a4ba13b7b9368bb2a00bad03e1fa41a11a9c1230ac4a8b6caa291b3",
+            "text": "  사채할인발행차금"
+          },
+          {
+            "start_character": 21479,
+            "end_character": 21556,
+            "literal_cell": "<TD width='152' height='24' align='RIGHT' valign='TOP'>(-)30,534,618,948</TD>",
+            "literal_sha256": "f1fa59e1165b5040cbc7463efe1f899043224a00eec2abbc6ce138e8bdf4e5a6",
+            "text": "(-)30,534,618,948"
+          },
+          {
+            "start_character": 21560,
+            "end_character": 21630,
+            "literal_cell": "<TD width='165' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+            "literal_sha256": "0427a05ebbeb1d37ab9de752269d8309c1e14e266b59dad843d49c9866b909b9",
+            "text": " |  | "
+          }
+        ],
+        "1/87": [
+          {
+            "start_character": 21647,
+            "end_character": 21713,
+            "literal_cell": "<TD width='293' height='24' valign='TOP'>&nbsp;&nbsp;현재가치할인차금</TD>",
+            "literal_sha256": "20ad3de2d19b78bbc2ead55d79ac0471228048dfb378e930a93fb30208d219b3",
+            "text": "  현재가치할인차금"
+          },
+          {
+            "start_character": 21717,
+            "end_character": 21795,
+            "literal_cell": "<TD width='152' height='24' align='RIGHT' valign='TOP'>(-)629,879,557,043</TD>",
+            "literal_sha256": "b71e95bd5fd3b09346ad1c2b70b450a2eacb0782c69e9eb4b20c95919c201a07",
+            "text": "(-)629,879,557,043"
+          },
+          {
+            "start_character": 21799,
+            "end_character": 21876,
+            "literal_cell": "<TD width='165' height='24' align='RIGHT' valign='TOP'>2,826,678,664,009</TD>",
+            "literal_sha256": "9feeff93d9bb04d151bf64ccbada7c9e61efba413016ffd527af0d915b6a27f0",
+            "text": "2,826,678,664,009"
+          }
+        ]
+      }
+    },
+    "20010104000076": {
+      "file": "viewer-section-20010104000076-2417.html.gz",
+      "capture": {
+        "rcept_no": "20010104000076",
+        "eleId": "2417",
+        "heading": "3. 재무제표",
+        "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20010104000076&dcmNo=127163&eleId=2417&offset=272092&length=54340&dtd=dart2.dtd",
+        "body_sha256": "f9cc8a723d53da9f27177c6af1caa2119d54142cf3a8163037b58932c503a5f2",
+        "body_bytes": 55542,
+        "source_encoding": "utf-8",
+        "pointer_sha256": "10884a5fdc5f371ded64b9c0cdca88073fbc8f30b6448ff3811997a47319452a",
+        "actions_run_id": "36994245000",
+        "http_status": 200
+      },
+      "gzip_sha256": "c862f6719c5b7aba506f44e2c7888c8ee643a6afc8e3f3791efc05cf0ad22d02",
+      "cells": {
+        "1/1/0": {
+          "start_character": 1174,
+          "end_character": 4697,
+          "literal_sha256": "f8e53427c7c1e6cffa986bc90e262830638b684828182fc1206377e5eb3fb2fa",
+          "literal_cell": "<TD width='206' height='1688' valign='TOP'>&nbsp;자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;산<BR/>Ⅰ. 유 &nbsp;&nbsp;&nbsp;&nbsp;동 &nbsp;&nbsp;&nbsp;&nbsp;자 &nbsp;&nbsp;&nbsp;&nbsp;산<BR/> (1) 당 &nbsp;&nbsp;&nbsp;좌 &nbsp;&nbsp;&nbsp;자 &nbsp;&nbsp;&nbsp;산 <BR/> &nbsp;1. 현금및현금등가물<BR/> &nbsp;2. 당좌예금<BR/> &nbsp;3. 단기금융상품<BR/> &nbsp;4. 유가증권<BR/> &nbsp;5. 매출채권<BR/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대손충당금<BR/> &nbsp;6. 미수금<BR/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대손충당금<BR/> &nbsp;7. 미수수익<BR/> &nbsp;8. 선급금<BR/> &nbsp;9. 선급비용<BR/> &nbsp;10. 선급제세<BR/> &nbsp;11. 가지급금<BR/><BR/> (2) 재 &nbsp;&nbsp;&nbsp;고 &nbsp;&nbsp;&nbsp;자 &nbsp;&nbsp;&nbsp;산<BR/> &nbsp;1. 상 &nbsp;&nbsp;&nbsp;&nbsp;품<BR/> &nbsp;2. 제 &nbsp;&nbsp;&nbsp;&nbsp;품<BR/> &nbsp;3. 재 공 품<BR/> &nbsp;4. 원 재 료<BR/> &nbsp;5. 부 재 료<BR/> &nbsp;6. 저 장 품<BR/> &nbsp;7. 미 착 품<BR/><BR/>Ⅱ. 고 &nbsp;&nbsp;&nbsp;&nbsp;정 &nbsp;&nbsp;&nbsp;&nbsp;자 &nbsp;&nbsp;&nbsp;&nbsp;산<BR/><BR/> (1) 투 &nbsp;&nbsp;&nbsp;자 &nbsp;&nbsp;&nbsp;자 &nbsp;&nbsp;&nbsp;산<BR/> &nbsp;1. 장기금융상품<BR/> &nbsp;2. 투자유가증권<BR/> &nbsp;3. 보증금<BR/> &nbsp;4. 단체퇴직보험예치금<BR/><BR/>(2) 유 &nbsp;&nbsp;&nbsp;형 &nbsp;&nbsp;&nbsp;자 &nbsp;&nbsp;&nbsp;산<BR/> &nbsp;1. 토 &nbsp;&nbsp;&nbsp;&nbsp;지<BR/> &nbsp;2. 건 &nbsp;&nbsp;&nbsp;&nbsp;물<BR/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;감가상각누계액<BR/> &nbsp;3. 구 축 물<BR/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;감가상각누계액<BR/> &nbsp;4. 기계장치<BR/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;감가상각누계액<BR/> &nbsp;5. 차량운반구<BR/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;감가상각누계액<BR/> &nbsp;6. 공기구비품<BR/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;감가상각누계액<BR/> &nbsp;7. 입 &nbsp;&nbsp;&nbsp;&nbsp;목<BR/> &nbsp;8. 건설중인자산<BR/><BR/> (3) 무 &nbsp;&nbsp;&nbsp;형 &nbsp;&nbsp;&nbsp;자 &nbsp;&nbsp;&nbsp;산<BR/> &nbsp;1. 산업재산권<BR/> &nbsp;2. 기타의무형자산<BR/><BR/> &nbsp;자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;산 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;총 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;계<BR/><BR/> &nbsp;부 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;채<BR/>Ⅰ. 유 &nbsp;&nbsp;&nbsp;&nbsp;동 &nbsp;&nbsp;&nbsp;&nbsp;부 &nbsp;&nbsp;&nbsp;&nbsp;채<BR/> &nbsp;1. 매입채무<BR/> &nbsp;2. 단기차입금<BR/> &nbsp;3. 미지급금<BR/> &nbsp;4. 선수금<BR/> &nbsp;5. 예수금<BR/> &nbsp;6. 미지급비용<BR/> &nbsp;7. 미지급법인세<BR/> &nbsp;8. 미지급배당금<BR/> &nbsp;9. 부가세예수금<BR/> 10. 수입보증금<BR/> 11. 유동성장기부채<BR/><BR/>Ⅱ. 고정부채<BR/> &nbsp;1. 전환사채<BR/> &nbsp;2. 장기차입금<BR/> &nbsp;3. 장기미지급금<BR/> &nbsp;4. 퇴직급여충당금<BR/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;국민연금전환금<BR/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;퇴직신탁예치금<BR/> &nbsp;5. 보증채무<BR/><BR/> &nbsp;부 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;채 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;총 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;계<BR/><BR/> &nbsp;자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;본<BR/>Ⅰ. 자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;본 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;금<BR/> &nbsp;1. 보통주자본금<BR/><BR/>Ⅱ. 이 &nbsp;&nbsp;월 &nbsp;&nbsp;결 &nbsp;&nbsp;손 &nbsp;&nbsp;금<BR/> &nbsp;1. 차기이월결손금<BR/>(당기순손실:6,516,196,541원)<BR/><BR/>Ⅲ. 자 &nbsp;&nbsp;&nbsp;&nbsp;본 &nbsp;&nbsp;&nbsp;&nbsp;조 &nbsp;&nbsp;&nbsp;&nbsp;정<BR/> &nbsp;1. 자기주식처분손실<BR/><BR/> &nbsp;자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;본 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;총 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;계<BR/><BR/> &nbsp;부 &nbsp;채 &nbsp;&nbsp;와 &nbsp;&nbsp;자 &nbsp;본 &nbsp;총 &nbsp;계</TD>",
+          "lines": [
+            "자 산",
+            "Ⅰ. 유 동 자 산",
+            "(1) 당 좌 자 산",
+            "1. 현금및현금등가물",
+            "2. 당좌예금",
+            "3. 단기금융상품",
+            "4. 유가증권",
+            "5. 매출채권",
+            "대손충당금",
+            "6. 미수금",
+            "대손충당금",
+            "7. 미수수익",
+            "8. 선급금",
+            "9. 선급비용",
+            "10. 선급제세",
+            "11. 가지급금",
+            "",
+            "(2) 재 고 자 산",
+            "1. 상 품",
+            "2. 제 품",
+            "3. 재 공 품",
+            "4. 원 재 료",
+            "5. 부 재 료",
+            "6. 저 장 품",
+            "7. 미 착 품",
+            "",
+            "Ⅱ. 고 정 자 산",
+            "",
+            "(1) 투 자 자 산",
+            "1. 장기금융상품",
+            "2. 투자유가증권",
+            "3. 보증금",
+            "4. 단체퇴직보험예치금",
+            "",
+            "(2) 유 형 자 산",
+            "1. 토 지",
+            "2. 건 물",
+            "감가상각누계액",
+            "3. 구 축 물",
+            "감가상각누계액",
+            "4. 기계장치",
+            "감가상각누계액",
+            "5. 차량운반구",
+            "감가상각누계액",
+            "6. 공기구비품",
+            "감가상각누계액",
+            "7. 입 목",
+            "8. 건설중인자산",
+            "",
+            "(3) 무 형 자 산",
+            "1. 산업재산권",
+            "2. 기타의무형자산",
+            "",
+            "자 산 총 계",
+            "",
+            "부 채",
+            "Ⅰ. 유 동 부 채",
+            "1. 매입채무",
+            "2. 단기차입금",
+            "3. 미지급금",
+            "4. 선수금",
+            "5. 예수금",
+            "6. 미지급비용",
+            "7. 미지급법인세",
+            "8. 미지급배당금",
+            "9. 부가세예수금",
+            "10. 수입보증금",
+            "11. 유동성장기부채",
+            "",
+            "Ⅱ. 고정부채",
+            "1. 전환사채",
+            "2. 장기차입금",
+            "3. 장기미지급금",
+            "4. 퇴직급여충당금",
+            "국민연금전환금",
+            "퇴직신탁예치금",
+            "5. 보증채무",
+            "",
+            "부 채 총 계",
+            "",
+            "자 본",
+            "Ⅰ. 자 본 금",
+            "1. 보통주자본금",
+            "",
+            "Ⅱ. 이 월 결 손 금",
+            "1. 차기이월결손금",
+            "(당기순손실:6,516,196,541원)",
+            "",
+            "Ⅲ. 자 본 조 정",
+            "1. 자기주식처분손실",
+            "",
+            "자 본 총 계",
+            "",
+            "부 채 와 자 본 총 계"
+          ],
+          "attrs": {
+            "width": "206",
+            "height": "1688",
+            "valign": "TOP"
+          }
+        },
+        "1/1/1": {
+          "start_character": 4701,
+          "end_character": 6143,
+          "literal_sha256": "2c6f0e0d23b610ef10bf68688a807f36076ea86505f6a3fccc925f0d1e814b26",
+          "literal_cell": "<TD width='190' height='1688' align='RIGHT' valign='TOP'><BR/>28,343,368,159<BR/>20,118,623,269<BR/>1,321,673,222<BR/>8,079,734<BR/>1,267,901,000<BR/>3,185,000<BR/>36,797,457,537<BR/>-19,674,522,792<BR/>124,522,752<BR/>-1,313,318<BR/>16,053,635<BR/>147,290,783<BR/>108,174<BR/>102,687,542<BR/>5,500,000<BR/><BR/>8,224,744,890<BR/>201,139,919<BR/>3,568,832,912<BR/>527,467,375<BR/>1,341,815,095<BR/>1,612,093,282<BR/>930,563,674<BR/>42,832,633<BR/><BR/>31,910,792,902<BR/><BR/>1,442,143,812<BR/>10,500,000<BR/>87,703,250<BR/>1,296,516,798<BR/>47,423,764<BR/><BR/>30,310,824,319<BR/>11,166,210,130<BR/>14,536,735,740<BR/>-3,204,518,212<BR/>217,838,421<BR/>-134,250,910<BR/>3,057,814,284<BR/>-2,763,767,765<BR/>791,801,421<BR/>-734,075,769<BR/>17,106,380,623<BR/>-13,208,681,671<BR/>54,740,000<BR/>3,424,598,027<BR/><BR/>157,824,771<BR/>149,997,591<BR/>7,827,180<BR/><BR/>60,254,161,061<BR/><BR/><BR/>12,253,448,444<BR/>5,093,804,620<BR/>500,000,000<BR/>1,441,618,492<BR/>-1<BR/>230,311,609<BR/>810,671,143<BR/>23,028,756<BR/>19,899,690<BR/>406,120,505<BR/>3,395,230,417<BR/>332,763,213<BR/><BR/>76,714,077,288<BR/>5,000,000,000<BR/>57,437,172,226<BR/>1,898,869,254<BR/>4,284,018,133<BR/>328,714,670<BR/>10,074,196<BR/>8,432,806,541<BR/><BR/>88,967,525,732<BR/><BR/><BR/>7,500,000,000<BR/>7,500,000,000<BR/><BR/>△36,091,561,271<BR/>△36,091,561,271<BR/><BR/><BR/>△121,803,400<BR/>△121,803,400<BR/><BR/>△28,713,364,671<BR/><BR/>60,254,161,061</TD>",
+          "lines": [
+            "",
+            "28,343,368,159",
+            "20,118,623,269",
+            "1,321,673,222",
+            "8,079,734",
+            "1,267,901,000",
+            "3,185,000",
+            "36,797,457,537",
+            "-19,674,522,792",
+            "124,522,752",
+            "-1,313,318",
+            "16,053,635",
+            "147,290,783",
+            "108,174",
+            "102,687,542",
+            "5,500,000",
+            "",
+            "8,224,744,890",
+            "201,139,919",
+            "3,568,832,912",
+            "527,467,375",
+            "1,341,815,095",
+            "1,612,093,282",
+            "930,563,674",
+            "42,832,633",
+            "",
+            "31,910,792,902",
+            "",
+            "1,442,143,812",
+            "10,500,000",
+            "87,703,250",
+            "1,296,516,798",
+            "47,423,764",
+            "",
+            "30,310,824,319",
+            "11,166,210,130",
+            "14,536,735,740",
+            "-3,204,518,212",
+            "217,838,421",
+            "-134,250,910",
+            "3,057,814,284",
+            "-2,763,767,765",
+            "791,801,421",
+            "-734,075,769",
+            "17,106,380,623",
+            "-13,208,681,671",
+            "54,740,000",
+            "3,424,598,027",
+            "",
+            "157,824,771",
+            "149,997,591",
+            "7,827,180",
+            "",
+            "60,254,161,061",
+            "",
+            "",
+            "12,253,448,444",
+            "5,093,804,620",
+            "500,000,000",
+            "1,441,618,492",
+            "-1",
+            "230,311,609",
+            "810,671,143",
+            "23,028,756",
+            "19,899,690",
+            "406,120,505",
+            "3,395,230,417",
+            "332,763,213",
+            "",
+            "76,714,077,288",
+            "5,000,000,000",
+            "57,437,172,226",
+            "1,898,869,254",
+            "4,284,018,133",
+            "328,714,670",
+            "10,074,196",
+            "8,432,806,541",
+            "",
+            "88,967,525,732",
+            "",
+            "",
+            "7,500,000,000",
+            "7,500,000,000",
+            "",
+            "△36,091,561,271",
+            "△36,091,561,271",
+            "",
+            "",
+            "△121,803,400",
+            "△121,803,400",
+            "",
+            "△28,713,364,671",
+            "",
+            "60,254,161,061"
+          ],
+          "attrs": {
+            "width": "190",
+            "height": "1688",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/1/2": {
+          "start_character": 6147,
+          "end_character": 7796,
+          "literal_sha256": "c67a248127d20bbdbe9410d3bfa876e13775cc6c0f80b1a302437372d05a9bb8",
+          "literal_cell": "<TD width='201' height='1688' align='RIGHT' valign='TOP'><BR/>32,674,355,766<BR/>22,369,101,174<BR/>2,375,274,966<BR/><BR/>501,383,000<BR/>138,083,455<BR/>37,621,419,700<BR/>-19,392,895,048<BR/>127,271,256<BR/>-1,272,713<BR/>113,728,830<BR/>21,907,794<BR/>297,829,769<BR/>566,370,165<BR/><BR/><BR/>10,305,254,592<BR/>197,810,062<BR/>5,533,286,515<BR/>486,550,564<BR/>1,362,133,507<BR/>1,619,881,647<BR/>1,045,571,290<BR/>60,021,007<BR/><BR/>36,600,942,999<BR/><BR/>2,074,461,075<BR/>10,500,000<BR/>97,455,753<BR/>1,919,081,558<BR/>47,423,764<BR/><BR/>34,347,028,211<BR/>13,046,835,600<BR/>16,320,375,019<BR/>-3,410,821,762<BR/>557,884,168<BR/>-401,275,596<BR/>3,057,814,284<BR/>-2,680,262,912<BR/>819,503,081<BR/>-730,816,655<BR/>17,180,082,121<BR/>-12,891,627,164<BR/>54,740,000<BR/>3,424,598,027<BR/><BR/>179,453,713<BR/>170,819,793<BR/>8,633,920<BR/><BR/>69,275,298,765<BR/><BR/><BR/>14,659,621,369<BR/>3,817,822,197<BR/>500,000,000<BR/>4,369,950,644<BR/>11,973,630<BR/>503,106,389<BR/>37,307,103<BR/>23,028,756<BR/>19,899,690<BR/>404,002,282<BR/>4,832,609,855<BR/>139,920,823<BR/><BR/>76,812,688,126<BR/>5,000,000,000<BR/>58,115,453,486<BR/>2,199,330,776<BR/>3,454,754,993<BR/>389,657,670<BR/><BR/>8,432,806,541<BR/><BR/>91,472,309,495<BR/><BR/><BR/>7,500,000,000<BR/>7,500,000,000<BR/><BR/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;△29,575,207,330<BR/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;△29,575,207,330<BR/><BR/><BR/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;△121,803,400<BR/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;△121,803,400<BR/><BR/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;△22,197,010,730<BR/><BR/>69,275,298,765</TD>",
+          "lines": [
+            "",
+            "32,674,355,766",
+            "22,369,101,174",
+            "2,375,274,966",
+            "",
+            "501,383,000",
+            "138,083,455",
+            "37,621,419,700",
+            "-19,392,895,048",
+            "127,271,256",
+            "-1,272,713",
+            "113,728,830",
+            "21,907,794",
+            "297,829,769",
+            "566,370,165",
+            "",
+            "",
+            "10,305,254,592",
+            "197,810,062",
+            "5,533,286,515",
+            "486,550,564",
+            "1,362,133,507",
+            "1,619,881,647",
+            "1,045,571,290",
+            "60,021,007",
+            "",
+            "36,600,942,999",
+            "",
+            "2,074,461,075",
+            "10,500,000",
+            "97,455,753",
+            "1,919,081,558",
+            "47,423,764",
+            "",
+            "34,347,028,211",
+            "13,046,835,600",
+            "16,320,375,019",
+            "-3,410,821,762",
+            "557,884,168",
+            "-401,275,596",
+            "3,057,814,284",
+            "-2,680,262,912",
+            "819,503,081",
+            "-730,816,655",
+            "17,180,082,121",
+            "-12,891,627,164",
+            "54,740,000",
+            "3,424,598,027",
+            "",
+            "179,453,713",
+            "170,819,793",
+            "8,633,920",
+            "",
+            "69,275,298,765",
+            "",
+            "",
+            "14,659,621,369",
+            "3,817,822,197",
+            "500,000,000",
+            "4,369,950,644",
+            "11,973,630",
+            "503,106,389",
+            "37,307,103",
+            "23,028,756",
+            "19,899,690",
+            "404,002,282",
+            "4,832,609,855",
+            "139,920,823",
+            "",
+            "76,812,688,126",
+            "5,000,000,000",
+            "58,115,453,486",
+            "2,199,330,776",
+            "3,454,754,993",
+            "389,657,670",
+            "",
+            "8,432,806,541",
+            "",
+            "91,472,309,495",
+            "",
+            "",
+            "7,500,000,000",
+            "7,500,000,000",
+            "",
+            "△29,575,207,330",
+            "△29,575,207,330",
+            "",
+            "",
+            "△121,803,400",
+            "△121,803,400",
+            "",
+            "△22,197,010,730",
+            "",
+            "69,275,298,765"
+          ],
+          "attrs": {
+            "width": "201",
+            "height": "1688",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        }
+      },
+      "headers": {
+        "1": {
+          "date_unit_rows": [
+            [
+              "제 39 기 분기 2000. 09. 30 현재"
+            ],
+            [
+              "제 38 기        1999. 12. 31 현재"
+            ],
+            [
+              "(단위 :원 )"
+            ]
+          ],
+          "numeric_column_cells": [
+            {
+              "text": "과 목",
+              "attrs": {
+                "width": "206",
+                "height": "24"
+              },
+              "literal_cell": "<TH width='206' height='24'>과 목</TH>",
+              "start_character": 1012,
+              "end_character": 1048
+            },
+            {
+              "text": "제 39 기 분기",
+              "attrs": {
+                "width": "190",
+                "height": "24"
+              },
+              "literal_cell": "<TH width='190' height='24'>제 39 기 분기</TH>",
+              "start_character": 1052,
+              "end_character": 1094
+            },
+            {
+              "text": "제 38 연간",
+              "attrs": {
+                "width": "201",
+                "height": "24"
+              },
+              "literal_cell": "<TH width='201' height='24'>제 38 연간</TH>",
+              "start_character": 1098,
+              "end_character": 1138
+            }
+          ],
+          "date_unit_cells": [
+            {
+              "start_character": 644,
+              "end_character": 717,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 39 기 분기 2000. 09. 30 현재</TD>",
+              "literal_sha256": "9ff75179464a23a3cb5b29f9b607f7a5b4ee3426c5734fa88db1a16f49b6f714"
+            },
+            {
+              "start_character": 734,
+              "end_character": 846,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 38 기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1999. 12. 31 현재</TD>",
+              "literal_sha256": "3c9b8a327bacf5a09e21e31a6e6904cca226c627c425d07d5c1525eecc21c645"
+            },
+            {
+              "start_character": 863,
+              "end_character": 934,
+              "literal_cell": "<TD width='600' height='24' align='RIGHT' valign='BOTTOM'>(단위 :원 )</TD>",
+              "literal_sha256": "3ab9378735a119fc0bcccd9fa968bf2b096f1632df0d5c8caaabf8f2889ff3b5"
+            }
+          ]
+        },
+        "5": {
+          "date_unit_rows": [
+            [
+              "제 39 기 (2000. 01. 01 부터 2000. 09. 30 까지)"
+            ],
+            [
+              "제 38 기 (1999. 01. 01 부터 1999. 12. 31 까지)"
+            ],
+            [
+              "(단위 : 원)"
+            ]
+          ],
+          "date_unit_cells": [
+            {
+              "start_character": 16641,
+              "end_character": 16729,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 39 기 (2000. 01. 01 부터 2000. 09. 30 까지)</TD>",
+              "literal_sha256": "7407d08810f87194ded9230226540c774735e10ef572c5773f25a87d614f98be"
+            },
+            {
+              "start_character": 16746,
+              "end_character": 16834,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 38 기 (1999. 01. 01 부터 1999. 12. 31 까지)</TD>",
+              "literal_sha256": "6a0bf9984c868b100b342ab691941891f090bae285b50522b5823581ca627831"
+            },
+            {
+              "start_character": 16851,
+              "end_character": 16922,
+              "literal_cell": "<TD width='600' height='24' align='RIGHT' valign='BOTTOM'>(단위 : 원)</TD>",
+              "literal_sha256": "fb5f24ba266303705e018b9b4b68d2091ea9f17a13f5f8b89692bf4d90ac6293"
+            }
+          ],
+          "numeric_column_cells": [
+            {
+              "text": "과 목",
+              "attrs": {
+                "width": "243",
+                "height": "24"
+              },
+              "literal_cell": "<TH width='243' height='24'>과 목</TH>",
+              "start_character": 17000,
+              "end_character": 17036
+            },
+            {
+              "text": "제 39기 분기",
+              "attrs": {
+                "width": "179",
+                "height": "24"
+              },
+              "literal_cell": "<TH width='179' height='24'>제 39기 분기</TH>",
+              "start_character": 17040,
+              "end_character": 17081
+            },
+            {
+              "text": "제 38 기 연간",
+              "attrs": {
+                "width": "177",
+                "height": "24"
+              },
+              "literal_cell": "<TH width='177' height='24'>제 38 기 연간</TH>",
+              "start_character": 17085,
+              "end_character": 17127
+            }
+          ]
+        }
+      },
+      "semantic_context": {}
+    },
+    "20010213000010": {
+      "file": "viewer-section-20010213000010-3163.html.gz",
+      "capture": {
+        "rcept_no": "20010213000010",
+        "eleId": "3163",
+        "heading": "3. 재무제표",
+        "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20010213000010&dcmNo=136292&eleId=3163&offset=329772&length=442090&dtd=dart2.dtd",
+        "body_sha256": "c24959a83d276b240e52800f2b4421ee945db9a354e5db9c09627ce35b4b3246",
+        "body_bytes": 261223,
+        "source_encoding": "utf-8",
+        "pointer_sha256": "851dae0e85e346de0a7a0b96ec8a74844b621f830c9e5733c415e9cfd457e68d",
+        "actions_run_id": "36994245000",
+        "http_status": 200
+      },
+      "gzip_sha256": "38967af54f519dff98630d84e4ed4f43e1e9afdae2e7448915c692332b7ad6fc",
+      "cells": {
+        "1/68/0": {
+          "start_character": 12174,
+          "end_character": 12274,
+          "literal_sha256": "d127007214d6f717ac96446f4736a02fb4885ae1e7e0036ebe3153eac3664441",
+          "literal_cell": "<TD width='312' height='24' valign='TOP'>1. 사 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;채</TD>",
+          "lines": [
+            "1. 사 채"
+          ],
+          "attrs": {
+            "width": "312",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/68/1": {
+          "start_character": 12278,
+          "end_character": 12352,
+          "literal_sha256": "2bd44514881648ad8790517c553de5f0d3dac84c85135c02d70c549939656d1b",
+          "literal_cell": "<TD width='285' height='24' align='RIGHT' valign='TOP'>10,000,000,000</TD>",
+          "lines": [
+            "10,000,000,000"
+          ],
+          "attrs": {
+            "width": "285",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/4/0": {
+          "start_character": 1569,
+          "end_character": 1628,
+          "literal_sha256": "e567db8ba33b9bf09d1c3035ce0d56f11902b0196457eec847f68c4e8828f468",
+          "literal_cell": "<TD width='312' height='24' valign='TOP'>1. 현금 및 현금등가물</TD>",
+          "lines": [
+            "1. 현금 및 현금등가물"
+          ],
+          "attrs": {
+            "width": "312",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/4/1": {
+          "start_character": 1632,
+          "end_character": 1705,
+          "literal_sha256": "f0f72961b6e7080124dfbd709d081622b118358f55c3763d276e4fa1d980b4dd",
+          "literal_cell": "<TD width='285' height='24' align='RIGHT' valign='TOP'>5,107,654,472</TD>",
+          "lines": [
+            "5,107,654,472"
+          ],
+          "attrs": {
+            "width": "285",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/2/0": {
+          "start_character": 1231,
+          "end_character": 1304,
+          "literal_sha256": "8e2df43acb5e757d282d87047c0a8faedba40433f8f34c9a4ea418997b6f1c6f",
+          "literal_cell": "<TD width='312' height='24' valign='TOP'>Ⅰ.유 &nbsp;동 &nbsp;자 &nbsp;산</TD>",
+          "lines": [
+            "Ⅰ.유 동 자 산"
+          ],
+          "attrs": {
+            "width": "312",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/2/1": {
+          "start_character": 1308,
+          "end_character": 1382,
+          "literal_sha256": "91cad5ccc08f7c6809d795f94bd5b2446956293dfb8b34666024a357c69cfd74",
+          "literal_cell": "<TD width='285' height='24' align='RIGHT' valign='TOP'>83,062,125,714</TD>",
+          "lines": [
+            "83,062,125,714"
+          ],
+          "attrs": {
+            "width": "285",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/52/0": {
+          "start_character": 9620,
+          "end_character": 9694,
+          "literal_sha256": "8d9a5eca2882c8ae2feaf5cad60495cc2082c2e4b6f66c24d9f9fb1d8e1feba0",
+          "literal_cell": "<TD width='312' height='24' valign='TOP'>I. 유 &nbsp;동 &nbsp;부 &nbsp;채</TD>",
+          "lines": [
+            "I. 유 동 부 채"
+          ],
+          "attrs": {
+            "width": "312",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/52/1": {
+          "start_character": 9698,
+          "end_character": 9772,
+          "literal_sha256": "8686397a71ff5a4b109221681bea082ffa81f0998c523b815c477cee09140e23",
+          "literal_cell": "<TD width='285' height='24' align='RIGHT' valign='TOP'>48,502,756,559</TD>",
+          "lines": [
+            "48,502,756,559"
+          ],
+          "attrs": {
+            "width": "285",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/70/0": {
+          "start_character": 12521,
+          "end_character": 12579,
+          "literal_sha256": "79ab0cfcd3ac6e6118cfcca6aa0d23de42e5926d3327a0d7140aa6691314fd15",
+          "literal_cell": "<TD width='312' height='24' valign='TOP'>2. 장 기 차 입 금</TD>",
+          "lines": [
+            "2. 장 기 차 입 금"
+          ],
+          "attrs": {
+            "width": "312",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/70/1": {
+          "start_character": 12583,
+          "end_character": 12657,
+          "literal_sha256": "77554145d48c568b626bd037b521a8169733ff5d28597ea5ed3da133082c8a25",
+          "literal_cell": "<TD width='285' height='24' align='RIGHT' valign='TOP'>37,680,817,616</TD>",
+          "lines": [
+            "37,680,817,616"
+          ],
+          "attrs": {
+            "width": "285",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/35/0": {
+          "start_character": 6795,
+          "end_character": 6858,
+          "literal_sha256": "16be793d42c98885357f4aa0fd63bd040fbe5afda1f1c1ab479a411a28e5b7d7",
+          "literal_cell": "<TD width='312' height='24' valign='TOP'>(2) 유 형 자 &nbsp;산</TD>",
+          "lines": [
+            "(2) 유 형 자 산"
+          ],
+          "attrs": {
+            "width": "312",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/35/1": {
+          "start_character": 6862,
+          "end_character": 6936,
+          "literal_sha256": "e76da2c0c7da300536f03bc1d9efc40e25b30f79f6f0a43a088abbfa6e9fb949",
+          "literal_cell": "<TD width='285' height='24' align='RIGHT' valign='TOP'>68,747,509,097</TD>",
+          "lines": [
+            "68,747,509,097"
+          ],
+          "attrs": {
+            "width": "285",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/54/0": {
+          "start_character": 9957,
+          "end_character": 10015,
+          "literal_sha256": "e6076235850908b1f447096291051b77c088244aa99e62c160f2fceb472bb503",
+          "literal_cell": "<TD width='312' height='24' valign='TOP'>2. 단 기 차 입 금</TD>",
+          "lines": [
+            "2. 단 기 차 입 금"
+          ],
+          "attrs": {
+            "width": "312",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/54/1": {
+          "start_character": 10019,
+          "end_character": 10092,
+          "literal_sha256": "c57e413d9249d944357cfd18058b83431ed89808cf45e793e43e2cda425a256e",
+          "literal_cell": "<TD width='285' height='24' align='RIGHT' valign='TOP'>1,869,864,439</TD>",
+          "lines": [
+            "1,869,864,439"
+          ],
+          "attrs": {
+            "width": "285",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "7/6/0": {
+          "start_character": 49920,
+          "end_character": 49994,
+          "literal_sha256": "56dd01de30243a411779b9e541153db193f659b8bb64a24d6af8de2dc304410c",
+          "literal_cell": "<TD width='310' height='24' valign='TOP'>II.매 &nbsp;출 &nbsp;원 &nbsp;가</TD>",
+          "lines": [
+            "II.매 출 원 가"
+          ],
+          "attrs": {
+            "width": "310",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "7/6/1": {
+          "start_character": 49998,
+          "end_character": 50072,
+          "literal_sha256": "1cf131b60f5240ab7e1983b54c130320e6efd3beee322932c3dc7e5b068533ed",
+          "literal_cell": "<TD width='289' height='24' align='RIGHT' valign='TOP'>34,895,490,421</TD>",
+          "lines": [
+            "34,895,490,421"
+          ],
+          "attrs": {
+            "width": "289",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "7/30/0": {
+          "start_character": 53674,
+          "end_character": 53732,
+          "literal_sha256": "367a64452dfab6ca029bd6be168c9d9133cc93b18ada6eb92d65d92bfd14f0ec",
+          "literal_cell": "<TD width='310' height='24' valign='TOP'>12.감 가 상 각 비</TD>",
+          "lines": [
+            "12.감 가 상 각 비"
+          ],
+          "attrs": {
+            "width": "310",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "7/30/1": {
+          "start_character": 53736,
+          "end_character": 53807,
+          "literal_sha256": "637abaf955f1d1ecf86494160b920a13da7f2850252cf44d18b7d9db7f979c83",
+          "literal_cell": "<TD width='289' height='24' align='RIGHT' valign='TOP'>591,873,922</TD>",
+          "lines": [
+            "591,873,922"
+          ],
+          "attrs": {
+            "width": "289",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "7/17/0": {
+          "start_character": 51586,
+          "end_character": 51645,
+          "literal_sha256": "f148d56a5416cc510d2ae4c84d94c6d0ebcee2dcd3f64457f22d5028d4d419c4",
+          "literal_cell": "<TD width='310' height='24' valign='TOP'>III.매 출 총 이 익</TD>",
+          "lines": [
+            "III.매 출 총 이 익"
+          ],
+          "attrs": {
+            "width": "310",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "7/17/1": {
+          "start_character": 51649,
+          "end_character": 51723,
+          "literal_sha256": "ddd9702ec40648b2ede967c1978054f49b5ec011b1e3d2ebc381ae04669d0641",
+          "literal_cell": "<TD width='289' height='24' align='RIGHT' valign='TOP'>42,529,464,697</TD>",
+          "lines": [
+            "42,529,464,697"
+          ],
+          "attrs": {
+            "width": "289",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "7/47/0": {
+          "start_character": 56556,
+          "end_character": 56630,
+          "literal_sha256": "310c9b4d43106c823142f90bbe28f3f149c786785d234277204cba6c7a06170b",
+          "literal_cell": "<TD width='310' height='24' valign='TOP'>V. 영 &nbsp;업 &nbsp;이 &nbsp;익</TD>",
+          "lines": [
+            "V. 영 업 이 익"
+          ],
+          "attrs": {
+            "width": "310",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "7/47/1": {
+          "start_character": 56634,
+          "end_character": 56708,
+          "literal_sha256": "a2bced65464d180c2db180bfb9e5bcf147e2fca54ed2afe4302563e8a6f6f1b1",
+          "literal_cell": "<TD width='289' height='24' align='RIGHT' valign='TOP'>13,262,918,811</TD>",
+          "lines": [
+            "13,262,918,811"
+          ],
+          "attrs": {
+            "width": "289",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        }
+      },
+      "headers": {
+        "1": {
+          "date_unit_rows": [
+            [
+              "제 58 기 3분기 2000. 12. 31 현재"
+            ],
+            [
+              "(단위 :원 )"
+            ]
+          ],
+          "numeric_column_cells": [
+            {
+              "text": "과 목",
+              "attrs": {
+                "width": "312",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TD width='312' height='24' align='CENTER'>과 목</TD>",
+              "start_character": 884,
+              "end_character": 935
+            },
+            {
+              "text": "제 58기 3분기",
+              "attrs": {
+                "width": "285",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TD width='285' height='24' align='CENTER'>제 58기 3분기</TD>",
+              "start_character": 939,
+              "end_character": 996
+            }
+          ],
+          "date_unit_cells": [
+            {
+              "start_character": 630,
+              "end_character": 704,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 58 기 3분기 2000. 12. 31 현재</TD>",
+              "literal_sha256": "1466e73dd2e826a668575c7700325d129b6aa7c880c09c079e400aeb4a393945"
+            },
+            {
+              "start_character": 721,
+              "end_character": 792,
+              "literal_cell": "<TD width='600' height='24' align='RIGHT' valign='BOTTOM'>(단위 :원 )</TD>",
+              "literal_sha256": "3ab9378735a119fc0bcccd9fa968bf2b096f1632df0d5c8caaabf8f2889ff3b5"
+            }
+          ]
+        },
+        "7": {
+          "date_unit_rows": [
+            [
+              "제 58 기 3분기 (2000. 04. 01 부터 2000. 12. 31 까지)"
+            ],
+            [
+              "(단위 :원 )"
+            ]
+          ],
+          "numeric_column_cells": [
+            {
+              "text": "과 목",
+              "attrs": {
+                "width": "310",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TD width='310' height='24' align='CENTER'>과 목</TD>",
+              "start_character": 49002,
+              "end_character": 49053
+            },
+            {
+              "text": "제 58 기 3분기",
+              "attrs": {
+                "width": "289",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TD width='289' height='24' align='CENTER'>제 58 기 3분기</TD>",
+              "start_character": 49057,
+              "end_character": 49115
+            }
+          ],
+          "date_unit_cells": [
+            {
+              "start_character": 48730,
+              "end_character": 48822,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 58 기 3분기 (2000. 04. 01 부터 2000. 12. 31 까지)</TD>",
+              "literal_sha256": "29ec14ebc6f21fb3801f901c9ff610d9d7b8c95db0750e9901767af9811869b9"
+            },
+            {
+              "start_character": 48839,
+              "end_character": 48910,
+              "literal_cell": "<TD width='600' height='24' align='RIGHT' valign='BOTTOM'>(단위 :원 )</TD>",
+              "literal_sha256": "3ab9378735a119fc0bcccd9fa968bf2b096f1632df0d5c8caaabf8f2889ff3b5"
+            }
+          ]
+        }
+      },
+      "semantic_context": {
+        "1/67": [
+          {
+            "start_character": 12016,
+            "end_character": 12079,
+            "literal_cell": "<TD width='312' height='24' valign='TOP'>II. 고 정 부 &nbsp;채</TD>",
+            "literal_sha256": "95e25e1f1c0b56ffeb29a5cbd6a6814e0d44d0b668ffef3d90ca99441e3ef900",
+            "text": "II. 고 정 부  채"
+          },
+          {
+            "start_character": 12083,
+            "end_character": 12157,
+            "literal_cell": "<TD width='285' height='24' align='RIGHT' valign='TOP'>66,074,057,583</TD>",
+            "literal_sha256": "b52c6b3fd4d8b062dc8c92c8f51224ceaa0b1f054e17db61d5e5c5797237297c",
+            "text": "66,074,057,583"
+          }
+        ],
+        "1/69": [
+          {
+            "start_character": 12369,
+            "end_character": 12429,
+            "literal_cell": "<TD width='312' height='24' valign='TOP'>&nbsp;사채할인발행차금</TD>",
+            "literal_sha256": "97dddebea4862297256d73414b4a1907db308e09a396a3c5db8a690447fe5b1d",
+            "text": " 사채할인발행차금"
+          },
+          {
+            "start_character": 12433,
+            "end_character": 12504,
+            "literal_cell": "<TD width='285' height='24' align='RIGHT' valign='TOP'>174,992,723</TD>",
+            "literal_sha256": "3632458b550c2585ed223e10b37c11ae0790d315f1f845eec6fbe7dcd9e67222",
+            "text": "174,992,723"
+          }
+        ],
+        "7/18": [
+          {
+            "start_character": 51740,
+            "end_character": 51798,
+            "literal_cell": "<TD width='310' height='24' valign='TOP'>IV.판매비 와 관리비</TD>",
+            "literal_sha256": "b9bfceb4c3424ded698cd5f10cac9f77f8fabcd17705b32c8b95a2bbdc5629c1",
+            "text": "IV.판매비 와 관리비"
+          },
+          {
+            "start_character": 51802,
+            "end_character": 51876,
+            "literal_cell": "<TD width='289' height='24' align='RIGHT' valign='TOP'>29,266,545,886</TD>",
+            "literal_sha256": "26ee5cda9c8766befe54869d4aceb7deae4b6916517c5c3750d1183a7a2ddf23",
+            "text": "29,266,545,886"
+          }
+        ]
+      }
+    },
+    "20010213000014": {
+      "file": "viewer-section-20010213000014-3380.html.gz",
+      "capture": {
+        "rcept_no": "20010213000014",
+        "eleId": "3380",
+        "heading": "3. 재무제표",
+        "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20010213000014&dcmNo=136300&eleId=3380&offset=372370&length=191641&dtd=dart2.dtd",
+        "body_sha256": "d51a64d69cf25b6061fdf6daaed895bd13b5c5121e570a490a0ab5729984ca1c",
+        "body_bytes": 117935,
+        "source_encoding": "utf-8",
+        "pointer_sha256": "c9d54d3d261ae9bedd6cbf3432559ad1a9a08cd4ba24e0b25aef18ca6c70d553",
+        "actions_run_id": "36994245000",
+        "http_status": 200
+      },
+      "gzip_sha256": "a8a3d66e376ff7d1a55796ef030e5579aa59b9c0a4dd772fe9cf2d16a9e0da80",
+      "cells": {
+        "1/70/0": {
+          "start_character": 27365,
+          "end_character": 27416,
+          "literal_sha256": "84be321dbd812dc0f0d37ada9b25234e5ed867965e63c58a2e0029d378c6344f",
+          "literal_cell": "<TD width='165' height='24' valign='TOP'>1. 사채</TD>",
+          "lines": [
+            "1. 사채"
+          ],
+          "attrs": {
+            "width": "165",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/70/1": {
+          "start_character": 27420,
+          "end_character": 27494,
+          "literal_sha256": "b3c22d371f260e15f43714c38670670c45750307300800cada03936501ed31e5",
+          "literal_cell": "<TD width='140' height='24' align='RIGHT' valign='TOP'>22,762,718,508</TD>",
+          "lines": [
+            "22,762,718,508"
+          ],
+          "attrs": {
+            "width": "140",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/70/2": {
+          "start_character": 27498,
+          "end_character": 27568,
+          "literal_sha256": "7a0df832e20cca26bd60b8e7b420084e0cb060e150db2792c7da7a9a9149c280",
+          "literal_cell": "<TD width='117' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "117",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/70/3": {
+          "start_character": 27572,
+          "end_character": 27646,
+          "literal_sha256": "314bf720a149848e746af022d2741fcca3e62e70389f9956ef69ccbba36f8caf",
+          "literal_cell": "<TD width='138' height='24' align='RIGHT' valign='TOP'>81,867,590,787</TD>",
+          "lines": [
+            "81,867,590,787"
+          ],
+          "attrs": {
+            "width": "138",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/70/4": {
+          "start_character": 27650,
+          "end_character": 27724,
+          "literal_sha256": "bfbe84824b4dd1291d9040867a43300bbde23c3fca572e47e5c5067313ce1703",
+          "literal_cell": "<TD width='134' height='24' align='RIGHT' valign='TOP'>63,993,358,508</TD>",
+          "lines": [
+            "63,993,358,508"
+          ],
+          "attrs": {
+            "width": "134",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/4/0": {
+          "start_character": 2785,
+          "end_character": 2843,
+          "literal_sha256": "c4e5bc4b85f4e07dc731e65796a6b69848e6bdb48dbc98d39c497301f1e8e6b9",
+          "literal_cell": "<TD width='165' height='24' valign='TOP'>1. 현금및 현금등가물</TD>",
+          "lines": [
+            "1. 현금및 현금등가물"
+          ],
+          "attrs": {
+            "width": "165",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/4/1": {
+          "start_character": 2847,
+          "end_character": 2921,
+          "literal_sha256": "86c62e3175c129796fdc3da525a3f078476c5efd2b04a9ce452edaaac8017510",
+          "literal_cell": "<TD width='140' height='24' align='RIGHT' valign='TOP'>78,898,599,478</TD>",
+          "lines": [
+            "78,898,599,478"
+          ],
+          "attrs": {
+            "width": "140",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/4/2": {
+          "start_character": 2925,
+          "end_character": 2995,
+          "literal_sha256": "7a0df832e20cca26bd60b8e7b420084e0cb060e150db2792c7da7a9a9149c280",
+          "literal_cell": "<TD width='117' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "117",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/4/3": {
+          "start_character": 2999,
+          "end_character": 3073,
+          "literal_sha256": "623b58844fbfa749cbdb225310417d32325300d9294eef4aa800b330d997fc82",
+          "literal_cell": "<TD width='138' height='24' align='RIGHT' valign='TOP'>29,622,525,414</TD>",
+          "lines": [
+            "29,622,525,414"
+          ],
+          "attrs": {
+            "width": "138",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/4/4": {
+          "start_character": 3077,
+          "end_character": 3151,
+          "literal_sha256": "4b6ac4768e6415ac7985d29fc765f1455bfa44806f69a3b5a4ebc38c0466ac34",
+          "literal_cell": "<TD width='134' height='24' align='RIGHT' valign='TOP'>46,586,548,915</TD>",
+          "lines": [
+            "46,586,548,915"
+          ],
+          "attrs": {
+            "width": "134",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/51/0": {
+          "start_character": 20328,
+          "end_character": 20384,
+          "literal_sha256": "b1ce7e1880525acd0dc3568f170d6b37025fd23e80ca480836336c57f68fbe61",
+          "literal_cell": "<TD width='165' height='24' valign='TOP'>Ⅰ. 유 동 부 채</TD>",
+          "lines": [
+            "Ⅰ. 유 동 부 채"
+          ],
+          "attrs": {
+            "width": "165",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/51/1": {
+          "start_character": 20388,
+          "end_character": 20463,
+          "literal_sha256": "8eb1649ee159fcf3b44fd4f841558fcaa7997264de5c41d09be74e1470d3e6b9",
+          "literal_cell": "<TD width='140' height='24' align='RIGHT' valign='TOP'>233,527,676,191</TD>",
+          "lines": [
+            "233,527,676,191"
+          ],
+          "attrs": {
+            "width": "140",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/51/2": {
+          "start_character": 20467,
+          "end_character": 20537,
+          "literal_sha256": "7a0df832e20cca26bd60b8e7b420084e0cb060e150db2792c7da7a9a9149c280",
+          "literal_cell": "<TD width='117' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "117",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/51/3": {
+          "start_character": 20541,
+          "end_character": 20618,
+          "literal_sha256": "661098e96353a55b60d42ddd46ec83c7cc37f40dfb7af0cb18d1a9e408193273",
+          "literal_cell": "<TD width='138' height='24' align='RIGHT' valign='TOP'>(108,248,583,171)</TD>",
+          "lines": [
+            "(108,248,583,171)"
+          ],
+          "attrs": {
+            "width": "138",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/51/4": {
+          "start_character": 20622,
+          "end_character": 20699,
+          "literal_sha256": "db44b0b73a4ba512b8b1942061bcdf5b01d245565dc42860fbd346d8e8d74652",
+          "literal_cell": "<TD width='134' height='24' align='RIGHT' valign='TOP'>(226,872,789,095)</TD>",
+          "lines": [
+            "(226,872,789,095)"
+          ],
+          "attrs": {
+            "width": "134",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/74/0": {
+          "start_character": 28877,
+          "end_character": 28931,
+          "literal_sha256": "a4569872a0c070e7dc120aee1a404fd842859d62d95ef2cdc26a0af7a0435fa4",
+          "literal_cell": "<TD width='165' height='24' valign='TOP'>3. 장기차입금</TD>",
+          "lines": [
+            "3. 장기차입금"
+          ],
+          "attrs": {
+            "width": "165",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/74/1": {
+          "start_character": 28935,
+          "end_character": 29009,
+          "literal_sha256": "a0d6aac837b9da68272c3b731f520bedaed8168f2126b592cfceeadae27cc2c4",
+          "literal_cell": "<TD width='140' height='24' align='RIGHT' valign='TOP'>46,125,719,973</TD>",
+          "lines": [
+            "46,125,719,973"
+          ],
+          "attrs": {
+            "width": "140",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/74/2": {
+          "start_character": 29013,
+          "end_character": 29083,
+          "literal_sha256": "7a0df832e20cca26bd60b8e7b420084e0cb060e150db2792c7da7a9a9149c280",
+          "literal_cell": "<TD width='117' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "117",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/74/3": {
+          "start_character": 29087,
+          "end_character": 29161,
+          "literal_sha256": "842976f057a6760162fa39b77ed776410aa68b7061781acf3dc98f422ae2e3bd",
+          "literal_cell": "<TD width='138' height='24' align='RIGHT' valign='TOP'>88,677,838,801</TD>",
+          "lines": [
+            "88,677,838,801"
+          ],
+          "attrs": {
+            "width": "138",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/74/4": {
+          "start_character": 29165,
+          "end_character": 29239,
+          "literal_sha256": "93078d3d04d1ea073db32188f5d88ce30e321c47cf2467ba24df71f638a243ad",
+          "literal_cell": "<TD width='134' height='24' align='RIGHT' valign='TOP'>76,638,381,540</TD>",
+          "lines": [
+            "76,638,381,540"
+          ],
+          "attrs": {
+            "width": "134",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/53/0": {
+          "start_character": 21095,
+          "end_character": 21149,
+          "literal_sha256": "59c41178e37ab87996765e3233deebfed0e66a49c878841cd368d18bbca08704",
+          "literal_cell": "<TD width='165' height='24' valign='TOP'>2. 단기차입금</TD>",
+          "lines": [
+            "2. 단기차입금"
+          ],
+          "attrs": {
+            "width": "165",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "1/53/1": {
+          "start_character": 21153,
+          "end_character": 21227,
+          "literal_sha256": "cedbe864fb9a5eba0bd6219053d038063b51256609eb931f6abf86e1a5666548",
+          "literal_cell": "<TD width='140' height='24' align='RIGHT' valign='TOP'>27,480,500,000</TD>",
+          "lines": [
+            "27,480,500,000"
+          ],
+          "attrs": {
+            "width": "140",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/53/2": {
+          "start_character": 21231,
+          "end_character": 21301,
+          "literal_sha256": "7a0df832e20cca26bd60b8e7b420084e0cb060e150db2792c7da7a9a9149c280",
+          "literal_cell": "<TD width='117' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "117",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/53/3": {
+          "start_character": 21305,
+          "end_character": 21366,
+          "literal_sha256": "f31210c1e3b0c15a7480b28aab473e4d844eb31bb9980b99021a051dc542610b",
+          "literal_cell": "<TD width='138' height='24' align='RIGHT' valign='TOP'>0</TD>",
+          "lines": [
+            "0"
+          ],
+          "attrs": {
+            "width": "138",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "1/53/4": {
+          "start_character": 21370,
+          "end_character": 21444,
+          "literal_sha256": "dd3d4e0bbadc7a5fa041a60fdcfa9340a8f4913e0a531ad942786433ce615b14",
+          "literal_cell": "<TD width='134' height='24' align='RIGHT' valign='TOP'>49,019,082,955</TD>",
+          "lines": [
+            "49,019,082,955"
+          ],
+          "attrs": {
+            "width": "134",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/33/0": {
+          "start_character": 53260,
+          "end_character": 53316,
+          "literal_sha256": "b6405d33fb28f19d5adda658ffe13647aeaf957a8cbae4ad9837fe5b158e8696",
+          "literal_cell": "<TD width='190' height='24' valign='TOP'>24.무형자산상각비</TD>",
+          "lines": [
+            "24.무형자산상각비"
+          ],
+          "attrs": {
+            "width": "190",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "3/33/1": {
+          "start_character": 53320,
+          "end_character": 53390,
+          "literal_sha256": "49499d0b1829bbb813eed797d0206ae885fa52dcea556e3bc289901f2cd10059",
+          "literal_cell": "<TD width='123' height='24' align='RIGHT' valign='TOP'>17,604,826</TD>",
+          "lines": [
+            "17,604,826"
+          ],
+          "attrs": {
+            "width": "123",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/33/2": {
+          "start_character": 53394,
+          "end_character": 53464,
+          "literal_sha256": "8cd2d0aed6fdaae449436fd96a169c40bf451f1bc3293b8f49357b7dd3a84cfe",
+          "literal_cell": "<TD width='112' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "112",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/33/3": {
+          "start_character": 53468,
+          "end_character": 53538,
+          "literal_sha256": "8fba80e07efd2f4edeb6abe5f315c19aaaea4e848a6e2805fb10448baae8a15b",
+          "literal_cell": "<TD width='121' height='24' align='RIGHT' valign='TOP'>22,400,522</TD>",
+          "lines": [
+            "22,400,522"
+          ],
+          "attrs": {
+            "width": "121",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/33/4": {
+          "start_character": 53542,
+          "end_character": 53612,
+          "literal_sha256": "d9c9d111698f585afcb21aac494ae7674ad3da6769c7e471aa7731d50039d37a",
+          "literal_cell": "<TD width='149' height='24' align='RIGHT' valign='TOP'>18,892,070</TD>",
+          "lines": [
+            "18,892,070"
+          ],
+          "attrs": {
+            "width": "149",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/4/0": {
+          "start_character": 42474,
+          "end_character": 42526,
+          "literal_sha256": "9ec9fd6a02012e14164241ee6611b27df003efb9761825987d92d20190775372",
+          "literal_cell": "<TD width='190' height='24' valign='TOP'>Ⅱ.매출원가</TD>",
+          "lines": [
+            "Ⅱ.매출원가"
+          ],
+          "attrs": {
+            "width": "190",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "3/4/1": {
+          "start_character": 42530,
+          "end_character": 42605,
+          "literal_sha256": "a714f496cf3a4af05cc5d7efbcedb2e97ee750f3bb141664b1de895b309a232b",
+          "literal_cell": "<TD width='123' height='24' align='RIGHT' valign='TOP'>262,400,962,134</TD>",
+          "lines": [
+            "262,400,962,134"
+          ],
+          "attrs": {
+            "width": "123",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/4/2": {
+          "start_character": 42609,
+          "end_character": 42679,
+          "literal_sha256": "8cd2d0aed6fdaae449436fd96a169c40bf451f1bc3293b8f49357b7dd3a84cfe",
+          "literal_cell": "<TD width='112' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "112",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/4/3": {
+          "start_character": 42683,
+          "end_character": 42758,
+          "literal_sha256": "d8f1b1c1e20627cf634d04d8f8d708e082a4ceb680767df1d410e132250de7c4",
+          "literal_cell": "<TD width='121' height='24' align='RIGHT' valign='TOP'>319,557,891,558</TD>",
+          "lines": [
+            "319,557,891,558"
+          ],
+          "attrs": {
+            "width": "121",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/4/4": {
+          "start_character": 42762,
+          "end_character": 42837,
+          "literal_sha256": "bb86e9d0cbd1c035d4b7b854b76ce24367d62022272d44cbb1264bbbabad7501",
+          "literal_cell": "<TD width='149' height='24' align='RIGHT' valign='TOP'>271,310,655,994</TD>",
+          "lines": [
+            "271,310,655,994"
+          ],
+          "attrs": {
+            "width": "149",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/16/0": {
+          "start_character": 46968,
+          "end_character": 47021,
+          "literal_sha256": "54ab27691aaa02e85e2264e5b77a91f2f272271a0ba271e084c140444bd27273",
+          "literal_cell": "<TD width='190' height='24' valign='TOP'>7.감가상각비</TD>",
+          "lines": [
+            "7.감가상각비"
+          ],
+          "attrs": {
+            "width": "190",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "3/16/1": {
+          "start_character": 47025,
+          "end_character": 47098,
+          "literal_sha256": "41c06b0192384a95a6f0699a367282bcd77f879cc222b48c30569e57d6f83b66",
+          "literal_cell": "<TD width='123' height='24' align='RIGHT' valign='TOP'>3,407,270,581</TD>",
+          "lines": [
+            "3,407,270,581"
+          ],
+          "attrs": {
+            "width": "123",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/16/2": {
+          "start_character": 47102,
+          "end_character": 47172,
+          "literal_sha256": "8cd2d0aed6fdaae449436fd96a169c40bf451f1bc3293b8f49357b7dd3a84cfe",
+          "literal_cell": "<TD width='112' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "112",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/16/3": {
+          "start_character": 47176,
+          "end_character": 47249,
+          "literal_sha256": "9947df24952131321001370904fe445558f5388d1ff5d3063812c03eeaa1a12f",
+          "literal_cell": "<TD width='121' height='24' align='RIGHT' valign='TOP'>5,152,450,701</TD>",
+          "lines": [
+            "5,152,450,701"
+          ],
+          "attrs": {
+            "width": "121",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/16/4": {
+          "start_character": 47253,
+          "end_character": 47326,
+          "literal_sha256": "e1e05dcf68e94a929c2e643e6efbaa0647bb15ed9f7d8e73844de750a6b76ad3",
+          "literal_cell": "<TD width='149' height='24' align='RIGHT' valign='TOP'>8,909,696,449</TD>",
+          "lines": [
+            "8,909,696,449"
+          ],
+          "attrs": {
+            "width": "149",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/8/0": {
+          "start_character": 43995,
+          "end_character": 44048,
+          "literal_sha256": "542da8a4c82ff811271c5c3fe27dc88c50f930947e969c24c0012b44ba48c963",
+          "literal_cell": "<TD width='190' height='24' valign='TOP'>Ⅲ.매출총이익</TD>",
+          "lines": [
+            "Ⅲ.매출총이익"
+          ],
+          "attrs": {
+            "width": "190",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "3/8/1": {
+          "start_character": 44052,
+          "end_character": 44127,
+          "literal_sha256": "8a169bb6a6d6fcaa08a0aebb31783961e8b799c909ea55759edf9ec193ecb262",
+          "literal_cell": "<TD width='123' height='24' align='RIGHT' valign='TOP'>101,696,999,391</TD>",
+          "lines": [
+            "101,696,999,391"
+          ],
+          "attrs": {
+            "width": "123",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/8/2": {
+          "start_character": 44131,
+          "end_character": 44201,
+          "literal_sha256": "8cd2d0aed6fdaae449436fd96a169c40bf451f1bc3293b8f49357b7dd3a84cfe",
+          "literal_cell": "<TD width='112' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "112",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/8/3": {
+          "start_character": 44205,
+          "end_character": 44280,
+          "literal_sha256": "d6413e617b921b1efd11b38f5051b12a729f6c137139cfd98450c6eeab0ea7fc",
+          "literal_cell": "<TD width='121' height='24' align='RIGHT' valign='TOP'>113,539,986,286</TD>",
+          "lines": [
+            "113,539,986,286"
+          ],
+          "attrs": {
+            "width": "121",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/8/4": {
+          "start_character": 44284,
+          "end_character": 44358,
+          "literal_sha256": "0d5a92013dc3ab20255959151e13bd9c5443edb63d16708c3f0a13561a9e8b20",
+          "literal_cell": "<TD width='149' height='24' align='RIGHT' valign='TOP'>87,973,775,825</TD>",
+          "lines": [
+            "87,973,775,825"
+          ],
+          "attrs": {
+            "width": "149",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/35/0": {
+          "start_character": 53994,
+          "end_character": 54046,
+          "literal_sha256": "8d5b8547acefdd74ab58045ab47d101d64879c9cd5f891114c41847d618997b6",
+          "literal_cell": "<TD width='190' height='24' valign='TOP'>Ⅴ.영업이익</TD>",
+          "lines": [
+            "Ⅴ.영업이익"
+          ],
+          "attrs": {
+            "width": "190",
+            "height": "24",
+            "valign": "TOP"
+          }
+        },
+        "3/35/1": {
+          "start_character": 54050,
+          "end_character": 54124,
+          "literal_sha256": "d76d8569eb61457d20d9fb924508c062f05544ba5863b52e40e5a77d4d1168c9",
+          "literal_cell": "<TD width='123' height='24' align='RIGHT' valign='TOP'>62,535,104,822</TD>",
+          "lines": [
+            "62,535,104,822"
+          ],
+          "attrs": {
+            "width": "123",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/35/2": {
+          "start_character": 54128,
+          "end_character": 54198,
+          "literal_sha256": "8cd2d0aed6fdaae449436fd96a169c40bf451f1bc3293b8f49357b7dd3a84cfe",
+          "literal_cell": "<TD width='112' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+          "lines": [
+            "",
+            "",
+            ""
+          ],
+          "attrs": {
+            "width": "112",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/35/3": {
+          "start_character": 54202,
+          "end_character": 54276,
+          "literal_sha256": "49d879ed7873b728c28e8ef8fd0d2a25181753fd4c07baca89c907da3b62d35d",
+          "literal_cell": "<TD width='121' height='24' align='RIGHT' valign='TOP'>64,752,321,126</TD>",
+          "lines": [
+            "64,752,321,126"
+          ],
+          "attrs": {
+            "width": "121",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        },
+        "3/35/4": {
+          "start_character": 54280,
+          "end_character": 54354,
+          "literal_sha256": "146421f7d621f2d6ea64c9540b70b95b21f4878eaa5a96f310affe26ea9b7afa",
+          "literal_cell": "<TD width='149' height='24' align='RIGHT' valign='TOP'>33,959,285,686</TD>",
+          "lines": [
+            "33,959,285,686"
+          ],
+          "attrs": {
+            "width": "149",
+            "height": "24",
+            "align": "RIGHT",
+            "valign": "TOP"
+          }
+        }
+      },
+      "headers": {
+        "1": {
+          "date_unit_rows": [
+            [
+              "제 32 기 분기 2000. 12. 31 현재"
+            ],
+            [
+              "제 31 기 분기 1999. 12. 31 현재"
+            ],
+            [
+              "제 31 기        2000. 03. 31 현재"
+            ],
+            [
+              "제 30 기        1999. 03. 31 현재"
+            ],
+            [
+              "(단위 : 원 )"
+            ]
+          ],
+          "numeric_column_cells": [
+            {
+              "text": "과          목",
+              "attrs": {
+                "width": "165",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TD width='165' height='24' align='CENTER'>과 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목</TD>",
+              "start_character": 1218,
+              "end_character": 1323
+            },
+            {
+              "text": "제32기 3 분기",
+              "attrs": {
+                "width": "140",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TD width='140' height='24' align='CENTER'>제32기 3 분기</TD>",
+              "start_character": 1327,
+              "end_character": 1384
+            },
+            {
+              "text": "제31기 3 분기",
+              "attrs": {
+                "width": "117",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TD width='117' height='24' align='CENTER'>제31기 3 분기</TD>",
+              "start_character": 1388,
+              "end_character": 1445
+            },
+            {
+              "text": "제 31 기",
+              "attrs": {
+                "width": "138",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TD width='138' height='24' align='CENTER'>제 31 기</TD>",
+              "start_character": 1449,
+              "end_character": 1503
+            },
+            {
+              "text": "제 30 기",
+              "attrs": {
+                "width": "134",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TD width='134' height='24' align='CENTER'>제 30 기</TD>",
+              "start_character": 1507,
+              "end_character": 1561
+            }
+          ],
+          "date_unit_cells": [
+            {
+              "start_character": 630,
+              "end_character": 703,
+              "literal_cell": "<TD width='691' height='24' align='CENTER'>제 32 기 분기 2000. 12. 31 현재</TD>",
+              "literal_sha256": "8109336912ccf07a7f699f1a7106028a8558e280c5ebcfc4011d177c3a0f8eb3"
+            },
+            {
+              "start_character": 720,
+              "end_character": 793,
+              "literal_cell": "<TD width='691' height='24' align='CENTER'>제 31 기 분기 1999. 12. 31 현재</TD>",
+              "literal_sha256": "6158db5a1acbb22673337d3a23348e8e6a3dd98f32a1401140825f4c176204ed"
+            },
+            {
+              "start_character": 810,
+              "end_character": 922,
+              "literal_cell": "<TD width='691' height='24' align='CENTER'>제 31 기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2000. 03. 31 현재</TD>",
+              "literal_sha256": "42e7922d67477dfc86363c1dfc1be44aadaa486c22cd570a6ec57cd3be29faac"
+            },
+            {
+              "start_character": 939,
+              "end_character": 1051,
+              "literal_cell": "<TD width='691' height='24' align='CENTER'>제 30 기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1999. 03. 31 현재</TD>",
+              "literal_sha256": "87fff6fb97b8888d3ffb0fd9fca32b409fbc20232a21260cf2f03f6836d0c263"
+            },
+            {
+              "start_character": 1068,
+              "end_character": 1140,
+              "literal_cell": "<TD width='691' height='24' align='RIGHT' valign='BOTTOM'>(단위 : 원 )</TD>",
+              "literal_sha256": "a144f9b1c43c70e06b979b42f3a88c16c227199f78e7bbe8b971f7073a2fb7e8"
+            }
+          ]
+        },
+        "3": {
+          "date_unit_rows": [
+            [
+              "제 32 기 분기 (2000. 04. 01 부터 2000. 12. 31 까지)"
+            ],
+            [
+              "제 31기  분기 (1999. 04. 01 부터 1999. 12. 31 까지)"
+            ],
+            [
+              "제 31 기        (1999. 04. 01 부터 2000. 03. 31 까지)"
+            ],
+            [
+              "제 30 기        (1998. 04. 01 부터 1999. 03. 31 까지)"
+            ],
+            [
+              "(단위 : 원 )"
+            ]
+          ],
+          "numeric_column_cells": [
+            {
+              "text": "과            목",
+              "attrs": {
+                "width": "190",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TD width='190' height='24' align='CENTER'>과 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목</TD>",
+              "start_character": 40966,
+              "end_character": 41083
+            },
+            {
+              "text": "제32기 3분기",
+              "attrs": {
+                "width": "123",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TD width='123' height='24' align='CENTER'>제32기 3분기</TD>",
+              "start_character": 41087,
+              "end_character": 41143
+            },
+            {
+              "text": "제31기 3분기",
+              "attrs": {
+                "width": "112",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TD width='112' height='24' align='CENTER'>제31기 3분기</TD>",
+              "start_character": 41147,
+              "end_character": 41203
+            },
+            {
+              "text": "제 31 기",
+              "attrs": {
+                "width": "121",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TD width='121' height='24' align='CENTER'>제 31 기</TD>",
+              "start_character": 41207,
+              "end_character": 41261
+            },
+            {
+              "text": "제 30 기",
+              "attrs": {
+                "width": "149",
+                "height": "24",
+                "align": "CENTER"
+              },
+              "literal_cell": "<TD width='149' height='24' align='CENTER'>제 30 기</TD>",
+              "start_character": 41265,
+              "end_character": 41319
+            }
+          ],
+          "date_unit_cells": [
+            {
+              "start_character": 40301,
+              "end_character": 40392,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 32 기 분기 (2000. 04. 01 부터 2000. 12. 31 까지)</TD>",
+              "literal_sha256": "0c3cddee15482d9f8a6cd0822de9dc029156eeb19c19e7b8db82b0405026db4d"
+            },
+            {
+              "start_character": 40409,
+              "end_character": 40505,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 31기 &nbsp;분기 (1999. 04. 01 부터 1999. 12. 31 까지)</TD>",
+              "literal_sha256": "99068d6c5dfe7a66278cc3d582d33d196d948c56721a6a88944f6d64d50f5e5a"
+            },
+            {
+              "start_character": 40522,
+              "end_character": 40652,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 31 기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1999. 04. 01 부터 2000. 03. 31 까지)</TD>",
+              "literal_sha256": "85ebaffef34c1dbc9999fd6a7cd8a3d1c90aa7e172bf7fdc656c7560177de049"
+            },
+            {
+              "start_character": 40669,
+              "end_character": 40799,
+              "literal_cell": "<TD width='600' height='24' align='CENTER'>제 30 기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1998. 04. 01 부터 1999. 03. 31 까지)</TD>",
+              "literal_sha256": "7e6f717b49d72dde3560e18073c655da5daed103809b9954115bec2125ae8fb4"
+            },
+            {
+              "start_character": 40816,
+              "end_character": 40888,
+              "literal_cell": "<TD width='600' height='24' align='RIGHT' valign='BOTTOM'>(단위 : 원 )</TD>",
+              "literal_sha256": "70ad7d3ff7cde59d697ecdf0e8c5f29d71c732f614cd6ddbef304c59aa92379b"
+            }
+          ]
+        }
+      },
+      "semantic_context": {
+        "1/71": [
+          {
+            "start_character": 27741,
+            "end_character": 27813,
+            "literal_cell": "<TD width='165' height='24' valign='TOP'>&nbsp;&nbsp;&nbsp;사채할인발행차금</TD>",
+            "literal_sha256": "50b460cf11d2deac78acda7ac8c7b74287746e20f2bf57e7964425ecac745cac",
+            "text": "   사채할인발행차금"
+          },
+          {
+            "start_character": 27817,
+            "end_character": 27888,
+            "literal_cell": "<TD width='140' height='24' align='RIGHT' valign='TOP'>△15,465,106</TD>",
+            "literal_sha256": "0782f6f7a3f15a2cba3c5449a3c68d2408d7f83e85b8fbc99f29dd0cc095fac1",
+            "text": "△15,465,106"
+          },
+          {
+            "start_character": 27892,
+            "end_character": 27962,
+            "literal_cell": "<TD width='117' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+            "literal_sha256": "7a0df832e20cca26bd60b8e7b420084e0cb060e150db2792c7da7a9a9149c280",
+            "text": " |  | "
+          },
+          {
+            "start_character": 27966,
+            "end_character": 28038,
+            "literal_cell": "<TD width='138' height='24' align='RIGHT' valign='TOP'>△281,637,724</TD>",
+            "literal_sha256": "26c862fa7629b11d1e0f0a611b692c867c95f813378f4b9ebe52f82af44db1c1",
+            "text": "△281,637,724"
+          },
+          {
+            "start_character": 28042,
+            "end_character": 28114,
+            "literal_cell": "<TD width='134' height='24' align='RIGHT' valign='TOP'>△868,847,725</TD>",
+            "literal_sha256": "8093d4e4fd4d9efb661bad79ac7581cc1e9468e8ca1f2bf6b740e92d8ffc92e2",
+            "text": "△868,847,725"
+          }
+        ],
+        "1/72": [
+          {
+            "start_character": 28131,
+            "end_character": 28184,
+            "literal_cell": "<TD width='165' height='24' valign='TOP'>2. 전환사채</TD>",
+            "literal_sha256": "07997cd384727b894ae2ff2bf610c447a07b46bf79466a56a38591255799a9ef",
+            "text": "2. 전환사채"
+          },
+          {
+            "start_character": 28188,
+            "end_character": 28261,
+            "literal_cell": "<TD width='140' height='24' align='RIGHT' valign='TOP'>7,388,000,000</TD>",
+            "literal_sha256": "2a87850a411362346a144089bcfd35bdc11ed645c140f046a202c930c3f5908e",
+            "text": "7,388,000,000"
+          },
+          {
+            "start_character": 28265,
+            "end_character": 28335,
+            "literal_cell": "<TD width='117' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+            "literal_sha256": "7a0df832e20cca26bd60b8e7b420084e0cb060e150db2792c7da7a9a9149c280",
+            "text": " |  | "
+          },
+          {
+            "start_character": 28339,
+            "end_character": 28413,
+            "literal_cell": "<TD width='138' height='24' align='RIGHT' valign='TOP'>20,000,000,000</TD>",
+            "literal_sha256": "cd4bc5812472aa8c3aaf033d3345a6519369a319e98542716f5e8fa5e874526d",
+            "text": "20,000,000,000"
+          },
+          {
+            "start_character": 28417,
+            "end_character": 28478,
+            "literal_cell": "<TD width='134' height='24' align='RIGHT' valign='TOP'>0</TD>",
+            "literal_sha256": "da7608347a58bc81181fdb636b5472279509e971083797b7df43cd9413ad2c14",
+            "text": "0"
+          }
+        ],
+        "3/9": [
+          {
+            "start_character": 44375,
+            "end_character": 44432,
+            "literal_cell": "<TD width='190' height='24' valign='TOP'>Ⅳ.판매비와일반관리비</TD>",
+            "literal_sha256": "a4039126f760cb2aeb1ca2686bf2768e321b71c4f668d0a9e4837072d3a20f9f",
+            "text": "Ⅳ.판매비와일반관리비"
+          },
+          {
+            "start_character": 44436,
+            "end_character": 44510,
+            "literal_cell": "<TD width='123' height='24' align='RIGHT' valign='TOP'>39,161,894,569</TD>",
+            "literal_sha256": "90a51265e983b3b406360d5327964863efe54f8e57aab4fa8763f137b50920b1",
+            "text": "39,161,894,569"
+          },
+          {
+            "start_character": 44514,
+            "end_character": 44584,
+            "literal_cell": "<TD width='112' height='24' align='RIGHT' valign='TOP'><BR/><BR/></TD>",
+            "literal_sha256": "8cd2d0aed6fdaae449436fd96a169c40bf451f1bc3293b8f49357b7dd3a84cfe",
+            "text": " |  | "
+          },
+          {
+            "start_character": 44588,
+            "end_character": 44662,
+            "literal_cell": "<TD width='121' height='24' align='RIGHT' valign='TOP'>48,787,665,160</TD>",
+            "literal_sha256": "883e41ee072a7d9feddb44e63dbb0769d1a69ec36f9c8b91b631f9b82c8a137b",
+            "text": "48,787,665,160"
+          },
+          {
+            "start_character": 44666,
+            "end_character": 44740,
+            "literal_cell": "<TD width='149' height='24' align='RIGHT' valign='TOP'>54,014,490,139</TD>",
+            "literal_sha256": "5bb4498821683aca2ef2d155df52f9f97dd408e68f66c1a9f8419be2d45e198a",
+            "text": "54,014,490,139"
+          }
+        ]
+      }
+    }
+  }
+}
