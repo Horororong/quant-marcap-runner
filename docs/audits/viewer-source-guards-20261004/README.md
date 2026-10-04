@@ -19,9 +19,8 @@ contracts are unchanged. Viewer-specific `(-)` signs and the exact Ildong
 `당기순이(손)익` label belong to the separate adapter version
 `dart-viewer-period-scope-unit-column-v1`.
 
-33 local regression tests passed. Standard full Strategy DSL CI is required
-before this change is considered complete; its actual status will be appended
-after the run finishes. No new execution kit is required for this source-only
+33 local regression tests passed. Standard full Strategy DSL CI37184664330 completed successfully on the
+final code commit be450e9f9f38909f60d354edad07012e3604b2bd. No new execution kit is required for this source-only
 change: no bundled runtime/provider/engine code changed, and legacy remains an
 unpublished capability. Never edit the installed frozen runtime to add this
 adapter.
@@ -152,3 +151,60 @@ not consumed. Full CI also runs both commands and saves their results as the
 `legacy-viewer-source-replay` artifact. The next data task is to inspect the
 five blocked current-period cells' full original BR structure before extending
 layout support; zero-padding, line shifting and guessed prior values are forbidden.
+
+
+## Verified remote primary-audit checkpoint
+
+On actual code commit `be450e9f9f38909f60d354edad07012e3604b2bd`, legacy
+validation [CI37184664255](https://github.com/Horororong/quant-marcap-runner/actions/runs/37184664255)
+completed successfully, including native parser/resume/schema checks, the 33
+new source regressions and the independent 72-item comparator. Artifact
+11296975611 was downloaded; ZIP SHA and CRC passed. Its input hashes prove the
+remote audit read the later main's changed `legacy_metrics_2001.csv.gz`,
+`legacy_metrics_2002.csv.gz` and collector checkpoint, not the older local
+snapshot. The 72-item findings remain 49 missing / 18 period / 3 amount / 2
+semantic. All input hashes stayed unchanged during the audit.
+
+The full Strategy DSL CI source artifact11296566580 was also downloaded;
+ZIP SHA/CRC and the 49-cell replay summary match local evidence. Four accepted
+BS totals satisfy assets = liabilities + equity; this is **secondary arithmetic
+consistency**, not a new independent audit. **None of the six quarterly sources
+provides current-period OCF or a complete usable 4F row.** Previous annual CF
+and CFS cannot fill that gap. See `source-consistency.json`, the remote audit
+summary/provenance and `remote_ci_evidence.json`.
+
+
+## Final code CI and project status
+
+Full [CI37184664330](https://github.com/Horororong/quant-marcap-runner/actions/runs/37184664330)
+completed/success on **be450e9f9f38909f60d354edad07012e3604b2bd** at
+2026-10-04 07:24 UTC. The test job and CP311/CP312 sandbox replays all succeeded;
+download-only job was skipped. All required generated-contract, native
+parser/resume/automation, canonical report, real KRX/DART/decile/corporate-action
+and checked-CLI regressions passed. Full job/step state and filtered completed
+logs are saved in `full_ci_success.json` and `full-ci-completion.log`. Later
+evidence-only documentation commits do not change the tested source code,
+fixtures, workflow or financial inputs.
+
+The existing browser report regression passed (artifact11297120535). Its
+metrics_CURRENT.csv, daily_nav_canonical.csv and benchmark statistics are
+**byte-identical** to the previously verified CI report. No UI was rebuilt and
+no investment-performance metrics were calculated by this audit. Branch data
+preservation was independently checked against main: **418 data blob SHAs,
+zero changed blobs**, including later normalized financial shards/checkpoints.
+PR #30 is a draft stacked on audit PR #29; neither has been merged into main.
+
+| Project area | Actual judgment |
+|---|---|
+| Report functionality | implemented + browser/CURRENT/CSV regression verified |
+| Data preparation | incomplete; legacy collection pending 103,619 at main4833fb5, modern pending gaps persist |
+| Independent financial quality | reproducible 72-item failure-oriented sample and 49-cell guarded replay; full-data/PIT/revision certification incomplete |
+| Actual strategy validation | incomplete; existing quarter DSL preflight passes its small kit window, no new research NAV/cost/OOS/robustness study |
+
+The source guard feature and its required regressions are complete **within
+this staged offline scope**. This does not complete legacy data preparation,
+full-data certification or actual investment strategy validation. Next data
+work: independently establish the five blocked current-period cells' BR/label
+alignment from their full primary sources before extending the adapter. Current
+quarter OCF, independent 2019–2020 strategy-source samples and correction/PIT
+chains still require primary acquisition/review through authorized collection.
