@@ -1,0 +1,439 @@
+{
+  "observed_at": "2026-10-04T03:29:29.834Z",
+  "previous_environment_processes": "확인 불가",
+  "new_local_collectors": 0,
+  "local_initial_sha": "40fe72e420f12e069eb1ba07ef712e61684d8a78",
+  "local_initial_clean": true,
+  "new_collector_started": false,
+  "decision": "재시작하지 않고 기존 공유-lock 예약 workflow 유지; 이전 환경의 로컬 프로세스는 확인 불가.",
+  "in_progress": {
+    "total": 0,
+    "runs": []
+  },
+  "queued": {
+    "total": 0,
+    "runs": []
+  },
+  "branches": [
+    {
+      "name": "analysis/legacy-dart-build-20260923",
+      "sha": "c49bbfe9d9f90b5df1fac60d9ced95baf553ad9a"
+    },
+    {
+      "name": "analysis/legacy-dart-probe-20260923",
+      "sha": "c9abbc9cf2bd5cba1df138df3f6dab2ddd44df51"
+    },
+    {
+      "name": "analysis/super-value-20260923",
+      "sha": "b4749d9ea1ffe928789062a25f23f20367cd1b87"
+    },
+    {
+      "name": "analysis/super-value-fast-backfill-20260923",
+      "sha": "dd97189f99179a8681eb41776457675f5e6602f9"
+    },
+    {
+      "name": "analysis/super-value-v216-20260923",
+      "sha": "2d52b62922272e7c642914763b78a204a0173449"
+    },
+    {
+      "name": "analysis/super-value-v216-20260924",
+      "sha": "cc49eb8374220c182777043276bcc8a0f911337a"
+    },
+    {
+      "name": "audit/data-readiness-20261003",
+      "sha": "14e7d76eb0808f11fd2986b51e4369b32e4efba5"
+    },
+    {
+      "name": "chatgpt/permanent-v216-20260929",
+      "sha": "229b236d53b4ebc61108ce15717c4ed4a91b2872"
+    },
+    {
+      "name": "chatgpt-super-value-backtest",
+      "sha": "80e76b8698c3eadcff4212eec4c7242a7da21b1e"
+    },
+    {
+      "name": "codex/legacy-october-capacity",
+      "sha": "e0fc32db5e5bfc9d6e175f1daa4a985f2b82ae8f"
+    },
+    {
+      "name": "deliver/mobile-download-20261003",
+      "sha": "5d0f781809023e05edb3abf05a729627dfdeff70"
+    },
+    {
+      "name": "deliver/mobile-download-public-20261003",
+      "sha": "a326472a6417997d7067bd601a92580cc8bbe23c"
+    },
+    {
+      "name": "deliver/quant-sandbox-20261002",
+      "sha": "9ce3292b723e275682e9722614ff543b185a4e89"
+    },
+    {
+      "name": "feat/financial-custom-rebalance",
+      "sha": "140bbdfaa8a0974229092667580e8998868d8af3"
+    },
+    {
+      "name": "feature/canonical-performance-v3",
+      "sha": "2288d2bbcd659b8ff94d415705acbe28e1d29d4b"
+    },
+    {
+      "name": "feature/cash-share-exchange-v1",
+      "sha": "587733f7c3e1c5497d36cbb74b8bcb78b4a5bbca"
+    },
+    {
+      "name": "feature/checked-dsl-main-integration",
+      "sha": "14eb1ef850546496647fad47be0dc52bc2086509"
+    },
+    {
+      "name": "feature/dart-backfill-durability",
+      "sha": "2e6f95c85422629b26ef48ef57ae81ae247a9fba"
+    },
+    {
+      "name": "feature/dart-factor-adapter-v1",
+      "sha": "7fd9bd5216d4216fce1f55cdbabb48f10f2c24f4"
+    },
+    {
+      "name": "feature/deterministic-dart-storage",
+      "sha": "155d08a3f4c6233168105a7baee05721050a40d4"
+    },
+    {
+      "name": "feature/dsl-benchmark-v1",
+      "sha": "72f85070d40b719c667c5ed5230e2db391c28c1f"
+    },
+    {
+      "name": "feature/dsl-dart-factors",
+      "sha": "0caa6f4f888233d24e62c2d659eb5c007a611cfa"
+    },
+    {
+      "name": "feature/dsl-execution-stage",
+      "sha": "1a8059e669440d70ab78b352e27337ad3e039567"
+    },
+    {
+      "name": "feature/dsl-external-filters-v1",
+      "sha": "3a6fb3fc507fdde6ec17e33734e874ff57303db5"
+    },
+    {
+      "name": "feature/dsl-external-filters-v2",
+      "sha": "85e23485b5caaf53604f508b13d0b2b2e942f92b"
+    },
+    {
+      "name": "feature/dsl-factor-deciles-v1",
+      "sha": "f4ea9b0dce103a805ab74fa2c8035a680f49c959"
+    },
+    {
+      "name": "feature/dsl-machine-contract",
+      "sha": "928d96426f52cd03a00f84162baa008dc5f015e5"
+    },
+    {
+      "name": "feature/dsl-machine-contract-v2",
+      "sha": "a59bb932ecb087703eafa8c6842760146d6c0f21"
+    },
+    {
+      "name": "feature/dsl-nl-aliases",
+      "sha": "6f39a2e26621671375e3f306b15591b8d631ee74"
+    },
+    {
+      "name": "feature/dsl-nl-aliases-v2",
+      "sha": "a5def415d8456fe83314e0330587082193661d21"
+    },
+    {
+      "name": "feature/dsl-preflight-v1",
+      "sha": "6340bf165c8203c9ff0a96a83fb5b3b1022aed72"
+    },
+    {
+      "name": "feature/dsl-preflight-v2",
+      "sha": "30325f38d5fffb894b98121db766482e6afd0ede"
+    },
+    {
+      "name": "feature/dsl-provider-registry-integration",
+      "sha": "fd1fedbfd64166e1d174756fefae345644159e1d"
+    },
+    {
+      "name": "feature/dsl-quarterly-profitability-v1",
+      "sha": "688f2974e76c4c87774251744286e172657c1edf"
+    },
+    {
+      "name": "feature/dsl-quarterly-profitability-v2",
+      "sha": "5f5e8171f4601e7cc0bf1ef669b63be16372ccb8"
+    },
+    {
+      "name": "feature/dsl-super-value-execution",
+      "sha": "0a51335fcfb8a51f800f87a1b54dff86960d3ce0"
+    },
+    {
+      "name": "feature/dsl-technical-factors-v1",
+      "sha": "fc45f95006d785c59a28f4aa0e6af4c6490f1280"
+    },
+    {
+      "name": "feature/dsl-technical-factors-v2",
+      "sha": "09734871f1709c0bc8c80fed689c75b989344a67"
+    },
+    {
+      "name": "feature/dsl-volatility-factors-v1",
+      "sha": "04a5b393eafb74a9032b7a4f61e8c01386edf7f9"
+    },
+    {
+      "name": "feature/factor-provider-registry",
+      "sha": "5d4f585ea64dd33d2f0d9f2f2b4fb476bf2b710f"
+    },
+    {
+      "name": "feature/gpt-sandbox-kit-release",
+      "sha": "6e9eec887508adfb0a608e297f9a25c55ef5ccc0"
+    },
+    {
+      "name": "feature/gpt-sandbox-kit-v1",
+      "sha": "215fa3fb38109d7edcf693f3bcb7b7df0aaa11b3"
+    },
+    {
+      "name": "feature/held-return-guard-splits-v1",
+      "sha": "a271839af32c56d7feb7951e98d6586c00e222e2"
+    },
+    {
+      "name": "feature/krx-history-coverage-audit-v1",
+      "sha": "2195f771c334068484602f9db8300fd3e2c3b3f5"
+    },
+    {
+      "name": "feature/legacy-financial-body-evidence",
+      "sha": "a02386d08cd2974dd004019efa95bfd8195625be"
+    },
+    {
+      "name": "feature/legacy-pit-handover",
+      "sha": "16bf1cb51caaab413754b838707efa52a9f6dda1"
+    },
+    {
+      "name": "feature/preflight-corporate-action-gaps",
+      "sha": "6bbfe22d8fa92383ae57e3d810d9bcd2e9af95cf"
+    },
+    {
+      "name": "feature/requested-period-reports-20261003",
+      "sha": "edcda2d990e40343d179b5ccbeceeb9b19dd04a7"
+    },
+    {
+      "name": "feature/requested-period-reports-final-20261003",
+      "sha": "822c435f4b6148c2832e12370a6ccb324a9e875f"
+    },
+    {
+      "name": "feature/storage-main-integration",
+      "sha": "9356fd3d05fc2c964f566283904fb7567cf36171"
+    },
+    {
+      "name": "feature/strategy-dsl-run-orchestration",
+      "sha": "b2d3631b8a2604c4f1ee04bb2283d3bac55caa13"
+    },
+    {
+      "name": "feature/strategy-dsl-v1",
+      "sha": "b0b49d5e7b383db3ea43d015ace0b16923834e47"
+    },
+    {
+      "name": "feature/strict-dsl-input-validation",
+      "sha": "88553d8e1994ba15a32d4adc3e6e6b7815418d88"
+    },
+    {
+      "name": "feature/verified-autumn-splits-v1",
+      "sha": "2585d24a26a88c9d4707e1beb79ec2a228cafb7c"
+    },
+    {
+      "name": "feature/verified-split-coverage-v1",
+      "sha": "0ac5f57659a0fe64f57b7dbf8085550e9bb96bf4"
+    },
+    {
+      "name": "fix/kosdaq-global-observations",
+      "sha": "3c4cedc217aa7cbcefc4fc3b0073ef1a3ee452ce"
+    },
+    {
+      "name": "main",
+      "sha": "4833fb503105d810ea6e8e905d914f1ab3c28632"
+    },
+    {
+      "name": "publish/requested-report-kit-20261003-final",
+      "sha": "af758297b8ae82f4a268c836c5287b38c409d838"
+    },
+    {
+      "name": "recover/report-browser-20261003",
+      "sha": "e9baae816f4de2cddfa9e1e2c5c43f8cd2e95859"
+    },
+    {
+      "name": "research/super-value-audit-20260924",
+      "sha": "073290e88965b9e017e20c6a8ba2f19d45abea98"
+    },
+    {
+      "name": "stage/report-delivery-prepared-20261003",
+      "sha": "245135f8ef1e5535d0bfa4310077c6f6f39d60a9"
+    },
+    {
+      "name": "stage/report-work-install-checkpoint-20261003",
+      "sha": "45fc8bc5eb33cd244f466385750b9d1f39ea3091"
+    },
+    {
+      "name": "tmp/super-value-backtest-20260923",
+      "sha": "5514f5f673cb597ff4ab1b8d282173d0e6dd29e5"
+    }
+  ],
+  "waiting": {
+    "total": 0,
+    "runs": []
+  },
+  "prs": [
+    {
+      "number": 28,
+      "state": "closed",
+      "head": "publish/requested-report-kit-20261003-final",
+      "merged_at": "2026-10-03T22:53:38Z"
+    },
+    {
+      "number": 27,
+      "state": "open",
+      "head": "deliver/quant-sandbox-20261002",
+      "merged_at": null
+    },
+    {
+      "number": 26,
+      "state": "closed",
+      "head": "feat/financial-custom-rebalance",
+      "merged_at": "2026-10-02T19:38:51Z"
+    },
+    {
+      "number": 25,
+      "state": "closed",
+      "head": "codex/legacy-october-capacity",
+      "merged_at": "2026-10-02T11:41:34Z"
+    },
+    {
+      "number": 24,
+      "state": "closed",
+      "head": "feature/legacy-financial-body-evidence",
+      "merged_at": "2026-10-02T10:13:06Z"
+    },
+    {
+      "number": 23,
+      "state": "closed",
+      "head": "feature/preflight-corporate-action-gaps",
+      "merged_at": "2026-10-01T22:33:04Z"
+    },
+    {
+      "number": 22,
+      "state": "closed",
+      "head": "feature/cash-share-exchange-v1",
+      "merged_at": "2026-10-01T10:33:50Z"
+    },
+    {
+      "number": 21,
+      "state": "closed",
+      "head": "fix/kosdaq-global-observations",
+      "merged_at": "2026-10-01T08:52:55Z"
+    },
+    {
+      "number": 19,
+      "state": "closed",
+      "head": "feature/verified-autumn-splits-v1",
+      "merged_at": "2026-10-01T07:52:39Z"
+    },
+    {
+      "number": 18,
+      "state": "closed",
+      "head": "feature/canonical-performance-v3",
+      "merged_at": "2026-10-01T06:34:27Z"
+    },
+    {
+      "number": 17,
+      "state": "closed",
+      "head": "feature/verified-split-coverage-v1",
+      "merged_at": "2026-10-01T05:57:23Z"
+    },
+    {
+      "number": 16,
+      "state": "closed",
+      "head": "feature/held-return-guard-splits-v1",
+      "merged_at": "2026-10-01T05:02:04Z"
+    },
+    {
+      "number": 15,
+      "state": "closed",
+      "head": "feature/krx-history-coverage-audit-v1",
+      "merged_at": "2026-10-01T04:08:03Z"
+    },
+    {
+      "number": 14,
+      "state": "closed",
+      "head": "feature/dsl-factor-deciles-v1",
+      "merged_at": "2026-10-01T03:17:11Z"
+    },
+    {
+      "number": 13,
+      "state": "closed",
+      "head": "feature/dsl-benchmark-v1",
+      "merged_at": "2026-10-01T02:41:28Z"
+    },
+    {
+      "number": 12,
+      "state": "closed",
+      "head": "feature/dsl-volatility-factors-v1",
+      "merged_at": "2026-10-01T02:32:20Z"
+    },
+    {
+      "number": 11,
+      "state": "closed",
+      "head": "feature/dsl-quarterly-profitability-v2",
+      "merged_at": "2026-10-01T02:16:48Z"
+    },
+    {
+      "number": 10,
+      "state": "closed",
+      "head": "feature/dsl-technical-factors-v2",
+      "merged_at": "2026-10-01T01:44:45Z"
+    },
+    {
+      "number": 9,
+      "state": "closed",
+      "head": "feature/dsl-external-filters-v2",
+      "merged_at": "2026-10-01T00:51:39Z"
+    },
+    {
+      "number": 8,
+      "state": "closed",
+      "head": "feature/dsl-preflight-v2",
+      "merged_at": "2026-10-01T00:37:29Z"
+    },
+    {
+      "number": 7,
+      "state": "closed",
+      "head": "feature/dsl-nl-aliases-v2",
+      "merged_at": "2026-10-01T00:20:20Z"
+    },
+    {
+      "number": 6,
+      "state": "closed",
+      "head": "feature/dsl-machine-contract-v2",
+      "merged_at": "2026-09-30T23:30:30Z"
+    },
+    {
+      "number": 5,
+      "state": "closed",
+      "head": "feature/dsl-provider-registry-integration",
+      "merged_at": "2026-09-30T22:10:22Z"
+    },
+    {
+      "number": 4,
+      "state": "closed",
+      "head": "feature/factor-provider-registry",
+      "merged_at": null
+    },
+    {
+      "number": 3,
+      "state": "closed",
+      "head": "feature/dsl-execution-stage",
+      "merged_at": null
+    },
+    {
+      "number": 2,
+      "state": "closed",
+      "head": "feature/dsl-dart-factors",
+      "merged_at": "2026-09-30T20:32:42Z"
+    },
+    {
+      "number": 1,
+      "state": "closed",
+      "head": "feature/strategy-dsl-v1",
+      "merged_at": "2026-09-30T14:05:08Z"
+    }
+  ]
+}
