@@ -1,0 +1,745 @@
+[
+  {
+    "rcept_no": "20000330000447",
+    "pre_status": "NO_METRICS",
+    "corp_code": "00119724",
+    "fiscal_year": "1999",
+    "period": "FY",
+    "document_sha256": "fd48b509b179feb99318ade3fca809b70e55f4d76fdac5f32815c759c8ffb60a",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [
+      "SOURCE_XML_INCOMPLETE_OR_INVALID"
+    ],
+    "cause": "STRUCTURAL_INCOMPLETE_OR_UNSUPPORTED",
+    "member_diagnostics": [
+      {
+        "member": "20000330000447.xml",
+        "bytes": 26933,
+        "sha256": "8a7c334e9748e5881a58d35360aac871a754167ec027ce4e0e8cd738257ba084",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0,
+        "xml_error": "no element found: line 4, column 23035"
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000215000003",
+    "pre_status": "NO_METRICS",
+    "corp_code": "00130091",
+    "fiscal_year": "1999",
+    "period": "H1",
+    "document_sha256": "ac69bcf4778e678f999957ff1784f42284512f3975113ecd29c38dc62ae5feb8",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [
+      "SOURCE_XML_INCOMPLETE_OR_INVALID"
+    ],
+    "cause": "STRUCTURAL_INCOMPLETE_OR_UNSUPPORTED",
+    "member_diagnostics": [
+      {
+        "member": "20000215000003.xml",
+        "bytes": 601796,
+        "sha256": "1ad44a6f8c08e521e39576bf5054dbf1a310f028eacd0a0a4742403c8908bb66",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0,
+        "xml_error": "no element found: line 4, column 569914"
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20010330001533",
+    "pre_status": "NO_METRICS",
+    "corp_code": "00258801",
+    "fiscal_year": "2000",
+    "period": "FY",
+    "document_sha256": "5f1d6c63abe3724b636013294a7b5b76cca9d53a9adbafb9ef20e920a31344b6",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [
+      "SOURCE_REPLACEMENT_CHARACTERS"
+    ],
+    "cause": "REPLACEMENT_CHARACTERS",
+    "member_diagnostics": [
+      {
+        "member": "20010330001533.xml",
+        "bytes": 902408,
+        "sha256": "a06cf66679cf1dfb56cd81252b2b89115501ba896d17f898e2913e11593169fe",
+        "issues": [
+          "SOURCE_REPLACEMENT_CHARACTERS"
+        ],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 34492
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000814000485",
+    "pre_status": "NO_METRICS",
+    "corp_code": "00101752",
+    "fiscal_year": "2000",
+    "period": "H1",
+    "document_sha256": "df36a3faf53f7ef1a60e05c2cc94bf66d5e69c244ce6e31af35cc0c0c3b41335",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [
+      "SOURCE_XML_INCOMPLETE_OR_INVALID"
+    ],
+    "cause": "STRUCTURAL_INCOMPLETE_OR_UNSUPPORTED",
+    "member_diagnostics": [
+      {
+        "member": "20000814000485.xml",
+        "bytes": 17617,
+        "sha256": "edd9c44e27f24fee1bec2f65fd84632e623bac2fbd21fc65db5a8ba125776bbf",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0,
+        "xml_error": "no element found: line 4, column 14088"
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000515000556",
+    "pre_status": "NO_METRICS",
+    "corp_code": "00199252",
+    "fiscal_year": "2000",
+    "period": "Q1",
+    "document_sha256": "8a11837e7bda080dac0bdae933e920f7bccde5f4f141e5914dbc6f58ac9ffd32",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [
+      "SOURCE_XML_INCOMPLETE_OR_INVALID"
+    ],
+    "cause": "STRUCTURAL_INCOMPLETE_OR_UNSUPPORTED",
+    "member_diagnostics": [
+      {
+        "member": "20000515000556.xml",
+        "bytes": 226264,
+        "sha256": "2b1360261497957e5e80cb23c3d1cb67f70fc736d76d8d0e0356c6259f51e8c6",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0,
+        "xml_error": "no element found: line 4, column 211682"
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000515000178",
+    "pre_status": "NO_METRICS",
+    "corp_code": "00139685",
+    "fiscal_year": "2000",
+    "period": "Q3",
+    "document_sha256": "fce780964908e229a4d7cc8c2205aaba54c9ff6451d004a2d7bada5238f0394a",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [
+      "SOURCE_XML_INCOMPLETE_OR_INVALID"
+    ],
+    "cause": "STRUCTURAL_INCOMPLETE_OR_UNSUPPORTED",
+    "member_diagnostics": [
+      {
+        "member": "20000515000178.xml",
+        "bytes": 231545,
+        "sha256": "fe49b26a0f087db4637dfd5e7948b1fdfd6cec4c6640315b4aa9ab814ad514ae",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0,
+        "xml_error": "no element found: line 4, column 220623"
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20010214000151",
+    "pre_status": "NO_METRICS",
+    "corp_code": "00231442",
+    "fiscal_year": "2000",
+    "period": "QX",
+    "document_sha256": "22c35749c52e2f6a63cbc04e599334b5156c9ba64c82e1c0d4e90430b02f4f29",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [
+      "SOURCE_REPLACEMENT_CHARACTERS",
+      "SOURCE_XML_INCOMPLETE_OR_INVALID"
+    ],
+    "cause": "REPLACEMENT_CHARACTERS_WITH_STRUCTURAL_ERROR",
+    "member_diagnostics": [
+      {
+        "member": "20010214000151.xml",
+        "bytes": 535743,
+        "sha256": "380f44f7af72beccfacd91564300243760158aa580d1ab5b63149a1b0dd7496f",
+        "issues": [
+          "SOURCE_REPLACEMENT_CHARACTERS",
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 30214,
+        "xml_error": "no element found: line 4, column 451493"
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20020330000187",
+    "pre_status": "NO_METRICS",
+    "corp_code": "00135467",
+    "fiscal_year": "2001",
+    "period": "FY",
+    "document_sha256": "90c335772fd3830f908a10e5ea3d6ae781095ddbe73b8d4ac396aba25362a519",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [],
+    "cause": "SUPPORTED_CP949_PRIMARY_VALUES_PRESENT_WITH_PROPRIETARY_TE_CELLS",
+    "member_diagnostics": [
+      {
+        "member": "20020330000187.xml",
+        "bytes": 927587,
+        "sha256": "ca9ec0ddd700b542bebbe0c53d0b9030797eacf1cc96e1c55f7fcd4291e772ce",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 4
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation",
+    "item_absence_verified": false,
+    "parser_cause_scope": "TE numeric cells are ignored by existing TH/TD-only candidate path; this proves a support gap for those cells, not the full NO_METRICS cause. Other conventional TD cells exist.",
+    "literal_primary_row_xml": "<TR ACOPY=\"COPY\" ADELETE=\"DELETE\"><TD ROWSPAN=\"1\" COLSPAN=\"4\" ALIGN=\"CENTER\" VALIGN=\"TOP\" WIDTH=\"172\" HEIGHT=\"42\" AUPDATECONT=\"NOUPDATECONT\">당기순이익</TD><TE ROWSPAN=\"1\" COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"TOP\" WIDTH=\"90\" HEIGHT=\"42\" ACODE=\"A01\" ADELIM=\"1\">3,247,285,472</TE><TE ROWSPAN=\"1\" COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"TOP\" WIDTH=\"82\" HEIGHT=\"42\" ACODE=\"A01\" ADELIM=\"2\">3,408,879,734</TE><TE ROWSPAN=\"1\" COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"TOP\" WIDTH=\"88\" HEIGHT=\"42\" ACODE=\"A01\" ADELIM=\"3\">3,783,669,095</TE><TE ROWSPAN=\"1\" COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"TOP\" WIDTH=\"80\" HEIGHT=\"42\" ACODE=\"A01\" ADELIM=\"4\">2,361,355,133</TE><TE ROWSPAN=\"1\" COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"TOP\" WIDTH=\"86\" HEIGHT=\"42\" ACODE=\"A01\" ADELIM=\"5\">1,438,496,819</TE></TR>",
+    "source_cell_tags": [
+      "TD",
+      "TE",
+      "TE",
+      "TE",
+      "TE",
+      "TE"
+    ],
+    "source_financial_values_observed": [
+      "3,247,285,472",
+      "3,408,879,734",
+      "3,783,669,095"
+    ],
+    "independent_amount_or_period_certification": false
+  },
+  {
+    "rcept_no": "20010813000171",
+    "pre_status": "NO_METRICS",
+    "corp_code": "00128731",
+    "fiscal_year": "2001",
+    "period": "H1",
+    "document_sha256": "0ac4037795f70e9512f797b29078a23dc7191140d6ce0c7661796996d81097fb",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [
+      "SOURCE_REPLACEMENT_CHARACTERS",
+      "SOURCE_XML_INCOMPLETE_OR_INVALID"
+    ],
+    "cause": "REPLACEMENT_CHARACTERS_WITH_STRUCTURAL_ERROR",
+    "member_diagnostics": [
+      {
+        "member": "20010813000171.xml",
+        "bytes": 310144,
+        "sha256": "d64382a559681610909658920d79f3eb9009ccc1dd52f62e27a9a49aca1987f0",
+        "issues": [
+          "SOURCE_REPLACEMENT_CHARACTERS",
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 18598,
+        "xml_error": "not well-formed (invalid token): line 4, column 95693"
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20010515000145",
+    "pre_status": "NO_METRICS",
+    "corp_code": "00122898",
+    "fiscal_year": "2001",
+    "period": "Q1",
+    "document_sha256": "0d7cef3fd6cd96ffa5b3d788b29ca2511a0a5b7b1a8e80663c23fb2a78800bbe",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [
+      "SOURCE_REPLACEMENT_CHARACTERS",
+      "SOURCE_XML_INCOMPLETE_OR_INVALID"
+    ],
+    "cause": "REPLACEMENT_CHARACTERS_WITH_STRUCTURAL_ERROR",
+    "member_diagnostics": [
+      {
+        "member": "20010515000145.xml",
+        "bytes": 267696,
+        "sha256": "6e9dcaf4b905b2b6e66352eab849c35ea5ef89e9a2d7bd242f673abae96bcb04",
+        "issues": [
+          "SOURCE_REPLACEMENT_CHARACTERS",
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 12197,
+        "xml_error": "no element found: line 4, column 233377"
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20011114000493",
+    "pre_status": "NO_METRICS",
+    "corp_code": "00138695",
+    "fiscal_year": "2001",
+    "period": "Q3",
+    "document_sha256": "5a018c2afbdd6f391390d8866ad66eeb4153330079d23d65025ca7641a455c72",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [
+      "SOURCE_REPLACEMENT_CHARACTERS",
+      "SOURCE_XML_INCOMPLETE_OR_INVALID"
+    ],
+    "cause": "REPLACEMENT_CHARACTERS_WITH_STRUCTURAL_ERROR",
+    "member_diagnostics": [
+      {
+        "member": "20011114000493.xml",
+        "bytes": 206222,
+        "sha256": "a2a4d6e3d0df547acd34c46ba5003898d945e5ed83d39969a3a5ae2b4c6ffc35",
+        "issues": [
+          "SOURCE_REPLACEMENT_CHARACTERS",
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 7526,
+        "xml_error": "no element found: line 4, column 184926"
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20010214000193",
+    "pre_status": "NO_METRICS",
+    "corp_code": "00105509",
+    "fiscal_year": "2001",
+    "period": "QX",
+    "document_sha256": "eab435223e25eb804d315be17f6062753df1e53b75c0f008eed2a3959f0cbb4e",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [
+      "SOURCE_REPLACEMENT_CHARACTERS",
+      "SOURCE_XML_INCOMPLETE_OR_INVALID"
+    ],
+    "cause": "REPLACEMENT_CHARACTERS_WITH_STRUCTURAL_ERROR",
+    "member_diagnostics": [
+      {
+        "member": "20010214000193.xml",
+        "bytes": 393941,
+        "sha256": "e4df10c5a09548d7469c865d57c9e491ecf0cb87755e762608226cb88970fe3c",
+        "issues": [
+          "SOURCE_REPLACEMENT_CHARACTERS",
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 13919,
+        "xml_error": "not well-formed (invalid token): line 4, column 33294"
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000131000001",
+    "pre_status": "PARSED_4F",
+    "corp_code": "00126885",
+    "fiscal_year": "1998",
+    "period": "FY",
+    "document_sha256": "b3c540cdc9bfe015025b7ebde0e60f47e017f765f21afbe2ec1fff7a8c15b594",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [],
+    "cause": "SUPPORTED_STRUCTURE",
+    "member_diagnostics": [
+      {
+        "member": "20000131000001.xml",
+        "bytes": 883580,
+        "sha256": "0e297c720a1436c373ad7c6ffa631b562b769688be6ce6bef42110e7d2e36a63",
+        "issues": [],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000330000124",
+    "pre_status": "PARSED_4F",
+    "corp_code": "00261054",
+    "fiscal_year": "1999",
+    "period": "FY",
+    "document_sha256": "11be21fe475d47f7a98132cc6a78feb4974c856a7ef24391bdb4068ed8f1c24f",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [
+      "SOURCE_XML_INCOMPLETE_OR_INVALID"
+    ],
+    "cause": "STRUCTURAL_INCOMPLETE_OR_UNSUPPORTED",
+    "member_diagnostics": [
+      {
+        "member": "20000330000124.xml",
+        "bytes": 562089,
+        "sha256": "59cca3fbbca8ff308101e0e1d4456ac75c5abcb239fb78a240775db07b2191b2",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0,
+        "xml_error": "no element found: line 4, column 533158"
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000330000121",
+    "pre_status": "PARSED_PARTIAL",
+    "corp_code": "00261355",
+    "fiscal_year": "1999",
+    "period": "FY",
+    "document_sha256": "9f7945db67e29e8f9289a1a76a646778723c4ed9a3b937953a7baef51807ed1e",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [],
+    "cause": "SUPPORTED_STRUCTURE",
+    "member_diagnostics": [
+      {
+        "member": "20000330000121.xml",
+        "bytes": 778257,
+        "sha256": "a633427c5bedcfb298fee58e82cfd01c8f4db4f41a37e2ecfe853a29f766c01d",
+        "issues": [],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000113000001",
+    "pre_status": "PARSED_4F",
+    "corp_code": "00136776",
+    "fiscal_year": "1999",
+    "period": "H1",
+    "document_sha256": "02ae98809aac262ef6d649edaaa3e14aa875dd4aad7dc26fe554864382014d73",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [],
+    "cause": "SUPPORTED_STRUCTURE",
+    "member_diagnostics": [
+      {
+        "member": "20000113000001.xml",
+        "bytes": 1110039,
+        "sha256": "cc7e91e12df76631661f81390b4ee1d70f3b5bbdf4c585492e2371028b9be6bf",
+        "issues": [],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000329000068",
+    "pre_status": "PARSED_PARTIAL",
+    "corp_code": "00172033",
+    "fiscal_year": "1999",
+    "period": "H1",
+    "document_sha256": "eddf60f49a73b0660917a8572c912c5f0cd408d48faab8c3f78b3138e41205ee",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [],
+    "cause": "SUPPORTED_STRUCTURE",
+    "member_diagnostics": [
+      {
+        "member": "20000329000068.xml",
+        "bytes": 513042,
+        "sha256": "6c00e90ea74de04fb9a8af7e2eccde880fe80083d281995dcd34cafe539d3ca9",
+        "issues": [],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000429000023",
+    "pre_status": "PARSED_4F",
+    "corp_code": "00154189",
+    "fiscal_year": "2000",
+    "period": "FY",
+    "document_sha256": "72b345111d16f8b970c6ad46518bc6a3ac46320b6f7ad30f8285ade74a9fb53d",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [],
+    "cause": "SUPPORTED_STRUCTURE",
+    "member_diagnostics": [
+      {
+        "member": "20000429000023.xml",
+        "bytes": 1104667,
+        "sha256": "9b3a77099accfbf919f13b24b96398652021f0ead4985fe4744a0db0daf59cea",
+        "issues": [],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000629000132",
+    "pre_status": "PARSED_PARTIAL",
+    "corp_code": "00116860",
+    "fiscal_year": "2000",
+    "period": "FY",
+    "document_sha256": "8a576d752c15e9b51780fca73341ac0300dd79830f42686cca746b379d3c7b37",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [],
+    "cause": "SUPPORTED_STRUCTURE",
+    "member_diagnostics": [
+      {
+        "member": "20000629000132.xml",
+        "bytes": 717694,
+        "sha256": "c06435e141505da25209fd35bafe45e05d01ea74ed60645e0cfcaa01608f50df",
+        "issues": [],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000811000019",
+    "pre_status": "PARSED_4F",
+    "corp_code": "00130772",
+    "fiscal_year": "2000",
+    "period": "H1",
+    "document_sha256": "981e270e0b367c4d73f7db68eb61b14d1e3b65fae33156797056e56c28040968",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [],
+    "cause": "SUPPORTED_STRUCTURE",
+    "member_diagnostics": [
+      {
+        "member": "20000811000019.xml",
+        "bytes": 740486,
+        "sha256": "b5e15b37c27d546acf483cca4f932dbb1faa4e1b1a5e037bf9bc7f2f34577b88",
+        "issues": [],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000814000240",
+    "pre_status": "PARSED_PARTIAL",
+    "corp_code": "00154392",
+    "fiscal_year": "2000",
+    "period": "H1",
+    "document_sha256": "f858c0b022a77bd76464ed31ff80bfeefb9ff18d8e6bb86022697a4ef0fec884",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [
+      "SOURCE_XML_INCOMPLETE_OR_INVALID"
+    ],
+    "cause": "STRUCTURAL_INCOMPLETE_OR_UNSUPPORTED",
+    "member_diagnostics": [
+      {
+        "member": "20000814000240.xml",
+        "bytes": 491698,
+        "sha256": "1d813ca95cf7ed8a4580dc4a362488fcfb5fbfd9b93d33b71644fc8aae3fca17",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0,
+        "xml_error": "no element found: line 4, column 469319"
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000513000171",
+    "pre_status": "PARSED_4F",
+    "corp_code": "00138260",
+    "fiscal_year": "2000",
+    "period": "Q1",
+    "document_sha256": "ba609f051816306f85f640dfa280afd2843f48b4a688ca6ff23ec2c54f72d13f",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [],
+    "cause": "SUPPORTED_STRUCTURE",
+    "member_diagnostics": [
+      {
+        "member": "20000513000171.xml",
+        "bytes": 680798,
+        "sha256": "0f8bb9c4a7347334d724b5771c712621eeba1a3e13ee59d4f983a7bf5ac6908e",
+        "issues": [],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000515000042",
+    "pre_status": "PARSED_PARTIAL",
+    "corp_code": "00145260",
+    "fiscal_year": "2000",
+    "period": "Q1",
+    "document_sha256": "97498df16b6d65457da81c787ad4c6c6df630400a2654e64cf6e01e3aa26d8c1",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [],
+    "cause": "SUPPORTED_STRUCTURE",
+    "member_diagnostics": [
+      {
+        "member": "20000515000042.xml",
+        "bytes": 626146,
+        "sha256": "c3e6011bd5f98ceeb7a6cc222974e3e5d1e708a1b830d283309e40ebdeb1b194",
+        "issues": [],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  },
+  {
+    "rcept_no": "20000812000050",
+    "pre_status": "PARSED_4F",
+    "corp_code": "00203315",
+    "fiscal_year": "2000",
+    "period": "QX",
+    "document_sha256": "2c9d73b431e42ce640df86432e6b072eed4b53630d52cf5f35af2229546f37bb",
+    "same_as_checkpoint": true,
+    "diagnostic_version": "legacy-document-quality-v2",
+    "issues": [],
+    "cause": "SUPPORTED_STRUCTURE",
+    "member_diagnostics": [
+      {
+        "member": "20000812000050.xml",
+        "bytes": 559996,
+        "sha256": "46e449db9d0dcf49bd097572098fd8119e8cb586e586625131f5e16dfec0dd7b",
+        "issues": [],
+        "warnings": [],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0
+      }
+    ],
+    "publication_clock_verified": false,
+    "numeric_audit": false,
+    "scope_limitation": "fixed 12 NO_METRICS plus 12 parsed receipts; no population extrapolation"
+  }
+]

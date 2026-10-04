@@ -1,0 +1,14 @@
+{
+  "actual_starting_main": "778b02b9b3b7373ece88fd4bb61453308bcd70c3",
+  "original_collector_git_blob": "501c287ed09a6741d7aa69243cfdc864acf211f1",
+  "ast_identity": {
+    "norm_account": true,
+    "parse_number": true,
+    "UNIT_MULTIPLIERS": true,
+    "ALIASES": true,
+    "choose_metric": true,
+    "METRIC_STATEMENTS": true
+  },
+  "finding": "Existing aliases,statement requirements and numeric conversion are exactly unchanged. Scope-context issue is not introduced by v2 source acceptance.",
+  "parser_version": "legacy-v5-single-amount"
+}

@@ -1,0 +1,90 @@
+{
+  "run_id": 37210246868,
+  "job_id": 111459784422,
+  "code_commit": "6e2ee6c9dfc377453b3664fb546d482d52bd09f9",
+  "data_commit": "86de66b7ed804f9fcffc6de84c7d0e44a2aae897",
+  "parser_version": "legacy-v5-single-amount",
+  "source_version": "opendart-document-v1",
+  "source_diagnostic_version": "legacy-document-quality-v1",
+  "actual_status": "COMPLETED",
+  "selected": 100,
+  "completed": 100,
+  "requests": 100,
+  "changed_receipts": 100,
+  "published_new_metric_rows": 0,
+  "new_independently_audited_items": 0,
+  "after": {
+    "mapped_unique_receipts": 115020,
+    "durably_classified": 15476,
+    "pending": 99544,
+    "parsed_4f": 2360,
+    "parsed_partial": 2157,
+    "no_metrics": 9231,
+    "no_document": 1607,
+    "source_gap": 121,
+    "errors": 0
+  },
+  "metadata_issue": "actual100/3 worker; v1 separate evidence process incorrectly wrote limit20/workers4. Fixed in v2, old record preserved.",
+  "v1_validation_result": "FAILED_NORMAL_FORMAT_ACCEPTANCE; all100 encoding-blocked; five fixed-before-inspection source examples prove3 supported CP949 complete/2 structurally problematic. Do not call all100 financially truncated.",
+  "old_source_controls": {
+    "pre_value_fixed_no_metrics": 12,
+    "pre_value_fixed_parsed": 12,
+    "actual_official_document_reacquisition": 24,
+    "all_same_sha_as_checkpoint": true,
+    "parsed_normal_guard_pass": 10,
+    "parsed_true_source_gap": 2,
+    "current_v5_rows_quarantined": 32,
+    "all_version_rows_from_these_two": 70,
+    "older_v2_v4_rows_from_prior_two_native": 29,
+    "all_version_raw_rows_retained_under_diagnosed_sources": 99
+  },
+  "artifacts": [
+    {
+      "id": 11305989274,
+      "name": "legacy-source-audit-subset-1",
+      "bytes": 2447513,
+      "sha256": "8ab0a94481fd73b7cab54cd7e7984c8b411cf7258fee18a9efd9b5fc80821485",
+      "independently_downloaded_verified": true
+    },
+    {
+      "id": 11306352403,
+      "name": "legacy-source-evidence",
+      "bytes": 35690756,
+      "sha256": "7f0872974e6c7a731dce7b1b81fd9abaec34c7343aff2611a123bd7358bae930",
+      "independently_downloaded_verified": false,
+      "limitation": "authorized downloader32MiB cap; GitHub90-day full preservation, bounded subset independently inspected"
+    },
+    {
+      "id": 11306357382,
+      "name": "super-value-fast-backfill-status",
+      "bytes": 2060,
+      "sha256": "aaf5a42bbbfb0c41c579c29a8bd17a50493802d1de300a6fa22f6f8885b080ef",
+      "independently_downloaded_verified": true
+    }
+  ],
+  "pit_verified": 0,
+  "investment_strategy_verified": false,
+  "count_definition": "mapped unique receipts only; classified includes source gaps/absence and is not financial success. All-compatible effective state has2 additional unmapped NO_DOCUMENT. Before_raw is c767 checkpoint without PR33 overlays; before_effective applies7 reviewed SHA holds at main6e. The small run additionally classifies100 receipts and14 sampled old receipts.",
+  "before_raw_checkpoint": {
+    "mapped_unique_receipts": 115020,
+    "durably_classified": 15376,
+    "pending": 99644,
+    "parsed_4f": 2361,
+    "parsed_partial": 2158,
+    "no_metrics": 9250,
+    "no_document": 1607,
+    "source_gap": 0,
+    "errors": 0
+  },
+  "before_effective_after_pr33_quarantine": {
+    "mapped_unique_receipts": 115020,
+    "durably_classified": 15376,
+    "pending": 99644,
+    "parsed_4f": 2361,
+    "parsed_partial": 2158,
+    "no_metrics": 9243,
+    "no_document": 1607,
+    "source_gap": 7,
+    "errors": 0
+  }
+}

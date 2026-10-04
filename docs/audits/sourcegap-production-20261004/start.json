@@ -58,6 +58,21 @@
     "run": 37210246868,
     "job": 111459784422,
     "code": "6e2ee6c9dfc377453b3664fb546d482d52bd09f9",
-    "status": "RUNNING_AT_LAST_OBSERVATION"
+    "status": "COMPLETED",
+    "data_commit": "86de66b7ed804f9fcffc6de84c7d0e44a2aae897",
+    "source_guard_validation": "FAILED_NORMAL_ENCODING_ACCEPTANCE",
+    "source_gap": 100,
+    "new_published_rows": 0
+  },
+  "v2_followup": {
+    "pr": 34,
+    "head": "c5231009602f599cf4ee2d17ceaf81fd2860414b",
+    "native_ci": 37212563763,
+    "native_result": "success",
+    "full_ci": 37212563755,
+    "full_result": "IN_PROGRESS_AT_2026-10-04T15:35Z",
+    "merge": "NOT_YET",
+    "operator_gate_pr": 35,
+    "operator_status": "PREPARED_NOT_EXECUTED"
   }
 }

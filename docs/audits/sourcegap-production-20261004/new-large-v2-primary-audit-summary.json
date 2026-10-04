@@ -1,0 +1,32 @@
+{
+  "selection_commit": "8f16bf38adf986fd8f06a5439ad0ec8f63c9a048",
+  "selection_rule": "pre-value fixed12 receipt plan; ordered unique receipts; lexical metric/scope; one cell per receipt per round until30",
+  "source_run": 37215324227,
+  "actual_independently_compared_items": 30,
+  "distinct_primary_company_ciks": 12,
+  "stored_periods": [
+    "FY",
+    "H1",
+    "Q1",
+    "Q3",
+    "QX"
+  ],
+  "stored_scopes": [
+    "CFS",
+    "OFS"
+  ],
+  "selected_number_unit_matches": 28,
+  "confirmed_positive_sign_error": 1,
+  "source_unit_absent_krw_correctly_withheld": 1,
+  "current_component_problem_items": 15,
+  "confirmed_error_items": 13,
+  "additional_unresolved_items": 2,
+  "current_components_matched_pending_fiscal_pit": 15,
+  "scope_mismatches": 2,
+  "past_period_cases": 9,
+  "wrong_current_column_cases": 3,
+  "unresolved_fiscal_qx_cases": 3,
+  "issue_counts_overlap": true,
+  "pit_investment_verified": 0,
+  "limitation": "No dash imputation; no numeric/PIT whole-corpus certification; month-first metadata is not an exact primary date. Insurance operating expense alias remains measurement-qualified."
+}

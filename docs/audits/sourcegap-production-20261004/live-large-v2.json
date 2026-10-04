@@ -1,0 +1,92 @@
+{
+  "run_id": 37215324227,
+  "job_id": 111474535668,
+  "code_commit": "f81ca8db53802ab6236e77dfb9760e2e861239f9",
+  "collector_parser": "legacy-v5-single-amount",
+  "collector_source": "opendart-document-v1",
+  "collector_source_diagnostic": "legacy-document-quality-v2",
+  "source_code_merge": "967dae0805cd62a3ffaa8d9d85ac4e5bfc02a561",
+  "data_commit": "bce2d91b8a503e9e3faaf4ecc935b11ec743564f",
+  "actual_state": "COMPLETED",
+  "run_report": {
+    "completed": 2000,
+    "rate_limited": false,
+    "stop_reason": "BATCH_COMPLETE",
+    "requests": 2000,
+    "eligible_before_run": 99544,
+    "quarantined_errors": 0,
+    "selected": 2000,
+    "parser_version": "legacy-v5-single-amount",
+    "source_version": "opendart-document-v1",
+    "source_diagnostic_version": "legacy-document-quality-v2"
+  },
+  "checkpoint_status": {
+    "﻿automatic_pending_filings": "97544",
+    "collection_complete": "False",
+    "document_batch_limit": "2000",
+    "index_complete": "True",
+    "index_tasks_completed": "180",
+    "index_tasks_total": "180",
+    "indexed_filings": "138540",
+    "mapped_filings": "115020",
+    "mode": "BACKFILL_ACTIVE",
+    "no_document_filings": "1610",
+    "no_metrics_filings": "9263",
+    "parsed_partial_filings": "2216",
+    "parser_version": "legacy-v5-single-amount",
+    "processed_definition": "durably_classified_not_financial_success",
+    "processed_filings": "17476",
+    "quality_complete": "False",
+    "quality_status": "INDEPENDENT_SOURCE_AUDIT_REQUIRED",
+    "quarantined_error_filings": "0",
+    "remaining_mapped_filings": "97544",
+    "source_diagnostic_version": "legacy-document-quality-v2",
+    "source_gap_filings": "1919",
+    "source_only_filings_carried_forward": "1203",
+    "source_version": "opendart-document-v1",
+    "updated_at_utc": "2026-10-04T16:41:21.584204+00:00",
+    "usable_four_factor_filings": "2468",
+    "workers": "3"
+  },
+  "new_candidate_fields": 2476,
+  "new_candidate_receipts": 136,
+  "changed_status_counts": {
+    "SOURCE_GAP": 1830,
+    "PARSED_4F": 88,
+    "PARSED_PARTIAL": 48,
+    "NO_METRICS": 31,
+    "NO_DOCUMENT": 3
+  },
+  "scope_counts": {
+    "OFS": 2086,
+    "CFS": 390
+  },
+  "period_counts": {
+    "Q3": 1926,
+    "FY": 256,
+    "H1": 204,
+    "QX": 37,
+    "Q1": 53
+  },
+  "new_candidate_source_gap_overlap": 0,
+  "duplicate_new_fields": 0,
+  "checkpoint_progress": "25,50,...,2000 preserved in live-large-v2.log",
+  "investment_eligible": 0,
+  "live_observation": {
+    "main": "bce2d91b8a503e9e3faaf4ecc935b11ec743564f",
+    "utc": "2026-10-04 17:04 UTC",
+    "active_actions": 0,
+    "queued_actions": 0,
+    "previous_environment": "UNVERIFIABLE"
+  },
+  "artifact": {
+    "subset_id": 11308679201,
+    "subset_bytes": 2165240,
+    "subset_sha256": "1f16088502b5299c3ebb7be8cf5b25134387a614279a5934c5fd42f27e5fd553",
+    "full_id": 11308933452,
+    "full_bytes": 79524393,
+    "full_sha256": "37c9d097477b12269120411ea06a4c7e5fde220cccc1037246f5fea2fc470678",
+    "full_local_inspection": "NOT_DONE: authorized file download32MiB ceiling",
+    "retention_days": 90
+  }
+}
