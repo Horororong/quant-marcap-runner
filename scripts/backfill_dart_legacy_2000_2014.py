@@ -808,6 +808,8 @@ def current_state() -> pd.DataFrame:
     if not quarantine.empty:
         for row in quarantine.to_dict("records"):
             mask = out["rcept_no"].eq(row["rcept_no"]) & out["document_sha256"].eq(row["document_sha256"])
+            if not mask.any():
+                continue
             out.loc[mask, "prior_status"] = out.loc[mask, "status"]
             out.loc[mask, "status"] = "SOURCE_GAP"
             out.loc[mask, "best_scope"] = ""

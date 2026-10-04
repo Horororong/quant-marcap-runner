@@ -125,3 +125,45 @@ def test_evidence_budget_stops_before_new_publication(monkeypatch, tmp_path):
     with pytest.raises(CollectionPaused):
         legacy.preserve_document(b"too large", "receipt", "sha")
     assert list(tmp_path.iterdir()) == []
+
+
+def test_empty_compatible_state_is_not_mutated_by_unmatched_ledger(monkeypatch, tmp_path):
+    path = tmp_path / "state.csv"
+    pd.DataFrame([{"rcept_no": "old", "status": "ERROR", "metric_rows": "0",
+                   "document_sha256": "sha", "parser_version": "previous-parser",
+                   "source_version": legacy.SOURCE_VERSION}]).to_csv(path, index=False)
+    monkeypatch.setattr(legacy, "STATE_FILE", path)
+    assert legacy.current_state().empty
+
+
+def test_probe_rate_limit_stops_following_downloads(monkeypatch, tmp_path):
+    import json
+    from scripts import legacy_batch_evidence as evidence
+    monkeypatch.setenv("LEGACY_DART_EVIDENCE_DIR", str(tmp_path))
+    monkeypatch.setenv("LEGACY_DART_RUN_REPORT", str(tmp_path / "run.json"))
+    monkeypatch.setenv("LEGACY_DART_MAX_REQUESTS", "150")
+    monkeypatch.setattr(evidence.legacy, "QUARANTINE_FILE", tmp_path / "ledger.csv")
+    (tmp_path / "run.json").write_text(json.dumps({"requests": 100, "stop_reason": "BATCH_COMPLETE"}))
+    (tmp_path / "plan.json").write_text(json.dumps({"old_source_samples": [
+        {"rcept_no": "one"}, {"rcept_no": "two"}]}))
+    calls = []
+    def limited(receipt):
+        calls.append(receipt)
+        raise evidence.legacy.RateLimitExceeded("020")
+    monkeypatch.setattr(evidence.legacy, "fetch_document", limited)
+    evidence.probe()
+    assert calls == ["one"]
+    assert evidence.legacy.RUN_CONTROL is None
+
+
+def test_source_sample_selection_is_frozen_diverse_and_excludes_original_seven():
+    from scripts.legacy_batch_evidence import selected_samples
+    state = pd.DataFrame([{"rcept_no": f"receipt-{i}", "status": "NO_METRICS" if i < 20 else "PARSED_PARTIAL",
+                           "document_sha256": "sha", "metric_rows": "0"} for i in range(40)])
+    index = pd.DataFrame([{"rcept_no": f"receipt-{i}", "corp_code": f"corp-{i}",
+                          "fiscal_year": str(2000 + i % 3), "period": ["Q1", "H1", "Q3", "FY"][i % 4]}
+                         for i in range(40)])
+    a = selected_samples(state, index)
+    assert a == selected_samples(state.iloc[::-1], index.iloc[::-1])
+    assert len(a) == 24 and len({r["corp_code"] for r in a}) == 24
+    assert len({r["period"] for r in a}) > 1 and len({r["fiscal_year"] for r in a}) > 1
