@@ -1,0 +1,1120 @@
+{
+  "code_sha": "1af7b8952d1d346129b2eae1ccde67f105ca1eae",
+  "full_ci": {
+    "id": 37199649791,
+    "status": "completed",
+    "conclusion": "success",
+    "updated_at": "2026-10-04T12:07:49Z",
+    "jobs": [
+      {
+        "id": 111428517858,
+        "name": "sandbox-replay (3.12)",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-04T11:42:38Z",
+            "completed_at": "2026-10-04T11:42:40Z"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-04T11:42:40Z",
+            "completed_at": "2026-10-04T11:43:44Z"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-04T11:43:44Z",
+            "completed_at": "2026-10-04T11:43:44Z"
+          },
+          {
+            "name": "Install build and baseline dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-04T11:43:44Z",
+            "completed_at": "2026-10-04T11:43:56Z"
+          },
+          {
+            "name": "Prepare checksum-locked offline wheels",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-04T11:43:56Z",
+            "completed_at": "2026-10-04T11:43:58Z"
+          },
+          {
+            "name": "Clean venv real-data replay with network blocked",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-04T11:43:58Z",
+            "completed_at": "2026-10-04T11:47:52Z"
+          },
+          {
+            "name": "Upload small verification ledger",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-04T11:47:52Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Prepare bounded download segments after verified replay",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload delivery integrity ledger",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 9,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 001",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 10,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 002",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 11,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 003",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 12,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 004",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 13,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 005",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 14,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 006",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 15,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 007",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 16,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 008",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 17,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 009",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 18,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 010",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 19,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 011",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 20,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 012",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 21,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 013",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 22,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 014",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 23,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 015",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 24,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 016",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 25,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 017",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 26,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 018",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 27,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 019",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 28,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 020",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 29,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 021",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 30,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 022",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 31,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 023",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 32,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 024",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 33,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 025",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 34,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 026",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 35,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 027",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 36,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 028",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 37,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 029",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 38,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 030",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 39,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 031",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 40,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Upload download segment 032",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 41,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 81,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 82,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 83,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          }
+        ]
+      },
+      {
+        "id": 111428517993,
+        "name": "sandbox-replay (3.11)",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-04T11:42:38Z",
+            "completed_at": "2026-10-04T11:42:39Z"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-04T11:42:39Z",
+            "completed_at": "2026-10-04T11:43:42Z"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-04T11:43:42Z",
+            "completed_at": "2026-10-04T11:43:42Z"
+          },
+          {
+            "name": "Install build and baseline dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-04T11:43:42Z",
+            "completed_at": "2026-10-04T11:43:54Z"
+          },
+          {
+            "name": "Prepare checksum-locked offline wheels",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-04T11:43:54Z",
+            "completed_at": "2026-10-04T11:43:55Z"
+          },
+          {
+            "name": "Clean venv real-data replay with network blocked",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-04T11:43:55Z",
+            "completed_at": "2026-10-04T11:47:19Z"
+          },
+          {
+            "name": "Upload small verification ledger",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-04T11:47:19Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Prepare bounded download segments after verified replay",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload delivery integrity ledger",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 9,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 001",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 10,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 002",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 11,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 003",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 12,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 004",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 13,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 005",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 14,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 006",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 15,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 007",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 16,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 008",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 17,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 009",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 18,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 010",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 19,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 011",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 20,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 012",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 21,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 013",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 22,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 014",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 23,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 015",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 24,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 016",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 25,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 017",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 26,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 018",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 27,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 019",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 28,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 020",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 29,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 021",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 30,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 022",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 31,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 023",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 32,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 024",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 33,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 025",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 34,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 026",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 35,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 027",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 36,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 028",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 37,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 029",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 38,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 030",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 39,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 031",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 40,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Upload download segment 032",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 41,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 81,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:20Z"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 82,
+            "started_at": "2026-10-04T11:47:20Z",
+            "completed_at": "2026-10-04T11:47:21Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 83,
+            "started_at": "2026-10-04T11:47:21Z",
+            "completed_at": "2026-10-04T11:47:21Z"
+          }
+        ]
+      },
+      {
+        "id": 111428518149,
+        "name": "test",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-04T11:42:39Z",
+            "completed_at": "2026-10-04T11:42:39Z"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-04T11:42:39Z",
+            "completed_at": "2026-10-04T11:43:48Z"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-04T11:43:48Z",
+            "completed_at": "2026-10-04T11:43:49Z"
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-04T11:43:49Z",
+            "completed_at": "2026-10-04T11:44:10Z"
+          },
+          {
+            "name": "Legacy parser, resume and scheduled automation regressions",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-04T11:44:10Z",
+            "completed_at": "2026-10-04T11:44:25Z"
+          },
+          {
+            "name": "Preserve offline primary viewer replay and guard audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-04T11:44:25Z",
+            "completed_at": "2026-10-04T11:44:26Z"
+          },
+          {
+            "name": "Syntax check",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-04T11:44:26Z",
+            "completed_at": "2026-10-04T11:44:26Z"
+          },
+          {
+            "name": "Offline sandbox kit failure boundaries",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-10-04T11:44:26Z",
+            "completed_at": "2026-10-04T11:44:28Z"
+          },
+          {
+            "name": "Check machine-readable DSL contract",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-04T11:44:28Z",
+            "completed_at": "2026-10-04T11:44:29Z"
+          },
+          {
+            "name": "Recent DART deterministic storage and commit regression",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-04T11:44:29Z",
+            "completed_at": "2026-10-04T11:44:59Z"
+          },
+          {
+            "name": "Read-only Git storage growth measurement",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-10-04T11:44:59Z",
+            "completed_at": "2026-10-04T11:44:59Z"
+          },
+          {
+            "name": "Strict DSL input validation and normalization compatibility",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-10-04T11:44:59Z",
+            "completed_at": "2026-10-04T11:45:02Z"
+          },
+          {
+            "name": "Checked execution lifecycle and CURRENT readiness",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-10-04T11:45:02Z",
+            "completed_at": "2026-10-04T11:45:20Z"
+          },
+          {
+            "name": "Canonical performance and report E2E",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14,
+            "started_at": "2026-10-04T11:45:20Z",
+            "completed_at": "2026-10-04T11:46:00Z"
+          },
+          {
+            "name": "Requested period metrics and checked lifecycle boundaries",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15,
+            "started_at": "2026-10-04T11:46:00Z",
+            "completed_at": "2026-10-04T11:46:25Z"
+          },
+          {
+            "name": "Real checked NAV and requested-period report",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16,
+            "started_at": "2026-10-04T11:46:25Z",
+            "completed_at": "2026-10-04T11:46:57Z"
+          },
+          {
+            "name": "Install pinned browser test tooling",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17,
+            "started_at": "2026-10-04T11:46:57Z",
+            "completed_at": "2026-10-04T11:47:19Z"
+          },
+          {
+            "name": "Real report period, table, charts and mobile browser interactions",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18,
+            "started_at": "2026-10-04T11:47:19Z",
+            "completed_at": "2026-10-04T11:47:25Z"
+          },
+          {
+            "name": "Preserve actual report screen and interaction evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19,
+            "started_at": "2026-10-04T11:47:25Z",
+            "completed_at": "2026-10-04T11:47:26Z"
+          },
+          {
+            "name": "CURRENT and PROJECT compatibility self-tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 20,
+            "started_at": "2026-10-04T11:47:26Z",
+            "completed_at": "2026-10-04T11:47:37Z"
+          },
+          {
+            "name": "KRX session coverage and real history audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21,
+            "started_at": "2026-10-04T11:47:37Z",
+            "completed_at": "2026-10-04T11:47:46Z"
+          },
+          {
+            "name": "Held return guard and real verified split E2E",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 22,
+            "started_at": "2026-10-04T11:47:46Z",
+            "completed_at": "2026-10-04T11:47:53Z"
+          },
+          {
+            "name": "Corporate-action reconciliation and real share-class E2E",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23,
+            "started_at": "2026-10-04T11:47:53Z",
+            "completed_at": "2026-10-04T11:48:09Z"
+          },
+          {
+            "name": "KRX market normalization and segment restoration E2E",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24,
+            "started_at": "2026-10-04T11:48:09Z",
+            "completed_at": "2026-10-04T11:48:18Z"
+          },
+          {
+            "name": "Verified autumn splits and real public KRX modes",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25,
+            "started_at": "2026-10-04T11:48:18Z",
+            "completed_at": "2026-10-04T11:48:41Z"
+          },
+          {
+            "name": "Natural-language factor alias test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 26,
+            "started_at": "2026-10-04T11:48:41Z",
+            "completed_at": "2026-10-04T11:48:41Z"
+          },
+          {
+            "name": "Validate example DSL",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27,
+            "started_at": "2026-10-04T11:48:41Z",
+            "completed_at": "2026-10-04T11:48:42Z"
+          },
+          {
+            "name": "Strategy DSL preflight classification test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28,
+            "started_at": "2026-10-04T11:48:42Z",
+            "completed_at": "2026-10-04T11:48:47Z"
+          },
+          {
+            "name": "Known corporate-action preflight exposure and real modes",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29,
+            "started_at": "2026-10-04T11:48:47Z",
+            "completed_at": "2026-10-04T11:49:03Z"
+          },
+          {
+            "name": "Strategy DSL benchmark contract test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 30,
+            "started_at": "2026-10-04T11:49:03Z",
+            "completed_at": "2026-10-04T11:49:06Z"
+          },
+          {
+            "name": "Decile partition and execution contract test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 31,
+            "started_at": "2026-10-04T11:49:06Z",
+            "completed_at": "2026-10-04T11:49:14Z"
+          },
+          {
+            "name": "Real KRX decile execution E2E",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 32,
+            "started_at": "2026-10-04T11:49:14Z",
+            "completed_at": "2026-10-04T11:49:20Z"
+          },
+          {
+            "name": "KRX technical factor adapter test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 33,
+            "started_at": "2026-10-04T11:49:20Z",
+            "completed_at": "2026-10-04T11:49:20Z"
+          },
+          {
+            "name": "KRX volatility factor adapter test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 34,
+            "started_at": "2026-10-04T11:49:20Z",
+            "completed_at": "2026-10-04T11:49:21Z"
+          },
+          {
+            "name": "Factor provider registry extension test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 35,
+            "started_at": "2026-10-04T11:49:21Z",
+            "completed_at": "2026-10-04T11:49:21Z"
+          },
+          {
+            "name": "Custom financial rebalance and original DART quarter oracle",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 36,
+            "started_at": "2026-10-04T11:49:21Z",
+            "completed_at": "2026-10-04T11:53:44Z"
+          },
+          {
+            "name": "Cash entitlement, liquidity and settlement execution",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 37,
+            "started_at": "2026-10-04T11:53:44Z",
+            "completed_at": "2026-10-04T11:53:53Z"
+          },
+          {
+            "name": "Corporate action execution regression",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 38,
+            "started_at": "2026-10-04T11:53:53Z",
+            "completed_at": "2026-10-04T11:53:54Z"
+          },
+          {
+            "name": "Integration smoke test against PROJECT v2-16",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 39,
+            "started_at": "2026-10-04T11:53:54Z",
+            "completed_at": "2026-10-04T11:53:54Z"
+          },
+          {
+            "name": "DART Super Value PIT integration",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 40,
+            "started_at": "2026-10-04T11:53:54Z",
+            "completed_at": "2026-10-04T12:01:50Z"
+          },
+          {
+            "name": "Real-data DSL execution E2E",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 41,
+            "started_at": "2026-10-04T12:01:50Z",
+            "completed_at": "2026-10-04T12:04:35Z"
+          },
+          {
+            "name": "Checked CLI and real KRX DART execution lifecycle",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 42,
+            "started_at": "2026-10-04T12:04:35Z",
+            "completed_at": "2026-10-04T12:07:46Z"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 83,
+            "started_at": "2026-10-04T12:07:46Z",
+            "completed_at": "2026-10-04T12:07:46Z"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 84,
+            "started_at": "2026-10-04T12:07:46Z",
+            "completed_at": "2026-10-04T12:07:46Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 85,
+            "started_at": "2026-10-04T12:07:46Z",
+            "completed_at": "2026-10-04T12:07:46Z"
+          }
+        ]
+      },
+      {
+        "id": 111428518622,
+        "name": "download-verified-kit",
+        "status": "completed",
+        "conclusion": "skipped",
+        "steps": []
+      }
+    ]
+  },
+  "native_ci": {
+    "id": 37199649781,
+    "status": "completed",
+    "conclusion": "success",
+    "job_id": 111428517528
+  },
+  "running_actions": [],
+  "queued_actions": [],
+  "main_data_sha": "778b02b9b3b7373ece88fd4bb61453308bcd70c3",
+  "feature_deployed": false,
+  "original_environment": "UNVERIFIABLE",
+  "production_valid_recovery": 0,
+  "fully_verified_pit": 0,
+  "strategy_validation": "NOT_RUN"
+}

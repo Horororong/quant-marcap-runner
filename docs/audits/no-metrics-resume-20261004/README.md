@@ -167,11 +167,12 @@ completed success. Actual log `native-ci.log` shows seven new collector tests,
 six source-quality tests, four recovery tests, existing parser/resume suites,
 48 adapter and 11 independent audit guards; all pass. Historical independent
 72-cell failures and 46-cell/78-population evidence remain unchanged. Full
-CI37199649791 remains pending until its actual completion evidence is captured.
+CI37199649791 completed success at2026-10-04T12:07:49Z. Its actual log and all
+job/step statuses are saved in full-ci.log/final-ci-evidence.json.
 
 ## Completed live bounded batch (direct final evidence)
 
-Run37172051500 attempt2/job111425020146 completed success at 11:48:32 UTC.
+Run37172051500 attempt2/job111425020146 completed success at 11:48 UTC.
 Actual collection report: selected/completed/requests2000; BATCH_COMPLETE;
 rate_limited=false; 25-receipt checkpoint logs through2000. Artifact11302815319
 was downloaded and full ZIP SHA273fbd2b45953157cb2828aa480834fad795d1af5013f8035b27af011051f84a
@@ -191,3 +192,30 @@ blobs is therefore not completed; see live-durability-check.json. Local original
 state/index/all normalized hashes remain unchanged. Latest remote data was not
 replaced by the initial local snapshot. The resumed run used deployed v5; this
 review-only SOURCE_GAP patch has not been merged/deployed.
+
+Final evidence publication remote1bafad3 (local24f4fc6) restores all prior #32
+handoff text verbatim and adds actual completed-batch/runtime evidence. It has
+no source/registry/data/kit modifications relative to tested code1af7b895.
+Original decoded job logs are retained verbatim, including trailing spaces.
+
+## Final status and remaining work
+
+Full code CI37199649791: test and CPython3.11/3.12 offline replay **success**;
+conditional download-verified-kit **skipped**. Native CI37199649781 success.
+Final queried running/queued Actions lists are empty; bounded backfill completed,
+no background worker is claimed. Previous environment remains unverifiable.
+
+Collection incomplete (101619 mapped pending); archived recovery completed for
+five receipts, production-valid recovery0; numeric audit population78 checked,
+full-data independent audit incomplete; PIT date evidence78 but fullPIT0;
+actual strategy cost/OOS/robustness/operability validation NOT_RUN. Source patch
+is review-only/unmerged. Generic online viewer fallback, remaining NO_METRICS
+classification, FY2014 filing boundary/mapping, full primary timing/amendment
+chains, current OCF/CFS/measurement definitions, corporate actions/benchmark
+coverage and research readiness remain separate requirements.
+
+For legacy-only resume after confirming no competing active/queued writer:
+`gh workflow run backfill-dart-legacy-2000-2014.yml --repo Horororong/quant-marcap-runner --ref main`.
+This existing workflow shares the same lock/budgets/checkpoint and avoids adding
+modern refresh tasks. Do not merge/redeploy the parser stack without review of
+#29–#33; source diagnostics and staging are not validated PIT capabilities.
