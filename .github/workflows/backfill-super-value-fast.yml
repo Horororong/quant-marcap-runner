@@ -158,3 +158,5 @@ jobs:
             data/financials/legacy_2000_2014/
             data/status/dart_legacy_*.csv
           retention-days: 14
+
+# Operator batch evidence: PR33 source18857483 passed full CI; merge only after live100 verifies.

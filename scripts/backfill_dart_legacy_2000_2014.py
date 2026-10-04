@@ -21,14 +21,14 @@ try:
     from scripts.legacy_financial_fields import (ALIASES, METRIC_STATEMENTS, UNIT_MULTIPLIERS, norm_account, parse_number, choose_metric)
     from scripts.csv_storage import atomic_write_if_changed
     from scripts.legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
-    from scripts.legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION
+    from scripts.legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION, needs_encoding_recheck
 except ModuleNotFoundError as error:
     if error.name != "scripts":
         raise
     from legacy_financial_fields import (ALIASES, METRIC_STATEMENTS, UNIT_MULTIPLIERS, norm_account, parse_number, choose_metric)
     from csv_storage import atomic_write_if_changed
     from legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
-    from legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION
+    from legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION, needs_encoding_recheck
 
 warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
@@ -706,8 +706,9 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
             for n in names:
                 try:
                     data=z.read(n)
-                    diagnostics.append(inspect_member(data, n))
-                    text=decode_legacy(data)
+                    diagnostic = inspect_member(data, n)
+                    diagnostics.append(diagnostic)
+                    text = data.decode(diagnostic["resolved_encoding"]) if diagnostic.get("resolved_encoding") else decode_legacy(data)
                     all_cands.extend(table_candidates(text))
                 except Exception as error:
                     diagnostics.append({"member": n, "issues": ["MEMBER_READ_OR_PARSE_ERROR"],
@@ -806,7 +807,13 @@ def current_state() -> pd.DataFrame:
     out = state[current | transport_only].drop_duplicates("rcept_no", keep="last").copy()
     quarantine = load_csv(QUARANTINE_FILE, dtype=str).fillna("")
     if not quarantine.empty:
+        # Keep prior diagnosis rows as evidence, but a current-version source
+        # reinspection takes precedence for the same original document SHA.
+        quarantine["_current_diagnostic"] = quarantine.get("diagnostic_version", pd.Series("", index=quarantine.index)).eq(DIAGNOSTIC_VERSION)
+        quarantine = quarantine.sort_values("_current_diagnostic").drop_duplicates(["rcept_no", "document_sha256"], keep="last")
         for row in quarantine.to_dict("records"):
+            if str(row.get("active", "True")).lower() == "false":
+                continue
             mask = out["rcept_no"].eq(row["rcept_no"]) & out["document_sha256"].eq(row["document_sha256"])
             if not mask.any():
                 continue
@@ -824,7 +831,9 @@ def durable_done_receipts(state: pd.DataFrame) -> set[str]:
     """Terminal parse state alone is insufficient if its normalized data was lost."""
     # A source gap is quarantined for evidence-based recovery, never retried
     # indefinitely and never reported as proof that financial items are absent.
-    done = set(state.loc[state["status"].isin(["NO_METRICS", "NO_DOCUMENT", "SOURCE_GAP"]), "rcept_no"])
+    terminal = state["status"].isin(["NO_METRICS", "NO_DOCUMENT", "SOURCE_GAP"])
+    recheck = state.apply(lambda row: needs_encoding_recheck(row.to_dict()), axis=1) if not state.empty else pd.Series(False, index=state.index)
+    done = set(state.loc[terminal & ~recheck.astype(bool), "rcept_no"])
     parsed = state[state["status"].isin(["PARSED_4F", "PARSED_PARTIAL"])]
     if parsed.empty:
         return done

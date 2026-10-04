@@ -1,0 +1,24 @@
+{
+  "local_data_revision": "4833fb503105d810ea6e8e905d914f1ab3c28632",
+  "candidate_rows": 29,
+  "by_parser": {
+    "legacy-v4-book": 23,
+    "legacy-v2": 6
+  },
+  "by_receipt": {
+    "20000214000011": 26,
+    "20000515000887": 3
+  },
+  "registered_provider_connected": false,
+  "strategy_promotion": false,
+  "raw_records_retained": true,
+  "current_remote_normalized_recheck": {
+    "1999_blob": "9855069705f74a03b1b9cbc44b88e1fe7bab924b",
+    "2000_blob": "45296f496caf3ae12583ac962e1fef08102c775c",
+    "all_affected_blobs_equal_actual_main": true
+  },
+  "source_cause_qualifications": {
+    "20000515000887": "Literal EOF cuts narrative mid-sentence; strict XML incomplete. Native truncation confirmed, not corrected.",
+    "20000214000011": "Duplicate DOCUMENT open and only one final close; unsupported/unbalanced native container. Financial-body truncation cannot be inferred from strict XML error alone."
+  }
+}

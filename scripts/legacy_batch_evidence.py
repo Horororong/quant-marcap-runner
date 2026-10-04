@@ -13,6 +13,10 @@ import shutil
 import subprocess
 import zipfile
 import pandas as pd
+# The fast wrapper sets these only inside its own process. Evidence steps run
+# separately and must inherit the actual existing-job limits before import.
+os.environ.setdefault("LEGACY_DART_MAX_DOCS", os.getenv("SUPER_VALUE_FAST_LEGACY_DOCS", "20"))
+os.environ.setdefault("LEGACY_DART_WORKERS", os.getenv("SUPER_VALUE_FAST_LEGACY_WORKERS", "4"))
 try:
     from scripts import backfill_dart_legacy_2000_2014 as legacy
     from scripts.legacy_document_quality import inspect_member, DIAGNOSTIC_VERSION
@@ -135,7 +139,7 @@ def probe():
             records.append(record)
             (folder / "old-source-probes.json").write_text(json.dumps(records, ensure_ascii=False, indent=2) + "\n")
     if ledger:
-        out = pd.DataFrame(ledger).drop_duplicates(["rcept_no", "document_sha256"], keep="last")
+        out = pd.DataFrame(ledger).drop_duplicates(["rcept_no", "document_sha256", "diagnostic_version"], keep="last")
         legacy.atomic_write_if_changed(out, legacy.QUARANTINE_FILE)
     legacy.RUN_CONTROL = None
 
