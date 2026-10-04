@@ -1,0 +1,26 @@
+2026-10-04T07:52:36.1730202Z ============================== 19 passed in 0.87s ==============================
+2026-10-04T07:52:38.5959820Z ============================== 22 passed in 2.09s ==============================
+2026-10-04T07:52:39.4227225Z ============================== 8 passed in 0.48s ===============================
+2026-10-04T07:52:40.1956218Z ============================== 7 passed in 0.43s ===============================
+2026-10-04T07:52:41.1637521Z Ran 8 tests in 0.039s
+2026-10-04T07:52:42.4856295Z test_primary_five_previously_withheld_values_and_original_indices (__main__.ViewerGuardTests.test_primary_five_previously_withheld_values_and_original_indices) ... ok
+2026-10-04T07:52:43.2514314Z Ran 48 tests in 1.985s
+2026-10-04T07:52:43.6845469Z {"adapter_version": "dart-viewer-period-scope-unit-column-v2", "primary_bodies": 12, "receipts": 6, "independent_golden_items": 49, "results": {"MATCH": 22, "WITHHELD_PRIOR_PERIOD": 22, "WITHHELD_UNKNOWN_UNIT": 5}, "staging_rows": 78, "independently_matched_staging_rows": 22, "unreviewed_staging_rows": 56, "production_rows_written": 0, "checkpoint_rows_changed": 0, "verified_pit_items": 0, "collection_complete": false, "financial_quality_complete": false, "strategy_validation_complete": false, "source_verification": "archived primary body SHA, original cell spans, independent manual golden values", "manifest_sha256": "b5de27af7fe694630edd77542dad20a2268fe9f741cde1dc85276718124ac47a", "golden_sha256": "046bc73f2ff21233e2cff9dba2ac20b2bc9cd38e0c553c6f53a0600d825fd373"}
+2026-10-04T07:52:45.4615274Z {"samples": 72, "companies": 8, "receipts": 8, "source_period_end_years": ["1999", "2000"], "scope_counts": {"OFS": 46, "CFS": 26}, "results": {"stored_missing": 49, "period_mismatch": 18, "amount_mismatch": 3, "semantic_mismatch": 2}, "numeric_equal": 19, "numeric_unequal": 3, "stored_present": 23, "stored_missing": 49, "unit_unverified": 5, "correction_chain_verified": 0, "verified_pit_items": 0, "expected_sha256": "e95e0c4199905d7d59a27ed9a12b72ec4b698961f33a1c29c495819a49992240", "source_verification": "full archived primary body SHA and original literal cell offsets", "interpretation": "failure-oriented sample; not full-data certification; preserved v4 observations are not current provider inputs"}
+2026-10-04T07:52:45.5711457Z Ran 6 tests in 0.059s
+2026-10-04T07:52:48.8720487Z Ran 14 tests in 1.703s
+2026-10-04T07:52:49.3598898Z STRATEGY DSL MACHINE CONTRACT: PASS
+2026-10-04T07:53:14.7617986Z Ran 9 tests in 24.889s
+2026-10-04T07:53:15.1759400Z Ran 4 tests in 0.224s
+2026-10-04T07:53:18.7310961Z STRATEGY DSL INPUT CONTRACT: PASS (271 invalid cases; 8 unchanged fingerprints; CLI/data guards)
+2026-10-04T07:54:24.3171161Z Ran 5 tests in 19.371s
+2026-10-04T07:54:51.4003055Z   "report_ready": true,
+2026-10-04T07:55:25.6283029Z ##[group]Run python -c "import sys; sys.path.insert(0, 'scripts'); import quant_backtest_template_CURRENT as c; c._self_test(); from strategy_dsl_runner import load_project_engine; from pathlib import Path; load_project_engine(Path.cwd())._self_test(); print('TEMPLATE SELF-TESTS: PASS')"
+2026-10-04T07:55:25.6284688Z [36;1mpython -c "import sys; sys.path.insert(0, 'scripts'); import quant_backtest_template_CURRENT as c; c._self_test(); from strategy_dsl_runner import load_project_engine; from pathlib import Path; load_project_engine(Path.cwd())._self_test(); print('TEMPLATE SELF-TESTS: PASS')"[0m
+2026-10-04T07:55:34.2347958Z TEMPLATE SELF-TESTS: PASS
+2026-10-04T07:55:47.1179244Z HELD RETURN GUARD AND REAL ECOPRO SPLIT E2E: PASS
+2026-10-04T07:56:01.0622922Z CORPORATE ACTION RECONCILIATION AND REAL SHARE-CLASS E2E: PASS
+2026-10-04T07:57:00.6375477Z STRATEGY DSL REAL KRX DECILE E2E: PASS
+2026-10-04T07:57:02.9882364Z Ran 14 tests in 0.232s
+2026-10-04T08:09:31.9245553Z STRATEGY DSL EXECUTION E2E: PASS
+2026-10-04T08:12:11.4777321Z CHECKED DSL REAL E2E: PASS (CLI top_n/deciles unchanged, no overwrite, known-event/data gaps before NAV, DART/benchmark/audits)

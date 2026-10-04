@@ -16,7 +16,13 @@ new independent samples or a certification of all data.
 | same | same | net_income | 625,811,634 / 625811634 | 5 / 1 / 1 / 88 |
 | 피어리스 / 002130 / 20010104000076 | 2000-01-01–2000-09-30, Q3 | revenue | 19,891,704,755 / 19891704755 | 5 / 1 / 1 / 0 |
 | same | same | net_income | 6,516,196,541 / -6516196541 (explicit loss account) | 5 / 1 / 1 / 94 |
-| 대우 / 000200 / 20010103000052 | 2000-01-01–2000-09-30, Q3 | net_income | (-)3,423,467,689,539 / -3423467689539 | 6 / 54 / 2 / 0 |
+| 대우중공업 / 000200 / 20010103000052 | 2000-01-01–2000-09-30, Q3 | net_income | (-)3,423,467,689,539 / -3423467689539 | 6 / 54 / 2 / 0 |
+
+The five-cell audit JSON/CSV also preserves corp identifiers, original stored
+values (all five absent), index-recorded receipt dates (2000-08-09, 2001-01-03,
+2001-01-04) and correction indicators. Those receipt-day fields are explicitly
+marked unverified as actual legal publication times; correction chains are not
+reviewed. No synthetic publication lag or PIT date is added.
 
 Official viewer URLs, body SHA, literal-cell SHA/spans and every original BR
 line are in the source review. Unit is explicitly 원 for all five. Actual filing
@@ -65,13 +71,14 @@ adapter; the existing frozen kit was independently verified without edits.
   evidence remains in its separate audit directory.
 - All 63 previous staging rows retain identical values, tokens, periods, units
   and source coordinates. V2 emits 78 rows; 22 have independent manual matching,
-  **56 remain unaudited**, including 10 newly exposed non-golden rows.
+  56 were outside the frozen 49-cell golden (including ten newly exposed
+  non-golden rows); the separate ten-item audit below now leaves **46 unaudited**.
 - Independent original 72-item audit recheck against local baseline remains
   49 stored-missing / 18 period / 3 amount / 2 semantic findings. Known v4 records
   are preserved; no historical stored value is silently corrected or promoted.
 - Generated DSL contract check, compile check, whitespace check and immutable
-  dedicated-Python kit verify passed. Full final-code remote CI remains pending
-  until its actual completion and downloaded evidence are recorded below.
+  dedicated-Python kit verify passed. Full final-code remote CI succeeded at code commit
+  `1895508aa09d014558e895715ffaaf4cfbe69322`; exact completion evidence is below.
 
 ## Live collection and backtest boundary
 
@@ -107,6 +114,82 @@ timeout -k 5s 60s python scripts/export_strategy_dsl_contract.py --check
 
 Do not reset collection checkpoints, dispatch duplicate collection or promote
 staging rows without actual availability/correction and source-quality evidence.
-Next source-quality unit: independently review the ten newly exposed, non-golden
-staging rows against their original accounts/tokens before broadening verified
-coverage. Do not treat their inclusion in output as independent verification.
+Next source-quality unit: independently audit the remaining 46 staging rows
+using a pre-recorded sample plan and original source cells. Do not promote any
+of the 32 matched rows without verified availability and correction chains.
+
+## Additional independent ten-item source audit
+
+While mandatory CI was running, all ten newly exposed non-golden fields were
+selected without a performance/value filter in `ADDITIONAL_SAMPLE_PLAN.json`.
+Manual literal account/token expectations came from the original complete BR
+lines inspected before the adapter change, not from computing expectations
+with the new parser. The ten fields are amortization, cost of sales, depreciation,
+gross profit and operating income for United and Peerless. They are distinct
+from the existing 72 original samples (verified receipt/metric/scope disjointness).
+
+`verify_additional_cells.py` imports no collector or adapter. It checks original
+gzip/body/literal-cell SHA, slices pre-recorded raw cells, decodes HTML and splits
+original BR tokens independently, preserving blanks, then compares exact manual
+accounts/tokens and Decimal values with persisted staging. Original source
+period/scope/unit are the same already inspected IS headers used in the fixed
+audit. Ten of ten match, including Peerless's negative operating income.
+Production stored values for these ten additional fields were **not rechecked**;
+the table labels them as unchecked rather than missing/correct. Filing/correction
+evidence remains unverified and usable dates remain null.
+
+The original 72-item stored-data recheck remains unchanged; these are ten additional
+primary-to-staging comparisons, not an 82-item production-data certification.
+Across viewer staging, 22 original golden matches plus 10 supplementary matches
+make **32 independently matched rows of 78**; **46 remain unaudited**. The frozen
+49-cell replay JSON correctly retains its original-only count of 22 matches /
+56 outside that golden, and is byte-identical to the current CI replay.
+
+```bash
+timeout -k 5s 30s python docs/audits/viewer-line-alignment-20261004/verify_additional_cells.py --output-dir /tmp/quant-viewer-extra10-new
+```
+
+## Final completion checkpoint
+
+- Draft [PR #31](https://github.com/Horororong/quant-marcap-runner/pull/31), stacked
+  on PR #30, remains unmerged. Tested remote code commit:
+  `1895508aa09d014558e895715ffaaf4cfbe69322` (local corresponding source commit
+  `8849104`). Final evidence-only commits preserve the tested code blobs.
+- [Full Strategy DSL CI37187021329](https://github.com/Horororong/quant-marcap-runner/actions/runs/37187021329)
+  succeeded, updated **2026-10-04 08:12:15 UTC**. Test and clean offline CP311/CP312
+  jobs succeeded; the unrelated verified-kit download job was legitimately skipped.
+  Legacy CI37187021335 also succeeded. Native parser, source guard, generated
+  contracts, real DART/KRX/top-N/decile/checked CLI, CURRENT and browser checks
+  passed without changing the existing workflow contracts.
+- Actual remote 72-item audit artifact **11297795579** was downloaded and SHA
+  checked; findings remain 49 missing/18 period/3 amount/2 semantic. Actual remote
+  source replay artifact **11297194132** matches all four local replay files byte
+  for byte. Exact input/body hashes and CI metadata are preserved in this directory.
+- Actual report artifact **11297700610** passed the existing browser interaction
+  checks. Metrics/NAV/benchmark CSV SHA match the preceding verified CI exactly.
+  The existing report example is `status=ok, nav_ready=true, report_ready=true`,
+  but `report_complete=false`: configured ready periods are reported, unavailable
+  default/book/long-history periods are not certified. This remains software
+  regression evidence, not actual investment cost/OOS/robustness validation.
+- All **418 data blobs and 5 historical checkpoint documents** retain their
+  original remote SHA. Main remained `4833fb503105d810ea6e8e905d914f1ab3c28632`;
+  latest GitHub running/queued lists were empty, local collector scan empty, and
+  the earlier execution environment unobservable. No collector/reset/dispatch
+  was started. Coverage was fetched directly from that exact main: mapped
+  115,020 / processed 11,401 / pending 103,619 / reported PARSED_4F 616.
+- Supplementary `additional-10-complete-records/` is the latest ten-item audit
+  table with complete identifier/period/unknown-publication metadata. The earlier
+  `additional-10-audit/` first pass is preserved. Both have ten matches. No
+  production data value was checked/promoted for these ten supplementary fields.
+- This final checkpoint supersedes the initial pending-CI and ten-row next-task
+  lines in `HANDOFF_CURRENT.md`, which links here. The ten-row source review is
+  now complete; next is a pre-recorded independent audit of the remaining 46
+  staging rows. Availability/correction and current OCF gaps still block PIT
+  promotion even for the 32 source-matched rows.
+
+| Project area | Actual state after this task |
+|---|---|
+| Report function | Existing configured-window software regression passed; no new UI added |
+| Data preparation | Incomplete; legacy collection/PIT/current OCF and long-history gaps remain |
+| Independent quality | Original 72-item recheck plus ten additional primary-to-staging matches; full data certification incomplete |
+| Actual strategy validation | Cost/OOS/robustness/operational validation incomplete; no new requested research NAV run |
