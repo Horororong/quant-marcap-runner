@@ -2,6 +2,21 @@
 
 This repository is a reproducible quantitative-research and backtesting system.
 
+## Owner's failure-recovery instruction (2026-10-06)
+
+On command/tool failure, inspect the last verbatim error, actual exit code (or
+explicit absence of one), and completed steps before choosing recovery. Only
+transient communication failures receive bounded retries; do not repeat the
+same failure without fixing its cause. Locate the original dedicated Python and
+kit_manifest, and require `sandbox_runtime.py verify` before calculation. No
+internet pip, arbitrary package changes, or ambient/system Python calculation
+fallback. Preserve completed collection/backfill/commits and resume incomplete
+steps only. Distinguish attempted commands from actual verified outputs. Do not
+hide failures by changing data, periods or formulas. If blocked, persist the
+error, completed scope, preserved artifacts/checkpoint and exact resume command.
+The original kit's stdlib-only bootstrap may restore its pinned offline runtime;
+it does not authorize strategy execution outside that verified runtime.
+
 Read `PROJECT_CHARTER.md` before other project documentation. It preserves the
 owner's standing project instructions, including the legacy DART backfill and
 independent source-audit requirements. Follow it in every new task/session.

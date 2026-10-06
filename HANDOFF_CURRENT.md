@@ -1,3 +1,22 @@
+## 2026-10-06 LAA 실행 및 실패 복구 checkpoint
+
+사용자 실패 복구 지침은 AGENTS.md에 기록했다. 인터넷 설치는 재시도하지 않았다.
+이전 runtime/manifest는 현재 환경에서 없었으며 원래 kit26e4ec02e569를 CI37157470156의
+13개 transport/ledger artifact에서 원본 SHA/CRC 검증 후 오프라인 복원했다.
+전용 Python `/workspace/scratch/laa-recovery/runtime/.venv/bin/python`, bootstrap와
+sandbox_runtime verify 실제 exit0/statusok. 원래 kit/가격/UNRATE/백필 state 유지.
+
+LAA(고정 IWD/GLD/IEF 각25%, 월별 QQQ/SHY25%)의 reusable allocation executor와
+원문 URL 기반 274 발표일, 8개 통과 테스트 추가. 실제 요청2004-11-18~2026-10-02
+실행 `results/laa/run-20261006-v2`: exit3/data_gap/preflight/nav_readyfalse/report_readyfalse.
+2026-03-31 신호/04-01 체결에서 필요한12개월실업률평균에 공식조사가없는2025-10이
+포함된다. 저장4.4를 공개된값으로 사용하지 않음. 기간축소/결측보간/다른계산으로
+우회0, NAV·성과·차트 생성0. 지표 결측이 있어도 S&P>=MA로 QQQ가 확정되는 다른
+월은 정확한AND계약으로 판단하며 원래macro공백은감사에남긴다. 당시발표값vintage
+완전인증은여전히미완료. 결측필수신호시기존보유유지등의새규칙은사용자응답대기,
+자동적용하지않음. 기존수집/백필/commit중복실행0, main배포/remoteCI성공선언없음.
+정확한오류·보존파일·재개절차: [LAA 복구 기록](docs/LAA_RECOVERY_20261006.md).
+
 ## 2026-10-04 PR33/34/35 실제 운영 배치·신규 감사 최종 checkpoint
 
 PR33 main6e2ee6c 실제병합, v1실제100건의 정상CP949차단 결함은 PR34 main967dae08(v2)에서 수정했다. 각최종source native/fullCI통과. 수정된운영 경로의동일100건SHA재처리 run37214492414/dataed5232c는581새candidate/31공시. 그 gate통과후 PR35 mainf81ca8db의기존fastjobmarker로신규2000건 run37215324227/job111474535668을실제완료했다. data mainbce2d91b;2000requests/BATCH_COMPLETE/modern0/rate0/error0,2476새candidate/136공시. 처리17476/대기97544/4F2468/partial2216/NO_METRICS9263/mappedNO_DOCUMENT1610/SOURCE_GAP1919. SOURCE_GAP은추출성공·데이터준비가아니다. collection/quality_complete=false.

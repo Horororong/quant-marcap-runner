@@ -1,0 +1,33 @@
+{
+  "id": "laa",
+  "fixed_weights": {
+    "IWD": 0.25,
+    "GLD": 0.25,
+    "IEF": 0.25
+  },
+  "timing_weight": 0.25,
+  "risk_asset": "QQQ",
+  "defensive_asset": "SHY",
+  "benchmark": "SPY",
+  "price_signal": "data/indices/SP500.csv",
+  "macro_values": "data/macro/US_UNEMPLOYMENT.csv",
+  "macro_releases": "data/macro/US_UNEMPLOYMENT_RELEASE_DATES.csv",
+  "price_ma_sessions": 200,
+  "macro_ma_months": 12,
+  "annual_rebalance_month": 1,
+  "cost_bps": [
+    0,
+    5,
+    15
+  ],
+  "calendar": "XNYS",
+  "start": "2004-11-18",
+  "end": "2026-10-02",
+  "macro_policy": "latest_revised_values_at_evidenced_release_dates",
+  "limitations": [
+    "Repository UNRATE values may contain later revisions; vintage correctness is not certified.",
+    "Every calendar month in the macro MA window must have both a value and primary release evidence.",
+    "ETF adjusted closes reflect provider adjustments; complete historical distribution accuracy is not independently certified.",
+    "USD returns, no FX conversion, taxes excluded, no optimization or OOS certification."
+  ]
+}

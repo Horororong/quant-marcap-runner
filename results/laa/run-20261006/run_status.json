@@ -1,0 +1,12 @@
+{
+  "status": "data_gap",
+  "phase": "preflight",
+  "nav_ready": false,
+  "report_ready": false,
+  "output_dir": "/workspace/quant-marcap-runner/results/laa/run-20261006",
+  "error": {
+    "type": "DataGap",
+    "message": "10 signal dependency gaps; first: {'signal_date': '2025-12-31', 'execution_date': '2026-01-02', 'kind': 'annual', 'sp500_close': 6845.5, 'sp500_ma': 6286.451240234375, 'macro_month': '2025-11', 'macro_release_date': '2025-12-16', 'macro_window_start': '2024-12', 'unemployment': 4.5, 'status': 'data_gap', 'month': '2025-10', 'reason': 'missing primary release evidence', 'stored_value': 4.4}"
+  },
+  "exit_code": 3
+}
