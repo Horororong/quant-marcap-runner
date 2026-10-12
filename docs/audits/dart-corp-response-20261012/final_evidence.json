@@ -1,0 +1,95 @@
+{
+  "code_head": "670e693b2472220d103a3f87b42655a5d307e041",
+  "merge": {
+    "sha": "917e2b51a6652bc5ba3d570adc1d53fca4dbe567",
+    "merged": true,
+    "message": "Pull Request successfully merged"
+  },
+  "checks": [
+    {
+      "name": "download-verified-kit",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38190342160/job/114621549358"
+    },
+    {
+      "name": "sandbox-replay (3.12)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38190342160/job/114621548348"
+    },
+    {
+      "name": "sandbox-replay (3.11)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38190342160/job/114621548225"
+    },
+    {
+      "name": "test",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38190342160/job/114621548140"
+    },
+    {
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38190342163/job/114621547953"
+    }
+  ],
+  "ci_log_excerpt": [
+    "2026-10-12T01:04:10.3405276Z Ran 18 tests in 0.067s",
+    "2026-10-12T01:04:29.8988306Z STRATEGY DSL MACHINE CONTRACT: PASS",
+    "2026-10-12T01:05:01.5714799Z CHECKED DSL RUN LIFECYCLE: PASS (gaps, readiness, frozen input, distinct runs, atomic outputs, failures/interruption, actual CURRENT report)",
+    "2026-10-12T01:07:19.0894086Z STRATEGY DSL DECILE CONTRACT AND EXECUTION: PASS",
+    "2026-10-12T01:09:52.8248016Z CORPORATE ACTION EXECUTION TEST: PASS",
+    "2026-10-12T01:14:18.5349677Z DART DSL SUPER VALUE INTEGRATION: PASS",
+    "2026-10-12T01:15:47.8608302Z STRATEGY DSL EXECUTION E2E: PASS"
+  ],
+  "local_tests": {
+    "count": 18,
+    "exit_code": 0,
+    "python": "/workspace/scratch/laa-recovery/runtime/.venv/bin/python"
+  },
+  "deployment_runs": [
+    {
+      "id": 38191547427,
+      "name": "Validate legacy parser schema",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "917e2b51a6652bc5ba3d570adc1d53fca4dbe567"
+    },
+    {
+      "id": 38191547391,
+      "name": "Fast-backfill super-value PIT inputs",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "917e2b51a6652bc5ba3d570adc1d53fca4dbe567"
+    },
+    {
+      "id": 38191547381,
+      "name": "Update quant data",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "917e2b51a6652bc5ba3d570adc1d53fca4dbe567"
+    },
+    {
+      "id": 38191547377,
+      "name": "Test Strategy DSL v1",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "917e2b51a6652bc5ba3d570adc1d53fca4dbe567"
+    },
+    {
+      "id": 38191547372,
+      "name": "Refresh recent DART financials",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "917e2b51a6652bc5ba3d570adc1d53fca4dbe567"
+    }
+  ],
+  "recovery_notes": [
+    "Early in-progress job log fetch returned BlobNotFound; logs were retrieved after job completion.",
+    "First merge call failed tool schema validation before mutation; corrected repository_full_name and merged with pinned code head."
+  ]
+}
