@@ -39,6 +39,9 @@ on:
       - 'scripts/test_legacy_schedule_gate.py'
       - 'scripts/backfill_dart_legacy_2000_2014.py'
       - 'scripts/backfill_super_value_fast.py'
+      - 'scripts/backfill_dart_full_financials.py'
+      - 'scripts/dart_corp_code.py'
+      - 'tests/test_dart_corp_code.py'
       - 'tests/test_legacy*.py'
       - 'tests/fixtures/legacy_dart/**'
       - '.github/workflows/backfill-super-value-fast.yml'
@@ -151,6 +154,7 @@ jobs:
       - name: Legacy parser, resume and scheduled automation regressions
         timeout-minutes: 5
         run: |
+          timeout -k 5s 30s python -u tests/test_dart_corp_code.py
           for test_file in tests/test_legacy_dart_parser.py tests/test_legacy_backfill_resume.py tests/test_legacy_backfill_automation.py tests/test_legacy_source_evidence.py tests/test_legacy_document_quality.py; do
             timeout -k 5s 60s python -u -m pytest "$test_file" -vv -s -o faulthandler_timeout=15 || exit $?
           done

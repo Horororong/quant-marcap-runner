@@ -285,9 +285,22 @@ def main() -> None:
 
     legacy_result = legacy_fast()
     # Legacy gets its bounded quota first. Never continue API calls after 020.
-    modern_result = (modern_fast() if MODERN_LIMIT > 0 and not legacy_result.get("legacy_rate_limited")
-                     and legacy_result.get("legacy_stop_reason") != "FATAL_API"
-                     else {"modern_run_tasks": 0, "modern_skipped": True})
+    modern_failure = None
+    modern_result = {"modern_run_tasks": 0, "modern_skipped": True}
+    if (MODERN_LIMIT > 0 and not legacy_result.get("legacy_rate_limited")
+            and legacy_result.get("legacy_stop_reason") != "FATAL_API"):
+        try:
+            modern_result = modern_fast()
+        except Exception as exc:
+            modern_failure = exc
+            # Do not print request URLs, response bodies or exception messages.
+            # Progress from this phase can be partial, so its count is unknown.
+            modern_result = {"modern_run_tasks": None, "modern_failed": True,
+                             "modern_failure_type": type(exc).__name__,
+                             "modern_failure_kind": getattr(exc, "kind", "modern_phase_error"),
+                             "modern_failure_status": getattr(exc, "status", ""),
+                             "modern_failure_attempts": getattr(exc, "attempts", None),
+                             "modern_rate_limited": isinstance(exc, modern.RateLimitExceeded)}
 
     row = {
         "mode": "SUPER_VALUE_FAST_BACKFILL",
@@ -299,6 +312,9 @@ def main() -> None:
     print(pd.DataFrame([row]).to_string(index=False), flush=True)
     if legacy_result.get("legacy_stop_reason") == "FATAL_API":
         raise RuntimeError("DART authentication/service failure; saved progress preserved")
+    if modern_failure is not None:
+        raise RuntimeError(f"Modern DART phase failed ({type(modern_failure).__name__}); "
+                           "legacy progress and current failure status preserved") from None
 
 
 if __name__ == "__main__":

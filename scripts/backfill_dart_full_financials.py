@@ -14,6 +14,11 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 import requests
 
+try:
+    from scripts.dart_corp_code import CorpCodeError, fetch_corp_code
+except ModuleNotFoundError:
+    from dart_corp_code import CorpCodeError, fetch_corp_code
+
 API_KEY = os.getenv("DART_API_KEY", "").strip()
 MAX_TASKS = max(1, int(os.getenv("DART_FULL_BACKFILL_TASKS", "3000")))
 WORKERS = max(1, min(8, int(os.getenv("DART_FULL_BACKFILL_WORKERS", "6"))))
@@ -62,12 +67,19 @@ def normalize_name(value: str) -> str:
 
 
 def load_all_dart_corps() -> pd.DataFrame:
-    r = requests.get(f"{BASE}/corpCode.xml", params={"crtfc_key": API_KEY}, timeout=60)
-    r.raise_for_status()
-    with zipfile.ZipFile(io.BytesIO(r.content)) as z:
-        xml = z.read(z.namelist()[0])
-    root = ET.fromstring(xml)
-    rows = [{child.tag: child.text for child in node} for node in root.findall("list")]
+    try:
+        rows = fetch_corp_code(requests.get, f"{BASE}/corpCode.xml", API_KEY,
+                               transport_errors=(requests.Timeout, requests.ConnectionError))
+    except CorpCodeError as exc:
+        if exc.kind == "rate_limit":
+            translated = RateLimitExceeded(str(exc))
+            translated.kind, translated.status, translated.attempts = exc.kind, exc.status, exc.attempts
+            raise translated from None
+        if exc.kind == "fatal_api":
+            translated = FatalDartError(str(exc))
+            translated.kind, translated.status, translated.attempts = exc.kind, exc.status, exc.attempts
+            raise translated from None
+        raise
     df = pd.DataFrame(rows)
     for c in ["corp_code", "corp_name", "stock_code", "modify_date"]:
         if c not in df.columns:
