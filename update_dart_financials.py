@@ -13,6 +13,7 @@ import requests
 import pandas as pd
 
 from scripts.csv_storage import canonical_csv, atomic_write_if_changed
+from scripts.dart_corp_code import fetch_corp_code
 
 API_KEY = os.getenv('DART_API_KEY', '').strip()
 ROOT = Path('data/financials')
@@ -37,11 +38,8 @@ def rotation_positions(total: int, start: int, batch_size: int) -> tuple[list[in
 
 
 def get_corp_codes() -> pd.DataFrame:
-    r = requests.get(f'{BASE}/corpCode.xml', params={'crtfc_key': API_KEY}, timeout=60)
-    r.raise_for_status()
-    with zipfile.ZipFile(io.BytesIO(r.content)) as z:
-        root = ET.fromstring(z.read(z.namelist()[0]))
-    rows = [{child.tag: child.text for child in node} for node in root.findall('list')]
+    rows = fetch_corp_code(requests.get, f'{BASE}/corpCode.xml', API_KEY,
+                           transport_errors=(requests.Timeout, requests.ConnectionError))
     df = pd.DataFrame(rows)
     raw_code = df['stock_code'].fillna('').astype(str).str.strip()
     df = df[raw_code.str.fullmatch(r'\d{6}')].copy()

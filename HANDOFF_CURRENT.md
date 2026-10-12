@@ -1,3 +1,15 @@
+## 2026-10-12 corpCode 응답 오류 수정 checkpoint
+
+실패 run38079743270/job114294012340의 BadZipFile/exit1을 확인했다. 정상 ZIP과
+API오류를 구분하고 통신 timeout/connection·HTTP500/502/503/504만3회이내 재시도한다.
+modern full 및 recent refresh가 공유검증helper를 사용한다. modern실패시 완료legacy
+진행량과현재실패상태를먼저atomic저장한후nonzero종료한다. raw응답/비밀키노출0.
+원래전용runtime/kit verify exit0, 새18회귀테스트통과, generatedcontractPASS.
+격리4021건/sourcegap15918건/reset/중복수집0, numeric parser/PIT/자료/예약변경0.
+source기준live main44ca6d5와동일, 이전LAA작업은다른worktree에보존한다.
+최종원격CI/배포상태는실제GitHub조회필요. 상세오류·검증·재개:
+[corpCode 복구 기록](docs/DART_CORP_RESPONSE_REPAIR_20261012.md).
+
 ## 2026-10-04 PR33/34/35 실제 운영 배치·신규 감사 최종 checkpoint
 
 PR33 main6e2ee6c 실제병합, v1실제100건의 정상CP949차단 결함은 PR34 main967dae08(v2)에서 수정했다. 각최종source native/fullCI통과. 수정된운영 경로의동일100건SHA재처리 run37214492414/dataed5232c는581새candidate/31공시. 그 gate통과후 PR35 mainf81ca8db의기존fastjobmarker로신규2000건 run37215324227/job111474535668을실제완료했다. data mainbce2d91b;2000requests/BATCH_COMPLETE/modern0/rate0/error0,2476새candidate/136공시. 처리17476/대기97544/4F2468/partial2216/NO_METRICS9263/mappedNO_DOCUMENT1610/SOURCE_GAP1919. SOURCE_GAP은추출성공·데이터준비가아니다. collection/quality_complete=false.
