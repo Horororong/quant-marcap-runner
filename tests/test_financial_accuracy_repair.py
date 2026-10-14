@@ -85,4 +85,37 @@ class CollectorSafety(unittest.TestCase):
     r={**select_verified(parse_native(fixture())['candidates'])[0],'fiscal_year':2007,'rcept_no':'20070814000001','document_sha256':'f'*64}
     self.subject.append_normalized([r])
     self.assertFalse((Path(t)/'normalized').exists());self.assertTrue((Path(t)/'review/legacy_metrics_2007.csv.gz').exists())
+ def test_review_checkpoint_requires_real_hash_and_row_count(self):
+  import pandas as pd
+  from unittest.mock import patch
+  with tempfile.TemporaryDirectory()as t:
+   with patch.object(self.subject,'NORM_DIR',Path(t)/'normalized'),patch.object(self.subject,'REVIEW_DIR',Path(t)/'review'):
+    r={**select_verified(parse_native(fixture())['candidates'])[0],'fiscal_year':2007,'rcept_no':'20070814000001','document_sha256':'f'*64}
+    state=pd.DataFrame([{'rcept_no':r['rcept_no'],'status':'PARSED_PARTIAL','metric_rows':1,'document_sha256':r['document_sha256']}])
+    self.assertEqual(self.subject.durable_done_receipts(state),set())
+    self.subject.append_normalized([r]);self.assertEqual(self.subject.durable_done_receipts(state),{r['rcept_no']})
+    state.loc[0,'document_sha256']='wrong';self.assertEqual(self.subject.durable_done_receipts(state),set())
+    state.loc[0,'document_sha256']=r['document_sha256'];state.loc[0,'metric_rows']=2
+    self.assertEqual(self.subject.durable_done_receipts(state),set())
+ def test_isolated_review_stores_never_reuse_another_checkpoint(self):
+  import pandas as pd
+  from unittest.mock import patch
+  with tempfile.TemporaryDirectory()as t:
+   r={**select_verified(parse_native(fixture())['candidates'])[0],'fiscal_year':2007,'rcept_no':'20070814000001','document_sha256':'f'*64}
+   state=pd.DataFrame([{'rcept_no':r['rcept_no'],'status':'PARSED_PARTIAL','metric_rows':1,'document_sha256':r['document_sha256']}])
+   for folder,write in [('one',True),('two',False)]:
+    with patch.object(self.subject,'NORM_DIR',Path(t)/folder/'normalized'),patch.object(self.subject,'REVIEW_DIR',Path(t)/folder/'review'):
+     if write:self.subject.append_normalized([r])
+     self.assertEqual(self.subject.durable_done_receipts(state),{r['rcept_no']}if write else set())
+ def test_review_append_preserves_opaque_old_numeric_and_missing_tokens(self):
+  import pandas as pd
+  from unittest.mock import patch
+  with tempfile.TemporaryDirectory()as t:
+   with patch.object(self.subject,'NORM_DIR',Path(t)/'normalized'),patch.object(self.subject,'REVIEW_DIR',Path(t)/'review'):
+    r={**select_verified(parse_native(fixture())['candidates'])[0],'fiscal_year':2007,'rcept_no':'20070814000001','document_sha256':'f'*64,'parser_version':'legacy-v3-book','amount_krw':'1.2431421104738549e+23','amount_reported':'4.621540057200055e+46','account_name':'NA'}
+    self.subject.append_normalized([r]);path=Path(t)/'review/legacy_metrics_2007.csv.gz'
+    before=pd.read_csv(path,dtype=str,keep_default_na=False).iloc[0].to_dict()
+    self.subject.append_normalized([{**r,'parser_version':self.subject.PARSER_VERSION,'amount_krw':'1234'}])
+    after=pd.read_csv(path,dtype=str,keep_default_na=False);kept=after[after.parser_version.eq('legacy-v3-book')].iloc[0].to_dict()
+    self.assertEqual(before,kept);self.assertEqual(len(after),2);self.assertFalse((Path(t)/'normalized').exists())
 if __name__=='__main__':unittest.main(verbosity=2)

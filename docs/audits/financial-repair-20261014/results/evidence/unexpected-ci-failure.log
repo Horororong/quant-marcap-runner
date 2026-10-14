@@ -1,0 +1,16 @@
+2026-10-14T10:08:13.9017848Z ##[group]Run pip install pandas requests beautifulsoup4 lxml pytest pyyaml
+2026-10-14T10:08:13.9018477Z [36;1mpip install pandas requests beautifulsoup4 lxml pytest pyyaml[0m
+2026-10-14T10:08:26.4732062Z ============================== 19 passed in 0.52s ==============================
+2026-10-14T10:08:27.2940784Z tests/test_legacy_backfill_resume.py::test_state_cannot_skip_missing_or_mismatched_normalized_data[missing_file] FAILED
+2026-10-14T10:08:27.4132664Z FAILED
+2026-10-14T10:08:28.8521932Z tests/test_legacy_backfill_resume.py::test_append_preserves_all_old_numeric_tokens_and_missing_strings_verbatim FAILED
+2026-10-14T10:08:28.9795472Z E       assert 0 == 1
+2026-10-14T10:08:28.9796410Z E        +  where 0 = len(Empty DataFrame\nColumns: [rcept_no, rcept_dt, fiscal_year, period, stock_code]\nIndex: [])
+2026-10-14T10:08:28.9797263Z tests/test_legacy_backfill_resume.py:90: AssertionError
+2026-10-14T10:08:28.9808824Z E       StopIteration
+2026-10-14T10:08:28.9815817Z E       StopIteration
+2026-10-14T10:08:28.9827250Z FAILED tests/test_legacy_backfill_resume.py::test_state_cannot_skip_missing_or_mismatched_normalized_data[missing_file] - assert 0 == 1
+2026-10-14T10:08:28.9829766Z FAILED tests/test_legacy_backfill_resume.py::test_parser_version_resume_keeps_old_observations_and_does_not_reparse_current - StopIteration
+2026-10-14T10:08:28.9831242Z FAILED tests/test_legacy_backfill_resume.py::test_append_preserves_all_old_numeric_tokens_and_missing_strings_verbatim - StopIteration
+2026-10-14T10:08:28.9832263Z ========================= 3 failed, 19 passed in 2.26s =========================
+2026-10-14T10:08:29.0722366Z ##[error]Process completed with exit code 1.

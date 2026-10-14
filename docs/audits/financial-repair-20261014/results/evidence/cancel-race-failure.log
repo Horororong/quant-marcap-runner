@@ -1,0 +1,9 @@
+2026-10-14T10:09:57.4739754Z RequestError [HttpError]: Cannot cancel a workflow run that is not in progress.
+2026-10-14T10:09:57.4755206Z   status: 409,
+2026-10-14T10:09:57.4759532Z     url: 'https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/38547623968/cancel',
+2026-10-14T10:09:57.4763095Z     status: 409,
+2026-10-14T10:09:57.4822485Z ##[error]Unhandled error: HttpError: Cannot cancel a workflow run that is not in progress.
+2026-10-14T10:09:57.4874959Z       message: 'Cannot cancel a workflow run that is not in progress.',
+2026-10-14T10:09:57.4877648Z       documentation_url: 'https://docs.github.com/rest/actions/workflow-runs#cancel-a-workflow-run',
+2026-10-14T10:09:57.4880188Z       status: '409'
+2026-10-14T10:09:57.4886438Z     url: 'https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/38547623968/cancel',

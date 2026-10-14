@@ -9,7 +9,7 @@ from scripts.legacy_backfill_runtime import CollectionControl, CollectionPaused,
 @pytest.fixture
 def store(tmp_path, monkeypatch):
     for name, path in {
-        "NORM_DIR": tmp_path / "normalized", "STATE_FILE": tmp_path / "state.csv",
+        "NORM_DIR": tmp_path / "normalized", "REVIEW_DIR": tmp_path / "review", "STATE_FILE": tmp_path / "state.csv",
         "INDEX_FILE": tmp_path / "index.csv.gz", "INDEX_STATE_FILE": tmp_path / "index-state.csv",
         "STATUS_FILE": tmp_path / "status.csv", "COVERAGE_FILE": tmp_path / "coverage.csv",
     }.items():
@@ -100,7 +100,8 @@ def test_parser_version_resume_keeps_old_observations_and_does_not_reparse_curre
     monkeypatch.setattr(legacy, "process_filing", lambda meta: (calls.append(meta["rcept_no"]) or result(meta)))
     legacy.process_pending(index(2), workers=1, control=control())
     assert calls == [metas[0]["rcept_no"]]
-    stored = pd.read_csv(next(legacy.NORM_DIR.glob("*.gz")), dtype=str)
+    # Unattested observations are preserved in review, never PIT input.
+    stored = pd.read_csv(next(legacy.REVIEW_DIR.glob("*.gz")), dtype=str)
     assert len(stored) == 3
     assert set(stored.parser_version) == {"legacy-v3-book", legacy.PARSER_VERSION}
 
@@ -270,7 +271,7 @@ def test_append_preserves_all_old_numeric_tokens_and_missing_strings_verbatim(st
     rows[0]["amount_reported"] = "4.621540057200055e+46"
     rows[0]["account_name"] = "NA"
     legacy.append_normalized(rows)
-    path = next(legacy.NORM_DIR.glob("*.gz"))
+    path = next(legacy.REVIEW_DIR.glob("*.gz"))
     old = pd.read_csv(path, dtype=str, keep_default_na=False).iloc[0].to_dict()
     new, _ = result(index(2).iloc[1])
     legacy.append_normalized(new)

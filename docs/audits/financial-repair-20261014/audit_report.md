@@ -20,7 +20,7 @@ HTTP만 원본 fixture로 교체했으며 재무 파싱·선택·계산을 mock�
 **값을 제거·보류한 것을 정확한 값 복구로 계산하지 않았다.** 기존135개는 UNVERIFIED다.
 기존 감사 금액 항목 PASS였던123개도 다시 인증하지 못했다.
 과거 정상값의 현재 기간 사용 차단과 추출/증거 공백이 섞여 있어 기존 정상 사례의 회귀 오류가 없다고 선언하지 않는다.
-518개의 PASS도 구조·금액에 한정되며 기업 매핑·공개시점 인증이 아니다.
+521개의 PASS도 구조·금액에 한정되며 기업 매핑·공개시점 인증이 아니다.
 
 신규64의 FAIL5는 알려진 당기 순이익의 추출 실패:
 N10/N11: 손익 계정과 주당이익이 붙은 셀. CF 순이익 행에서 정확한 값을 독립 확인했다.
@@ -60,7 +60,7 @@ PIT/기업 매핑을 확인하지 못한60건 모두 backtest_eligible=False이�
   review 완료도 SHA/행 수로 확인해 중복 요청을 피한다.
 - scripts/legacy_financial_fields.py: 기업 전체 순매출액 별칭 및 (-) 음수 토큰 공통 처리.
   생산 코드에 접수번호/표본별 분기 없음.
-- tests/test_financial_accuracy_repair.py: 안전 경계18개.
+- tests/test_financial_accuracy_repair.py: 안전 경계21개.
   기존 파서 테스트를 명시적인 구조 근거, Decimal 문자열, 새 버전 계약으로 갱신했다.
 - docs/audits/financial-repair-20261014/: 독립 통제/선정/원본 SHA/실행/세부CSV/보고서.
 - .github/workflows/financial-accuracy-revalidation.yml: 원래 kit의 dedicated Python으로 동일60건 재현.
@@ -114,7 +114,7 @@ CI도 동일60 원본/선정을 별도90일 artifact로 보존한다. 영구 저
 kit_id26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd,
 원 kit source822c435f4b6148c2832e12370a6ccb324a9e875f.
 verify exit0/status ok; 원래 bootstrap/bundled wheels만 사용, 인터넷pip/시스템Python 계산 없음.
-안전18+기존 source품질6 테스트, 지정25회귀, 실제60 collector replay, 독립 DOM 비교, DSL 계약 검사 exit0.
+안전21+기존 source품질6 테스트, 지정25회귀, 실제60 collector replay, 독립 DOM 비교, DSL 계약 검사 exit0.
 results/evidence에 실제 stdout/stderr/verify, results에 판정과 세부CSV.
 CI 성공은 재현/지정 회귀 성공이며 남은 FAIL5/UNVERIFIED가 정확성 통과한 것이 아니다.
 kit에 pytest/requests/bs4가 없어 전체pytest와 online 수집 통합 경로는 미검증이다.
@@ -203,3 +203,11 @@ main 병합과 전체2000 재처리는 하지 않았다.
 
 첫 수정commit c63660dd461faa89abd5891f4cff36362e2f6e29 전송에서 audit_details.csv만 CRLF→LF로 바뀐 것을 로컬 Git tree 비교로 발견했다. 685,834bytes→684,070bytes, 1,764개 줄바꿈 차이; 값/판정 변화 없음. 바이트 그대로 디코딩해 게시를 수정했다.
 별도 validate-legacy-parser CI38547275390도 자동 시작된 것을 발견했다. 조회 시 pip 설치 단계는 pending이었고 직접 취소 도구가 없어 수정 브랜치에 제한된 취소 작업과 job guard를 추가했다. 실행되더라도 그 인터넷 의존성 CI는 인증 근거로 사용하지 않는다. 기존 DSL guard와 동일하게 main의 CI 동작은 변경하지 않는다.
+
+## 추가 CI 실패의 실제 결과와 수정
+
+직접 취소 도구가 없어 시도한 job보다 기존 CI가 먼저 끝나 실제 인터넷pip 설치가 실행됐다(38547275390/job115796325658). 금지된 환경 변경이 발생했음을 기록하며 그 CI를 승인된 검증으로 인정하지 않는다. 자동 CI 범위를 모두 확인하지 않은 작업 오류다. 원 kit/금융 계산 환경은 변경하지 않았다. 원 pytest의 parser19개 통과, resume19개 통과/3개 실패, exit1이었다. 실패 원문은 unexpected-ci-failure.log. review 저장 경로가 새로 추가되었는데 기존 fixture가 이 경로를 임시 폴더로 격리하지 않아 다른 테스트의 동일 접수번호 파일이 missing-file 검사에 재사용됐다. 나머지2는 새 계약에서 review로 보낸 데이터를 normalized에서 찾은 StopIteration이었다. fixture를 REVIEW_DIR까지 격리하고 미확정 데이터를 review에서 검증하도록 수정했다. 저장/행수/SHA/원본 숫자 토큰 보존 assertion을 약화하지 않았다. 원 kit에서 이3 실패 경계에 해당하는 독립 unittest3개를 추가, 총21 안전 테스트를 exit0으로 확인했다. 전체pytest는 원 kit에서 여전히 미실행이다.
+
+취소 job115797486002는 이미 skipped 완료된 run38547623968을 취소하려다 Cannot cancel a workflow run that is not in progress로 실패했다. 경쟁조건 원문은 cancel-race-failure.log에 보존. 완료된 unsafe run을 다시 취소/재실행하지 않고, 모든 미래 브랜치 unsafe CI가 guard로 차단되는 것을 확인해 불필요한 취소 job을 제거했다. 생산 금융 코드·원본·판정은 이 수정에서 변경하지 않았다.
+
+Git whitespace 검사 exit2는 CSV의 CRLF를 trailing whitespace로 인식한 결과였다. 데이터 줄바꿈을 변형하지 않고 Git의 cr-at-eol 검사로 실제 코드 공백을 검증했다(exit0).

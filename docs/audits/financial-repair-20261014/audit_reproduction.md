@@ -46,7 +46,7 @@ CI의 GITHUB_SHA/run ID와 artifact는 최종 코드 버전 증거다.
 - 새 감사 초안 오류3개는 보고서에서 생산 수정과 별도 기록.
 - 보고서 작성 JS template의 Markdown backtick SyntaxError: 호출 전 오류, 파일 변경 없음.
   명령 문법을 수정해 실제 파일/manifest 생성 확인.
-- 최종18+6 테스트/회귀25/실제60/독립대조/계약검사 exit0.
+- 최종21+6 테스트/회귀25/실제60/독립대조/계약검사 exit0.
   명령 실행 완료와 금융 판정의 FAIL5/UNVERIFIED는 별개다.
 
 보존 및 정확한 재개:
@@ -65,3 +65,5 @@ CSV 분모: FIELD700/BASELINE_TARGET565/HOLDOUT_TARGET64/CHECK434는 겹치므�
 공개시각/역사 mapping/전체 correction chain 부족: 투자 사용 가능0건.
 
 게시 추가 복구: CSV CRLF 보존 실패는 Path.read_text의 줄바꿈 정규화 때문이었다. read_bytes().decode(utf-8)로 원래 바이트를 유지했다. 기존 validate-legacy-parser job도 이 branch에서 제외하고 이전 자동 run을 취소하도록 했다. 최종 결과의 수치/원본/계산 방법은 바꾸지 않았다.
+
+추가 실제 오류: 기존 자동 CI38547275390은 pip 설치 후 resume 테스트3개 실패(exit1). 원 kit 기반 검증으로 인정하지 않는다. fixture REVIEW_DIR 미격리와 review/normalized 새 계약의 경로 충돌을 수정했다. 해당 경계3개를 기존 kit unittest로 실제 재현/검증해 총21개 통과. 원 pytest 전체는 여전히 미검증. 취소 race는 이미 끝난 skipped run에 대한 API 오류였으며 cancel job 제거와 branch guard로 이후 잘못된 설치/재시도를 막았다. 원문은 results/evidence의2개 failure log.

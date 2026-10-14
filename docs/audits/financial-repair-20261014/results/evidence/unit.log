@@ -1,4 +1,7 @@
+test_isolated_review_stores_never_reuse_another_checkpoint (__main__.CollectorSafety.test_isolated_review_stores_never_reuse_another_checkpoint) ... ok
 test_month_end_and_invalid_dates (__main__.CollectorSafety.test_month_end_and_invalid_dates) ... ok
+test_review_append_preserves_opaque_old_numeric_and_missing_tokens (__main__.CollectorSafety.test_review_append_preserves_opaque_old_numeric_and_missing_tokens) ... ok
+test_review_checkpoint_requires_real_hash_and_row_count (__main__.CollectorSafety.test_review_checkpoint_requires_real_hash_and_row_count) ... ok
 test_unverified_values_never_enter_normalized_input (__main__.CollectorSafety.test_unverified_values_never_enter_normalized_input) ... ok
 test_actual_negative_stays_negative (__main__.NumericSafety.test_actual_negative_stays_negative) ... ok
 test_alternative_profit_loss_stays_positive (__main__.NumericSafety.test_alternative_profit_loss_stays_positive) ... ok
@@ -18,6 +21,6 @@ test_unheaded_value_is_not_verified (__main__.StructureSafety.test_unheaded_valu
 test_unknown_unit_is_not_published (__main__.StructureSafety.test_unknown_unit_is_not_published) ... ok
 
 ----------------------------------------------------------------------
-Ran 18 tests in 0.333s
+Ran 21 tests in 0.390s
 
 OK
