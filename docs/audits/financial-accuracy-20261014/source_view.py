@@ -73,6 +73,20 @@ for sample in selection["samples"]:
     (out/(prefix+"-table-"+str(table["table_index"]).zfill(4)+".json")).write_text(json.dumps(table_copy,ensure_ascii=False,indent=2)+"\n")
    result["members"].append({"name":n,"sha256":sha(b),"encoding":encoding,"declared_encoding":declaration.group(1).decode("ascii") if declaration else "",
        "table_count":len(view.tables),"document_text_head":" ".join(view.history)[:2500],"metadata_tags":view.tags,"focused_tables":tables})
+ compact={"sample":sample,"evidence":evidence,"members":[]}
+ for member in result["members"]:
+  cm={k:v for k,v in member.items() if k!="focused_tables"}
+  cm["tables"]=[]
+  for table in member.get("focused_tables",[]):
+   major=[]
+   for row in table["rows"]:
+    label=row["cells"][0]["text"].replace(" ","") if row["cells"] else ""
+    if any(k in label for k in ("매출","영업수익","자본총","자본계","자산총","부채총","순이익","순손실","영업활동","영업이익","영업손실","매출총")):
+     major.append({"row_index":row["row_index"],"cells":[c["text"] for c in row["cells"]]})
+   if major:
+    cm["tables"].append({"table_index":table["table_index"],"context":table["context"][-950:],"headers":[{"row_index":r["row_index"],"cells":[c["text"] for c in r["cells"]]} for r in table["rows"] if r["row_index"]<4],"major_rows":major})
+  compact["members"].append(cm)
+ (out/(sid+"-source-map.json")).write_text(json.dumps(compact,ensure_ascii=False,indent=2)+"\n")
  (out/(sid+"-source-view.json")).write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n")
  rows=[r for r in json.loads((root/"selected_metrics.json").read_text()) if r["rcept_no"]==receipt]
  (out/(sid+"-extracted.json")).write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n")
