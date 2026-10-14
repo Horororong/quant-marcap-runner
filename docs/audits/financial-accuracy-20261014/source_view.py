@@ -20,15 +20,15 @@ class View(HTMLParser):
    self.tables.append(t);self.stack.append(t)
   elif self.stack and tag=="tr":
    self.stack[-1]["row"]={"source_line":self.getpos()[0],"cells":[]}
-  elif self.stack and tag in {"td","th"}:
-   self.stack[-1]["cell"]={"text":"","attributes":dict(attrs),"source_line":self.getpos()[0]}
+  elif self.stack and tag in {"td","th","te","tu"} and self.stack[-1]["cell"] is None:
+   self.stack[-1]["cell"]={"tag":tag,"text":"","attributes":dict(attrs),"source_line":self.getpos()[0]}
  def handle_data(self,data):
   self.history.append(data)
   if self.stack and self.stack[-1]["cell"] is not None:self.stack[-1]["cell"]["text"]+=data+" "
  def handle_endtag(self,tag):
   if not self.stack:return
   t=self.stack[-1]
-  if tag in {"td","th"} and t["cell"] is not None:
+  if tag in {"td","th","te","tu"} and t["cell"] is not None and t["cell"]["tag"]==tag:
    t["cell"]["text"]=" ".join(t["cell"]["text"].split())
    if t["row"] is not None:t["row"]["cells"].append(t["cell"])
    t["cell"]=None
@@ -68,6 +68,9 @@ for sample in selection["samples"]:
    for ci,start in enumerate(range(0,len(text),100000)):
     (out/(prefix+"-source-"+str(ci).zfill(3)+".txt")).write_text(text[start:start+100000],encoding="utf-8")
    (out/(prefix+"-all-tables.json")).write_text(json.dumps(view.tables,ensure_ascii=False,indent=2)+"\n")
+   for table in view.tables:
+    table_copy={k:v for k,v in table.items() if k not in {"row","cell"}}
+    (out/(prefix+"-table-"+str(table["table_index"]).zfill(4)+".json")).write_text(json.dumps(table_copy,ensure_ascii=False,indent=2)+"\n")
    result["members"].append({"name":n,"sha256":sha(b),"encoding":encoding,"declared_encoding":declaration.group(1).decode("ascii") if declaration else "",
        "table_count":len(view.tables),"document_text_head":" ".join(view.history)[:2500],"metadata_tags":view.tags,"focused_tables":tables})
  (out/(sid+"-source-view.json")).write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n")
