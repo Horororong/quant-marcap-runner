@@ -1,0 +1,12 @@
+{
+  "selection": "Stage5 preserved receipt inventory and explicit correction headers; no new list requests",
+  "maximum_new_documents": 20,
+  "documents": [
+    {"sample_id":"N12","corp_code":"00115384","rcept_no":"20070814000340","purpose":"same-day original candidate"},
+    {"sample_id":"N14","corp_code":"00175623","rcept_no":"20070814001344","purpose":"original candidate"},
+    {"sample_id":"N14","corp_code":"00175623","rcept_no":"20070814001621","purpose":"same-day middle correction"},
+    {"sample_id":"N14","corp_code":"00175623","rcept_no":"20070928000415","purpose":"later correction"},
+    {"sample_id":"S39","corp_code":"00127158","rcept_no":"20070515001200","purpose":"first-submission typo cross-check"},
+    {"sample_id":"S19","corp_code":"00142698","rcept_no":"20070629000046","purpose":"attachment-addition and original identification"}
+  ]
+}

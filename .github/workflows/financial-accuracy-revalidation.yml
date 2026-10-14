@@ -12,6 +12,7 @@ on:
       - 'docs/audits/financial-extraction-stage3-20261014/**'
       - 'docs/audits/historical-pit-stage4-20261014/**'
       - 'docs/audits/dart-history-stage5-20261014/**'
+      - 'docs/audits/version-pit-stage6-20261014/**'
       - '.github/workflows/financial-accuracy-revalidation.yml'
 permissions:
   contents: read
@@ -50,6 +51,16 @@ jobs:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/dart-history-stage5-20261014/collect_history.py --original40 "$RUNNER_TEMP/financial-repair/review" --holdout20 "$RUNNER_TEMP/financial-repair/heldout20/review" --output "$RUNNER_TEMP/financial-repair/stage5"
+      - name: Offline bounded document transport and PIT policy tests
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/version-pit-stage6-20261014/test_stage6.py
+      - name: One bounded six-receipt official document proof
+        id: dart_documents
+        if: ${{ github.event_name == 'push' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') }}
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/version-pit-stage6-20261014/collect_documents.py --output "$RUNNER_TEMP/financial-repair/stage6-documents"
       - name: Focused safety tests and actual sixty-receipt collector replay
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I tests/test_financial_accuracy_repair.py 2>&1 | tee "$RUNNER_TEMP/financial-repair/unit.log"
@@ -101,4 +112,12 @@ jobs:
           path: |
             ${{ runner.temp }}/financial-repair/review
             ${{ runner.temp }}/financial-repair/heldout20/review
+          retention-days: 90
+      - name: Preserve bounded Stage6 official document responses
+        uses: actions/upload-artifact@v4
+        if: ${{ always() && steps.dart_documents.outcome != 'skipped' }}
+        with:
+          name: dart-version-documents6
+          path: ${{ runner.temp }}/financial-repair/stage6-documents
+          if-no-files-found: error
           retention-days: 90
