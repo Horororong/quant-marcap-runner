@@ -1,0 +1,574 @@
+{
+  "table_index": 121,
+  "source_line": 4,
+  "context": "- 179,272 162,284 179,272 162,284 세금과공과 11,278 8,063 152,257 142,083 163,535 150,146 16. 외화자산ㆍ부채의 환산내용  (1) 화폐성 외화자산과 화폐성 외화부채의 환산내용 및 환산손익의 내용은 다음과 같습니다.                                                                                               (단위 : 천원, USD) 과          목 통화 외화금액 원화금액 환산이익 환산손실 당분기말 전기말 당분기말 전기말 당분기 전분기 당분기 전분기 현금및현금성자산 USD 18,483.09 4,138.19 17,017 3,847 1 4 119 1 매입채무 USD 1,854,770.61 3,794,701.95 1,707,687 3,527,555 36,857 58,590 0 48 미지급금 USD 189,969.65 347,453.08 174,905 322,992 2,411 4,182 5 0 미지급비용 USD 7,243.93 14,674.40 6,669 13,641 111 164 0 1 단기차입금 USD 2,134,000.00 4,901,000.00 1,964,774 4,555,970 24,343 131,647 227 9,540 보증금 USD 0 201,280 0 190,250 0 0 0 2,569 합          계 63,723 194,587 351 12,159  (2) 적용환율의 내용은 다음과 같습니다. 외 화 종 류 적용환율 당분기말 전기말 USD 920.70 929.60 17. 법인세회계  (1) 법인세비용의 주요 구성 내용은 다음과 같습니다.                                                                                                      (단위 : 천원) 구        분 당   분   기 전    분   기 금      액 금       액 법인세부담액 642,846 495,702 ± 일시적차이로 인한 이연법인세자산(부채) 변동액 (-)152,280 (-)180,133 ± 세무상 결손금 등으로 인한 이연법인세 변동액 - - ± 자본에 직접 반영된 이연법인세 (-)12,634 - =계속사업손익에 반영된 법인세비용 477,932 315,569  (2) 법인세비용차감전순이익과 과세소득간의 차이 내용은 다음과 같습니다.                                                                                                      (단위 : 천원) 구    분 당  분  기 전  분  기 법인세비용 차감전순이익 2,183,258 1,375,698 비일시적차이로 인한 증가(감소)액 301,600 (-)102,168 일시적차이로 인한 증가(감소)액 542,713 726,612 이월결손금, 소득공제 - - 과세소득 3,027,571 2,000,142 산출세액 807,135 539,811 공제감면세액 164,289 44,109 법인세부담액 642,846 495,702 선납법인세 235,410 23,435 미지급법인세 407,436 472,267  (3) 당분기 누적일시적차이의 증감 및 이연법인세자산(부채)의 내용은 다음과 같습니다.                                                                                                   (단위:  천원) 구    분 기초잔액 조정 당분기증가(감소) 당분기말 잔액 유동 비유동 미수수익 (-)43,658 - 513 (-)43,145 -  개발비 (-)4,267 - 4,267 - - 퇴직급여충당부채 544,414 94,162 274,552 - 913,128 퇴직보험예치금 (-)544,414 (-)94,162 61,085 - (-)577,491 대손충당금 213,349 (-)1,884 (-)38,059 173,406 - 단기매매증권 (-)427,823 (-)10,400 193,052 (-)245,171 - 매도가능증권평가이익 (-)27,541 (-)11,601 36,499 (-)2,643 매도가능증권평가손실 50,350 1,318 5,460 - 57,128 통화선도평가이익 (-)13,431 - 12,618 (-)813 - 통화선도평가손실 24,540 4,011 (-)7,275 21,276 - 연구및인력개발준비금 (-)2,100,000 - - (-)366,667 (-)1,733,333 일시적차이등 합계 (-)2,328,481 (-)18,556 542,713 (-)461,113 (-)1,343,211 한계세율 27.5% 27.5% 27.5% 27.5% 27.5% 일시적차이로 인한 이연법인세자산(부채) (-)640,332 (-)5,103 149,246 (-)126,806 (-)369,383  (4) 자본에 직접 부가(차감)된 당분기법인세부담액과 이연법인세의 내역은 다음과 같습니다.                                                                                                       (단위: 천원)",
+  "rows": [
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "구분",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "138",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "자본의 과목",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "155",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "적용대상금액",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "115",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "적용세율(%)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "112",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "자본에 가(감)된 법인세부담액등",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "120",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "법인세부담액등차감후 금액",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "112",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "이연법인세변동액",
+          "attributes": {
+            "rowspan": "3",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "138",
+            "height": "72",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "매도가능증권평가이익",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "155",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "2,643",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "115",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "27.5",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "112",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(-)727",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,916",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "112",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "매도가능증권평가손실",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "155",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(-)57,128",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "115",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "27.5",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "112",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "15,710",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(-)41,418",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "112",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "소계",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "155",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(-)54,485",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "115",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "112",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "14,983",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(-)39,502",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "112",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "당기법인세부담액",
+          "attributes": {
+            "rowspan": "2",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "138",
+            "height": "48",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "자기주식처분손익",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "155",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "100,426",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "115",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "27.5",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "112",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(-)27,617",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "72,809",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "112",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "소계",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "155",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "100,426",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "115",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "112",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(-)27,617",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "72,809",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "112",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "합계",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "2",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "293",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "45,941",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "115",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "112",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(-)12,634",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "33,307",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "112",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    }
+  ]
+}

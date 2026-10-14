@@ -1,0 +1,1926 @@
+{
+  "table_index": 55,
+  "source_line": 4,
+  "context": " 소유형태 소     재     지 구  분(m2) 기초장부가액 당기증감 당기상각 당기장부가액 비     고 증가 감소 양주 자가보유 경기 양주 회천 덕계     686 886 118       118 355               \"                694 15,461 6,708       6,708 7,112               \"                694   9 12,109 30,999               \"                694  10 23 11               \"                694  11 9 4               \"                694  12 21 9               \"                694  13 107 44               \"                694  14 154 63               \"                694   1 2,699 648       648 1,242               \"                694   2 4,392 52       52 2,020               \"                694   3 11,808 1,417       1,417 775               \"                694   4 7,260 871       871 476               \"                694   5 1,909 458       458 878               \"                694   6 1,025 170       170 2,624               \"                694   7 264 27       27 676               \"                697   4 2,268 544       544 5,806               \"             산108   3 40,097 401       401 309               \"             산108   5 29,455 26       26 167               \"             산108   6 34,322 343       343 212               \"             산108   9 181 2       2 12               \"             산108  11 1,199 144       144 83               \"       덕계동683  15 463 194 194 222 계 166,112 12,123    12,123 54,099 의정부 자가보유 경기 의정부 장암      30       1 1,362 817   817 1,179               \"             31     42 114 68 68 32               \"             31     43 218 131 131 108               \"             31     41 2 1               \"             37     49 2,226 1,235 1,235 828               \"             37     50 3 1               \"             44 1,339 1,339               \"             37     38 50 3 3 18               \"             38     10 1,229 1,229                 \"             44       8 119   119                               31     19  61 48 48 16 계 4,036 4,989 2.687 2,302 2,183 여  주 자가보유 경기 여주 가남 태평     산 40 21,620 576   576 774                     \"          산 41  1 36,496 971   971 1,018                     \"          산 41  2 694 18   18 20 계 58,810 1,565 1,565 1,812 전  곡 자가보유 경기 연천 전곡 은대 559         3 3,175 338   338 540                  \"        559         5 165 17 17 26 계 3,340 355 355 566 서울 자가보유 서울 강동 둔촌 44 4,070 14,039 14,039 13,757 계 4,070 14,039 14,039 13,757 여주 자가보유 경기 남양주 금곡 669  3 1,096 1,802 1,802 917  \"                 5 1,198 1,871 1,871 1,042 \"                20 112 174 174 63 \"                21 278 434 434 232 계 2,684 4,281 4,281 2,254 소          계 239,052 33,071 4,281 2,687 34,665 74,671 [자산항목 : 건물] (단위 : 백만원)",
+  "rows": [
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "th",
+          "text": "사업소",
+          "attributes": {
+            "rowspan": "2",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "24",
+            "height": "60",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "소유형태",
+          "attributes": {
+            "rowspan": "2",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "66",
+            "height": "60",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "소재지",
+          "attributes": {
+            "rowspan": "2",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "220",
+            "height": "60",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "구분(m2)",
+          "attributes": {
+            "rowspan": "2",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "71",
+            "height": "60",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "기초장부가액",
+          "attributes": {
+            "rowspan": "2",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "57",
+            "height": "60",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "당기증감",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "2",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "111",
+            "height": "30",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "당기상각",
+          "attributes": {
+            "rowspan": "2",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "66",
+            "height": "60",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "당기장부가액",
+          "attributes": {
+            "rowspan": "2",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "76",
+            "height": "60",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "비고",
+          "attributes": {
+            "rowspan": "2",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "74",
+            "height": "60",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "th",
+          "text": "증가",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "56",
+            "height": "30",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "감소",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "55",
+            "height": "30",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "양주",
+          "attributes": {
+            "rowspan": "9",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "24",
+            "height": "216",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "자가보유",
+          "attributes": {
+            "rowspan": "9",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "66",
+            "height": "216",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "경기 양주 회천 덕계 694",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "220",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "3,181",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "71",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "259",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "57",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "56",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "55",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "66",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "259",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "76",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "74",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "\"",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "220",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,972",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "71",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "181",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "57",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "56",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "55",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "11",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "66",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "170",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "76",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "74",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "\"",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "220",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "94",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "71",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "2",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "57",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "56",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "55",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "66",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "2",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "76",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "74",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "\" 694, 694-5",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "220",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "302",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "71",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "13",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "57",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "56",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "55",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "66",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "12",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "76",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "74",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "\" 694, 694-1",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "220",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "12,649",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "71",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,234",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "57",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "56",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "55",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "42",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "66",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,192",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "76",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "74",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "\" 694-6 ,7 ,9",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "220",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "12,009",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "71",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "3,394",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "57",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "56",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "55",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "188",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "66",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "3,206",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "76",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "74",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "\"",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "220",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "534",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "71",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "31",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "57",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "56",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "55",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "2",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "66",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "29",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "76",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "74",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "\" 신우아파트",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "220",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "85",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "71",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "71",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "57",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "56",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "55",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "66",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "70",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "76",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "74",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "계",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "TOP",
+            "width": "220",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "30,826",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "71",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "5,185",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "57",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "56",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "55",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "245",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "66",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "4,940",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "76",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "74",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "서울",
+          "attributes": {
+            "rowspan": "2",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "24",
+            "height": "48",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "자가보유",
+          "attributes": {
+            "rowspan": "2",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "66",
+            "height": "48",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "강동구 둔촌동 444",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "MIDDLE",
+            "width": "220",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "19,388",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "71",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "7,257",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "57",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "56",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "55",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "192",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "66",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "7,065",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "76",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "74",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "계",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "TOP",
+            "width": "220",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "19,388",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "71",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "7,257",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "57",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "56",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "55",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "192",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "66",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "7,065",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "76",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "74",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "여주",
+          "attributes": {
+            "rowspan": "2",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "24",
+            "height": "48",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "자가보유",
+          "attributes": {
+            "rowspan": "2",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "66",
+            "height": "48",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "경기 남양주 금곡 669 3",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "220",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1805",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "71",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "57",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "549",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "56",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "55",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "4",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "66",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "545",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "76",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "74",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "계",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "TOP",
+            "width": "220",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1805",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "71",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "57",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "549",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "56",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "55",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "4",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "66",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "545",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "76",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "74",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "소 계",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "3",
+            "align": "CENTER",
+            "valign": "TOP",
+            "width": "310",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "50,214",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "71",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "12,442",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "57",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "549",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "56",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "55",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "441",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "66",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "12,550",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "76",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "74",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    }
+  ]
+}

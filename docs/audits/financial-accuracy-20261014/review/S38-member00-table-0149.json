@@ -1,0 +1,617 @@
+{
+  "table_index": 149,
+  "source_line": 4,
+  "context": "계 　 860,250  6,103,000  5,667,075 1,296,175  대손충당금 (400,000)   (600,000)  (400,000) (600,000)  차   감   계 　 ￦     460,250  ￦  5,503,000  ￦  5,267,075  ￦     696,175  　 (2) 장기대여금     (주)에이엠에스(*) 9% ￦  5,600,000  ￦    800,000  ￦             -  ￦  6,400,000   운전자금대여      종업원대여금 6% 7,500  -  7,500  -   차량구입자금대여 합         계 　 5,607,500  800,000  7,500  6,400,000  대손충당금 (2,800,000) (400,000) -  (3,200,000) 차   감   계 　 ￦  2,807,500  ￦    400,000  ￦       7,500  ￦  3,200,000  　 (*) 증가액 800백만원은 단기대여금에서 대체되었음. 라. 2007년과 2006년 6월 30일 현재 회사가 특수관계자를 위하여 제공한 지급보증내역은 다음과 같습니다(단위:천원). 제공받은 회사 내    용 2007 2006 (주)에이엠에스 차입금보증 ￦ 15,213,100      ￦ 14,943,100      (주)넬바이오텍 차입금보증 1,791,000      2,111,988      회사는 대차대조표일 이후인 2007년 8월에 특수관계자인 (주)에이엠에스의 금융기관 차입금과 관련하여 4,550,000천원의 추가 지급보증을 하였습니다.상기 이외에 당기말 현재 회사는 대표이사를 위해 장기금융상품을 담보로 제공하고 있으며(주석 3 참조), 최웅철(회사의 대표이사인 이명곤의 처남)에 대한 미수금  270백만원이 있습니다.마. 당기중 주요경영진에 대한 보상내역은 다음과 같습니다. 구       분 금  액(천원)                      급           여 ￦       646,152                                           퇴  직  급  여 468,034                      ￦    1,114,186                      상기 주요경영진은 회사의 활동의 계획, 운영, 통제에 대한 중요한 권한과 책임을 가진 임원들로 구성되어 있습니다. 16. 외화자산 및 부채 : 회사의 전기말 현재 화폐성외화자산 및 부채의 내역은 다음과 같습니다. 계 정 과 목 외화금액 원화(천원)        현금및현금등가물 US$           71        ￦            68                  단기 금융 상품 US$ 4,284,220        4,114,136                  미 지 급 비 용 JPY  1,596,000        13,311                  해외 전환 사채 US$ 4,474,783        4,297,134           17. 현금흐름표 :회사의 현금흐름표는 간접법으로 작성되었으며, 당기와 전기중 현금의 유입과 유출이 없는 중요한 거래내역은 다음과 같습니다(단위:천원). 내            역 당      기 전      기  지분법자본변동의 증가(감소) ￦    (18,909)   ￦     18,909     부의지분법자본변동의 감소(증가) (1,868)   517,927     단기대여금의 장기대여금 대체 800,000    3,500,000     장기매도가능증권의 지분법적용투자주식으로의 대체 312,461    -     건설중인자산의 건물 대체 281,109    -     건설중인자산의 기계장치 대체 38,000    772,230     건설중인자산의 무형자산 대체 -    426,000     장기미지급금의 유동성장기미지급금 대체 1,667,000    1,667,000     전환사채 전환으로 인한 자본금 대체 1,062,719    -     전환사채 전환으로 인한 주식발행초과금으로의 대체 1,235,648    -     전환권대가의 주식발행초과금 대체 183,218    -     전환권대가의 미지급법인세 대체 218,992    -     전환권대가의 이연법인세부채로의 대체 3,794    -    18. 부가가치계산에 필요한 사항 :당기와 전기에 발생된 회사의 부가가치계산에 필요한 사항은 다음과 같습니다(단위:천원).- 당  기 계 정 과 목 제조원가(제품) 기타매출원가 판매비와관리비 계   급           여 ￦  6,984,591   ￦  1,038,557   ￦  1,792,815   ￦  9,815,963     퇴  직  급  여 898,923   101,625   601,608   1,602,156     복 리 후 생 비 833,782   78,481   135,992   1,048,255     임     차     료 57,489   -   220,167   277,656     감 가 상 각 비 1,517,740   724,630   63,735   2,306,105     무형자산상각비 -   -   102,026   102,026     세 금 과 공 과 66,638   5,093   77,809   149,540   - 전  기",
+  "rows": [
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "th",
+          "text": "계 정 과 목",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "width": "120",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "제조원가(제품)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "width": "120",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "기타매출원가",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "width": "120",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "판매비와관리비",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "width": "120",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "계",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "width": "120",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "급 여",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "￦ 5,850,409",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "￦ 959,323",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "￦ 1,343,921",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "￦ 8,153,653",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "퇴 직 급 여",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "912,442",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "93,924",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "225,399",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,231,765",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "복 리 후 생 비",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "724,502",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "71,422",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "120,348",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "916,272",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "임 차 료",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "46,960",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "140,530",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "187,490",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "감 가 상 각 비",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,333,718",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "715,579",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "51,347",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "2,100,644",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "무형자산상각비",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "101,434",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "101,434",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "세 금 과 공 과",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "32,860",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "4,770",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "49,834",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "87,464",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "120",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    }
+  ]
+}

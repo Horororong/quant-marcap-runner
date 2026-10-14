@@ -1,0 +1,1787 @@
+{
+  "table_index": 126,
+  "source_line": 4,
+  "context": "  구    분 당   기 전   기 당기 법인세부담액 \\            1,350,885  \\              246,711  일시적차이로인한 이연법인세 변동액  306,675   7,652  자본에 직접 반영된 이연법인세 등 (1,275,496) (555,229) 법인세비용(효과) \\               382,064 ================= \\             (300,866)================== 법인세비용차감전순손실 \\          (3,537,982) \\          (1,878,100) 법인세 유효세율  -   -  나. 회계이익과 과세소득간의 세무조정 항목별 내역은 다음과 같습니다(단위:천원). 계정과목 당   기 전   기 일시적차이 일시적차이 아님 일시적차이 일시적차이 아님 Ⅰ. 익금산입 및 손금불산입    대손충당금 \\    1,197,034  \\               -  \\     536,105  \\              -     퇴직급여충당금  289,325   -   -   -     기술개발준비금환입  255,000   -   340,000   -     공사손실충당금  62,398   -   344,721   -     지분법손실  4,189,736   -   881,166   -     지분법자본변동  -   1,115,182   311,040   -     지분법적용투자주식  631,416   -   -   -     장기투자증권평가  10,501   -   70,900   -     장기투자자산  338,120   -   -   -     자기주식처분이익  -   3,655,409   -   -     기타  380,420   465,953   1,913,529   2,491,187  소   계  7,353,950   5,236,544   4,397,461   2,491,187  Ⅱ. 손금산입 및 익금불산입    대손충당금  536,105   -   553,660   -     퇴직급여충당금  91,450   -   -   -     지분법투자주식  1,115,182   -   -   -     장기투자자산평가손실  -   338,120   -   -     기타  367,349   39,809   1,555,216   61,609  소   계  2,110,086   377,929   2,108,876   61,609  합   계 \\    5,243,864 ============= \\   4,858,615 ============= \\   2,288,585 ============= \\   2,429,578 ============ 다. 당기와 전기 중 주요 누적일시적차이의 증감내역 및 이연법인세자산(이연법인세부채)의 내역은 다음과 같습니다(단위:천원). 계정과목 당   기 차감할(가산할)일시적차이 이연법인세자산(부채) 기초잔액 증감 기말잔액 기초잔액 증감 기말잔액 유동성 비유동성 대손충당금 \\    536,105  \\    660,929  \\  1,197,034  \\    147,429  \\    181,755  \\    329,184  \\     98,755  \\    230,429  퇴직급여충당금 93,014  197,875  290,889  25,579  54,415  79,994   -  79,994  기술개발준비금 (1,155,000) 255,000  (900,000) (317,625) 70,125  (247,500) (70,125) (177,375) 공사손실충당금 409,927  62,398  472,325  112,730  17,159  129,889   -  129,889  지분법손실 881,166  4,141,262  5,022,428  242,321  (242,321)  -   -   -  지분법자본변동 311,040   -  311,040  85,536  (85,536)  -   -   -  장기투자증권감액손 260,900  10,501  271,401  71,747  (21,862) 49,885   -  49,885  지분법적용투자주식  -  679,890  679,890   -   -   -   -   -  장기투자자산  -  338,120  338,120   -   -   -   -   -  기타 (32,623) 124,951  92,328  (8,972) 34,364  25,392  362  25,030  소   계 1,304,529  6,470,926  7,775,455  358,745  8,099  366,844  28,992  337,852  신주인수권대가 111,880  (111,880)  -  30,767  (30,767)  -   -   -  지분법자본조정  -  (1,115,182) (1,115,182)  -  (306,675) (306,675)  -  (306,675) 합   계 \\  1,416,409 ============ \\  5,243,864 ============ \\  6,660,273 ============ \\    389,512 ============ \\   (329,343)=========== \\     60,169 =========== \\      28,992 ============ \\     31,177 ===========",
+  "rows": [
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "th",
+          "text": "계정과목",
+          "attributes": {
+            "rowspan": "3",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "139",
+            "height": "72",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "전 기",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "8",
+            "align": "CENTER",
+            "width": "847",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "th",
+          "text": "차감할(가산할)일시적차이",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "3",
+            "align": "CENTER",
+            "width": "318",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "이연법인세자산(부채)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "5",
+            "align": "CENTER",
+            "width": "529",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "th",
+          "text": "기초잔액",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "width": "106",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "증감",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "width": "106",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "기말잔액",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "width": "106",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "기초잔액",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "width": "106",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "증감",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "width": "106",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "기말잔액",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "width": "106",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "유동성",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "width": "106",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "비유동성",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "width": "105",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "대손충당금",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "139",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ 553,660",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ (17,555)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ 536,105",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ 152,257",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ (4,828)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ 147,429",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ 147,429",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ -",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "105",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "기술개발준비금",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "139",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(595,000)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(560,000)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(1,155,000)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(163,625)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(154,000)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(317,625)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(70,125)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(247,500)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "105",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "감가상각(유형자산)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "139",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "185,410",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "185,410",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "50,988",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "50,988",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "50,988",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "105",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "장기투자증권",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "139",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "190,000",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "70,900",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "260,900",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "52,250",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "19,498",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "71,748",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "71,748",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "105",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "공사손실충당금",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "139",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "65,206",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "344,721",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "409,927",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "17,932",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "94,798",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "112,730",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "112,730",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "105",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "상환할증금",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "MIDDLE",
+            "width": "139",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "275,528",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "275,528",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "75,770",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "75,770",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "75,770",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "105",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "신주인수권조정",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "139",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(362,693)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(362,693)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(99,740)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(99,740)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(99,740)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "105",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "지분법적용투자주식",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "139",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,192,206",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,192,206",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "327,857",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "327,857",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "327,857",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "105",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "기타",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "139",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(186,043)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "148,189",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(37,854)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(51,163)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "102,285",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "51,122",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "MIDDLE",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(844)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "51,966",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "105",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "소 계",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "139",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "27,823",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,276,706",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,304,529",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "7,651",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "412,628",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "420,279",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "189,190",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "231,089",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "105",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "신수인수권대가",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "MIDDLE",
+            "width": "139",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "111,880",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "111,880",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(30,767)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(30,767)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "-",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "(30,767)",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "105",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "합 계",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "139",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ 27,823 ============",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ 1,388,586 ============",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ 1,416,409 ============",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ 7,651 ============",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ 381,861 ===========",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ 389,512 ============",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ 189,190 ============",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "106",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "\\ 200,322 ============",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "105",
+            "height": "42",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    }
+  ]
+}

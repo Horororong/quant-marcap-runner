@@ -1,0 +1,2072 @@
+{
+  "table_index": 71,
+  "source_line": 4,
+  "context": "발 위탁 3차원 형상 조각기 제어에 있어 3차원 포인트 좌표를 균일하게 재정리하고, 삼각형 index를 구조적으로 재정열하는 Re-meshing과 왜곡이 되어지는 접합부분에 임의적인 포인트 데이터를 넣어주는 smoothing 기능 구현.  3차원 얼굴조각기절삭 데이터 처리 Servo controller 개발 내부 200W에서 5kW급까지의 다양한 Servo controller 개발.해외 제품과의 기술격차 해소 및 다양한 사양 개발로 CNC 적용 기계의 선택폭이 커짐. 터보 밀, 터보 턴, 모터드라이브, FX, FX+, HX등 CNC 제품군 PC-NC 개발 내부 폐쇄성을 가진 전용의 하드웨어를 가진 CNC 기능을 PC에서 구현. 개방성으로 인한 사용자 편의 증가 및 제어를필요로 하는 각종 가공기의 확장 적용 가능. HX Series모터 드라이브를 제외한 모든 분야 Sensorless BLDC Motor Driver 내부 에어컨 및 냉장고 등의 공조기기에 사용되는 Compressor 및 Fan Motor의 구동을 위해 터보테크가 개발, 안정화를 거쳐 신뢰성을 확보한 제품.Fan motor 구동시에 문제가 되는 역회전을 방지하고 초기 기동시의 진동 문제를 해결.제어기 설계 및 Software 의 안정화가 이루어져 있고, 향후 같은 기술을 Compressor에 적용하여 더 많은 수요가 창출될 것으로 예상됨. 자체 모델 RACFan Motor 구동에 관한 제어 IX Series(Software-based CNC) 내부 모든 제품이 소비자에 따라 특화된 제품을 개발하는 방향으로 전개되어 가는 현재의 시장 동향을 고려하여 CNC에서도 각 사용자별로 특화된 제품을 쉽게 개발할 수 있는 CNC가 필요. IX Series는 이러한 대량 개별화 (Mass Customization)이 가능한 CNC로서 전용기 및 일반 범용기에 효과적으로 사용할 수 있는 CNC 제품임. IX Series는 IX-CNC, IX-ICE, IX-SoftManager 등으로 구성되어 있어 사용자가 원하는 작업을 효과적으로 수행할 수 있음. IX Series는 통합 제품의 명칭이며, IX-CNC, IX-ICE, IX-SoftManager 등은 IX Series에 포함된 별도의 제품 명칭임. GX Series(IT기반 나노제어기) 내부 LCD 및 반도체 장비에 적용할 수 있는 고급 모션 제어기로서 향후 성장산업 분야에 적용할 수 있어 매출 신장에 크게 기여할 수 있을 것으로 기대함. 또한, 제품의 적용 분야가 차세대 성장동력 산업으로서 향후 터보테크가 모션제어기에서 FPD 모듈 및 FPD 장비 산업으로 진출하는 핵심 제품이 될 것이다. GX Series 중 이번에 개발하여 상용화 한 모델은 GX-S500으로서 모듈형 구조를 채택하고 있는 제품으로서, 적용하는 제품의 특징에 따라 다양한 H/W 모듈을 선택적으로 사용할 수 있도록 만든 제품임. ※ 특허 등록 현황 구분 출원일 명칭 비고 국내특허 1990.11.21  전자열쇠식 자동차 보안 및 시동장치 - \" 1991.08.16  전자시계겸용 타이머회로 - \" 1991.10.24  전자시계겸용 전원타이머 장치 - \" 1991.11.15  레벨비교에 의한 전자로크장치 - \" 1999.04.07  수치제어공작기계에 있어서 분할척의 분할각도 자동제어장치 - \" 2000.12.21  공작기계의 고속가공시 모서리에서 정밀도를 유지하면서 가공하는 방법 - \" 2001.05.31  드릴의 이송속도 궤적을 이용한 버 최소화 방법 - \" 2003.03.05  센서리스 브러시리스 직류모터의 구동방법 및 구 장치 - 9. 기타 투자의사결정에 필요한 사항 가. 외부자금조달 요약표 [국내조달] (단위 : 백만원) 조 달 원 천 기초잔액 신규조달 상환등감소 기말잔액 비고 은           행 21,863 - 1,400 20,463 - 보  험  회  사 - - - - - 종합금융회사 - - - - - 여신전문금융회사 - - - - - 상호저축은행 - - - - - 기타금융기관 - - - - - 금융기관 합계 21,863 - 1,400 20,463 - 회사채 (공모) - - - - - 회사채 (사모) - - - - - 유 상 증 자 (공모) 160,470 - - 160,470 - 유 상 증 자 (사모) - - - - - 자산유동화 (공모) - - - - - 자산유동화 (사모) - - - - - 기           타 - 58 - 58 - 자본시장 합계 182,333 58 1,400 180,991 - 주주ㆍ임원ㆍ계열회사차입금 - - - - - 기           타 - - - - - 총           계 182,333 58 1,400 180,991 -   (참  고) 당기 중 회사채 총발행액 공모 : 백만원 사모 : 백만원 [해외조달] (단위 : 원) 조 달 원 천 기초잔액 신규조달 상환등감소 기말잔액 비고 금  융  기  관 - - - - - 해외증권(회사채) - - - - - 해외증권(주식등) - - - - - 자 산 유 동 화 - - - - - 기           타 - - - - - 총           계 - - - - - 나. 최근 3년간 신용등급   \"해당사항 없음\" 다. 기타 중요한 사항   \"해당사항 없음\" III. 재무에 관한 사항 1. 요약재무정보 (단위 : 백만원)",
+  "rows": [
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "th",
+          "text": "구 분",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "150",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "제20기 반기",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "90",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "제19기",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "90",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "제18기",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "90",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "제17기",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "90",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "th",
+          "text": "제16기",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "90",
+            "height": "24",
+            "acopycol": "COPYCOL",
+            "adeletecol": "DELETECOL",
+            "amovecol": "NOMOVECOL",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "[유동자산]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[6,739]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[9,621]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[24,013]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[136,092]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[140,301]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "ㆍ당좌자산",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "6,076",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "8,996",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "22,572",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "108,475",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "110,571",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "ㆍ재고자산",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "663",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "625",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,441",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "27,617",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "29,730",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "[비유동자산]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[21,967]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[24,529]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[41,027]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[56,701]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[60,742]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "ㆍ투자자산",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "11,164",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "10,714",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "11,630",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "14,642",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "17,429",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "ㆍ유형자산",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "10,028",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "12,399",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "16,353",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "18,393",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "19,690",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "ㆍ무형자산",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "342",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "393",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "11,917",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "17,565",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "18,870",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "ㆍ기타비유동자산",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "433",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,023",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,126",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "3,101",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "4,753",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "자산총계",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "28,706",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "34,150",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "65,040",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "192,793",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "201,043",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "[유동부채]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[3,840]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[6,975]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[13,258]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[42,033]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[41,532]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "[비유동부채]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[20,473]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[24,978]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[33,619]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[9,445]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[16,537]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "부채총계",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "24,313",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "31,953",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "46,877",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "51,478",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "58,069",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "[자본금]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[11,210]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[11,210]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[29,569]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[22,399]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[22,262]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "[자본잉여금]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[0]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[149,260]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[125,241]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[120,625]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[120,487]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "[자본조정]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[△2,349]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[△2,389]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[△2,472]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[△2,472]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[△2,472]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "[기타포괄손익누계액]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[△32]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[425]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[△82]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[351]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[△1,505]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "[이익잉여금]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[△4,435]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[△156,309]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[△134,093]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[412]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[4,202]",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "자본총계",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "4,393",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "2,197",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "18,163",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "141,315",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "142,974",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "매출액",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "2,209",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "13,295",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "49,719",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "66,492",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "63,808",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "영업이익",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "△2,702",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "△11,709",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "△34,165",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "△2,857",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "5,846",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "계속사업이익",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "2,613",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "△22,517",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "△133,003",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "△3,603",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,291",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "당기순이익",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "150",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "2,613",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "△22,217",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "△134,505",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "△3,791",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "1,121",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "RIGHT",
+            "valign": "TOP",
+            "width": "90",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    }
+  ]
+}

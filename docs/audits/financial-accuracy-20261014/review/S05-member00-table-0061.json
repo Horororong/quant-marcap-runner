@@ -1,0 +1,172 @@
+{
+  "table_index": 61,
+  "source_line": 4,
+  "context": "한 단계 더 진화한 개념으로 각각의 IP Phone과 IP PBX를 기반으로 Voice 전송환경을 구성하여 End-to-End까지 IP Packet을 통한 음성 전송이 가능하도록 한다. 뿐만 아니라 IP PBX는 Voice에 대한 Switching 개념을 넘어 Video 트래픽에 대한 지원이 가능하도록 설계하여 차세대 멀티미디어 환경을 선도할 수 있는 Voice/Video의 통합적 지원에 대한 네트워크 모델을 개발한다. 연구 기관 당시 부설 연구소 연구 결과 완료 기대 효과 IP Phone을 통한 음성신호는 Circuit Switching 네트워크를 사용하지 않고, IP Phone에서 직접 사용자의 아날로그 음성 시그널을 디지털화 또는 IP Packet화 시킨다. 이러한 IP Packet은 또 다른 시그널의 변환 과정 없이 Data Packet 네트워크를 통해 전달되어진다. IP와 같은 개방형 프로토콜을 기반으로 Voice 전송을 위한 네트워크 모델을 개발함으로써 이기종 장비간의 연결을 용이하게 할 수 있다. 또 기존 PBX환경에서 지원하지 못한 IP를 기반으로 한 Voice, Video의 통합과 나아가 Data를 통합할 수 있는 솔루션을 개발하여 새로운 Application의 통합을 가져올 수 있다. 멀티미디어 전송을 위한 효율적인 네트워크 모델 개발은 기존 전화망에서 상상하지 못했던 다양한 부가 서비스를 지원을 통해 End User의 비용절감과 업무의 효율성을 증대시킬 수 있을 것으로 기대된다. (8) IP 텔레포니에 맞는 화상회의 연동 모델 개발 연구 개발명  IP 텔레포니에 맞는 화상회의 연동 모델 개발 연구 과제 현재까지 보편적으로 사용 중인 화상회의 시스템은 크게 Software 기반 화상회의와 코덱과 같은 전용 Hardware 기반 화상회의 장비로 구분되어 시장에 공급되었다. Software 기반 화상회의 장비는 Hardware 기반에 비해 구축 비용이 저렴하고 구축이 용이하다는 장점이 있으나, 화질이 떨어지며 이기종간 연동을 위한 표준 프로토콜 개발이 미진하다는 문제가 있다. 또한, Hardware 기반 화상회의 장비의 경우 화질이 우수하고 다양한 디스플레이 장비와 조합이 가능하다는 장점이 있으나 구축 비용이 높고 구축 장소의 제약이 있다는 문제가 있다.        따라서 IP Network를 기반으로 데이터, 음성, 화상을 통합하는 IP Telephony 환경에 상기 두 가지 시스템의 장점을 결합시켜 고화질, 상호 호환성, 저렴한 비용, 용이한 시스템 구축과 같은 신개념의 IPT 기반 화상회의 연동 시스템을 개발한다.. 연구 기관 당시 부설 연구소 연구 결과 진행중 기대 효과 I[수요자 기대효과]        공공기관, 기업들에 점차 확산 보급되고 있는 IP Telephony 시스템에 화상단말을 직접 연결함으로써 화상회의를 위한 별도의 네트워크를 구축하지 않고 데이터, 음성, 화상이 통합된 단일 시스템을 운영함으로써 구축, 유지, 운영비용을 획기적으로 절감할 수 있다. 또한, 접근과 사용이 용이한 PC 기반의 화상회의 단말과 화상회의 전용 단말을 적절히 보급하여 조직 내 직원간 커뮤니케이션 향상을 도모할 수 있다.[당사 기대 효과]  당사의 강점인 데이터 네트워크 기술과 IPT 시스템의 구축 노하우를 바탕으로 화상회의 부문을 새로이 네트워크에 접목할 경우 시장 확대가 보다 용이할 것으로 판단된다. 또한, 현재 보유하고 있는 음성에 대한 품질 보장 기술을 화상회의 시스템에 확대 적용할 경우 통합망에서 음성과 화상에 대한 우수한 품질을 확보할 수 있어 한 차원 높은 경쟁력을 가질 수 있을 것으로 보인다.. (9)엔터프라이즈 보안에 필요한 네트워크 보안장비 연동 모델 개발 연구 개발명 엔터프라이즈 보안에 필요한 네트워크 보안장비 연동 모델 개발 연구 과제 오늘날의 보안 문제는 외부에서 내부로의 공격은 경계보안 솔루션  (Perimeter Security  Solution)으로 방어하고 있으며,  내부보안의 경우  종단보안 솔루션(End-point Security  Solution)으로 방어한다. 그러나,서로간에 연동을 하지 않으므로 효과적인 보안을 할 수 없으며 이로 인한 피해는 점차 증가추세이다. 따라서 효과적인 경계보안 솔루션과 종단보안 솔루션간이 효과적인 연동방안을 찾고자 한다. 연구 기관 당시 부설 연구소 연구 결과 진행중 기대 효과 [수요자 기대효과]-외부로부터의 보안 위협은 경계보안 솔루션으로 방지하고,   내부에서 발생한 보안위협도 경계보안 솔루션에서 탐지한 정보를 기으로  내부 보안을 한층 더 강화시킬 수 있다.  -경계보안솔루션으로부터 바이러스에 감염된 사용자 PC의 정보를 제공  받아  바이러스에 감염된 PC의  프로세스 제거 및 바이러스 파일이름 변경  하여 내부 전파를 방지한다.  종단보안 솔루션에서 IP spoofing을 발생시키는 사용자 PC를 찾아내고,   spoofing 트래픽을 차단하여 전체 네트웍을 보호하게 한다.  [당사 기대 효과] -경계보안 솔루션과 종단보안 솔루션을 함께 제안하여 당사의 매출증대    및 타사와의  차별화 가능 -보안을 한층더 강화시킬 수 있으므로, 보안상 문제로 인한 네트웍 down   time의  최소화로 고객만족 창출.  (10) IPV6망을 기반으로 하는 IPV4/IPV6 연동 메커니즘 개발 ",
+  "rows": [
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "연구 개발명",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "115",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "IPV6망을 기반으로 하는 IPV4/IPV6 연동 메커니즘 개발",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "485",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "연구 과제",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "115",
+            "height": "78",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "IPV4 환경에서의 주소의 유한성 과 주소공간관리 복잡성, 보안이슈에 대한 대안인 IPV6 에 대한 연동 메커니즘에 대한 모델 개발 -IPV4 와 IPV6 망의 효율적인 연동 설계 -IT 인프라 자원의 연동성 시험을 통한 최적의 솔루션 발굴",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "MIDDLE",
+            "width": "485",
+            "height": "78",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "연구 기관",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "115",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "당시 부설 연구소",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "485",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "연구 결과",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "115",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "진행중",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "TOP",
+            "width": "485",
+            "height": "24",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "source_line": 4,
+      "cells": [
+        {
+          "tag": "td",
+          "text": "기대 효과",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "CENTER",
+            "valign": "MIDDLE",
+            "width": "115",
+            "height": "186",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        },
+        {
+          "tag": "td",
+          "text": "[수요자 기대효과]-기존 IT Infra 자원의 효율적인 재활용 (IPV4) 및 신규 Infra 장비 (IPV6) 의 효율적인 배치를 통한 자원관리로 원가절감-주소의 무한성, 우수한 보안성, 이동성 과 QoS 를 고려한 설계 및 구현을 통한 효율적인 망 연동 기대 [당사 기대 효과]-IPV4, IPV6 의 혼재 모델링 과 IPV6 단독 모델링에 대한 사전 준비로 설계 표준 지침을 마련 (차별화된 망 설계를 통해 품질 서비스 향상)-IPV4 와 IPV6의 설계 및 망 연동 구현을 통한 성공사례 확보",
+          "attributes": {
+            "rowspan": "1",
+            "colspan": "1",
+            "align": "LEFT",
+            "valign": "MIDDLE",
+            "width": "485",
+            "height": "186",
+            "aupdatecont": "UPDATECONT"
+          },
+          "source_line": 4
+        }
+      ]
+    }
+  ]
+}
