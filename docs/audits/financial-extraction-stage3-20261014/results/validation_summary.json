@@ -1,0 +1,8087 @@
+{
+  "samples": 60,
+  "original40": 40,
+  "holdout20": 20,
+  "all_original_sha_crc_verified": true,
+  "field_rows": 716,
+  "field_counts": {
+    "PASS": 530,
+    "FAIL": 0,
+    "UNVERIFIED": 186
+  },
+  "original565_fixed_denominator": {
+    "PASS": 433,
+    "FAIL": 0,
+    "UNVERIFIED": 132
+  },
+  "holdout64_targets": {
+    "PASS": 64,
+    "FAIL": 0,
+    "UNVERIFIED": 0
+  },
+  "holdout_target_details": [
+    {
+      "sample_id": "N01",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N01",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N01",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N01",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N02",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N02",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N02",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N02",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N03",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N03",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N03",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N03",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N04",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N04",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N04",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N04",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N05",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N05",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N05",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N05",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N06",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N06",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N06",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N06",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N07",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N07",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N07",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N07",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N08",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N08",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N08",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N08",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N09",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N09",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N09",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N09",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N10",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N10",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N10",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N10",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N11",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N11",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N11",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N11",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N12",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N12",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N12",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N12",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N13",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N13",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N13",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N13",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N14",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N14",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N14",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N14",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N15",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N15",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N15",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N15",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N16",
+      "metric": "equity",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N16",
+      "metric": "revenue",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N16",
+      "metric": "net_income",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "N16",
+      "metric": "ocf",
+      "scope": "OFS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    }
+  ],
+  "original565_details": [
+    {
+      "sample_id": "S01",
+      "metric": "dividends_paid",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "capex_intangibles",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S01",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "long_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "current_portion_long_term_debt",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S02",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S03",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S03",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S03",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S03",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S03",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S03",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S03",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S03",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S03",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S03",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S03",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S03",
+      "metric": "capex_ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S03",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S03",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "ppe",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "long_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "long_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "cash_and_equivalents",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "depreciation",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "short_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "amortization",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "dividends_paid",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "current_portion_long_term_debt",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "current_portion_long_term_debt",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "revenue",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "total_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S05",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S06",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S06",
+      "metric": "bonds_payable",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S06",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S06",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S06",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S06",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S06",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S06",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S06",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S06",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S06",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "current_portion_long_term_debt",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "long_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S07",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "dividends_paid",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "current_portion_long_term_debt",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "long_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S08",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S09",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S09",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S09",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S09",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S09",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S09",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S09",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S09",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S09",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S09",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S09",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S09",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "ppe",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "bonds_payable",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "long_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "cash_and_equivalents",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "depreciation",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "short_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "bonds_payable",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "amortization",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "current_portion_long_term_debt",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "revenue",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "total_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "dividends_paid",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "long_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S12",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S12",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S12",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S12",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S12",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S12",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S12",
+      "metric": "dividends_paid",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S12",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S12",
+      "metric": "bonds_payable",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S12",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S12",
+      "metric": "capex_ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S12",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S12",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S12",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S13",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "bonds_payable",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "ppe",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "current_portion_long_term_debt",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "bonds_payable",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "cash_and_equivalents",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "short_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "amortization",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "current_portion_long_term_debt",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "depreciation",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "revenue",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "total_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "long_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "current_portion_long_term_debt",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S15",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S16",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S16",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S16",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S16",
+      "metric": "dividends_paid",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S16",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S16",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S16",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S16",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "ppe",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "cash_and_equivalents",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "amortization",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "short_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "long_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "long_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "depreciation",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "revenue",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "total_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S18",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S18",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S18",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S18",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S18",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S18",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S18",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S18",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S18",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S18",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S19",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S19",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S19",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S19",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S19",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S19",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S19",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S19",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S19",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S19",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S19",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S19",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "total_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "revenue",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "long_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "current_portion_long_term_debt",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S22",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "amortization",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "depreciation",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "bonds_payable",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "long_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "current_portion_long_term_debt",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "UNVERIFIED",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S24",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "ppe",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "cash_and_equivalents",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "amortization",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "short_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "long_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "depreciation",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "current_portion_long_term_debt",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "revenue",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "total_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "ppe",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "bonds_payable",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "cash_and_equivalents",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "short_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "long_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "current_portion_long_term_debt",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "revenue",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "capex_intangibles",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "dividends_paid",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "bonds_payable",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "capex_ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "long_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "cash_and_equivalents",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "capex_intangibles",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "amortization",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "depreciation",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "current_portion_long_term_debt",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "total_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "long_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S38",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S38",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S38",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S38",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S38",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S38",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S38",
+      "metric": "long_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S38",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S38",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S38",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S38",
+      "metric": "current_portion_long_term_debt",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S38",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S38",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S38",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "ppe",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "cash_and_equivalents",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "short_term_borrowings",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "amortization",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "ocf",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S39",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S40",
+      "metric": "current_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S40",
+      "metric": "current_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S40",
+      "metric": "gross_profit",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S40",
+      "metric": "operating_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S40",
+      "metric": "net_income",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S40",
+      "metric": "revenue",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S40",
+      "metric": "cost_of_sales",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "FAIL",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S40",
+      "metric": "total_liabilities",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S40",
+      "metric": "equity",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    },
+    {
+      "sample_id": "S40",
+      "metric": "total_assets",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "PASS",
+      "after_action": "EMITTED"
+    }
+  ],
+  "baseline_amount_pass_not_revalidated_count": 121,
+  "baseline_amount_pass_not_revalidated": [
+    {
+      "sample_id": "S04",
+      "metric": "ppe",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "long_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "cash_and_equivalents",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "depreciation",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "short_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "amortization",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "current_portion_long_term_debt",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "revenue",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S04",
+      "metric": "total_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S06",
+      "metric": "bonds_payable",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "ppe",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "long_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "cash_and_equivalents",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "depreciation",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "short_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "bonds_payable",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "amortization",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "current_portion_long_term_debt",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "revenue",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S10",
+      "metric": "total_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S11",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "ppe",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "cash_and_equivalents",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "short_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "amortization",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "current_portion_long_term_debt",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "depreciation",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "revenue",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S14",
+      "metric": "total_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "ppe",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "cash_and_equivalents",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "amortization",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "long_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "depreciation",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "revenue",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S17",
+      "metric": "total_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S20",
+      "metric": "total_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S21",
+      "metric": "depreciation",
+      "scope": "OFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "amortization",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "depreciation",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S23",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "ppe",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "cash_and_equivalents",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "amortization",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "short_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "long_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "depreciation",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "revenue",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S25",
+      "metric": "total_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "ppe",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "bonds_payable",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "cash_and_equivalents",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "short_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "long_term_borrowings",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "current_portion_long_term_debt",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "revenue",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S36",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "cash_and_equivalents",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "amortization",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "depreciation",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "current_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "current_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "cost_of_sales",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "gross_profit",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "operating_income",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "total_liabilities",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "equity",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    },
+    {
+      "sample_id": "S37",
+      "metric": "total_assets",
+      "scope": "CFS",
+      "before": "FAIL",
+      "before_amount": "PASS",
+      "after": "UNVERIFIED",
+      "after_action": "WITHHELD"
+    }
+  ],
+  "comparison40": {
+    "1_identity": {
+      "before": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 40
+      },
+      "after": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 40
+      }
+    },
+    "2_receipt_report_period": {
+      "before": {
+        "PASS": 0,
+        "FAIL": 40,
+        "UNVERIFIED": 0
+      },
+      "after": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 40
+      }
+    },
+    "3_amounts": {
+      "before": {
+        "PASS": 9,
+        "FAIL": 21,
+        "UNVERIFIED": 10
+      },
+      "after": {
+        "PASS": 15,
+        "FAIL": 0,
+        "UNVERIFIED": 25
+      }
+    },
+    "4_units": {
+      "before": {
+        "PASS": 28,
+        "FAIL": 1,
+        "UNVERIFIED": 11
+      },
+      "after": {
+        "PASS": 28,
+        "FAIL": 0,
+        "UNVERIFIED": 12
+      }
+    },
+    "5_scope": {
+      "before": {
+        "PASS": 28,
+        "FAIL": 2,
+        "UNVERIFIED": 10
+      },
+      "after": {
+        "PASS": 28,
+        "FAIL": 0,
+        "UNVERIFIED": 12
+      }
+    },
+    "6_corrections": {
+      "before": {
+        "PASS": 0,
+        "FAIL": 3,
+        "UNVERIFIED": 37
+      },
+      "after": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 40
+      }
+    },
+    "7_no_metrics": {
+      "before": {
+        "PASS": 0,
+        "FAIL": 10,
+        "UNVERIFIED": 0
+      },
+      "after": {
+        "PASS": 10,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      }
+    },
+    "8_point_in_time": {
+      "before": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 40
+      },
+      "after": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 40
+      }
+    }
+  },
+  "sample_details": [
+    {
+      "sample_id": "S01",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 17,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 17,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S02",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 18,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 18,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S03",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 18,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 18,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S04",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 19,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 19,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S05",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 16,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 16,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S06",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 10,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 10,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S07",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 18,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 18,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S08",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 18,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 18,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S09",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 12,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 12,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S10",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 17,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 17,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S11",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 15,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 15,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S12",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 14,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 14,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S13",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 16,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 16,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S14",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 17,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 17,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S15",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 18,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 18,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S16",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 8,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_PARTIAL",
+      "rows": 8,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S17",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 14,
+        "FAIL": 0,
+        "UNVERIFIED": 1
+      },
+      "status": "PARSED_PARTIAL",
+      "rows": 15,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S18",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 11,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 11,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S19",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 16,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 16,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S20",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 15,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_PARTIAL",
+      "rows": 15,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S21",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 15,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 15,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S22",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 17,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 17,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S23",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 16,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 16,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S24",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 14,
+        "FAIL": 0,
+        "UNVERIFIED": 2
+      },
+      "status": "PARSED_4F",
+      "rows": 16,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S25",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 14,
+        "FAIL": 0,
+        "UNVERIFIED": 1
+      },
+      "status": "PARSED_4F",
+      "rows": 15,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S26",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED",
+        "7_no_metrics": "PASS"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "EXTRACTION_FAILED",
+      "rows": 0,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S27",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED",
+        "7_no_metrics": "PASS"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "EXTRACTION_FAILED",
+      "rows": 0,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S28",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED",
+        "7_no_metrics": "PASS"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "EXTRACTION_FAILED",
+      "rows": 0,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S29",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED",
+        "7_no_metrics": "PASS"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "EXTRACTION_FAILED",
+      "rows": 0,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S30",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED",
+        "7_no_metrics": "PASS"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "EXTRACTION_FAILED",
+      "rows": 0,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S31",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED",
+        "7_no_metrics": "PASS"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "EXTRACTION_FAILED",
+      "rows": 0,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S32",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED",
+        "7_no_metrics": "PASS"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "EXTRACTION_FAILED",
+      "rows": 0,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S33",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED",
+        "7_no_metrics": "PASS"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "EXTRACTION_FAILED",
+      "rows": 0,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S34",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED",
+        "7_no_metrics": "PASS"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "EXTRACTION_FAILED",
+      "rows": 0,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S35",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED",
+        "7_no_metrics": "PASS"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "EXTRACTION_FAILED",
+      "rows": 0,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S36",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 19,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 19,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S37",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 18,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 18,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S38",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 17,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 17,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S39",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 16,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "PARSED_4F",
+      "rows": 16,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S40",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 13,
+        "FAIL": 0,
+        "UNVERIFIED": 1
+      },
+      "status": "PARSED_4F",
+      "rows": 14,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N01",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 11
+      },
+      "status": "PARSED_4F",
+      "rows": 15,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N02",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 14
+      },
+      "status": "PARSED_4F",
+      "rows": 18,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N03",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 14
+      },
+      "status": "PARSED_4F",
+      "rows": 18,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N04",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 14
+      },
+      "status": "PARSED_4F",
+      "rows": 18,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N05",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 13
+      },
+      "status": "PARSED_4F",
+      "rows": 17,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N06",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 15
+      },
+      "status": "PARSED_4F",
+      "rows": 19,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N07",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 11
+      },
+      "status": "PARSED_4F",
+      "rows": 15,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N08",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 7
+      },
+      "status": "PARSED_4F",
+      "rows": 11,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N09",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 13
+      },
+      "status": "PARSED_4F",
+      "rows": 17,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N10",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 14
+      },
+      "status": "PARSED_4F",
+      "rows": 18,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N11",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 13
+      },
+      "status": "PARSED_4F",
+      "rows": 17,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N12",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 10
+      },
+      "status": "PARSED_4F",
+      "rows": 14,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N13",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 7
+      },
+      "status": "PARSED_4F",
+      "rows": 11,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N14",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 11
+      },
+      "status": "PARSED_4F",
+      "rows": 15,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N15",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 7
+      },
+      "status": "PARSED_4F",
+      "rows": 11,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N16",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 4,
+        "FAIL": 0,
+        "UNVERIFIED": 7
+      },
+      "status": "PARSED_4F",
+      "rows": 11,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N17",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED",
+        "7_no_metrics": "PASS"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "EXTRACTION_FAILED",
+      "rows": 0,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N18",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED",
+        "7_no_metrics": "PASS"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "EXTRACTION_FAILED",
+      "rows": 0,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N19",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED",
+        "7_no_metrics": "PASS"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "EXTRACTION_FAILED",
+      "rows": 0,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    },
+    {
+      "sample_id": "N20",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "UNVERIFIED",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED",
+        "7_no_metrics": "PASS"
+      },
+      "source_period_verdict": "PASS",
+      "field_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      },
+      "status": "EXTRACTION_FAILED",
+      "rows": 0,
+      "backtest_eligible": false,
+      "verdict": "UNVERIFIED"
+    }
+  ],
+  "backtest_eligible_samples": 0,
+  "auditor_changes": "Stage3 supplementary source controls and exact receipt/metric/current-period/scope linking. Original Stage1 retained. Strict grouping rejects malformed 7,205,734,7733. New cumulative publication basis is explicit; old 3-month literal verdicts remain unchanged. No oracle import from production parser. Withheld original targets remain UNVERIFIED; missing known holdout targets FAIL."
+}

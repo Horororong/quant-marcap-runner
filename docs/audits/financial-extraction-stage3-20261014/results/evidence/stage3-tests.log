@@ -1,0 +1,22 @@
+test_asset_bond_holding_is_not_issued_debt (__main__.NetPpeProtectionTests.test_asset_bond_holding_is_not_issued_debt) ... ok
+test_explicit_liability_bond_is_retained (__main__.NetPpeProtectionTests.test_explicit_liability_bond_is_retained) ... ok
+test_explicit_net_scalar_is_not_lost_when_gross_component_is_missing (__main__.NetPpeProtectionTests.test_explicit_net_scalar_is_not_lost_when_gross_component_is_missing) ... ok
+test_net_subtotal_requires_exact_component_equation (__main__.NetPpeProtectionTests.test_net_subtotal_requires_exact_component_equation) ... ok
+test_unproved_gross_net_conflicts_stay_withheld (__main__.NetPpeProtectionTests.test_unproved_gross_net_conflicts_stay_withheld) ... ok
+test_cash_flow_does_not_change_proved_is_scalar (__main__.Stage3ProfitTests.test_cash_flow_does_not_change_proved_is_scalar) ... ok
+test_cash_flow_profit_without_operating_reconciliation_is_withheld (__main__.Stage3ProfitTests.test_cash_flow_profit_without_operating_reconciliation_is_withheld) ... ok
+test_cf_prior_period_unknown_unit_and_dash_are_not_fallbacks (__main__.Stage3ProfitTests.test_cf_prior_period_unknown_unit_and_dash_are_not_fallbacks) ... ok
+test_eps_annotation_leaves_exact_scalar (__main__.Stage3ProfitTests.test_eps_annotation_leaves_exact_scalar) ... ok
+test_explicit_cash_flow_profit_recovers_unusable_is (__main__.Stage3ProfitTests.test_explicit_cash_flow_profit_recovers_unusable_is) ... ok
+test_fused_money_eps_token_is_never_split (__main__.Stage3ProfitTests.test_fused_money_eps_token_is_never_split) ... ok
+test_half_or_current_year_alias_is_exact (__main__.Stage3ProfitTests.test_half_or_current_year_alias_is_exact) ... ok
+test_loss_semantics_ignore_positive_eps_annotation (__main__.Stage3ProfitTests.test_loss_semantics_ignore_positive_eps_annotation) ... ok
+test_non_profit_cash_flow_is_not_net_income (__main__.Stage3ProfitTests.test_non_profit_cash_flow_is_not_net_income) ... ok
+test_other_account_in_annotation_is_not_stripped (__main__.Stage3ProfitTests.test_other_account_in_annotation_is_not_stripped) ... ok
+test_raw_token_and_normalization_provenance_are_retained (__main__.Stage3ProfitTests.test_raw_token_and_normalization_provenance_are_retained) ... ok
+test_underline_is_terminal_and_does_not_invent_zero (__main__.Stage3ProfitTests.test_underline_is_terminal_and_does_not_invent_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.059s
+
+OK

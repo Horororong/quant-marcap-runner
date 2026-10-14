@@ -1,0 +1,34 @@
+{
+  "baseline_commit": "3f1ac4fd0709f42dd4400030c98d2666cc001960",
+  "all60_original_sha_crc_member_sha_verified": true,
+  "old135_count": 135,
+  "previously_pass123_count": 123,
+  "old135_categories": {
+    "SAFE_BLOCK": 129,
+    "AUDIT_METHOD_DIFFERENCE": 4,
+    "PARSING_REGRESSION": 1,
+    "SOURCE_EVIDENCE_INSUFFICIENT": 1
+  },
+  "old123_categories": {
+    "SAFE_BLOCK": 119,
+    "AUDIT_METHOD_DIFFERENCE": 3,
+    "PARSING_REGRESSION": 1
+  },
+  "old123_current_recertification": {
+    "UNVERIFIED": 122,
+    "PASS": 1
+  },
+  "old135_stage3_field_verdict": {
+    "UNVERIFIED": 132,
+    "PASS": 3
+  },
+  "protected518": {
+    "PASS": 518
+  },
+  "before_after565_stage3": {
+    "PASS": 433,
+    "UNVERIFIED": 132
+  },
+  "backtest_eligible": false,
+  "category_interpretation": "SAFE_BLOCK treatment is successful but extracted value is not PASS; historical cell arithmetic is separate from current-period/metric reauthentication. Summary precision changes and missing audit controls are explicit. All source fields remain subject to identity/correction/publication gaps."
+}

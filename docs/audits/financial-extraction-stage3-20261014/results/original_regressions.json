@@ -1,0 +1,131 @@
+{
+  "assertions": 25,
+  "status": "PASS",
+  "results": [
+    {
+      "test": "S01 original exact period end",
+      "status": "PASS",
+      "evidence": "S01 original COVER and primary statement date headers"
+    },
+    {
+      "test": "S05 positive profit sign and explicit cumulative basis",
+      "status": "PASS",
+      "evidence": "Stage1 independent primary IS table controls; revalidation DOM arithmetic"
+    },
+    {
+      "test": "S09 positive profit sign and explicit cumulative basis",
+      "status": "PASS",
+      "evidence": "Stage1 independent primary IS table controls; revalidation DOM arithmetic"
+    },
+    {
+      "test": "S38 positive profit sign and explicit cumulative basis",
+      "status": "PASS",
+      "evidence": "Stage1 independent primary IS table controls; revalidation DOM arithmetic"
+    },
+    {
+      "test": "S24 corrected PPE",
+      "status": "PASS",
+      "evidence": "corrected original body table92"
+    },
+    {
+      "test": "S24 malformed current liability withheld",
+      "status": "PASS",
+      "evidence": "corrected source 7,205,734,7733 is malformed"
+    },
+    {
+      "test": "S39 corrected full body revenue",
+      "status": "PASS",
+      "evidence": "corrected full body table142; rounded summary is not the oracle"
+    },
+    {
+      "test": "S40 corrected KRW revenue and loss",
+      "status": "PASS",
+      "evidence": "corrected full body table51; source unit 원"
+    },
+    {
+      "test": "S11 prior dividends absent",
+      "status": "PASS",
+      "evidence": "current dash cannot become prior 360,000,000"
+    },
+    {
+      "test": "S17 comparative annual CFS excluded",
+      "status": "PASS",
+      "evidence": "current June period vs prior December connected statements"
+    },
+    {
+      "test": "S36 comparative borrowings and bonds excluded",
+      "status": "PASS",
+      "evidence": "current OFS dash vs prior 34,277,560,000/50,000,000,000"
+    },
+    {
+      "test": "S21 whole company revenue",
+      "status": "PASS",
+      "evidence": "primary OFS whole company amount; segment excluded"
+    },
+    {
+      "test": "S37 whole company cumulative net revenue",
+      "status": "PASS",
+      "evidence": "primary OFS table91 row2 col2; former segment revenue1,342million excluded"
+    },
+    {
+      "test": "S26 data-present extraction gap",
+      "status": "PASS",
+      "evidence": "Stage1 independent financial_absence_evidence and preserved source cells"
+    },
+    {
+      "test": "S27 data-present extraction gap",
+      "status": "PASS",
+      "evidence": "Stage1 independent financial_absence_evidence and preserved source cells"
+    },
+    {
+      "test": "S28 data-present extraction gap",
+      "status": "PASS",
+      "evidence": "Stage1 independent financial_absence_evidence and preserved source cells"
+    },
+    {
+      "test": "S29 data-present extraction gap",
+      "status": "PASS",
+      "evidence": "Stage1 independent financial_absence_evidence and preserved source cells"
+    },
+    {
+      "test": "S30 data-present extraction gap",
+      "status": "PASS",
+      "evidence": "Stage1 independent financial_absence_evidence and preserved source cells"
+    },
+    {
+      "test": "S31 data-present extraction gap",
+      "status": "PASS",
+      "evidence": "Stage1 independent financial_absence_evidence and preserved source cells"
+    },
+    {
+      "test": "S32 data-present extraction gap",
+      "status": "PASS",
+      "evidence": "Stage1 independent financial_absence_evidence and preserved source cells"
+    },
+    {
+      "test": "S33 data-present extraction gap",
+      "status": "PASS",
+      "evidence": "Stage1 independent financial_absence_evidence and preserved source cells"
+    },
+    {
+      "test": "S34 data-present extraction gap",
+      "status": "PASS",
+      "evidence": "Stage1 independent financial_absence_evidence and preserved source cells"
+    },
+    {
+      "test": "S35 data-present extraction gap",
+      "status": "PASS",
+      "evidence": "Stage1 independent financial_absence_evidence and preserved source cells"
+    },
+    {
+      "test": "60 unique exact preserved ZIPs",
+      "status": "PASS",
+      "evidence": "source_manifest ZIP SHA, member SHA and CRC"
+    },
+    {
+      "test": "60 publication gates remain closed",
+      "status": "PASS",
+      "evidence": "no identity/correction/publication attestation"
+    }
+  ]
+}

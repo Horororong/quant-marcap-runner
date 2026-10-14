@@ -18,7 +18,7 @@ except ModuleNotFoundError as error:
         raise
     from legacy_financial_fields import choose_metric, norm_account
 
-PARSER_VERSION = "legacy-v6-structural-evidence"
+PARSER_VERSION = "legacy-v7-current-profit-normalization"
 DATE = re.compile(r"(\d{4})\s*[.년/-]\s*(\d{1,2})\s*[.월/-]\s*(\d{1,2})(?:\s*[.일])?")
 HEADING = re.compile(r"(?:연결)?(?:포괄손익계산서|손익계산서|대차대조표|재무상태표|현금흐름표|이익잉여금처분계산서|결손금처리계산서)")
 TERM = re.compile(r"(?:제\s*)?(\d+)\s*(?:\([당전]\))?\s*기")
@@ -27,16 +27,46 @@ TOKEN = re.compile(r"[+-]?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?\Z")
 compact = lambda s: re.sub(r"\s+", "", str(s or ""))
 
 
-def financial_account(label, statement):
+def account_without_annotations(label):
     # Only explicit terminal note references and decorative total delimiters.
     # Profit(loss) is a financial account label and is never stripped.
     label = re.sub(r"\((?:주석|주)[\s\d,~과및등-]*\)\s*$", "", str(label)).strip("= ")
-    return choose_metric(label, statement)
+    whole = compact(label)
+    # An EPS explanatory parenthesis changes the label, never the amount cell.
+    # Separate account lines and fused monetary/EPS tokens are not split here.
+    annotation = re.search(r"\((?:기본|희석)?주당(?:계속사업)?(?:순이익|순손실|손익|경상이익|이익|손실)", whole)
+    if annotation:
+        prefix = whole[:annotation.start()]
+        metric, _ = choose_metric(prefix, "IS")
+        if metric == "net_income" and not re.search(r"매출액|영업활동|유형자산|부채총계|영업이익|법인세비용", whole[annotation.start():]):
+            return prefix
+    return label
+
+
+def financial_account(label, statement):
+    label = account_without_annotations(label)
+    metric, priority = choose_metric(label, statement)
+    if not metric and statement == "CF":
+        # A standalone reported-profit reconciliation line in a primary cash
+        # flow statement has its own proved dates, scope and monetary cell.
+        alternate, rank = choose_metric(label, "IS")
+        if alternate == "net_income":
+            return alternate, rank
+    return metric, priority
+
+
+def strip_terminal_underline(raw):
+    """Only a trailing run of >=2 '=' or '_' characters; no prefix guessing."""
+    return re.sub(r"(?:={2,}|_{2,})$", "", compact(raw))
 
 
 def decimal_amount(raw, account="", metric=""):
     """One whole monetary token; malformed comma grouping and missing stay missing."""
-    s = compact(raw).replace("−", "-").replace("－", "-")
+    # Two whitespace-separated digit runs are not one proved scalar. Removing
+    # their boundary could fabricate an integer even without malformed commas.
+    if re.search(r"\d\s+\d", str(raw)):
+        return None
+    s = strip_terminal_underline(raw).replace("−", "-").replace("－", "-")
     if not s or s in {"-", "—", "–", "―"}:
         return None
     negative = False
@@ -58,7 +88,7 @@ def decimal_amount(raw, account="", metric=""):
         return None
     if negative:
         value = -abs(value)
-    label = norm_account(account)
+    label = norm_account(account_without_annotations(account))
     if metric in {"net_income", "gross_profit", "operating_income"} and "손실" in label and "이익" not in label:
         value = -abs(value)
     return value
@@ -168,6 +198,77 @@ def grid(rows):
             column += c["colspan"]
         result.append(slots)
     return result
+
+
+def ppe_net_components(rows, layout, current_cols):
+    """Prove the explicit BS net subtotal against adjacent gross/accumulation.
+
+    No general preference score: all three current scalars and their exact
+    arithmetic must agree. Extra impairment/subsidy components remain unknown.
+    """
+    proved = {}
+    for ri in range(len(rows) - 2):
+        labels = [cell_text(rows[r][0]) if rows[r] else "" for r in (ri, ri + 1, ri + 2)]
+        if not re.match(r"^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩIVX]+[.]", compact(labels[0])):
+            continue
+        if any(financial_account(label, "BS")[0] != "ppe" for label in labels[:2]):
+            continue
+        if compact(labels[2]).strip("()") != "감가상각누계액":
+            continue
+        if ri + 3 < len(rows) and rows[ri + 3] and re.search(r"손상|국고보조금|감가상각누계액", cell_text(rows[ri + 3][0])):
+            continue
+        values, locators = [], []
+        for r in (ri, ri + 1, ri + 2):
+            cells = {entry[1]: entry[2] for col, entry in layout[r].items()
+                     if col in current_cols and entry[0] == r and entry[1] > 0}
+            present = [(ci, c) for ci, c in cells.items() if compact(cell_text(c))]
+            if len(present) != 1:
+                break
+            ci, c = present[0]
+            value = decimal_amount(cell_text(c))
+            if value is None:
+                break
+            values.append(value)
+            locators.append({"row": r, "column": ci, "raw": cell_text(c)})
+        if len(values) == 3:
+            with localcontext() as context:
+                context.prec = 50
+                if values[2] <= 0 and values[0] == values[1] + values[2]:
+                    proved[ri] = locators
+    return proved
+
+
+def operating_reconciliation_rows(rows):
+    """A CF profit line must belong to the operating reconciliation, not a note
+    or an investing/financing subtotal elsewhere in the same statement."""
+    active, allowed = False, set()
+    for ri, row in enumerate(rows):
+        if not row:
+            continue
+        label = cell_text(row[0])
+        if financial_account(label, "CF")[0] == "ocf":
+            active = True
+        elif re.match(r"^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩIVX0-9.()\-]*(?:투자활동|재무활동)", compact(label)):
+            active = False
+        if active:
+            allowed.add(ri)
+    return allowed
+
+
+def balance_sheet_sides(rows):
+    """Only explicit asset/liability/equity headings establish a BS side."""
+    side, out = "UNKNOWN", {}
+    for ri, row in enumerate(rows):
+        label = compact(cell_text(row[0])) if row else ""
+        label = re.sub(r"^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩIVX0-9.()\-]+", "", label)
+        if label in {"자산", "유동자산", "비유동자산", "고정자산"}:
+            side = "ASSET"
+        elif label in {"부채", "유동부채", "비유동부채", "고정부채"}:
+            side = "LIABILITY"
+        elif label in {"자본", "자본금"}:
+            side = "EQUITY"
+        out[ri] = side
+    return out
 
 
 def source_contract(prefix):
@@ -302,6 +403,9 @@ def parse_native(text):
             continue
         hi, hc, header, ht = current_header
         current_cols = sorted(k for k, v in layout[hi].items() if v[:2] == (hi, hc))
+        net_ppe = ppe_net_components(rows, layout, current_cols) if contract["statement"] == "BS" else {}
+        operating_rows = operating_reconciliation_rows(rows) if contract["statement"] == "CF" else set()
+        bs_sides = balance_sheet_sides(rows) if contract["statement"] == "BS" else {}
         nearest = compact(table["prefix"])
         heads = list(HEADING.finditer(nearest))
         tail = nearest[heads[-1].end():] if heads else nearest
@@ -358,9 +462,24 @@ def parse_native(text):
                             "structural_status": "PASS" if source_ok else "UNVERIFIED",
                             "availability_status": "UNVERIFIED", "backtest_eligible": False,
                             "value_basis": "explicit current term and measurement basis from original headers",
+                            "numeric_normalization": "terminal_underline" if strip_terminal_underline(token) != compact(token) else "whole_token",
+                            "account_normalization": "explicit_account_annotation" if compact(account_without_annotations(label)) != compact(label).strip("= ") else "exact",
                             "parser_version": PARSER_VERSION})
                         if contract["statement"] == "BS":
                             observations[-1]["period"] = report_period
+                            observations[-1]["balance_sheet_side"] = bs_sides[ri]
+                            if metric == "bonds_payable" and bs_sides[ri] == "ASSET":
+                                observations[-1]["structural_status"] = "UNVERIFIED"
+                                observations[-1]["exclusion_reason"] = "ASSET_SECURITY_NOT_BOND_LIABILITY"
+                        if metric == "ppe" and ri in net_ppe:
+                            observations[-1]["carrying_amount_basis"] = "net_of_accumulated_depreciation"
+                            observations[-1]["net_components"] = net_ppe[ri]
+                        if metric == "ppe" and ri - 1 in net_ppe:
+                            observations[-1]["structural_status"] = "UNVERIFIED"
+                            observations[-1]["exclusion_reason"] = "GROSS_PPE_COMPONENT_NOT_NET_CARRYING_AMOUNT"
+                        if metric == "net_income" and contract["statement"] == "CF" and ri not in operating_rows:
+                            observations[-1]["structural_status"] = "UNVERIFIED"
+                            observations[-1]["exclusion_reason"] = "CF_PROFIT_OUTSIDE_OPERATING_RECONCILIATION"
     return {"candidates": observations, "issues": issues, "financial_data_present": present,
             "report_period_end": report_end, "correction_file": correction_file}
 
@@ -374,10 +493,18 @@ def select_verified(candidates):
         groups.setdefault((row["metric"], row["scope"], row["period_end"], row["measurement_basis"]), []).append(row)
     selected = []
     for key, rows in sorted(groups.items()):
+        if key[0] == "net_income":
+            primary = [row for row in rows if row["statement"] == "IS"]
+            # Preserve proved income-statement scalars. CF is an explicit
+            # alternative source when a usable IS scalar is absent, not a
+            # numeric prefix carved out of an ambiguous combined IS cell.
+            if primary:
+                rows = primary
         if len({row["amount_krw"] for row in rows}) != 1:
             continue
-        selected.append({**min(rows, key=lambda r: (r["amendment_region"] != "FILED_BODY", r["table_index"], r["row_index"])),
-                         "candidate_count": len(rows)})
+        chosen = min(rows, key=lambda r: (r["amendment_region"] != "FILED_BODY", r["table_index"], r["row_index"]))
+        selected.append({**chosen, "candidate_count": len(rows),
+                         "net_income_source": "primary_cash_flow_reconciliation" if chosen["metric"] == "net_income" and chosen["statement"] == "CF" else "primary_statement"})
     # Keep one explicit basis per metric/scope for compatibility. Cumulative is
     # selected, never silently interpreted as a standalone quarter.
     out = {}

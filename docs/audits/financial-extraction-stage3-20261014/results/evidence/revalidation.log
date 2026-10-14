@@ -1,0 +1,123 @@
+{
+  "samples": 60,
+  "original40": 40,
+  "holdout20": 20,
+  "all_original_sha_crc_verified": true,
+  "field_rows": 716,
+  "field_counts": {
+    "PASS": 530,
+    "FAIL": 0,
+    "UNVERIFIED": 186
+  },
+  "original565_fixed_denominator": {
+    "PASS": 433,
+    "FAIL": 0,
+    "UNVERIFIED": 132
+  },
+  "holdout64_targets": {
+    "PASS": 64,
+    "FAIL": 0,
+    "UNVERIFIED": 0
+  },
+  "baseline_amount_pass_not_revalidated_count": 121,
+  "comparison40": {
+    "1_identity": {
+      "before": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 40
+      },
+      "after": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 40
+      }
+    },
+    "2_receipt_report_period": {
+      "before": {
+        "PASS": 0,
+        "FAIL": 40,
+        "UNVERIFIED": 0
+      },
+      "after": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 40
+      }
+    },
+    "3_amounts": {
+      "before": {
+        "PASS": 9,
+        "FAIL": 21,
+        "UNVERIFIED": 10
+      },
+      "after": {
+        "PASS": 15,
+        "FAIL": 0,
+        "UNVERIFIED": 25
+      }
+    },
+    "4_units": {
+      "before": {
+        "PASS": 28,
+        "FAIL": 1,
+        "UNVERIFIED": 11
+      },
+      "after": {
+        "PASS": 28,
+        "FAIL": 0,
+        "UNVERIFIED": 12
+      }
+    },
+    "5_scope": {
+      "before": {
+        "PASS": 28,
+        "FAIL": 2,
+        "UNVERIFIED": 10
+      },
+      "after": {
+        "PASS": 28,
+        "FAIL": 0,
+        "UNVERIFIED": 12
+      }
+    },
+    "6_corrections": {
+      "before": {
+        "PASS": 0,
+        "FAIL": 3,
+        "UNVERIFIED": 37
+      },
+      "after": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 40
+      }
+    },
+    "7_no_metrics": {
+      "before": {
+        "PASS": 0,
+        "FAIL": 10,
+        "UNVERIFIED": 0
+      },
+      "after": {
+        "PASS": 10,
+        "FAIL": 0,
+        "UNVERIFIED": 0
+      }
+    },
+    "8_point_in_time": {
+      "before": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 40
+      },
+      "after": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 40
+      }
+    }
+  },
+  "backtest_eligible_samples": 0,
+  "auditor_changes": "Stage3 supplementary source controls and exact receipt/metric/current-period/scope linking. Original Stage1 retained. Strict grouping rejects malformed 7,205,734,7733. New cumulative publication basis is explicit; old 3-month literal verdicts remain unchanged. No oracle import from production parser. Withheld original targets remain UNVERIFIED; missing known holdout targets FAIL."
+}

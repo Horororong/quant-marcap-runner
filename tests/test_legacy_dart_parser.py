@@ -23,7 +23,7 @@ def test_loss_label_normalizes_positive_magnitude():
     assert row["amount_krw"] == "-5787000"
 
 def test_parser_version_requires_reprocessing():
-    assert PARSER_VERSION == "legacy-v6-structural-evidence"
+    assert PARSER_VERSION == "legacy-v7-current-profit-normalization"
 
 
 @pytest.mark.parametrize("text", ["751,637 22,35416,940", "670,000200,0001,500,000", "83 15,787 13,418 100", "12,34", "1.5%", "1 (주2)", "-", "—", "–"])

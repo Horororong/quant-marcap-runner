@@ -1,0 +1,32 @@
+test_net_subtotal_requires_exact_component_equation (__main__.NetPpeProtectionTests.test_net_subtotal_requires_exact_component_equation) ... ok
+test_unproved_gross_net_conflicts_stay_withheld (__main__.NetPpeProtectionTests.test_unproved_gross_net_conflicts_stay_withheld) ... FAIL
+test_cash_flow_does_not_change_proved_is_scalar (__main__.Stage3ProfitTests.test_cash_flow_does_not_change_proved_is_scalar) ... ok
+test_cf_prior_period_unknown_unit_and_dash_are_not_fallbacks (__main__.Stage3ProfitTests.test_cf_prior_period_unknown_unit_and_dash_are_not_fallbacks) ... ok
+test_eps_annotation_leaves_exact_scalar (__main__.Stage3ProfitTests.test_eps_annotation_leaves_exact_scalar) ... ok
+test_explicit_cash_flow_profit_recovers_unusable_is (__main__.Stage3ProfitTests.test_explicit_cash_flow_profit_recovers_unusable_is) ... ok
+test_fused_money_eps_token_is_never_split (__main__.Stage3ProfitTests.test_fused_money_eps_token_is_never_split) ... ok
+test_half_or_current_year_alias_is_exact (__main__.Stage3ProfitTests.test_half_or_current_year_alias_is_exact) ... ok
+test_loss_semantics_ignore_positive_eps_annotation (__main__.Stage3ProfitTests.test_loss_semantics_ignore_positive_eps_annotation) ... ok
+test_non_profit_cash_flow_is_not_net_income (__main__.Stage3ProfitTests.test_non_profit_cash_flow_is_not_net_income) ... ok
+test_other_account_in_annotation_is_not_stripped (__main__.Stage3ProfitTests.test_other_account_in_annotation_is_not_stripped) ... ok
+test_raw_token_and_normalization_provenance_are_retained (__main__.Stage3ProfitTests.test_raw_token_and_normalization_provenance_are_retained) ... ok
+test_underline_is_terminal_and_does_not_invent_zero (__main__.Stage3ProfitTests.test_underline_is_terminal_and_does_not_invent_zero) ... ok
+
+======================================================================
+FAIL: test_unproved_gross_net_conflicts_stay_withheld (__main__.NetPpeProtectionTests.test_unproved_gross_net_conflicts_stay_withheld)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/quant-marcap-runner/tests/test_financial_extraction_stage3.py", line 59, in test_unproved_gross_net_conflicts_stay_withheld
+    self.assertEqual(rows(self.body(**args)),[],args)
+AssertionError: Lists differ: [{'statement': 'BS', 'scope': 'OFS', 'term[869 chars]nt'}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'statement': 'BS', 'scope': 'OFS', 'term': '12', 'period_start': '', 'period_end': '2007-06-30', 'heading': '대차대조표', 'unit': '원', 'period': 'H1', 'metric': 'ppe', 'account_name': 'Ⅵ. 유형자산', 'raw_amount': '1,200', 'amount_reported': '1200', 'amount_krw': '1200', 'unit_multiplier': '1', 'unit_known': True, 'priority': 0, 'parser_confidence': 1.0, 'table_index': 1, 'row_index': 1, 'value_col': 1, 'source_line_index': 0, 'source_character': 244, 'measurement_basis': 'instant', 'amendment_region': 'FILED_BODY', 'correction_file': False, 'structural_status': 'PASS', 'availability_status': 'UNVERIFIED', 'backtest_eligible': False, 'value_basis': 'explicit current term and measurement basis from original headers', 'numeric_normalization': 'whole_token', 'account_normalization': 'exact', 'parser_version': 'legacy-v7-current-profit-normalization', 'candidate_count': 1, 'net_income_source': 'primary_statement'}
+
+Diff is 1078 characters long. Set self.maxDiff to None to see it. : {'gross': '-'}
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.047s
+
+FAILED (failures=1)

@@ -1,3 +1,15 @@
+## 2026-10-14 financial extraction Stage3 checkpoint (same repair branch)
+
+Branch fix/financial-accuracy-20261014; baseline remote3f1ac4fd. Main unmerged; no full2000 replay or original-data edits.
+Five holdout net-income failures recovered from original current-period scalars (N10 CF; fused IS stays unverified).
+Original135 classified:129 safe blocks/1 actual regression recovered/1 source gap/4 audit-definition changes.
+Previous amountPASS123:119 unsafe current-source uses/1 recovered netPPE/3 definition/precision differences.
+Earlier proved518 values retained and independently matched at exact receipt/metric/start/end/scope/basis.
+Holdout64=64P/0F/0U; original565=433P/0F/132U. No PIT/identity/correction-chain certification; backtest eligibility0.
+Original kit only;110 unittest passes and25 original source regressions. Fullpytest unavailable (missing pinned kit dependencies).
+Existing unsafe-pip CI branch guards remain. Same fixed-kit workflow reproduces60 and forensic before/after against immutable Stage2 artifact.
+Final source SHA/CI must be read from live GitHub. Detailed evidence and resume: [Stage3 audit](docs/audits/financial-extraction-stage3-20261014/audit_report.md).
+
 ## 2026-10-12 corpCode 응답 오류 수정 checkpoint
 
 실패 run38079743270/job114294012340의 BadZipFile/exit1을 확인했다. 정상 ZIP과
