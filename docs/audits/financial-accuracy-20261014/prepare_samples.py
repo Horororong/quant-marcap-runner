@@ -10,7 +10,7 @@ z=zipfile.ZipFile(root/"batch.zip")
 if z.testzip() is not None:raise ValueError("source artifact CRC failure")
 names=z.namelist()
 def find(suffix):
- matches=[n for n in names if n.endswith(suffix)]
+ matches=[n for n in names if n.endswith(suffix) and "audit-subset" not in Path(n).parts]
  if len(matches)!=1:raise ValueError("ambiguous or missing artifact member: "+suffix+str(matches))
  return matches[0]
 def csvdata(name):

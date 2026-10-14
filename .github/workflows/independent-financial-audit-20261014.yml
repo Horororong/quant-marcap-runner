@@ -30,7 +30,7 @@ jobs:
         id: prepare
         run: '"$RUNNER_TEMP/independent-audit/runtime/.venv/bin/python" -I docs/audits/financial-accuracy-20261014/prepare_samples.py --workdir "$RUNNER_TEMP/independent-audit"'
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: steps.prepare.outcome == 'success'
         with:
           name: independent-audit-selection-ledger
           path: |

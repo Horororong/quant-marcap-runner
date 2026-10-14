@@ -1,11 +1,19 @@
 """Restore original pinned offline kit and existing source artifact; stdlib transport only."""
 import argparse,hashlib,json,os,urllib.request,zipfile
 from pathlib import Path
+from urllib.parse import urlsplit
+class SourceRedirect(urllib.request.HTTPRedirectHandler):
+ def redirect_request(self,req,fp,code,msg,headers,newurl):
+  redirected=super().redirect_request(req,fp,code,msg,headers,newurl)
+  if redirected is not None and urlsplit(req.full_url).netloc!=urlsplit(newurl).netloc:
+   redirected.remove_header('Authorization')
+  return redirected
+opener=urllib.request.build_opener(SourceRedirect())
 p=argparse.ArgumentParser();p.add_argument("--workdir",type=Path,required=True);a=p.parse_args()
 root=a.workdir;root.mkdir(parents=True,exist_ok=True)
 def download(url,dest,sha=None,token=False):
  h={"Authorization":"Bearer "+os.environ["GH_TOKEN"]} if token else {}
- with urllib.request.urlopen(urllib.request.Request(url,headers=h),timeout=120) as r, dest.open("wb") as f:
+ with opener.open(urllib.request.Request(url,headers=h),timeout=120) as r, dest.open("wb") as f:
   while True:
    b=r.read(1024*1024)
    if not b:break
