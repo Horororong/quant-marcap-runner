@@ -22,8 +22,24 @@ def download(url,dest,sha=None,token=False):
  if sha and digest!=sha:raise ValueError("archive SHA mismatch: "+dest.name)
  print(dest.name,dest.stat().st_size,digest,flush=True)
  return digest
-artifact=root/"batch.zip"
-download("https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11866183704/zip",artifact,"4d7ba8748a50a78d5fc15304b16072258105bbdb5c90c5374901e023943b61e5",True)
+artifact=root/"review-packet.zip"
+download("https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11871753367/zip",artifact,"44b9ba097cc8c724be3b6025a4964b8be223f364d5ddf6204487497e101736fa",True)
+ledgerzip=root/"ledger.zip"
+download("https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11871948035/zip",ledgerzip,"13ae94569bb80878800fc700eea4fd3539ec0771f3af77f91cd5126614e7a15f",True)
+with zipfile.ZipFile(ledgerzip) as z:
+ name=[n for n in z.namelist() if n.endswith("transport_manifest.json")]
+ if len(name)!=1:raise ValueError("transport ledger not unique")
+ ledger=json.loads(z.read(name[0]))
+with zipfile.ZipFile(artifact) as z:
+ if z.testzip() is not None:raise ValueError("review packet CRC")
+ name=[n for n in z.namelist() if n.endswith("review.part001")]
+ if len(name)!=1:raise ValueError("review segment not unique")
+ data=z.read(name[0])
+if len(ledger["parts"])!=1 or hashlib.sha256(data).hexdigest()!=ledger["zip_sha256"] or len(data)!=ledger["zip_bytes"]:raise ValueError("review identity mismatch")
+with zipfile.ZipFile(__import__("io").BytesIO(data)) as z:
+ if z.testzip() is not None:raise ValueError("review CRC")
+ z.extractall(root/"review")
+(root/"transport_manifest.json").write_text(json.dumps(ledger,indent=2)+"\n")
 kit=root/"original-kit.zip"
 download("https://github.com/Horororong/quant-marcap-runner/releases/download/quant-report-26e4ec02e569/quant-sandbox-26e4ec02e569.zip",kit,"f76f38e1c9ed9401cd3607db67100cf6211d8c96fc5dadcbda13eff940984784")
 with zipfile.ZipFile(kit) as z:

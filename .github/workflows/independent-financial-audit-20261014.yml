@@ -1,16 +1,16 @@
-name: Independent financial audit preparation
+name: Independent financial audit source review
 on:
   push:
     branches: ['audit/financial-accuracy-20261014']
     paths:
       - 'docs/audits/financial-accuracy-20261014/restore_inputs.py'
-      - 'docs/audits/financial-accuracy-20261014/prepare_samples.py'
+      - 'docs/audits/financial-accuracy-20261014/source_view.py'
       - '.github/workflows/independent-financial-audit-20261014.yml'
 permissions:
-  contents: read
+  contents: write
   actions: read
 jobs:
-  prepare:
+  source-review:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -18,84 +18,22 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Restore exact existing kit and source artifact
+      - name: Restore fixed forty-sample review and original offline kit
         env:
           GH_TOKEN: ${{ github.token }}
         run: python docs/audits/financial-accuracy-20261014/restore_inputs.py --workdir "$RUNNER_TEMP/independent-audit"
       - name: Bootstrap original offline kit
         run: python "$RUNNER_TEMP/independent-audit/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/independent-audit/kit-parts" --destination "$RUNNER_TEMP/independent-audit/runtime"
-      - name: Verify dedicated original runtime
+      - name: Verify dedicated runtime
         run: '"$RUNNER_TEMP/independent-audit/runtime/.venv/bin/python" -I "$RUNNER_TEMP/independent-audit/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/independent-audit/verify.json"'
-      - name: Freeze forty samples and preserved primary originals
-        id: prepare
-        run: '"$RUNNER_TEMP/independent-audit/runtime/.venv/bin/python" -I docs/audits/financial-accuracy-20261014/prepare_samples.py --workdir "$RUNNER_TEMP/independent-audit"'
-      - uses: actions/upload-artifact@v4
-        if: steps.prepare.outcome == 'success'
-        with:
-          name: independent-audit-selection-ledger
-          path: |
-            ${{ runner.temp }}/independent-audit/transport_manifest.json
-            ${{ runner.temp }}/independent-audit/prepared_summary.json
-            ${{ runner.temp }}/independent-audit/verify.json
-            ${{ runner.temp }}/independent-audit/review/selection.json
-            ${{ runner.temp }}/independent-audit/review/selected_metrics.json
-            ${{ runner.temp }}/independent-audit/review/selected_metrics.csv
-            ${{ runner.temp }}/independent-audit/review/source_manifest.json
-          retention-days: 90
-          if-no-files-found: error
-      - uses: actions/upload-artifact@v4
-        if: steps.prepare.outputs.parts >= 1
-        with:
-          name: independent-audit-review-001
-          path: ${{ runner.temp }}/independent-audit/parts/review.part001
-          compression-level: 0
-          retention-days: 90
-      - uses: actions/upload-artifact@v4
-        if: steps.prepare.outputs.parts >= 2
-        with:
-          name: independent-audit-review-002
-          path: ${{ runner.temp }}/independent-audit/parts/review.part002
-          compression-level: 0
-          retention-days: 90
-      - uses: actions/upload-artifact@v4
-        if: steps.prepare.outputs.parts >= 3
-        with:
-          name: independent-audit-review-003
-          path: ${{ runner.temp }}/independent-audit/parts/review.part003
-          compression-level: 0
-          retention-days: 90
-      - uses: actions/upload-artifact@v4
-        if: steps.prepare.outputs.parts >= 4
-        with:
-          name: independent-audit-review-004
-          path: ${{ runner.temp }}/independent-audit/parts/review.part004
-          compression-level: 0
-          retention-days: 90
-      - uses: actions/upload-artifact@v4
-        if: steps.prepare.outputs.parts >= 5
-        with:
-          name: independent-audit-review-005
-          path: ${{ runner.temp }}/independent-audit/parts/review.part005
-          compression-level: 0
-          retention-days: 90
-      - uses: actions/upload-artifact@v4
-        if: steps.prepare.outputs.parts >= 6
-        with:
-          name: independent-audit-review-006
-          path: ${{ runner.temp }}/independent-audit/parts/review.part006
-          compression-level: 0
-          retention-days: 90
-      - uses: actions/upload-artifact@v4
-        if: steps.prepare.outputs.parts >= 7
-        with:
-          name: independent-audit-review-007
-          path: ${{ runner.temp }}/independent-audit/parts/review.part007
-          compression-level: 0
-          retention-days: 90
-      - uses: actions/upload-artifact@v4
-        if: steps.prepare.outputs.parts >= 8
-        with:
-          name: independent-audit-review-008
-          path: ${{ runner.temp }}/independent-audit/parts/review.part008
-          compression-level: 0
-          retention-days: 90
+      - name: Create literal original source views
+        run: '"$RUNNER_TEMP/independent-audit/runtime/.venv/bin/python" -I docs/audits/financial-accuracy-20261014/source_view.py --workdir "$RUNNER_TEMP/independent-audit" --output docs/audits/financial-accuracy-20261014/review'
+      - name: Save audit viewing evidence on isolated branch
+        run: |
+          test "$GITHUB_REF_NAME" = "audit/financial-accuracy-20261014"
+          cp "$RUNNER_TEMP/independent-audit/verify.json" docs/audits/financial-accuracy-20261014/review/runtime_verify.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/audits/financial-accuracy-20261014/review/
+          git commit -m "Preserve forty frozen original source views for independent manual audit"
+          git push origin HEAD:audit/financial-accuracy-20261014
