@@ -1,0 +1,40 @@
+name: Freeze independent financial heldout twenty
+on:
+  push:
+    branches: ['fix/financial-accuracy-20261014']
+    paths: ['docs/audits/financial-repair-20261014/prepare_heldout.py', '.github/workflows/financial-accuracy-heldout.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore original offline kit and fixed original forty
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python docs/audits/financial-repair-20261014/restore_inputs.py --workdir "$RUNNER_TEMP/independent-audit"
+      - name: Bootstrap and verify original dedicated Python
+        run: |
+          python "$RUNNER_TEMP/independent-audit/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/independent-audit/kit-parts" --destination "$RUNNER_TEMP/independent-audit/runtime"
+          "$RUNNER_TEMP/independent-audit/runtime/.venv/bin/python" -I "$RUNNER_TEMP/independent-audit/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/independent-audit/verify.json"
+      - name: Freeze metadata selection before opening new originals
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: '"$RUNNER_TEMP/independent-audit/runtime/.venv/bin/python" -I docs/audits/financial-repair-20261014/prepare_heldout.py --workdir "$RUNNER_TEMP/independent-audit"'
+      - name: Render literal primary sources only
+        run: |
+          mkdir -p "$RUNNER_TEMP/heldout-view/review"
+          cp -r "$RUNNER_TEMP/independent-audit/heldout/." "$RUNNER_TEMP/heldout-view/review/"
+          "$RUNNER_TEMP/independent-audit/runtime/.venv/bin/python" -I docs/audits/financial-repair-20261014/source_view.py --workdir "$RUNNER_TEMP/heldout-view" --output "$RUNNER_TEMP/heldout-view/view"
+          cp "$RUNNER_TEMP/independent-audit/verify.json" "$RUNNER_TEMP/heldout-view/runtime-verify.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: financial-repair-heldout20
+          path: ${{ runner.temp }}/heldout-view
+          retention-days: 30
