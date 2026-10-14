@@ -12,16 +12,18 @@ def test_legacy_negative_symbols():
 
 def test_loss_label_normalizes_positive_magnitude():
     html = """
-    <h2>손익계산서</h2><p>단위: 천원</p>
-    <table><tr><td>당기순손실</td><td>5,787</td></tr></table>
+    <COVER>사업연도 2007년01월01일부터2007년06월30일까지</COVER>
+    <p>4. 재무제표</p><h2>손익계산서</h2>
+    <table><tr><td>제12기반기2007.01.01부터2007.06.30까지</td></tr><tr><td>단위:천원</td></tr></table>
+    <table><tr><th>과목</th><th>제12기반기</th></tr><tr><td>당기순손실</td><td>5,787</td></tr></table>
     """
     rows = table_candidates(html)
     row = next(r for r in rows if r["metric"] == "net_income")
-    assert row["amount_reported"] == -5787
-    assert row["amount_krw"] == -5_787_000
+    assert row["amount_reported"] == "-5787"
+    assert row["amount_krw"] == "-5787000"
 
 def test_parser_version_requires_reprocessing():
-    assert PARSER_VERSION == "legacy-v5-single-amount"
+    assert PARSER_VERSION == "legacy-v6-structural-evidence"
 
 
 @pytest.mark.parametrize("text", ["751,637 22,35416,940", "670,000200,0001,500,000", "83 15,787 13,418 100", "12,34", "1.5%", "1 (주2)", "-", "—", "–"])
@@ -55,7 +57,7 @@ def test_unknown_statement_and_partial_alias_do_not_become_financial_metrics():
 def test_nonfinite_scaled_value_cannot_be_usable_money():
     amount = "1" + "0" * 308
     rows = table_candidates("<h2>손익계산서</h2><p>단위: 백만원</p><table><tr><td>당기순이익</td><td>" + amount + "</td></tr></table>")
-    assert rows and math.isnan(rows[0]["amount_krw"])
+    assert rows == []  # Neither an unbounded numeric token nor unproved dates may be published.
 
 
 @pytest.mark.parametrize("text,expected", [

@@ -138,7 +138,9 @@ concurrency:
 
 jobs:
   test:
-    if: ${{ !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && (inputs.download_existing_kit || inputs.publish_public_download)) }}
+    # This repair branch uses financial-accuracy-revalidation.yml with the original offline kit.
+    # Owner prohibits internet pip/upgrade; main and other branch CI are unchanged.
+    if: ${{ github.ref_name != 'fix/financial-accuracy-20261014' && !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && (inputs.download_existing_kit || inputs.publish_public_download)) }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -275,7 +277,9 @@ jobs:
         run: python scripts/test_dsl_run_e2e.py
 
   sandbox-replay:
-    if: ${{ !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && (inputs.download_existing_kit || inputs.publish_public_download)) }}
+    # This repair branch uses financial-accuracy-revalidation.yml with the original offline kit.
+    # Owner prohibits internet pip/upgrade; main and other branch CI are unchanged.
+    if: ${{ github.ref_name != 'fix/financial-accuracy-20261014' && !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && (inputs.download_existing_kit || inputs.publish_public_download)) }}
     runs-on: ubuntu-latest
     timeout-minutes: 40
     env:

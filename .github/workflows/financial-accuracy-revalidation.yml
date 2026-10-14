@@ -1,0 +1,65 @@
+name: Financial accuracy fixed-kit revalidation
+on:
+  push:
+    branches: ['fix/financial-accuracy-20261014']
+    paths:
+      - 'scripts/legacy_native_financials.py'
+      - 'scripts/legacy_financial_fields.py'
+      - 'scripts/backfill_dart_legacy_2000_2014.py'
+      - 'tests/test_financial_accuracy_repair.py'
+      - 'docs/audits/financial-repair-20261014/**'
+      - '.github/workflows/financial-accuracy-revalidation.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  fixed-kit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore exact original kit and existing sixty receipts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python docs/audits/financial-repair-20261014/restore_inputs.py --workdir "$RUNNER_TEMP/financial-repair"
+          python docs/audits/financial-repair-20261014/restore_holdout.py --output "$RUNNER_TEMP/financial-repair/heldout20"
+      - name: Bootstrap original bundled wheels and verify dedicated Python
+        run: |
+          python "$RUNNER_TEMP/financial-repair/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/financial-repair/kit-parts" --destination "$RUNNER_TEMP/financial-repair/runtime"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I "$RUNNER_TEMP/financial-repair/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/financial-repair/verify.json"
+      - name: Focused safety tests and actual sixty-receipt collector replay
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I tests/test_financial_accuracy_repair.py 2>&1 | tee "$RUNNER_TEMP/financial-repair/unit.log"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c 'import sys,runpy; sys.path.insert(0,"scripts"); sys.path.insert(0,"."); runpy.run_path("scripts/test_legacy_document_quality.py",run_name="__main__")'
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c 'import sys,runpy; sys.path.insert(0,"scripts"); sys.argv=["scripts/export_strategy_dsl_contract.py","--check"]; runpy.run_path(sys.argv[0],run_name="__main__")'
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/financial-repair-20261014/replay60.py --original40 "$RUNNER_TEMP/financial-repair/review" --holdout20 "$RUNNER_TEMP/financial-repair/heldout20/review" --runtime "$RUNNER_TEMP/financial-repair/runtime" --output "$RUNNER_TEMP/financial-repair/replay60"
+      - name: Independent original XML DOM comparison and required regressions
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/financial-repair-20261014/revalidate.py --original40 "$RUNNER_TEMP/financial-repair/review" --holdout20 "$RUNNER_TEMP/financial-repair/heldout20/review" --replay "$RUNNER_TEMP/financial-repair/replay60" --output "$RUNNER_TEMP/financial-repair/results"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/financial-repair-20261014/assert_regressions.py --replay "$RUNNER_TEMP/financial-repair/replay60" --output "$RUNNER_TEMP/financial-repair/results/regressions.json"
+      - name: Verify deterministic result identity; does not certify accuracy
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c 'import hashlib,os,pathlib; root=pathlib.Path(os.environ["RUNNER_TEMP"])/"financial-repair/results"; expected=pathlib.Path("docs/audits/financial-repair-20261014/results"); names=["audit_details.csv","validation_summary.json","regressions.json"]; [(print(n,hashlib.sha256((root/n).read_bytes()).hexdigest()), (_ for _ in ()).throw(AssertionError(n)) if (root/n).read_bytes()!=(expected/n).read_bytes() else None) for n in names]'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: financial-accuracy-revalidation60
+          path: |
+            ${{ runner.temp }}/financial-repair/results
+            ${{ runner.temp }}/financial-repair/replay60
+            ${{ runner.temp }}/financial-repair/unit.log
+            ${{ runner.temp }}/financial-repair/verify.json
+          retention-days: 30
+      - name: Preserve the sixty exact original ZIPs and selection manifests
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: financial-accuracy-preserved-originals60
+          path: |
+            ${{ runner.temp }}/financial-repair/review
+            ${{ runner.temp }}/financial-repair/heldout20/review
+          retention-days: 90

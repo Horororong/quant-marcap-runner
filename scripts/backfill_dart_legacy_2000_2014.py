@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import calendar
 import io
 import json
 import math
@@ -15,13 +16,13 @@ from pathlib import Path
 
 import pandas as pd
 import requests
-from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
 
 try:
     from scripts.legacy_financial_fields import (ALIASES, METRIC_STATEMENTS, UNIT_MULTIPLIERS, norm_account, parse_number, choose_metric)
     from scripts.csv_storage import atomic_write_if_changed
     from scripts.legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
     from scripts.legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION, needs_encoding_recheck
+    from scripts.legacy_native_financials import parse_native, select_verified, PARSER_VERSION
 except ModuleNotFoundError as error:
     if error.name != "scripts":
         raise
@@ -29,8 +30,8 @@ except ModuleNotFoundError as error:
     from csv_storage import atomic_write_if_changed
     from legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
     from legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION, needs_encoding_recheck
+    from legacy_native_financials import parse_native, select_verified, PARSER_VERSION
 
-warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
 API_KEY = os.getenv("DART_API_KEY", "").strip()
 START_YEAR = int(os.getenv("LEGACY_DART_START_YEAR", "2000"))
@@ -39,16 +40,16 @@ MAX_INDEX_TASKS = max(1, int(os.getenv("LEGACY_DART_INDEX_TASKS", "6")))
 MAX_DOCS = max(1, int(os.getenv("LEGACY_DART_MAX_DOCS", "20")))
 WORKERS = max(1, min(8, int(os.getenv("LEGACY_DART_WORKERS", "4"))))
 BASE = "https://opendart.fss.or.kr/api"
-PARSER_VERSION = "legacy-v5-single-amount"
 SOURCE_VERSION = "opendart-document-v1"
-# Financial parsing v5 rejects ambiguous cells; transport failures are keyed by
+# Financial parsing v6 requires source structure; transport failures are keyed by
 # SOURCE_VERSION and need not be downloaded again for a numeric-parser change.
 RUN_CONTROL = None
-TERMINAL_STATUSES = {"PARSED_4F", "PARSED_PARTIAL", "NO_METRICS", "NO_DOCUMENT", "SOURCE_GAP"}
+TERMINAL_STATUSES = {"PARSED_4F", "PARSED_PARTIAL", "NO_METRICS", "NO_DOCUMENT", "SOURCE_GAP", "EXTRACTION_FAILED", "UNVERIFIED_FINANCIALS"}
 MAX_ERROR_ATTEMPTS = 3
 
 ROOT = Path("data/financials/legacy_2000_2014")
 NORM_DIR = ROOT / "normalized"
+REVIEW_DIR = ROOT / "structural_review"
 STATUS_DIR = Path("data/status")
 INDEX_FILE = ROOT / "legacy_filings.csv.gz"
 INDEX_STATE_FILE = STATUS_DIR / "dart_legacy_index_state.csv"
@@ -161,11 +162,12 @@ def infer_report_fields(report_nm: str, filing_date: pd.Timestamp) -> dict:
 
     m = PERIOD_END_RE.search(name)
     if m:
-        y = int(m.group(1)); mo = int(m.group(2)); d = int(m.group(3) or 1)
+        y = int(m.group(1)); mo = int(m.group(2))
         try:
+            d = int(m.group(3)) if m.group(3) else calendar.monthrange(y, mo)[1]
             period_end = pd.Timestamp(year=y, month=mo, day=d)
         except Exception:
-            period_end = pd.Timestamp(year=y, month=mo, day=1)
+            period_end = pd.NaT
     else:
         period_end = pd.NaT
 
@@ -174,6 +176,7 @@ def infer_report_fields(report_nm: str, filing_date: pd.Timestamp) -> dict:
         "period_end": period_end,
         "period_year": int(period_end.year) if pd.notna(period_end) else pd.NA,
         "period_month": int(period_end.month) if pd.notna(period_end) else pd.NA,
+        "period_end_evidence": "explicit_report_name_date" if m and m.group(3) and pd.notna(period_end) else "report_name_month_end" if m and pd.notna(period_end) else "UNVERIFIED",
     }
 
 
@@ -556,89 +559,12 @@ def previous_context(table) -> str:
 
 
 def table_candidates(text: str) -> list[dict]:
-    soup = BeautifulSoup(text, "lxml")
-    out=[]
-    for ti, table in enumerate(soup.find_all("table")):
-        rows = table.find_all("tr")
-        if not rows:
-            continue
-        ctx = previous_context(table) + " " + table.get_text(" ", strip=True)[:500]
-        statement = infer_statement(ctx)
-        scope = infer_scope(ctx)
-
-        unit_text = table.get_text(" ", strip=True)[:1000] + " " + previous_context(table)[-500:]
-        unit, mult = detect_unit(unit_text)
-
-        header_rows=[]
-        for ri, tr in enumerate(rows[:8]):
-            cells=[c.get_text(" ",strip=True) for c in tr.find_all(["th","td"])]
-            header_rows.append(cells)
-        note_cols=set()
-        for hr in header_rows:
-            for ci, cell in enumerate(hr):
-                if "주석" in cell:
-                    note_cols.add(ci)
-
-        for ri, tr in enumerate(rows):
-            cells=[c.get_text(" ",strip=True) for c in tr.find_all(["th","td"])]
-            if len(cells) < 2:
-                continue
-            for ci, cell in enumerate(cells):
-                metric, priority = choose_metric(cell, statement)
-                if metric is None:
-                    continue
-                val=math.nan; raw_val=""; value_col=-1
-                for cj in range(ci+1, len(cells)):
-                    if cj in note_cols:
-                        continue
-                    v=parse_number(cells[cj])
-                    if not math.isnan(v):
-                        val=v; raw_val=cells[cj]; value_col=cj
-                        break
-                if math.isnan(val):
-                    continue
-                # Older DART filings sometimes express a loss as a positive
-                # magnitude and put the sign only in the account label
-                # (e.g. 당기순손실 5,787).  Preserve an explicit numeric
-                # negative sign, otherwise normalize loss-labelled P&L rows.
-                account_norm = norm_account(cell)
-                if metric in {"net_income", "operating_income", "gross_profit"} and "손실" in account_norm and val > 0:
-                    val = -val
-                row_unit, row_mult = detect_inline_unit(cell)
-                use_unit = unit or row_unit
-                use_mult = mult if not math.isnan(mult) else row_mult
-                amount_krw = val * use_mult if not math.isnan(use_mult) else math.nan
-                if not math.isfinite(amount_krw):
-                    amount_krw = math.nan
-                conf = 0.45
-                if statement: conf += 0.20
-                if priority < 10: conf += 0.15
-                if use_unit: conf += 0.15
-                if scope == "CFS": conf += 0.02
-                out.append({
-                    "metric":metric, "scope":scope, "statement":statement,
-                    "account_name":cell, "raw_amount":raw_val, "amount_reported":val,
-                    "unit":use_unit, "unit_multiplier":use_mult, "amount_krw":amount_krw,
-                    "priority":priority, "parser_confidence":min(conf,0.99),
-                    "table_index":ti, "row_index":ri, "value_col":value_col,
-                })
-                break
-    return out
+    """Capture source observations; only select_verified can publish values."""
+    return parse_native(text)["candidates"]
 
 
 def select_best_candidates(cands: list[dict]) -> list[dict]:
-    if not cands:
-        return []
-    df=pd.DataFrame(cands)
-    df["unit_known"]=df["unit"].astype(str).ne("")
-    df=df.sort_values(
-        ["metric","scope","unit_known","parser_confidence","priority","table_index","row_index"],
-        ascending=[True,True,False,False,True,True,True]
-    )
-    best=df.groupby(["metric","scope"],as_index=False).head(1).copy()
-    counts=df.groupby(["metric","scope"]).size().rename("candidate_count").reset_index()
-    best=best.merge(counts,on=["metric","scope"],how="left")
-    return best.to_dict("records")
+    return select_verified(cands)
 
 
 def fetch_document(rcept_no: str) -> tuple[bytes, str]:
@@ -701,6 +627,8 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
         preserve_document(blob, rcept, sha)
         all_cands=[]
         diagnostics=[]
+        structural_issues=[]
+        financial_data_present=False
         with zipfile.ZipFile(io.BytesIO(blob)) as z:
             names=[n for n in z.namelist() if not n.endswith("/")]
             for n in names:
@@ -709,7 +637,12 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
                     diagnostic = inspect_member(data, n)
                     diagnostics.append(diagnostic)
                     text = data.decode(diagnostic["resolved_encoding"]) if diagnostic.get("resolved_encoding") else decode_legacy(data)
-                    all_cands.extend(table_candidates(text))
+                    parsed = parse_native(text)
+                    financial_data_present |= parsed["financial_data_present"]
+                    structural_issues.extend({"member": n, **issue} for issue in parsed["issues"])
+                    all_cands.extend({**row, "source_member": n,
+                                      "source_member_sha256": hashlib.sha256(data).hexdigest()}
+                                     for row in parsed["candidates"])
                 except Exception as error:
                     diagnostics.append({"member": n, "issues": ["MEMBER_READ_OR_PARSE_ERROR"],
                                         "error": type(error).__name__})
@@ -730,14 +663,14 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
                 "stock_code":str(meta.get("stock_code","")).zfill(6) if str(meta.get("stock_code","")) else "",
                 "report_nm":str(meta.get("report_nm","")),
                 "filing_date":str(pd.Timestamp(meta["rcept_dt"]).date()) if pd.notna(meta.get("rcept_dt")) else "",
-                "period_end":str(pd.Timestamp(meta["period_end"]).date()) if pd.notna(meta.get("period_end")) else "",
+                # Source statement dates/basis are retained from the structural reader.
+                "period_end_evidence":"original_statement_header",
                 "fiscal_year":meta.get("fiscal_year",pd.NA),
-                "period":meta.get("period",""),
                 "document_sha256":sha,
                 "parser_version":PARSER_VERSION,
                 "source_diagnostic_version":DIAGNOSTIC_VERSION,
-                "source_quality":"PASS",
-                "value_basis":"first current-period amount column in the filed statement",
+                "source_quality":"STRUCTURAL_ONLY_PIT_UNVERIFIED",
+                "availability_status":"UNVERIFIED", "backtest_eligible":False,
             })
             rows.append(rec)
 
@@ -747,13 +680,18 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
             scopes[scope]=len(have & CORE_4F)
         usable=max(scopes.values()) if scopes else 0
         best_scope=max(scopes,key=scopes.get) if usable > 0 else ""
-        status="PARSED_4F" if usable>=4 else ("PARSED_PARTIAL" if rows else empty_parse_status(diagnostics))
+        status="PARSED_4F" if usable>=4 else "PARSED_PARTIAL" if rows else empty_parse_status(diagnostics)
+        if not rows and status != "SOURCE_GAP" and financial_data_present:
+            status = "UNVERIFIED_FINANCIALS" if all_cands else "EXTRACTION_FAILED"
         state={
             "rcept_no":rcept,"status":status,"metric_rows":len(rows),
             "best_scope":best_scope,"usable_metric_count":usable,
             "document_sha256":sha,"parser_version":PARSER_VERSION,"updated_at_utc":now_utc(),
             "source_diagnostic_version":DIAGNOSTIC_VERSION,
-            "error":json.dumps(diagnostics, ensure_ascii=False) if status == "SOURCE_GAP" else ""
+            "error":json.dumps(diagnostics if status == "SOURCE_GAP" else structural_issues, ensure_ascii=False),
+            "financial_data_present":financial_data_present, "backtest_eligible":False,
+            "structural_issues":json.dumps(structural_issues, ensure_ascii=False),
+            "availability_status":"UNVERIFIED"
         }
         return rows,state
     except DocumentUnavailable as e:
@@ -776,10 +714,15 @@ def append_normalized(rows: list[dict]) -> None:
     if not rows:
         return
     add=pd.DataFrame(rows)
+    # Structural amounts are research observations, not attested PIT inputs.
+    destination = REVIEW_DIR
+    if all(r.get("backtest_eligible") is True and r.get("availability_status") == "PASS" for r in rows):
+        destination = NORM_DIR
+    destination.mkdir(parents=True, exist_ok=True)
     add["fiscal_year"]=pd.to_numeric(add["fiscal_year"],errors="coerce").astype("Int64")
     for y,g in add.groupby("fiscal_year",dropna=False):
         label="unknown" if pd.isna(y) else str(int(y))
-        p=NORM_DIR/f"legacy_metrics_{label}.csv.gz"
+        p=destination/f"legacy_metrics_{label}.csv.gz"
         # Existing observations are immutable textual source records. Reading
         # them as floats can change amounts when a later batch is appended.
         old=load_csv(p,dtype=str,keep_default_na=False)
@@ -831,14 +774,14 @@ def durable_done_receipts(state: pd.DataFrame) -> set[str]:
     """Terminal parse state alone is insufficient if its normalized data was lost."""
     # A source gap is quarantined for evidence-based recovery, never retried
     # indefinitely and never reported as proof that financial items are absent.
-    terminal = state["status"].isin(["NO_METRICS", "NO_DOCUMENT", "SOURCE_GAP"])
+    terminal = state["status"].isin(["NO_METRICS", "NO_DOCUMENT", "SOURCE_GAP", "EXTRACTION_FAILED", "UNVERIFIED_FINANCIALS"])
     recheck = state.apply(lambda row: needs_encoding_recheck(row.to_dict()), axis=1) if not state.empty else pd.Series(False, index=state.index)
     done = set(state.loc[terminal & ~recheck.astype(bool), "rcept_no"])
     parsed = state[state["status"].isin(["PARSED_4F", "PARSED_PARTIAL"])]
     if parsed.empty:
         return done
     frames = []
-    for path in sorted(NORM_DIR.glob("legacy_metrics_*.csv.gz")):
+    for path in sorted(list(NORM_DIR.glob("legacy_metrics_*.csv.gz")) + list(REVIEW_DIR.glob("legacy_metrics_*.csv.gz"))):
         frame = load_csv(path, dtype=str)
         if not frame.empty and "parser_version" in frame:
             frames.append(frame[frame["parser_version"].eq(PARSER_VERSION)])

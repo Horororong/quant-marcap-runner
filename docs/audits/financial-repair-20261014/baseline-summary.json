@@ -1,0 +1,792 @@
+{
+  "samples": 40,
+  "financial_fields": 565,
+  "sample_verdict": {
+    "FAIL": 40
+  },
+  "field_verdict": {
+    "FAIL": 565
+  },
+  "originals_verified": 40,
+  "all_requested_items_verified": false,
+  "seed": 20261014,
+  "cohort_count": 2000,
+  "cohort_status_counts": {
+    "NO_DOCUMENT": 12,
+    "NO_METRICS": 14,
+    "PARSED_4F": 470,
+    "PARSED_PARTIAL": 294,
+    "SOURCE_GAP": 1210
+  },
+  "runtime_python": "/home/runner/work/_temp/independent-audit/runtime/.venv/bin/python",
+  "runtime_verify_status": "ok",
+  "kit_id": "26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd",
+  "audit_code_commit": "9a2c48af6ec1a7c64b2f07a87774e32afcfddfd3",
+  "audit_run_id": "38521539338",
+  "manual_controls_sha256": "b9de9839832f5590c828e60f205f7dd4fa8cecf730ae822d56f013eca0e60aa1",
+  "metric_input_sha256": "213ee660976fe5abec60716de8ddd8821f87c1beea890ad83ebbfbfc698394b6",
+  "samples_detail": [
+    {
+      "sample_id": "S01",
+      "category": "full",
+      "corp_name": "티씨케이",
+      "rcept_no": "20070814001252",
+      "field_count": 17,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S02",
+      "category": "full",
+      "corp_name": "HLB글로벌",
+      "rcept_no": "20070814000573",
+      "field_count": 18,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S03",
+      "category": "full",
+      "corp_name": "호반산업",
+      "rcept_no": "20070813000416",
+      "field_count": 14,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S04",
+      "category": "full",
+      "corp_name": "케이에이치필룩스",
+      "rcept_no": "20070814001613",
+      "field_count": 35,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S05",
+      "category": "full",
+      "corp_name": "링네트",
+      "rcept_no": "20071113000102",
+      "field_count": 16,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S06",
+      "category": "full",
+      "corp_name": "코리안리",
+      "rcept_no": "20070814001420",
+      "field_count": 11,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S07",
+      "category": "full",
+      "corp_name": "신비앤텍",
+      "rcept_no": "20071109000112",
+      "field_count": 18,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S08",
+      "category": "full",
+      "corp_name": "차바이오텍",
+      "rcept_no": "20071112000102",
+      "field_count": 18,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S09",
+      "category": "full",
+      "corp_name": "그린손해보험",
+      "rcept_no": "20070814001588",
+      "field_count": 12,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S10",
+      "category": "full",
+      "corp_name": "케이비물산",
+      "rcept_no": "20070914000197",
+      "field_count": 33,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S11",
+      "category": "full",
+      "corp_name": "신양오라컴디스플레이",
+      "rcept_no": "20070814002097",
+      "field_count": 17,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S12",
+      "category": "full",
+      "corp_name": "메리츠종합금융",
+      "rcept_no": "20070814001044",
+      "field_count": 14,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S13",
+      "category": "full",
+      "corp_name": "베스트플로우",
+      "rcept_no": "20070801000226",
+      "field_count": 16,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S14",
+      "category": "full",
+      "corp_name": "대구백화점",
+      "rcept_no": "20071112000071",
+      "field_count": 33,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S15",
+      "category": "full",
+      "corp_name": "동화약품",
+      "rcept_no": "20071113000027",
+      "field_count": 18,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S16",
+      "category": "partial",
+      "corp_name": "제일바이오",
+      "rcept_no": "20070814000725",
+      "field_count": 8,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S17",
+      "category": "partial",
+      "corp_name": "솔브레인홀딩스",
+      "rcept_no": "20070814001591",
+      "field_count": 26,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S18",
+      "category": "partial",
+      "corp_name": "아시아퍼시픽9호선박투자회사",
+      "rcept_no": "20071015000159",
+      "field_count": 10,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S19",
+      "category": "partial",
+      "corp_name": "휴리프",
+      "rcept_no": "20070801000039",
+      "field_count": 12,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S20",
+      "category": "partial",
+      "corp_name": "대웅바이오",
+      "rcept_no": "20070814000641",
+      "field_count": 17,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S21",
+      "category": "partial",
+      "corp_name": "신성통상",
+      "rcept_no": "20070928000132",
+      "field_count": 17,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "UNVERIFIED",
+        "5_scope": "FAIL",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S22",
+      "category": "partial",
+      "corp_name": "중앙에너비스",
+      "rcept_no": "20070814001201",
+      "field_count": 16,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "PASS",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S23",
+      "category": "partial",
+      "corp_name": "케이알",
+      "rcept_no": "20070801000186",
+      "field_count": 24,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S24",
+      "category": "partial",
+      "corp_name": "일공공일안경콘택트",
+      "rcept_no": "20070814000807",
+      "field_count": 16,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "FAIL",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S25",
+      "category": "partial",
+      "corp_name": "신라교역",
+      "rcept_no": "20070814001436",
+      "field_count": 27,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S26",
+      "category": "no_metrics",
+      "corp_name": "제일모직",
+      "rcept_no": "20070814001873",
+      "field_count": 0,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "7_no_metrics": "FAIL",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S27",
+      "category": "no_metrics",
+      "corp_name": "피엘에이",
+      "rcept_no": "20070814001461",
+      "field_count": 0,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "7_no_metrics": "FAIL",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S28",
+      "category": "no_metrics",
+      "corp_name": "터보테크",
+      "rcept_no": "20070814000899",
+      "field_count": 0,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "7_no_metrics": "FAIL",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S29",
+      "category": "no_metrics",
+      "corp_name": "만호제강",
+      "rcept_no": "20070927000166",
+      "field_count": 0,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "7_no_metrics": "FAIL",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S30",
+      "category": "no_metrics",
+      "corp_name": "케이피에프",
+      "rcept_no": "20070813000292",
+      "field_count": 0,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "7_no_metrics": "FAIL",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S31",
+      "category": "no_metrics",
+      "corp_name": "동원개발",
+      "rcept_no": "20070814000727",
+      "field_count": 0,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "7_no_metrics": "FAIL",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S32",
+      "category": "no_metrics",
+      "corp_name": "아큐텍",
+      "rcept_no": "20070814001271",
+      "field_count": 0,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "7_no_metrics": "FAIL",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S33",
+      "category": "no_metrics",
+      "corp_name": "남양유업",
+      "rcept_no": "20070814000023",
+      "field_count": 0,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "7_no_metrics": "FAIL",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S34",
+      "category": "no_metrics",
+      "corp_name": "삼양케이씨아이",
+      "rcept_no": "20070813000110",
+      "field_count": 0,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "7_no_metrics": "FAIL",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S35",
+      "category": "no_metrics",
+      "corp_name": "조은저축은행",
+      "rcept_no": "20070927000103",
+      "field_count": 0,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "UNVERIFIED",
+        "4_units": "UNVERIFIED",
+        "5_scope": "UNVERIFIED",
+        "6_corrections": "UNVERIFIED",
+        "7_no_metrics": "FAIL",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S36",
+      "category": "high_risk",
+      "corp_name": "한화에어로스페이스",
+      "rcept_no": "20070814001792",
+      "field_count": 35,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S37",
+      "category": "high_risk",
+      "corp_name": "SUN&L",
+      "rcept_no": "20070810000550",
+      "field_count": 28,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "FAIL",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S38",
+      "category": "high_risk",
+      "corp_name": "체시스",
+      "rcept_no": "20070928000022",
+      "field_count": 14,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "UNVERIFIED",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S39",
+      "category": "high_risk",
+      "corp_name": "씨아이테크",
+      "rcept_no": "20070814001024",
+      "field_count": 15,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "PASS",
+        "5_scope": "PASS",
+        "6_corrections": "FAIL",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    },
+    {
+      "sample_id": "S40",
+      "category": "high_risk",
+      "corp_name": "한국기술산업",
+      "rcept_no": "20070831000247",
+      "field_count": 10,
+      "verdict": "FAIL",
+      "checks": {
+        "1_identity": "UNVERIFIED",
+        "2_receipt_report_period": "FAIL",
+        "3_amounts": "FAIL",
+        "4_units": "FAIL",
+        "5_scope": "PASS",
+        "6_corrections": "FAIL",
+        "8_point_in_time": "UNVERIFIED"
+      }
+    }
+  ],
+  "amount_verdict": {
+    "PASS": 516,
+    "FAIL": 48,
+    "UNVERIFIED": 1
+  },
+  "literal_amount_verdict": {
+    "PASS": 542,
+    "FAIL": 21,
+    "UNVERIFIED": 2
+  },
+  "unit_verdict": {
+    "PASS": 560,
+    "UNVERIFIED": 2,
+    "FAIL": 3
+  },
+  "scope_verdict": {
+    "PASS": 562,
+    "FAIL": 3
+  },
+  "current_column_verdict": {
+    "PASS": 555,
+    "FAIL": 10
+  },
+  "correction_verdict": {
+    "PASS": 545,
+    "FAIL": 20
+  },
+  "period_verdict": {
+    "FAIL": 565
+  },
+  "measurement_window_verdict": {
+    "PASS": 411,
+    "UNVERIFIED": 154
+  },
+  "applicable_check_verdict": {
+    "UNVERIFIED": 148,
+    "FAIL": 77,
+    "PASS": 65
+  },
+  "check_breakdown": {
+    "1_identity": {
+      "UNVERIFIED": 40
+    },
+    "2_receipt_report_period": {
+      "FAIL": 40
+    },
+    "3_amounts": {
+      "PASS": 9,
+      "FAIL": 21,
+      "UNVERIFIED": 10
+    },
+    "4_units": {
+      "PASS": 28,
+      "UNVERIFIED": 11,
+      "FAIL": 1
+    },
+    "5_scope": {
+      "PASS": 28,
+      "FAIL": 2,
+      "UNVERIFIED": 10
+    },
+    "6_corrections": {
+      "UNVERIFIED": 37,
+      "FAIL": 3
+    },
+    "7_no_metrics": {
+      "FAIL": 10
+    },
+    "8_point_in_time": {
+      "UNVERIFIED": 40
+    }
+  }
+}
