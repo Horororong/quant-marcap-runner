@@ -1,0 +1,284 @@
+{
+  "summary": {
+    "head_sha": "651e6a48a9b0b75822ab244a2ab9e8266d026d9c",
+    "api_samples": 20,
+    "responses": 22,
+    "requests": 22,
+    "official_receipt_corp_pass": 20,
+    "receipt_date_pass": 20,
+    "total_filings": 1240,
+    "query_end": "20261015",
+    "all_pages_sha_crc_verified": true,
+    "exact_public_time_pass": 0,
+    "complete_version_chain_pass": 0,
+    "daily_availability_pass": 0,
+    "historical_krx_mapping_pass": 0,
+    "backtest_eligible": false
+  },
+  "samples": [
+    {
+      "sample_id": "S01",
+      "filings": 82,
+      "pages": 1,
+      "receipt_date": "2007-08-14",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 1,
+      "original_date_candidates": []
+    },
+    {
+      "sample_id": "S02",
+      "filings": 86,
+      "pages": 1,
+      "receipt_date": "2007-08-14",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 1,
+      "original_date_candidates": []
+    },
+    {
+      "sample_id": "S03",
+      "filings": 49,
+      "pages": 1,
+      "receipt_date": "2007-08-13",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 1,
+      "original_date_candidates": []
+    },
+    {
+      "sample_id": "S04",
+      "filings": 89,
+      "pages": 1,
+      "receipt_date": "2007-08-14",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 1,
+      "original_date_candidates": []
+    },
+    {
+      "sample_id": "S05",
+      "filings": 86,
+      "pages": 1,
+      "receipt_date": "2007-11-13",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 1,
+      "original_date_candidates": []
+    },
+    {
+      "sample_id": "S07",
+      "filings": 87,
+      "pages": 1,
+      "receipt_date": "2007-11-09",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 1,
+      "original_date_candidates": []
+    },
+    {
+      "sample_id": "S08",
+      "filings": 101,
+      "pages": 2,
+      "receipt_date": "2007-11-12",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 2,
+      "original_date_candidates": [
+        {
+          "corp_code": "00525679",
+          "rcept_no": "20071108000248",
+          "rcept_dt": "20071108",
+          "report_nm": "분기보고서 (2007.09)",
+          "rm": "정"
+        }
+      ]
+    },
+    {
+      "sample_id": "S09",
+      "filings": 33,
+      "pages": 1,
+      "receipt_date": "2007-08-14",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 1,
+      "original_date_candidates": []
+    },
+    {
+      "sample_id": "S11",
+      "filings": 54,
+      "pages": 1,
+      "receipt_date": "2007-08-14",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 3,
+      "original_date_candidates": [
+        {
+          "corp_code": "00317830",
+          "rcept_no": "20070511002125",
+          "rcept_dt": "20070511",
+          "report_nm": "분기보고서 (2007.03)",
+          "rm": "정"
+        }
+      ]
+    },
+    {
+      "sample_id": "S12",
+      "filings": 14,
+      "pages": 1,
+      "receipt_date": "2007-08-14",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 1,
+      "original_date_candidates": []
+    },
+    {
+      "sample_id": "S13",
+      "filings": 11,
+      "pages": 1,
+      "receipt_date": "2007-08-01",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 3,
+      "original_date_candidates": [
+        {
+          "corp_code": "00377814",
+          "rcept_no": "20070515002247",
+          "rcept_dt": "20070515",
+          "report_nm": "분기보고서 (2007.03)",
+          "rm": "정"
+        }
+      ]
+    },
+    {
+      "sample_id": "S19",
+      "filings": 14,
+      "pages": 1,
+      "receipt_date": "2007-08-01",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 2,
+      "original_date_candidates": []
+    },
+    {
+      "sample_id": "S24",
+      "filings": 22,
+      "pages": 1,
+      "receipt_date": "2007-08-14",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 3,
+      "original_date_candidates": [
+        {
+          "corp_code": "00107358",
+          "rcept_no": "20070515002042",
+          "rcept_dt": "20070515",
+          "report_nm": "분기보고서 (2007.03)",
+          "rm": "정"
+        }
+      ]
+    },
+    {
+      "sample_id": "S25",
+      "filings": 102,
+      "pages": 2,
+      "receipt_date": "2007-08-14",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 3,
+      "original_date_candidates": [
+        {
+          "corp_code": "00135962",
+          "rcept_no": "20070515001232",
+          "rcept_dt": "20070515",
+          "report_nm": "분기보고서 (2007.03)",
+          "rm": "정"
+        }
+      ]
+    },
+    {
+      "sample_id": "S26",
+      "filings": 31,
+      "pages": 1,
+      "receipt_date": "2007-08-14",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 1,
+      "original_date_candidates": []
+    },
+    {
+      "sample_id": "S36",
+      "filings": 88,
+      "pages": 1,
+      "receipt_date": "2007-08-14",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 1,
+      "original_date_candidates": []
+    },
+    {
+      "sample_id": "S39",
+      "filings": 90,
+      "pages": 1,
+      "receipt_date": "2007-08-14",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 2,
+      "original_date_candidates": []
+    },
+    {
+      "sample_id": "S40",
+      "filings": 31,
+      "pages": 1,
+      "receipt_date": "2007-08-31",
+      "scope_begin": "20050101",
+      "scope_end": "20261015",
+      "family_candidates": 2,
+      "original_date_candidates": [
+        {
+          "corp_code": "00110176",
+          "rcept_no": "20060127000324",
+          "rcept_dt": "20060127",
+          "report_nm": "사업보고서 (2005.10)",
+          "rm": "정"
+        }
+      ]
+    },
+    {
+      "sample_id": "N12",
+      "filings": 83,
+      "pages": 1,
+      "receipt_date": "2007-08-14",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 2,
+      "original_date_candidates": [
+        {
+          "corp_code": "00115384",
+          "rcept_no": "20070814000340",
+          "rcept_dt": "20070814",
+          "report_nm": "반기보고서 (2007.06)",
+          "rm": "정"
+        }
+      ]
+    },
+    {
+      "sample_id": "N14",
+      "filings": 87,
+      "pages": 1,
+      "receipt_date": "2007-08-23",
+      "scope_begin": "20070101",
+      "scope_end": "20261015",
+      "family_candidates": 4,
+      "original_date_candidates": [
+        {
+          "corp_code": "00175623",
+          "rcept_no": "20070814001344",
+          "rcept_dt": "20070814",
+          "report_nm": "반기보고서 (2007.06)",
+          "rm": "정"
+        }
+      ]
+    }
+  ]
+}

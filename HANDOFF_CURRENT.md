@@ -1,3 +1,18 @@
+## Stage5 official DART history acquisition complete (same repair branch)
+
+Collection code651e6a48a9b0b75822ab244a2ab9e8266d026d9c; actual successful run38586232910.
+Existing Actions DART_API_KEY authentication works in bounded fixed-kit step: firstS01/S02 succeeded, then eighteen expanded in same run.
+Twenty corporations,22 HTTP200/DART000 replies,1240 regular-disclosure metadata rows. Every page/count/SHA/target receipt/corp/day independently checked.
+Scope2007-01-01 (S40:2005-01-01) through observed Korean run date2026-10-15. Complete only within categoryA/query bounds, not a complete certified version graph.
+Target receipt/corp and official receipt-day comparisons20P/0F/0U. Exact public clock, full correction links, official session-derived daily availability and historical KRX mapping remain20U each; investment eligibility0.
+N14 has later2007-09-28 correction candidate; N12 original/correction same day; S19 earliest date candidate is attachment-addition. Never promote these by title/receipt ordering alone.
+Existing financial518/core64,original60 and all Stage4 result bytes preserved. Collection CI127 tests passes and full source/replay checks agree.
+Official raw22 replies are preserved in audit results and artifact11906122063 (SHA a48311a4d409a217100e3ed5f0707075c4155f2cbeb9baca84691c64e4a44864, expires2027-01-12).
+One-shot marker/run_attempt guard prevents routine evidence pushes or reruns from recollecting API history. Final evidence commit CI must show API step skipped and offline official-reply verification passed.
+No main merge, operating-data writes, internetpip or2000-document reprocessing. No credential copied/logged; new auth method not used.
+Outcome/proof/reproduction: [Stage5 report](docs/audits/dart-history-stage5-20261014/stage5_report.md), [collector constraints](docs/audits/dart-history-stage5-20261014/README.md).
+Next: explicit related-receipt/intermediate correction evidence from captured candidate IDs, official KRX historical security/calendar records, then conservative daily PIT certification.
+
 ## 2026-10-14 historical identity / correction / PIT Stage4 checkpoint
 
 Same branch fix/financial-accuracy-20261014, remote baseline8a1a46730e01cce1767bf549bebf5c6543512835.

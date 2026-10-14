@@ -39,6 +39,10 @@ jobs:
       - name: Offline official-history collector safety tests
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/dart-history-stage5-20261014/test_collection.py
+      - name: Verify preserved official replies without another API call
+        if: ${{ hashFiles('docs/audits/dart-history-stage5-20261014/results/response_manifest.json') != '' }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/dart-history-stage5-20261014/verify_responses.py
       - name: One bounded official DART history proof for existing twenty samples
         id: dart_history
         if: ${{ github.event_name == 'push' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage5-dart-proof]') }}
