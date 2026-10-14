@@ -1,3 +1,16 @@
+## 2026-10-14 historical identity / correction / PIT Stage4 checkpoint
+
+Same branch fix/financial-accuracy-20261014, remote baseline8a1a46730e01cce1767bf549bebf5c6543512835.
+Twenty of the fixed60 original receipts independently reviewed. Complete mapping/correction/publication certificates:0P/0F/20U for each group; investment eligibility0.
+Original COMPANY-NAME/AREGCIK matches20;13 source/stored names differ and must not be blindly overwritten across correction/name-effective dates.
+Ten correction headers found; nine declared original dates parse, S39 original date has explicit source typo. No original receipt/public timestamp/complete amendment chain inferred.
+Actual-row containment65 PASS; three S26 scenarios UNVERIFIED because no emitted financial rows. These provisional-date probes do not certify actual public-boundary timing.
+Financial production code3 files, protected518 and core64 controls/results, all60 original ZIP/member/CRC and replay bytes preserved.43 local tests pass; fullpytest remains dependency/access gap.
+Existing fixed-kit workflow executes these changes; HANDOFF also matches DSL workflow whose existing repair-branch guard skips its jobs. Reused fixed-kit workflow includes Stage4 independent audit/method regressions and deterministic result checks; final code SHA/run must be read from actual GitHub evidence.
+No main merge, original-data edits, internetpip, full2000 replay or new collector dispatch. Production PIT gate unchanged and remains closed for unverified sources.
+Next: authorized official DART full version responses/time evidence, KRX effective-dated legal/security/tradability records and official calendar, then independent real-boundary tests for same20.
+Report, detailed20 CSV, evidence manifest, preserved audit-method failures and exact resume: [Stage4 audit](docs/audits/historical-pit-stage4-20261014/stage4_report.md), [reproduction](docs/audits/historical-pit-stage4-20261014/stage4_reproduction.md).
+
 ## 2026-10-14 financial extraction Stage3 checkpoint (same repair branch)
 
 Branch fix/financial-accuracy-20261014; baseline remote3f1ac4fd. Main unmerged; no full2000 replay or original-data edits.

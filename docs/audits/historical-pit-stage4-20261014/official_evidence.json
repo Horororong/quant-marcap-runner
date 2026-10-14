@@ -1,0 +1,53 @@
+{
+  "checked_at": "2026-10-14T21:14:26+09:00",
+  "facts": [
+    {
+      "id": "OPENDART_LIST_SCHEMA",
+      "url": "https://opendart.fss.or.kr/guide/detail.do?apiGrpCd=DS001&apiId=2019001",
+      "location": "response fields rcept_dt/report_nm/rm and last_reprt_at parameter",
+      "fact": "API supplies receipt date, not intraday release time. Full submission search defaults N and includes corrections; rm correction flag directs readers to related reports.",
+      "scope": "Schema only; not evidence of a sample public date or complete chain."
+    },
+    {
+      "id": "KRX_GREEN_REVIEW",
+      "url": "https://kind.krx.co.kr/external/2012/06/29/000443/20120628000859/91813.htm",
+      "location": "title/content paragraphs 1-4",
+      "fact": "KRX states that Green Insurance met delisting criteria at the 2012-06-29 review and describes objection/subsequent proceedings.",
+      "scope": "Delisting process corroboration; does not prove final effective delisting date, 2007 ticker mapping or tradability."
+    },
+    {
+      "id": "KRX_CHEIL_MERGER_PLAN",
+      "url": "https://kind.krx.co.kr/external/2014/03/31/000032/20140330000018/61572.htm",
+      "location": "merger method, surviving/disappearing companies, schedule",
+      "fact": "Samsung SDI is the planned surviving company and Cheil Industries the disappearing company; 2014-07-01 merger and subsequent dates are scheduled.",
+      "scope": "Plan, not completed event or 2007 ticker identity. Do not turn planned dates into actual delisting dates."
+    },
+    {
+      "id": "KRX_CHEIL_COMPLETED_HISTORY",
+      "url": "https://kind.krx.co.kr/external/2014/09/01/000084/20140901000243/11200.htm",
+      "location": "notes following major/shareholder table, web extracted lines 1237-1260",
+      "fact": "A subsequent official filing reports old Cheil merged into Samsung SDI and Samsung Everland renamed Cheil; it also reports shareholder change following the 2014-07-02 absorption.",
+      "scope": "Corroborates distinct entities sharing Cheil name and completed-history statement; full effective-dated security/corp-code chain still absent."
+    }
+  ],
+  "access_limits": {
+    "shell_policy": "DART/KRX hosts absent from enforced allowed destinations; no bypass attempted. No DART API key binding available.",
+    "dart_viewer_attempts": [
+      {
+        "sample_id": "S01",
+        "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20070814001252",
+        "error": "URL https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20070814001252 is not accessible via this tool.",
+        "exit_code": null
+      },
+      {
+        "sample_id": "S02",
+        "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20070814000573",
+        "error": "URL https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20070814000573 is not accessible via this tool.",
+        "exit_code": null
+      }
+    ],
+    "remaining_viewers": "NOT_ATTEMPTED following same-host access failures; evidence stays UNVERIFIED, no repeated blocked calls.",
+    "searches": "Bounded official-domain discovery; empty exact-receipt results are not proof of absence.",
+    "krx_data_home": "Accessible empty/dynamic page; no actual historical calendar or trading-status records obtained."
+  }
+}

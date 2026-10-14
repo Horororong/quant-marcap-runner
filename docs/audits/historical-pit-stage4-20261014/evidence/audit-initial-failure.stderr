@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/quant-marcap-runner/docs/audits/historical-pit-stage4-20261014/run_stage4.py", line 171, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/workspace/quant-marcap-runner/docs/audits/historical-pit-stage4-20261014/run_stage4.py", line 85, in main
+    assert len(preservation['replay_files'])==60
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

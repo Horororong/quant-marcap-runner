@@ -1,0 +1,80 @@
+{
+  "branch": "fix/financial-accuracy-20261014",
+  "changed_paths": [
+    ".github/workflows/financial-accuracy-revalidation.yml",
+    "HANDOFF_CURRENT.md",
+    "docs/audits/historical-pit-stage4-20261014/ci_trigger_review.json",
+    "docs/audits/historical-pit-stage4-20261014/document_identity_controls.json",
+    "docs/audits/historical-pit-stage4-20261014/evidence/audit-empty-row-failure.stderr",
+    "docs/audits/historical-pit-stage4-20261014/evidence/audit-final.log",
+    "docs/audits/historical-pit-stage4-20261014/evidence/audit-final.stderr",
+    "docs/audits/historical-pit-stage4-20261014/evidence/audit-initial-failure.stderr",
+    "docs/audits/historical-pit-stage4-20261014/evidence/audit-method-tests.log",
+    "docs/audits/historical-pit-stage4-20261014/evidence/existing21.log",
+    "docs/audits/historical-pit-stage4-20261014/evidence/initial-date-selection-source-facts.json",
+    "docs/audits/historical-pit-stage4-20261014/evidence/initial-date-selection-summary.json",
+    "docs/audits/historical-pit-stage4-20261014/evidence/runtime-verify.json",
+    "docs/audits/historical-pit-stage4-20261014/evidence/stage3-17.log",
+    "docs/audits/historical-pit-stage4-20261014/official_evidence.json",
+    "docs/audits/historical-pit-stage4-20261014/preservation_controls.json",
+    "docs/audits/historical-pit-stage4-20261014/repository_leads.json",
+    "docs/audits/historical-pit-stage4-20261014/results/signal_tests.csv",
+    "docs/audits/historical-pit-stage4-20261014/results/source_facts.json",
+    "docs/audits/historical-pit-stage4-20261014/results/stage4_details.csv",
+    "docs/audits/historical-pit-stage4-20261014/results/summary.json",
+    "docs/audits/historical-pit-stage4-20261014/review_ci_triggers.py",
+    "docs/audits/historical-pit-stage4-20261014/run_stage4.py",
+    "docs/audits/historical-pit-stage4-20261014/selection20.json",
+    "docs/audits/historical-pit-stage4-20261014/stage4_evidence_manifest.json",
+    "docs/audits/historical-pit-stage4-20261014/stage4_report.md",
+    "docs/audits/historical-pit-stage4-20261014/stage4_reproduction.md",
+    "docs/audits/historical-pit-stage4-20261014/test_stage4_audit.py"
+  ],
+  "matching_workflows": [
+    {
+      "workflow": "financial-accuracy-revalidation.yml",
+      "state": "original_offline_kit_only",
+      "matching_paths": [
+        ".github/workflows/financial-accuracy-revalidation.yml",
+        "docs/audits/historical-pit-stage4-20261014/ci_trigger_review.json",
+        "docs/audits/historical-pit-stage4-20261014/document_identity_controls.json",
+        "docs/audits/historical-pit-stage4-20261014/evidence/audit-empty-row-failure.stderr",
+        "docs/audits/historical-pit-stage4-20261014/evidence/audit-final.log",
+        "docs/audits/historical-pit-stage4-20261014/evidence/audit-final.stderr",
+        "docs/audits/historical-pit-stage4-20261014/evidence/audit-initial-failure.stderr",
+        "docs/audits/historical-pit-stage4-20261014/evidence/audit-method-tests.log",
+        "docs/audits/historical-pit-stage4-20261014/evidence/existing21.log",
+        "docs/audits/historical-pit-stage4-20261014/evidence/initial-date-selection-source-facts.json",
+        "docs/audits/historical-pit-stage4-20261014/evidence/initial-date-selection-summary.json",
+        "docs/audits/historical-pit-stage4-20261014/evidence/runtime-verify.json",
+        "docs/audits/historical-pit-stage4-20261014/evidence/stage3-17.log",
+        "docs/audits/historical-pit-stage4-20261014/official_evidence.json",
+        "docs/audits/historical-pit-stage4-20261014/preservation_controls.json",
+        "docs/audits/historical-pit-stage4-20261014/repository_leads.json",
+        "docs/audits/historical-pit-stage4-20261014/results/signal_tests.csv",
+        "docs/audits/historical-pit-stage4-20261014/results/source_facts.json",
+        "docs/audits/historical-pit-stage4-20261014/results/stage4_details.csv",
+        "docs/audits/historical-pit-stage4-20261014/results/summary.json",
+        "docs/audits/historical-pit-stage4-20261014/review_ci_triggers.py",
+        "docs/audits/historical-pit-stage4-20261014/run_stage4.py",
+        "docs/audits/historical-pit-stage4-20261014/selection20.json",
+        "docs/audits/historical-pit-stage4-20261014/stage4_evidence_manifest.json",
+        "docs/audits/historical-pit-stage4-20261014/stage4_report.md",
+        "docs/audits/historical-pit-stage4-20261014/stage4_reproduction.md",
+        "docs/audits/historical-pit-stage4-20261014/test_stage4_audit.py"
+      ],
+      "sha256": "43c97b840f7124a2f9b1815732471603510d935f0e0bfb9dad719538afe75d44"
+    },
+    {
+      "workflow": "test-strategy-dsl.yml",
+      "state": "branch_guard_skips_internet_pip_jobs",
+      "matching_paths": [
+        "HANDOFF_CURRENT.md"
+      ],
+      "sha256": "1d3de2ad11845ea0d8bd1555a73d10c43294a46421a9bdd8111f11b43bd5195e"
+    }
+  ],
+  "workflow_run_chaining": false,
+  "internet_pip_allowed": false,
+  "limitations": "Reviews the existing simple repository push grammar; unsupported/unfiltered shapes stop instead of assuming safety."
+}

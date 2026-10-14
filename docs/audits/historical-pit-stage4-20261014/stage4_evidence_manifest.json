@@ -1,0 +1,366 @@
+{
+  "baseline_commit": "8a1a46730e01cce1767bf549bebf5c6543512835",
+  "baseline_tree": "90ae5ef245d8897881d6772f9def056a74e0fb55",
+  "branch": "fix/financial-accuracy-20261014",
+  "checked_at": "2026-10-14T21:14:26+09:00",
+  "python": "/workspace/financial-repair/runtime/.venv/bin/python",
+  "kit_id": "26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd",
+  "kit_manifest_sha256": "a396ca2750bd55939b6915a90522a61a301e7b17ad095a6d8f4f422efa2a6018",
+  "sources": [
+    {
+      "sample_id": "S01",
+      "rcept_no": "20070814001252",
+      "document_sha256": "62b91eb331c9181cddb53181eb3ea07546a8b6206bd38a8e26434c783e656334",
+      "source_member": "20070814001252.xml",
+      "source_member_sha256": "775c7eaf1e54655fc794601ff64f3e05885dce3b30cbd411e1ddc3690f5631b3",
+      "encoding": "cp949",
+      "company_location": "20070814001252.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S02",
+      "rcept_no": "20070814000573",
+      "document_sha256": "8f97bb0aca822f187e308c44d76b2a4ac040671690bf487982d68db177217541",
+      "source_member": "20070814000573.xml",
+      "source_member_sha256": "4a74a7ad647474303c6d358dd86f49b9ef9a969f372a9eadc65bf6f19f9796be",
+      "encoding": "cp949",
+      "company_location": "20070814000573.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S03",
+      "rcept_no": "20070813000416",
+      "document_sha256": "e0e4032b652324cc659ae3d5c5d6a6f2b8840414c043ca6cfffd281eeb70ca89",
+      "source_member": "20070813000416.xml",
+      "source_member_sha256": "4d93233da97e3493ab761bd091b15ae52c01b613956b6185d136ef00e8c0065b",
+      "encoding": "cp949",
+      "company_location": "20070813000416.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S04",
+      "rcept_no": "20070814001613",
+      "document_sha256": "5ed1f8d9d7e09adb2331d337e8ccc1368447fd34bec1b04df16f011cdeff0dd8",
+      "source_member": "20070814001613.xml",
+      "source_member_sha256": "b1d4abe378faddc4d247bac0b5276ee69efb502664d3c5f7150eef5b5ce4c594",
+      "encoding": "cp949",
+      "company_location": "20070814001613.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S05",
+      "rcept_no": "20071113000102",
+      "document_sha256": "84e932cc7fcbd866f7d93d83d4c1c7f2930fa7e393ce0238f26cbfc5c0ac3b7f",
+      "source_member": "20071113000102.xml",
+      "source_member_sha256": "c1b6740a0c0a062919b5a2b4392280bdf6164fd038676c2f7580c7ff44dacba7",
+      "encoding": "cp949",
+      "company_location": "20071113000102.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S07",
+      "rcept_no": "20071109000112",
+      "document_sha256": "7379f48ed540c1560de6b31858a6d2f75305f4ba371f91930f18233642077404",
+      "source_member": "20071109000112.xml",
+      "source_member_sha256": "b58bc61948ad2399d93da35e71deb97a6b10e6dad77fdbe2b4cc7445f20e1592",
+      "encoding": "cp949",
+      "company_location": "20071109000112.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S08",
+      "rcept_no": "20071112000102",
+      "document_sha256": "f96fe20c4fe819698bff2097926877b4d6985a0d8b0b3d05f7c54817e57f62b4",
+      "source_member": "20071112000102.xml",
+      "source_member_sha256": "63e64d9f6fbb63acaf7b5e3a5e1fdf2778dcb1208276ce7a5506575ba2fe9612",
+      "encoding": "cp949",
+      "company_location": "20071112000102.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S09",
+      "rcept_no": "20070814001588",
+      "document_sha256": "1e256c7e79eeddedb49befeb8de6991babd0683e9f4ce11b13aa051e6f7f4be8",
+      "source_member": "20070814001588.xml",
+      "source_member_sha256": "2c5231477b556d9850b012a2216cd7407cab2481dc110509381863c1c65118f0",
+      "encoding": "cp949",
+      "company_location": "20070814001588.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S11",
+      "rcept_no": "20070814002097",
+      "document_sha256": "9e1ea34563af46af1fcf57832374fba0a9f38fcb951cf39954b46cfc525ee41f",
+      "source_member": "20070814002097.xml",
+      "source_member_sha256": "3b1d9847340b5a2305b1c9d9f4f9d0db6a40b51a27d9fff82a21b906c9bd39c3",
+      "encoding": "cp949",
+      "company_location": "20070814002097.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S12",
+      "rcept_no": "20070814001044",
+      "document_sha256": "38deb7f3e34f08ec176fbdc83a1c4a2322964d8ec4433235128d821914f76220",
+      "source_member": "20070814001044.xml",
+      "source_member_sha256": "80a31973021b6fb022eb8699e8c1368ed84712508d3f7dc9b775333323ecea3c",
+      "encoding": "cp949",
+      "company_location": "20070814001044.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S13",
+      "rcept_no": "20070801000226",
+      "document_sha256": "3b1b0e0ab1bdd591f244eea003014ddd1bd74a787380fc5f9823c9514d97ce36",
+      "source_member": "20070801000226.xml",
+      "source_member_sha256": "ad37d172b08844ab31b6357f206a3c985176ab487ab1c8242ef04e768b4a0853",
+      "encoding": "cp949",
+      "company_location": "20070801000226.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S19",
+      "rcept_no": "20070801000039",
+      "document_sha256": "f88a51256078c9eb9b3bd7f34853e6fe890005e93e2a7a25e4ad313a813e0f02",
+      "source_member": "20070801000039.xml",
+      "source_member_sha256": "f88793358e42d7a1c8db43988859b535ccf79c137327a1bf61e763ec2071c01b",
+      "encoding": "cp949",
+      "company_location": "20070801000039.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S24",
+      "rcept_no": "20070814000807",
+      "document_sha256": "a775d427f2e5bd8b4c0e2a63d350e977c1ad5e69bbac07c10209e4702b28d98f",
+      "source_member": "20070814000807.xml",
+      "source_member_sha256": "eee8d2fb5b0b60e195a5ca5c5f0b379cf4eb8a770dd85a9474c70b3e431f0a21",
+      "encoding": "cp949",
+      "company_location": "20070814000807.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S25",
+      "rcept_no": "20070814001436",
+      "document_sha256": "a065504acccc26928964f499862a4f327f9cc8c7dce755674a8a1581f017ef5d",
+      "source_member": "20070814001436.xml",
+      "source_member_sha256": "85bd9b62e657c27349459d18eef00599a8f8d9acf50c662883923edc1367488d",
+      "encoding": "cp949",
+      "company_location": "20070814001436.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S26",
+      "rcept_no": "20070814001873",
+      "document_sha256": "94c346e0d99d0f95326224fb690429950f7cfd96eb4f94abe8b286d45e1b47dd",
+      "source_member": "20070814001873.xml",
+      "source_member_sha256": "2ff5cd90a03222d7e5c103ef2bc14bf48d0a20a8a29a124fcda4d4f9803c71f8",
+      "encoding": "cp949",
+      "company_location": "20070814001873.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S36",
+      "rcept_no": "20070814001792",
+      "document_sha256": "83a51bce7f82bf3bf5920c0ead7f64dcca2814c3d3d4f0223fdc3af75ba2bbd6",
+      "source_member": "20070814001792.xml",
+      "source_member_sha256": "db17a77de894616ff36276d894ccf31abf614cca7036e6c01442c3207d7fa1ad",
+      "encoding": "cp949",
+      "company_location": "20070814001792.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S39",
+      "rcept_no": "20070814001024",
+      "document_sha256": "a7520b78f5e4208a0b16dd34f7bd692897121e77bc7a49d37b13069708d4e075",
+      "source_member": "20070814001024.xml",
+      "source_member_sha256": "ec81ac0e09a14e9d93e64e98b2f5cbeb5f7321090f22654810789d3d284bd300",
+      "encoding": "cp949",
+      "company_location": "20070814001024.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "S40",
+      "rcept_no": "20070831000247",
+      "document_sha256": "969ddc3422fd8f79a82cb6c7ab0c3225b09a507ef0dc0aa0ac25cd1183073cab",
+      "source_member": "20070831000247.xml",
+      "source_member_sha256": "7bc09499edb5e2721d2c27c4d0eaad76d21987c4e81ce37015f5a5fdba34cd35",
+      "encoding": "cp949",
+      "company_location": "20070831000247.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "N12",
+      "rcept_no": "20070814000583",
+      "document_sha256": "6c58d43f772ee1de7547a36c78f75615cf49c02919fd1acf76c4e5345c23e8e3",
+      "source_member": "20070814000583.xml",
+      "source_member_sha256": "65c517ac238a9bdfc586cac81a6c89e1fb2125f306b9309fa37b9808de6b7cc2",
+      "encoding": "cp949",
+      "company_location": "20070814000583.xml#COMPANY-NAME/@AREGCIK"
+    },
+    {
+      "sample_id": "N14",
+      "rcept_no": "20070823000020",
+      "document_sha256": "9f6405bd5391514679eff1a2c55d7bdb02be305353985d38804d959d7c743789",
+      "source_member": "20070823000020.xml",
+      "source_member_sha256": "26324c87ac0e031e9b496ec8d3d145491cb6153b91631c0cd612faed5fd71634",
+      "encoding": "cp949",
+      "company_location": "20070823000020.xml#COMPANY-NAME/@AREGCIK"
+    }
+  ],
+  "official_records": {
+    "checked_at": "2026-10-14T21:14:26+09:00",
+    "facts": [
+      {
+        "id": "OPENDART_LIST_SCHEMA",
+        "url": "https://opendart.fss.or.kr/guide/detail.do?apiGrpCd=DS001&apiId=2019001",
+        "location": "response fields rcept_dt/report_nm/rm and last_reprt_at parameter",
+        "fact": "API supplies receipt date, not intraday release time. Full submission search defaults N and includes corrections; rm correction flag directs readers to related reports.",
+        "scope": "Schema only; not evidence of a sample public date or complete chain."
+      },
+      {
+        "id": "KRX_GREEN_REVIEW",
+        "url": "https://kind.krx.co.kr/external/2012/06/29/000443/20120628000859/91813.htm",
+        "location": "title/content paragraphs 1-4",
+        "fact": "KRX states that Green Insurance met delisting criteria at the 2012-06-29 review and describes objection/subsequent proceedings.",
+        "scope": "Delisting process corroboration; does not prove final effective delisting date, 2007 ticker mapping or tradability."
+      },
+      {
+        "id": "KRX_CHEIL_MERGER_PLAN",
+        "url": "https://kind.krx.co.kr/external/2014/03/31/000032/20140330000018/61572.htm",
+        "location": "merger method, surviving/disappearing companies, schedule",
+        "fact": "Samsung SDI is the planned surviving company and Cheil Industries the disappearing company; 2014-07-01 merger and subsequent dates are scheduled.",
+        "scope": "Plan, not completed event or 2007 ticker identity. Do not turn planned dates into actual delisting dates."
+      },
+      {
+        "id": "KRX_CHEIL_COMPLETED_HISTORY",
+        "url": "https://kind.krx.co.kr/external/2014/09/01/000084/20140901000243/11200.htm",
+        "location": "notes following major/shareholder table, web extracted lines 1237-1260",
+        "fact": "A subsequent official filing reports old Cheil merged into Samsung SDI and Samsung Everland renamed Cheil; it also reports shareholder change following the 2014-07-02 absorption.",
+        "scope": "Corroborates distinct entities sharing Cheil name and completed-history statement; full effective-dated security/corp-code chain still absent."
+      }
+    ],
+    "access_limits": {
+      "shell_policy": "DART/KRX hosts absent from enforced allowed destinations; no bypass attempted. No DART API key binding available.",
+      "dart_viewer_attempts": [
+        {
+          "sample_id": "S01",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20070814001252",
+          "error": "URL https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20070814001252 is not accessible via this tool.",
+          "exit_code": null
+        },
+        {
+          "sample_id": "S02",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20070814000573",
+          "error": "URL https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20070814000573 is not accessible via this tool.",
+          "exit_code": null
+        }
+      ],
+      "remaining_viewers": "NOT_ATTEMPTED following same-host access failures; evidence stays UNVERIFIED, no repeated blocked calls.",
+      "searches": "Bounded official-domain discovery; empty exact-receipt results are not proof of absence.",
+      "krx_data_home": "Accessible empty/dynamic page; no actual historical calendar or trading-status records obtained."
+    }
+  },
+  "baseline_artifacts": {
+    "results": {
+      "id": 11891266805,
+      "run_id": 38558616835,
+      "sha256": "2f459eba7bf4e3bbd91bad5f00d81a117515f357b71eccdb05b70fa0d91fb812",
+      "bytes": 252633
+    },
+    "preserved_originals": {
+      "id": 11891556581,
+      "sha256": "985de2844cc3d0235690a2afcf6ec0303895e9ad81fb563aed0430d2826672af",
+      "expires": "2027-01-12"
+    }
+  },
+  "inputs": {
+    "/workspace/financial-repair/evidence/review/selection.json": "532b6cf1d1707239cd3b060a8cf45e12c68ba027aec188f99ed2fc1d7e7f358a",
+    "/workspace/financial-repair/evidence/review/source_manifest.json": "edcd1f114a4ed50bc8c96b64949d038c15c9c44ef290f6e98101ceaee9125014",
+    "/workspace/financial-repair/heldout20/review/selection.json": "5cc827d09d6a654f4c7bbdce648273bd6557af283a480d36d2e53d2a18dc7608",
+    "/workspace/financial-repair/heldout20/review/source_manifest.json": "15b64ea2efd3380f751c870874097d5e7b77cce394812e130e1b3527527c3cc5"
+  },
+  "outputs": {
+    "ci_trigger_review.json": {
+      "sha256": "316e6444cbe1dcd154393fd2d75a2f757fb39420fd8402cf44ca940afdd8c250",
+      "bytes": 5061
+    },
+    "document_identity_controls.json": {
+      "sha256": "f57df238e4f6e7e3d770808e458d61204348d644997490de911b0bb37dbee910",
+      "bytes": 4046
+    },
+    "evidence/audit-empty-row-failure.stderr": {
+      "sha256": "7572f3355aaa5be5b4580a86d01ca010911b1f67780013e9dcf2b15ee311eab3",
+      "bytes": 531
+    },
+    "evidence/audit-final.log": {
+      "sha256": "00d61f08ad258dba0ba520a8c74b4117f803ddc55f1d98eb4ebadb0404fd3b3a",
+      "bytes": 1267
+    },
+    "evidence/audit-final.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "evidence/audit-initial-failure.stderr": {
+      "sha256": "b64005273c05c2ebef45232a690cdc10cd120778cb47005c38e19a3905388e21",
+      "bytes": 455
+    },
+    "evidence/audit-method-tests.log": {
+      "sha256": "f8a7fe9d422ec500f3076e95926e933faa52bfd4f088b90408bcd771d809eabc",
+      "bytes": 637
+    },
+    "evidence/existing21.log": {
+      "sha256": "997c8dee0bdaaf0d6b3ecad532585f0f422d7e387b47a61cea8d0c9a4b20a7dd",
+      "bytes": 2443
+    },
+    "evidence/initial-date-selection-source-facts.json": {
+      "sha256": "863333fe8cea3f6c151406f409c3e591c137643f2482e3b6b6973c91644d4860",
+      "bytes": 36328
+    },
+    "evidence/initial-date-selection-summary.json": {
+      "sha256": "d7066016a3cd8e561f7702f19adcb401abeed977d94f551d318ec79040f007b2",
+      "bytes": 1267
+    },
+    "evidence/runtime-verify.json": {
+      "sha256": "a2776816a1db5c3a67a035d2985185c1bbf03a3e3d566b1e9e29efbfe57e2de4",
+      "bytes": 21113
+    },
+    "evidence/stage3-17.log": {
+      "sha256": "5b7b6f33bcd2bcac8bce43010bc0217d1b7902b3da71fd85baa359516c9ec154",
+      "bytes": 2445
+    },
+    "official_evidence.json": {
+      "sha256": "a28bbfd5d279351bda0dbae69bbf6f73108fe435ae209e73ef65f594fc693512",
+      "bytes": 3218
+    },
+    "preservation_controls.json": {
+      "sha256": "5af5fc455fbf661631c70fc7853d6337b08b7ae64d405087c590fa540f2df4c7",
+      "bytes": 6065
+    },
+    "repository_leads.json": {
+      "sha256": "070c81161ca9bd9a35f266c2043d2b3f3ef63508cec6ab25e38b772047331634",
+      "bytes": 31195
+    },
+    "results/signal_tests.csv": {
+      "sha256": "e78928d82eff63b37c7a3151c47d9706c77b5233e19743bd2808e7687250a109",
+      "bytes": 12440
+    },
+    "results/source_facts.json": {
+      "sha256": "8670779487718e85d4af9a35992ed425f5584433723b86418ce4b1546890310f",
+      "bytes": 36628
+    },
+    "results/stage4_details.csv": {
+      "sha256": "83ecd4daaefc9ba8d31cd082a1ce097a8a403df835c7a7b4f5e3ab695e4411b8",
+      "bytes": 15499
+    },
+    "results/summary.json": {
+      "sha256": "00d61f08ad258dba0ba520a8c74b4117f803ddc55f1d98eb4ebadb0404fd3b3a",
+      "bytes": 1267
+    },
+    "review_ci_triggers.py": {
+      "sha256": "45bb0a80c8881c1da4705cdeb203621406d58d3540cb9891d8ed293cca3e4d7f",
+      "bytes": 3094
+    },
+    "run_stage4.py": {
+      "sha256": "e3b5608ff95dc84fac801eb0cbe9836c6ad918569e62a8a53f2d2a8163e6b6f3",
+      "bytes": 13800
+    },
+    "selection20.json": {
+      "sha256": "7049b91fe2156c99dc3aed8489130c7a259117294b4a9b459de4122817076954",
+      "bytes": 3194
+    },
+    "stage4_report.md": {
+      "sha256": "feadab201c6a9de8434ff5c31fc4ccf561e47a2509b336cee3c42665bec50191",
+      "bytes": 10260
+    },
+    "stage4_reproduction.md": {
+      "sha256": "30831bd61f8808efd9fd6d2df3f01d7f0d6f0ad0637d07a33de9c9d64615f19b",
+      "bytes": 6801
+    },
+    "test_stage4_audit.py": {
+      "sha256": "e415f0f9efb16be9862b4cacfbcf152dca58ec2ff52e58f9e96b759f0fb41acf",
+      "bytes": 1993
+    }
+  },
+  "limitations": "Source hashes authenticate preserved bytes, not public timestamps, legal listing dates or correction completeness. Official snapshots are scoped human facts, not raw API responses. Final CI exact SHA and artifacts are linked in final execution evidence."
+}

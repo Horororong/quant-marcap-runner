@@ -1,0 +1,50 @@
+{
+  "baseline_sha": "8a1a46730e01cce1767bf549bebf5c6543512835",
+  "samples": 20,
+  "mapping": {
+    "PASS": 0,
+    "FAIL": 0,
+    "UNVERIFIED": 20
+  },
+  "correction_chain": {
+    "PASS": 0,
+    "FAIL": 0,
+    "UNVERIFIED": 20
+  },
+  "publication": {
+    "PASS": 0,
+    "FAIL": 0,
+    "UNVERIFIED": 20
+  },
+  "overall": {
+    "PASS": 0,
+    "FAIL": 0,
+    "UNVERIFIED": 20
+  },
+  "corp_code_source_comparison": {
+    "PASS": 20,
+    "FAIL": 0,
+    "UNVERIFIED": 0
+  },
+  "name_differences": 13,
+  "corrective_documents": 10,
+  "original_date_format": {
+    "PASS": 9,
+    "FAIL": 1,
+    "UNVERIFIED": 10
+  },
+  "native_containment_scenarios": 60,
+  "native_containment_pass": 57,
+  "native_containment_unverified": 3,
+  "actual_public_boundary_tests": "UNVERIFIED; provisional-date probes are not publication certification",
+  "delisted_retention": "All selected receipts retained; actual universe/official delisting certification UNVERIFIED",
+  "financial_protection": {
+    "protected518_bytes": "PASS",
+    "holdout64_control_and_results_bytes": "PASS",
+    "financial_production_files_unchanged": "PASS",
+    "all60_original_zip_and_member_sha_crc": "PASS",
+    "replay60_result_bytes": "PASS"
+  },
+  "backtest_eligible_samples": 0,
+  "certification_rate": 0.0
+}

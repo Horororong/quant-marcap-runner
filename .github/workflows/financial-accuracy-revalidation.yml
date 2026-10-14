@@ -10,6 +10,7 @@ on:
       - 'tests/test_financial_extraction_stage3.py'
       - 'docs/audits/financial-repair-20261014/**'
       - 'docs/audits/financial-extraction-stage3-20261014/**'
+      - 'docs/audits/historical-pit-stage4-20261014/**'
       - '.github/workflows/financial-accuracy-revalidation.yml'
 permissions:
   contents: read
@@ -52,6 +53,11 @@ jobs:
       - name: Verify deterministic result identity; does not certify accuracy
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c 'import hashlib,os,pathlib; root=pathlib.Path(os.environ["RUNNER_TEMP"])/"financial-repair/results"; expected=pathlib.Path("docs/audits/financial-extraction-stage3-20261014/results"); names=["audit_details.csv","validation_summary.json","original_regressions.json","stage3_assertions.json","forensic_summary.json","unverified135_classification.csv","protected518.csv","before_after565.csv"]; [(print(n,hashlib.sha256((root/n).read_bytes()).hexdigest()), (_ for _ in ()).throw(AssertionError(n)) if (root/n).read_bytes()!=(expected/n).read_bytes() else None) for n in names]'
+      - name: Independent historical identity and PIT evidence audit
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/historical-pit-stage4-20261014/test_stage4_audit.py
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/historical-pit-stage4-20261014/run_stage4.py --original40 "$RUNNER_TEMP/financial-repair/review" --holdout20 "$RUNNER_TEMP/financial-repair/heldout20/review" --replay "$RUNNER_TEMP/financial-repair/replay60" --output "$RUNNER_TEMP/financial-repair/stage4"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c 'import os,pathlib,hashlib; actual=pathlib.Path(os.environ["RUNNER_TEMP"])/"financial-repair/stage4"; expected=pathlib.Path("docs/audits/historical-pit-stage4-20261014/results"); names=["stage4_details.csv","signal_tests.csv","summary.json","source_facts.json"]; [(print(name,hashlib.sha256((actual/name).read_bytes()).hexdigest()), (_ for _ in ()).throw(AssertionError(name)) if (actual/name).read_bytes()!=(expected/name).read_bytes() else None) for name in names]'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -62,6 +68,7 @@ jobs:
             ${{ runner.temp }}/financial-repair/unit.log
             ${{ runner.temp }}/financial-repair/stage3-unit.log
             ${{ runner.temp }}/financial-repair/verify.json
+            ${{ runner.temp }}/financial-repair/stage4
           retention-days: 30
       - name: Preserve the sixty exact original ZIPs and selection manifests
         uses: actions/upload-artifact@v4
