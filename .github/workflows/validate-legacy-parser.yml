@@ -37,6 +37,9 @@ on:
 
 jobs:
   validate:
+    # The owner requires the original verified offline kit for this repair.
+    # The dedicated revalidation workflow replaces internet-pip CI on this branch.
+    if: github.ref_name != 'fix/financial-accuracy-20261014'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

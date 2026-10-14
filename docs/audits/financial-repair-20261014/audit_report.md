@@ -198,3 +198,8 @@ main 병합과 전체2000 재처리는 하지 않았다.
 |N18|EXTRACTION_FAILED|0|0/0/0|UNVERIFIED|
 |N19|EXTRACTION_FAILED|0|0/0/0|UNVERIFIED|
 |N20|EXTRACTION_FAILED|0|0/0/0|UNVERIFIED|
+
+## 게시 후 전송/CI 복구
+
+첫 수정commit c63660dd461faa89abd5891f4cff36362e2f6e29 전송에서 audit_details.csv만 CRLF→LF로 바뀐 것을 로컬 Git tree 비교로 발견했다. 685,834bytes→684,070bytes, 1,764개 줄바꿈 차이; 값/판정 변화 없음. 바이트 그대로 디코딩해 게시를 수정했다.
+별도 validate-legacy-parser CI38547275390도 자동 시작된 것을 발견했다. 조회 시 pip 설치 단계는 pending이었고 직접 취소 도구가 없어 수정 브랜치에 제한된 취소 작업과 job guard를 추가했다. 실행되더라도 그 인터넷 의존성 CI는 인증 근거로 사용하지 않는다. 기존 DSL guard와 동일하게 main의 CI 동작은 변경하지 않는다.

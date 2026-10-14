@@ -63,3 +63,5 @@ CI의 GITHUB_SHA/run ID와 artifact는 최종 코드 버전 증거다.
 CSV 분모: FIELD700/BASELINE_TARGET565/HOLDOUT_TARGET64/CHECK434는 겹치므로 합산하지 않는다.
 기존 보류 UNVERIFIED, 신규 알려진 금액 누락 FAIL. CHECK2는 기간이 고쳐져도 live receipt 인증 없어서 UNVERIFIED.
 공개시각/역사 mapping/전체 correction chain 부족: 투자 사용 가능0건.
+
+게시 추가 복구: CSV CRLF 보존 실패는 Path.read_text의 줄바꿈 정규화 때문이었다. read_bytes().decode(utf-8)로 원래 바이트를 유지했다. 기존 validate-legacy-parser job도 이 branch에서 제외하고 이전 자동 run을 취소하도록 했다. 최종 결과의 수치/원본/계산 방법은 바꾸지 않았다.
