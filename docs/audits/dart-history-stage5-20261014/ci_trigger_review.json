@@ -1,0 +1,29 @@
+{
+  "branch": "fix/financial-accuracy-20261014",
+  "changed_paths": [
+    ".github/workflows/financial-accuracy-revalidation.yml",
+    "docs/audits/dart-history-stage5-20261014/README.md",
+    "docs/audits/dart-history-stage5-20261014/collect_history.py",
+    "docs/audits/dart-history-stage5-20261014/evidence/collection-tests.log",
+    "docs/audits/dart-history-stage5-20261014/evidence/runtime-verify.json",
+    "docs/audits/dart-history-stage5-20261014/test_collection.py"
+  ],
+  "matching_workflows": [
+    {
+      "workflow": "financial-accuracy-revalidation.yml",
+      "state": "original_offline_kit_only",
+      "matching_paths": [
+        ".github/workflows/financial-accuracy-revalidation.yml",
+        "docs/audits/dart-history-stage5-20261014/README.md",
+        "docs/audits/dart-history-stage5-20261014/collect_history.py",
+        "docs/audits/dart-history-stage5-20261014/evidence/collection-tests.log",
+        "docs/audits/dart-history-stage5-20261014/evidence/runtime-verify.json",
+        "docs/audits/dart-history-stage5-20261014/test_collection.py"
+      ],
+      "sha256": "40b26ebe9ef5f3a26b7528ac41242e4f545890dbd1ee0c0184c853a3286eca40"
+    }
+  ],
+  "workflow_run_chaining": false,
+  "internet_pip_allowed": false,
+  "limitations": "Reviews the existing simple repository push grammar; unsupported/unfiltered shapes stop instead of assuming safety."
+}

@@ -11,6 +11,7 @@ on:
       - 'docs/audits/financial-repair-20261014/**'
       - 'docs/audits/financial-extraction-stage3-20261014/**'
       - 'docs/audits/historical-pit-stage4-20261014/**'
+      - 'docs/audits/dart-history-stage5-20261014/**'
       - '.github/workflows/financial-accuracy-revalidation.yml'
 permissions:
   contents: read
@@ -35,6 +36,16 @@ jobs:
         run: |
           python "$RUNNER_TEMP/financial-repair/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/financial-repair/kit-parts" --destination "$RUNNER_TEMP/financial-repair/runtime"
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I "$RUNNER_TEMP/financial-repair/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/financial-repair/verify.json"
+      - name: Offline official-history collector safety tests
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/dart-history-stage5-20261014/test_collection.py
+      - name: One bounded official DART history proof for existing twenty samples
+        id: dart_history
+        if: ${{ github.event_name == 'push' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage5-dart-proof]') }}
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/dart-history-stage5-20261014/collect_history.py --original40 "$RUNNER_TEMP/financial-repair/review" --holdout20 "$RUNNER_TEMP/financial-repair/heldout20/review" --output "$RUNNER_TEMP/financial-repair/stage5"
       - name: Focused safety tests and actual sixty-receipt collector replay
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I tests/test_financial_accuracy_repair.py 2>&1 | tee "$RUNNER_TEMP/financial-repair/unit.log"
@@ -70,6 +81,14 @@ jobs:
             ${{ runner.temp }}/financial-repair/verify.json
             ${{ runner.temp }}/financial-repair/stage4
           retention-days: 30
+      - name: Preserve bounded official DART history responses and safe diagnostics
+        uses: actions/upload-artifact@v4
+        if: ${{ always() && steps.dart_history.outcome != 'skipped' }}
+        with:
+          name: dart-official-history20
+          path: ${{ runner.temp }}/financial-repair/stage5
+          if-no-files-found: error
+          retention-days: 90
       - name: Preserve the sixty exact original ZIPs and selection manifests
         uses: actions/upload-artifact@v4
         if: always()
