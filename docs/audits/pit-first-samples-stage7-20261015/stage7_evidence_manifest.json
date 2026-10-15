@@ -1,0 +1,136 @@
+{
+  "stage": 7,
+  "checked_date": "2026-10-15",
+  "timezone": "Asia/Seoul",
+  "baseline_remote_commit": "e35e773cc42cc1afda196032c6f59f9160db3b21",
+  "local_baseline_commit": "da90cc9882170f77e258be4212c2df49e9ddb60e",
+  "baseline_tree": "79645556f35a9939b64d2c4138ee7d0728b41a26",
+  "raw_official_KRX_downloads_obtained": 0,
+  "official_2007_equity_calendar_certified": false,
+  "samples": [
+    {
+      "sample_id": "S01",
+      "company_name_in_original": "(주)티씨케이",
+      "corp_code": "00245472",
+      "stock_code_lead_not_KRX_certified": "064760",
+      "rcept_no": "20070814001252",
+      "official_receipt_date": "2007-08-14",
+      "candidate_signal_date_not_certified": "2007-08-16",
+      "execution_date": null,
+      "api_file": "docs/audits/dart-history-stage5-20261014/results/raw/S01_page001.json",
+      "api_sha256": "7166d666175d46e92f22f723df8fcd4709a001608241b992692a505fbb17e859",
+      "api_target_pointer": "/list/2",
+      "api_pages": 1,
+      "api_total_count": 82,
+      "regular_disclosures_observed_before_candidate_signal": 3,
+      "target_title_period_candidates_before_signal": ["20070814001252"],
+      "source_transport_file": "docs/audits/version-pit-stage6-20261014/sources/20070814001252.zip.b64",
+      "decoded_original_zip_sha256": "62b91eb331c9181cddb53181eb3ea07546a8b6206bd38a8e26434c783e656334",
+      "xml_member": "20070814001252.xml",
+      "xml_sha256": "775c7eaf1e54655fc794601ff64f3e05885dce3b30cbd411e1ddc3690f5631b3",
+      "xml_encoding": "cp949",
+      "identity_location": "ELEMENT[3]/COMPANY-NAME/@AREGCIK",
+      "period_locations": ["ELEMENT[15]/TU/@AUNITVALUE", "ELEMENT[18]/TU/@AUNITVALUE"],
+      "sample_PIT": "UNVERIFIED"
+    },
+    {
+      "sample_id": "S05",
+      "company_name_in_original": "(주)링네트",
+      "corp_code": "00352499",
+      "stock_code_lead_not_KRX_certified": "042500",
+      "rcept_no": "20071113000102",
+      "official_receipt_date": "2007-11-13",
+      "candidate_signal_date_not_certified": "2007-11-14",
+      "execution_date": null,
+      "api_file": "docs/audits/dart-history-stage5-20261014/results/raw/S05_page001.json",
+      "api_sha256": "eadfdd496304bdc7f064c59457f868a7d296bd0877d734a2ecc4d01632ae852e",
+      "api_target_pointer": "/list/3",
+      "api_pages": 1,
+      "api_total_count": 86,
+      "regular_disclosures_observed_before_candidate_signal": 4,
+      "target_title_period_candidates_before_signal": ["20071113000102"],
+      "source_transport_file": "docs/audits/version-pit-stage6-20261014/sources/20071113000102.zip.b64",
+      "decoded_original_zip_sha256": "84e932cc7fcbd866f7d93d83d4c1c7f2930fa7e393ce0238f26cbfc5c0ac3b7f",
+      "xml_member": "20071113000102.xml",
+      "xml_sha256": "c1b6740a0c0a062919b5a2b4392280bdf6164fd038676c2f7580c7ff44dacba7",
+      "xml_encoding": "cp949",
+      "identity_location": "ELEMENT[3]/COMPANY-NAME/@AREGCIK",
+      "period_locations": ["ELEMENT[15]/TU/@AUNITVALUE", "ELEMENT[18]/TU/@AUNITVALUE"],
+      "sample_PIT": "UNVERIFIED"
+    }
+  ],
+  "dart_query_scope_reused": {
+    "last_reprt_at": "N",
+    "pblntf_ty": "A",
+    "begin": "20070101",
+    "end": "20261015",
+    "complete_correction_history_claimed": false,
+    "new_API_calls": 0
+  },
+  "access_results": [
+    {
+      "url": "https://www.krx.co.kr/contents/MKD/01/0110/01100303/MKD01100303.jsp",
+      "method": "official web open",
+      "observed_http_status": 403,
+      "observed_error": "Forbidden",
+      "official_2007_attachment_obtained": false,
+      "equity_vs_derivatives_scope": "UNVERIFIED",
+      "raw_bytes_sha256": null
+    },
+    {
+      "url": "https://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd?menuId=MDC0201020101",
+      "method": "official web open",
+      "observed_content_type": "text/html",
+      "extracted_data_lines": 0,
+      "historical_query_response_obtained": false,
+      "http_error_claimed": false,
+      "raw_bytes_sha256": null
+    },
+    {
+      "url": "https://openapi.krx.co.kr/contents/OPP/INFO/service/OPPINFO004.cmd",
+      "method": "official web open",
+      "evidence_locations": ["line 55", "line 64", "line 69"],
+      "observed_KOSDAQ_daily_and_basic_start": "2010-01-04",
+      "covers_2007": false,
+      "raw_bytes_sha256": null
+    },
+    {
+      "url": "https://openapi.krx.co.kr/contents/OPP/DATA/OPPDATA001.jsp",
+      "method": "official purchase-guidance link followed",
+      "evidence_locations": ["lines 55-64", "lines 70-96"],
+      "observed_route": "Membership/login, product coverage/sample/price review, payment and use-purpose review, then email or download delivery",
+      "contact": "KRX data business department 02-3774-8904; krxdata@krx.co.kr",
+      "requested_2007_product_coverage_or_price_confirmed": false,
+      "purchase_or_contact_performed": false,
+      "raw_bytes_sha256": null
+    },
+    {
+      "url": "https://openapi.krx.co.kr/contents/OPP/DATA/OPPDATA003.jsp",
+      "method": "official web open",
+      "evidence_locations": ["lines 55-69"],
+      "observed_route": "Professional distribution or commercial use may require KRX approval and KOSCOM contract; requested historical fields and coverage require confirmation",
+      "raw_bytes_sha256": null
+    }
+  ],
+  "environment_access": {
+    "observations_current": true,
+    "policy_mode": "restricted",
+    "policy_state": "enforced",
+    "KRX_hosts_in_effective_allowlist": [],
+    "KRX_credentials_bound": false,
+    "terminal_network_bypass_attempted": false,
+    "KRX_search_no_result_interpretation": "No requested historical primary records acquired; not proof of nonlisting or missing history"
+  },
+  "sample_counts": {"PASS": 0, "FAIL": 0, "UNVERIFIED": 2},
+  "item_counts": {"PASS": 4, "FAIL": 0, "UNVERIFIED": 12},
+  "investment_approved": 0,
+  "preservation": {
+    "previous_518_and_64_results": "REUSED_UNCHANGED",
+    "original60": "UNCHANGED_NOT_REPROCESSED",
+    "stage6_results": "UNCHANGED_NOT_RERUN",
+    "operating_PIT_gate": "UNCHANGED_BLOCKED",
+    "new_audit_programs": 0,
+    "new_tests_or_test_reruns": 0,
+    "new_KRX_or_DART_bulk_backfill": 0
+  }
+}
