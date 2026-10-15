@@ -1,0 +1,142 @@
+{
+  "checked_at_utc": "2026-10-15 13:17:28 UTC",
+  "baseline_remote_sha": "a4aa49440d24a50030a44f60f18a6a687626672b",
+  "baseline_local_sha": "9b2cc02e91e5c592973553b0b23bcc269c094f0d",
+  "baseline_tree": "022c759de0f5ac8f46c619255315b6d8dd72c38f",
+  "acquisition": "Independent reading of official KIND-hosted issuer reports via approved web extraction; no existing financial parser used.",
+  "raw_http_bytes_obtained": false,
+  "original_http_response_sha256": null,
+  "hash_scope": "manifest hashes identify authored local records, not original official HTTP responses",
+  "documents": [
+    {
+      "id": "A",
+      "url": "https://kind.krx.co.kr/external/2022/05/13/000034/20220513000042/11013.htm",
+      "issuer": "주식회사 셀트리온헬스케어",
+      "document": "제23기 분기보고서",
+      "report_period_start": "2022-01-01",
+      "report_period_end": "2022-03-31",
+      "cover_submission_date": "2022-05-13",
+      "external_document_id": "20220513000042/11013",
+      "dart_receipt_number_verified": false,
+      "issuer_location": "cover company field, web extraction line16; title/period/date lines2-10",
+      "location": "VI. 이사회 등 회사의 기관에 관한 사항 > 3. 주주총회 등에 관한 사항 > 바. 주주총회 의사록 요약 > 2020. 03. 27 정기 row",
+      "web_extraction_lines": "3951-3961",
+      "short_verbatim_cells": {
+        "parent_date": "2020. 03. 27",
+        "agenda": "주식배당(안) 승인의 건",
+        "parent_row_result": "가결"
+      },
+      "row_reading": "Approval result belongs to the dated parent row covering the listed AGM agenda; the stock-dividend item is one of that row's agenda items.",
+      "claim": "The issuer retrospectively reports adoption of the stock-dividend agenda at the 2020-03-27 AGM.",
+      "verdict": "PASS",
+      "scope_limit": "Official retrospective report of approval; not original signed minutes, contemporaneous AGM-result disclosure, 2019 public availability or delivery/trading proof."
+    },
+    {
+      "id": "B",
+      "url": "https://kind.krx.co.kr/external/2023/03/20/000902/20230320004068/11011.htm",
+      "issuer": "주식회사 셀트리온헬스케어",
+      "document": "제23기 사업보고서",
+      "report_period_start": "2022-01-01",
+      "report_period_end": "2022-12-31",
+      "cover_submission_date": "2023-03-20",
+      "external_document_id": "20230320004068/11011",
+      "dart_receipt_number_verified": false,
+      "issuer_location": "cover company field, web extraction line16; title/period/date lines2-10",
+      "location": "7. 증권의 발행을 통한 자금조달에 관한 사항 > 7-1. 증권의 발행을 통한 자금조달 실적 > 지분증권의 발행 등과 관련된 사항 > 가. 증자(감자)현황 > 2020.03.27 row",
+      "web_extraction_lines": "5128-5145; table headers 5135-5143",
+      "short_verbatim_row": "2020.03.27 | 주식배당 | 보통주 | 7,116,148 | 1,000 | 1,000 | -",
+      "column_meanings": [
+        "주식발행(감소)일자",
+        "발행(감소)형태",
+        "종류",
+        "수량",
+        "주당 액면가액",
+        "주당발행(감소)가액",
+        "비고"
+      ],
+      "table_as_of": "2022-12-31",
+      "units": "원, 주",
+      "claim": "Issuer's stock-issuance history records 7116148 ordinary shares via stock dividend on 2020-03-27.",
+      "verdict": "PASS",
+      "scope_limit": "Date is labelled issuance date, not securities-account credit or KRX listing date. The two 1000 figures are table amount fields, not market close/ex-dividend base."
+    }
+  ],
+  "link_to_prior_proposal": {
+    "prior_evidence_id": "Stage9 E03",
+    "prior_url": "https://kind.krx.co.kr/external/2020/03/12/001173/20200312002443/00591.htm",
+    "prior_location": "제6호 의안 주식배당(안) 승인의 건; proposal: 5%, 7116148 ordinary shares, AGM scheduled 2020-03-27",
+    "match_keys": [
+      "same issuer",
+      "same stock-dividend agenda",
+      "same AGM/recorded issuance date",
+      "same ordinary-share issue quantity (proposal vs B)"
+    ],
+    "link_grade": "CORROBORATED_EVENT_FACTS",
+    "amendment_version_chain_certified": false,
+    "limits": "A records agenda adoption without restating rate/quantity in that row; B supplies an issuance record. These are distinct retrospective facts, not proof of stock-credit timing or a certified correction chain."
+  },
+  "verdict_effect": {
+    "old_stage9_snapshot_unchanged": true,
+    "existing_check_changed_in_followup_only": "C06 actual_AGM_approval: UNVERIFIED -> PASS (retrospective official approval report)",
+    "new_separate_assertion": "I01 issuer_recorded_issuance: PASS; not a replacement for C07 or C08",
+    "original_fixed_10_before": {
+      "PASS": 2,
+      "FAIL": 0,
+      "UNVERIFIED": 8
+    },
+    "original_fixed_10_after": {
+      "PASS": 3,
+      "FAIL": 0,
+      "UNVERIFIED": 7
+    },
+    "issuance_assertion_outside_original_denominator": true,
+    "investment_PIT_approval_changed": false
+  },
+  "remaining_three_topics": [
+    {
+      "topic": "2019-12-27 official stock ex-dividend notice and 54600 KRW base",
+      "verdict": "UNVERIFIED",
+      "result": "Bounded official-domain index searches did not surface the matching original notice/tape. No numeric fit promoted to proof.",
+      "required": "091990 official stock-market ex-dividend notice with effective date and base; original official close/base/return tape."
+    },
+    {
+      "topic": "then-effective KOSDAQ cash-equity base-price and tick rules",
+      "verdict": "UNVERIFIED",
+      "result": "Search found later 2021 KOSDAQ rule reference; opening failed. No then-effective 2019 formula/tick appendix was obtained.",
+      "required": "Official version effective 2019-12-27, enforcement-rule Article17, relevant appendix, tick/rounding provisions and applicability/change history."
+    },
+    {
+      "topic": "actual stock credit and trading availability",
+      "verdict": "UNVERIFIED",
+      "result": "No primary settlement/credit record or applicable KRX additional-listing notice obtained. 2020-03-27 issue row cannot establish either.",
+      "required": "KSD/transfer-agent/issuer official distribution or electronic-credit confirmation; applicable KRX additional-listing notice with actual first tradable date."
+    }
+  ],
+  "acquisition_stop": {
+    "url": "https://law.krx.co.kr/las/RefBon.jsp?lawid=000113&lawkd=B&pubdt=20211027&pubno=0000019900",
+    "stage": "approved web open",
+    "tool_error": "Failed to fetch https://law.krx.co.kr/las/RefBon.jsp?lawid=000113&lawkd=B&pubdt=20211027&pubno=0000019900: (400) Timeout fetching",
+    "official_server_http_status_observed": null,
+    "process_exit_code": null,
+    "interpretation": "Web-tool acquisition timeout, not a directly observed official-server HTTP400. Same law.krx.co.kr host had failed during Stage9.",
+    "requests_to_this_url_in_followup": 1,
+    "retries": 0,
+    "additional_source_collection_after_error": 0,
+    "new_collection_code_created": false,
+    "terminal_route": "Network policy restricted/enforced; KIND and law.krx.co.kr absent from terminal allowlist; no configured credential bindings. No bypass attempted.",
+    "permissions_or_purchase_requirement": "Not established by these public queries; official archive access or supplied source documents are needed, not an assumed paid-data entitlement."
+  },
+  "scope_controls": {
+    "engine_changed": false,
+    "registry_changed": false,
+    "operating_data_changed": false,
+    "PIT_gate_changed": false,
+    "return_tolerance_changed": false,
+    "decile_rerun": false,
+    "new_backfill": false,
+    "pip_install": false,
+    "investment_use_allowed": false,
+    "stage6_investment_approval": "0/6 unchanged",
+    "price_reference_vs_holder_economic_return": "Separate validation targets; no forced 1bp agreement."
+  }
+}

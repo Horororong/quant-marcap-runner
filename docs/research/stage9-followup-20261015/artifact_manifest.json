@@ -1,0 +1,30 @@
+{
+  "scope": "Follow-up authored evidence records; excludes this manifest itself; not raw official response hashes",
+  "baseline_remote_sha": "a4aa49440d24a50030a44f60f18a6a687626672b",
+  "files": {
+    "evidence.json": {
+      "bytes": 7852,
+      "sha256": "a1c5879d8b266a0107776da2fed0bca17cb835e76e3ed0712a5cbcdf8148ecd5"
+    },
+    "followup_report.md": {
+      "bytes": 8053,
+      "sha256": "0cfd3de4a9f68cb8b2511412445e5988a4d6cd1236ed3599689345755495b5c9"
+    },
+    "preservation.json": {
+      "bytes": 5415,
+      "sha256": "45454c7fb2fcdbcb40926730c97608b7abefae936456196c668815ff53e2c734"
+    },
+    "remaining_gaps.csv": {
+      "bytes": 758,
+      "sha256": "e252931c18e5af1a9cf9c64bc6b099f842a4b938b5fd6adc506be7c04393d878"
+    },
+    "reproduction.md": {
+      "bytes": 4169,
+      "sha256": "59f056f373834a28b90276cafb80dc7f698b3e1721bd398393753f42faca496a"
+    },
+    "verdict_delta.csv": {
+      "bytes": 545,
+      "sha256": "97f0c3256e6de1d0677f3666bccd0c72bbe78f450e6929837999f4972a881907"
+    }
+  }
+}
