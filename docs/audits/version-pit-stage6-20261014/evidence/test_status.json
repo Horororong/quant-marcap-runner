@@ -1,0 +1,141 @@
+[
+  {
+    "file": "tests/test_financial_accuracy_repair.py",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-c",
+      "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('tests/test_financial_accuracy_repair.py',run_name=\"__main__\")"
+    ],
+    "exit_code": 0,
+    "log": "/workspace/financial-repair/stage6/test-logs/test_financial_accuracy_repair.log",
+    "sha256": "be57db8bb084edd2ef670fb61d3e668b423238ac83704caf3d82e8d1a2fedba3",
+    "preserved_log": "evidence/test-logs/test_financial_accuracy_repair.log",
+    "tests": 21
+  },
+  {
+    "file": "tests/test_financial_extraction_stage3.py",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-c",
+      "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('tests/test_financial_extraction_stage3.py',run_name=\"__main__\")"
+    ],
+    "exit_code": 0,
+    "log": "/workspace/financial-repair/stage6/test-logs/test_financial_extraction_stage3.log",
+    "sha256": "3460b23d7ff7dbc9324c370e0e22ccbb52078f144d4de48c76bbaeabb503bcdb",
+    "preserved_log": "evidence/test-logs/test_financial_extraction_stage3.log",
+    "tests": 17
+  },
+  {
+    "file": "docs/audits/historical-pit-stage4-20261014/test_stage4_audit.py",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-c",
+      "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('docs/audits/historical-pit-stage4-20261014/test_stage4_audit.py',run_name=\"__main__\")"
+    ],
+    "exit_code": 0,
+    "log": "/workspace/financial-repair/stage6/test-logs/test_stage4_audit.log",
+    "sha256": "f8a7fe9d422ec500f3076e95926e933faa52bfd4f088b90408bcd771d809eabc",
+    "preserved_log": "evidence/test-logs/test_stage4_audit.log",
+    "tests": 5
+  },
+  {
+    "file": "docs/audits/dart-history-stage5-20261014/test_collection.py",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-c",
+      "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('docs/audits/dart-history-stage5-20261014/test_collection.py',run_name=\"__main__\")"
+    ],
+    "exit_code": 0,
+    "log": "/workspace/financial-repair/stage6/test-logs/test_collection.log",
+    "sha256": "ba347755678d7932347c1d2723524f572fa92839141591bbc8c7f31e9173cf2b",
+    "preserved_log": "evidence/test-logs/test_collection.log",
+    "tests": 12
+  },
+  {
+    "file": "docs/audits/version-pit-stage6-20261014/test_stage6.py",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "docs/audits/version-pit-stage6-20261014/test_stage6.py"
+    ],
+    "exit_code": 0,
+    "log": "/workspace/financial-repair/stage6/test-logs/test_stage6.log",
+    "sha256": "28866f9876f7623eec99a6389eedea359b5726f33ff6589ef6eea59d089ff1f6",
+    "preserved_log": "evidence/test-logs/test_stage6.log",
+    "tests": 27
+  },
+  {
+    "file": "scripts/test_legacy_document_quality.py",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-c",
+      "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('scripts/test_legacy_document_quality.py',run_name=\"__main__\")"
+    ],
+    "exit_code": 0,
+    "log": "/workspace/financial-repair/stage6/test-logs/test_legacy_document_quality.log",
+    "sha256": "fccd63cf77a5143f9c999f1b702828b30e7f848507c8418101135237179e1db6",
+    "preserved_log": "evidence/test-logs/test_legacy_document_quality.log",
+    "tests": 6
+  },
+  {
+    "file": "scripts/test_legacy_viewer_source.py",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-c",
+      "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('scripts/test_legacy_viewer_source.py',run_name=\"__main__\")"
+    ],
+    "exit_code": 0,
+    "log": "/workspace/financial-repair/stage6/test-logs/test_legacy_viewer_source.log",
+    "sha256": "c6535df234443bcb8009ede9cc44573fc9c0620e3101ca15c30b7d7595b6e2ac",
+    "preserved_log": "evidence/test-logs/test_legacy_viewer_source.log",
+    "tests": 48
+  },
+  {
+    "file": "scripts/test_legacy_viewer_sections.py",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-c",
+      "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('scripts/test_legacy_viewer_sections.py',run_name=\"__main__\")"
+    ],
+    "exit_code": 0,
+    "log": "/workspace/financial-repair/stage6/test-logs/test_legacy_viewer_sections.log",
+    "sha256": "56d5153807c8fba0e07e4a4d0b646411b24c00187793c93e3b02046d1258904d",
+    "preserved_log": "evidence/test-logs/test_legacy_viewer_sections.log",
+    "tests": 8
+  },
+  {
+    "file": "scripts/test_legacy_schedule_gate.py",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-c",
+      "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('scripts/test_legacy_schedule_gate.py',run_name=\"__main__\")"
+    ],
+    "exit_code": 0,
+    "log": "/workspace/financial-repair/stage6/test-logs/test_legacy_schedule_gate.log",
+    "sha256": "170590ba7d76185e7aff4104be94e2f1542e6616f7d844eb94611ebdd47632f7",
+    "preserved_log": "evidence/test-logs/test_legacy_schedule_gate.log",
+    "tests": 6
+  },
+  {
+    "file": "scripts/test_legacy_no_metrics_recovery.py",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-c",
+      "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('scripts/test_legacy_no_metrics_recovery.py',run_name=\"__main__\")"
+    ],
+    "exit_code": 0,
+    "log": "/workspace/financial-repair/stage6/test-logs/test_legacy_no_metrics_recovery.log",
+    "sha256": "f843c3aed150f89e05cf66e1d5bb03da990d78b6b0ffd24925403cc985fb8399",
+    "preserved_log": "evidence/test-logs/test_legacy_no_metrics_recovery.log",
+    "tests": 4
+  }
+]

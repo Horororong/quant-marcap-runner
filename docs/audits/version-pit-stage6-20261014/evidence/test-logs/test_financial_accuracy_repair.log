@@ -1,0 +1,26 @@
+test_isolated_review_stores_never_reuse_another_checkpoint (__main__.CollectorSafety.test_isolated_review_stores_never_reuse_another_checkpoint) ... ok
+test_month_end_and_invalid_dates (__main__.CollectorSafety.test_month_end_and_invalid_dates) ... ok
+test_review_append_preserves_opaque_old_numeric_and_missing_tokens (__main__.CollectorSafety.test_review_append_preserves_opaque_old_numeric_and_missing_tokens) ... ok
+test_review_checkpoint_requires_real_hash_and_row_count (__main__.CollectorSafety.test_review_checkpoint_requires_real_hash_and_row_count) ... ok
+test_unverified_values_never_enter_normalized_input (__main__.CollectorSafety.test_unverified_values_never_enter_normalized_input) ... ok
+test_actual_negative_stays_negative (__main__.NumericSafety.test_actual_negative_stays_negative) ... ok
+test_alternative_profit_loss_stays_positive (__main__.NumericSafety.test_alternative_profit_loss_stays_positive) ... ok
+test_no_invalid_grouping_or_merged_value (__main__.NumericSafety.test_no_invalid_grouping_or_merged_value) ... ok
+test_shared_explicit_negative_prefix (__main__.NumericSafety.test_shared_explicit_negative_prefix) ... ok
+test_terminal_note_alias_preserves_loss (__main__.NumericSafety.test_terminal_note_alias_preserves_loss) ... ok
+test_zero_is_real_money (__main__.NumericSafety.test_zero_is_real_money) ... ok
+test_ambiguous_conflict_withheld (__main__.StructureSafety.test_ambiguous_conflict_withheld) ... ok
+test_cfs_is_separate (__main__.StructureSafety.test_cfs_is_separate) ... ok
+test_dash_never_falls_back (__main__.StructureSafety.test_dash_never_falls_back) ... ok
+test_exact_units_and_dates (__main__.StructureSafety.test_exact_units_and_dates) ... ok
+test_old_statement_never_relabelled_current (__main__.StructureSafety.test_old_statement_never_relabelled_current) ... ok
+test_point_in_time_default_closed (__main__.StructureSafety.test_point_in_time_default_closed) ... ok
+test_segment_is_not_whole_company (__main__.StructureSafety.test_segment_is_not_whole_company) ... ok
+test_three_month_and_cumulative_separate (__main__.StructureSafety.test_three_month_and_cumulative_separate) ... ok
+test_unheaded_value_is_not_verified (__main__.StructureSafety.test_unheaded_value_is_not_verified) ... ok
+test_unknown_unit_is_not_published (__main__.StructureSafety.test_unknown_unit_is_not_published) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.436s
+
+OK

@@ -1,0 +1,43 @@
+[
+  {
+    "step": "original artifact restore CI",
+    "run_id": 38592204895,
+    "error": "urllib.error.HTTPError: HTTP Error 503: Egress is over the account limit.",
+    "exit_code": 1,
+    "recovery": "same pinned kit release-only job; successful DART receipt proof run38592615003; original60 replay performed locally"
+  },
+  {
+    "step": "initial local financial revalidation",
+    "error": "FileNotFoundError: [Errno 2] No such file or directory: '/workspace/financial-repair/stage6/replay60/N01.json'",
+    "exit_code": 1,
+    "recovery": "waited for replay60 exit0 and reran unchanged-source validation"
+  },
+  {
+    "step": "GitHub binary blob tool 1",
+    "error": "aborted by user after 2007.3s",
+    "http_status": null,
+    "exit_code": null,
+    "recovery": "original ZIP and Actions artifact retained; original-byte hash preserved in lossless text transport"
+  },
+  {
+    "step": "GitHub binary blob tool 2",
+    "error": "aborted by user after 3629.4s",
+    "http_status": null,
+    "exit_code": null,
+    "recovery": "same binary tool not called again"
+  },
+  {
+    "step": "GitHub large tree request",
+    "error": "no response within45s bounded timer; expected treeGET404",
+    "http_status": null,
+    "exit_code": null,
+    "expected_tree": "cea55292e34d3e4dad02bf87279a2667b4dc7f41",
+    "recovery": "no commit/ref update; final local result preserved; remote evidence publishing incomplete"
+  },
+  {
+    "step": "report patch context check",
+    "error": "apply_patch verification failed: Failed to find expected lines",
+    "exit_code": null,
+    "recovery": "read exact current paragraphs; applied corrected patch; no audit computation changed"
+  }
+]

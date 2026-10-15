@@ -1,0 +1,16 @@
+{
+  "observed_date_utc": "2026-10-14",
+  "retrieval_method": "Actual web search/open of primary pages; source URLs and observed limits below",
+  "raw_webpage_bytes_sha256": null,
+  "official_2007_calendar_acquired": false,
+  "observations": [
+    {"url":"https://openapi.krx.co.kr/contents/OPP/INFO/service/OPPINFO004.cmd","source_class":"KRX official API documentation","observed":"Stock daily and security-basic APIs start 2010-01-04, not 2007","certifies_2007_sessions":false},
+    {"url":"https://www.krx.co.kr/contents/MKD/01/0110/01100303/MKD01100303.jsp","source_class":"KRX official schedule page","observed":"2007 download button present; retrieved text contains no corresponding file content or download href; schedule market scope must be checked","certifies_2007_sessions":false},
+    {"url":"https://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd?menuId=MDC0201020101","source_class":"KRX Data Marketplace","observed":"Dynamic page; text view has zero data lines; no actual 2007 query response was acquired","certifies_2007_sessions":false},
+    {"url":"https://github.com/FinanceData/marcap","source_class":"Secondary dataset publisher","observed":"Publisher describes organized KRX daily data from 1995; not a signed official 2007 raw response or historical legal listing register","certifies_2007_sessions":false},
+    {"url":"https://openapi.krx.co.kr/contents/OPP/INFO/OPPINFO002.jsp","source_class":"KRX official API terms","observed":"Noncommercial use, result attribution, no third-party provision; API availability is not completeness guarantee","certifies_dataset_redistribution_rights":false},
+    {"url":"https://openapi.krx.co.kr/contents/OPP/DATA/OPPDATA003.jsp","source_class":"KRX official data reception/licensing guidance","observed":"Additional contract path for redistribution/revenue use and professional subscriptions via KOSCOM","certifies_dataset_redistribution_rights":false},
+    {"url":"https://www.data.go.kr/data/15094808/openapi.do","source_class":"Financial Services Commission official public data","observed":"Daily update lag, KOGL type4 and unauthorized third-party redistribution restrictions; 2007 coverage not demonstrated","certifies_2007_sessions":false},
+    {"url":"https://opendart.fss.or.kr/guide/detail.do?apiGrpCd=DS001&apiId=2019003","source_class":"OpenDART official document API guide","observed":"Receipt-specific original ZIP retrieval; actual six responses independently preserved in the Stage6 artifact and source manifests"}
+  ]
+}

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/quant-marcap-runner/docs/audits/financial-extraction-stage3-20261014/revalidate.py", line 101, in <module>
+    sid=s['sample_id'];isold=sid.startswith('S');r=json.loads((a.replay/(sid+'.json')).read_text());docs=source(root,s)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/financial-repair/stage6/replay60/N01.json'

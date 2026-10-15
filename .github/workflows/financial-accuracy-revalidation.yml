@@ -19,7 +19,7 @@ permissions:
   actions: read
 jobs:
   fixed-kit:
-    if: ${{ !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') }}
+    if: ${{ !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -135,6 +135,55 @@ jobs:
           name: dart-version-documents6
           path: |
             ${{ runner.temp }}/financial-repair/stage6-documents
+            ${{ runner.temp }}/financial-repair/verify.json
+          if-no-files-found: error
+          retention-days: 90
+  stage6-evidence:
+    if: ${{ contains(github.event.head_commit.message, '[stage6-evidence]') || (github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage6-krx-proof]')) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore and verify original pinned kit
+        run: |
+          python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/financial-repair"
+          python "$RUNNER_TEMP/financial-repair/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/financial-repair/kit-parts" --destination "$RUNNER_TEMP/financial-repair/runtime"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I "$RUNNER_TEMP/financial-repair/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/financial-repair/verify.json"
+      - name: Financial safety and independent audit tests on exact kit
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I tests/test_financial_accuracy_repair.py
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I tests/test_financial_extraction_stage3.py
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/historical-pit-stage4-20261014/test_stage4_audit.py
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/dart-history-stage5-20261014/test_collection.py
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/version-pit-stage6-20261014/test_stage6.py
+          for file in test_legacy_document_quality.py test_legacy_viewer_source.py test_legacy_viewer_sections.py test_legacy_schedule_gate.py test_legacy_no_metrics_recovery.py; do
+            "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c "import sys,runpy; sys.path.insert(0,'scripts'); sys.path.insert(0,'.'); runpy.run_path('scripts/$file',run_name='__main__')"
+          done
+      - name: Verify preserved sixty originals and existing financial outputs without reprocessing
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/version-pit-stage6-20261014/verify_preserved60.py --output "$RUNNER_TEMP/financial-repair/preserved60-verification"
+      - name: Independent twelve-document references and actual signal-boundary audit
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/dart-history-stage5-20261014/verify_responses.py
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/version-pit-stage6-20261014/audit_versions.py --output "$RUNNER_TEMP/financial-repair/stage6"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c 'import os,pathlib; actual=pathlib.Path(os.environ["RUNNER_TEMP"])/"financial-repair/stage6"; expected=pathlib.Path("docs/audits/version-pit-stage6-20261014"); names=["stage6_details.csv","stage6_version_chains.json","signal_tests.csv","summary.json","calendar_research.json"]; [(print(n,"bytes-identical"), (_ for _ in ()).throw(AssertionError(n)) if (actual/n).read_bytes()!=(expected/n).read_bytes() else None) for n in names]'
+      - name: One public official calendar investigation without credentials
+        if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage6-krx-proof]') }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/version-pit-stage6-20261014/research_krx_calendar.py --output "$RUNNER_TEMP/financial-repair/krx-research"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stage6-independent-evidence
+          path: |
+            ${{ runner.temp }}/financial-repair/stage6
+            ${{ runner.temp }}/financial-repair/krx-research
+            ${{ runner.temp }}/financial-repair/preserved60-verification
             ${{ runner.temp }}/financial-repair/verify.json
           if-no-files-found: error
           retention-days: 90

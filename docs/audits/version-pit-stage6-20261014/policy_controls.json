@@ -1,0 +1,17 @@
+{
+  "scope": "Independently reviewed receipt identities at real receipt-date boundaries; secondary observed sessions, not official PIT certification",
+  "controls": [
+    {"sample_id":"N12","signal_day":"2007-08-13","receipt":""},
+    {"sample_id":"N12","signal_day":"2007-08-14","receipt":""},
+    {"sample_id":"N12","signal_day":"2007-08-16","receipt":"20070814000583"},
+    {"sample_id":"N14","signal_day":"2007-08-13","receipt":""},
+    {"sample_id":"N14","signal_day":"2007-08-14","receipt":""},
+    {"sample_id":"N14","signal_day":"2007-08-16","receipt":"20070814001621"},
+    {"sample_id":"N14","signal_day":"2007-08-22","receipt":"20070814001621"},
+    {"sample_id":"N14","signal_day":"2007-08-23","receipt":"20070814001621"},
+    {"sample_id":"N14","signal_day":"2007-08-24","receipt":"20070823000020"},
+    {"sample_id":"N14","signal_day":"2007-09-27","receipt":"20070823000020"},
+    {"sample_id":"N14","signal_day":"2007-09-28","receipt":"20070823000020"},
+    {"sample_id":"N14","signal_day":"2007-10-01","receipt":"20070928000415"}
+  ]
+}

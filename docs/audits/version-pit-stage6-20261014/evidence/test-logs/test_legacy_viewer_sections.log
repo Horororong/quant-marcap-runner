@@ -1,0 +1,18 @@
+viewer section 20010103000052/3618: HTTP_RESPONSE_CAPTURED HTTP=200 audit=NOT_RUN
+viewer section 20010103000052/3618: HTTP_RESPONSE_CAPTURED HTTP=403 audit=NOT_RUN
+viewer section 20010103000052/3618: HTTP_RESPONSE_CAPTURED HTTP=200 audit=NOT_RUN
+viewer section 20010103000052/10627: DEFERRED HTTP=None audit=NOT_RUN
+viewer section 20010103000052/3618: TRANSPORT_ERROR HTTP=None audit=NOT_RUN
+test_body_limit_and_request_deadline_bound_reads (__main__.ViewerEvidenceTests.test_body_limit_and_request_deadline_bound_reads) ... ok
+test_mismatched_receipt_url_and_duplicate_route_are_rejected (__main__.ViewerEvidenceTests.test_mismatched_receipt_url_and_duplicate_route_are_rejected) ... ok
+test_publication_failure_cannot_leave_complete_report (__main__.ViewerEvidenceTests.test_publication_failure_cannot_leave_complete_report) ... ok
+test_raw_bytes_precede_report_and_second_run_is_noop (__main__.ViewerEvidenceTests.test_raw_bytes_precede_report_and_second_run_is_noop) ... ok
+test_real_artifact_supplies_twelve_routes_without_reinventing_offsets (__main__.ViewerEvidenceTests.test_real_artifact_supplies_twelve_routes_without_reinventing_offsets) ... ok
+test_redirect_is_not_followed_and_http_error_is_source_evidence_only (__main__.ViewerEvidenceTests.test_redirect_is_not_followed_and_http_error_is_source_evidence_only) ... ok
+test_request_budget_never_submits_additional_calls (__main__.ViewerEvidenceTests.test_request_budget_never_submits_additional_calls) ... ok
+test_transport_failure_stops_and_is_not_automatically_retried (__main__.ViewerEvidenceTests.test_transport_failure_stops_and_is_not_automatically_retried) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.007s
+
+OK

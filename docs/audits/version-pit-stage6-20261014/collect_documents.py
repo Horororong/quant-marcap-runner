@@ -3,7 +3,7 @@
 No retries; raw errors and ZIPs are retained after credential-echo checks.
 Financial parsing and operating datasets are deliberately not imported.
 """
-import argparse, hashlib, io, json, os, re, time, zipfile
+import argparse, base64, hashlib, io, json, os, re, time, zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib import request, error, parse
@@ -73,6 +73,8 @@ def echo_check(raw, key):
 def validate(payload, key, corp):
     if len(payload) > MAX_BYTES:
         raise Stop('RESPONSE_SIZE_LIMIT', 200)
+    if key.encode() in payload or parse.quote(key,safe='').encode() in payload:
+        raise Stop('CREDENTIAL_ECHO_BLOCKED',200)
     if not zipfile.is_zipfile(io.BytesIO(payload)):
         echo_check(payload, key)
         try:
@@ -170,7 +172,20 @@ def main():
     parser = argparse.ArgumentParser(); parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     try:
-        state = acquire(load_plan(HOME/'document_plan.json'), os.getenv('DART_API_KEY', ''), args.output)
+        rows = load_plan(HOME/'document_plan.json')
+        cached = HOME/'source_manifest.json'
+        if cached.exists():
+            entries = [r for r in json.loads(cached.read_text()) if r.get('origin') == 'stage6_official_document_api']
+            if {r['rcept_no'] for r in entries} == {r['rcept_no'] for r in rows}:
+                for entry in entries:
+                    raw=(HOME/entry['file']).read_bytes()
+                    if entry.get('transport_encoding')=='base64':
+                        raw=base64.b64decode(b''.join(raw.splitlines()),validate=True)
+                    if hashlib.sha256(raw).hexdigest() != entry['sha256']:
+                        raise Stop('PRESERVED_DOCUMENT_SHA_MISMATCH')
+                print(json.dumps({'status':'ALREADY_CAPTURED_NO_REQUEST','requests':0,'documents':len(entries)}));return 0
+            raise Stop('PARTIAL_CACHE_REQUIRES_MANUAL_REVIEW')
+        state = acquire(rows, os.getenv('DART_API_KEY', ''), args.output)
     except Stop as exc:
         print(json.dumps({'status':'STOPPED','error':exc.kind})); return 2
     print(json.dumps({k: state[k] for k in ['status', 'requests', 'completed']}))
