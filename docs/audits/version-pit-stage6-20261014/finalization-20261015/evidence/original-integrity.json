@@ -1,0 +1,22 @@
+{
+  "zip_patch_manifest_sha": "PASS",
+  "changed57_git_and_worktree_sha": "PASS",
+  "original_commit": "859bc1236423acc8824460d2e621e123ddf464c5",
+  "patch_apply_previous_proof": {
+    "result": "PASS",
+    "base_kind": "exact_cached_remote_tree",
+    "base_commit_object_available_locally": false,
+    "base_tree_sha1": "e91c4ac5d9832cace2be15b83fab9c1cbe9a018f",
+    "applied_tree_sha1": "3bbf2daf6d88f2998206a6349fcf7b4f206949f4",
+    "expected_head_tree_sha1": "3bbf2daf6d88f2998206a6349fcf7b4f206949f4",
+    "git_apply_check_index": true,
+    "git_apply_index": true,
+    "all_changed_file_hashes_match": true,
+    "original_head_and_worktree_unchanged": true,
+    "scratch_directory": "/workspace/stage6-delivery/stage6-apply-j5tlwf0v",
+    "tests_rerun": false,
+    "financial_processing_run": false,
+    "network_used": false
+  },
+  "zip_bytes": 1315321
+}

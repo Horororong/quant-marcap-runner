@@ -1,0 +1,70 @@
+{
+  "samples": 6,
+  "primary_documents": 12,
+  "new_downloads": 6,
+  "target_relationship_grades": {
+    "CERTIFIED": 4,
+    "CANDIDATE": 2
+  },
+  "document_relationship_grades": {
+    "CERTIFIED": 9,
+    "CANDIDATE": 3
+  },
+  "root_reference_edge_grades": {
+    "CERTIFIED": 4,
+    "CANDIDATE": 2
+  },
+  "immediate_predecessor_edge_grades": {
+    "CANDIDATE": 6
+  },
+  "details_counts": {
+    "PASS": 33,
+    "UNVERIFIED": 74,
+    "FAIL": 1
+  },
+  "counts_by_check": {
+    "certified_daily_available_date": {
+      "UNVERIFIED": 12
+    },
+    "document_identity": {
+      "PASS": 12
+    },
+    "exact_public_timestamp": {
+      "UNVERIFIED": 12
+    },
+    "first_submission_date_format": {
+      "UNVERIFIED": 6,
+      "PASS": 5,
+      "FAIL": 1
+    },
+    "historical_security_link": {
+      "UNVERIFIED": 12
+    },
+    "investment_backtest_approval": {
+      "UNVERIFIED": 12
+    },
+    "official_historical_sessions": {
+      "UNVERIFIED": 12
+    },
+    "official_receipt_date": {
+      "PASS": 12
+    },
+    "version_root_relationship": {
+      "UNVERIFIED": 8,
+      "PASS": 4
+    }
+  },
+  "policy_boundary_tests": 36,
+  "policy_test_failures": 0,
+  "official_calendar_certified": 0,
+  "exact_time_certified": 0,
+  "historical_security_certified": 0,
+  "daily_available_dates_certified": 0,
+  "investment_approved": 0,
+  "preservation": {
+    "protected_financial_values": 518,
+    "core_targets": 64,
+    "stage5_raw_responses": 22,
+    "operating_parser_changes": false
+  }
+}

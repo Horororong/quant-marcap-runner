@@ -1,0 +1,11 @@
+test_kst_expiry_skips_even_without_status (__main__.ScheduleGateTests.test_kst_expiry_skips_even_without_status) ... ok
+test_last_second_of_october_allows_pending_batch (__main__.ScheduleGateTests.test_last_second_of_october_allows_pending_batch) ... ok
+test_missing_or_corrupt_status_fails_before_collection (__main__.ScheduleGateTests.test_missing_or_corrupt_status_fails_before_collection) ... ok
+test_queue_completion_skips_extra_batch (__main__.ScheduleGateTests.test_queue_completion_skips_extra_batch) ... ok
+test_regular_daily_push_and_manual_do_not_depend_on_coverage (__main__.ScheduleGateTests.test_regular_daily_push_and_manual_do_not_depend_on_coverage) ... ok
+test_unknown_schedule_and_naive_time_fail_closed (__main__.ScheduleGateTests.test_unknown_schedule_and_naive_time_fail_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK

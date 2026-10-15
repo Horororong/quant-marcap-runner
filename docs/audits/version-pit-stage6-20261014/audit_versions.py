@@ -79,12 +79,23 @@ def read_document(entry):
 def certify_root(document, originals):
     # Explicit valid first-submission reference is required, never title-only.
     candidates=[x for x in originals if x['corp_code']==document['corp_code'] and
+                document.get('period_start') and x.get('period_start')==document['period_start'] and
                 x['period_end']==document['period_end'] and x['document_name']==document['document_name'] and
                 x['receipt_date']==document['initial_date'] and not x['is_correction'] and
                 not x['official_title'].startswith('[')]
     if document['is_correction'] and document['initial_date'] and len(candidates)==1:
         return 'CERTIFIED',candidates[0]['rcept_no']
     return 'CANDIDATE',''
+def version_scope(family):
+    # A first-submission reference proves a root relationship, not adjacency.
+    # Sorting receipt numbers is display only; the preserved corpus does not
+    # contain independently certified immediate-predecessor or completeness proof.
+    ordered=sorted(family,key=lambda d:(d['receipt_date'],d['rcept_no']))
+    adjacency=[{'from_receipt':prev['rcept_no'],'to_receipt':nxt['rcept_no'],
+                'grade':'CANDIDATE',
+                'reason':'immediate predecessor not explicitly identified; root reference does not prove adjacency'}
+               for prev,nxt in zip(ordered,ordered[1:])]
+    return adjacency,'UNVERIFIED'
 def available_date(receipt_day, sessions):
     # No weekday arithmetic or default package calendar in the certified path.
     later=[d for d in sessions if d>receipt_day]
@@ -158,13 +169,7 @@ def main():
         edges=[{'from_receipt':d['root_receipt'],'to_receipt':d['rcept_no'],'grade':d['relationship_grade'],
                 'relation_kind':'explicit_first_submission_root_reference','basis_location':d['initial_date_location'],
                 'initial_date_raw':d['initial_date_raw'],'source_member_sha256':d['source_member_sha256']}for d in family if d['is_correction']]
-        adjacency=[]
-        ordered=sorted(family,key=lambda d:(d['receipt_date'],d['rcept_no']))
-        for prev,nxt in zip(ordered,ordered[1:]):
-            # Receipt-number ordering is display only, never evidence of intra-day order.
-            grade='CERTIFIED'if nxt['root_receipt']==prev['rcept_no'] and nxt['relationship_grade']=='CERTIFIED'else'CANDIDATE'
-            adjacency.append({'from_receipt':prev['rcept_no'],'to_receipt':nxt['rcept_no'],'grade':grade,
-                              'reason':'explicit root link'if grade=='CERTIFIED'else'immediate predecessor not explicitly identified'})
+        adjacency,full_chain=version_scope(family)
         stock=assessment.get('stock_code') or metadata[target['rcept_no']].get('stock_code','')
         observed_security=panel.loc[panel.Code.astype(str)==stock]
         historical={'stock_code_lead':stock,'source':'archived secondary marcap panel',
@@ -176,14 +181,14 @@ def main():
                 'documents':family,'root_reference_edges':edges,'immediate_predecessor_edges':adjacency,
                 'scoped_candidates':candidates,'query_begin':assessment['scope_begin'],'query_end':assessment['scope_end'],
                 'query_category':'A','absence_outside_query_or_title_family':'UNVERIFIED','historical_security':historical,
-                'full_chain_verdict':'CERTIFIED'if len(family)==2 and all(d['relationship_grade']=='CERTIFIED'for d in family)else'UNVERIFIED',
+                'full_chain_verdict':full_chain,
                 'investment_eligible':False}
         chains.append(claims)
         for d in family:
             next_observed=available_date(d['receipt_date'],observed)
             checks=[('document_identity','PASS',d['company_name'],d['source_member']+'#COMPANY-NAME/@AREGCIK'),
                     ('official_receipt_date','PASS',d['receipt_date'],'Stage5/raw/'+sid+'_page001.json#'+d['rcept_no']),
-                    ('version_root_relationship','PASS'if d['relationship_grade']=='CERTIFIED'else'UNVERIFIED',d['relationship_grade'],d['initial_date_location']or d['source_member']+'#COVER'),
+                    ('version_root_relationship','PASS'if d['is_correction']and d['relationship_grade']=='CERTIFIED'else'UNVERIFIED',d['relationship_grade']if d['is_correction']else'NOT_A_CORRECTION_ROOT_REFERENCE',d['initial_date_location']or d['source_member']+'#COVER'),
                     ('first_submission_date_format','FAIL'if d['is_correction']and not d['initial_date']else'PASS'if d['is_correction']else'UNVERIFIED',d['initial_date_raw'],d['initial_date_location']),
                     ('exact_public_timestamp','UNVERIFIED','','API returns date only'),
                     ('official_historical_sessions','UNVERIFIED','','official 2007 calendar not retrieved'),

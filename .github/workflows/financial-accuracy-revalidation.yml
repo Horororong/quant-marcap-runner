@@ -162,6 +162,9 @@ jobs:
           for file in test_legacy_document_quality.py test_legacy_viewer_source.py test_legacy_viewer_sections.py test_legacy_schedule_gate.py test_legacy_no_metrics_recovery.py; do
             "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c "import sys,runpy; sys.path.insert(0,'scripts'); sys.path.insert(0,'.'); runpy.run_path('scripts/$file',run_name='__main__')"
           done
+      - name: Fail-closed restore and bounded certification regression tests
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/version-pit-stage6-20261014/test_finalization.py
       - name: Verify preserved sixty originals and existing financial outputs without reprocessing
         env:
           GH_TOKEN: ${{ github.token }}
@@ -171,7 +174,7 @@ jobs:
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/dart-history-stage5-20261014/verify_responses.py
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/version-pit-stage6-20261014/audit_versions.py --output "$RUNNER_TEMP/financial-repair/stage6"
-          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c 'import os,pathlib; actual=pathlib.Path(os.environ["RUNNER_TEMP"])/"financial-repair/stage6"; expected=pathlib.Path("docs/audits/version-pit-stage6-20261014"); names=["stage6_details.csv","stage6_version_chains.json","signal_tests.csv","summary.json","calendar_research.json"]; [(print(n,"bytes-identical"), (_ for _ in ()).throw(AssertionError(n)) if (actual/n).read_bytes()!=(expected/n).read_bytes() else None) for n in names]'
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c 'import os,pathlib; actual=pathlib.Path(os.environ["RUNNER_TEMP"])/"financial-repair/stage6"; expected=pathlib.Path("docs/audits/version-pit-stage6-20261014/finalization-20261015/results"); names=["stage6_details.csv","stage6_version_chains.json","signal_tests.csv","summary.json","calendar_research.json"]; [(print(n,"bytes-identical"), (_ for _ in ()).throw(AssertionError(n)) if (actual/n).read_bytes()!=(expected/n).read_bytes() else None) for n in names]'
       - name: One public official calendar investigation without credentials
         if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage6-krx-proof]') }}
         run: |

@@ -1,0 +1,32 @@
+test_budget_no_calls (__main__.CollectionTests.test_budget_no_calls) ... ok
+test_corrupt_xml_held (__main__.CollectionTests.test_corrupt_xml_held) ... ok
+test_duplicate_plan_no_calls (__main__.CollectionTests.test_duplicate_plan_no_calls) ... ok
+test_encoded_primary_evidence_identity (__main__.CollectionTests.test_encoded_primary_evidence_identity) ... ok
+test_exact_success (__main__.CollectionTests.test_exact_success) ... ok
+test_exception_url_never_emitted (__main__.CollectionTests.test_exception_url_never_emitted) ... ok
+test_existing_checkpoint_not_overwritten (__main__.CollectionTests.test_existing_checkpoint_not_overwritten) ... ok
+test_literal_credential_inside_compressed_zip (__main__.CollectionTests.test_literal_credential_inside_compressed_zip) ... ok
+test_missing_auth_no_request (__main__.CollectionTests.test_missing_auth_no_request) ... ok
+test_preserved_documents_never_redownloaded (__main__.CollectionTests.test_preserved_documents_never_redownloaded) ... ok
+test_rate_error_preserved_no_retry (__main__.CollectionTests.test_rate_error_preserved_no_retry) ... ok
+test_real_plan_from_preserved_metadata (__main__.CollectionTests.test_real_plan_from_preserved_metadata) ... ok
+test_wrong_corp_not_saved (__main__.CollectionTests.test_wrong_corp_not_saved) ... ok
+test_xml_escaped_credential (__main__.CollectionTests.test_xml_escaped_credential) ... ok
+test_actual_N12_N14_receipt_boundaries (__main__.PolicyTests.test_actual_N12_N14_receipt_boundaries) ... ok
+test_candidate_root_not_certified_by_matching_title (__main__.PolicyTests.test_candidate_root_not_certified_by_matching_title) ... ok
+test_current_name_cannot_certify_past_security (__main__.PolicyTests.test_current_name_cannot_certify_past_security) ... ok
+test_delisted_fixture_not_excluded_by_current_survival (__main__.PolicyTests.test_delisted_fixture_not_excluded_by_current_survival) ... ok
+test_explicit_same_day_reference_beats_root (__main__.PolicyTests.test_explicit_same_day_reference_beats_root) ... ok
+test_later_correction_excluded_before_and_on_receipt_day (__main__.PolicyTests.test_later_correction_excluded_before_and_on_receipt_day) ... ok
+test_later_correction_only_next_session (__main__.PolicyTests.test_later_correction_only_next_session) ... ok
+test_malformed_first_submission_not_repaired (__main__.PolicyTests.test_malformed_first_submission_not_repaired) ... ok
+test_missing_mapping_or_calendar_blocks_investment (__main__.PolicyTests.test_missing_mapping_or_calendar_blocks_investment) ... ok
+test_no_calendar_no_weekday_fallback (__main__.PolicyTests.test_no_calendar_no_weekday_fallback) ... ok
+test_receipt_day_never_usable (__main__.PolicyTests.test_receipt_day_never_usable) ... ok
+test_two_same_day_corrections_never_order_by_receipt_number (__main__.PolicyTests.test_two_same_day_corrections_never_order_by_receipt_number) ... ok
+test_unknown_new_version_blocks_stale_fallback (__main__.PolicyTests.test_unknown_new_version_blocks_stale_fallback) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.099s
+
+OK

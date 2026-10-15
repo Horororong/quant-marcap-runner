@@ -91,6 +91,8 @@ def main():
         result['status']='PASS'
     except RestoreGap as exc:
         result['restore_error']={'kind':exc.kind,'http_status':exc.http,'retries':0}
+        # Missing evidence remains UNVERIFIED and must fail the CI process.
+        exit_code=2
     except Exception as exc:
         result['status']='FAIL';result['verification_error_type']=type(exc).__name__;exit_code=1
     (a.output/'verification.json').write_text(json.dumps(result,indent=2)+'\n')

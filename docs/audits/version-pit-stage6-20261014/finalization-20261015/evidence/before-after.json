@@ -1,0 +1,34 @@
+{
+  "baseline_commit": "859bc1236423acc8824460d2e621e123ddf464c5",
+  "old_counts": {
+    "PASS": 38,
+    "UNVERIFIED": 69,
+    "FAIL": 1
+  },
+  "new_counts": {
+    "PASS": 33,
+    "UNVERIFIED": 74,
+    "FAIL": 1
+  },
+  "old_immediate_predecessor_grades": {
+    "CERTIFIED": 2,
+    "CANDIDATE": 4
+  },
+  "new_immediate_predecessor_grades": {
+    "CANDIDATE": 6
+  },
+  "full_chain_certified_before": 1,
+  "full_chain_certified_after": 0,
+  "root_reference_edges_unchanged": true,
+  "primary_document_facts_unchanged": true,
+  "signal_tests_bytes_unchanged": true,
+  "calendar_research_bytes_unchanged": true,
+  "investment_approved": 0,
+  "result_sha256": {
+    "stage6_details.csv": "edf4aa19423c205adf0b05e1d7b6b986758b6431f1f4629b7f1deb42cb4f5589",
+    "stage6_version_chains.json": "7ac0d472f1a0ad37f39caf4f539d908a173a56b1f68657f7c3adaffcabf64779",
+    "signal_tests.csv": "58cecb78ed99a185c572c587c59f1a149666b7aebf2d339afd1bf9d9d7ec97f1",
+    "summary.json": "43a1a5642def0e4dc7a0f6a10d374c96b1aa285d9b71a7b0a40034dd57ba7d16",
+    "calendar_research.json": "34fd19310c4487f8c2a2819edd976e474daa38af2936834921094102386ddebd"
+  }
+}

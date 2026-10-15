@@ -1,0 +1,146 @@
+{
+  "tests": 166,
+  "suites": [
+    {
+      "file": "tests/test_financial_accuracy_repair.py",
+      "command": [
+        "/workspace/financial-repair/runtime/.venv/bin/python",
+        "-I",
+        "-c",
+        "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('tests/test_financial_accuracy_repair.py',run_name=\"__main__\")"
+      ],
+      "tests": 21,
+      "exit_code": 0,
+      "log": "finalization-20261015/evidence/test-logs/test_financial_accuracy_repair.log",
+      "log_sha256": "47decf3a8561662c036780c1bcb781828458da17fab92fe9bdf4a9eac1a3616c"
+    },
+    {
+      "file": "tests/test_financial_extraction_stage3.py",
+      "command": [
+        "/workspace/financial-repair/runtime/.venv/bin/python",
+        "-I",
+        "-c",
+        "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('tests/test_financial_extraction_stage3.py',run_name=\"__main__\")"
+      ],
+      "tests": 17,
+      "exit_code": 0,
+      "log": "finalization-20261015/evidence/test-logs/test_financial_extraction_stage3.log",
+      "log_sha256": "4d88fa4211d97fa3cfe21757ef25e763fb5a484c856391758e97397feece942c"
+    },
+    {
+      "file": "docs/audits/historical-pit-stage4-20261014/test_stage4_audit.py",
+      "command": [
+        "/workspace/financial-repair/runtime/.venv/bin/python",
+        "-I",
+        "-c",
+        "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('docs/audits/historical-pit-stage4-20261014/test_stage4_audit.py',run_name=\"__main__\")"
+      ],
+      "tests": 5,
+      "exit_code": 0,
+      "log": "finalization-20261015/evidence/test-logs/test_stage4_audit.log",
+      "log_sha256": "f8a7fe9d422ec500f3076e95926e933faa52bfd4f088b90408bcd771d809eabc"
+    },
+    {
+      "file": "docs/audits/dart-history-stage5-20261014/test_collection.py",
+      "command": [
+        "/workspace/financial-repair/runtime/.venv/bin/python",
+        "-I",
+        "-c",
+        "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('docs/audits/dart-history-stage5-20261014/test_collection.py',run_name=\"__main__\")"
+      ],
+      "tests": 12,
+      "exit_code": 0,
+      "log": "finalization-20261015/evidence/test-logs/test_collection.log",
+      "log_sha256": "de036149bf370f0c72cc55976386a8e263f71384ff7a34612d7d962aceddad75"
+    },
+    {
+      "file": "docs/audits/version-pit-stage6-20261014/test_stage6.py",
+      "command": [
+        "/workspace/financial-repair/runtime/.venv/bin/python",
+        "-I",
+        "docs/audits/version-pit-stage6-20261014/test_stage6.py"
+      ],
+      "tests": 27,
+      "exit_code": 0,
+      "log": "finalization-20261015/evidence/test-logs/test_stage6.log",
+      "log_sha256": "611550355cc91bd3a0af6f8853e9281abf977d4d13f8cc26ebdc743374249b34"
+    },
+    {
+      "file": "scripts/test_legacy_document_quality.py",
+      "command": [
+        "/workspace/financial-repair/runtime/.venv/bin/python",
+        "-I",
+        "-c",
+        "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('scripts/test_legacy_document_quality.py',run_name=\"__main__\")"
+      ],
+      "tests": 6,
+      "exit_code": 0,
+      "log": "finalization-20261015/evidence/test-logs/test_legacy_document_quality.log",
+      "log_sha256": "8b9d1ce11039a82b389e903f52a4223e027ac280d2df052507dabe2b656b0e73"
+    },
+    {
+      "file": "scripts/test_legacy_viewer_source.py",
+      "command": [
+        "/workspace/financial-repair/runtime/.venv/bin/python",
+        "-I",
+        "-c",
+        "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('scripts/test_legacy_viewer_source.py',run_name=\"__main__\")"
+      ],
+      "tests": 48,
+      "exit_code": 0,
+      "log": "finalization-20261015/evidence/test-logs/test_legacy_viewer_source.log",
+      "log_sha256": "e1e940fe2127ffca4d202b8fe79356f0114ad8ec61f60de5292ce1173fccfbb5"
+    },
+    {
+      "file": "scripts/test_legacy_viewer_sections.py",
+      "command": [
+        "/workspace/financial-repair/runtime/.venv/bin/python",
+        "-I",
+        "-c",
+        "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('scripts/test_legacy_viewer_sections.py',run_name=\"__main__\")"
+      ],
+      "tests": 8,
+      "exit_code": 0,
+      "log": "finalization-20261015/evidence/test-logs/test_legacy_viewer_sections.log",
+      "log_sha256": "c038b3a3ea05f8807f8a1b513ef11bc2cf8f65ccd50ce55a1aed137de57e3766"
+    },
+    {
+      "file": "scripts/test_legacy_schedule_gate.py",
+      "command": [
+        "/workspace/financial-repair/runtime/.venv/bin/python",
+        "-I",
+        "-c",
+        "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('scripts/test_legacy_schedule_gate.py',run_name=\"__main__\")"
+      ],
+      "tests": 6,
+      "exit_code": 0,
+      "log": "finalization-20261015/evidence/test-logs/test_legacy_schedule_gate.log",
+      "log_sha256": "170590ba7d76185e7aff4104be94e2f1542e6616f7d844eb94611ebdd47632f7"
+    },
+    {
+      "file": "scripts/test_legacy_no_metrics_recovery.py",
+      "command": [
+        "/workspace/financial-repair/runtime/.venv/bin/python",
+        "-I",
+        "-c",
+        "import sys,runpy; sys.path.insert(0,\"scripts\"); sys.path.insert(0,\".\"); runpy.run_path('scripts/test_legacy_no_metrics_recovery.py',run_name=\"__main__\")"
+      ],
+      "tests": 4,
+      "exit_code": 0,
+      "log": "finalization-20261015/evidence/test-logs/test_legacy_no_metrics_recovery.log",
+      "log_sha256": "3b7b9d718a1eceb8f79b3ba2da56e77bbe65f77626d98f9c44fcf7cfdd0cb462"
+    },
+    {
+      "file": "docs/audits/version-pit-stage6-20261014/test_finalization.py",
+      "command": [
+        "/workspace/financial-repair/runtime/.venv/bin/python",
+        "-I",
+        "/workspace/quant-marcap-runner/docs/audits/version-pit-stage6-20261014/test_finalization.py"
+      ],
+      "tests": 12,
+      "exit_code": 0,
+      "log": "finalization-20261015/evidence/test-logs/test_finalization.log",
+      "log_sha256": "c17cf52c753358c8bc635add8867b919c7be6b93c32f7bf1d194213513627152"
+    }
+  ]
+}
