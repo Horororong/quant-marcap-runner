@@ -1,0 +1,109 @@
+{
+  "years": {
+    "2019": {
+      "path": "data/krx_equities/yearly/marcap-2019.parquet",
+      "bytes": 20548266,
+      "sha256": "c60efce88cf71814174b574b429d1e277b03a1add373eaf91406c692f5ae185e",
+      "columns": [
+        "Date",
+        "Rank",
+        "Code",
+        "Name",
+        "Market",
+        "Dept",
+        "MarketId",
+        "Open",
+        "High",
+        "Low",
+        "Close",
+        "Volume",
+        "Amount",
+        "Changes",
+        "ChangeCode",
+        "ChangesRatio",
+        "Marcap",
+        "Stocks",
+        "Change",
+        "UpDown",
+        "Comp"
+      ],
+      "rows": 555287,
+      "codes": 2341,
+      "start": "2019-01-02",
+      "end": "2019-12-30",
+      "sessions_per_market": {
+        "KOSDAQ": 246,
+        "KOSPI": 246
+      },
+      "duplicate_date_code": 0,
+      "missing_fields": {
+        "Close": 0,
+        "Volume": 0,
+        "Marcap": 0,
+        "ChangesRatio": 0
+      }
+    },
+    "2020": {
+      "path": "data/krx_equities/yearly/marcap-2020.parquet",
+      "bytes": 21987765,
+      "sha256": "b8457fa399a3801558f06264bb2a16c444d1517caf7505fc3e7c24d7c9d036fd",
+      "columns": [
+        "Date",
+        "Rank",
+        "Code",
+        "Name",
+        "Market",
+        "Dept",
+        "MarketId",
+        "Open",
+        "High",
+        "Low",
+        "Close",
+        "Volume",
+        "Amount",
+        "Changes",
+        "ChangeCode",
+        "ChangesRatio",
+        "Marcap",
+        "Stocks",
+        "Change",
+        "UpDown",
+        "Comp"
+      ],
+      "rows": 580252,
+      "codes": 2426,
+      "start": "2020-01-02",
+      "end": "2020-12-30",
+      "sessions_per_market": {
+        "KOSDAQ": 248,
+        "KOSPI": 248
+      },
+      "duplicate_date_code": 0,
+      "missing_fields": {
+        "Close": 0,
+        "Volume": 0,
+        "Marcap": 0,
+        "ChangesRatio": 0
+      }
+    }
+  },
+  "sources": {
+    "data/indices/KOSPI.csv": {
+      "bytes": 763682,
+      "sha256": "bc5a9590454b10078b6156c4ea0e92562f7b780630ab71c09ca1344fc9ed15a0"
+    },
+    "config/kr_corporate_actions.csv": {
+      "bytes": 3971,
+      "sha256": "839eaf2945817fdb3459dae3ef287ce11d94da443df1668aa1a593c07a230662"
+    },
+    "config/kr_corporate_action_gaps.json": {
+      "bytes": 351,
+      "sha256": "6b550b783e1666c187ed52b115c429f00dbae49b80a627fadfe72209ca7398e3"
+    },
+    "config/strategies/kr_equity_size_deciles_research.json": {
+      "bytes": 1632,
+      "sha256": "be81bc9b640880e921a28eed67a578df598105470074a58f2f66cf69b754f7e3"
+    }
+  },
+  "certification": "RESEARCH_ONLY_NOT_INVESTMENT_CERTIFIED"
+}

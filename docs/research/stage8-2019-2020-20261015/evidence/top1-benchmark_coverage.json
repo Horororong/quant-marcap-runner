@@ -1,0 +1,11 @@
+{
+  "source": "index",
+  "symbol": "KOSPI",
+  "start": "2019-01-02",
+  "end": "2020-12-30",
+  "observations": 494,
+  "exact_date_alignment": true,
+  "return_basis": "price_index_close",
+  "includes_dividends": false,
+  "path": "data/indices/KOSPI.csv"
+}

@@ -1,0 +1,89 @@
+{
+  "preflight_contract_version": "3",
+  "status": "ok",
+  "phase": "ready",
+  "strategy_id": "stage8_kr_equity_report_validation_2019_2020_2019_2020",
+  "strategy_fingerprint": "6a600e61130b3c6cb53e26ce86fb88ec993214041946880dc86719c757307955",
+  "versions": {
+    "schema_version": "1.0",
+    "dsl_machine_contract_version": "23",
+    "factor_registry_version": "7",
+    "execution_engine_version": "v2-16-exec-3",
+    "corporate_action_registry_version": "5",
+    "project_template_version": "v2-16"
+  },
+  "requested_period": {
+    "start": "2019-01-01",
+    "end": "2020-12-31"
+  },
+  "krx_panel": {
+    "actual_start": "2019-01-02",
+    "actual_end": "2020-12-30",
+    "rows": 1135539,
+    "distinct_codes": 2443,
+    "markets": [
+      "KOSDAQ",
+      "KOSPI"
+    ]
+  },
+  "signal_dates": [
+    "2019-01-31",
+    "2019-04-30",
+    "2019-07-31",
+    "2019-10-31",
+    "2020-01-31",
+    "2020-04-29",
+    "2020-07-31",
+    "2020-10-30"
+  ],
+  "factor_sources": [
+    "krx"
+  ],
+  "provider_coverage": [],
+  "corporate_action_audit": {
+    "coverage": "known evidence gaps only; historical corporate-action completeness remains unverified",
+    "policy": "shared signal selection and lag; positive planned holdings; no NAV, drift or cost calculation",
+    "selection_performed": false,
+    "known_gap_count": 0,
+    "executed_target_count": 0,
+    "exposures": []
+  },
+  "history_coverage": {
+    "history_audit_contract_version": "1",
+    "status": "complete",
+    "calendar": "XKRX",
+    "calendar_package_version": "4.13.2",
+    "requested_start": "2019-01-01",
+    "requested_end": "2020-12-31",
+    "expected_first_session": "2019-01-02",
+    "expected_last_session": "2020-12-30",
+    "expected_sessions": 494,
+    "markets": {
+      "KOSDAQ": {
+        "status": "complete",
+        "observed_sessions": 494,
+        "missing_sessions": [],
+        "unexpected_dates": []
+      },
+      "KOSPI": {
+        "status": "complete",
+        "observed_sessions": 494,
+        "missing_sessions": [],
+        "unexpected_dates": []
+      }
+    },
+    "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+  },
+  "benchmark": {
+    "source": "index",
+    "symbol": "KOSPI",
+    "start": "2019-01-02",
+    "end": "2020-12-30",
+    "observations": 494,
+    "exact_date_alignment": true,
+    "return_basis": "price_index_close",
+    "includes_dividends": false,
+    "path": "data/indices/KOSPI.csv"
+  },
+  "ready_for_execution": true
+}
