@@ -1,0 +1,90 @@
+{
+  "checked_at_utc": "2026-10-15",
+  "acquisition": "approved web tool extracted text/search results; not HTTP response-byte archives",
+  "raw_response_archives_preserved": false,
+  "official_raw_response_sha256": null,
+  "warning": "Hashes of local authored summaries are not hashes of original official documents.",
+  "sources": [
+    {
+      "id": "E01",
+      "url": "https://kind.krx.co.kr/external/2020/03/06/000628/20200303000219/70471.htm",
+      "identifier": "external document 20200303000219/70471; related KIND receipt 20191217000478",
+      "document_date_as_read": "2020-03-06",
+      "location": "3. 의안 주요내용 제6호; ※관련공시",
+      "observations": "AGM scheduled 2020-03-27; stock-dividend approval on proposed agenda; explicit related 2019-12-17 declaration link.",
+      "limits": "Not actual approval; path identifier is not certified receipt date."
+    },
+    {
+      "id": "E02",
+      "url": "https://kind.krx.co.kr/common/disclsviewer.do?acptno=20191217000478&langTpCd=0&method=search&orgid=K&rcpno=20191217000478&tran=Y",
+      "identifier": "KIND acptno 20191217000478",
+      "document_date_as_read": null,
+      "location": "viewer title and final-document notice; extracted view had 9 lines",
+      "observations": "Stock-dividend declaration title is visible; original body and amendment menu are absent from accessible extraction.",
+      "limits": "Original terms, final version and actual amendment existence/timing UNVERIFIED. Generic viewer notice alone proves no version edge."
+    },
+    {
+      "id": "E03",
+      "url": "https://kind.krx.co.kr/external/2020/03/12/001173/20200312002443/00591.htm",
+      "identifier": "external document 20200312002443/00591",
+      "document_date_as_read": "2020-03-12",
+      "location": "cover company/date; 제6호 의안 주식배당(안) table; 이익잉여금처분계산서 당기 처분예정",
+      "observations": "5% proposal; 0.05 ordinary shares per eligible share; 143928048 total minus 1605086 treasury = 142322962 eligible; 7116148 proposed new shares. Proposed fractional cash uses closing price before 20th AGM.",
+      "limits": "Retrospective proposal evidence only. Not 2019 PIT availability, record date, ex-date, approval result, delivery or listing proof."
+    },
+    {
+      "id": "E04",
+      "url": "https://www.etoday.co.kr/news/view/1835412",
+      "identifier": "news 1835412",
+      "document_date_as_read": "2019-12-17 17:57 (page timestamp, not official filing clock)",
+      "location": "title; article opening paragraph",
+      "observations": "Contemporary secondary report corroborates 0.05-per-share declaration and proposed total.",
+      "limits": "Not primary exchange action, entitlement or official publication-time certification."
+    },
+    {
+      "id": "E05",
+      "url": "https://kind.krx.co.kr/external/2022/12/19/000384/20221219000928/99858.htm",
+      "identifier": "20221219000928/99858",
+      "document_date_as_read": "2022-12-19 (URL; not separately certified)",
+      "location": "search result: ELW terms change; cited securities-market share-count formula",
+      "observations": "Search discovery only of a later ELW document; suggests investigating aggregate issuance denominator.",
+      "limits": "EXCLUDED from 2019 KOSDAQ stock pricing certification. Different year and instrument/regulatory scope."
+    },
+    {
+      "id": "E06",
+      "url": "https://kind.krx.co.kr/external/2021/12/21/000627/20211220000292/70874.htm",
+      "identifier": "20211220000292/70874",
+      "document_date_as_read": null,
+      "location": "search result: stock futures investment notice",
+      "observations": "Later derivatives adjustment notice found.",
+      "limits": "EXCLUDED. Futures rounding or multipliers do not prove 2019 cash-equity tick/base."
+    },
+    {
+      "id": "E07",
+      "url": "https://law.krx.co.kr/las/RefBon.jsp?lawid=000114&lawkd=B&pubdt=20191127&pubno=0000017520",
+      "identifier": "lawid 000114, pubdt 20191127, pubno 0000017520",
+      "document_date_as_read": null,
+      "location": "search result references KOSDAQ enforcement rule Article 17; actual open failed",
+      "observations": "Tool result: Failed to fetch; (400) Timeout fetching. No repeated request.",
+      "limits": "Tool acquisition failure, not an observed official-server HTTP response. Derivatives document itself excluded as direct cash-equity formula proof."
+    },
+    {
+      "id": "E08",
+      "url": "https://kr.investing.com/news/stock-market-news/article-388619",
+      "identifier": "secondary news article 388619",
+      "document_date_as_read": null,
+      "location": "search result 2020-04-24 additional-listing schedule",
+      "observations": "Candidate lead: 7116148 shares scheduled for listing 2020-04-24.",
+      "limits": "Search lead only; NOT official delivery/listing evidence or verified actual payment."
+    },
+    {
+      "id": "E09",
+      "url": "https://im-first-rate.tistory.com/55",
+      "identifier": "secondary blog 55",
+      "document_date_as_read": null,
+      "location": "search result",
+      "observations": "Candidate lead for 2019-12-27 ex-date.",
+      "limits": "Not official evidence. Blog wording confuses settlement/record dates; no legal dates adopted."
+    }
+  ]
+}

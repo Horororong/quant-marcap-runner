@@ -1,0 +1,79 @@
+{
+  "classification": "DIAGNOSTIC_HYPOTHESES_ONLY_NOT_EXECUTABLE_EVENTS",
+  "source": "docs/research/stage8-2019-2020-20261015/evidence/deciles-blocking-source-rows.csv",
+  "source_sha256": "7827459f4406f5a4d2d0418a70f0a948a7a065203813a2c733afc9c53a22adc2",
+  "source_provenance": "preserved secondary FinanceData/marcap observations; not an independent KRX tape",
+  "raw_source_rows": [
+    {
+      "Date": "2019-12-26",
+      "Code": "091990",
+      "Name": "셀트리온헬스케어",
+      "Close": "57300.0",
+      "ChangesRatio": "3.8",
+      "Stocks": "143928048",
+      "Volume": "2117916.0",
+      "Marcap": "8247077150400.0"
+    },
+    {
+      "Date": "2019-12-27",
+      "Code": "091990",
+      "Name": "셀트리온헬스케어",
+      "Close": "54100.0",
+      "ChangesRatio": "-0.92",
+      "Stocks": "143928048",
+      "Volume": "1563989.0",
+      "Marcap": "7786507396800.0"
+    },
+    {
+      "Date": "2019-12-30",
+      "Code": "091990",
+      "Name": "셀트리온헬스케어",
+      "Close": "53000.0",
+      "ChangesRatio": "-2.03",
+      "Stocks": "143928048",
+      "Volume": "643498.0",
+      "Marcap": "7628186544000.0"
+    }
+  ],
+  "percent_returns": {
+    "2019-12-27_raw_close": "-5.584642233856893542757417102966841186740",
+    "2019-12-27_reported_ChangesRatio": "-0.9200",
+    "2019-12-27_assumed_54600_base": "-0.9157509157509157509157509157509157509200",
+    "2019-12-27_assumed_1_05_equivalent_holder_value": "-0.8638743455497382198952879581151832460700",
+    "2019-12-30_raw_close": "-2.033271719038817005545286506469500924210",
+    "2019-12-30_reported_ChangesRatio": "-2.03"
+  },
+  "absolute_difference_bps": {
+    "2019-12-27_raw_vs_reported": "466.4642233856893542757417102966841186740",
+    "2019-12-27_assumed_54600_vs_reported": "0.4249084249084249084249084249084249080000",
+    "2019-12-27_assumed_1_05_vs_reported": "5.612565445026178010471204188481675393000",
+    "2019-12-27_assumed_holder_vs_assumed_base": "5.187657020117753102046295763573250485000",
+    "2019-12-30_raw_vs_reported": "0.3271719038817005545286506469500924210000"
+  },
+  "unverified_base_hypotheses_KRW": {
+    "previous_close_divided_by_1_05": "54571.42857142857142857142857142857142857",
+    "aggregate_share_count_dilution": "54600.42404012663949033831131121383836556",
+    "user_suggested_rounded_base": "54600"
+  },
+  "later_proposal_quantities": {
+    "total_old_shares": "143928048",
+    "eligible_old_shares_excluding_treasury": "142322962",
+    "proposed_new_shares": "7116148",
+    "proposed_new_over_total": "0.04944239916322633653726756580482492196379"
+  },
+  "hypothetical_per_old_share_value_KRW": {
+    "tradable_stock": "54100.0",
+    "unpaid_0_05_share_claim_marked_at_same_close": "2705.000",
+    "combined_value": "56805.000"
+  },
+  "cautions": [
+    "54600 is a hypothesis, not an official observed base price.",
+    "Two different unrounded base hypotheses exist; no rounding/tick rule is selected.",
+    "1.05 assumes a full gross entitlement marked at the ordinary-share price; no legal entitlement, delivery, tax, fraction, liquidity or NAV certification follows.",
+    "A reference-price return and an entitled holder's economic return need separate validation contracts.",
+    "No official 2019-12-26 return comparison is possible from these three rows alone."
+  ],
+  "guard_tolerance_bps_unchanged": 1,
+  "operating_data_modified": false,
+  "decile_rerun_performed": false
+}

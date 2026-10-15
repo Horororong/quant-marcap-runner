@@ -1,0 +1,33 @@
+{
+  "classification": "RESEARCH_ONLY_BLOCKED",
+  "official_evidence_checks": 10,
+  "official_evidence_counts": {
+    "PASS": 2,
+    "FAIL": 0,
+    "UNVERIFIED": 8
+  },
+  "PASS_scope": "later official proposal rate and proposed fractional cash method only",
+  "corporate_action_certified": false,
+  "official_54600_base_verified": false,
+  "official_2019_ex_date_verified": false,
+  "root_cause_grade": "PLAUSIBLE_NOT_OFFICIALLY_CERTIFIED",
+  "stock_dividend_engine_supported": false,
+  "engine_or_registry_modified": false,
+  "decile_rerun_performed": false,
+  "new_regression_tests_executed": 0,
+  "previous_first_failure": {
+    "stage": 8,
+    "date": "2019-12-27",
+    "code": "091990",
+    "decile": "D01",
+    "exit_code": 4,
+    "tolerance_bps": 1
+  },
+  "investment_use_allowed": false,
+  "stage6_investment_PIT_approved": 0,
+  "stage6_sample_count": 6,
+  "protected518_and_core64": "prior results preserved; no financial reprocessing",
+  "main_merged": false,
+  "bulk_backfill": false,
+  "internet_pip": false
+}

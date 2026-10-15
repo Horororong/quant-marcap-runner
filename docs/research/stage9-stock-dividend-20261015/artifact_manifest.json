@@ -1,0 +1,41 @@
+{
+  "baseline_remote_sha": "ab4850193da1cd8bd4137a35ab978eb5f166f550",
+  "baseline_local_sha": "07d0f882d6e54929159fb1711c0e372f85a94e43",
+  "baseline_tree_sha": "7546db07b2930aa98627df6bd7b8e6ed5047f6ec",
+  "scope": "new Stage9 research artifacts only; excludes this manifest itself",
+  "official_response_hashes_obtained": false,
+  "files": {
+    "arithmetic.json": {
+      "bytes": 3417,
+      "sha256": "d4068f2aa393b13734a52a42aeb552dd64cc56b5fad5dfe125cba48b187508c8"
+    },
+    "inspect_arithmetic.py": {
+      "bytes": 4621,
+      "sha256": "20365688f9ad98b5d043fa30e0cb49b7c9376fac2c17f945347af5fe3c5d9f84"
+    },
+    "preservation.json": {
+      "bytes": 21117,
+      "sha256": "98a8036b91d47705b1d2515bc44e0ee455685b4b6c957bb42466ce3751affe2f"
+    },
+    "reproduction.md": {
+      "bytes": 5929,
+      "sha256": "534d6294bdecee3f1e60fafb0b15a81194e11dc162751d94d24a2e06872345f8"
+    },
+    "source_observations.json": {
+      "bytes": 5265,
+      "sha256": "031fa5733c3855cc71a4d973cb7d6c384bbea2cc84f432d8eff0ec9bddc8cd99"
+    },
+    "stage9_details.csv": {
+      "bytes": 1980,
+      "sha256": "7437a7540cda327a54da3bca14933c4fb868c8465e44d41158c9df755044b401"
+    },
+    "stage9_report.md": {
+      "bytes": 10697,
+      "sha256": "1bc2eb8f0d7ab6980c9079430fddfb65a3b7ed47913c985ea385715511b295ea"
+    },
+    "status.json": {
+      "bytes": 1021,
+      "sha256": "e815f84727dcccb7bf42023db5ac096c5f29e36efc5c65187a4d5c511a2dd70e"
+    }
+  }
+}
