@@ -45,6 +45,7 @@ import numpy as np
 import pandas as pd
 
 from cash_share_exchange import CASH_EVENT, normalize_cash_exchanges
+from stock_dividend import reject_public_execution
 from execution_contract import EXECUTION_ENGINE_VERSION, PROJECT_TEMPLATE_VERSION, HELD_RETURN_TOLERANCE_BPS
 
 from quant_backtest_template_CURRENT import (
@@ -955,6 +956,7 @@ def _normalize_corporate_action_events(
     if ca["event_date"].isna().any():
         raise ValueError("corporate_action_events에 유효하지 않은 event_date가 있습니다.")
     ca["event_type"] = ca["event_type"].astype(str).str.strip().str.lower()
+    reject_public_execution(ca)
     if (~ca["event_type"].isin(["stock_merger", "stock_split"])).any():
         bad = sorted(ca.loc[~ca["event_type"].isin(["stock_merger", "stock_split"]), "event_type"].unique())
         raise ValueError(f"현재 지원하지 않는 corporate action 유형: {bad}")

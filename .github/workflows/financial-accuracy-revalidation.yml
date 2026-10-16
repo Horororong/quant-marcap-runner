@@ -14,12 +14,49 @@ on:
       - 'docs/audits/dart-history-stage5-20261014/**'
       - 'docs/audits/version-pit-stage6-20261014/**'
       - '.github/workflows/financial-accuracy-revalidation.yml'
+      - 'scripts/stock_dividend.py'
+      - 'scripts/test_stock_dividend*.py'
+      - 'scripts/collect_stock_dividend_metadata.py'
+      - 'docs/research/stage12-stock-dividend-20261016/**'
 permissions:
   contents: read
   actions: read
 jobs:
+  stage12-stock-dividend:
+    if: ${{ contains(github.event.head_commit.message, '[stage12]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore original pinned offline kit and verify dedicated Python
+        run: |
+          python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/financial-repair"
+          python "$RUNNER_TEMP/financial-repair/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/financial-repair/kit-parts" --destination "$RUNNER_TEMP/financial-repair/runtime"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I "$RUNNER_TEMP/financial-repair/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/financial-repair/verify.json"
+      - name: Shared subledger, fail-closed boundaries and existing engine E2E
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage12-stock-dividend-20261016/validate.py --output "$RUNNER_TEMP/stage12-validation"
+      - name: One bounded official exchange-disclosure metadata discovery
+        if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage12-official-proof]') }}
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I scripts/collect_stock_dividend_metadata.py --output "$RUNNER_TEMP/stage12-official"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stage12-stock-dividend-evidence
+          path: |
+            ${{ runner.temp }}/stage12-validation
+            ${{ runner.temp }}/stage12-official
+            ${{ runner.temp }}/financial-repair/verify.json
+          if-no-files-found: error
+          retention-days: 90
   fixed-kit:
-    if: ${{ !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
+    if: ${{ !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:

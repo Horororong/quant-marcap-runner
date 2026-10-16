@@ -26,6 +26,7 @@ from factor_registry import FACTOR_REGISTRY_VERSION, factor_catalog, factor_sour
 from krx_technical_factor_adapter import technical_factor_catalog
 from krx_history_audit import PRICE_DIFFERENCE_THRESHOLD_BPS
 from krx_market_normalization import MARKET_LABELS
+from stock_dividend import CONTRACT as STOCK_DIVIDEND_CONTRACT
 from strategy_dsl_aliases import alias_catalog, direction_alias_catalog
 from strategy_dsl import (
     build_strategy_json_schema,
@@ -143,6 +144,7 @@ def build_capabilities() -> dict:
             "read run_status.json; formal success requires nav_ready and report_ready; --execution-only requests research NAV explicitly",
         ],
         "corporate_actions": {
+            "stock_dividend_subledger": STOCK_DIVIDEND_CONTRACT,
             "supported_event_types": ["stock_merger", "stock_split", "cash_share_exchange"],
             "cash_exchange_contract": {
                 "entitlement": "completed legal exchange; no successor; share_ratio=0; fixed positive KRW cash_per_share",

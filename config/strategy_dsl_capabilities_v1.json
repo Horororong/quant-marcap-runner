@@ -115,6 +115,26 @@
     "merger_contract": "stock-only succession with zero cash_per_share; mixed stock/cash mergers rejected",
     "registry": "config/kr_corporate_actions.csv",
     "split_contract": "same code, shares_after/shares_before > 0, zero cash; event_date is trading resumption; adjusted event return still checked against exchange reference",
+    "stock_dividend_subledger": {
+      "certification": "synthetic and evidenced_research books only; no investment/PIT approval",
+      "economic_value": "settled cash + tradable shares + locked shares + explicitly marked rights; never equated to ChangesRatio",
+      "owner": "scripts/stock_dividend.py",
+      "price_reference": "Close / evidenced reference price - 1 versus ChangesRatio / 100; existing 1bp tolerance",
+      "public_execution": "blocked: pending-rights integration with target weights, costs and audit export is incomplete",
+      "receipt": "actual credit moves approved whole-share rights into locked shares without second income",
+      "rights": "ex-date opening quantities only; separate conditional/approved rights survive sales",
+      "scope": "quantity subledger and market-reference validation; not DSL execution support",
+      "tradability": "separate actual listing/release evidence; locked shares cannot be sold",
+      "unsupported": [
+        "fractional cash settlement",
+        "withholding/tax",
+        "shorts",
+        "borrowing",
+        "rejection/cancellation cash compensation"
+      ],
+      "valuation": "explicit as-of unit mark, evidence and rationale for every pending right; no default close/probability",
+      "version": "1"
+    },
     "supported_event_types": [
       "stock_merger",
       "stock_split",

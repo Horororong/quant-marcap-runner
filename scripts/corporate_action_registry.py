@@ -14,6 +14,7 @@ import pandas as pd
 import numpy as np
 
 from cash_share_exchange import CASH_EVENT, validate_cash_exchanges
+from stock_dividend import reject_public_execution
 from execution_contract import CORPORATE_ACTION_REGISTRY_VERSION
 
 CORPORATE_ACTION_FILE = "config/kr_corporate_actions.csv"
@@ -59,6 +60,7 @@ def load_corporate_actions(
         x[col] = x[col].fillna("").astype(str).str.replace(".0", "", regex=False).map(lambda v: v.zfill(6) if v else "")
 
     x["event_type"] = x["event_type"].astype(str).str.strip().str.lower()
+    reject_public_execution(x)
     x["share_ratio"] = pd.to_numeric(x["share_ratio"], errors="coerce")
     x["cash_per_share"] = pd.to_numeric(x["cash_per_share"], errors="coerce")
 

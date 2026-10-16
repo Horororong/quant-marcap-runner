@@ -1,3 +1,11 @@
+## Stage12 stock-dividend implementation in progress (2026-10-16)
+
+Read `docs/research/stage12-stock-dividend-20261016/checkpoint.md` and
+`docs/STOCK_DIVIDEND.md` first for this active task. Common rights subledger
+implemented; public stock-dividend execution remains blocked. Original Stage6
+collection/PIT0/6 and Stage11 four unresolved events are preserved. Final CI and
+official bounded metadata proof are not yet recorded as completed.
+
 ## Stage5 official DART history acquisition complete (same repair branch)
 
 Collection code651e6a48a9b0b75822ab244a2ab9e8266d026d9c; actual successful run38586232910.
