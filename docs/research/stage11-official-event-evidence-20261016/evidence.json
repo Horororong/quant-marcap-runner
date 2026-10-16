@@ -1,0 +1,187 @@
+{
+  "baseline_remote_sha": "5be8b720784f0f9a3817bdaee3fc2685a6905dc3",
+  "baseline_tree": "88675418f8cc7045590a65538057acb46e49982c",
+  "review_date": "2026-10-16",
+  "classification": "RESEARCH_ONLY_EVIDENCE_REVIEW_BLOCKED_FOR_EXECUTION",
+  "full_official_http_response_bytes_obtained": false,
+  "official_raw_response_sha256": null,
+  "local_hash_scope": "authored observations and existing repository artifacts, not original official HTTP bytes",
+  "sources": [
+    {
+      "id": "E11-01",
+      "url": "https://kind.krx.co.kr/external/2019/12/26/000462/20191223000799/99342.htm",
+      "title": "배당락 기준가격 안내(12월 결산법인)",
+      "external_document_id": "20191223000799/99342",
+      "location": "2. 주식배당락 기준가격 > 셀트리온 row; 5. 적용일; 6. 근거규정",
+      "web_extraction_lines": "13-20,30-31",
+      "short_exact_excerpt": "셀트리온 : 181,000원",
+      "effective_date_as_read": "2019.12.27(금)",
+      "cited_rule_as_read": "유가증권시장 업무규정 시행세칙 제30조",
+      "facts": [
+        "Official issuer-named stock-dividend ex-date reference price181000",
+        "Explicit application date2019-12-27",
+        "Cash-equity KOSPI Article30 citation"
+      ],
+      "limits": [
+        "No prior/event close or ChangesRatio in this notice",
+        "No actual clock verified; URL directory date is not certified availability time",
+        "No security code shown in extracted issuer row; link uses existing Stage10 issuer/code evidence and is not new legal historical mapping certification",
+        "Rule citation does not certify its complete formula, tick rule or version history"
+      ]
+    },
+    {
+      "id": "E11-02",
+      "url": "https://kind.krx.co.kr/external/2022/05/12/000580/20220512001227/11011.htm",
+      "title": "셀트리온 corrected FY2020 annual report (same source as Stage10 E10-01)",
+      "external_document_id": "20220512001227/11011",
+      "document_correction_date_context": "2022-05-12; source covers FY2020, notFY2022",
+      "location": "I.3 capital-change issuance history row2020.03.27; III OFS note22 retained earnings previous-year appropriation confirmed date and dividend; XI.2 AGM summary",
+      "web_extraction_lines": "798;6151-6175;8862-8869",
+      "short_exact_excerpts": [
+        "2020.03.27 | 주식배당 | 보통주 | 6,360,313",
+        "전기처분확정일: 2020년 3월 27일"
+      ],
+      "facts": [
+        "FY2019 appropriation confirmed2020-03-27; row identifies stock dividend6360313000KRW",
+        "6360313 ordinary shares reported as issued on2020-03-27",
+        "FY29 AGM adopted financial statements; not a separately named stock-dividend agenda in that table",
+        "FY30 AGM2021-03-26 and current appropriation remain planned/unapproved in this document's content despite2022 correction path"
+      ],
+      "limits": [
+        "Retrospective event facts only; no2019 signal availability",
+        "Issuance/capital transfer is not account credit/listing/trading",
+        "FY30 planned text is not proof of completed2021 approval",
+        "Full correction chain/earliest publication of each revised value not certified"
+      ]
+    },
+    {
+      "id": "E11-03",
+      "url": "https://kind.krx.co.kr/common/disclsviewer.do?acptNo=20201228000536&method=searchInitInfo",
+      "title": "셀트리온 배당락 기준가격 안내 viewer",
+      "identifier": "KIND acptNo20201228000536",
+      "location": "viewer shell only, extracted9 lines",
+      "facts": [
+        "Official viewer title exists for Celltrion"
+      ],
+      "limits": [
+        "Body/base/effective date not exposed; final-document warning alone does not certify an amendment",
+        "No retry, no invented external-document URL; not sufficient to certify2020 base"
+      ]
+    },
+    {
+      "id": "EXCLUDED-NEWS",
+      "url": "https://news.bizwatch.co.kr/article/market/2020/12/21/0006",
+      "location": "search result discussion of hypothetical dividend ex-price and its own calculation correction",
+      "limits": [
+        "Secondary commentary with hypothetical prices; not an official quote, applicable rule or actual base-price proof"
+      ]
+    },
+    {
+      "id": "REUSED-S9",
+      "repository_path": "docs/research/stage9-followup-20261015/evidence.json",
+      "limits": [
+        "Reuse of officially read5% proposal/approval/issuance facts; no new settlement or same-day availability certification"
+      ]
+    },
+    {
+      "id": "REUSED-S10",
+      "repository_path": "docs/research/stage10-return-diagnostic-20261016/case_evidence.json",
+      "limits": [
+        "Reuse of rate histories andHC2020 approval/issuance; no exact base/settlement proof"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "HC2019",
+      "code": "091990",
+      "issuer": "셀트리온헬스케어",
+      "market": "KOSDAQ",
+      "date": "2019-12-27",
+      "rate": "0.05",
+      "rate_evidence": "Stage9 E03; Stage9 followup A/B",
+      "official_ex_date": null,
+      "official_base": null,
+      "approval": "2020-03-27",
+      "approval_evidence": "Stage9 followup A",
+      "issuance_date": "2020-03-27",
+      "issuance_shares": "7116148",
+      "issuance_evidence": "Stage9 followup B",
+      "fraction_note": "Prior proposal uses pre-AGM close for fractional cash; actual processing not certified."
+    },
+    {
+      "id": "HC2020",
+      "code": "091990",
+      "issuer": "셀트리온헬스케어",
+      "market": "KOSDAQ",
+      "date": "2020-12-29",
+      "rate": "0.02",
+      "rate_evidence": "Stage10 E10-02",
+      "official_ex_date": null,
+      "official_base": null,
+      "approval": "2021-03-26",
+      "approval_evidence": "Stage10 E10-02 AGM summary",
+      "issuance_date": "2021-03-26",
+      "issuance_shares": "3003213",
+      "issuance_evidence": "Stage10 E10-02 issuance row",
+      "fraction_note": "Actual applicable fraction-cash processing not certified."
+    },
+    {
+      "id": "CT2019",
+      "code": "068270",
+      "issuer": "셀트리온",
+      "market": "KOSPI",
+      "date": "2019-12-27",
+      "rate": "0.05",
+      "rate_evidence": "Stage10 E10-01/03",
+      "official_ex_date": "2019-12-27",
+      "official_base": "181000",
+      "official_base_evidence": "E11-01",
+      "approval": "2020-03-27",
+      "approval_evidence": "E11-02 OFS note22 previous appropriation confirmed date + dividend row; XI.2 FY29 AGM adopted financial statements",
+      "issuance_date": "2020-03-27",
+      "issuance_shares": "6360313",
+      "issuance_evidence": "E11-02 capital changes row and OFS note22",
+      "fraction_note": "Actual applicable fraction-cash processing not certified."
+    },
+    {
+      "id": "CT2020",
+      "code": "068270",
+      "issuer": "셀트리온",
+      "market": "KOSPI",
+      "date": "2020-12-29",
+      "rate": "0.02",
+      "rate_evidence": "Stage10 E10-01/03",
+      "official_ex_date": null,
+      "official_base": null,
+      "approval": null,
+      "approval_evidence": "E11-02 says FY30 AGM/appropriation planned, not completed; original content not updated to approval by later correction date",
+      "issuance_date": null,
+      "issuance_shares": null,
+      "issuance_evidence": "FY2020 proposal for2675697 shares is not actual issuance proof",
+      "fraction_note": "Actual applicable fraction-cash processing not certified."
+    }
+  ],
+  "known_failed_paths_not_reopened": [
+    "https://law.krx.co.kr/las/RefBon.jsp?lawid=000113&lawkd=B&pubdt=20211027&pubno=0000019900",
+    "https://law.krx.co.kr/las/RefBon.jsp?lawid=000114&lawkd=B&pubdt=20191127&pubno=0000017520"
+  ],
+  "remaining_for_each_case": [
+    "official prior close, event close and reference-percent tape",
+    "then-effective cash-equity base formula plus tick/rounding and amendment applicability history",
+    "record date and settlement-defined eligible holder",
+    "actual account credit and official additional listing/first tradability",
+    "actual fractional cash and applicable tax/cash/liquidity treatment",
+    "certified economic holder return"
+  ],
+  "global_limits": {
+    "engine_support": "stock_dividend not supported; source/basis gap and event-ledger gap are separate",
+    "source_error_confirmed_cases": 0,
+    "fully_reconciled_cases": 0,
+    "investment_approved_cases": 0,
+    "operating_changes": 0,
+    "decile_reruns": 0,
+    "price_reference_and_economic_return": "different validation targets; no forced1bp equality",
+    "official_bases_not_reversed_from_returns": true
+  }
+}

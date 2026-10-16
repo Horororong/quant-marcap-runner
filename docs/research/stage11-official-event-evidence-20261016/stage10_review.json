@@ -1,0 +1,454 @@
+{
+  "scope": "Full reading/integrity inspection of existing Stage10; no diagnostic or backtest rerun",
+  "remote_sha": "5be8b720784f0f9a3817bdaee3fc2685a6905dc3",
+  "remote_tree": "88675418f8cc7045590a65538057acb46e49982c",
+  "files": {
+    "artifact_manifest.json": {
+      "bytes": 3490,
+      "sha256": "93a862013ed7de9bb4046a29c1ab1e6935986eeea3251a91d59f433065a31e7a"
+    },
+    "case_evidence.json": {
+      "bytes": 3609,
+      "sha256": "19ad614d17f85e1d6eb4b4f88bbe135776ab3a0d535478d181058ee2eef5490f"
+    },
+    "diagnose.py": {
+      "bytes": 11858,
+      "sha256": "a32708cf0751199804f00a71db623bbb6854d920c73f0addcfb6e86d2fc5f1af"
+    },
+    "reproduction.md": {
+      "bytes": 4213,
+      "sha256": "85396656a9771eaf0772590dc47b60d2ee46dca4f7ae68f581dc87b647a412e9"
+    },
+    "results/execution_plan.json": {
+      "bytes": 3654,
+      "sha256": "745c0343e16198c5294479feac6a9a0b70269fce4b8c55d722f5805b27659a74"
+    },
+    "results/history_coverage.json": {
+      "bytes": 734,
+      "sha256": "2e7f83d4f318344d6bf884ea569657c55e33c35b54a87cc5ddc98dd5069563bf"
+    },
+    "results/input_sha256.json": {
+      "bytes": 21315,
+      "sha256": "54bd29a59b51f10c6955cca6629e44eea7d5e2a338bd9ecf996cfba1243543e0"
+    },
+    "results/membership.csv": {
+      "bytes": 10738,
+      "sha256": "6432c2afd00c8084c4f982fb36e294dcc1628226572ce34881b900890983f3b0"
+    },
+    "results/missing_planned_observations.csv": {
+      "bytes": 49,
+      "sha256": "625fc87396748876b08c20c1a9dd0decb8f0a42b5871f99677d9d33e604a9abd"
+    },
+    "results/panel_mismatches.csv": {
+      "bytes": 91606,
+      "sha256": "9bb5bd127fe99b596616cd06dfef678cb90882e214915ff7b4dc5dc90dedc72e"
+    },
+    "results/panel_numeric_mismatches.csv": {
+      "bytes": 158134,
+      "sha256": "5e09f9ee2be466aa1df172adb4dc98e481e2a9c9dbe2a7a7208624ef441d06d8"
+    },
+    "results/panel_unverified.csv.gz": {
+      "bytes": 410760,
+      "sha256": "2ee9e00f72ce1c770b09bad1dbb3e5f127209fe60f3f85d22beaed3044e0e9c7"
+    },
+    "results/partition_audit.csv": {
+      "bytes": 151,
+      "sha256": "cbce606273df41a136c2fe055944dbc575ef3892561b8e76cc8c6e7f323b38aa"
+    },
+    "results/planned_by_code.csv": {
+      "bytes": 140,
+      "sha256": "b2ce60fcb442165ea8421468523e401403e124d5034efe3a60b0736f8d760856"
+    },
+    "results/planned_by_date.csv": {
+      "bytes": 37,
+      "sha256": "f1c231280a18ef5cda46b32f53c7960e8b4e724f96b86c9cb9cf7b5a97ca4084"
+    },
+    "results/planned_holding_mismatches.csv": {
+      "bytes": 1949,
+      "sha256": "2858cf61e9af40b05e6bf2ad7d9a6d5c7157490e5d4a159e663b578c15119ba1"
+    },
+    "results/planned_holding_observations.csv.gz": {
+      "bytes": 522494,
+      "sha256": "57ead0556e55dde277ac6d3d491cb0bb527abecfccdd3efaab56f839a140594e"
+    },
+    "results/planned_top20.csv": {
+      "bytes": 1949,
+      "sha256": "2858cf61e9af40b05e6bf2ad7d9a6d5c7157490e5d4a159e663b578c15119ba1"
+    },
+    "results/registered_events_in_period.csv": {
+      "bytes": 449,
+      "sha256": "1ff4dceb380fa4c7981f13b850c41ef940cebb0ade1a30232c9e5d046c65f27b"
+    },
+    "results/schedule.csv": {
+      "bytes": 609,
+      "sha256": "ee5cdf29d16c9ace74e594709793007f8bc63f8d6587b41e6e8c48a70688257b"
+    },
+    "results/summary.json": {
+      "bytes": 5186,
+      "sha256": "c484e17a593bb7c931daaa62e2ed7cd66dfe23c183de661a7aa2f197a6ab0793"
+    },
+    "results/target_only_observations.csv": {
+      "bytes": 10011,
+      "sha256": "fd9e5c01a97676649268c9504598af1be8eb0ce8cac149367ac789db39bcee41"
+    },
+    "runtime_verification.json": {
+      "bytes": 654,
+      "sha256": "246c0c42369143996b55725fa5ea7a99123ecfa209aea84c6545b401f4cdb115"
+    },
+    "stage10_report.md": {
+      "bytes": 11467,
+      "sha256": "9bb2d8fceadeac40d51444ac51aa7c736316782526f87ecb1a40d1b259db2537"
+    },
+    "verification.json": {
+      "bytes": 3662,
+      "sha256": "eb796360694325b714f672dda5a00b5c6c09c9b239959675e23eaf2fcc4452f8"
+    },
+    "verify_results.py": {
+      "bytes": 6141,
+      "sha256": "6d1467f21769a78ad3c3e6b2559c1ecd7bb2b890c906cd4e696d7e7f04774add"
+    }
+  },
+  "tables": {
+    "results/membership.csv": {
+      "rows": 59,
+      "columns": [
+        "Amount",
+        "Changes",
+        "ChangesRatio",
+        "Close",
+        "Code",
+        "Date",
+        "Marcap",
+        "Market",
+        "Name",
+        "Stocks",
+        "Volume",
+        "factor_rank__size",
+        "composite_score",
+        "decile",
+        "bucket_size",
+        "target_weight",
+        "eligible_count",
+        "signal_date"
+      ]
+    },
+    "results/missing_planned_observations.csv": {
+      "rows": 0,
+      "columns": [
+        "Date",
+        "Code",
+        "decile",
+        "origin_signal",
+        "comparison_status"
+      ],
+      "statuses": {}
+    },
+    "results/panel_mismatches.csv": {
+      "rows": 316,
+      "columns": [
+        "Date",
+        "Code",
+        "Name",
+        "Market",
+        "previous_date",
+        "previous_close",
+        "Close",
+        "ChangesRatio",
+        "close_return",
+        "difference_bps",
+        "absolute_difference_bps",
+        "Volume",
+        "previous_volume",
+        "Stocks",
+        "previous_stocks",
+        "shares_change_ratio",
+        "Changes",
+        "comparison_status",
+        "numeric_mismatch",
+        "planned_holding",
+        "possible_exposure",
+        "decile",
+        "origin_signal",
+        "target_decile",
+        "evidence_grade",
+        "cause_candidate",
+        "cause_clue",
+        "evidence_reference"
+      ],
+      "statuses": {
+        "comparable": 316
+      }
+    },
+    "results/panel_numeric_mismatches.csv": {
+      "rows": 535,
+      "columns": [
+        "Date",
+        "Code",
+        "Name",
+        "Market",
+        "previous_date",
+        "previous_close",
+        "Close",
+        "ChangesRatio",
+        "close_return",
+        "difference_bps",
+        "absolute_difference_bps",
+        "Volume",
+        "previous_volume",
+        "Stocks",
+        "previous_stocks",
+        "shares_change_ratio",
+        "Changes",
+        "comparison_status",
+        "numeric_mismatch",
+        "planned_holding",
+        "possible_exposure",
+        "decile",
+        "origin_signal",
+        "target_decile",
+        "evidence_grade",
+        "cause_candidate",
+        "cause_clue",
+        "evidence_reference"
+      ],
+      "statuses": {
+        "nontrading_boundary_UNVERIFIED": 219,
+        "comparable": 316
+      }
+    },
+    "results/panel_unverified.csv.gz": {
+      "rows": 41822,
+      "columns": [
+        "Date",
+        "Code",
+        "Name",
+        "Market",
+        "previous_date",
+        "previous_close",
+        "Close",
+        "ChangesRatio",
+        "close_return",
+        "difference_bps",
+        "absolute_difference_bps",
+        "Volume",
+        "previous_volume",
+        "Stocks",
+        "previous_stocks",
+        "shares_change_ratio",
+        "Changes",
+        "comparison_status",
+        "numeric_mismatch",
+        "planned_holding",
+        "possible_exposure",
+        "decile",
+        "origin_signal",
+        "target_decile",
+        "evidence_grade",
+        "cause_candidate",
+        "cause_clue",
+        "evidence_reference"
+      ],
+      "statuses": {
+        "first_observation_UNVERIFIED": 2443,
+        "nontrading_boundary_UNVERIFIED": 39379
+      }
+    },
+    "results/partition_audit.csv": {
+      "rows": 2,
+      "columns": [
+        "signal_date",
+        "eligible_count",
+        "bucket_count",
+        "minimum_bucket_size",
+        "maximum_bucket_size",
+        "ties_split_at_boundaries"
+      ]
+    },
+    "results/planned_by_code.csv": {
+      "rows": 2,
+      "columns": [
+        "Code",
+        "Name",
+        "count",
+        "maximum_absolute_difference_bps"
+      ]
+    },
+    "results/planned_by_date.csv": {
+      "rows": 2,
+      "columns": [
+        "Date",
+        "count"
+      ]
+    },
+    "results/planned_holding_mismatches.csv": {
+      "rows": 4,
+      "columns": [
+        "Date",
+        "Code",
+        "Name",
+        "Market",
+        "previous_date",
+        "previous_close",
+        "Close",
+        "ChangesRatio",
+        "close_return",
+        "difference_bps",
+        "absolute_difference_bps",
+        "Volume",
+        "previous_volume",
+        "Stocks",
+        "previous_stocks",
+        "shares_change_ratio",
+        "Changes",
+        "comparison_status",
+        "numeric_mismatch",
+        "planned_holding",
+        "possible_exposure",
+        "decile",
+        "origin_signal",
+        "target_decile",
+        "evidence_grade",
+        "cause_candidate",
+        "cause_clue",
+        "evidence_reference"
+      ],
+      "statuses": {
+        "comparable": 4
+      }
+    },
+    "results/planned_holding_observations.csv.gz": {
+      "rows": 12441,
+      "columns": [
+        "Date",
+        "Code",
+        "Name",
+        "Market",
+        "previous_date",
+        "previous_close",
+        "Close",
+        "ChangesRatio",
+        "close_return",
+        "difference_bps",
+        "absolute_difference_bps",
+        "Volume",
+        "previous_volume",
+        "Stocks",
+        "previous_stocks",
+        "shares_change_ratio",
+        "Changes",
+        "comparison_status",
+        "numeric_mismatch",
+        "planned_holding",
+        "possible_exposure",
+        "decile",
+        "origin_signal",
+        "target_decile",
+        "evidence_grade",
+        "cause_candidate",
+        "cause_clue",
+        "evidence_reference"
+      ],
+      "statuses": {
+        "comparable": 12441
+      }
+    },
+    "results/planned_top20.csv": {
+      "rows": 4,
+      "columns": [
+        "Date",
+        "Code",
+        "Name",
+        "Market",
+        "previous_date",
+        "previous_close",
+        "Close",
+        "ChangesRatio",
+        "close_return",
+        "difference_bps",
+        "absolute_difference_bps",
+        "Volume",
+        "previous_volume",
+        "Stocks",
+        "previous_stocks",
+        "shares_change_ratio",
+        "Changes",
+        "comparison_status",
+        "numeric_mismatch",
+        "planned_holding",
+        "possible_exposure",
+        "decile",
+        "origin_signal",
+        "target_decile",
+        "evidence_grade",
+        "cause_candidate",
+        "cause_clue",
+        "evidence_reference"
+      ],
+      "statuses": {
+        "comparable": 4
+      }
+    },
+    "results/registered_events_in_period.csv": {
+      "rows": 1,
+      "columns": [
+        "event_date",
+        "event_type",
+        "predecessor_code",
+        "predecessor_name",
+        "successor_code",
+        "successor_name",
+        "share_ratio",
+        "cash_per_share",
+        "source",
+        "source_url",
+        "notes"
+      ]
+    },
+    "results/schedule.csv": {
+      "rows": 20,
+      "columns": [
+        "decile",
+        "signal_date",
+        "execution_date",
+        "selected_count"
+      ]
+    },
+    "results/target_only_observations.csv": {
+      "rows": 33,
+      "columns": [
+        "Date",
+        "Code",
+        "Name",
+        "Market",
+        "previous_date",
+        "previous_close",
+        "Close",
+        "ChangesRatio",
+        "close_return",
+        "difference_bps",
+        "absolute_difference_bps",
+        "Volume",
+        "previous_volume",
+        "Stocks",
+        "previous_stocks",
+        "shares_change_ratio",
+        "Changes",
+        "comparison_status",
+        "numeric_mismatch",
+        "planned_holding",
+        "possible_exposure",
+        "decile",
+        "origin_signal",
+        "target_decile",
+        "evidence_grade",
+        "cause_candidate",
+        "cause_clue",
+        "evidence_reference"
+      ],
+      "statuses": {
+        "comparable": 33
+      }
+    }
+  },
+  "manifest_entries_matched": 25
+}

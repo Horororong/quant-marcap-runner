@@ -1,0 +1,138 @@
+{
+  "scope": "Bounded approved web search/open/find; not a collector; cache/HTTP request counts unavailable",
+  "search_batches": [
+    {
+      "batch": 1,
+      "queries": [
+        "\"셀트리온헬스케어\" \"배당락\" \"2020\" \"기준가격\"",
+        "\"셀트리온\" \"배당락\" \"2019-12-27\"",
+        "\"셀트리온\" \"배당락\" \"2020-12-29\"",
+        "\"셀트리온헬스케어\" \"추가상장\" \"2021\" \"주식배당\""
+      ]
+    },
+    {
+      "batch": 2,
+      "queries": [
+        "\"셀트리온\" \"2019\" \"배당락\" \"기준가격\"",
+        "\"셀트리온헬스케어\" \"2019-12-26\" \"배당락\"",
+        "\"셀트리온\" \"2021\" \"배당주식\"",
+        "\"주식배당\" \"2019\" \"코스닥\" \"호가가격단위\""
+      ]
+    },
+    {
+      "batch": 3,
+      "queries": [
+        "셀트리온 2020 주식배당 지급 안내",
+        "셀트리온헬스케어 제20기 주식배당 지급일 공고",
+        "셀트리온 2021 배당 신주 교부 상장 공고",
+        "셀트리온 배당락 20191226 20201228"
+      ]
+    },
+    {
+      "batch": 4,
+      "queries": [
+        "\"배당락 기준가격 안내\" \"2020\" \"셀트리온\" \"327,500\"",
+        "\"셀트리온헬스케어\" \"배당락\" \"2019/12/26\"",
+        "\"셀트리온헬스케어\" \"배당락\" \"2020/12/28\""
+      ]
+    },
+    {
+      "batch": 5,
+      "queries": [
+        "\"배당락 기준가격 안내\" \"2020.12.29\"",
+        "\"배당락\" \"2019\" \"A091990\"",
+        "\"배당락\" \"2020\" \"A091990\"",
+        "\"2019\" \"제30조\" \"배당락\" \"호가가격단위\""
+      ]
+    },
+    {
+      "batch": 6,
+      "queries": [
+        "\"2020\" \"배당락 기준가격 안내\""
+      ]
+    },
+    {
+      "batch": 7,
+      "queries": [
+        "\"셀트리온\" \"99311\" \"2020\"",
+        "\"셀트리온헬스케어\" \"70767\" \"2019\"",
+        "\"셀트리온헬스케어\" \"70767\" \"2020\"",
+        "\"셀트리온\" \"제29기\" \"배당\" \"지급\""
+      ]
+    },
+    {
+      "batch": 8,
+      "queries": [
+        "\"유가증권시장 업무규정 시행세칙\" \"2019\" filetype:pdf",
+        "\"코스닥시장 업무규정 시행세칙\" \"2020\" \"별표\" filetype:pdf"
+      ]
+    },
+    {
+      "batch": 9,
+      "queries": [
+        "\"셀트리온\" \"2020\" \"배당\" \"지급\"",
+        "\"셀트리온헬스케어\" \"추가상장\" \"3,003,213\"",
+        "\"셀트리온\" \"추가상장\" \"6,360,313\"",
+        "\"셀트리온\" \"주식배당\" \"단주\" \"2021\""
+      ]
+    }
+  ],
+  "search_queries": 30,
+  "primary_source_open_operations": 2,
+  "primary_source_find_operations": 6,
+  "known_failed_RefBon_URLs_reopened": 0,
+  "new_DART_API_calls": 0,
+  "new_KRX_API_calls": 0,
+  "terminal_external_network_calls": 0,
+  "collector_code_created": false,
+  "web_body_gap": {
+    "url": "https://kind.krx.co.kr/common/disclsviewer.do?acptNo=20201228000536&method=searchInitInfo",
+    "outcome": "Only9-line viewer shell; no actual base/body exposed",
+    "official_HTTP_status": null,
+    "retries": 0
+  },
+  "law_access": {
+    "action": "Reused Stage9/followup documented timeout failures; did not repeat RefBon requests",
+    "missing": "then-effective KOSPI/KOSDAQ formula and tick history not obtained",
+    "indexed_search_snippets": "Not certified original version; excluded later/derivative/KONEX material",
+    "terminal_policy": "restricted/enforced; official hosts absent; current credential bindings0; no bypass"
+  },
+  "github_restore": {
+    "local_original_state": "clean c8fb84cbd121c68e7cf2e678ceb03c8c8ca2858d; Stage10 absent",
+    "initial_local_lookup_error": "rg: docs/research/stage10-return-diagnostic-20261016: IO error for operation on docs/research/stage10-return-diagnostic-20261016: No such file or directory (os error 2)",
+    "shell_combined_exit": 0,
+    "note": "rg component reported failure; overall shell's later command returned0, not lookup success",
+    "contents_tool_failures": [
+      {
+        "root_file_index": 2,
+        "error": "tool rejected with empty object {}; no HTTP status or exit code provided",
+        "recovery": "used dedicated github_fetch_file capability instead of repeating contents GET"
+      },
+      {
+        "root_file_index": 3,
+        "error": "tool rejected with empty object {}; no HTTP status or exit code provided",
+        "recovery": "used dedicated github_fetch_file capability instead of repeating contents GET"
+      },
+      {
+        "root_file_index": 5,
+        "error": "tool rejected with empty object {}; no HTTP status or exit code provided",
+        "recovery": "used dedicated github_fetch_file capability instead of repeating contents GET"
+      },
+      {
+        "root_file_index": 7,
+        "error": "tool rejected with empty object {}; no HTTP status or exit code provided",
+        "recovery": "used dedicated github_fetch_file capability instead of repeating contents GET"
+      }
+    ],
+    "recovery": "Used dedicated github_fetch_file for exact commit UTF8/base64, then verified all26 Git blob SHA1 and25 manifest SHA256; no existing file overwritten",
+    "stage10_rerun": false,
+    "contents_failure_paths": [
+      "diagnose.py",
+      "reproduction.md",
+      "stage10_report.md",
+      "verify_results.py"
+    ],
+    "failure_root_cause": "Not observable from empty tool rejection objects; no HTTP status/stack details. Dedicated file capability succeeded. Not classified as transient and contents requests not repeated."
+  },
+  "metadata_limit": "A search involving327500 was a candidate lookup only; no resulting primary proof and no such number adopted as official. No unknown base computed by inverse price/return fitting."
+}

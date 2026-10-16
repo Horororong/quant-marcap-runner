@@ -1,0 +1,42 @@
+{
+  "scope": "New Stage11 artifacts only; hashes are local records, not official HTTP bytes",
+  "baseline_remote_sha": "5be8b720784f0f9a3817bdaee3fc2685a6905dc3",
+  "files": {
+    "access_log.json": {
+      "bytes": 5742,
+      "sha256": "3925664a4cc3d9ed60a849ed6d9a40886217e48546e6d3fa748d655b07b5271a"
+    },
+    "calculate.py": {
+      "bytes": 4525,
+      "sha256": "b85c7895b59a8caa366569dcffd115a2ae2c1e37a4682c903858228f3175d712"
+    },
+    "calculations.json": {
+      "bytes": 5495,
+      "sha256": "6b712b8218cb9860849e98d9af95a3630ad6f3bbccfd0b6b189954d1200ae1d5"
+    },
+    "evidence.json": {
+      "bytes": 8498,
+      "sha256": "11d9a405c3713ef2dc8c9c2c0b1988ffb925946bbb7df7ddfcd0dc6ad2be3f60"
+    },
+    "preservation.json": {
+      "bytes": 4991,
+      "sha256": "b8105c2988916fe0bf35e1c11be96d36a442780b44e220fec2a464b9adf02916"
+    },
+    "reproduction.md": {
+      "bytes": 5123,
+      "sha256": "fd93265bad435d0c84a1bf35fdb5924d617acae5656fb24dbdc37fc2b243e360"
+    },
+    "stage10_review.json": {
+      "bytes": 11740,
+      "sha256": "9889d556c61a7807a949951af5b724e0ec9c32180fd9f742887b3b0e4a4fd950"
+    },
+    "stage11_details.csv": {
+      "bytes": 9623,
+      "sha256": "08a77ce1641efc857ece5a51f721fa68ade412fa2a2d3ac0542df6e6cdbbe979"
+    },
+    "stage11_report.md": {
+      "bytes": 12526,
+      "sha256": "afb063723f658e0e3c331895073170946bcc6a986c78f7cf4b9cc6a04e6273dc"
+    }
+  }
+}
