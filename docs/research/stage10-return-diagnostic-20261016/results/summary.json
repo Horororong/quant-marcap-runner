@@ -1,0 +1,201 @@
+{
+  "classification": "RESEARCH_ONLY_DIAGNOSTIC",
+  "investment_use_allowed": false,
+  "baseline_commit": "6dfa430128b37cd49990232acf43f2882fcf20dc",
+  "strategy": "docs/research/stage8-2019-2020-20261015/deciles_research_only.json",
+  "tolerance_bps": 1.0,
+  "full_panel": {
+    "observations": 1135539,
+    "comparable": 1093717,
+    "not_comparable": 41822,
+    "mismatches": 316,
+    "mismatch_codes": 261,
+    "mismatch_dates": 151,
+    "numeric_mismatches_including_nontrading": 535,
+    "statuses": {
+      "comparable": 1093717,
+      "nontrading_boundary_UNVERIFIED": 39379,
+      "first_observation_UNVERIFIED": 2443
+    }
+  },
+  "planned_holdings": {
+    "observations": 12441,
+    "comparable": 12441,
+    "not_comparable": 0,
+    "mismatches": 4,
+    "mismatch_codes": 2,
+    "mismatch_dates": 2,
+    "numeric_mismatches_including_nontrading": 4,
+    "statuses": {
+      "comparable": 12441
+    }
+  },
+  "unheld_panel": {
+    "observations": 1123098,
+    "comparable": 1081276,
+    "not_comparable": 41822,
+    "mismatches": 312,
+    "mismatch_codes": 259,
+    "mismatch_dates": 151,
+    "numeric_mismatches_including_nontrading": 531,
+    "statuses": {
+      "comparable": 1081276,
+      "nontrading_boundary_UNVERIFIED": 39379,
+      "first_observation_UNVERIFIED": 2443
+    }
+  },
+  "planned_expected": 12441,
+  "missing_planned_observations": 0,
+  "selected_codes": 33,
+  "target_only": {
+    "observations": 33,
+    "comparable": 33,
+    "not_comparable": 0,
+    "mismatches": 0,
+    "mismatch_codes": 0,
+    "mismatch_dates": 0,
+    "numeric_mismatches_including_nontrading": 0,
+    "statuses": {
+      "comparable": 33
+    }
+  },
+  "per_decile": {
+    "D01": {
+      "observations": 1483,
+      "comparable": 1483,
+      "not_comparable": 0,
+      "mismatches": 1,
+      "mismatch_codes": 1,
+      "mismatch_dates": 1,
+      "numeric_mismatches_including_nontrading": 1,
+      "statuses": {
+        "comparable": 1483
+      }
+    },
+    "D02": {
+      "observations": 1483,
+      "comparable": 1483,
+      "not_comparable": 0,
+      "mismatches": 1,
+      "mismatch_codes": 1,
+      "mismatch_dates": 1,
+      "numeric_mismatches_including_nontrading": 1,
+      "statuses": {
+        "comparable": 1483
+      }
+    },
+    "D03": {
+      "observations": 1483,
+      "comparable": 1483,
+      "not_comparable": 0,
+      "mismatches": 0,
+      "mismatch_codes": 0,
+      "mismatch_dates": 0,
+      "numeric_mismatches_including_nontrading": 0,
+      "statuses": {
+        "comparable": 1483
+      }
+    },
+    "D04": {
+      "observations": 1236,
+      "comparable": 1236,
+      "not_comparable": 0,
+      "mismatches": 0,
+      "mismatch_codes": 0,
+      "mismatch_dates": 0,
+      "numeric_mismatches_including_nontrading": 0,
+      "statuses": {
+        "comparable": 1236
+      }
+    },
+    "D05": {
+      "observations": 1236,
+      "comparable": 1236,
+      "not_comparable": 0,
+      "mismatches": 0,
+      "mismatch_codes": 0,
+      "mismatch_dates": 0,
+      "numeric_mismatches_including_nontrading": 0,
+      "statuses": {
+        "comparable": 1236
+      }
+    },
+    "D06": {
+      "observations": 1236,
+      "comparable": 1236,
+      "not_comparable": 0,
+      "mismatches": 0,
+      "mismatch_codes": 0,
+      "mismatch_dates": 0,
+      "numeric_mismatches_including_nontrading": 0,
+      "statuses": {
+        "comparable": 1236
+      }
+    },
+    "D07": {
+      "observations": 1071,
+      "comparable": 1071,
+      "not_comparable": 0,
+      "mismatches": 0,
+      "mismatch_codes": 0,
+      "mismatch_dates": 0,
+      "numeric_mismatches_including_nontrading": 0,
+      "statuses": {
+        "comparable": 1071
+      }
+    },
+    "D08": {
+      "observations": 1071,
+      "comparable": 1071,
+      "not_comparable": 0,
+      "mismatches": 1,
+      "mismatch_codes": 1,
+      "mismatch_dates": 1,
+      "numeric_mismatches_including_nontrading": 1,
+      "statuses": {
+        "comparable": 1071
+      }
+    },
+    "D09": {
+      "observations": 1071,
+      "comparable": 1071,
+      "not_comparable": 0,
+      "mismatches": 1,
+      "mismatch_codes": 1,
+      "mismatch_dates": 1,
+      "numeric_mismatches_including_nontrading": 1,
+      "statuses": {
+        "comparable": 1071
+      }
+    },
+    "D10": {
+      "observations": 1071,
+      "comparable": 1071,
+      "not_comparable": 0,
+      "mismatches": 0,
+      "mismatch_codes": 0,
+      "mismatch_dates": 0,
+      "numeric_mismatches_including_nontrading": 0,
+      "statuses": {
+        "comparable": 1071
+      }
+    }
+  },
+  "requested_start": "2019-01-01",
+  "requested_end": "2020-12-31",
+  "first_observed": "2019-01-02 00:00:00",
+  "last_observed": "2020-12-30 00:00:00",
+  "market_sessions": 494,
+  "exact_registered_events_affecting_selections": 0,
+  "planned_exposed_sessions": 412,
+  "candidate_categories": {
+    "stock_dividend": 4
+  },
+  "raw_numeric_categories": {
+    "unknown": 531,
+    "stock_dividend": 4
+  },
+  "planned_mismatch_rate": 0.0003215175628968732,
+  "plan_limit": "Positive target membership before daily rebalance; no NAV/drift/cost/liquidity/unsupported-event rights ledger. Not completed holdings or certified investable results.",
+  "python": "3.12.14"
+}

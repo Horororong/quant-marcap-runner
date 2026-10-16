@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0",
+  "strategy_id": "stage8_kr_equity_size_deciles_research_2019_2020",
+  "strategy_fingerprint": "060768eb3d37f87e8452cc773cd3ce64babe350a01fa13f1f186a66c4aaeccd8",
+  "factor_registry_version": "7",
+  "execution_engine_version": "v2-16-exec-3",
+  "corporate_action_registry_version": "5",
+  "dsl_machine_contract_version": "23",
+  "preflight_contract_version": "3",
+  "history_audit_contract_version": "1",
+  "krx_market_normalization_version": "1",
+  "project_template_version": "v2-16",
+  "performance_template_version": "v2-18",
+  "asset_class": "kr_equity",
+  "data_contract": {
+    "price_universe": "data/krx_equities/yearly/marcap-YYYY.parquet",
+    "factor_sources": [
+      "krx"
+    ],
+    "pit_required": true,
+    "held_return_reference": "mandatory ChangesRatio/100 at execution; no automatic replacement of NAV returns",
+    "held_return_tolerance_bps": 1.0,
+    "session_coverage": "exact XKRX sessions in requested period for each requested market; fail on missing or unexpected dates"
+  },
+  "universe": {
+    "markets": [
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "filters": [
+      {
+        "field": "Marcap",
+        "op": "gte",
+        "value": 10000000000000
+      }
+    ],
+    "require_tradable_on_signal": true
+  },
+  "factors": [
+    {
+      "name": "size",
+      "source": "krx",
+      "field": "Marcap",
+      "direction": "low",
+      "weight": 1.0,
+      "transform": "identity"
+    }
+  ],
+  "factor_contracts": [
+    {
+      "name": "size",
+      "source": "krx",
+      "field": "Marcap",
+      "storage": "panel",
+      "description": "signal-date market capitalization"
+    }
+  ],
+  "filter_contracts": [
+    {
+      "field": "Marcap",
+      "source": "krx",
+      "storage": "panel",
+      "description": "signal-date market capitalization"
+    }
+  ],
+  "benchmark": {
+    "source": "index",
+    "symbol": "KOSPI"
+  },
+  "portfolio": {
+    "number_of_positions": null,
+    "weighting": "equal",
+    "selection": "deciles"
+  },
+  "decile_contract": {
+    "version": "1",
+    "bucket_count": 10,
+    "ordering": "D01 best composite score, D10 worst",
+    "partition": "contiguous balanced buckets; remainder assigned to best buckets first",
+    "tie_policy": "composite_score ascending, then zero-padded Code ascending; ties may split",
+    "minimum_eligible_universe": 10,
+    "small_universe_policy": "error",
+    "missing_factor_policy": "exclude intersection before ranking, same as top_n",
+    "weighting": "equal within each bucket",
+    "capital": "initial_capital applies independently to each of ten long-only portfolios",
+    "execution": "same PROJECT engine, lag, tradability, costs and verified corporate actions",
+    "metrics": "CURRENT postprocess only; no synthetic long-short spread NAV"
+  },
+  "rebalance": {
+    "frequency": "months",
+    "months": [
+      4
+    ],
+    "trading_day": "last"
+  },
+  "execution": {
+    "lag_sessions": 1,
+    "price": "next_close"
+  },
+  "cost_scenarios": {
+    "zero": {
+      "commission_bps": 0.0,
+      "sell_tax_bps": 0.0,
+      "spread_bps": 0.0,
+      "slippage_bps": 0.0,
+      "market_impact_bps": 0.0
+    },
+    "fixed_cost": {
+      "commission_bps": 1.5,
+      "sell_tax_bps": 15.0,
+      "spread_bps": 3.0,
+      "slippage_bps": 5.0,
+      "market_impact_bps": 0.0
+    }
+  },
+  "period": {
+    "start": "2019-01-01",
+    "end": "2020-12-31",
+    "book_start": "2019-01-01",
+    "book_end": "2020-12-31",
+    "as_of_date": "2020-12-31"
+  },
+  "initial_capital": 10000000.0,
+  "canonical_metrics_source": "scripts/quant_backtest_template_CURRENT.py",
+  "project_engine": "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py"
+}

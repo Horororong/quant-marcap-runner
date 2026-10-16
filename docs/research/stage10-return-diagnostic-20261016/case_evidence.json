@@ -1,0 +1,37 @@
+{
+  "scope": "Historical event-related clues only; all four exact code-date explanations remain UNVERIFIED. No factor input or executable event.",
+  "review_date": "2026-10-16",
+  "sources": [
+    {
+      "id": "E10-01",
+      "url": "https://kind.krx.co.kr/external/2022/05/12/000580/20220512001227/11011.htm",
+      "document": "Celltrion corrected FY2020 annual report, issuer identity checked; correction filed 2022-05-12",
+      "location": "I.6 major dividend indicators; web lines 16-51 and 900-927",
+      "verified_fact": "FY2020 (30th term): common stock dividend 0.02 share per share; FY2019 (29th term): 0.05 share per share. Same rates in corrected table. Historical dividend indicators only.",
+      "not_verified": "Exact ex-dates, official reference prices, 2019/2020 effective market rules, actual receipt/tradability dates, full amendment chain"
+    },
+    {
+      "id": "E10-02",
+      "url": "https://kind.krx.co.kr/external/2023/03/20/000902/20230320004068/11011.htm",
+      "document": "Celltrion Healthcare FY2022 annual report filed 2023-03-20",
+      "location": "6 dividend indicators web lines 5095-5114; 7-1 issuance history 5134-5150; shareholder resolution summary 6140-6149",
+      "verified_fact": "21st term FY2020 common dividend 0.02 share per share; issuance-history row 2021-03-26, stock dividend, common, 3,003,213 shares; same-date shareholder summary records dividend proposal approval.",
+      "not_verified": "2020-12-29 official ex-date/reference price, receipt/additional listing/tradability dates; issuance date is not receipt date"
+    },
+    {
+      "id": "E10-03",
+      "url": "https://kind.krx.co.kr/external/2021/03/10/000774/20210310002002/00660.htm",
+      "document": "Celltrion proxy solicitation material, filed 2021-03-10",
+      "location": "III financial-statement approval, retained earnings appropriation proposal web lines 1149-1161 and recent dividends 1530-1533",
+      "verified_fact": "Proposal lists current FY2020 stock dividend 2%, previous FY2019 5%. Corroboration of proposal/history, not completed FY2020 shareholder approval.",
+      "not_verified": "Exact price discontinuity explanation or completed FY2020 rights/payment lifecycle"
+    }
+  ],
+  "cases": [
+    {"code":"091990", "date":"2019-12-27", "cause_candidate":"stock_dividend", "clue":"Stage9 evidence: 5% proposal, approval and issuance; exact ex-date/reference price/receipt remain UNVERIFIED", "reference":"../stage9-followup-20261015/followup_report.md"},
+    {"code":"068270", "date":"2019-12-27", "cause_candidate":"stock_dividend", "clue":"E10-01/03: FY2019 dividend 0.05 share per share; event-date price link remains UNVERIFIED", "reference":"case_evidence.json#E10-01"},
+    {"code":"091990", "date":"2020-12-29", "cause_candidate":"stock_dividend", "clue":"E10-02: FY2020 dividend 0.02 share; 2021-03-26 approval/3,003,213 issuance history; exact ex-date/reference price/receipt remain UNVERIFIED", "reference":"case_evidence.json#E10-02"},
+    {"code":"068270", "date":"2020-12-29", "cause_candidate":"stock_dividend", "clue":"E10-01/03: FY2020 dividend 0.02 share per share; event-date price link remains UNVERIFIED", "reference":"case_evidence.json#E10-01"}
+  ],
+  "evidence_limits": "Web text read with document identity and table context. No new complete original HTTP response bytes/SHA acquired. Short facts paraphrased; no complete primary documents copied. Sources dated after signals establish retrospective historical clues, never PIT signal availability. Rates not derived by fitting prices. No failed law.krx.co.kr URLs retried. No bulk collection."
+}

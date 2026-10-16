@@ -1,0 +1,26 @@
+{
+  "history_audit_contract_version": "1",
+  "status": "complete",
+  "calendar": "XKRX",
+  "calendar_package_version": "4.13.2",
+  "requested_start": "2019-01-01",
+  "requested_end": "2020-12-31",
+  "expected_first_session": "2019-01-02",
+  "expected_last_session": "2020-12-30",
+  "expected_sessions": 494,
+  "markets": {
+    "KOSDAQ": {
+      "status": "complete",
+      "observed_sessions": 494,
+      "missing_sessions": [],
+      "unexpected_dates": []
+    },
+    "KOSPI": {
+      "status": "complete",
+      "observed_sessions": 494,
+      "missing_sessions": [],
+      "unexpected_dates": []
+    }
+  },
+  "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+}
