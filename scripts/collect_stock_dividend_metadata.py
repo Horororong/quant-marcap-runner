@@ -30,6 +30,7 @@ def acquire(output, key, fetch=transport.fetch):
             raise transport.Stop("AUTH_ENV_MISSING_OR_INVALID")
         for corp, security in TARGETS:
             expected_total = None
+            seen = set()
             for page in (1, 2):
                 params = {"corp_code": corp, "bgn_de": "20191201", "end_de": "20210430",
                           "last_reprt_at": "N", "pblntf_ty": "I", "page_count": "100", "page_no": str(page),
@@ -61,6 +62,9 @@ def acquire(output, key, fetch=transport.fetch):
                             or not re.fullmatch(r"\d{8}", row.get("rcept_dt", ""))
                             or not "20191201" <= row["rcept_dt"] <= "20210430"):
                         raise transport.Stop("INVALID_IDENTITY_OR_DATE", http, status)
+                    if row["rcept_no"] in seen:
+                        raise transport.Stop("DUPLICATE_RECEIPT", http, status)
+                    seen.add(row["rcept_no"])
                     if any(word in row.get("report_nm", "") for word in ["배당", "추가상장", "주주총회"]):
                         state["candidates"].append(row)
                 if page == pages:

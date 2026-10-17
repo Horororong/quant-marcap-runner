@@ -36,6 +36,28 @@ class TransportTests(unittest.TestCase):
         self.assertEqual(r["status"], "COMPLETE_LIMITED_METADATA_ONLY")
         self.assertFalse(r["backtest_eligible"])
 
+    def test_valid_limited_response_preserves_raw_and_candidate_identity(self):
+        def reply(params, key):
+            security = "068270" if params["corp_code"] == "00413046" else "091990"
+            row = dict(corp_code=params["corp_code"], stock_code=security,
+                       rcept_no="20201228000001", rcept_dt="20201228", report_nm="배당락 안내")
+            return 200, json.dumps(dict(status="000", total_count=1, total_page=1,
+                                       page_no=1, page_count=100, list=[row])).encode()
+        r = self.run_capture("x" * 40, reply)
+        self.assertEqual((r["requests"], len(r["responses"]), len(r["candidates"])), (2, 2, 2))
+        self.assertTrue(all(len(x["sha256"]) == 64 for x in r["responses"]))
+        self.assertNotIn("crtfc_key", r["responses"][0]["parameters"])
+
+    def test_page_budget_stops_before_additional_requests(self):
+        def reply(params, key):
+            rows = [dict(corp_code=params["corp_code"], stock_code="068270",
+                         rcept_no=f"20201228{i:06d}", rcept_dt="20201228", report_nm="기타") for i in range(100)]
+            return 200, json.dumps(dict(status="000", total_count=201, total_page=3,
+                                       page_no=1, page_count=100, list=rows)).encode()
+        r = self.run_capture("x" * 40, reply)
+        self.assertEqual(r["requests"], 1)
+        self.assertEqual(r["error"]["kind"], "DECLARED_PAGE_BUDGET_EXCEEDED")
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -10,7 +10,7 @@ from __future__ import annotations
 from copy import deepcopy
 from dataclasses import asdict, dataclass
 from datetime import date
-from decimal import Decimal, localcontext
+from decimal import Context, Decimal, InvalidOperation, localcontext
 import re
 from typing import Mapping
 
@@ -171,8 +171,9 @@ class StockDividendBook:
         # An invalid multi-action close must leave cash, rights, shares and log
         # exactly intact. No partially applied approval/credit/trade survives.
         draft = deepcopy(self)
-        with localcontext() as ctx:
-            ctx.prec = 50
+        entitlements, decisions, credits, listings, trades, marks = (
+            tuple(items) for items in (entitlements, decisions, credits, listings, trades, marks))
+        with localcontext(Context(prec=50)):
             result = draft._close(session, prices, entitlements, decisions, credits, listings, trades, marks)
         self.__dict__.update(draft.__dict__)
         return result
@@ -299,17 +300,21 @@ def validate_market_reference(*, session, security, close, reference_price, chan
     px, base = number(close, "close", positive=True), number(reference_price, "reference price", positive=True)
     if isinstance(changes_ratio_pct, (bool, float)):
         raise ValueError("ChangesRatio requires exact decimal")
-    reference = Decimal(changes_ratio_pct)
+    try:
+        reference = Decimal(changes_ratio_pct)
+    except (InvalidOperation, TypeError, ValueError):
+        raise ValueError("invalid ChangesRatio") from None
     if not reference.is_finite() or reference < -100:
         raise ValueError("invalid ChangesRatio")
-    with localcontext() as ctx:
-        ctx.prec = 50
+    with localcontext(Context(prec=50)):
         price_return = px / base - 1
         difference = abs(price_return - reference / 100) * 10000
     if difference > Decimal(str(HELD_RETURN_TOLERANCE_BPS)):
         raise ValueError("official-reference price check exceeds existing 1bp tolerance")
     return {"basis": "reference_price", "security": security, "session": session,
             "return": str(price_return), "difference_bps": str(difference),
+            "reference_price": str(base), "close": str(px), "changes_ratio_pct": str(reference),
+            "evidence": asdict(evidence), "tolerance_bps": str(HELD_RETURN_TOLERANCE_BPS),
             "economic_return_certified": False, "investment_approved": False}
 
 

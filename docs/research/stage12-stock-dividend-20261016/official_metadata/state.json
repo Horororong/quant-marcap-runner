@@ -1,0 +1,245 @@
+{
+  "status": "COMPLETE_LIMITED_METADATA_ONLY",
+  "requests": 2,
+  "responses": [
+    {
+      "file": "068270_page1.json",
+      "parameters": {
+        "corp_code": "00413046",
+        "bgn_de": "20191201",
+        "end_de": "20210430",
+        "last_reprt_at": "N",
+        "pblntf_ty": "I",
+        "page_count": "100",
+        "page_no": "1",
+        "sort": "date",
+        "sort_mth": "asc"
+      },
+      "http": 200,
+      "dart_status": "000",
+      "bytes": 17394,
+      "sha256": "4840d8b16244264f874986c41ec4671af6fb321033e3a9453cd704a2a4880289"
+    },
+    {
+      "file": "091990_page1.json",
+      "parameters": {
+        "corp_code": "00554024",
+        "bgn_de": "20191201",
+        "end_de": "20210430",
+        "last_reprt_at": "N",
+        "pblntf_ty": "I",
+        "page_count": "100",
+        "page_no": "1",
+        "sort": "date",
+        "sort_mth": "asc"
+      },
+      "http": 200,
+      "dart_status": "000",
+      "bytes": 7377,
+      "sha256": "0f3c0e442e6d7f0e2d287ddfb5e4f886ff1daaa2ff6612be1a71c16b0a5e395a"
+    }
+  ],
+  "candidates": [
+    {
+      "corp_code": "00413046",
+      "corp_name": "셀트리온",
+      "stock_code": "068270",
+      "corp_cls": "Y",
+      "report_nm": "주식배당결정",
+      "rcept_no": "20191218800434",
+      "flr_nm": "셀트리온",
+      "rcept_dt": "20191218",
+      "rm": "유"
+    },
+    {
+      "corp_code": "00413046",
+      "corp_name": "셀트리온",
+      "stock_code": "068270",
+      "corp_cls": "Y",
+      "report_nm": "주주총회소집결의",
+      "rcept_no": "20200219800388",
+      "flr_nm": "셀트리온",
+      "rcept_dt": "20200219",
+      "rm": "유"
+    },
+    {
+      "corp_code": "00413046",
+      "corp_name": "셀트리온",
+      "stock_code": "068270",
+      "corp_cls": "Y",
+      "report_nm": "주주총회집중일개최사유신고",
+      "rcept_no": "20200309801229",
+      "flr_nm": "셀트리온",
+      "rcept_dt": "20200309",
+      "rm": "유"
+    },
+    {
+      "corp_code": "00413046",
+      "corp_name": "셀트리온",
+      "stock_code": "068270",
+      "corp_cls": "Y",
+      "report_nm": "정기주주총회결과",
+      "rcept_no": "20200327803501",
+      "flr_nm": "셀트리온",
+      "rcept_dt": "20200327",
+      "rm": "유"
+    },
+    {
+      "corp_code": "00413046",
+      "corp_name": "셀트리온",
+      "stock_code": "068270",
+      "corp_cls": "Y",
+      "report_nm": "주식배당결정",
+      "rcept_no": "20201216801088",
+      "flr_nm": "셀트리온",
+      "rcept_dt": "20201216",
+      "rm": "유"
+    },
+    {
+      "corp_code": "00413046",
+      "corp_name": "셀트리온",
+      "stock_code": "068270",
+      "corp_cls": "Y",
+      "report_nm": "주주총회소집결의",
+      "rcept_no": "20210222800456",
+      "flr_nm": "셀트리온",
+      "rcept_dt": "20210222",
+      "rm": "유"
+    },
+    {
+      "corp_code": "00413046",
+      "corp_name": "셀트리온",
+      "stock_code": "068270",
+      "corp_cls": "Y",
+      "report_nm": "주주총회집중일개최사유신고",
+      "rcept_no": "20210310800802",
+      "flr_nm": "셀트리온",
+      "rcept_dt": "20210310",
+      "rm": "유"
+    },
+    {
+      "corp_code": "00413046",
+      "corp_name": "셀트리온",
+      "stock_code": "068270",
+      "corp_cls": "Y",
+      "report_nm": "정기주주총회결과",
+      "rcept_no": "20210326802215",
+      "flr_nm": "셀트리온",
+      "rcept_dt": "20210326",
+      "rm": "유"
+    },
+    {
+      "corp_code": "00554024",
+      "corp_name": "셀트리온헬스케어",
+      "stock_code": "091990",
+      "corp_cls": "E",
+      "report_nm": "주식배당결정",
+      "rcept_no": "20191217900478",
+      "flr_nm": "셀트리온헬스케어",
+      "rcept_dt": "20191217",
+      "rm": "코"
+    },
+    {
+      "corp_code": "00554024",
+      "corp_name": "셀트리온헬스케어",
+      "stock_code": "091990",
+      "corp_cls": "E",
+      "report_nm": "배당락(주식배당)",
+      "rcept_no": "20191226900748",
+      "flr_nm": "코스닥시장본부",
+      "rcept_dt": "20191226",
+      "rm": "코"
+    },
+    {
+      "corp_code": "00554024",
+      "corp_name": "셀트리온헬스케어",
+      "stock_code": "091990",
+      "corp_cls": "E",
+      "report_nm": "주주총회소집결의",
+      "rcept_no": "20200306900628",
+      "flr_nm": "셀트리온헬스케어",
+      "rcept_dt": "20200306",
+      "rm": "코"
+    },
+    {
+      "corp_code": "00554024",
+      "corp_name": "셀트리온헬스케어",
+      "stock_code": "091990",
+      "corp_cls": "E",
+      "report_nm": "주주총회집중일개최사유신고",
+      "rcept_no": "20200312901049",
+      "flr_nm": "셀트리온헬스케어",
+      "rcept_dt": "20200312",
+      "rm": "코"
+    },
+    {
+      "corp_code": "00554024",
+      "corp_name": "셀트리온헬스케어",
+      "stock_code": "091990",
+      "corp_cls": "E",
+      "report_nm": "정기주주총회결과",
+      "rcept_no": "20200327902239",
+      "flr_nm": "셀트리온헬스케어",
+      "rcept_dt": "20200327",
+      "rm": "코"
+    },
+    {
+      "corp_code": "00554024",
+      "corp_name": "셀트리온헬스케어",
+      "stock_code": "091990",
+      "corp_cls": "E",
+      "report_nm": "주식배당결정",
+      "rcept_no": "20201216900990",
+      "flr_nm": "셀트리온헬스케어",
+      "rcept_dt": "20201216",
+      "rm": "코"
+    },
+    {
+      "corp_code": "00554024",
+      "corp_name": "셀트리온헬스케어",
+      "stock_code": "091990",
+      "corp_cls": "E",
+      "report_nm": "배당락(주식배당)",
+      "rcept_no": "20201228900943",
+      "flr_nm": "코스닥시장본부",
+      "rcept_dt": "20201228",
+      "rm": "코"
+    },
+    {
+      "corp_code": "00554024",
+      "corp_name": "셀트리온헬스케어",
+      "stock_code": "091990",
+      "corp_cls": "E",
+      "report_nm": "주주총회소집결의",
+      "rcept_no": "20210304900529",
+      "flr_nm": "셀트리온헬스케어",
+      "rcept_dt": "20210304",
+      "rm": "코"
+    },
+    {
+      "corp_code": "00554024",
+      "corp_name": "셀트리온헬스케어",
+      "stock_code": "091990",
+      "corp_cls": "E",
+      "report_nm": "주주총회집중일개최사유신고",
+      "rcept_no": "20210311900883",
+      "flr_nm": "셀트리온헬스케어",
+      "rcept_dt": "20210311",
+      "rm": "코"
+    },
+    {
+      "corp_code": "00554024",
+      "corp_name": "셀트리온헬스케어",
+      "stock_code": "091990",
+      "corp_cls": "E",
+      "report_nm": "정기주주총회결과",
+      "rcept_no": "20210326901313",
+      "flr_nm": "셀트리온헬스케어",
+      "rcept_dt": "20210326",
+      "rm": "코"
+    }
+  ],
+  "scope": "exchange category I, 20191201..20210430, max2 pages/corp, max4 calls; no document requests",
+  "backtest_eligible": false,
+  "retries": 0
+}

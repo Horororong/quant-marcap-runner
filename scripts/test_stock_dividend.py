@@ -179,8 +179,37 @@ class LedgerTests(unittest.TestCase):
             b = self.opened(quantity=12345, rate="0.012345")
         self.assertEqual(str(b.claims["A"]["quantity"]), "152.399025")
 
+    def test_generator_inputs_remain_in_reproduction_log(self):
+        b = StockDividendBook("0", {"000001": 100}, scope="synthetic")
+        r = b.close("2024-01-02", {"000001": "90"}, entitlements=(x for x in [terms()]), marks=(x for x in [mark("2024-01-02")]))
+        self.assertEqual(r["inputs"]["entitlements"][0]["event_id"], "A")
+        self.assertEqual(len(r["inputs"]["marks"]), 1)
+
 
 class IntegrationTests(unittest.TestCase):
+    def test_four_real_source_anomalies_still_fail_before_nav(self):
+        # This is a local guard probe with hypothetical holdings, NOT the
+        # original strategy rerun, an event registration or economic certificate.
+        root = Path(__file__).resolve().parents[1]
+        rows = pd.read_csv(root / "docs/research/stage10-return-diagnostic-20261016/results/planned_holding_mismatches.csv", dtype={"Code": str})
+        engine = load_project_engine(root)
+        panels = {year: pd.read_parquet(root / f"data/krx_equities/yearly/marcap-{year}.parquet", columns=["Date", "Code", "Close", "Volume", "ChangesRatio"])
+                  for year in (2019, 2020)}
+        self.assertEqual(len(rows), 4)
+        for _, row in rows.iterrows():
+            # The immutable diagnostic's exact codes/dates select the probes;
+            # no species of price jump is inferred as a corporate action.
+            dt, security = pd.Timestamp(row["Date"]), row["Code"]
+            with self.subTest(security=security, date=str(dt.date())):
+                panel = panels[dt.year]
+                x = panel[(panel["Code"] == security) & (panel["Date"] <= dt)].sort_values("Date").tail(3).set_index("Date")
+                self.assertEqual(len(x), 3)
+                px = x[["Close"]].rename(columns={"Close": security})
+                ref = (x[["ChangesRatio"]] / 100).rename(columns={"ChangesRatio": security})
+                target = pd.DataFrame({security: [1.]}, index=px.index[:1])
+                with self.assertRaisesRegex(RuntimeError, "held-return reference check failed"):
+                    engine.simulate_target_weight_portfolio(px, target, reference_returns=ref)
+
     def test_market_reference_and_economic_book_are_different(self):
         checked = validate_market_reference(session="2024-01-02", security="000001", close="90", reference_price="91", changes_ratio_pct="-1.10", evidence=proof(), scope="synthetic")
         b = StockDividendBook("0", {"000001": 100}, scope="synthetic")
