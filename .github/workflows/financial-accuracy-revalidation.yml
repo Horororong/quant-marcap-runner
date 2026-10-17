@@ -17,11 +17,31 @@ on:
       - 'scripts/stock_dividend.py'
       - 'scripts/test_stock_dividend*.py'
       - 'scripts/collect_stock_dividend_metadata.py'
+      - 'scripts/read_stock_dividend_artifact.py'
       - 'docs/research/stage12-stock-dividend-20261016/**'
 permissions:
   contents: read
   actions: read
 jobs:
+  stage12-artifact-transfer:
+    if: ${{ contains(github.event.head_commit.message, '[stage12-read-artifact]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore and verify same original offline kit
+        run: |
+          python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/financial-repair"
+          python "$RUNNER_TEMP/financial-repair/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/financial-repair/kit-parts" --destination "$RUNNER_TEMP/financial-repair/runtime"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I "$RUNNER_TEMP/financial-repair/runtime/scripts/sandbox_runtime.py" verify
+      - name: Read pinned existing artifact once without another DART request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I scripts/read_stock_dividend_artifact.py
   stage12-stock-dividend:
     if: ${{ contains(github.event.head_commit.message, '[stage12]') }}
     runs-on: ubuntu-latest
@@ -45,6 +65,14 @@ jobs:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I scripts/collect_stock_dividend_metadata.py --output "$RUNNER_TEMP/stage12-official"
+      - name: Preserve all prior audit bytes and financial controls without reprocessing
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage12-stock-dividend-20261016/preserve.py --output "$RUNNER_TEMP/stage12-preservation"
+      - name: Restore and verify preserved originals and existing replay artifacts only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/version-pit-stage6-20261014/verify_preserved60.py --output "$RUNNER_TEMP/stage12-originals60"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -52,11 +80,13 @@ jobs:
           path: |
             ${{ runner.temp }}/stage12-validation
             ${{ runner.temp }}/stage12-official
+            ${{ runner.temp }}/stage12-preservation
+            ${{ runner.temp }}/stage12-originals60/verification.json
             ${{ runner.temp }}/financial-repair/verify.json
           if-no-files-found: error
           retention-days: 90
   fixed-kit:
-    if: ${{ !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
+    if: ${{ !contains(github.event.head_commit.message, '[stage12-read-artifact]') && !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
