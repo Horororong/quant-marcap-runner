@@ -77,8 +77,61 @@ def fetch(url):
     except Exception: raise safe.Stop("TRANSPORT_FAILURE") from None
 
 
+def issuer_history(output):
+    """UI-proved GET form, max3 result pages + max2 relevant2020 notices."""
+    output.mkdir(parents=True,exist_ok=False)
+    base="https://www.celltrion.com/ko-kr/investment/notice/announce"
+    state=dict(requests=0,retries=0,responses=[],entries=[],errors=[],investment_approved=False)
+    selected=[]
+    try:
+        for page in range(1,4):
+            url=base+"?"+parse.urlencode(dict(page=page,searchWord="배당",selectType=""))
+            state["requests"]+=1
+            http,ct,raw=fetch(url)
+            if len(raw)>MAX_BYTES: raise ValueError("RESPONSE_SIZE_LIMIT")
+            text=raw.decode("utf-8")
+            (output/f"search_{page}.html").write_bytes(raw)
+            state["responses"].append(dict(url=url,http=http,content_type=ct,bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest()))
+            matches=re.findall(r'no="(\d+)"[^>]*>\s*<p class="subject">(.*?)</p>\s*<span class="date">([\d.]+)</span>',text,re.S)
+            entries=[]
+            for ident,title,date in matches:
+                title=unescape(re.sub("<[^>]+>","",title)).strip()
+                entry=dict(id=ident,title=title,date=date,url=base+"/"+ident)
+                entries.append(entry)
+                if date.startswith("2020.") and re.search("배당",title): selected.append(entry)
+            state["entries"].extend(entries)
+            if selected or not entries or min(e["date"] for e in entries)<"2020.01.01": break
+        for entry in selected[:2]:
+            state["requests"]+=1
+            http,ct,raw=fetch(entry["url"])
+            if len(raw)>MAX_BYTES: raise ValueError("RESPONSE_SIZE_LIMIT")
+            text=raw.decode("utf-8");parser=Text();parser.feed(text)
+            (output/(entry["id"]+".html")).write_bytes(raw)
+            (output/(entry["id"]+"_text.txt")).write_text("".join(parser.text))
+            state["responses"].append(dict(**entry,http=http,content_type=ct,bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest()))
+    except (safe.Stop,ValueError,UnicodeError) as e:
+        state["errors"].append(dict(reason=e.kind if isinstance(e,safe.Stop) else type(e).__name__,http=getattr(e,"http",None)))
+    (output/"state.json").write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n")
+    emit_bundle(output,state)
+    return int(bool(state["errors"]))
+
+
+def emit_bundle(output,state):
+    bundle=io.BytesIO()
+    with zipfile.ZipFile(bundle,"w",compression=zipfile.ZIP_DEFLATED) as z:
+        for f in sorted(output.iterdir()): z.writestr(f.name,f.read_bytes())
+    raw=bundle.getvalue()
+    if len(raw)<=256*1024:
+        print("STAGE14_SOURCE_BUNDLE_BEGIN")
+        encoded=base64.b64encode(raw).decode()
+        for i in range(0,len(encoded),2000): print(encoded[i:i+2000])
+        print("STAGE14_SOURCE_BUNDLE_END")
+    print(json.dumps(dict(bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest(),requests=state["requests"],errors=state["errors"])))
+
+
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--output",type=Path,required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument("--output",type=Path,required=True);p.add_argument("--issuer-history",action="store_true");a=p.parse_args()
+    if a.issuer_history: return issuer_history(a.output)
     a.output.mkdir(parents=True,exist_ok=False)
     state=dict(requests=0,retries=0,responses=[],errors=[],investment_approved=False)
     key=os.environ.get("DART_API_KEY","")
@@ -121,16 +174,7 @@ def main():
             state["errors"].append(dict(scope="issuer",source=url,reason=e.kind if isinstance(e,safe.Stop) else type(e).__name__,http=getattr(e,"http",None)))
             break  # no repeated failing host/path
     (a.output/"state.json").write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n")
-    bundle=io.BytesIO()
-    with zipfile.ZipFile(bundle,"w",compression=zipfile.ZIP_DEFLATED) as z:
-        for f in sorted(a.output.iterdir()): z.writestr(f.name,f.read_bytes())
-    raw=bundle.getvalue()
-    if len(raw)<=256*1024:
-        print("STAGE14_SOURCE_BUNDLE_BEGIN")
-        encoded=base64.b64encode(raw).decode()
-        for i in range(0,len(encoded),2000): print(encoded[i:i+2000])
-        print("STAGE14_SOURCE_BUNDLE_END")
-    print(json.dumps(dict(bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest(),requests=state["requests"],errors=state["errors"])))
+    emit_bundle(a.output,state)
     return int(bool(state["errors"]))
 
 
