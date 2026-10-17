@@ -1000,6 +1000,115 @@
     "months"
   ],
   "requested_report_contract_version": "1",
+  "research_workbench": {
+    "blocker_classes": [
+      {
+        "class": "historical_fact",
+        "condition": "source_file/schema/identity/date/unit missing",
+        "effect": "required observations cannot be replaced by model assumptions",
+        "owner": "strategy_dsl_preflight / KRX/DART providers"
+      },
+      {
+        "class": "historical_fact",
+        "condition": "market sessions or exact benchmark dates missing",
+        "effect": "no weekday estimate, current-universe substitution or forward fill",
+        "owner": "krx_history_audit / strategy_dsl_runner benchmark loader"
+      },
+      {
+        "class": "historical_fact",
+        "condition": "held return undefined or unregistered price/reference mismatch >1bp",
+        "effect": "block affected actual exposure; full-panel candidates alone are diagnostics",
+        "owner": "PROJECT held-return guard"
+      },
+      {
+        "class": "historical_fact",
+        "condition": "ex-date/record-date/rate/reference/approval outcome/listing needed but unproved",
+        "effect": "no event inference; only recognition after proven source availability",
+        "owner": "stock_dividend_research fact loader / stock_dividend book"
+      },
+      {
+        "class": "historical_fact",
+        "condition": "DART values/availability/corrections/scope/historical issuer mapping needed by a factor",
+        "effect": "financial research remains subject to existing gate; research model does not waive it",
+        "owner": "existing DART factor provider and operating PIT gate"
+      },
+      {
+        "class": "historical_fact",
+        "condition": "technical lookback or factor intersection incomplete",
+        "effect": "registered exact lookback only, no shortened lookback or silent fill",
+        "owner": "krx_technical_factor_adapter / factor registry"
+      },
+      {
+        "class": "research_model",
+        "condition": "conditional-right market price unobserved / valuation policy unselected",
+        "effect": "chosen share-equivalent haircut model is labeled modeled, not official price/probability; sensitivity variants recorded",
+        "owner": "explicit DSL research contract v1"
+      },
+      {
+        "class": "research_model",
+        "condition": "continuous quantity / dividend tax / virtual settlement convention unselected",
+        "effect": "continuous pro-rata before-distribution-tax virtual book; no actual-credit claim, integer-account mode unchanged",
+        "owner": "explicit DSL research contract v1"
+      },
+      {
+        "class": "research_model",
+        "condition": "costs / signal-to-execution lag / targets / settled liquidity",
+        "effect": "explicit cost and timing assumptions; rights cannot be sold/spent; insufficient cash fails, targets are never scaled",
+        "owner": "StrategySpec / PROJECT"
+      },
+      {
+        "class": "capability_gap",
+        "condition": "unsupported shorts/interacting actions/compensated cancellation",
+        "effect": "remain unsupported until a tested common contract exists",
+        "owner": "stock_dividend / cash exchange / PROJECT"
+      },
+      {
+        "class": "account_or_investment_evidence",
+        "condition": "broker-credit date/quantity, actual fractional cash, investor withholding",
+        "effect": "needed for actual account reproduction, not asserted by continuous pretax virtual settlement",
+        "owner": "whole-account dividend contract"
+      },
+      {
+        "class": "account_or_investment_evidence",
+        "condition": "exact public clock, complete legal listing history, full investment PIT certification",
+        "effect": "research execution does not certify these or relax financial factor gates",
+        "owner": "independent official-source audit"
+      },
+      {
+        "class": "report_contract",
+        "condition": "requested performance period too short / incomplete calendar months",
+        "effect": "undefined statistics stay unavailable; no new calculator or fabricated annualization",
+        "owner": "CURRENT requested-period readiness / calculate_metrics"
+      }
+    ],
+    "certification": "RESEARCH_ONLY; neither inventory metadata, model assumptions nor software success is PIT approval",
+    "commands": [
+      "capabilities",
+      "inventory",
+      "translate",
+      "check",
+      "run"
+    ],
+    "entrypoint": "scripts/research_workbench.py",
+    "execution": "run_checked_strategy -> PROJECT -> CURRENT; no alternative backtester/calculator",
+    "korean_input": "exact labeled Korean clauses separated by semicolon; unknown/missing/duplicate clauses rejected",
+    "optional_clauses": [
+      "필터"
+    ],
+    "readiness": "existing preflight; full-panel candidates are diagnostics, not selected exposure or certified execution",
+    "required_clauses": [
+      "기간",
+      "시장",
+      "팩터",
+      "포트폴리오",
+      "리밸런싱",
+      "체결",
+      "비용",
+      "벤치마크"
+    ],
+    "translation": "registered factor/direction aliases and strict StrategySpec only",
+    "version": "1"
+  },
   "run_orchestration": {
     "automatic_preflight": true,
     "command": "python scripts/strategy_dsl_runner.py <strategy.json>",

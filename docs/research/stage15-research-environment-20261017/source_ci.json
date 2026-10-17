@@ -1,0 +1,62 @@
+[
+  {
+    "run_id": 39030154599,
+    "sha": "3dadfd7b25281b0707e54f5dd7fbd873e2bf41fe",
+    "http_requests": 18,
+    "retries": 0,
+    "api_collection_repeated": false,
+    "conclusion": "success",
+    "artifacts": [
+      {
+        "id": 12100027509,
+        "node_id": "MDg6QXJ0aWZhY3QxMjEwMDAyNzUwOQ==",
+        "name": "stage15-remaining-primary-sources",
+        "size_in_bytes": 50679,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12100027509",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12100027509/zip",
+        "expired": false,
+        "digest": "sha256:a634c70fe214f0783359bf5a9ea1b1014dfd30f5ae4f8f72878934336e075a61",
+        "created_at": "2026-10-17T11:50:21Z",
+        "updated_at": "2026-10-17T11:50:21Z",
+        "expires_at": "2027-01-15T11:49:24Z",
+        "workflow_run": {
+          "id": 39030154599,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "fix/financial-accuracy-20261014",
+          "head_sha": "3dadfd7b25281b0707e54f5dd7fbd873e2bf41fe"
+        }
+      }
+    ]
+  },
+  {
+    "run_id": 39030327589,
+    "sha": "a5b2559ffb6b3eb7c710fce976145051931ac488",
+    "http_requests": 4,
+    "retries": 0,
+    "api_collection_repeated": false,
+    "conclusion": "success",
+    "artifacts": [
+      {
+        "id": 12100505816,
+        "node_id": "MDg6QXJ0aWZhY3QxMjEwMDUwNTgxNg==",
+        "name": "stage15-remaining-primary-sources",
+        "size_in_bytes": 13940,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12100505816",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12100505816/zip",
+        "expired": false,
+        "digest": "sha256:17263c583b77f36e1d4e28824d04ef889ef00d90c924cdf186a15c8c215eda42",
+        "created_at": "2026-10-17T11:53:10Z",
+        "updated_at": "2026-10-17T11:53:10Z",
+        "expires_at": "2027-01-15T11:52:09Z",
+        "workflow_run": {
+          "id": 39030327589,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "fix/financial-accuracy-20261014",
+          "head_sha": "a5b2559ffb6b3eb7c710fce976145051931ac488"
+        }
+      }
+    ]
+  }
+]

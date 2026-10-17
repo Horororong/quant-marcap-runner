@@ -236,6 +236,9 @@ def dashboard_payload(periods: dict, columns: list[str], config: BacktestConfig,
         meta[name] = {'kind': 'strategy', 'portfolio': portfolio, 'cost': cost,
                       'label': (portfolio + ' · ' if portfolio != 'strategy' else '') + label}
     summary, diagnostics, limits = report_context(daily_csv, repo_root, config.title)
+    raw=diagnostics.get('strategy_normalized.json',{})
+    if benchmark and raw.get('benchmark'):
+        meta[benchmark]['label']=raw['benchmark']['symbol']+' · 가격지수(배당 미포함)'
     if diagnostics.get('research_model'):
         for key in costs:
             if key!='gross': costs[key]+=' · 배당세 전'

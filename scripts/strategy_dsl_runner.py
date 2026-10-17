@@ -557,6 +557,7 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     cfg, costs, execution = engine_inputs(spec, engine)
     corporate_actions = load_strategy_actions(
         repo_root, spec,
+        registry_loader=load_corporate_actions,
         start=close.index.min(),
         end=close.index.max(),
         asset_codes=set(assets),

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "scripts/test_held_return_guard.py", line 182, in <module>
+    real_split_e2e()
+  File "scripts/test_held_return_guard.py", line 174, in real_split_e2e
+    fails(lambda: run_strategy(path, ROOT, Path(td) / "unregistered", postprocess=False))
+  File "scripts/test_held_return_guard.py", line 27, in fails
+    raise AssertionError(f"expected failure: {text}")
+AssertionError: expected failure: held-return reference check

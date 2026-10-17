@@ -13,6 +13,18 @@ def ev(d='2020-01-01',kind='primary'):
  return Evidence('https://example.org/source' if kind=='primary' else 'model:explicit-v1','a'*64,'synthetic test metadata; not actual issuer evidence',d,kind)
 
 class Research(unittest.TestCase):
+ def test_unknown_lifecycle_is_not_carried_indefinitely_into_future_periods(self):
+  from stock_dividend_research import load_strategy_actions
+  raw=json.loads((ROOT/'config/strategies/research_size_deciles_2019_2020_v1.json').read_text())
+  raw['period']['end']='2021-12-31';raw['period']['book_end']='2021-12-31';raw['period']['as_of_date']='2021-12-31'
+  with self.assertRaisesRegex(ValueError,'beyond catalog support'):
+   load_strategy_actions(ROOT,StrategySpec.from_dict(raw),asset_codes={'068270','091990'})
+ def test_preferred_share_security_codes_are_valid_without_universe_exclusion(self):
+  self.assertEqual(code('00088K'),'00088K')
+  b=StockDividendBook('0',{'00088K':'1.5'},scope='modeled_research',quantity_policy='research_pro_rata')
+  self.assertEqual(b.close('2020-01-02',{'00088K':'100'})['value'],'150.0')
+  for bad in ['00088k','00088','000088K']:
+   with self.assertRaises(ValueError):code(bad)
  def test_policy_and_fingerprint(self):
   raw=json.loads((ROOT/'config/strategies/research_size_deciles_2019_2020_v1.json').read_text())
   a=StrategySpec.from_dict(raw);b=deepcopy(raw);b['research']['conditional_fraction']=.9

@@ -1,31 +1,68 @@
 {
   "stage": "15",
-  "checkpoint": "common research model and first full original decile NAV independently verified; final reporting/interface/CI pending",
+  "checkpoint": "full research workbench, original deciles, sensitivity, other periods and Korean pipeline completed locally; final required CI pending live run verification",
   "source_runs": [
     39030154599,
     39030327589
   ],
-  "first_run": "/workspace/research-stage15-20261017/deciles-first",
-  "independent_summary": {
-    "status": "PASS_MODEL_ACCOUNTING",
-    "rows": 14820,
-    "portfolios": 10,
-    "sessions": 494,
-    "max_nav_error": 8.568167686462402e-08,
-    "numerical_tolerance_currency": 1e-05,
-    "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
-    "investment_approved": false
-  },
-  "real_event_functional_summary": {
-    "status": "PASS_MODEL_ACCOUNTING",
-    "rows": 261,
-    "portfolios": 1,
-    "sessions": 87,
-    "max_nav_error": 1.4551915228366852e-11,
-    "numerical_tolerance_currency": 1e-05,
-    "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
-    "investment_approved": false
+  "local_output": "/workspace/research-stage15-20261017/final-environment",
+  "accounting": {
+    "original": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 14820,
+      "portfolios": 10,
+      "sessions": 494,
+      "max_nav_error": 8.568167686462402e-08,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    },
+    "haircut90": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 14820,
+      "portfolios": 10,
+      "sessions": 494,
+      "max_nav_error": 8.568167686462402e-08,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    },
+    "listing_lag1": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 14820,
+      "portfolios": 10,
+      "sessions": 494,
+      "max_nav_error": 8.568167686462402e-08,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    },
+    "momentum2020": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 744,
+      "portfolios": 1,
+      "sessions": 248,
+      "max_nav_error": 3.725290298461914e-08,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    },
+    "size2024": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 732,
+      "portfolios": 1,
+      "sessions": 244,
+      "max_nav_error": 1.1175870895385742e-08,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    }
   },
   "classification": "RESEARCH_ONLY",
-  "investment_approved": false
+  "investment_approved": false,
+  "protected": {
+    "financial": 518,
+    "core": 64,
+    "originals": 60
+  }
 }

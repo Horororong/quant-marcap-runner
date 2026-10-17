@@ -1,5 +1,10 @@
 # BACKTEST START HERE
 
+Stage15의 실제 연구 진입점은 [RESEARCH_WORKBENCH](docs/RESEARCH_WORKBENCH.md)다.
+지원 capability·제한된 한국어→DSL·기간별 준비도·공통 실행·CURRENT 보고를 연결한다.
+원래2019~2020 시총10분위와 별도2020모멘텀/2024시총 예시가 실행되었다.
+연속수량·배당세 전 연구이며 투자 PIT 승인이나 실제 계좌 인증은 아니다.
+
 이 파일은 ChatGPT/코딩 에이전트가 백테스트 요청을 받을 때의 진입점이다.
 
 ## 사용자에게 요구할 단계 없음

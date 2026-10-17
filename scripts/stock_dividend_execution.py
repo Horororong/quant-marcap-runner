@@ -140,7 +140,11 @@ class DividendExecution:
                         ev=Evidence("model:stock-dividend-research-v1",hashlib.sha256(raw.encode()).hexdigest(),
                             "explicit underlying-close share-equivalent model; not an observed right price or certified approval probability",session,"research_model")
                         marks.append(RightMark(t.event_id,session,str(mark),"explicit conditional/liquidity haircut; distribution tax excluded",ev))
-            snapshot = book.close(session, {c: str(v) for c, v in prices.items() if math.isfinite(v) and v > 0},
+            # The sleeve owns dividend securities only. Unrelated selected/raw
+            # panel quotes remain validated by PROJECT, never cloned into this
+            # subledger's audit or subjected to its event-identity contract.
+            owned={p["terms"].security for p in self.plans}
+            snapshot = book.close(session, {c: str(v) for c, v in prices.items() if c in owned and math.isfinite(v) and v > 0},
                                   entitlements=entitlements, decisions=decisions, credits=credits, listings=listings, marks=marks,settlements=settlements)
             new_value = float(Decimal(snapshot["rights_value"]) + Decimal(snapshot["locked_value"]))
             released = {c: float(book.shares.get(c, 0) - shares.get(c, 0)) for c in set(book.shares) | set(shares)}

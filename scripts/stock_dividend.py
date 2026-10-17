@@ -57,8 +57,8 @@ def day(value):
 
 
 def code(value):
-    if type(value) is not str or not re.fullmatch(r"\d{6}", value):
-        raise ValueError("security requires exact six-digit code")
+    if type(value) is not str or not re.fullmatch(r"[0-9A-Z]{6}", value):
+        raise ValueError("security requires exact six-character KRX code")
     return value
 
 

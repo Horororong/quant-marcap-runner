@@ -96,7 +96,7 @@ def check_known_action_exposure(panel, spec, repo_root: Path, engine):
     }
     if gaps.empty:
         return audit
-    events = load_strategy_actions(repo_root, spec, start=dates[0], end=dates[-1])
+    events = load_strategy_actions(repo_root, spec, start=dates[0], end=dates[-1], registry_loader=load_corporate_actions)
     possible_codes = set(panel['Code'].astype(str).str.zfill(6))
     if not events.empty:
         possible_codes.update(events['successor_code'])

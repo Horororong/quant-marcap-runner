@@ -1,0 +1,19 @@
+test_all_months_explicit_policy_and_legacy_fingerprint (__main__.QuarterTests.test_all_months_explicit_policy_and_legacy_fingerprint) ... ok
+test_candidate_window_and_year_boundary (__main__.QuarterTests.test_candidate_window_and_year_boundary) ... ok
+test_dart_filter_inherits_selected_policy (__main__.QuarterTests.test_dart_filter_inherits_selected_policy) ... ok
+test_kit_collects_actual_policy_dependencies (__main__.QuarterTests.test_kit_collects_actual_policy_dependencies) ... ok
+test_latest_incomplete_report_cannot_fall_back_to_older_complete_quarter (__main__.QuarterTests.test_latest_incomplete_report_cannot_fall_back_to_older_complete_quarter) ... ok
+test_missing_coverage_blocks_before_snapshot (__main__.QuarterTests.test_missing_coverage_blocks_before_snapshot) ... ok
+test_missing_dependency_stays_nan (__main__.QuarterTests.test_missing_dependency_stays_nan) ... ok
+test_newer_scope_report_beats_older_complete_scope (__main__.QuarterTests.test_newer_scope_report_beats_older_complete_scope) ... ok
+test_no_cross_scope_subtraction_and_complete_ofs_fallback (__main__.QuarterTests.test_no_cross_scope_subtraction_and_complete_ofs_fallback) ... ok
+test_predecessor_correction_date_is_not_hidden (__main__.QuarterTests.test_predecessor_correction_date_is_not_hidden) ... ok
+test_q1_and_late_correction_are_pit (__main__.QuarterTests.test_q1_and_late_correction_are_pit) ... ok
+test_q2_q3_and_q4_formulas (__main__.QuarterTests.test_q2_q3_and_q4_formulas) ... ok
+test_report_with_no_registered_accounts_is_not_hidden (__main__.QuarterTests.test_report_with_no_registered_accounts_is_not_hidden) ... ok
+test_shared_ranking_deciles_and_coverage_receive_policy (__main__.QuarterTests.test_shared_ranking_deciles_and_coverage_receive_policy) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.524s
+
+OK

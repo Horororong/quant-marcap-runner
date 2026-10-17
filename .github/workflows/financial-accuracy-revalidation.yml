@@ -16,6 +16,19 @@ on:
       - '.github/workflows/financial-accuracy-revalidation.yml'
       - 'scripts/stock_dividend.py'
       - 'scripts/stock_dividend_execution.py'
+      - 'scripts/stock_dividend_research.py'
+      - 'scripts/research_workbench.py'
+      - 'scripts/research_readiness.py'
+      - 'scripts/test_research_workbench.py'
+      - 'scripts/verify_research_dashboard.cjs'
+      - 'scripts/strategy_dsl*.py'
+      - 'scripts/corporate_action_preflight.py'
+      - 'scripts/quant_backtest_postprocess.py'
+      - 'scripts/export_strategy_dsl_contract.py'
+      - 'config/research/**'
+      - 'config/strategies/**'
+      - 'config/reports/**'
+      - 'config/strategy_dsl*.json'
       - 'scripts/dart_value_factor_adapter.py'
       - 'scripts/test_dart_snapshot_selection.py'
       - 'scripts/collect_stage13_notice.py'
@@ -186,7 +199,7 @@ jobs:
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I scripts/read_stock_dividend_artifact.py
   stock-dividend-regression:
-    if: ${{ contains(github.event.head_commit.message, '[stage13]') || contains(github.event.head_commit.message, '[stage14]') }}
+    if: ${{ contains(github.event.head_commit.message, '[stage13]') || contains(github.event.head_commit.message, '[stage14]') || contains(github.event.head_commit.message, '[stage15]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -213,6 +226,14 @@ jobs:
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c 'import runpy,sys;sys.path.insert(0,"docs/research/stage14-celltrion-2019-20261017");runpy.run_path("docs/research/stage14-celltrion-2019-20261017/test_source_formats.py",run_name="__main__")'
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage14-celltrion-2019-20261017/verify_event.py --output "$RUNNER_TEMP/stage14-event-review.json"
           cmp "$RUNNER_TEMP/stage14-event-review.json" docs/research/stage14-celltrion-2019-20261017/event_review.json
+      - name: Research models, Korean entrypoint, full original deciles and independent real-price ledgers
+        if: ${{ contains(github.event.head_commit.message, '[stage15]') }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage15-research-environment-20261017/validate_environment.py --check --output "$RUNNER_TEMP/stage15-environment"
+      - name: Actual offline Chromium presentation and interaction checks without installs
+        if: ${{ contains(github.event.head_commit.message, '[stage15]') }}
+        run: |
+          node scripts/verify_research_dashboard.cjs "$RUNNER_TEMP/stage15-environment/original/report/report_CURRENT.html" "$RUNNER_TEMP/stage15-browser"
       - name: One bounded official exchange-disclosure metadata discovery
         if: ${{ github.sha == 'b7a12ff56e9f4b64b1b26f02b68cb6c2626250bb' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage12-official-proof]') }}
         env:
@@ -222,7 +243,10 @@ jobs:
       - name: Preserve all prior audit bytes and financial controls without reprocessing
         if: ${{ always() && steps.runtime.outcome == 'success' }}
         run: |
-          if [[ "${{ contains(github.event.head_commit.message, '[stage14]') }}" == "true" ]]; then
+          if [[ "${{ contains(github.event.head_commit.message, '[stage15]') }}" == "true" ]]; then
+            "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage15-research-environment-20261017/preserve.py --output "$RUNNER_TEMP/stage12-preservation"
+            "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage15-research-environment-20261017/verify_evidence.py
+          elif [[ "${{ contains(github.event.head_commit.message, '[stage14]') }}" == "true" ]]; then
             "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage14-celltrion-2019-20261017/preserve.py --output "$RUNNER_TEMP/stage12-preservation"
             "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage14-celltrion-2019-20261017/verify_artifacts.py
           else
@@ -242,7 +266,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ${{ contains(github.event.head_commit.message, '[stage14]') && 'stage14-stock-dividend-evidence' || 'stage13-stock-dividend-evidence' }}
+          name: ${{ contains(github.event.head_commit.message, '[stage15]') && 'stage15-research-environment' || contains(github.event.head_commit.message, '[stage14]') && 'stage14-stock-dividend-evidence' || 'stage13-stock-dividend-evidence' }}
           path: |
             ${{ runner.temp }}/stage12-validation
             ${{ runner.temp }}/stage13-independent-ledger.csv
@@ -253,6 +277,8 @@ jobs:
             ${{ runner.temp }}/stage12-krx-comparison.json
             ${{ runner.temp }}/stage12-originals60/verification.json
             ${{ runner.temp }}/financial-repair/verify.json
+            ${{ runner.temp }}/stage15-environment
+            ${{ runner.temp }}/stage15-browser
           if-no-files-found: error
           retention-days: 90
   fixed-kit:

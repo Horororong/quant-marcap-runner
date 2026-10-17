@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "scripts/test_corporate_action_reconciliation.py", line 155, in <module>
+    real_source_and_public_modes()
+  File "scripts/test_corporate_action_reconciliation.py", line 148, in real_source_and_public_modes
+    raise AssertionError("preferred split event inherited from common stock")
+AssertionError: preferred split event inherited from common stock

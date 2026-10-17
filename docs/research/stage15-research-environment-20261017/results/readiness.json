@@ -1,0 +1,236 @@
+{
+  "preflight_contract_version": "3",
+  "status": "ok",
+  "phase": "ready",
+  "strategy_id": "stage8_kr_equity_size_deciles_research_2019_2020",
+  "strategy_fingerprint": "53190c28df04481bd9394d1c13a6010ae9b4a233f3a401b61335016f3f3b1b03",
+  "versions": {
+    "schema_version": "1.0",
+    "dsl_machine_contract_version": "25",
+    "factor_registry_version": "7",
+    "execution_engine_version": "v2-16-exec-5",
+    "corporate_action_registry_version": "7",
+    "project_template_version": "v2-16"
+  },
+  "requested_period": {
+    "start": "2019-01-01",
+    "end": "2020-12-31"
+  },
+  "krx_panel": {
+    "actual_start": "2019-01-02",
+    "actual_end": "2020-12-30",
+    "rows": 1135539,
+    "distinct_codes": 2443,
+    "markets": [
+      "KOSDAQ",
+      "KOSPI"
+    ]
+  },
+  "signal_dates": [
+    "2019-04-30",
+    "2020-04-29"
+  ],
+  "factor_sources": [
+    "krx"
+  ],
+  "provider_coverage": [],
+  "corporate_action_audit": {
+    "coverage": "known evidence gaps only; historical corporate-action completeness remains unverified",
+    "policy": "shared signal selection and lag; positive planned holdings; no NAV, drift or cost calculation",
+    "selection_performed": false,
+    "known_gap_count": 0,
+    "executed_target_count": 0,
+    "exposures": []
+  },
+  "history_coverage": {
+    "history_audit_contract_version": "1",
+    "status": "complete",
+    "calendar": "XKRX",
+    "calendar_package_version": "4.13.2",
+    "requested_start": "2019-01-01",
+    "requested_end": "2020-12-31",
+    "expected_first_session": "2019-01-02",
+    "expected_last_session": "2020-12-30",
+    "expected_sessions": 494,
+    "markets": {
+      "KOSDAQ": {
+        "status": "complete",
+        "observed_sessions": 494,
+        "missing_sessions": [],
+        "unexpected_dates": []
+      },
+      "KOSPI": {
+        "status": "complete",
+        "observed_sessions": 494,
+        "missing_sessions": [],
+        "unexpected_dates": []
+      }
+    },
+    "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+  },
+  "benchmark": {
+    "source": "index",
+    "symbol": "KOSPI",
+    "start": "2019-01-02",
+    "end": "2020-12-30",
+    "observations": 494,
+    "exact_date_alignment": true,
+    "return_basis": "price_index_close",
+    "includes_dividends": false,
+    "path": "data/indices/KOSPI.csv"
+  },
+  "ready_for_execution": true,
+  "blocker_classes": [
+    {
+      "condition": "source_file/schema/identity/date/unit missing",
+      "class": "historical_fact",
+      "owner": "strategy_dsl_preflight / KRX/DART providers",
+      "effect": "required observations cannot be replaced by model assumptions"
+    },
+    {
+      "condition": "market sessions or exact benchmark dates missing",
+      "class": "historical_fact",
+      "owner": "krx_history_audit / strategy_dsl_runner benchmark loader",
+      "effect": "no weekday estimate, current-universe substitution or forward fill"
+    },
+    {
+      "condition": "held return undefined or unregistered price/reference mismatch >1bp",
+      "class": "historical_fact",
+      "owner": "PROJECT held-return guard",
+      "effect": "block affected actual exposure; full-panel candidates alone are diagnostics"
+    },
+    {
+      "condition": "ex-date/record-date/rate/reference/approval outcome/listing needed but unproved",
+      "class": "historical_fact",
+      "owner": "stock_dividend_research fact loader / stock_dividend book",
+      "effect": "no event inference; only recognition after proven source availability"
+    },
+    {
+      "condition": "DART values/availability/corrections/scope/historical issuer mapping needed by a factor",
+      "class": "historical_fact",
+      "owner": "existing DART factor provider and operating PIT gate",
+      "effect": "financial research remains subject to existing gate; research model does not waive it"
+    },
+    {
+      "condition": "technical lookback or factor intersection incomplete",
+      "class": "historical_fact",
+      "owner": "krx_technical_factor_adapter / factor registry",
+      "effect": "registered exact lookback only, no shortened lookback or silent fill"
+    },
+    {
+      "condition": "conditional-right market price unobserved / valuation policy unselected",
+      "class": "research_model",
+      "owner": "explicit DSL research contract v1",
+      "effect": "chosen share-equivalent haircut model is labeled modeled, not official price/probability; sensitivity variants recorded"
+    },
+    {
+      "condition": "continuous quantity / dividend tax / virtual settlement convention unselected",
+      "class": "research_model",
+      "owner": "explicit DSL research contract v1",
+      "effect": "continuous pro-rata before-distribution-tax virtual book; no actual-credit claim, integer-account mode unchanged"
+    },
+    {
+      "condition": "costs / signal-to-execution lag / targets / settled liquidity",
+      "class": "research_model",
+      "owner": "StrategySpec / PROJECT",
+      "effect": "explicit cost and timing assumptions; rights cannot be sold/spent; insufficient cash fails, targets are never scaled"
+    },
+    {
+      "condition": "unsupported shorts/interacting actions/compensated cancellation",
+      "class": "capability_gap",
+      "owner": "stock_dividend / cash exchange / PROJECT",
+      "effect": "remain unsupported until a tested common contract exists"
+    },
+    {
+      "condition": "broker-credit date/quantity, actual fractional cash, investor withholding",
+      "class": "account_or_investment_evidence",
+      "owner": "whole-account dividend contract",
+      "effect": "needed for actual account reproduction, not asserted by continuous pretax virtual settlement"
+    },
+    {
+      "condition": "exact public clock, complete legal listing history, full investment PIT certification",
+      "class": "account_or_investment_evidence",
+      "owner": "independent official-source audit",
+      "effect": "research execution does not certify these or relax financial factor gates"
+    },
+    {
+      "condition": "requested performance period too short / incomplete calendar months",
+      "class": "report_contract",
+      "owner": "CURRENT requested-period readiness / calculate_metrics",
+      "effect": "undefined statistics stay unavailable; no new calculator or fabricated annualization"
+    }
+  ],
+  "research_certification": {
+    "investment_approved": false,
+    "account_reconstruction": false,
+    "held_return_validation": "only actual engine execution can validate selected holdings at1bp"
+  },
+  "full_panel_diagnostics": {
+    "status": "complete",
+    "history_audit_contract_version": "1",
+    "source": {
+      "path_template": "data/krx_equities/yearly/marcap-YYYY.parquet",
+      "origin": "FinanceData/marcap via repository",
+      "markets": [
+        "KOSDAQ",
+        "KOSPI"
+      ]
+    },
+    "session_coverage": {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2019-01-01",
+      "requested_end": "2020-12-31",
+      "expected_first_session": "2019-01-02",
+      "expected_last_session": "2020-12-30",
+      "expected_sessions": 494,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 494,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 494,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    "rows": 1135539,
+    "distinct_codes": 2443,
+    "candidate_counts": {
+      "close_reference_return_difference": 530,
+      "left_censored_observation_start": 217,
+      "right_censored_observation_end": 55
+    },
+    "price_comparison": {
+      "changes_ratio_unit": "percent",
+      "absolute_difference_threshold_bps": 25.0,
+      "compared_consecutive_observations": 1133096,
+      "policy": "review candidates only; no inferred split, merger, delisting or dividend"
+    },
+    "corporate_actions": {
+      "registry": "config/kr_corporate_actions.csv",
+      "registry_file_present": true,
+      "registered_events_in_period": 1,
+      "history_completeness": "unverified",
+      "events": [
+        {
+          "event_date": "2020-07-13",
+          "event_type": "stock_merger",
+          "predecessor_code": "002300",
+          "successor_code": "034810",
+          "source": "KIND merger securities report 2020-05-21"
+        }
+      ]
+    },
+    "interpretation": "observed starts/ends are censored by the requested window; gaps can reflect source defects or security events. Candidates never change universe, weights, NAV or registry.",
+    "not_selected_exposure": true
+  }
+}

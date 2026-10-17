@@ -1,3 +1,44 @@
+## Stage15 research environment checkpoint (2026-10-17)
+
+Read `docs/RESEARCH_WORKBENCH.md` and
+`docs/research/stage15-research-environment-20261017/stage15_report.md` /
+`stage15_reproduction.md` before the historical checkpoints below.
+Original unchanged2019–2020 ten-decile research now runs all494sessions through
+the existing common engine/CURRENT. Independent raw-price units/rights/cash
+matches14820book-days. Korean labeled input produces identical NAV/targets/metrics.
+2020momentum top3 and2024size top1 also run; no new backtester/metric calculator.
+
+Explicit DSL research v1: continuous pro-rata, underlying-close share-equivalent
+conditional mark1.0 (MODEL, not official price/probability), before distribution
+tax, virtual official-listing-close settlement (NOT broker credit). Separate0.9
+mark/1session settlement-lag sensitivity runs; no hindsight model selection.
+Four source-backed event facts in config/research/stock_dividends_2019_2020.json;
+missing three reference prices obtained directly, no price recollection.
+2019 approvals/listings known,2020end rights conditional; missing future lifecycle
+past2020-12-31 blocks. Production registry/gap/DART PIT gate unchanged.
+
+SourceCI39030154599/39030327589 success,22requests/0retries, retired to exactSHA.
+Model checkpoint remotecef04745b61dbb6e0392b77771db18bafed1bb66; final SHA/CI must
+be read live. Final[stage15] runs original19commands + additional10, real E2E,
+oracles/numeric pins/browser. Collection jobs remain skipped.
+Local browser SIGTRAP after sandbox setsockopt EPERM; local UI UNVERIFIED.
+CI must prove interactions, no package installs or repeated blocked browser.
+Initial registry mock injection seam and stale version expectations fixed,
+failed logs preserved. Native139 diagnostic root remains UNVERIFIED; normal
+DART E2E passes without that timer. Financial518/core64/original60 and730past
+pins preserved. Investment PIT certification unchanged0/6.
+
+Use capabilities/inventory/check for every new strategy/period; resolve actual
+held exposure blockers with source evidence. 2026check currently fails first on
+calendar/source agreement atJune3/July17, not yet on shorter KOSPI coverage;
+do not label those missing prices without official holiday evidence.
+For2021 rights carry obtain contemporary approvals/listings. Cash-dividend total
+returns, actual fractional cash/withholding/credit and full legal history remain
+outside certified scope. No personal account input needed for current research.
+Unsupported Korean syntax must fail, never approximate. Full local results:
+/workspace/research-stage15-20261017/final-environment; final CI artifact
+stage15-research-environment contains complete reports and ledgers.
+
 ## Stage14 actual Celltrion event checkpoint (2026-10-17)
 
 Read docs/research/stage14-celltrion-2019-20261017/stage14_report.md,

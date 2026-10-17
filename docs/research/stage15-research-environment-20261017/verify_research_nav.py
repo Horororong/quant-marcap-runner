@@ -11,8 +11,8 @@ import pandas as pd
 ROOT=Path(__file__).resolve().parents[3]
 
 def verify(run,output):
- spec=json.loads((run/'strategy_normalized.json').read_text());model=spec['research']
- facts=json.loads((ROOT/model['event_file']).read_text())['events']
+ spec=json.loads((run/'strategy_normalized.json').read_text());model=spec.get('research')
+ facts=json.loads((ROOT/model['event_file']).read_text())['events'] if model else []
  actual=pd.read_csv(run/'artifacts/daily_nav.csv',index_col='Date',parse_dates=True);dates=actual.index
  targets={d.name:pd.read_csv(d/'target_weights.csv',index_col=0,parse_dates=True) for d in (run/'artifacts').glob('D[0-9][0-9]')}
  if not targets:targets={'top_n':pd.read_csv(run/'artifacts/target_weights.csv',index_col=0,parse_dates=True)}

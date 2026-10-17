@@ -27,11 +27,13 @@ def validate_model(model):
   raise ValueError('strict finite research model numbers required')
  return model
 
-def load_strategy_actions(repo_root,spec,*,start=None,end=None,asset_codes=None):
+def load_strategy_actions(repo_root,spec,*,start=None,end=None,asset_codes=None,registry_loader=None):
  from corporate_action_registry import load_corporate_actions
  import pandas as pd
  from quant_backtest_template_CURRENT import expected_market_sessions
- base=load_corporate_actions(repo_root,start=start,end=end,asset_codes=asset_codes)
+ # Preserve the common caller's operational-registry dependency (including
+ # fail-closed missing-registry tests); research facts only compose with it.
+ base=(registry_loader or load_corporate_actions)(repo_root,start=start,end=end,asset_codes=asset_codes)
  model=spec.research
  if model is None:return base
  validate_model(model)
@@ -42,7 +44,7 @@ def load_strategy_actions(repo_root,spec,*,start=None,end=None,asset_codes=None)
  raw=path.read_bytes()
  if hashlib.sha256(raw).hexdigest()!=model['event_sha256']:raise ValueError('research event-file SHA256 mismatch; new facts require new fingerprint')
  facts=json.loads(raw)
- if set(facts)!={'version','events'} or facts['version']!=1:raise ValueError('invalid research fact catalog')
+ if set(facts)!={'version','events','pending_lifecycle_supported_through'} or facts['version']!=1:raise ValueError('invalid research fact catalog')
  # The execution sessions come from verified exchange-calendar coverage, not weekdays.
  dates=expected_market_sessions(pd.Timestamp(spec.period.start),pd.Timestamp(spec.period.end),'XKRX')
  sessions=[str(d.date()) for d in dates]
@@ -60,6 +62,8 @@ def load_strategy_actions(repo_root,spec,*,start=None,end=None,asset_codes=None)
   if start is not None and fact['ex_date']<str(pd.Timestamp(start).date()):continue
   if end is not None and fact['ex_date']>str(pd.Timestamp(end).date()):continue
   if asset_codes is not None and fact['security'] not in asset_codes:continue
+  if spec.period.end>facts['pending_lifecycle_supported_through'] and (fact['decision'] is None or fact['listing'] is None):
+   raise ValueError('data_gap: pending dividend lifecycle beyond catalog support '+facts['pending_lifecycle_supported_through']+'; approval/listing must be obtained, never modeled indefinitely')
   ev=evidence(fact['terms_evidence'])
   if ev['usable_session']>fact['ex_date']:raise ValueError('proposal terms unavailable before ex-date')
   reference=evidence(fact['reference_evidence'])
