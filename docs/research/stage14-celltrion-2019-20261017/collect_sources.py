@@ -176,8 +176,63 @@ def listing_access(output):
     return int(bool(state["errors"]))
 
 
+def corrected_access(output):
+    """One corrected KIND request and source-proved KSD company lookup.
+
+    The preceding empty response is not a listing result. Parameter corrections
+    are taken from the preserved searchDetailsMain fnSearch/setCorpInfo code.
+    No root pages, price API, secret, cookie or failed request is repeated.
+    """
+    output.mkdir(parents=True,exist_ok=False)
+    state=dict(requests=0,retries=0,responses=[],errors=[],investment_approved=False)
+    def capture(url,name,data=None):
+        state["requests"]+=1
+        if state["requests"]>5: raise ValueError("REQUEST_BUDGET")
+        try:
+            headers={"X-Requested-With":"XMLHttpRequest"}
+            if data: headers["Content-Type"]="application/x-www-form-urlencoded"
+            with request.build_opener(safe.NoRedirect()).open(request.Request(url,data=data,headers=headers),timeout=25) as r:
+                raw=r.read(MAX_BYTES+1);http=r.status;ct=r.headers.get("Content-Type","")
+            if len(raw)>MAX_BYTES: raise ValueError("RESPONSE_SIZE_LIMIT")
+            (output/name).write_bytes(raw)
+            state["responses"].append(dict(url=url,file=name,http=http,content_type=ct,bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest()))
+            if not raw:
+                state["errors"].append(dict(url=url,reason="EMPTY_RESPONSE_NOT_EVIDENCE",http=http));return None
+            return safe.decode(raw)
+        except error.HTTPError as e: state["errors"].append(dict(url=url,reason="HTTP_FAILURE",http=e.code))
+        except Exception as e: state["errors"].append(dict(url=url,reason=type(e).__name__,http=None))
+        return None
+    params=dict(method="searchDetailsSub",forward="details_sub",currentPageSize="100",pageIndex="1",orderMode="0",orderStat="D",
+                fromDate="2020-04-20",toDate="2020-04-24",searchCodeType="char",repIsuSrtCd="A068270",searchCorpName="셀트리온",
+                oldSearchCorpName="셀트리온",reportNm="추가상장",reportNmTemp="추가상장")
+    state["corrected_kind_parameters"]=params
+    text=capture("https://kind.krx.co.kr/disclosure/details.do","kind_corrected.html",parse.urlencode(params).encode())
+    receipts=[]
+    for row in re.findall(r"<tr\b.*?</tr>",text or "",re.S|re.I):
+        if "셀트리온" in row and "추가상장" in row: receipts.extend(re.findall(r"openDisclsViewer\(['\"](\d{14})",row))
+    state["candidate_kind_receipts"]=list(dict.fromkeys(receipts))
+    if receipts:
+        capture("https://kind.krx.co.kr/common/disclsviewer.do?"+parse.urlencode(dict(method="searchInitInfo",acptNo=receipts[0])),"kind_listing_viewer.html")
+    lookup="https://m.seibro.or.kr/common/selectIssueList.do?"+parse.urlencode(dict(searchNm="셀트리온",searchCode="00"))
+    text=capture(lookup,"ksd_lookup.txt")
+    matches=[]
+    for item in (text or "").split(","):
+        fields=item.strip().split(":")
+        if len(fields)==2 and fields[1].strip()=="셀트리온" and re.fullmatch(r"[A-Za-z0-9]+",fields[0].strip()): matches.append(fields[0].strip())
+    state["ksd_exact_company_matches"]=matches
+    if len(matches)==1:
+        capture("https://m.seibro.or.kr/cmuc/company/selectCompanySchedule.do","ksd_company.html",
+                parse.urlencode(dict(searchCode="00",shotn_isin=matches[0],txt_sch="셀트리온")).encode())
+    else: state["errors"].append(dict(scope="ksd",reason="EXACT_COMPANY_LOOKUP_NOT_ESTABLISHED"))
+    (output/"state.json").write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n")
+    emit_bundle(output,state)
+    # Transport gaps remain visible and fail the evidence-acquisition job.
+    return int(bool(state["errors"]))
+
+
 def main():
     p=argparse.ArgumentParser();p.add_argument("--output",type=Path,required=True);p.add_argument("--issuer-history",action="store_true");p.add_argument("--listing-access",action="store_true");a=p.parse_args()
+    if os.getenv("STAGE14_CORRECTED_ACCESS")=="1": return corrected_access(a.output)
     if a.listing_access: return listing_access(a.output)
     if a.issuer_history: return issuer_history(a.output)
     a.output.mkdir(parents=True,exist_ok=False)

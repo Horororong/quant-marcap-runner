@@ -33,7 +33,7 @@ permissions:
   actions: read
 jobs:
   bounded-stage14-source:
-    if: ${{ github.run_attempt == 1 && (github.sha == '4612825f5ba6df2d42efe925ddd21dc8d2986a17' && contains(github.event.head_commit.message, '[stage14-source]') || github.sha == '6f88d23ba4a85b6b9babf80404c03fb28e7fc3f8' && contains(github.event.head_commit.message, '[stage14-history]') || contains(github.event.head_commit.message, '[stage14-listing]')) }}
+    if: ${{ github.run_attempt == 1 && (github.sha == '4612825f5ba6df2d42efe925ddd21dc8d2986a17' && contains(github.event.head_commit.message, '[stage14-source]') || github.sha == '6f88d23ba4a85b6b9babf80404c03fb28e7fc3f8' && contains(github.event.head_commit.message, '[stage14-history]') || github.sha == '2d13fc97fa062ffadca09a920c383d3c98a47df9' && contains(github.event.head_commit.message, '[stage14-listing]') || contains(github.event.head_commit.message, '[stage14-corrected]')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -48,7 +48,7 @@ jobs:
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I "$RUNNER_TEMP/financial-repair/runtime/scripts/sandbox_runtime.py" verify
       - name: New record-date and fraction terms plus issuer archive discovery only
         env:
-          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+          STAGE14_CORRECTED_ACCESS: "1"
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c 'import runpy,sys;sys.path.insert(0,"docs/research/stage14-celltrion-2019-20261017");runpy.run_path("docs/research/stage14-celltrion-2019-20261017/test_source_formats.py",run_name="__main__")'
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage14-celltrion-2019-20261017/collect_sources.py --listing-access --output "$RUNNER_TEMP/stage14-source"
@@ -217,7 +217,7 @@ jobs:
           if-no-files-found: error
           retention-days: 90
   fixed-kit:
-    if: ${{ !contains(github.event.head_commit.message, '[stage14-listing]') && !contains(github.event.head_commit.message, '[stage14-history]') && !contains(github.event.head_commit.message, '[stage14-source]') && !contains(github.event.head_commit.message, '[stage14]') && !contains(github.event.head_commit.message, '[stage13-proof]') && !contains(github.event.head_commit.message, '[stage13]') && !contains(github.event.head_commit.message, '[stage12-krx-prices]') && !contains(github.event.head_commit.message, '[stage12-read-artifact]') && !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
+    if: ${{ !contains(github.event.head_commit.message, '[stage14-corrected]') && !contains(github.event.head_commit.message, '[stage14-listing]') && !contains(github.event.head_commit.message, '[stage14-history]') && !contains(github.event.head_commit.message, '[stage14-source]') && !contains(github.event.head_commit.message, '[stage14]') && !contains(github.event.head_commit.message, '[stage13-proof]') && !contains(github.event.head_commit.message, '[stage13]') && !contains(github.event.head_commit.message, '[stage12-krx-prices]') && !contains(github.event.head_commit.message, '[stage12-read-artifact]') && !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
