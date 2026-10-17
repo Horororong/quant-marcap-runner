@@ -1,0 +1,21 @@
+import sys,subprocess,types,time,faulthandler,json,sysconfig,platform,importlib.metadata
+from pathlib import Path
+sys.path.insert(0,'scripts')
+import pandas as pd
+import numpy as np
+import pyarrow
+import dart_value_factor_adapter as current
+source=subprocess.check_output(['git','show','56395108c4c689f19d7d26182e148ca3e1e8d6a9:scripts/dart_value_factor_adapter.py'])
+old=types.ModuleType('before');exec(compile(source,'baseline_adapter.py','exec'),old.__dict__)
+raw=current.load_financial_raw(Path.cwd(),2019,'Q3',preserve_reports=True)
+parts=[g for _,g in raw.groupby(['stock_code','fs_div_requested','rcept_no','filing_date'],dropna=False)]
+small=pd.concat(parts[:64],ignore_index=True)
+faulthandler.enable()
+mode=sys.argv[1]
+if mode=='timer': faulthandler.dump_traceback_later(1,repeat=True)
+for i in range(8):
+ print('REPORT_SELECTION',mode,i,'START',flush=True)
+ old.report_snapshots(small,keep_empty_reports=True)
+ print('REPORT_SELECTION',mode,i,'DONE',flush=True)
+faulthandler.cancel_dump_traceback_later()
+print('MINIMUM_PASS',mode,flush=True)

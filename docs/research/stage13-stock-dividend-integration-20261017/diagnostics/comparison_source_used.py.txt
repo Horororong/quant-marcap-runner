@@ -1,0 +1,23 @@
+import sys,subprocess,types,time,json,sysconfig,platform,importlib.metadata,pstats,io
+from pathlib import Path
+sys.path.insert(0,'scripts')
+import pandas as pd
+import dart_value_factor_adapter as current
+baseline='56395108c4c689f19d7d26182e148ca3e1e8d6a9'
+old=types.ModuleType('before_dart_adapter')
+source=subprocess.check_output(['git','show',baseline+':scripts/dart_value_factor_adapter.py'])
+exec(compile(source,'baseline/dart_value_factor_adapter.py','exec'),old.__dict__)
+raw=current.load_financial_raw(Path.cwd(),2019,'Q3',preserve_reports=True)
+# Actual raw rows, all accounts, first64 receipt/scope/filing groups, no fabricated inputs.
+parts=[g for _,g in raw.groupby(['stock_code','fs_div_requested','rcept_no','filing_date'],dropna=False)]
+small=pd.concat(parts[:64],ignore_index=True)
+result={'baseline':baseline,'python':sys.executable,'python_version':platform.python_version(),'SOABI':sysconfig.get_config_var('SOABI'),'packages':{p:importlib.metadata.version(p) for p in ['pandas','numpy','pyarrow']},'imports':{m.__name__:m.__file__ for m in [pd,current]},'real_input_rows':len(small),'real_report_groups':64,'comparisons':[]}
+for keep in [False,True]:
+ t=time.monotonic();before=old.report_snapshots(small,keep_empty_reports=keep);before_s=time.monotonic()-t
+ t=time.monotonic();after=current.report_snapshots(small,keep_empty_reports=keep);after_s=time.monotonic()-t
+ pd.testing.assert_frame_equal(before,after,check_exact=True)
+ result['comparisons'].append({'keep_empty_reports':keep,'before_seconds':before_s,'after_seconds':after_s,'rows':len(after),'exact_frame_equal':True})
+s=io.StringIO();pstats.Stats('/workspace/research-stage13-20261017/dart-before.prof',stream=s).strip_dirs().sort_stats('cumtime').print_stats(24)
+Path('/workspace/research-stage13-20261017/profile_summary.txt').write_text(s.getvalue())
+Path('/workspace/research-stage13-20261017/snapshot_comparison.json').write_text(json.dumps(result,indent=2)+'\n')
+print(json.dumps(result,indent=2))

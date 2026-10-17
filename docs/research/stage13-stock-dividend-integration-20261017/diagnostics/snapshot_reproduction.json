@@ -1,0 +1,21 @@
+{
+  "baseline_code_sha256": "35ad6f778af02b76d5cfa27e9d3e36602db2bd0c3c4b98f24c5daf800c4597c0",
+  "real_input_rows": 630,
+  "real_report_groups": 64,
+  "comparisons": [
+    {
+      "keep_empty_reports": false,
+      "rows": 64,
+      "exact_frame_equal": true,
+      "before_seconds": 0.8195434530007333,
+      "after_seconds": 0.053514696000092954
+    },
+    {
+      "keep_empty_reports": true,
+      "rows": 64,
+      "exact_frame_equal": true,
+      "before_seconds": 0.8345214769997256,
+      "after_seconds": 0.04609823400005553
+    }
+  ]
+}

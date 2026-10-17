@@ -1,7 +1,7 @@
 """Quantity subledger for evidenced stock dividends; never a return override.
 
-This common corporate-action component is not yet wired to the weight-based
-PROJECT allocator. It deliberately cannot register an executable DSL event.
+The common PROJECT allocator uses this component through its dividend sleeve.
+An event requires an explicit evidence/valuation/account-quantity contract.
 Inputs labelled synthetic are accepted only in a synthetic book. Evidence
 metadata is an audit contract, not automatic certification of a web document.
 """
@@ -17,17 +17,19 @@ from typing import Mapping
 from execution_contract import HELD_RETURN_TOLERANCE_BPS
 
 EVENT = "stock_dividend"
-CONTRACT_VERSION = "1"
+CONTRACT_VERSION = "2"
 CONTRACT = {
     "version": CONTRACT_VERSION,
     "owner": "scripts/stock_dividend.py",
-    "scope": "quantity subledger and market-reference validation; not DSL execution support",
-    "public_execution": "blocked: pending-rights integration with target weights, costs and audit export is incomplete",
+    "scope": "PROJECT common Gross/Net allocator with separate illiquid rights/locked-stock sleeves; research only",
+    "public_execution": "explicit stock_dividend_contract required; real events remain evidence-gated; no automatic production registration",
     "rights": "ex-date opening quantities only; separate conditional/approved rights survive sales",
     "valuation": "explicit as-of unit mark, evidence and rationale for every pending right; no default close/probability",
     "receipt": "actual credit moves approved whole-share rights into locked shares without second income",
     "tradability": "separate actual listing/release evidence; locked shares cannot be sold",
-    "unsupported": ["fractional cash settlement", "withholding/tax", "shorts", "borrowing", "rejection/cancellation cash compensation"],
+    "unsupported": ["fractional cash settlement", "withholding/tax", "shorts", "borrowing", "cancellation cash compensation", "interacting other corporate actions"],
+    "quantity_policy": "whole primary accounts; continuous pro-rata only with explicit synthetic scope, never legal fractional settlement",
+    "cancellation": "actual decision plus verified no-compensation evidence removes conditional claim and recognizes valuation loss",
     "price_reference": "Close / evidenced reference price - 1 versus ChangesRatio / 100; existing 1bp tolerance",
     "economic_value": "settled cash + tradable shares + locked shares + explicitly marked rights; never equated to ChangesRatio",
     "certification": "synthetic and evidenced_research books only; no investment/PIT approval",
@@ -106,6 +108,8 @@ class Decision:
     actual_date: str
     approved: bool
     evidence: Evidence
+    cancellation_treatment: str | None = None
+    cancellation_evidence: Evidence | None = None
 
 
 @dataclass(frozen=True)
@@ -158,15 +162,21 @@ class StockDividendBook:
     class does not reconstruct trade settlement or legal record-date ownership.
     """
 
-    def __init__(self, cash, shares: Mapping[str, int] | None = None, *, scope):
+    def __init__(self, cash, shares: Mapping[str, int] | None = None, *, scope, quantity_policy="whole"):
         if scope not in {"synthetic", "evidenced_research"}:
             raise ValueError("book requires synthetic or evidenced_research scope")
         self.scope = scope
+        if quantity_policy not in {"whole", "synthetic_pro_rata"} or (quantity_policy == "synthetic_pro_rata" and scope != "synthetic"):
+            raise ValueError("continuous pro-rata quantities are synthetic model assumptions only")
+        self.quantity_policy = quantity_policy
         self.cash = number(cash, "cash")
-        self.shares = {code(c): whole(q, "opening shares") for c, q in (shares or {}).items()}
+        self.shares = {code(c): self.quantity(q, "opening shares") for c, q in (shares or {}).items()}
         self.claims = {}
         self.last_session = None
         self.history = []
+
+    def quantity(self, value, name):
+        return number(value, name) if self.quantity_policy == "synthetic_pro_rata" else whole(value, name)
 
     def close(self, session, prices, *, entitlements=(), decisions=(), credits=(), listings=(), trades=(), marks=()):
         # An invalid multi-action close must leave cash, rights, shares and log
@@ -195,7 +205,7 @@ class StockDividendBook:
                 raise ValueError("duplicate stock-dividend entitlement")
             if any(c["terms"].security == terms.security and c["terms"].ex_date == terms.ex_date for c in self.claims.values()):
                 raise ValueError("duplicate security/ex-date entitlement under another identifier")
-            if any(c["terms"].security == terms.security and c["state"] != "released" for c in self.claims.values()):
+            if any(c["terms"].security == terms.security and c["state"] not in {"released", "cancelled"} for c in self.claims.values()):
                 raise ValueError("overlapping pending corporate actions on one security unsupported")
             # Rights stay attached to the original account after old shares sell.
             eligible = self.shares.get(terms.security, 0)
@@ -211,24 +221,28 @@ class StockDividendBook:
             if day(decision.actual_date) != dt or type(decision.approved) is not bool or claim["state"] != "conditional":
                 raise ValueError("decision requires a pending conditional right")
             if not decision.approved:
-                # Cancellation valuation/compensation is not silently zeroed.
-                raise ValueError("rejected dividend requires unsupported cancellation accounting")
-            claim["state"] = "approved"
-            actions.append({"event": decision.event_id, "action": "approval"})
+                if decision.cancellation_treatment != "verified_no_compensation" or decision.cancellation_evidence is None:
+                    raise ValueError("rejected dividend requires unsupported cancellation accounting without verified no-compensation evidence")
+                decision.cancellation_evidence.check(session, self.scope)
+                claim["state"] = "cancelled"
+                actions.append({"event": decision.event_id, "action": "cancellation_no_compensation"})
+            else:
+                claim["state"] = "approved"
+                actions.append({"event": decision.event_id, "action": "approval"})
         for credit in credits:
             claim = self.claims[credit.event_id]
             credit.evidence.check(session, self.scope)
             credit.tax_evidence.check(session, self.scope)
-            whole(credit.shares, "credited shares")
+            self.quantity(credit.shares, "credited shares")
             if day(credit.actual_date) != dt or dt < day(claim["terms"].record_date) or claim["state"] != "approved":
                 raise ValueError("credit requires approved right and exact actual credit date; no plans")
             if credit.tax_treatment != "verified_none":
                 raise ValueError("withholding/tax unsupported; verified no-deduction treatment required")
-            if claim["quantity"] != claim["quantity"].to_integral_value():
+            if self.quantity_policy == "whole" and claim["quantity"] != claim["quantity"].to_integral_value():
                 raise ValueError("fractional cash settlement unsupported; cannot discard or fabricate fractions")
             if Decimal(credit.shares) != claim["quantity"]:
                 raise ValueError("actual credit differs from entitlement; partial credit unsupported")
-            claim["locked"], claim["state"] = credit.shares, "credited_locked"
+            claim["locked"], claim["state"] = self.quantity(credit.shares, "credited shares"), "credited_locked"
             actions.append({"event": credit.event_id, "action": "actual_credit", "shares": credit.shares})
         for listing in listings:
             claim = self.claims[listing.event_id]
@@ -241,7 +255,7 @@ class StockDividendBook:
             actions.append({"event": listing.event_id, "action": "tradable_release"})
         for trade in trades:
             security = code(trade.security)
-            q = whole(trade.shares, "trade shares")
+            q = self.quantity(trade.shares, "trade shares")
             if q == 0 or trade.side not in {"buy", "sell"}:
                 raise ValueError("trade requires positive quantity and buy/sell side")
             value, fee = Decimal(q) * px[security], number(trade.fee, "trade fee")
@@ -324,6 +338,8 @@ def validate_market_reference(*, session, security, close, reference_price, chan
 
 
 def reject_public_execution(events):
-    """Shared registry/PROJECT boundary until the allocator supports this book."""
-    if events is not None and not events.empty and events["event_type"].eq(EVENT).any():
-        raise ValueError("stock_dividend capability_gap: quantity subledger exists, but public target-weight/cost integration is incomplete; verified event and rights valuation/credit/listing evidence required")
+    """Reject legacy split-like dividend rows lacking the explicit sleeve contract."""
+    if events is not None and not events.empty:
+        rows = events.loc[events["event_type"].eq(EVENT)]
+        if not rows.empty and ("stock_dividend_contract" not in rows or rows["stock_dividend_contract"].isna().any()):
+            raise ValueError("stock_dividend capability_gap: explicit stock_dividend_contract, rights valuation/credit/listing evidence required")

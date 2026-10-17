@@ -1,0 +1,33 @@
+{
+  "baseline": "56395108c4c689f19d7d26182e148ca3e1e8d6a9",
+  "python": "/workspace/financial-repair/runtime/.venv/bin/python",
+  "python_version": "3.12.14",
+  "SOABI": "cpython-312-x86_64-linux-gnu",
+  "packages": {
+    "pandas": "3.0.6",
+    "numpy": "2.4.6",
+    "pyarrow": "25.0.1"
+  },
+  "imports": {
+    "pandas": "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/__init__.py",
+    "dart_value_factor_adapter": "/workspace/quant-marcap-runner/scripts/dart_value_factor_adapter.py"
+  },
+  "real_input_rows": 630,
+  "real_report_groups": 64,
+  "comparisons": [
+    {
+      "keep_empty_reports": false,
+      "before_seconds": 0.736787037000795,
+      "after_seconds": 0.044257022999772744,
+      "rows": 64,
+      "exact_frame_equal": true
+    },
+    {
+      "keep_empty_reports": true,
+      "before_seconds": 0.7292797170002814,
+      "after_seconds": 0.04042217499954859,
+      "rows": 64,
+      "exact_frame_equal": true
+    }
+  ]
+}

@@ -61,11 +61,14 @@ def load_corporate_actions(
 
     x["event_type"] = x["event_type"].astype(str).str.strip().str.lower()
     reject_public_execution(x)
+    for raw in x.loc[x["event_type"].eq("stock_dividend"), "stock_dividend_contract"] if "stock_dividend_contract" in x else []:
+        if json.loads(raw).get("scope") != "evidenced_research":
+            raise ValueError("synthetic stock-dividend fixtures cannot enter the production event registry")
     x["share_ratio"] = pd.to_numeric(x["share_ratio"], errors="coerce")
     x["cash_per_share"] = pd.to_numeric(x["cash_per_share"], errors="coerce")
 
-    if (~x["event_type"].isin(["stock_merger", "stock_split", CASH_EVENT])).any():
-        bad = sorted(x.loc[~x["event_type"].isin(["stock_merger", "stock_split", CASH_EVENT]), "event_type"].unique())
+    if (~x["event_type"].isin(["stock_merger", "stock_split", "stock_dividend", CASH_EVENT])).any():
+        bad = sorted(x.loc[~x["event_type"].isin(["stock_merger", "stock_split", "stock_dividend", CASH_EVENT]), "event_type"].unique())
         raise ValueError(f"unsupported corporate action types: {bad}")
     cash = x["event_type"].eq(CASH_EVENT)
     validate_cash_exchanges(x)
@@ -75,7 +78,7 @@ def load_corporate_actions(
         raise ValueError("cash_per_share must be >= 0")
     if x.loc[x["event_type"].eq("stock_merger"), "cash_per_share"].ne(0).any():
         raise ValueError("mixed stock/cash merger is unsupported; cash must not be converted to successor shares")
-    split = x["event_type"].eq("stock_split")
+    split = x["event_type"].isin(["stock_split", "stock_dividend"])
     if (x.loc[split, "predecessor_code"] != x.loc[split, "successor_code"]).any() or x.loc[split, "cash_per_share"].ne(0).any():
         raise ValueError("stock_split requires the same security code and zero cash_per_share")
     if (x.loc[~split & ~cash, "predecessor_code"] == x.loc[~split & ~cash, "successor_code"]).any():

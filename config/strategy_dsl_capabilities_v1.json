@@ -98,7 +98,7 @@
     ],
     "version": "1"
   },
-  "corporate_action_registry_version": "5",
+  "corporate_action_registry_version": "6",
   "corporate_actions": {
     "cash_exchange_contract": {
       "actual_coverage": "no cash exchange in production registry; Jeisys actual payment evidence unresolved",
@@ -117,29 +117,33 @@
     "split_contract": "same code, shares_after/shares_before > 0, zero cash; event_date is trading resumption; adjusted event return still checked against exchange reference",
     "stock_dividend_subledger": {
       "arithmetic": "50-digit Decimal book rejects inexact arithmetic; reference-price division is a separate rounded diagnostic",
+      "cancellation": "actual decision plus verified no-compensation evidence removes conditional claim and recognizes valuation loss",
       "certification": "synthetic and evidenced_research books only; no investment/PIT approval",
       "economic_value": "settled cash + tradable shares + locked shares + explicitly marked rights; never equated to ChangesRatio",
       "owner": "scripts/stock_dividend.py",
       "price_reference": "Close / evidenced reference price - 1 versus ChangesRatio / 100; existing 1bp tolerance",
-      "public_execution": "blocked: pending-rights integration with target weights, costs and audit export is incomplete",
+      "public_execution": "explicit stock_dividend_contract required; real events remain evidence-gated; no automatic production registration",
+      "quantity_policy": "whole primary accounts; continuous pro-rata only with explicit synthetic scope, never legal fractional settlement",
       "receipt": "actual credit moves approved whole-share rights into locked shares without second income",
       "rights": "ex-date opening quantities only; separate conditional/approved rights survive sales",
-      "scope": "quantity subledger and market-reference validation; not DSL execution support",
+      "scope": "PROJECT common Gross/Net allocator with separate illiquid rights/locked-stock sleeves; research only",
       "tradability": "separate actual listing/release evidence; locked shares cannot be sold",
       "unsupported": [
         "fractional cash settlement",
         "withholding/tax",
         "shorts",
         "borrowing",
-        "rejection/cancellation cash compensation"
+        "cancellation cash compensation",
+        "interacting other corporate actions"
       ],
       "valuation": "explicit as-of unit mark, evidence and rationale for every pending right; no default close/probability",
-      "version": "1"
+      "version": "2"
     },
     "supported_event_types": [
       "stock_merger",
       "stock_split",
-      "cash_share_exchange"
+      "cash_share_exchange",
+      "stock_dividend"
     ],
     "unregistered_held_price_gap_policy": "fail"
   },
@@ -178,7 +182,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "23",
+  "dsl_machine_contract_version": "24",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -186,7 +190,7 @@
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
   },
-  "execution_engine_version": "v2-16-exec-3",
+  "execution_engine_version": "v2-16-exec-4",
   "execution_prices": [
     "next_close"
   ],

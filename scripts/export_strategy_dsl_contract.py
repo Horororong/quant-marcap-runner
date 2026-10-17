@@ -145,7 +145,7 @@ def build_capabilities() -> dict:
         ],
         "corporate_actions": {
             "stock_dividend_subledger": STOCK_DIVIDEND_CONTRACT,
-            "supported_event_types": ["stock_merger", "stock_split", "cash_share_exchange"],
+            "supported_event_types": ["stock_merger", "stock_split", "cash_share_exchange", "stock_dividend"],
             "cash_exchange_contract": {
                 "entitlement": "completed legal exchange; no successor; share_ratio=0; fixed positive KRW cash_per_share",
                 "payment": "payment_date and payment_source URL with payment_status=verified_actual; planned dates rejected",

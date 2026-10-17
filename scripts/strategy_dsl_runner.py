@@ -488,6 +488,12 @@ def execute_daily_nav(
 
 
 def save_cash_exchange_audits(result: dict[str, Any], out: Path) -> None:
+    for path in out.glob("stock_dividend_*_*.json"):
+        path.unlink()
+    for scenario, execution in result["execution_scenarios"].items():
+        for name in ("stock_dividend_books", "stock_dividend_price_checks"):
+            if execution.get(name):
+                (out / f"{name}_{scenario}.json").write_text(json.dumps(execution[name], ensure_ascii=False, indent=2, default=str) + "\n", encoding="utf-8")
     # Clear only these generated artifacts after successful execution. A shorter
     # rerun must not retain an old receipt or another scenario's cash balances.
     for pattern in ("cash_entitlements.csv", "cash_payments.csv", "cash_balances_gross_*.csv", "cash_balances_net_*.csv"):

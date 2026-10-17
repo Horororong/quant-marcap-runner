@@ -1,3 +1,35 @@
+## Stage13 common two-book integration (2026-10-17)
+
+Read `docs/research/stage13-stock-dividend-integration-20261017/stage13_report.md`
+and `reproduction.md`, then current code/tests and actual GitHub state.
+Original real DART E2E now passes locally in16.6s under unchanged150s budget.
+Profiling isolated tiny report DataFrame sorts; stable key selection preserves
+actual64-report/630-row output exactly. Same old minimum without async dump
+passes; enabling dump_traceback_later reproduces139. Exact native binary defect
+remains UNVERIFIED; do not repeat the unsafe timer diagnostic or upgrade packages.
+
+PROJECT now carries separate Gross/Net conditional rights and locked-stock
+sleeves in its existing allocator, settled liquidity, original cost/timing and
+separate official-reference1bp checks. Synthetic integration11tests use an
+independent daily share/cash oracle, including both public modes. Local19-command
+regression includes the unchanged real DART E2E, no defer/skip. Final CI must be
+read on the posted SHA; final chat records the actual Run/Job outcome.
+
+Real four events remain0PASS/0FAIL/4UNVERIFIED, registry entries0, original full
+2019–2020 deciles NOT rerun. Continuous pro-rata credit is SYNTHETIC ONLY; actual
+whole accounts/fraction settlement/tax/rights marks and dates require evidence.
+No operating PIT gate was relaxed. Original518/64/60 and old audit bytes preserved.
+
+A single previously unrequested20201228900943 notice used existing Actions auth:
+remotea7842f2c9401a421d71aeb13665a8bb6a5393c72, CI39007075828 failed with
+HTTP200/INVALID_DOCUMENT_XML, no raw document retained, complete0, retry0.
+Status artifact12091442461 is evidence of the attempt, NOT of its document.
+Do not repeat it or the Stage12 rejected20191226900748 path. Stage12 metadata98,
+KRX8responses/12PASS are reused; no new prices/list queries. Bounded capture jobs
+are pinned to their completed SHA and attempt1. Next: official cash-equity
+notice/rules, actual credit/tradability, account fractions/tax and rights marks;
+then independently certify one actual event before the unchanged full strategy.
+
 ## Stage12 partial implementation / CI blocker (2026-10-17)
 
 Read `docs/research/stage12-stock-dividend-20261016/stage12_report.md`,

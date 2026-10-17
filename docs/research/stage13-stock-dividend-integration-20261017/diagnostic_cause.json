@@ -1,0 +1,31 @@
+{
+  "baseline_remote": "c20e09aa705c96bfe67139c4aea27c15e347a5da",
+  "original_e2e_before_profile_exit": 0,
+  "minimum_old_no_timer_exit": 0,
+  "minimum_old_timer_exit": 139,
+  "timeout_cause": "CPU-intensive per-report tiny DataFrame sorting; original code same environment completes without async dump",
+  "native_fault_isolation": "async dump active on old real64-report minimum; exact defective native binary UNVERIFIED",
+  "original_e2e_after_exit": 0,
+  "dependency_or_timeout_changes": false,
+  "actual_event_status": {
+    "PASS": 0,
+    "FAIL": 0,
+    "UNVERIFIED": 4
+  },
+  "proof": {
+    "remote_sha": "a7842f2c9401a421d71aeb13665a8bb6a5393c72",
+    "run_id": 39007075828,
+    "job_id": 117321614615,
+    "requests": 1,
+    "http_status": 200,
+    "dart_error_code": null,
+    "error": "INVALID_DOCUMENT_XML",
+    "retry": 0,
+    "completed_documents": 0,
+    "raw_bytes_preserved": false,
+    "artifact_id": 12091442461,
+    "artifact_bytes": 589,
+    "artifact_digest": "76aa47de331538870d73e85782e42c5a4300fb38124a3b560bc6d4e484ca2308"
+  },
+  "original_strategy_rerun": false
+}

@@ -1,0 +1,35 @@
+REPORT_SELECTION timer 0 START
+REPORT_SELECTION timer 0 DONE
+REPORT_SELECTION timer 1 START
+Timeout (0:00:01)!
+Thread 0x00007fb290b51740 (most recent call first):
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pyarrow/compute.py", line 167 in take
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/arrays/arrow/array.py", line 115 in take
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/algorithms.py", line 1549 in safe_sort
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/algorithms.py", line 836 in factorize
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/arrays/categorical.py", line 491 in __init__
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/sorting.py", line 354 in lexsort_indexer
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/frame.py", line 8355 in sort_values
+  File "baseline_adapter.py", line 420 in report_snapshots
+  File "/workspace/research-stage13-20261017/native_minimum.py", line 18 in <module>
+REPORT_SELECTION timer 1 DONE
+REPORT_SELECTION timer 2 START
+Timeout (0:00:01)!
+Thread 0x00007fb290b51740 (most recent call first):
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 2635 in _with_infer
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/dtypes/dtypes.py", line 590 in validate_categories
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/dtypes/dtypes.py", line 391 in _finalize
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/dtypes/dtypes.py", line 234 in __init__
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/arrays/categorical.py", line 491 in __init__
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/sorting.py", line 354 in lexsort_indexer
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/frame.py", line 8355 in sort_values
+  File "baseline_adapter.py", line 420 in report_snapshots
+  File "/workspace/research-stage13-20261017/native_minimum.py", line 18 in <module>
+REPORT_SELECTION timer 2 DONE
+REPORT_SELECTION timer 3 START
+REPORT_SELECTION timer 3 DONE
+REPORT_SELECTION timer 4 START
+Timeout (0:00:01)!
+Thread 0x00007fb290b51740 (most recent call first):
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/series.py", line 1280 in __array__
+  File "<shim>"
