@@ -1,0 +1,101 @@
+{
+  "classification": "RESEARCH_ONLY_PARTIAL_IMPLEMENTATION",
+  "investment_approved": false,
+  "original_strategy_executed": false,
+  "official_metadata": {
+    "run_id": 38980154097,
+    "job_id": 117238857041,
+    "code_sha": "b7a12ff56e9f4b64b1b26f02b68cb6c2626250bb",
+    "artifact_id": 12080946966,
+    "artifact_sha256": "5a6de9ddcc8e2fd72f8633e0a6ae4ecef32f7677c77e06caf7a6c450275ba382",
+    "artifact_bytes": 13557,
+    "endpoint": "https://opendart.fss.or.kr/api/list.json",
+    "requests": 2,
+    "http_statuses": [
+      200,
+      200
+    ],
+    "dart_statuses": [
+      "000",
+      "000"
+    ],
+    "filings": 98,
+    "scope": "20191201..20210430; category I; last_reprt_at=N; two corporations; one whole page each",
+    "raw_files": [
+      "official_metadata/068270_page1.json",
+      "official_metadata/091990_page1.json"
+    ],
+    "raw_manifest": "official_metadata/state.json",
+    "receipt_clock_certified": false,
+    "all_corrections_certified": false,
+    "historical_listing_status_certified": false
+  },
+  "document_attempt": {
+    "run_id": 39003674278,
+    "job_id": 117311639886,
+    "code_sha": "57cdba365bc82aae0be35e5dde9c978e6d7b95cf",
+    "requested_receipt": "20191226900748",
+    "requests": 1,
+    "http_status": 200,
+    "dart_status": null,
+    "exit_code": 2,
+    "error": "DOCUMENT_CORP_MISMATCH",
+    "second_receipt_not_attempted": "20201228900943",
+    "completed_documents": 0,
+    "raw_bytes_preserved": false,
+    "raw_sha256": null,
+    "limitation": "Validator requires financial-report COMPANY-NAME/AREGCIK identity; absent/different actual identifier cannot be determined because rejected payload was not saved. No re-request or relaxed validation.",
+    "state": "official_documents/run_state.json",
+    "quarantine_fix_validation": "synthetic only; safe identity-rejected XML retained as UNVERIFIED, credential echoes never persisted"
+  },
+  "new_public_document_observation": {
+    "url": "https://kind.krx.co.kr/external/2021/04/09/000628/20210409001579/00634.htm",
+    "document_id": "20210409001579/00634",
+    "location": "1. issuer identity; 3.다. detailed ownership change, 2021.03.26 stock-dividend row",
+    "facts": "091990 issuer identified; reporting shareholder's quantity increases 738376 at 2% under reported change date2021-03-26",
+    "scope": "retrospective corroboration only; no account credit/listing/date certification; the 2% rate was already known",
+    "original_http_bytes_preserved": false
+  },
+  "reused_sources": [
+    "../stage11-official-event-evidence-20261016/evidence.json#E11-01",
+    "../stage11-official-event-evidence-20261016/evidence.json#E11-02",
+    "../stage10-return-diagnostic-20261016/case_evidence.json",
+    "../stage9-followup-20261015/followup_report.md"
+  ],
+  "real_event_summary": {
+    "PASS": 0,
+    "FAIL": 0,
+    "UNVERIFIED": 4
+  },
+  "stage6_investment_pit_certified": "0/6",
+  "public_stock_dividend_execution": "CAPABILITY_GAP",
+  "protection": "preservation_manifest.json and local_validation/preservation.json; no financial reprocessing",
+  "official_krx": {
+    "run_id": 39004603672,
+    "job_id": 117314391668,
+    "code_sha": "68aed33e8b206a39d45d8168be6254c3e6b72e52",
+    "artifact_id": 12090049835,
+    "artifact_bytes": 539408,
+    "artifact_sha256": "66a75e106ca32101e2a49114dccdfce7fa48a02bf7bc746e993f0e1043d5ba8b",
+    "requests": 8,
+    "http200_responses": 8,
+    "target_rows": 8,
+    "scope": "cash equities only;KOSPI/KOSDAQ;20191226/27,20201228/29",
+    "state": "official_krx/state.json",
+    "comparison": "official_krx/comparison.json",
+    "exact_field_verdicts": {
+      "PASS": 12,
+      "FAIL": 0,
+      "UNVERIFIED": 0
+    },
+    "raw_response_bytes_location": "GitHub artifact only; not locally re-downloaded",
+    "no_reference_price_field": true,
+    "reference_price_not_inferred": true,
+    "pit_certified": false,
+    "specification_sources": [
+      "https://openapi.krx.co.kr/contents/OPP/USES/service/OPPUSES002_S2.cmd?BO_ID=JvJFzlAENzZlPBDNGAWC",
+      "https://openapi.krx.co.kr/contents/OPP/USES/service/OPPUSES002_S2.cmd?BO_ID=hZjGpkllgCBCWqeTsYFj"
+    ],
+    "specification_location": "API name/description lines55-64; header AUTH_KEY lines92-94; current specification, not historical trading rules"
+  }
+}

@@ -29,7 +29,8 @@ kept in the input audit; synthetic evidence is rejected in evidenced research.
 All books explicitly remain investment-unapproved. Same-session evidence usable
 at the close is caller-established; no same-close trade signal is authorized.
 
-Amounts use exact Decimal inputs, a fixed 50-digit local context and whole-share
+Amounts use exact Decimal inputs, a fixed 50-digit local context (inexact book
+arithmetic rejects rather than silently rounding) and whole-share
 stock trades. Every close is transactional: failed valuation, funding, approval,
 credit, listing or trade restores all previous state/history. Missing prices,
 future evidence, duplicate entitlements/receipts and overlapping pending events

@@ -10,7 +10,7 @@ from __future__ import annotations
 from copy import deepcopy
 from dataclasses import asdict, dataclass
 from datetime import date
-from decimal import Context, Decimal, InvalidOperation, localcontext
+from decimal import Context, Decimal, Inexact, InvalidOperation, localcontext
 import re
 from typing import Mapping
 
@@ -31,6 +31,7 @@ CONTRACT = {
     "price_reference": "Close / evidenced reference price - 1 versus ChangesRatio / 100; existing 1bp tolerance",
     "economic_value": "settled cash + tradable shares + locked shares + explicitly marked rights; never equated to ChangesRatio",
     "certification": "synthetic and evidenced_research books only; no investment/PIT approval",
+    "arithmetic": "50-digit Decimal book rejects inexact arithmetic; reference-price division is a separate rounded diagnostic",
 }
 
 
@@ -173,8 +174,12 @@ class StockDividendBook:
         draft = deepcopy(self)
         entitlements, decisions, credits, listings, trades, marks = (
             tuple(items) for items in (entitlements, decisions, credits, listings, trades, marks))
-        with localcontext(Context(prec=50)):
-            result = draft._close(session, prices, entitlements, decisions, credits, listings, trades, marks)
+        with localcontext(Context(prec=50)) as ctx:
+            ctx.traps[Inexact] = True
+            try:
+                result = draft._close(session, prices, entitlements, decisions, credits, listings, trades, marks)
+            except Inexact:
+                raise ValueError("ledger arithmetic exceeds exact 50-digit precision; no silent rounding") from None
         self.__dict__.update(draft.__dict__)
         return result
 

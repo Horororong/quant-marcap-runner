@@ -20,6 +20,30 @@ spec.loader.exec_module(original)
 RECEIPTS = ("20191226900748", "20201228900943")
 
 
+def fetch_and_quarantine(receipt, key, output, corp, fetch=original.fetch):
+    """Preserve a safe identity-rejected response without certifying its issuer.
+
+    Stage6 raises DOCUMENT_CORP_MISMATCH only AFTER byte/expansion bounds,
+    credential-echo checks and all XML member parses pass. Other errors,
+    especially credential echoes, must never persist payload bytes here.
+    """
+    http, payload = fetch(receipt, key)
+    try:
+        original.validate(payload, key, corp)
+    except original.Stop as exc:
+        if exc.kind == "DOCUMENT_CORP_MISMATCH":
+            folder = output / "quarantine"
+            folder.mkdir(exist_ok=True)
+            (folder / (receipt + ".zip")).write_bytes(payload)
+            meta = {"rcept_no": receipt, "expected_corp_code": corp,
+                    "bytes": len(payload), "sha256": hashlib.sha256(payload).hexdigest(),
+                    "verdict": "UNVERIFIED", "reason": exc.kind,
+                    "scope": "safe XML archive only; issuer identity NOT certified"}
+            (folder / (receipt + ".json")).write_text(json.dumps(meta, indent=2) + "\n")
+        raise
+    return http, payload
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--output", required=True, type=Path)
@@ -37,7 +61,9 @@ def main():
         assert row["corp_code"] == "00554024" and row["stock_code"] == "091990"
         assert row["report_nm"] == "배당락(주식배당)"
         rows.append({"rcept_no": receipt, "corp_code": row["corp_code"], "report_nm": row["report_nm"]})
-    result = original.acquire(rows, os.environ.get("DART_API_KEY", ""), args.output)
+    corp_by_receipt = {r["rcept_no"]: r["corp_code"] for r in rows}
+    result = original.acquire(rows, os.environ.get("DART_API_KEY", ""), args.output,
+        transport=lambda receipt, key: fetch_and_quarantine(receipt, key, args.output, corp_by_receipt[receipt]))
     # Emit only safe post-validation evidence. Exclude any DART error XML body;
     # its HTTP/status/SHA remains in state. No requests/keys or exception URLs.
     bundle = io.BytesIO()
@@ -47,6 +73,9 @@ def main():
         for response in result["responses"]:
             if response["kind"] == "ZIP":
                 z.writestr(response["file"], (args.output / response["file"]).read_bytes())
+        if (args.output / "quarantine").exists():
+            for path in sorted((args.output / "quarantine").iterdir()):
+                z.writestr("quarantine/" + path.name, path.read_bytes())
     raw = bundle.getvalue()
     if len(raw) > 256 * 1024:
         print("BOUNDED_BUNDLE_EXCEEDS_LOG_TRANSFER; artifact retained")

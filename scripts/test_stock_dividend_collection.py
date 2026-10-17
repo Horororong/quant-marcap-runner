@@ -1,12 +1,66 @@
 """Offline tests: no real credential/network used."""
 import json
+import io
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
+import zipfile
+import importlib.util
+import sys
+from contextlib import redirect_stdout
+from types import SimpleNamespace
+from unittest.mock import patch
 from collect_stock_dividend_metadata import acquire, transport
+from collect_stock_dividend_documents import fetch_and_quarantine, original
 
 
 class TransportTests(unittest.TestCase):
+    def test_deferred_native_incident_cannot_produce_green_ci(self):
+        location = Path(__file__).resolve().parents[1] / "docs/research/stage12-stock-dividend-20261016/validate.py"
+        spec = importlib.util.spec_from_file_location("stage12_validation_gate", location)
+        validator = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(validator)
+        with TemporaryDirectory() as td:
+            output = Path(td) / "out"
+            argv = ["validate", "--output", str(output), "--defer-dart-e2e-after-native-crash"]
+            with patch.object(sys, "argv", argv), patch.object(validator.subprocess, "run", return_value=SimpleNamespace(stdout=b"synthetic command pass", stderr=b"", returncode=0)) as run, redirect_stdout(io.StringIO()):
+                result = validator.main()
+            rows = json.loads((output / "results.json").read_text())
+            self.assertEqual(result, 2)
+            self.assertEqual(sum(r["status"] == "UNVERIFIED" for r in rows), 1)
+            self.assertEqual(run.call_count, len(validator.TESTS))
+            self.assertEqual(next(r for r in rows if r["status"] == "UNVERIFIED")["exit_code"], None)
+
+    def archive(self, corp, text=""):
+        stream = io.BytesIO()
+        with zipfile.ZipFile(stream, "w") as archive:
+            archive.writestr("notice.xml", f'<DOCUMENT><COMPANY-NAME AREGCIK="{corp}">{text}</COMPANY-NAME></DOCUMENT>')
+        return stream.getvalue()
+
+    def test_identity_rejection_keeps_safe_raw_bytes_unverified(self):
+        payload = self.archive("00000001", "SYNTHETIC different issuer")
+        with TemporaryDirectory() as td:
+            folder = Path(td)
+            with self.assertRaises(original.Stop) as caught:
+                fetch_and_quarantine("20191226900748", "x" * 40, folder, "00554024", lambda *a: (200, payload))
+            self.assertEqual(caught.exception.kind, "DOCUMENT_CORP_MISMATCH")
+            self.assertEqual((folder / "quarantine/20191226900748.zip").read_bytes(), payload)
+            self.assertEqual(json.loads((folder / "quarantine/20191226900748.json").read_text())["verdict"], "UNVERIFIED")
+
+    def test_credential_echo_is_not_quarantined(self):
+        with TemporaryDirectory() as td:
+            folder = Path(td)
+            with self.assertRaises(original.Stop) as caught:
+                fetch_and_quarantine("20191226900748", "x" * 40, folder, "00554024", lambda *a: (200, self.archive("00000001", "x" * 40)))
+            self.assertEqual(caught.exception.kind, "CREDENTIAL_ECHO_BLOCKED")
+            self.assertEqual(list(folder.iterdir()), [])
+
+    def test_valid_identity_returns_original_bytes(self):
+        payload = self.archive("00554024", "SYNTHETIC issuer")
+        with TemporaryDirectory() as td:
+            self.assertEqual(fetch_and_quarantine("20191226900748", "x" * 40, Path(td), "00554024", lambda *a: (200, payload)), (200, payload))
+            self.assertEqual(list(Path(td).iterdir()), [])
+
     def run_capture(self, key, fetch):
         with TemporaryDirectory() as td:
             output = Path(td) / "out"

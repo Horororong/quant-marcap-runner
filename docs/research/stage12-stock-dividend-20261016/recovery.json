@@ -1,0 +1,38 @@
+{
+  "runtime": "original verified kit26e4ec02e569; dedicated CPython; no dependency changes",
+  "failures": [
+    {
+      "operation": "new preservation checker",
+      "error": "KeyError: 'after_value'",
+      "exit_code": 1,
+      "completed_before_error": "566 prior-file byte/SHA controls matched",
+      "root_cause": "UTF-8 BOM remained on first CSV header when read without utf-8-sig",
+      "fix": "read protected518.csv using utf-8-sig; original file untouched",
+      "verification": "corrected checker exit0, 518/64 controls and all60 nested ZIP/member SHA/CRC preserved"
+    },
+    {
+      "operation": "local external artifact download",
+      "error": "aborted by user after 3146.1s",
+      "exit_code": null,
+      "actual_file_created": false,
+      "root_cause": "command did not complete through permission-gated external network path",
+      "retry_same_request": false,
+      "recovery": "Actions39003485145 reads only pinned existing artifact12080946966; source ZIP13557 bytes and original GitHub SHA/CRC verified locally; DART requests0"
+    },
+    {
+      "operation": "new official document acquisition",
+      "receipt": "20191226900748",
+      "http_status": 200,
+      "error": "DOCUMENT_CORP_MISMATCH",
+      "exit_code": 2,
+      "completed_documents": 0,
+      "unattempted_receipt": "20201228900943",
+      "retries": 0,
+      "root_cause_boundary": "existing financial-document validator rejects absent/different COMPANY-NAME/AREGCIK. Actual issuer mismatch versus unsupported notice identity format is UNVERIFIED; no preserved body to distinguish them.",
+      "collection_defect": "payload was saved only after identity validation, losing safe rejected response bytes",
+      "fix": "quarantine only already safety-scanned identity-rejected XML ZIPs as UNVERIFIED; retain original failure. Credential-echo responses remain unsaved.",
+      "verification": "three new offline quarantine safety tests; no actual API retry",
+      "resume": "first obtain an independently identifiable notice/original under an appropriate reviewed document-format contract; never change expected corp or relabel this attempt PASS"
+    }
+  ]
+}

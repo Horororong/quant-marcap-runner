@@ -1,5 +1,10 @@
 # Stage12 implementation checkpoint
 
+Historical first checkpoint below. Current result is stage12_report.md and
+native_runtime_incident.json: common subledger implemented,33 focused tests pass,
+actual4 events UNVERIFIED, public bridge incomplete and full CI not certified.
+Do not repeat the completed metadata query or the identity-rejected document.
+
 Remote baseline 577278bc869a76d80523b14e8600380ad37f415b; initial local
 47f6bf6ae209fc4837167887ca2b413ae6fc1a9a has the same tree. Original local
 history is preserved. Branch fix/financial-accuracy-20261014, no main merge.

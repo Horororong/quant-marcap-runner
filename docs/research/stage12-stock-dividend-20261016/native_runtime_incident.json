@@ -1,0 +1,19 @@
+{
+  "verdict": "UNVERIFIED",
+  "required_dart_e2e_currently_certified": false,
+  "test": "scripts/test_dsl_execution_e2e.py",
+  "runtime": "original pinned kit26e4ec02e569 CPython3.12; no dependency changes",
+  "earlier_success": {"run_id": 38980154097, "job_id": 117238857041, "elapsed_seconds_from_log": 95.101, "exit_code": 0},
+  "ci_failure": {"run_id": 39003674278, "job_id": 117311639749, "timeout_seconds": 150, "exit_code": 124, "following_preservation_steps": "SKIPPED"},
+  "one_local_diagnostic": {
+    "instrumentation": "faulthandler.enable and dump_traceback_later(30, repeat=True); original real-data E2E unchanged",
+    "exit_code": 139,
+    "stderr": "Segmentation fault",
+    "partial_stack_locations": ["pandas/core/internals/managers.py:449 apply", "pandas/core/series.py:6177 _constructor_from_mgr", "pandas/core/dtypes/common.py"],
+    "observed_process": "CPU100%, runnable at40s; no network request observed",
+    "log": "local_validation/dart-e2e-diagnostic.log"
+  },
+  "root_cause": "UNVERIFIED: insufficient evidence to distinguish native runtime/test problem from async diagnostic stack-dump fault. Not proved to be a stock-dividend regression.",
+  "response": "Do not rerun this known-failing diagnostic, widen its150s limit, change dependencies or switch Python. Final CI runs other checks, records this test UNVERIFIED and deliberately exits2; preservation steps run independently.",
+  "next_minimum_investigation": "Investigate original frozen-runtime E2E/native-instrumentation compatibility with a reviewed safe diagnostic. Default runner still includes the full test; explicit defer flag cannot yield a successful CI. Remove defer only after a concrete fix and actual original E2E pass."
+}

@@ -25,6 +25,13 @@ def main():
             raw = (ROOT / name).read_bytes()
             assert len(raw) == pin["bytes"] and hashlib.sha256(raw).hexdigest() == pin["sha256"], name
             result["checked_files"] += 1
+        delivery = json.loads((HOME / "artifact_manifest.json").read_text())["files"]
+        for name, pin in delivery.items():
+            raw = (HOME / name).read_bytes()
+            assert len(raw) == pin["bytes"] and hashlib.sha256(raw).hexdigest() == pin["sha256"], name
+        result["stage12_artifact_files"] = len(delivery)
+        for name, sha in json.loads((HOME / "implementation_sha256.json").read_text()).items():
+            assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == sha, name
         financial = ROOT / "docs/audits/financial-extraction-stage3-20261014/results"
         with (financial / "protected518.csv").open(encoding="utf-8-sig") as f:
             rows = list(csv.DictReader(f))

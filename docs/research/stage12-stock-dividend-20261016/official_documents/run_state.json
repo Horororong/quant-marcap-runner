@@ -1,0 +1,17 @@
+{
+  "code_sha": "57cdba365bc82aae0be35e5dde9c978e6d7b95cf",
+  "checked_at": "2026-10-17T04:45:07.017747+00:00",
+  "status": "STOPPED",
+  "requests": 1,
+  "completed": [],
+  "responses": [],
+  "max_new_documents": 20,
+  "endpoint": "https://opendart.fss.or.kr/api/document.xml",
+  "backtest_eligible": false,
+  "active_receipt": "20191226900748",
+  "error": {
+    "kind": "DOCUMENT_CORP_MISMATCH",
+    "http_status": 200,
+    "dart_status": null
+  }
+}

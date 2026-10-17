@@ -27,7 +27,7 @@ permissions:
   actions: read
 jobs:
   bounded-stage12-krx:
-    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage12-krx-prices]') }}
+    if: ${{ github.sha == '68aed33e8b206a39d45d8168be6254c3e6b72e52' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage12-krx-prices]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -129,6 +129,11 @@ jobs:
         if: ${{ always() && steps.runtime.outcome == 'success' }}
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage12-stock-dividend-20261016/preserve.py --output "$RUNNER_TEMP/stage12-preservation"
+      - name: Independently reproduce twelve exact official price-field comparisons
+        if: ${{ always() && steps.runtime.outcome == 'success' }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage12-stock-dividend-20261016/compare_krx.py --output "$RUNNER_TEMP/stage12-krx-comparison.json"
+          cmp "$RUNNER_TEMP/stage12-krx-comparison.json" docs/research/stage12-stock-dividend-20261016/official_krx/comparison.json
       - name: Restore and verify preserved originals and existing replay artifacts only
         if: ${{ always() && steps.runtime.outcome == 'success' }}
         env:
@@ -143,6 +148,7 @@ jobs:
             ${{ runner.temp }}/stage12-validation
             ${{ runner.temp }}/stage12-official
             ${{ runner.temp }}/stage12-preservation
+            ${{ runner.temp }}/stage12-krx-comparison.json
             ${{ runner.temp }}/stage12-originals60/verification.json
             ${{ runner.temp }}/financial-repair/verify.json
           if-no-files-found: error

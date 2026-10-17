@@ -1,0 +1,195 @@
+{
+  "scope": "official current historical API observations versus preserved source; not PIT/rights certification",
+  "fields": [
+    {
+      "Code": "091990",
+      "event_date": "2019-12-27",
+      "field": "previous_close",
+      "official_value": "57300",
+      "preserved_value": "57300.0",
+      "verdict": "PASS",
+      "source_file": "ksq_bydd_trd_20191226.json",
+      "source_row_index": 535,
+      "source_key": "TDD_CLSPRC"
+    },
+    {
+      "Code": "091990",
+      "event_date": "2019-12-27",
+      "field": "Close",
+      "official_value": "54100",
+      "preserved_value": "54100.0",
+      "verdict": "PASS",
+      "source_file": "ksq_bydd_trd_20191227.json",
+      "source_row_index": 535,
+      "source_key": "TDD_CLSPRC"
+    },
+    {
+      "Code": "091990",
+      "event_date": "2019-12-27",
+      "field": "ChangesRatio",
+      "official_value": "-0.92",
+      "preserved_value": "-0.92",
+      "verdict": "PASS",
+      "source_file": "ksq_bydd_trd_20191227.json",
+      "source_row_index": 535,
+      "source_key": "FLUC_RT"
+    },
+    {
+      "Code": "068270",
+      "event_date": "2019-12-27",
+      "field": "previous_close",
+      "official_value": "189500",
+      "preserved_value": "189500.0",
+      "verdict": "PASS",
+      "source_file": "stk_bydd_trd_20191226.json",
+      "source_row_index": 487,
+      "source_key": "TDD_CLSPRC"
+    },
+    {
+      "Code": "068270",
+      "event_date": "2019-12-27",
+      "field": "Close",
+      "official_value": "184000",
+      "preserved_value": "184000.0",
+      "verdict": "PASS",
+      "source_file": "stk_bydd_trd_20191227.json",
+      "source_row_index": 487,
+      "source_key": "TDD_CLSPRC"
+    },
+    {
+      "Code": "068270",
+      "event_date": "2019-12-27",
+      "field": "ChangesRatio",
+      "official_value": "1.66",
+      "preserved_value": "1.66",
+      "verdict": "PASS",
+      "source_file": "stk_bydd_trd_20191227.json",
+      "source_row_index": 487,
+      "source_key": "FLUC_RT"
+    },
+    {
+      "Code": "091990",
+      "event_date": "2020-12-29",
+      "field": "previous_close",
+      "official_value": "160500",
+      "preserved_value": "160500.0",
+      "verdict": "PASS",
+      "source_file": "ksq_bydd_trd_20201228.json",
+      "source_row_index": 554,
+      "source_key": "TDD_CLSPRC"
+    },
+    {
+      "Code": "091990",
+      "event_date": "2020-12-29",
+      "field": "Close",
+      "official_value": "167900",
+      "preserved_value": "167900.0",
+      "verdict": "PASS",
+      "source_file": "ksq_bydd_trd_20201229.json",
+      "source_row_index": 554,
+      "source_key": "TDD_CLSPRC"
+    },
+    {
+      "Code": "091990",
+      "event_date": "2020-12-29",
+      "field": "ChangesRatio",
+      "official_value": "6.67",
+      "preserved_value": "6.67",
+      "verdict": "PASS",
+      "source_file": "ksq_bydd_trd_20201229.json",
+      "source_row_index": 554,
+      "source_key": "FLUC_RT"
+    },
+    {
+      "Code": "068270",
+      "event_date": "2020-12-29",
+      "field": "previous_close",
+      "official_value": "333500",
+      "preserved_value": "333500.0",
+      "verdict": "PASS",
+      "source_file": "stk_bydd_trd_20201228.json",
+      "source_row_index": 486,
+      "source_key": "TDD_CLSPRC"
+    },
+    {
+      "Code": "068270",
+      "event_date": "2020-12-29",
+      "field": "Close",
+      "official_value": "360500",
+      "preserved_value": "360500.0",
+      "verdict": "PASS",
+      "source_file": "stk_bydd_trd_20201229.json",
+      "source_row_index": 486,
+      "source_key": "TDD_CLSPRC"
+    },
+    {
+      "Code": "068270",
+      "event_date": "2020-12-29",
+      "field": "ChangesRatio",
+      "official_value": "10.08",
+      "preserved_value": "10.08",
+      "verdict": "PASS",
+      "source_file": "stk_bydd_trd_20201229.json",
+      "source_row_index": 486,
+      "source_key": "FLUC_RT"
+    }
+  ],
+  "cases": [
+    {
+      "Code": "091990",
+      "date": "2019-12-27",
+      "raw_price_return": "-0.05584642233856893542757417102966841186736474694590",
+      "official_reported_return": "-0.0092",
+      "known_reference_price_check": null,
+      "actual_economic_holding_return": null,
+      "real_event_verdict": "UNVERIFIED"
+    },
+    {
+      "Code": "068270",
+      "date": "2019-12-27",
+      "raw_price_return": "-0.02902374670184696569920844327176781002638522427441",
+      "official_reported_return": "0.0166",
+      "known_reference_price_check": {
+        "official_reference_price": "181000",
+        "reference_price_return": "0.0165745856353591160220994475138121546961325966851",
+        "difference_from_reported_bps": "0.2541436464088397790055248618784530386740331490000"
+      },
+      "actual_economic_holding_return": null,
+      "real_event_verdict": "UNVERIFIED"
+    },
+    {
+      "Code": "091990",
+      "date": "2020-12-29",
+      "raw_price_return": "0.0461059190031152647975077881619937694704049844237",
+      "official_reported_return": "0.0667",
+      "known_reference_price_check": null,
+      "actual_economic_holding_return": null,
+      "real_event_verdict": "UNVERIFIED"
+    },
+    {
+      "Code": "068270",
+      "date": "2020-12-29",
+      "raw_price_return": "0.0809595202398800599700149925037481259370314842579",
+      "official_reported_return": "0.1008",
+      "known_reference_price_check": null,
+      "actual_economic_holding_return": null,
+      "real_event_verdict": "UNVERIFIED"
+    }
+  ],
+  "investment_approved": false,
+  "field_summary": {
+    "PASS": 12,
+    "FAIL": 0,
+    "UNVERIFIED": 0
+  },
+  "source_response_hashes": {
+    "stk_bydd_trd_20191226.json": "62544e108d8e170fda4fb0f52c4a380f41782c188d5c5f2e7d760e8ae70ecc3d",
+    "stk_bydd_trd_20191227.json": "a9270610d429bbafb0b3d581d954f1a42e7b336b8ae97d32e40e0348530ef463",
+    "stk_bydd_trd_20201228.json": "bb0f4ac7a54a1516397764b72a2260a5bbc69365e7fd76b9db179291f1797112",
+    "stk_bydd_trd_20201229.json": "1e755e495618ccb0a1686123be03b2510239b4f7d61e7f8e60405122e018c4c1",
+    "ksq_bydd_trd_20191226.json": "5bb651bb7e61faa7d948778eb3f9caefbfad6f7f9275b94ffde4578051f76b4e",
+    "ksq_bydd_trd_20191227.json": "3b07aca6e3aa369fb249cf84473ede7211adade3cd225bf8824777b880bab068",
+    "ksq_bydd_trd_20201228.json": "d68b90fc25a782a7f8b56aa3a61c895bfed2b5ada290c4b908fd2e4fb7d9f1cd",
+    "ksq_bydd_trd_20201229.json": "8574fdfe798188319e338258aad9b18fc8f1b03e8d0e75b339c99037cb8daa99"
+  }
+}

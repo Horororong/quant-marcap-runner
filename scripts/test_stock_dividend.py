@@ -185,6 +185,10 @@ class LedgerTests(unittest.TestCase):
         self.assertEqual(r["inputs"]["entitlements"][0]["event_id"], "A")
         self.assertEqual(len(r["inputs"]["marks"]), 1)
 
+    def test_large_cash_cannot_silently_round_away_a_share_value(self):
+        b = StockDividendBook("1e60", {"000001": 1}, scope="synthetic")
+        self.unchanged_failure(b, "no silent rounding", lambda: b.close("2024-01-02", {"000001": "90"}))
+
 
 class IntegrationTests(unittest.TestCase):
     def test_four_real_source_anomalies_still_fail_before_nav(self):

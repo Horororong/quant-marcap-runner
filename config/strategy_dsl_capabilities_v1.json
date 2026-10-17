@@ -116,6 +116,7 @@
     "registry": "config/kr_corporate_actions.csv",
     "split_contract": "same code, shares_after/shares_before > 0, zero cash; event_date is trading resumption; adjusted event return still checked against exchange reference",
     "stock_dividend_subledger": {
+      "arithmetic": "50-digit Decimal book rejects inexact arithmetic; reference-price division is a separate rounded diagnostic",
       "certification": "synthetic and evidenced_research books only; no investment/PIT approval",
       "economic_value": "settled cash + tradable shares + locked shares + explicitly marked rights; never equated to ChangesRatio",
       "owner": "scripts/stock_dividend.py",

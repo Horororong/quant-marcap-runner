@@ -1,0 +1,7 @@
+Timeout (0:00:30)!
+Thread 0x00007f44d20fe740 (most recent call first):
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 449 in apply
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/series.py", line 6177 in _constructor_from_mgr
+Timeout (0:00:30)!
+Thread 0x00007f44d20fe740 (most recent call first):
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/core/dtypes/common.py"

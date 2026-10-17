@@ -1,0 +1,59 @@
+{
+  "baseline_remote": "577278bc869a76d80523b14e8600380ad37f415b",
+  "checkpoints": [
+    {
+      "remote_sha": "b7a12ff56e9f4b64b1b26f02b68cb6c2626250bb",
+      "local_sha": "ee4979323523c8fe65411da341ae46de79f4dee5",
+      "tree": "9fd0040aa11b78d1e07de56a7fcd5e14e0a1881c",
+      "run_id": 38980154097,
+      "conclusion": "success",
+      "note": "initial15 test files+contract; one bounded2-request official metadata query"
+    },
+    {
+      "remote_sha": "daa9aeee7e83f654792b293a98b45e7b7d76ed51",
+      "local_sha": "5cfbcc9fa12d84c2dd94de2d86a9316d6b9f585e",
+      "tree": "580e90fbd9b6a1b3ee826010ee6a58b52ff75403",
+      "run_id": 39003485145,
+      "conclusion": "success",
+      "note": "read existing artifact only; no API/financial reprocessing"
+    },
+    {
+      "remote_sha": "57cdba365bc82aae0be35e5dde9c978e6d7b95cf",
+      "local_sha": "47f5b1ccf697c8475a4c96dc938f590dc3ce8d0d",
+      "tree": "79bf9a6695f560f411079a8bbd974d97ea3d3eee",
+      "run_id": 39003674278,
+      "conclusion": "failure",
+      "jobs": [
+        {
+          "id": 117311639749,
+          "name": "stage12-stock-dividend",
+          "conclusion": "failure",
+          "reason": "DART E2E150s timeout exit124; later preservation skipped"
+        },
+        {
+          "id": 117311639886,
+          "name": "bounded-stage12-documents",
+          "conclusion": "failure",
+          "reason": "HTTP200, DOCUMENT_CORP_MISMATCH, exit2; no repeat"
+        }
+      ]
+    },
+    {
+      "remote_sha": "68aed33e8b206a39d45d8168be6254c3e6b72e52",
+      "local_sha": "ff6be4cdfaed040c08e4a03addf984af391994fd",
+      "tree": "aa0ff5f2b94628b2df1d4330bf16a845c69e1777",
+      "run_id": 39004603672,
+      "job_id": 117314391668,
+      "conclusion": "success",
+      "note": "8 bounded official KRX cash-equity replies; other jobs skipped"
+    }
+  ],
+  "latest_code_local_focused_tests": {
+    "stock_dividend_unittest": 23,
+    "collection_and_ci_unittest": 10,
+    "status": "PASS_SOFTWARE_ONLY",
+    "krx_transport_unittest": 4
+  },
+  "final_ci_contract": "query actual final remote head SHA; explicit deferred native incident keeps required full suite UNVERIFIED/exit2, never green. Other regressions and preserved60/518/64 checks still execute. No DART collection on final commit.",
+  "final_run_lookup": "GET /repos/Horororong/quant-marcap-runner/actions/runs?head_sha=<actual_final_remote_sha>"
+}

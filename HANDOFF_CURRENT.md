@@ -1,10 +1,27 @@
-## Stage12 stock-dividend implementation in progress (2026-10-16)
+## Stage12 partial implementation / CI blocker (2026-10-17)
 
-Read `docs/research/stage12-stock-dividend-20261016/checkpoint.md` and
-`docs/STOCK_DIVIDEND.md` first for this active task. Common rights subledger
-implemented; public stock-dividend execution remains blocked. Original Stage6
-collection/PIT0/6 and Stage11 four unresolved events are preserved. Final CI and
-official bounded metadata proof are not yet recorded as completed.
+Read `docs/research/stage12-stock-dividend-20261016/stage12_report.md`,
+`reproduction.md`, `native_runtime_incident.json` and `docs/STOCK_DIVIDEND.md`.
+Common transactional rights/locked-stock/cash subledger and separate price
+validator implemented;37 focused tests pass locally, but public allocator
+integration is incomplete. No real stock-dividend event was registered; original
+2019–2020 decile strategy remains blocked. Original Stage6 investment PIT0/6 and
+all old financial/evidence data are preserved.
+Official Actions query38980154097 obtained2 safe replies/98 metadata rows, now
+committed. Do not recollect them. Newly identified notice20191226900748 returned
+HTTP200 but identity validator rejected it (CI39003674278); next receipt was not
+attempted. Safe rejected-body quarantine is fixed/tested synthetically only.
+The same CI's existing DART E2E timed out150s; a local async stack diagnostic
+then exited139. Root cause remains UNVERIFIED. Do not blindly rerun, widen the
+budget, change dependencies or bypass this result. Final CI explicitly defers
+that unsafe repeat and must exit2, while other tests and preservation run.
+An explicit defer can NEVER mean successful complete CI. Query actual final
+remote SHA/jobs; initial CI success is not final full-suite certification.
+Existing KRX_AUTH_KEY route also worked: CI39004603672 returned8 official
+cash-equity market-day replies. Twelve prior/event Close/FLUC_RT fields match
+Stage10 exactly. See official_krx/state.json and comparison.json; raw8 replies
+are in artifact12090049835. Three reference bases and complete event/PIT
+certifications remain unverified. Do not re-download completed queries.
 
 ## Stage5 official DART history acquisition complete (same repair branch)
 
