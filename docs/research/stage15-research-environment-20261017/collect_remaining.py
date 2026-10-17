@@ -28,6 +28,26 @@ def main():
   except error.HTTPError as e:state['errors'].append(dict(file=name,reason='HTTP_FAILURE',http=e.code))
   except Exception as e:state['errors'].append(dict(file=name,reason=type(e).__name__,http=None))
   return None
+ if os.getenv('STAGE15_COMPLETION')=='1':
+  # Only a newly identified AGM result and actual listing receipt from the
+  # preceding saved search. No repeated searches, proposals or prices.
+  receipt='20200327902239'
+  catalog=json.loads((ROOT/'docs/research/stage12-stock-dividend-20261016/official_metadata/091990_page1.json').read_text())['list']
+  assert any(r['rcept_no']==receipt and r['report_nm']=='정기주주총회결과' for r in catalog)
+  if not re.fullmatch(r'[A-Za-z0-9]{40}',key):raise ValueError('AUTH_ENV_MISSING')
+  capture('https://opendart.fss.or.kr/api/document.xml?'+parse.urlencode(dict(crtfc_key=key,rcept_no=receipt)),receipt+'.zip',archive=True)
+  receipt='20200421000430'
+  shell=capture('https://kind.krx.co.kr/common/disclsviewer.do?'+parse.urlencode(dict(method='searchInitInfo',acptNo=receipt)),receipt+'_viewer.html')
+  m=re.search(r"<option value=['\"](\d{14})\|Y['\"]",shell or '')
+  if not m:raise ValueError('NO_SOURCE_DOCNO')
+  body=capture('https://kind.krx.co.kr/common/disclsviewer.do?'+parse.urlencode(dict(method='searchContents',docNo=m[1])),receipt+'_path.html')
+  paths=re.findall(r"[\"'](https://kind\.krx\.co\.kr/external/[^\"'\s]+\.htm)[\"']",body or '')
+  if not paths:raise ValueError('NO_RETURNED_BODY')
+  capture(paths[0],receipt+'_body.html')
+  assert state['requests']==4
+  (a.output/'state.json').write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n')
+  safe.emit_bundle(a.output,state)
+  return int(bool(state['errors']))
  # Three new proposal documents, proved by frozen official metadata; never the rejected ex-notices.
  for code,receipt in [('091990','20191217900478'),('091990','20201216900990'),('068270','20201216801088')]:
   rows=json.loads((ROOT/f'docs/research/stage12-stock-dividend-20261016/official_metadata/{code}_page1.json').read_bytes())['list']
