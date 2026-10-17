@@ -129,8 +129,56 @@ def emit_bundle(output,state):
     print(json.dumps(dict(bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest(),requests=state["requests"],errors=state["errors"])))
 
 
+def listing_access(output):
+    """Final bounded public-route probe: KIND exact2020 listing window/KSD UI.
+
+    No retries, no previously rejected DART receipt, no price/history APIs.
+    A successful HTTP response remains source evidence, not event certification.
+    """
+    output.mkdir(parents=True,exist_ok=False)
+    state=dict(requests=0,retries=0,responses=[],errors=[],investment_approved=False)
+    def capture(url,name,data=None):
+        state["requests"]+=1
+        try:
+            req=request.Request(url,data=data,headers={"Content-Type":"application/x-www-form-urlencoded"} if data else {})
+            with request.build_opener(safe.NoRedirect()).open(req,timeout=25) as r:
+                raw=r.read(MAX_BYTES+1);http=r.status;ct=r.headers.get("Content-Type","")
+            if len(raw)>MAX_BYTES: raise ValueError("RESPONSE_SIZE_LIMIT")
+            text=safe.decode(raw)
+            (output/name).write_bytes(raw)
+            state["responses"].append(dict(url=url,method="POST" if data else "GET",file=name,http=http,content_type=ct,
+                bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest(),form_names=re.findall(r'name=[\"\']([^\"\']+)',text)))
+            return text
+        except error.HTTPError as e: state["errors"].append(dict(url=url,reason="HTTP_FAILURE",http=e.code))
+        except Exception as e: state["errors"].append(dict(url=url,reason=type(e).__name__,http=None))
+        return None
+    url="https://kind.krx.co.kr/disclosure/details.do?method=searchDetailsMain"
+    text=capture(url,"kind_form.html")
+    if text and "searchDetailsSub" in text:
+        params=dict(method="searchDetailsSub",forward="disclosure/details_sub",currentPageSize="100",pageIndex="1",orderMode="0",orderStat="D",
+                    fromDate="2020-04-20",toDate="2020-04-24",repIsuSrtCd="068270",searchCorpName="셀트리온",reportName="추가상장")
+        state["kind_parameters"]=params
+        body=capture("https://kind.krx.co.kr/disclosure/details.do","kind_search.html",parse.urlencode(params).encode())
+        if body:
+            # Follow only an actual receipt identifier returned with a matching
+            # issuer/title row, never convert DART receipt numbers or invent one.
+            receipts=[]
+            for row in re.findall(r"<tr\b.*?</tr>",body,re.S|re.I):
+                if "셀트리온" in row and "추가상장" in row:
+                    receipts.extend(re.findall(r"openDisclsViewer\(['\"](\d{14})",row))
+            state["candidate_receipts"]=list(dict.fromkeys(receipts))
+            if receipts:
+                capture("https://kind.krx.co.kr/common/disclsviewer.do?"+parse.urlencode(dict(method="searchInitInfo",acptNo=receipts[0])),"kind_listing_viewer.html")
+    elif text: state["errors"].append(dict(scope="kind",reason="SEARCH_SUB_ROUTE_NOT_PROVED_IN_RETURNED_FORM"))
+    capture("https://m.seibro.or.kr/cmuc/company/selectCompanySchedule.do","ksd_form.html")
+    (output/"state.json").write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n")
+    emit_bundle(output,state)
+    return int(bool(state["errors"]))
+
+
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--output",type=Path,required=True);p.add_argument("--issuer-history",action="store_true");a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument("--output",type=Path,required=True);p.add_argument("--issuer-history",action="store_true");p.add_argument("--listing-access",action="store_true");a=p.parse_args()
+    if a.listing_access: return listing_access(a.output)
     if a.issuer_history: return issuer_history(a.output)
     a.output.mkdir(parents=True,exist_ok=False)
     state=dict(requests=0,retries=0,responses=[],errors=[],investment_approved=False)
