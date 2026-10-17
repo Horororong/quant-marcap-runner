@@ -384,7 +384,7 @@ def report_snapshots(raw: pd.DataFrame, keep_empty_reports: bool = False) -> pd.
         ["stock_code", "fs_div_requested", "rcept_no", "filing_date"], dropna=False
     ):
         cand = []
-        for _, row in group.iterrows():
+        for row in group.to_dict("records"):
             metric, priority = _metric_priority(row)
             if metric is None:
                 continue
@@ -398,7 +398,6 @@ def report_snapshots(raw: pd.DataFrame, keep_empty_reports: bool = False) -> pd.
             })
         if not cand and not keep_empty_reports:
             continue
-        c = pd.DataFrame(cand, columns=["metric", "priority", "current", "cumulative", "account_nm", "account_id"])
         rec = {
             "Code": str(code).zfill(6),
             "fs_div": str(fs),
@@ -406,23 +405,20 @@ def report_snapshots(raw: pd.DataFrame, keep_empty_reports: bool = False) -> pd.
             "filing_date": pd.Timestamp(fdate) if pd.notna(fdate) else pd.NaT,
         }
         for metric in ("equity", "revenue", "net_income", "ocf"):
-            z = c[c["metric"] == metric].copy()
-            if z.empty:
+            z = [r for r in cand if r["metric"] == metric]
+            if not z:
                 rec[f"{metric}_current"] = np.nan
                 rec[f"{metric}_cum"] = np.nan
                 continue
-            z["has_value"] = z[["current", "cumulative"]].notna().any(axis=1).astype(int)
-            z["account_key"] = (
-                z["account_id"].fillna("").astype(str).map(_normalize_name)
-                + "|"
-                + z["account_nm"].fillna("").astype(str).map(_normalize_name)
-            )
-            z = z.sort_values(
-                ["has_value", "priority", "account_key"],
-                ascending=[False, True, True],
-                kind="mergesort",
-            )
-            best = z.iloc[0]
+            # Same stable lexicographic selection as the former tiny DataFrame
+            # sort: nonmissing first, concept priority, normalized account key,
+            # original source order for exact ties. Avoid ~40k DataFrame sorts
+            # in the real DART E2E; no numeric/PIT/account policy changes.
+            def key(r):
+                normalize = lambda v: _normalize_name("" if pd.isna(v) else str(v))
+                return (-int(pd.notna(r["current"]) or pd.notna(r["cumulative"])),
+                        r["priority"], normalize(r["account_id"]) + "|" + normalize(r["account_nm"]))
+            best = min(z, key=key)
             rec[f"{metric}_current"] = best["current"]
             rec[f"{metric}_cum"] = best["cumulative"]
         rows.append(rec)
