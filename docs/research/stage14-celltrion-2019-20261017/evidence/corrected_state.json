@@ -1,0 +1,57 @@
+{
+  "requests": 3,
+  "retries": 0,
+  "responses": [
+    {
+      "url": "https://kind.krx.co.kr/disclosure/details.do",
+      "file": "kind_corrected.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 3101,
+      "sha256": "bd441fa5a83fe45f7afa3d6af6d933a3b324208220efb114d408f4c1a4fa3c3d"
+    },
+    {
+      "url": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchInitInfo&acptNo=20200421000196",
+      "file": "kind_listing_viewer.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 24336,
+      "sha256": "ce25deff9ea53bfef2b064f17ee8b3021b1035bf739c284a7fa5a99bd88203ab"
+    },
+    {
+      "url": "https://m.seibro.or.kr/common/selectIssueList.do?searchNm=%EC%85%80%ED%8A%B8%EB%A6%AC%EC%98%A8&searchCode=00",
+      "file": "ksd_lookup.txt",
+      "http": 200,
+      "content_type": "text/plain;charset=UTF-8",
+      "bytes": 106,
+      "sha256": "623757dc4b3be6e8b44f6d2fcee9eaf024f08fda525f6d693a75b419c46be6a4"
+    }
+  ],
+  "errors": [
+    {
+      "scope": "ksd",
+      "reason": "EXACT_COMPANY_LOOKUP_NOT_ESTABLISHED"
+    }
+  ],
+  "investment_approved": false,
+  "corrected_kind_parameters": {
+    "method": "searchDetailsSub",
+    "forward": "details_sub",
+    "currentPageSize": "100",
+    "pageIndex": "1",
+    "orderMode": "0",
+    "orderStat": "D",
+    "fromDate": "2020-04-20",
+    "toDate": "2020-04-24",
+    "searchCodeType": "char",
+    "repIsuSrtCd": "A068270",
+    "searchCorpName": "셀트리온",
+    "oldSearchCorpName": "셀트리온",
+    "reportNm": "추가상장",
+    "reportNmTemp": "추가상장"
+  },
+  "candidate_kind_receipts": [
+    "20200421000196"
+  ],
+  "ksd_exact_company_matches": []
+}

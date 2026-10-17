@@ -1,0 +1,307 @@
+[
+  {
+    "run_id": 39025947660,
+    "head_sha": "4612825f5ba6df2d42efe925ddd21dc8d2986a17",
+    "url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39025947660",
+    "status": "completed",
+    "conclusion": "success",
+    "artifacts": [
+      {
+        "id": 12098403146,
+        "name": "stage14-primary-source-discovery",
+        "bytes": 23666,
+        "digest": "sha256:c052a7c3174a0a7793e0f131f67f6fd48c073ce44da0273e2116ea5778b294cb",
+        "expired": false
+      }
+    ],
+    "jobs": [
+      {
+        "id": 117376832415,
+        "name": "bounded-stage14-source",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Restore and verify original pinned offline kit",
+            "conclusion": "success"
+          },
+          {
+            "name": "New record-date and fraction terms plus issuer archive discovery only",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "run_id": 39026153113,
+    "head_sha": "6f88d23ba4a85b6b9babf80404c03fb28e7fc3f8",
+    "url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39026153113",
+    "status": "completed",
+    "conclusion": "success",
+    "artifacts": [
+      {
+        "id": 12097948474,
+        "name": "stage14-primary-source-discovery",
+        "bytes": 22429,
+        "digest": "sha256:6c8b5663ecb43252131f15dbb6622f43cc931864fbb4cda728cdd5e9885b7239",
+        "expired": false
+      }
+    ],
+    "jobs": [
+      {
+        "id": 117377419048,
+        "name": "bounded-stage14-source",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Restore and verify original pinned offline kit",
+            "conclusion": "success"
+          },
+          {
+            "name": "New record-date and fraction terms plus issuer archive discovery only",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "run_id": 39026397148,
+    "head_sha": "2d13fc97fa062ffadca09a920c383d3c98a47df9",
+    "url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39026397148",
+    "status": "completed",
+    "conclusion": "success",
+    "artifacts": [
+      {
+        "id": 12098866040,
+        "name": "stage14-primary-source-discovery",
+        "bytes": 40734,
+        "digest": "sha256:722a691a3ee02138d6f55d945e359091cdfb9a1bca0fd79f6f0d182eb5e93594",
+        "expired": false
+      }
+    ],
+    "jobs": [
+      {
+        "id": 117378122005,
+        "name": "bounded-stage14-source",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Restore and verify original pinned offline kit",
+            "conclusion": "success"
+          },
+          {
+            "name": "New record-date and fraction terms plus issuer archive discovery only",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "run_id": 39026715582,
+    "head_sha": "4c38b66d5eff2e7986762ea11cbf21577444fb10",
+    "url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39026715582",
+    "status": "completed",
+    "conclusion": "failure",
+    "artifacts": [
+      {
+        "id": 12098429344,
+        "name": "stage14-primary-source-discovery",
+        "bytes": 9709,
+        "digest": "sha256:e7e47de66796d90ac49087f8a7fd66235b31e2d31378163941be608befd0d9b9",
+        "expired": false
+      }
+    ],
+    "jobs": [
+      {
+        "id": 117379025911,
+        "name": "bounded-stage14-source",
+        "conclusion": "failure",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Restore and verify original pinned offline kit",
+            "conclusion": "success"
+          },
+          {
+            "name": "New record-date and fraction terms plus issuer archive discovery only",
+            "conclusion": "failure"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "run_id": 39026845523,
+    "head_sha": "2fb260dc30c2e188164c69d15b1f45c3a7de8bbe",
+    "url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39026845523",
+    "status": "completed",
+    "conclusion": "success",
+    "artifacts": [
+      {
+        "id": 12098982138,
+        "name": "stage14-primary-source-discovery",
+        "bytes": 7905,
+        "digest": "sha256:0bd269886834380cec20131aef52372535ca2fa393ef35ae46315690d18c845f",
+        "expired": false
+      }
+    ],
+    "jobs": [
+      {
+        "id": 117379401515,
+        "name": "bounded-stage14-source",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Restore and verify original pinned offline kit",
+            "conclusion": "success"
+          },
+          {
+            "name": "New record-date and fraction terms plus issuer archive discovery only",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  }
+]

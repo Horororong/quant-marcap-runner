@@ -33,7 +33,7 @@ permissions:
   actions: read
 jobs:
   bounded-stage14-source:
-    if: ${{ github.run_attempt == 1 && (github.sha == '4612825f5ba6df2d42efe925ddd21dc8d2986a17' && contains(github.event.head_commit.message, '[stage14-source]') || github.sha == '6f88d23ba4a85b6b9babf80404c03fb28e7fc3f8' && contains(github.event.head_commit.message, '[stage14-history]') || github.sha == '2d13fc97fa062ffadca09a920c383d3c98a47df9' && contains(github.event.head_commit.message, '[stage14-listing]') || github.sha == '4c38b66d5eff2e7986762ea11cbf21577444fb10' && contains(github.event.head_commit.message, '[stage14-corrected]') || contains(github.event.head_commit.message, '[stage14-body]')) }}
+    if: ${{ github.run_attempt == 1 && (github.sha == '4612825f5ba6df2d42efe925ddd21dc8d2986a17' && contains(github.event.head_commit.message, '[stage14-source]') || github.sha == '6f88d23ba4a85b6b9babf80404c03fb28e7fc3f8' && contains(github.event.head_commit.message, '[stage14-history]') || github.sha == '2d13fc97fa062ffadca09a920c383d3c98a47df9' && contains(github.event.head_commit.message, '[stage14-listing]') || github.sha == '4c38b66d5eff2e7986762ea11cbf21577444fb10' && contains(github.event.head_commit.message, '[stage14-corrected]') || github.sha == '2fb260dc30c2e188164c69d15b1f45c3a7de8bbe' && contains(github.event.head_commit.message, '[stage14-body]')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -159,7 +159,7 @@ jobs:
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I scripts/read_stock_dividend_artifact.py
   stock-dividend-regression:
-    if: ${{ contains(github.event.head_commit.message, '[stage13]') }}
+    if: ${{ contains(github.event.head_commit.message, '[stage13]') || contains(github.event.head_commit.message, '[stage14]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -180,6 +180,12 @@ jobs:
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage13-stock-dividend-integration-20261017/validate.py --output "$RUNNER_TEMP/stage12-validation"
           cmp "$RUNNER_TEMP/stage13-independent-ledger.csv" docs/research/stage13-stock-dividend-integration-20261017/independent_ledger.csv
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage13-stock-dividend-integration-20261017/compare_snapshot.py --output "$RUNNER_TEMP/stage13-snapshot-comparison.json"
+      - name: Stage14 original-source and actual-price component assertions (not event PASS)
+        if: ${{ contains(github.event.head_commit.message, '[stage14]') }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c 'import runpy,sys;sys.path.insert(0,"docs/research/stage14-celltrion-2019-20261017");runpy.run_path("docs/research/stage14-celltrion-2019-20261017/test_source_formats.py",run_name="__main__")'
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage14-celltrion-2019-20261017/verify_event.py --output "$RUNNER_TEMP/stage14-event-review.json"
+          cmp "$RUNNER_TEMP/stage14-event-review.json" docs/research/stage14-celltrion-2019-20261017/event_review.json
       - name: One bounded official exchange-disclosure metadata discovery
         if: ${{ github.sha == 'b7a12ff56e9f4b64b1b26f02b68cb6c2626250bb' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage12-official-proof]') }}
         env:
@@ -189,7 +195,12 @@ jobs:
       - name: Preserve all prior audit bytes and financial controls without reprocessing
         if: ${{ always() && steps.runtime.outcome == 'success' }}
         run: |
-          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage13-stock-dividend-integration-20261017/preserve.py --output "$RUNNER_TEMP/stage12-preservation"
+          if [[ "${{ contains(github.event.head_commit.message, '[stage14]') }}" == "true" ]]; then
+            "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage14-celltrion-2019-20261017/preserve.py --output "$RUNNER_TEMP/stage12-preservation"
+            "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage14-celltrion-2019-20261017/verify_artifacts.py
+          else
+            "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage13-stock-dividend-integration-20261017/preserve.py --output "$RUNNER_TEMP/stage12-preservation"
+          fi
       - name: Independently reproduce twelve exact official price-field comparisons
         if: ${{ always() && steps.runtime.outcome == 'success' }}
         run: |
@@ -204,11 +215,12 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: stage13-stock-dividend-evidence
+          name: ${{ contains(github.event.head_commit.message, '[stage14]') && 'stage14-stock-dividend-evidence' || 'stage13-stock-dividend-evidence' }}
           path: |
             ${{ runner.temp }}/stage12-validation
             ${{ runner.temp }}/stage13-independent-ledger.csv
             ${{ runner.temp }}/stage13-snapshot-comparison.json
+            ${{ runner.temp }}/stage14-event-review.json
             ${{ runner.temp }}/stage12-official
             ${{ runner.temp }}/stage12-preservation
             ${{ runner.temp }}/stage12-krx-comparison.json

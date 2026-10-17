@@ -1,0 +1,233 @@
+{
+  "scope": "new Stage14 final byte pins; no recursive self hash; final Git tree pins this manifest",
+  "files": {
+    ".github/workflows/financial-accuracy-revalidation.yml": {
+      "bytes": 30613,
+      "sha256": "a95ead09962c1adee3ff71f7f0418d001bdbc70e7f9a0819bb569086390dea3a"
+    },
+    "HANDOFF_CURRENT.md": {
+      "bytes": 57493,
+      "sha256": "e982eb57512e953e172e599f6e45fe4f5213e6d9db7ac6d911cc77c71b5c0cab"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/collect_sources.py": {
+      "bytes": 19167,
+      "sha256": "55640a4252f16128d0f4c10e7e0c55a6ee19b0754ce5d5f9d9020a4e8c08d161"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/event_review.json": {
+      "bytes": 4561,
+      "sha256": "2edd296682310b3414f14a29a8a095692e2abbc20cfc3f272a2e3b0060562e41"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/20191218800434.html": {
+      "bytes": 7687,
+      "sha256": "56650bc0bf851216ef41aaf70c6bd7cad60b86ff55637d5ae07aa90c22dee2ba"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/20191218800434.raw.b64": {
+      "bytes": 9877,
+      "sha256": "4275a2041cb92f633b3bf1c70c6b041daf66ec8b2c0a3683575eec8b41d7e65a"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/20191218800434_text.json": {
+      "bytes": 2804,
+      "sha256": "8ff76d4783e36959a43b53a7d3eecbae4200474b3e7000116c5c954608fca3df"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/body_state.json": {
+      "bytes": 1139,
+      "sha256": "925886a2ae94242494bbf30dda844c7b375f2e87b724594612a6398536e15a91"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/corrected_state.json": {
+      "bytes": 1712,
+      "sha256": "d159f24eb102b4ef620cef09e04c7a4687e2036a2394f91ce4e06cf8aec86047"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/encoding.json": {
+      "bytes": 373,
+      "sha256": "510d2bca40de7e59ee4f288df8fc0cc0a7d18667df00aa6d942f23f1a33c59c0"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/issuer_697_redacted.html": {
+      "bytes": 40209,
+      "sha256": "fa0b5a74b1157ff07b3980b30e8d52e4257c3901ff11febb8cdcf0162892ee05"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/issuer_697_text.txt": {
+      "bytes": 22066,
+      "sha256": "80a969b164dc81542e9969b31dbe1718096423c15ab0137c817a61331ee48a86"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/issuer_history_state.json": {
+      "bytes": 5261,
+      "sha256": "cde946baa7678bdd2714aae463f9b12297dcb30bfaed3d726fe2be5e08018176"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/kind_body_0.html": {
+      "bytes": 659,
+      "sha256": "7f481944f225981bb635ec204b9686eb78c80fc458c6ed38023fd4acbda7e161"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/kind_corrected.html": {
+      "bytes": 3101,
+      "sha256": "bd441fa5a83fe45f7afa3d6af6d933a3b324208220efb114d408f4c1a4fa3c3d"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/kind_form_redacted.html": {
+      "bytes": 275318,
+      "sha256": "55ad8d2a02ebe0b5c1f43b58d35182d56e8c233b662184f9a64001c6067327fb"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/kind_listing_viewer.html": {
+      "bytes": 24336,
+      "sha256": "ce25deff9ea53bfef2b064f17ee8b3021b1035bf739c284a7fa5a99bd88203ab"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/kind_path.html": {
+      "bytes": 968,
+      "sha256": "7c377e3270d4a051f5a93705909ca3779b49db7a199da8fd71b1159abe90bb79"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/ksd_celltrion_redacted.html": {
+      "bytes": 37677,
+      "sha256": "eecc2e7794c4c2ced8436137beb2a3920c6c5d675a7b095a247f33da661e5952"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/ksd_form_redacted.html": {
+      "bytes": 49989,
+      "sha256": "af510f3277a7b218e23f99cbf8f33d24e235f52f76ae7306d17e75ac9cd03575"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/listing_state.json": {
+      "bytes": 13148,
+      "sha256": "97bc95609c953f2abefe61c2c1caef2cea951e8401ff50d45ae717e9bcf27783"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/evidence/source_state.json": {
+      "bytes": 3186,
+      "sha256": "16ccbeaafe8f867bef0abd8fcb6066be2659f941fb26d4bd8ce83134d95c0d27"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/execution.json": {
+      "bytes": 205,
+      "sha256": "6365dcb242e94cd82c4ebe923df3a52428d63d14a37f0aec73f069bb1a6afbf5"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/export_strategy_dsl_contract.py.log": {
+      "bytes": 36,
+      "sha256": "bdb90d50bd169f5de18f6a858635f7da08647763aaab17ca8790e005dbaddd8a"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/results.json": {
+      "bytes": 5380,
+      "sha256": "21fa9d5c0dd7163c96dadd2e572225bd525803601579d60c29afffee36a80038"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_cash_share_exchange.py.log": {
+      "bytes": 172,
+      "sha256": "d2cdcfd7390fba792697345797c8890e6c9ea159862883a7fa0470bcf12caa19"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_corporate_action_execution.py.log": {
+      "bytes": 38,
+      "sha256": "90b7e439daa3aeb5594eb119db1d5d1b8ed8a8a6e85391689fecd589d844f5d1"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_corporate_action_preflight.py.log": {
+      "bytes": 152,
+      "sha256": "04e14907cf5e7d8d4db39ec7ac1b258744920f15abeb1ca227fd26703557ec7f"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_corporate_action_reconciliation.py.log": {
+      "bytes": 63,
+      "sha256": "6addcda974f3d742ffcf6cd1602a1b4c0baf2d5f346f1cc7d2d0abe58a5b5e6f"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_dart_custom_rebalance.py.log": {
+      "bytes": 1859,
+      "sha256": "0d2911c928a8c079453f043c60dbdb00cc5f297c215486e3d559f5d739159f88"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_dart_snapshot_selection.py.log": {
+      "bytes": 390,
+      "sha256": "9d380fc8b5dc2811bcfc8a32f34e470fac79d94b5519d25d3d2f510221d1aef5"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_dsl_deciles_e2e.py.log": {
+      "bytes": 39,
+      "sha256": "2da279a3b406821a90307e8919a7741b7305b243d7c89660f9dc91c365e1843e"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_dsl_execution_e2e.py.log": {
+      "bytes": 33,
+      "sha256": "f2a841d912a421acb7c68145b28cacafb140e9ec7221ac51ac928ea07e10d17f"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_held_return_guard.py.log": {
+      "bytes": 50,
+      "sha256": "febd8de4860d556b3e0a57b9458352bff26d2cd48a3323c759688a62b5a94bb5"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_stock_dividend.py.log": {
+      "bytes": 2990,
+      "sha256": "f00a9967740b2443e7804a7212b731195710379da6724e3c8934f3a1bb88b540"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_stock_dividend_collection.py.log": {
+      "bytes": 1311,
+      "sha256": "b92ad6d077d077f19f9c7175e43e44830076b2a2706533c24c69e435f4606793"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_stock_dividend_execution.py.log": {
+      "bytes": 1693,
+      "sha256": "7b4c4f80168b33d061fdd7166c344df6a4a489b69164ff6328fad94b4c32adc2"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_stock_dividend_krx.py.log": {
+      "bytes": 476,
+      "sha256": "ac681db47fa92a9f51b8a680ba547c0e159f8768103aea87d1eb9df8c6f99c3f"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_strategy_dsl.py.log": {
+      "bytes": 24,
+      "sha256": "cff600395e8a62373ad3c4596b304324e89c0b0f77c1decf7d20320a293421be"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_strategy_dsl_deciles.py.log": {
+      "bytes": 49,
+      "sha256": "d72a1ea4c6cecbd45d043d94c39544e1053ef92377f099815ce472eefedd8e9b"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_strategy_dsl_preflight.py.log": {
+      "bytes": 34,
+      "sha256": "71e5cc8ec3c40d049c317429e65a469ca51385218ad5e0ec6c89a2e2f4ff14eb"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_strategy_dsl_validation.py.log": {
+      "bytes": 97,
+      "sha256": "df7322bab96a3c2fc87ab8ce23f7c48d402afd97b6daec509029da9c7060dc2a"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/local_validation/test_verified_autumn_splits.py.log": {
+      "bytes": 55,
+      "sha256": "6e038230674e57bf87dd9f08638f8e87c375ae7ff1b47050aabc80d18a773728"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/preservation_manifest.json": {
+      "bytes": 131343,
+      "sha256": "694cff3aff3b6cd1fa518f2274bcbd15c006874ae8a7435cd3d533f804e09576"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/preservation_result.json": {
+      "bytes": 201,
+      "sha256": "0eda179c707eb1bed01c63cdf11ec8f0cc43010555bda966130516db1bf83f85"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/preserve.py": {
+      "bytes": 2176,
+      "sha256": "673ce875a231fd56dbd098ae2332b8d0b2c8ba66bf80a96d746a2a716d58c1ae"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/readiness.json": {
+      "bytes": 7987,
+      "sha256": "fda84fdec44ff8ac9da7fd54b1e6dc0a8631e95f73ac7cdf4c7704a2a339944d"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/runtime_verify.json": {
+      "bytes": 21113,
+      "sha256": "a2776816a1db5c3a67a035d2985185c1bbf03a3e3d566b1e9e29efbfe57e2de4"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/snapshot_comparison.json": {
+      "bytes": 544,
+      "sha256": "27aa64c77f2bd9ff338827a29c3d4fd6554c028d1ca08d0fec2ed52c2381eb64"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/source_ci.json": {
+      "bytes": 8566,
+      "sha256": "21ff93a1f57c82494b3357408ef0931392fdb9f5a643a3cb74e298d0d27030f4"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/source_formats.log": {
+      "bytes": 566,
+      "sha256": "67261e5c263079ae1dcc6b31b5f81e6cffbfbf1b5efbb8f83d1f8fc7f26da1b8"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/stage14_details.csv": {
+      "bytes": 4281,
+      "sha256": "fa32a53bf5e656458b56f0d3156167803b4ca731d0d8df0686f09e50615e7fe5"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/stage14_report.md": {
+      "bytes": 13290,
+      "sha256": "7c254c5bf8aedec62f3422ee94308992b4c2e4212b7af268adc7d4c3b6371da3"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/stage14_reproduction.md": {
+      "bytes": 5696,
+      "sha256": "b159a15c612aadb6985faa199b4f459d4738df8ca9f208ba69c691112a5e957d"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/test_source_formats.py": {
+      "bytes": 1466,
+      "sha256": "e220aff025ae8b16a594fcf4928bf3f4d17d4bbe9f642ec5d2a6dde9e31a8240"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/verify_artifacts.py": {
+      "bytes": 583,
+      "sha256": "be78ab54f27f8031566a31cca110663dfa15a4efd843fb86e3e0d533d18bb94d"
+    },
+    "docs/research/stage14-celltrion-2019-20261017/verify_event.py": {
+      "bytes": 6719,
+      "sha256": "8b8ae42776106bf14826eaebeaad95e53f181972d5fcae19af06d745c981d7cb"
+    }
+  }
+}

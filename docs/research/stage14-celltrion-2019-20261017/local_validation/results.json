@@ -1,0 +1,173 @@
+[
+  {
+    "file": "test_dart_snapshot_selection.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 0.386,
+    "log": "test_dart_snapshot_selection.py.log",
+    "sha256": "9d380fc8b5dc2811bcfc8a32f34e470fac79d94b5519d25d3d2f510221d1aef5"
+  },
+  {
+    "file": "test_stock_dividend_execution.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 1.958,
+    "log": "test_stock_dividend_execution.py.log",
+    "sha256": "7b4c4f80168b33d061fdd7166c344df6a4a489b69164ff6328fad94b4c32adc2"
+  },
+  {
+    "file": "test_stock_dividend.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 0.686,
+    "log": "test_stock_dividend.py.log",
+    "sha256": "f00a9967740b2443e7804a7212b731195710379da6724e3c8934f3a1bb88b540"
+  },
+  {
+    "file": "test_stock_dividend_collection.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 0.12,
+    "log": "test_stock_dividend_collection.py.log",
+    "sha256": "b92ad6d077d077f19f9c7175e43e44830076b2a2706533c24c69e435f4606793"
+  },
+  {
+    "file": "test_stock_dividend_krx.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 0.091,
+    "log": "test_stock_dividend_krx.py.log",
+    "sha256": "ac681db47fa92a9f51b8a680ba547c0e159f8768103aea87d1eb9df8c6f99c3f"
+  },
+  {
+    "file": "test_held_return_guard.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 5.756,
+    "log": "test_held_return_guard.py.log",
+    "sha256": "febd8de4860d556b3e0a57b9458352bff26d2cd48a3323c759688a62b5a94bb5"
+  },
+  {
+    "file": "test_cash_share_exchange.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 7.084,
+    "log": "test_cash_share_exchange.py.log",
+    "sha256": "d2cdcfd7390fba792697345797c8890e6c9ea159862883a7fa0470bcf12caa19"
+  },
+  {
+    "file": "test_corporate_action_execution.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 0.412,
+    "log": "test_corporate_action_execution.py.log",
+    "sha256": "90b7e439daa3aeb5594eb119db1d5d1b8ed8a8a6e85391689fecd589d844f5d1"
+  },
+  {
+    "file": "test_corporate_action_reconciliation.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 13.02,
+    "log": "test_corporate_action_reconciliation.py.log",
+    "sha256": "6addcda974f3d742ffcf6cd1602a1b4c0baf2d5f346f1cc7d2d0abe58a5b5e6f"
+  },
+  {
+    "file": "test_corporate_action_preflight.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 12.227,
+    "log": "test_corporate_action_preflight.py.log",
+    "sha256": "04e14907cf5e7d8d4db39ec7ac1b258744920f15abeb1ca227fd26703557ec7f"
+  },
+  {
+    "file": "test_verified_autumn_splits.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 17.638,
+    "log": "test_verified_autumn_splits.py.log",
+    "sha256": "6e038230674e57bf87dd9f08638f8e87c375ae7ff1b47050aabc80d18a773728"
+  },
+  {
+    "file": "test_strategy_dsl_validation.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 2.979,
+    "log": "test_strategy_dsl_validation.py.log",
+    "sha256": "df7322bab96a3c2fc87ab8ce23f7c48d402afd97b6daec509029da9c7060dc2a"
+  },
+  {
+    "file": "test_strategy_dsl.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 0.638,
+    "log": "test_strategy_dsl.py.log",
+    "sha256": "cff600395e8a62373ad3c4596b304324e89c0b0f77c1decf7d20320a293421be"
+  },
+  {
+    "file": "test_strategy_dsl_deciles.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 6.207,
+    "log": "test_strategy_dsl_deciles.py.log",
+    "sha256": "d72a1ea4c6cecbd45d043d94c39544e1053ef92377f099815ce472eefedd8e9b"
+  },
+  {
+    "file": "test_strategy_dsl_preflight.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 3.957,
+    "log": "test_strategy_dsl_preflight.py.log",
+    "sha256": "71e5cc8ec3c40d049c317429e65a469ca51385218ad5e0ec6c89a2e2f4ff14eb"
+  },
+  {
+    "file": "test_dart_custom_rebalance.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 0.723,
+    "log": "test_dart_custom_rebalance.py.log",
+    "sha256": "0d2911c928a8c079453f043c60dbdb00cc5f297c215486e3d559f5d739159f88"
+  },
+  {
+    "file": "test_dsl_execution_e2e.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 16.707,
+    "log": "test_dsl_execution_e2e.py.log",
+    "sha256": "f2a841d912a421acb7c68145b28cacafb140e9ec7221ac51ac928ea07e10d17f"
+  },
+  {
+    "file": "test_dsl_deciles_e2e.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 4.652,
+    "log": "test_dsl_deciles_e2e.py.log",
+    "sha256": "2da279a3b406821a90307e8919a7741b7305b243d7c89660f9dc91c365e1843e"
+  },
+  {
+    "file": "export_strategy_dsl_contract.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "timeout_seconds": 150,
+    "elapsed_seconds": 0.453,
+    "log": "export_strategy_dsl_contract.py.log",
+    "sha256": "bdb90d50bd169f5de18f6a858635f7da08647763aaab17ca8790e005dbaddd8a"
+  }
+]

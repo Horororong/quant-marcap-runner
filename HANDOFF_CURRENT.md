@@ -1,3 +1,40 @@
+## Stage14 actual Celltrion event checkpoint (2026-10-17)
+
+Read docs/research/stage14-celltrion-2019-20261017/stage14_report.md,
+stage14_reproduction.md, readiness.json/event_review.json and source_ci.json.
+Goal NOT complete: actual registry events0, complete event0PASS/0FAIL/1UNVERIFIED;
+original2019–2020 deciles not rerun. Existing Stage13 engine/contract unchanged.
+New primary original20191218800434 proves record2019-12-31 and conditional/fraction
+proposal terms. Issuer notice697 (2020-04-06) proves approval2020-03-27, personal
+distribution tax guidance (NOT verified_none) and planned listing4/24.
+New actual KRX receipt20200421000196/doc20200421000468 external68154.htm explicitly
+states6360313shares, issuance3/27, listing4/24. Do NOT seek that listing date again
+or relabel it UNVERIFIED; broker credit/quantity/cash remains distinct and unknown.
+Public KSD company schedule returns record dates only, no credit detail.
+
+Official181000 base versus184000 close/1.66% passes unchanged1bp (0.2541436464bp).
+No historic formula text required just to USE this directly evidenced base.
+Common actual-source/price component probe stops at missing pending-right mark,
+leaves ledger atomic; no invented mark, payment/credit, fraction/tax cash or
+synthetic primary record. A zero-opening ex-date new buy gets no dividend rights.
+Continuous target weights versus primary whole-only credit is a MODEL GAP, not
+absence of market evidence. Before-distribution-tax research must be explicit,
+not an assertion that a real Korean account has zero tax. Pending conditional
+valuation policy and actual credit are still needed for complete execution.
+
+Source jobs:39025947660/39026153113/39026397148/39026845523 transport success;
+39026715582 FAILURE (KIND corrected search succeeded, KSD pipe/comma mismatch).
+No retries/price recollection. Captured docNo/body path was followed, not guessed.
+HTML ZIP notice is quarantined as HTML, not forced into annual-report XML identity.
+Source jobs are retired to their exact completedSHA/attempt1; final[stage14]
+uses existing19-command regression + four format safety tests + real component
+byte reproduction, no source calls. Final chat and CI artifact execution.json
+provide exact final remote SHA/RunID after verification; do not infer from this text.
+Preserved518/64/60, old audits/gate/prices/registry and native139 cause UNVERIFIED.
+Next minimum: evidence for actual credit; explicit pending-right valuation and
+continuous real-data before-distribution-tax research model, separately from
+whole-account fractional cash/actual-tax certification. No unapproved gate waiver.
+
 ## Stage13 common two-book integration (2026-10-17)
 
 Read `docs/research/stage13-stock-dividend-integration-20261017/stage13_report.md`

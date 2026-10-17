@@ -1,0 +1,28 @@
+test_existing_registry_and_project_reject_stock_dividend_until_integrated (__main__.IntegrationTests.test_existing_registry_and_project_reject_stock_dividend_until_integrated) ... ok
+test_four_real_source_anomalies_still_fail_before_nav (__main__.IntegrationTests.test_four_real_source_anomalies_still_fail_before_nav) ... ok
+test_market_reference_and_economic_book_are_different (__main__.IntegrationTests.test_market_reference_and_economic_book_are_different) ... ok
+test_approval_and_actual_credit_are_required (__main__.LedgerTests.test_approval_and_actual_credit_are_required) ... ok
+test_credit_and_release_create_no_second_gain (__main__.LedgerTests.test_credit_and_release_create_no_second_gain) ... ok
+test_decimal_precision_is_not_caller_global_context (__main__.LedgerTests.test_decimal_precision_is_not_caller_global_context) ... ok
+test_duplicate_close_and_future_evidence_fail (__main__.LedgerTests.test_duplicate_close_and_future_evidence_fail) ... ok
+test_duplicate_entitlement_and_overlapping_events_reject (__main__.LedgerTests.test_duplicate_entitlement_and_overlapping_events_reject) ... ok
+test_ex_date_new_buyer_has_no_rights (__main__.LedgerTests.test_ex_date_new_buyer_has_no_rights) ... ok
+test_fractional_entitlement_is_kept_and_settlement_blocked (__main__.LedgerTests.test_fractional_entitlement_is_kept_and_settlement_blocked) ... ok
+test_generator_inputs_remain_in_reproduction_log (__main__.LedgerTests.test_generator_inputs_remain_in_reproduction_log) ... ok
+test_independent_amount_book_sale_then_credit_and_listing (__main__.LedgerTests.test_independent_amount_book_sale_then_credit_and_listing) ... ok
+test_large_cash_cannot_silently_round_away_a_share_value (__main__.LedgerTests.test_large_cash_cannot_silently_round_away_a_share_value) ... ok
+test_listing_without_credit_or_wrong_date_fails (__main__.LedgerTests.test_listing_without_credit_or_wrong_date_fails) ... ok
+test_locked_shares_cannot_be_sold (__main__.LedgerTests.test_locked_shares_cannot_be_sold) ... ok
+test_missing_mark_fails_after_successful_actions_atomically (__main__.LedgerTests.test_missing_mark_fails_after_successful_actions_atomically) ... ok
+test_missing_prices_never_filled (__main__.LedgerTests.test_missing_prices_never_filled) ... ok
+test_multiple_securities_independent (__main__.LedgerTests.test_multiple_securities_independent) ... ok
+test_no_withholding_or_partial_receipt_guess (__main__.LedgerTests.test_no_withholding_or_partial_receipt_guess) ... ok
+test_numeric_and_evidence_boundaries (__main__.LedgerTests.test_numeric_and_evidence_boundaries) ... ok
+test_rejection_requires_own_contract (__main__.LedgerTests.test_rejection_requires_own_contract) ... ok
+test_rights_cannot_fund_trade (__main__.LedgerTests.test_rights_cannot_fund_trade) ... ok
+test_sale_keeps_rights_but_cannot_sell_them (__main__.LedgerTests.test_sale_keeps_rights_but_cannot_sell_them) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.220s
+
+OK

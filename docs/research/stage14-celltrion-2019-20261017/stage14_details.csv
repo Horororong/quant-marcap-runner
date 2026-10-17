@@ -1,0 +1,22 @@
+field,verdict,value,evidence,calculation_or_state_affected,execution_requirement
+issuer_and_security,PASS,셀트리온/068270/00413046,Stage12 official_metadata/068270_page1.json; evidence/kind_body_0.html codeKR7068270008/A068270,identity binding,required
+ex_date,PASS,2019-12-27,Stage11 E11-01 application date,opening entitlement and exact market reference day,required
+record_date,PASS,2019-12-31,evidence/20191218800434.raw.b64 row4,legal eligibility input; no reconstruction of actual settlement ownership,required
+stock_dividend_rate,PASS,0.05,same original proposal row1,eligible quantity *0.05,required
+proposal_is_conditional,PASS,AGM may change proposal,same original proposal row6,must remain conditional before decision,required
+approval_actual_date,PASS,2020-03-27,issuer697 posted2020-04-06; Stage11 E11-02 retrospective report,conditional to approved; evidence availability differs from effective date,required; after-fact knowledge is not backdated PIT evidence
+aggregate_issued_shares,PASS,6360313; issuance2020-03-27,evidence/kind_body_0.html rows1/3; Stage11 E11-02,aggregate crosscheck; not account quantity/credit,crosscheck; not credit substitute
+official_market_listing_date,PASS,2020-04-24,evidence/kind_body_0.html row6; KRX additional-listing notice20200421000196,exchange admission date; tradability release only after separate credited state,required for listing; does not prove broker credit
+reference_price,PASS,181000,Stage11 E11-01 preserved official-page observation (no original HTTP bytes),Close/reference-1; no reverse-engineering,required for reference check
+previous_close,PASS,189500,Stage12 official_krx/state.json stk_bydd_trd_20191226 TDD_CLSPRC,old position value; independent official/raw source match,required
+ex_close,PASS,184000,Stage12 official_krx/state.json stk_bydd_trd_20191227 TDD_CLSPRC,tradable position value,required
+official_changes_ratio_pct,PASS,1.66,Stage12 official_krx/state.json stk_bydd_trd_20191227 FLUC_RT,reference check within unchanged1bp,required
+proposal_fraction_formula,PASS,fraction * AGM previous-session close; proposed cash settlement,original proposal row6,future fractional cash method; actual amount/date not proved,not needed for divisible whole quantities; needed if actual fractions occur
+published_personal_tax_guidance,PASS,face1000; income14%; local1.4%; small-amount caveat; broker-dependent,issuer697 2020-04-06,cannot assert verified_none; guidance not account tax cash record,only actual after-distribution-tax account requires account deductions
+actual_account_credit,UNVERIFIED,,no credit/settlement record obtained; KSD company schedule has record dates only,approved right -> locked shares; actual q per Gross/Net book,required by current credit contract; issuance/listing cannot fill it
+pending_right_valuation,UNVERIFIED,,no observable conditional/liquidity-adjusted daily mark or approved explicit valuation policy,pending rights NAV; blocks first positive held close2019-12-27,required even before credit; no default zero/close/forward-fill
+actual_fraction_cash,UNVERIFIED,,"proposal formula only, no settled cash price/date/amount",account fractional cash/NAV,conditional; not needed if no fractions; continuous research needs its own explicit model
+actual_distribution_tax_cash,UNVERIFIED,,no broker account class/withholding amount/date,after-tax cash and Net NAV; cannot use verified_none,not a market-price/Gross-before-tax fact; current engine lacks explicit before-distribution-tax real-research basis
+real_continuous_quantity_contract,UNVERIFIED,,common allocator uses continuous target weights; primary dividend adapter whole-only,original Gross/Net entitlement and credits; no rounding to integers,model capability gap; synthetic_pro_rata cannot label real registry event
+historical_full_formula_and_tick_rule,UNVERIFIED,,not acquired; Stage11 direct observed base181000 reused,deriving a new base would need applicable rules,NOT a block for directly evidenced181000 price check
+precise_publication_time_and_complete_pit_chain,UNVERIFIED,,current sources/official receipt dates; no full event availability chain certified,signal information/PIT investment certification,not required for retrospective component arithmetic; required for PIT approval

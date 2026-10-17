@@ -1,0 +1,35 @@
+{
+  "requests": 3,
+  "retries": 0,
+  "responses": [
+    {
+      "url": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchContents&docNo=20200421000468",
+      "file": "kind_path.html",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 968,
+      "sha256": "7c377e3270d4a051f5a93705909ca3779b49db7a199da8fd71b1159abe90bb79"
+    },
+    {
+      "url": "https://kind.krx.co.kr/external/2020/04/21/000196/20200421000468/68154.htm",
+      "file": "kind_body_0.html",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 659,
+      "sha256": "7f481944f225981bb635ec204b9686eb78c80fc458c6ed38023fd4acbda7e161"
+    },
+    {
+      "url": "https://m.seibro.or.kr/cmuc/company/selectCompanySchedule.do",
+      "file": "ksd_celltrion.html",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 41472,
+      "sha256": "43e7f1bf846408913b512fdbc76e5738341f8784d84d65435a4e5f0ca86b8b6d"
+    }
+  ],
+  "errors": [],
+  "investment_approved": false,
+  "returned_external_paths": [
+    "https://kind.krx.co.kr/external/2020/04/21/000196/20200421000468/68154.htm"
+  ]
+}

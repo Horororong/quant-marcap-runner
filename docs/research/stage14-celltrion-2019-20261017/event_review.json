@@ -1,0 +1,149 @@
+{
+  "scope": "RESEARCH_ONLY_COMPONENT_CHECKS_NOT_FULL_EVENT",
+  "security": "068270",
+  "ex_date": "2019-12-27",
+  "new_primary_controls": 20,
+  "price_check": {
+    "basis": "reference_price",
+    "security": "068270",
+    "session": "2019-12-27",
+    "return": "0.0165745856353591160220994475138121546961325966851",
+    "difference_bps": "0.2541436464088397790055248618784530386740331490000",
+    "reference_price": "181000",
+    "close": "184000",
+    "changes_ratio_pct": "1.66",
+    "evidence": {
+      "source": "https://kind.krx.co.kr/external/2019/12/26/000462/20191223000799/99342.htm",
+      "sha256": "11d9a405c3713ef2dc8c9c2c0b1988ffb925946bbb7df7ddfcd0dc6ad2be3f60",
+      "location": "E11-01 preserved official-page observation; hash is authored observation JSON, NOT original HTTP bytes",
+      "usable_session": "2019-12-27",
+      "kind": "primary"
+    },
+    "tolerance_bps": "1.0",
+    "economic_return_certified": false,
+    "investment_approved": false,
+    "verdict": "PASS_PRICE_COMPONENT_ONLY"
+  },
+  "raw_close_return": "-0.02902374670184696569920844327176781002638522427441",
+  "official_listing": {
+    "receipt": "20200421000196",
+    "document": "20200421000468",
+    "date": "2020-04-24",
+    "shares": 6360313,
+    "account_credit_proved": false,
+    "postfact_not_2019_signal_information": true
+  },
+  "economic_holding_return": null,
+  "opening_functional_test": {
+    "session": "2019-12-26",
+    "scope": "evidenced_research",
+    "investment_approved": false,
+    "cash": "0",
+    "tradable_shares": {
+      "068270": 100
+    },
+    "claims": {},
+    "tradable_value": "18950000",
+    "locked_value": "0",
+    "rights_value": "0",
+    "value": "18950000",
+    "actions": [],
+    "inputs": {
+      "prices": {
+        "068270": "189500"
+      },
+      "entitlements": [],
+      "decisions": [],
+      "credits": [],
+      "listings": [],
+      "trades": [],
+      "marks": []
+    }
+  },
+  "pending_right_probe": {
+    "status": "BLOCKED_UNVERIFIED",
+    "reason": "explicit as-of mark required for every pending right; no default valuation",
+    "atomic_rollback": true,
+    "eligible_test_quantity": 100,
+    "unvalued_entitlement_quantity": "5.00",
+    "invented_mark": null
+  },
+  "ex_date_new_buyer_probe": {
+    "status": "PASS_COMPONENT_ONLY",
+    "snapshot": {
+      "session": "2019-12-27",
+      "scope": "evidenced_research",
+      "investment_approved": false,
+      "cash": "0",
+      "tradable_shares": {
+        "068270": 100
+      },
+      "claims": {
+        "stage14-unregistered-probe": {
+          "security": "068270",
+          "eligible_shares": 0,
+          "quantity": "0.00",
+          "state": "conditional",
+          "locked_shares": 0
+        }
+      },
+      "tradable_value": "18400000",
+      "locked_value": "0",
+      "rights_value": "0",
+      "value": "18400000",
+      "actions": [
+        {
+          "event": "stage14-unregistered-probe",
+          "action": "entitlement",
+          "eligible_shares": 0
+        },
+        {
+          "action": "buy",
+          "security": "068270",
+          "shares": 100,
+          "fee": "0"
+        }
+      ],
+      "inputs": {
+        "prices": {
+          "068270": "184000"
+        },
+        "entitlements": [
+          {
+            "event_id": "stage14-unregistered-probe",
+            "security": "068270",
+            "ex_date": "2019-12-27",
+            "record_date": "2019-12-31",
+            "rate": "0.05",
+            "evidence": {
+              "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20191218800434",
+              "sha256": "ac7535444b78db7ac3524e0988147739f0e37a7741bd0aa9b4853100b630924a",
+              "location": "proposal rows1/4; ex-date independently reused from Stage11 E11-01; component probe only",
+              "usable_session": "2019-12-27",
+              "kind": "primary"
+            }
+          }
+        ],
+        "decisions": [],
+        "credits": [],
+        "listings": [],
+        "trades": [
+          {
+            "security": "068270",
+            "side": "buy",
+            "shares": 100,
+            "fee": "0"
+          }
+        ],
+        "marks": []
+      }
+    },
+    "entitlement_quantity": "0.00",
+    "parameters": "100-share zero-trading-fee functional account, not original strategy or historical tax account"
+  },
+  "actual_registered_events": 0,
+  "actual_complete_event_verdict": "UNVERIFIED",
+  "investment_approved": false,
+  "exact_publication_time_certified": false,
+  "source_hash_scope_warning": "Stage11 base reused from observation; no raw HTML falsely claimed"
+}

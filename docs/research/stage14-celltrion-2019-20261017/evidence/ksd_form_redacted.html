@@ -1,0 +1,1790 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=0.5, width=device-width" />
+<title>기업별일정조회</title>
+<!-- eGovFrame Common import -->        
+<link rel="stylesheet" href="/css/default.css;jsessionid=REDACTED" />
+<link rel="stylesheet" href="/css/flick.css;jsessionid=REDACTED" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="/js/common.js;jsessionid=REDACTED"></script>
+<script type="text/javascript" src="/js/main.js;jsessionid=REDACTED"></script>
+<script type="text/javascript" src="/js/jquery.event.drag-1.5.min.js;jsessionid=REDACTED"></script>
+<script type="text/javascript" src="/js/jquery.touchSlider.js;jsessionid=REDACTED"></script>
+<script>
+
+function fn_slider() 
+{
+	$("#searchPop").touchSlider({
+		flexible : true,
+		roll : false,
+		view : 1
+//		btn_prev : $("#touchSlider").next().find(".btn_prev"),
+//		btn_next : $("#touchSlider").next().find(".btn_next"),
+//		counter : function (e) {
+//			$("#count").html("current : " + e.current + ", total : " + e.total);
+//		}
+	});
+}
+
+function searchIssu()
+{
+	var searchNm = document.searchForm.txt_sch.value;
+	var searchCode = document.searchForm.searchCode.value;
+
+	$.ajax({
+		type: "GET",
+		async: true,
+		url: "/common/selectIssueList.do;jsessionid=REDACTED",
+		timeout: 30000,
+		cache: false,
+		data:"searchNm=" + searchNm + "&searchCode=" + searchCode, // 0:기업,11:채권,21:주식,41:ELS,42:ELW,43:DLS,97:발행기관,98:ETF
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		error : function(request, status, error) {
+		     console.log("code : " + request.status + "\r\nmessage : " + request.reponseText);
+		    },
+		success : function(response){
+		     //$("#searchPop").css("display", "block");
+		     issuList(response);
+			}
+	});
+}
+
+function issuList(response)
+{
+	var str = "";
+	var datas = response.split(",");
+	var size = datas.length;
+	var rows = 6;
+	var cols = parseInt(size / rows) + 1;
+	
+	if( size == 0 || response == "")
+	{
+		return;
+	}
+
+	str += "<ul>";
+	
+	if( size <= rows )
+	{
+		str += "<li>";
+		str += "<ul class=\"searchLi\">";
+		for(var i=0 ; i<size ; i++)
+		{
+			var temps = datas[i].split(":");
+			var code = temps[0];
+			var name = temps[1];
+			str += "<li>";
+			str += "<a href=\"javascript:selectBasicInfo(\'" + code + "\',\'" + name + "\');\">";
+			str += "<span class=\"code\">" + code + "</span><span class=\"co\">" + name + "</span></a>";
+			str += "</li>";
+		}
+		str += "<li class='popClosed'><a href='javascript:closeIssueList();'>닫기</a></li>";
+		str += "</ul>";
+		str += "</li>";
+	}
+	else
+	{
+		for( var i=0 ; i<cols ; i++)
+		{
+			str += "<li>";
+			str += "<ul class=\"searchLi\">";
+			for(var j=0 ; j<rows ; j++)
+			{
+				var index = i*rows + j;
+				if( index < size )
+				{
+					var temps = datas[index].split(":");
+					var code = temps[0];
+					var name = temps[1];
+					str += "<li>";
+					str += "<a href=\"javascript:selectBasicInfo(\'" + code + "\',\'" + name + "\');\">";
+					str += "<span class=\"code\">" + code + "</span><span class=\"co\">" + name + "</span></a>";
+					str += "</li>";
+				}
+				else
+				{
+					str += "<li>&nbsp;</li>";
+				}
+			}
+			str += "<li class='popClosed'><a href='javascript:closeIssueList();'>닫기</a></li>";
+			str += "</ul>";
+			str += "</li>";
+		}	
+	}
+
+	str += "</ul>";
+	
+	$("#searchPop").html(str);
+
+	fn_slider();
+
+	$("#searchPop").css("display", "block");
+	
+}
+
+function closeIssueList()
+{
+	$("#searchPop").css("display", "none");
+}
+//	common function End
+
+function selectBasicInfo(code, name)
+{
+	var form = document.searchForm;
+
+	if(code == "" || code.length <= 0)
+	{
+		form.shotn_isin.value = "";
+		form.txt_sch.value = "";
+	}
+	else
+	{
+		form.shotn_isin.value = code;
+		form.txt_sch.value = name;
+	}
+	
+	form.action = "/cmuc/company/selectCompanySchedule.do;jsessionid=REDACTED";
+	form.submit();
+}
+</script>
+</head>
+<!-- header 시작 -->
+
+
+<!--<link rel="stylesheet" href="/css/default.css;jsessionid=REDACTED" />-->
+<script>
+
+function showSubmenu(idx)
+{
+	$(".mTab li").removeClass("on");
+
+	switch(idx)
+	{
+	case '1':
+		$(".m01").addClass("on");
+		$("#sub01").css("display" ,"block");
+		$("#sub02").css("display" ,"none");
+		$("#sub03").css("display" ,"none");
+		$("#sub04").css("display" ,"none");
+		$("#sub05").css("display" ,"none");
+		$("#sub06").css("display" ,"none");
+		$("#sub07").css("display" ,"none");
+		$("#sub08").css("display" ,"none");
+		$("#sub09").css("display" ,"none");
+		$("#sub10").css("display" ,"none");
+		$("#sub11").css("display" ,"none");
+	break;
+	case '2':
+		$(".m02").addClass("on");
+		$("#sub01").css("display" ,"none");
+		$("#sub02").css("display" ,"block");
+		$("#sub03").css("display" ,"none");
+		$("#sub04").css("display" ,"none");
+		$("#sub05").css("display" ,"none");
+		$("#sub06").css("display" ,"none");
+		$("#sub07").css("display" ,"none");
+		$("#sub08").css("display" ,"none");
+		$("#sub09").css("display" ,"none");
+		$("#sub10").css("display" ,"none");
+		$("#sub11").css("display" ,"none");
+	break;
+	case '3':
+		$(".m03").addClass("on");
+		$("#sub01").css("display" ,"none");
+		$("#sub02").css("display" ,"none");
+		$("#sub03").css("display" ,"block");
+		$("#sub04").css("display" ,"none");
+		$("#sub05").css("display" ,"none");
+		$("#sub06").css("display" ,"none");
+		$("#sub07").css("display" ,"none");
+		$("#sub08").css("display" ,"none");
+		$("#sub09").css("display" ,"none");
+		$("#sub10").css("display" ,"none");
+		$("#sub11").css("display" ,"none");
+	break;
+	case '4':
+		$(".m04").addClass("on");
+		$("#sub01").css("display" ,"none");
+		$("#sub02").css("display" ,"none");
+		$("#sub03").css("display" ,"none");
+		$("#sub04").css("display" ,"block");
+		$("#sub05").css("display" ,"none");
+		$("#sub06").css("display" ,"none");
+		$("#sub07").css("display" ,"none");
+		$("#sub08").css("display" ,"none");
+		$("#sub09").css("display" ,"none");
+		$("#sub10").css("display" ,"none");
+		$("#sub11").css("display" ,"none");
+	break;
+	case '5':
+		$(".m05").addClass("on");
+		$("#sub01").css("display" ,"none");
+		$("#sub02").css("display" ,"none");
+		$("#sub03").css("display" ,"none");
+		$("#sub04").css("display" ,"none");
+		$("#sub05").css("display" ,"block");
+		$("#sub06").css("display" ,"none");
+		$("#sub07").css("display" ,"none");
+		$("#sub08").css("display" ,"none");
+		$("#sub09").css("display" ,"none");
+		$("#sub10").css("display" ,"none");
+		$("#sub11").css("display" ,"none");
+	break;
+	case '6':
+		$(".m06").addClass("on");
+		$("#sub01").css("display" ,"none");
+		$("#sub02").css("display" ,"none");
+		$("#sub03").css("display" ,"none");
+		$("#sub04").css("display" ,"none");
+		$("#sub05").css("display" ,"none");
+		$("#sub06").css("display" ,"block");
+		$("#sub07").css("display" ,"none");
+		$("#sub08").css("display" ,"none");
+		$("#sub09").css("display" ,"none");
+		$("#sub10").css("display" ,"none");
+		$("#sub11").css("display" ,"none");
+	break;
+	case '7':
+		$(".m07").addClass("on");
+		$("#sub01").css("display" ,"none");
+		$("#sub02").css("display" ,"none");
+		$("#sub03").css("display" ,"none");
+		$("#sub04").css("display" ,"none");
+		$("#sub05").css("display" ,"none");
+		$("#sub06").css("display" ,"none");
+		$("#sub07").css("display" ,"block");
+		$("#sub08").css("display" ,"none");
+		$("#sub09").css("display" ,"none");
+		$("#sub10").css("display" ,"none");
+		$("#sub11").css("display" ,"none");
+	break;
+	case '8':
+		$(".m08").addClass("on");
+		$("#sub01").css("display" ,"none");
+		$("#sub02").css("display" ,"none");
+		$("#sub03").css("display" ,"none");
+		$("#sub04").css("display" ,"none");
+		$("#sub05").css("display" ,"none");
+		$("#sub06").css("display" ,"none");
+		$("#sub07").css("display" ,"none");
+		$("#sub08").css("display" ,"block");
+		$("#sub09").css("display" ,"none");
+		$("#sub10").css("display" ,"none");
+		$("#sub11").css("display" ,"none");
+	break;
+	case '9':
+		$(".m09").addClass("on");
+		$("#sub01").css("display" ,"none");
+		$("#sub02").css("display" ,"none");
+		$("#sub03").css("display" ,"none");
+		$("#sub04").css("display" ,"none");
+		$("#sub05").css("display" ,"none");
+		$("#sub06").css("display" ,"none");
+		$("#sub07").css("display" ,"none");
+		$("#sub08").css("display" ,"none");
+		$("#sub09").css("display" ,"block");
+		$("#sub10").css("display" ,"none");
+		$("#sub11").css("display" ,"none");
+	break;
+	case '10':
+		$(".m10").addClass("on");
+		$("#sub01").css("display" ,"none");
+		$("#sub02").css("display" ,"none");
+		$("#sub03").css("display" ,"none");
+		$("#sub04").css("display" ,"none");
+		$("#sub05").css("display" ,"none");
+		$("#sub06").css("display" ,"none");
+		$("#sub07").css("display" ,"none");
+		$("#sub08").css("display" ,"none");
+		$("#sub09").css("display" ,"none");
+		$("#sub10").css("display" ,"block");
+		$("#sub11").css("display" ,"none");
+	break;
+	case '11':
+		$(".m11").addClass("on");
+		$("#sub01").css("display" ,"none");
+		$("#sub02").css("display" ,"none");
+		$("#sub03").css("display" ,"none");
+		$("#sub04").css("display" ,"none");
+		$("#sub05").css("display" ,"none");
+		$("#sub06").css("display" ,"none");
+		$("#sub07").css("display" ,"none");
+		$("#sub08").css("display" ,"none");
+		$("#sub09").css("display" ,"none");
+		$("#sub10").css("display" ,"none");
+		$("#sub11").css("display" ,"block");
+	break;
+	}
+}
+
+function hideSubmenu(idx)
+{
+	$(".mTab li").removeClass("on");
+	switch(idx)
+	{
+	case '1':
+		$("#sub01").slideUp("fast");
+//		$("#sub01").css("display", "none");
+	break;
+	case '2':
+		$("#sub02").slideUp("fast");
+//		$("#sub02").css("display", "none");
+	break;
+	case '3':
+		$("#sub03").slideUp("fast");
+//		$("#sub03").css("display", "none");
+	break;
+	case '4':
+		$("#sub04").slideUp("fast");
+//		$("#sub04").css("display", "none");
+	break;
+	case '5':
+		$("#sub05").slideUp("fast");
+//		$("#sub05").css("display", "none");
+	break;
+	case '6':
+		$("#sub06").slideUp("fast");
+//		$("#sub06").css("display", "none");
+	break;
+	case '7':
+		$("#sub07").slideUp("fast");
+//		$("#sub07").css("display", "none");
+	break;
+	case '8':
+		$("#sub08").slideUp("fast");
+//		$("#sub08").css("display", "none");
+	break;
+	case '9':
+		$("#sub09").slideUp("fast");
+//		$("#sub09").css("display", "none");
+	break;
+	case '10':
+		$("#sub10").slideUp("fast");
+//		$("#sub10").css("display", "none");
+	break;
+	case '11':
+		$("#sub11").slideUp("fast");
+//		$("#sub11").css("display", "none");
+	break;
+	}
+}
+
+function hideAllSubmenu()
+{
+	$(".mTab li").removeClass("on");
+	$("#sub01").slideDown("fast");
+//	$("#sub01").css("display" ,"none");
+	$("#sub02").slideDown("fast");
+//	$("#sub02").css("display" ,"none");
+	$("#sub03").slideDown("fast");
+//	$("#sub03").css("display" ,"none");
+	$("#sub04").slideDown("fast");
+//	$("#sub04").css("display" ,"none");
+	$("#sub05").slideDown("fast");
+//	$("#sub05").css("display" ,"none");
+	$("#sub06").slideDown("fast");
+//	$("#sub06").css("display" ,"none");
+	$("#sub07").slideDown("fast");
+//	$("#sub07").css("display" ,"none");
+	$("#sub08").slideDown("fast");
+//	$("#sub08").css("display" ,"none");
+	$("#sub09").slideDown("fast");
+//	$("#sub09").css("display" ,"none");
+	$("#sub10").slideDown("fast");
+//	$("#sub10").css("display" ,"none");
+	$("#sub11").slideDown("fast");
+//	$("#sub11").css("display" ,"none");
+}
+
+function showNext(idx)
+{
+	if( idx == '1')
+	{
+		$("#menu01").css("display", "none");
+		$("#menu02").css("display", "block");
+	}
+	else if( idx == '2')
+	{
+		$("#menu02").css("display", "none");
+		$("#menu03").css("display", "block");
+	}
+
+	hideAllSubmenu();
+}
+
+function showPrev(idx)
+{
+	if( idx == '2')
+	{
+		$("#menu01").css("display", "block");
+		$("#menu02").css("display", "none");
+	}
+	else if( idx == '3')
+	{
+		$("#menu02").css("display", "block");
+		$("#menu03").css("display", "none");
+	}
+	hideAllSubmenu();
+}
+
+function init(index)
+{
+	var curr = 0;
+	switch(index)
+	{
+	case 1: 
+		$(".m01").addClass("on");
+		curr = 1;
+		break;
+	case 2: 
+		$(".m02").addClass("on");
+		curr = 1;
+		break;
+	case 3: 
+		$(".m03").addClass("on");
+		curr = 1;
+		break;
+	case 4: 
+		$(".m04").addClass("on");
+		curr = 4;
+		break;
+	case 5: 
+		$(".m05").addClass("on");
+		curr = 4;
+		break;
+	case 6: 
+		$(".m06").addClass("on");
+		curr = 4;
+		break;
+	case 7: 
+		$(".m07").addClass("on");
+		curr = 7;
+		break;
+	case 8: 
+		$(".m08").addClass("on");
+		curr = 7;
+		break;
+	case 9: 
+		$(".m09").addClass("on");
+		curr = 7;
+		break;
+	case 10: 
+		$(".m10").addClass("on");
+		curr = 10;
+		break;
+	case 11: 
+		$(".m11").addClass("on");
+		curr = 10;
+		break;
+	}
+	
+	$("#topNav").touchSlider({
+		flexible : true,
+		page : curr,
+		roll : false,
+		view : 3,
+		
+		btn_prev : $("#topNav").next().find(".btn_prev"),
+		btn_next : $("#topNav").next().find(".btn_next"),
+	
+		counter : function (e) {
+			if(e.current == "1"){
+				$(".btn_prev").hide();
+				$(".btn_next").show();
+			}
+			else if( e.current > "1" && e.current < "4")
+			{
+				$(".btn_prev").show();
+				$(".btn_next").show();
+			}
+			else if( e.current == "4")
+			{
+				$(".btn_prev").show();
+				$(".btn_next").hide();
+			}
+/*			
+			if(e.current < "4"){
+				$(".gnbLast").show();
+			}else{
+				$(".gnbLast").hide();
+			}
+*/
+		}
+		
+	});
+}
+//	common function End
+
+</script>
+<!-- header 시작 -->
+
+
+<!-- <link rel="stylesheet" href="/css/default.css;jsessionid=REDACTED" /> -->
+<script type="text/javascript" src="/js/wlcollector.js;jsessionid=REDACTED"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#menuTop").click(function(){
+			var url = "/cmmn/allView.do;jsessionid=REDACTED";
+			$(location).attr('href',url);			
+		});
+	});
+</script>
+<header id="header">
+<div class="inner">
+	<h1><a href="javascript:location.href='/common/index.do;jsessionid=REDACTED'"><img src="/images/common/logo.png;jsessionid=REDACTED" alt="KSD 증권정보포털"></a></h1>
+	<div class="menuAdd">
+		<a id="menuTop" href="#"><img src="/images/common/menu_all.png;jsessionid=REDACTED" alt="메뉴 더보기"></a>
+	</div>
+</div>
+</header>
+
+
+
+<!-- header 끝 -->
+
+<nav id="nav">
+<div class="topNav" id="topNav">
+	<ul class="mTab">
+		<li class="m01"><a href="javascript:showSubmenu('1');">기업/주식</a></li>
+		<li class="m02"><a href="javascript:showSubmenu('2');">채권</a></li>
+		<li class="m03 bg_none"><a href="javascript:showSubmenu('3');">단기금융증권</a></li>
+		<li class="m04"><a href="javascript:showSubmenu('4');">파생결합증권</a></li>
+		<li class="m05"><a href="javascript:showSubmenu('5');">해외증권</a></li>
+		<li class="m06 bg_none"><a href="javascript:showSubmenu('6');">REPO</a></li>
+		<li class="m07"><a href="javascript:showSubmenu('7');">증권대차</a></li>
+		<li class="m08"><a href="javascript:showSubmenu('8');">증권일정</a></li>
+		<li class="m09 bg_none"><a href="javascript:showSubmenu('9');">사고증권</a></li>
+		<li class="m10"><a href="javascript:showSubmenu('10');">펀드</a></li>
+		<li class="m11"><a href="javascript:showSubmenu('11');">ETF</a></li>
+		<li class="m12 bg_none"><a href="javascript:showSubmenu('12');">&nbsp;</a></li>
+	</ul>
+</div>
+<div>
+	<a href="javascript:showPrev('3');" id="btn_prev" class="btn_prev" onclick="topNav.prev();">이전</a>
+	<a href="javascript:showNext('2');" id="btn_next" class="btn_next" onclick="topNav.next();">다음</a>
+</div>
+</nav>
+
+<div class="subMTotal">
+	<ul id="sub01" class="subM sub01" style="display:none;">
+		<li><a href="javascript:location.href='/cnts/company/selectBasicInfo.do;jsessionid=REDACTED'">기업기본정보</a></li>
+		<li><a href="javascript:location.href='/cnts/company/selectStockPublishInfo.do;jsessionid=REDACTED'">증권별발행정보</a></li>
+		<li><a href="javascript:location.href='/cnts/company/selectFinncialRatio.do;jsessionid=REDACTED'">재무제표</a></li>
+		<li><a href="javascript:location.href='/cnts/company/selectDiv50.do;jsessionid=REDACTED'">배당순위50</a></li>
+		<li><a href="javascript:location.href='/cnts/company/selectRelease.do;jsessionid=REDACTED'">주식의무보호예수 해제물량조회</a></li>
+		<li><a href="javascript:location.href='/cnts/stock/selectStockDetailInfo.do;jsessionid=REDACTED'">종목종합정보</a></li>
+		<li><a href="javascript:location.href='/cnts/stock/selectCompanyWarrants.do;jsessionid=REDACTED'">신주인수권증서증권발행종목</a></li>
+		<li><a href="javascript:location.href='/cnts/stock/selectStockKDRInfo.do;jsessionid=REDACTED'">KDR발행종목전체</a></li>
+		<li><a href="javascript:location.href='/cnts/stock/selectUnlistedStock.do;jsessionid=REDACTED'">비상장주식 유통추정정보</a></li>
+		<li><a href="javascript:location.href='/cnts/stock/selectDepositIssues.do;jsessionid=REDACTED'">등록(예탁)가능여부종목조회</a></li>
+		<li><a href="javascript:location.href='/cnts/stock/selectNewDepositIssuesEL1.do;jsessionid=REDACTED'">신규등록(예탁)지정종목조회</a></li>
+		<li class="subClose"><a href="javascript:hideSubmenu('1');">닫기</a></li>
+	</ul>
+	<ul id="sub02" class="subM sub02" style="display:none;">
+		<li><a href="javascript:location.href='/cnts/bond/selectOrgnPay.do;jsessionid=REDACTED'">채권원리금지급내역</a></li>
+		<li><a href="javascript:location.href='/cnts/bond/selectOptionDebt.do;jsessionid=REDACTED'">옵션부채권조기상환내역</a></li>
+		<li><a href="javascript:location.href='/cnts/bond/selectBondConvention.do;jsessionid=REDACTED'">주식관련사채권리행사내역</a></li>
+		<li><a href="javascript:location.href='/cnts/bond/selectBondSchedule.do;jsessionid=REDACTED'">채권권리행사일정</a></li>
+		<!-- li><a href="javascript:location.href='/cnts/bond/selectMoneyRateInfo.do;jsessionid=REDACTED'">금리정보</a></li-->
+		<li><a href="javascript:location.href='/cnts/bond/selectDetailInfo.do;jsessionid=REDACTED'">채권종목상세</a></li>
+		<li class="subClose"><a href="javascript:hideSubmenu('2');">닫기</a></li>
+	</ul>
+	<ul id="sub03" class="subM sub03" style="display:none;">
+		<li><a href="javascript:location.href='/cnts/moneymarke/selectCompanyStateMoneyMarke.do;jsessionid=REDACTED'">발행자별 단기채무증권현황</a></li>
+		<li><a href="javascript:location.href='/cnts/moneymarke/selectIssues.do;jsessionid=REDACTED'">CP/단기사채 종목검색</a></li>
+		<li><a href="javascript:location.href='/cnts/moneymarke/selectABCPIssues.do;jsessionid=REDACTED'">ABCP 종목검색</a></li>
+		<li><a href="javascript:location.href='/cnts/moneymarke/selectCDIssues.do;jsessionid=REDACTED'">CD 종목검색</a></li>
+		<li class="subClose"><a href="javascript:hideSubmenu('3');">닫기</a></li>
+	</ul>
+	<ul id="sub04" class="subM sub04" style="display:none;">
+		<li><a href="javascript:location.href='/cnts/derivcombi/selectDeriCombiScheduleMain.do;jsessionid=REDACTED'">발행/상환일정</a></li>
+		<li><a href="javascript:location.href='/cnts/derivcombi/selectDerivComBiELSDLWInfo.do;jsessionid=REDACTED'">ELS/DLS 청약종목</a></li>
+		<li><a href="javascript:location.href='/cnts/derivcombi/selectDeriCombiPublish.do;jsessionid=REDACTED'">ELS/DLS 발행종목</a></li>
+		<li><a href="javascript:location.href='/cnts/derivcombi/selectDerivELSDLSDetailInfo.do;jsessionid=REDACTED'">ELS/DLS 종목상세(개별)</a></li>
+		<li><a href="javascript:location.href='/cnts/derivcombi/selectDerivELSDLSRedIssues.do;jsessionid=REDACTED'">ELS/DLS 상환종목</a></li>
+		<li><a href="javascript:location.href='/cnts/derivcombi/selectDerivComBiELWReRLoad.do;jsessionid=REDACTED'">ELW 발행종목</a></li>
+		<li class="subClose"><a href="javascript:hideSubmenu('4');">닫기</a></li>
+	</ul>
+	<ul id="sub05" class="subM sub05" style="display:none;">
+		<li><a href="javascript:location.href='/cnts/ovssec/selectOverSecDRPubSearch.do;jsessionid=REDACTED'">해외DR 발행종목</a></li>
+		<li><a href="javascript:location.href='/cnts/ovssec/selectOverSecDRConvPoss.do;jsessionid=REDACTED'">해외DR 종목별전환가능주식수</a></li>
+		<li><a href="javascript:location.href='/cnts/ovssec/selectOvrSecDRSchedule.do;jsessionid=REDACTED'">해외DR 일정조회</a></li>
+		<li><a href="javascript:location.href='/cnts/ovssec/selectDetailCBWPublishInfo.do;jsessionid=REDACTED'">해외 CB/BW 발행종목</a></li>
+		<li><a href="javascript:location.href='/cnts/ovssec/selectOvrSecCBWPublishDetail.do;jsessionid=REDACTED'">해외CB/BW 종목별상세내역</a></li>
+		<li class="subClose"><a href="javascript:hideSubmenu('5');">닫기</a></li>
+	</ul>
+	<ul id="sub06" class="subM sub06" style="display:none;">
+		<li><a href="javascript:location.href='/cnts/refo/selectRefoInterestInfo.do;jsessionid=REDACTED'">당일건별REPO이자율</a></li>
+		<li><a href="javascript:location.href='/cnts/refo/selectRefoRateInfo.do;jsessionid=REDACTED'">일자별물별이자율</a></li>
+		<li><a href="javascript:location.href='/cnts/refo/selectRefoCategory.do;jsessionid=REDACTED'">업종별매도/매수별이자율</a></li>
+		<li class="subClose"><a href="javascript:hideSubmenu('6');">닫기</a></li>
+	</ul>
+	<ul id="sub07" class="subM sub07" style="display:none;">
+		<li><a href="javascript:location.href='/cnts/loan/selectLoanRank.do;jsessionid=REDACTED'">주식대차 대차종목순위</a></li>
+		<li><a href="javascript:location.href='/cnts/loan/selectStockLoanDeal.do;jsessionid=REDACTED'">주식대차 종목별대차거래현황</a></li>
+		<li><a href="javascript:location.href='/cnts/loan/selectStockLoanState.do;jsessionid=REDACTED'">주식대차 월별대차거래현황</a></li>
+		<li><a href="javascript:location.href='/cnts/loan/selectBondLoanRank.do;jsessionid=REDACTED'">채권대차 대차종목순위</a></li>
+		<li><a href="javascript:location.href='/cnts/loan/selectBondLoanDeal.do;jsessionid=REDACTED'">채권대차 종목별대차거래현황</a></li>
+		<li><a href="javascript:location.href='/cnts/loan/selectBondLoanState.do;jsessionid=REDACTED'">채권대차 월별대차거래현황</a></li>
+		<li class="subClose"><a href="javascript:hideSubmenu('7');">닫기</a></li>
+	</ul>
+	<ul id="sub08" class="subM sub08" style="display:none;">
+		<li><a href="javascript:location.href='/cmuc/company/selectWeekScheduleInfo.do;jsessionid=REDACTED'">금주주요일정</a></li>
+		<li><a href="javascript:location.href='/cmuc/company/selectDateSchedule.do;jsessionid=REDACTED'">일자별일정조회</a></li>
+		<li><a href="javascript:location.href='/cmuc/company/selectCompanySchedule.do;jsessionid=REDACTED'">기업별일정조회</a></li>
+		<li class="subClose"><a href="javascript:hideSubmenu('8');">닫기</a></li>
+	</ul>
+	<ul id="sub09" class="subM sub09" style="display:none;">
+		<li><a href="javascript:location.href='/cmuc/bond/selectMisStock.do;jsessionid=REDACTED'">사고주권조회</a></li>
+		<li><a href="javascript:location.href='/cmuc/bond/selectMisBond.do;jsessionid=REDACTED'">사고채권조회</a></li>
+		<li class="subClose"><a href="javascript:hideSubmenu('9');">닫기</a></li>
+	</ul>
+	<ul id="sub10" class="subM sub10" style="display:none;">
+		<li><a href="javascript:location.href='/cnts/fund/selectPublishInfo.do;jsessionid=REDACTED'">펀드발행현황</a></li>
+		<li><a href="javascript:location.href='/cnts/fund/selectDetailInfo.do;jsessionid=REDACTED'">펀드상세정보</a></li>
+		<li><a href="javascript:location.href='/cnts/fund/selectFundTop.do;jsessionid=REDACTED'">TOP펀드</a></li>
+		<li><a href="javascript:location.href='/cnts/fund/selectCalculator.do;jsessionid=REDACTED'">펀드계산기</a></li>
+		<li class="subClose"><a href="javascript:hideSubmenu('10');">닫기</a></li>
+	</ul>
+	<ul id="sub11" class="subM sub11" style="display:none;">
+		<li><a href="javascript:location.href='/cnts/etf/selectPublishInfo.do;jsessionid=REDACTED'">종목발행현황</a></li>
+		<li><a href="javascript:location.href='/cnts/etf/selectKindDetailInfo.do;jsessionid=REDACTED'">종목상세</a></li>
+		<!--  <li><a href="javascript:location.href='/cnts/etf/selectMarketSummary.do;jsessionid=REDACTED'">ETF시장요약</a></li> -->
+		<li><a href="javascript:location.href='/cnts/etf/selectCalculator.do;jsessionid=REDACTED'">수익률계산기</a></li>
+		<li class="subClose"><a href="javascript:hideSubmenu('11');">닫기</a></li>
+	</ul>
+</div>
+
+<!-- header 끝 -->
+
+
+<!-- header 끝 -->
+
+<body onload="javascript:init(8);">
+<hr>
+<!-- 본문 시작 -->
+<div id="content">
+
+<h2>기업별일정조회</h2>
+
+<section id="search_area">
+	<form name="searchForm" method="post">
+	<input type="hidden" name="searchCode" value="00" />
+	<input type="hidden" name="shotn_isin" value="" />
+<fieldset id="searchFieldset">
+<legend>종목 검색 폼</legend>
+	<div class="search_row1">
+			<label for="txt_sch"><span>종목</span></label>
+			<p><input type="text" id="txt_sch" name="txt_sch" onkeydown="if (event.keyCode==13){ searchIssu();event.returnValue=false; }" value="삼성전자" title="검색어 입력" class="search_word" maxlength="64" />
+			<a class="icon" href="javascript:searchIssu();">검색</a></p>
+	</div>
+</fieldset>
+</form>
+</section>
+
+<div id="searchPop" class="searchPop" style="display:none;">
+</div>
+
+<section id="cntA">
+<table>
+<colgroup>
+	<col style="width:30%"/>
+	<col style="width:*"/>
+	<col style="width:35%"/>
+</colgroup>
+<thead>
+	<tr><th class="first">기준일</th><th>일정사유</th><th>시장구분</th></tr>
+</thead>
+<tbody>
+	
+		<tr>
+			<td class="tc">2026/09/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2026/08/31 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2026/07/31 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2026/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2026/05/29 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2026/04/30 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2026/03/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2026/02/27 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2026/01/30 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2025/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2025/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2025/11/28 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2025/10/31 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2025/09/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2025/08/29 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2025/07/31 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2025/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2025/05/30 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2025/04/30 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2025/03/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2025/02/28 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2025/01/31 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2024/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2024/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2024/11/30 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2024/10/31 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2024/09/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2024/08/30 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2024/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2024/03/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2023/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2023/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2023/09/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2023/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2023/03/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2022/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2022/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2022/09/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2022/09/19 </td>
+			<td class="tc">임시총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2022/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2022/03/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2021/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2021/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2021/09/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2021/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2021/03/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2020/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2020/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2020/09/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2020/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2020/03/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2019/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2019/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2019/09/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2019/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2019/03/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2018/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2018/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2018/09/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2018/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2018/05/02 </td>
+			<td class="tc">액면분할</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2018/03/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2017/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2017/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2017/09/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2017/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2017/03/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2016/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2016/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2016/09/28 </td>
+			<td class="tc">임시총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2016/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2015/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2015/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2015/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2014/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2014/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2014/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2013/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2013/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2013/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2012/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2012/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2012/10/09 </td>
+			<td class="tc">매수청구</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2012/10/09 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2012/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2012/02/01 </td>
+			<td class="tc">매수청구</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2012/02/01 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2011/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2011/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2011/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2010/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2010/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2010/10/13 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2010/10/13 </td>
+			<td class="tc">매수청구</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2010/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2009/12/31 </td>
+			<td class="tc">매수청구</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2009/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2009/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2009/12/31 </td>
+			<td class="tc">기타</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2009/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2008/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2008/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2008/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2007/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2007/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2007/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2006/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2006/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2006/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2005/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2005/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2005/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2004/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2004/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2004/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2003/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2003/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2003/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2002/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2002/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2002/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2001/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2001/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2001/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2000/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2000/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2000/06/30 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">2000/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1999/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1999/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1999/06/30 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1999/05/14 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1998/12/31 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1998/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1998/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1998/08/17 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1998/04/27 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1997/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1997/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1997/05/23 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1996/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1996/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1996/12/31 </td>
+			<td class="tc">매수청구</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1996/03/13 </td>
+			<td class="tc">무상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1995/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1995/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1995/07/10 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1995/03/13 </td>
+			<td class="tc">무상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1994/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1994/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1994/07/11 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1993/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1993/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1993/09/10 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1992/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1992/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1992/11/03 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1991/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1991/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1991/10/15 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1990/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1990/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1990/11/30 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1989/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1989/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1989/08/25 </td>
+			<td class="tc">무상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1989/07/20 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1988/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1988/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1988/11/29 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1988/11/29 </td>
+			<td class="tc">무상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1988/03/31 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1988/03/28 </td>
+			<td class="tc">무상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1988/03/28 </td>
+			<td class="tc">유상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1987/12/31 </td>
+			<td class="tc">배당/분배</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1987/12/31 </td>
+			<td class="tc">정기총회</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+		<tr>
+			<td class="tc">1960/01/01 </td>
+			<td class="tc">무상증자</td>
+			<td class="tc">유가증권시장</td>
+		</tr>
+	
+</tbody>
+</table>
+</section>
+
+</div><!-- 본문 끝 -->
+
+<!-- footer 시작 -->
+
+<footer class="footCopy">
+	<p>
+		<a href="http://www.seibro.or.kr">PC화면</a>
+		<span href="#">&copy; KSD 증권포털</span>
+	</p>
+</footer>
+<!-- footer 끝 -->
+
+</body>
+</html>

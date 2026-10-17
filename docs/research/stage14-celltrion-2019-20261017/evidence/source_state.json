@@ -1,0 +1,84 @@
+{
+  "requests": 5,
+  "retries": 0,
+  "responses": [
+    {
+      "source": "OpenDART document.xml",
+      "receipt": "20191218800434",
+      "http": 200,
+      "content_type": "application/x-msdownload;charset=UTF-8",
+      "bytes": 1681,
+      "sha256": "29e420a7f475f6b5b35141b63ed9ceb210f45a48672930b35e896da4173e54d9",
+      "members": [
+        {
+          "name": "20191218800434.xml",
+          "bytes": 7406,
+          "sha256": "ac7535444b78db7ac3524e0988147739f0e37a7741bd0aa9b4853100b630924a",
+          "format": "HTML",
+          "strict_xml_valid": true,
+          "strict_xml_error": null
+        }
+      ],
+      "identity": "UNVERIFIED pending independent text review"
+    },
+    {
+      "source": "https://www.celltrion.com/ko-kr/investment/notice/announce",
+      "http": 200,
+      "content_type": "text/html;charset=UTF-8",
+      "bytes": 51031,
+      "sha256": "ef1edd94a81b720b5f060f40d63a308d32a924860884255bb3192da77c6df4aa",
+      "scripts": [
+        "/front/assets/common/js/third-party-deferred.js",
+        "/front/assets/common/js/lib/jquery-3.6.3.min.js",
+        "/front/assets/common/js/lib/jquery-ui.min.js",
+        "/front/assets/common/js/lib/jquery.easing.min.js",
+        "/front/assets/common/js/lib/jquery.selectric.min.js",
+        "/front/assets/common/js/lib/swiper-bundle.min.js",
+        "/front/assets/common/js/lib/aos.js",
+        "/front/assets/common/js/lib/jquery.counterup.min.js",
+        "/front/assets/common/js/lib/html5.js",
+        "/front/assets/common/js/lib/gsap.min.js",
+        "/front/assets/common/js/lib/ScrollToPlugin.min.js",
+        "/front/assets/common/js/lib/ScrollTrigger.min.js",
+        "/front/assets/common/js/lib/CustomEase.min.js",
+        "/front/assets/common/js/lib/lenis.min.js",
+        "/front/assets/common/js/lib/clipboard-2.0.10.min.js",
+        "/front/assets/common/js/common.js",
+        "/front/assets/common/js/contents_01.js",
+        "/front/assets/common/js/contents_02.js",
+        "/front/assets/common/js/contents_03.js",
+        "/front/assets/common/js/contents_04.js",
+        "/app/js/plugins/jquery.validate-1.19.5.min.js",
+        "/app/js/plugins/additional-methods-1.19.5.min.js",
+        "/app/js/common/constants.js",
+        "/app/js/common/commUtil.js"
+      ]
+    },
+    {
+      "source": "https://www.celltrion.com/app/js/plugins/additional-methods-1.19.5.min.js",
+      "http": 200,
+      "content_type": "application/javascript",
+      "bytes": 22303,
+      "sha256": "f50836b30f24727b2f5531e22d7cac2d0e4162a6797809c774b2586c7d72880a",
+      "scripts": []
+    },
+    {
+      "source": "https://www.celltrion.com/app/js/common/constants.js",
+      "http": 200,
+      "content_type": "application/javascript",
+      "bytes": 1645,
+      "sha256": "38ab7f932fa8f33c0492543b2b8bc0e3471cffc3032c9c1d26f4a99c86982582",
+      "scripts": []
+    },
+    {
+      "source": "https://www.celltrion.com/app/js/common/commUtil.js",
+      "http": 200,
+      "content_type": "application/javascript",
+      "bytes": 16959,
+      "sha256": "80d75204c4e00ff530d44735193cf187d3a6ea2e82716342d8a90cfd31fb5530",
+      "scripts": []
+    }
+  ],
+  "errors": [],
+  "investment_approved": false
+}

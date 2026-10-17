@@ -1,0 +1,184 @@
+{
+  "scope": "NON_EXECUTABLE_EVIDENCE_DOSSIER_NOT_REGISTRY_EVENT",
+  "security": "068270",
+  "event_date": "2019-12-27",
+  "fields": [
+    {
+      "field": "issuer_and_security",
+      "verdict": "PASS",
+      "value": "셀트리온/068270/00413046",
+      "evidence": "Stage12 official_metadata/068270_page1.json; evidence/kind_body_0.html codeKR7068270008/A068270",
+      "calculation_or_state_affected": "identity binding",
+      "execution_requirement": "required"
+    },
+    {
+      "field": "ex_date",
+      "verdict": "PASS",
+      "value": "2019-12-27",
+      "evidence": "Stage11 E11-01 application date",
+      "calculation_or_state_affected": "opening entitlement and exact market reference day",
+      "execution_requirement": "required"
+    },
+    {
+      "field": "record_date",
+      "verdict": "PASS",
+      "value": "2019-12-31",
+      "evidence": "evidence/20191218800434.raw.b64 row4",
+      "calculation_or_state_affected": "legal eligibility input; no reconstruction of actual settlement ownership",
+      "execution_requirement": "required"
+    },
+    {
+      "field": "stock_dividend_rate",
+      "verdict": "PASS",
+      "value": "0.05",
+      "evidence": "same original proposal row1",
+      "calculation_or_state_affected": "eligible quantity *0.05",
+      "execution_requirement": "required"
+    },
+    {
+      "field": "proposal_is_conditional",
+      "verdict": "PASS",
+      "value": "AGM may change proposal",
+      "evidence": "same original proposal row6",
+      "calculation_or_state_affected": "must remain conditional before decision",
+      "execution_requirement": "required"
+    },
+    {
+      "field": "approval_actual_date",
+      "verdict": "PASS",
+      "value": "2020-03-27",
+      "evidence": "issuer697 posted2020-04-06; Stage11 E11-02 retrospective report",
+      "calculation_or_state_affected": "conditional to approved; evidence availability differs from effective date",
+      "execution_requirement": "required; after-fact knowledge is not backdated PIT evidence"
+    },
+    {
+      "field": "aggregate_issued_shares",
+      "verdict": "PASS",
+      "value": "6360313; issuance2020-03-27",
+      "evidence": "evidence/kind_body_0.html rows1/3; Stage11 E11-02",
+      "calculation_or_state_affected": "aggregate crosscheck; not account quantity/credit",
+      "execution_requirement": "crosscheck; not credit substitute"
+    },
+    {
+      "field": "official_market_listing_date",
+      "verdict": "PASS",
+      "value": "2020-04-24",
+      "evidence": "evidence/kind_body_0.html row6; KRX additional-listing notice20200421000196",
+      "calculation_or_state_affected": "exchange admission date; tradability release only after separate credited state",
+      "execution_requirement": "required for listing; does not prove broker credit"
+    },
+    {
+      "field": "reference_price",
+      "verdict": "PASS",
+      "value": "181000",
+      "evidence": "Stage11 E11-01 preserved official-page observation (no original HTTP bytes)",
+      "calculation_or_state_affected": "Close/reference-1; no reverse-engineering",
+      "execution_requirement": "required for reference check"
+    },
+    {
+      "field": "previous_close",
+      "verdict": "PASS",
+      "value": "189500",
+      "evidence": "Stage12 official_krx/state.json stk_bydd_trd_20191226 TDD_CLSPRC",
+      "calculation_or_state_affected": "old position value; independent official/raw source match",
+      "execution_requirement": "required"
+    },
+    {
+      "field": "ex_close",
+      "verdict": "PASS",
+      "value": "184000",
+      "evidence": "Stage12 official_krx/state.json stk_bydd_trd_20191227 TDD_CLSPRC",
+      "calculation_or_state_affected": "tradable position value",
+      "execution_requirement": "required"
+    },
+    {
+      "field": "official_changes_ratio_pct",
+      "verdict": "PASS",
+      "value": "1.66",
+      "evidence": "Stage12 official_krx/state.json stk_bydd_trd_20191227 FLUC_RT",
+      "calculation_or_state_affected": "reference check within unchanged1bp",
+      "execution_requirement": "required"
+    },
+    {
+      "field": "proposal_fraction_formula",
+      "verdict": "PASS",
+      "value": "fraction * AGM previous-session close; proposed cash settlement",
+      "evidence": "original proposal row6",
+      "calculation_or_state_affected": "future fractional cash method; actual amount/date not proved",
+      "execution_requirement": "not needed for divisible whole quantities; needed if actual fractions occur"
+    },
+    {
+      "field": "published_personal_tax_guidance",
+      "verdict": "PASS",
+      "value": "face1000; income14%; local1.4%; small-amount caveat; broker-dependent",
+      "evidence": "issuer697 2020-04-06",
+      "calculation_or_state_affected": "cannot assert verified_none; guidance not account tax cash record",
+      "execution_requirement": "only actual after-distribution-tax account requires account deductions"
+    },
+    {
+      "field": "actual_account_credit",
+      "verdict": "UNVERIFIED",
+      "value": "",
+      "evidence": "no credit/settlement record obtained; KSD company schedule has record dates only",
+      "calculation_or_state_affected": "approved right -> locked shares; actual q per Gross/Net book",
+      "execution_requirement": "required by current credit contract; issuance/listing cannot fill it"
+    },
+    {
+      "field": "pending_right_valuation",
+      "verdict": "UNVERIFIED",
+      "value": "",
+      "evidence": "no observable conditional/liquidity-adjusted daily mark or approved explicit valuation policy",
+      "calculation_or_state_affected": "pending rights NAV; blocks first positive held close2019-12-27",
+      "execution_requirement": "required even before credit; no default zero/close/forward-fill"
+    },
+    {
+      "field": "actual_fraction_cash",
+      "verdict": "UNVERIFIED",
+      "value": "",
+      "evidence": "proposal formula only, no settled cash price/date/amount",
+      "calculation_or_state_affected": "account fractional cash/NAV",
+      "execution_requirement": "conditional; not needed if no fractions; continuous research needs its own explicit model"
+    },
+    {
+      "field": "actual_distribution_tax_cash",
+      "verdict": "UNVERIFIED",
+      "value": "",
+      "evidence": "no broker account class/withholding amount/date",
+      "calculation_or_state_affected": "after-tax cash and Net NAV; cannot use verified_none",
+      "execution_requirement": "not a market-price/Gross-before-tax fact; current engine lacks explicit before-distribution-tax real-research basis"
+    },
+    {
+      "field": "real_continuous_quantity_contract",
+      "verdict": "UNVERIFIED",
+      "value": "",
+      "evidence": "common allocator uses continuous target weights; primary dividend adapter whole-only",
+      "calculation_or_state_affected": "original Gross/Net entitlement and credits; no rounding to integers",
+      "execution_requirement": "model capability gap; synthetic_pro_rata cannot label real registry event"
+    },
+    {
+      "field": "historical_full_formula_and_tick_rule",
+      "verdict": "UNVERIFIED",
+      "value": "",
+      "evidence": "not acquired; Stage11 direct observed base181000 reused",
+      "calculation_or_state_affected": "deriving a new base would need applicable rules",
+      "execution_requirement": "NOT a block for directly evidenced181000 price check"
+    },
+    {
+      "field": "precise_publication_time_and_complete_pit_chain",
+      "verdict": "UNVERIFIED",
+      "value": "",
+      "evidence": "current sources/official receipt dates; no full event availability chain certified",
+      "calculation_or_state_affected": "signal information/PIT investment certification",
+      "execution_requirement": "not required for retrospective component arithmetic; required for PIT approval"
+    }
+  ],
+  "summary": {
+    "PASS": 14,
+    "FAIL": 0,
+    "UNVERIFIED": 7
+  },
+  "registered_events": 0,
+  "complete_event_verdict": "UNVERIFIED",
+  "original_deciles_rerun": false,
+  "investment_approved": false
+}
