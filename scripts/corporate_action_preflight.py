@@ -11,6 +11,7 @@ from typing import Any
 import pandas as pd
 
 from corporate_action_registry import load_corporate_action_gaps, load_corporate_actions
+from stock_dividend_research import load_strategy_actions
 
 
 class CorporateActionEvidenceGap(RuntimeError):
@@ -95,7 +96,7 @@ def check_known_action_exposure(panel, spec, repo_root: Path, engine):
     }
     if gaps.empty:
         return audit
-    events = load_corporate_actions(repo_root, start=dates[0], end=dates[-1])
+    events = load_strategy_actions(repo_root, spec, start=dates[0], end=dates[-1])
     possible_codes = set(panel['Code'].astype(str).str.zfill(6))
     if not events.empty:
         possible_codes.update(events['successor_code'])

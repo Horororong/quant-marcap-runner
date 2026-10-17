@@ -15,6 +15,7 @@ import numpy as np
 import pandas as pd
 
 from corporate_action_registry import load_corporate_actions, load_corporate_action_gaps
+from stock_dividend_research import load_strategy_actions
 from execution_contract import DECILE_RESEARCH_CONTRACT
 from krx_history_audit import require_session_coverage
 from strategy_dsl import StrategySpec, compile_execution_plan
@@ -165,7 +166,7 @@ def run_decile_strategy(
     targets, membership, audit = build_decile_target_weights_from_panel(panel, spec, repo_root)
     dates = pd.DatetimeIndex(pd.to_datetime(panel["Date"]).unique()).sort_values()
     benchmark_meta = benchmark_coverage_audit(repo_root, spec.benchmark, dates)
-    events = load_corporate_actions(repo_root, start=dates.min(), end=dates.max(), asset_codes=set(panel["Code"]))
+    events = load_strategy_actions(repo_root, spec, start=dates.min(), end=dates.max(), asset_codes=set(panel["Code"]))
     result = execute_decile_nav(panel, spec, targets, engine, events, return_reference_matrix(panel, sorted(panel["Code"].astype(str).str.zfill(6).unique())), load_corporate_action_gaps(repo_root))
     daily = result["daily_nav"]
     if spec.benchmark is not None:

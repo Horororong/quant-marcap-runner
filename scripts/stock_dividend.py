@@ -17,7 +17,7 @@ from typing import Mapping
 from execution_contract import HELD_RETURN_TOLERANCE_BPS
 
 EVENT = "stock_dividend"
-CONTRACT_VERSION = "2"
+CONTRACT_VERSION = "3"
 CONTRACT = {
     "version": CONTRACT_VERSION,
     "owner": "scripts/stock_dividend.py",
@@ -28,7 +28,8 @@ CONTRACT = {
     "receipt": "actual credit moves approved whole-share rights into locked shares without second income",
     "tradability": "separate actual listing/release evidence; locked shares cannot be sold",
     "unsupported": ["fractional cash settlement", "withholding/tax", "shorts", "borrowing", "cancellation cash compensation", "interacting other corporate actions"],
-    "quantity_policy": "whole primary accounts; continuous pro-rata only with explicit synthetic scope, never legal fractional settlement",
+    "quantity_policy": "whole primary accounts unchanged; continuous synthetic fixtures or explicit modeled_research research_pro_rata, never legal fractional settlement",
+    "research_model": "optional DSL research v1: continuous pro-rata, explicit underlying-close share-equivalent haircut, date-only publication recognized next observed session, virtual settlement on official listing close plus declared session lag, before distribution tax; no broker credit/PIT certification",
     "cancellation": "actual decision plus verified no-compensation evidence removes conditional claim and recognizes valuation loss",
     "price_reference": "Close / evidenced reference price - 1 versus ChangesRatio / 100; existing 1bp tolerance",
     "economic_value": "settled cash + tradable shares + locked shares + explicitly marked rights; never equated to ChangesRatio",
@@ -70,10 +71,14 @@ class Evidence:
     kind: str  # synthetic or primary; requires independent human/source review
 
     def check(self, session, scope):
-        if self.kind not in {"synthetic", "primary"}:
+        if self.kind not in {"synthetic", "primary", "research_model"}:
             raise ValueError("unsupported evidence kind")
         if scope == "evidenced_research" and self.kind != "primary":
             raise ValueError("synthetic evidence cannot enter evidenced research")
+        if scope == "modeled_research" and self.kind not in {"primary", "research_model"}:
+            raise ValueError("synthetic evidence cannot enter real-data modeled research")
+        if self.kind == "research_model" and (scope != "modeled_research" or not self.source.startswith("model:")):
+            raise ValueError("research-model valuation is not primary observation")
         if not re.fullmatch(r"[0-9a-f]{64}", self.sha256) or not self.location.strip():
             raise ValueError("evidence requires SHA256 and exact location")
         if self.kind == "primary" and not re.fullmatch(r"https://[^\s]+", self.source):
@@ -99,6 +104,8 @@ class Terms:
         if day(self.ex_date) != day(session) or day(self.record_date) < day(self.ex_date):
             raise ValueError("entitlement requires exact ex-date and verified record date")
         number(self.rate, "additional share rate", positive=True)
+        if scope == "modeled_research" and self.evidence.kind != "primary":
+            raise ValueError("research assumptions cannot supply historical entitlement facts")
         self.evidence.check(session, scope)
 
 
@@ -146,6 +153,14 @@ class Trade:
     fee: str = "0"  # exact externally calculated settled trading cost
 
 
+@dataclass(frozen=True)
+class VirtualSettlement:
+    event_id: str
+    model_date: str
+    official_listing_date: str
+    evidence: Evidence
+
+
 def whole(value, name):
     if type(value) is not int or value < 0:
         raise ValueError(f"{name}: nonnegative whole shares required")
@@ -163,10 +178,10 @@ class StockDividendBook:
     """
 
     def __init__(self, cash, shares: Mapping[str, int] | None = None, *, scope, quantity_policy="whole"):
-        if scope not in {"synthetic", "evidenced_research"}:
+        if scope not in {"synthetic", "evidenced_research", "modeled_research"}:
             raise ValueError("book requires synthetic or evidenced_research scope")
         self.scope = scope
-        if quantity_policy not in {"whole", "synthetic_pro_rata"} or (quantity_policy == "synthetic_pro_rata" and scope != "synthetic"):
+        if quantity_policy not in {"whole", "synthetic_pro_rata", "research_pro_rata"} or (quantity_policy == "synthetic_pro_rata" and scope != "synthetic") or (quantity_policy == "research_pro_rata" and scope != "modeled_research") or (scope == "modeled_research" and quantity_policy != "research_pro_rata"):
             raise ValueError("continuous pro-rata quantities are synthetic model assumptions only")
         self.quantity_policy = quantity_policy
         self.cash = number(cash, "cash")
@@ -176,9 +191,9 @@ class StockDividendBook:
         self.history = []
 
     def quantity(self, value, name):
-        return number(value, name) if self.quantity_policy == "synthetic_pro_rata" else whole(value, name)
+        return number(value, name) if self.quantity_policy in {"synthetic_pro_rata", "research_pro_rata"} else whole(value, name)
 
-    def close(self, session, prices, *, entitlements=(), decisions=(), credits=(), listings=(), trades=(), marks=()):
+    def close(self, session, prices, *, entitlements=(), decisions=(), credits=(), listings=(), trades=(), marks=(), settlements=()):
         # An invalid multi-action close must leave cash, rights, shares and log
         # exactly intact. No partially applied approval/credit/trade survives.
         draft = deepcopy(self)
@@ -187,13 +202,13 @@ class StockDividendBook:
         with localcontext(Context(prec=50)) as ctx:
             ctx.traps[Inexact] = True
             try:
-                result = draft._close(session, prices, entitlements, decisions, credits, listings, trades, marks)
+                result = draft._close(session, prices, entitlements, decisions, credits, listings, trades, marks, tuple(settlements))
             except Inexact:
                 raise ValueError("ledger arithmetic exceeds exact 50-digit precision; no silent rounding") from None
         self.__dict__.update(draft.__dict__)
         return result
 
-    def _close(self, session, prices, entitlements, decisions, credits, listings, trades, marks):
+    def _close(self, session, prices, entitlements, decisions, credits, listings, trades, marks, settlements):
         dt = day(session)
         if self.last_session is not None and dt <= day(self.last_session):
             raise ValueError("sessions must strictly increase; duplicate close forbidden")
@@ -218,7 +233,10 @@ class StockDividendBook:
         for decision in decisions:
             claim = self.claims[decision.event_id]
             decision.evidence.check(session, self.scope)
-            if day(decision.actual_date) != dt or type(decision.approved) is not bool or claim["state"] != "conditional":
+            if self.scope == "modeled_research" and decision.evidence.kind != "primary":
+                raise ValueError("approval outcome requires primary facts, not a model")
+            date_ok = day(decision.actual_date) <= dt if self.scope == "modeled_research" else day(decision.actual_date) == dt
+            if not date_ok or type(decision.approved) is not bool or claim["state"] != "conditional":
                 raise ValueError("decision requires a pending conditional right")
             if not decision.approved:
                 if decision.cancellation_treatment != "verified_no_compensation" or decision.cancellation_evidence is None:
@@ -253,6 +271,19 @@ class StockDividendBook:
             self.shares[security] = self.shares.get(security, 0) + claim["locked"]
             claim["locked"], claim["state"] = 0, "released"
             actions.append({"event": listing.event_id, "action": "tradable_release"})
+        for settlement in settlements:
+            claim = self.claims[settlement.event_id]
+            settlement.evidence.check(session, self.scope)
+            if settlement.evidence.kind != "primary":
+                raise ValueError("official listing requires primary facts, not a model")
+            if self.scope != "modeled_research" or self.quantity_policy != "research_pro_rata" or claim["state"] != "approved" or day(settlement.model_date) != dt or day(settlement.official_listing_date) > dt:
+                raise ValueError("virtual settlement requires explicit research basis, known approval and official listing; not actual account credit")
+            security=claim["terms"].security
+            self.shares[security]=self.shares.get(security,0)+claim["quantity"]
+            claim["state"]="released"
+            actions.append({"event":settlement.event_id,"action":"virtual_listing_settlement","model_date":session,
+                            "official_listing_date":settlement.official_listing_date,"shares":str(claim["quantity"]),
+                            "actual_account_credit_certified":False,"distribution_tax_basis":"before_distribution_tax"})
         for trade in trades:
             security = code(trade.security)
             q = self.quantity(trade.shares, "trade shares")
@@ -302,6 +333,8 @@ class StockDividendBook:
                                 [("entitlements", entitlements), ("decisions", decisions), ("credits", credits),
                                  ("listings", listings), ("trades", trades), ("marks", marks)]}}}
         self.last_session = session
+        if settlements:
+            result["inputs"]["virtual_settlements"]=[asdict(item) for item in settlements]
         self.history.append(deepcopy(result))
         return result
 
@@ -313,9 +346,11 @@ def validate_market_reference(*, session, security, close, reference_price, chan
     Evidence must identify the security, effective date and reference-price row.
     """
     code(security)
-    if scope not in {"synthetic", "evidenced_research"}:
+    if scope not in {"synthetic", "evidenced_research", "modeled_research"}:
         raise ValueError("invalid reference-check scope")
     evidence.check(session, scope)
+    if scope == "modeled_research" and evidence.kind != "primary":
+        raise ValueError("reference price requires primary observation, not a research model")
     px, base = number(close, "close", positive=True), number(reference_price, "reference price", positive=True)
     if isinstance(changes_ratio_pct, (bool, float)):
         raise ValueError("ChangesRatio requires exact decimal")

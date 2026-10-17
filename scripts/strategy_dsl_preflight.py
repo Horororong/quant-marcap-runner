@@ -124,6 +124,12 @@ def preflight_strategy(
     # Known events can be present in a universe yet absent from selected
     # holdings. Trace the shared signal plan before reporting readiness.
     try:
+        if spec.research is not None:
+            from stock_dividend_research import load_strategy_actions
+            from stock_dividend_execution import DividendExecution
+            research_events=load_strategy_actions(root,spec,start=dates[0],end=dates[-1],asset_codes=set(panel['Code']))
+            research_events=research_events.loc[research_events['event_type'].eq('stock_dividend')]
+            DividendExecution(research_events,dates,sorted(set(panel['Code'])))
         corporate_action_audit = check_known_action_exposure(panel, spec, root, engine)
     except CorporateActionEvidenceGap as exc:
         return _error_payload(status="data_gap", phase="corporate_actions", exc=exc,

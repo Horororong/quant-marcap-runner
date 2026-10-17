@@ -1,0 +1,31 @@
+{
+  "stage": "15",
+  "checkpoint": "common research model and first full original decile NAV independently verified; final reporting/interface/CI pending",
+  "source_runs": [
+    39030154599,
+    39030327589
+  ],
+  "first_run": "/workspace/research-stage15-20261017/deciles-first",
+  "independent_summary": {
+    "status": "PASS_MODEL_ACCOUNTING",
+    "rows": 14820,
+    "portfolios": 10,
+    "sessions": 494,
+    "max_nav_error": 8.568167686462402e-08,
+    "numerical_tolerance_currency": 1e-05,
+    "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+    "investment_approved": false
+  },
+  "real_event_functional_summary": {
+    "status": "PASS_MODEL_ACCOUNTING",
+    "rows": 261,
+    "portfolios": 1,
+    "sessions": 87,
+    "max_nav_error": 1.4551915228366852e-11,
+    "numerical_tolerance_currency": 1e-05,
+    "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+    "investment_approved": false
+  },
+  "classification": "RESEARCH_ONLY",
+  "investment_approved": false
+}

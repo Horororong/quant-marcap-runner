@@ -206,6 +206,11 @@ def report_context(daily_csv: Path, repo_root: Path, title: str) -> tuple[str, d
         limits.append("고정 비용은 요청 DSL의 가정이며 실제 과거 세율·시장충격을 모두 검증한 결과가 아닙니다.")
         if raw.get('metadata'):
             diagnostics['strategy_scope'] = raw['metadata']
+        if raw.get('research'):
+            model=raw['research'];diagnostics['research_model']=model
+            limits.insert(0,"RESEARCH_ONLY · 투자/PIT 인증 없음. 연속수량·배당세 전 가상 장부입니다. Net은 거래비용 반영값이며 배당 관련 세후 계좌 성과가 아닙니다.")
+            limits.append(f"미입고 조건부 권리는 당일 기초주가의 {model['conditional_fraction']:.0%}로 평가합니다. 직접 관측된 권리 가격이나 승인 확률이 아닙니다.")
+            limits.append(f"공식 추가상장일로부터 {model['settlement_lag_sessions']} 거래일 뒤 종가에 가상 정산합니다. 실제 증권계좌 입고일을 인증한 것이 아니며 단주 현금과 배당 원천세는 재현하지 않습니다.")
         if raw.get('metadata', {}).get('report_validation_only'):
             limits.insert(0,"이 예제는 실행·보고 소프트웨어 검증용입니다. 알파·OOS·시장 전체·장기 투자 검증 결과가 아닙니다.")
     else:
@@ -231,6 +236,11 @@ def dashboard_payload(periods: dict, columns: list[str], config: BacktestConfig,
         meta[name] = {'kind': 'strategy', 'portfolio': portfolio, 'cost': cost,
                       'label': (portfolio + ' · ' if portfolio != 'strategy' else '') + label}
     summary, diagnostics, limits = report_context(daily_csv, repo_root, config.title)
+    if diagnostics.get('research_model'):
+        for key in costs:
+            if key!='gross': costs[key]+=' · 배당세 전'
+        for row in meta.values():
+            if row['kind']=='strategy' and row['cost']!='gross':row['label']+=' · 배당세 전'
     return {'schema_version': 1, 'performance_template_version': TEMPLATE_VERSION,
             'requested_report_contract_version': REQUESTED_REPORT_CONTRACT_VERSION, 'mode': mode,
             'title': config.title, 'strategy_summary': summary, 'periods': periods, 'series_meta': meta,

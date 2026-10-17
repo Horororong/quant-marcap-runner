@@ -1,0 +1,41 @@
+{
+  "requests": 4,
+  "retries": 0,
+  "responses": [
+    {
+      "file": "20200327902239.zip",
+      "http": 200,
+      "content_type": "application/x-msdownload;charset=UTF-8",
+      "bytes": 3595,
+      "sha256": "9ab507b9c2ae9e16373a0dd7d33fd0542563c5638bf7755e14d619453d493989",
+      "source": "OpenDART document.xml"
+    },
+    {
+      "file": "20200421000430_viewer.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 24432,
+      "sha256": "6e0f4943af4da122367f2896d1590651a6118445118c77611ad00faa7b2b914c",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchInitInfo&acptNo=20200421000430"
+    },
+    {
+      "file": "20200421000430_path.html",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 968,
+      "sha256": "f238d7d2cd6803e0b2b2ecb4086562756bfe4d078fe47f70cdf416c0060a0f52",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchContents&docNo=20200421001084"
+    },
+    {
+      "file": "20200421000430_body.html",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 6685,
+      "sha256": "17f6401766e1e5c551c6075a65b293e8b2b90b3184eb8076f05921fb63594d35",
+      "source": "https://kind.krx.co.kr/external/2020/04/21/000430/20200421001084/70791.htm"
+    }
+  ],
+  "errors": [],
+  "candidates": [],
+  "investment_approved": false
+}

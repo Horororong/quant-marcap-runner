@@ -8,9 +8,10 @@ from dataclasses import asdict
 from decimal import Decimal, Context, Inexact, localcontext
 import json
 import math
+import hashlib
 
 from stock_dividend import (StockDividendBook, Evidence, Terms, Decision, Credit,
-                            Listing, RightMark, day, number, validate_market_reference)
+                            Listing, RightMark, VirtualSettlement, day, number, validate_market_reference)
 
 
 def evidence(raw):
@@ -35,8 +36,16 @@ class DividendExecution:
             if not isinstance(raw, str):
                 raise ValueError("stock_dividend capability_gap: explicit stock_dividend_contract required")
             p = json.loads(raw)
-            if set(p) != {"scope", "quantity_policy", "terms", "decisions", "credits", "listings", "marks", "market_reference"}:
+            required={"scope", "quantity_policy", "terms", "decisions", "credits", "listings", "marks", "market_reference"}
+            modeled=p.get("scope")=="modeled_research"
+            if modeled: required.add("research_model")
+            if set(p) != required:
                 raise ValueError("stock-dividend contract has missing/unknown fields")
+            if modeled:
+                from stock_dividend_research import validate_model
+                validate_model(p["research_model"]["contract"])
+                if p["quantity_policy"]!="research_pro_rata" or p["credits"] or p["listings"] or p["marks"]:
+                    raise ValueError("modeled research must not mix actual-credit records or caller valuation overrides")
             t = Terms(**{**p["terms"], "evidence": evidence(p["terms"]["evidence"])})
             t.check(t.ex_date, p["scope"])
             if (t.event_id in seen or t.security not in assets or t.ex_date != str(row.event_date.date())
@@ -77,7 +86,7 @@ class DividendExecution:
                     q = int(q)
                 shares[security] = q
             book.shares = shares
-            entitlements, decisions, credits, listings, marks = [], [], [], [], []
+            entitlements, decisions, credits, listings, marks, settlements = [], [], [], [], [], []
             for p in self.plans:
                 t = p["terms"]
                 if session == t.ex_date:
@@ -85,8 +94,9 @@ class DividendExecution:
                 if session < t.ex_date:
                     continue
                 for a in p["decisions"]:
-                    if session == a["actual_date"]:
+                    if session == a.get("recognition_date",a["actual_date"]):
                         d = {**a, "event_id": t.event_id, "evidence": evidence(a["evidence"])}
+                        d.pop("recognition_date",None)
                         if d.get("cancellation_evidence"):
                             d["cancellation_evidence"] = evidence(d["cancellation_evidence"])
                         decisions.append(Decision(**d))
@@ -112,8 +122,26 @@ class DividendExecution:
                         q = (shares.get(t.security, 0) * number(t.rate, "rate") if session == t.ex_date else book.claims[t.event_id]["quantity"])
                         if q:
                             marks.append(RightMark(event_id=t.event_id, **{**a, "evidence": evidence(a["evidence"])}))
+                if p["scope"]=="modeled_research":
+                    model=p["research_model"];contract=model["contract"]
+                    claim=book.claims.get(t.event_id)
+                    q=number(shares.get(t.security,0),"opening shares")*number(t.rate,"rate") if session==t.ex_date else claim["quantity"]
+                    state="conditional" if claim is None else claim["state"]
+                    for d in decisions:
+                        if d.event_id==t.event_id: state="approved" if d.approved else "cancelled"
+                    listing=model["official_listing"]
+                    if listing and session==listing["model_settlement_date"]:
+                        settlements.append(VirtualSettlement(t.event_id,session,listing["date"],evidence(listing["evidence"])))
+                        state="released"
+                    if q and state in {"conditional","approved"}:
+                        factor=number(str(contract["conditional_fraction"]),"conditional valuation fraction") if state=="conditional" else Decimal(1)
+                        mark=number(str(prices[t.security]),"observed underlying close",positive=True)*factor
+                        raw=json.dumps(contract,sort_keys=True,separators=(",",":"))
+                        ev=Evidence("model:stock-dividend-research-v1",hashlib.sha256(raw.encode()).hexdigest(),
+                            "explicit underlying-close share-equivalent model; not an observed right price or certified approval probability",session,"research_model")
+                        marks.append(RightMark(t.event_id,session,str(mark),"explicit conditional/liquidity haircut; distribution tax excluded",ev))
             snapshot = book.close(session, {c: str(v) for c, v in prices.items() if math.isfinite(v) and v > 0},
-                                  entitlements=entitlements, decisions=decisions, credits=credits, listings=listings, marks=marks)
+                                  entitlements=entitlements, decisions=decisions, credits=credits, listings=listings, marks=marks,settlements=settlements)
             new_value = float(Decimal(snapshot["rights_value"]) + Decimal(snapshot["locked_value"]))
             released = {c: float(book.shares.get(c, 0) - shares.get(c, 0)) for c in set(book.shares) | set(shares)}
             release_value = sum(q * prices[c] for c, q in released.items() if q)

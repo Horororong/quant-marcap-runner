@@ -257,6 +257,7 @@ def build_strategy_json_schema() -> dict:
             },
             "initial_capital": {"type": "number", "exclusiveMinimum": 0, "default": 10000000},
             "metadata": {"type": "object", "additionalProperties": True},
+            "research": __import__("stock_dividend_research").model_schema(),
         },
     }
 
@@ -570,6 +571,7 @@ class StrategySpec:
     benchmark: BenchmarkSpec | None = None
     initial_capital: float = 10_000_000.0
     metadata: Mapping[str, Any] = field(default_factory=dict)
+    research: Mapping[str, Any] | None = None
 
     @classmethod
     def from_dict(cls, raw: Mapping[str, Any]) -> "StrategySpec":
@@ -622,10 +624,12 @@ class StrategySpec:
             benchmark=benchmark,
             initial_capital=initial_capital,
             metadata=dict(raw.get("metadata", {})),
+            research=__import__("stock_dividend_research").validate_model(raw["research"]) if "research" in raw else None,
         )
 
     def to_dict(self) -> dict[str, Any]:
         out = asdict(self)
+        if self.research is None: out.pop("research")
         out["rebalance"] = self.rebalance.to_dict()
         # Retain normalized JSON/fingerprints of existing top-N strategies.
         if self.portfolio.selection == "top_n":
@@ -652,6 +656,7 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         "schema_version": spec.schema_version,
         "strategy_id": spec.strategy_id,
         "strategy_fingerprint": spec.fingerprint(),
+        "research_model": spec.research,
         "factor_registry_version": FACTOR_REGISTRY_VERSION,
         "execution_engine_version": EXECUTION_ENGINE_VERSION,
         "corporate_action_registry_version": CORPORATE_ACTION_REGISTRY_VERSION,

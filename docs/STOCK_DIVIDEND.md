@@ -75,3 +75,47 @@ cash balance, costs, sales before/after credit, post-ex new buys, cancellation,
 credit/listing transitions, continuous-fraction boundaries and multiple events.
 Floating-point oracle comparisons allow 1e-8 currency units on 10000 capital;
 this numerical allowance does not change any market-return tolerance.
+
+## Explicit real-data research contract v1 (subledger contract3)
+
+An optional validated DSL `research` object selects a different, fingerprinted
+research model; absent it, contract2 whole-account behavior and old DSL
+fingerprints/NAV remain unchanged. Its fact catalog is a separate SHA-pinned
+`config/research/` file, never the operating production event registry.
+
+Conditional-right valuation is a modeling decision, not an unavailable official
+price. Alternatives: zero until confirmation defers value and creates a later
+recognition jump; full underlying-share equivalence ignores conditional approval
+and liquidity discounts; a declared fraction of underlying close makes those
+risks visible as a sensitivity scenario, without claiming an observed probability.
+The baseline chooses full share equivalence (fraction1.0) before observing results;
+0.9 and settlement-delay scenarios test sensitivity, never optimize the choice.
+Approved rights use full share equivalence. Cancellation still needs actual
+primary decision/no-compensation facts and recognizes loss, not a retrospective
+assumption of successful approval. Directly observed market reference-price
+returns and these modeled economic NAV returns remain different quantities.
+
+Actual facts retain source/publication/effective dates. Date-only evidence is
+usable after its publication date on the first supplied observed session. A
+retrospective report does not backdate an approval used in NAV. Model marks use
+only the current underlying close and currently recognized state; they are
+`research_model` evidence, never primary price observations.
+
+`research_pro_rata` has continuous units, including rights and final delivery.
+It deliberately does not model whole-account fractional cash. Virtual delivery
+at the official market listing close (plus explicit observed-session lag) is a
+virtual-account settlement convention, NOT a claimed actual brokerage credit.
+It requires a known approval and primary official listing evidence. No source
+listing means no guessed virtual date; rights stay nontradable. Credit and release
+occur once with zero new income/cost; any mark change is separately visible.
+Conditional/approved rights cannot be sold or fund rebalances. Original settled
+cash, post-cost target allocation and insufficient-liquidity errors are unchanged.
+
+Both Gross and Net exclude stock-dividend withholding and fractional cash.
+Net deducts the existing declared trading commissions/tax/spread/slippage only.
+The model never says a real taxpayer owes zero dividend tax. Whole-account
+credit still requires its original verified treatment and integer boundaries.
+This research model gives no operating DART/PIT approval and no total-return,
+legal ownership, personalized tax or broker-account certification. Report labels
+and diagnostics show these assumptions. Reused event facts do not become
+historical trading signals before their public availability.

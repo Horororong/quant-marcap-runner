@@ -98,7 +98,7 @@
     ],
     "version": "1"
   },
-  "corporate_action_registry_version": "6",
+  "corporate_action_registry_version": "7",
   "corporate_actions": {
     "cash_exchange_contract": {
       "actual_coverage": "no cash exchange in production registry; Jeisys actual payment evidence unresolved",
@@ -123,8 +123,9 @@
       "owner": "scripts/stock_dividend.py",
       "price_reference": "Close / evidenced reference price - 1 versus ChangesRatio / 100; existing 1bp tolerance",
       "public_execution": "explicit stock_dividend_contract required; real events remain evidence-gated; no automatic production registration",
-      "quantity_policy": "whole primary accounts; continuous pro-rata only with explicit synthetic scope, never legal fractional settlement",
+      "quantity_policy": "whole primary accounts unchanged; continuous synthetic fixtures or explicit modeled_research research_pro_rata, never legal fractional settlement",
       "receipt": "actual credit moves approved whole-share rights into locked shares without second income",
+      "research_model": "optional DSL research v1: continuous pro-rata, explicit underlying-close share-equivalent haircut, date-only publication recognized next observed session, virtual settlement on official listing close plus declared session lag, before distribution tax; no broker credit/PIT certification",
       "rights": "ex-date opening quantities only; separate conditional/approved rights survive sales",
       "scope": "PROJECT common Gross/Net allocator with separate illiquid rights/locked-stock sleeves; research only",
       "tradability": "separate actual listing/release evidence; locked shares cannot be sold",
@@ -137,7 +138,7 @@
         "interacting other corporate actions"
       ],
       "valuation": "explicit as-of unit mark, evidence and rationale for every pending right; no default close/probability",
-      "version": "2"
+      "version": "3"
     },
     "supported_event_types": [
       "stock_merger",
@@ -182,7 +183,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "24",
+  "dsl_machine_contract_version": "25",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -190,7 +191,7 @@
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
   },
-  "execution_engine_version": "v2-16-exec-4",
+  "execution_engine_version": "v2-16-exec-5",
   "execution_prices": [
     "next_close"
   ],

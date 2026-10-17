@@ -34,7 +34,7 @@ permissions:
   actions: read
 jobs:
   bounded-stage15-source:
-    if: ${{ github.run_attempt == 1 && (github.sha == '3dadfd7b25281b0707e54f5dd7fbd873e2bf41fe' && contains(github.event.head_commit.message, '[stage15-source]') || contains(github.event.head_commit.message, '[stage15-completion]')) }}
+    if: ${{ github.run_attempt == 1 && (github.sha == '3dadfd7b25281b0707e54f5dd7fbd873e2bf41fe' && contains(github.event.head_commit.message, '[stage15-source]') || github.sha == 'a5b2559ffb6b3eb7c710fce976145051931ac488' && contains(github.event.head_commit.message, '[stage15-completion]')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -256,7 +256,7 @@ jobs:
           if-no-files-found: error
           retention-days: 90
   fixed-kit:
-    if: ${{ !contains(github.event.head_commit.message, '[stage15-completion]') && !contains(github.event.head_commit.message, '[stage15-source]') && !contains(github.event.head_commit.message, '[stage15]') && !contains(github.event.head_commit.message, '[stage14-body]') && !contains(github.event.head_commit.message, '[stage14-corrected]') && !contains(github.event.head_commit.message, '[stage14-listing]') && !contains(github.event.head_commit.message, '[stage14-history]') && !contains(github.event.head_commit.message, '[stage14-source]') && !contains(github.event.head_commit.message, '[stage14]') && !contains(github.event.head_commit.message, '[stage13-proof]') && !contains(github.event.head_commit.message, '[stage13]') && !contains(github.event.head_commit.message, '[stage12-krx-prices]') && !contains(github.event.head_commit.message, '[stage12-read-artifact]') && !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
+    if: ${{ !contains(github.event.head_commit.message, '[stage15-model]') && !contains(github.event.head_commit.message, '[stage15-completion]') && !contains(github.event.head_commit.message, '[stage15-source]') && !contains(github.event.head_commit.message, '[stage15]') && !contains(github.event.head_commit.message, '[stage14-body]') && !contains(github.event.head_commit.message, '[stage14-corrected]') && !contains(github.event.head_commit.message, '[stage14-listing]') && !contains(github.event.head_commit.message, '[stage14-history]') && !contains(github.event.head_commit.message, '[stage14-source]') && !contains(github.event.head_commit.message, '[stage14]') && !contains(github.event.head_commit.message, '[stage13-proof]') && !contains(github.event.head_commit.message, '[stage13]') && !contains(github.event.head_commit.message, '[stage12-krx-prices]') && !contains(github.event.head_commit.message, '[stage12-read-artifact]') && !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:

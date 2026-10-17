@@ -362,6 +362,56 @@
       ],
       "type": "object"
     },
+    "research": {
+      "additionalProperties": false,
+      "properties": {
+        "conditional_fraction": {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        "distribution_tax_basis": {
+          "const": "before_distribution_tax"
+        },
+        "event_file": {
+          "pattern": "^config/research/[A-Za-z0-9_/-]+\\.json$",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "quantity_basis": {
+          "const": "continuous_pro_rata"
+        },
+        "rights_valuation": {
+          "const": "underlying_close_share_equivalent"
+        },
+        "settlement_basis": {
+          "const": "virtual_on_official_listing_close"
+        },
+        "settlement_lag_sessions": {
+          "maximum": 20,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "version": {
+          "const": "1"
+        }
+      },
+      "required": [
+        "conditional_fraction",
+        "distribution_tax_basis",
+        "event_file",
+        "event_sha256",
+        "quantity_basis",
+        "rights_valuation",
+        "settlement_basis",
+        "settlement_lag_sessions",
+        "version"
+      ],
+      "type": "object"
+    },
     "schema_version": {
       "const": "1.0"
     },

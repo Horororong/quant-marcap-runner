@@ -21,6 +21,7 @@ import pandas as pd
 from strategy_dsl import BenchmarkSpec, StrategySpec, compile_execution_plan, load_strategy_spec
 from execution_contract import EXECUTION_ENGINE_VERSION, PROJECT_TEMPLATE_VERSION
 from corporate_action_registry import load_corporate_actions, load_corporate_action_gaps
+from stock_dividend_research import load_strategy_actions
 from krx_history_audit import require_session_coverage
 from factor_registry import (
     build_external_provider,
@@ -554,8 +555,8 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     assets = list(target_weights.columns)
     close, tradable = close_and_tradable_matrices(panel, assets)
     cfg, costs, execution = engine_inputs(spec, engine)
-    corporate_actions = load_corporate_actions(
-        repo_root,
+    corporate_actions = load_strategy_actions(
+        repo_root, spec,
         start=close.index.min(),
         end=close.index.max(),
         asset_codes=set(assets),
