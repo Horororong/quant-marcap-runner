@@ -1,0 +1,19 @@
+{
+  "run_id": 39077759321,
+  "sha": "96a3785a6fc979d83bbd35d304a46957220989dc",
+  "job_id": 117528349545,
+  "conclusion": "failure",
+  "failed_command": "node scripts/verify_research_dashboard.cjs .../original/report/report_CURRENT.html .../stage15-browser",
+  "exit_code": 1,
+  "error": "CDP -32000: Object reference chain is too long",
+  "cause": "Plotly.relayout Promise resolves to cyclic graph DOM; Runtime.evaluate returnByValue attempts to serialize it",
+  "correction": "Await relayout but return scalar true for both zoom/reset evaluations; assertions unchanged",
+  "passed": [
+    "original19 commands including real DART E2E",
+    "additional10 test commands",
+    "six actual research runs and independent books",
+    "15 numeric files exact bytes/SHA",
+    "518/64/originals60 and8 financial result bytes"
+  ],
+  "investment_approved": false
+}

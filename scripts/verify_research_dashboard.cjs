@@ -25,9 +25,11 @@ function validate(x){if(!x.ready){assert(x.gap);assert(x.rows.length===0);return
  for(const p of contract.portfolios){await select('portfolio',p);validate(await inspect());checks++;}
  for(const c of contract.costs){await select('cost',c);validate(await inspect());checks++;}
  await select('cost','all');await select('portfolio',contract.portfolios[0]);
- await evaluate(`Plotly.relayout(document.getElementById('wealth'),{'xaxis.range[0]':'2020-04-10','xaxis.range[1]':'2020-04-24'})`);await until(`document.getElementById('log2').layout.xaxis.range?.[0]==='2020-04-10' && document.getElementById('drawdown').layout.xaxis.range?.[1]==='2020-04-24'`);
+ // Plotly resolves to the cyclic graph DOM. Await completion, then return a
+ // scalar over CDP; serializing that DOM by value fails in Chromium.
+ await evaluate(`Plotly.relayout(document.getElementById('wealth'),{'xaxis.range[0]':'2020-04-10','xaxis.range[1]':'2020-04-24'}).then(()=>true)`);await until(`document.getElementById('log2').layout.xaxis.range?.[0]==='2020-04-10' && document.getElementById('drawdown').layout.xaxis.range?.[1]==='2020-04-24'`);
  // Restore default range for a real pointer hover and screenshots.
- await evaluate(`Plotly.relayout(document.getElementById('wealth'),{'xaxis.autorange':true})`);
+ await evaluate(`Plotly.relayout(document.getElementById('wealth'),{'xaxis.autorange':true}).then(()=>true)`);
  await evaluate(`document.getElementById('log2').scrollIntoView({block:'center'})`);
  const point=await evaluate(`(()=>{const g=document.getElementById('log2'),t=g.data[0],i=Math.floor(t.x.length*.65),r=g.getBoundingClientRect();return{x:r.left+g._fullLayout.xaxis._offset+g._fullLayout.xaxis.d2p(t.x[i]),y:r.top+g._fullLayout.yaxis._offset+g._fullLayout.yaxis.d2p(t.y[i]),date:t.x[i].slice(0,10),multiple:t.customdata[i][0].toFixed(6)+'배'}})()`);
  await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:point.x,y:point.y});await until(`document.querySelector('#log2 .hoverlayer').textContent.includes(${JSON.stringify(point.date)})`);

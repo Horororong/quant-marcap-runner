@@ -145,3 +145,10 @@ D08은16643.050705에서16625.089165가 된다. 일부2019 노출은 최종자�
 실행한다. 소스 재수집은 없다. 최종 SHA/RunID/각 실제 결과는 해당 커밋의
 Actions 및 artifact execution.json/summary.json을 읽어 확인해야 하며, 이 문서가
 커밋되었다는 사실로 CI 성공을 미리 선언하지 않는다.
+
+첫 최종 CI39077759321/96a3785는 원래19명령·추가10명령·모든 실제 연구·
+15개 숫자 파일 bytes/SHA·원본60·518/64 보존을 통과했으나 브라우저 단계에서
+`Object reference chain is too long`으로 실패했다. Plotly.relayout이 반환하는
+순환 DOM 객체를 CDP returnByValue로 넘긴 검사 코드의 문제다. 완료를 await한
+뒤 scalar true를 반환하도록 두 호출만 수정했다. 차트·수익률·지표·허용오차·
+입력·검사 항목은 바꾸지 않았다. 수정 후 최종 CI를 같은 경로로 다시 실행한다.
