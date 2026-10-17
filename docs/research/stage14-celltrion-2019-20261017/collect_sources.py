@@ -230,8 +230,42 @@ def corrected_access(output):
     return int(bool(state["errors"]))
 
 
+def listing_body(output):
+    """New body from an observed KIND docNo; no repeated search/viewer.
+
+    KSD actual lookup response is pipe-delimited although its old UI JS splits
+    comma. The exact returned 068270:셀트리온 is used without another lookup.
+    """
+    output.mkdir(parents=True,exist_ok=False)
+    state=dict(requests=0,retries=0,responses=[],errors=[],investment_approved=False)
+    def capture(url,name,data=None):
+        state["requests"]+=1
+        if state["requests"]>4: raise ValueError("REQUEST_BUDGET")
+        try:
+            with request.build_opener(safe.NoRedirect()).open(request.Request(url,data=data),timeout=25) as r:
+                raw=r.read(MAX_BYTES+1);http=r.status;ct=r.headers.get("Content-Type","")
+            if len(raw)>MAX_BYTES or not raw: raise ValueError("EMPTY_OR_OVERSIZE_RESPONSE")
+            (output/name).write_bytes(raw)
+            state["responses"].append(dict(url=url,file=name,http=http,content_type=ct,bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest()))
+            return safe.decode(raw)
+        except error.HTTPError as e: state["errors"].append(dict(url=url,reason="HTTP_FAILURE",http=e.code))
+        except Exception as e: state["errors"].append(dict(url=url,reason=type(e).__name__,http=None))
+        return None
+    url="https://kind.krx.co.kr/common/disclsviewer.do?"+parse.urlencode(dict(method="searchContents",docNo="20200421000468"))
+    body=capture(url,"kind_path.html")
+    paths=list(dict.fromkeys(re.findall(r"[\"']((?:https://kind\.krx\.co\.kr)?/external/[^\"'\s]+\.htm)[\"']",body or "")))
+    state["returned_external_paths"]=paths
+    for index,path in enumerate(paths[:2]): capture(parse.urljoin(url,path),f"kind_body_{index}.html")
+    capture("https://m.seibro.or.kr/cmuc/company/selectCompanySchedule.do","ksd_celltrion.html",
+            parse.urlencode(dict(searchCode="00",shotn_isin="068270",txt_sch="셀트리온")).encode())
+    (output/"state.json").write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n")
+    emit_bundle(output,state)
+    return int(bool(state["errors"]))
+
+
 def main():
     p=argparse.ArgumentParser();p.add_argument("--output",type=Path,required=True);p.add_argument("--issuer-history",action="store_true");p.add_argument("--listing-access",action="store_true");a=p.parse_args()
+    if os.getenv("STAGE14_LISTING_BODY")=="1": return listing_body(a.output)
     if os.getenv("STAGE14_CORRECTED_ACCESS")=="1": return corrected_access(a.output)
     if a.listing_access: return listing_access(a.output)
     if a.issuer_history: return issuer_history(a.output)
