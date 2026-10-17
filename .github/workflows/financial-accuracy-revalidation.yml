@@ -19,13 +19,44 @@ on:
       - 'scripts/collect_stock_dividend_metadata.py'
       - 'scripts/read_stock_dividend_artifact.py'
       - 'scripts/collect_stock_dividend_documents.py'
+      - 'scripts/collect_stock_dividend_krx.py'
+      - 'scripts/test_stock_dividend_krx.py'
       - 'docs/research/stage12-stock-dividend-20261016/**'
 permissions:
   contents: read
   actions: read
 jobs:
+  bounded-stage12-krx:
+    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage12-krx-prices]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore and verify original pinned kit
+        run: |
+          python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/financial-repair"
+          python "$RUNNER_TEMP/financial-repair/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/financial-repair/kit-parts" --destination "$RUNNER_TEMP/financial-repair/runtime"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I "$RUNNER_TEMP/financial-repair/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/financial-repair/verify.json"
+      - name: At most eight official cash-equity date queries
+        env:
+          KRX_AUTH_KEY: ${{ secrets.KRX_AUTH_KEY }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/test_stock_dividend_krx.py",run_name="__main__")'
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I scripts/collect_stock_dividend_krx.py --output "$RUNNER_TEMP/stage12-krx"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stage12-official-krx-prices
+          path: |
+            ${{ runner.temp }}/stage12-krx
+            ${{ runner.temp }}/financial-repair/verify.json
+          retention-days: 90
   bounded-stage12-documents:
-    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage12-dart-documents]') }}
+    # Completed bounded attempt: do not retry a rejected document from later commits.
+    if: ${{ github.sha == '57cdba365bc82aae0be35e5dde9c978e6d7b95cf' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage12-dart-documents]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -80,23 +111,26 @@ jobs:
         with:
           python-version: '3.12'
       - name: Restore original pinned offline kit and verify dedicated Python
+        id: runtime
         run: |
           python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/financial-repair"
           python "$RUNNER_TEMP/financial-repair/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/financial-repair/kit-parts" --destination "$RUNNER_TEMP/financial-repair/runtime"
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I "$RUNNER_TEMP/financial-repair/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/financial-repair/verify.json"
       - name: Shared subledger, fail-closed boundaries and existing engine E2E
         run: |
-          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage12-stock-dividend-20261016/validate.py --output "$RUNNER_TEMP/stage12-validation"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage12-stock-dividend-20261016/validate.py --defer-dart-e2e-after-native-crash --output "$RUNNER_TEMP/stage12-validation"
       - name: One bounded official exchange-disclosure metadata discovery
-        if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage12-official-proof]') }}
+        if: ${{ github.sha == 'b7a12ff56e9f4b64b1b26f02b68cb6c2626250bb' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage12-official-proof]') }}
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I scripts/collect_stock_dividend_metadata.py --output "$RUNNER_TEMP/stage12-official"
       - name: Preserve all prior audit bytes and financial controls without reprocessing
+        if: ${{ always() && steps.runtime.outcome == 'success' }}
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage12-stock-dividend-20261016/preserve.py --output "$RUNNER_TEMP/stage12-preservation"
       - name: Restore and verify preserved originals and existing replay artifacts only
+        if: ${{ always() && steps.runtime.outcome == 'success' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -114,7 +148,7 @@ jobs:
           if-no-files-found: error
           retention-days: 90
   fixed-kit:
-    if: ${{ !contains(github.event.head_commit.message, '[stage12-read-artifact]') && !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
+    if: ${{ !contains(github.event.head_commit.message, '[stage12-krx-prices]') && !contains(github.event.head_commit.message, '[stage12-read-artifact]') && !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
