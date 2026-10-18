@@ -24,6 +24,7 @@ try:
     from scripts.legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION, needs_encoding_recheck
     from scripts.legacy_native_financials import parse_native, select_verified, PARSER_VERSION
     from scripts.dart_service_status import defer_maintenance, defer_http_transient
+    from scripts.legacy_parser_migration import require_explicit_migration
 except ModuleNotFoundError as error:
     if error.name != "scripts":
         raise
@@ -33,6 +34,7 @@ except ModuleNotFoundError as error:
     from legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION, needs_encoding_recheck
     from legacy_native_financials import parse_native, select_verified, PARSER_VERSION
     from dart_service_status import defer_maintenance, defer_http_transient
+    from legacy_parser_migration import require_explicit_migration
 
 
 API_KEY = os.getenv("DART_API_KEY", "").strip()
@@ -676,7 +678,9 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
                 "filing_date":str(pd.Timestamp(meta["rcept_dt"]).date()) if pd.notna(meta.get("rcept_dt")) else "",
                 # Source statement dates/basis are retained from the structural reader.
                 "period_end_evidence":"original_statement_header",
-                "fiscal_year":meta.get("fiscal_year",pd.NA),
+                "index_fiscal_year":meta.get("fiscal_year",None),
+                # Fiscal identity is source-derived by the native reader.
+                # Retain the current-master index label only as provenance.
                 "document_sha256":sha,
                 "parser_version":PARSER_VERSION,
                 "source_diagnostic_version":DIAGNOSTIC_VERSION,
@@ -833,7 +837,13 @@ def new_control() -> CollectionControl:
     )
 
 
+def check_parser_migration() -> None:
+    state = load_csv(STATE_FILE, dtype=str, keep_default_na=False)
+    require_explicit_migration(state.to_dict('records'), PARSER_VERSION)
+
+
 def process_pending(idx: pd.DataFrame, *, max_docs=None, workers=None, control=None) -> dict:
+    check_parser_migration()
     global RUN_CONTROL
     control = control or new_control()
     previous_control = RUN_CONTROL
@@ -950,7 +960,7 @@ def main() -> None:
     global RUN_CONTROL
     if not API_KEY:
         raise RuntimeError("DART_API_KEY missing; stored progress was preserved")
-
+    check_parser_migration()
     RUN_CONTROL = new_control()
     with RUN_CONTROL.signals():
         idx=update_filing_index()

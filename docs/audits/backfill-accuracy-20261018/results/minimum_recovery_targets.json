@@ -1,169 +1,176 @@
 {
+  "receipt_count": 22,
+  "amount_controls": 88,
+  "direct_amount_failures": 34,
+  "metadata_failures": 77,
   "receipts": [
     {
       "receipt": "20090814001572",
-      "confirmed_amount_failures": 0,
-      "confirmed_period_failures": 4,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 0,
+      "period_failures": 4,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20090814001647",
-      "confirmed_amount_failures": 2,
-      "confirmed_period_failures": 4,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 2,
+      "period_failures": 4,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20090824000170",
-      "confirmed_amount_failures": 0,
-      "confirmed_period_failures": 3,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 0,
+      "period_failures": 3,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20090910000055",
-      "confirmed_amount_failures": 2,
-      "confirmed_period_failures": 3,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 2,
+      "period_failures": 3,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20090925000304",
-      "confirmed_amount_failures": 2,
-      "confirmed_period_failures": 3,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 2,
+      "period_failures": 3,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20090928000006",
-      "confirmed_amount_failures": 1,
-      "confirmed_period_failures": 4,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 1,
+      "period_failures": 4,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20091113000204",
-      "confirmed_amount_failures": 2,
-      "confirmed_period_failures": 4,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 2,
+      "period_failures": 4,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20091113000302",
-      "confirmed_amount_failures": 3,
-      "confirmed_period_failures": 3,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 3,
+      "period_failures": 3,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20091113000655",
-      "confirmed_amount_failures": 2,
-      "confirmed_period_failures": 2,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 2,
+      "period_failures": 2,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20091116000440",
-      "confirmed_amount_failures": 2,
-      "confirmed_period_failures": 4,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 2,
+      "period_failures": 4,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
+    },
+    {
+      "receipt": "20100127000210",
+      "amount_failures": 2,
+      "period_failures": 4,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20100128000293",
-      "confirmed_amount_failures": 2,
-      "confirmed_period_failures": 4,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 2,
+      "period_failures": 4,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20100212000066",
-      "confirmed_amount_failures": 3,
-      "confirmed_period_failures": 3,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 3,
+      "period_failures": 3,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20100216000091",
-      "confirmed_amount_failures": 1,
-      "confirmed_period_failures": 4,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 1,
+      "period_failures": 4,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20100216000247",
-      "confirmed_amount_failures": 2,
-      "confirmed_period_failures": 3,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 2,
+      "period_failures": 3,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20100302000344",
-      "confirmed_amount_failures": 0,
-      "confirmed_period_failures": 3,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 0,
+      "period_failures": 3,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20100319000344",
-      "confirmed_amount_failures": 3,
-      "confirmed_period_failures": 4,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 3,
+      "period_failures": 4,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
+    },
+    {
+      "receipt": "20100319000356",
+      "amount_failures": 0,
+      "period_failures": 4,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20100326000114",
-      "confirmed_amount_failures": 2,
-      "confirmed_period_failures": 3,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 2,
+      "period_failures": 3,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20100329000308",
-      "confirmed_amount_failures": 0,
-      "confirmed_period_failures": 4,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 0,
+      "period_failures": 4,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20100330000015",
-      "confirmed_amount_failures": 2,
-      "confirmed_period_failures": 3,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 2,
+      "period_failures": 3,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     },
     {
       "receipt": "20100330000158",
-      "confirmed_amount_failures": 1,
-      "confirmed_period_failures": 4,
-      "scope": "Explicit audited controls only, not all document fields",
-      "action": "OFFLINE_REEXTRACT_REVIEW_ONLY",
-      "operating_reprocess_approved": false
+      "amount_failures": 1,
+      "period_failures": 4,
+      "action": "OFFLINE_SHADOW_SOURCE_REVIEW_ONLY",
+      "operational_reprocess_authorized": false
     }
   ],
-  "receipt_count": 20,
-  "amount_controls": 80,
-  "direct_amount_failures": 32,
-  "metadata_failures": 69,
-  "all_new_financial_PIT_eligible": false
+  "source_gap_review_targets": [
+    "20090821000040",
+    "20090928000375",
+    "20090909000078",
+    "20090814001689"
+  ],
+  "no_document_evidence_targets": [
+    "20090904000055",
+    "20090825000210",
+    "20090819000149",
+    "20090814001826"
+  ],
+  "maintenance_requeue": "Separate3998candidate manifest; not automatically reset",
+  "investment_approved": false
 }

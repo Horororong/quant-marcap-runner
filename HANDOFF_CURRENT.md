@@ -1,6 +1,6 @@
-## 금융 정확성 우선 인계 (2026-10-18)
+## 금융 정확성 최종 인계 (2026-10-18)
 
-[재무 백필 수정 보고서](docs/audits/backfill-accuracy-20261018/report.md)와 [재현](docs/audits/backfill-accuracy-20261018/reproduction.md)을 먼저 읽는다. main203842...는 여전히v5로누적71118건; 연구수정미배포. 기존32금액은v8.1에서28PASS/4UNVERIFIED, 독립48은20PASS/28UNVERIFIED이며main에서맞던14개재추출공백이있어운영배포금지다. 518/64/원문60과기존감사보존. 최소20접수번호shadow검토와3998점검800후보를분리; 운영재처리·격리초기화·자동설정변경없음. 신규장기다종목완주0,투자PIT0/6유지. 최종원격SHA/CI는실제GitHub기록을확인한다. 다음우선은14정상값의일반형식지원과별도개발/신규독립표본,유한migration체크포인트다.
+[보고서](docs/audits/backfill-accuracy-20261018/report.md)와[재현](docs/audits/backfill-accuracy-20261018/reproduction.md)을먼저읽는다. main203842.../v5/누적71118은그대로이며연구수정미배포. v9.1은기존32통제28P/4U,첫48통제44P/4U,추가8통제8P를원문대조했다. 첫48의v8.1결과20P/28U와14정상값누락은삭제하지않고별도보존;후속공통섹션·정정템플릿·원문FY수정으로해소. 추가reserve는독립접수번호2건/같은2기업/부분층부족을명시. 518/64/원문60/기존849핀보존. 최소22접수번호shadow복구,4source-gap·4API014·3998서비스후보를구분한다. 운영수집이이전파서상태를자동재대기시키지않도록새migration가드는수집/coverage이전에중단한다. main적용·자동실행변경·운영데이터수정없음. 남은우선작업은수집durability와금융품질버전의명시적분리·유한migration게시절차,외화/원문손상/공개·정정·역사매핑근거다. 신규장기다종목완주0,투자PIT0/6유지. 최종SHA/CI는실제원격기록을확인한다.
 
 ## Multi-security research continuation (2026-10-18)
 

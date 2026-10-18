@@ -4,6 +4,11 @@ on:
     branches: ['fix/financial-accuracy-20261014']
     paths:
       - 'scripts/legacy_native_financials.py'
+      - 'scripts/legacy_parser_migration.py'
+      - 'scripts/dart_service_status.py'
+      - 'scripts/fast_backfill_phase_policy.py'
+      - 'scripts/backfill_super_value_fast.py'
+      - 'tests/test_financial_backfill_v8.py'
       - 'scripts/legacy_financial_fields.py'
       - 'scripts/backfill_dart_legacy_2000_2014.py'
       - 'tests/test_financial_accuracy_repair.py'
@@ -52,7 +57,7 @@ permissions:
   actions: read
 jobs:
   financial-backfill-existing-sources:
-    if: ${{ github.run_attempt == 1 && (((github.sha == '14804b081585bbb5769c76ff6182cc69135eb6a1' || github.sha == '9b6634c5f2326127c6fb6ad6d76a809edf12558c') && contains(github.event.head_commit.message, '[financial-backfill-source]')) || contains(github.event.head_commit.message, '[financial-reserve-source]')) }}
+    if: ${{ github.run_attempt == 1 && (((github.sha == '14804b081585bbb5769c76ff6182cc69135eb6a1' || github.sha == '9b6634c5f2326127c6fb6ad6d76a809edf12558c') && contains(github.event.head_commit.message, '[financial-backfill-source]')) || (github.sha == '98ee6462c6da3d33e43529a00bc95b988a4dbfed' && contains(github.event.head_commit.message, '[financial-reserve-source]'))) }}
     permissions:
       contents: write
       actions: read
@@ -742,6 +747,7 @@ jobs:
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I tests/test_financial_accuracy_repair.py 2>&1 | tee "$RUNNER_TEMP/financial-repair/unit.log"
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I tests/test_financial_extraction_stage3.py 2>&1 | tee "$RUNNER_TEMP/financial-repair/stage3-unit.log"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I tests/test_financial_backfill_v8.py 2>&1 | tee "$RUNNER_TEMP/financial-repair/v9-unit.log"
           for file in test_legacy_document_quality.py test_legacy_viewer_source.py test_legacy_viewer_sections.py test_legacy_schedule_gate.py test_legacy_no_metrics_recovery.py; do
             "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I -c "import sys,runpy; sys.path.insert(0,'scripts'); sys.path.insert(0,'.'); runpy.run_path('scripts/$file',run_name='__main__')"
           done

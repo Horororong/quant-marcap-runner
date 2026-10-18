@@ -12,7 +12,7 @@
         "PASS": 16,
         "UNVERIFIED": 4
       },
-      "v8_amount_verdict": {
+      "revised_amount_verdict": {
         "PASS": 28,
         "UNVERIFIED": 4
       },
@@ -20,15 +20,15 @@
         "FAIL": 28,
         "UNVERIFIED": 4
       },
-      "v8_period_verdict": {
+      "revised_period_verdict": {
         "PASS": 28,
         "UNVERIFIED": 4
       },
-      "v8_source_verdict": {
+      "revised_source_verdict": {
         "PASS": 28,
         "UNVERIFIED": 4
       },
-      "v8_contract_verdict": {
+      "revised_contract_verdict": {
         "PASS": 28,
         "UNVERIFIED": 4
       },
@@ -50,25 +50,25 @@
         "PASS": 24,
         "UNVERIFIED": 4
       },
-      "v8_amount_verdict": {
-        "PASS": 20,
-        "UNVERIFIED": 28
+      "revised_amount_verdict": {
+        "PASS": 44,
+        "UNVERIFIED": 4
       },
       "main_period_verdict": {
         "FAIL": 41,
         "UNVERIFIED": 7
       },
-      "v8_period_verdict": {
-        "PASS": 20,
-        "UNVERIFIED": 28
+      "revised_period_verdict": {
+        "PASS": 44,
+        "UNVERIFIED": 4
       },
-      "v8_source_verdict": {
-        "PASS": 20,
-        "UNVERIFIED": 28
+      "revised_source_verdict": {
+        "PASS": 44,
+        "UNVERIFIED": 4
       },
-      "v8_contract_verdict": {
-        "PASS": 20,
-        "UNVERIFIED": 28
+      "revised_contract_verdict": {
+        "PASS": 44,
+        "UNVERIFIED": 4
       },
       "error_classes": {
         "QUARTER_YTD_OR_WRONG_SOURCE": 12,
@@ -76,6 +76,33 @@
         "SIGN_INVERSION": 2,
         "OMITTED_VALUE": 6,
         "NOT_FINANCIAL_CERTIFICATION": 4
+      }
+    },
+    "reserve": {
+      "samples": 2,
+      "fields": 8,
+      "main_amount_verdict": {
+        "PASS": 6,
+        "FAIL": 2
+      },
+      "revised_amount_verdict": {
+        "PASS": 8
+      },
+      "main_period_verdict": {
+        "FAIL": 8
+      },
+      "revised_period_verdict": {
+        "PASS": 8
+      },
+      "revised_source_verdict": {
+        "PASS": 8
+      },
+      "revised_contract_verdict": {
+        "PASS": 8
+      },
+      "error_classes": {
+        "PRIMARY_EXACT_MATCH": 6,
+        "QUARTER_YTD_OR_WRONG_SOURCE": 2
       }
     }
   }

@@ -18,7 +18,7 @@ except ModuleNotFoundError as error:
         raise
     from legacy_financial_fields import choose_metric, norm_account
 
-PARSER_VERSION = "legacy-v9-primary-section-variants"
+PARSER_VERSION = "legacy-v9.1-primary-source-metadata"
 DATE = re.compile(r"(\d{4})\s*[.년/-]\s*(\d{1,2})\s*[.월/-]\s*(\d{1,2})(?:\s*[.일])?")
 HEADING = re.compile(r"(?:연결)?(?:포괄손익계산서|손익계산서|대차대조표|재무상태표|현금흐름표|이익잉여금처분계산서|결손금처리계산서)")
 TERM = re.compile(r"(?:제\s*)?(\d+)\s*(?:\([당전]\))?\s*기")
@@ -486,6 +486,12 @@ def parse_native(text):
                             "account_normalization": "explicit_account_annotation" if compact(account_without_annotations(label)) != compact(label).strip("= ") else "exact",
                             "parser_version": PARSER_VERSION})
                         observations[-1]["period"] = report_period if report_period != "QX" else observations[-1]["period"]
+                        # A current-company fiscal-end mapping is not evidence
+                        # for a historical filing's fiscal-year label. The
+                        # actual annual report proves its own fiscal end year;
+                        # interim filings need additional fiscal-year evidence.
+                        observations[-1]["fiscal_year"] = int(report_end[:4]) if report_period == "FY" else None
+                        observations[-1]["fiscal_year_evidence"] = "original_annual_report_end" if report_period == "FY" else "UNVERIFIED_INTERIM_FISCAL_YEAR"
                         if contract["statement"] == "BS":
                             observations[-1]["balance_sheet_side"] = bs_sides[ri]
                             if metric == "bonds_payable" and bs_sides[ri] == "ASSET":

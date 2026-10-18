@@ -9,12 +9,18 @@ def sha(b):return hashlib.sha256(b).hexdigest()
 def payload():
  b=base64.b64decode((HOME/'sources/selected_originals.json.gz.b64').read_bytes());freeze=json.loads((HOME/'parser_freeze.json').read_text())
  assert sha(b)==freeze['compressed_sha256']
- return json.loads(gzip.decompress(b))
+ data=json.loads(gzip.decompress(b))
+ reserve=HOME/'sources/reserve_originals.json.gz.b64'
+ if reserve.exists():
+  blob=base64.b64decode(reserve.read_bytes());assert sha(blob)=='2c06a167c16c36682cfff37a1492fa5466c2b13caa07b3186b074500576fbfdd'
+  extra=json.loads(gzip.decompress(blob));data['files'].update(extra['files']);data['manifest'].extend(extra['manifest']);data['metrics']['reserve']=extra['metrics']
+ return data
 
 def run(out,before=False,cohort=None):
  out.mkdir(parents=True,exist_ok=False);data=payload();subject=parser
  if before:
   raw=gzip.decompress(base64.b64decode((HOME/'sources/parser_v7.py.gz.b64').read_bytes()))
+  assert sha(raw)==json.loads((HOME/'parser_freeze.json').read_text())['before_v7_sha256']
   subject=type('BeforeParser',(),{})();ns={'__name__':'previous_financial_parser'};exec(compile(raw,'<pinned-v7>','exec'),ns);subject.parse_native=ns['parse_native'];subject.select_verified=ns['select_verified'];subject.PARSER_VERSION=ns['PARSER_VERSION']
  result=[]
  for rec in data['manifest']:
@@ -39,4 +45,4 @@ def run(out,before=False,cohort=None):
  (out/'replay.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
  print(json.dumps({'filings':len(result),'rows':sum(len(x['rows'])for x in result),'parser':subject.PARSER_VERSION,'sources_recollected':0,'investment_approved':False}))
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--before',action='store_true');p.add_argument('--cohort',choices=['development','holdout']);a=p.parse_args();run(a.output,a.before,a.cohort)
+ p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--before',action='store_true');p.add_argument('--cohort',choices=['development','holdout','reserve']);a=p.parse_args();run(a.output,a.before,a.cohort)

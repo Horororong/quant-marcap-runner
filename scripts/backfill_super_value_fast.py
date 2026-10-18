@@ -262,6 +262,9 @@ def legacy_fast() -> dict:
     # including corrections, are collected rather than a strategy-specific subset.
     if LEGACY_LIMIT == 0:
         return {"legacy_run_docs": 0, "legacy_scope": "DISABLED_BY_BATCH_LIMIT"}
+    # Reject an unreviewed parser-version migration before index requests or
+    # the coverage-writing finally block can alter the old operational status.
+    legacy.check_parser_migration()
     guard = legacy.new_control()
     legacy.RUN_CONTROL = guard
     try:

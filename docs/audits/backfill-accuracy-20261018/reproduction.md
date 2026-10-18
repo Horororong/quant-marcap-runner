@@ -65,3 +65,24 @@ financial-backfill-repair가새금융검증을,기존stock-dividend/multi-asset/
 continuous-baseline jobs가원래JSON/한국어·독립장부·CURRENT브라우저회귀를실행한다.
 새수집job은이미완료한정확한과거SHA에고정되어재실행되지않는다.
 CI미실행/skip은PASS가아니며financial_population_certification은계속UNVERIFIED다.
+
+## 최종 v9.1 후속 (v8.1 초기 결과와 분리)
+
+현재 코드는 legacy-v9.1-primary-source-metadata다. 위 명령의 출력 경로명은 임의이며
+현재 validate는v91폴더를 만들고26문서/88개통제를 검증한다. 금융unit49개다.
+기존32=28P/4U,초기48의수정후=44P/4U,새reserve8=8P. 원래v8.1의초기48
+결과20P/28U는 results/v81와v81_checkpoint_report.md에 보존한다.
+원래12건을v9의새블라인드검증으로세지않는다. 새reserve는소스가있는2개접수번호이며
+이전과같은2개기업이다. 부분추출층은2건부족해대체하지않았다.
+
+reserve_plan.json은원문보기전동결했고 CI39134450854는새로운8MB기존artifact
+12137798496만복원했다. 기존233MB/199MB아카이브를다시복원하거나DART를호출하지않았다.
+reserve_originals는압축SHA2c06a167c16c36682cfff37a1492fa5466c2b13caa07b3186b074500576fbfdd,
+Gitblob02bd6a5dfda73d5e4ad4b5fae09dbb3f6aae16de다.
+추가8개좌표/리터럴은v9출력비교전별도커밋으로고정했다.
+
+최종main_proposal/02는14누락을해결한v9.1과기본폐쇄migration가드를포함한다.
+운영배포는여전히하지않았다. 기존파서분류를수집완료와금융품질버전으로분리하는
+유한migration/게시절차가승인되기전에는가드를해제하지않는다.
+22접수번호최소shadow목록,별도4source-gap/4API014/3998서비스후보를구분한다.
+모든중간·최종SHA/원문/통제값은history와현재별도파일에보존한다.

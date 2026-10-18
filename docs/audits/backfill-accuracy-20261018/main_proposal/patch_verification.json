@@ -12,13 +12,13 @@
       "applied_only_to_temporary_fixture": true
     },
     "02_financial_shadow_candidate_NOT_AUTO_DEPLOY.patch": {
-      "sha256": "2cb3209bb04da06ba0fe18d439c4e96c56efa2ade236f230c37de84a16a1ce55",
+      "sha256": "e0180dd8d1542376830f5bfad0992d2d58ca20067c70018cc092da22ec4bd333",
       "apply_check": "PASS",
       "applied_only_to_temporary_fixture": true
     }
   },
   "operating_main_changed": false,
   "financial_deployable": false,
-  "reason": "v8.1 independent holdout misses14 formerly matching values; parser version change would also requeue historical parser states unless explicit bounded migration is designed. Patch02 is for isolated shadow canary only, not scheduled collector deployment.",
+  "reason": "v9.1 recovers all14 initial matching-value gaps, but8 foreign-currency controls and4 malformed-source documents remain unverified; new default-closed migration guard blocks automatic requeue of old parser states. Patch02 is shadow-only until bounded source/financial checkpoint migration and publication are explicitly reviewed and approved.",
   "rollback_byte_identical": true
 }

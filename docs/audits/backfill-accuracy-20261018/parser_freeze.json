@@ -25,5 +25,10 @@
     "parser_sha256": "b0764d8bf31c19cfe5035e44c8dcb1c3028ee7ca993bc70d07ece6f140b5fe19",
     "before_reserve_original_review": true,
     "reason": "Initial12 now retained as development regression cohort: explicitXI financial-statements heading variant and unused non-display correction-template labels; no reserve source/control/output inspected."
-  }
+  },
+  "v91_metadata_followup": {
+    "parser_sha256": "f0992d1dee23643f43e9701740b0a20eabf7df8019c5f7bd435cc1b50945261e",
+    "reason": "Initial development H06 annual statement ends2009-12-31 while current index saysfiscal_year2010. Annual source establishes ownyear; interim FY labels remainUNVERIFIED, current-master label retained onlyasindex_fiscal_year. No reserve amount/selection tuning."
+  },
+  "before_v7_sha256": "d5e0070601b780bd5db81dbec15c2f09b8d1d23e88eb61a5a686d803e32654c6"
 }

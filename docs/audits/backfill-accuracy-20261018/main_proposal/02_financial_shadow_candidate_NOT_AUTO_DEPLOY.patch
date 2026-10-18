@@ -9,7 +9,7 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
  import io
  import json
  import math
-@@ -15,24 +16,24 @@
+@@ -15,24 +16,26 @@
  
  import pandas as pd
  import requests
@@ -23,6 +23,7 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
 +    from scripts.legacy_native_financials import parse_native, select_verified, PARSER_VERSION
      from scripts.dart_service_status import defer_maintenance, defer_http_transient
 -    from scripts.legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION, needs_encoding_recheck
++    from scripts.legacy_parser_migration import require_explicit_migration
  except ModuleNotFoundError as error:
      if error.name != "scripts":
          raise
@@ -35,11 +36,12 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
 -    from legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION, needs_encoding_recheck
 -
 -warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
++    from legacy_parser_migration import require_explicit_migration
 +
  
  API_KEY = os.getenv("DART_API_KEY", "").strip()
  START_YEAR = int(os.getenv("LEGACY_DART_START_YEAR", "2000"))
-@@ -41,16 +42,16 @@
+@@ -41,16 +44,16 @@
  MAX_DOCS = max(1, int(os.getenv("LEGACY_DART_MAX_DOCS", "20")))
  WORKERS = max(1, min(8, int(os.getenv("LEGACY_DART_WORKERS", "4"))))
  BASE = "https://opendart.fss.or.kr/api"
@@ -59,7 +61,7 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
  STATUS_DIR = Path("data/status")
  INDEX_FILE = ROOT / "legacy_filings.csv.gz"
  INDEX_STATE_FILE = STATUS_DIR / "dart_legacy_index_state.csv"
-@@ -163,11 +164,12 @@
+@@ -163,11 +166,12 @@
  
      m = PERIOD_END_RE.search(name)
      if m:
@@ -74,7 +76,7 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
      else:
          period_end = pd.NaT
  
-@@ -176,6 +178,7 @@
+@@ -176,6 +180,7 @@
          "period_end": period_end,
          "period_year": int(period_end.year) if pd.notna(period_end) else pd.NA,
          "period_month": int(period_end.month) if pd.notna(period_end) else pd.NA,
@@ -82,7 +84,7 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
      }
  
  
-@@ -558,89 +561,12 @@
+@@ -558,89 +563,12 @@
  
  
  def table_candidates(text: str) -> list[dict]:
@@ -175,7 +177,7 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
  
  
  def fetch_document(rcept_no: str) -> tuple[bytes, str]:
-@@ -650,9 +576,9 @@
+@@ -650,9 +578,9 @@
              if RUN_CONTROL is not None:
                  RUN_CONTROL.before_request()
              r=requests.get(f"{BASE}/document.xml",params={"crtfc_key":API_KEY,"rcept_no":rcept_no},timeout=90)
@@ -188,7 +190,7 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
              r.raise_for_status()
              if r.content[:2] != b"PK":
                  defer_maintenance(r.content, RUN_CONTROL, CollectionPaused)
-@@ -674,9 +600,12 @@
+@@ -674,9 +602,12 @@
              last=e
              if attempt<3:
                  time.sleep(2*(attempt+1))
@@ -203,7 +205,7 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
  
  
  def preserve_document(blob: bytes, receipt: str, sha: str) -> None:
-@@ -709,6 +638,8 @@
+@@ -709,6 +640,8 @@
          preserve_document(blob, rcept, sha)
          all_cands=[]
          diagnostics=[]
@@ -212,7 +214,7 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
          with zipfile.ZipFile(io.BytesIO(blob)) as z:
              names=[n for n in z.namelist() if not n.endswith("/")]
              for n in names:
-@@ -717,7 +648,12 @@
+@@ -717,7 +650,12 @@
                      diagnostic = inspect_member(data, n)
                      diagnostics.append(diagnostic)
                      text = data.decode(diagnostic["resolved_encoding"]) if diagnostic.get("resolved_encoding") else decode_legacy(data)
@@ -226,15 +228,18 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
                  except Exception as error:
                      diagnostics.append({"member": n, "issues": ["MEMBER_READ_OR_PARSE_ERROR"],
                                          "error": type(error).__name__})
-@@ -738,14 +674,14 @@
+@@ -738,14 +676,16 @@
                  "stock_code":str(meta.get("stock_code","")).zfill(6) if str(meta.get("stock_code","")) else "",
                  "report_nm":str(meta.get("report_nm","")),
                  "filing_date":str(pd.Timestamp(meta["rcept_dt"]).date()) if pd.notna(meta.get("rcept_dt")) else "",
 -                "period_end":str(pd.Timestamp(meta["period_end"]).date()) if pd.notna(meta.get("period_end")) else "",
+-                "fiscal_year":meta.get("fiscal_year",pd.NA),
+-                "period":meta.get("period",""),
 +                # Source statement dates/basis are retained from the structural reader.
 +                "period_end_evidence":"original_statement_header",
-                 "fiscal_year":meta.get("fiscal_year",pd.NA),
--                "period":meta.get("period",""),
++                "index_fiscal_year":meta.get("fiscal_year",None),
++                # Fiscal identity is source-derived by the native reader.
++                # Retain the current-master index label only as provenance.
                  "document_sha256":sha,
                  "parser_version":PARSER_VERSION,
                  "source_diagnostic_version":DIAGNOSTIC_VERSION,
@@ -245,7 +250,7 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
              })
              rows.append(rec)
  
-@@ -755,13 +691,18 @@
+@@ -755,13 +695,18 @@
              scopes[scope]=len(have & CORE_4F)
          usable=max(scopes.values()) if scopes else 0
          best_scope=max(scopes,key=scopes.get) if usable > 0 else ""
@@ -266,7 +271,7 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
          }
          return rows,state
      except DocumentUnavailable as e:
-@@ -784,10 +725,15 @@
+@@ -784,10 +729,15 @@
      if not rows:
          return
      add=pd.DataFrame(rows)
@@ -283,7 +288,7 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
          # Existing observations are immutable textual source records. Reading
          # them as floats can change amounts when a later batch is appended.
          old=load_csv(p,dtype=str,keep_default_na=False)
-@@ -839,14 +785,14 @@
+@@ -839,14 +789,14 @@
      """Terminal parse state alone is insufficient if its normalized data was lost."""
      # A source gap is quarantined for evidence-based recovery, never retried
      # indefinitely and never reported as proof that financial items are absent.
@@ -300,6 +305,40 @@ diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_l
          frame = load_csv(path, dtype=str)
          if not frame.empty and "parser_version" in frame:
              frames.append(frame[frame["parser_version"].eq(PARSER_VERSION)])
+@@ -887,7 +837,13 @@
+     )
+ 
+ 
++def check_parser_migration() -> None:
++    state = load_csv(STATE_FILE, dtype=str, keep_default_na=False)
++    require_explicit_migration(state.to_dict('records'), PARSER_VERSION)
++
++
+ def process_pending(idx: pd.DataFrame, *, max_docs=None, workers=None, control=None) -> dict:
++    check_parser_migration()
+     global RUN_CONTROL
+     control = control or new_control()
+     previous_control = RUN_CONTROL
+@@ -1004,7 +960,7 @@
+     global RUN_CONTROL
+     if not API_KEY:
+         raise RuntimeError("DART_API_KEY missing; stored progress was preserved")
+-
++    check_parser_migration()
+     RUN_CONTROL = new_control()
+     with RUN_CONTROL.signals():
+         idx=update_filing_index()
+diff --git a/scripts/backfill_super_value_fast.py b/scripts/backfill_super_value_fast.py
+--- a/scripts/backfill_super_value_fast.py
++++ b/scripts/backfill_super_value_fast.py
+@@ -260,6 +260,7 @@
+     # including corrections, are collected rather than a strategy-specific subset.
+     if LEGACY_LIMIT == 0:
+         return {"legacy_run_docs": 0, "legacy_scope": "DISABLED_BY_BATCH_LIMIT"}
++    legacy.check_parser_migration()
+     guard = legacy.new_control()
+     legacy.RUN_CONTROL = guard
+     try:
 diff --git a/scripts/legacy_financial_fields.py b/scripts/legacy_financial_fields.py
 --- a/scripts/legacy_financial_fields.py
 +++ b/scripts/legacy_financial_fields.py
@@ -338,7 +377,7 @@ diff --git a/scripts/legacy_native_financials.py b/scripts/legacy_native_financi
 new file mode 100644
 --- /dev/null
 +++ b/scripts/legacy_native_financials.py
-@@ -0,0 +1,545 @@
+@@ -0,0 +1,560 @@
 +"""Native DART structural financial reader; no network, pandas or audit controls.
 +
 +Source dates, statement families, current column groups, units and amendment
@@ -359,7 +398,7 @@ new file mode 100644
 +        raise
 +    from legacy_financial_fields import choose_metric, norm_account
 +
-+PARSER_VERSION = "legacy-v8.1-primary-appendix-report-kind"
++PARSER_VERSION = "legacy-v9.1-primary-source-metadata"
 +DATE = re.compile(r"(\d{4})\s*[.년/-]\s*(\d{1,2})\s*[.월/-]\s*(\d{1,2})(?:\s*[.일])?")
 +HEADING = re.compile(r"(?:연결)?(?:포괄손익계산서|손익계산서|대차대조표|재무상태표|현금흐름표|이익잉여금처분계산서|결손금처리계산서)")
 +TERM = re.compile(r"(?:제\s*)?(\d+)\s*(?:\([당전]\))?\s*기")
@@ -455,6 +494,7 @@ new file mode 100644
 +        super().__init__(convert_charrefs=True)
 +        self.tables, self.stack, self.outside = [], [], []
 +        self.in_cover, self.cover_text = False, []
++        self.has_correction_section = False
 +        self.offsets = [0]
 +        for line in text.splitlines(keepends=True):
 +            self.offsets.append(self.offsets[-1] + len(line))
@@ -464,6 +504,8 @@ new file mode 100644
 +        return self.offsets[line - 1] + column
 +
 +    def handle_starttag(self, tag, attrs):
++        if tag == "correction":
++            self.has_correction_section = True
 +        if tag == "cover":
 +            self.in_cover = True
 +        if tag == "table":
@@ -680,7 +722,12 @@ new file mode 100644
 +        report_period = "FY"
 +    elif "반기보고서" in cover_title:
 +        report_period = "H1"
-+    correction_file = "정정신고" in compact(text[:50000])
++    # Native forms embed unused insertion-menu/library labels even in an
++    # original filing. They are not an actual correction notice. Retain every
++    # visible/structured correction region, including CORRECTION inside an
++    # INSERTION, and only exclude the explicit non-display metadata elements.
++    probe = re.sub(r"<(COMMENT|LIBRARYLIST|FILENAME)\b[^>]*>[\s\S]*?</\1\s*>", "", text[:50000], flags=re.I)
++    correction_file = reader.has_correction_section or "정정신고" in compact(probe)
 +    zone, amendment, contract = False, "UNKNOWN" if correction_file else "ORIGINAL_FILED", None
 +    observations, issues, present = [], [], False
 +    for table in reader.tables:
@@ -695,9 +742,10 @@ new file mode 100644
 +        # Opening this section does not authenticate any number: every table
 +        # still needs a fresh primary statement heading, current term/dates,
 +        # explicit unit and an unambiguous physical amount column.
-+        events = list(re.finditer(r"4[.]재무제표|가[.]재무제표|다[.]연결재무제표|(?:XI|Ⅺ|ⅩⅠ)[.]부속명세서|부문별재무현황|사업부문별재무|합병전[ㆍ·]?후|외화자산과부채|주석", prefix))
++        events = list(re.finditer(r"4[.]재무제표|가[.]재무제표|다[.]연결재무제표|(?:XI|Ⅺ|ⅩⅠ)[.](?:부속명세서|재무제표등)|부문별재무현황|사업부문별재무|합병전[ㆍ·]?후|외화자산과부채|주석", prefix))
 +        for event in events:
-+            zone = event.group() in {"4.재무제표", "가.재무제표", "다.연결재무제표", "XI.부속명세서", "Ⅺ.부속명세서", "ⅩⅠ.부속명세서"}
++            zone = (event.group() in {"4.재무제표", "가.재무제표", "다.연결재무제표"}
++                    or bool(re.fullmatch(r"(?:XI|Ⅺ|ⅩⅠ)[.](?:부속명세서|재무제표등)", event.group())))
 +        rows = table["rows"]
 +        if not rows:
 +            continue
@@ -818,6 +866,12 @@ new file mode 100644
 +                            "account_normalization": "explicit_account_annotation" if compact(account_without_annotations(label)) != compact(label).strip("= ") else "exact",
 +                            "parser_version": PARSER_VERSION})
 +                        observations[-1]["period"] = report_period if report_period != "QX" else observations[-1]["period"]
++                        # A current-company fiscal-end mapping is not evidence
++                        # for a historical filing's fiscal-year label. The
++                        # actual annual report proves its own fiscal end year;
++                        # interim filings need additional fiscal-year evidence.
++                        observations[-1]["fiscal_year"] = int(report_end[:4]) if report_period == "FY" else None
++                        observations[-1]["fiscal_year_evidence"] = "original_annual_report_end" if report_period == "FY" else "UNVERIFIED_INTERIM_FISCAL_YEAR"
 +                        if contract["statement"] == "BS":
 +                            observations[-1]["balance_sheet_side"] = bs_sides[ri]
 +                            if metric == "bonds_payable" and bs_sides[ri] == "ASSET":
@@ -884,3 +938,36 @@ new file mode 100644
 +        return False
 +    # A date alone cannot establish publication before a same-day close.
 +    return available < signal
+diff --git a/scripts/legacy_parser_migration.py b/scripts/legacy_parser_migration.py
+new file mode 100644
+--- /dev/null
++++ b/scripts/legacy_parser_migration.py
+@@ -0,0 +1,28 @@
++"""Changing a parser version never authorizes replaying its whole old queue."""
++
++
++class ParserMigrationRequired(RuntimeError):
++    pass
++
++
++def require_explicit_migration(records, current_version):
++    """Read-only guard, before document collection/checkpoint mutation.
++
++    Native source absence can be carried independently of numeric parsers.
++    Everything else with an earlier explicit parser version must first pass a
++    bounded offline source replay and a separately authorized migration. No
++    environment escape hatch clears old quarantine or grants that approval.
++    """
++    versions = {}
++    records = list(records)
++    current = {r.get('rcept_no') for r in records if r.get('parser_version') == current_version}
++    for row in records:
++        version = row.get('parser_version', '')
++        if (version and version != current_version and row.get('status') != 'NO_DOCUMENT'
++                and row.get('rcept_no') not in current):
++            versions[version] = versions.get(version, 0) + 1
++    if versions:
++        raise ParserMigrationRequired(
++            'PARSER_MIGRATION_REQUIRED: earlier classified states=' + str(sorted(versions.items()))
++            + '; parser upgrade does not authorize requeue. Use bounded offline '
++            'original-source review and an explicit reviewed migration; existing states preserved.')

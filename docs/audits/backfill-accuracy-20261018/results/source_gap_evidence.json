@@ -1,0 +1,130 @@
+[
+  {
+    "sample": "A13",
+    "receipt": "20090821000040",
+    "status": "SOURCE_GAP",
+    "diagnostics": [
+      {
+        "member": "20090821000040.xml",
+        "bytes": 794834,
+        "sha256": "177d14e2727d9949262b94eb876d445d02629d6d550a20d4fbf33f179c19fde5",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 1372,
+        "xml_error": "not well-formed (invalid token): line 823, column 55"
+      }
+    ],
+    "withheld_structural_candidates": 0
+  },
+  {
+    "sample": "A14",
+    "receipt": "20090928000375",
+    "status": "SOURCE_GAP",
+    "diagnostics": [
+      {
+        "member": "20090928000375.xml",
+        "bytes": 733334,
+        "sha256": "58a713d975f6d2298d04779dfa2d2bfa1948726adbf843a3bb338a486011a8b0",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 644,
+        "xml_error": "not well-formed (invalid token): line 3719, column 11"
+      },
+      {
+        "member": "20090928000375_00760.xml",
+        "bytes": 479338,
+        "sha256": "f23592e9072a17964bfcf00d1766d5cba023e331e4f55bc2f7642f3d7395cd58",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 357,
+        "xml_error": "mismatched tag: line 4003, column 17"
+      },
+      {
+        "member": "20090928000375_00761.xml",
+        "bytes": 514734,
+        "sha256": "8c355759404f4588e4d05a0d76d688ed73b2d999c7dd4ce15b8a9c0604c073b5",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 389,
+        "xml_error": "mismatched tag: line 4186, column 17"
+      }
+    ],
+    "withheld_structural_candidates": 28
+  },
+  {
+    "sample": "A15",
+    "receipt": "20090909000078",
+    "status": "SOURCE_GAP",
+    "diagnostics": [
+      {
+        "member": "20090909000078.xml",
+        "bytes": 532870,
+        "sha256": "557c04636b6ede0907ce87e59149fb0be271cdac3cd899b890fa248f01d86a64",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 1009,
+        "xml_error": "not well-formed (invalid token): line 1315, column 19"
+      }
+    ],
+    "withheld_structural_candidates": 15
+  },
+  {
+    "sample": "A16",
+    "receipt": "20090814001689",
+    "status": "SOURCE_GAP",
+    "diagnostics": [
+      {
+        "member": "20090814001689.xml",
+        "bytes": 883677,
+        "sha256": "6d41dfd5256e4c23a6f4f61df4e83dee9669467a6c35b9b47e419b3d1e0eae8b",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "utf-8",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 1149,
+        "xml_error": "mismatched tag: line 11490, column 145"
+      }
+    ],
+    "withheld_structural_candidates": 17
+  }
+]
