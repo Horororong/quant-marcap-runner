@@ -9,7 +9,7 @@ from urllib import request,parse,error
 HOME=Path(__file__).resolve().parent;ROOT=HOME.parents[2]
 s=importlib.util.spec_from_file_location('safe14',ROOT/'docs/research/stage14-celltrion-2019-20261017/collect_sources.py');safe=importlib.util.module_from_spec(s);s.loader.exec_module(safe)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--output',required=True,type=Path);a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
+ p=argparse.ArgumentParser();p.add_argument('--output',required=True,type=Path);p.add_argument('--reference-only',action='store_true');a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
  state=dict(requests=0,retries=0,responses=[],errors=[],candidates=[],investment_approved=False)
  def capture(url,name,data=None):
   if state['requests']>=16:raise ValueError('REQUEST_BUDGET16')
@@ -21,9 +21,10 @@ def main():
    state['responses'].append(dict(file=name,http=http,content_type=ct,bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest(),source=url));return text
   except error.HTTPError as e:state['errors'].append(dict(file=name,http=e.code,reason='HTTP_FAILURE'));raise RuntimeError('HTTP_FAILURE_STOP') from None
  try:
-  capture('https://www.kakaocorp.com/ir/noticeView?boardIdx=10326&currentGroup=1&currentPage=1','kakao_split_issuer.html')
+  if not a.reference_only:capture('https://www.kakaocorp.com/ir/noticeView?boardIdx=10326&currentGroup=1&currentPage=1','kakao_split_issuer.html')
   targets=[]
-  for code,name,title,first,last in [('035720','카카오','변경상장','2021-04-01','2021-04-16'),('003550','LG','매매거래정지','2021-04-20','2021-05-04')]:
+  queries=([('035720','카카오','기준가격','2021-04-14','2021-04-14')] if a.reference_only else [('035720','카카오','변경상장','2021-04-01','2021-04-16'),('003550','LG','매매거래정지','2021-04-20','2021-05-04')])
+  for code,name,title,first,last in queries:
    params=dict(method='searchDetailsSub',forward='details_sub',currentPageSize='100',pageIndex='1',orderMode='0',orderStat='D',fromDate=first,toDate=last,searchCodeType='char',repIsuSrtCd='A'+code,searchCorpName=name,oldSearchCorpName=name,reportNm=title,reportNmTemp=title)
    text=capture('https://kind.krx.co.kr/disclosure/details.do',code+'_search.html',parse.urlencode(params).encode())
    for row in re.findall(r'<tr\b.*?</tr>',text,re.S|re.I):
