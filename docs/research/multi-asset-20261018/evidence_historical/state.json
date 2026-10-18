@@ -1,0 +1,30 @@
+{
+  "requests": 2,
+  "retries": 0,
+  "responses": [
+    {
+      "file": "A015580_주식이전_search.html",
+      "source": "https://kind.krx.co.kr/disclosure/details.do",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 2090,
+      "sha256": "c1773be4778aebfce399585a1c23457592e1037328f119068b5f807046c14400"
+    },
+    {
+      "file": "A012170_변경상장_search.html",
+      "source": "https://kind.krx.co.kr/disclosure/details.do",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 2922,
+      "sha256": "0085120ab80d02acda834a8744c2a1813e0c80f0eb9d565e6182d27c6e5701d7"
+    }
+  ],
+  "candidates": [],
+  "errors": [
+    {
+      "reason": "ValueError",
+      "detail": "NO_RETURNED_CANDIDATES"
+    }
+  ],
+  "investment_approved": false
+}

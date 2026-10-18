@@ -75,7 +75,7 @@ jobs:
           path: ${{ runner.temp }}/multi-asset-quotes
           retention-days: 90
   bounded-multi-asset-source:
-    if: ${{ github.run_attempt == 1 && ((github.sha == 'dfa9a9e07df9f89d94667e3fab9b930608f24f8d' && contains(github.event.head_commit.message, '[multi-asset-source]')) || (github.sha == '002ed7b9dac22457836a2b760a1336f2bed3beb6' && contains(github.event.head_commit.message, '[multi-asset-followup]')) || contains(github.event.head_commit.message, '[multi-asset-historical]')) }}
+    if: ${{ github.run_attempt == 1 && ((github.sha == 'dfa9a9e07df9f89d94667e3fab9b930608f24f8d' && contains(github.event.head_commit.message, '[multi-asset-source]')) || (github.sha == '002ed7b9dac22457836a2b760a1336f2bed3beb6' && contains(github.event.head_commit.message, '[multi-asset-followup]')) || (github.sha == 'ba5830d157968b516ebf45edc29ab5f5da560c84' && contains(github.event.head_commit.message, '[multi-asset-historical]')) || contains(github.event.head_commit.message, '[multi-asset-skt]')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -88,9 +88,14 @@ jobs:
           python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/financial-repair"
           python "$RUNNER_TEMP/financial-repair/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/financial-repair/kit-parts" --destination "$RUNNER_TEMP/financial-repair/runtime"
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I "$RUNNER_TEMP/financial-repair/runtime/scripts/sandbox_runtime.py" verify
-      - name: Bounded public LG and LX official notices without credentials or retries
+      - name: Bounded public demerger notices and optional one new official market-day
+        env:
+          KRX_AUTH_KEY: ${{ secrets.KRX_AUTH_KEY }}
         run: |
-          if [[ "${{ contains(github.event.head_commit.message, '[multi-asset-historical]') }}" == "true" ]]; then
+          if [[ "${{ contains(github.event.head_commit.message, '[multi-asset-skt]') }}" == "true" ]]; then
+            "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/multi-asset-20261018/collect_lg_lx.py --skt --output "$RUNNER_TEMP/multi-asset-source"
+            "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/multi-asset-20261018/collect_quote_calendar.py --stock-only --stock-date 20211129 --stock-codes 017670,402340 --output "$RUNNER_TEMP/multi-asset-source-quotes"
+          elif [[ "${{ contains(github.event.head_commit.message, '[multi-asset-historical]') }}" == "true" ]]; then
             "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/multi-asset-20261018/collect_lg_lx.py --historical --output "$RUNNER_TEMP/multi-asset-source"
           else
             "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/multi-asset-20261018/collect_lg_lx.py --followup --output "$RUNNER_TEMP/multi-asset-source"
@@ -99,7 +104,9 @@ jobs:
         if: always()
         with:
           name: multi-asset-primary
-          path: ${{ runner.temp }}/multi-asset-source
+          path: |
+            ${{ runner.temp }}/multi-asset-source
+            ${{ runner.temp }}/multi-asset-source-quotes
           retention-days: 90
   multi-asset-research:
     if: ${{ contains(github.event.head_commit.message, '[multi-asset]') }}
@@ -500,7 +507,7 @@ jobs:
           if-no-files-found: error
           retention-days: 90
   fixed-kit:
-    if: ${{ !contains(github.event.head_commit.message, '[multi-asset-historical]') && !contains(github.event.head_commit.message, '[multi-asset-quotes]') && !contains(github.event.head_commit.message, '[multi-asset-followup]') && !contains(github.event.head_commit.message, '[multi-asset-source]') && !contains(github.event.head_commit.message, '[multi-asset]') && !contains(github.event.head_commit.message, '[stage16-source]') && !contains(github.event.head_commit.message, '[stage16]') && !contains(github.event.head_commit.message, '[stage15-model]') && !contains(github.event.head_commit.message, '[stage15-completion]') && !contains(github.event.head_commit.message, '[stage15-source]') && !contains(github.event.head_commit.message, '[stage15]') && !contains(github.event.head_commit.message, '[stage14-body]') && !contains(github.event.head_commit.message, '[stage14-corrected]') && !contains(github.event.head_commit.message, '[stage14-listing]') && !contains(github.event.head_commit.message, '[stage14-history]') && !contains(github.event.head_commit.message, '[stage14-source]') && !contains(github.event.head_commit.message, '[stage14]') && !contains(github.event.head_commit.message, '[stage13-proof]') && !contains(github.event.head_commit.message, '[stage13]') && !contains(github.event.head_commit.message, '[stage12-krx-prices]') && !contains(github.event.head_commit.message, '[stage12-read-artifact]') && !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
+    if: ${{ !contains(github.event.head_commit.message, '[multi-asset-skt]') && !contains(github.event.head_commit.message, '[multi-asset-historical]') && !contains(github.event.head_commit.message, '[multi-asset-quotes]') && !contains(github.event.head_commit.message, '[multi-asset-followup]') && !contains(github.event.head_commit.message, '[multi-asset-source]') && !contains(github.event.head_commit.message, '[multi-asset]') && !contains(github.event.head_commit.message, '[stage16-source]') && !contains(github.event.head_commit.message, '[stage16]') && !contains(github.event.head_commit.message, '[stage15-model]') && !contains(github.event.head_commit.message, '[stage15-completion]') && !contains(github.event.head_commit.message, '[stage15-source]') && !contains(github.event.head_commit.message, '[stage15]') && !contains(github.event.head_commit.message, '[stage14-body]') && !contains(github.event.head_commit.message, '[stage14-corrected]') && !contains(github.event.head_commit.message, '[stage14-listing]') && !contains(github.event.head_commit.message, '[stage14-history]') && !contains(github.event.head_commit.message, '[stage14-source]') && !contains(github.event.head_commit.message, '[stage14]') && !contains(github.event.head_commit.message, '[stage13-proof]') && !contains(github.event.head_commit.message, '[stage13]') && !contains(github.event.head_commit.message, '[stage12-krx-prices]') && !contains(github.event.head_commit.message, '[stage12-read-artifact]') && !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:

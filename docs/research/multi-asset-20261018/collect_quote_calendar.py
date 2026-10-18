@@ -10,7 +10,7 @@ def module(name,path):
 safe=module('safe14',ROOT/'docs/research/stage14-celltrion-2019-20261017/collect_sources.py')
 quotes=module('quotes12',ROOT/'scripts/collect_stock_dividend_krx.py')
 
-def main(out):
+def main(out,stock_date="20210527",stock_codes=("003550","383800"),stock_only=False):
  out.mkdir(parents=True,exist_ok=False);key=os.environ.get('KRX_AUTH_KEY','').strip()
  state=dict(requests=0,retries=0,responses=[],target_rows=[],errors=[],scope='one new stock market-day and one index-service access probe; no raw data repair',investment_approved=False)
  def save(name,raw,url,http,ctype):
@@ -19,12 +19,14 @@ def main(out):
  if not key:state['errors'].append(dict(route='KRX',reason='AUTH_ENV_MISSING'))
  else:
   try:
-   state['requests']+=1;http,raw=quotes.fetch('stk_bydd_trd','20210527',key)
+   state['requests']+=1;http,raw=quotes.fetch('stk_bydd_trd',stock_date,key)
    data=json.loads(raw);rows=data.get('OutBlock_1');assert isinstance(rows,list) and rows
-   save('stk_bydd_trd_20210527.json',raw,'https://data-dbg.krx.co.kr/svc/apis/sto/stk_bydd_trd?basDd=20210527',http,'application/json')
-   for code in ['003550','383800']:
-    matched=[dict(source_row_index=i,security=code,date='2021-05-27',raw_api_row=r) for i,r in enumerate(rows) if r.get('ISU_CD')==code or r.get('ISU_SRT_CD')==code]
+   save('stk_bydd_trd_'+stock_date+'.json',raw,'https://data-dbg.krx.co.kr/svc/apis/sto/stk_bydd_trd?basDd='+stock_date,http,'application/json')
+   for code in stock_codes:
+    matched=[dict(source_row_index=i,security=code,date=stock_date[:4]+'-'+stock_date[4:6]+'-'+stock_date[6:],raw_api_row=r) for i,r in enumerate(rows) if r.get('ISU_CD')==code or r.get('ISU_SRT_CD')==code]
     assert len(matched)==1;state['target_rows']+=matched
+   if stock_only:
+    (out/'state.json').write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n');safe.emit_bundle(out,state);return 0
    url='https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20260918';state['requests']+=1
    try:
     with request.build_opener(quotes.NoRedirect()).open(request.Request(url,headers={'AUTH_KEY':key,'Accept':'application/json'}),timeout=25) as r:raw=r.read(quotes.MAX_BYTES+1);http=r.status
@@ -58,4 +60,4 @@ def main(out):
  (out/'state.json').write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n');safe.emit_bundle(out,state)
  return int(not state['target_rows'])
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--output',required=True,type=Path);a=p.parse_args();raise SystemExit(main(a.output))
+ p=argparse.ArgumentParser();p.add_argument('--output',required=True,type=Path);p.add_argument('--stock-only',action='store_true');p.add_argument('--stock-date',choices=['20210527','20211129'],default='20210527');p.add_argument('--stock-codes',default='003550,383800');a=p.parse_args();codes=tuple(a.stock_codes.split(','));assert len(codes)==2 and all(re.fullmatch(r'\d{6}',c) for c in codes);raise SystemExit(main(a.output,a.stock_date,codes,a.stock_only))
