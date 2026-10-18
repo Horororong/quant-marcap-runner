@@ -24,6 +24,7 @@ def main():
     p.add_argument('--followup', action='store_true')
     p.add_argument('--historical', action='store_true')
     p.add_argument('--skt', action='store_true')
+    p.add_argument('--skt-terms', action='store_true')
     a = p.parse_args()
     a.output.mkdir(parents=True, exist_ok=False)
     state = dict(requests=0, retries=0, responses=[], candidates=[], errors=[], investment_approved=False)
@@ -60,6 +61,10 @@ def main():
             queries=[('A015580','','주식이전','2001-08-01','2001-09-10'),('A012170','','변경상장','2001-06-15','2001-06-21')]
         if a.skt:
             queries=[('A017670','','변경상장','2021-11-15','2021-11-30'),('A402340','','재상장','2021-11-15','2021-11-30'),('A017670','','기준가격','2021-11-15','2021-11-30'),('A017670','','회사분할결정','2021-06-01','2021-06-30')]
+        if a.skt_terms:
+            queries=[('A017670','','변경상장','2021-11-01','2021-11-14')]
+            capture('https://kind.krx.co.kr/external/2021/08/17/001055/20210817003322/11345.htm','20210817001055_terms.html')
+            capture('https://kind.krx.co.kr/external/2021/11/02/000453/20211102001062/10810.htm','20211102000453_completion.html')
         for code, company, title, start, end in queries:
             params = dict(method='searchDetailsSub', forward='details_sub', currentPageSize='100', pageIndex='1',
                           orderMode='0', orderStat='D', fromDate=start, toDate=end,
@@ -67,7 +72,7 @@ def main():
                           oldSearchCorpName=company, reportNm=title, reportNmTemp=title)
             text = capture('https://kind.krx.co.kr/disclosure/details.do', code+'_'+title+'_search.html', parse.urlencode(params).encode())
             for row in re.findall(r'<tr\b.*?</tr>', text, re.S | re.I):
-                if a.skt and any(x in row for x in ['주식선물','파생상품','우선주']):
+                if (a.skt or a.skt_terms) and any(x in row for x in ['주식선물','파생상품','우선주']):
                     continue
                 if title not in row:
                     continue
@@ -77,7 +82,7 @@ def main():
                         targets.append(receipt)
             if len(targets)>(6 if a.skt else 4 if a.followup else 5):
                 raise ValueError('MORE_THAN_FIVE_CANDIDATES_REVIEW_BEFORE_COLLECTION')
-        if not targets:
+        if not targets and not a.skt_terms:
             raise ValueError('NO_RETURNED_CANDIDATES')
         for receipt in targets:
             text = capture('https://kind.krx.co.kr/common/disclsviewer.do?' + parse.urlencode(dict(method='searchInitInfo', acptNo=receipt)), receipt + '_viewer.html')

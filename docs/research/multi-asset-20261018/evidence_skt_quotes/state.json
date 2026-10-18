@@ -1,0 +1,63 @@
+{
+  "requests": 1,
+  "retries": 0,
+  "responses": [
+    {
+      "file": "stk_bydd_trd_20211129.json",
+      "source": "https://data-dbg.krx.co.kr/svc/apis/sto/stk_bydd_trd?basDd=20211129",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 294851,
+      "sha256": "6536fac474c4970e43fd0a139025b847f81ed665c4f961d1c1109886e737f05f"
+    }
+  ],
+  "target_rows": [
+    {
+      "source_row_index": 146,
+      "security": "017670",
+      "date": "2021-11-29",
+      "raw_api_row": {
+        "BAS_DD": "20211129",
+        "ISU_CD": "017670",
+        "ISU_NM": "SK텔레콤",
+        "MKT_NM": "KOSPI",
+        "SECT_TP_NM": "",
+        "TDD_CLSPRC": "57900",
+        "CMPPREVDD_PRC": "4500",
+        "FLUC_RT": "8.43",
+        "TDD_OPNPRC": "53400",
+        "TDD_HGPRC": "60000",
+        "TDD_LWPRC": "50000",
+        "ACC_TRDVOL": "11028540",
+        "ACC_TRDVAL": "619519600200",
+        "MKTCAP": "12670439037600",
+        "LIST_SHRS": "218833144"
+      }
+    },
+    {
+      "source_row_index": 137,
+      "security": "402340",
+      "date": "2021-11-29",
+      "raw_api_row": {
+        "BAS_DD": "20211129",
+        "ISU_CD": "402340",
+        "ISU_NM": "SK스퀘어",
+        "MKT_NM": "KOSPI",
+        "SECT_TP_NM": "",
+        "TDD_CLSPRC": "76000",
+        "CMPPREVDD_PRC": "-6000",
+        "FLUC_RT": "-7.32",
+        "TDD_OPNPRC": "82000",
+        "TDD_HGPRC": "85000",
+        "TDD_LWPRC": "73900",
+        "ACC_TRDVOL": "8764092",
+        "ACC_TRDVAL": "679594959200",
+        "MKTCAP": "10751535396000",
+        "LIST_SHRS": "141467571"
+      }
+    }
+  ],
+  "errors": [],
+  "scope": "one new stock market-day and one index-service access probe; no raw data repair",
+  "investment_approved": false
+}
