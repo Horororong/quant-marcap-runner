@@ -1,0 +1,19 @@
+{
+  "rcept_no": "20100331001582",
+  "parser_version": "legacy-v9.1-primary-source-metadata",
+  "quality_version": "financial-quality-v1-source-linked-not-PIT",
+  "extraction_state": "PARSED_4F",
+  "field_count": 18,
+  "financial_accuracy": "SOURCE_LITERAL_VERIFIED_SUBSET_PIT_UNVERIFIED",
+  "availability_status": "UNVERIFIED",
+  "backtest_eligible": false,
+  "document_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+  "rejection_reason": "[{\"member\": \"20100331001582.xml\", \"table\": 169, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331001582_00760.xml\", \"table\": 22, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+  "updated_at_utc": "2026-10-18T23:09:12.323226+00:00",
+  "structural_candidate_count": 18,
+  "published_field_count": 4,
+  "source_audited_field_count": 4,
+  "publication_status": "SOURCE_VERIFIED_SUBSET_ONLY",
+  "unpublished_candidate_count": 14,
+  "source_artifact_id": 12153773795
+}

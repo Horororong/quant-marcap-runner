@@ -65,7 +65,7 @@ of `quality/` records parser/version/rejection/UNVERIFIED financial status.
 Existing v5 normalized/state/quarantine files are not rewritten. Results are held
 as candidates. No full-source-chain or investment certification is inferred.
 
-Configuration: CANARY_ONCE,2 documents (hard ceiling100); schedules cannot collect;
+Initial predeployment configuration: CANARY_ONCE,2 documents (hard ceiling100); schedules cannot collect;
 manual entry requires explicit bounded_verification. Both old legacy entry points
 share the existing concurrency lock. No modern collection starts after a pause.
 No automatic candidate publication and no fallback to v5 or2000 documents.
@@ -115,7 +115,7 @@ Predeployment live HTTP plan is exactly two preserved prior800 candidates,
 20041112000277/20041112000279, in separate output; no old quarantine reset.
 Stop at first service/rate-limit failure. Do not retry it blindly.
 
-Rollout is NOT yet merged or operating-verified at this checkpoint. Merge only
+The preceding sections are predeployment checkpoints, not the final operating state. At that checkpoint rollout was NOT yet merged or operating-verified. Merge only
 after required scoped CI and live HTTP checks have actually passed. On failure,
 leave canary/schedules/publication held. Revert code independently from any later
 data commit; keep candidate raw artifacts/quality state for inspection. A rollback
@@ -173,3 +173,85 @@ fixed-kit-validation. PR39 is separate from the research branch and remains
 unmerged until its final head CI completes. Final log instrumentation adds
 explicit UTC/connect/read stages without changing source parsing/HTTP semantics.
 Operating checkout is pinned to the trigger SHA, not a moving main ref.
+
+
+## Final bounded operating result (supersedes earlier candidate checkpoints)
+
+PR39 merged as63ad9b8fe26ff619dafd11935619ca7f61be530b, preserving ETF
+update8be3b098. Final PR39173902344 and push39173899179 passed on90fb122.
+Main financial CI39174955538 passed at the actual merge SHA.
+
+The first operating plan was fixed at10 untouched pending receipts, within the
+user100-document ceiling, before any operating values. Actual run39174955546
+SUCCESS,10/10 processed in45.497seconds:3PARSED_4F,7SOURCE_GAP,51 structural
+observations, zero service/rate/worker errors. It was transport/checkpoint success,
+not financial acceptance of all candidates. No original v5 state/financial data
+was rewritten and3998 old service-quarantine records remain untouched.
+
+Independent operating primary controls:16 unique fields,12 source amount/period/
+unit/scope/coordinate PASS,0FAIL,4CFS UNVERIFIED because unextracted. Publication
+acceptance is narrower:8 fields accepted and8 controls held. Only OFS core4 each
+for20100331001578 (original 고려반도체시스템, current index 코세스) and20100331001582
+(사조산업) are source-verified for publication. Their original auditor primary
+statements also agree. Other28 non-core structural observations and all15 rows
+from the source-conflicting bank remain in the original artifact, not the posted
+metrics (43 total candidate rows held). No CFS value is replaced with an OFS value.
+
+Receipt20100331001580 main primary CF reports2,274,870,860원, while its auditor
+primary CF reports2,274,103,227원 for the same2009FY OFS period. The main CF profit
+reconciliation also differs from its IS by767,633원. These are confirmed source
+discrepancies; authoritative version/amount remains UNVERIFIED. No parser answer
+was changed to pick a favorable source. All15 bank candidates are HELD.
+
+Seven archives have strict source-integrity failures, often in an attachment.
+Their main bodies can visibly contain financial tables. SOURCE_GAP means the
+archive failed current integrity requirements, not that financial items are absent.
+Exact members/reasons/hashes are in operating_source_gaps.json and original ZIPs.
+
+Source artifact12153773795, size1444872, zipSHA551dfea8895c871c9fa9affc2412fa7f99a8245482b4083173820e758b2172d3.
+Public raw/candidate transfer blob aad8c5f8f42afa33fafe14c3bba9dbe0c43b451d,
+compressedSHA b7f743566098c248907a2c2a1bc7bd790a08e8b6e22ca6e5561ce45bb2f4bd68.
+The immutable operating ZIPs, typed controls, quality checkpoints and8 posted
+fields are rechecked by scripts/financial_operating_evidence.py in actual CI.
+That independent checker imports no production parser or account aliases.
+
+Collection/quality checkpoints are separate; next unclassified receipt is after
+20100331001585, with10 exact source receipts durable in quality_v9/collection.
+New untouched queue38961 is prior38971 minus these disjoint10; old v5 snapshot
+counts remain labeled v5. Old wrapper CSVs are explicitly superseded, not current
+success evidence. data/status/dart_legacy_rollout_status.json is the current view.
+
+The closing configuration is HOLD. No automatic collection or automatic data
+publication resumes, and no v5/2000 fallback exists. Scope expansion requires a
+separate decision, including malformed-source handling, attachment/version
+conflicts, CFS coverage and explicit source financial acceptance.
+
+Every posted row keeps original member/archive SHA, field coordinates, source
+units/dates, parser and quality versions. Identity, complete amendment chain and
+official availability remain UNVERIFIED; backtest_eligible=False, PIT0/6. These
+are exact-source financial observations, not complete investment-certified data.
+Original22 common-collector replay produced331 candidates, with80P/0F/8U across
+88 controls. The8FX controls were not promoted.518/64/source60 protection remains
+separate from the new small-sample source audit. No new long multi-security run
+completed in this task; the prior rights/succession/source blockers remain.
+
+Reproduction in the same verified kit:
+```bash
+PY=/workspace/financial-repair/runtime/.venv/bin/python
+"$PY" -I /workspace/financial-repair/runtime/scripts/sandbox_runtime.py verify
+"$PY" -I scripts/financial_operating_evidence.py
+"$PY" -I -m unittest discover -s tests -p 'test_financial*.py' -v
+"$PY" -I -m unittest discover -s tests -p test_legacy_dart_parser.py -v
+```
+Replay source12 and old22/518/64/60 commands are pinned in the workflow. The8-field
+publication uses the fixed operating_controls.json; changing those controls after
+comparison is forbidden. Code rollback and explicit data withdrawal are distinct.
+Keep HOLD policy while reverting code; preserve original artifacts and add a
+withdrawal record for any invalid posted observation instead of deleting evidence.
+
+One forbidden Internet installer ran in initial failed schema CI39171683542.
+It affected its ephemeral runner only; it is not fixed-kit or accuracy evidence.
+Both legacy installer triggers were corrected for this scoped release. Final
+scoped runs use the original pinned kit and no internet pip. Broad skipped jobs
+are not reported as PASS. Actual final SHAs, run states and publication readback
+are reported separately after the closing data/HOLD PR finishes.

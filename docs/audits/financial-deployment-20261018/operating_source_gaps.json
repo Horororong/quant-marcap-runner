@@ -1,0 +1,335 @@
+[
+  {
+    "receipt": "20100331001574",
+    "status": "SOURCE_GAP",
+    "financial_data_present": true,
+    "diagnostics": [
+      {
+        "member": "20100331001574_00761.xml",
+        "bytes": 307371,
+        "sha256": "ab0471ddc203243d04c16ab382b782e8dbccfb5d0c9c6e3047d724149575df33",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 696,
+        "xml_error": "mismatched tag: line 3120, column 200"
+      },
+      {
+        "member": "20100331001574.xml",
+        "bytes": 310456,
+        "sha256": "9956fb8f7076aa537cfa33b752b8e2ce3457664a7bc577e8eb2ad7f6b2f5d5a3",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 643
+      },
+      {
+        "member": "20100331001574_00760.xml",
+        "bytes": 285601,
+        "sha256": "35900bf6236b75c6fa92ca3a0970d99c8e8d5ab3cf46d1f0ea7042003008b9a7",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 507,
+        "xml_error": "mismatched tag: line 3080, column 9"
+      }
+    ],
+    "meaning": "At least one native XML member failed strict source-integrity checks; financial absence not certified"
+  },
+  {
+    "receipt": "20100331001575",
+    "status": "SOURCE_GAP",
+    "financial_data_present": true,
+    "diagnostics": [
+      {
+        "member": "20100331001575.xml",
+        "bytes": 603705,
+        "sha256": "253e4e33d6a3d55b37bdfc83bf435c294cbdeb7c8b5b26f35a93c51da94e8af8",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 843
+      },
+      {
+        "member": "20100331001575_00761.xml",
+        "bytes": 362040,
+        "sha256": "91799c44617ed51a1172f3345c5c15024b178c3799898e7aded336670b822c08",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 600,
+        "xml_error": "mismatched tag: line 3580, column 53"
+      },
+      {
+        "member": "20100331001575_00760.xml",
+        "bytes": 390784,
+        "sha256": "cfbc61bde563769f1b652438c91417385d0ecf4f14aa42db14d45d982369a024",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 636,
+        "xml_error": "mismatched tag: line 3416, column 53"
+      }
+    ],
+    "meaning": "At least one native XML member failed strict source-integrity checks; financial absence not certified"
+  },
+  {
+    "receipt": "20100331001576",
+    "status": "SOURCE_GAP",
+    "financial_data_present": true,
+    "diagnostics": [
+      {
+        "member": "20100331001576.xml",
+        "bytes": 597856,
+        "sha256": "b08dc104b3a7bb7a7461ec944a29a10bbb7acc07e337fc433e13638da91bc2d4",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 988,
+        "xml_error": "not well-formed (invalid token): line 3385, column 56"
+      },
+      {
+        "member": "20100331001576_00760.xml",
+        "bytes": 336616,
+        "sha256": "6a7fca1701dff9deb7ea0a76d230f904b7d411c19cbb511a57fd2cb0e4a82197",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 618
+      }
+    ],
+    "meaning": "At least one native XML member failed strict source-integrity checks; financial absence not certified"
+  },
+  {
+    "receipt": "20100331001579",
+    "status": "SOURCE_GAP",
+    "financial_data_present": true,
+    "diagnostics": [
+      {
+        "member": "20100331001579_00760.xml",
+        "bytes": 340907,
+        "sha256": "d483608f6377466e6533d590c9fa58fbc792cc780449e410114e34dcde769c1d",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 214,
+        "xml_error": "mismatched tag: line 3248, column 66"
+      },
+      {
+        "member": "20100331001579.xml",
+        "bytes": 602615,
+        "sha256": "8ec7f76debd94cb30d2d02db86a8b305d78d22799e95c48746875ad50f490017",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 742,
+        "xml_error": "mismatched tag: line 9606, column 66"
+      },
+      {
+        "member": "20100331001579_00761.xml",
+        "bytes": 353123,
+        "sha256": "6bdeea9ddde1b7ef86354dd568072c012c60783c2f18ee642438b3a2326dfa8a",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 226,
+        "xml_error": "not well-formed (invalid token): line 3185, column 104"
+      }
+    ],
+    "meaning": "At least one native XML member failed strict source-integrity checks; financial absence not certified"
+  },
+  {
+    "receipt": "20100331001581",
+    "status": "SOURCE_GAP",
+    "financial_data_present": true,
+    "diagnostics": [
+      {
+        "member": "20100331001581.xml",
+        "bytes": 409918,
+        "sha256": "c7bb9caffe1773ee93c02d1daf319bffc14eebb01cecc766eb24e79583ef64d7",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 649,
+        "xml_error": "not well-formed (invalid token): line 3664, column 1141"
+      }
+    ],
+    "meaning": "At least one native XML member failed strict source-integrity checks; financial absence not certified"
+  },
+  {
+    "receipt": "20100331001583",
+    "status": "SOURCE_GAP",
+    "financial_data_present": true,
+    "diagnostics": [
+      {
+        "member": "20100331001583_00760.xml",
+        "bytes": 354081,
+        "sha256": "7ee3f8b2588c137110106deacce9d4f32377c29ad461cec659bf4426d9210f9b",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 261,
+        "xml_error": "mismatched tag: line 3180, column 48"
+      },
+      {
+        "member": "20100331001583.xml",
+        "bytes": 566927,
+        "sha256": "363a37d84746e6fea461421c3beec33856b2b7466b250d242977f99a5a0cb8fd",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 1005,
+        "xml_error": "mismatched tag: line 4417, column 166"
+      }
+    ],
+    "meaning": "At least one native XML member failed strict source-integrity checks; financial absence not certified"
+  },
+  {
+    "receipt": "20100331001585",
+    "status": "SOURCE_GAP",
+    "financial_data_present": true,
+    "diagnostics": [
+      {
+        "member": "20100331001585.xml",
+        "bytes": 1177489,
+        "sha256": "34a8fa6a6d9261199b1a021659dd9fbe1f8ad1a11a3de100d5891bcb28395420",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 1785
+      },
+      {
+        "member": "20100331001585_00760.xml",
+        "bytes": 349999,
+        "sha256": "e9f8b007391730a9c11d30672598f080f6fea849fbaefa2d6c64ab772a582b79",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 330,
+        "xml_error": "mismatched tag: line 6483, column 89"
+      },
+      {
+        "member": "20100331001585_00761.xml",
+        "bytes": 602709,
+        "sha256": "74b065a2c104ece01b3745c7db2ee82d18cdbe87bdd55c91da53cd9ac9dedb0b",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 419,
+        "xml_error": "mismatched tag: line 12363, column 9"
+      }
+    ],
+    "meaning": "At least one native XML member failed strict source-integrity checks; financial absence not certified"
+  }
+]
