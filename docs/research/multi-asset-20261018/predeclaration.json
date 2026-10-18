@@ -1,0 +1,54 @@
+{
+  "status": "PREDECLARED_NOT_EXECUTED",
+  "classification": "RESEARCH_ONLY",
+  "investment_approved": false,
+  "strategies": [
+    {
+      "path": "config/strategies/research_size_deciles_2019_2025_event_deferred_v1.json",
+      "sha256": "9bbdcad3040b595e818101112b63210152372bcca4a76e47ba51a5a7e96bc735"
+    },
+    {
+      "path": "config/strategies/research_broad_size_deciles_2001_2025_v1.json",
+      "sha256": "200bce02e0fd01c22f703f0f239696ce1ebe615c08a8b2b0f345370d0f9705ff"
+    },
+    {
+      "path": "config/strategies/research_broad_size_top10_2001_2025_v1.json",
+      "sha256": "e99954b17f6f2f6e78cefc6bab40bbf53868d9054817fb289edd733f861be57c"
+    },
+    {
+      "path": "config/strategies/research_broad_momentum_top10_2001_2025_v1.json",
+      "sha256": "f4a6244506770b6ff136d3864e9a96e9bd8811d64d87d9364effff0de18b418a"
+    }
+  ],
+  "research_contract": {
+    "selection": "Full historical cross-section BEFORE selected-observation projection",
+    "schedule": "April last observed session each year, earliest next-session close",
+    "weights": "Equal top10 or equal within each of ten independently capitalized deciles",
+    "costs": {
+      "zero": {},
+      "fixed_cost": {
+        "commission_bps": 1.5,
+        "sell_tax_bps": 15.0,
+        "spread_bps": 3.0,
+        "slippage_bps": 5.0
+      }
+    },
+    "model": {
+      "version": "1",
+      "event_file": "config/research/stock_dividends_2019_2020_lifecycle2021_v1.json",
+      "event_sha256": "84f7d5c0cace828abe63aef695ef4bdb422743812b1868ff0da1a6759a5ba82e",
+      "quantity_basis": "continuous_pro_rata",
+      "rights_valuation": "underlying_close_share_equivalent",
+      "conditional_fraction": 1.0,
+      "settlement_basis": "virtual_on_official_listing_close",
+      "settlement_lag_sessions": 0,
+      "distribution_tax_basis": "before_distribution_tax"
+    },
+    "order_policy": "defer_full_rebalance_events_v1",
+    "rights": "Conditional underlying-share-equivalent mark haircut1.0, virtual official-listing settlement; model not observed legal account",
+    "missing": "Stop affected strategy, no survivor filter/count reduction/shortened period",
+    "benchmark": "Exact historical KOSPI price closes; no distributions",
+    "suspension": "Observed original prices only; no arbitrary filling; mandatory source/event checks; unknown spin-off blocks",
+    "cancellation": "No cancellation/reselection of pending order; overlapping new signal and pending end fail"
+  }
+}
