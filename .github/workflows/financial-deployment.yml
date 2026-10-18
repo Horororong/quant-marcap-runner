@@ -1,0 +1,42 @@
+name: Financial bounded deployment evidence
+on:
+  push:
+    branches: ['deploy/financial-backfill-v9-20261018']
+  pull_request:
+    branches: [main]
+    paths: ['scripts/*financial*', 'scripts/*dart*', 'scripts/*legacy*', '.github/workflows/financial-deployment.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-source-freeze:
+    if: github.event_name == 'push' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[independent-source-freeze]')
+    permissions:
+      contents: write
+      actions: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore immutable offline kit, no internet pip
+        run: |
+          python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: Freeze twelve new corporations before opening values; existing originals only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_deployment_sources.py --output "$RUNNER_TEMP/selected"'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: independent-deployment-selected-originals
+          path: |
+            ${{ runner.temp }}/selected/selected_receipts.json
+            ${{ runner.temp }}/selected/transfer.json
+            ${{ runner.temp }}/runtime.json
+          if-no-files-found: error
+          retention-days: 90
