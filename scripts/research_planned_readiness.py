@@ -10,10 +10,11 @@ import numpy as np
 import pandas as pd
 from execution_contract import HELD_RETURN_TOLERANCE_BPS,PREFLIGHT_CONTRACT_VERSION
 
-VERSION='1'
+VERSION='2'
 CONTRACT=dict(version=VERSION,scope='planned positive cohorts and pending rights; no NAV/cost/drift; not investment certification',
  source='annual bounded-memory reads, all historical signal cross-sections before selected-observation projection',
  failures='structured facts/model/definition/capability/contract incidents; no event inference or universe exclusion',
+ diagnostic_boundary='A later failed order retains resolved liquidity schedule before its planned date; fallback exposures only from that date are diagnostic, never certified fills or NAV',
  limits='execution liquidity/weight drift still require common engine; possible trade constraints remain warnings')
 
 def inspect_planned_strategy(strategy_json,repo_root):
@@ -22,21 +23,23 @@ def inspect_planned_strategy(strategy_json,repo_root):
  from strategy_dsl_deciles import partition_deciles
  from krx_history_audit import session_coverage_audit
  from corporate_action_registry import load_corporate_actions,load_corporate_action_gaps
- root=Path(repo_root).resolve();issues=[];warnings=[];by_key={};diagnostic_portfolios=set()
+ root=Path(repo_root).resolve();issues=[];warnings=[];by_key={};diagnostic_portfolios={}
  result=dict(preflight_contract_version=PREFLIGHT_CONTRACT_VERSION,planned_readiness_contract_version=VERSION,status='data_gap',ready_for_execution=False,
   phase='compile',contract=CONTRACT,issues=issues,warnings=warnings,investment_approved=False)
  def issue(kind,detail,*,code=None,date=None,portfolio=None,required=None,classification='historical_fact',verdict='UNVERIFIED',**extra):
   date=str(pd.Timestamp(date).date()) if date is not None else None
+  cutoff=diagnostic_portfolios.get(portfolio)
+  diagnostic=portfolio in diagnostic_portfolios and (cutoff is None or date is None or pd.Timestamp(date)>=cutoff)
   # Preserve first exact incident and affected range rather than emitting one
   # indistinguishable missing-quote incident for every later session.
-  key=(kind,code,portfolio,extra.get('event_id'),extra.get('market'),None if kind=='missing_held_quote' else date)
+  key=(kind,code,portfolio,diagnostic,extra.get('event_id'),extra.get('market'),None if kind=='missing_held_quote' else date)
   if key in by_key:
    old=by_key[key];old['occurrences']+=1
    if date:old['affected_through']=max(old.get('affected_through') or date,date)
    return old
   row=dict(kind=kind,classification=classification,verdict=verdict,security=code,date=date,portfolio=portfolio,detail=detail,
    required=required or 'Inspect exact original source and common contract; never fill/exclude/override',occurrences=1,affected_through=date,**extra)
-  if portfolio in diagnostic_portfolios:row['diagnostic_only']=True
+  if diagnostic:row['diagnostic_only']=True
   row['incident_id']=hashlib.sha256(json.dumps({k:row.get(k) for k in ['kind','security','date','portfolio','event_id','market']},sort_keys=True).encode()).hexdigest()[:20]
   issues.append(row);by_key[key]=row;return row
  try:spec=load_strategy_spec(strategy_json);plan=compile_execution_plan(spec)
@@ -170,7 +173,14 @@ def inspect_planned_strategy(strategy_json,repo_root):
     result.setdefault('deferred_order_audit',{})[label]=json.loads(pd.DataFrame(delay_audit).to_json(orient='records',date_format='iso'))
    except (ValueError,RuntimeError,KeyError) as e:
     issue('pending_order_event_contract_gap',str(e),portfolio=label,date=getattr(e,'date',None),origin_signal=str(getattr(e,'origin_signal','')),planned_date=str(getattr(e,'planned_date','')),last_blocked=getattr(e,'blocked',None),classification='execution_constraint',required='Exact verified share/rights lineage and executable lifecycle; no guessed event. Other source diagnostics below use original earliest schedule, not certified actual fills.')
-    diagnostic_portfolios.add(label)
+    cutoff=getattr(e,'planned_date',None)
+    diagnostic_portfolios[label]=pd.Timestamp(cutoff) if cutoff is not None else None
+    if cutoff is not None:
+     prefix=getattr(e,'resolved_schedule',{})
+     schedule={s:d for s,d in schedule.items() if d>=pd.Timestamp(cutoff)}
+     schedule.update(prefix)
+     result.setdefault('resolved_schedule_prefix',{})[label]=[dict(signal_date=str(s.date()),execution_date=str(d.date())) for s,d in prefix.items()]
+    result.setdefault('diagnostic_schedule_starts',{})[label]=str(pd.Timestamp(cutoff).date()) if cutoff is not None else None
     result.setdefault('diagnostic_schedule_only',[]).append(label)
   spin_normal={}
   if spec.execution.nontradable_policy=='defer_full_rebalance_events_v1':

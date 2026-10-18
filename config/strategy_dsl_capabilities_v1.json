@@ -1154,13 +1154,14 @@
       "필터"
     ],
     "planned_exposure": {
+      "diagnostic_boundary": "A later failed order retains resolved liquidity schedule before its planned date; fallback exposures only from that date are diagnostic, never certified fills or NAV",
       "failures": "structured facts/model/definition/capability/contract incidents; no event inference or universe exclusion",
       "limits": "execution liquidity/weight drift still require common engine; possible trade constraints remain warnings",
       "scope": "planned positive cohorts and pending rights; no NAV/cost/drift; not investment certification",
       "source": "annual bounded-memory reads, all historical signal cross-sections before selected-observation projection",
-      "version": "1"
+      "version": "2"
     },
-    "readiness": "shared planned preflight v1: annual complete signal cross-sections, selected cohorts and pending rights; exact structured incidents; engine liquidity/NAV still mandatory",
+    "readiness": "shared planned preflight v2: annual complete signal cross-sections, resolved schedule prefix before a failed order, selected cohorts and pending rights; later fallback exposures explicitly diagnostic; engine liquidity/NAV still mandatory",
     "required_clauses": [
       "기간",
       "시장",

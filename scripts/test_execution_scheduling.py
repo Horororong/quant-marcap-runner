@@ -73,6 +73,18 @@ class Scheduling(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, 'held-return reference'):
             self.runbook(reference_returns=ref)
 
+    def test_later_pending_error_keeps_completed_actual_schedule_prefix(self):
+        from execution_scheduling import PendingOrderError
+        e,d,p,mask,w,_,_=self.fixture()
+        mask.loc[d[3]:,'000001']=False
+        w.loc[d[4]]=[1.,0.]
+        with self.assertRaises(PendingOrderError) as caught:
+            resolve_deferred_schedule(e._schedule_signal_execution_dates(d,w.index,1),w,p,mask)
+        error=caught.exception
+        self.assertEqual(error.resolved_schedule,{d[0]:d[1]})
+        self.assertEqual(error.planned_date,d[3]);self.assertEqual(error.date,d[5])
+        self.assertEqual(len(error.completed_order_audit),1)
+
     def test_unobserved_liquidity_shorts_and_illiquid_action_books_rejected(self):
         e, d, p, mask, w, event, _ = self.fixture()
         with self.assertRaisesRegex(ValueError, 'tradable mask'):

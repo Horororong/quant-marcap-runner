@@ -8,13 +8,14 @@ from research_planned_readiness import inspect_planned_strategy
 ROOT=Path(__file__).resolve().parents[1]
 
 class PlannedReadiness(unittest.TestCase):
- def fixture(self,mutate=None,deciles=False):
+ def fixture(self,mutate=None,deciles=False,deferred=False):
   dates=pd.to_datetime(['2024-05-02','2024-05-03','2024-05-07','2024-05-08'])
   rows=[dict(Date=d,Code=c,Market='KOSPI',Name=c,Close=100.,Volume=10.,Marcap=2e13,ChangesRatio=0.) for d in dates for c in ['000001','000002']]
   panel=pd.DataFrame(rows)
   if mutate:mutate(panel,dates)
   spec=json.loads((ROOT/'config/strategies/research_size_top1_2024.json').read_text());spec['period']={k:('2024-05-02' if k in ['start','book_start'] else '2024-05-08') for k in spec['period']}
   if deciles:spec['portfolio']=dict(selection='deciles',weighting='equal')
+  if deferred:spec['execution']['nontradable_policy']='defer_full_rebalance_events_v1'
   engine=SimpleNamespace(load_krx_equity_panel=lambda **kwargs:panel.copy())
   ranked=panel[panel.Date.eq(dates[0])].copy();ranked['composite_score']=[.1,.2]
   with tempfile.TemporaryDirectory() as td:
@@ -41,6 +42,14 @@ class PlannedReadiness(unittest.TestCase):
   r=self.fixture(change);b=r['first_blocker'];self.assertEqual(b['kind'],'planned_trade_not_tradable');self.assertEqual(b['date'],'2024-05-03')
  def test_original_population_rule_never_relaxed(self):
   r=self.fixture(deciles=True);self.assertEqual(r['issues'][0]['kind'],'insufficient_eligible_population');self.assertEqual(r['issues'][0]['classification'],'strategy_definition');self.assertFalse(r['ready_for_execution'])
+ def test_later_pending_conflict_does_not_hide_earlier_held_return_failure(self):
+  from execution_scheduling import PendingOrderError
+  def change(x,d):x.loc[x.Date.eq(d[2])&x.Code.eq('000001'),'ChangesRatio']=1.
+  dates=pd.to_datetime(['2024-05-02','2024-05-03','2024-05-07','2024-05-08'])
+  error=PendingOrderError('synthetic later pending conflict',dates[-1],dict(signal=dates[-2],planned=dates[-1],blocked=[]),resolved={dates[0]:dates[1]})
+  with patch('execution_scheduling.resolve_deferred_schedule',side_effect=error):r=self.fixture(change,deferred=True)
+  b=r['first_blocker'];self.assertEqual((b['kind'],b['date']),('held_return_reference_gap','2024-05-07'));self.assertFalse(b.get('diagnostic_only',False))
+  self.assertFalse(r['ready_for_execution']);self.assertIn('top_n',r['resolved_schedule_prefix'])
  def test_unsupported_input_does_not_read_sources(self):
   with tempfile.TemporaryDirectory() as td:
    p=Path(td)/'bad.json';p.write_text('{}');r=inspect_planned_strategy(p,td);self.assertEqual(r['status'],'capability_gap');self.assertEqual(r['phase'],'compile')

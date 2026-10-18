@@ -14,7 +14,7 @@ WORKBENCH_CONTRACT={
  'korean_input':'exact labeled Korean clauses separated by semicolon; unknown/missing/duplicate clauses rejected',
  'required_clauses':['기간','시장','팩터','포트폴리오','리밸런싱','체결','비용','벤치마크'],
  'optional_clauses':['필터'],'translation':'registered factor/direction aliases and strict StrategySpec only',
- 'readiness':'shared planned preflight v1: annual complete signal cross-sections, selected cohorts and pending rights; exact structured incidents; engine liquidity/NAV still mandatory',
+ 'readiness':'shared planned preflight v2: annual complete signal cross-sections, resolved schedule prefix before a failed order, selected cohorts and pending rights; later fallback exposures explicitly diagnostic; engine liquidity/NAV still mandatory',
  'execution':'run_checked_strategy -> PROJECT -> CURRENT; no alternative backtester/calculator',
  'opt_in_execution':'--execution-contract-from a validated predeclared DSL adds only explicit nontradable_policy/data_loading to Korean input; never changes its lag, price or selections',
  'certification':'RESEARCH_ONLY; neither inventory metadata, model assumptions nor software success is PIT approval'}

@@ -21,12 +21,16 @@ CONTRACT = {
 
 
 class PendingOrderError(ValueError):
-    def __init__(self, message, date, pending):
+    def __init__(self, message, date, pending, *, resolved=None, audit=None):
         super().__init__(message)
         self.date=date
         self.origin_signal=pending['signal']
         self.planned_date=pending['planned']
         self.blocked=pending['blocked'][-1] if pending['blocked'] else None
+        # Diagnostic evidence only: a later unfilled order must not erase the
+        # already resolved prefix or turn earlier real holdings into conjecture.
+        self.resolved_schedule=dict(resolved or {})
+        self.completed_order_audit=list(audit or [])
 
 
 def resolve_deferred_schedule(schedule, target_weights, prices, tradable, tolerance=1e-10, *, events=None):
@@ -105,7 +109,7 @@ def resolve_deferred_schedule(schedule, target_weights, prices, tradable, tolera
             pending['required'] = held | pending['target']
         if date in at:
             if pending is not None:
-                raise PendingOrderError(f"pending_order_conflict: original signal {pending['signal'].date()} remains unfilled at new execution {date.date()}",date,pending)
+                raise PendingOrderError(f"pending_order_conflict: original signal {pending['signal'].date()} remains unfilled at new execution {date.date()}",date,pending,resolved=resolved,audit=audit)
             signal = at[date]
             row = target_weights.loc[signal]
             target = set(row.index[row.gt(tolerance)])
@@ -126,7 +130,7 @@ def resolve_deferred_schedule(schedule, target_weights, prices, tradable, tolera
         held = pending['target']
         pending = None
     if pending is not None:
-        raise PendingOrderError(f"pending_order_at_requested_end: signal {pending['signal'].date()}, planned {pending['planned'].date()}, last {prices.index[-1].date()}, blocked {pending['blocked'][-1]}",prices.index[-1],pending)
+        raise PendingOrderError(f"pending_order_at_requested_end: signal {pending['signal'].date()}, planned {pending['planned'].date()}, last {prices.index[-1].date()}, blocked {pending['blocked'][-1]}",prices.index[-1],pending,resolved=resolved,audit=audit)
     if len(resolved) != len(schedule):
         raise ValueError("deferred schedule did not account for every original signal")
     return resolved, audit
