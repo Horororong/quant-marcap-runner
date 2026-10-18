@@ -1,11 +1,22 @@
 {
-  "status": "LOCAL_IMPLEMENTATION_AND_SOURCE_AUDIT_COMPLETE_FINAL_REGRESSION_RUNNING",
-  "base_remote": "b37c0cf636e5fd80d001cf6d5c907cbf209eede8",
-  "source_remote": "22bbe36de14b28b404658df3725171b40f39e904",
-  "new_research": "2026-01-02..2026-10-16 top1,192sessions,JSON/Korean exact,576 independent book-days",
-  "full_multi_period_nav": "NOT_COMPLETED; official207940reference identified, rights quote endpoint401; historical merger gaps retained",
-  "main_deployment": false,
-  "financial_audit": "20samples:12FAIL,8UNVERIFIED;32primary fields16PASS,12FAIL,4UNVERIFIED",
-  "maintenance800": "3998of4021current mainERROR; branch-only defer/stop/failaftercheckpoint fix",
-  "next": "Finish fresh regressions, document exact blockers and post final5jobCI. No sources/jobs must be repeated."
+  "status": "LOCAL_VERIFIED_AWAIT_FINAL_REMOTE_CI",
+  "last_verified_research_remote": "02cfe5b2ec1b051251c2011c7d785e1d8a146832",
+  "main_snapshot": "78ab49df4b25e0b71df0fc4366fcc7f5d0a179a9",
+  "main_modified": false,
+  "full_new_multisecurity_NAV_completed": false,
+  "new_completed_research": "top1 2026-01-02..2026-10-16,192sessions",
+  "financial_sample_verdicts": {
+    "PASS": 0,
+    "FAIL": 12,
+    "UNVERIFIED": 8
+  },
+  "monetary_controls": {
+    "PASS": 16,
+    "FAIL": 12,
+    "UNVERIFIED": 4
+  },
+  "financial_PIT": "0/6",
+  "final_CI": "Read actual5jobs at the commit containing this checkpoint; not yet claimed PASS",
+  "no_recollection": true,
+  "next": "If CI fails, diagnose exact logs. After CI, rights-source access/economic ledger contract and historical source requirements remain blockers; main deployment is separately unauthorized."
 }

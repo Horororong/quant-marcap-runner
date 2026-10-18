@@ -1,0 +1,37 @@
+{
+  "main_sha": "78ab49df4b25e0b71df0fc4366fcc7f5d0a179a9",
+  "legacy_published_sha": "5fd6583ca89de0dfa887deda0221852b448c04d5",
+  "main_parser": "legacy-v5-single-amount",
+  "research_parser": "legacy-v7-current-profit-normalization",
+  "independent_money_audit_applies_to": "main legacy-v5-only",
+  "files": {
+    "scripts/backfill_super_value_fast.py": {
+      "bytes": 12789,
+      "sha256": "9c55cf862fe725d4c6b2bb64a2f994d1a54ae5b1ffb8d01012b2d05dfc5966a5"
+    },
+    "scripts/legacy_financial_fields.py": {
+      "bytes": 5886,
+      "sha256": "9f1a5bc373001d08fdd13a11231b13c912df325187571bd150437ee1f02f1cce"
+    },
+    "scripts/backfill_dart_legacy_2000_2014.py": {
+      "bytes": 44101,
+      "sha256": "18677cbb87b619a1af559b4e1b4d8b23cd8a9ddf37b02857136d2c323de1c3a3"
+    },
+    "scripts/legacy_backfill_runtime.py": {
+      "bytes": 5248,
+      "sha256": "2276cce985351a3386661ba5b5923ef4ab3e18c9c94bf70419b82973756d8e69"
+    },
+    "data/status/dart_rotation_state.csv": {
+      "bytes": 158,
+      "sha256": "c86349aa5734ece34995b3b1544fdd972fd6f86c1c14c52eb2bc17893adeb714"
+    },
+    "data/status/dart_full_backfill_status.csv": {
+      "bytes": 309,
+      "sha256": "10e9a93441b3ff4567cd8aa0cee63ffa4a6119df098c388bbb42bf01e5697e74"
+    },
+    "data/status/dart_status.csv": {
+      "bytes": 202,
+      "sha256": "24d97bebeb2cdf5568d885125338b9d025f517ce227cf0783ab34344da7ee253"
+    }
+  }
+}

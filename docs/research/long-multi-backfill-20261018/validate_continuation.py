@@ -20,6 +20,13 @@ def verify(out,check):
  (out/'source_verification.json').write_text(json.dumps(source_verification,indent=2)+'\n')
  command('independent_financial',['docs/research/long-multi-backfill-20261018/verify_independent_audit.py','--output',str(out/'financial')])
  assert json.loads((out/'financial/audit_summary.json').read_bytes())==json.loads((HOME/'results/financial_audit/audit_summary.json').read_bytes())
+ command('inventory',['scripts/research_workbench.py','inventory','--output',str(out/'inventory.json')])
+ inventory=json.loads((out/'inventory.json').read_bytes())
+ revision=inventory['append_only_source_revision']['registry']
+ assert revision['validated_through']=='2026-10-16' and len(revision['datasets'])==2
+ assert not inventory['investment_approved']
+ command('examples',['scripts/research_workbench.py','examples','--output',str(out/'examples.json')])
+ assert any(x['strategy']=='config/strategies/research_size_top1_2026_asof1016_v1.json' for x in json.loads((out/'examples.json').read_bytes())['examples'])
  source='config/strategies/research_size_top1_2026_asof1016_v1.json';report='config/reports/research_continuous_2025.json'
  for label,argument in [('json',['--strategy',source]),('korean',['--request',REQUEST,'--research-model-from',source])]:
   command(label,['scripts/research_workbench.py','run',*argument,'--report-periods',report,'--output-dir',str(out/label)])

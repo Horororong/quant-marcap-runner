@@ -1,0 +1,656 @@
+{
+  "status": "PASS_COMMON_IMPLEMENTATION_WITH_FULL_REQUESTS_BLOCKED",
+  "investment_approved": false,
+  "github_sha": null,
+  "ci_run_id": null,
+  "python": "/workspace/financial-repair/runtime/.venv/bin/python",
+  "frozen_evidence_files": 211,
+  "new_official_responses": 79,
+  "source_requests_this_validation": 0,
+  "actual_lg_lx": {
+    "parent": "003550",
+    "child": "383800",
+    "event_date": "2021-05-27",
+    "status": "PASS_ACTUAL_PRICE_RESEARCH_COMPONENT",
+    "sessions": 26,
+    "book_days": 78,
+    "max_error_currency": 7.450580596923828e-09,
+    "tolerance_currency": 1e-05,
+    "source_sha256": "7bc8bb41509a7a568b54fdd82d4fe3205df89436b01b8915c3a3c391918f5fe7",
+    "fact_catalog_sha256": "2f9424d80b22451fead5ea38691158d676e4e54cb9b460f66afeb90ea9da7eb6",
+    "official_price_checks": [
+      {
+        "security": "003550",
+        "reference": 119500.0,
+        "close": 108500.0,
+        "exchange_return": -0.09210000000000002,
+        "difference_bps": 0.4979079497907657
+      },
+      {
+        "security": "383800",
+        "reference": 12650.0,
+        "close": 12000.0,
+        "exchange_return": -0.051399999999999994,
+        "difference_bps": 0.16600790513791874
+      }
+    ],
+    "investment_approved": false,
+    "scope": "Two-leg simultaneous-listing continuous-quantity component with another real security. Not a full-period factor strategy, integer broker account, dividend total return or investment PIT certification.",
+    "pending_sale_no_cash_advance": true,
+    "entire_order_waits_for_both_legs": true,
+    "original_fixed_lag_unchanged": true,
+    "all_ten_buckets_and_top_n_common_results_exact": true
+  },
+  "actual_skt_square": {
+    "parent": "017670",
+    "child": "402340",
+    "event_date": "2021-11-29",
+    "status": "PASS_ACTUAL_PRICE_RESEARCH_COMPONENT",
+    "sessions": 32,
+    "book_days": 96,
+    "max_error_currency": 5.587935447692871e-09,
+    "tolerance_currency": 1e-05,
+    "source_sha256": "7bc8bb41509a7a568b54fdd82d4fe3205df89436b01b8915c3a3c391918f5fe7",
+    "fact_catalog_sha256": "2f9424d80b22451fead5ea38691158d676e4e54cb9b460f66afeb90ea9da7eb6",
+    "official_price_checks": [
+      {
+        "security": "017670",
+        "reference": 53400.0,
+        "close": 57900.0,
+        "exchange_return": 0.0843,
+        "difference_bps": 0.3033707865159052
+      },
+      {
+        "security": "402340",
+        "reference": 82000.0,
+        "close": 76000.0,
+        "exchange_return": -0.0732,
+        "difference_bps": 0.2926829268297404
+      }
+    ],
+    "investment_approved": false,
+    "scope": "Two-leg simultaneous-listing continuous-quantity component with another real security. Not a full-period factor strategy, integer broker account, dividend total return or investment PIT certification.",
+    "pending_sale_no_cash_advance": true,
+    "entire_order_waits_for_both_legs": true,
+    "original_fixed_lag_unchanged": true,
+    "all_ten_buckets_and_top_n_common_results_exact": true
+  },
+  "actual_2021_dividends": {
+    "status": "PASS_TWO_NEW_DIVIDENDS_ACTUAL_PRICE_MODEL_ACCOUNTING",
+    "events": 2,
+    "sessions": 102,
+    "book_days": 306,
+    "max_nav_error_currency": 6.51925802230835e-09,
+    "tolerance_currency": 1e-05,
+    "source_fact_sha256": "fe70cf914942398a3e8b97d60adcebbe429f363bc19fcfdc16fb9c6e6986df16",
+    "source_assertions": [
+      {
+        "file": "20211217800219.zip.b64",
+        "raw_sha256": "bb094f1e6b9c2a0459be96ddce7a026f034f310bff5cd3a78c34532b9e335a17",
+        "format": "CP949 HTML despite XML suffix; not forced XML",
+        "members": [
+          {
+            "name": "20211217800219.xml",
+            "bytes": 6881,
+            "sha256": "0b4f3e874c4b59ba0712ecb6e17fbc20b5edf185011e64617b688207540aca20",
+            "format": "HTML",
+            "strict_xml_valid": false,
+            "strict_xml_error": "mismatched tag: line 73, column 3"
+          }
+        ]
+      },
+      {
+        "file": "20220325801692.zip.b64",
+        "raw_sha256": "d584e083c52795387b25bc926dd52094279cc51bd47ab9e6e7c8b3c7d17e5232",
+        "format": "CP949 HTML despite XML suffix; not forced XML",
+        "members": [
+          {
+            "name": "20220325801692.xml",
+            "bytes": 35817,
+            "sha256": "361c8cb3cada0f8860b77e4bc7d4157bb7540496dd123ab59e8092d0c5cbb0a2",
+            "format": "HTML",
+            "strict_xml_valid": false,
+            "strict_xml_error": "mismatched tag: line 73, column 3"
+          }
+        ]
+      },
+      {
+        "file": "20211217900217.zip.b64",
+        "raw_sha256": "56213c1b67864e5b777b875d0bdffbc141fe89ccdf0448e3e2936d133c81a2ad",
+        "format": "CP949 HTML despite XML suffix; not forced XML",
+        "members": [
+          {
+            "name": "20211217900217.xml",
+            "bytes": 6765,
+            "sha256": "15de423dda4d01b6d148625389ce5c84542f66d7d5b5210fc3d3121650ce4364",
+            "format": "HTML",
+            "strict_xml_valid": false,
+            "strict_xml_error": "mismatched tag: line 73, column 3"
+          }
+        ]
+      },
+      {
+        "file": "20220325901111.zip.b64",
+        "raw_sha256": "854cec5b39ea3df559f3aabae04ba7b56e151a0af006e5ecbb6666417a9cca0c",
+        "format": "CP949 HTML despite XML suffix; not forced XML",
+        "members": [
+          {
+            "name": "20220325901111.xml",
+            "bytes": 30449,
+            "sha256": "bc7a72406dcf31a64b563f10a9a72d1283924fe3db6a8b9777ddc1d4254ae85f",
+            "format": "HTML",
+            "strict_xml_valid": false,
+            "strict_xml_error": "mismatched tag: line 73, column 3"
+          }
+        ]
+      }
+    ],
+    "investment_approved": false,
+    "scope": "Explicit continuous liquid-target component; not a full-period factor result, integer broker account, cash distribution total return or tax/PIT certification"
+  },
+  "source_acquisition_gaps": [
+    {
+      "folder": "evidence_historical",
+      "errors": [
+        {
+          "reason": "ValueError",
+          "detail": "NO_RETURNED_CANDIDATES"
+        }
+      ],
+      "requests": 2,
+      "status": "UNVERIFIED_NOT_ABSENCE_PROOF"
+    }
+  ],
+  "original_two_year_independent": {
+    "status": "PASS_MODEL_ACCOUNTING",
+    "rows": 14820,
+    "portfolios": 10,
+    "sessions": 494,
+    "max_nav_error": 8.568167686462402e-08,
+    "numerical_tolerance_currency": 1e-05,
+    "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+    "investment_approved": false
+  },
+  "korean_original_nav_targets_metrics_exact": true,
+  "technical_projection_numeric_exact": true,
+  "original_strict_blocker": {
+    "kind": "planned_trade_not_tradable",
+    "classification": "execution_constraint",
+    "verdict": "FAIL",
+    "security": "003550",
+    "date": "2021-05-03",
+    "portfolio": "D01",
+    "detail": "Entering/exiting planned position has no tradable close",
+    "required": "Original exact execution day has zero volume. A separately specified halt-aware execution/settlement contract would change this strategy; no silent delay or exclusion.",
+    "occurrences": 1,
+    "affected_through": "2021-05-03",
+    "origin_signal": "2021-04-30",
+    "incident_id": "910970153deeb783e34a"
+  },
+  "requested_strategies": [
+    {
+      "strategy": "research_size_deciles_2019_2025_event_deferred_v1",
+      "period": {
+        "start": "2019-01-01",
+        "end": "2025-12-31"
+      },
+      "status": "data_gap",
+      "nav_ready": false,
+      "report_ready": false,
+      "issue_count": 19,
+      "diagnostic_only_count": 2,
+      "first_blocker": {
+        "kind": "held_return_reference_gap",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": "068270",
+        "date": "2021-12-29",
+        "portfolio": "D03",
+        "detail": "Planned holding fails unchanged1bp source/event comparison",
+        "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+        "occurrences": 1,
+        "affected_through": "2021-12-29",
+        "previous_date": "2021-12-28",
+        "previous_close": 216000.0,
+        "close": 201000.0,
+        "exchange_return": -0.0519,
+        "effective_comparison_return": -0.06944444444444442,
+        "difference_bps": 175.44444444444417,
+        "basis": "raw_close",
+        "origin_signal": "2021-04-30",
+        "incident_id": "f80d5cb951e8ab0fd3f8"
+      },
+      "preflight_sha256": "81335250711898ebc679001f055e86a3ff2fa3f11701b1bec01cbb6b0aeb6a9f",
+      "planned_codes": 63,
+      "sessions": 1719,
+      "full_preflight_in_ci_artifact": "research_size_deciles_2019_2025_event_deferred_v1/preflight.json"
+    },
+    {
+      "strategy": "research_broad_size_deciles_2001_2025_v1",
+      "period": {
+        "start": "2001-01-01",
+        "end": "2025-12-31"
+      },
+      "status": "data_gap",
+      "nav_ready": false,
+      "report_ready": false,
+      "issue_count": 9997,
+      "diagnostic_only_count": 9687,
+      "first_blocker": {
+        "kind": "held_return_reference_gap",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": "037950",
+        "date": "2001-05-08",
+        "portfolio": "D05",
+        "detail": "Planned holding fails unchanged1bp source/event comparison",
+        "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+        "occurrences": 1,
+        "affected_through": "2001-05-08",
+        "previous_date": "2001-05-07",
+        "previous_close": 4680.0,
+        "close": 4150.0,
+        "exchange_return": -0.0258,
+        "effective_comparison_return": -0.11324786324786329,
+        "difference_bps": 874.4786324786329,
+        "basis": "raw_close",
+        "origin_signal": "2001-04-30",
+        "incident_id": "d000badcf76f0156431d"
+      },
+      "preflight_sha256": "c937be64ab28b11a340aae2c74f3592d0ab06fc331361aef6f5246b0025f1bed",
+      "planned_codes": 3990,
+      "sessions": 6168,
+      "full_preflight_in_ci_artifact": "research_broad_size_deciles_2001_2025_v1/preflight.json"
+    },
+    {
+      "strategy": "research_broad_size_top10_2001_2025_v1",
+      "period": {
+        "start": "2001-01-01",
+        "end": "2025-12-31"
+      },
+      "status": "data_gap",
+      "nav_ready": false,
+      "report_ready": false,
+      "issue_count": 21,
+      "diagnostic_only_count": 18,
+      "first_blocker": {
+        "kind": "missing_held_quote",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": "015580",
+        "date": "2001-09-10",
+        "portfolio": "top_n",
+        "detail": "Positive planned holding has no finite positive close",
+        "required": "Exact historical observations or independently verified cessation/disposal contract; never interpolate or remove security",
+        "occurrences": 156,
+        "affected_through": "2002-04-30",
+        "origin_signal": "2001-04-30",
+        "incident_id": "947f87bfd73a1e2bf93d"
+      },
+      "preflight_sha256": "818ee83195811b7b1fa347ab946dec0f61ca23d169bea3a1c29386d1c733d956",
+      "planned_codes": 35,
+      "sessions": 6168,
+      "full_preflight_in_ci_artifact": "research_broad_size_top10_2001_2025_v1/preflight.json"
+    },
+    {
+      "strategy": "research_broad_momentum_top10_2001_2025_v1",
+      "period": {
+        "start": "2001-01-01",
+        "end": "2025-12-31"
+      },
+      "status": "data_gap",
+      "nav_ready": false,
+      "report_ready": false,
+      "issue_count": 101,
+      "diagnostic_only_count": 91,
+      "first_blocker": {
+        "kind": "held_return_reference_gap",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": "012170",
+        "date": "2001-06-21",
+        "portfolio": "top_n",
+        "detail": "Planned holding fails unchanged1bp source/event comparison",
+        "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+        "occurrences": 1,
+        "affected_through": "2001-06-21",
+        "previous_date": "2001-06-20",
+        "previous_close": 9000.0,
+        "close": 34500.0,
+        "exchange_return": 0.15,
+        "effective_comparison_return": 2.8333333333333335,
+        "difference_bps": 26833.333333333336,
+        "basis": "raw_close",
+        "origin_signal": "2001-04-30",
+        "incident_id": "7b283707c413d87c66ed"
+      },
+      "preflight_sha256": "02989b0e1fb0d0670d45d02ed073683a05c8e5066e590f05dd18dc8c1abf9715",
+      "planned_codes": 232,
+      "sessions": 6168,
+      "full_preflight_in_ci_artifact": "research_broad_momentum_top10_2001_2025_v1/preflight.json"
+    },
+    {
+      "strategy": "research_size_deciles_2019_2025_event_deferred_v2",
+      "period": {
+        "start": "2019-01-01",
+        "end": "2025-12-31"
+      },
+      "status": "data_gap",
+      "nav_ready": false,
+      "report_ready": false,
+      "issue_count": 17,
+      "diagnostic_only_count": 2,
+      "first_blocker": {
+        "kind": "held_return_reference_gap",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": "207940",
+        "date": "2022-02-28",
+        "portfolio": "D02",
+        "detail": "Planned holding fails unchanged1bp source/event comparison",
+        "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+        "occurrences": 1,
+        "affected_through": "2022-02-28",
+        "previous_date": "2022-02-25",
+        "previous_close": 769000.0,
+        "close": 779000.0,
+        "exchange_return": 0.025,
+        "effective_comparison_return": 0.013003901170351106,
+        "difference_bps": 119.96098829648895,
+        "basis": "raw_close",
+        "origin_signal": "2021-04-30",
+        "incident_id": "ebaafd770239b4a4361d"
+      },
+      "preflight_sha256": "d0755aab0215d335e921f4ea99a55d7ec0071ce28b3b87dca70800b1b6b422e6",
+      "planned_codes": 63,
+      "sessions": 1719,
+      "full_preflight_in_ci_artifact": "research_size_deciles_2019_2025_event_deferred_v2/preflight.json"
+    }
+  ],
+  "commands": [
+    {
+      "name": "test_event_deferred_execution.py",
+      "args": [
+        "-c",
+        "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_event_deferred_execution.py',run_name='__main__')"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 2.361,
+      "log_sha256": "cf89501980931635d3812011970f9f677e8abee455629b43d9edb0ebdacdcb96"
+    },
+    {
+      "name": "test_research_spinoff.py",
+      "args": [
+        "-c",
+        "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_research_spinoff.py',run_name='__main__')"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 0.84,
+      "log_sha256": "a85e5c3357c846c958ef5375d367facf22dfca8cef7d757056938e16fe9e1720"
+    },
+    {
+      "name": "test_execution_scheduling.py",
+      "args": [
+        "-c",
+        "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_execution_scheduling.py',run_name='__main__')"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 1.226,
+      "log_sha256": "4ae8cbbcc2138a27b9aa3df56c2872060dfd8d5a8541d6b171b6c703c7517b32"
+    },
+    {
+      "name": "test_stock_dividend_execution.py",
+      "args": [
+        "-c",
+        "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_stock_dividend_execution.py',run_name='__main__')"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 2.17,
+      "log_sha256": "29980d0d445f62955286f6cbec68b8a8c1ee28ae6b529d735ce630387a3c7c6c"
+    },
+    {
+      "name": "test_stock_dividend_research.py",
+      "args": [
+        "-c",
+        "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_stock_dividend_research.py',run_name='__main__')"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 2.146,
+      "log_sha256": "9c127ae44df5008f8719cb15e7102f4d76bbf0fdc9673697c2e795b4474a62c0"
+    },
+    {
+      "name": "test_annual_selected_preparation.py",
+      "args": [
+        "-c",
+        "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_annual_selected_preparation.py',run_name='__main__')"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 0.645,
+      "log_sha256": "1c5b0df2b819aeb0130e463bd1a1500b33dca7e507970888ed697808c669251f"
+    },
+    {
+      "name": "test_research_planned_readiness.py",
+      "args": [
+        "-c",
+        "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_research_planned_readiness.py',run_name='__main__')"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 0.593,
+      "log_sha256": "51803c1eba0337a38e2b81341cb8c944a4e7be028ef98f885740f89e94eb1adf"
+    },
+    {
+      "name": "test_cash_share_exchange.py",
+      "args": [
+        "-c",
+        "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_cash_share_exchange.py',run_name='__main__')"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 7.07,
+      "log_sha256": "d2cdcfd7390fba792697345797c8890e6c9ea159862883a7fa0470bcf12caa19"
+    },
+    {
+      "name": "test_research_workbench.py",
+      "args": [
+        "-c",
+        "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_research_workbench.py',run_name='__main__')"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 0.492,
+      "log_sha256": "4477f89b903803bec2c2f04df76ce7d133f45f7d1ad5081ae2652ecafc81a169"
+    },
+    {
+      "name": "test_krx_technical_factor_adapter.py",
+      "args": [
+        "-c",
+        "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_krx_technical_factor_adapter.py',run_name='__main__')"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 0.508,
+      "log_sha256": "d02f887afd789dbf5a7584c44ab4dfc5c1440fc042f2f605aea2e80deec78e82"
+    },
+    {
+      "name": "generated_contracts",
+      "args": [
+        "-c",
+        "import runpy,sys;sys.path.insert(0,'scripts');sys.argv=['scripts/export_strategy_dsl_contract.py','--check'];runpy.run_path(sys.argv[0],run_name='__main__')"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 0.39,
+      "log_sha256": "bdb90d50bd169f5de18f6a858635f7da08647763aaab17ca8790e005dbaddd8a"
+    },
+    {
+      "name": "event_contract_original_full2019_2020",
+      "args": [
+        "scripts/research_workbench.py",
+        "run",
+        "--report-periods",
+        "config/reports/research_2019_2020.json",
+        "--output-dir",
+        "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/event_contract_original_full2019_2020",
+        "--strategy",
+        "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/component_original.json"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 41.502,
+      "log_sha256": "404752bb3ab68ce60ee6e860e4fb608ee086719492c502385d281a92ba8b16bb"
+    },
+    {
+      "name": "korean_original_full2019_2020",
+      "args": [
+        "scripts/research_workbench.py",
+        "run",
+        "--report-periods",
+        "config/reports/research_2019_2020.json",
+        "--output-dir",
+        "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/korean_original_full2019_2020",
+        "--request",
+        "기간:2019-01-01~2020-12-31;시장:코스피·코스닥;필터:시가총액>=10조원;팩터:시가총액 낮은;포트폴리오:10분위;리밸런싱:4월말;체결:1거래일뒤종가;비용:수수료1.5bp,매도세15bp,스프레드3bp,슬리피지5bp;벤치마크:코스피",
+        "--research-model-from",
+        "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/component_original.json",
+        "--execution-contract-from",
+        "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/component_original.json"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 41.179,
+      "log_sha256": "ddb9395a12ebeff8c6a4e0227a108d487048d5f626da0566f9abdfb9d7173372"
+    },
+    {
+      "name": "projected_momentum_full2020",
+      "args": [
+        "scripts/research_workbench.py",
+        "run",
+        "--strategy",
+        "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/projection_momentum.json",
+        "--report-periods",
+        "config/reports/research_2019_2020.json",
+        "--output-dir",
+        "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/projected_momentum_full2020"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 16.418,
+      "log_sha256": "b0057a0de1728fd8e2a27e7bad7251fc9db52ee44a4da692e6f098a5d863591f"
+    },
+    {
+      "name": "research_size_deciles_2019_2025_event_deferred_v1",
+      "args": [
+        "scripts/research_workbench.py",
+        "run",
+        "--strategy",
+        "/workspace/quant-marcap-runner/config/strategies/research_size_deciles_2019_2025_event_deferred_v1.json",
+        "--report-periods",
+        "config/reports/research_continuous_2025.json",
+        "--output-dir",
+        "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_size_deciles_2019_2025_event_deferred_v1"
+      ],
+      "exit_code": 3,
+      "expected_exit": 3,
+      "seconds": 16.126,
+      "log_sha256": "ad2c18c3aa8941041e9791bb8dd93e1bcbae65ba57412a94ae2f853ca29241d2"
+    },
+    {
+      "name": "research_broad_size_deciles_2001_2025_v1",
+      "args": [
+        "scripts/research_workbench.py",
+        "run",
+        "--strategy",
+        "/workspace/quant-marcap-runner/config/strategies/research_broad_size_deciles_2001_2025_v1.json",
+        "--report-periods",
+        "config/reports/research_continuous_2025.json",
+        "--output-dir",
+        "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_broad_size_deciles_2001_2025_v1"
+      ],
+      "exit_code": 3,
+      "expected_exit": 3,
+      "seconds": 103.421,
+      "log_sha256": "adc90cb0245fe0a26721c0133061cc2e17b20f9c6f4a2a51f940c2aad37a59af"
+    },
+    {
+      "name": "research_broad_size_top10_2001_2025_v1",
+      "args": [
+        "scripts/research_workbench.py",
+        "run",
+        "--strategy",
+        "/workspace/quant-marcap-runner/config/strategies/research_broad_size_top10_2001_2025_v1.json",
+        "--report-periods",
+        "config/reports/research_continuous_2025.json",
+        "--output-dir",
+        "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_broad_size_top10_2001_2025_v1"
+      ],
+      "exit_code": 3,
+      "expected_exit": 3,
+      "seconds": 43.504,
+      "log_sha256": "b74f163580a0d00f028f52a90269f224247b587565a9725646dae7e892e67ae3"
+    },
+    {
+      "name": "research_broad_momentum_top10_2001_2025_v1",
+      "args": [
+        "scripts/research_workbench.py",
+        "run",
+        "--strategy",
+        "/workspace/quant-marcap-runner/config/strategies/research_broad_momentum_top10_2001_2025_v1.json",
+        "--report-periods",
+        "config/reports/research_continuous_2025.json",
+        "--output-dir",
+        "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_broad_momentum_top10_2001_2025_v1"
+      ],
+      "exit_code": 3,
+      "expected_exit": 3,
+      "seconds": 71.732,
+      "log_sha256": "617e18fe1bfb113323c41551669904f4aff9ddab4775cb7ee4f546d96753db0f"
+    },
+    {
+      "name": "research_size_deciles_2019_2025_event_deferred_v2",
+      "args": [
+        "scripts/research_workbench.py",
+        "run",
+        "--strategy",
+        "/workspace/quant-marcap-runner/config/strategies/research_size_deciles_2019_2025_event_deferred_v2.json",
+        "--report-periods",
+        "config/reports/research_continuous_2025.json",
+        "--output-dir",
+        "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_size_deciles_2019_2025_event_deferred_v2"
+      ],
+      "exit_code": 3,
+      "expected_exit": 3,
+      "seconds": 15.846,
+      "log_sha256": "e6caf1741b4e497f4e87366f301c87b1a40cd875d8751243592bf38c46040dff"
+    },
+    {
+      "name": "original_strict_2019_2025",
+      "args": [
+        "scripts/research_workbench.py",
+        "run",
+        "--strategy",
+        "config/strategies/research_size_deciles_2019_2025_v1.json",
+        "--report-periods",
+        "config/reports/research_continuous_2025.json",
+        "--output-dir",
+        "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/original_strict_2019_2025"
+      ],
+      "exit_code": 3,
+      "expected_exit": 3,
+      "seconds": 15.086,
+      "log_sha256": "d3bf4743d853ff068b664445ca3958b46150d34290ebda44f00c9e5395997f0c"
+    }
+  ],
+  "limitations": [
+    "No full requested multi-security NAV accepted; all source blockers retained",
+    "No cash-dividend total returns or distribution-tax/broker-account certification",
+    "2026 official holiday/index access demonstrated separately; raw original calendars/index stores not changed",
+    "No new collection in final validation"
+  ]
+}

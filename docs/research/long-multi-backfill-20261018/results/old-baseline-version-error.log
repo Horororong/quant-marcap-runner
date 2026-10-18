@@ -1,0 +1,15 @@
+test_corporate_action_reference.py 0
+test_research_planned_readiness.py 0
+test_research_action_scope.py 0
+primary 0
+Traceback (most recent call last):
+  File "/workspace/quant-marcap-runner/docs/research/stage16-continuous-research-20261018/validate_continuous.py", line 76, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--output',required=True,type=Path);p.add_argument('--baselines',required=True,type=Path);p.add_argument('--check',action='store_true');p.add_argument('--finalize-existing',action='store_true',help='Recheck already completed actual runs after comparator-only fix; never rerun/replace their inputs/NAV');a=p.parse_args();finalize(a.output,a.check) if a.finalize_existing else main(a.output,a.baselines,a.check)
+                                                                                                                                                                                                                                                                                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/quant-marcap-runner/docs/research/stage16-continuous-research-20261018/validate_continuous.py", line 54, in main
+    regression=frozen(baselines,out/'frozen_regression.json')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/quant-marcap-runner/docs/research/stage16-continuous-research-20261018/verify_baseline.py", line 18, in verify
+    assert {k:a[k] for k in versions}==versions,name
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: original/artifacts/execution_plan.json

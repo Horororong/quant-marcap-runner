@@ -95,7 +95,10 @@ def inventory(root):
     d=pd.read_csv(p,usecols=['Date'])['Date'];row.update(rows=len(d),first=str(d.min()),last=str(d.max()))
    except Exception as e:row['error']=type(e).__name__
   benchmarks.append(row)
+ extension_file=root/'config/research/official_source_extensions_v1.json'
+ extensions=json.loads(extension_file.read_bytes()) if extension_file.exists() else None
  return dict(contract=WORKBENCH_CONTRACT,price_panels=years,benchmarks=benchmarks,
+  append_only_source_revision=dict(path=str(extension_file.relative_to(root)),registry=extensions,scope='Declared append-only source metadata, separately from immutable base-file dates; per-request SHA/source/session validation is still mandatory') if extensions else None,
   scope='metadata inventory only; no legal listing, event completeness, PIT or execution certification',
   technical='registered lookbacks require preceding source years and exact per-code sessions; existing provider/preflight validates each strategy',
   dart='financial PIT/availability/corrections/historical mapping remain existing operating gate requirements; file existence is not approval',investment_approved=False)

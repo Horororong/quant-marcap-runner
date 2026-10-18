@@ -1,0 +1,123 @@
+[
+  {
+    "name": "test_event_deferred_execution.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_event_deferred_execution.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 2.319,
+    "log_sha256": "a2e8c61f7cfe744bb4ad73cdd08eeeb70eba83ac9118dd07624064fbf09cd543"
+  },
+  {
+    "name": "test_research_spinoff.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_research_spinoff.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.677,
+    "log_sha256": "ae337b0b5f409f55bf1e8c76c1861650c41ef1d2e76db6262343a60dd1e687b4"
+  },
+  {
+    "name": "test_execution_scheduling.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_execution_scheduling.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 1.12,
+    "log_sha256": "440004d33de0f4490b1949c5a6b5b3b47284c3c94e1c7f373531f871de814425"
+  },
+  {
+    "name": "test_stock_dividend_execution.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_stock_dividend_execution.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 1.928,
+    "log_sha256": "27db95b769812d836873b5abc01c79cc4f71b453ba066ec08fb24cce47c722e4"
+  },
+  {
+    "name": "test_stock_dividend_research.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_stock_dividend_research.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 2.142,
+    "log_sha256": "7c12427e9c6c8ffc10bf4906c501f0f941ab00978cd5a28cea30ea95b8199078"
+  },
+  {
+    "name": "test_annual_selected_preparation.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_annual_selected_preparation.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.641,
+    "log_sha256": "edcb65587b24d670b43f828138162bc07c2ca5b5bb63d23be48342553add0196"
+  },
+  {
+    "name": "test_research_planned_readiness.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_research_planned_readiness.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.613,
+    "log_sha256": "3b486a48d4974287c32a18ba136a7e2591bcd2d2f694588cffeedd89f79f8258"
+  },
+  {
+    "name": "test_cash_share_exchange.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_cash_share_exchange.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 6.825,
+    "log_sha256": "d2cdcfd7390fba792697345797c8890e6c9ea159862883a7fa0470bcf12caa19"
+  },
+  {
+    "name": "test_research_workbench.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_research_workbench.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.494,
+    "log_sha256": "62bebbb13fcedaee9c23151fee24f6d448abf1479610e5f778a2137506a2aef2"
+  },
+  {
+    "name": "test_krx_technical_factor_adapter.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_krx_technical_factor_adapter.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.46,
+    "log_sha256": "d02f887afd789dbf5a7584c44ab4dfc5c1440fc042f2f605aea2e80deec78e82"
+  },
+  {
+    "name": "generated_contracts",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');sys.argv=['scripts/export_strategy_dsl_contract.py','--check'];runpy.run_path(sys.argv[0],run_name='__main__')"
+    ],
+    "exit_code": 1,
+    "expected_exit": 0,
+    "seconds": 0.457,
+    "log_sha256": "4779bc84414842e23432314a4c9c792c49f5e7dab315fd8977f7836ba1e293c6"
+  }
+]

@@ -1,0 +1,192 @@
+[
+  {
+    "strategy": "research_size_deciles_2019_2025_event_deferred_v1",
+    "first_blocker": {
+      "kind": "held_return_reference_gap",
+      "classification": "historical_fact",
+      "verdict": "UNVERIFIED",
+      "security": "068270",
+      "date": "2021-12-29",
+      "portfolio": "D03",
+      "detail": "Planned holding fails unchanged1bp source/event comparison",
+      "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+      "occurrences": 1,
+      "affected_through": "2021-12-29",
+      "previous_date": "2021-12-28",
+      "previous_close": 216000.0,
+      "close": 201000.0,
+      "exchange_return": -0.0519,
+      "effective_comparison_return": -0.06944444444444442,
+      "difference_bps": 175.44444444444417,
+      "basis": "raw_close",
+      "origin_signal": "2021-04-30",
+      "incident_id": "f80d5cb951e8ab0fd3f8"
+    },
+    "full_input_period": {
+      "start": "2019-01-01",
+      "end": "2025-12-31"
+    },
+    "nav_issued": false,
+    "exact_sources_required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+    "specific_required_evidence": {
+      "minimum_sources": [],
+      "existing_solution": "2021년 주식배당 공식 근거는 이미 v2 event file에 있음. v1원본은 유지하고 새 자료를 반복 수집하지 않음",
+      "state": "LEGACY_INPUT_KEPT; SOURCE_REVISION_V2_ALREADY_AVAILABLE"
+    }
+  },
+  {
+    "strategy": "research_broad_size_deciles_2001_2025_v1",
+    "first_blocker": {
+      "kind": "held_return_reference_gap",
+      "classification": "historical_fact",
+      "verdict": "UNVERIFIED",
+      "security": "037950",
+      "date": "2001-05-08",
+      "portfolio": "D05",
+      "detail": "Planned holding fails unchanged1bp source/event comparison",
+      "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+      "occurrences": 1,
+      "affected_through": "2001-05-08",
+      "previous_date": "2001-05-07",
+      "previous_close": 4680.0,
+      "close": 4150.0,
+      "exchange_return": -0.0258,
+      "effective_comparison_return": -0.11324786324786329,
+      "difference_bps": 874.4786324786329,
+      "basis": "raw_close",
+      "origin_signal": "2001-04-30",
+      "incident_id": "d000badcf76f0156431d"
+    },
+    "full_input_period": {
+      "start": "2001-01-01",
+      "end": "2025-12-31"
+    },
+    "nav_issued": false,
+    "exact_sources_required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+    "specific_required_evidence": {
+      "observed_historical_name": "한성엘컴텍",
+      "exact_date": "2001-05-08",
+      "minimum_sources": [
+        "당일 KOSDAQ 공식 원시 종가·등락률과 기준가격/변경 통지",
+        "실제 기업행위 종류·효력일·배정/교환/정산 및 필요한 권리 조건; 권리락/분할로 추정하지 않음"
+      ],
+      "access_limit": "KRX OPEN API는 이2001년 구간을 제공하지 않음. 기존 공식 과거검색 경로가 자료를 반환하지 않아 원천 확인 불가; 별도 KRX 과거 원장/회사 당시 공시 필요",
+      "state": "UNVERIFIED"
+    }
+  },
+  {
+    "strategy": "research_broad_size_top10_2001_2025_v1",
+    "first_blocker": {
+      "kind": "missing_held_quote",
+      "classification": "historical_fact",
+      "verdict": "UNVERIFIED",
+      "security": "015580",
+      "date": "2001-09-10",
+      "portfolio": "top_n",
+      "detail": "Positive planned holding has no finite positive close",
+      "required": "Exact historical observations or independently verified cessation/disposal contract; never interpolate or remove security",
+      "occurrences": 156,
+      "affected_through": "2002-04-30",
+      "origin_signal": "2001-04-30",
+      "incident_id": "947f87bfd73a1e2bf93d"
+    },
+    "full_input_period": {
+      "start": "2001-01-01",
+      "end": "2025-12-31"
+    },
+    "nav_issued": false,
+    "exact_sources_required": "Exact historical observations or independently verified cessation/disposal contract; never interpolate or remove security",
+    "specific_required_evidence": {
+      "observed_historical_name": "신한은행",
+      "last_observation": "2001-09-07",
+      "first_missing_held_session": "2001-09-10",
+      "minimum_sources": [
+        "015580 법인·종목의 당시 주식이전/합병/상폐 여부·효력일을 명시한 공식 기록",
+        "공식 승계 종목과 교환비율·현금/단주·후속 상장 및 거래가능일",
+        "023130국민은행2001-11-08 이후와002580/018415 미체결도 같은 종류의 독립 원장 필요"
+      ],
+      "access_limit": "기존 공식 과거검색에서 후보 미반환. 최신 종목마스터나 관측 소멸만으로 승계를 만들 수 없음",
+      "state": "UNVERIFIED"
+    }
+  },
+  {
+    "strategy": "research_broad_momentum_top10_2001_2025_v1",
+    "first_blocker": {
+      "kind": "held_return_reference_gap",
+      "classification": "historical_fact",
+      "verdict": "UNVERIFIED",
+      "security": "012170",
+      "date": "2001-06-21",
+      "portfolio": "top_n",
+      "detail": "Planned holding fails unchanged1bp source/event comparison",
+      "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+      "occurrences": 1,
+      "affected_through": "2001-06-21",
+      "previous_date": "2001-06-20",
+      "previous_close": 9000.0,
+      "close": 34500.0,
+      "exchange_return": 0.15,
+      "effective_comparison_return": 2.8333333333333335,
+      "difference_bps": 26833.333333333336,
+      "basis": "raw_close",
+      "origin_signal": "2001-04-30",
+      "incident_id": "7b283707c413d87c66ed"
+    },
+    "full_input_period": {
+      "start": "2001-01-01",
+      "end": "2025-12-31"
+    },
+    "nav_issued": false,
+    "exact_sources_required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+    "specific_required_evidence": {
+      "observed_historical_name": "의성실업",
+      "exact_date": "2001-06-21",
+      "minimum_sources": [
+        "당시 거래소 종가·등락률·기준가격 변경 원장",
+        "동일 역사적 법인/종목의 실제 기업행위 종류·효력일·수량/현금/권리 승계 조건"
+      ],
+      "access_limit": "2001년 KRX API 미제공; 보존 시세만 있고 사건 공식 문서 미확보",
+      "state": "UNVERIFIED"
+    }
+  },
+  {
+    "strategy": "research_size_deciles_2019_2025_event_deferred_v2",
+    "first_blocker": {
+      "kind": "held_return_reference_gap",
+      "classification": "historical_fact",
+      "verdict": "UNVERIFIED",
+      "security": "207940",
+      "date": "2022-02-28",
+      "portfolio": "D02",
+      "detail": "Planned holding fails unchanged1bp source/event comparison",
+      "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+      "occurrences": 1,
+      "affected_through": "2022-02-28",
+      "previous_date": "2022-02-25",
+      "previous_close": 769000.0,
+      "close": 779000.0,
+      "exchange_return": 0.025,
+      "effective_comparison_return": 0.013003901170351106,
+      "difference_bps": 119.96098829648895,
+      "basis": "raw_close",
+      "origin_signal": "2021-04-30",
+      "incident_id": "ebaafd770239b4a4361d"
+    },
+    "full_input_period": {
+      "start": "2019-01-01",
+      "end": "2025-12-31"
+    },
+    "nav_issued": false,
+    "exact_sources_required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+    "specific_required_evidence": {
+      "official_quote_reference": "PASS:760000원/2022-02-28",
+      "minimum_sources": [
+        "시장 매각 계약 선택 시2022-03-23~29 실제 증서 코드·종가·거래량/상장 사실",
+        "청약 계약 선택 시 당시 알려진 발행가 변경·자금납입·실제 신주 추가상장/거래 가능 근거"
+      ],
+      "common_model_gap": "유상 청약 권리·현금·납입/매각 공통 장부 미구현. 무료 주식배당/stock_split으로 대체 불가",
+      "access_limit": "인증키로stock/index성공하지만sr_bydd_trd첫날401;1회 중단. API 서비스 승인·키 범위 확인 또는 공식5일 CSV 제공 필요",
+      "state": "UNVERIFIED_ECONOMIC_BOOK"
+    }
+  }
+]

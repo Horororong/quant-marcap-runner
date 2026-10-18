@@ -1,0 +1,280 @@
+[
+  {
+    "name": "test_event_deferred_execution.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_event_deferred_execution.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 2.361,
+    "log_sha256": "cf89501980931635d3812011970f9f677e8abee455629b43d9edb0ebdacdcb96"
+  },
+  {
+    "name": "test_research_spinoff.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_research_spinoff.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.84,
+    "log_sha256": "a85e5c3357c846c958ef5375d367facf22dfca8cef7d757056938e16fe9e1720"
+  },
+  {
+    "name": "test_execution_scheduling.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_execution_scheduling.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 1.226,
+    "log_sha256": "4ae8cbbcc2138a27b9aa3df56c2872060dfd8d5a8541d6b171b6c703c7517b32"
+  },
+  {
+    "name": "test_stock_dividend_execution.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_stock_dividend_execution.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 2.17,
+    "log_sha256": "29980d0d445f62955286f6cbec68b8a8c1ee28ae6b529d735ce630387a3c7c6c"
+  },
+  {
+    "name": "test_stock_dividend_research.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_stock_dividend_research.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 2.146,
+    "log_sha256": "9c127ae44df5008f8719cb15e7102f4d76bbf0fdc9673697c2e795b4474a62c0"
+  },
+  {
+    "name": "test_annual_selected_preparation.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_annual_selected_preparation.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.645,
+    "log_sha256": "1c5b0df2b819aeb0130e463bd1a1500b33dca7e507970888ed697808c669251f"
+  },
+  {
+    "name": "test_research_planned_readiness.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_research_planned_readiness.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.593,
+    "log_sha256": "51803c1eba0337a38e2b81341cb8c944a4e7be028ef98f885740f89e94eb1adf"
+  },
+  {
+    "name": "test_cash_share_exchange.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_cash_share_exchange.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 7.07,
+    "log_sha256": "d2cdcfd7390fba792697345797c8890e6c9ea159862883a7fa0470bcf12caa19"
+  },
+  {
+    "name": "test_research_workbench.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_research_workbench.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.492,
+    "log_sha256": "4477f89b903803bec2c2f04df76ce7d133f45f7d1ad5081ae2652ecafc81a169"
+  },
+  {
+    "name": "test_krx_technical_factor_adapter.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_krx_technical_factor_adapter.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.508,
+    "log_sha256": "d02f887afd789dbf5a7584c44ab4dfc5c1440fc042f2f605aea2e80deec78e82"
+  },
+  {
+    "name": "generated_contracts",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');sys.argv=['scripts/export_strategy_dsl_contract.py','--check'];runpy.run_path(sys.argv[0],run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.39,
+    "log_sha256": "bdb90d50bd169f5de18f6a858635f7da08647763aaab17ca8790e005dbaddd8a"
+  },
+  {
+    "name": "event_contract_original_full2019_2020",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--report-periods",
+      "config/reports/research_2019_2020.json",
+      "--output-dir",
+      "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/event_contract_original_full2019_2020",
+      "--strategy",
+      "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/component_original.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 41.502,
+    "log_sha256": "404752bb3ab68ce60ee6e860e4fb608ee086719492c502385d281a92ba8b16bb"
+  },
+  {
+    "name": "korean_original_full2019_2020",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--report-periods",
+      "config/reports/research_2019_2020.json",
+      "--output-dir",
+      "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/korean_original_full2019_2020",
+      "--request",
+      "기간:2019-01-01~2020-12-31;시장:코스피·코스닥;필터:시가총액>=10조원;팩터:시가총액 낮은;포트폴리오:10분위;리밸런싱:4월말;체결:1거래일뒤종가;비용:수수료1.5bp,매도세15bp,스프레드3bp,슬리피지5bp;벤치마크:코스피",
+      "--research-model-from",
+      "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/component_original.json",
+      "--execution-contract-from",
+      "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/component_original.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 41.179,
+    "log_sha256": "ddb9395a12ebeff8c6a4e0227a108d487048d5f626da0566f9abdfb9d7173372"
+  },
+  {
+    "name": "projected_momentum_full2020",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/projection_momentum.json",
+      "--report-periods",
+      "config/reports/research_2019_2020.json",
+      "--output-dir",
+      "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/projected_momentum_full2020"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 16.418,
+    "log_sha256": "b0057a0de1728fd8e2a27e7bad7251fc9db52ee44a4da692e6f098a5d863591f"
+  },
+  {
+    "name": "research_size_deciles_2019_2025_event_deferred_v1",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/quant-marcap-runner/config/strategies/research_size_deciles_2019_2025_event_deferred_v1.json",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_size_deciles_2019_2025_event_deferred_v1"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "seconds": 16.126,
+    "log_sha256": "ad2c18c3aa8941041e9791bb8dd93e1bcbae65ba57412a94ae2f853ca29241d2"
+  },
+  {
+    "name": "research_broad_size_deciles_2001_2025_v1",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/quant-marcap-runner/config/strategies/research_broad_size_deciles_2001_2025_v1.json",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_broad_size_deciles_2001_2025_v1"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "seconds": 103.421,
+    "log_sha256": "adc90cb0245fe0a26721c0133061cc2e17b20f9c6f4a2a51f940c2aad37a59af"
+  },
+  {
+    "name": "research_broad_size_top10_2001_2025_v1",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/quant-marcap-runner/config/strategies/research_broad_size_top10_2001_2025_v1.json",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_broad_size_top10_2001_2025_v1"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "seconds": 43.504,
+    "log_sha256": "b74f163580a0d00f028f52a90269f224247b587565a9725646dae7e892e67ae3"
+  },
+  {
+    "name": "research_broad_momentum_top10_2001_2025_v1",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/quant-marcap-runner/config/strategies/research_broad_momentum_top10_2001_2025_v1.json",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_broad_momentum_top10_2001_2025_v1"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "seconds": 71.732,
+    "log_sha256": "617e18fe1bfb113323c41551669904f4aff9ddab4775cb7ee4f546d96753db0f"
+  },
+  {
+    "name": "research_size_deciles_2019_2025_event_deferred_v2",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/quant-marcap-runner/config/strategies/research_size_deciles_2019_2025_event_deferred_v2.json",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_size_deciles_2019_2025_event_deferred_v2"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "seconds": 15.846,
+    "log_sha256": "e6caf1741b4e497f4e87366f301c87b1a40cd875d8751243592bf38c46040dff"
+  },
+  {
+    "name": "original_strict_2019_2025",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "config/strategies/research_size_deciles_2019_2025_v1.json",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/original_strict_2019_2025"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "seconds": 15.086,
+    "log_sha256": "d3bf4743d853ff068b664445ca3958b46150d34290ebda44f00c9e5395997f0c"
+  }
+]

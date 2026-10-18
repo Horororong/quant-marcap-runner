@@ -1,0 +1,143 @@
+{
+  "run_id": 39113592029,
+  "job_id": 117634700809,
+  "conclusion": "success",
+  "main_published_sha": "78ab49df4b25e0b71df0fc4366fcc7f5d0a179a9",
+  "jobs": [
+    {
+      "id": 117634700809,
+      "run_id": 39113592029,
+      "workflow_name": "Refresh recent DART financials",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/39113592029",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT80f3M8AAAAbY5MWCQ",
+      "head_sha": "5fd6583ca89de0dfa887deda0221852b448c04d5",
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/117634700809",
+      "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39113592029/job/117634700809",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-18T08:59:58Z",
+      "started_at": "2026-10-18T09:00:01Z",
+      "completed_at": "2026-10-18T09:29:03Z",
+      "name": "refresh",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-18T09:00:01Z",
+          "completed_at": "2026-10-18T09:00:02Z"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-18T09:00:02Z",
+          "completed_at": "2026-10-18T09:00:33Z"
+        },
+        {
+          "name": "Set up Python",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-18T09:00:33Z",
+          "completed_at": "2026-10-18T09:00:34Z"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-18T09:00:34Z",
+          "completed_at": "2026-10-18T09:00:41Z"
+        },
+        {
+          "name": "Refresh rolling recent DART financials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-18T09:00:41Z",
+          "completed_at": "2026-10-18T09:28:56Z"
+        },
+        {
+          "name": "Commit recent DART datasets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-18T09:28:56Z",
+          "completed_at": "2026-10-18T09:29:00Z"
+        },
+        {
+          "name": "Upload recent-DART status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-18T09:29:00Z",
+          "completed_at": "2026-10-18T09:29:01Z"
+        },
+        {
+          "name": "Post Set up Python",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-18T09:29:01Z",
+          "completed_at": "2026-10-18T09:29:01Z"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-18T09:29:01Z",
+          "completed_at": "2026-10-18T09:29:01Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-18T09:29:01Z",
+          "completed_at": "2026-10-18T09:29:01Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/117634700809",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001197,
+      "runner_name": "GitHub Actions 1000001197",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ],
+  "excerpts": [
+    "2026-10-18T09:00:02.3724623Z   DART_MAX_COMPANIES: 300",
+    "2026-10-18T09:00:33.9039359Z Updating files:  95% (1195/1257)",
+    "2026-10-18T09:00:33.9635643Z   DART_MAX_COMPANIES: 300",
+    "2026-10-18T09:00:34.1105336Z   DART_MAX_COMPANIES: 300",
+    "2026-10-18T09:00:41.2067854Z   DART_MAX_COMPANIES: 300",
+    "2026-10-18T09:04:06.1419725Z DART batch start=1200 size=300 workers=6",
+    "2026-10-18T09:06:01.8320982Z DART progress 25/300",
+    "2026-10-18T09:08:11.7515987Z DART progress 50/300",
+    "2026-10-18T09:10:35.0422242Z DART progress 75/300",
+    "2026-10-18T09:12:30.2952759Z DART progress 100/300",
+    "2026-10-18T09:14:05.0388775Z DART progress 125/300",
+    "2026-10-18T09:16:05.0311960Z DART progress 150/300",
+    "2026-10-18T09:17:41.8606390Z DART progress 175/300",
+    "2026-10-18T09:20:12.0000775Z DART progress 200/300",
+    "2026-10-18T09:22:12.4246979Z DART progress 225/300",
+    "2026-10-18T09:24:32.9683253Z DART progress 250/300",
+    "2026-10-18T09:26:26.4323985Z DART progress 275/300",
+    "2026-10-18T09:28:49.9279198Z DART progress 300/300",
+    "2026-10-18T09:28:56.5495688Z {\"status\": \"OK\", \"checked_at_utc\": \"2026-10-18T09:00:41.638359+00:00\", \"changed_paths\": [\"data/financials/recent_batches/dart_recent_01200_01499.csv.gz\", \"data/status/dart_rotation_state.csv\", \"data/status/dart_status.csv\"]}",
+    "2026-10-18T09:28:56.8685302Z \u001b[36;1mgit add data/financials/dart_errors_*.csv || true\u001b[0m",
+    "2026-10-18T09:28:56.8742066Z   DART_MAX_COMPANIES: 300",
+    "2026-10-18T09:28:57.5454860Z [main 78ab49d] Refresh recent DART financials",
+    "2026-10-18T09:29:00.3076847Z   DART_MAX_COMPANIES: 300",
+    "2026-10-18T09:29:00.6965484Z (node:2548) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities."
+  ],
+  "numeric_accuracy_certified": false
+}

@@ -1,0 +1,105 @@
+[
+  {
+    "name": "test_execution_scheduling.py",
+    "args": [
+      "-c",
+      "import sys,runpy;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_execution_scheduling.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 1.811,
+    "log_sha256": "56d3bca50ea7b863f460b45019e7b8f038bb0d3286d7801cb015a84bcce9522a"
+  },
+  {
+    "name": "test_annual_selected_preparation.py",
+    "args": [
+      "-c",
+      "import sys,runpy;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_annual_selected_preparation.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 1.158,
+    "log_sha256": "74304b7904ef88a28db9c426e74dafc728f48901d4121774a73c0026e3ed69f5"
+  },
+  {
+    "name": "test_calendar_cache.py",
+    "args": [
+      "-c",
+      "import sys,runpy;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_calendar_cache.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 3.414,
+    "log_sha256": "de3863d634fd58fbcb54c61d18765a5f714ee338ad9cb264952cda40eb8fd76d"
+  },
+  {
+    "name": "contracts",
+    "args": [
+      "-c",
+      "import sys,runpy;sys.path.insert(0,'scripts');sys.argv=['scripts/export_strategy_dsl_contract.py','--check'];runpy.run_path(sys.argv[0],run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.633,
+    "log_sha256": "bdb90d50bd169f5de18f6a858635f7da08647763aaab17ca8790e005dbaddd8a"
+  },
+  {
+    "name": "financial_original_preservation",
+    "args": [
+      "docs/research/stage16-continuous-research-20261018/preserve.py",
+      "--output",
+      "/workspace/long-multi-backfill-20261018/long-regression/financial-preservation"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.619,
+    "log_sha256": "7d19fc6e56f14d99c9106f8b3b926ce165f88192c65b1d801dc281822e9c3264"
+  },
+  {
+    "name": "long2001_2025",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/long-multi-backfill-20261018/long-regression/long2001_2025",
+      "--strategy",
+      "/workspace/quant-marcap-runner/config/strategies/research_size_top1_2001_2025_deferred_v1.json"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 325.59,
+    "log_sha256": "f41265056ebfa58da93b5dc95397e55aa1828fb660ca5c6373eedfd991a70ef9"
+  },
+  {
+    "name": "korean2001_2025",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/long-multi-backfill-20261018/long-regression/korean2001_2025",
+      "--request",
+      "기간:2001-01-01~2025-12-31;시장:코스피·코스닥;필터:시가총액>=10조원;팩터:시가총액 높은;포트폴리오:상위1개;리밸런싱:4월말;체결:1거래일뒤종가;비용:수수료1.5bp,매도세15bp,스프레드3bp,슬리피지5bp;벤치마크:코스피",
+      "--research-model-from",
+      "/workspace/quant-marcap-runner/config/strategies/research_size_top1_2001_2025_deferred_v1.json",
+      "--execution-contract-from",
+      "/workspace/quant-marcap-runner/config/strategies/research_size_top1_2001_2025_deferred_v1.json"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 203.065,
+    "log_sha256": "385ac62841506385539077ee40f4bd6ee5be3cac52666d90c1e3f61650f84d9c"
+  },
+  {
+    "name": "projected_original",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/long-multi-backfill-20261018/long-regression/projection_original_input.json",
+      "--report-periods",
+      "config/reports/research_2019_2020.json",
+      "--output-dir",
+      "/workspace/long-multi-backfill-20261018/long-regression/projected_original"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 40.116,
+    "log_sha256": "eedeb3b689f90b5bb3d8b0964fd8caf89c8568ed0040694a44604b91c966a65f"
+  }
+]

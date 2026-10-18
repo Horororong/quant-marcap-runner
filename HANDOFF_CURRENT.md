@@ -798,3 +798,29 @@ artifact `11259265188`로 올렸다. 실제 HTTPS 다운로드와 내부 원본 
 - 이 파일은 안쪽 ZIP wrapper가 없는 원래 실행 ZIP이다. ChatGPT 퀀트 프로젝트의
   Python 실행 가능한 대화에 **그대로 첨부**하고 기존 bootstrap/verify를 사용한다.
 - Machine checkpoint: `docs/audits/public-sandbox-download-checkpoint-20261003.json`.
+
+## 2026-10-18 장기 다종목·main 백필 동시 작업 재개점
+
+최신 상세 기록: `docs/research/long-multi-backfill-20261018/report.md`와
+`reproduction.md`. main snapshot78ab49d,legacy 실제 게시5fd6583,연구 중간 게시02cfe5b.
+커밋 containing this handoff의 실제 SHA/5jobCI를 GitHub에서 조회한다. 로컬/원격은
+GitData author 차이로 commit SHA가 다르며 tree/file 일치와 ref lease를 확인했다.
+
+- 장기 신규 다종목5입력은 모두 전체 기간 실행을 시도했으나 NAV 미발행.
+  준비도v2는 뒤의 pending conflict로 앞선 실제 일정 노출을 숨기던 문제를 수정한다.
+  현재 첫 원천 차단은 broad deciles037950/2001-05-08,top10size015580/2001-09-10,
+  momentum012170/2001-06-21,2019–2025event-v2의207940/2022-02-28이다.
+- Bio의 공식 기준가760000·권리비율·발행 조건은 보존했다. 시세/API 인증과 경제적
+  장부는 별개다. sr_bydd_trd는1회401후 중단했으므로 동일 실패 경로를 반복하지 않는다.
+- 기존10분위2019–2020/모멘텀top3 2020/top1 2024/7년top1/25년별도top1의 숫자 해시는
+  보존·재현했다. 새 독립2026as-of10/16top1은192세션 JSON/한국어/독립576장부일 완료.
+  원본 parquet/index CSV는 수정하지 않고 공식 원문 SHA가 있는 별도 확장을 연결했다.
+- main v5의 최신 legacy69513분류/41486대기/4021격리이며 quality_complete=False.
+  3998격리는DART800시스템점검이다. status800DEFERRED+checkpoint후fail,legacy deadline
+  후modern새단계차단 수정은 연구에만 있다. main 자동 수집을 실행/취소/수정하지 않았다.
+- 독립 감사20건:표본0PASS/12FAIL/8UNVERIFIED,32금액16PASS/12FAIL/4UNVERIFIED.
+  부호·단위·기간·누적/분기·범위 문제. 기존v7감사를main v5에 적용해 통과시키지 않는다.
+  단주/실제계좌/현금배당총수익·금융PIT0/6·운영게이트는 계속 미승인이다.
+- 다음 일은 CI 실제 결과 확인 후 source_requirements.json의 원천/공통 유상권리 장부를
+  해결하는 것과,별도 승인한main 최소 배포/canary 절차다. 2,000건/전체 백필·소급 수정·
+  main 병합·pip설치·임의 종목/기간/허용오차 변경은 승인되지 않았다.

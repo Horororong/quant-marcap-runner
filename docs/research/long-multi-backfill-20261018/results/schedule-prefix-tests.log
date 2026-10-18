@@ -1,0 +1,13 @@
+test_all_ten_deciles_use_same_deferred_engine_and_cost_owner (test_execution_scheduling.Scheduling.test_all_ten_deciles_use_same_deferred_engine_and_cost_owner) ... ok
+test_default_reject_retains_original_halt_failure (test_execution_scheduling.Scheduling.test_default_reject_retains_original_halt_failure) ... ok
+test_delayed_split_sale_independent_gross_net_quantity_cash (test_execution_scheduling.Scheduling.test_delayed_split_sale_independent_gross_net_quantity_cash) ... ok
+test_later_pending_error_keeps_completed_actual_schedule_prefix (test_execution_scheduling.Scheduling.test_later_pending_error_keeps_completed_actual_schedule_prefix) ... ok
+test_no_early_fill_and_entire_order_waits_for_target (test_execution_scheduling.Scheduling.test_no_early_fill_and_entire_order_waits_for_target) ... ok
+test_no_missing_hold_price_fill_or_ordinary_return_waiver (test_execution_scheduling.Scheduling.test_no_missing_hold_price_fill_or_ordinary_return_waiver) ... ok
+test_unfilled_end_and_overlap_fail_instead_of_dropping (test_execution_scheduling.Scheduling.test_unfilled_end_and_overlap_fail_instead_of_dropping) ... ok
+test_unobserved_liquidity_shorts_and_illiquid_action_books_rejected (test_execution_scheduling.Scheduling.test_unobserved_liquidity_shorts_and_illiquid_action_books_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.603s
+
+OK

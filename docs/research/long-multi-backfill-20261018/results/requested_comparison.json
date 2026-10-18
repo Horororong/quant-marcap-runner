@@ -1,0 +1,302 @@
+[
+  {
+    "strategy": "research_size_deciles_2019_2025_event_deferred_v1",
+    "before": {
+      "first": {
+        "kind": "held_return_reference_gap",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": "068270",
+        "date": "2021-12-29",
+        "portfolio": "D03",
+        "detail": "Planned holding fails unchanged1bp source/event comparison",
+        "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+        "occurrences": 1,
+        "affected_through": "2021-12-29",
+        "previous_date": "2021-12-28",
+        "previous_close": 216000.0,
+        "close": 201000.0,
+        "exchange_return": -0.0519,
+        "effective_comparison_return": -0.06944444444444442,
+        "difference_bps": 175.44444444444417,
+        "basis": "raw_close",
+        "origin_signal": "2021-04-30",
+        "incident_id": "f80d5cb951e8ab0fd3f8"
+      },
+      "issues": 18,
+      "diagnostic": 4
+    },
+    "after": {
+      "first": {
+        "kind": "held_return_reference_gap",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": "068270",
+        "date": "2021-12-29",
+        "portfolio": "D03",
+        "detail": "Planned holding fails unchanged1bp source/event comparison",
+        "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+        "occurrences": 1,
+        "affected_through": "2021-12-29",
+        "previous_date": "2021-12-28",
+        "previous_close": 216000.0,
+        "close": 201000.0,
+        "exchange_return": -0.0519,
+        "effective_comparison_return": -0.06944444444444442,
+        "difference_bps": 175.44444444444417,
+        "basis": "raw_close",
+        "origin_signal": "2021-04-30",
+        "incident_id": "f80d5cb951e8ab0fd3f8"
+      },
+      "issues": 19,
+      "diagnostic": 2
+    },
+    "nav_issued": false,
+    "reason": "Later pending-order failure previously hid whole portfolio history. Preserve resolved schedule prefix; only fallbacks from pending planned date remain diagnostic. No change to DSL, prices, execution/cost or NAV."
+  },
+  {
+    "strategy": "research_broad_size_deciles_2001_2025_v1",
+    "before": {
+      "first": {
+        "kind": "pending_order_event_contract_gap",
+        "classification": "execution_constraint",
+        "verdict": "UNVERIFIED",
+        "security": null,
+        "date": "2002-05-02",
+        "portfolio": "D01",
+        "detail": "pending_order_conflict: original signal 2001-04-30 remains unfilled at new execution 2002-05-02",
+        "required": "Exact verified share/rights lineage and executable lifecycle; no guessed event. Other source diagnostics below use original earliest schedule, not certified actual fills.",
+        "occurrences": 1,
+        "affected_through": "2002-05-02",
+        "origin_signal": "2001-04-30 00:00:00",
+        "planned_date": "2001-05-02 00:00:00",
+        "last_blocked": {
+          "date": "2002-04-30",
+          "securities": [
+            "000300",
+            "000315",
+            "000317",
+            "000475",
+            "001110",
+            "001697",
+            "001785",
+            "001787",
+            "001797",
+            "002105",
+            "002180",
+            "002470",
+            "002580",
+            "002585",
+            "003260",
+            "003660",
+            "004465",
+            "007595",
+            "008985",
+            "012265",
+            "012670",
+            "013005",
+            "013095",
+            "013097",
+            "016555",
+            "017090",
+            "017120",
+            "033300",
+            "042675",
+            "047890",
+            "052530"
+          ]
+        },
+        "incident_id": "084204e968f40c53bcd1"
+      },
+      "issues": 9970,
+      "diagnostic": 9960
+    },
+    "after": {
+      "first": {
+        "kind": "held_return_reference_gap",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": "037950",
+        "date": "2001-05-08",
+        "portfolio": "D05",
+        "detail": "Planned holding fails unchanged1bp source/event comparison",
+        "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+        "occurrences": 1,
+        "affected_through": "2001-05-08",
+        "previous_date": "2001-05-07",
+        "previous_close": 4680.0,
+        "close": 4150.0,
+        "exchange_return": -0.0258,
+        "effective_comparison_return": -0.11324786324786329,
+        "difference_bps": 874.4786324786329,
+        "basis": "raw_close",
+        "origin_signal": "2001-04-30",
+        "incident_id": "d000badcf76f0156431d"
+      },
+      "issues": 9997,
+      "diagnostic": 9687
+    },
+    "nav_issued": false,
+    "reason": "Later pending-order failure previously hid whole portfolio history. Preserve resolved schedule prefix; only fallbacks from pending planned date remain diagnostic. No change to DSL, prices, execution/cost or NAV."
+  },
+  {
+    "strategy": "research_broad_size_top10_2001_2025_v1",
+    "before": {
+      "first": {
+        "kind": "pending_order_event_contract_gap",
+        "classification": "execution_constraint",
+        "verdict": "UNVERIFIED",
+        "security": null,
+        "date": "2003-05-02",
+        "portfolio": "top_n",
+        "detail": "pending_order_conflict: original signal 2002-04-30 remains unfilled at new execution 2003-05-02",
+        "required": "Exact verified share/rights lineage and executable lifecycle; no guessed event. Other source diagnostics below use original earliest schedule, not certified actual fills.",
+        "occurrences": 1,
+        "affected_through": "2003-05-02",
+        "origin_signal": "2002-04-30 00:00:00",
+        "planned_date": "2002-05-02 00:00:00",
+        "last_blocked": {
+          "date": "2003-04-30",
+          "securities": [
+            "015580",
+            "023130"
+          ]
+        },
+        "incident_id": "eb1d56120b2aa988ad71"
+      },
+      "issues": 19,
+      "diagnostic": 18
+    },
+    "after": {
+      "first": {
+        "kind": "missing_held_quote",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": "015580",
+        "date": "2001-09-10",
+        "portfolio": "top_n",
+        "detail": "Positive planned holding has no finite positive close",
+        "required": "Exact historical observations or independently verified cessation/disposal contract; never interpolate or remove security",
+        "occurrences": 156,
+        "affected_through": "2002-04-30",
+        "origin_signal": "2001-04-30",
+        "incident_id": "947f87bfd73a1e2bf93d"
+      },
+      "issues": 21,
+      "diagnostic": 18
+    },
+    "nav_issued": false,
+    "reason": "Later pending-order failure previously hid whole portfolio history. Preserve resolved schedule prefix; only fallbacks from pending planned date remain diagnostic. No change to DSL, prices, execution/cost or NAV."
+  },
+  {
+    "strategy": "research_broad_momentum_top10_2001_2025_v1",
+    "before": {
+      "first": {
+        "kind": "pending_order_event_contract_gap",
+        "classification": "execution_constraint",
+        "verdict": "UNVERIFIED",
+        "security": null,
+        "date": "2003-05-02",
+        "portfolio": "top_n",
+        "detail": "pending_order_conflict: original signal 2002-04-30 remains unfilled at new execution 2003-05-02",
+        "required": "Exact verified share/rights lineage and executable lifecycle; no guessed event. Other source diagnostics below use original earliest schedule, not certified actual fills.",
+        "occurrences": 1,
+        "affected_through": "2003-05-02",
+        "origin_signal": "2002-04-30 00:00:00",
+        "planned_date": "2002-05-02 00:00:00",
+        "last_blocked": {
+          "date": "2003-04-30",
+          "securities": [
+            "002580",
+            "018415"
+          ]
+        },
+        "incident_id": "eb1d56120b2aa988ad71"
+      },
+      "issues": 100,
+      "diagnostic": 99
+    },
+    "after": {
+      "first": {
+        "kind": "held_return_reference_gap",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": "012170",
+        "date": "2001-06-21",
+        "portfolio": "top_n",
+        "detail": "Planned holding fails unchanged1bp source/event comparison",
+        "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+        "occurrences": 1,
+        "affected_through": "2001-06-21",
+        "previous_date": "2001-06-20",
+        "previous_close": 9000.0,
+        "close": 34500.0,
+        "exchange_return": 0.15,
+        "effective_comparison_return": 2.8333333333333335,
+        "difference_bps": 26833.333333333336,
+        "basis": "raw_close",
+        "origin_signal": "2001-04-30",
+        "incident_id": "7b283707c413d87c66ed"
+      },
+      "issues": 101,
+      "diagnostic": 91
+    },
+    "nav_issued": false,
+    "reason": "Later pending-order failure previously hid whole portfolio history. Preserve resolved schedule prefix; only fallbacks from pending planned date remain diagnostic. No change to DSL, prices, execution/cost or NAV."
+  },
+  {
+    "strategy": "research_size_deciles_2019_2025_event_deferred_v2",
+    "before": {
+      "first": {
+        "kind": "held_return_reference_gap",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": "207940",
+        "date": "2022-02-28",
+        "portfolio": "D02",
+        "detail": "Planned holding fails unchanged1bp source/event comparison",
+        "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+        "occurrences": 1,
+        "affected_through": "2022-02-28",
+        "previous_date": "2022-02-25",
+        "previous_close": 769000.0,
+        "close": 779000.0,
+        "exchange_return": 0.025,
+        "effective_comparison_return": 0.013003901170351106,
+        "difference_bps": 119.96098829648895,
+        "basis": "raw_close",
+        "origin_signal": "2021-04-30",
+        "incident_id": "ebaafd770239b4a4361d"
+      },
+      "issues": 16,
+      "diagnostic": 4
+    },
+    "after": {
+      "first": {
+        "kind": "held_return_reference_gap",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": "207940",
+        "date": "2022-02-28",
+        "portfolio": "D02",
+        "detail": "Planned holding fails unchanged1bp source/event comparison",
+        "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+        "occurrences": 1,
+        "affected_through": "2022-02-28",
+        "previous_date": "2022-02-25",
+        "previous_close": 769000.0,
+        "close": 779000.0,
+        "exchange_return": 0.025,
+        "effective_comparison_return": 0.013003901170351106,
+        "difference_bps": 119.96098829648895,
+        "basis": "raw_close",
+        "origin_signal": "2021-04-30",
+        "incident_id": "ebaafd770239b4a4361d"
+      },
+      "issues": 17,
+      "diagnostic": 2
+    },
+    "nav_issued": false,
+    "reason": "Later pending-order failure previously hid whole portfolio history. Preserve resolved schedule prefix; only fallbacks from pending planned date remain diagnostic. No change to DSL, prices, execution/cost or NAV."
+  }
+]

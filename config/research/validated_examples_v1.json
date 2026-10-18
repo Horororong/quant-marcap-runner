@@ -43,6 +43,15 @@
       "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_size_top1_2001_2025_deferred_v1.json",
       "execution": "Same run command with --report-periods config/reports/research_continuous_2025.json",
       "distinction": "Separate predeclared full-order deferred execution; NOT the original fixed-lag top1 or original decile strategy; trading-cost Net, cash distributions not reconstructed"
+    },
+    {
+      "strategy": "config/strategies/research_size_top1_2026_asof1016_v1.json",
+      "period": "2026-01-01..2026-10-16",
+      "status": "RESEARCH_ONLY_EXAMPLE",
+      "numeric_validation": "docs/research/long-multi-backfill-20261018/numeric2026_manifest.json",
+      "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_size_top1_2026_asof1016_v1.json",
+      "execution": "Same run command after fresh preflight; --report-periods config/reports/research_continuous_2025.json",
+      "distinction": "Independent predeclared as-of completed2026session192days; original long inputs unchanged; append-only official source revision. No cash dividends/PIT certification."
     }
   ],
   "blocked_examples": [
@@ -87,7 +96,9 @@
       },
       "status": "BLOCKED_NO_ACCEPTED_NAV",
       "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_size_deciles_2019_2025_event_deferred_v1.json",
-      "full_diagnostic_evidence": "docs/research/multi-asset-20261018/results/requested_incidents.csv"
+      "full_diagnostic_evidence": "docs/research/multi-asset-20261018/results/requested_incidents.csv",
+      "evidence": "docs/research/long-multi-backfill-20261018/results/requested_comparison.json",
+      "readiness_contract": "2; fresh check still mandatory"
     },
     {
       "strategy": "config/strategies/research_broad_size_deciles_2001_2025_v1.json",
@@ -96,59 +107,31 @@
         "end": "2025-12-31"
       },
       "reason": {
-        "kind": "pending_order_event_contract_gap",
-        "classification": "execution_constraint",
+        "kind": "held_return_reference_gap",
+        "classification": "historical_fact",
         "verdict": "UNVERIFIED",
-        "security": null,
-        "date": "2002-05-02",
-        "portfolio": "D01",
-        "detail": "pending_order_conflict: original signal 2001-04-30 remains unfilled at new execution 2002-05-02",
-        "required": "Exact verified share/rights lineage and executable lifecycle; no guessed event. Other source diagnostics below use original earliest schedule, not certified actual fills.",
+        "security": "037950",
+        "date": "2001-05-08",
+        "portfolio": "D05",
+        "detail": "Planned holding fails unchanged1bp source/event comparison",
+        "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
         "occurrences": 1,
-        "affected_through": "2002-05-02",
-        "origin_signal": "2001-04-30 00:00:00",
-        "planned_date": "2001-05-02 00:00:00",
-        "last_blocked": {
-          "date": "2002-04-30",
-          "securities": [
-            "000300",
-            "000315",
-            "000317",
-            "000475",
-            "001110",
-            "001697",
-            "001785",
-            "001787",
-            "001797",
-            "002105",
-            "002180",
-            "002470",
-            "002580",
-            "002585",
-            "003260",
-            "003660",
-            "004465",
-            "007595",
-            "008985",
-            "012265",
-            "012670",
-            "013005",
-            "013095",
-            "013097",
-            "016555",
-            "017090",
-            "017120",
-            "033300",
-            "042675",
-            "047890",
-            "052530"
-          ]
-        },
-        "incident_id": "084204e968f40c53bcd1"
+        "affected_through": "2001-05-08",
+        "previous_date": "2001-05-07",
+        "previous_close": 4680.0,
+        "close": 4150.0,
+        "exchange_return": -0.0258,
+        "effective_comparison_return": -0.11324786324786329,
+        "difference_bps": 874.4786324786329,
+        "basis": "raw_close",
+        "origin_signal": "2001-04-30",
+        "incident_id": "d000badcf76f0156431d"
       },
       "status": "BLOCKED_NO_ACCEPTED_NAV",
       "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_broad_size_deciles_2001_2025_v1.json",
-      "full_diagnostic_evidence": "docs/research/multi-asset-20261018/results/requested_incidents.csv"
+      "full_diagnostic_evidence": "docs/research/multi-asset-20261018/results/requested_incidents.csv",
+      "evidence": "docs/research/long-multi-backfill-20261018/results/requested_comparison.json",
+      "readiness_contract": "2; fresh check still mandatory"
     },
     {
       "strategy": "config/strategies/research_broad_size_top10_2001_2025_v1.json",
@@ -157,30 +140,24 @@
         "end": "2025-12-31"
       },
       "reason": {
-        "kind": "pending_order_event_contract_gap",
-        "classification": "execution_constraint",
+        "kind": "missing_held_quote",
+        "classification": "historical_fact",
         "verdict": "UNVERIFIED",
-        "security": null,
-        "date": "2003-05-02",
+        "security": "015580",
+        "date": "2001-09-10",
         "portfolio": "top_n",
-        "detail": "pending_order_conflict: original signal 2002-04-30 remains unfilled at new execution 2003-05-02",
-        "required": "Exact verified share/rights lineage and executable lifecycle; no guessed event. Other source diagnostics below use original earliest schedule, not certified actual fills.",
-        "occurrences": 1,
-        "affected_through": "2003-05-02",
-        "origin_signal": "2002-04-30 00:00:00",
-        "planned_date": "2002-05-02 00:00:00",
-        "last_blocked": {
-          "date": "2003-04-30",
-          "securities": [
-            "015580",
-            "023130"
-          ]
-        },
-        "incident_id": "eb1d56120b2aa988ad71"
+        "detail": "Positive planned holding has no finite positive close",
+        "required": "Exact historical observations or independently verified cessation/disposal contract; never interpolate or remove security",
+        "occurrences": 156,
+        "affected_through": "2002-04-30",
+        "origin_signal": "2001-04-30",
+        "incident_id": "947f87bfd73a1e2bf93d"
       },
       "status": "BLOCKED_NO_ACCEPTED_NAV",
       "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_broad_size_top10_2001_2025_v1.json",
-      "full_diagnostic_evidence": "docs/research/multi-asset-20261018/results/requested_incidents.csv"
+      "full_diagnostic_evidence": "docs/research/multi-asset-20261018/results/requested_incidents.csv",
+      "evidence": "docs/research/long-multi-backfill-20261018/results/requested_comparison.json",
+      "readiness_contract": "2; fresh check still mandatory"
     },
     {
       "strategy": "config/strategies/research_broad_momentum_top10_2001_2025_v1.json",
@@ -189,30 +166,31 @@
         "end": "2025-12-31"
       },
       "reason": {
-        "kind": "pending_order_event_contract_gap",
-        "classification": "execution_constraint",
+        "kind": "held_return_reference_gap",
+        "classification": "historical_fact",
         "verdict": "UNVERIFIED",
-        "security": null,
-        "date": "2003-05-02",
+        "security": "012170",
+        "date": "2001-06-21",
         "portfolio": "top_n",
-        "detail": "pending_order_conflict: original signal 2002-04-30 remains unfilled at new execution 2003-05-02",
-        "required": "Exact verified share/rights lineage and executable lifecycle; no guessed event. Other source diagnostics below use original earliest schedule, not certified actual fills.",
+        "detail": "Planned holding fails unchanged1bp source/event comparison",
+        "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
         "occurrences": 1,
-        "affected_through": "2003-05-02",
-        "origin_signal": "2002-04-30 00:00:00",
-        "planned_date": "2002-05-02 00:00:00",
-        "last_blocked": {
-          "date": "2003-04-30",
-          "securities": [
-            "002580",
-            "018415"
-          ]
-        },
-        "incident_id": "eb1d56120b2aa988ad71"
+        "affected_through": "2001-06-21",
+        "previous_date": "2001-06-20",
+        "previous_close": 9000.0,
+        "close": 34500.0,
+        "exchange_return": 0.15,
+        "effective_comparison_return": 2.8333333333333335,
+        "difference_bps": 26833.333333333336,
+        "basis": "raw_close",
+        "origin_signal": "2001-04-30",
+        "incident_id": "7b283707c413d87c66ed"
       },
       "status": "BLOCKED_NO_ACCEPTED_NAV",
       "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_broad_momentum_top10_2001_2025_v1.json",
-      "full_diagnostic_evidence": "docs/research/multi-asset-20261018/results/requested_incidents.csv"
+      "full_diagnostic_evidence": "docs/research/multi-asset-20261018/results/requested_incidents.csv",
+      "evidence": "docs/research/long-multi-backfill-20261018/results/requested_comparison.json",
+      "readiness_contract": "2; fresh check still mandatory"
     },
     {
       "strategy": "config/strategies/research_size_deciles_2019_2025_event_deferred_v2.json",
@@ -243,7 +221,9 @@
       },
       "status": "BLOCKED_NO_ACCEPTED_NAV",
       "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_size_deciles_2019_2025_event_deferred_v2.json",
-      "full_diagnostic_evidence": "docs/research/multi-asset-20261018/results/requested_incidents.csv"
+      "full_diagnostic_evidence": "docs/research/multi-asset-20261018/results/requested_incidents.csv",
+      "evidence": "docs/research/long-multi-backfill-20261018/results/requested_comparison.json",
+      "readiness_contract": "2; fresh check still mandatory"
     }
   ],
   "separate_2026": "XKRX versus observed-session mismatch and exact KOSPI benchmark coverage missing; no2026 approval",
