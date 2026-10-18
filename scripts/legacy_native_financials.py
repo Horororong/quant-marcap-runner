@@ -18,7 +18,7 @@ except ModuleNotFoundError as error:
         raise
     from legacy_financial_fields import choose_metric, norm_account
 
-PARSER_VERSION = "legacy-v7-current-profit-normalization"
+PARSER_VERSION = "legacy-v8-primary-appendix-structure"
 DATE = re.compile(r"(\d{4})\s*[.년/-]\s*(\d{1,2})\s*[.월/-]\s*(\d{1,2})(?:\s*[.일])?")
 HEADING = re.compile(r"(?:연결)?(?:포괄손익계산서|손익계산서|대차대조표|재무상태표|현금흐름표|이익잉여금처분계산서|결손금처리계산서)")
 TERM = re.compile(r"(?:제\s*)?(\d+)\s*(?:\([당전]\))?\s*기")
@@ -343,9 +343,13 @@ def parse_native(text):
         if marks:
             amendment = "BEFORE" if marks[-1].group() == "정정전" else "AFTER"
         # Exclusion lasts until a fresh primary financial heading.
-        events = list(re.finditer(r"4[.]재무제표|다[.]연결재무제표|부문별재무현황|사업부문별재무|합병전[ㆍ·]?후|외화자산과부채|주석", prefix))
+        # Older native filings place the full statements in XI. 부속명세서.
+        # Opening this section does not authenticate any number: every table
+        # still needs a fresh primary statement heading, current term/dates,
+        # explicit unit and an unambiguous physical amount column.
+        events = list(re.finditer(r"4[.]재무제표|가[.]재무제표|다[.]연결재무제표|(?:XI|Ⅺ|ⅩⅠ)[.]부속명세서|부문별재무현황|사업부문별재무|합병전[ㆍ·]?후|외화자산과부채|주석", prefix))
         for event in events:
-            zone = event.group() in {"4.재무제표", "다.연결재무제표"}
+            zone = event.group() in {"4.재무제표", "가.재무제표", "다.연결재무제표", "XI.부속명세서", "Ⅺ.부속명세서", "ⅩⅠ.부속명세서"}
         rows = table["rows"]
         if not rows:
             continue

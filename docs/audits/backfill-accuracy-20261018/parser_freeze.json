@@ -1,0 +1,16 @@
+{
+  "parser_version": "legacy-v8-primary-appendix-structure",
+  "parser_sha256": "c9a54547f210653468a05c38f31dcd3312437ba77940fbb942f8a483f541df13",
+  "before_holdout_source_review": true,
+  "holdout_transfer_blob": "f9ad56c6bc85d1494d6ce70a93152464faeb931c",
+  "compressed_sha256": "88b8090bb306ef1f0be8e4b8ae29e5acc81bf5113d42a645cfb173a95705a3de",
+  "selection_sha256": "751f7bcc169a588ebe04de12d4c3e3b4d37f2c2745cb139999e171ad33af96f0",
+  "read_only_source_runs": [
+    39132454920,
+    39132718687
+  ],
+  "new_DART_calls": 0,
+  "development_controls": "prior32 unchanged; all28KRW match after explicit primary-appendix section support; four RMB fields remain UNVERIFIED",
+  "remaining_development_source_gaps": 4,
+  "correction": "First selector lacked metadata, got2 not12; fixed receipt-index join before monetary review; first receipt list and source artifact retained, no outcome-driven reselection."
+}
