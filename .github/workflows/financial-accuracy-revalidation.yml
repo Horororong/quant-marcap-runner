@@ -9,6 +9,7 @@ on:
       - 'tests/test_financial_accuracy_repair.py'
       - 'tests/test_financial_extraction_stage3.py'
       - 'docs/audits/financial-repair-20261014/**'
+      - 'docs/audits/backfill-accuracy-20261018/**'
       - 'docs/audits/financial-extraction-stage3-20261014/**'
       - 'docs/audits/historical-pit-stage4-20261014/**'
       - 'docs/audits/dart-history-stage5-20261014/**'
@@ -50,6 +51,39 @@ permissions:
   contents: read
   actions: read
 jobs:
+  financial-backfill-existing-sources:
+    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[financial-backfill-source]') }}
+    permissions:
+      contents: write
+      actions: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore exact offline kit and verify before evidence access
+        run: |
+          python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/financial-repair"
+          python "$RUNNER_TEMP/financial-repair/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/financial-repair/kit-parts" --destination "$RUNNER_TEMP/financial-repair/runtime"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I "$RUNNER_TEMP/financial-repair/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/financial-runtime.json"
+      - name: Freeze holdout and transfer only selected EXISTING originals; zero DART calls
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/backfill-accuracy-20261018/prepare_sources.py --output "$RUNNER_TEMP/financial-selected-originals"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: financial-backfill-selected-originals
+          path: |
+            ${{ runner.temp }}/financial-selected-originals/selected_originals.json.gz.b64
+            ${{ runner.temp }}/financial-selected-originals/selected_receipts.json
+            ${{ runner.temp }}/financial-selected-originals/transfer.json
+            ${{ runner.temp }}/financial-runtime.json
+          if-no-files-found: error
+          retention-days: 90
   long-backfill-continuation:
     if: ${{ contains(github.event.head_commit.message, '[long-backfill]') }}
     runs-on: ubuntu-latest

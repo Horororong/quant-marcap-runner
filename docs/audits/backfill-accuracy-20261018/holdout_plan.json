@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "seed": "financial-repair-holdout-20261018-v1",
+  "frozen_before_original_or_metric_inspection": true,
+  "main_sha": "2038421602956bf7abe098286d5a2edd554d849b",
+  "source_run": 39125956115,
+  "artifact": 12138475303,
+  "artifact_sha256": "e0aefa960b97c26b1a7987085828acf95ed8ed2d05ea7dbe3c04246982aa5a4d",
+  "strata": {"PARSED_4F": 6, "PARSED_PARTIAL": 6},
+  "selection": "Only changed receipts in this separately published batch, excluding prior audit20 and original60 by receipt; round-robin sorted fiscal_year,period, then SHA256(seed:receipt) within groups; distinct corp_code within each stratum. Freeze selected_receipts.json before reading new-metrics.csv or originals. No source-availability/value replacements; missing source remains UNVERIFIED. Short strata remain short. This tests recent legacy documents, not all years or industries; report actual diversity.",
+  "controls": "Independent human review of primary statement account, dates, current-period columns, units, literal whole monetary tokens and correction region. Control coordinates/literals fixed before comparison against revised extraction. Production parser output is never an oracle. Full PIT, identity/version chains and FX remain separate default-closed checks.",
+  "development_exclusions": "Do not use these receipts to tune parsing rules in this task. If a holdout fails, report it and reserve any fix for a separately labelled development cohort and new holdout.",
+  "investment_approved": false
+}
