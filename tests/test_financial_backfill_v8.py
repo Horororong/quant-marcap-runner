@@ -7,10 +7,10 @@ from scripts.legacy_native_financials import parse_native,select_verified
 class Appendix(unittest.TestCase):
  def rows(self,section,**kwargs):return select_verified(parse_native(m.fixture(**kwargs).replace('4. 재무제표',section))['candidates'])
  def test_current_primary_appendix_is_explicit(self):
-  for section in ['XI. 부속명세서','Ⅺ. 부속명세서','ⅩⅠ. 부속명세서','XI. 부속명세서 1. 재무제표 및 주석 가. 재무제표']:
+  for section in ['XI. 부속명세서','Ⅺ. 부속명세서','ⅩⅠ. 부속명세서','XI. 부속명세서 1. 재무제표 및 주석 가. 재무제표','XI. 재무제표 등','Ⅺ. 재무제표 등','ⅩⅠ. 재무제표 등']:
    r=self.rows(section)[0];self.assertEqual(r['amount_krw'],'1234000');self.assertEqual(r['period_end'],'2007-06-30');self.assertFalse(r['backtest_eligible'])
  def test_later_notes_and_segments_stay_closed(self):
-  for section in ['XI. 부속명세서 주석','XI. 부속명세서 부문별재무현황','XI. 부속명세서 합병전후']:
+  for section in ['XI. 부속명세서 주석','XI. 부속명세서 부문별재무현황','XI. 부속명세서 합병전후','XI. 재무제표 등 주석','XI. 재무제표 등 부문별재무현황']:
    self.assertEqual(self.rows(section),[])
  def test_appendix_does_not_prove_missing_source_contract(self):
   for kwargs in [{'unit':''},{'amount':'-'},{'end':'2006.06.30'}]:self.assertEqual(self.rows('XI. 부속명세서',**kwargs),[])
@@ -22,4 +22,10 @@ class Appendix(unittest.TestCase):
   r=select_verified(parse_native(t)['candidates'])[0]
   self.assertEqual(r['period'],'FY');self.assertEqual(r['measurement_basis'],'cumulative')
   self.assertEqual(r['period_start'],'2007-01-01');self.assertEqual(r['period_end'],'2007-06-30')
+ def test_unused_correction_template_is_not_a_correction_notice(self):
+  t=m.fixture().replace('<DOCUMENT>','<DOCUMENT><INSERTION><COMMENT>정정문서 작성시</COMMENT><LIBRARYLIST>정정신고(보고).LCommon</LIBRARYLIST></INSERTION>')
+  p=parse_native(t);self.assertFalse(p['correction_file']);self.assertTrue(select_verified(p['candidates']))
+ def test_actual_correction_inside_insertion_remains_a_correction(self):
+  t=m.fixture().replace('<DOCUMENT>','<DOCUMENT><INSERTION><COMMENT>정정문서 작성시</COMMENT><CORRECTION><TITLE>정정신고(보고)</TITLE></CORRECTION></INSERTION>')
+  self.assertTrue(parse_native(t)['correction_file'])
 if __name__=='__main__':unittest.main(verbosity=2)

@@ -19,5 +19,11 @@
     "development_reason": "A05 source explicitly BUSINESS REPORT for shortJan-Jun fiscal year; do not label H1 solely by6month duration. Independent A01-A08 manual starts/report kinds replace auditor tautological period_start fallback.",
     "holdout_used_to_tune_rule": false,
     "holdout_controls_unchanged": true
+  },
+  "v9_reserve_freeze": {
+    "version": "legacy-v9-primary-section-variants",
+    "parser_sha256": "b0764d8bf31c19cfe5035e44c8dcb1c3028ee7ca993bc70d07ece6f140b5fe19",
+    "before_reserve_original_review": true,
+    "reason": "Initial12 now retained as development regression cohort: explicitXI financial-statements heading variant and unused non-display correction-template labels; no reserve source/control/output inspected."
   }
 }

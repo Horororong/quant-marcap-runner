@@ -18,7 +18,7 @@ except ModuleNotFoundError as error:
         raise
     from legacy_financial_fields import choose_metric, norm_account
 
-PARSER_VERSION = "legacy-v8.1-primary-appendix-report-kind"
+PARSER_VERSION = "legacy-v9-primary-section-variants"
 DATE = re.compile(r"(\d{4})\s*[.년/-]\s*(\d{1,2})\s*[.월/-]\s*(\d{1,2})(?:\s*[.일])?")
 HEADING = re.compile(r"(?:연결)?(?:포괄손익계산서|손익계산서|대차대조표|재무상태표|현금흐름표|이익잉여금처분계산서|결손금처리계산서)")
 TERM = re.compile(r"(?:제\s*)?(\d+)\s*(?:\([당전]\))?\s*기")
@@ -114,6 +114,7 @@ class NativeTables(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.tables, self.stack, self.outside = [], [], []
         self.in_cover, self.cover_text = False, []
+        self.has_correction_section = False
         self.offsets = [0]
         for line in text.splitlines(keepends=True):
             self.offsets.append(self.offsets[-1] + len(line))
@@ -123,6 +124,8 @@ class NativeTables(HTMLParser):
         return self.offsets[line - 1] + column
 
     def handle_starttag(self, tag, attrs):
+        if tag == "correction":
+            self.has_correction_section = True
         if tag == "cover":
             self.in_cover = True
         if tag == "table":
@@ -339,7 +342,12 @@ def parse_native(text):
         report_period = "FY"
     elif "반기보고서" in cover_title:
         report_period = "H1"
-    correction_file = "정정신고" in compact(text[:50000])
+    # Native forms embed unused insertion-menu/library labels even in an
+    # original filing. They are not an actual correction notice. Retain every
+    # visible/structured correction region, including CORRECTION inside an
+    # INSERTION, and only exclude the explicit non-display metadata elements.
+    probe = re.sub(r"<(COMMENT|LIBRARYLIST|FILENAME)\b[^>]*>[\s\S]*?</\1\s*>", "", text[:50000], flags=re.I)
+    correction_file = reader.has_correction_section or "정정신고" in compact(probe)
     zone, amendment, contract = False, "UNKNOWN" if correction_file else "ORIGINAL_FILED", None
     observations, issues, present = [], [], False
     for table in reader.tables:
@@ -354,9 +362,10 @@ def parse_native(text):
         # Opening this section does not authenticate any number: every table
         # still needs a fresh primary statement heading, current term/dates,
         # explicit unit and an unambiguous physical amount column.
-        events = list(re.finditer(r"4[.]재무제표|가[.]재무제표|다[.]연결재무제표|(?:XI|Ⅺ|ⅩⅠ)[.]부속명세서|부문별재무현황|사업부문별재무|합병전[ㆍ·]?후|외화자산과부채|주석", prefix))
+        events = list(re.finditer(r"4[.]재무제표|가[.]재무제표|다[.]연결재무제표|(?:XI|Ⅺ|ⅩⅠ)[.](?:부속명세서|재무제표등)|부문별재무현황|사업부문별재무|합병전[ㆍ·]?후|외화자산과부채|주석", prefix))
         for event in events:
-            zone = event.group() in {"4.재무제표", "가.재무제표", "다.연결재무제표", "XI.부속명세서", "Ⅺ.부속명세서", "ⅩⅠ.부속명세서"}
+            zone = (event.group() in {"4.재무제표", "가.재무제표", "다.연결재무제표"}
+                    or bool(re.fullmatch(r"(?:XI|Ⅺ|ⅩⅠ)[.](?:부속명세서|재무제표등)", event.group())))
         rows = table["rows"]
         if not rows:
             continue
