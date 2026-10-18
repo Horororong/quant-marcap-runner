@@ -10,6 +10,7 @@ import os
 import socket
 import ssl
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib import error, parse, request
 import xml.etree.ElementTree as ET
@@ -38,7 +39,7 @@ def preserve_error_response(content, receipt):
 def progress(stage, **fields):
     allowed = {'receipt','attempt','http_status','dart_status','bytes','elapsed_seconds','checkpoint','run_id','stop_reason'}
     safe = {k:v for k,v in fields.items() if k in allowed}
-    record = dict(stage=stage, monotonic=time.monotonic(), **safe)
+    record = dict(stage=stage, updated_at_utc=datetime.now(timezone.utc).isoformat(), monotonic=time.monotonic(), **safe)
     dest=os.getenv('LEGACY_DART_PROGRESS_FILE')
     if dest:
         path=Path(dest);path.parent.mkdir(parents=True,exist_ok=True)
@@ -63,9 +64,12 @@ def get(url, params=None, timeout=35, *, _opener=None):
         raise ValueError('Unapproved DART endpoint')
     connect=10.0;read=15.0;wall=min(float(timeout),35.0)
     started=time.monotonic();limit=32*1024*1024
+    receipt=str((params or {}).get('rcept_no',''))
     class Connection(http.client.HTTPSConnection):
         def connect(self):
+            progress('connect_start',receipt=receipt)
             super().connect();self.sock.settimeout(read)
+            progress('read_start',receipt=receipt,elapsed_seconds=round(time.monotonic()-started,3))
     class Handler(request.HTTPSHandler):
         def https_open(self, req):
             # TLS verification belongs to the explicit default SSLContext.

@@ -149,3 +149,27 @@ tests/test_legacy_dart_parser.py is migrated to standard unittest, preserving
 all numeric/alias/source protections, requiring dates for valid loss extraction,
 testing refusal of unheaded/NaN values and preventing implicit v5 replay. It runs
 in the dedicated fixed-kit CI; no original source fixture/oracle is overwritten.
+
+## Verified predeployment checkpoint
+
+Candidate8b1c845dfc332faea88382f1f414602cdbbad4b2/run39171975276 completed
+SUCCESS. Actual fixed-kit financial61, legacy parser10, service5, phase5 and
+source-quality6 tests, DSL contract check, independent12 source replay/audit and
+original22/518/64/60 protection all executed. Recreated audit CSV/summary bytes
+matched. Broad/schema skipped workflows are not counted as successful tests.
+
+Live authenticated shadow2 completed in18.545seconds. Both prior800 receipts now
+returned original ZIPs, but each has independently recorded malformed XML:
+20041112000277 mismatched tag and20041112000279 invalid token. Both are SOURCE_GAP,
+0 published monetary rows, not NO_METRICS or financial PASS. The original3998
+quarantine manifest/state is unchanged. This demonstrates the actual fixed-kit
+HTTP route and correct distinction between prior service outage and current
+document damage, not financial accuracy of those documents.
+
+Raw shadow transfer Git blob a04e3097e3e23753df03e2dbb54a46c898db2d59,
+compressed SHA256 d36e7c5056d2c51053a83e01439c1c4bfa142d468537bf75655a3daaba805cfc.
+Artifacts:12152837621 financial-shadow-live-HTTP and12153515057 bounded-financial-
+fixed-kit-validation. PR39 is separate from the research branch and remains
+unmerged until its final head CI completes. Final log instrumentation adds
+explicit UTC/connect/read stages without changing source parsing/HTTP semantics.
+Operating checkout is pinned to the trigger SHA, not a moving main ref.
