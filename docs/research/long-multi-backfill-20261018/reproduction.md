@@ -125,3 +125,16 @@ explicit-long-research/multi-asset-research/continuous-baseline-research의5개�
 수집 job들은 과거의 정확한 SHA에만 한정되어 최종 검증 때 새 원문 API를 호출하지 않는다.
 스킵된 기본 Strategy DSL workflow는 PASS로 세지 않는다. 최종 job의 실제 SHA·상태·
 명령·브라우저 PNG/JSON·산출물은 해당 Actions artifact에서 확인한다.
+
+## 최종 업로드 결함의 후속 최소 수정
+
+첫 최종 CI39128696160 /83d07aa4738f82570a8784392b6dbcb3adee4097의
+long-backfill-continuation117679175133은 계산·32금액 판정 재현·192세션 JSON/한국어·
+독립576장부일·Chrome 실제 상호작용 단계는 성공했으나 artifact 업로드 단계가 실패했다.
+원문 오류는 `test_fast_backfill_phase*.py.log`의 `Asterisk *` 파일명 거부다.
+이 job를 PASS로 표시하지 않는다. 테스트 검색 패턴을 변경하지 않고 로그 basename만
+안전한 ASCII와 원래 이름 SHA8로 만든다. commands.json에 실제 log_file을 기록하고
+아티팩트의 모든 파일 이름을 검사한다. 로컬 원래 전체 명령을 새 폴더에서 다시
+실행해 숫자 해시·원문 판정이 그대로이고 금지 문자가 없음을 확인했다. 이 후속 커밋은
+원문 수집·원자료·전략·수익률·허용오차·금액 판정을 바꾸지 않는다. 실패 증거는
+results/ci_39128696160_upload_failure.json에 보존했다.

@@ -1,0 +1,193 @@
+{
+  "status": "PASS_SOFTWARE_AND_RESEARCH_MODEL_NOT_FINANCIAL_OR_INVESTMENT_CERTIFICATION",
+  "original_baseline_files": 211,
+  "existing_original_2026_and_index_unchanged": true,
+  "sessions": 192,
+  "ledger": {
+    "status": "PASS_MODEL_ACCOUNTING",
+    "rows": 576,
+    "sessions": 192,
+    "max_absolute_error": 2.7939677238464355e-08,
+    "currency_tolerance": 1e-05,
+    "official_extension_days": 5,
+    "zero_advanced_sale_cash": true,
+    "source": "Original parquet plus direct raw official STK JSON fields, NOT production append loader",
+    "investment_approved": false
+  },
+  "commands": [
+    {
+      "name": "test_fast_backfill_phase*.py",
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_fast_backfill_phase*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 0.481,
+      "log_file": "test_fast_backfill_phase_.py-413b2a1c.log",
+      "log_sha256": "cd832ae7cf1e8c9f4af434cfa79b2a0b7e8c18020e9fa4279cc87463998f9631"
+    },
+    {
+      "name": "test_dart_service_status.py",
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_dart_service_status.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 0.079,
+      "log_file": "test_dart_service_status.py-2c94339f.log",
+      "log_sha256": "69be650743e1a1c1b33757491b92c6d06f84062c47c2c1b4243ea69748b47c4d"
+    },
+    {
+      "name": "test_audited_source_extensions.py",
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_audited_source_extensions.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 0.988,
+      "log_file": "test_audited_source_extensions.py-578cc679.log",
+      "log_sha256": "6819de74b6349d6cdf10709399799cad2e4ee0aed0b23933a1d84707ebf324e5"
+    },
+    {
+      "name": "independent_financial",
+      "args": [
+        "docs/research/long-multi-backfill-20261018/verify_independent_audit.py",
+        "--output",
+        "/workspace/long-multi-backfill-20261018/artifact-name-fixed/financial"
+      ],
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 0.103,
+      "log_file": "independent_financial-88391340.log",
+      "log_sha256": "5a1336d9da17237cb3eb5ab1647f453c079d81adc0c7c79d207007647c9b22a2"
+    },
+    {
+      "name": "inventory",
+      "args": [
+        "scripts/research_workbench.py",
+        "inventory",
+        "--output",
+        "/workspace/long-multi-backfill-20261018/artifact-name-fixed/inventory.json"
+      ],
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 0.474,
+      "log_file": "inventory-b11a85b2.log",
+      "log_sha256": "5ccb3807a5eaf59a3607c9b46e3e46eb3918cfef35b49c1578dccf69c42842fe"
+    },
+    {
+      "name": "examples",
+      "args": [
+        "scripts/research_workbench.py",
+        "examples",
+        "--output",
+        "/workspace/long-multi-backfill-20261018/artifact-name-fixed/examples.json"
+      ],
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 0.464,
+      "log_file": "examples-c590b3c9.log",
+      "log_sha256": "bfffea6cc571d6823c5e0a963e49e0cf3cef3e19bd12d12a045a2eea58b01351"
+    },
+    {
+      "name": "json",
+      "args": [
+        "scripts/research_workbench.py",
+        "run",
+        "--strategy",
+        "config/strategies/research_size_top1_2026_asof1016_v1.json",
+        "--report-periods",
+        "config/reports/research_continuous_2025.json",
+        "--output-dir",
+        "/workspace/long-multi-backfill-20261018/artifact-name-fixed/json"
+      ],
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 15.09,
+      "log_file": "json-02bd175f.log",
+      "log_sha256": "a9b2fa9d98134135b183564215317d20e35dc7c316d8f2f5f7442d23e6c070f0"
+    },
+    {
+      "name": "korean",
+      "args": [
+        "scripts/research_workbench.py",
+        "run",
+        "--request",
+        "기간:2026-01-01~2026-10-16;시장:코스피·코스닥;필터:시가총액>=10조원;팩터:시가총액 높은;포트폴리오:상위1개;리밸런싱:4월말;체결:1거래일뒤종가;비용:수수료1.5bp,매도세15bp,스프레드3bp,슬리피지5bp;벤치마크:코스피",
+        "--research-model-from",
+        "config/strategies/research_size_top1_2026_asof1016_v1.json",
+        "--report-periods",
+        "config/reports/research_continuous_2025.json",
+        "--output-dir",
+        "/workspace/long-multi-backfill-20261018/artifact-name-fixed/korean"
+      ],
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 14.991,
+      "log_file": "korean-e35fbb1a.log",
+      "log_sha256": "04890c10865d3586a61896aa4557da4d3dbbbb7edf2630817efc4a1cf41ab10a"
+    }
+  ],
+  "financial_verdicts": {
+    "samples": 20,
+    "sample_verdicts": {
+      "FAIL": 12,
+      "UNVERIFIED": 8
+    },
+    "financial_controls": 32,
+    "financial_primary_exact": {
+      "FAIL": 12,
+      "PASS": 16,
+      "UNVERIFIED": 4
+    },
+    "literal_normalization": {
+      "PASS": 20,
+      "FAIL": 4,
+      "UNVERIFIED": 8
+    },
+    "period_checks": {
+      "FAIL": 28,
+      "UNVERIFIED": 4
+    },
+    "nonmonetary_checks": {
+      "UNVERIFIED": 64,
+      "FAIL": 6,
+      "PASS": 4
+    },
+    "cohorts": {
+      "LATEST_CHANGED": 16,
+      "OLDER_QUARANTINE": 4
+    },
+    "no_metrics_latest_batch": 0,
+    "no_metrics_stratum_shortfall": 4,
+    "parser": "legacy-v5-single-amount",
+    "main_snapshot": "78ab49df4b25e0b71df0fc4366fcc7f5d0a179a9",
+    "research_parser_certified_by_this_audit": false,
+    "investment_approved": false,
+    "limits": "Only32 reviewed core fields, not remaining fields/CFS candidates or full population. Full source ZIP identities retained; literal grids do not replace original archives. Source-date/currency/mapping/version ambiguity never passed."
+  },
+  "PIT_certified": 0,
+  "investment_approved": false,
+  "source_requests": 0
+}

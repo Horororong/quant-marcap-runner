@@ -1,5 +1,5 @@
 """Offline reproduction; no API, collection, state reset or original mutation."""
-import argparse,hashlib,json,subprocess,sys,time
+import argparse,hashlib,json,re,subprocess,sys,time
 from pathlib import Path
 import pandas as pd
 HOME=Path(__file__).resolve().parent;ROOT=HOME.parents[2];sys.path.insert(0,str(HOME))
@@ -9,9 +9,13 @@ REQUEST='기간:2026-01-01~2026-10-16;시장:코스피·코스닥;필터:시가�
 def verify(out,check):
  out.mkdir(parents=True,exist_ok=False);commands=[]
  def command(name,args,expected=0):
-  start=time.monotonic();log=out/(name+'.log')
+  # Linux permits '*' in filenames, GitHub artifact storage does not. Keep the
+  # original test-discovery pattern in args/name; only encode the log basename.
+  log_name=re.sub(r'[^A-Za-z0-9._-]+','_',name)+'-'+hashlib.sha256(name.encode()).hexdigest()[:8]+'.log'
+  assert re.fullmatch(r'[A-Za-z0-9._-]+',log_name)
+  start=time.monotonic();log=out/log_name
   with log.open('xb') as stream:r=subprocess.run([sys.executable,'-I',*args],cwd=ROOT,stdout=stream,stderr=subprocess.STDOUT)
-  commands.append(dict(name=name,args=args,exit_code=r.returncode,expected=expected,seconds=round(time.monotonic()-start,3),log_sha256=hashlib.sha256(log.read_bytes()).hexdigest()))
+  commands.append(dict(name=name,args=args,exit_code=r.returncode,expected=expected,seconds=round(time.monotonic()-start,3),log_file=log_name,log_sha256=hashlib.sha256(log.read_bytes()).hexdigest()))
   (out/'commands.json').write_text(json.dumps(commands,ensure_ascii=False,indent=2)+'\n');print(name,r.returncode,flush=True)
   assert r.returncode==expected,(name,r.returncode,'Preserved log; do not retry without diagnosis')
  for pattern in ['test_fast_backfill_phase*.py','test_dart_service_status.py','test_audited_source_extensions.py']:
@@ -51,6 +55,7 @@ def verify(out,check):
   assert hashlib.sha256((ROOT/p).read_bytes()).hexdigest()==pin['sha256']
  (out/'numeric_manifest.json').write_text(json.dumps(records,indent=2)+'\n')
  summary=dict(status='PASS_SOFTWARE_AND_RESEARCH_MODEL_NOT_FINANCIAL_OR_INVESTMENT_CERTIFICATION',original_baseline_files=len(pins),existing_original_2026_and_index_unchanged=True,sessions=192,ledger=result,commands=commands,financial_verdicts=json.loads((out/'financial/audit_summary.json').read_bytes()),PIT_certified=0,investment_approved=False,source_requests=0)
+ assert all(not set(p.name).intersection('<>:"/\\|?*') for p in out.rglob('*') if p.is_file()),'Artifact paths must be portable; do not omit failed logs'
  (out/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:v for k,v in summary.items() if k!='commands'}))
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--check',action='store_true');a=p.parse_args();verify(a.output,a.check)
