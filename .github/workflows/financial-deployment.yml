@@ -1,7 +1,7 @@
 name: Financial bounded deployment evidence
 on:
   push:
-    branches: ['deploy/financial-backfill-v9-20261018']
+    branches: ['deploy/financial-backfill-v9-20261018', main]
   pull_request:
     branches: [main]
     paths: ['scripts/*financial*', 'scripts/*dart*', 'scripts/*legacy*', '.github/workflows/financial-deployment.yml']
@@ -9,6 +9,96 @@ permissions:
   contents: read
   actions: read
 jobs:
+  fixed-kit-financial-validation:
+    if: github.event_name == 'pull_request' || contains(github.event.head_commit.message, '[financial-fixed-kit-only]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore original immutable offline kit
+        run: |
+          python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: Actual rollout transport deadline and financial regressions; source cells are separate oracles
+        run: |
+          PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
+          "$PY" -I -m unittest discover -s tests -p 'test_financial*.py' -v
+          "$PY" -I -m unittest discover -s scripts -p 'test_dart_service_status.py' -v
+          "$PY" -I -m unittest discover -s scripts -p 'test_fast_backfill_phase_policy.py' -v
+          "$PY" -I -m unittest discover -s scripts -p 'test_legacy_document_quality.py' -v
+          "$PY" -I scripts/export_strategy_dsl_contract.py --check
+          "$PY" -I scripts/financial_deployment_replay.py --source docs/audits/financial-deployment-20261018/independent_originals.json.gz.b64 --output "$RUNNER_TEMP/new12-replay"
+          "$PY" -I scripts/financial_deployment_audit.py --source docs/audits/financial-deployment-20261018/independent_originals.json.gz.b64 --controls docs/audits/financial-deployment-20261018/independent_controls.json --replay "$RUNNER_TEMP/new12-replay" --output "$RUNNER_TEMP/new12-audit"
+          cmp "$RUNNER_TEMP/new12-audit/details.csv" docs/audits/financial-deployment-20261018/results/details.csv
+          cmp "$RUNNER_TEMP/new12-audit/summary.json" docs/audits/financial-deployment-20261018/results/summary.json
+      - uses: actions/checkout@v4
+        with:
+          ref: 0d3669bd45a77d7d7cc03cabcac1fad7963461ff
+          path: audit-reference
+      - name: Validate candidate code against immutable22 financial controls,518/64 and original60
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
+          for file in backfill_dart_legacy_2000_2014.py backfill_super_value_fast.py legacy_native_financials.py legacy_financial_fields.py legacy_parser_migration.py dart_service_status.py dart_http.py; do
+            cp "scripts/$file" "audit-reference/scripts/$file"
+          done
+          cp scripts/test_dart_service_status.py audit-reference/scripts/test_dart_service_status.py
+          "$PY" -I audit-reference/docs/audits/version-pit-stage6-20261014/verify_preserved60.py --output "$RUNNER_TEMP/preserved60"
+          "$PY" -I audit-reference/docs/audits/backfill-accuracy-20261018/validate.py --check --originals "$RUNNER_TEMP/preserved60/originals60.zip" --runtime "$RUNNER_TEMP/fixed/runtime" --output "$RUNNER_TEMP/protected-financial-audit"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bounded-financial-fixed-kit-validation
+          path: |
+            ${{ runner.temp }}/new12-replay
+            ${{ runner.temp }}/new12-audit
+            ${{ runner.temp }}/protected-financial-audit
+            ${{ runner.temp }}/preserved60/verification.json
+            ${{ runner.temp }}/runtime.json
+          if-no-files-found: error
+          retention-days: 90
+  shadow-live-http:
+    if: github.event_name == 'push' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[financial-shadow-http]')
+    permissions:
+      contents: write
+    concurrency:
+      group: super-value-fast-pit-backfill
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore original fixed kit
+        run: |
+          python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: Existing authenticated DART route, first2 prior800 candidates, no historic state reset
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+        run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_rollout.py --mode shadow-http --selection docs/audits/financial-deployment-20261018/http_canary_selection.json --max-docs 2 --output "$RUNNER_TEMP/http-shadow"'
+      - name: Public source transfer without credentials or ref changes
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_rollout_transfer.py "$RUNNER_TEMP/http-shadow"'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: financial-shadow-live-HTTP
+          path: |
+            ${{ runner.temp }}/http-shadow
+            ${{ runner.temp }}/runtime.json
+          if-no-files-found: error
+          retention-days: 90
   independent-source-freeze:
     if: github.event_name == 'push' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[independent-source-freeze]')
     permissions:

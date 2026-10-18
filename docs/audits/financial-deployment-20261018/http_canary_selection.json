@@ -1,0 +1,49 @@
+{
+  "samples": [
+    {
+      "corp_code": "00109754",
+      "corp_name": "대림바스",
+      "stock_code": "005750",
+      "corp_cls": "Y",
+      "report_nm": "분기보고서 (2004.09)",
+      "rcept_no": "20041112000277",
+      "flr_nm": "대림바스",
+      "rcept_dt": "2004-11-12",
+      "rm": "",
+      "index_task_key": "2004_Q4_Y",
+      "query_corp_cls": "Y",
+      "report_kind": "QX",
+      "period_end": "2004-09-01",
+      "period_year": "2004",
+      "period_month": "9",
+      "fiscal_year_end_month": "12",
+      "period": "Q3",
+      "fiscal_year": "2004",
+      "mapping_method": "corp_code_active",
+      "mapping_confidence": "1.0"
+    },
+    {
+      "corp_code": "00250614",
+      "corp_name": "삼영엠텍",
+      "stock_code": "054540",
+      "corp_cls": "K",
+      "report_nm": "분기보고서 (2004.09)",
+      "rcept_no": "20041112000279",
+      "flr_nm": "삼영엠텍",
+      "rcept_dt": "2004-11-12",
+      "rm": "",
+      "index_task_key": "2004_Q4_K",
+      "query_corp_cls": "K",
+      "report_kind": "QX",
+      "period_end": "2004-09-01",
+      "period_year": "2004",
+      "period_month": "9",
+      "fiscal_year_end_month": "12",
+      "period": "Q3",
+      "fiscal_year": "2004",
+      "mapping_method": "corp_code_active",
+      "mapping_confidence": "1.0"
+    }
+  ],
+  "reason": "First2 preserved prior confirmed800 candidates in fixed manifest order. No old state reset, no main writes, at most2 requests per document, stop on first service outage."
+}

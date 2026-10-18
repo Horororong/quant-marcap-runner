@@ -3,6 +3,8 @@ from __future__ import annotations
 # manual-safe-trigger-20260924-1
 
 import importlib.util
+import json
+import time
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone, timedelta
@@ -260,6 +262,9 @@ def legacy_fast() -> dict:
     # including corrections, are collected rather than a strategy-specific subset.
     if LEGACY_LIMIT == 0:
         return {"legacy_run_docs": 0, "legacy_scope": "DISABLED_BY_BATCH_LIMIT"}
+    # Reject an unreviewed parser-version migration before index requests or
+    # the coverage-writing finally block can alter the old operational status.
+    legacy.check_parser_migration()
     guard = legacy.new_control()
     legacy.RUN_CONTROL = guard
     try:
@@ -283,12 +288,23 @@ def main() -> None:
     if not os.getenv("DART_API_KEY", "").strip():
         raise RuntimeError("DART_API_KEY is missing")
 
+    phase_start = time.monotonic()
+    print(json.dumps(dict(phase="legacy_start",limit=LEGACY_LIMIT)),flush=True)
     legacy_result = legacy_fast()
+    print(json.dumps(dict(phase="legacy_end",elapsed_seconds=round(time.monotonic()-phase_start,3),stop_reason=legacy_result.get("legacy_stop_reason"),completed=legacy_result.get("legacy_run_docs"))),flush=True)
     # Legacy gets its bounded quota first. Never continue API calls after 020.
     modern_failure = None
     modern_result = {"modern_run_tasks": 0, "modern_skipped": True}
-    if (MODERN_LIMIT > 0 and not legacy_result.get("legacy_rate_limited")
-            and legacy_result.get("legacy_stop_reason") != "FATAL_API"):
+    try:
+        from scripts.fast_backfill_phase_policy import modern_phase_decision
+    except ModuleNotFoundError as error:
+        if error.name != "scripts":
+            raise
+        from fast_backfill_phase_policy import modern_phase_decision
+    start_modern, phase_reason = modern_phase_decision(MODERN_LIMIT, legacy_result)
+    modern_result["modern_phase_decision"] = phase_reason
+    print(json.dumps(dict(phase="modern_decision",start=start_modern,reason=phase_reason,limit=MODERN_LIMIT)),flush=True)
+    if start_modern:
         try:
             modern_result = modern_fast()
         except Exception as exc:
@@ -312,6 +328,10 @@ def main() -> None:
     print(pd.DataFrame([row]).to_string(index=False), flush=True)
     if legacy_result.get("legacy_stop_reason") == "FATAL_API":
         raise RuntimeError("DART authentication/service failure; saved progress preserved")
+    if legacy_result.get("legacy_stop_reason") == "SERVICE_MAINTENANCE_800":
+        raise RuntimeError("DART service maintenance (800); saved progress preserved; receipts deferred, not quarantined")
+    if str(legacy_result.get("legacy_stop_reason", "")).startswith("TRANSIENT_"):
+        raise RuntimeError("DART transient service/transport outage; saved progress preserved; receipts deferred")
     if modern_failure is not None:
         raise RuntimeError(f"Modern DART phase failed ({type(modern_failure).__name__}); "
                            "legacy progress and current failure status preserved") from None

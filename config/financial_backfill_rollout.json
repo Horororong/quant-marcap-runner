@@ -1,0 +1,13 @@
+{
+  "mode": "CANARY_ONCE",
+  "maximum_documents": 2,
+  "hard_maximum_documents": 100,
+  "parser_version": "legacy-v9.1-primary-source-metadata",
+  "quality_version": "financial-quality-v1-source-linked-not-PIT",
+  "automatic_schedule_enabled": false,
+  "automatic_publication_enabled": false,
+  "collection_policy": "Only never-classified mapped receipts. All historical parser states and quarantine remain untouched.",
+  "financial_storage": "quality_v9 candidates only. No normalized or v5 overwrites.",
+  "investment_PIT": "0/6",
+  "next_scale": "Separate explicit review and approval; no automatic2000 fallback"
+}
