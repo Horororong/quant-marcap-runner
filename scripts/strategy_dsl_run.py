@@ -184,6 +184,7 @@ def run_checked_strategy(
     *,
     postprocess: bool = True,
     report_periods: str | Path | list[dict] | None = None,
+    inspect_planned: bool = False,
 ) -> dict[str, Any]:
     """Run a frozen DSL through preflight and publish only validated outputs.
 
@@ -254,8 +255,13 @@ def run_checked_strategy(
         complete("input")
 
         phase("preflight")
-        preflight = preflight_strategy(snapshot, root)
+        preflight = (preflight_strategy(snapshot, root, inspect_planned=True) if inspect_planned
+                     else preflight_strategy(snapshot, root))
         _save_json(out / "preflight.json", preflight)
+        if 'issues' in preflight:
+            _save_json(out / 'readiness_incidents.json',dict(strategy_fingerprint=spec.fingerprint(),
+                source_files=preflight.get('source_files',[]),issues=preflight['issues'],
+                scope='planned exposure diagnostics, never automatic event registration or return overrides'))
         if preflight["status"] in {"capability_gap", "data_gap"}:
             record["gap_phase"] = preflight["phase"]
             return finish(preflight["status"], preflight["error"])

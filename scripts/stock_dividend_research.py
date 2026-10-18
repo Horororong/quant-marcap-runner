@@ -11,6 +11,24 @@ from decimal import Decimal
 VERSION='1'
 FIELDS={'version','event_file','event_sha256','quantity_basis','rights_valuation','conditional_fraction','settlement_basis','settlement_lag_sessions','distribution_tax_basis'}
 
+def selected_action_scope(repo_root, spec, targets, start, end):
+ """Positive selections plus verified successors, never universe filtering.
+
+ All source rows still participate in selection. Unheld dividend catalogs must
+ not block an unrelated portfolio, but held rights retain the full lifecycle.
+ """
+ from corporate_action_registry import load_corporate_actions
+ frames=targets.values() if isinstance(targets,dict) else [targets]
+ used=set()
+ for weights in frames:used.update(weights.columns[weights.ne(0).any(axis=0)])
+ if spec.research is not None:
+  events=load_corporate_actions(repo_root,start=start,end=end)
+  while not events.empty:
+   successors=set(events.loc[events.predecessor_code.isin(used)&events.event_type.eq('stock_merger'),'successor_code'])
+   if successors.issubset(used):break
+   used.update(successors)
+ return used
+
 def model_schema():
  return {'type':'object','additionalProperties':False,'required':sorted(FIELDS),'properties':{
   'version':{'const':VERSION},'event_file':{'type':'string','pattern':r'^config/research/[A-Za-z0-9_/-]+\.json$'},

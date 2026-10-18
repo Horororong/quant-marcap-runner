@@ -1,0 +1,100 @@
+{
+  "requests": 10,
+  "retries": 0,
+  "responses": [
+    {
+      "file": "20210326802215.zip",
+      "http": 200,
+      "content_type": "application/x-msdownload;charset=UTF-8",
+      "bytes": 3556,
+      "sha256": "2f6a7f3c93f8f1742d4bcf0efee5bea9a6f29b4becef932665ef1c20b9c50f48",
+      "source": "OpenDART document.xml"
+    },
+    {
+      "file": "20210326901313.zip",
+      "http": 200,
+      "content_type": "application/x-msdownload;charset=UTF-8",
+      "bytes": 3251,
+      "sha256": "65e6d841d2c8e61bac9ef8732ae38cd4918a71f7c8c0c03f781552c650560126",
+      "source": "OpenDART document.xml"
+    },
+    {
+      "file": "068270_listing_search.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 3101,
+      "sha256": "f4dfe518d1bd365fa8ad8efb337504bf314f019e27a30637f3270d5dc8c7a02b",
+      "source": "https://kind.krx.co.kr/disclosure/details.do"
+    },
+    {
+      "file": "091990_listing_search.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 2672,
+      "sha256": "e48b7c02bbd1ba78b0a597cd1352a5de866b62a677a89804ed867d156eb37d39",
+      "source": "https://kind.krx.co.kr/disclosure/details.do"
+    },
+    {
+      "file": "20210419000083_viewer.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 24336,
+      "sha256": "0dcd12bdfa7954f5e497f47f60622fbfee2b4a82b571cdceac88d109fc1c395e",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchInitInfo&acptNo=20210419000083"
+    },
+    {
+      "file": "20210419000083_path.html",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 968,
+      "sha256": "dd9e2d9c344836a7e4d1bab441f90efc8a4984c0d846feaefb26438e01af4cb3",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchContents&docNo=20210419000132"
+    },
+    {
+      "file": "20210419000083_body.html",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 659,
+      "sha256": "772777e282ad5e8ee994e6620899ab862b24a06357fa6ade6454c99bf5d6adf5",
+      "source": "https://kind.krx.co.kr/external/2021/04/19/000083/20210419000132/68154.htm"
+    },
+    {
+      "file": "20210420000350_viewer.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 24432,
+      "sha256": "0513ab456910c2a144818bc124a52bf17f76f9dde58cadaca474abb4ab3aee1a",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchInitInfo&acptNo=20210420000350"
+    },
+    {
+      "file": "20210420000350_path.html",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 968,
+      "sha256": "f9d93c5eed40784d9b7d3b9f663d6d9c82805b9fea7bdf353d2b01f8ea74d2c5",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchContents&docNo=20210420001114"
+    },
+    {
+      "file": "20210420000350_body.html",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 6685,
+      "sha256": "d51454ffe0b748a01d4cea99ace5508d18de2de3737a4fc044575820df04ec68",
+      "source": "https://kind.krx.co.kr/external/2021/04/20/000350/20210420001114/70791.htm"
+    }
+  ],
+  "errors": [],
+  "candidates": [
+    {
+      "code": "068270",
+      "receipt": "20210419000083",
+      "row": " \r\n\t\t\t\t 1 \r\n\t\t\t\t 2021-04-19 17:31 \r\n\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t     셀트리온         \r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t  추가상장(주식배당)  \r\n\t\t\t\t 유가증권시장본부 \r\n\t\r\n\t\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\t  공시차트  \r\n\t\t\t\t\t  주가차트  \r\n\t\t\t\t\r\n\t\t\t\t \r\n\t\t\t\r\n\t\t\t "
+    },
+    {
+      "code": "091990",
+      "receipt": "20210420000350",
+      "row": " \r\n\t\t\t\t 1 \r\n\t\t\t\t 2021-04-20 15:54 \r\n\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t     셀트리온헬스케어     \r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t  추가상장(주식배당)  \r\n\t\t\t\t 코스닥시장본부 \r\n\t\r\n\t\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t \r\n\t\t\t\r\n\t\t\t "
+    }
+  ],
+  "investment_approved": false
+}

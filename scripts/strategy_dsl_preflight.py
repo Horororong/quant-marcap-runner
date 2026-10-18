@@ -68,7 +68,11 @@ def _error_payload(
 def preflight_strategy(
     strategy_json: str | Path,
     repo_root: str | Path,
+    *, inspect_planned: bool = False,
 ) -> dict[str, Any]:
+    if inspect_planned:
+        from research_planned_readiness import inspect_planned_strategy
+        return inspect_planned_strategy(strategy_json, repo_root)
     strategy_path = Path(strategy_json)
     root = Path(repo_root).resolve()
 

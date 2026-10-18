@@ -9,12 +9,12 @@ from decimal import Decimal
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 
 WORKBENCH_CONTRACT={
- 'version':'1','entrypoint':'scripts/research_workbench.py',
+ 'version':'2','entrypoint':'scripts/research_workbench.py',
  'commands':['capabilities','inventory','translate','check','run'],
  'korean_input':'exact labeled Korean clauses separated by semicolon; unknown/missing/duplicate clauses rejected',
  'required_clauses':['기간','시장','팩터','포트폴리오','리밸런싱','체결','비용','벤치마크'],
  'optional_clauses':['필터'],'translation':'registered factor/direction aliases and strict StrategySpec only',
- 'readiness':'existing preflight; full-panel candidates are diagnostics, not selected exposure or certified execution',
+ 'readiness':'shared planned preflight v1: annual complete signal cross-sections, selected cohorts and pending rights; exact structured incidents; engine liquidity/NAV still mandatory',
  'execution':'run_checked_strategy -> PROJECT -> CURRENT; no alternative backtester/calculator',
  'certification':'RESEARCH_ONLY; neither inventory metadata, model assumptions nor software success is PIT approval'}
 ROOT=Path(__file__).resolve().parents[1]
@@ -98,7 +98,7 @@ def inventory(root):
 
 def check(path,root,diagnose=False):
  from strategy_dsl_preflight import preflight_strategy
- result=preflight_strategy(path,root)
+ result=preflight_strategy(path,root,inspect_planned=True)
  from research_readiness import BLOCKER_CLASSES
  result['blocker_classes']=BLOCKER_CLASSES
  result['research_certification']=dict(investment_approved=False,account_reconstruction=False,held_return_validation='only actual engine execution can validate selected holdings at1bp')
@@ -130,12 +130,12 @@ def main():
   else:
    from strategy_dsl_run import run_checked_strategy
    if bool(a.strategy)==bool(a.request):raise ValueError('exactly one of --strategy/--request required')
-   if a.strategy:result=run_checked_strategy(a.strategy,a.repo_root,a.output_dir,report_periods=a.report_periods)
+   if a.strategy:result=run_checked_strategy(a.strategy,a.repo_root,a.output_dir,report_periods=a.report_periods,inspect_planned=True)
    else:
     model=json.loads(a.research_model_from.read_text())['research'] if a.research_model_from else None
     with tempfile.TemporaryDirectory(prefix='korean-dsl-') as temporary:
      f=Path(temporary)/'request.json';f.write_text(json.dumps(korean_spec(a.request,research=model).to_dict(),ensure_ascii=False))
-     result=run_checked_strategy(f,a.repo_root,a.output_dir,report_periods=a.report_periods)
+     result=run_checked_strategy(f,a.repo_root,a.output_dir,report_periods=a.report_periods,inspect_planned=True)
   if a.output:
    with a.output.open('x') as stream:json.dump(result['strategy'] if a.command=='translate' else result,stream,ensure_ascii=False,indent=2)
   print(json.dumps({k:v for k,v in result.items() if k!='artifacts'},ensure_ascii=False,indent=2,default=str))

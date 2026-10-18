@@ -183,7 +183,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "25",
+  "dsl_machine_contract_version": "26",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -1095,7 +1095,14 @@
     "optional_clauses": [
       "필터"
     ],
-    "readiness": "existing preflight; full-panel candidates are diagnostics, not selected exposure or certified execution",
+    "planned_exposure": {
+      "failures": "structured facts/model/definition/capability/contract incidents; no event inference or universe exclusion",
+      "limits": "execution liquidity/weight drift still require common engine; possible trade constraints remain warnings",
+      "scope": "planned positive cohorts and pending rights; no NAV/cost/drift; not investment certification",
+      "source": "annual bounded-memory reads, all historical signal cross-sections before selected-observation projection",
+      "version": "1"
+    },
+    "readiness": "shared planned preflight v1: annual complete signal cross-sections, selected cohorts and pending rights; exact structured incidents; engine liquidity/NAV still mandatory",
     "required_clauses": [
       "기간",
       "시장",
@@ -1107,7 +1114,7 @@
       "벤치마크"
     ],
     "translation": "registered factor/direction aliases and strict StrategySpec only",
-    "version": "1"
+    "version": "2"
   },
   "run_orchestration": {
     "automatic_preflight": true,

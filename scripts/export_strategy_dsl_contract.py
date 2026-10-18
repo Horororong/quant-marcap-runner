@@ -28,6 +28,7 @@ from krx_history_audit import PRICE_DIFFERENCE_THRESHOLD_BPS
 from krx_market_normalization import MARKET_LABELS
 from stock_dividend import CONTRACT as STOCK_DIVIDEND_CONTRACT
 from research_workbench import WORKBENCH_CONTRACT
+from research_planned_readiness import CONTRACT as PLANNED_READINESS_CONTRACT
 from research_readiness import BLOCKER_CLASSES
 from strategy_dsl_aliases import alias_catalog, direction_alias_catalog
 from strategy_dsl import (
@@ -57,7 +58,7 @@ def build_capabilities() -> dict:
         "dsl_machine_contract_version": DSL_MACHINE_CONTRACT_VERSION,
         "schema_version": SCHEMA_VERSION,
         "input_validation": INPUT_VALIDATION_CONTRACT,
-        "research_workbench": {**WORKBENCH_CONTRACT,"blocker_classes": BLOCKER_CLASSES},
+        "research_workbench": {**WORKBENCH_CONTRACT,"blocker_classes": BLOCKER_CLASSES,"planned_exposure":PLANNED_READINESS_CONTRACT},
         "run_orchestration": RUN_ORCHESTRATION_CONTRACT,
         "sandbox_distribution": SANDBOX_DISTRIBUTION_CONTRACT,
         "project_template_version": PROJECT_TEMPLATE_VERSION,

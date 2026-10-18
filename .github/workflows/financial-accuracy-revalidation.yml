@@ -48,7 +48,7 @@ permissions:
   actions: read
 jobs:
   bounded-stage16-source:
-    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[stage16-source]') }}
+    if: ${{ github.run_attempt == 1 && (github.sha == '699cfa5e17ff8104ed17911e5e2f17739cd9f953' && contains(github.event.head_commit.message, '[stage16-source]') || contains(github.event.head_commit.message, '[stage16-actions2021]')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -65,7 +65,11 @@ jobs:
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: |
-          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage16-continuous-research-20261018/collect_primary.py --output "$RUNNER_TEMP/stage16-source"
+          if [[ "${{ contains(github.event.head_commit.message, '[stage16-actions2021]') }}" == "true" ]]; then
+            "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage16-continuous-research-20261018/collect_actions2021.py --output "$RUNNER_TEMP/stage16-source"
+          else
+            "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage16-continuous-research-20261018/collect_primary.py --output "$RUNNER_TEMP/stage16-source"
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:

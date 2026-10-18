@@ -21,7 +21,7 @@ import pandas as pd
 from strategy_dsl import BenchmarkSpec, StrategySpec, compile_execution_plan, load_strategy_spec
 from execution_contract import EXECUTION_ENGINE_VERSION, PROJECT_TEMPLATE_VERSION
 from corporate_action_registry import load_corporate_actions, load_corporate_action_gaps
-from stock_dividend_research import load_strategy_actions
+from stock_dividend_research import load_strategy_actions, selected_action_scope
 from krx_history_audit import require_session_coverage
 from factor_registry import (
     build_external_provider,
@@ -560,7 +560,8 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
         registry_loader=load_corporate_actions,
         start=close.index.min(),
         end=close.index.max(),
-        asset_codes=set(assets),
+        asset_codes=(selected_action_scope(repo_root,spec,target_weights,close.index.min(),close.index.max())
+                     if spec.research is not None else set(assets)),
     )
     result = execute_daily_nav(
         engine=engine,
