@@ -8,7 +8,7 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-VERSION = "1"
+VERSION = "2"
 CONTRACT = {
     "version": VERSION,
     "policy": "defer_full_rebalance",
@@ -20,7 +20,7 @@ CONTRACT = {
 }
 
 
-def resolve_deferred_schedule(schedule, target_weights, prices, tradable, tolerance=1e-10):
+def resolve_deferred_schedule(schedule, target_weights, prices, tradable, tolerance=1e-10, *, events=None):
     if not np.isfinite(tolerance) or tolerance < 0:
         raise ValueError("deferred schedule requires finite nonnegative tolerance")
     if not target_weights.index.is_unique or not np.isfinite(target_weights.to_numpy(float)).all():
@@ -42,10 +42,52 @@ def resolve_deferred_schedule(schedule, target_weights, prices, tradable, tolera
         if date in at or date not in prices.index or signal not in target_weights.index or date <= signal:
             raise ValueError("invalid/overlapping base execution schedule")
         at[date] = signal
+    # Event plans are validated by the common book BEFORE use. The scheduler
+    # tracks only whether a nonzero tradable position can exist, never value.
+    records = [] if events is None or events.empty else events.to_dict('records')
+    permitted = {'stock_split', 'stock_merger', 'cash_share_exchange', 'stock_dividend'}
+    if any(x['event_type'] not in permitted for x in records):
+        raise ValueError('pending_order_unsupported_event: independently evidenced event book required')
+    dividends = None
+    if any(x['event_type']=='stock_dividend' for x in records):
+        from stock_dividend_execution import DividendExecution
+        dividends = DividendExecution(events.loc[events.event_type.eq('stock_dividend')], prices.index, list(prices.columns))
+    plans = [] if dividends is None else dividends.plans
+    rights = {}
     held = set()
     pending = None
     resolved, audit = {}, []
     for date in prices.index:
+        session = str(date.date())
+        # Entitlement uses OPENING holdings; a close buyer receives no old right.
+        for plan in plans:
+            t = plan['terms']
+            if t.ex_date == session and t.security in held:
+                rights[t.event_id] = t.security
+            if t.event_id not in rights:
+                continue
+            for decision in plan['decisions']:
+                if decision.get('recognition_date', decision['actual_date'])==session and not decision['approved']:
+                    rights.pop(t.event_id, None)
+            if t.event_id not in rights:
+                continue
+            if plan['scope']=='modeled_research':
+                listing = plan['research_model']['official_listing']
+                released = listing is not None and listing['model_settlement_date']==session
+            else:
+                released = any(x['actual_date']==session for x in plan['listings'])
+            if released:
+                held.add(rights.pop(t.event_id))
+        for event in records:
+            if date != pd.Timestamp(event['event_date']):
+                continue
+            pred, succ = event['predecessor_code'], event.get('successor_code')
+            if pred in held and event['event_type'] in {'stock_merger','cash_share_exchange'}:
+                held.remove(pred)
+                if event['event_type']=='stock_merger':
+                    held.add(succ)
+        if pending is not None:
+            pending['required'] = held | pending['target']
         if date in at:
             if pending is not None:
                 raise ValueError(f"pending_order_conflict: original signal {pending['signal'].date()} remains unfilled at new execution {date.date()}")
@@ -73,3 +115,13 @@ def resolve_deferred_schedule(schedule, target_weights, prices, tradable, tolera
     if len(resolved) != len(schedule):
         raise ValueError("deferred schedule did not account for every original signal")
     return resolved, audit
+
+
+EVENT_CONTRACT = {
+    "version": "1", "policy": "defer_full_rebalance_events_v1",
+    "orders": CONTRACT["pending"], "liquidity": CONTRACT["liquidity"],
+    "events": "Validated splits, stock mergers, fixed cash exchange and stock dividends only; unknown spin-offs fail",
+    "rights": "Ex-date opening holders only; cancellation removes right; listing creates tradable holding even after original-share sale",
+    "allocation": "Requested weights apply to liquid NAV, separately for Gross/Net; claims remain outside cash budget; fees on pre-cost liquid targets, post-cost liquid allocation",
+    "scope": "RESEARCH_ONLY continuous quantities, distribution taxes excluded; no actual brokerage settlement certification",
+}

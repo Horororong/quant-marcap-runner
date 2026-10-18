@@ -89,7 +89,8 @@
         },
         "nontradable_policy": {
           "enum": [
-            "defer_full_rebalance"
+            "defer_full_rebalance",
+            "defer_full_rebalance_events_v1"
           ]
         },
         "price": {

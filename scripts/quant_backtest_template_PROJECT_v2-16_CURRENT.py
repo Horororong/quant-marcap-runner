@@ -852,7 +852,7 @@ class ExecutionAssumptions:
     nontradable_policy: str = "reject"
 
     def __post_init__(self) -> None:
-        if self.nontradable_policy not in ("reject", "defer_full_rebalance"):
+        if self.nontradable_policy not in ("reject", "defer_full_rebalance", "defer_full_rebalance_events_v1"):
             raise ValueError("unsupported nontradable_policy")
         if self.nontradable_policy != "reject" and self.allow_short:
             raise ValueError("deferred execution supports long-only holdings")
@@ -1119,6 +1119,11 @@ def simulate_target_weight_portfolio(
         schedule, deferred_audit = resolve_deferred_schedule(schedule, weights_signal, px, mask, ex.weight_tolerance)
         execution_targets = {exec_dt: weights_signal.loc[sig].astype(float) for sig, exec_dt in schedule.items()}
 
+    if ex.nontradable_policy == "defer_full_rebalance_events_v1":
+        from execution_scheduling import resolve_deferred_schedule
+        schedule, deferred_audit = resolve_deferred_schedule(schedule, weights_signal, px, mask, ex.weight_tolerance, events=corporate_action_events)
+        execution_targets = {exec_dt: weights_signal.loc[sig].astype(float) for sig, exec_dt in schedule.items()}
+
     rets = px.pct_change(fill_method=None)
     reference = None
     if reference_returns is not None:
@@ -1360,10 +1365,18 @@ def simulate_target_weight_portfolio(
                 code = event["predecessor_code"]
                 if dt >= event["event_date"] and code in target.index and abs(target[code]) > ex.weight_tolerance:
                     raise RuntimeError("cash-exchanged security cannot be repurchased after entitlement")
+            liquid_targets = ex.nontradable_policy == "defer_full_rebalance_events_v1"
+            requested_target = target.copy()
+            net_target = target.copy()
+            if liquid_targets:
+                if pending_gross > gross_nav + ex.weight_tolerance or pending_net > net_nav + ex.weight_tolerance:
+                    raise RuntimeError("illiquid claims exceed NAV; cannot finance order")
+                target = requested_target * (1.0 - pending_gross / gross_nav)
+                net_target = requested_target * (1.0 - pending_net / net_nav)
             if pending_gross > 0 and float(target.sum()) + pending_gross / gross_nav > 1.0 + ex.weight_tolerance:
                 raise RuntimeError("insufficient settled cash: target weights include unpaid cash receivable")
             if mask is not None:
-                changing = ((target - current_w).abs() > ex.weight_tolerance) | ((target - net_w).abs() > ex.weight_tolerance)
+                changing = ((target - current_w).abs() > ex.weight_tolerance) | ((net_target - net_w).abs() > ex.weight_tolerance)
                 blocked = changing & (~mask.loc[dt])
                 if blocked.any():
                     raise RuntimeError(
@@ -1373,7 +1386,7 @@ def simulate_target_weight_portfolio(
             diff = target - current_w
             buy_to = float(diff.clip(lower=0.0).sum())
             sell_to = float((-diff.clip(upper=0.0)).sum())
-            net_diff = target - net_w
+            net_diff = net_target - net_w
             net_buy_to = float(net_diff.clip(lower=0).sum())
             net_sell_to = float((-net_diff.clip(upper=0)).sum())
             net_cost_fraction = float(calculate_trading_cost_fraction(
@@ -1381,11 +1394,13 @@ def simulate_target_weight_portfolio(
                 pd.Series([net_sell_to], index=[dt]), costs,
             ).iloc[0])
             net_nav *= 1.0 - net_cost_fraction
-            if pending_net > 0 and float(target.sum()) + pending_net / net_nav > 1.0 + ex.weight_tolerance:
+            if liquid_targets:
+                net_target = requested_target * (1.0 - pending_net / net_nav)
+            if pending_net > 0 and float(net_target.sum()) + pending_net / net_nav > 1.0 + ex.weight_tolerance:
                 raise RuntimeError("insufficient settled cash after costs: net receivable cannot fund trades")
             cost_fraction = net_cost_fraction
             current_w = target
-            net_w = target.copy()
+            net_w = net_target.copy()
             signal_date = next(sig for sig, exdt in schedule.items() if exdt == dt)
 
         if gross_nav <= 0 or net_nav <= 0:

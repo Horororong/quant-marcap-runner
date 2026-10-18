@@ -133,6 +133,7 @@ def inspect_planned_strategy(strategy_json,repo_root):
  all_events=events.to_dict('records') if not events.empty else []
  names=sorted(selected);indices={c:i for i,c in enumerate(names)};p=px.to_numpy(float);v=vol.to_numpy(float);r=refs.to_numpy(float);raw_returns=px.pct_change(fill_method=None).to_numpy(float)
  explained=[];schedules=[]
+ gap_records=gaps.to_dict('records') if not gaps.empty else []
  for label,w in weights.items():
   try:schedule=engine._schedule_signal_execution_dates(dates,w.index,execution.execution_lag_sessions)
   except (ValueError,RuntimeError) as e:issue('execution_schedule_gap',str(e),portfolio=label,classification='contract');continue
@@ -146,6 +147,16 @@ def inspect_planned_strategy(strategy_json,repo_root):
     schedule,delay_audit=resolve_deferred_schedule(schedule,w.reindex(columns=px.columns,fill_value=0),px,px.notna()&px.gt(0)&vol.gt(0),execution.weight_tolerance)
     result.setdefault('deferred_order_audit',{})[label]=json.loads(pd.DataFrame(delay_audit).to_json(orient='records',date_format='iso'))
    except (ValueError,RuntimeError) as e:issue('pending_order_execution_gap',str(e),portfolio=label,classification='execution_constraint',verdict='FAIL');continue
+  if spec.execution.nontradable_policy == 'defer_full_rebalance_events_v1':
+   try:
+    from execution_scheduling import resolve_deferred_schedule
+    from stock_dividend_research import load_strategy_actions
+    action_rows=load_strategy_actions(root,spec,start=dates[0],end=dates[-1],asset_codes=set(w.columns[w.gt(0).any()]))
+    schedule,delay_audit=resolve_deferred_schedule(schedule,w.reindex(columns=px.columns,fill_value=0),px,px.notna()&px.gt(0)&vol.gt(0),execution.weight_tolerance,events=action_rows)
+    result.setdefault('deferred_order_audit',{})[label]=json.loads(pd.DataFrame(delay_audit).to_json(orient='records',date_format='iso'))
+   except (ValueError,RuntimeError,KeyError) as e:
+    issue('pending_order_event_contract_gap',str(e),portfolio=label,classification='execution_constraint',required='Exact verified share/rights lineage and executable lifecycle; no guessed event. Other source diagnostics below use original earliest schedule, not certified actual fills.')
+    result.setdefault('diagnostic_schedule_only',[]).append(label)
   at={d:s for s,d in schedule.items()};schedules.extend(dict(portfolio=label,signal_date=str(s.date()),execution_date=str(d.date())) for s,d in schedule.items())
   executable={d:w.loc[s] for s,d in schedule.items()};normal={}
   for event in all_events:
@@ -168,7 +179,7 @@ def inspect_planned_strategy(strategy_json,repo_root):
      listing=pd.Timestamp(fact['listing']['date']);idx=dates.searchsorted(listing)+spec.research['settlement_lag_sessions']
      if idx<len(dates) and dt==dates[idx] and fact['listing']['evidence']['publication_date']<session and fact['decision']['evidence']['publication_date']<session:
       held.setdefault(code,claims[eid]['origin']);claims.pop(eid)
-   for gap in gaps.to_dict('records') if not gaps.empty else []:
+   for gap in gap_records:
     if dt>=pd.Timestamp(gap['event_date']) and gap['predecessor_code'] in prior:
      issue('known_unresolved_event',gap['reason'],code=gap['predecessor_code'],date=dt,portfolio=label,required=gap.get('evidence','Official event and settlement evidence'))
    for code in sorted(prior):

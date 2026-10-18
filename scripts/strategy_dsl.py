@@ -228,7 +228,7 @@ def build_strategy_json_schema() -> dict:
                 "properties": {
                     "lag_sessions": {"type": "integer", "minimum": 1},
                     "price": {"enum": sorted(SUPPORTED_EXECUTION_PRICES)},
-                    "nontradable_policy": {"enum": ["defer_full_rebalance"]},
+                    "nontradable_policy": {"enum": ["defer_full_rebalance", "defer_full_rebalance_events_v1"]},
                     "data_loading": {"enum": ["annual_selected_projection"]},
                 },
             },
@@ -495,7 +495,7 @@ class ExecutionSpec:
     def from_dict(cls, raw: Mapping[str, Any]) -> "ExecutionSpec":
         obj = cls(lag_sessions=int(raw.get("lag_sessions", 1)), price=str(raw.get("price", "next_close")).lower(),
                   nontradable_policy=raw.get("nontradable_policy"), data_loading=raw.get("data_loading"))
-        if obj.nontradable_policy not in (None, "defer_full_rebalance") or obj.data_loading not in (None, "annual_selected_projection"):
+        if obj.nontradable_policy not in (None, "defer_full_rebalance", "defer_full_rebalance_events_v1") or obj.data_loading not in (None, "annual_selected_projection"):
             raise ValueError("unsupported explicit execution/preparation contract")
         if obj.lag_sessions < 1:
             raise ValueError("execution.lag_sessions must be >= 1")

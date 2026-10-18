@@ -190,7 +190,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "27",
+  "dsl_machine_contract_version": "28",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -198,7 +198,7 @@
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
   },
-  "execution_engine_version": "v2-16-exec-7",
+  "execution_engine_version": "v2-16-exec-8",
   "execution_prices": [
     "next_close"
   ],
@@ -981,7 +981,7 @@
     "pending": "retain original target; no partial fills, cancellation, replacement, exclusion or cash advance",
     "policy": "defer_full_rebalance",
     "scope": "RESEARCH_ONLY modeled close execution, not certified realizable brokerage fills",
-    "version": "1"
+    "version": "2"
   },
   "performance_template_version": "v2-18",
   "portfolio_selections": [
