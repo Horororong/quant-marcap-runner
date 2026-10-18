@@ -1,0 +1,19 @@
+{
+  "rcept_no": "20100331001575",
+  "parser_version": "legacy-v9.1-primary-source-metadata",
+  "quality_version": "financial-quality-v1-source-linked-not-PIT",
+  "extraction_state": "SOURCE_GAP",
+  "field_count": 0,
+  "financial_accuracy": "UNVERIFIED_SOURCE_GAP",
+  "availability_status": "UNVERIFIED",
+  "backtest_eligible": false,
+  "document_sha256": "b4d37f06ce59719f61f4dd5f5c1dd46957c9a36d45feabf1b4b8e37203baed80",
+  "rejection_reason": "[{\"member\": \"20100331001575.xml\", \"bytes\": 603705, \"sha256\": \"253e4e33d6a3d55b37bdfc83bf435c294cbdeb7c8b5b26f35a93c51da94e8af8\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 843}, {\"member\": \"20100331001575_00761.xml\", \"bytes\": 362040, \"sha256\": \"91799c44617ed51a1172f3345c5c15024b178c3799898e7aded336670b822c08\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 600, \"xml_error\": \"mismatched tag: line 3580, column 53\"}, {\"member\": \"20100331001575_00760.xml\", \"bytes\": 390784, \"sha256\": \"cfbc61bde563769f1b652438c91417385d0ecf4f14aa42db14d45d982369a024\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 636, \"xml_error\": \"mismatched tag: line 3416, column 53\"}]",
+  "updated_at_utc": "2026-10-18T23:08:47.999370+00:00",
+  "structural_candidate_count": 0,
+  "published_field_count": 0,
+  "source_audited_field_count": 0,
+  "publication_status": "HELD",
+  "unpublished_candidate_count": 0,
+  "source_artifact_id": 12153773795
+}

@@ -1,0 +1,38 @@
+{
+  "merge_sha": "63ad9b8fe26ff619dafd11935619ca7f61be530b",
+  "operating_run": 39174955546,
+  "status": "COMPLETE_CANDIDATES_HELD",
+  "elapsed_seconds": 45.497,
+  "selected_documents": 10,
+  "completed_documents": 10,
+  "classification_counts": {
+    "SOURCE_GAP": 7,
+    "PARSED_4F": 3
+  },
+  "structural_candidates": 51,
+  "audited_controls": 16,
+  "source_amount_counts": {
+    "PASS": 12,
+    "UNVERIFIED": 4
+  },
+  "publication_counts": {
+    "PASS_SOURCE_ONLY": 8,
+    "UNVERIFIED_HELD": 8
+  },
+  "published_documents": 2,
+  "published_fields": 8,
+  "unpublished_structural_candidates": 43,
+  "unextracted_CFS_controls": 4,
+  "source_conflict_documents": 1,
+  "last_checkpoint": "20100331001585",
+  "historical_v5_rewritten": false,
+  "old22_reprocessed_in_main": false,
+  "historical3998_reset": false,
+  "automatic_collection": "HOLD",
+  "automatic_publication": "HOLD",
+  "investment_PIT": "0/6",
+  "financial_population_certification": "UNVERIFIED",
+  "source_artifact_id": 12153773795,
+  "source_transfer_blob": "aad8c5f8f42afa33fafe14c3bba9dbe0c43b451d",
+  "source_transfer_sha256": "b7f743566098c248907a2c2a1bc7bd790a08e8b6e22ca6e5561ce45bb2f4bd68"
+}
