@@ -40,10 +40,12 @@ def main(out):
  for name in ('original40-selection.json','holdout20-selection.json'):
   excluded.update(s['rcept_no'] for s in json.loads((ROOT/'docs/audits/financial-repair-20261014'/name).read_text())['samples'])
  new=restore(plan['artifact'],plan['artifact_sha256'],out/'new-source')
+ with gzip.open(ROOT/'data/financials/legacy_2000_2014/legacy_filings.csv.gz','rt',encoding='utf-8-sig') as f:
+  index={r['rcept_no']:r for r in csv.DictReader(f)}
  effective={r['rcept_no']:r for r in csvrows(new/'effective-state.csv')}
  changed=csvrows(new/'changed-state.csv');groups={};chosen=[]
  for status,count in plan['strata'].items():
-  candidates=[dict(effective.get(r['rcept_no'],{}),**r) for r in changed if r['rcept_no'] not in excluded and effective.get(r['rcept_no'],r).get('status')==status]
+  candidates=[dict(index.get(r['rcept_no'],{}),**dict(effective.get(r['rcept_no'],{}),**r)) for r in changed if r['rcept_no'] not in excluded and effective.get(r['rcept_no'],r).get('status')==status]
   buckets={}
   for r in candidates:buckets.setdefault((r.get('fiscal_year',''),r.get('period','')),[]).append(r)
   for rows in buckets.values():rows.sort(key=lambda r:sha((plan['seed']+':'+r['rcept_no']).encode()))
@@ -51,7 +53,7 @@ def main(out):
   while any(buckets.values()) and len(picked)<count:
    for key in sorted(buckets):
     rows=buckets[key]
-    while rows and rows[0].get('corp_code') in used:rows.pop(0)
+    while rows and rows[0].get('corp_code') and rows[0].get('corp_code') in used:rows.pop(0)
     if rows and len(picked)<count:
      r=rows.pop(0);used.add(r.get('corp_code'));picked.append(dict(r,stratum=status))
   chosen.extend(picked)
@@ -59,11 +61,17 @@ def main(out):
  selection={'plan':plan,'samples':chosen,'excluded_receipts':sorted(excluded)}
  (out/'selected_receipts.json').write_text(json.dumps(selection,ensure_ascii=False,indent=2)+'\n')
  # Receipt list is durable BEFORE any amount file or document is opened.
- prior=restore(12122416836,'6faea3647a128da272d76aa0d315f4bdb93c7e46ba4554a8314add2d5b8f2f65',out/'prior-source')
- recs=[(s['receipt'],prior,'development',s['sample']) for s in old_selection if s['stratum'] in ('PARSED_4F','PARSED_PARTIAL','SOURCE_GAP')]
- recs += [(s['rcept_no'],new,'holdout',s['sample']) for s in chosen]
- payload={'selection':selection,'files':{},'manifest':[],'metrics':{}}
- for root,label in ((prior,'development'),(new,'holdout')):
+ # Reuse the previous selected-originals public blob; never redownload the old
+ # 199MB archive merely because the NEW holdout selector lacked metadata.
+ with request.urlopen(request.Request('https://api.github.com/repos/Horororong/quant-marcap-runner/git/blobs/6f4aeb49338148e119cadce49bcdf8d33040fcfc',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'}),timeout=30) as r:
+  existing=json.load(r)
+ encoded=base64.b64decode(existing['content'])
+ packed=base64.b64decode(encoded)
+ assert sha(packed)=='3af9186d67dc5c71496b4f923278753ca018fee1b1c028e386a68fce93802180'
+ prior_payload=json.loads(gzip.decompress(packed))
+ payload={'selection':selection,'files':{n:b for n,b in prior_payload['files'].items() if n.startswith('development/')},'manifest':[r for r in prior_payload['manifest'] if r['cohort']=='development'],'metrics':{'development':prior_payload['metrics']['development']}}
+ recs=[(s['rcept_no'],new,'holdout',s['sample']) for s in chosen]
+ for root,label in ((new,'holdout'),):
   want={r for r,rr,_,_ in recs if rr==root}
   payload['metrics'][label]=[r for r in csvrows(root/'new-metrics.csv') if r['rcept_no'] in want]
  for receipt,root,cohort,sid in recs:
@@ -82,7 +90,7 @@ def main(out):
  body=json.dumps({'content':encoded+'\n','encoding':'utf-8'}).encode()
  req=request.Request('https://api.github.com/repos/Horororong/quant-marcap-runner/git/blobs',data=body,method='POST',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'})
  with request.urlopen(req,timeout=60) as r:blob=json.load(r)
- result={'blob_sha':blob['sha'],'compressed_sha256':sha(compressed),'compressed_bytes':len(compressed),'raw_bytes':len(raw),'documents':len(recs),'holdout_receipts':[r['rcept_no'] for r in chosen],'new_dart_calls':0,'selection_sha256':sha((out/'selected_receipts.json').read_bytes())}
+ result={'blob_sha':blob['sha'],'compressed_sha256':sha(compressed),'compressed_bytes':len(compressed),'raw_bytes':len(raw),'documents':len(payload['manifest']),'holdout_receipts':[r['rcept_no'] for r in chosen],'new_dart_calls':0,'selection_sha256':sha((out/'selected_receipts.json').read_bytes())}
  (out/'transfer.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);main(p.parse_args().output)

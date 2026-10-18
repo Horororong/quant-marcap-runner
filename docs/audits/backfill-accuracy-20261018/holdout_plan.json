@@ -6,9 +6,19 @@
   "source_run": 39125956115,
   "artifact": 12138475303,
   "artifact_sha256": "e0aefa960b97c26b1a7987085828acf95ed8ed2d05ea7dbe3c04246982aa5a4d",
-  "strata": {"PARSED_4F": 6, "PARSED_PARTIAL": 6},
+  "strata": {
+    "PARSED_4F": 6,
+    "PARSED_PARTIAL": 6
+  },
   "selection": "Only changed receipts in this separately published batch, excluding prior audit20 and original60 by receipt; round-robin sorted fiscal_year,period, then SHA256(seed:receipt) within groups; distinct corp_code within each stratum. Freeze selected_receipts.json before reading new-metrics.csv or originals. No source-availability/value replacements; missing source remains UNVERIFIED. Short strata remain short. This tests recent legacy documents, not all years or industries; report actual diversity.",
   "controls": "Independent human review of primary statement account, dates, current-period columns, units, literal whole monetary tokens and correction region. Control coordinates/literals fixed before comparison against revised extraction. Production parser output is never an oracle. Full PIT, identity/version chains and FX remain separate default-closed checks.",
   "development_exclusions": "Do not use these receipts to tune parsing rules in this task. If a holdout fails, report it and reserve any fix for a separately labelled development cohort and new holdout.",
-  "investment_approved": false
+  "investment_approved": false,
+  "selector_correction": {
+    "previous_remote": "14804b081585bbb5769c76ff6182cc69135eb6a1",
+    "previous_run": 39132454920,
+    "previous_selection_sha256": "28ca5aa849e12b6971e74ac992b1ef964ffe2297b41b375d52407dd90f6f2753",
+    "reason": "changed-state has no corp_code/fiscal_year/period; missing corporation collapsed all candidates to None. Join unchanged complete filing index by receipt BEFORE selection. Same seed, strata, no value inspection, no source-availability replacement; old two sources not used for development.",
+    "before_holdout_value_review": true
+  }
 }
