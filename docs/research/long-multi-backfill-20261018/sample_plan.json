@@ -6,8 +6,16 @@
   "research_sha": "b37c0cf636e5fd80d001cf6d5c907cbf209eede8",
   "source_run": 39085773974,
   "source_artifact": 12122416836,
-  "strata": {"PARSED_4F":4,"PARSED_PARTIAL":4,"NO_METRICS":4,"NO_DOCUMENT":4,"SOURCE_GAP":4,"QUARANTINED_ERROR":4},
+  "strata": {
+    "PARSED_4F": 4,
+    "PARSED_PARTIAL": 4,
+    "NO_METRICS": 4,
+    "NO_DOCUMENT": 4,
+    "SOURCE_GAP": 4,
+    "QUARANTINED_ERROR": 4
+  },
   "selection": "Newest published batch changed receipts, separately by final status; quarantine is current ERROR attempts>=3 and explicitly labeled older cohort if not changed. Round-robin sorted fiscal_year/period, SHA256(seed:receipt) within each group, distinct company where possible. No outcome/value-based replacement. Short strata remain short; missing sources remain UNVERIFIED.",
   "independence": "Existing parser outputs are observations only. Independent original-member HTML table coordinates, literal values, headings, periods and units must support manual controls. Reparse consistency is not source certification.",
-  "investment_approved": false
+  "investment_approved": false,
+  "access_addendum": "If full archive unavailable and distinct original8MB review subset is restored, retain all24 original selections (missing originals UNVERIFIED), then add up to4 four-field and4 partial NEW receipts from available preserved source filenames, SHA(seed:available:receipt), distinct company, before monetary reads. Additive cohort is explicitly nonrandom source-available subset and never replaces missing samples."
 }

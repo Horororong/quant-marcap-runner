@@ -32,7 +32,7 @@ def main(out,mode):
   else:
    import exchange_calendars as xcals
    end=pd.Timestamp('2026-10-16');assert end.date()<datetime.now(timezone.utc).date()
-   sessions=pd.DatetimeIndex(xcals.get_calendar('XKRX',start='2026-01-01',end='2026-12-31').sessions_in_range('2026-01-01',end)).tz_localize(None)
+   sessions=pd.DatetimeIndex(xcals.get_calendar('XKRX',start='2025-12-20',end='2026-12-31').sessions_in_range('2026-01-01',end)).tz_localize(None)
    sessions=sessions.difference(pd.to_datetime(['2026-06-03','2026-07-17']))
    prior=ROOT/'docs/research/multi-asset-20261018/evidence_quotes/kospi_dd_trd_20260918.json';state['reused_index_response']=dict(path=str(prior.relative_to(ROOT)),sha256=hashlib.sha256(prior.read_bytes()).hexdigest())
    for day in sessions[sessions>pd.Timestamp('2026-09-18')]:

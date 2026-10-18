@@ -44,22 +44,30 @@ def main(snapshot,evidence,out):
     if g:rest.append(g)
    groups=rest
   chosen.extend(picked)
+ # Additive access-limited subset cohort was declared before reading values.
+ available={p.name[:14] for p in evidence.glob('*.zip')}|{p.name[:14] for p in (evidence/'native').glob('*.zip')}
+ if not (evidence/'before').exists():
+  for status in ['PARSED_4F','PARSED_PARTIAL']:
+   candidates=info[info.rcept_no.isin(changed.rcept_no)&info.rcept_no.isin(available)&info.status.eq(status)&~info.rcept_no.isin(used)].copy()
+   candidates['rank']=candidates.rcept_no.map(lambda r:sha((plan['seed']+':available:'+r).encode()))
+   for row in candidates.sort_values('rank').drop_duplicates('corp_code').head(4).to_dict('records'):
+    row.update(audit_stratum=status,cohort='ADDITIONAL_AVAILABLE_SOURCE_PRE_VALUE');chosen.append(row);used.add(row['rcept_no'])
  pd.DataFrame(chosen).to_csv(out/'selected_state.csv',index=False)
  # Selection is now durably frozen BEFORE reading any monetary outputs.
  selection=dict(plan=plan,selected=[dict(sample=f'A{i+1:02}',receipt=x['rcept_no'],stratum=x['audit_stratum'],cohort=x['cohort']) for i,x in enumerate(chosen)])
  (out/'selection.json').write_text(json.dumps(selection,ensure_ascii=False,indent=2)+'\n')
  metrics=read(evidence/'new-metrics.csv');metrics[metrics.rcept_no.isin(used)].to_csv(out/'selected_metrics.csv',index=False)
- before=read(evidence/'before/data/status/dart_legacy_backfill_state.csv');after=read(evidence/'after/data/status/dart_legacy_backfill_state.csv')
- def counts(frame):return dict(rows=len(frame),duplicate_receipts=int(frame.rcept_no.duplicated().sum()),statuses=frame.status.value_counts().to_dict(),versions=frame.parser_version.value_counts().to_dict())
+ before_path=evidence/'before/data/status/dart_legacy_backfill_state.csv';before=read(before_path) if before_path.exists() else pd.DataFrame(columns=state.columns);after_path=evidence/'after/data/status/dart_legacy_backfill_state.csv';after=read(after_path) if after_path.exists() else state
+ def counts(frame):return dict(rows=len(frame),duplicate_receipts_across_all_versions=int(frame.rcept_no.duplicated().sum()),duplicate_receipt_version=int(frame.duplicated(['rcept_no','parser_version']).sum()),statuses=frame.status.value_counts().to_dict(),versions=frame.parser_version.value_counts().to_dict())
  before_last=before.drop_duplicates('rcept_no',keep='last').set_index('rcept_no');after_last=after.drop_duplicates('rcept_no',keep='last').set_index('rcept_no');transition={}
  for row in chosen:
-  receipt=row['rcept_no'];a=before_last.loc[receipt].status if receipt in before_last.index else 'ABSENT';b=after_last.loc[receipt].status;transition[a+'->'+b]=transition.get(a+'->'+b,0)+1
- summary=dict(before=counts(before),after=counts(after),effective=counts(effective),changed=counts(changed),transitions_selected=transition,selected=len(chosen),source_originals_recollected=0)
+  receipt=row['rcept_no'];a=before_last.loc[receipt].status if receipt in before_last.index else 'ABSENT';b=after_last.loc[receipt].status if receipt in after_last.index else 'ABSENT';transition[a+'->'+b]=transition.get(a+'->'+b,0)+1
+ summary=dict(before_available=before_path.exists(),before=counts(before),after=counts(after),effective=counts(effective),changed=counts(changed),transitions_selected=transition,selected=len(chosen),source_originals_recollected=0)
  # Independent lossless cell TEXT export. No existing financial parser, account
  # aliases, sign conversion, period selection or unit calculation is invoked.
  grids=[];source=[]
  for row in chosen:
-  receipt=row['rcept_no'];files=sorted((evidence/'native').glob(receipt+'-*.zip'));rec=dict(receipt=receipt,files=[])
+  receipt=row['rcept_no'];files=sorted((evidence/'native').glob(receipt+'-*.zip')) or sorted(evidence.glob(receipt+'-*.zip'));rec=dict(receipt=receipt,files=[])
   for p in files:
    b=p.read_bytes();entry=dict(path=str(p.relative_to(evidence)),bytes=len(b),sha256=sha(b),members=[])
    with zipfile.ZipFile(p) as z:

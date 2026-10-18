@@ -51,7 +51,7 @@ permissions:
   actions: read
 jobs:
   continuation-source:
-    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[continuation-source]') }}
+    if: ${{ github.run_attempt == 1 && ((github.sha == '241fbb1a6faeba197d570228f00ab2784b600da0' && contains(github.event.head_commit.message, '[continuation-source]')) || contains(github.event.head_commit.message, '[continuation-recovery]')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -69,17 +69,16 @@ jobs:
         with:
           ref: 78ab49df4b25e0b71df0fc4366fcc7f5d0a179a9
           path: _main_snapshot
-      - uses: actions/download-artifact@v4
-        with:
-          name: legacy-source-evidence-1
-          run-id: 39085773974
-          github-token: ${{ github.token }}
-          path: ${{ runner.temp }}/existing-legacy-evidence
+      - name: Restore existing artifact through one bounded official API read per distinct artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/long-multi-backfill-20261018/restore_existing_evidence.py --output "$RUNNER_TEMP/restored-existing"
       - name: Pinned main state and predeclared independent source export; no collector execution
         run: |
-          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/long-multi-backfill-20261018/read_main_evidence.py --snapshot _main_snapshot --evidence "$RUNNER_TEMP/existing-legacy-evidence" --output "$RUNNER_TEMP/main-evidence-review"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/long-multi-backfill-20261018/read_main_evidence.py --snapshot _main_snapshot --evidence "$RUNNER_TEMP/restored-existing/evidence" --output "$RUNNER_TEMP/main-evidence-review"
       - name: Only new Bio rights sources
-        if: ${{ always() && steps.runtime.outcome == 'success' }}
+        if: ${{ always() && steps.runtime.outcome == 'success' && !contains(github.event.head_commit.message, '[continuation-recovery]') }}
         env:
           KRX_AUTH_KEY: ${{ secrets.KRX_AUTH_KEY }}
         run: |
@@ -95,6 +94,7 @@ jobs:
         with:
           name: continuation-primary-evidence
           path: |
+            ${{ runner.temp }}/restored-existing/restore.json
             ${{ runner.temp }}/main-evidence-review
             ${{ runner.temp }}/bio-official
             ${{ runner.temp }}/extension2026-official
@@ -564,7 +564,7 @@ jobs:
           if-no-files-found: error
           retention-days: 90
   fixed-kit:
-    if: ${{ !contains(github.event.head_commit.message, '[continuation-source]') && !contains(github.event.head_commit.message, '[multi-asset-div2021]') && !contains(github.event.head_commit.message, '[multi-asset-skt-terms]') && !contains(github.event.head_commit.message, '[multi-asset-skt]') && !contains(github.event.head_commit.message, '[multi-asset-historical]') && !contains(github.event.head_commit.message, '[multi-asset-quotes]') && !contains(github.event.head_commit.message, '[multi-asset-followup]') && !contains(github.event.head_commit.message, '[multi-asset-source]') && !contains(github.event.head_commit.message, '[multi-asset]') && !contains(github.event.head_commit.message, '[stage16-source]') && !contains(github.event.head_commit.message, '[stage16]') && !contains(github.event.head_commit.message, '[stage15-model]') && !contains(github.event.head_commit.message, '[stage15-completion]') && !contains(github.event.head_commit.message, '[stage15-source]') && !contains(github.event.head_commit.message, '[stage15]') && !contains(github.event.head_commit.message, '[stage14-body]') && !contains(github.event.head_commit.message, '[stage14-corrected]') && !contains(github.event.head_commit.message, '[stage14-listing]') && !contains(github.event.head_commit.message, '[stage14-history]') && !contains(github.event.head_commit.message, '[stage14-source]') && !contains(github.event.head_commit.message, '[stage14]') && !contains(github.event.head_commit.message, '[stage13-proof]') && !contains(github.event.head_commit.message, '[stage13]') && !contains(github.event.head_commit.message, '[stage12-krx-prices]') && !contains(github.event.head_commit.message, '[stage12-read-artifact]') && !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
+    if: ${{ !contains(github.event.head_commit.message, '[continuation-recovery]') && !contains(github.event.head_commit.message, '[continuation-source]') && !contains(github.event.head_commit.message, '[multi-asset-div2021]') && !contains(github.event.head_commit.message, '[multi-asset-skt-terms]') && !contains(github.event.head_commit.message, '[multi-asset-skt]') && !contains(github.event.head_commit.message, '[multi-asset-historical]') && !contains(github.event.head_commit.message, '[multi-asset-quotes]') && !contains(github.event.head_commit.message, '[multi-asset-followup]') && !contains(github.event.head_commit.message, '[multi-asset-source]') && !contains(github.event.head_commit.message, '[multi-asset]') && !contains(github.event.head_commit.message, '[stage16-source]') && !contains(github.event.head_commit.message, '[stage16]') && !contains(github.event.head_commit.message, '[stage15-model]') && !contains(github.event.head_commit.message, '[stage15-completion]') && !contains(github.event.head_commit.message, '[stage15-source]') && !contains(github.event.head_commit.message, '[stage15]') && !contains(github.event.head_commit.message, '[stage14-body]') && !contains(github.event.head_commit.message, '[stage14-corrected]') && !contains(github.event.head_commit.message, '[stage14-listing]') && !contains(github.event.head_commit.message, '[stage14-history]') && !contains(github.event.head_commit.message, '[stage14-source]') && !contains(github.event.head_commit.message, '[stage14]') && !contains(github.event.head_commit.message, '[stage13-proof]') && !contains(github.event.head_commit.message, '[stage13]') && !contains(github.event.head_commit.message, '[stage12-krx-prices]') && !contains(github.event.head_commit.message, '[stage12-read-artifact]') && !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
