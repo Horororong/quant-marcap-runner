@@ -21,14 +21,20 @@ def main(out,mode):
   except error.HTTPError as e:raise ValueError('HTTP_'+str(e.code)+'_NO_RETRY') from None
   if not b or len(b)>8*1024*1024:raise ValueError('EMPTY_OR_OVERSIZE')
   if key and key.encode() in b:raise ValueError('CREDENTIAL_ECHO_BLOCKED')
+  (out/name).write_bytes(b);state['responses'].append(dict(file=name,source=url,http=http,content_type=ct,bytes=len(b),sha256=hashlib.sha256(b).hexdigest()))
   if auth:
-   obj=json.loads(b);rows=obj.get('OutBlock_1');assert isinstance(rows,list) and rows,'NO_OFFICIAL_ROWS';date=url.rsplit('=',1)[1];assert all(str(r.get('BAS_DD','')).replace('-','').replace('/','')==date for r in rows),'DATE_MISMATCH'
-  (out/name).write_bytes(b);state['responses'].append(dict(file=name,source=url,http=http,content_type=ct,bytes=len(b),sha256=hashlib.sha256(b).hexdigest()));return b
+   obj=json.loads(b);rows=obj.get('OutBlock_1')
+   if not isinstance(rows,list) or not rows:raise ValueError('NO_OFFICIAL_ROWS_SCHEMA_'+','.join(sorted(obj)))
+   date=url.rsplit('=',1)[1];assert all(str(r.get('BAS_DD','')).replace('-','').replace('/','')==date for r in rows),'DATE_MISMATCH'
+  return b
  try:
   if mode=='bio':
    urls=[('reference.html','https://kind.krx.co.kr/external/2022/02/25/000917/20220225002100/99301.htm'),('prospectus_initial.html','https://kind.krx.co.kr/external/2022/01/28/000862/20220128001831/10001.htm'),('prospectus_feb25.html','https://kind.krx.co.kr/external/2022/02/25/000689/20220225001679/10001.htm'),('final_terms_apr05.html','https://kind.krx.co.kr/external/2022/04/05/000247/20220405000489/11306.htm'),('actual_result_apr15.html','https://kind.krx.co.kr/external/2022/04/15/000655/20220415001446/10800.htm')]
    for name,url in urls:capture(url,name)
    for day in ['20220225','20220228']:capture('https://data-dbg.krx.co.kr/svc/apis/sto/stk_bydd_trd?basDd='+day,'stk_'+day+'.json',True)
+  elif mode=='rights':
+   for dt in ['20220323','20220324','20220325','20220328','20220329']:
+    capture('https://data-dbg.krx.co.kr/svc/apis/sto/sr_bydd_trd?basDd='+dt,'rights_'+dt+'.json',True)
   else:
    import exchange_calendars as xcals
    end=pd.Timestamp('2026-10-16');assert end.date()<datetime.now(timezone.utc).date()
@@ -44,4 +50,4 @@ def main(out,mode):
  except Exception as e:state['errors'].append(dict(type=type(e).__name__,reason=str(e) if isinstance(e,ValueError) else 'Response validation failed; raw evidence preserved where valid'))
  (out/'state.json').write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n');emit(out,'OFFICIAL_'+mode.upper());return int(bool(state['errors']))
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mode',choices=['bio','2026'],required=True);a=p.parse_args();raise SystemExit(main(a.output,a.mode))
+ p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mode',choices=['bio','2026','rights'],required=True);a=p.parse_args();raise SystemExit(main(a.output,a.mode))

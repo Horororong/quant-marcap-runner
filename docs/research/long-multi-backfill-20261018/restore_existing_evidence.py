@@ -7,9 +7,9 @@ from urllib import request,error,parse
 class NoRedirect(request.HTTPRedirectHandler):
  def redirect_request(self,*a):return None
 
-def main(out):
+def main(out,subset=False):
  out.mkdir(parents=True,exist_ok=False);state=dict(attempts=[],new_dart_calls=0)
- for artifact,digest in [(12122416836,'6faea3647a128da272d76aa0d315f4bdb93c7e46ba4554a8314add2d5b8f2f65'),(12122461579,None)]:
+ for artifact,digest in ([(12122461579,None)] if subset else [(12122416836,'6faea3647a128da272d76aa0d315f4bdb93c7e46ba4554a8314add2d5b8f2f65'),(12122461579,None)]):
   rec=dict(artifact_id=artifact,attempts=1);state['attempts'].append(rec)
   try:
    url=f'https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/{artifact}/zip'
@@ -43,4 +43,4 @@ def main(out):
   finally:(out/'restore.json').write_text(json.dumps(state,indent=2)+'\n')
  print(json.dumps(state));return int('selected_artifact' not in state)
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a=p.parse_args();raise SystemExit(main(a.output))
+ p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--subset',action='store_true');a=p.parse_args();raise SystemExit(main(a.output,a.subset))
