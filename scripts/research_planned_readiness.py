@@ -4,7 +4,7 @@ Annual source reads preserve every requested signal cross-section. Only after
 selection are selected-code observations loaded for diagnostics. Nothing here
 changes eligibility, prices, event records, execution weights or return guards.
 """
-import hashlib,json,math
+import hashlib,json,math,re
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -29,14 +29,14 @@ def inspect_planned_strategy(strategy_json,repo_root):
   date=str(pd.Timestamp(date).date()) if date is not None else None
   # Preserve first exact incident and affected range rather than emitting one
   # indistinguishable missing-quote incident for every later session.
-  key=(kind,code,portfolio,extra.get('event_id'),None if kind=='missing_held_quote' else date)
+  key=(kind,code,portfolio,extra.get('event_id'),extra.get('market'),None if kind=='missing_held_quote' else date)
   if key in by_key:
    old=by_key[key];old['occurrences']+=1
    if date:old['affected_through']=max(old.get('affected_through') or date,date)
    return old
   row=dict(kind=kind,classification=classification,verdict=verdict,security=code,date=date,portfolio=portfolio,detail=detail,
    required=required or 'Inspect exact original source and common contract; never fill/exclude/override',occurrences=1,affected_through=date,**extra)
-  row['incident_id']=hashlib.sha256(json.dumps({k:row.get(k) for k in ['kind','security','date','portfolio','event_id']},sort_keys=True).encode()).hexdigest()[:20]
+  row['incident_id']=hashlib.sha256(json.dumps({k:row.get(k) for k in ['kind','security','date','portfolio','event_id','market']},sort_keys=True).encode()).hexdigest()[:20]
   issues.append(row);by_key[key]=row;return row
  try:spec=load_strategy_spec(strategy_json);plan=compile_execution_plan(spec)
  except (ValueError,KeyError,TypeError) as e:
@@ -64,7 +64,12 @@ def inspect_planned_strategy(strategy_json,repo_root):
    panel=engine.load_krx_equity_panel(start=start,end=end,markets=spec.universe.markets,columns=required_panel_columns(spec),repo_root=root)
    total_rows+=len(panel)
    c=session_coverage_audit(panel,start,end,spec.universe.markets);coverage.append(c)
-   if c['status']!='complete':issue('market_calendar_source_mismatch',json.dumps(c['markets']),date=start,required='Official cash-equity calendar and source-day agreement; no assumed weekdays or filling')
+   if c['status']!='complete':
+    emitted_before=len(issues)
+    for market,market_audit in c['markets'].items():
+     for direction in ['missing_sessions','unexpected_dates']:
+      for day in market_audit.get(direction,[]):issue('market_calendar_source_mismatch',direction,market=market,date=day,required='Official cash-equity calendar and source-day agreement; no assumed weekdays or filling')
+    if len(issues)==emitted_before:issue('market_calendar_scope_unverified',json.dumps(c),date=start,required='Complete official market-day/source audit; unexplained non-complete state cannot authorize execution')
    dates=pd.DatetimeIndex(pd.to_datetime(panel.Date).unique()).sort_values();date_parts.extend(dates)
    audit=factor_provider_coverage_audit(panel,spec,root)
    if not audit.empty:
@@ -94,7 +99,8 @@ def inspect_planned_strategy(strategy_json,repo_root):
   return result
  if not len(dates):return finish()
  try:result['benchmark']=benchmark_coverage_audit(root,spec.benchmark,dates)
- except (OSError,ValueError,RuntimeError,KeyError,AssertionError) as e:issue('benchmark_coverage_gap',str(e),required='Exact explicitly selected index closes on every requested session; no proxy/fill')
+ except (OSError,ValueError,RuntimeError,KeyError,AssertionError) as e:
+  missing=re.findall(r'\b\d{4}-\d{2}-\d{2}\b',str(e));issue('benchmark_coverage_gap',str(e),date=missing[0] if missing else None,explicit_missing_dates=missing,required='Exact explicitly selected index closes on every requested session; no proxy/fill')
  result['observed_sessions']=len(dates);result['planned_portfolios']=len(targets);result['planned_selected_codes']=sorted(selected)
  result['krx_panel']=dict(actual_start=str(dates[0].date()),actual_end=str(dates[-1].date()),rows=total_rows,distinct_planned_codes=len(selected),markets=list(spec.universe.markets))
  result['signal_dates']=sorted({r['signal_date'] for r in populations})

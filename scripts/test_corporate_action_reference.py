@@ -23,6 +23,12 @@ class Reference(unittest.TestCase):
  def test_missing_exact_reference_fails_existing_one_bp(self):
   e,d,p,w,r,c,ca=self.fixture()
   with self.assertRaisesRegex(RuntimeError,'held-return reference'):self.runbook(e,p,w,r,ca.drop(columns='market_reference_contract'))
+ def test_independent_reconciliation_keeps_both_returns(self):
+  from corporate_action_reconciliation import reconcile_registered_events
+  e,d,p,w,r,c,ca=self.fixture();ca['source_url']='synthetic://explicit-unit-fixture'
+  panel=pd.DataFrame(dict(Date=d,Code='000001',Market='KOSPI',Close=p['000001'].to_numpy(),Volume=10.,ChangesRatio=r['000001'].to_numpy()*100))
+  checks,_=reconcile_registered_events(panel,ca,pd.DataFrame(columns=['Date','Code','kind']))
+  self.assertEqual(checks.iloc[0]['status'],'reference_consistent');self.assertAlmostEqual(checks.iloc[0]['effective_return'],120/110-1);self.assertAlmostEqual(checks.iloc[0]['price_comparison_return'],60/56-1)
  def test_wrong_price_fails_without_changing_nav_or_tolerance(self):
   e,d,p,w,r,c,ca=self.fixture();c['reference_price']=55;ca['market_reference_contract']=json.dumps(c)
   with self.assertRaisesRegex(RuntimeError,'held-return reference'):self.runbook(e,p,w,r,ca)

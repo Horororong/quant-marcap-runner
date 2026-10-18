@@ -83,11 +83,19 @@ def reconcile_registered_events(panel: pd.DataFrame, events: pd.DataFrame,
             rec["reason"] = "suspension prices/references are inconsistent with unchanged holding value"
             continue
         effective = float(ratio * close / previous - 1.0)
-        difference = abs(effective - reference) * 10000.0
+        comparison=effective
+        contract=event.get('market_reference_contract')
+        if isinstance(contract,str) and contract:
+            from corporate_action_reference import validate_reference
+            c=validate_reference(contract,str(date.date()),code)
+            comparison=float(close)/c['reference_price']-1.
+            rec.update(price_comparison_return=comparison,price_comparison_basis='exact_primary_split_reference')
+        difference = abs(comparison - reference) * 10000.0
         rec.update(effective_return=effective, difference_bps=difference,
                    status="reference_consistent" if np.isfinite(difference) and difference <= HELD_RETURN_TOLERANCE_BPS else "reference_mismatch",
                    reason="registered split agrees with exchange reference" if np.isfinite(difference) and difference <= HELD_RETURN_TOLERANCE_BPS else "registered split does not agree with exchange reference")
-    checks = pd.DataFrame(records, columns=EVENT_COLUMNS)
+    extra=['price_comparison_return','price_comparison_basis'] if any('price_comparison_basis' in r for r in records) else []
+    checks = pd.DataFrame(records, columns=EVENT_COLUMNS+extra)
     reviewed = candidates.copy(deep=True)
     reviewed["registry_match_status"] = "unresolved"
     reviewed["registry_source_url"] = ""

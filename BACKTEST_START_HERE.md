@@ -1,3 +1,7 @@
+## Continuous research user entrypoint (2026-10-18)
+
+Use `scripts/research_workbench.py examples`, `capabilities`, `inventory`, `check`, `run`, and `issues --saved-run`. Full instructions and supported validated periods: [continuous research usage](docs/research/stage16-continuous-research-20261018/README.md). The new successful example is size top1full2019–2025; original long deciles and25year inputs are explicitly blocked. All results remain RESEARCH_ONLY, not financial/investment PIT approval.
+
 # BACKTEST START HERE
 
 Stage15의 실제 연구 진입점은 [RESEARCH_WORKBENCH](docs/RESEARCH_WORKBENCH.md)다.

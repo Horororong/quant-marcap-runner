@@ -96,7 +96,7 @@
       "registry_event_checks.csv",
       "candidate_reconciliation.csv"
     ],
-    "version": "1"
+    "version": "2"
   },
   "corporate_action_registry_version": "8",
   "corporate_actions": {
@@ -1104,6 +1104,7 @@
     "commands": [
       "capabilities",
       "inventory",
+      "examples",
       "translate",
       "check",
       "run",

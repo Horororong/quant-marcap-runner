@@ -1,0 +1,55 @@
+{
+  "version": "1",
+  "scope": "Previously validated examples only; no guarantee for arbitrary strategy, period, legal universe or investment PIT. Fresh preflight and runtime guards mandatory.",
+  "investment_use_allowed": false,
+  "examples": [
+    {
+      "strategy": "config/strategies/research_size_deciles_2019_2020_v1.json",
+      "period": "2019-01-01..2020-12-31",
+      "status": "RESEARCH_ONLY_EXAMPLE",
+      "numeric_validation": "docs/research/stage15-research-environment-20261017/numeric_manifest.json",
+      "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_size_deciles_2019_2020_v1.json",
+      "execution": "Same run command after fresh preflight; --report-periods config/reports/research_continuous_2025.json"
+    },
+    {
+      "strategy": "config/strategies/research_momentum_top3_2020.json",
+      "period": "2020-01-01..2020-12-31",
+      "status": "RESEARCH_ONLY_EXAMPLE",
+      "numeric_validation": "docs/research/stage15-research-environment-20261017/numeric_manifest.json",
+      "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_momentum_top3_2020.json",
+      "execution": "Same run command after fresh preflight; --report-periods config/reports/research_continuous_2025.json"
+    },
+    {
+      "strategy": "config/strategies/research_size_top1_2024.json",
+      "period": "2024-01-01..2024-12-31",
+      "status": "RESEARCH_ONLY_EXAMPLE",
+      "numeric_validation": "docs/research/stage15-research-environment-20261017/numeric_manifest.json",
+      "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_size_top1_2024.json",
+      "execution": "Same run command after fresh preflight; --report-periods config/reports/research_continuous_2025.json"
+    },
+    {
+      "strategy": "config/strategies/research_size_top1_2019_2025.json",
+      "period": "2019-01-01..2025-12-31",
+      "status": "RESEARCH_ONLY_EXAMPLE",
+      "numeric_validation": "docs/research/stage16-continuous-research-20261018/numeric_manifest.json",
+      "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_size_top1_2019_2025.json",
+      "execution": "Same run command after fresh preflight; --report-periods config/reports/research_continuous_2025.json"
+    }
+  ],
+  "blocked_examples": [
+    {
+      "strategy": "config/strategies/research_size_deciles_2019_2025_v1.json",
+      "reason": "003550 scheduled exit during official suspension2021-05-03; no fixed-lag fill possible"
+    },
+    {
+      "strategy": "config/strategies/research_original_size_deciles_2001_2025.json",
+      "reason": "First signal2001-04-30 yields4 eligible stocks under unchanged10trillion filter, needs10"
+    },
+    {
+      "strategy": "config/strategies/research_size_top1_2001_2025.json",
+      "reason": "005930 scheduled exit2018-05-02 with observed Volume0; cannot silently delay"
+    }
+  ],
+  "separate_2026": "XKRX versus observed-session mismatch and exact KOSPI benchmark coverage missing; no2026 approval",
+  "financials": "DART factors retain existing source/availability/operating PIT requirements; Stage6 investment audit0/6 unchanged"
+}

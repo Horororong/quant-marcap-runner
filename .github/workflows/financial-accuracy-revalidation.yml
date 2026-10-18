@@ -266,6 +266,7 @@ jobs:
         if: ${{ contains(github.event.head_commit.message, '[stage16]') }}
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage16-continuous-research-20261018/validate_continuous.py --check --baselines "$RUNNER_TEMP/stage15-environment" --output "$RUNNER_TEMP/stage16-continuous"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I scripts/research_workbench.py examples > "$RUNNER_TEMP/stage16-continuous/examples.json"
       - name: Actual long-report browser interactions without installations
         if: ${{ contains(github.event.head_commit.message, '[stage16]') }}
         run: |

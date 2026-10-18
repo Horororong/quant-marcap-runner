@@ -1315,6 +1315,14 @@ def simulate_target_weight_portfolio(
                     "transferred_weight": transferred_weight,
                     "source": action.get("source", ""),
                 })
+                contract=action.get('market_reference_contract')
+                if isinstance(contract,str) and contract:
+                    from corporate_action_reference import validate_reference
+                    c=validate_reference(contract,str(dt.date()),pred)
+                    corporate_action_rows[-1].update(market_reference_price=c['reference_price'],
+                        market_reference_return=float(px.at[dt,pred])/c['reference_price']-1.,
+                        market_reference_source=c['source'],market_reference_sha256=c['sha256'],
+                        market_reference_scope=c['scope'],market_reference_evidence_path=c['evidence_path'])
 
         # Receipt is available only at the first observed session close on/after
         # the evidenced actual payment date. Receipt changes liquidity, not NAV.

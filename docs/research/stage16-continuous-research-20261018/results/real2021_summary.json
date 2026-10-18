@@ -1,0 +1,27 @@
+{
+  "status": "PASS_MODEL_REAL_PRICE_FUNCTIONAL_LIFECYCLE",
+  "cases": {
+    "068270": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 255,
+      "portfolios": 1,
+      "sessions": 85,
+      "max_nav_error": 1.4551915228366852e-11,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    },
+    "091990": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 255,
+      "portfolios": 1,
+      "sessions": 85,
+      "max_nav_error": 9.094947017729282e-12,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    }
+  },
+  "scope": "short component test; not original strategy, account deposit or investment PIT approval",
+  "investment_approved": false
+}

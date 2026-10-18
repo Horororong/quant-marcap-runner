@@ -9,10 +9,10 @@
   ],
   "first_blocker": "2020 rights require missing 2021 approval/listing lifecycle; market sessions and benchmark phase passed",
   "source_request_plan": "Two AGM receipts from existing98 metadata plus two bounded KIND listing searches; maximum16 new requests, zero retries, no repeated history or prices",
-  "next": "Complete frozen151-file regression, continuous/Korean checks, final pinned CI and browser; keep original full25yr inputs blocked",
+  "next": "Final pinned CI and browser on published [stage16] SHA. Then separate explicit halt/pending-order contract; no false original-long success.",
   "classification": "RESEARCH_ONLY",
   "investment_approved": false,
-  "status": "common_split_reference_checkpoint; full final CI pending",
+  "status": "local_available_research_validated; final CI must verify exact published SHA",
   "official_2021_collection": {
     "run_id": 39081048119,
     "requests": 10,
@@ -35,5 +35,23 @@
     "kakao_split": "7sessions14ledgerrows, explicit official112000 reference and5:1economics"
   },
   "available_new_run": "size top1full2019–2025,1719sessions;5157independent rows; final-version local/CI reproduction still running",
-  "original_blocker": "003550 LG2021-05-03: scheduled exit during officially announced halt; no delay/exclusion/zero-return workaround"
+  "original_blocker": "003550 LG2021-05-03: scheduled exit during officially announced halt; no delay/exclusion/zero-return workaround",
+  "frozen_regression": {
+    "files": 151,
+    "exact": 130,
+    "explicit_contract_evolution": 9,
+    "volatile_preserved": 12,
+    "prior_numeric_files_identical": 15
+  },
+  "local_continuous": "continuous_verified:13commands actually completed; failed final header comparison corrected and completed runs revalidated without overwriting inputs/NAV",
+  "local_new_success": {
+    "strategy": "research_size_top1_2019_2025",
+    "sessions": 1719,
+    "independent_rows": 5157,
+    "max_error": 1.6391277313232422e-07,
+    "korean_nav_targets_metrics_bytes_equal": true,
+    "selection_values_exact_after_factor_label_mapping": true
+  },
+  "mandatory_external_user_files": null,
+  "original_long_deciles": "NOT_COMPLETED; execution constraint at0035502021-05-03; original lag unchanged"
 }

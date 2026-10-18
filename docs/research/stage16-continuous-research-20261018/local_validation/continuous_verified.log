@@ -1,0 +1,22 @@
+test_corporate_action_reference.py 0
+test_research_planned_readiness.py 0
+test_research_action_scope.py 0
+primary 0
+real2021 0
+real_kakao 0
+original2019_2025 3
+research_original_size_deciles_2001_2025 3
+research_size_top1_2001_2025 3
+separate2026 3
+issues_lookup 0
+size2019_2025 0
+{"status": "PASS_MODEL_ACCOUNTING", "rows": 5157, "portfolios": 1, "sessions": 1719, "max_nav_error": 1.6391277313232422e-07, "numerical_tolerance_currency": 1e-05, "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification", "investment_approved": false}
+korean2019_2025 0
+Traceback (most recent call last):
+  File "/workspace/quant-marcap-runner/docs/research/stage16-continuous-research-20261018/validate_continuous.py", line 51, in <module>
+    if __name__=='__main__':
+                             
+  File "/workspace/quant-marcap-runner/docs/research/stage16-continuous-research-20261018/validate_continuous.py", line 42, in main
+    for name in ['artifacts/daily_nav.csv','artifacts/target_weights.csv','artifacts/selections.csv','report/metrics_CURRENT.csv','report/daily_nav_canonical.csv']:
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('Korean differs', 'artifacts/selections.csv')

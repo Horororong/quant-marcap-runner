@@ -1,0 +1,1953 @@
+{
+  "preflight_contract_version": "3",
+  "planned_readiness_contract_version": "1",
+  "status": "data_gap",
+  "ready_for_execution": false,
+  "phase": "planned_exposure",
+  "contract": {
+    "version": "1",
+    "scope": "planned positive cohorts and pending rights; no NAV/cost/drift; not investment certification",
+    "source": "annual bounded-memory reads, all historical signal cross-sections before selected-observation projection",
+    "failures": "structured facts/model/definition/capability/contract incidents; no event inference or universe exclusion",
+    "limits": "execution liquidity/weight drift still require common engine; possible trade constraints remain warnings"
+  },
+  "issues": [
+    {
+      "kind": "planned_trade_not_tradable",
+      "classification": "execution_constraint",
+      "verdict": "FAIL",
+      "security": "005930",
+      "date": "2018-05-02",
+      "portfolio": "top_n",
+      "detail": "Entering/exiting planned position has no tradable close",
+      "required": "Original exact execution day has zero volume. A separately specified halt-aware execution/settlement contract would change this strategy; no silent delay or exclusion.",
+      "occurrences": 1,
+      "affected_through": "2018-05-02",
+      "origin_signal": "2018-04-30",
+      "incident_id": "afe509c402633be708ae"
+    }
+  ],
+  "warnings": [],
+  "investment_approved": false,
+  "strategy_id": "research_size_top1_2001_2025",
+  "strategy_fingerprint": "55ef9dbcb482cea8379c56a812b30dfc21bb5bf737f62d2fbcae83ea1587d0a9",
+  "requested_period": {
+    "start": "2001-01-01",
+    "end": "2025-12-31"
+  },
+  "versions": {
+    "schema_version": "1.0",
+    "factor_registry_version": "7",
+    "execution_engine_version": "v2-16-exec-6",
+    "corporate_action_registry_version": "8",
+    "dsl_machine_contract_version": "26",
+    "preflight_contract_version": "3",
+    "history_audit_contract_version": "1",
+    "krx_market_normalization_version": "1",
+    "project_template_version": "v2-16",
+    "performance_template_version": "v2-18"
+  },
+  "factor_sources": [
+    "krx"
+  ],
+  "control_files": [
+    {
+      "path": "config/kr_corporate_actions.csv",
+      "bytes": 4535,
+      "sha256": "66a5cf946ec30dd8aff6379f640d12c4545698b6dff2828dc45b9261dd43efa9"
+    },
+    {
+      "path": "config/kr_corporate_action_references.json",
+      "bytes": 648,
+      "sha256": "50ba2f70a525d6e8778cd49128b5cb4174a82885a0bae13d334f62190e07c092"
+    },
+    {
+      "path": "config/kr_corporate_action_gaps.json",
+      "bytes": 351,
+      "sha256": "6b550b783e1666c187ed52b115c429f00dbae49b80a627fadfe72209ca7398e3"
+    },
+    {
+      "path": "config/research/stock_dividends_2019_2020_lifecycle2021_v1.json",
+      "bytes": 7161,
+      "sha256": "84f7d5c0cace828abe63aef695ef4bdb422743812b1868ff0da1a6759a5ba82e"
+    },
+    {
+      "path": "data/indices/KOSPI.csv",
+      "bytes": 763682,
+      "sha256": "bc5a9590454b10078b6156c4ea0e92562f7b780630ab71c09ca1344fc9ed15a0"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "data/krx_equities/yearly/marcap-2001.parquet",
+      "bytes": 13471290,
+      "sha256": "ad145ee4f1e2c5fd2f253a34c391bf57d39f043691dc59c9cb891a36205a19c1"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2002.parquet",
+      "bytes": 14758343,
+      "sha256": "09ea814403611b8ec00ebb0a9adf3fcc9f80fb9f39ef50302fd131fbc8deef33"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2003.parquet",
+      "bytes": 15043384,
+      "sha256": "65cd695a31708aa050538abb4244a7930b762d4e51297676385baff58f0ce301"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2004.parquet",
+      "bytes": 15219629,
+      "sha256": "a085b1bc6935e894cb6ef0a2e4f0b9bda9e1a9257dca051e9773042b2d66262d"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2005.parquet",
+      "bytes": 15765754,
+      "sha256": "5e2bacb56b469b175db9b4bb443bc55d41caf0088505ff2e01adb1e644f115be"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2006.parquet",
+      "bytes": 16187925,
+      "sha256": "44fa52a1003407b2c3f3a0bad129f929b42ca78fbe0cf337ad4edddeae1a0809"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2007.parquet",
+      "bytes": 17171636,
+      "sha256": "cb09cb6818991e77995f65f006128104332f4722a14861aadcb0747a7d70b0c3"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2008.parquet",
+      "bytes": 17588742,
+      "sha256": "82c6786de7111921c8f5ea0b699ce769f0b699b9b34b243ca397193d5363f52f"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2009.parquet",
+      "bytes": 18098687,
+      "sha256": "0e234b9e1aca7d2f42ef22c5afca8fefcfc144c1bdb4460c169edec2adc7d13a"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2010.parquet",
+      "bytes": 17668181,
+      "sha256": "efd4e041a96bfc2630e0c6e356031dde094995f06632162a0ccfb82e7fb38989"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2011.parquet",
+      "bytes": 18017782,
+      "sha256": "a164ed6d5efd3c7e41e40900a9add9340ca06cf9ec7d201b20c6fedf52c0ef59"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2012.parquet",
+      "bytes": 18061003,
+      "sha256": "0a6be46ebbaa9af390efd036c344d17a90fe9f7dbfd01be0472078731a7f00b4"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2013.parquet",
+      "bytes": 17656360,
+      "sha256": "d3b8d8edff905bb648ebdccc88736f830bc620f6c594e859d5e9a48655ca6fd3"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2014.parquet",
+      "bytes": 17514656,
+      "sha256": "c13f8d85129d42bcae8823bf8c5d2a950ba85f76d5e675ede2bfbeb6f4cbb672"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2015.parquet",
+      "bytes": 18447680,
+      "sha256": "8f8e79b707762297900f560bc2d502bc90e09772bb0d6fc7febeebad231cfd11"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2016.parquet",
+      "bytes": 18683506,
+      "sha256": "70e21cbcbfee8703f6078b374ad209ecc14caac02b584db5477d8d38c334d4a8"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2017.parquet",
+      "bytes": 18839233,
+      "sha256": "980fc0100205839175b64ac88b358bbdb7fc4b9d20f642715454524ce0abdabd"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2018.parquet",
+      "bytes": 19948936,
+      "sha256": "8326cbb45607c5a38532aed3412d74ab08ff7b28485b9442515c40ee2960b863"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2019.parquet",
+      "bytes": 20548266,
+      "sha256": "c60efce88cf71814174b574b429d1e277b03a1add373eaf91406c692f5ae185e"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2020.parquet",
+      "bytes": 21987765,
+      "sha256": "b8457fa399a3801558f06264bb2a16c444d1517caf7505fc3e7c24d7c9d036fd"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2021.parquet",
+      "bytes": 23000593,
+      "sha256": "7bc8bb41509a7a568b54fdd82d4fe3205df89436b01b8915c3a3c391918f5fe7"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2022.parquet",
+      "bytes": 23137995,
+      "sha256": "1b3b9ffc070d2ace9cff9b1ed485dc1438d1f132660e56a9986824cb4f329075"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2023.parquet",
+      "bytes": 24152135,
+      "sha256": "76aef2d0109276cc5e5d869da63a74cc253810d34238b83c85745ae573e18809"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2024.parquet",
+      "bytes": 24906850,
+      "sha256": "aa1c1f7546fd17bcc4adb997b7e02a62b0f7a41199db99ea1784c0cb5e42f329"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2025.parquet",
+      "bytes": 25434255,
+      "sha256": "c6fcafccdf89125384c87730d432c7c89662c4035e25d40df9d9345f116f10a7"
+    }
+  ],
+  "history_coverage_by_year": [
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2001-01-01",
+      "requested_end": "2001-12-31",
+      "expected_first_session": "2001-01-02",
+      "expected_last_session": "2001-12-28",
+      "expected_sessions": 246,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 246,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 246,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2002-01-01",
+      "requested_end": "2002-12-31",
+      "expected_first_session": "2002-01-02",
+      "expected_last_session": "2002-12-30",
+      "expected_sessions": 244,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 244,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 244,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2003-01-01",
+      "requested_end": "2003-12-31",
+      "expected_first_session": "2003-01-02",
+      "expected_last_session": "2003-12-30",
+      "expected_sessions": 247,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 247,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 247,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2004-01-01",
+      "requested_end": "2004-12-31",
+      "expected_first_session": "2004-01-02",
+      "expected_last_session": "2004-12-30",
+      "expected_sessions": 249,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 249,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 249,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2005-01-01",
+      "requested_end": "2005-12-31",
+      "expected_first_session": "2005-01-03",
+      "expected_last_session": "2005-12-29",
+      "expected_sessions": 249,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 249,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 249,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2006-01-01",
+      "requested_end": "2006-12-31",
+      "expected_first_session": "2006-01-02",
+      "expected_last_session": "2006-12-28",
+      "expected_sessions": 247,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 247,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 247,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2007-01-01",
+      "requested_end": "2007-12-31",
+      "expected_first_session": "2007-01-02",
+      "expected_last_session": "2007-12-28",
+      "expected_sessions": 246,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 246,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 246,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2008-01-01",
+      "requested_end": "2008-12-31",
+      "expected_first_session": "2008-01-02",
+      "expected_last_session": "2008-12-30",
+      "expected_sessions": 248,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 248,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 248,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2009-01-01",
+      "requested_end": "2009-12-31",
+      "expected_first_session": "2009-01-02",
+      "expected_last_session": "2009-12-30",
+      "expected_sessions": 253,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 253,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 253,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2010-01-01",
+      "requested_end": "2010-12-31",
+      "expected_first_session": "2010-01-04",
+      "expected_last_session": "2010-12-30",
+      "expected_sessions": 251,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 251,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 251,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2011-01-01",
+      "requested_end": "2011-12-31",
+      "expected_first_session": "2011-01-03",
+      "expected_last_session": "2011-12-29",
+      "expected_sessions": 248,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 248,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 248,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2012-01-01",
+      "requested_end": "2012-12-31",
+      "expected_first_session": "2012-01-02",
+      "expected_last_session": "2012-12-28",
+      "expected_sessions": 248,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 248,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 248,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2013-01-01",
+      "requested_end": "2013-12-31",
+      "expected_first_session": "2013-01-02",
+      "expected_last_session": "2013-12-30",
+      "expected_sessions": 247,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 247,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 247,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2014-01-01",
+      "requested_end": "2014-12-31",
+      "expected_first_session": "2014-01-02",
+      "expected_last_session": "2014-12-30",
+      "expected_sessions": 245,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 245,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 245,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2015-01-01",
+      "requested_end": "2015-12-31",
+      "expected_first_session": "2015-01-02",
+      "expected_last_session": "2015-12-30",
+      "expected_sessions": 248,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 248,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 248,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2016-01-01",
+      "requested_end": "2016-12-31",
+      "expected_first_session": "2016-01-04",
+      "expected_last_session": "2016-12-29",
+      "expected_sessions": 246,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 246,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 246,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2017-01-01",
+      "requested_end": "2017-12-31",
+      "expected_first_session": "2017-01-02",
+      "expected_last_session": "2017-12-28",
+      "expected_sessions": 243,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 243,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 243,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2018-01-01",
+      "requested_end": "2018-12-31",
+      "expected_first_session": "2018-01-02",
+      "expected_last_session": "2018-12-28",
+      "expected_sessions": 244,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 244,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 244,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2019-01-01",
+      "requested_end": "2019-12-31",
+      "expected_first_session": "2019-01-02",
+      "expected_last_session": "2019-12-30",
+      "expected_sessions": 246,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 246,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 246,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2020-01-01",
+      "requested_end": "2020-12-31",
+      "expected_first_session": "2020-01-02",
+      "expected_last_session": "2020-12-30",
+      "expected_sessions": 248,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 248,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 248,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2021-01-01",
+      "requested_end": "2021-12-31",
+      "expected_first_session": "2021-01-04",
+      "expected_last_session": "2021-12-30",
+      "expected_sessions": 248,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 248,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 248,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2022-01-01",
+      "requested_end": "2022-12-31",
+      "expected_first_session": "2022-01-03",
+      "expected_last_session": "2022-12-29",
+      "expected_sessions": 246,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 246,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 246,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2023-01-01",
+      "requested_end": "2023-12-31",
+      "expected_first_session": "2023-01-02",
+      "expected_last_session": "2023-12-28",
+      "expected_sessions": 245,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 245,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 245,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2024-01-01",
+      "requested_end": "2024-12-31",
+      "expected_first_session": "2024-01-02",
+      "expected_last_session": "2024-12-30",
+      "expected_sessions": 244,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 244,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 244,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    },
+    {
+      "history_audit_contract_version": "1",
+      "status": "complete",
+      "calendar": "XKRX",
+      "calendar_package_version": "4.13.2",
+      "requested_start": "2025-01-01",
+      "requested_end": "2025-12-31",
+      "expected_first_session": "2025-01-02",
+      "expected_last_session": "2025-12-30",
+      "expected_sessions": 242,
+      "markets": {
+        "KOSDAQ": {
+          "status": "complete",
+          "observed_sessions": 242,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        },
+        "KOSPI": {
+          "status": "complete",
+          "observed_sessions": 242,
+          "missing_sessions": [],
+          "unexpected_dates": []
+        }
+      },
+      "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+    }
+  ],
+  "signal_populations": [
+    {
+      "signal_date": "2001-04-30",
+      "eligible_count": 4,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2002-04-30",
+      "eligible_count": 7,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2003-04-30",
+      "eligible_count": 5,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2004-04-30",
+      "eligible_count": 6,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2005-04-29",
+      "eligible_count": 8,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2006-04-28",
+      "eligible_count": 14,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2007-04-30",
+      "eligible_count": 17,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2008-04-30",
+      "eligible_count": 24,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2009-04-30",
+      "eligible_count": 11,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2010-04-30",
+      "eligible_count": 20,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2011-04-29",
+      "eligible_count": 32,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2012-04-30",
+      "eligible_count": 22,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2013-04-30",
+      "eligible_count": 23,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2014-04-30",
+      "eligible_count": 22,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2015-04-30",
+      "eligible_count": 24,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2016-04-29",
+      "eligible_count": 26,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2017-04-28",
+      "eligible_count": 32,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2018-04-30",
+      "eligible_count": 32,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2019-04-30",
+      "eligible_count": 33,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2020-04-29",
+      "eligible_count": 26,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2021-04-30",
+      "eligible_count": 36,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2022-04-29",
+      "eligible_count": 45,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2023-04-28",
+      "eligible_count": 36,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2024-04-30",
+      "eligible_count": 44,
+      "required_minimum": 1
+    },
+    {
+      "signal_date": "2025-04-30",
+      "eligible_count": 45,
+      "required_minimum": 1
+    }
+  ],
+  "provider_coverage": [],
+  "benchmark": {
+    "source": "index",
+    "symbol": "KOSPI",
+    "start": "2001-01-02",
+    "end": "2025-12-30",
+    "observations": 6168,
+    "exact_date_alignment": true,
+    "return_basis": "price_index_close",
+    "includes_dividends": false,
+    "path": "data/indices/KOSPI.csv"
+  },
+  "observed_sessions": 6168,
+  "planned_portfolios": 1,
+  "planned_selected_codes": [
+    "000660",
+    "005930"
+  ],
+  "krx_panel": {
+    "actual_start": "2001-01-02",
+    "actual_end": "2025-12-30",
+    "rows": 12757495,
+    "distinct_planned_codes": 2,
+    "markets": [
+      "KOSPI",
+      "KOSDAQ"
+    ]
+  },
+  "signal_dates": [
+    "2001-04-30",
+    "2002-04-30",
+    "2003-04-30",
+    "2004-04-30",
+    "2005-04-29",
+    "2006-04-28",
+    "2007-04-30",
+    "2008-04-30",
+    "2009-04-30",
+    "2010-04-30",
+    "2011-04-29",
+    "2012-04-30",
+    "2013-04-30",
+    "2014-04-30",
+    "2015-04-30",
+    "2016-04-29",
+    "2017-04-28",
+    "2018-04-30",
+    "2019-04-30",
+    "2020-04-29",
+    "2021-04-30",
+    "2022-04-29",
+    "2023-04-28",
+    "2024-04-30",
+    "2025-04-30"
+  ],
+  "history_coverage": {
+    "status": "complete",
+    "annual": [
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2001-01-01",
+        "requested_end": "2001-12-31",
+        "expected_first_session": "2001-01-02",
+        "expected_last_session": "2001-12-28",
+        "expected_sessions": 246,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 246,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 246,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2002-01-01",
+        "requested_end": "2002-12-31",
+        "expected_first_session": "2002-01-02",
+        "expected_last_session": "2002-12-30",
+        "expected_sessions": 244,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 244,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 244,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2003-01-01",
+        "requested_end": "2003-12-31",
+        "expected_first_session": "2003-01-02",
+        "expected_last_session": "2003-12-30",
+        "expected_sessions": 247,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 247,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 247,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2004-01-01",
+        "requested_end": "2004-12-31",
+        "expected_first_session": "2004-01-02",
+        "expected_last_session": "2004-12-30",
+        "expected_sessions": 249,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 249,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 249,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2005-01-01",
+        "requested_end": "2005-12-31",
+        "expected_first_session": "2005-01-03",
+        "expected_last_session": "2005-12-29",
+        "expected_sessions": 249,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 249,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 249,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2006-01-01",
+        "requested_end": "2006-12-31",
+        "expected_first_session": "2006-01-02",
+        "expected_last_session": "2006-12-28",
+        "expected_sessions": 247,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 247,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 247,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2007-01-01",
+        "requested_end": "2007-12-31",
+        "expected_first_session": "2007-01-02",
+        "expected_last_session": "2007-12-28",
+        "expected_sessions": 246,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 246,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 246,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2008-01-01",
+        "requested_end": "2008-12-31",
+        "expected_first_session": "2008-01-02",
+        "expected_last_session": "2008-12-30",
+        "expected_sessions": 248,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 248,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 248,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2009-01-01",
+        "requested_end": "2009-12-31",
+        "expected_first_session": "2009-01-02",
+        "expected_last_session": "2009-12-30",
+        "expected_sessions": 253,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 253,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 253,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2010-01-01",
+        "requested_end": "2010-12-31",
+        "expected_first_session": "2010-01-04",
+        "expected_last_session": "2010-12-30",
+        "expected_sessions": 251,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 251,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 251,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2011-01-01",
+        "requested_end": "2011-12-31",
+        "expected_first_session": "2011-01-03",
+        "expected_last_session": "2011-12-29",
+        "expected_sessions": 248,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 248,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 248,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2012-01-01",
+        "requested_end": "2012-12-31",
+        "expected_first_session": "2012-01-02",
+        "expected_last_session": "2012-12-28",
+        "expected_sessions": 248,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 248,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 248,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2013-01-01",
+        "requested_end": "2013-12-31",
+        "expected_first_session": "2013-01-02",
+        "expected_last_session": "2013-12-30",
+        "expected_sessions": 247,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 247,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 247,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2014-01-01",
+        "requested_end": "2014-12-31",
+        "expected_first_session": "2014-01-02",
+        "expected_last_session": "2014-12-30",
+        "expected_sessions": 245,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 245,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 245,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2015-01-01",
+        "requested_end": "2015-12-31",
+        "expected_first_session": "2015-01-02",
+        "expected_last_session": "2015-12-30",
+        "expected_sessions": 248,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 248,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 248,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2016-01-01",
+        "requested_end": "2016-12-31",
+        "expected_first_session": "2016-01-04",
+        "expected_last_session": "2016-12-29",
+        "expected_sessions": 246,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 246,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 246,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2017-01-01",
+        "requested_end": "2017-12-31",
+        "expected_first_session": "2017-01-02",
+        "expected_last_session": "2017-12-28",
+        "expected_sessions": 243,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 243,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 243,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2018-01-01",
+        "requested_end": "2018-12-31",
+        "expected_first_session": "2018-01-02",
+        "expected_last_session": "2018-12-28",
+        "expected_sessions": 244,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 244,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 244,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2019-01-01",
+        "requested_end": "2019-12-31",
+        "expected_first_session": "2019-01-02",
+        "expected_last_session": "2019-12-30",
+        "expected_sessions": 246,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 246,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 246,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2020-01-01",
+        "requested_end": "2020-12-31",
+        "expected_first_session": "2020-01-02",
+        "expected_last_session": "2020-12-30",
+        "expected_sessions": 248,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 248,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 248,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2021-01-01",
+        "requested_end": "2021-12-31",
+        "expected_first_session": "2021-01-04",
+        "expected_last_session": "2021-12-30",
+        "expected_sessions": 248,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 248,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 248,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2022-01-01",
+        "requested_end": "2022-12-31",
+        "expected_first_session": "2022-01-03",
+        "expected_last_session": "2022-12-29",
+        "expected_sessions": 246,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 246,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 246,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2023-01-01",
+        "requested_end": "2023-12-31",
+        "expected_first_session": "2023-01-02",
+        "expected_last_session": "2023-12-28",
+        "expected_sessions": 245,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 245,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 245,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2024-01-01",
+        "requested_end": "2024-12-31",
+        "expected_first_session": "2024-01-02",
+        "expected_last_session": "2024-12-30",
+        "expected_sessions": 244,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 244,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 244,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      },
+      {
+        "history_audit_contract_version": "1",
+        "status": "complete",
+        "calendar": "XKRX",
+        "calendar_package_version": "4.13.2",
+        "requested_start": "2025-01-01",
+        "requested_end": "2025-12-31",
+        "expected_first_session": "2025-01-02",
+        "expected_last_session": "2025-12-30",
+        "expected_sessions": 242,
+        "markets": {
+          "KOSDAQ": {
+            "status": "complete",
+            "observed_sessions": 242,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          },
+          "KOSPI": {
+            "status": "complete",
+            "observed_sessions": 242,
+            "missing_sessions": [],
+            "unexpected_dates": []
+          }
+        },
+        "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+      }
+    ]
+  },
+  "observation_codes_with_verified_successors": [
+    "000660",
+    "005930"
+  ],
+  "planned_execution_schedule": [
+    {
+      "portfolio": "top_n",
+      "signal_date": "2001-04-30",
+      "execution_date": "2001-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2002-04-30",
+      "execution_date": "2002-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2003-04-30",
+      "execution_date": "2003-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2004-04-30",
+      "execution_date": "2004-05-03"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2005-04-29",
+      "execution_date": "2005-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2006-04-28",
+      "execution_date": "2006-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2007-04-30",
+      "execution_date": "2007-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2008-04-30",
+      "execution_date": "2008-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2009-04-30",
+      "execution_date": "2009-05-04"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2010-04-30",
+      "execution_date": "2010-05-03"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2011-04-29",
+      "execution_date": "2011-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2012-04-30",
+      "execution_date": "2012-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2013-04-30",
+      "execution_date": "2013-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2014-04-30",
+      "execution_date": "2014-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2015-04-30",
+      "execution_date": "2015-05-04"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2016-04-29",
+      "execution_date": "2016-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2017-04-28",
+      "execution_date": "2017-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2018-04-30",
+      "execution_date": "2018-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2019-04-30",
+      "execution_date": "2019-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2020-04-29",
+      "execution_date": "2020-05-04"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2021-04-30",
+      "execution_date": "2021-05-03"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2022-04-29",
+      "execution_date": "2022-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2023-04-28",
+      "execution_date": "2023-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2024-04-30",
+      "execution_date": "2024-05-02"
+    },
+    {
+      "portfolio": "top_n",
+      "signal_date": "2025-04-30",
+      "execution_date": "2025-05-02"
+    }
+  ],
+  "explained_registered_prices": [],
+  "full_panel_diagnostics": "separate source audit; these incidents concern planned selected cohorts only",
+  "price_validation": "1bp source/reference diagnostic; economic rights/cash/NAV not simulated or certified",
+  "runtime_checks_still_required": [
+    "actual held quantities and price path",
+    "rights economic value",
+    "settled cash and costs",
+    "drift-dependent trades",
+    "unregistered events beyond this planned trace"
+  ],
+  "first_blocker": {
+    "kind": "planned_trade_not_tradable",
+    "classification": "execution_constraint",
+    "verdict": "FAIL",
+    "security": "005930",
+    "date": "2018-05-02",
+    "portfolio": "top_n",
+    "detail": "Entering/exiting planned position has no tradable close",
+    "required": "Original exact execution day has zero volume. A separately specified halt-aware execution/settlement contract would change this strategy; no silent delay or exclusion.",
+    "occurrences": 1,
+    "affected_through": "2018-05-02",
+    "origin_signal": "2018-04-30",
+    "incident_id": "afe509c402633be708ae"
+  },
+  "error": {
+    "type": "PlannedReadinessGap",
+    "message": "planned_trade_not_tradable: 005930@2018-05-02: Entering/exiting planned position has no tradable close",
+    "incident_id": "afe509c402633be708ae"
+  },
+  "blocker_classes": [
+    {
+      "condition": "original eligible population smaller than requested buckets/positions",
+      "class": "strategy_definition",
+      "owner": "shared signal cross-section/selection",
+      "effect": "observed count is a definition failure, never missing-data proof or permission to relax filters"
+    },
+    {
+      "condition": "original execution date requires trade in observed zero-volume security",
+      "class": "execution_constraint",
+      "owner": "PROJECT tradable mask and fixed lag",
+      "effect": "cannot execute an original fixed-lag order during a halt; a separately explicit halt-aware contract changes the strategy"
+    },
+    {
+      "condition": "source_file/schema/identity/date/unit missing",
+      "class": "historical_fact",
+      "owner": "strategy_dsl_preflight / KRX/DART providers",
+      "effect": "required observations cannot be replaced by model assumptions"
+    },
+    {
+      "condition": "market sessions or exact benchmark dates missing",
+      "class": "historical_fact",
+      "owner": "krx_history_audit / strategy_dsl_runner benchmark loader",
+      "effect": "no weekday estimate, current-universe substitution or forward fill"
+    },
+    {
+      "condition": "held return undefined or unregistered price/reference mismatch >1bp",
+      "class": "historical_fact",
+      "owner": "PROJECT held-return guard",
+      "effect": "block affected actual exposure; full-panel candidates alone are diagnostics"
+    },
+    {
+      "condition": "ex-date/record-date/rate/reference/approval outcome/listing needed but unproved",
+      "class": "historical_fact",
+      "owner": "stock_dividend_research fact loader / stock_dividend book",
+      "effect": "no event inference; only recognition after proven source availability"
+    },
+    {
+      "condition": "DART values/availability/corrections/scope/historical issuer mapping needed by a factor",
+      "class": "historical_fact",
+      "owner": "existing DART factor provider and operating PIT gate",
+      "effect": "financial research remains subject to existing gate; research model does not waive it"
+    },
+    {
+      "condition": "technical lookback or factor intersection incomplete",
+      "class": "historical_fact",
+      "owner": "krx_technical_factor_adapter / factor registry",
+      "effect": "registered exact lookback only, no shortened lookback or silent fill"
+    },
+    {
+      "condition": "conditional-right market price unobserved / valuation policy unselected",
+      "class": "research_model",
+      "owner": "explicit DSL research contract v1",
+      "effect": "chosen share-equivalent haircut model is labeled modeled, not official price/probability; sensitivity variants recorded"
+    },
+    {
+      "condition": "continuous quantity / dividend tax / virtual settlement convention unselected",
+      "class": "research_model",
+      "owner": "explicit DSL research contract v1",
+      "effect": "continuous pro-rata before-distribution-tax virtual book; no actual-credit claim, integer-account mode unchanged"
+    },
+    {
+      "condition": "costs / signal-to-execution lag / targets / settled liquidity",
+      "class": "research_model",
+      "owner": "StrategySpec / PROJECT",
+      "effect": "explicit cost and timing assumptions; rights cannot be sold/spent; insufficient cash fails, targets are never scaled"
+    },
+    {
+      "condition": "unsupported shorts/interacting actions/compensated cancellation",
+      "class": "capability_gap",
+      "owner": "stock_dividend / cash exchange / PROJECT",
+      "effect": "remain unsupported until a tested common contract exists"
+    },
+    {
+      "condition": "broker-credit date/quantity, actual fractional cash, investor withholding",
+      "class": "account_or_investment_evidence",
+      "owner": "whole-account dividend contract",
+      "effect": "needed for actual account reproduction, not asserted by continuous pretax virtual settlement"
+    },
+    {
+      "condition": "exact public clock, complete legal listing history, full investment PIT certification",
+      "class": "account_or_investment_evidence",
+      "owner": "independent official-source audit",
+      "effect": "research execution does not certify these or relax financial factor gates"
+    },
+    {
+      "condition": "requested performance period too short / incomplete calendar months",
+      "class": "report_contract",
+      "owner": "CURRENT requested-period readiness / calculate_metrics",
+      "effect": "undefined statistics stay unavailable; no new calculator or fabricated annualization"
+    }
+  ],
+  "research_certification": {
+    "investment_approved": false,
+    "account_reconstruction": false,
+    "held_return_validation": "only actual engine execution can validate selected holdings at1bp"
+  }
+}

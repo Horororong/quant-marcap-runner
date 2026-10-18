@@ -1,3 +1,21 @@
+# Continuous research checkpoint (2026-10-18)
+
+Read docs/research/stage16-continuous-research-20261018/README.md and stage16_report.md first for the new workbench path. Starting remote019075550256b9796fd5475fe8d6aa43a6d53b21/CI39078538435 was verified. Current live SHA/CI must be read from GitHub; publication/CI metadata is emitted as GITHUB_SHA/RunID in the actual artifact, not inferred from this checkpoint.
+
+- Existing full original deciles2019–2020, momentum3-1 top3full2020 and size top1full2024 preserved.151file frozen baseline:130exact bytes,9explicit contract evolutions,12volatile envelopes preserved; old15numeric hashes unchanged.
+- Separate predeclared size top1full2019–2025 now executes1719sessions through shared PROJECT/CURRENT.5157independent Gross/Net quantity-cash rows; Korean/JSON NAV,targets,metrics byte-identical; selected values exact after factor audit label mapping.
+- Original deciles2019–2025 remains blocked:003550 LG2021-05-03 planned exit during official suspension. RawVolume0 and official notice agree. Do not delay/exclude/pretend fill to claim original success.
+- Original deciles2001–2025: firstsignal2001-04-30 only4eligible under original10trillion filter. A separate top1control is also blocked at0059302018-05-02 scheduled exitVolume0. Neither full25year run approved.
+- Workbench v2 adds annual full-cross-section planned exposure/readiness, saved exact incidents/lookup, examples; core source-only preflight API preserved, opt-in --inspect-planned. Data facts, research models, execution constraints, population limits and investment evidence separated.
+- Two2020dividends' actual2021approval/listing sources obtained: AGM3/26=>recognition3/29, listingsCT4/22 andHC4/23; continuous pretax virtual settlement, never individual account credit.
+- Common exec6/registry8/reconciliation2 separate exact primary split-market reference from economic quantity return. Kakao2021-04-15 official5:1split and112000reference independently captured; actual7day/14ledger component passes. Normal1bp and unknown-event guards remain.
+- Source jobs39081048119,39081611115,39081945016:23requests total,0retries. Completed SHA guards prevent repeats. Main, source prices, protected financial518/core64/original60 and DART investmentPIT0/6 unchanged.
+-2026 separate: missing observed6/3,7/17 versusXKRX4.13.2; exact KOSPI closes unavailable after9/17. No weekday fill or partial-period success.
+- Next common contract is explicit halt/pending-order/holding-freeze handling in a separately versioned DSL, plus evidence for1:Nspin-offs/later rights. Preserve original target/lag tests. No source purchase or file can make a suspended stock trade on the original day.
+- Final pinned CI is [stage16] in existing financial-accuracy workflow: original DART E2E/19commands, old full baselines, new actual-data accounting/Korean/long checks, Chrome presentation, financial and60original restore. CI success means tests of expected blocks pass; it does not mean original long strategy or investment certification passed.
+
+Previous checkpoint follows unchanged for historical context.
+
 ## Stage15 research environment checkpoint (2026-10-17)
 
 Read `docs/RESEARCH_WORKBENCH.md` and

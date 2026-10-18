@@ -10,7 +10,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parent))
 
 WORKBENCH_CONTRACT={
  'version':'2','entrypoint':'scripts/research_workbench.py',
- 'commands':['capabilities','inventory','translate','check','run','issues'],
+ 'commands':['capabilities','inventory','examples','translate','check','run','issues'],
  'korean_input':'exact labeled Korean clauses separated by semicolon; unknown/missing/duplicate clauses rejected',
  'required_clauses':['기간','시장','팩터','포트폴리오','리밸런싱','체결','비용','벤치마크'],
  'optional_clauses':['필터'],'translation':'registered factor/direction aliases and strict StrategySpec only',
@@ -120,6 +120,8 @@ def main():
    from export_strategy_dsl_contract import build_capabilities
    result=build_capabilities()
   elif a.command=='inventory':result=inventory(a.repo_root)
+  elif a.command=='examples':
+   result=json.loads((a.repo_root/'config/research/validated_examples_v1.json').read_text())
   elif a.command=='issues':
    if not a.saved_run:raise ValueError('--saved-run required')
    found={name:json.loads((a.saved_run/name).read_text()) for name in ['readiness_incidents.json','runtime_incident.json'] if (a.saved_run/name).is_file()}

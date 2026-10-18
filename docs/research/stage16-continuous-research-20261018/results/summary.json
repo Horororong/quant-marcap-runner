@@ -1,0 +1,153 @@
+{
+  "status": "PASS_SOFTWARE_AND_AVAILABLE_RESEARCH; ORIGINAL_LONG_DECILES_BLOCKED",
+  "investment_approved": false,
+  "available": [
+    "original deciles2019–2020",
+    "momentum3-1 top3full2020",
+    "size top1full2024",
+    "predeclared size top1full2019–2025"
+  ],
+  "ledger": {
+    "status": "PASS_MODEL_ACCOUNTING",
+    "rows": 5157,
+    "portfolios": 1,
+    "sessions": 1719,
+    "max_nav_error": 1.6391277313232422e-07,
+    "numerical_tolerance_currency": 1e-05,
+    "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+    "investment_approved": false
+  },
+  "korean_nav_weights_metrics_bytes_identical": true,
+  "selection_values_exact_after_registered_label_mapping": true,
+  "frozen": {
+    "status": "PASS_FROZEN_REGRESSION_WITH_EXPLICIT_CONTRACT_EVOLUTION",
+    "preserved_archive_files": 151,
+    "exact_files": 130,
+    "contract_files": 9,
+    "volatile_envelopes_preserved_only": 12
+  },
+  "blockers": {
+    "original2019_2025": {
+      "kind": "planned_trade_not_tradable",
+      "classification": "execution_constraint",
+      "verdict": "FAIL",
+      "security": "003550",
+      "date": "2021-05-03",
+      "portfolio": "D01",
+      "detail": "Entering/exiting planned position has no tradable close",
+      "required": "Original exact execution day has zero volume. A separately specified halt-aware execution/settlement contract would change this strategy; no silent delay or exclusion.",
+      "occurrences": 1,
+      "affected_through": "2021-05-03",
+      "origin_signal": "2021-04-30",
+      "incident_id": "7441fd5c20cd2a2a0b4e"
+    },
+    "research_original_size_deciles_2001_2025": {
+      "kind": "insufficient_eligible_population",
+      "classification": "strategy_definition",
+      "verdict": "FAIL",
+      "security": null,
+      "date": "2001-04-30",
+      "portfolio": null,
+      "detail": "Original rules yield 4, required 10",
+      "required": "Keep original strategy blocked; any separately predeclared broad-universe strategy needs its own DSL/fingerprint",
+      "occurrences": 1,
+      "affected_through": "2001-04-30",
+      "incident_id": "94f48ad86b10659d262d"
+    },
+    "research_size_top1_2001_2025": {
+      "kind": "planned_trade_not_tradable",
+      "classification": "execution_constraint",
+      "verdict": "FAIL",
+      "security": "005930",
+      "date": "2018-05-02",
+      "portfolio": "top_n",
+      "detail": "Entering/exiting planned position has no tradable close",
+      "required": "Original exact execution day has zero volume. A separately specified halt-aware execution/settlement contract would change this strategy; no silent delay or exclusion.",
+      "occurrences": 1,
+      "affected_through": "2018-05-02",
+      "origin_signal": "2018-04-30",
+      "incident_id": "afe509c402633be708ae"
+    }
+  },
+  "commands": [
+    {
+      "name": "test_corporate_action_reference.py",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 0.53
+    },
+    {
+      "name": "test_research_planned_readiness.py",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 0.544
+    },
+    {
+      "name": "test_research_action_scope.py",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 2.137
+    },
+    {
+      "name": "primary",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 0.03
+    },
+    {
+      "name": "real2021",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 4.157
+    },
+    {
+      "name": "real_kakao",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 0.652
+    },
+    {
+      "name": "original2019_2025",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "seconds": 17.745
+    },
+    {
+      "name": "research_original_size_deciles_2001_2025",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "seconds": 56.418
+    },
+    {
+      "name": "research_size_top1_2001_2025",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "seconds": 43.764
+    },
+    {
+      "name": "separate2026",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "seconds": 3.187
+    },
+    {
+      "name": "issues_lookup",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 0.031
+    },
+    {
+      "name": "size2019_2025",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 88.408
+    },
+    {
+      "name": "korean2019_2025",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "seconds": 88.271
+    }
+  ],
+  "scope": "Source-panel price/size research, modeled continuous pretax stock rights where used; cash distributions/legal account/PIT not certified; Net means trading costs only"
+}
