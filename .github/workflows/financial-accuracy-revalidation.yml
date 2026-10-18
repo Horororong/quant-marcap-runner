@@ -36,6 +36,7 @@ on:
       - 'docs/research/stage14-celltrion-2019-20261017/**'
       - 'docs/research/stage15-research-environment-20261017/**'
       - 'docs/research/stage16-continuous-research-20261018/**'
+      - 'docs/research/long-execution-20261018/**'
       - 'scripts/test_stock_dividend*.py'
       - 'scripts/collect_stock_dividend_metadata.py'
       - 'scripts/read_stock_dividend_artifact.py'
@@ -47,6 +48,29 @@ permissions:
   contents: read
   actions: read
 jobs:
+  bounded-long-split-source:
+    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[long-split-source]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore and verify original pinned offline kit
+        run: |
+          python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/financial-repair"
+          python "$RUNNER_TEMP/financial-repair/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/financial-repair/kit-parts" --destination "$RUNNER_TEMP/financial-repair/runtime"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I "$RUNNER_TEMP/financial-repair/runtime/scripts/sandbox_runtime.py" verify
+      - name: One public actual change-listing search without credentials
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/long-execution-20261018/collect_split.py --output "$RUNNER_TEMP/long-split-source"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: long-split-primary
+          path: ${{ runner.temp }}/long-split-source
+          retention-days: 90
   bounded-stage16-source:
     if: ${{ github.run_attempt == 1 && (github.sha == '699cfa5e17ff8104ed17911e5e2f17739cd9f953' && contains(github.event.head_commit.message, '[stage16-source]') || github.sha == 'cda84bad7f3a5cf481e89352edde15030ac732dd' && contains(github.event.head_commit.message, '[stage16-actions2021]') || github.sha == 'c445a80128bbc13ed4d02bcb10dafb77a35d9ddc' && contains(github.event.head_commit.message, '[stage16-reference]')) }}
     runs-on: ubuntu-latest
