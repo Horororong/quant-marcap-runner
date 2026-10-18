@@ -10,7 +10,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parent))
 
 WORKBENCH_CONTRACT={
  'version':'2','entrypoint':'scripts/research_workbench.py',
- 'commands':['capabilities','inventory','translate','check','run'],
+ 'commands':['capabilities','inventory','translate','check','run','issues'],
  'korean_input':'exact labeled Korean clauses separated by semicolon; unknown/missing/duplicate clauses rejected',
  'required_clauses':['기간','시장','팩터','포트폴리오','리밸런싱','체결','비용','벤치마크'],
  'optional_clauses':['필터'],'translation':'registered factor/direction aliases and strict StrategySpec only',
@@ -114,12 +114,17 @@ def check(path,root,diagnose=False):
  return result
 
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=WORKBENCH_CONTRACT['commands']);p.add_argument('--strategy',type=Path);p.add_argument('--request');p.add_argument('--output',type=Path);p.add_argument('--output-dir',type=Path);p.add_argument('--report-periods',type=Path);p.add_argument('--research-model-from',type=Path);p.add_argument('--diagnose-panel',action='store_true');p.add_argument('--repo-root',type=Path,default=ROOT);a=p.parse_args()
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=WORKBENCH_CONTRACT['commands']);p.add_argument('--strategy',type=Path);p.add_argument('--request');p.add_argument('--output',type=Path);p.add_argument('--output-dir',type=Path);p.add_argument('--saved-run',type=Path);p.add_argument('--report-periods',type=Path);p.add_argument('--research-model-from',type=Path);p.add_argument('--diagnose-panel',action='store_true');p.add_argument('--repo-root',type=Path,default=ROOT);a=p.parse_args()
  try:
   if a.command=='capabilities':
    from export_strategy_dsl_contract import build_capabilities
    result=build_capabilities()
   elif a.command=='inventory':result=inventory(a.repo_root)
+  elif a.command=='issues':
+   if not a.saved_run:raise ValueError('--saved-run required')
+   found={name:json.loads((a.saved_run/name).read_text()) for name in ['readiness_incidents.json','runtime_incident.json'] if (a.saved_run/name).is_file()}
+   if not found:raise ValueError('No preserved structured incidents in this run')
+   result=dict(status='ok',saved_incidents=found,scope='Exact previous diagnostics only; current inputs must pass fresh preflight before execution',investment_approved=False)
   elif a.command=='translate':
    if not a.request:raise ValueError('--request required')
    model=json.loads(a.research_model_from.read_text())['research'] if a.research_model_from else None

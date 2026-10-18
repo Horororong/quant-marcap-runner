@@ -942,6 +942,8 @@ def _normalize_corporate_action_events(
         raise TypeError("corporate_action_events는 DataFrame 또는 None이어야 합니다.")
     if corporate_action_events.empty:
         return pd.DataFrame(columns=columns + ["last_trade_date", "last_price", "successor_price", "event_return"])
+    if 'market_reference_contract' in corporate_action_events:
+        columns += ['market_reference_contract']
 
     required = {
         "event_date", "event_type", "predecessor_code", "successor_code",
@@ -989,6 +991,11 @@ def _normalize_corporate_action_events(
         event_date = pd.Timestamp(row["event_date"])
         pred = row["predecessor_code"]
         succ = row["successor_code"]
+        contract=row.get('market_reference_contract')
+        if isinstance(contract,str) and contract:
+            from corporate_action_reference import validate_reference
+            if row['event_type']!='stock_split':raise ValueError('market reference requires an exact stock_split')
+            validate_reference(contract,str(event_date.date()),pred)
         if execution_targets is not None:
             possible = set(possible_successors)
             for execution_date, target in execution_targets.items():
@@ -1213,7 +1220,20 @@ def simulate_target_weight_portfolio(
             override_count = int((held & reference_exempt.loc[dt]).sum())
             observed = reference.loc[dt]
             finite = np.isfinite(observed) & np.isfinite(r)
-            difference = (r - observed).abs() * 10_000.0
+            comparison = r.copy()
+            for action in actions_by_date.get(dt,[]):
+                contract=action.get('market_reference_contract')
+                if isinstance(contract,str) and contract:
+                    from corporate_action_reference import validate_reference
+                    if action['event_type']!='stock_split':raise ValueError('market reference requires an exact stock_split')
+                    c=validate_reference(contract,str(dt.date()),action['predecessor_code'])
+                    security=c['security']
+                    comparison[security]=float(px.at[dt,security])/c['reference_price']-1.
+                    finite[security]=np.isfinite(observed[security]) and np.isfinite(comparison[security])
+            # This changes only the independent source-price comparison. The
+            # economic return r (share_ratio * close / last_close) still owns
+            # Gross/Net NAV, quantities, turnover and cash without alteration.
+            difference = (comparison - observed).abs() * 10_000.0
             bad = checked & (~finite | (difference > HELD_RETURN_TOLERANCE_BPS))
             if bad.any():
                 codes = list(bad[bad].index)

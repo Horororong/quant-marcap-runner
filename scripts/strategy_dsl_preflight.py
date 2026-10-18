@@ -72,7 +72,10 @@ def preflight_strategy(
 ) -> dict[str, Any]:
     if inspect_planned:
         from research_planned_readiness import inspect_planned_strategy
-        return inspect_planned_strategy(strategy_json, repo_root)
+        try:
+            return inspect_planned_strategy(strategy_json, repo_root)
+        except (OSError,KeyError,TypeError,ValueError,RuntimeError,AssertionError) as exc:
+            return _error_payload(status='data_gap',phase='planned_data_contract',exc=exc)
     strategy_path = Path(strategy_json)
     root = Path(repo_root).resolve()
 
@@ -209,6 +212,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("strategy_json", type=Path)
     ap.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
+    ap.add_argument('--inspect-planned',action='store_true',help='Annual bounded-memory selected-exposure and pending-rights inspection; no NAV')
     ap.add_argument(
         "--always-zero",
         action="store_true",
@@ -216,7 +220,7 @@ def main() -> None:
     )
     args = ap.parse_args()
 
-    result = preflight_strategy(args.strategy_json, args.repo_root)
+    result = preflight_strategy(args.strategy_json, args.repo_root,inspect_planned=args.inspect_planned)
     print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
     if not args.always_zero:
         raise SystemExit(exit_code_for(result))

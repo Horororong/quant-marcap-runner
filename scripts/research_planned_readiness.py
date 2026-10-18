@@ -25,7 +25,7 @@ def inspect_planned_strategy(strategy_json,repo_root):
  root=Path(repo_root).resolve();issues=[];warnings=[];by_key={}
  result=dict(preflight_contract_version=PREFLIGHT_CONTRACT_VERSION,planned_readiness_contract_version=VERSION,status='data_gap',ready_for_execution=False,
   phase='compile',contract=CONTRACT,issues=issues,warnings=warnings,investment_approved=False)
- def issue(kind,detail,*,code=None,date=None,portfolio=None,required=None,classification='historical_fact',**extra):
+ def issue(kind,detail,*,code=None,date=None,portfolio=None,required=None,classification='historical_fact',verdict='UNVERIFIED',**extra):
   date=str(pd.Timestamp(date).date()) if date is not None else None
   # Preserve first exact incident and affected range rather than emitting one
   # indistinguishable missing-quote incident for every later session.
@@ -34,7 +34,7 @@ def inspect_planned_strategy(strategy_json,repo_root):
    old=by_key[key];old['occurrences']+=1
    if date:old['affected_through']=max(old.get('affected_through') or date,date)
    return old
-  row=dict(kind=kind,classification=classification,verdict='UNVERIFIED',security=code,date=date,portfolio=portfolio,detail=detail,
+  row=dict(kind=kind,classification=classification,verdict=verdict,security=code,date=date,portfolio=portfolio,detail=detail,
    required=required or 'Inspect exact original source and common contract; never fill/exclude/override',occurrences=1,affected_through=date,**extra)
   row['incident_id']=hashlib.sha256(json.dumps({k:row.get(k) for k in ['kind','security','date','portfolio','event_id']},sort_keys=True).encode()).hexdigest()[:20]
   issues.append(row);by_key[key]=row;return row
@@ -42,7 +42,20 @@ def inspect_planned_strategy(strategy_json,repo_root):
  except (ValueError,KeyError,TypeError) as e:
   result.update(status='capability_gap',error=dict(type=type(e).__name__,message=str(e)));issue('unsupported_strategy',str(e),classification='capability_gap');return result
  result.update(strategy_id=spec.strategy_id,strategy_fingerprint=spec.fingerprint(),requested_period=dict(start=spec.period.start,end=spec.period.end),versions={k:v for k,v in plan.items() if k.endswith('_version')},factor_sources=plan['data_contract']['factor_sources'],phase='sources')
+ controls=['config/kr_corporate_actions.csv','config/kr_corporate_action_references.json','config/kr_corporate_action_gaps.json']
+ if spec.research:controls.append(spec.research['event_file'])
+ if spec.benchmark:controls.append('data/indices/'+spec.benchmark.symbol+'.csv')
+ result['control_files']=[dict(path=name,bytes=(root/name).stat().st_size,sha256=hashlib.sha256((root/name).read_bytes()).hexdigest()) for name in controls if (root/name).is_file()]
  engine=load_project_engine(root);_,_,execution=engine_inputs(spec,engine)
+ from krx_technical_factor_adapter import TECHNICAL_FACTOR_SPECS
+ technical=sorted({f.field for f in spec.factors if f.field in TECHNICAL_FACTOR_SPECS}|{f.field for f in spec.universe.filters if f.field in TECHNICAL_FACTOR_SPECS})
+ if technical:
+  result['technical_lookback']={field:dict(required_sessions=TECHNICAL_FACTOR_SPECS[field].lookback_sessions,skip_sessions=TECHNICAL_FACTOR_SPECS[field].skip_sessions,owner='registered technical provider; exact original per-code window, no shortening') for field in technical}
+  history=[]
+  for year in range(pd.Timestamp(spec.period.start).year-2,pd.Timestamp(spec.period.end).year+1):
+   p=root/f'data/krx_equities/yearly/marcap-{year}.parquet'
+   if p.is_file():history.append(dict(path=str(p.relative_to(root)),bytes=p.stat().st_size,sha256=hashlib.sha256(p.read_bytes()).hexdigest()))
+  result['technical_history_files']=history
  provenance=[];coverage=[];populations=[];targets={};selected=set();date_parts=[];provider=[];total_rows=0
  for year in range(pd.Timestamp(spec.period.start).year,pd.Timestamp(spec.period.end).year+1):
   start=max(spec.period.start,f'{year}-01-01');end=min(spec.period.end,f'{year}-12-31');path=root/f'data/krx_equities/yearly/marcap-{year}.parquet'
@@ -63,7 +76,7 @@ def inspect_planned_strategy(strategy_json,repo_root):
      n=len(ranked);minimum=10 if spec.portfolio.selection=='deciles' else spec.portfolio.number_of_positions
      populations.append(dict(signal_date=str(pd.Timestamp(signal).date()),eligible_count=n,required_minimum=minimum))
      if n<minimum:
-      issue('insufficient_eligible_population',f'Original rules yield {n}, required {minimum}',date=signal,classification='strategy_definition',required='Keep original strategy blocked; any separately predeclared broad-universe strategy needs its own DSL/fingerprint');continue
+      issue('insufficient_eligible_population',f'Original rules yield {n}, required {minimum}',date=signal,classification='strategy_definition',verdict='FAIL',required='Keep original strategy blocked; any separately predeclared broad-universe strategy needs its own DSL/fingerprint');continue
      groups=partition_deciles(ranked).groupby('decile',sort=True) if spec.portfolio.selection=='deciles' else [('top_n',ranked.head(minimum).assign(target_weight=1/minimum))]
      for label,group in groups:
       row=pd.Series(group.target_weight.to_numpy(float),index=group.Code.astype(str),name=pd.Timestamp(signal));targets.setdefault(label,[]).append(row);selected.update(row.index)
@@ -76,7 +89,8 @@ def inspect_planned_strategy(strategy_json,repo_root):
  dates=pd.DatetimeIndex(date_parts).unique().sort_values()
  def finish():
   result['first_blocker']=min((x for x in issues if x['date']),key=lambda x:(x['date'],x['security'] or '',x['portfolio'] or '')) if any(x['date'] for x in issues) else (issues[0] if issues else None)
-  if issues:result['error']=dict(type='PlannedReadinessGap',message=result['first_blocker']['detail'],incident_id=result['first_blocker']['incident_id'])
+  if issues:
+   b=result['first_blocker'];result['error']=dict(type='PlannedReadinessGap',message=f"{b['kind']}: {b['security']}@{b['date']}: {b['detail']}",incident_id=b['incident_id'])
   return result
  if not len(dates):return finish()
  try:result['benchmark']=benchmark_coverage_audit(root,spec.benchmark,dates)
@@ -145,6 +159,10 @@ def inspect_planned_strategy(strategy_json,repo_root):
     j=indices[code];value=raw_returns[i,j];reference=r[i,j];basis='raw_close';event=normal.get((dt,code));exempt=False
     if event:
      value=event['event_return'];basis=event['event_type'];exempt=basis=='stock_merger'
+     contract=event.get('market_reference_contract')
+     if isinstance(contract,str) and contract:
+      from corporate_action_reference import validate_reference
+      c=validate_reference(contract,session,code);value=p[i,j]/c['reference_price']-1;basis='official_split_reference'
     for (end,security),a in normal.items():
      if security==code and pd.Timestamp(a['last_trade_date'])<dt<end and not math.isfinite(value):value=0;exempt=not math.isfinite(reference);basis='registered_suspension'
     fact=next((f for f in catalog if f['security']==code and f['ex_date']==session),None)
@@ -154,7 +172,8 @@ def inspect_planned_strategy(strategy_json,repo_root):
       value=p[i,j]/float(fact['reference_price'])-1;basis='official_dividend_reference'
      else:issue('missing_available_event_reference','Official reference not usable by this close',code=code,date=dt,portfolio=label)
     difference=abs(value-reference)*10000 if math.isfinite(value) and math.isfinite(reference) else None
-    if not math.isfinite(p[i,j]) or p[i,j]<=0:issue('missing_held_quote','Positive planned holding has no finite positive close',code=code,date=dt,portfolio=label,origin_signal=held.get(code),required='Exact historical observations or independently verified cessation/disposal contract; never interpolate or remove security')
+    known_quote_contract=basis in ['stock_merger','registered_suspension'] and math.isfinite(value)
+    if (not math.isfinite(p[i,j]) or p[i,j]<=0) and not known_quote_contract:issue('missing_held_quote','Positive planned holding has no finite positive close',code=code,date=dt,portfolio=label,origin_signal=held.get(code),required='Exact historical observations or independently verified cessation/disposal contract; never interpolate or remove security')
     elif not exempt and (difference is None or difference>HELD_RETURN_TOLERANCE_BPS):
      issue('held_return_reference_gap','Planned holding fails unchanged1bp source/event comparison',code=code,date=dt,portfolio=label,previous_date=str(dates[i-1].date()) if i else None,previous_close=float(p[i-1,j]) if i and math.isfinite(p[i-1,j]) else None,close=float(p[i,j]),exchange_return=float(reference) if math.isfinite(reference) else None,effective_comparison_return=float(value) if math.isfinite(value) else None,difference_bps=difference,basis=basis,origin_signal=held.get(code),required='Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override')
     elif basis!='raw_close':explained.append(dict(portfolio=label,security=code,date=session,basis=basis,difference_bps=difference))
@@ -166,7 +185,9 @@ def inspect_planned_strategy(strategy_json,repo_root):
     for code in set(held)|set(nextheld):
      j=indices[code]
      if not math.isfinite(p[i,j]) or p[i,j]<=0 or not math.isfinite(v[i,j]) or v[i,j]<=0:
-      if code not in held or code not in nextheld:issue('planned_trade_not_tradable','Entering/exiting planned position has no tradable close',code=code,date=dt,portfolio=label,origin_signal=str(sig.date()),required='Exact execution-day quote/volume and official suspension/resumption information; original lag stays unchanged')
+      if code not in held or code not in nextheld:
+       zero_volume=math.isfinite(v[i,j]) and v[i,j]==0
+       issue('planned_trade_not_tradable','Entering/exiting planned position has no tradable close',code=code,date=dt,portfolio=label,origin_signal=str(sig.date()),classification='execution_constraint' if zero_volume else 'historical_fact',verdict='FAIL' if zero_volume else 'UNVERIFIED',required='Original exact execution day has zero volume. A separately specified halt-aware execution/settlement contract would change this strategy; no silent delay or exclusion.' if zero_volume else 'Exact execution-day quote/volume and official suspension/resumption information; original lag stays unchanged')
       else:warnings.append(dict(kind='possible_drift_trade_constraint',security=code,date=session,portfolio=label,detail='Same planned member; actual drifting weight determines whether a trade is required'))
     held=nextheld
  result.update(phase='planned_exposure',planned_execution_schedule=schedules,explained_registered_prices=explained,

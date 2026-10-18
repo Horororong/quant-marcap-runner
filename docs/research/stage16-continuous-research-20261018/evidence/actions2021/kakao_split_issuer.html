@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ko" xml:lang="ko" class="ko">
+    <head>
+        <meta charset="utf-8">
+        <!-- meta -->
+        <meta name="viewport" content="user-scalable=no,width=device-width,height=device-height,initial-scale=1,maximum-scale=1,minimum-scale=1,viewport-fit=cover">
+        <meta content="website"       property="og:type"  />
+        <meta content='kakaocorp.com'   property='og:site_name'/>
+        <meta content='//www.kakaocorp.com/ir/noticeView' property='og:url'/>
+
+        <meta content='ko_KR'           property='og:locale'/>
+            <meta content='en_US'           property='og:locale:alternate'/>
+            <meta content="Kakao"            property='og:title'/>
+                <meta content='Connect Everything - 새로운 연결, 더 나은 세상' property='og:description'/>
+                <meta content="//t1.kakaocdn.net/kakaocorp/corp_thumbnail/Kakao.png" property="og:image"/>
+            <meta name="naver-site-verification" content="6171ab3d716f1b32969a13e4f5b9475b2f4dd42c"/>
+        <!-- //meta -->
+        <title>공고 | 카카오 투자정보</title>
+            <link rel="shortcut icon" href="/ir/resources/favicon.ico" type="image/x-icon" />
+        
+        <link rel="stylesheet" type="text/css" href="/ir/resources/common/css/sub.css?t_=202610180908">
+                <link rel="stylesheet" type="text/css" href="/ir/resources/service/_css/kSlide.css?t_=202610180908">
+            <link rel="stylesheet" type="text/css" href="/ir/resources/service/_css/jquery.mCustomScrollbar.css">
+            <link rel="stylesheet" type="text/css" href="/ir/resources/service/_css/font.css">
+
+            <!--[if lte IE 8]>
+            <script src="https://t1.kakaocdn.net/cssjs/sizzle/sizzle-1.10.7.min.js?original"></script>
+            <script src="https://t1.kakaocdn.net/cssjs/JSON-js/fc535e9cc8/json2.min.js?original"></script>
+            <![endif]-->
+            <!--[if lt IE 9]>
+            <script src="https://t1.kakaocdn.net/cssjs/sizzle/sizzle-1.10.7.min.js?original"></script>
+            <script src="https://t1.kakaocdn.net/cssjs/JSON-js/fc535e9cc8/json2.min.js?original"></script>
+            <script src="https://t1.kakaocdn.net/cssjs/html5shiv/html5shiv-3.7.0.min.js?original"></script>
+            <![endif]-->
+
+            <script type="text/javascript" src="/ir/resources/common/js/common.js?t_=202610180908"></script>
+            <script type="text/javascript" src="/ir/resources/common/js/utils.js?t_=202610180908"></script>
+            <script type="text/javascript" src="https://tv.kakao.com/player/script/sdk/player_api.min.js"></script>
+            <script type="text/javascript" src="https://t1.kakaocdn.net/kakaocorp/Ir/js/jquery-3.7.0.min.js"></script>
+            <script type="text/javascript" src="https://t1.kakaocdn.net/kakaocorp/Ir/js/jigu.min.js"></script>
+            <script type="text/javascript" src="https://t1.kakaocdn.net/kakaocorp/Ir/js/jquery.mCustomScrollbar.js"></script>
+            <script type="text/javascript" src="https://t1.kakaocdn.net/kakaocorp/Ir/js/lib.js"></script>
+            <script type="text/javascript" src="https://t1.kakaocdn.net/kakaocorp/Ir/js/jquery.form.min.js"></script>
+            <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+        <!-- New Tiara SDK -->
+         <!-- 2025-12-24 sdk 호출 방식 수정 -->
+         <script type="text/javascript" src="//t1.kakaocdn.net/tiara/js/v1/tiara-1.2.2.min.js" integrity="sha384-Qw5nj2ARiHDKjDQFJMbmaZAkfMRCf9f/Dtdy/E0gJ9bTyuxIx2TfiMPRuLzuV5sP" crossorigin="anonymous"></script>
+         <script type="text/javascript" src="https://t1.kakaocdn.net/kakaocorp/Ir/js/tiaraTracker_20251230.js"></script>
+    </head>
+    <body>
+        <script>
+            $(function(){
+               function submit(href, url) {
+                 $("#frmFileDownload").children("input[name='fileUrl']").val(href);
+                 $("#frmFileDownload").attr("action", url);
+                 $("#frmFileDownload").submit();
+               }
+               // data-filename 속성으로 저장 파일명 지정 가능
+                $(document).on("click", "a.btnDownloadPromise", function (e) {
+                  e.preventDefault();
+                  var rawFileName = $(this).data('filename') || '';
+                  var encodedFileName = rawFileName ? btoa(unescape(encodeURIComponent(rawFileName))) : '';
+                  $("#frmFileDownload").children("input[name='fileName']").val(encodedFileName);
+                  submit($(this).prop('href'), "/ir/download/url")
+                });
+
+              // original filename 으로 다운로드
+              $(document).on("click", "a.btnDownloadPromiseFileName", function (e) {
+                e.preventDefault();
+                submit($(this).prop('href'), "/ir/download/filename");
+              });
+            });
+
+            function changeLanguage(lang) {
+                const url = new URL(window.location.href);
+                url.search = '';
+                url.searchParams.set('lang', lang);
+                window.location.href = url.toString();
+            }
+
+            function commonExcelDownload(excelCode) {
+                const existingForm = document.getElementById("commonExcelDownloadForm");
+                if (existingForm) {
+                    document.body.removeChild(existingForm);
+                }
+                const form = document.createElement("form");
+                form.id = "commonExcelDownloadForm";
+                form.method = "GET";
+                form.action = "/ir/download/excel";
+                form.style.display = "none";
+
+                const input = document.createElement("input");
+                input.type = "hidden";
+                input.name = "excelCode";
+                input.value = excelCode;
+                form.appendChild(input);
+
+                document.body.appendChild(form);
+                form.submit();
+            }
+
+        </script>
+        <form id="frmFileDownload" method="GET" action="/ir/download/url">
+            <input type="hidden" name="fileUrl" value="">
+            <input type="hidden" name="fileName" value="">
+        </form>
+
+        <div class="direct-link">
+                    <a href="#kakaoBody">본문 바로가기</a>
+                    <a href="#gnbContent">메뉴 바로가기</a>
+                </div>
+            <div id="kakaoWrap" class="ir_main">
+                    <header class="doc-header">
+    <div class="inner-header">
+        <h1 class="doc-title">
+            <a href="/ir/main" aria-label="카카오 투자정보">
+                <svg viewBox="0 0 154 29" fill="none">
+                            <g>
+                                <path d="M27.3602 8.42969H14.1602V25.8597H27.3602V8.42969Z" fill="white" />
+                            </g>
+                            <path d="M15.1602 20.6097C15.1602 19.0997 15.6602 17.9497 16.6702 17.1597C17.6802 16.3697 19.1502 15.9697 21.0702 15.9697H23.9602V15.0197C23.9602 12.7097 22.9402 11.5597 20.9102 11.5597C20.2602 11.5597 19.5702 11.6497 18.8502 11.8297C18.1302 12.0097 17.4702 12.2397 16.8702 12.5097L16.1302 10.7397C16.8802 10.3197 17.6802 9.99969 18.5402 9.76969C19.4002 9.53969 20.2402 9.42969 21.0602 9.42969C24.5902 9.42969 26.3502 11.3097 26.3502 15.0697V24.6097H24.5002L24.2002 22.9697C23.4502 23.5697 22.6602 24.0297 21.8202 24.3597C20.9802 24.6897 20.1702 24.8497 19.4102 24.8497C18.0802 24.8497 17.0402 24.4697 16.2902 23.7197C15.5402 22.9697 15.1602 21.9297 15.1602 20.5997M19.8702 22.8397C20.2102 22.8397 20.5702 22.7897 20.9402 22.6997C21.3102 22.6097 21.6802 22.4897 22.0502 22.3497C22.4202 22.1997 22.7702 22.0297 23.1002 21.8197C23.4302 21.6097 23.7202 21.3897 23.9702 21.1497V17.6597H21.3602C20.0402 17.6597 19.0802 17.8897 18.4702 18.3397C17.8702 18.7897 17.5602 19.5097 17.5602 20.4897C17.5602 22.0497 18.3302 22.8297 19.8702 22.8297" fill="black" />
+                            <g>
+                                <g>
+                                    <path d="M43.7701 2H29.8301V26H43.7701V2Z" fill="whtie" />
+                                </g>
+                            </g>
+                            <path d="M33.3303 24.62H30.8203V3.55L33.3303 3V24.62ZM40.0403 9.32L42.0003 10.74L37.1803 16.79L42.7703 23.5L40.8403 25L34.2403 16.93L40.0403 9.33V9.32Z" fill="black" />
+                            <g>
+                                <path d="M57.1805 8.42969H43.9805V25.8597H57.1805V8.42969Z" fill="white" />
+                            </g>
+                            <path d="M44.9805 20.6097C44.9805 19.0997 45.4805 17.9497 46.4905 17.1597C47.5005 16.3697 48.9705 15.9697 50.8905 15.9697H53.7805V15.0197C53.7805 12.7097 52.7605 11.5597 50.7305 11.5597C50.0805 11.5597 49.3905 11.6497 48.6705 11.8297C47.9505 12.0097 47.2905 12.2397 46.6905 12.5097L45.9505 10.7397C46.7005 10.3197 47.5005 9.99969 48.3605 9.76969C49.2205 9.53969 50.0605 9.42969 50.8805 9.42969C54.4005 9.42969 56.1705 11.3097 56.1705 15.0697V24.6097H54.3205L54.0205 22.9697C53.2705 23.5697 52.4805 24.0297 51.6405 24.3597C50.8005 24.6897 49.9905 24.8497 49.2305 24.8497C47.9005 24.8497 46.8605 24.4697 46.1105 23.7197C45.3605 22.9697 44.9805 21.9297 44.9805 20.5997M49.6905 22.8397C50.0305 22.8397 50.3905 22.7897 50.7605 22.6997C51.1305 22.6097 51.5005 22.4897 51.8705 22.3497C52.2405 22.1997 52.5905 22.0297 52.9205 21.8197C53.2405 21.6097 53.5305 21.3897 53.7905 21.1497V17.6597H51.1805C49.8605 17.6597 48.8905 17.8897 48.2905 18.3397C47.6805 18.7897 47.3805 19.5097 47.3805 20.4897C47.3805 22.0497 48.1505 22.8297 49.6905 22.8297" fill="black" />
+                            <g>
+                                <g>
+                                    <path d="M73.9309 8.46094H58.6309V25.9409H73.9309V8.46094Z" fill="white" />
+                                </g>
+                            </g>
+                            <path d="M66.2809 9.46094C68.3509 9.46094 69.9809 10.1309 71.1609 11.4809C72.3409 12.8309 72.9309 14.7509 72.9309 17.2609C72.9309 19.7709 72.3409 21.6309 71.1709 22.9609C70.0009 24.2909 68.3709 24.9509 66.2809 24.9509C64.1909 24.9509 62.5809 24.2909 61.4009 22.9609C60.2209 21.6309 59.6309 19.7309 59.6309 17.2609C59.6309 14.7909 60.2209 12.8309 61.4209 11.4809C62.6109 10.1409 64.2309 9.46094 66.2909 9.46094M66.2809 11.4809C64.9709 11.4809 63.9709 11.9709 63.2709 12.9509C62.5709 13.9309 62.2209 15.3709 62.2209 17.2609C62.2209 19.1509 62.5709 20.5509 63.2709 21.5009C63.9709 22.4509 64.9709 22.9309 66.2809 22.9309C67.5909 22.9309 68.6209 22.4509 69.3209 21.5009C70.0209 20.5509 70.3709 19.1309 70.3709 17.2609C70.3709 15.3909 70.0209 13.9309 69.3209 12.9509C68.6209 11.9709 67.6109 11.4809 66.2809 11.4809Z" fill="black" />
+                            <g>
+                                <path d="M13.94 2H0V26H13.94V2Z" fill="white" />
+                            </g>
+                            <path d="M4.41 16.93L11.01 25L12.95 23.5L7.36 16.79L12.19 10.74L10.23 9.32L4.42 16.92L4.41 16.93ZM3.51 3L1 3.55V24.62H3.51V3Z" fill="black" />
+                            <g>
+                                <path d="M103.499 6.83984H86.0293V25.0798H103.499V6.83984Z" fill="white" />
+                            </g>
+                            <path d="M102.49 17.3598H87.0195V18.6298H93.9695V24.0798H95.5295V18.6298H102.48V17.3598H102.49ZM100.78 14.3598H90.6295V12.2698H100.17V11.0698H90.6295V9.08984H100.57V7.83984H89.0895V15.6098H100.77V14.3598H100.78Z" fill="black" />
+                            <g>
+                                <path d="M120.95 6.06055H102.74V25.0805H120.95V6.06055Z" fill="white" />
+                            </g>
+                            <path d="M119.95 13.9205H117.14V7.06055H115.58V24.0805H117.14V15.2305H119.95V13.9205ZM109.77 10.0905H113.55V8.80055H104.34V10.0905H108.23V12.2605C108.23 15.1505 106.18 18.3805 103.75 19.5905L104.66 20.8305C106.58 19.8405 108.23 17.6805 109.01 15.1905C109.79 17.4705 111.39 19.4605 113.29 20.4105L114.18 19.1605C111.71 18.0005 109.77 14.9805 109.77 12.2605V10.0905Z" fill="black" />
+                            <g>
+                                <path d="M136.101 6.06055H120.061V25.0805H136.101V6.06055Z" fill="white" />
+                            </g>
+                            <path d="M129.42 17.7405C125.92 17.7405 123.74 18.9005 123.74 20.9105C123.74 22.9205 125.92 24.0805 129.42 24.0805C132.92 24.0805 135.1 22.9205 135.1 20.9105C135.1 18.9005 132.92 17.7405 129.42 17.7405ZM129.42 22.8705C126.85 22.8705 125.3 22.1505 125.3 20.9105C125.3 19.6705 126.86 18.9305 129.42 18.9305C131.98 18.9305 133.54 19.6705 133.54 20.9105C133.54 22.1505 131.98 22.8705 129.42 22.8705ZM131.06 15.3505C128.59 14.4805 126.92 12.3305 126.92 10.1405V9.55055H130.66V8.30055H121.56V9.55055H125.36V10.1405C125.36 12.5905 123.61 14.8905 121.07 15.8205L121.89 17.0505C123.88 16.2905 125.46 14.6905 126.18 12.7205C126.92 14.4705 128.38 15.8705 130.28 16.5605L131.06 15.3405V15.3505ZM130.11 11.4705V12.7405H133.47V17.2005H135.05V7.06055H133.47V11.4705H130.11Z" fill="black" />
+                            <g>
+                                <path d="M154.44 7.25977H136.99V22.8998H154.44V7.25977Z" fill="white" />
+                            </g>
+                            <path d="M146.48 20.6298V16.9598H151.57V8.25977H150.05V11.2998H141.35V8.25977H139.81V16.9598H144.9V20.6298H137.98V21.8998H153.43V20.6298H146.48ZM141.35 12.5698H150.05V15.6998H141.35V12.5698Z" fill="black" />
+                        </svg>
+                    </a>
+        </h1>
+        <div class="box_controls">
+            <button type="button" class="btn_lang " onclick="changeLanguage('en')"><span class="ir_pm">영문 페이지로 이동</span></button>
+            <button type="button" class="btn_menu" aria-controls="gnbContent"><span class="ir_pm">메인 메뉴 열기</span></button>
+        </div>
+        <nav id="gnbContent" class="doc-gnb">
+            <h2 class="screen_out">메인 메뉴</h2>
+            <ul class="list_main">
+                <li> <a role="button" href="#none" aria-expanded="false" aria-current="false" aria-controls="mainMenu-01">기업지배구조</a>
+                    <ul id="mainMenu-01" class="list_sub">
+                        <li> <a href="/ir/managementInformation/shareholderComposition">주주구성</a> </li>
+                        <li> <a href="/ir/calendar/shareholdersMeeting">주주총회</a> </li>
+                        <li> <a href="/ir/managementInformation/boardOfDirectors/configuration">이사회</a> </li>
+                        <li> <a href="https://sustainability.kakao.com/ko/policies" target="_blank" rel="noreferrer noopener">규정<i class="screen_out">(새창 열림)</i></a> </li>
+                        <li> <a href="/ir/managementInformation/bestPracticeCorporateGovernance">지배구조</a> </li>
+                    </ul>
+                </li>
+                <li> <a role="button" href="#none" aria-expanded="false" aria-current="false" aria-controls="mainMenu-02">주식정보</a>
+                    <ul id="mainMenu-02" class="list_sub">
+                        <li> <a href="/ir/stockInformation">주가정보</a> </li>
+                        <li> <a href="/ir/dividendInformation">주주환원</a> </li>
+                    </ul>
+                </li>
+                <li> <a role="button" href="#none" aria-expanded="false" aria-current="false" aria-controls="mainMenu-03">재무정보</a>
+                    <ul id="mainMenu-03" class="list_sub">
+                        <li> <a href="/ir/financialInformation/consolidatedFinancialStatements">연결재무제표</a> </li>
+                        <li> <a href="/ir/financialInformation/separateFinancialStatements">별도재무제표</a> </li>
+                        <li> <a href="/ir/financialInformation/creditRating">신용등급</a> </li>
+                    </ul>
+                </li>
+                <li> <a role="button" href="#none" aria-expanded="false" aria-current="false" aria-controls="mainMenu-04">IR 자료</a>
+                    <ul id="mainMenu-04" class="list_sub">
+                        <li> <a href="/ir/referenceRoom/ceoMessage">CEO 메시지</a> </li>
+                        <li> <a href="/ir/referenceRoom/earningsAnnouncement">실적발표</a> </li>
+                        <li> <a href="/ir/calendar/event">IR 행사</a> </li>
+                        <li> <a href="https://ir.kakaocorp.com/reservation" target="_blank">IR 미팅예약<i class="screen_out">(새창 열림)</i></a> </li>
+                        <li> <a href="/ir/securitiesCompanyCoverage">증권사커버리지</a> </li>
+                    </ul>
+                </li>
+                <li> <a role="button" href="#none" aria-expanded="false" aria-current="false" aria-controls="mainMenu-05">공시정보</a>
+                    <ul id="mainMenu-05" class="list_sub">
+                        <li> <a href="/ir/disclosureInformation">공시사항</a> </li>
+                        <li> <a href="/ir/referenceRoom/regularReports">사업보고서</a> </li>
+                        <li> <a href="/ir/referenceRoom/auditReports">감사 및 검토보고서</a> </li>
+                    </ul>
+                </li>
+                <li> <a role="button" href="#none" aria-expanded="false" aria-current="page" aria-controls="mainMenu-06">공고</a>
+                    <ul id="mainMenu-06" class="list_sub">
+                        <li> <a href="/ir/noticeList">공고사항</a> </li>
+                        <li> <a href="/ir/shareholderProposal">주주제안권</a> </li>
+                    </ul>
+                </li>
+                <li> <a role="button" href="#none" aria-expanded="false" aria-current="false" aria-controls="mainMenu-07">투자정보</a>
+                    <ul id="mainMenu-07" class="list_sub">
+                        <li> <a href="/ir/corporateValueUp">기업가치제고계획</a> </li>
+                    </ul>
+                </li>
+                <li> <a role="button" href="https://sustainability.kakao.com/ko" class="link_out" target="_blank" rel="noreferrer noopener">지속가능성<i class="screen_out">(새창 열림)</i></a> </li>
+                        <li> <a role="button" href="https://www.kakaocorp.com?lang=KOR" class="link_out" target="_blank" rel="noreferrer noopener">kakao<i class="screen_out">(새창 열림)</i></a> </li>
+                    </ul>
+        </nav>
+
+        <button type="button" class="btn_lang view_pc " onclick="changeLanguage('en')"><span class="ir_pm">영문 페이지로 이동</span></button>
+
+
+        <div class="box_info">
+                <div class="inner_info">
+                    <strong class="screen_out">페이지 이동경로</strong>
+                    <ul class="info_path">
+                        <li>
+                            <a href="/ir" class="link_path">홈</a>
+                            <span class="ico_corp ico_arr">&gt</span>
+                        </li>
+                        <li>
+                            <a href="/ir/noticeList" class="link_path">
+                                공고<!-- footer 약관 -->
+                                </a>
+                            <span class="ico_corp ico_arr">&gt;</span></li>
+                        <li class="on">
+                            <em class="link_path">
+                                공고사항</em>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</header>
+
+
+    <!-- // daumHead -->
+    <hr class="hide">
+    <div id="kakaoContent" class="cont_invest" role="main" aria-hidden="true">
+        <div id="cMain">
+            <div id="mArticle">
+                <h2 id="kakaoBody" class="screen_out">투자정보 본문</h2>
+                <h3 class="screen_out">공고</h3>
+                <div class="wrap_cont">
+                    <div class="area_tit">
+                        <h4 class="tit_corp">액면분할에 따른 기준일 공고</h4>
+                    </div>
+                    <div class="area_cont">
+                        <div class="board_view">
+                            <div class="view_body">
+                                	<p class="MsoNormal" align="center" style="margin-left:21.3pt;text-align:center;
+text-indent:-22.0pt;mso-pagination:widow-orphan;word-break:keep-all"><span lang="EN-US" style="font-size: 11pt; font-family: 돋움; color: rgb(0, 0, 0);">&nbsp;</span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="center" style="margin-left:21.3pt;text-align:center;
+text-indent:-22.0pt;mso-pagination:widow-orphan;word-break:keep-all"><span style="font-size:11.0pt;mso-bidi-font-size:10.0pt;font-family:돋움"><span style="color: rgb(0, 0, 0);">액면분할에 따른 기준일 공고</span><span lang="EN-US"><o:p></o:p></span></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="margin-left: 77pt; text-indent: -22pt; word-break: keep-all;"><span lang="EN-US" style="font-size: 11pt; font-family: 돋움; color: rgb(0, 0, 0);">&nbsp;</span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="word-break: keep-all;"><span style="font-size:11.0pt;mso-bidi-font-size:10.0pt;
+font-family:돋움"><span style="color: rgb(0, 0, 0);">당사는 </span><span lang="EN-US" style="color: rgb(0, 0, 0);">2021</span><span style="color: rgb(0, 0, 0);">년 </span><span lang="EN-US" style="color: rgb(0, 0, 0);">3</span><span style="color: rgb(0, 0, 0);">월</span><span lang="EN-US" style="color: rgb(0, 0, 0);">29</span><span style="color: rgb(0, 0, 0);">일 개최된 주주총회에서 액면분할을 위한 정관을 변경하고</span><span lang="EN-US" style="color: rgb(0, 0, 0);">, </span><span style="color: rgb(0, 0, 0);">액면금액
+오백</span><span lang="EN-US" style="color: rgb(0, 0, 0);">(500)</span><span style="color: rgb(0, 0, 0);">원의 </span><span lang="EN-US" style="color: rgb(0, 0, 0);">88,761,861</span><span style="color: rgb(0, 0, 0);">주를 액면금액 일백</span><span lang="EN-US" style="color: rgb(0, 0, 0);">(100)</span><span style="color: rgb(0, 0, 0);">원의 주식 </span><span lang="EN-US" style="color: rgb(0, 0, 0);">443,809,305</span><span style="color: rgb(0, 0, 0);">주로 분할하여 아래와 같은 일정으로
+신주권을 교부하고자 합니다</span><span lang="EN-US"><span style="color: rgb(0, 0, 0);">.</span><o:p></o:p></span></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="word-break: keep-all;"><span lang="EN-US" style="font-size: 11pt; font-family: 돋움; color: rgb(0, 0, 0);">&nbsp;</span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="margin-left: 35.45pt; text-indent: -18pt; word-break: keep-all;"><!--[if !supportLists]--><span lang="EN-US" style="font-size:
+11.0pt;mso-bidi-font-size:10.0pt;font-family:돋움;mso-bidi-font-family:돋움"><span style="color: rgb(0, 0, 0);">1.</span><span style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: " times="" new="" roman";="" color:="" rgb(0,="" 0,="" 0);"="">&nbsp;&nbsp;
+</span></span><!--[endif]--><span style="font-size:11.0pt;mso-bidi-font-size:
+10.0pt;font-family:돋움"><span style="color: rgb(0, 0, 0);">교체대상 주권</span><span lang="EN-US" style="color: rgb(0, 0, 0);">: </span><span style="color: rgb(0, 0, 0);">주식회사 카카오 기명식 보통주 </span><span lang="EN-US"><o:p></o:p></span></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="margin-left: 35.45pt; word-break: keep-all;"><span lang="EN-US" style="font-size: 11pt; font-family: 돋움; color: rgb(0, 0, 0);">&nbsp;</span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="margin-left: 35.45pt; text-indent: -18pt; word-break: keep-all;"><!--[if !supportLists]--><span lang="EN-US" style="font-size:
+11.0pt;mso-bidi-font-size:10.0pt;font-family:돋움;mso-bidi-font-family:돋움"><span style="color: rgb(0, 0, 0);">2.</span><span style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: " times="" new="" roman";="" color:="" rgb(0,="" 0,="" 0);"="">&nbsp;&nbsp;
+</span></span><!--[endif]--><span style="font-size:11.0pt;mso-bidi-font-size:
+10.0pt;font-family:돋움"><span style="color: rgb(0, 0, 0);">액면분할 기준일</span><span lang="EN-US" style="color: rgb(0, 0, 0);">: 2021</span><span style="color: rgb(0, 0, 0);">년 </span><span lang="EN-US" style="color: rgb(0, 0, 0);">4</span><span style="color: rgb(0, 0, 0);">월 </span><span lang="EN-US" style="color: rgb(0, 0, 0);">14</span><span style="color: rgb(0, 0, 0);">일</span><span lang="EN-US"><o:p></o:p></span></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="word-break: keep-all;"><span lang="EN-US" style="font-size: 11pt; font-family: 돋움; color: rgb(0, 0, 0);">&nbsp;</span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="margin-left: 35.45pt; text-indent: -18pt; word-break: keep-all;"><!--[if !supportLists]--><span lang="EN-US" style="font-size:
+11.0pt;mso-bidi-font-size:10.0pt;font-family:돋움;mso-bidi-font-family:돋움"><span style="color: rgb(0, 0, 0);">3.</span><span style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: " times="" new="" roman";="" color:="" rgb(0,="" 0,="" 0);"="">&nbsp;&nbsp;
+</span></span><!--[endif]--><span style="font-size:11.0pt;mso-bidi-font-size:
+10.0pt;font-family:돋움"><span style="color: rgb(0, 0, 0);">신주권유통예정일</span><span lang="EN-US" style="color: rgb(0, 0, 0);">(</span><span style="color: rgb(0, 0, 0);">상장예정일</span><span lang="EN-US" style="color: rgb(0, 0, 0);">):
+2021</span><span style="color: rgb(0, 0, 0);">년 </span><span lang="EN-US" style="color: rgb(0, 0, 0);">4</span><span style="color: rgb(0, 0, 0);">월</span><span lang="EN-US" style="color: rgb(0, 0, 0);"> 15</span><span style="color: rgb(0, 0, 0);">일 </span><span lang="EN-US"><o:p></o:p></span></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="margin-left: 35.45pt; word-break: keep-all;"><span lang="EN-US" style="font-size: 11pt; font-family: 돋움; color: rgb(0, 0, 0);">&nbsp;</span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="margin-left: 35.45pt; text-indent: -18pt; word-break: keep-all;"><!--[if !supportLists]--><span lang="EN-US" style="font-size:
+11.0pt;mso-bidi-font-size:10.0pt;font-family:돋움;mso-bidi-font-family:돋움"><span style="color: rgb(0, 0, 0);">4.</span><span style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: " times="" new="" roman";="" color:="" rgb(0,="" 0,="" 0);"="">&nbsp;&nbsp;
+</span></span><!--[endif]--><span style="font-size:11.0pt;mso-bidi-font-size:
+10.0pt;font-family:돋움"><span style="color: rgb(0, 0, 0);">기타사항 </span><span lang="EN-US"><o:p></o:p></span></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="word-break: keep-all;"><span lang="EN-US" style="font-size: 11pt; font-family: 돋움; color: rgb(0, 0, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:11.0pt;mso-bidi-font-size:10.0pt;font-family:돋움"><span style="color: rgb(0, 0, 0);">가</span><span lang="EN-US" style="color: rgb(0, 0, 0);">. 2021</span><span style="color: rgb(0, 0, 0);">년 </span><span lang="EN-US" style="color: rgb(0, 0, 0);">4</span><span style="color: rgb(0, 0, 0);">월 </span><span lang="EN-US" style="color: rgb(0, 0, 0);">12</span><span style="color: rgb(0, 0, 0);">일부터
+</span><span lang="EN-US" style="color: rgb(0, 0, 0);">2021</span><span style="color: rgb(0, 0, 0);">년 </span><span lang="EN-US" style="color: rgb(0, 0, 0);">4</span><span style="color: rgb(0, 0, 0);">월 </span><span lang="EN-US" style="color: rgb(0, 0, 0);">14</span><span style="color: rgb(0, 0, 0);">일까지는
+매매거래 정지 예정임</span><span lang="EN-US"><span style="color: rgb(0, 0, 0);">.</span><o:p></o:p></span></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="word-break: keep-all;"><span lang="EN-US" style="font-size: 11pt; font-family: 돋움; color: rgb(0, 0, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:11.0pt;mso-bidi-font-size:10.0pt;font-family:돋움"><span style="color: rgb(0, 0, 0);">나</span><span lang="EN-US" style="color: rgb(0, 0, 0);">. 2021</span><span style="color: rgb(0, 0, 0);">년 </span><span lang="EN-US" style="color: rgb(0, 0, 0);">4</span><span style="color: rgb(0, 0, 0);">월 </span><span lang="EN-US" style="color: rgb(0, 0, 0);">15</span><span style="color: rgb(0, 0, 0);">일부터
+매매개시 예정임</span><span lang="EN-US"><span style="color: rgb(0, 0, 0);">. </span><o:p></o:p></span></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="margin-left: 77pt; text-indent: -77pt; word-break: keep-all;"><span lang="EN-US" style="font-size:11.0pt;mso-bidi-font-size:
+10.0pt;font-family:돋움"><span style="color: rgb(0, 0, 0);">&nbsp;</span><o:p></o:p></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="word-break: keep-all;"><span lang="EN-US" style="font-size: 11pt; font-family: 돋움; color: rgb(0, 0, 0);">&nbsp;</span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="word-break: keep-all;"><span style="font-size:11.0pt;mso-bidi-font-size:10.0pt;
+font-family:돋움"><span style="color: rgb(0, 0, 0);">※ 주식분할 일정</span><span lang="EN-US" style="color: rgb(0, 0, 0);">, </span><span style="color: rgb(0, 0, 0);">절차 및 기타 필요한 사항은 상법 등 관련 법령 및
+관련 기관과의 협의 과정에서 일부 변경될 수 있습니다</span><span lang="EN-US"><span style="color: rgb(0, 0, 0);">. </span><o:p></o:p></span></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="margin-left: 77pt; text-indent: -22pt; word-break: keep-all;"><span lang="EN-US" style="font-size:11.0pt;mso-bidi-font-size:10.0pt;font-family:돋움"><span style="color: rgb(0, 0, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="margin-left: 77pt; text-indent: -22pt; word-break: keep-all;"><span lang="EN-US" style="font-size: 11pt; font-family: 돋움; color: rgb(0, 0, 0);">&nbsp;</span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="center" style="margin-left:21.3pt;text-align:center;
+text-indent:-22.0pt;mso-pagination:widow-orphan;word-break:keep-all"><span lang="EN-US" style="font-size: 11pt; font-family: 돋움; color: rgb(0, 0, 0);">2021</span><span style="font-size:11.0pt;mso-bidi-font-size:10.0pt;font-family:돋움"><span style="color: rgb(0, 0, 0);">년</span><span lang="EN-US" style="color: rgb(0, 0, 0);"> 3</span><span style="color: rgb(0, 0, 0);">월 </span><span lang="EN-US" style="color: rgb(0, 0, 0);">29</span><span style="color: rgb(0, 0, 0);">일</span><span lang="EN-US"><o:p></o:p></span></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="left" style="margin-left: 77pt; text-indent: -22pt; word-break: keep-all;"><span lang="EN-US" style="font-size: 11pt; font-family: 돋움; color: rgb(0, 0, 0);">&nbsp;</span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="right" style="margin-left:21.3pt;text-align:right;
+text-indent:-22.0pt;mso-pagination:widow-orphan;word-break:keep-all"><span style="font-size:11.0pt;mso-bidi-font-size:10.0pt;font-family:돋움"><span style="color: rgb(0, 0, 0);">제주특별자치도 제주시 첨단로</span><span lang="EN-US"><span style="color: rgb(0, 0, 0);"> 242</span><o:p></o:p></span></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="right" style="margin-left:21.3pt;text-align:right;
+text-indent:-22.0pt;mso-pagination:widow-orphan;word-break:keep-all"><span style="font-size:11.0pt;mso-bidi-font-size:10.0pt;font-family:돋움"><span style="color: rgb(0, 0, 0);">주식회사 카카오 대표이사
+여민수</span><span lang="EN-US" style="color: rgb(0, 0, 0);">, </span><span style="color: rgb(0, 0, 0);">조수용</span><span lang="EN-US"><o:p></o:p></span></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="right" style="margin-left:21.3pt;text-align:right;
+text-indent:-22.0pt;mso-pagination:widow-orphan;word-break:keep-all"><span style="font-size:11.0pt;mso-bidi-font-size:10.0pt;font-family:돋움"><span style="color: rgb(0, 0, 0);">명의개서대리인 주식회사 국민은행
+은행장 허인</span><span lang="EN-US"><o:p></o:p></span></span></p><span style="color: rgb(0, 0, 0);">
+
+</span><p class="MsoNormal" align="right" style="text-align:right"><span lang="EN-US" style="font-family: 돋움; color: rgb(0, 0, 0);">&nbsp;</span></p>	
+
+</div>
+                            </div>
+                        <div class="wrap_btn">
+                            <a href="/ir/noticeView?boardIdx=10325&currentPage=1&currentGroup=1" class="btn_move">이전</a>
+                            <a href="/ir/noticeView?boardIdx=10376&currentPage=1&currentGroup=1" class="btn_move">다음</a>
+                            <a href="/ir/noticeList?currentPage=1&currentGroup=1" class="btn_list">목록</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--// mArticle -->
+        </div>
+        <!-- // cMain -->
+    </div>
+    <!-- // kakaoContent -->
+    <hr class="hide">
+    <script type="text/javascript">
+        // 2020-07-28 구 티아라 제거
+        // pushTiara('ir', 'notice_list');
+        pushNewTiara('ir', 'notice_list');
+    </script>
+
+                    <footer id="kakaoFoot" class="doc-footer">
+    <h2 class="screen_out">하단 메뉴</h2>
+    <ul class="list_main">
+        <li>
+            <strong>기업지배구조</strong>
+            <ul class="list_sub">
+                <li> <a href="/ir/managementInformation/shareholderComposition">주주구성</a> </li>
+                <li> <a href="/ir/calendar/shareholdersMeeting">주주총회</a> </li>
+                <li> <a href="/ir/managementInformation/boardOfDirectors/configuration">이사회</a> </li>
+                <li> <a href="/ir/managementInformation/rule" target="_blank" rel="noreferrer noopener">규정</a><i class="screen_out">(새창 열림)</i></li>
+                <li> <a href="/ir/managementInformation/bestPracticeCorporateGovernance">지배구조</a> </li>
+            </ul>
+        </li>
+        <li>
+            <strong>주식정보</strong>
+            <ul class="list_sub">
+                <li> <a href="/ir/stockInformation">주가정보</a> </li>
+                <li> <a href="/ir/dividendInformation">주주환원</a> </li>
+            </ul>
+        </li>
+        <li>
+            <strong>재무정보</strong>
+            <ul class="list_sub">
+                <li> <a href="/ir/financialInformation/consolidatedFinancialStatements">연결재무제표</a> </li>
+                <li> <a href="/ir/financialInformation/separateFinancialStatements">별도재무제표</a> </li>
+                <li> <a href="/ir/financialInformation/creditRating">신용등급</a> </li>
+            </ul>
+        </li>
+        <li>
+            <strong>IR 자료</strong>
+            <ul class="list_sub">
+                <li> <a href="/ir/referenceRoom/ceoMessage">CEO 메시지</a> </li>
+                <li> <a href="/ir/referenceRoom/earningsAnnouncement">실적발표</a> </li>
+                <li> <a href="/ir/calendar/event">IR 행사</a> </li>
+                <li> <a href="https://ir.kakaocorp.com/reservation" target="_blank" rel="noreferrer noopener">IR 미팅예약</a><i class="screen_out">(새창 열림)</i> </li>
+                <li> <a href="/ir/securitiesCompanyCoverage">증권사커버리지</a> </li>
+            </ul>
+        </li>
+        <li>
+            <strong>공시정보</strong>
+            <ul class="list_sub">
+                <li> <a href="/ir/disclosureInformation">공시사항</a> </li>
+                <li> <a href="/ir/referenceRoom/regularReports">사업보고서</a> </li>
+                <li> <a href="/ir/referenceRoom/auditReports">감사 및 검토보고서</a> </li>
+            </ul>
+        </li>
+        <li>
+            <strong>공고</strong>
+            <ul class="list_sub">
+                <li> <a href="/ir/noticeList">공고사항</a> </li>
+                <li> <a href="/ir/shareholderProposal">주주제안권</a> </li>
+            </ul>
+        </li>
+    </ul>
+    <div class="box_links">
+        <h2 class="screen_out">서비스 이용 정보</h2>
+        <ul class="list_policy">
+            <li> <a href="#none" role="button" class="link_menu" aria-expanded="false">이용약관</a>
+                        <ul class="list_sub">
+                            <li> <a href="https://www.kakao.com/policy/terms?type=a&lang=ko" target="_blank" rel="noreferrer noopener">카카오계정 서비스<i class="screen_out">(새창 열림)</i></a> </li>
+                            <li> <a href="https://www.kakao.com/policy/terms?type=ts&lang=ko" target="_blank" rel="noreferrer noopener">카카오 서비스<i class="screen_out">(새창 열림)</i></a> </li>
+                        </ul>
+                    </li>
+                <li> <a role="button" href="https://www.kakao.com/policy/location?lang=ko" class="txt_emph link_out" target="_blank" rel="noreferrer noopener">위치정보이용약관<i class="screen_out">(새창 열림)</i></a> </li>
+
+
+            <li> <a role="button" href="#none" class="link_menu txt_emph" aria-expanded="false">개인정보처리방침</a>
+                        <ul class="list_sub">
+                            <li> <a href="/policy/privacyPolicy/corporateSitePrivacyPolicy" class="link_in">기업사이트</a> </li>
+                            <li> <a href="https://www.kakao.com/policy/privacy?lang=ko" target="_blank" rel="noreferrer noopener">카카오 서비스<i class="screen_out">(새창 열림)</i></a> </li>
+                        </ul>
+                    </li>
+                <li> <a role="button" href="https://www.kakao.com/policy/oppolicy?lang=ko" class="link_out" target="_blank" rel="noreferrer noopener">운영정책<i class="screen_out">(새창 열림)</i></a> </li>
+
+            <li> <a role="button" href="https://www.kakao.com/policy/safeguard?lang=ko" class="link_out" target="_blank" rel="noreferrer noopener">청소년보호정책<i class="screen_out">(새창 열림)</i></a> </li>
+                <li>
+                <a role="button" href="https://www.kakao.com/policy/brand/trademark?lang=ko" class="link_out" target="_blank" rel="noreferrer noopener">브랜드보호정책<i class="screen_out">(새창 열림)</i></a>
+            </li>
+
+            <li><a role="button" href="https://www.kakao.com/policy/right?lang=ko" class="link_out" target="_blank" rel="noreferrer noopener">권리침해신고안내<i class="screen_out">(새창 열림)</i></a></li>
+                <li>
+                        <a role="button" href="#none" class="link_menu" aria-expanded="false">
+                            공지사항<span class="type_new ir_pm">새로운 알림이 있습니다</span>
+                            </a>
+                        <ul class="list_sub">
+                            <li>
+                                <a href="/policy/notice/kakaocorp/list" class="link_in">투자정보</a>
+                            </li>
+                            <li>
+                                <a href="https://www.kakao.com/notices?lang=ko" target="_blank" rel="noreferrer noopener">카카오 서비스<span class="type_new ir_pm">새로운 알림이 있습니다</span>
+                                    <i class="screen_out">(새창 열림)</i></a>
+                            </li>
+                        </ul>
+                    </li>
+                <li> <a role="button" href="/policy/cyberEthics/info?lang=ko">사이버윤리실</a> </li>
+
+            <li> <a role="button" href="/ir/wayToCome">Contact Us</a> </li>
+
+        </ul>
+        <div class="area_relation"> <button type="button" class="btn_relation" aria-expanded="false">관련사이트</button>
+            <ul class="list_relation">
+                <li><a href="https://kakao.ai/" target="_blank" rel="noreferrer noopener">카카오 AI<i class="screen_out">(새창 열림)</i></a></li>
+                <li><a href="https://privacy.kakao.com/main?lang=ko" target="_blank" rel="noreferrer noopener">카카오 프라이버시<i class="screen_out">(새창 열림)</i></a></li>
+                <li><a href="https://developers.kakao.com/" target="_blank" rel="noreferrer noopener">카카오 디벨로퍼스<i class="screen_out">(새창 열림)</i></a></li>
+                <li><a href="https://www.daum.net/" target="_blank" rel="noreferrer noopener">다음 포털 사이트<i class="screen_out">(새창 열림)</i></a></li>
+                <li><a href="https://winwin.kakao.com/index" target="_blank" rel="noreferrer noopener">동반성장 사이트<i class="screen_out">(새창 열림)</i></a></li>
+                    <li><a href="https://jeju.kakao.com/" target="_blank" rel="noreferrer noopener">제주 with kakao<i class="screen_out">(새창 열림)</i></a></li>
+            </ul>
+        </div> <small class="txt_copy"><a href="https://www.kakaocorp.com/main" class="link_copy" target="_blank" rel="noreferrer noopener">&copy; Kakao Corp.<i class="screen_out">(새창 열림)</i></a> All rights reserved.</small>
+    </div>
+</footer><a href="#" class="link_top hide"><span class="ico_corp ico_top">맨위로</span></a>
+                    </div>
+            </body>
+
+    <script type="text/javascript" src="/ir/resources/common/js/pc/common_pc.js?t=202610180908"></script>
+    </html>

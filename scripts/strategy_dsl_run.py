@@ -222,6 +222,21 @@ def run_checked_strategy(
         record["error"] = error
         record["finished_at"] = _utc_now()
         if status not in ('ok','running'):
+            # Persist exact runtime evidence even when a future failure is not
+            # covered by the planned trace. This is a diagnostic, never an
+            # event inference, waiver or cache authorizing another execution.
+            if record['phase']!='input':
+                import re
+                message=(error or {}).get('message','')
+                dates=sorted(set(re.findall(r'\b\d{4}-\d{2}-\d{2}\b',message)))
+                securities=sorted(set(re.findall(r"(?<!\d)\d{6}(?!\d)",message)))
+                _save_json(out/'runtime_incident.json',dict(incident_schema_version='1',
+                    strategy_fingerprint=record['strategy_fingerprint'],phase=record['phase'],
+                    status=status,error=error,explicit_dates_in_error=dates,explicit_security_codes_in_error=securities,
+                    required_action='Inspect exact failed owner/source; no automatic correction, exclusion, filling or rule change',
+                    reusable_evidence='strategy_normalized.json, preflight.json and readiness_incidents.json when present',
+                    investment_approved=False))
+                record['outputs']['runtime_incident']='runtime_incident.json'
             from quant_report_dashboard import write_failure_dashboard
             readiness_path = out / 'report_readiness.json'
             readiness = json.loads(readiness_path.read_text()) if readiness_path.is_file() else None
@@ -260,7 +275,7 @@ def run_checked_strategy(
         _save_json(out / "preflight.json", preflight)
         if 'issues' in preflight:
             _save_json(out / 'readiness_incidents.json',dict(strategy_fingerprint=spec.fingerprint(),
-                source_files=preflight.get('source_files',[]),issues=preflight['issues'],
+                source_files=preflight.get('source_files',[]),control_files=preflight.get('control_files',[]),issues=preflight['issues'],
                 scope='planned exposure diagnostics, never automatic event registration or return overrides'))
         if preflight["status"] in {"capability_gap", "data_gap"}:
             record["gap_phase"] = preflight["phase"]

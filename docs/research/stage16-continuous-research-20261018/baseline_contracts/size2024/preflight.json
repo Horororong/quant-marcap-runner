@@ -1,0 +1,82 @@
+{
+  "preflight_contract_version": "3",
+  "status": "ok",
+  "phase": "ready",
+  "strategy_id": "research_size_top1_2024",
+  "strategy_fingerprint": "4ef1c8a29de276ba00471da7176cd2b459745f794a1fe1d045781fa760198ca7",
+  "versions": {
+    "schema_version": "1.0",
+    "dsl_machine_contract_version": "25",
+    "factor_registry_version": "7",
+    "execution_engine_version": "v2-16-exec-5",
+    "corporate_action_registry_version": "7",
+    "project_template_version": "v2-16"
+  },
+  "requested_period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "krx_panel": {
+    "actual_start": "2024-01-02",
+    "actual_end": "2024-12-30",
+    "rows": 657429,
+    "distinct_codes": 2797,
+    "markets": [
+      "KOSDAQ",
+      "KOSPI"
+    ]
+  },
+  "signal_dates": [
+    "2024-04-30"
+  ],
+  "factor_sources": [
+    "krx"
+  ],
+  "provider_coverage": [],
+  "corporate_action_audit": {
+    "coverage": "known evidence gaps only; historical corporate-action completeness remains unverified",
+    "policy": "shared signal selection and lag; positive planned holdings; no NAV, drift or cost calculation",
+    "selection_performed": true,
+    "known_gap_count": 1,
+    "executed_target_count": 1,
+    "exposures": []
+  },
+  "history_coverage": {
+    "history_audit_contract_version": "1",
+    "status": "complete",
+    "calendar": "XKRX",
+    "calendar_package_version": "4.13.2",
+    "requested_start": "2024-01-01",
+    "requested_end": "2024-12-31",
+    "expected_first_session": "2024-01-02",
+    "expected_last_session": "2024-12-30",
+    "expected_sessions": 244,
+    "markets": {
+      "KOSDAQ": {
+        "status": "complete",
+        "observed_sessions": 244,
+        "missing_sessions": [],
+        "unexpected_dates": []
+      },
+      "KOSPI": {
+        "status": "complete",
+        "observed_sessions": 244,
+        "missing_sessions": [],
+        "unexpected_dates": []
+      }
+    },
+    "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+  },
+  "benchmark": {
+    "source": "index",
+    "symbol": "KOSPI",
+    "start": "2024-01-02",
+    "end": "2024-12-30",
+    "observations": 244,
+    "exact_date_alignment": true,
+    "return_basis": "price_index_close",
+    "includes_dividends": false,
+    "path": "data/indices/KOSPI.csv"
+  },
+  "ready_for_execution": true
+}

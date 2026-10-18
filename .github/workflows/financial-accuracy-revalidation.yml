@@ -48,7 +48,7 @@ permissions:
   actions: read
 jobs:
   bounded-stage16-source:
-    if: ${{ github.run_attempt == 1 && (github.sha == '699cfa5e17ff8104ed17911e5e2f17739cd9f953' && contains(github.event.head_commit.message, '[stage16-source]') || github.sha == 'cda84bad7f3a5cf481e89352edde15030ac732dd' && contains(github.event.head_commit.message, '[stage16-actions2021]') || contains(github.event.head_commit.message, '[stage16-reference]')) }}
+    if: ${{ github.run_attempt == 1 && (github.sha == '699cfa5e17ff8104ed17911e5e2f17739cd9f953' && contains(github.event.head_commit.message, '[stage16-source]') || github.sha == 'cda84bad7f3a5cf481e89352edde15030ac732dd' && contains(github.event.head_commit.message, '[stage16-actions2021]') || github.sha == 'c445a80128bbc13ed4d02bcb10dafb77a35d9ddc' && contains(github.event.head_commit.message, '[stage16-reference]')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -231,7 +231,7 @@ jobs:
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I scripts/read_stock_dividend_artifact.py
   stock-dividend-regression:
-    if: ${{ contains(github.event.head_commit.message, '[stage13]') || contains(github.event.head_commit.message, '[stage14]') || contains(github.event.head_commit.message, '[stage15]') }}
+    if: ${{ contains(github.event.head_commit.message, '[stage13]') || contains(github.event.head_commit.message, '[stage14]') || contains(github.event.head_commit.message, '[stage15]') || contains(github.event.head_commit.message, '[stage16]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -259,11 +259,19 @@ jobs:
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage14-celltrion-2019-20261017/verify_event.py --output "$RUNNER_TEMP/stage14-event-review.json"
           cmp "$RUNNER_TEMP/stage14-event-review.json" docs/research/stage14-celltrion-2019-20261017/event_review.json
       - name: Research models, Korean entrypoint, full original deciles and independent real-price ledgers
-        if: ${{ contains(github.event.head_commit.message, '[stage15]') }}
+        if: ${{ contains(github.event.head_commit.message, '[stage15]') || contains(github.event.head_commit.message, '[stage16]') }}
         run: |
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage15-research-environment-20261017/validate_environment.py --check --output "$RUNNER_TEMP/stage15-environment"
+      - name: Continuous planned exposure, real lifecycle and unchanged extended research commands
+        if: ${{ contains(github.event.head_commit.message, '[stage16]') }}
+        run: |
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage16-continuous-research-20261018/validate_continuous.py --check --baselines "$RUNNER_TEMP/stage15-environment" --output "$RUNNER_TEMP/stage16-continuous"
+      - name: Actual long-report browser interactions without installations
+        if: ${{ contains(github.event.head_commit.message, '[stage16]') }}
+        run: |
+          node scripts/verify_research_dashboard.cjs "$RUNNER_TEMP/stage16-continuous/size2019_2025/report/report_CURRENT.html" "$RUNNER_TEMP/stage16-browser"
       - name: Actual offline Chromium presentation and interaction checks without installs
-        if: ${{ contains(github.event.head_commit.message, '[stage15]') }}
+        if: ${{ contains(github.event.head_commit.message, '[stage15]') || contains(github.event.head_commit.message, '[stage16]') }}
         run: |
           node scripts/verify_research_dashboard.cjs "$RUNNER_TEMP/stage15-environment/original/report/report_CURRENT.html" "$RUNNER_TEMP/stage15-browser"
       - name: One bounded official exchange-disclosure metadata discovery
@@ -275,7 +283,11 @@ jobs:
       - name: Preserve all prior audit bytes and financial controls without reprocessing
         if: ${{ always() && steps.runtime.outcome == 'success' }}
         run: |
-          if [[ "${{ contains(github.event.head_commit.message, '[stage15]') }}" == "true" ]]; then
+          if [[ "${{ contains(github.event.head_commit.message, '[stage16]') }}" == "true" ]]; then
+            "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage16-continuous-research-20261018/preserve.py --output "$RUNNER_TEMP/stage12-preservation"
+            "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage16-continuous-research-20261018/verify_primary.py
+            "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage15-research-environment-20261017/verify_evidence.py
+          elif [[ "${{ contains(github.event.head_commit.message, '[stage15]') }}" == "true" ]]; then
             "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage15-research-environment-20261017/preserve.py --output "$RUNNER_TEMP/stage12-preservation"
             "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/stage15-research-environment-20261017/verify_evidence.py
           elif [[ "${{ contains(github.event.head_commit.message, '[stage14]') }}" == "true" ]]; then
@@ -298,7 +310,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ${{ contains(github.event.head_commit.message, '[stage15]') && 'stage15-research-environment' || contains(github.event.head_commit.message, '[stage14]') && 'stage14-stock-dividend-evidence' || 'stage13-stock-dividend-evidence' }}
+          name: ${{ contains(github.event.head_commit.message, '[stage16]') && 'stage16-continuous-research' || contains(github.event.head_commit.message, '[stage15]') && 'stage15-research-environment' || contains(github.event.head_commit.message, '[stage14]') && 'stage14-stock-dividend-evidence' || 'stage13-stock-dividend-evidence' }}
           path: |
             ${{ runner.temp }}/stage12-validation
             ${{ runner.temp }}/stage13-independent-ledger.csv
@@ -311,6 +323,8 @@ jobs:
             ${{ runner.temp }}/financial-repair/verify.json
             ${{ runner.temp }}/stage15-environment
             ${{ runner.temp }}/stage15-browser
+            ${{ runner.temp }}/stage16-continuous
+            ${{ runner.temp }}/stage16-browser
           if-no-files-found: error
           retention-days: 90
   fixed-kit:

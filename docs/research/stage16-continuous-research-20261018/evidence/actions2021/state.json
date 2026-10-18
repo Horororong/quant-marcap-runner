@@ -1,0 +1,92 @@
+{
+  "requests": 9,
+  "retries": 0,
+  "responses": [
+    {
+      "file": "kakao_split_issuer.html",
+      "http": 200,
+      "content_type": "text/html;charset=UTF-8",
+      "bytes": 42410,
+      "sha256": "a6224beb60bff9034d6bbbe6621764207f98f99f7e9440aefb397504ebd8961b",
+      "source": "https://www.kakaocorp.com/ir/noticeView?boardIdx=10326&currentGroup=1&currentPage=1"
+    },
+    {
+      "file": "035720_search.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 3095,
+      "sha256": "2fa73ac6266c17b202f441e0bd109ad2659147dc57b2b5ca2670eada79e9efa6",
+      "source": "https://kind.krx.co.kr/disclosure/details.do"
+    },
+    {
+      "file": "003550_search.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 3121,
+      "sha256": "e8c486203862988dd9663c2cc60f08a3697d87cde0492830863254c71e59545b",
+      "source": "https://kind.krx.co.kr/disclosure/details.do"
+    },
+    {
+      "file": "20210414000374_viewer.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 24312,
+      "sha256": "15698bdd822c8705aa5c9c797a81cbf43b5db715624d1c15f4d095b92ddf0ae7",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchInitInfo&acptNo=20210414000374"
+    },
+    {
+      "file": "20210414000374_path.html",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 968,
+      "sha256": "f0389d285f52a61a76f6e541ad2f9969b8693ff010a4b226f3395f086fd1ff9f",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchContents&docNo=20210414001157"
+    },
+    {
+      "file": "20210414000374_body.html",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 935,
+      "sha256": "dd23445b94b656666d77ffbcf9950650171ab28eeff5c25db962669c07848b4b",
+      "source": "https://kind.krx.co.kr/external/2021/04/14/000374/20210414001157/68155.htm"
+    },
+    {
+      "file": "20210422000329_viewer.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 24319,
+      "sha256": "254b5ee86e50ae9d5b051847e08bebd3ef702771a5db9bb71959ab50c3a75a25",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchInitInfo&acptNo=20210422000329"
+    },
+    {
+      "file": "20210422000329_path.html",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 968,
+      "sha256": "f555186dec56a385173206388fb4628abf0073a6a5814059968cb73857ea4f37",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchContents&docNo=20210422000871"
+    },
+    {
+      "file": "20210422000329_body.html",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 4305,
+      "sha256": "eddb5bd4a5b124c05ecfb302e42fbcfb0e46b956f3fbadc5c9c618ff87d72337",
+      "source": "https://kind.krx.co.kr/external/2021/04/22/000329/20210422000871/68054.htm"
+    }
+  ],
+  "errors": [],
+  "candidates": [
+    {
+      "code": "035720",
+      "receipt": "20210414000374",
+      "row": " \r\n\t\t\t\t 1 \r\n\t\t\t\t 2021-04-14 16:22 \r\n\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t     카카오         \r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t  변경상장(액면분할)  \r\n\t\t\t\t 유가증권시장본부 \r\n\t\r\n\t\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\t  공시차트  \r\n\t\t\t\t\t  주가차트  \r\n\t\t\t\t\r\n\t\t\t\t \r\n\t\t\t\r\n\t\t\t "
+    },
+    {
+      "code": "003550",
+      "receipt": "20210422000329",
+      "row": " \r\n\t\t\t\t 1 \r\n\t\t\t\t 2021-04-22 17:03 \r\n\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t     LG       \r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t  매매거래정지및정지해제(회사분할에 따른 전자등록 변경, 말소)  \r\n\t\t\t\t 유가증권시장본부 \r\n\t\r\n\t\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\t  공시차트  \r\n\t\t\t\t\t  주가차트  \r\n\t\t\t\t\r\n\t\t\t\t \r\n\t\t\t\r\n\t\t\t "
+    }
+  ],
+  "investment_approved": false
+}

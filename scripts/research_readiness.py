@@ -1,5 +1,7 @@
 """Machine-readable boundaries; implementation owners remain authoritative."""
 BLOCKER_CLASSES=[
+ {'condition':'original eligible population smaller than requested buckets/positions','class':'strategy_definition','owner':'shared signal cross-section/selection','effect':'observed count is a definition failure, never missing-data proof or permission to relax filters'},
+ {'condition':'original execution date requires trade in observed zero-volume security','class':'execution_constraint','owner':'PROJECT tradable mask and fixed lag','effect':'cannot execute an original fixed-lag order during a halt; a separately explicit halt-aware contract changes the strategy'},
  {'condition':'source_file/schema/identity/date/unit missing','class':'historical_fact','owner':'strategy_dsl_preflight / KRX/DART providers','effect':'required observations cannot be replaced by model assumptions'},
  {'condition':'market sessions or exact benchmark dates missing','class':'historical_fact','owner':'krx_history_audit / strategy_dsl_runner benchmark loader','effect':'no weekday estimate, current-universe substitution or forward fill'},
  {'condition':'held return undefined or unregistered price/reference mismatch >1bp','class':'historical_fact','owner':'PROJECT held-return guard','effect':'block affected actual exposure; full-panel candidates alone are diagnostics'},

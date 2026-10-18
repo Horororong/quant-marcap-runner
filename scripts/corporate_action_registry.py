@@ -96,7 +96,8 @@ def load_corporate_actions(
         codes = {str(c).zfill(6) for c in asset_codes}
         x = x[x["predecessor_code"].isin(codes)]
 
-    return x.sort_values(["event_date", "predecessor_code"]).reset_index(drop=True)
+    from corporate_action_reference import attach_references
+    return attach_references(repo_root,x.sort_values(["event_date", "predecessor_code"]).reset_index(drop=True))
 
 
 def load_corporate_action_gaps(repo_root: str | Path) -> pd.DataFrame:

@@ -98,7 +98,7 @@
     ],
     "version": "1"
   },
-  "corporate_action_registry_version": "7",
+  "corporate_action_registry_version": "8",
   "corporate_actions": {
     "cash_exchange_contract": {
       "actual_coverage": "no cash exchange in production registry; Jeisys actual payment evidence unresolved",
@@ -114,7 +114,14 @@
     "history_completeness": "unverified; presence of registered events is not a coverage certificate",
     "merger_contract": "stock-only succession with zero cash_per_share; mixed stock/cash mergers rejected",
     "registry": "config/kr_corporate_actions.csv",
-    "split_contract": "same code, shares_after/shares_before > 0, zero cash; event_date is trading resumption; adjusted event return still checked against exchange reference",
+    "split_contract": "same code, shares_after/shares_before > 0, zero cash; event_date is trading resumption; exact primary market reference optionally separates exchange-price check from economic share return",
+    "split_market_reference": {
+      "comparison": "close / official reference - 1 at unchanged1bp; ordinary dates unchanged",
+      "contract_version": "1",
+      "economic_return": "share_ratio * close / last_trade_close - 1; never replaced by exchange percentage",
+      "failure": "missing evidence/hash/date/identity or same-day/future publication rejected; no inferred reference or broad exemption",
+      "registry": "config/kr_corporate_action_references.json (optional primary-evidenced exact split dates)"
+    },
     "stock_dividend_subledger": {
       "arithmetic": "50-digit Decimal book rejects inexact arithmetic; reference-price division is a separate rounded diagnostic",
       "cancellation": "actual decision plus verified no-compensation evidence removes conditional claim and recognizes valuation loss",
@@ -191,7 +198,7 @@
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
   },
-  "execution_engine_version": "v2-16-exec-5",
+  "execution_engine_version": "v2-16-exec-6",
   "execution_prices": [
     "next_close"
   ],
@@ -1003,6 +1010,18 @@
   "research_workbench": {
     "blocker_classes": [
       {
+        "class": "strategy_definition",
+        "condition": "original eligible population smaller than requested buckets/positions",
+        "effect": "observed count is a definition failure, never missing-data proof or permission to relax filters",
+        "owner": "shared signal cross-section/selection"
+      },
+      {
+        "class": "execution_constraint",
+        "condition": "original execution date requires trade in observed zero-volume security",
+        "effect": "cannot execute an original fixed-lag order during a halt; a separately explicit halt-aware contract changes the strategy",
+        "owner": "PROJECT tradable mask and fixed lag"
+      },
+      {
         "class": "historical_fact",
         "condition": "source_file/schema/identity/date/unit missing",
         "effect": "required observations cannot be replaced by model assumptions",
@@ -1087,7 +1106,8 @@
       "inventory",
       "translate",
       "check",
-      "run"
+      "run",
+      "issues"
     ],
     "entrypoint": "scripts/research_workbench.py",
     "execution": "run_checked_strategy -> PROJECT -> CURRENT; no alternative backtester/calculator",

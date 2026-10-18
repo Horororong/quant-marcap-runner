@@ -1,0 +1,47 @@
+{
+  "requests": 4,
+  "retries": 0,
+  "responses": [
+    {
+      "file": "035720_search.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 3107,
+      "sha256": "b4c950d5f766cc382158f0562498d9d09d0a93551c48f3a05937296314db7d59",
+      "source": "https://kind.krx.co.kr/disclosure/details.do"
+    },
+    {
+      "file": "20210414000560_viewer.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 24372,
+      "sha256": "8a4ff598fe7c09867e569fffcc507c3ce19a7954305a046affa2d986bb306756",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchInitInfo&acptNo=20210414000560"
+    },
+    {
+      "file": "20210414000560_path.html",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 968,
+      "sha256": "82ce32461a9ae37d0f28b9e4f483f0e35b7c331fb97205c852d22ce8cb535022",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchContents&docNo=20210414001570"
+    },
+    {
+      "file": "20210414000560_body.html",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 3723,
+      "sha256": "94bce9ba71bf80ca9b20f9fd9b5e6e36ddbdbcc92b9271200b62a2330740495c",
+      "source": "https://kind.krx.co.kr/external/2021/04/14/000560/20210414001570/99322.htm"
+    }
+  ],
+  "errors": [],
+  "candidates": [
+    {
+      "code": "035720",
+      "receipt": "20210414000560",
+      "row": " \r\n\t\t\t\t 1 \r\n\t\t\t\t 2021-04-14 16:54 \r\n\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t     카카오         \r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t  액면분할 기준가격 안내  \r\n\t\t\t\t 유가증권시장본부 \r\n\t\r\n\t\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\t  공시차트  \r\n\t\t\t\t\t  주가차트  \r\n\t\t\t\t\r\n\t\t\t\t \r\n\t\t\t\r\n\t\t\t "
+    }
+  ],
+  "investment_approved": false
+}
