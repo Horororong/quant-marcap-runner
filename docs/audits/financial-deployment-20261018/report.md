@@ -125,3 +125,27 @@ quality_v9-only publication commit. Scale-up requires separate explicit judgment
 
 Long multi-security completion is unchanged; no substitute single-stock runs.
 Investment PIT0/6 and all operating PIT gates remain unchanged.
+
+## Failed candidate runs retained; corrections are not successful deployment
+
+Candidate bbef9262 CI39171683518 failed. Fixed-kit financial tests passed, but
+the isolated DSL export command needed an explicit scripts import path. A runpy
+entrypoint with that path fixes invocation without changing the DSL/export owner.
+The live worker stopped before making HTTP because Python3.12 HTTPSHandler lacks
+the private _check_hostname attribute. The fix passes only the verified default
+SSLContext; an actual urllib opener-dispatch regression now covers that boundary.
+No network/service retry is justified by this local adapter error; the corrected
+transport is a separately versioned attempt and no prior quarantine was modified.
+
+An overlooked automatic validate-legacy-parser workflow39171683542 installed
+Internet dependencies before failing old v5 assertions. This violated this task's
+installation constraint; the run is not a fixed-kit test or PASS. Main and the
+immutable local kit were untouched. Its trigger is now guarded for this scoped
+release, as is broad Strategy DSL CI. No further Internet installation is allowed.
+
+Its three parser failures are explicit contract changes: old v5 version literal,
+unheaded negative money without proved period, and publishing NaN candidates.
+tests/test_legacy_dart_parser.py is migrated to standard unittest, preserving
+all numeric/alias/source protections, requiring dates for valid loss extraction,
+testing refusal of unheaded/NaN values and preventing implicit v5 replay. It runs
+in the dedicated fixed-kit CI; no original source fixture/oracle is overwritten.

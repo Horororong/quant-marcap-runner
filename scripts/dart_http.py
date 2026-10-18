@@ -68,7 +68,9 @@ def get(url, params=None, timeout=35, *, _opener=None):
             super().connect();self.sock.settimeout(read)
     class Handler(request.HTTPSHandler):
         def https_open(self, req):
-            return self.do_open(Connection,req,context=self._context,check_hostname=self._check_hostname)
+            # TLS verification belongs to the explicit default SSLContext.
+            # Python3.12 HTTPSHandler has no _check_hostname attribute.
+            return self.do_open(Connection,req,context=self._context)
     opener=_opener or request.build_opener(NoRedirect(),Handler(context=ssl.create_default_context()))
     target=url+('?' + parse.urlencode(params) if params else '')
     try:

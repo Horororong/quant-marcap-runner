@@ -55,6 +55,17 @@ class WallBudgets(unittest.TestCase):
             state=json.loads((folder/'run/run_status.json').read_text());self.assertEqual(state['worker_exit_code'],7);self.assertEqual(state['stop_reason'],'WORKER_FAILURE')
 
 class Transport(unittest.TestCase):
+    def test_real_opener_dispatch_uses_ssl_context_without_private_hostname_attribute(self):
+        class Stream(io.BytesIO):
+            code=200;msg='OK';headers={'Content-Type':'application/xml'}
+            def info(self):return self.headers
+        captured=[]
+        def do_open(handler,connection,req,**kw):
+            captured.append(kw);return Stream(b'<result><status>014</status></result>')
+        with patch.object(http.request.HTTPSHandler,'do_open',do_open):
+            response=http.get('https://opendart.fss.or.kr/api/document.xml')
+        self.assertEqual(response.status_code,200);self.assertTrue(captured[0]['context'].check_hostname)
+        self.assertNotIn('check_hostname',captured[0])
     def test_endpoint_redirect_or_plain_http_never_leaks_key(self):
         for url in ['http://opendart.fss.or.kr/api/document.xml','https://evil.invalid/api/document.xml','https://opendart.fss.or.kr/other']:
             with self.assertRaises(ValueError):http.get(url,params={'crtfc_key':'DO_NOT_LOG'})
