@@ -1,0 +1,17 @@
+{
+  "run_id": 39106399866,
+  "remote_sha": "a23c61ebf3517955d0c385ac68c6547c92df580f",
+  "job_id": 117613061839,
+  "job": "stock-dividend-regression",
+  "status": "FAIL",
+  "failed_command": "scripts/test_strategy_dsl.py",
+  "exit_code": 1,
+  "cause": "Stale explicit contract fixture expected exec7/machine27 although implemented/exported new opt-in contracts are exec10/machine30",
+  "local_reproduction": "AssertionError at test_strategy_dsl.py line65",
+  "correction": "Update only declared contract-version expectations; no test deletion/skip, no engine/formula/baseline/tolerance change",
+  "corrected_command_exit": 0,
+  "corrected_log_sha256": "cff600395e8a62373ad3c4596b304324e89c0b0f77c1decf7d20320a293421be",
+  "original_dart_e2e_exit": 0,
+  "ci_original60_replay60_518_core64": "PASS in separate actual preservation steps; does not make failed job PASS",
+  "followup_ci": "Read actual final SHA run; not assumed PASS"
+}

@@ -166,3 +166,16 @@ run/jobs/logs/artifacts linked in the final handoff; this report cannot attest
 its own future CI state. Source gaps remain UNVERIFIED. No main merge, raw-data
 mutation, bulk backfill, internet pip, new financial processing or operating-gate
 relaxation was performed. Existing518/core64/original60 controls are retained.
+
+## First final-CI failure and minimal correction
+
+Run39106399866 at a23c61eb failed stock-dividend-regression because
+`test_strategy_dsl.py` still required exec7/machine27. Local reproduction
+failed at line65; current generated/runtime contracts are intentionally
+exec10/machine30 for the new common opt-in functionality. Only those two
+explicit version expectations were updated. No engine, selection, numeric
+regression, test assertion logic or tolerance was removed/changed. The same
+command now exits0. Original DART E2E and separate actual518/64/original60/replay60
+preservation steps passed even in the failed run; that run remains FAIL.
+See results/ci_first_failure.json and before/after logs. The follow-up final
+SHA must complete all four real verification jobs before CI success is claimed.

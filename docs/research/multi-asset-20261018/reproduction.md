@@ -71,3 +71,15 @@ Retained artifacts: stage16-continuous-research, explicit-long-research,
 multi-asset-research and continuous-baseline-research; they include full
 preflight/output/logs/runtime verification and browser proofs. Read the actual
 run and commit rather than assuming a marker or successful upload proves tests.
+
+The first final CI exposed stale `test_strategy_dsl.py` version assertions
+(exec7/machine27); record39106399866 remains FAIL. Reproduce the exact test:
+
+```sh
+"$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/test_strategy_dsl.py",run_name="__main__")'
+```
+
+The correction asserts the actual explicitly versioned exec10/machine30,
+without changing the engine, contracts, numeric fixture or test logic. Before
+and after command logs are preserved; final workflow repeats the full original
+19-command regression, not just this corrected test.
