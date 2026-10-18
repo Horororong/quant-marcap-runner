@@ -1,0 +1,164 @@
+{
+  "documents": 12,
+  "fields": 52,
+  "counts": {
+    "amount_verdict": {
+      "PASS": 46,
+      "UNVERIFIED": 6
+    },
+    "period_verdict": {
+      "PASS": 46,
+      "UNVERIFIED": 6
+    },
+    "source_verdict": {
+      "PASS": 44,
+      "UNVERIFIED": 8
+    }
+  },
+  "samples": {
+    "D01": {
+      "amount_verdict": {
+        "PASS": 4
+      },
+      "period_verdict": {
+        "PASS": 4
+      },
+      "source_verdict": {
+        "PASS": 4
+      }
+    },
+    "D02": {
+      "amount_verdict": {
+        "PASS": 4
+      },
+      "period_verdict": {
+        "PASS": 4
+      },
+      "source_verdict": {
+        "PASS": 4
+      }
+    },
+    "D03": {
+      "amount_verdict": {
+        "UNVERIFIED": 1,
+        "PASS": 3
+      },
+      "period_verdict": {
+        "UNVERIFIED": 1,
+        "PASS": 3
+      },
+      "source_verdict": {
+        "UNVERIFIED": 1,
+        "PASS": 3
+      }
+    },
+    "D04": {
+      "amount_verdict": {
+        "PASS": 4
+      },
+      "period_verdict": {
+        "PASS": 4
+      },
+      "source_verdict": {
+        "PASS": 4
+      }
+    },
+    "D05": {
+      "amount_verdict": {
+        "UNVERIFIED": 1,
+        "PASS": 3
+      },
+      "period_verdict": {
+        "UNVERIFIED": 1,
+        "PASS": 3
+      },
+      "source_verdict": {
+        "UNVERIFIED": 2,
+        "PASS": 2
+      }
+    },
+    "D06": {
+      "amount_verdict": {
+        "PASS": 4
+      },
+      "period_verdict": {
+        "PASS": 4
+      },
+      "source_verdict": {
+        "PASS": 3,
+        "UNVERIFIED": 1
+      }
+    },
+    "D07": {
+      "amount_verdict": {
+        "PASS": 4,
+        "UNVERIFIED": 4
+      },
+      "period_verdict": {
+        "PASS": 4,
+        "UNVERIFIED": 4
+      },
+      "source_verdict": {
+        "PASS": 4,
+        "UNVERIFIED": 4
+      }
+    },
+    "D08": {
+      "amount_verdict": {
+        "PASS": 4
+      },
+      "period_verdict": {
+        "PASS": 4
+      },
+      "source_verdict": {
+        "PASS": 4
+      }
+    },
+    "D09": {
+      "amount_verdict": {
+        "PASS": 4
+      },
+      "period_verdict": {
+        "PASS": 4
+      },
+      "source_verdict": {
+        "PASS": 4
+      }
+    },
+    "D10": {
+      "amount_verdict": {
+        "PASS": 4
+      },
+      "period_verdict": {
+        "PASS": 4
+      },
+      "source_verdict": {
+        "PASS": 4
+      }
+    },
+    "D11": {
+      "amount_verdict": {
+        "PASS": 4
+      },
+      "period_verdict": {
+        "PASS": 4
+      },
+      "source_verdict": {
+        "PASS": 4
+      }
+    },
+    "D12": {
+      "amount_verdict": {
+        "PASS": 4
+      },
+      "period_verdict": {
+        "PASS": 4
+      },
+      "source_verdict": {
+        "PASS": 4
+      }
+    }
+  },
+  "financial_population_certification": "UNVERIFIED",
+  "investment_PIT": "0/6"
+}

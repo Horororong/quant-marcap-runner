@@ -1,6 +1,6 @@
 """Single owner of legacy account aliases and strict numeric tokens (no I/O).
 
-Extracted unchanged from the v5 collector; viewer source guards use these
+Shared with the native collector; viewer source guards use these
 fields without requiring collection/network dependencies.
 """
 from __future__ import annotations
@@ -12,11 +12,12 @@ ALIASES = {
         "자본총계", "자본합계", "자기자본", "자본총액",
     ],
     "revenue": [
-        "매출액", "매출", "영업수익", "영업수익합계", "수익(매출액)",
+        "매출액", "매출", "영업수익", "영업수익합계", "수익(매출액)", "순매출액",
     ],
     "net_income": [
         "당기순이익", "당기순이익(손실)", "당기순손익", "분기순이익", "분기순이익(손실)",
         "분기순손익", "분기순손실", "반기순이익", "반기순이익(손실)", "반기순손익", "반기순손실", "당기순손실",
+        "반(당)기순이익", "반(당)기순이익(손실)", "반(당)기순손실",
     ],
     "ocf": [
         "영업활동으로인한현금흐름", "영업활동현금흐름", "영업활동으로부터의현금흐름",
@@ -135,6 +136,8 @@ def norm_account(x: str) -> str:
 
 def parse_number(x: str) -> float:
     s = str(x or "").strip()
+    if s.startswith("(-)"):
+        s = "-" + s[3:].strip()
     s = s.replace("△", "-").replace("▲", "-").replace("Δ", "-").replace("－", "-")
     negative_parentheses = s.startswith("(") and s.endswith(")")
     if negative_parentheses:

@@ -1,163 +1,62 @@
 name: Fast-backfill super-value PIT inputs
-
 on:
   workflow_dispatch:
+    inputs:
+      bounded_verification:
+        description: Explicit first canary only; at most10 documents, candidates held for independent review
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths:
       - 'scripts/backfill_dart_legacy_2000_2014.py'
-      - 'scripts/legacy_backfill_runtime.py'
-      - 'scripts/backfill_super_value_fast.py'
-      - 'scripts/legacy_schedule_gate.py'
+      - 'scripts/financial_rollout.py'
+      - 'config/financial_backfill_rollout.json'
       - '.github/workflows/backfill-super-value-fast.yml'
   schedule:
-    # 00:30 KST daily = 15:30 UTC previous day.
-    # Reuse this existing schedule; legacy covers all mapped receipts.
     - cron: '30 15 * * *'
-    # October-only legacy catch-up: 08:30 / 16:30 KST, 2,000 receipts each.
-    # The gate skips API/dependency work after October or when the queue is empty.
     - cron: '30 7,23 * 10 *'
-
 concurrency:
   group: super-value-fast-pit-backfill
   cancel-in-progress: false
-
 permissions:
   contents: write
-
+  actions: read
 jobs:
-  fast:
-    if: github.ref == 'refs/heads/main'
+  bounded-canary:
+    if: github.ref == 'refs/heads/main' && github.run_attempt == 1 && ((github.event_name == 'push' && contains(github.event.head_commit.message, '[financial-canary-100]')) || (github.event_name == 'workflow_dispatch' && inputs.bounded_verification))
     runs-on: ubuntu-latest
-    timeout-minutes: 100
-    env:
-      DART_API_KEY: ${{ secrets.DART_API_KEY }}
-      # Deployment verifies100; an explicit verified operator commit may use2000.
-      # Existing schedules/lock are unchanged; daily data commits cannot recurse.
-      # V2 operator promotion follows an observed successful100-receipt source replay.
-      SUPER_VALUE_FAST_MODERN_TASKS: ${{ (github.event_name == 'push' || (github.event_name == 'schedule' && github.event.schedule != '30 15 * * *')) && '0' || '1000' }}
-      SUPER_VALUE_FAST_LEGACY_DOCS: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '[legacy-verified-batch-2000]') && '100' || '2000' }}
-      SUPER_VALUE_FAST_LEGACY_INDEX_TASKS: '6'
-      SUPER_VALUE_FAST_MODERN_WORKERS: '3'
-      SUPER_VALUE_FAST_LEGACY_WORKERS: '3'
-      LEGACY_DART_MAX_REQUESTS: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '[legacy-verified-batch-2000]') && '150' || '2500' }}
-      LEGACY_DART_MAX_SECONDS: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '[legacy-verified-batch-2000]') && '600' || '3300' }}
-      LEGACY_DART_REQUEST_INTERVAL: '0.5'
-      LEGACY_DART_CHECKPOINT_SIZE: '25'
-
+    timeout-minutes: 20
     steps:
-      - name: Checkout
-        id: checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          ref: main
-
-      - name: Gate temporary October legacy batches
-        id: batch
-        env:
-          BATCH_SCHEDULE: ${{ github.event.schedule }}
-        run: python scripts/legacy_schedule_gate.py
-
-      - name: Set up Python
-        if: steps.batch.outputs.run == 'true'
-        uses: actions/setup-python@v5
+          ref: ${{ github.sha }}
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
-      - name: Install dependencies
-        if: steps.batch.outputs.run == 'true'
+      - name: Restore original immutable offline environment
         run: |
-          python -m pip install --upgrade pip
-          pip install pandas requests pyarrow beautifulsoup4 lxml
-
-      - name: Freeze source-audit plan and input checkpoint
-        id: evidence
-        if: steps.batch.outputs.run == 'true'
-        env:
-          LEGACY_DART_EVIDENCE_DIR: ${{ runner.temp }}/legacy-source-evidence
-        run: python scripts/legacy_batch_evidence.py begin
-
-      - name: Prioritize super-value PIT inputs
-        if: steps.batch.outputs.run == 'true'
-        env:
-          LEGACY_DART_RUN_REPORT: ${{ runner.temp }}/legacy-collection-run.json
-          LEGACY_DART_SOURCE_DIR: ${{ runner.temp }}/legacy-source-evidence/native
-        timeout-minutes: 75
-        run: python scripts/backfill_super_value_fast.py
-
-      - name: Inspect frozen predeployment source samples
-        if: always() && steps.batch.outputs.run == 'true' && steps.evidence.outcome == 'success' && github.event_name == 'push' && !contains(github.event.head_commit.message, '[legacy-verified-batch-2000]')
+          python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: First operating verification; fixed10 documents; no automatic publication
         timeout-minutes: 12
         env:
-          LEGACY_DART_EVIDENCE_DIR: ${{ runner.temp }}/legacy-source-evidence
-          LEGACY_DART_SOURCE_DIR: ${{ runner.temp }}/legacy-source-evidence/native
-          LEGACY_DART_RUN_REPORT: ${{ runner.temp }}/legacy-collection-run.json
-        run: python scripts/legacy_batch_evidence.py probe
-
-      - name: Preserve source-audit output checkpoint
-        if: always() && steps.batch.outputs.run == 'true' && steps.evidence.outcome == 'success'
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+        run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_rollout.py --mode operational --max-docs 10 --output "$RUNNER_TEMP/operating-canary"'
+      - name: Transfer public bounded candidates for independent review, no ref update
+        if: always()
         env:
-          LEGACY_DART_EVIDENCE_DIR: ${{ runner.temp }}/legacy-source-evidence
-        run: python scripts/legacy_batch_evidence.py end
-
-      - name: Commit fast-backfill datasets and status
-        if: always() && steps.checkout.outcome == 'success' && steps.batch.outputs.run == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/financials/dart_historical_code_map.csv || true
-          git add data/financials/full_history/*.csv.gz || true
-          git add data/financials/legacy_2000_2014/ || true
-          git add data/status/dart_full_backfill_state.csv || true
-          git add data/status/dart_legacy_*.csv || true
-          git add data/status/super_value_fast_backfill_status.csv || true
-          if git diff --cached --quiet; then
-            echo "No super-value fast-backfill changes"
-          else
-            git commit -m "Fast-backfill super-value PIT inputs"
-            git pull --rebase origin main
-            git push origin HEAD:main
-          fi
-
-      - name: Upload fast-backfill status
-        if: always() && steps.batch.outputs.run == 'true'
-        uses: actions/upload-artifact@v4
+          GH_TOKEN: ${{ github.token }}
+        run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_rollout_transfer.py "$RUNNER_TEMP/operating-canary"'
+      - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: super-value-fast-backfill-status
+          name: financial-operating-canary-candidates-HELD
           path: |
-            ${{ runner.temp }}/legacy-collection-run.json
-            data/status/super_value_fast_backfill_status.csv
-            data/status/dart_legacy_backfill_status.csv
-            data/status/dart_full_backfill_status.csv
-          if-no-files-found: warn
-          retention-days: 14
-
-      - name: Preserve original batch documents and audit checkpoints
-        if: always() && steps.batch.outputs.run == 'true' && steps.evidence.outcome == 'success'
-        uses: actions/upload-artifact@v4
-        with:
-          name: legacy-source-evidence-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/legacy-source-evidence
+            ${{ runner.temp }}/operating-canary
+            ${{ runner.temp }}/runtime.json
           if-no-files-found: error
           retention-days: 90
-
-      - name: Preserve bounded independent-audit source subset
-        if: always() && steps.batch.outputs.run == 'true' && steps.evidence.outcome == 'success'
-        uses: actions/upload-artifact@v4
-        with:
-          name: legacy-source-audit-subset-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/legacy-source-evidence/audit-subset
-          if-no-files-found: error
-          retention-days: 90
-
-      - name: Preserve unpublished legacy checkpoint on failure
-        if: failure() && steps.checkout.outcome == 'success' && steps.batch.outputs.run == 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: legacy-recovery-checkpoint
-          path: |
-            data/financials/legacy_2000_2014/
-            data/status/dart_legacy_*.csv
-          retention-days: 14
-
-# Operator batch evidence: PR33 source18857483 passed full CI; merge only after live100 verifies.
+# Schedules deliberately cannot start collection. No legacy-v5 or2000 fallback.
+# Publish candidates only after independent field review in a separate data commit.

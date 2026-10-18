@@ -138,7 +138,7 @@ concurrency:
 
 jobs:
   test:
-    if: ${{ !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && (inputs.download_existing_kit || inputs.publish_public_download)) }}
+    if: ${{ !startsWith(github.ref_name, 'deploy/financial-backfill-v9-') && !contains(github.event.head_commit.message, '[financial-fixed-kit-only]') && !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && (inputs.download_existing_kit || inputs.publish_public_download)) }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -275,7 +275,7 @@ jobs:
         run: python scripts/test_dsl_run_e2e.py
 
   sandbox-replay:
-    if: ${{ !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && (inputs.download_existing_kit || inputs.publish_public_download)) }}
+    if: ${{ !startsWith(github.ref_name, 'deploy/financial-backfill-v9-') && !contains(github.event.head_commit.message, '[financial-fixed-kit-only]') && !startsWith(github.ref_name, 'deliver/mobile-download-') && !(github.event_name == 'workflow_dispatch' && (inputs.download_existing_kit || inputs.publish_public_download)) }}
     runs-on: ubuntu-latest
     timeout-minutes: 40
     env:

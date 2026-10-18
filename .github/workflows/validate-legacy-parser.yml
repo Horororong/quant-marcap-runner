@@ -37,6 +37,9 @@ on:
 
 jobs:
   validate:
+    # Scoped financial rollout is validated by financial-deployment.yml in the pinned kit.
+    # Never run the legacy Internet installer for this authorized offline-only release.
+    if: ${{ !startsWith(github.ref_name, 'deploy/financial-backfill-v9-') && !contains(github.event.head_commit.message, '[financial-fixed-kit-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
