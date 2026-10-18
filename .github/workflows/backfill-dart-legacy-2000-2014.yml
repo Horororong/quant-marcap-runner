@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       bounded_verification:
-        description: Explicit first canary only; at most2 documents, candidates held for independent review
+        description: Explicit first canary only; at most10 documents, candidates held for independent review
         type: boolean
         default: false
 concurrency:
@@ -29,11 +29,11 @@ jobs:
           python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
           python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
-      - name: First operating verification; fixed2 documents; no automatic publication
+      - name: First operating verification; fixed10 documents; no automatic publication
         timeout-minutes: 12
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
-        run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_rollout.py --mode operational --max-docs 2 --output "$RUNNER_TEMP/operating-canary"'
+        run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_rollout.py --mode operational --max-docs 10 --output "$RUNNER_TEMP/operating-canary"'
       - name: Transfer public bounded candidates for independent review, no ref update
         if: always()
         env:

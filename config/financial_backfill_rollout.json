@@ -1,6 +1,6 @@
 {
   "mode": "CANARY_ONCE",
-  "maximum_documents": 2,
+  "maximum_documents": 10,
   "hard_maximum_documents": 100,
   "parser_version": "legacy-v9.1-primary-source-metadata",
   "quality_version": "financial-quality-v1-source-linked-not-PIT",
@@ -9,5 +9,6 @@
   "collection_policy": "Only never-classified mapped receipts. All historical parser states and quarantine remain untouched.",
   "financial_storage": "quality_v9 candidates only. No normalized or v5 overwrites.",
   "investment_PIT": "0/6",
-  "next_scale": "Separate explicit review and approval; no automatic2000 fallback"
+  "next_scale": "Separate explicit review and approval; no automatic2000 fallback",
+  "canary_plan": "Freeze first10 never-classified mapped receipts before any operating HTTP or values; no replacements; total authorized ceiling100. Stop immediately on service/rate/worker error. Remaining schedules/publication held."
 }
