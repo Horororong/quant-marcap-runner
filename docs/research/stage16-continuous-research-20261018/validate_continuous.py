@@ -31,7 +31,8 @@ def finalize(out,check):
  (out/'numeric_manifest.json').write_text(json.dumps(pins,indent=2)+'\n')
  if check:assert pins==json.loads((HOME/'numeric_manifest.json').read_text()),'new continuous pins differ; never regenerate expected to pass'
  precise=out/'readiness2026_precise.json';year2026=json.loads((precise if precise.exists() else out/'readiness2026.json').read_text())
- assert {'2026-06-03','2026-07-17'}.issubset({r['date'] for r in year2026['issues']}) and any(r['kind']=='benchmark_coverage_gap' for r in year2026['issues'])
+ assert year2026['ready_for_execution'] and not year2026['issues'] and year2026['benchmark']['exact_date_alignment']
+ assert year2026['official_calendar_correction']['sha256']==hashlib.sha256((ROOT/'config/research/official_calendar_corrections_v1.json').read_bytes()).hexdigest()
  regression=json.loads((out/'frozen_regression.json').read_text());ledger=json.loads((out/'size2019_2025_independent/summary.json').read_text());assert ledger['status']=='PASS_MODEL_ACCOUNTING'
  blockers={'original2019_2025':json.loads((out/'original2019_2025/preflight.json').read_text())['first_blocker']}
  for name in ['research_original_size_deciles_2001_2025','research_size_top1_2001_2025']:blockers[name]=json.loads((out/(name+'.json')).read_text())['first_blocker']
@@ -63,8 +64,8 @@ def main(out,baselines,check):
  assert (blockers['research_size_top1_2001_2025']['security'],blockers['research_size_top1_2001_2025']['date'])==('005930','2018-05-02')
  # 2026 is explicitly separate; no shrinking an input period to obtain success.
  d=json.loads((ROOT/'config/strategies/research_size_top1_2019_2025.json').read_text());d['period']={k:('2026-01-01' if k in ['start','book_start'] else '2026-10-08') for k in d['period']};(out/'input2026.json').write_text(json.dumps(d,ensure_ascii=False))
- command('separate2026',['scripts/research_workbench.py','check','--strategy',str(out/'input2026.json'),'--output',str(out/'readiness2026.json')],3)
- year2026=json.loads((out/'readiness2026.json').read_text());assert {'2026-06-03','2026-07-17'}.issubset({x['date'] for x in year2026['issues']});assert any(x['kind']=='benchmark_coverage_gap' for x in year2026['issues'])
+ command('separate2026',['scripts/research_workbench.py','check','--strategy',str(out/'input2026.json'),'--output',str(out/'readiness2026.json')])
+ year2026=json.loads((out/'readiness2026.json').read_text());assert year2026['ready_for_execution'] and not year2026['issues'] and year2026['benchmark']['exact_date_alignment'];assert year2026['history_coverage']['status']=='complete'
  command('issues_lookup',['scripts/research_workbench.py','issues','--saved-run',str(out/'original2019_2025'),'--output',str(out/'saved_issues.json')])
  command('size2019_2025',['scripts/research_workbench.py','run','--strategy','config/strategies/research_size_top1_2019_2025.json','--report-periods','config/reports/research_continuous_2025.json','--output-dir',str(out/'size2019_2025')])
  ledger=accounting(out/'size2019_2025',out/'size2019_2025_independent')

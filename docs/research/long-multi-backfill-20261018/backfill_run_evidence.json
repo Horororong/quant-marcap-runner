@@ -1,0 +1,2736 @@
+[
+  {
+    "id": 39085773974,
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39085773974",
+    "created_at": "2026-10-18T01:14:43Z",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "bb93fce6459417f45aa824906501812a19a6b02e",
+    "jobs": [
+      {
+        "id": 117551899030,
+        "run_id": 39085773974,
+        "workflow_name": "Fast-backfill super-value PIT inputs",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/39085773974",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAbXqOhlg",
+        "head_sha": "bb93fce6459417f45aa824906501812a19a6b02e",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/117551899030",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39085773974/job/117551899030",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-18T01:14:43Z",
+        "started_at": "2026-10-18T01:14:46Z",
+        "completed_at": "2026-10-18T02:36:27Z",
+        "name": "fast",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-18T01:14:46Z",
+            "completed_at": "2026-10-18T01:14:47Z"
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-18T01:14:47Z",
+            "completed_at": "2026-10-18T01:15:17Z"
+          },
+          {
+            "name": "Gate temporary October legacy batches",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-18T01:15:17Z",
+            "completed_at": "2026-10-18T01:15:18Z"
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-18T01:15:18Z",
+            "completed_at": "2026-10-18T01:15:18Z"
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-18T01:15:18Z",
+            "completed_at": "2026-10-18T01:15:34Z"
+          },
+          {
+            "name": "Freeze source-audit plan and input checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-18T01:15:34Z",
+            "completed_at": "2026-10-18T01:15:39Z"
+          },
+          {
+            "name": "Prioritize super-value PIT inputs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-18T01:15:39Z",
+            "completed_at": "2026-10-18T02:23:18Z"
+          },
+          {
+            "name": "Inspect frozen predeployment source samples",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-18T02:23:18Z",
+            "completed_at": "2026-10-18T02:23:18Z"
+          },
+          {
+            "name": "Preserve source-audit output checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-18T02:23:18Z",
+            "completed_at": "2026-10-18T02:36:05Z"
+          },
+          {
+            "name": "Commit fast-backfill datasets and status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-18T02:36:05Z",
+            "completed_at": "2026-10-18T02:36:14Z"
+          },
+          {
+            "name": "Upload fast-backfill status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-10-18T02:36:14Z",
+            "completed_at": "2026-10-18T02:36:15Z"
+          },
+          {
+            "name": "Preserve original batch documents and audit checkpoints",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-10-18T02:36:15Z",
+            "completed_at": "2026-10-18T02:36:24Z"
+          },
+          {
+            "name": "Preserve bounded independent-audit source subset",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-10-18T02:36:24Z",
+            "completed_at": "2026-10-18T02:36:26Z"
+          },
+          {
+            "name": "Preserve unpublished legacy checkpoint on failure",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 14,
+            "started_at": "2026-10-18T02:36:26Z",
+            "completed_at": "2026-10-18T02:36:26Z"
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27,
+            "started_at": "2026-10-18T02:36:26Z",
+            "completed_at": "2026-10-18T02:36:26Z"
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28,
+            "started_at": "2026-10-18T02:36:26Z",
+            "completed_at": "2026-10-18T02:36:26Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29,
+            "started_at": "2026-10-18T02:36:26Z",
+            "completed_at": "2026-10-18T02:36:26Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/117551899030",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000001178,
+        "runner_name": "GitHub Actions 1000001178",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 12123060380,
+        "node_id": "MDg6QXJ0aWZhY3QxMjEyMzA2MDM4MA==",
+        "name": "super-value-fast-backfill-status",
+        "size_in_bytes": 2070,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12123060380",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12123060380/zip",
+        "expired": false,
+        "digest": "sha256:64f942a7d4029f1fd5598b64cb42eaf8cc8f45361ce8a4a2ebc4b1bda7044703",
+        "created_at": "2026-10-18T02:36:15Z",
+        "updated_at": "2026-10-18T02:36:15Z",
+        "expires_at": "2026-11-01T02:36:14Z",
+        "workflow_run": {
+          "id": 39085773974,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "bb93fce6459417f45aa824906501812a19a6b02e"
+        }
+      },
+      {
+        "id": 12122461579,
+        "node_id": "MDg6QXJ0aWZhY3QxMjEyMjQ2MTU3OQ==",
+        "name": "legacy-source-audit-subset-1",
+        "size_in_bytes": 8001995,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12122461579",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12122461579/zip",
+        "expired": false,
+        "digest": "sha256:326c0ad9baeedc2c326d62e85e04c94fa7b105a0f9f73abe75a4750f09f1dae5",
+        "created_at": "2026-10-18T02:36:25Z",
+        "updated_at": "2026-10-18T02:36:25Z",
+        "expires_at": "2027-01-16T01:14:43Z",
+        "workflow_run": {
+          "id": 39085773974,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "bb93fce6459417f45aa824906501812a19a6b02e"
+        }
+      },
+      {
+        "id": 12122416836,
+        "node_id": "MDg6QXJ0aWZhY3QxMjEyMjQxNjgzNg==",
+        "name": "legacy-source-evidence-1",
+        "size_in_bytes": 199816317,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12122416836",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12122416836/zip",
+        "expired": false,
+        "digest": "sha256:6faea3647a128da272d76aa0d315f4bdb93c7e46ba4554a8314add2d5b8f2f65",
+        "created_at": "2026-10-18T02:36:24Z",
+        "updated_at": "2026-10-18T02:36:24Z",
+        "expires_at": "2027-01-16T01:14:43Z",
+        "workflow_run": {
+          "id": 39085773974,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "bb93fce6459417f45aa824906501812a19a6b02e"
+        }
+      }
+    ]
+  },
+  {
+    "id": 39055693717,
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39055693717",
+    "created_at": "2026-10-17T17:53:09Z",
+    "status": "completed",
+    "conclusion": "failure",
+    "head_sha": "9cc1234b238ce5e9c92b0b178bf9aaf16424ff80",
+    "jobs": [
+      {
+        "id": 117463082731,
+        "run_id": 39055693717,
+        "workflow_name": "Fast-backfill super-value PIT inputs",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/39055693717",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAbWVhm6w",
+        "head_sha": "9cc1234b238ce5e9c92b0b178bf9aaf16424ff80",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/117463082731",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39055693717/job/117463082731",
+        "status": "completed",
+        "conclusion": "failure",
+        "created_at": "2026-10-17T17:53:10Z",
+        "started_at": "2026-10-17T17:53:12Z",
+        "completed_at": "2026-10-17T19:17:08Z",
+        "name": "fast",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-17T17:53:13Z",
+            "completed_at": "2026-10-17T17:53:14Z"
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-17T17:53:14Z",
+            "completed_at": "2026-10-17T17:53:43Z"
+          },
+          {
+            "name": "Gate temporary October legacy batches",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-17T17:53:43Z",
+            "completed_at": "2026-10-17T17:53:43Z"
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-17T17:53:43Z",
+            "completed_at": "2026-10-17T17:53:43Z"
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-17T17:53:43Z",
+            "completed_at": "2026-10-17T17:53:54Z"
+          },
+          {
+            "name": "Freeze source-audit plan and input checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-17T17:53:54Z",
+            "completed_at": "2026-10-17T17:53:57Z"
+          },
+          {
+            "name": "Prioritize super-value PIT inputs",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 7,
+            "started_at": "2026-10-17T17:53:57Z",
+            "completed_at": "2026-10-17T19:09:09Z"
+          },
+          {
+            "name": "Inspect frozen predeployment source samples",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-17T19:09:09Z",
+            "completed_at": "2026-10-17T19:09:09Z"
+          },
+          {
+            "name": "Preserve source-audit output checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-17T19:09:09Z",
+            "completed_at": "2026-10-17T19:16:47Z"
+          },
+          {
+            "name": "Commit fast-backfill datasets and status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-17T19:16:47Z",
+            "completed_at": "2026-10-17T19:16:55Z"
+          },
+          {
+            "name": "Upload fast-backfill status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-10-17T19:16:55Z",
+            "completed_at": "2026-10-17T19:16:56Z"
+          },
+          {
+            "name": "Preserve original batch documents and audit checkpoints",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-10-17T19:16:56Z",
+            "completed_at": "2026-10-17T19:17:03Z"
+          },
+          {
+            "name": "Preserve bounded independent-audit source subset",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-10-17T19:17:03Z",
+            "completed_at": "2026-10-17T19:17:05Z"
+          },
+          {
+            "name": "Preserve unpublished legacy checkpoint on failure",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14,
+            "started_at": "2026-10-17T19:17:05Z",
+            "completed_at": "2026-10-17T19:17:07Z"
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 27,
+            "started_at": "2026-10-17T19:17:07Z",
+            "completed_at": "2026-10-17T19:17:07Z"
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28,
+            "started_at": "2026-10-17T19:17:07Z",
+            "completed_at": "2026-10-17T19:17:07Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29,
+            "started_at": "2026-10-17T19:17:07Z",
+            "completed_at": "2026-10-17T19:17:07Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/117463082731",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000001171,
+        "runner_name": "GitHub Actions 1000001171",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 12111876486,
+        "node_id": "MDg6QXJ0aWZhY3QxMjExMTg3NjQ4Ng==",
+        "name": "legacy-source-audit-subset-1",
+        "size_in_bytes": 8428895,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12111876486",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12111876486/zip",
+        "expired": false,
+        "digest": "sha256:639e13956a17a778961c1b894c8ddf540af53bc2caf86d65eea93dc1293a77e1",
+        "created_at": "2026-10-17T19:17:04Z",
+        "updated_at": "2026-10-17T19:17:04Z",
+        "expires_at": "2027-01-15T17:53:10Z",
+        "workflow_run": {
+          "id": 39055693717,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "9cc1234b238ce5e9c92b0b178bf9aaf16424ff80"
+        }
+      },
+      {
+        "id": 12111791896,
+        "node_id": "MDg6QXJ0aWZhY3QxMjExMTc5MTg5Ng==",
+        "name": "super-value-fast-backfill-status",
+        "size_in_bytes": 2069,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12111791896",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12111791896/zip",
+        "expired": false,
+        "digest": "sha256:d54d10a9fa147aa00793f82a3639db6a1abac30be104caaf1491944637e75d0a",
+        "created_at": "2026-10-17T19:16:56Z",
+        "updated_at": "2026-10-17T19:16:56Z",
+        "expires_at": "2026-10-31T19:16:55Z",
+        "workflow_run": {
+          "id": 39055693717,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "9cc1234b238ce5e9c92b0b178bf9aaf16424ff80"
+        }
+      },
+      {
+        "id": 12111776967,
+        "node_id": "MDg6QXJ0aWZhY3QxMjExMTc3Njk2Nw==",
+        "name": "legacy-recovery-checkpoint",
+        "size_in_bytes": 45781012,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12111776967",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12111776967/zip",
+        "expired": false,
+        "digest": "sha256:37f1707eb425601b831dc0e0878a288fcef725e78e4aa9f4fd739df853d7fa0f",
+        "created_at": "2026-10-17T19:17:06Z",
+        "updated_at": "2026-10-17T19:17:06Z",
+        "expires_at": "2026-10-31T19:17:05Z",
+        "workflow_run": {
+          "id": 39055693717,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "9cc1234b238ce5e9c92b0b178bf9aaf16424ff80"
+        }
+      },
+      {
+        "id": 12111214299,
+        "node_id": "MDg6QXJ0aWZhY3QxMjExMTIxNDI5OQ==",
+        "name": "legacy-source-evidence-1",
+        "size_in_bytes": 239308798,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12111214299",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12111214299/zip",
+        "expired": false,
+        "digest": "sha256:24ad2489a47c00c23f11eea7ef716dcd27f4adee4d87edfd5f85c75fa5b17aa4",
+        "created_at": "2026-10-17T19:17:03Z",
+        "updated_at": "2026-10-17T19:17:03Z",
+        "expires_at": "2027-01-15T17:53:10Z",
+        "workflow_run": {
+          "id": 39055693717,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "9cc1234b238ce5e9c92b0b178bf9aaf16424ff80"
+        }
+      }
+    ]
+  },
+  {
+    "id": 39029639807,
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39029639807",
+    "created_at": "2026-10-17T11:41:05Z",
+    "status": "completed",
+    "conclusion": "cancelled",
+    "head_sha": "9cc1234b238ce5e9c92b0b178bf9aaf16424ff80",
+    "jobs": [
+      {
+        "id": 117387340739,
+        "run_id": 39029639807,
+        "workflow_name": "Fast-backfill super-value PIT inputs",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/39029639807",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAbVNSrww",
+        "head_sha": "9cc1234b238ce5e9c92b0b178bf9aaf16424ff80",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/117387340739",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39029639807/job/117387340739",
+        "status": "completed",
+        "conclusion": "cancelled",
+        "created_at": "2026-10-17T11:41:05Z",
+        "started_at": "2026-10-17T11:41:08Z",
+        "completed_at": "2026-10-17T13:26:08Z",
+        "name": "fast",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-17T11:41:09Z",
+            "completed_at": "2026-10-17T11:41:10Z"
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-17T11:41:10Z",
+            "completed_at": "2026-10-17T11:41:43Z"
+          },
+          {
+            "name": "Gate temporary October legacy batches",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-17T11:41:43Z",
+            "completed_at": "2026-10-17T11:41:43Z"
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-17T11:41:43Z",
+            "completed_at": "2026-10-17T11:41:43Z"
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-17T11:41:43Z",
+            "completed_at": "2026-10-17T11:41:55Z"
+          },
+          {
+            "name": "Freeze source-audit plan and input checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-17T11:41:55Z",
+            "completed_at": "2026-10-17T11:42:00Z"
+          },
+          {
+            "name": "Prioritize super-value PIT inputs",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 7,
+            "started_at": "2026-10-17T11:42:00Z",
+            "completed_at": "2026-10-17T12:57:13Z"
+          },
+          {
+            "name": "Inspect frozen predeployment source samples",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-17T12:57:13Z",
+            "completed_at": "2026-10-17T12:57:13Z"
+          },
+          {
+            "name": "Preserve source-audit output checkpoint",
+            "status": "in_progress",
+            "conclusion": null,
+            "number": 9,
+            "started_at": "2026-10-17T12:57:13Z",
+            "completed_at": null
+          },
+          {
+            "name": "Commit fast-backfill datasets and status",
+            "status": "pending",
+            "conclusion": null,
+            "number": 10,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Upload fast-backfill status",
+            "status": "pending",
+            "conclusion": null,
+            "number": 11,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Preserve original batch documents and audit checkpoints",
+            "status": "pending",
+            "conclusion": null,
+            "number": 12,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Preserve bounded independent-audit source subset",
+            "status": "pending",
+            "conclusion": null,
+            "number": 13,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Preserve unpublished legacy checkpoint on failure",
+            "status": "pending",
+            "conclusion": null,
+            "number": 14,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "pending",
+            "conclusion": null,
+            "number": 27,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Checkout",
+            "status": "pending",
+            "conclusion": null,
+            "number": 28,
+            "started_at": null,
+            "completed_at": null
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/117387340739",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000001168,
+        "runner_name": "GitHub Actions 1000001168",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ],
+    "artifacts": []
+  },
+  {
+    "id": 38990582998,
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38990582998",
+    "created_at": "2026-10-17T01:22:33Z",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "3a4c5e30a6a9ae29a812b946ab7bab167fbef8ef",
+    "jobs": [
+      {
+        "id": 117271879992,
+        "run_id": 38990582998,
+        "workflow_name": "Fast-backfill super-value PIT inputs",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/38990582998",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAbTfLhOA",
+        "head_sha": "3a4c5e30a6a9ae29a812b946ab7bab167fbef8ef",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/117271879992",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38990582998/job/117271879992",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-17T01:22:34Z",
+        "started_at": "2026-10-17T01:22:37Z",
+        "completed_at": "2026-10-17T02:40:17Z",
+        "name": "fast",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-17T01:22:37Z",
+            "completed_at": "2026-10-17T01:22:38Z"
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-17T01:22:38Z",
+            "completed_at": "2026-10-17T01:23:10Z"
+          },
+          {
+            "name": "Gate temporary October legacy batches",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-17T01:23:10Z",
+            "completed_at": "2026-10-17T01:23:10Z"
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-17T01:23:10Z",
+            "completed_at": "2026-10-17T01:23:10Z"
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-17T01:23:10Z",
+            "completed_at": "2026-10-17T01:23:22Z"
+          },
+          {
+            "name": "Freeze source-audit plan and input checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-17T01:23:22Z",
+            "completed_at": "2026-10-17T01:23:26Z"
+          },
+          {
+            "name": "Prioritize super-value PIT inputs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-17T01:23:26Z",
+            "completed_at": "2026-10-17T02:29:03Z"
+          },
+          {
+            "name": "Inspect frozen predeployment source samples",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-17T02:29:03Z",
+            "completed_at": "2026-10-17T02:29:03Z"
+          },
+          {
+            "name": "Preserve source-audit output checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-17T02:29:03Z",
+            "completed_at": "2026-10-17T02:39:55Z"
+          },
+          {
+            "name": "Commit fast-backfill datasets and status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-17T02:39:55Z",
+            "completed_at": "2026-10-17T02:40:03Z"
+          },
+          {
+            "name": "Upload fast-backfill status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-10-17T02:40:03Z",
+            "completed_at": "2026-10-17T02:40:04Z"
+          },
+          {
+            "name": "Preserve original batch documents and audit checkpoints",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-10-17T02:40:04Z",
+            "completed_at": "2026-10-17T02:40:13Z"
+          },
+          {
+            "name": "Preserve bounded independent-audit source subset",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-10-17T02:40:13Z",
+            "completed_at": "2026-10-17T02:40:15Z"
+          },
+          {
+            "name": "Preserve unpublished legacy checkpoint on failure",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 14,
+            "started_at": "2026-10-17T02:40:15Z",
+            "completed_at": "2026-10-17T02:40:15Z"
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27,
+            "started_at": "2026-10-17T02:40:15Z",
+            "completed_at": "2026-10-17T02:40:15Z"
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28,
+            "started_at": "2026-10-17T02:40:15Z",
+            "completed_at": "2026-10-17T02:40:15Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29,
+            "started_at": "2026-10-17T02:40:15Z",
+            "completed_at": "2026-10-17T02:40:15Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/117271879992",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000001153,
+        "runner_name": "GitHub Actions 1000001153",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 12087111958,
+        "node_id": "MDg6QXJ0aWZhY3QxMjA4NzExMTk1OA==",
+        "name": "legacy-source-audit-subset-1",
+        "size_in_bytes": 7713624,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12087111958",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12087111958/zip",
+        "expired": false,
+        "digest": "sha256:a8f2d2aca76da4f553550eeae6bbf580d70d2a89c744450d907949eb45ee0fcb",
+        "created_at": "2026-10-17T02:40:15Z",
+        "updated_at": "2026-10-17T02:40:15Z",
+        "expires_at": "2027-01-15T01:22:33Z",
+        "workflow_run": {
+          "id": 38990582998,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "3a4c5e30a6a9ae29a812b946ab7bab167fbef8ef"
+        }
+      },
+      {
+        "id": 12086982729,
+        "node_id": "MDg6QXJ0aWZhY3QxMjA4Njk4MjcyOQ==",
+        "name": "legacy-source-evidence-1",
+        "size_in_bytes": 209630959,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12086982729",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12086982729/zip",
+        "expired": false,
+        "digest": "sha256:c8804257da86b341135391b4eab959312650cb66df5111d32730a3528e51c0f4",
+        "created_at": "2026-10-17T02:40:13Z",
+        "updated_at": "2026-10-17T02:40:13Z",
+        "expires_at": "2027-01-15T01:22:33Z",
+        "workflow_run": {
+          "id": 38990582998,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "3a4c5e30a6a9ae29a812b946ab7bab167fbef8ef"
+        }
+      },
+      {
+        "id": 12086914021,
+        "node_id": "MDg6QXJ0aWZhY3QxMjA4NjkxNDAyMQ==",
+        "name": "super-value-fast-backfill-status",
+        "size_in_bytes": 2066,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12086914021",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12086914021/zip",
+        "expired": false,
+        "digest": "sha256:71411567065170c41bc83c6dd0d5c16871691fa895dd50816ecbb05d230ea239",
+        "created_at": "2026-10-17T02:40:04Z",
+        "updated_at": "2026-10-17T02:40:04Z",
+        "expires_at": "2026-10-31T02:40:03Z",
+        "workflow_run": {
+          "id": 38990582998,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "3a4c5e30a6a9ae29a812b946ab7bab167fbef8ef"
+        }
+      }
+    ]
+  },
+  {
+    "id": 38950864251,
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38950864251",
+    "created_at": "2026-10-16T18:54:01Z",
+    "status": "completed",
+    "conclusion": "cancelled",
+    "head_sha": "3a4c5e30a6a9ae29a812b946ab7bab167fbef8ef",
+    "jobs": [
+      {
+        "id": 117141585989,
+        "run_id": 38950864251,
+        "workflow_name": "Fast-backfill super-value PIT inputs",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/38950864251",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAbRi7ARQ",
+        "head_sha": "3a4c5e30a6a9ae29a812b946ab7bab167fbef8ef",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/117141585989",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38950864251/job/117141585989",
+        "status": "completed",
+        "conclusion": "cancelled",
+        "created_at": "2026-10-16T18:54:02Z",
+        "started_at": "2026-10-16T18:54:07Z",
+        "completed_at": "2026-10-16T20:39:07Z",
+        "name": "fast",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-16T18:54:10Z",
+            "completed_at": "2026-10-16T18:54:13Z"
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-16T18:54:13Z",
+            "completed_at": "2026-10-16T18:56:02Z"
+          },
+          {
+            "name": "Gate temporary October legacy batches",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-16T18:56:02Z",
+            "completed_at": "2026-10-16T18:56:02Z"
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-16T18:56:02Z",
+            "completed_at": "2026-10-16T18:56:03Z"
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-16T18:56:03Z",
+            "completed_at": "2026-10-16T18:56:57Z"
+          },
+          {
+            "name": "Freeze source-audit plan and input checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-16T18:56:57Z",
+            "completed_at": "2026-10-16T18:57:14Z"
+          },
+          {
+            "name": "Prioritize super-value PIT inputs",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 7,
+            "started_at": "2026-10-16T18:57:14Z",
+            "completed_at": "2026-10-16T20:12:27Z"
+          },
+          {
+            "name": "Inspect frozen predeployment source samples",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-16T20:12:27Z",
+            "completed_at": "2026-10-16T20:12:27Z"
+          },
+          {
+            "name": "Preserve source-audit output checkpoint",
+            "status": "in_progress",
+            "conclusion": null,
+            "number": 9,
+            "started_at": "2026-10-16T20:12:27Z",
+            "completed_at": null
+          },
+          {
+            "name": "Commit fast-backfill datasets and status",
+            "status": "pending",
+            "conclusion": null,
+            "number": 10,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Upload fast-backfill status",
+            "status": "pending",
+            "conclusion": null,
+            "number": 11,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Preserve original batch documents and audit checkpoints",
+            "status": "pending",
+            "conclusion": null,
+            "number": 12,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Preserve bounded independent-audit source subset",
+            "status": "pending",
+            "conclusion": null,
+            "number": 13,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Preserve unpublished legacy checkpoint on failure",
+            "status": "pending",
+            "conclusion": null,
+            "number": 14,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "pending",
+            "conclusion": null,
+            "number": 27,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Checkout",
+            "status": "pending",
+            "conclusion": null,
+            "number": 28,
+            "started_at": null,
+            "completed_at": null
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/117141585989",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000001151,
+        "runner_name": "GitHub Actions 1000001151",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ],
+    "artifacts": []
+  },
+  {
+    "id": 38901464530,
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38901464530",
+    "created_at": "2026-10-16T12:34:26Z",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "1294b64bbbecb1b80292630517d744e3c17fe4f0",
+    "jobs": [
+      {
+        "id": 116974482418,
+        "run_id": 38901464530,
+        "workflow_name": "Fast-backfill super-value PIT inputs",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/38901464530",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAbPDjz8g",
+        "head_sha": "1294b64bbbecb1b80292630517d744e3c17fe4f0",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/116974482418",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38901464530/job/116974482418",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-16T12:34:26Z",
+        "started_at": "2026-10-16T12:34:29Z",
+        "completed_at": "2026-10-16T13:45:10Z",
+        "name": "fast",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-16T12:34:30Z",
+            "completed_at": "2026-10-16T12:34:31Z"
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-16T12:34:31Z",
+            "completed_at": "2026-10-16T12:35:00Z"
+          },
+          {
+            "name": "Gate temporary October legacy batches",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-16T12:35:00Z",
+            "completed_at": "2026-10-16T12:35:00Z"
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-16T12:35:00Z",
+            "completed_at": "2026-10-16T12:35:00Z"
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-16T12:35:00Z",
+            "completed_at": "2026-10-16T12:35:11Z"
+          },
+          {
+            "name": "Freeze source-audit plan and input checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-16T12:35:11Z",
+            "completed_at": "2026-10-16T12:35:14Z"
+          },
+          {
+            "name": "Prioritize super-value PIT inputs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-16T12:35:14Z",
+            "completed_at": "2026-10-16T13:37:28Z"
+          },
+          {
+            "name": "Inspect frozen predeployment source samples",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-16T13:37:28Z",
+            "completed_at": "2026-10-16T13:37:28Z"
+          },
+          {
+            "name": "Preserve source-audit output checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-16T13:37:28Z",
+            "completed_at": "2026-10-16T13:44:50Z"
+          },
+          {
+            "name": "Commit fast-backfill datasets and status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-16T13:44:50Z",
+            "completed_at": "2026-10-16T13:44:58Z"
+          },
+          {
+            "name": "Upload fast-backfill status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-10-16T13:44:58Z",
+            "completed_at": "2026-10-16T13:44:59Z"
+          },
+          {
+            "name": "Preserve original batch documents and audit checkpoints",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-10-16T13:44:59Z",
+            "completed_at": "2026-10-16T13:45:06Z"
+          },
+          {
+            "name": "Preserve bounded independent-audit source subset",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-10-16T13:45:06Z",
+            "completed_at": "2026-10-16T13:45:08Z"
+          },
+          {
+            "name": "Preserve unpublished legacy checkpoint on failure",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 14,
+            "started_at": "2026-10-16T13:45:08Z",
+            "completed_at": "2026-10-16T13:45:08Z"
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27,
+            "started_at": "2026-10-16T13:45:08Z",
+            "completed_at": "2026-10-16T13:45:08Z"
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28,
+            "started_at": "2026-10-16T13:45:08Z",
+            "completed_at": "2026-10-16T13:45:08Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29,
+            "started_at": "2026-10-16T13:45:08Z",
+            "completed_at": "2026-10-16T13:45:08Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/116974482418",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000001150,
+        "runner_name": "GitHub Actions 1000001150",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 12050291160,
+        "node_id": "MDg6QXJ0aWZhY3QxMjA1MDI5MTE2MA==",
+        "name": "legacy-source-audit-subset-1",
+        "size_in_bytes": 7834704,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12050291160",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12050291160/zip",
+        "expired": false,
+        "digest": "sha256:fb6ce0d153ab5696b2511c8d91db539e0c8567b74e8ff5187baa416baea35e49",
+        "created_at": "2026-10-16T13:45:08Z",
+        "updated_at": "2026-10-16T13:45:08Z",
+        "expires_at": "2027-01-14T12:34:26Z",
+        "workflow_run": {
+          "id": 38901464530,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "1294b64bbbecb1b80292630517d744e3c17fe4f0"
+        }
+      },
+      {
+        "id": 12049851893,
+        "node_id": "MDg6QXJ0aWZhY3QxMjA0OTg1MTg5Mw==",
+        "name": "legacy-source-evidence-1",
+        "size_in_bytes": 227821350,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12049851893",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12049851893/zip",
+        "expired": false,
+        "digest": "sha256:cf6431b2a7f77c42eee8be6f2380e9bde33f49e7d65456e8fa49079e807c3f67",
+        "created_at": "2026-10-16T13:45:06Z",
+        "updated_at": "2026-10-16T13:45:06Z",
+        "expires_at": "2027-01-14T12:34:26Z",
+        "workflow_run": {
+          "id": 38901464530,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "1294b64bbbecb1b80292630517d744e3c17fe4f0"
+        }
+      },
+      {
+        "id": 12049572678,
+        "node_id": "MDg6QXJ0aWZhY3QxMjA0OTU3MjY3OA==",
+        "name": "super-value-fast-backfill-status",
+        "size_in_bytes": 2065,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12049572678",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12049572678/zip",
+        "expired": false,
+        "digest": "sha256:b6db6ad0558c9f5ed79b4914732e27a7580ce3feaa0ccfb6d836920a06ea6159",
+        "created_at": "2026-10-16T13:44:59Z",
+        "updated_at": "2026-10-16T13:44:59Z",
+        "expires_at": "2026-10-30T13:44:58Z",
+        "workflow_run": {
+          "id": 38901464530,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "1294b64bbbecb1b80292630517d744e3c17fe4f0"
+        }
+      }
+    ]
+  },
+  {
+    "id": 38835562329,
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38835562329",
+    "created_at": "2026-10-16T01:31:16Z",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "9adddb186efa2640687db8cc8e90e9bc8ed1c8fb",
+    "jobs": [
+      {
+        "id": 116763786802,
+        "run_id": 38835562329,
+        "workflow_name": "Fast-backfill super-value PIT inputs",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/38835562329",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAbL6n-Mg",
+        "head_sha": "9adddb186efa2640687db8cc8e90e9bc8ed1c8fb",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/116763786802",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38835562329/job/116763786802",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-16T01:31:16Z",
+        "started_at": "2026-10-16T01:31:19Z",
+        "completed_at": "2026-10-16T02:49:42Z",
+        "name": "fast",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-16T01:31:20Z",
+            "completed_at": "2026-10-16T01:31:20Z"
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-16T01:31:20Z",
+            "completed_at": "2026-10-16T01:31:48Z"
+          },
+          {
+            "name": "Gate temporary October legacy batches",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-16T01:31:48Z",
+            "completed_at": "2026-10-16T01:31:48Z"
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-16T01:31:48Z",
+            "completed_at": "2026-10-16T01:31:48Z"
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-16T01:31:48Z",
+            "completed_at": "2026-10-16T01:32:05Z"
+          },
+          {
+            "name": "Freeze source-audit plan and input checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-16T01:32:05Z",
+            "completed_at": "2026-10-16T01:32:10Z"
+          },
+          {
+            "name": "Prioritize super-value PIT inputs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-16T01:32:10Z",
+            "completed_at": "2026-10-16T02:38:09Z"
+          },
+          {
+            "name": "Inspect frozen predeployment source samples",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-16T02:38:09Z",
+            "completed_at": "2026-10-16T02:38:09Z"
+          },
+          {
+            "name": "Preserve source-audit output checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-16T02:38:09Z",
+            "completed_at": "2026-10-16T02:49:21Z"
+          },
+          {
+            "name": "Commit fast-backfill datasets and status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-16T02:49:21Z",
+            "completed_at": "2026-10-16T02:49:29Z"
+          },
+          {
+            "name": "Upload fast-backfill status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-10-16T02:49:29Z",
+            "completed_at": "2026-10-16T02:49:30Z"
+          },
+          {
+            "name": "Preserve original batch documents and audit checkpoints",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-10-16T02:49:30Z",
+            "completed_at": "2026-10-16T02:49:39Z"
+          },
+          {
+            "name": "Preserve bounded independent-audit source subset",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-10-16T02:49:39Z",
+            "completed_at": "2026-10-16T02:49:40Z"
+          },
+          {
+            "name": "Preserve unpublished legacy checkpoint on failure",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 14,
+            "started_at": "2026-10-16T02:49:40Z",
+            "completed_at": "2026-10-16T02:49:40Z"
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27,
+            "started_at": "2026-10-16T02:49:40Z",
+            "completed_at": "2026-10-16T02:49:41Z"
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28,
+            "started_at": "2026-10-16T02:49:41Z",
+            "completed_at": "2026-10-16T02:49:41Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29,
+            "started_at": "2026-10-16T02:49:41Z",
+            "completed_at": "2026-10-16T02:49:41Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/116763786802",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000001148,
+        "runner_name": "GitHub Actions 1000001148",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 12021148829,
+        "node_id": "MDg6QXJ0aWZhY3QxMjAyMTE0ODgyOQ==",
+        "name": "super-value-fast-backfill-status",
+        "size_in_bytes": 2067,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12021148829",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12021148829/zip",
+        "expired": false,
+        "digest": "sha256:84eb4cfb283926035828f2f20dc00b35080ec062a5c4206cf7135074fea27b95",
+        "created_at": "2026-10-16T02:49:30Z",
+        "updated_at": "2026-10-16T02:49:30Z",
+        "expires_at": "2026-10-30T02:49:29Z",
+        "workflow_run": {
+          "id": 38835562329,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "9adddb186efa2640687db8cc8e90e9bc8ed1c8fb"
+        }
+      },
+      {
+        "id": 12021004356,
+        "node_id": "MDg6QXJ0aWZhY3QxMjAyMTAwNDM1Ng==",
+        "name": "legacy-source-audit-subset-1",
+        "size_in_bytes": 7293349,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12021004356",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12021004356/zip",
+        "expired": false,
+        "digest": "sha256:af9d21e1fefff993064904f498675fb8278e85dc594b2d735d305af4598098b7",
+        "created_at": "2026-10-16T02:49:40Z",
+        "updated_at": "2026-10-16T02:49:40Z",
+        "expires_at": "2027-01-14T01:31:16Z",
+        "workflow_run": {
+          "id": 38835562329,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "9adddb186efa2640687db8cc8e90e9bc8ed1c8fb"
+        }
+      },
+      {
+        "id": 12020844470,
+        "node_id": "MDg6QXJ0aWZhY3QxMjAyMDg0NDQ3MA==",
+        "name": "legacy-source-evidence-1",
+        "size_in_bytes": 193815411,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12020844470",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12020844470/zip",
+        "expired": false,
+        "digest": "sha256:7d2eea999051259ab4e7381b94428720d60fca65022fad4916489b7a5dcad8eb",
+        "created_at": "2026-10-16T02:49:39Z",
+        "updated_at": "2026-10-16T02:49:39Z",
+        "expires_at": "2027-01-14T01:31:16Z",
+        "workflow_run": {
+          "id": 38835562329,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "9adddb186efa2640687db8cc8e90e9bc8ed1c8fb"
+        }
+      }
+    ]
+  },
+  {
+    "id": 38792757900,
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38792757900",
+    "created_at": "2026-10-15T19:18:02Z",
+    "status": "completed",
+    "conclusion": "failure",
+    "head_sha": "11b38d8b85195d1f6eaecf496e32e28234dd5de0",
+    "jobs": [
+      {
+        "id": 116621249800,
+        "run_id": 38792757900,
+        "workflow_name": "Fast-backfill super-value PIT inputs",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/38792757900",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAbJysNCA",
+        "head_sha": "11b38d8b85195d1f6eaecf496e32e28234dd5de0",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/116621249800",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38792757900/job/116621249800",
+        "status": "completed",
+        "conclusion": "failure",
+        "created_at": "2026-10-15T19:18:02Z",
+        "started_at": "2026-10-15T19:18:05Z",
+        "completed_at": "2026-10-15T20:48:19Z",
+        "name": "fast",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-15T19:18:06Z",
+            "completed_at": "2026-10-15T19:18:07Z"
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-15T19:18:07Z",
+            "completed_at": "2026-10-15T19:18:37Z"
+          },
+          {
+            "name": "Gate temporary October legacy batches",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-15T19:18:37Z",
+            "completed_at": "2026-10-15T19:18:37Z"
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-15T19:18:37Z",
+            "completed_at": "2026-10-15T19:18:37Z"
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-15T19:18:37Z",
+            "completed_at": "2026-10-15T19:18:53Z"
+          },
+          {
+            "name": "Freeze source-audit plan and input checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-15T19:18:53Z",
+            "completed_at": "2026-10-15T19:18:56Z"
+          },
+          {
+            "name": "Prioritize super-value PIT inputs",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 7,
+            "started_at": "2026-10-15T19:18:56Z",
+            "completed_at": "2026-10-15T20:34:09Z"
+          },
+          {
+            "name": "Inspect frozen predeployment source samples",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-15T20:34:09Z",
+            "completed_at": "2026-10-15T20:34:09Z"
+          },
+          {
+            "name": "Preserve source-audit output checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-15T20:34:09Z",
+            "completed_at": "2026-10-15T20:47:53Z"
+          },
+          {
+            "name": "Commit fast-backfill datasets and status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-15T20:47:53Z",
+            "completed_at": "2026-10-15T20:48:03Z"
+          },
+          {
+            "name": "Upload fast-backfill status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-10-15T20:48:03Z",
+            "completed_at": "2026-10-15T20:48:03Z"
+          },
+          {
+            "name": "Preserve original batch documents and audit checkpoints",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-10-15T20:48:03Z",
+            "completed_at": "2026-10-15T20:48:12Z"
+          },
+          {
+            "name": "Preserve bounded independent-audit source subset",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-10-15T20:48:12Z",
+            "completed_at": "2026-10-15T20:48:14Z"
+          },
+          {
+            "name": "Preserve unpublished legacy checkpoint on failure",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14,
+            "started_at": "2026-10-15T20:48:14Z",
+            "completed_at": "2026-10-15T20:48:16Z"
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 27,
+            "started_at": "2026-10-15T20:48:16Z",
+            "completed_at": "2026-10-15T20:48:16Z"
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28,
+            "started_at": "2026-10-15T20:48:16Z",
+            "completed_at": "2026-10-15T20:48:17Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29,
+            "started_at": "2026-10-15T20:48:17Z",
+            "completed_at": "2026-10-15T20:48:17Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/116621249800",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000001147,
+        "runner_name": "GitHub Actions 1000001147",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 12006185874,
+        "node_id": "MDg6QXJ0aWZhY3QxMjAwNjE4NTg3NA==",
+        "name": "legacy-recovery-checkpoint",
+        "size_in_bytes": 41413681,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12006185874",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12006185874/zip",
+        "expired": false,
+        "digest": "sha256:693b4a2b792593c5d6c41a72f18a27da2fd5d8e9d01e923c9f3f590c23310c55",
+        "created_at": "2026-10-15T20:48:16Z",
+        "updated_at": "2026-10-15T20:48:16Z",
+        "expires_at": "2026-10-29T20:48:14Z",
+        "workflow_run": {
+          "id": 38792757900,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "11b38d8b85195d1f6eaecf496e32e28234dd5de0"
+        }
+      },
+      {
+        "id": 12005976181,
+        "node_id": "MDg6QXJ0aWZhY3QxMjAwNTk3NjE4MQ==",
+        "name": "super-value-fast-backfill-status",
+        "size_in_bytes": 2069,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12005976181",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12005976181/zip",
+        "expired": false,
+        "digest": "sha256:720a5d81bcd9a2e4601cbfefb54dff577bd9ecc866168dd7835b4598214a6fb6",
+        "created_at": "2026-10-15T20:48:03Z",
+        "updated_at": "2026-10-15T20:48:03Z",
+        "expires_at": "2026-10-29T20:48:03Z",
+        "workflow_run": {
+          "id": 38792757900,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "11b38d8b85195d1f6eaecf496e32e28234dd5de0"
+        }
+      },
+      {
+        "id": 12005702874,
+        "node_id": "MDg6QXJ0aWZhY3QxMjAwNTcwMjg3NA==",
+        "name": "legacy-source-audit-subset-1",
+        "size_in_bytes": 7233550,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12005702874",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12005702874/zip",
+        "expired": false,
+        "digest": "sha256:a62696509cad405cc0b4f5104c63264bdaf617eb205c5155a9a643bb40f23012",
+        "created_at": "2026-10-15T20:48:14Z",
+        "updated_at": "2026-10-15T20:48:14Z",
+        "expires_at": "2027-01-13T19:18:02Z",
+        "workflow_run": {
+          "id": 38792757900,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "11b38d8b85195d1f6eaecf496e32e28234dd5de0"
+        }
+      },
+      {
+        "id": 12005108329,
+        "node_id": "MDg6QXJ0aWZhY3QxMjAwNTEwODMyOQ==",
+        "name": "legacy-source-evidence-1",
+        "size_in_bytes": 213361380,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12005108329",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12005108329/zip",
+        "expired": false,
+        "digest": "sha256:e0722046427387ceadbeb6cf6b5b554df191fbf29f1563d344df825c5c81db98",
+        "created_at": "2026-10-15T20:48:12Z",
+        "updated_at": "2026-10-15T20:48:12Z",
+        "expires_at": "2027-01-13T19:18:02Z",
+        "workflow_run": {
+          "id": 38792757900,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "11b38d8b85195d1f6eaecf496e32e28234dd5de0"
+        }
+      }
+    ]
+  },
+  {
+    "id": 38736863782,
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38736863782",
+    "created_at": "2026-10-15T12:43:43Z",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "14c4fef7bfad6f9597e703fbb8726e5c75b9ab6f",
+    "jobs": [
+      {
+        "id": 116428258907,
+        "run_id": 38736863782,
+        "workflow_name": "Fast-backfill super-value PIT inputs",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/38736863782",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAbG6o-Ww",
+        "head_sha": "14c4fef7bfad6f9597e703fbb8726e5c75b9ab6f",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/116428258907",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38736863782/job/116428258907",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-15T12:43:44Z",
+        "started_at": "2026-10-15T12:43:47Z",
+        "completed_at": "2026-10-15T13:35:15Z",
+        "name": "fast",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-15T12:43:48Z",
+            "completed_at": "2026-10-15T12:43:49Z"
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-15T12:43:49Z",
+            "completed_at": "2026-10-15T12:45:06Z"
+          },
+          {
+            "name": "Gate temporary October legacy batches",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-15T12:45:06Z",
+            "completed_at": "2026-10-15T12:45:06Z"
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-15T12:45:06Z",
+            "completed_at": "2026-10-15T12:45:06Z"
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-15T12:45:06Z",
+            "completed_at": "2026-10-15T12:45:20Z"
+          },
+          {
+            "name": "Freeze source-audit plan and input checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-15T12:45:20Z",
+            "completed_at": "2026-10-15T12:45:24Z"
+          },
+          {
+            "name": "Prioritize super-value PIT inputs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-15T12:45:24Z",
+            "completed_at": "2026-10-15T13:25:49Z"
+          },
+          {
+            "name": "Inspect frozen predeployment source samples",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-15T13:25:49Z",
+            "completed_at": "2026-10-15T13:25:49Z"
+          },
+          {
+            "name": "Preserve source-audit output checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-15T13:25:49Z",
+            "completed_at": "2026-10-15T13:34:50Z"
+          },
+          {
+            "name": "Commit fast-backfill datasets and status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-15T13:34:50Z",
+            "completed_at": "2026-10-15T13:34:58Z"
+          },
+          {
+            "name": "Upload fast-backfill status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-10-15T13:34:58Z",
+            "completed_at": "2026-10-15T13:34:59Z"
+          },
+          {
+            "name": "Preserve original batch documents and audit checkpoints",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-10-15T13:34:59Z",
+            "completed_at": "2026-10-15T13:35:09Z"
+          },
+          {
+            "name": "Preserve bounded independent-audit source subset",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-10-15T13:35:09Z",
+            "completed_at": "2026-10-15T13:35:11Z"
+          },
+          {
+            "name": "Preserve unpublished legacy checkpoint on failure",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 14,
+            "started_at": "2026-10-15T13:35:11Z",
+            "completed_at": "2026-10-15T13:35:11Z"
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27,
+            "started_at": "2026-10-15T13:35:11Z",
+            "completed_at": "2026-10-15T13:35:12Z"
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28,
+            "started_at": "2026-10-15T13:35:12Z",
+            "completed_at": "2026-10-15T13:35:12Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29,
+            "started_at": "2026-10-15T13:35:12Z",
+            "completed_at": "2026-10-15T13:35:12Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/116428258907",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000001146,
+        "runner_name": "GitHub Actions 1000001146",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 11978090112,
+        "node_id": "MDg6QXJ0aWZhY3QxMTk3ODA5MDExMg==",
+        "name": "super-value-fast-backfill-status",
+        "size_in_bytes": 2073,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11978090112",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11978090112/zip",
+        "expired": false,
+        "digest": "sha256:e60184be11646aec8b77c55f8c4a5f31fca220ec2c962469da6b3a40ae147134",
+        "created_at": "2026-10-15T13:34:59Z",
+        "updated_at": "2026-10-15T13:34:59Z",
+        "expires_at": "2026-10-29T13:34:59Z",
+        "workflow_run": {
+          "id": 38736863782,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "14c4fef7bfad6f9597e703fbb8726e5c75b9ab6f"
+        }
+      },
+      {
+        "id": 11977231707,
+        "node_id": "MDg6QXJ0aWZhY3QxMTk3NzIzMTcwNw==",
+        "name": "legacy-source-audit-subset-1",
+        "size_in_bytes": 7636814,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11977231707",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11977231707/zip",
+        "expired": false,
+        "digest": "sha256:526d441d4b9eb10a6f775bc8f36483be0874613daa8823f1743b42ff9e3da5ff",
+        "created_at": "2026-10-15T13:35:11Z",
+        "updated_at": "2026-10-15T13:35:11Z",
+        "expires_at": "2027-01-13T12:43:43Z",
+        "workflow_run": {
+          "id": 38736863782,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "14c4fef7bfad6f9597e703fbb8726e5c75b9ab6f"
+        }
+      },
+      {
+        "id": 11976631920,
+        "node_id": "MDg6QXJ0aWZhY3QxMTk3NjYzMTkyMA==",
+        "name": "legacy-source-evidence-1",
+        "size_in_bytes": 253006941,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11976631920",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11976631920/zip",
+        "expired": false,
+        "digest": "sha256:7a7669d89e5f91828f64c51d0befc57f2f70b9e28c63d12b3a70aa2ce63b1a05",
+        "created_at": "2026-10-15T13:35:09Z",
+        "updated_at": "2026-10-15T13:35:09Z",
+        "expires_at": "2027-01-13T12:43:43Z",
+        "workflow_run": {
+          "id": 38736863782,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "14c4fef7bfad6f9597e703fbb8726e5c75b9ab6f"
+        }
+      }
+    ]
+  },
+  {
+    "id": 38666473830,
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38666473830",
+    "created_at": "2026-10-15T01:35:24Z",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "9e7ceb69ac4e18e8d30713e5e191ea52d78b91c8",
+    "jobs": [
+      {
+        "id": 116199466796,
+        "run_id": 38666473830,
+        "workflow_name": "Fast-backfill super-value PIT inputs",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/38666473830",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAbDgcnLA",
+        "head_sha": "9e7ceb69ac4e18e8d30713e5e191ea52d78b91c8",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/116199466796",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38666473830/job/116199466796",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-15T01:35:25Z",
+        "started_at": "2026-10-15T01:35:28Z",
+        "completed_at": "2026-10-15T02:31:30Z",
+        "name": "fast",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-15T01:35:29Z",
+            "completed_at": "2026-10-15T01:35:30Z"
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-15T01:35:30Z",
+            "completed_at": "2026-10-15T01:36:02Z"
+          },
+          {
+            "name": "Gate temporary October legacy batches",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-15T01:36:02Z",
+            "completed_at": "2026-10-15T01:36:02Z"
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-15T01:36:02Z",
+            "completed_at": "2026-10-15T01:36:03Z"
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-15T01:36:03Z",
+            "completed_at": "2026-10-15T01:36:16Z"
+          },
+          {
+            "name": "Freeze source-audit plan and input checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-15T01:36:16Z",
+            "completed_at": "2026-10-15T01:36:20Z"
+          },
+          {
+            "name": "Prioritize super-value PIT inputs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-15T01:36:20Z",
+            "completed_at": "2026-10-15T02:22:08Z"
+          },
+          {
+            "name": "Inspect frozen predeployment source samples",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-15T02:22:08Z",
+            "completed_at": "2026-10-15T02:22:08Z"
+          },
+          {
+            "name": "Preserve source-audit output checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-15T02:22:08Z",
+            "completed_at": "2026-10-15T02:31:05Z"
+          },
+          {
+            "name": "Commit fast-backfill datasets and status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-15T02:31:05Z",
+            "completed_at": "2026-10-15T02:31:12Z"
+          },
+          {
+            "name": "Upload fast-backfill status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-10-15T02:31:12Z",
+            "completed_at": "2026-10-15T02:31:13Z"
+          },
+          {
+            "name": "Preserve original batch documents and audit checkpoints",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-10-15T02:31:13Z",
+            "completed_at": "2026-10-15T02:31:25Z"
+          },
+          {
+            "name": "Preserve bounded independent-audit source subset",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-10-15T02:31:25Z",
+            "completed_at": "2026-10-15T02:31:27Z"
+          },
+          {
+            "name": "Preserve unpublished legacy checkpoint on failure",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 14,
+            "started_at": "2026-10-15T02:31:27Z",
+            "completed_at": "2026-10-15T02:31:27Z"
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27,
+            "started_at": "2026-10-15T02:31:27Z",
+            "completed_at": "2026-10-15T02:31:27Z"
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28,
+            "started_at": "2026-10-15T02:31:27Z",
+            "completed_at": "2026-10-15T02:31:27Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29,
+            "started_at": "2026-10-15T02:31:27Z",
+            "completed_at": "2026-10-15T02:31:28Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/116199466796",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000001141,
+        "runner_name": "GitHub Actions 1000001141",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 11944702795,
+        "node_id": "MDg6QXJ0aWZhY3QxMTk0NDcwMjc5NQ==",
+        "name": "legacy-source-evidence-1",
+        "size_in_bytes": 249789346,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11944702795",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11944702795/zip",
+        "expired": false,
+        "digest": "sha256:6ec11708975a18c7c526fcabf7a4fe6a0c099d99710b4ab1a74f93ba284d8e6f",
+        "created_at": "2026-10-15T02:31:25Z",
+        "updated_at": "2026-10-15T02:31:25Z",
+        "expires_at": "2027-01-13T01:35:25Z",
+        "workflow_run": {
+          "id": 38666473830,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "9e7ceb69ac4e18e8d30713e5e191ea52d78b91c8"
+        }
+      },
+      {
+        "id": 11943653462,
+        "node_id": "MDg6QXJ0aWZhY3QxMTk0MzY1MzQ2Mg==",
+        "name": "super-value-fast-backfill-status",
+        "size_in_bytes": 2071,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11943653462",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11943653462/zip",
+        "expired": false,
+        "digest": "sha256:6cc26da1978300ae4d452c5f39e5a034753a1f91a0c7045dce18382c7bed7ccb",
+        "created_at": "2026-10-15T02:31:13Z",
+        "updated_at": "2026-10-15T02:31:13Z",
+        "expires_at": "2026-10-29T02:31:12Z",
+        "workflow_run": {
+          "id": 38666473830,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "9e7ceb69ac4e18e8d30713e5e191ea52d78b91c8"
+        }
+      },
+      {
+        "id": 11943603387,
+        "node_id": "MDg6QXJ0aWZhY3QxMTk0MzYwMzM4Nw==",
+        "name": "legacy-source-audit-subset-1",
+        "size_in_bytes": 7082461,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11943603387",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11943603387/zip",
+        "expired": false,
+        "digest": "sha256:c888463e4d428876d00342274c7ffc1542a74b0c516d02f39c66a08210679b6d",
+        "created_at": "2026-10-15T02:31:27Z",
+        "updated_at": "2026-10-15T02:31:27Z",
+        "expires_at": "2027-01-13T01:35:25Z",
+        "workflow_run": {
+          "id": 38666473830,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "9e7ceb69ac4e18e8d30713e5e191ea52d78b91c8"
+        }
+      }
+    ]
+  },
+  {
+    "id": 38624761497,
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38624761497",
+    "created_at": "2026-10-14T19:34:04Z",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "df09a9e1924fedefeca51ed7d66690d3b4413cfd",
+    "jobs": [
+      {
+        "id": 116060985764,
+        "run_id": 38624761497,
+        "workflow_name": "Fast-backfill super-value PIT inputs",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/38624761497",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAbBcYZpA",
+        "head_sha": "df09a9e1924fedefeca51ed7d66690d3b4413cfd",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/116060985764",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38624761497/job/116060985764",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-14T19:34:04Z",
+        "started_at": "2026-10-14T19:34:08Z",
+        "completed_at": "2026-10-14T20:37:09Z",
+        "name": "fast",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-14T19:34:09Z",
+            "completed_at": "2026-10-14T19:34:09Z"
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-14T19:34:09Z",
+            "completed_at": "2026-10-14T19:34:49Z"
+          },
+          {
+            "name": "Gate temporary October legacy batches",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-14T19:34:49Z",
+            "completed_at": "2026-10-14T19:34:50Z"
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-14T19:34:50Z",
+            "completed_at": "2026-10-14T19:34:50Z"
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-14T19:34:50Z",
+            "completed_at": "2026-10-14T19:35:02Z"
+          },
+          {
+            "name": "Freeze source-audit plan and input checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-14T19:35:02Z",
+            "completed_at": "2026-10-14T19:35:06Z"
+          },
+          {
+            "name": "Prioritize super-value PIT inputs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-14T19:35:06Z",
+            "completed_at": "2026-10-14T20:28:35Z"
+          },
+          {
+            "name": "Inspect frozen predeployment source samples",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-14T20:28:35Z",
+            "completed_at": "2026-10-14T20:28:35Z"
+          },
+          {
+            "name": "Preserve source-audit output checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-14T20:28:35Z",
+            "completed_at": "2026-10-14T20:36:42Z"
+          },
+          {
+            "name": "Commit fast-backfill datasets and status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-14T20:36:42Z",
+            "completed_at": "2026-10-14T20:36:50Z"
+          },
+          {
+            "name": "Upload fast-backfill status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-10-14T20:36:50Z",
+            "completed_at": "2026-10-14T20:36:52Z"
+          },
+          {
+            "name": "Preserve original batch documents and audit checkpoints",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-10-14T20:36:52Z",
+            "completed_at": "2026-10-14T20:37:03Z"
+          },
+          {
+            "name": "Preserve bounded independent-audit source subset",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-10-14T20:37:03Z",
+            "completed_at": "2026-10-14T20:37:06Z"
+          },
+          {
+            "name": "Preserve unpublished legacy checkpoint on failure",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 14,
+            "started_at": "2026-10-14T20:37:06Z",
+            "completed_at": "2026-10-14T20:37:06Z"
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27,
+            "started_at": "2026-10-14T20:37:06Z",
+            "completed_at": "2026-10-14T20:37:06Z"
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28,
+            "started_at": "2026-10-14T20:37:06Z",
+            "completed_at": "2026-10-14T20:37:06Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29,
+            "started_at": "2026-10-14T20:37:06Z",
+            "completed_at": "2026-10-14T20:37:06Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/116060985764",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000001140,
+        "runner_name": "GitHub Actions 1000001140",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 11926733311,
+        "node_id": "MDg6QXJ0aWZhY3QxMTkyNjczMzMxMQ==",
+        "name": "legacy-source-audit-subset-1",
+        "size_in_bytes": 6985545,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11926733311",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11926733311/zip",
+        "expired": false,
+        "digest": "sha256:c2de413342f6a0b9c46715392bf65e0034774c51ee854f96d5243b6b0ee548e1",
+        "created_at": "2026-10-14T20:37:06Z",
+        "updated_at": "2026-10-14T20:37:06Z",
+        "expires_at": "2027-01-12T19:34:04Z",
+        "workflow_run": {
+          "id": 38624761497,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "df09a9e1924fedefeca51ed7d66690d3b4413cfd"
+        }
+      },
+      {
+        "id": 11926453209,
+        "node_id": "MDg6QXJ0aWZhY3QxMTkyNjQ1MzIwOQ==",
+        "name": "legacy-source-evidence-1",
+        "size_in_bytes": 250541192,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11926453209",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11926453209/zip",
+        "expired": false,
+        "digest": "sha256:b4319aad3db40bd273fe9e390b95b525b4129ce27185979d0c3f599f96437aa9",
+        "created_at": "2026-10-14T20:37:03Z",
+        "updated_at": "2026-10-14T20:37:03Z",
+        "expires_at": "2027-01-12T19:34:04Z",
+        "workflow_run": {
+          "id": 38624761497,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "df09a9e1924fedefeca51ed7d66690d3b4413cfd"
+        }
+      },
+      {
+        "id": 11926253746,
+        "node_id": "MDg6QXJ0aWZhY3QxMTkyNjI1Mzc0Ng==",
+        "name": "super-value-fast-backfill-status",
+        "size_in_bytes": 2136,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11926253746",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11926253746/zip",
+        "expired": false,
+        "digest": "sha256:7bd68087ac2c3e1a628d042e3234843e85c18b76c42bfec1aa703fc87cd97861",
+        "created_at": "2026-10-14T20:36:52Z",
+        "updated_at": "2026-10-14T20:36:52Z",
+        "expires_at": "2026-10-28T20:36:51Z",
+        "workflow_run": {
+          "id": 38624761497,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "df09a9e1924fedefeca51ed7d66690d3b4413cfd"
+        }
+      }
+    ]
+  },
+  {
+    "id": 38567757432,
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38567757432",
+    "created_at": "2026-10-14T12:56:51Z",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "1e61dd676d3d8018875416abf046e3da9b0de598",
+    "jobs": [
+      {
+        "id": 115864712105,
+        "run_id": 38567757432,
+        "workflow_name": "Fast-backfill super-value PIT inputs",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/38567757432",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOT80f3M8AAAAa-hMzqQ",
+        "head_sha": "1e61dd676d3d8018875416abf046e3da9b0de598",
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/115864712105",
+        "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/38567757432/job/115864712105",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-14T12:56:52Z",
+        "started_at": "2026-10-14T12:56:55Z",
+        "completed_at": "2026-10-14T14:09:47Z",
+        "name": "fast",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-14T12:56:55Z",
+            "completed_at": "2026-10-14T12:56:56Z"
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-14T12:56:56Z",
+            "completed_at": "2026-10-14T12:58:18Z"
+          },
+          {
+            "name": "Gate temporary October legacy batches",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-14T12:58:18Z",
+            "completed_at": "2026-10-14T12:58:18Z"
+          },
+          {
+            "name": "Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-14T12:58:18Z",
+            "completed_at": "2026-10-14T12:58:18Z"
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-14T12:58:18Z",
+            "completed_at": "2026-10-14T12:58:34Z"
+          },
+          {
+            "name": "Freeze source-audit plan and input checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-14T12:58:34Z",
+            "completed_at": "2026-10-14T12:58:38Z"
+          },
+          {
+            "name": "Prioritize super-value PIT inputs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-14T12:58:38Z",
+            "completed_at": "2026-10-14T14:01:40Z"
+          },
+          {
+            "name": "Inspect frozen predeployment source samples",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8,
+            "started_at": "2026-10-14T14:01:40Z",
+            "completed_at": "2026-10-14T14:01:40Z"
+          },
+          {
+            "name": "Preserve source-audit output checkpoint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-14T14:01:40Z",
+            "completed_at": "2026-10-14T14:09:28Z"
+          },
+          {
+            "name": "Commit fast-backfill datasets and status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-14T14:09:28Z",
+            "completed_at": "2026-10-14T14:09:35Z"
+          },
+          {
+            "name": "Upload fast-backfill status",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-10-14T14:09:35Z",
+            "completed_at": "2026-10-14T14:09:36Z"
+          },
+          {
+            "name": "Preserve original batch documents and audit checkpoints",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-10-14T14:09:36Z",
+            "completed_at": "2026-10-14T14:09:44Z"
+          },
+          {
+            "name": "Preserve bounded independent-audit source subset",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-10-14T14:09:44Z",
+            "completed_at": "2026-10-14T14:09:45Z"
+          },
+          {
+            "name": "Preserve unpublished legacy checkpoint on failure",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 14,
+            "started_at": "2026-10-14T14:09:45Z",
+            "completed_at": "2026-10-14T14:09:45Z"
+          },
+          {
+            "name": "Post Set up Python",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27,
+            "started_at": "2026-10-14T14:09:45Z",
+            "completed_at": "2026-10-14T14:09:46Z"
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28,
+            "started_at": "2026-10-14T14:09:46Z",
+            "completed_at": "2026-10-14T14:09:46Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29,
+            "started_at": "2026-10-14T14:09:46Z",
+            "completed_at": "2026-10-14T14:09:46Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/115864712105",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000001134,
+        "runner_name": "GitHub Actions 1000001134",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 11902686083,
+        "node_id": "MDg6QXJ0aWZhY3QxMTkwMjY4NjA4Mw==",
+        "name": "legacy-source-audit-subset-1",
+        "size_in_bytes": 6578735,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11902686083",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11902686083/zip",
+        "expired": false,
+        "digest": "sha256:6dfde63751e4d3c97720380bc9032249a963189c0753d3d8106310c4ebb50148",
+        "created_at": "2026-10-14T14:09:45Z",
+        "updated_at": "2026-10-14T14:09:45Z",
+        "expires_at": "2027-01-12T12:56:52Z",
+        "workflow_run": {
+          "id": 38567757432,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "1e61dd676d3d8018875416abf046e3da9b0de598"
+        }
+      },
+      {
+        "id": 11900777768,
+        "node_id": "MDg6QXJ0aWZhY3QxMTkwMDc3Nzc2OA==",
+        "name": "super-value-fast-backfill-status",
+        "size_in_bytes": 2064,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11900777768",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11900777768/zip",
+        "expired": false,
+        "digest": "sha256:cff5858ebac2113dd632e2dbbb9c6e4a9d59d6c1d89411705472371da7921827",
+        "created_at": "2026-10-14T14:09:35Z",
+        "updated_at": "2026-10-14T14:09:35Z",
+        "expires_at": "2026-10-28T14:09:35Z",
+        "workflow_run": {
+          "id": 38567757432,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "1e61dd676d3d8018875416abf046e3da9b0de598"
+        }
+      },
+      {
+        "id": 11900658138,
+        "node_id": "MDg6QXJ0aWZhY3QxMTkwMDY1ODEzOA==",
+        "name": "legacy-source-evidence-1",
+        "size_in_bytes": 183776394,
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11900658138",
+        "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/11900658138/zip",
+        "expired": false,
+        "digest": "sha256:8b74da48d4ddf5c7ccb4cd305c4879d2be7672b3ed70e2febaf3d029027b7e6c",
+        "created_at": "2026-10-14T14:09:44Z",
+        "updated_at": "2026-10-14T14:09:44Z",
+        "expires_at": "2027-01-12T12:56:52Z",
+        "workflow_run": {
+          "id": 38567757432,
+          "repository_id": 1338843100,
+          "head_repository_id": 1338843100,
+          "head_branch": "main",
+          "head_sha": "1e61dd676d3d8018875416abf046e3da9b0de598"
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,123 @@
+{
+  "run_contract_version": "2",
+  "run_id": "20261018T104037250111Z-412d31a5",
+  "status": "ok",
+  "phase": "complete",
+  "started_at": "2026-10-18T10:40:37.250249+00:00",
+  "finished_at": "2026-10-18T10:40:52.380097+00:00",
+  "strategy_id": "korean_8a97989904e0a459",
+  "strategy_fingerprint": "cf62022009bde1f41292521fc12647c66ccfd5a7666831d0d65310cd5762365f",
+  "versions": {
+    "schema_version": "1.0",
+    "factor_registry_version": "7",
+    "execution_engine_version": "v2-16-exec-10",
+    "corporate_action_registry_version": "9",
+    "dsl_machine_contract_version": "30",
+    "preflight_contract_version": "3",
+    "history_audit_contract_version": "1",
+    "krx_market_normalization_version": "1",
+    "project_template_version": "v2-16",
+    "performance_template_version": "v2-18"
+  },
+  "mode": "requested_period_report",
+  "nav_ready": true,
+  "report_ready": true,
+  "input_path": "/tmp/korean-dsl-adme27r1/request.json",
+  "output_dir": "/workspace/long-multi-backfill-20261018/continuation-full/korean",
+  "status_file": "/workspace/long-multi-backfill-20261018/continuation-full/korean/run_status.json",
+  "completed_stages": [
+    "input",
+    "preflight",
+    "report_readiness",
+    "execution",
+    "postprocess"
+  ],
+  "outputs": {
+    "daily_nav": "artifacts/daily_nav.csv",
+    "target_weights": "artifacts/target_weights.csv",
+    "metrics": "report/metrics_CURRENT.csv",
+    "chat_manifest": "report/chat_manifest_CURRENT.json",
+    "dashboard": "report/report_CURRENT.html"
+  },
+  "artifacts": {
+    "execution": [
+      {
+        "path": "benchmark_coverage.json",
+        "bytes": 253
+      },
+      {
+        "path": "daily_nav.csv",
+        "bytes": 12901
+      },
+      {
+        "path": "execution_plan.json",
+        "bytes": 3386
+      },
+      {
+        "path": "held_return_checks.csv",
+        "bytes": 13769
+      },
+      {
+        "path": "history_coverage.json",
+        "bytes": 733
+      },
+      {
+        "path": "return_reference_audit.json",
+        "bytes": 282
+      },
+      {
+        "path": "selections.csv",
+        "bytes": 254
+      },
+      {
+        "path": "strategy_fingerprint.txt",
+        "bytes": 65
+      },
+      {
+        "path": "target_weights.csv",
+        "bytes": 31307
+      }
+    ],
+    "report": [
+      {
+        "path": "benchmark_statistics_CURRENT.csv",
+        "bytes": 511
+      },
+      {
+        "path": "chat_manifest_CURRENT.json",
+        "bytes": 439476
+      },
+      {
+        "path": "daily_nav_canonical.csv",
+        "bytes": 12876
+      },
+      {
+        "path": "metrics_CURRENT.csv",
+        "bytes": 1230
+      },
+      {
+        "path": "report_CURRENT.html",
+        "bytes": 4958135
+      }
+    ]
+  },
+  "error": null,
+  "requested_report_contract_version": "1",
+  "report_complete": true,
+  "period_readiness": {
+    "longest": {
+      "id": "longest",
+      "label": "RESEARCH_ONLY · explicit complete requested period",
+      "start": "longest",
+      "end": "latest",
+      "status": "ready",
+      "reason": null,
+      "ready": true,
+      "requested_start": "2026-01-02",
+      "requested_end": "2026-10-16",
+      "actual_start": "2026-01-02",
+      "actual_end": "2026-10-16",
+      "observations": 192
+    }
+  }
+}

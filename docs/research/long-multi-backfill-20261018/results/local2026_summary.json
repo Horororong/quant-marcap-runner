@@ -1,0 +1,159 @@
+{
+  "status": "PASS_SOFTWARE_AND_RESEARCH_MODEL_NOT_FINANCIAL_OR_INVESTMENT_CERTIFICATION",
+  "original_baseline_files": 211,
+  "existing_original_2026_and_index_unchanged": true,
+  "sessions": 192,
+  "ledger": {
+    "status": "PASS_MODEL_ACCOUNTING",
+    "rows": 576,
+    "sessions": 192,
+    "max_absolute_error": 2.7939677238464355e-08,
+    "currency_tolerance": 1e-05,
+    "official_extension_days": 5,
+    "zero_advanced_sale_cash": true,
+    "source": "Original parquet plus direct raw official STK JSON fields, NOT production append loader",
+    "investment_approved": false
+  },
+  "commands": [
+    {
+      "name": "test_fast_backfill_phase*.py",
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_fast_backfill_phase*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 0.457,
+      "log_sha256": "e6fbb42c26c727eddc713611cc0b6240f1ec8b105282066217ba1719c1800167"
+    },
+    {
+      "name": "test_dart_service_status.py",
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_dart_service_status.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 0.08,
+      "log_sha256": "e7b1ff0d9556e1d87fa061e29faebe4ca4d738144bd2f228facacf3f5a5d50f6"
+    },
+    {
+      "name": "test_audited_source_extensions.py",
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_audited_source_extensions.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 0.936,
+      "log_sha256": "a0af7e8dd9e3a9453633550335459c5101c801823e1380d9a2dc546fd9246b2b"
+    },
+    {
+      "name": "independent_financial",
+      "args": [
+        "docs/research/long-multi-backfill-20261018/verify_independent_audit.py",
+        "--output",
+        "/workspace/long-multi-backfill-20261018/continuation-full/financial"
+      ],
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 0.094,
+      "log_sha256": "5a1336d9da17237cb3eb5ab1647f453c079d81adc0c7c79d207007647c9b22a2"
+    },
+    {
+      "name": "json",
+      "args": [
+        "scripts/research_workbench.py",
+        "run",
+        "--strategy",
+        "config/strategies/research_size_top1_2026_asof1016_v1.json",
+        "--report-periods",
+        "config/reports/research_continuous_2025.json",
+        "--output-dir",
+        "/workspace/long-multi-backfill-20261018/continuation-full/json"
+      ],
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 14.626,
+      "log_sha256": "a72cb8981325599ed6799280dacd9b432deb44c4512d5e6396a91da1cbf21c0b"
+    },
+    {
+      "name": "korean",
+      "args": [
+        "scripts/research_workbench.py",
+        "run",
+        "--request",
+        "기간:2026-01-01~2026-10-16;시장:코스피·코스닥;필터:시가총액>=10조원;팩터:시가총액 높은;포트폴리오:상위1개;리밸런싱:4월말;체결:1거래일뒤종가;비용:수수료1.5bp,매도세15bp,스프레드3bp,슬리피지5bp;벤치마크:코스피",
+        "--research-model-from",
+        "config/strategies/research_size_top1_2026_asof1016_v1.json",
+        "--report-periods",
+        "config/reports/research_continuous_2025.json",
+        "--output-dir",
+        "/workspace/long-multi-backfill-20261018/continuation-full/korean"
+      ],
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 15.631,
+      "log_sha256": "27e674422db9e5b4a4273a215c7b58216c21a27ceb457f84294292ceec86da89"
+    }
+  ],
+  "financial_verdicts": {
+    "samples": 20,
+    "sample_verdicts": {
+      "FAIL": 12,
+      "UNVERIFIED": 8
+    },
+    "financial_controls": 32,
+    "financial_primary_exact": {
+      "FAIL": 12,
+      "PASS": 16,
+      "UNVERIFIED": 4
+    },
+    "literal_normalization": {
+      "PASS": 20,
+      "FAIL": 4,
+      "UNVERIFIED": 8
+    },
+    "period_checks": {
+      "FAIL": 28,
+      "UNVERIFIED": 4
+    },
+    "nonmonetary_checks": {
+      "UNVERIFIED": 64,
+      "FAIL": 6,
+      "PASS": 4
+    },
+    "cohorts": {
+      "LATEST_CHANGED": 16,
+      "OLDER_QUARANTINE": 4
+    },
+    "no_metrics_latest_batch": 0,
+    "no_metrics_stratum_shortfall": 4,
+    "parser": "legacy-v5-single-amount",
+    "main_snapshot": "78ab49df4b25e0b71df0fc4366fcc7f5d0a179a9",
+    "research_parser_certified_by_this_audit": false,
+    "investment_approved": false,
+    "limits": "Only32 reviewed core fields, not remaining fields/CFS candidates or full population. Full source ZIP identities retained; literal grids do not replace original archives. Source-date/currency/mapping/version ambiguity never passed."
+  },
+  "PIT_certified": 0,
+  "investment_approved": false,
+  "source_requests": 0
+}

@@ -54,6 +54,9 @@ def _load_benchmark_close(
         raise FileNotFoundError(f"benchmark index file not found: {path}")
 
     x = pd.read_csv(path, usecols=["Date", "Close"])
+    from audited_source_extensions import append as append_source_extension
+    idx = pd.DatetimeIndex(dates)
+    x = append_source_extension(repo_root, 'index:'+symbol, x, path, idx.min(), idx.max())
     x["Date"] = pd.to_datetime(x["Date"], errors="coerce").dt.normalize()
     x["Close"] = pd.to_numeric(x["Close"], errors="coerce")
     if x["Date"].isna().any():

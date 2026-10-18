@@ -1,0 +1,25 @@
+test_actual_calendar_dated_evidence_and_old_year_unchanged (test_audited_source_extensions.Extension.test_actual_calendar_dated_evidence_and_old_year_unchanged) ... ok
+test_actual_two_loaders_match_complete_extensions (test_audited_source_extensions.Extension.test_actual_two_loaders_match_complete_extensions) ... ERROR
+test_append_and_unchanged_old_period (test_audited_source_extensions.Extension.test_append_and_unchanged_old_period) ... ok
+test_changed_base_or_evidence_never_overwritten (test_audited_source_extensions.Extension.test_changed_base_or_evidence_never_overwritten) ... ok
+test_overlaps_duplicates_nonfinite_fail (test_audited_source_extensions.Extension.test_overlaps_duplicates_nonfinite_fail) ... ok
+
+======================================================================
+ERROR: test_actual_two_loaders_match_complete_extensions (test_audited_source_extensions.Extension.test_actual_two_loaders_match_complete_extensions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/quant-marcap-runner/scripts/test_audited_source_extensions.py", line 41, in test_actual_two_loaders_match_complete_extensions
+    a=load_krx_equity_panel(**kwargs);b=engine.load_krx_equity_panel(**kwargs)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/quant-marcap-runner/scripts/krx_backtest_data.py", line 141, in load_krx_equity_panel
+    df = append_source_extension(root, 'equities', df, path, start_ts, end_ts)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/quant-marcap-runner/scripts/audited_source_extensions.py", line 44, in append
+    if dataset=='equities' and (not extra.Code.str.fullmatch(r'\d{6}').all() or not extra.Market.isin(['KOSPI','KOSDAQ']).all()):raise ValueError('invalid official extension security/market')
+                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid official extension security/market
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.179s
+
+FAILED (errors=1)

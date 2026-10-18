@@ -427,7 +427,9 @@ def expected_market_sessions(start: pd.Timestamp, end: pd.Timestamp, market_cale
     start, end = pd.Timestamp(start).normalize(), pd.Timestamp(end).normalize()
     cal = _market_calendar(str(market_calendar), start.year, end.year)
     dates = pd.DatetimeIndex(cal.sessions_in_range(start, end))
-    return dates.tz_localize(None) if dates.tz is not None else dates
+    dates = dates.tz_localize(None) if dates.tz is not None else dates
+    from audited_krx_calendar import apply as apply_official_closures
+    return apply_official_closures(dates, market_calendar)
 
 def assert_daily_session_coverage(daily: pd.DataFrame, start: pd.Timestamp, end: pd.Timestamp, market_calendar: str) -> None:
     expected = expected_market_sessions(start, end, market_calendar)

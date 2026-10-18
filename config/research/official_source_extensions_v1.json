@@ -1,0 +1,268 @@
+{
+  "version": 1,
+  "revision": "official_2026_asof20261018_v1",
+  "validated_through": "2026-10-16",
+  "datasets": [
+    {
+      "dataset": "equities",
+      "start": "2026-10-12",
+      "end": "2026-10-16",
+      "base": {
+        "path": "data/krx_equities/yearly/marcap-2026.parquet",
+        "sha256": "b968a71a42eb96b2ff3d7d5fc300e237758eb8e4357f4f404f2c6fe8f5de1d26"
+      },
+      "data": {
+        "path": "data/research_extensions/official_2026_equities_through1016.csv.gz.b64",
+        "sha256": "58590ec0bebac6faa548d40477f27c8c9f86891190b178130efca94b77d1ae1f",
+        "original_sha256": "82971cb91f7b09a0038ff231b3fa95c52872828d51dae3410f8cfa1d2602380b",
+        "original_bytes": 2214794,
+        "encoding": "gzip_base64",
+        "csv_sha256": "82971cb91f7b09a0038ff231b3fa95c52872828d51dae3410f8cfa1d2602380b",
+        "rows": 13808
+      },
+      "evidence": [
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/stk_bydd_trd_20261012.json.gz.b64",
+          "sha256": "68f176a5e112b9d3d3254f3b965117519a8799f2c2d24a639054bb09dc610d3a",
+          "original_sha256": "8a686340a8b4e014f710f3a58026ef0dad23020d7baf4d62d34c94c40760401f",
+          "original_bytes": 293728,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/sto/stk_bydd_trd?basDd=20261012"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/ksq_bydd_trd_20261012.json.gz.b64",
+          "sha256": "7d308d47554b3efad1b32bfffc7bd7676d792fed25e94ff8c5f6288272a4176c",
+          "original_sha256": "ef7f9dcbf7c15e5b7e493fff9ee2a468c70ff5419816c2de5b93dd94db7c9bc4",
+          "original_bytes": 597681,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/sto/ksq_bydd_trd?basDd=20261012"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/stk_bydd_trd_20261013.json.gz.b64",
+          "sha256": "7cd2a619cc84ee43b3704a57bb47092a4c6c89aa968b4f81cec4128c3a5d0ad2",
+          "original_sha256": "9ea5d4fad41026a363836cdf505055a01388bc8214605a596d492e44bb912951",
+          "original_bytes": 293490,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/sto/stk_bydd_trd?basDd=20261013"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/ksq_bydd_trd_20261013.json.gz.b64",
+          "sha256": "047557a9da2f361569640473d7584e4da397368b00a4c4e8ad857cd26d199d27",
+          "original_sha256": "d2324cbebe3381ddf9444cd1589ee3e56c619a4417fc22b705083e6870baeb45",
+          "original_bytes": 596606,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/sto/ksq_bydd_trd?basDd=20261013"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/stk_bydd_trd_20261014.json.gz.b64",
+          "sha256": "66d7e8f392f2211fcb0e1d81661280a6a88f4161aeb898872420dcef8ace5cb9",
+          "original_sha256": "089fbc3395dcece04b920c0120fb0d9c338ee5650dc8c52221e42ace5da96c9d",
+          "original_bytes": 292655,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/sto/stk_bydd_trd?basDd=20261014"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/ksq_bydd_trd_20261014.json.gz.b64",
+          "sha256": "65bdd36a8bd7dba87564cfd374979409577e67571071c74b787d183e6862ba8f",
+          "original_sha256": "f7995e2d19d216c4a0eb0d049c6941431f61598250125c3cdc2f64d11739d58e",
+          "original_bytes": 595043,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/sto/ksq_bydd_trd?basDd=20261014"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/stk_bydd_trd_20261015.json.gz.b64",
+          "sha256": "474f5fbb43c9f714248d535c4dd4a11270d97ee38ddc33b4e9b0e5bb757fe085",
+          "original_sha256": "41c7f30d5986ce4934fb5194781197101a3131de1b85a3a6e9727d907a0e1951",
+          "original_bytes": 293821,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/sto/stk_bydd_trd?basDd=20261015"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/ksq_bydd_trd_20261015.json.gz.b64",
+          "sha256": "74f9cb24c1070d57280d56c4481ffa0b935969be468a83ebf61e8c13ceb2d36a",
+          "original_sha256": "2428d10039a31fbafc5311ca44f975aaabb5c364b9ef872ecd61d4c3c1548350",
+          "original_bytes": 598595,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/sto/ksq_bydd_trd?basDd=20261015"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/stk_bydd_trd_20261016.json.gz.b64",
+          "sha256": "6fb39de252e9ed9ff47223b31f932abe950c84eee2d8c3edbbf2eefc6a15ccb7",
+          "original_sha256": "405ff9a6edc940d48e1f4c8eb7d415b717f08c58ae7dffee06cc4e1745050266",
+          "original_bytes": 292021,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/sto/stk_bydd_trd?basDd=20261016"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/ksq_bydd_trd_20261016.json.gz.b64",
+          "sha256": "b7b7b4e06d0e88ff50fd52885f8ba33050fef0747c796184e3a1be3651d2ee11",
+          "original_sha256": "6c81b7ca5fddd48412dbd25505bfd6da435d43dd224ee8e51c26684076e1c893",
+          "original_bytes": 594923,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/sto/ksq_bydd_trd?basDd=20261016"
+        }
+      ],
+      "scope": "RESEARCH_ONLY, exact original official fields, no historical legal tradability/PIT or total-return certification"
+    },
+    {
+      "dataset": "index:KOSPI",
+      "start": "2026-09-18",
+      "end": "2026-10-16",
+      "base": {
+        "path": "data/indices/KOSPI.csv",
+        "sha256": "bc5a9590454b10078b6156c4ea0e92562f7b780630ab71c09ca1344fc9ed15a0"
+      },
+      "data": {
+        "path": "data/research_extensions/official_2026_index_KOSPI_through1016.csv.gz.b64",
+        "sha256": "de7112af0ab7121d1bca15dca6b0dac1c6ae0088f7008082b00ef3c80b3b3cf9",
+        "original_sha256": "914051b0e271c15c193a59196f8e0360bc2cad886dbeff353211445b1c48d5dd",
+        "original_bytes": 333,
+        "encoding": "gzip_base64",
+        "csv_sha256": "914051b0e271c15c193a59196f8e0360bc2cad886dbeff353211445b1c48d5dd",
+        "rows": 17
+      },
+      "evidence": [
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20260921.json.gz.b64",
+          "sha256": "9c837969234772dc754333934971742c19deaa65b3e0318d7760df65eaa7e893",
+          "original_sha256": "8c53afd86ccc59484cbf309d61d170ce90f4c44a18f9c4d26da59f87a338471e",
+          "original_bytes": 15148,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20260921"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20260922.json.gz.b64",
+          "sha256": "44ded1ce1ae1c119d40113ee0e36c7e3a40fa9c13d38a6180b524e604adfc259",
+          "original_sha256": "b9a9696d677c396c9ab206e13d98aecc6e1ba7d566c2dc6e60950f060c370fcf",
+          "original_bytes": 15127,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20260922"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20260923.json.gz.b64",
+          "sha256": "d5e74a993c743a660636174ffb273265fad36d1c7cef1e353578c6b857741d90",
+          "original_sha256": "e583d356d7887b3c55ff6a84b50278aa160e14974f035d1bac4e47e0b18f1fa5",
+          "original_bytes": 15184,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20260923"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20260928.json.gz.b64",
+          "sha256": "decf2a1bddfae974b60a6d945f94a547d2e895422bd332cd8961519cb510337b",
+          "original_sha256": "edeff263d7d401f9ce0c6f8dced9c73421dccb954bab1e368d05cca8ad421adf",
+          "original_bytes": 15163,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20260928"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20260929.json.gz.b64",
+          "sha256": "4c97081da735cbe435f333a69c81d1127978649697d012dc353fa1475aa4fcf8",
+          "original_sha256": "20c2f1261dbce9660372fd81aad7fb58739fd99e28ce77d4ab4be72ec567cd07",
+          "original_bytes": 15200,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20260929"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20260930.json.gz.b64",
+          "sha256": "f848b2a2a34fe1f6976087e998bd2ef67e96989d4390778c7d812a7f44a1f303",
+          "original_sha256": "cf1b57b472ae54ebe1732d6c3c4d6cd803480bc2333a238aa6e48e791c18f49c",
+          "original_bytes": 15172,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20260930"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20261001.json.gz.b64",
+          "sha256": "8bfd3ebc7ab0732f37f86302ece93ea83a45915d5b4a4940fa0a6140272bda85",
+          "original_sha256": "b8510477a7a2c6a2e11267827e4db1475f0a0d00d5d81a7c79ff7a1e2daed77e",
+          "original_bytes": 15135,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20261001"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20261002.json.gz.b64",
+          "sha256": "073b26943bf21def294b7529feeac04d67423df1e346b8102bfc7dfc0bca3453",
+          "original_sha256": "892a34e1f456c117eae284cda227c06affd82fdb334a978d4b119e58a806fb32",
+          "original_bytes": 15112,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20261002"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20261006.json.gz.b64",
+          "sha256": "ad3daba65233fefda43b4e9df8df54998c66f1535e901f3e3e87a878df46213f",
+          "original_sha256": "cf06a5bc21c6d3c0270eb5f6e93fc83371bdbcae8a6d4ed0b011bdfec9e0f7d0",
+          "original_bytes": 15171,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20261006"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20261007.json.gz.b64",
+          "sha256": "fd2b83dc8040bbb891a65db51b5d1d937fbc6158c9ceade680cde4d8374fecb4",
+          "original_sha256": "1d722b0b85e146aa24666fa04996cab405cd7b2cbf58ec7e7a9ef5956facc60a",
+          "original_bytes": 15211,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20261007"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20261008.json.gz.b64",
+          "sha256": "69a6671290023146afc3992e30b9d6f540ef034be6c74b59e0bb737c8e47ef5b",
+          "original_sha256": "534837b7507a61d1483dadaea3bfc3236881f0bf18a5e0475f9f77fc28799c21",
+          "original_bytes": 15234,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20261008"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20261012.json.gz.b64",
+          "sha256": "9d06f1a3bacfa155025f3ea9c07b53616d5cbd6b856572a76d6ac8a5deb3f6ec",
+          "original_sha256": "52ac2bd38f87e18593cc5b9d84e44c0a5de99e256bcc5e00f21fe78f346e0f84",
+          "original_bytes": 15232,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20261012"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20261013.json.gz.b64",
+          "sha256": "8bd519bf1b0488589edd512c1c9615f35c8adab9b75ff9f149c51951a15fea05",
+          "original_sha256": "e69e8d2561e7f2666047dc0205848712ea825b7fcdf98c19a75b849864f29ca1",
+          "original_bytes": 15211,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20261013"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20261014.json.gz.b64",
+          "sha256": "24bca68022b17ea04c92a64ddaa0b93c65bb4addcbe1c2a3c58b2597e896e5a9",
+          "original_sha256": "cae72bd3e1654068d96d7ba58a1ce2f0b828b5e8f79b5347bcbe970fa5718812",
+          "original_bytes": 15141,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20261014"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20261015.json.gz.b64",
+          "sha256": "b5606b7174ed3b434699a2d99843e6024438770f1b2f4b4aee1e531e81d3e546",
+          "original_sha256": "080a41336284b3f7a4b97a098bee72e56fb552cf86a0b0a4f00da1bf5815c8e9",
+          "original_bytes": 15219,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20261015"
+        },
+        {
+          "path": "docs/research/long-multi-backfill-20261018/sources/kospi_20261016.json.gz.b64",
+          "sha256": "fffe3e10f13e4f0f61af307c35224eeef299157c46d853e072d98289dc8e6857",
+          "original_sha256": "0140152893f0bfe44d90eca5a01af18f927df3002ff598c03488042c0684fd97",
+          "original_bytes": 15098,
+          "encoding": "gzip_base64",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20261016"
+        },
+        {
+          "path": "docs/research/multi-asset-20261018/evidence_quotes/kospi_dd_trd_20260918.json",
+          "sha256": "82bd2b6b4060b9ebfa1bd9b9c7cbd061195d89981d5ac6409d232bdf3f0070db",
+          "source": "reused original official reply"
+        }
+      ],
+      "scope": "RESEARCH_ONLY, exact original official fields, no historical legal tradability/PIT or total-return certification"
+    }
+  ],
+  "normalization": {
+    "Rank": "descending Marcap then Code across complete STK+KSQ daily source; derived rank, not KRX official ranking",
+    "SourceMarket": "original MKT_NM retained; KOSDAQ GLOBAL normalized to KOSDAQ",
+    "ChangeCode_UpDown_Comp": "not supplied by official service; empty/NaN, never synthesized as market data",
+    "Change": "literal CMPPREVDD_PRC alias"
+  }
+}

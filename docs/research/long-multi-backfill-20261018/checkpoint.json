@@ -1,0 +1,11 @@
+{
+  "status": "LOCAL_IMPLEMENTATION_AND_SOURCE_AUDIT_COMPLETE_FINAL_REGRESSION_RUNNING",
+  "base_remote": "b37c0cf636e5fd80d001cf6d5c907cbf209eede8",
+  "source_remote": "22bbe36de14b28b404658df3725171b40f39e904",
+  "new_research": "2026-01-02..2026-10-16 top1,192sessions,JSON/Korean exact,576 independent book-days",
+  "full_multi_period_nav": "NOT_COMPLETED; official207940reference identified, rights quote endpoint401; historical merger gaps retained",
+  "main_deployment": false,
+  "financial_audit": "20samples:12FAIL,8UNVERIFIED;32primary fields16PASS,12FAIL,4UNVERIFIED",
+  "maintenance800": "3998of4021current mainERROR; branch-only defer/stop/failaftercheckpoint fix",
+  "next": "Finish fresh regressions, document exact blockers and post final5jobCI. No sources/jobs must be repeated."
+}

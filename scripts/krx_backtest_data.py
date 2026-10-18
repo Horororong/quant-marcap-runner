@@ -137,6 +137,8 @@ def load_krx_equity_panel(
             df = pd.read_parquet(path)
             df = df[[c for c in wanted if c in df.columns]].copy()
 
+        from audited_source_extensions import append as append_source_extension
+        df = append_source_extension(root, 'equities', df, path, start_ts, end_ts)
         for c in mandatory:
             if c not in df.columns:
                 raise AssertionError(f"{path.name}: missing required column {c}")

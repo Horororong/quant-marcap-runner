@@ -23,6 +23,7 @@ try:
     from scripts.legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
     from scripts.legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION, needs_encoding_recheck
     from scripts.legacy_native_financials import parse_native, select_verified, PARSER_VERSION
+    from scripts.dart_service_status import defer_maintenance
 except ModuleNotFoundError as error:
     if error.name != "scripts":
         raise
@@ -31,6 +32,7 @@ except ModuleNotFoundError as error:
     from legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
     from legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION, needs_encoding_recheck
     from legacy_native_financials import parse_native, select_verified, PARSER_VERSION
+    from dart_service_status import defer_maintenance
 
 
 API_KEY = os.getenv("DART_API_KEY", "").strip()
@@ -576,6 +578,7 @@ def fetch_document(rcept_no: str) -> tuple[bytes, str]:
             r=requests.get(f"{BASE}/document.xml",params={"crtfc_key":API_KEY,"rcept_no":rcept_no},timeout=90)
             r.raise_for_status()
             if r.content[:2] != b"PK":
+                defer_maintenance(r.content, RUN_CONTROL, CollectionPaused)
                 txt=r.text[:500]
                 status_match = re.search(r"<status>\s*(\d+)\s*</status>", txt)
                 if status_match and status_match.group(1) in {"010", "011", "012", "901"}:

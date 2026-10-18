@@ -321,6 +321,8 @@ def load_krx_equity_panel(
             missing_requested_columns.update(c for c in wanted if c not in df.columns)
             df = df[read_cols].copy()
 
+        from audited_source_extensions import append as append_source_extension
+        df = append_source_extension(root, 'equities', df, path, start_ts, end_ts)
         for c in mandatory:
             if c not in df.columns:
                 raise AssertionError(f"{path.name}: 필수 컬럼 {c}가 없습니다.")

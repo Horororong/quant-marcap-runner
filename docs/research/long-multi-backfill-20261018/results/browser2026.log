@@ -1,0 +1,5 @@
+Error: Browser exit null/SIGTRAP: [24738:24738:1018/104048.837341:ERROR:third_party/crashpad/crashpad/util/linux/socket.cc:45] setsockopt: Operation not permitted (1)
+
+    at ChildProcess.<anonymous> (/workspace/quant-marcap-runner/scripts/verify_research_dashboard.cjs:11:97)
+    at ChildProcess.emit (node:events:509:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:295:12)

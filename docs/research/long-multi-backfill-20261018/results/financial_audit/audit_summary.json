@@ -1,0 +1,38 @@
+{
+  "samples": 20,
+  "sample_verdicts": {
+    "FAIL": 12,
+    "UNVERIFIED": 8
+  },
+  "financial_controls": 32,
+  "financial_primary_exact": {
+    "FAIL": 12,
+    "PASS": 16,
+    "UNVERIFIED": 4
+  },
+  "literal_normalization": {
+    "PASS": 20,
+    "FAIL": 4,
+    "UNVERIFIED": 8
+  },
+  "period_checks": {
+    "FAIL": 28,
+    "UNVERIFIED": 4
+  },
+  "nonmonetary_checks": {
+    "UNVERIFIED": 64,
+    "FAIL": 6,
+    "PASS": 4
+  },
+  "cohorts": {
+    "LATEST_CHANGED": 16,
+    "OLDER_QUARANTINE": 4
+  },
+  "no_metrics_latest_batch": 0,
+  "no_metrics_stratum_shortfall": 4,
+  "parser": "legacy-v5-single-amount",
+  "main_snapshot": "78ab49df4b25e0b71df0fc4366fcc7f5d0a179a9",
+  "research_parser_certified_by_this_audit": false,
+  "investment_approved": false,
+  "limits": "Only32 reviewed core fields, not remaining fields/CFS candidates or full population. Full source ZIP identities retained; literal grids do not replace original archives. Source-date/currency/mapping/version ambiguity never passed."
+}

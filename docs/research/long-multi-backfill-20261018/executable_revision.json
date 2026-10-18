@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "reason": "Former2026negative checks are resolved by pinned official May20cash-equity closure notices and append-only official KOSPI2026observations. Only executable expectation migrated; ALL old numeric/data/DSL/fingerprint pins unchanged; old negative report retained.",
+  "authorized": {
+    "docs/research/stage16-continuous-research-20261018/validate_continuous.py": {
+      "before": {
+        "bytes": 9499,
+        "sha256": "acffe579126a9a5cbaa8df0c7ddaefd392290b8b2fdc1704c34f41395df3d162"
+      },
+      "after": {
+        "bytes": 9632,
+        "sha256": "3a61a0c099d4804a5633328a660048227e4c22023025def1c1f5d8254c6e0ef8"
+      }
+    }
+  },
+  "evidence": [
+    "config/research/official_calendar_corrections_v1.json",
+    "config/research/official_source_extensions_v1.json"
+  ]
+}

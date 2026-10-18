@@ -46,7 +46,8 @@ def expected_krx_sessions(start: str, end: str) -> pd.DatetimeIndex:
     sessions = pd.DatetimeIndex(sessions).tz_localize(None).normalize()
     if sessions.empty:
         raise ValueError("requested period has no XKRX sessions")
-    return sessions
+    from audited_krx_calendar import apply as apply_official_closures
+    return apply_official_closures(sessions)
 
 
 def _normalized_panel(panel: pd.DataFrame) -> pd.DataFrame:

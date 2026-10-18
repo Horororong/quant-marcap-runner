@@ -120,6 +120,14 @@ def prepare_annual_selected(spec, root, engine):
         binding['source_assets']=sorted(source_assets)
         audit['research_execution_binding']=binding
         audit['research_execution_fingerprint']=hashlib.sha256(json.dumps(binding,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+    from audited_source_extensions import provenance as extension_provenance
+    from audited_krx_calendar import provenance as calendar_provenance
+    extra=extension_provenance(root,spec.period.start,spec.period.end)
+    correction=calendar_provenance(spec.period.start,spec.period.end)
+    if extra or correction:
+        audit['official_data_revision']=dict(extensions=extra,calendar=correction)
+        import json
+        audit['official_data_revision_fingerprint']=hashlib.sha256(json.dumps(audit['official_data_revision'],sort_keys=True).encode()).hexdigest()
     return dict(panel=panel, source_assets=sorted(source_assets), targets=weights, selections=pd.concat(selection, ignore_index=True),
                 partition_audit=pd.concat(partitions, ignore_index=True) if partitions else pd.DataFrame(),
                 provider_coverage=pd.concat(provider, ignore_index=True) if provider else pd.DataFrame(),

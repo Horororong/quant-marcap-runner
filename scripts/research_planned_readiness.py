@@ -50,6 +50,12 @@ def inspect_planned_strategy(strategy_json,repo_root):
   controls.append(CATALOG)
  if spec.benchmark:controls.append('data/indices/'+spec.benchmark.symbol+'.csv')
  result['control_files']=[dict(path=name,bytes=(root/name).stat().st_size,sha256=hashlib.sha256((root/name).read_bytes()).hexdigest()) for name in controls if (root/name).is_file()]
+ from audited_source_extensions import provenance as extension_provenance
+ from audited_krx_calendar import provenance as calendar_provenance
+ result['control_files']+=extension_provenance(root,spec.period.start,spec.period.end)
+ correction=calendar_provenance(spec.period.start,spec.period.end)
+ if correction:result['official_calendar_correction']=correction
+
  engine=load_project_engine(root);_,_,execution=engine_inputs(spec,engine)
  from krx_technical_factor_adapter import TECHNICAL_FACTOR_SPECS
  technical=sorted({f.field for f in spec.factors if f.field in TECHNICAL_FACTOR_SPECS}|{f.field for f in spec.universe.filters if f.field in TECHNICAL_FACTOR_SPECS})

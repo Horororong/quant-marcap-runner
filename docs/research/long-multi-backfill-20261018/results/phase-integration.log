@@ -1,0 +1,26 @@
+setUpClass (__main__.Wrapper) ... ERROR
+
+======================================================================
+ERROR: setUpClass (__main__.Wrapper)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "scripts/test_fast_backfill_phase_integration.py", line 8, in setUpClass
+    s=importlib.util.spec_from_file_location('fast_phase_test',Path('scripts/backfill_super_value_fast.py'));cls.m=importlib.util.module_from_spec(s);s.loader.exec_module(cls.m)
+                                                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/workspace/quant-marcap-runner/scripts/backfill_super_value_fast.py", line 40, in <module>
+    modern = import_module("dart_modern_fast", "scripts/backfill_dart_full_financials.py")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/quant-marcap-runner/scripts/backfill_super_value_fast.py", line 36, in import_module
+    spec.loader.exec_module(mod)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/workspace/quant-marcap-runner/scripts/backfill_dart_full_financials.py", line 15, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.259s
+
+FAILED (errors=1)

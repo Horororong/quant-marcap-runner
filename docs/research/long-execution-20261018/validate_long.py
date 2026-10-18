@@ -45,7 +45,12 @@ def main(out, check):
         assert path.stat().st_size == pin['bytes'] and sha(path) == pin['sha256']
     preserved = json.loads((HOME / 'stage16_frozen_manifest.json').read_bytes())
     for path, pin in preserved['files'].items():
-        assert (ROOT / path).stat().st_size == pin['bytes'] and sha(ROOT / path) == pin['sha256'], path
+        actual=dict(bytes=(ROOT/path).stat().st_size,sha256=sha(ROOT/path))
+        if actual!=pin:
+            revision=json.loads((ROOT/'docs/research/long-multi-backfill-20261018/executable_revision.json').read_bytes())
+            migration=revision['authorized'].get(path)
+            assert migration and migration['before']==pin and migration['after']==actual, path
+            assert path=='docs/research/stage16-continuous-research-20261018/validate_continuous.py', 'No numeric/source migration allowed'
     prefix = preserved['prior_registry_prefix']
     assert hashlib.sha256((ROOT / prefix['path']).read_bytes()[:prefix['bytes']]).hexdigest() == prefix['sha256'], 'Stage16 action rows must remain byte-identical prefix'
     command('financial_original_preservation', ['docs/research/stage16-continuous-research-20261018/preserve.py', '--output', str(out / 'financial-preservation')])
