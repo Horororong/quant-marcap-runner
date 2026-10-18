@@ -188,5 +188,12 @@
   "method": "Join receipt index and preserved effective state; only source ZIP filename availability before selection; round-robin indexed fiscal_year/period/market, SHA256(seed:receipt); unique corporation globally, exclude all old22 and original60 companies. Freeze selected_receipts.json and SHA before any original member, financial amounts or parser output is opened. No value-based replacements. Missing sources/strata or diversity recorded, never guessed.",
   "diversity": "Different years and industries sought via archive and index strata; CFS/OFS, units, format, quarter/YTD assessed after freeze. No current industry classification certified as historical.",
   "controls": "Independent primary source cell literals and metadata must be fixed before production parser comparison; unavailable provenance/correction chain remain UNVERIFIED.",
-  "new_DART_calls": 0
+  "new_DART_calls": 0,
+  "pre_value_selector_correction": {
+    "failed_run": 39170733793,
+    "exit_code": 1,
+    "error": "Expected exactly one preserved effective state",
+    "cause": "Full source artifact also contains nested audit-subset/effective-state.csv. Use the unique shallowest full-batch checkpoint, never the subset copy. No receipts selected or original amounts/production parser viewed before failure.",
+    "repeat": "One corrected restore, no identical-error retry; original archive SHA still pinned."
+  }
 }

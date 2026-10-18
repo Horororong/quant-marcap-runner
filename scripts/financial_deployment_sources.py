@@ -41,8 +41,13 @@ def main(out):
     for spec in plan['archives']:
         folder=restore(spec,out/str(spec['id'])); sources.append((spec,folder))
         available={p.name[:14] for p in folder.rglob('*.zip') if re.fullmatch(r'\d{14}-[a-f0-9]{64}\.zip',p.name)}
-        state_paths=list(folder.rglob('effective-state.csv'))
-        if len(state_paths)!=1: raise ValueError('Expected exactly one preserved effective state')
+        state_paths=sorted(folder.rglob('effective-state.csv'),key=lambda p:(len(p.relative_to(folder).parts),str(p)))
+        if not state_paths: raise ValueError('No preserved effective state')
+        # The full artifact also embeds its audit-subset with the same filename.
+        # Choose its top-level batch checkpoint, never the nested subset copy.
+        depth=len(state_paths[0].relative_to(folder).parts)
+        if sum(len(p.relative_to(folder).parts)==depth for p in state_paths)!=1:
+            raise ValueError('Ambiguous top-level preserved effective state')
         state=rows(state_paths[0])
         for status,count in spec['strata'].items():
             candidates=[dict(index.get(r['rcept_no'],{}),**r) for r in state if r['rcept_no'] in available and r.get('status')==status]
