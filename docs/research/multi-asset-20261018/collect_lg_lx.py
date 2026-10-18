@@ -21,6 +21,7 @@ s.loader.exec_module(safe)
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--followup', action='store_true')
     a = p.parse_args()
     a.output.mkdir(parents=True, exist_ok=False)
     state = dict(requests=0, retries=0, responses=[], candidates=[], errors=[], investment_approved=False)
@@ -47,6 +48,11 @@ def main():
     try:
         targets = []
         queries = [('A003550', 'LG', '변경상장'), ('A383800', 'LX홀딩스', '신규상장'), ('A003550', 'LG', '기준가격')]
+        if a.followup:
+            # New evidence: a demerger-created company uses RE-listing, not
+            # initial-listing. This is a changed, bounded search, not a retry.
+            queries = [('A383800', '', '재상장'), ('A383800', '', '기준가격')]
+            capture('https://kind.krx.co.kr/external/2020/11/26/000378/20201126000891/11345.htm', '20201126000378_decision.html')
         for code, company, title in queries:
             params = dict(method='searchDetailsSub', forward='details_sub', currentPageSize='100', pageIndex='1',
                           orderMode='0', orderStat='D', fromDate='2021-05-20', toDate='2021-05-31',
@@ -60,7 +66,7 @@ def main():
                     state['candidates'].append(dict(receipt=receipt, code=code, title=title, row=re.sub('<[^>]+>', ' ', row)))
                     if receipt not in targets:
                         targets.append(receipt)
-            if len(targets)>5:
+            if len(targets)>(4 if a.followup else 5):
                 raise ValueError('MORE_THAN_FIVE_CANDIDATES_REVIEW_BEFORE_COLLECTION')
         if not targets:
             raise ValueError('NO_RETURNED_CANDIDATES')

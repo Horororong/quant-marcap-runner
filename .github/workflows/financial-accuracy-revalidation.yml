@@ -50,7 +50,7 @@ permissions:
   actions: read
 jobs:
   bounded-multi-asset-source:
-    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[multi-asset-source]') }}
+    if: ${{ github.run_attempt == 1 && ((github.sha == 'dfa9a9e07df9f89d94667e3fab9b930608f24f8d' && contains(github.event.head_commit.message, '[multi-asset-source]')) || contains(github.event.head_commit.message, '[multi-asset-followup]')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -65,7 +65,7 @@ jobs:
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I "$RUNNER_TEMP/financial-repair/runtime/scripts/sandbox_runtime.py" verify
       - name: Bounded public LG and LX official notices without credentials or retries
         run: |
-          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/multi-asset-20261018/collect_lg_lx.py --output "$RUNNER_TEMP/multi-asset-source"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/research/multi-asset-20261018/collect_lg_lx.py --followup --output "$RUNNER_TEMP/multi-asset-source"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -406,7 +406,7 @@ jobs:
           if-no-files-found: error
           retention-days: 90
   fixed-kit:
-    if: ${{ !contains(github.event.head_commit.message, '[multi-asset-source]') && !contains(github.event.head_commit.message, '[multi-asset]') && !contains(github.event.head_commit.message, '[stage16-source]') && !contains(github.event.head_commit.message, '[stage16]') && !contains(github.event.head_commit.message, '[stage15-model]') && !contains(github.event.head_commit.message, '[stage15-completion]') && !contains(github.event.head_commit.message, '[stage15-source]') && !contains(github.event.head_commit.message, '[stage15]') && !contains(github.event.head_commit.message, '[stage14-body]') && !contains(github.event.head_commit.message, '[stage14-corrected]') && !contains(github.event.head_commit.message, '[stage14-listing]') && !contains(github.event.head_commit.message, '[stage14-history]') && !contains(github.event.head_commit.message, '[stage14-source]') && !contains(github.event.head_commit.message, '[stage14]') && !contains(github.event.head_commit.message, '[stage13-proof]') && !contains(github.event.head_commit.message, '[stage13]') && !contains(github.event.head_commit.message, '[stage12-krx-prices]') && !contains(github.event.head_commit.message, '[stage12-read-artifact]') && !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
+    if: ${{ !contains(github.event.head_commit.message, '[multi-asset-followup]') && !contains(github.event.head_commit.message, '[multi-asset-source]') && !contains(github.event.head_commit.message, '[multi-asset]') && !contains(github.event.head_commit.message, '[stage16-source]') && !contains(github.event.head_commit.message, '[stage16]') && !contains(github.event.head_commit.message, '[stage15-model]') && !contains(github.event.head_commit.message, '[stage15-completion]') && !contains(github.event.head_commit.message, '[stage15-source]') && !contains(github.event.head_commit.message, '[stage15]') && !contains(github.event.head_commit.message, '[stage14-body]') && !contains(github.event.head_commit.message, '[stage14-corrected]') && !contains(github.event.head_commit.message, '[stage14-listing]') && !contains(github.event.head_commit.message, '[stage14-history]') && !contains(github.event.head_commit.message, '[stage14-source]') && !contains(github.event.head_commit.message, '[stage14]') && !contains(github.event.head_commit.message, '[stage13-proof]') && !contains(github.event.head_commit.message, '[stage13]') && !contains(github.event.head_commit.message, '[stage12-krx-prices]') && !contains(github.event.head_commit.message, '[stage12-read-artifact]') && !contains(github.event.head_commit.message, '[stage12]') && !contains(github.event.head_commit.message, '[stage6-dart-doc-proof]') && !contains(github.event.head_commit.message, '[stage6-krx-proof]') && !contains(github.event.head_commit.message, '[stage6-evidence]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
