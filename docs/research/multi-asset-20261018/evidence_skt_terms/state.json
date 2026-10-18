@@ -1,0 +1,33 @@
+{
+  "requests": 3,
+  "retries": 0,
+  "responses": [
+    {
+      "file": "20210817001055_terms.html",
+      "source": "https://kind.krx.co.kr/external/2021/08/17/001055/20210817003322/11345.htm",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 45366,
+      "sha256": "2e3042fe4fd2e806e6ce81cc482b78ea6aa035072fbdf7811cd8136ae27a4b2d"
+    },
+    {
+      "file": "20211102000453_completion.html",
+      "source": "https://kind.krx.co.kr/external/2021/11/02/000453/20211102001062/10810.htm",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 57289,
+      "sha256": "31f01222824c094276b46325023ec55a1f292408ced12772d0ec4cf376e91c68"
+    },
+    {
+      "file": "A017670_변경상장_search.html",
+      "source": "https://kind.krx.co.kr/disclosure/details.do",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 2090,
+      "sha256": "5bc04befeec65000fbbe56e53aada5f0f45f3492868e0bf210e5e2421f4c9545"
+    }
+  ],
+  "candidates": [],
+  "errors": [],
+  "investment_approved": false
+}

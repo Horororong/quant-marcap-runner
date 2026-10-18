@@ -1,3 +1,7 @@
+## Multi-security research continuation (2026-10-18)
+
+Read [multi-security current report](docs/research/multi-asset-20261018/report.md) and [usage](docs/research/multi-asset-20261018/README.md) first. Common event-aware pending orders and two-leg demerger accounting are implemented. The complete NEW multi-security2019–2025/2001–2025 requests are still blocked; original successful numeric results are preserved. Fresh actual CI and first_blocker remain authoritative; no investment PIT or cash-dividend total-return approval.
+
 ## Long research entrypoint (2026-10-18)
 
 The separate predeclared largest-cap2001–2025 experiment now has complete6168session

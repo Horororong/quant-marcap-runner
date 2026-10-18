@@ -1,0 +1,267 @@
+{
+  "scope": "RESEARCH_ONLY; fresh runtime guards mandatory",
+  "available": [
+    {
+      "strategy": "config/strategies/research_size_deciles_2019_2020_v1.json",
+      "period": "2019-01-01..2020-12-31",
+      "status": "RESEARCH_ONLY_EXAMPLE",
+      "numeric_validation": "docs/research/stage15-research-environment-20261017/numeric_manifest.json",
+      "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_size_deciles_2019_2020_v1.json",
+      "execution": "Same run command after fresh preflight; --report-periods config/reports/research_continuous_2025.json"
+    },
+    {
+      "strategy": "config/strategies/research_momentum_top3_2020.json",
+      "period": "2020-01-01..2020-12-31",
+      "status": "RESEARCH_ONLY_EXAMPLE",
+      "numeric_validation": "docs/research/stage15-research-environment-20261017/numeric_manifest.json",
+      "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_momentum_top3_2020.json",
+      "execution": "Same run command after fresh preflight; --report-periods config/reports/research_continuous_2025.json"
+    },
+    {
+      "strategy": "config/strategies/research_size_top1_2024.json",
+      "period": "2024-01-01..2024-12-31",
+      "status": "RESEARCH_ONLY_EXAMPLE",
+      "numeric_validation": "docs/research/stage15-research-environment-20261017/numeric_manifest.json",
+      "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_size_top1_2024.json",
+      "execution": "Same run command after fresh preflight; --report-periods config/reports/research_continuous_2025.json"
+    },
+    {
+      "strategy": "config/strategies/research_size_top1_2019_2025.json",
+      "period": "2019-01-01..2025-12-31",
+      "status": "RESEARCH_ONLY_EXAMPLE",
+      "numeric_validation": "docs/research/stage16-continuous-research-20261018/numeric_manifest.json",
+      "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_size_top1_2019_2025.json",
+      "execution": "Same run command after fresh preflight; --report-periods config/reports/research_continuous_2025.json"
+    },
+    {
+      "strategy": "config/strategies/research_size_top1_2001_2025_deferred_v1.json",
+      "period": "2001-01-01..2025-12-31",
+      "status": "RESEARCH_ONLY_EXAMPLE",
+      "numeric_validation": "docs/research/long-execution-20261018/numeric_manifest.json",
+      "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_size_top1_2001_2025_deferred_v1.json",
+      "execution": "Same run command with --report-periods config/reports/research_continuous_2025.json",
+      "distinction": "Separate predeclared full-order deferred execution; NOT the original fixed-lag top1 or original decile strategy; trading-cost Net, cash distributions not reconstructed"
+    }
+  ],
+  "blocked": [
+    {
+      "strategy": "research_size_deciles_2019_2025_event_deferred_v1",
+      "period": {
+        "start": "2019-01-01",
+        "end": "2025-12-31"
+      },
+      "status": "data_gap",
+      "nav_ready": false,
+      "report_ready": false,
+      "issue_count": 18,
+      "diagnostic_only_count": 4,
+      "first_blocker": {
+        "kind": "held_return_reference_gap",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": "068270",
+        "date": "2021-12-29",
+        "portfolio": "D03",
+        "detail": "Planned holding fails unchanged1bp source/event comparison",
+        "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+        "occurrences": 1,
+        "affected_through": "2021-12-29",
+        "previous_date": "2021-12-28",
+        "previous_close": 216000.0,
+        "close": 201000.0,
+        "exchange_return": -0.0519,
+        "effective_comparison_return": -0.06944444444444442,
+        "difference_bps": 175.44444444444417,
+        "basis": "raw_close",
+        "origin_signal": "2021-04-30",
+        "incident_id": "f80d5cb951e8ab0fd3f8"
+      },
+      "preflight_sha256": "ec8e43de204849552e9a18ef30d9facd84c70c3c52766ae6f1477356d95d38ab",
+      "planned_codes": 63,
+      "sessions": 1719,
+      "full_preflight_in_ci_artifact": "research_size_deciles_2019_2025_event_deferred_v1/preflight.json"
+    },
+    {
+      "strategy": "research_broad_size_deciles_2001_2025_v1",
+      "period": {
+        "start": "2001-01-01",
+        "end": "2025-12-31"
+      },
+      "status": "data_gap",
+      "nav_ready": false,
+      "report_ready": false,
+      "issue_count": 9970,
+      "diagnostic_only_count": 9960,
+      "first_blocker": {
+        "kind": "pending_order_event_contract_gap",
+        "classification": "execution_constraint",
+        "verdict": "UNVERIFIED",
+        "security": null,
+        "date": "2002-05-02",
+        "portfolio": "D01",
+        "detail": "pending_order_conflict: original signal 2001-04-30 remains unfilled at new execution 2002-05-02",
+        "required": "Exact verified share/rights lineage and executable lifecycle; no guessed event. Other source diagnostics below use original earliest schedule, not certified actual fills.",
+        "occurrences": 1,
+        "affected_through": "2002-05-02",
+        "origin_signal": "2001-04-30 00:00:00",
+        "planned_date": "2001-05-02 00:00:00",
+        "last_blocked": {
+          "date": "2002-04-30",
+          "securities": [
+            "000300",
+            "000315",
+            "000317",
+            "000475",
+            "001110",
+            "001697",
+            "001785",
+            "001787",
+            "001797",
+            "002105",
+            "002180",
+            "002470",
+            "002580",
+            "002585",
+            "003260",
+            "003660",
+            "004465",
+            "007595",
+            "008985",
+            "012265",
+            "012670",
+            "013005",
+            "013095",
+            "013097",
+            "016555",
+            "017090",
+            "017120",
+            "033300",
+            "042675",
+            "047890",
+            "052530"
+          ]
+        },
+        "incident_id": "084204e968f40c53bcd1"
+      },
+      "preflight_sha256": "c5441ba722f8e98e46028b2ac4c71c12ca8669d4c5e9a4dcc63260be0a139246",
+      "planned_codes": 3990,
+      "sessions": 6168,
+      "full_preflight_in_ci_artifact": "research_broad_size_deciles_2001_2025_v1/preflight.json"
+    },
+    {
+      "strategy": "research_broad_size_top10_2001_2025_v1",
+      "period": {
+        "start": "2001-01-01",
+        "end": "2025-12-31"
+      },
+      "status": "data_gap",
+      "nav_ready": false,
+      "report_ready": false,
+      "issue_count": 19,
+      "diagnostic_only_count": 18,
+      "first_blocker": {
+        "kind": "pending_order_event_contract_gap",
+        "classification": "execution_constraint",
+        "verdict": "UNVERIFIED",
+        "security": null,
+        "date": "2003-05-02",
+        "portfolio": "top_n",
+        "detail": "pending_order_conflict: original signal 2002-04-30 remains unfilled at new execution 2003-05-02",
+        "required": "Exact verified share/rights lineage and executable lifecycle; no guessed event. Other source diagnostics below use original earliest schedule, not certified actual fills.",
+        "occurrences": 1,
+        "affected_through": "2003-05-02",
+        "origin_signal": "2002-04-30 00:00:00",
+        "planned_date": "2002-05-02 00:00:00",
+        "last_blocked": {
+          "date": "2003-04-30",
+          "securities": [
+            "015580",
+            "023130"
+          ]
+        },
+        "incident_id": "eb1d56120b2aa988ad71"
+      },
+      "preflight_sha256": "6871d70d4f917de1e2f6a24a82b5c5b17136ac64baed8ac473d83139259d49eb",
+      "planned_codes": 35,
+      "sessions": 6168,
+      "full_preflight_in_ci_artifact": "research_broad_size_top10_2001_2025_v1/preflight.json"
+    },
+    {
+      "strategy": "research_broad_momentum_top10_2001_2025_v1",
+      "period": {
+        "start": "2001-01-01",
+        "end": "2025-12-31"
+      },
+      "status": "data_gap",
+      "nav_ready": false,
+      "report_ready": false,
+      "issue_count": 100,
+      "diagnostic_only_count": 99,
+      "first_blocker": {
+        "kind": "pending_order_event_contract_gap",
+        "classification": "execution_constraint",
+        "verdict": "UNVERIFIED",
+        "security": null,
+        "date": "2003-05-02",
+        "portfolio": "top_n",
+        "detail": "pending_order_conflict: original signal 2002-04-30 remains unfilled at new execution 2003-05-02",
+        "required": "Exact verified share/rights lineage and executable lifecycle; no guessed event. Other source diagnostics below use original earliest schedule, not certified actual fills.",
+        "occurrences": 1,
+        "affected_through": "2003-05-02",
+        "origin_signal": "2002-04-30 00:00:00",
+        "planned_date": "2002-05-02 00:00:00",
+        "last_blocked": {
+          "date": "2003-04-30",
+          "securities": [
+            "002580",
+            "018415"
+          ]
+        },
+        "incident_id": "eb1d56120b2aa988ad71"
+      },
+      "preflight_sha256": "fca088ee1e6cb214b55cd5b0739f8074672557eb8602b4b8ab32919bd2319811",
+      "planned_codes": 232,
+      "sessions": 6168,
+      "full_preflight_in_ci_artifact": "research_broad_momentum_top10_2001_2025_v1/preflight.json"
+    },
+    {
+      "strategy": "research_size_deciles_2019_2025_event_deferred_v2",
+      "period": {
+        "start": "2019-01-01",
+        "end": "2025-12-31"
+      },
+      "status": "data_gap",
+      "nav_ready": false,
+      "report_ready": false,
+      "issue_count": 16,
+      "diagnostic_only_count": 4,
+      "first_blocker": {
+        "kind": "held_return_reference_gap",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": "207940",
+        "date": "2022-02-28",
+        "portfolio": "D02",
+        "detail": "Planned holding fails unchanged1bp source/event comparison",
+        "required": "Official ex-date/reference and action terms, or original-price correction evidence; no inferred split/return override",
+        "occurrences": 1,
+        "affected_through": "2022-02-28",
+        "previous_date": "2022-02-25",
+        "previous_close": 769000.0,
+        "close": 779000.0,
+        "exchange_return": 0.025,
+        "effective_comparison_return": 0.013003901170351106,
+        "difference_bps": 119.96098829648895,
+        "basis": "raw_close",
+        "origin_signal": "2021-04-30",
+        "incident_id": "ebaafd770239b4a4361d"
+      },
+      "preflight_sha256": "3eae39d6f791df7cef17b34a41dcc5d719c91288bffd0b37bfca54756f0f0668",
+      "planned_codes": 63,
+      "sessions": 1719,
+      "full_preflight_in_ci_artifact": "research_size_deciles_2019_2025_event_deferred_v2/preflight.json"
+    }
+  ],
+  "investment_approved": false,
+  "financial_PIT": "0/6 unchanged"
+}

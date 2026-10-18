@@ -1,0 +1,24 @@
+{
+  "status": "PREDECLARED_FACT_EXPANSION_BEFORE_NAV",
+  "parent": {
+    "path": "config/strategies/research_size_deciles_2019_2025_event_deferred_v1.json",
+    "sha256": "9bbdcad3040b595e818101112b63210152372bcca4a76e47ba51a5a7e96bc735"
+  },
+  "strategies": [
+    {
+      "path": "config/strategies/research_size_deciles_2019_2025_event_deferred_v2.json",
+      "sha256": "66c9e5a66b9a700d964086c5018c4a33d6f7d9d74f14cdedaa90e0c5ad71c2f5"
+    }
+  ],
+  "new_fact_file": {
+    "path": "config/research/stock_dividends_2019_2021_lifecycle2022_v1.json",
+    "sha256": "fe70cf914942398a3e8b97d60adcebbe429f363bc19fcfdc16fb9c6e6986df16"
+  },
+  "original_fact_file_preserved": {
+    "path": "config/research/stock_dividends_2019_2020_lifecycle2021_v1.json",
+    "sha256": "84f7d5c0cace828abe63aef695ef4bdb422743812b1868ff0da1a6759a5ba82e"
+  },
+  "numerical_rules_changed": false,
+  "newly_evidenced_dividends": 2,
+  "investment_approved": false
+}

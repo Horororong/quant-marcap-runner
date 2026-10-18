@@ -45,7 +45,9 @@ def inspect_planned_strategy(strategy_json,repo_root):
  result.update(strategy_id=spec.strategy_id,strategy_fingerprint=spec.fingerprint(),requested_period=dict(start=spec.period.start,end=spec.period.end),versions={k:v for k,v in plan.items() if k.endswith('_version')},factor_sources=plan['data_contract']['factor_sources'],phase='sources')
  controls=['config/kr_corporate_actions.csv','config/kr_corporate_action_references.json','config/kr_corporate_action_gaps.json']
  if spec.research:controls.append(spec.research['event_file'])
- if spec.execution.nontradable_policy=='defer_full_rebalance_events_v1':controls.append('config/research/spinoffs_v1.json')
+ if spec.execution.nontradable_policy=='defer_full_rebalance_events_v1':
+  from research_spinoff import CATALOG
+  controls.append(CATALOG)
  if spec.benchmark:controls.append('data/indices/'+spec.benchmark.symbol+'.csv')
  result['control_files']=[dict(path=name,bytes=(root/name).stat().st_size,sha256=hashlib.sha256((root/name).read_bytes()).hexdigest()) for name in controls if (root/name).is_file()]
  engine=load_project_engine(root);_,_,execution=engine_inputs(spec,engine)

@@ -1,0 +1,11 @@
+test_general_one_bp_guard_survives_registered_spinoff (__main__.SpinOff.test_general_one_bp_guard_survives_registered_spinoff) ... ok
+test_hold_both_legs_marked_independently_not_same_asset_split (__main__.SpinOff.test_hold_both_legs_marked_independently_not_same_asset_split) ... ok
+test_new_parent_buyer_after_listing_gets_no_historical_child (__main__.SpinOff.test_new_parent_buyer_after_listing_gets_no_historical_child) ... ok
+test_non_simultaneous_or_missing_observations_do_not_receive_exception (__main__.SpinOff.test_non_simultaneous_or_missing_observations_do_not_receive_exception) ... ok
+test_original_execution_and_missing_contract_remain_blocked (__main__.SpinOff.test_original_execution_and_missing_contract_remain_blocked) ... ok
+test_pending_order_sells_both_issued_legs_without_cash_advance (__main__.SpinOff.test_pending_order_sells_both_issued_legs_without_cash_advance) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.274s
+
+OK

@@ -12,19 +12,22 @@ from strategy_dsl_runner import load_project_engine
 from research_spinoff import load_events,CATALOG
 
 
-def verify(out):
+def verify(out,parent="003550"):
  out.mkdir(parents=True,exist_ok=False)
  pth=ROOT/'data/krx_equities/yearly/marcap-2021.parquet'
  panel=pd.read_parquet(pth,columns=['Date','Code','Close','Open','Volume','ChangesRatio'])
- panel=panel[panel.Date.between('2021-04-26','2021-06-02')&panel.Code.isin(['003550','383800','005930'])]
- codes=['003550','383800','005930'];dates=pd.DatetimeIndex(panel.Date.unique()).sort_values()
+ facts=json.loads((ROOT/CATALOG).read_bytes())['events'];fact=next(c for c in facts if c['parent']==parent)
+ parent,child=fact['parent'],fact['child'];codes=[parent,child,'005930']
+ source_dates=pd.DatetimeIndex(panel.Date.unique()).sort_values();last=source_dates.get_loc(pd.Timestamp(fact['last_trade_date']));listed=source_dates.get_loc(pd.Timestamp(fact['listing_date']))
+ dates=source_dates[last-2:listed+5]
+ panel=panel[panel.Date.isin(dates)&panel.Code.isin(codes)]
  px=panel.pivot(index='Date',columns='Code',values='Close').reindex(index=dates,columns=codes)
  volumes=panel.pivot(index='Date',columns='Code',values='Volume').reindex_like(px);mask=px.notna()&volumes.gt(0);refs=panel.pivot(index='Date',columns='Code',values='ChangesRatio').reindex_like(px)/100
- events=load_events(ROOT,start=dates[0],end=dates[-1],asset_codes=set(codes));assert len(events)==1
- fact=json.loads((ROOT/CATALOG).read_bytes())['events'][0]
- # These are test allocations fixed by the component contract, not factor
- # selections, not an excluded universe and not a replacement full strategy.
- w=pd.DataFrame([[.6,0,.4],[0,0,1],[.5,0,.5]],index=pd.to_datetime(['2021-04-27','2021-04-30','2021-05-28']),columns=codes)
+ events=load_events(ROOT,start=dates[0],end=dates[-1],asset_codes={parent});assert len(events)==1
+ # Explicit functional allocations, not a factor strategy or shortened full
+ # requested study: buy last pre-halt close, sell at first observed joint fill,
+ # then make a new parent purchase that cannot receive an old child entitlement.
+ w=pd.DataFrame([[.6,0,.4],[0,0,1],[.5,0,.5]],index=pd.DatetimeIndex([source_dates[last-1],pd.Timestamp(fact['record_date']),source_dates[listed+1]]),columns=codes)
  engine=load_project_engine(ROOT);capital=10000000.
  results={}
  for label,cost in [('zero',{}),('fixed_cost',dict(commission_bps=1.5,sell_tax_bps=15.,spread_bps=3.,slippage_bps=5.))]:
@@ -57,12 +60,13 @@ def verify(out):
    assert cash>=-1e-5
    rows.append(dict(book=book,Date=str(date.date()),independent_value=value,engine_value=actual,absolute_error=abs(value-actual),cash=cash,trading_cost=fee,**{'quantity_'+c:shares[c] for c in codes}))
   assert pending is None
-  own=[r for r in orders if r['book']==book];assert own[1]['execution_date']=='2021-05-27'
+  own=[r for r in orders if r['book']==book];assert own[1]['execution_date']==fact['listing_date']
   assert [str(d.date()) for d in result['execution_schedule'].execution_date]==[r['execution_date'] for r in own]
  # Actual independent source checks, not ratios reverse-engineered as facts.
- primary=json.loads((HOME/'evidence_quotes/stk_bydd_trd_20210527.json').read_bytes())['OutBlock_1'];checks=[]
- for code,reference in [('003550',119500.),('383800',12650.)]:
-  row=next(r for r in primary if r['ISU_CD']==code);src=panel[panel.Date.eq('2021-05-27')&panel.Code.eq(code)].iloc[0]
+ quote=next(e for e in fact['evidence'] if e['role']=='official_quote')
+ primary=json.loads((ROOT/quote['path']).read_bytes())['OutBlock_1'];checks=[]
+ for code,reference in [(parent,fact['parent_reference']),(child,fact['child_reference'])]:
+  row=next(r for r in primary if r['ISU_CD']==code);src=panel[panel.Date.eq(fact['listing_date'])&panel.Code.eq(code)].iloc[0]
   for a,b in [('Close','TDD_CLSPRC'),('Open','TDD_OPNPRC'),('Volume','ACC_TRDVOL'),('ChangesRatio','FLUC_RT')]:assert src[a]==float(row[b])
   diff=abs(float(row['TDD_CLSPRC'])/reference-1-float(row['FLUC_RT'])/100)*10000;assert diff<=1.
   checks.append(dict(security=code,reference=reference,close=float(row['TDD_CLSPRC']),exchange_return=float(row['FLUC_RT'])/100,difference_bps=diff))
@@ -81,7 +85,7 @@ def verify(out):
  pd.DataFrame(rows).to_csv(out/'independent_ledger.csv',index=False);pd.DataFrame(orders).to_csv(out/'independent_orders.csv',index=False)
  for k,v in results.items():
   v['daily_nav'].to_csv(out/(k+'_daily_nav.csv'));v['trades'].to_csv(out/(k+'_trades.csv'));v['corporate_actions'].to_csv(out/(k+'_actions.csv'),index=False)
- result=dict(status='PASS_ACTUAL_PRICE_RESEARCH_COMPONENT',sessions=len(dates),book_days=len(rows),max_error_currency=max(r['absolute_error'] for r in rows),tolerance_currency=1e-5,source_sha256=hashlib.sha256(pth.read_bytes()).hexdigest(),fact_catalog_sha256=hashlib.sha256((ROOT/CATALOG).read_bytes()).hexdigest(),official_price_checks=checks,investment_approved=False,scope='LG/LX simultaneous-listing continuous-quantity component with another real security. Not a full-period factor strategy, integer broker account, dividend total return or investment PIT certification.',pending_sale_no_cash_advance=True,entire_order_waits_for_both_legs=True,original_fixed_lag_unchanged=True,all_ten_buckets_and_top_n_common_results_exact=True)
+ result=dict(parent=parent,child=child,event_date=fact['listing_date'],status='PASS_ACTUAL_PRICE_RESEARCH_COMPONENT',sessions=len(dates),book_days=len(rows),max_error_currency=max(r['absolute_error'] for r in rows),tolerance_currency=1e-5,source_sha256=hashlib.sha256(pth.read_bytes()).hexdigest(),fact_catalog_sha256=hashlib.sha256((ROOT/CATALOG).read_bytes()).hexdigest(),official_price_checks=checks,investment_approved=False,scope='Two-leg simultaneous-listing continuous-quantity component with another real security. Not a full-period factor strategy, integer broker account, dividend total return or investment PIT certification.',pending_sale_no_cash_advance=True,entire_order_waits_for_both_legs=True,original_fixed_lag_unchanged=True,all_ten_buckets_and_top_n_common_results_exact=True)
  (out/'summary.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps(result));return result
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a=p.parse_args();verify(a.output)
+ p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--parent',default='003550');a=p.parse_args();verify(a.output,a.parent)

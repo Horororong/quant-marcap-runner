@@ -1,0 +1,240 @@
+{
+  "version": 1,
+  "events": [
+    {
+      "event_id": "068270_stock_dividend_2019",
+      "security": "068270",
+      "ex_date": "2019-12-27",
+      "record_date": "2019-12-31",
+      "rate": "0.05",
+      "terms_evidence": {
+        "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20191218800434",
+        "sha256": "ac7535444b78db7ac3524e0988147739f0e37a7741bd0aa9b4853100b630924a",
+        "location": "Stage14 raw member table1/4/6",
+        "publication_date": "2019-12-18"
+      },
+      "reference_price": "181000",
+      "reference_evidence": {
+        "source": "https://kind.krx.co.kr/external/2019/12/26/000462/20191223000799/99342.htm",
+        "sha256": "11d9a405c3713ef2dc8c9c2c0b1988ffb925946bbb7df7ddfcd0dc6ad2be3f60",
+        "location": "E11-01 preserved official-page observation; SHA covers authored observation JSON, not original HTTP bytes",
+        "publication_date": "2019-12-26"
+      },
+      "decision": {
+        "actual_date": "2020-03-27",
+        "approved": true,
+        "evidence": {
+          "source": "https://www.celltrion.com/ko-kr/investment/notice/announce/697",
+          "sha256": "f46dd4fd92f52da9687ef2dbce88de04674e44170466251d0b910f2225541462",
+          "location": "Stage14 issuer697 raw response / text: approval2020-03-27, published2020-04-06",
+          "publication_date": "2020-04-06"
+        }
+      },
+      "listing": {
+        "date": "2020-04-24",
+        "evidence": {
+          "source": "https://kind.krx.co.kr/external/2020/04/21/000196/20200421000468/68154.htm",
+          "sha256": "7f481944f225981bb635ec204b9686eb78c80fc458c6ed38023fd4acbda7e161",
+          "location": "Stage14 original KRX notice row6; official listing date, not account credit",
+          "publication_date": "2020-04-21"
+        }
+      }
+    },
+    {
+      "event_id": "091990_stock_dividend_2019",
+      "security": "091990",
+      "ex_date": "2019-12-27",
+      "record_date": "2019-12-31",
+      "rate": "0.05",
+      "terms_evidence": {
+        "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20191217900478",
+        "sha256": "faaa1d42780eaa4d953337d54fee9ae3e278995a8b74f27f7a9226abdf9e0a97",
+        "location": "original proposal table1/4/6; archive/member evidence preserved",
+        "publication_date": "2019-12-17"
+      },
+      "reference_price": "54600",
+      "reference_evidence": {
+        "source": "https://kind.krx.co.kr/external/2019/12/26/000748/20191226003638/70767.htm",
+        "sha256": "304aeb989dbc27d7be722b465fe20ad78f96a6bc96a34f9e90669770b8d11bf4",
+        "location": "table codeA091990/reference54600/ex-date2019-12-27",
+        "publication_date": "2019-12-26"
+      },
+      "decision": {
+        "actual_date": "2020-03-27",
+        "approved": true,
+        "evidence": {
+          "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20200327902239",
+          "sha256": "d4857a3cbf0e0fcaacce5bf5da511290aaad7576fb6ea55bf034a18f3562e7d1",
+          "location": "AGM original table2/4/5: 5%,7116148shares, stock-dividend proposal adopted, AGM2020-03-27",
+          "publication_date": "2020-03-27"
+        }
+      },
+      "listing": {
+        "date": "2020-04-24",
+        "evidence": {
+          "source": "https://kind.krx.co.kr/external/2020/04/21/000430/20200421001084/70791.htm",
+          "sha256": "17f6401766e1e5c551c6075a65b293e8b2b90b3184eb8076f05921fb63594d35",
+          "location": "table5 listing2020-04-24; issuance7116148; A091990; not account credit",
+          "publication_date": "2020-04-21"
+        }
+      }
+    },
+    {
+      "event_id": "068270_stock_dividend_2020",
+      "security": "068270",
+      "ex_date": "2020-12-29",
+      "record_date": "2020-12-31",
+      "rate": "0.02",
+      "terms_evidence": {
+        "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20201216801088",
+        "sha256": "3c85cfc7bf06581efe849bcd91d4b9c340fb7159b55c3c7e4cb0c9c6cc648d02",
+        "location": "original proposal table1/4/6; archive/member evidence preserved",
+        "publication_date": "2020-12-16"
+      },
+      "reference_price": "327500",
+      "reference_evidence": {
+        "source": "https://kind.krx.co.kr/external/2020/12/28/000536/20201228002267/99311.htm",
+        "sha256": "474c37aa795605d2b9ad3e8cf94dbe441e19554a60ab65af67e46fd79229b409",
+        "location": "companyCelltrion/reference327500/apply2020-12-29",
+        "publication_date": "2020-12-28"
+      },
+      "decision": {
+        "actual_date": "2021-03-26",
+        "approved": true,
+        "evidence": {
+          "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20210326802215",
+          "sha256": "2f6a7f3c93f8f1742d4bcf0efee5bea9a6f29b4becef932665ef1c20b9c50f48",
+          "location": "20210326802215.xml: 2. 배당 결의/보고, 나. 주식배당, 2%, 보통주 2,675,697주; 5. 주주총회일자; 안건 원안가결",
+          "publication_date": "2021-03-26"
+        }
+      },
+      "listing": {
+        "date": "2021-04-22",
+        "evidence": {
+          "source": "https://kind.krx.co.kr/external/2021/04/19/000083/20210419000132/68154.htm",
+          "sha256": "772777e282ad5e8ee994e6620899ab862b24a06357fa6ade6454c99bf5d6adf5",
+          "location": "⑥ 상장일; ① 2,675,697주; ③ 2021-03-26 발행",
+          "publication_date": "2021-04-19"
+        }
+      }
+    },
+    {
+      "event_id": "091990_stock_dividend_2020",
+      "security": "091990",
+      "ex_date": "2020-12-29",
+      "record_date": "2020-12-31",
+      "rate": "0.02",
+      "terms_evidence": {
+        "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20201216900990",
+        "sha256": "cf5ae9bfa14eb34fe8626de7d263eb7e067e997d4657f9efadae5bb5b17a84d5",
+        "location": "original proposal table1/4/6; archive/member evidence preserved",
+        "publication_date": "2020-12-16"
+      },
+      "reference_price": "157400",
+      "reference_evidence": {
+        "source": "https://kind.krx.co.kr/external/2020/12/28/000943/20201228003903/70767.htm",
+        "sha256": "35ba16e6119da7279d5610febd2ca3628ddc557a59bbb36c072af59c95cf0c59",
+        "location": "codeA091990/reference157400/ex-date2020-12-29",
+        "publication_date": "2020-12-28"
+      },
+      "decision": {
+        "actual_date": "2021-03-26",
+        "approved": true,
+        "evidence": {
+          "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20210326901313",
+          "sha256": "65e6d841d2c8e61bac9ef8732ae38cd4918a71f7c8c0c03f781552c650560126",
+          "location": "20210326901313.xml: 2. 배당 결의/보고, 나. 주식배당, 2%, 보통주 3,003,213주; 5. 주주총회일자; 안건 원안가결",
+          "publication_date": "2021-03-26"
+        }
+      },
+      "listing": {
+        "date": "2021-04-23",
+        "evidence": {
+          "source": "https://kind.krx.co.kr/external/2021/04/20/000350/20210420001114/70791.htm",
+          "sha256": "d51454ffe0b748a01d4cea99ace5508d18de2de3737a4fc044575820df04ec68",
+          "location": "5.상장일; 【발행내역】주식배당 3,003,213주 제44회(21.03.26)",
+          "publication_date": "2021-04-20"
+        }
+      }
+    },
+    {
+      "event_id": "068270-2021-stock-dividend",
+      "security": "068270",
+      "ex_date": "2021-12-29",
+      "record_date": "2021-12-31",
+      "rate": "0.02",
+      "terms_evidence": {
+        "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20211217800219",
+        "sha256": "bb094f1e6b9c2a0459be96ddce7a026f034f310bff5cd3a78c34532b9e335a17",
+        "location": "docs/research/multi-asset-20261018/evidence_div2021/20211217800219.zip.b64; base64 decode original ZIP; CP949 strict HTML member 20211217800219.xml; fields1 rate0.02,4 record date; conditional AGM and fractional cash terms. XML suffix is NOT XML validity.",
+        "publication_date": "2021-12-17"
+      },
+      "reference_price": 212000,
+      "reference_evidence": {
+        "source": "https://kind.krx.co.kr/external/2021/12/28/000729/20211228003660/99311.htm",
+        "sha256": "35a37fb513905554d59ac6321c2018740fd219976118238ce7a525e7aa027e3d",
+        "location": "docs/research/multi-asset-20261018/evidence_div2021/20211228000729_body.html; Exact code/name, official ex-date2021-12-29 and reference 212000",
+        "publication_date": "2021-12-28"
+      },
+      "decision": {
+        "actual_date": "2022-03-25",
+        "approved": true,
+        "evidence": {
+          "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20220325801692",
+          "sha256": "d584e083c52795387b25bc926dd52094279cc51bd47ab9e6e7c8b3c7d17e5232",
+          "location": "docs/research/multi-asset-20261018/evidence_div2021/20220325801692.zip.b64; Base64 original ZIP/CP949 HTML member; section2 나 주식배당률2%; actual general meeting approved 2732479 shares. Separate cash dividends NOT added to price research.",
+          "publication_date": "2022-03-25"
+        }
+      },
+      "listing": {
+        "date": "2022-04-22",
+        "evidence": {
+          "source": "https://kind.krx.co.kr/external/2022/04/19/000072/20220419000140/68154.htm",
+          "sha256": "db253440ca66e8364d4326c58813d8865ee3a749f07734719afc7b85a902107a",
+          "location": "docs/research/multi-asset-20261018/evidence_div2021/20220419000072_body.html; Actual official additional listing2022-04-22 2732479 stock-dividend shares. Issuance2022-03-25 is NOT credit date.",
+          "publication_date": "2022-04-19"
+        }
+      }
+    },
+    {
+      "event_id": "091990-2021-stock-dividend",
+      "security": "091990",
+      "ex_date": "2021-12-29",
+      "record_date": "2021-12-31",
+      "rate": "0.02",
+      "terms_evidence": {
+        "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20211217900217",
+        "sha256": "56213c1b67864e5b777b875d0bdffbc141fe89ccdf0448e3e2936d133c81a2ad",
+        "location": "docs/research/multi-asset-20261018/evidence_div2021/20211217900217.zip.b64; base64 decode original ZIP; CP949 strict HTML member 20211217900217.xml; fields1 rate0.02,4 record date; conditional AGM and fractional cash terms. XML suffix is NOT XML validity.",
+        "publication_date": "2021-12-17"
+      },
+      "reference_price": 86800,
+      "reference_evidence": {
+        "source": "https://kind.krx.co.kr/external/2021/12/28/000767/20211228002342/70767.htm",
+        "sha256": "cd5167157890d148e63a180562034b78add77f23dedad571ee0a3ecdfc2fbbee",
+        "location": "docs/research/multi-asset-20261018/evidence_div2021/20211228000767_body.html; Exact code/name, official ex-date2021-12-29 and reference 86800",
+        "publication_date": "2021-12-28"
+      },
+      "decision": {
+        "actual_date": "2022-03-25",
+        "approved": true,
+        "evidence": {
+          "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20220325901111",
+          "sha256": "854cec5b39ea3df559f3aabae04ba7b56e151a0af006e5ecbb6666417a9cca0c",
+          "location": "docs/research/multi-asset-20261018/evidence_div2021/20220325901111.zip.b64; Base64 original ZIP/CP949 HTML member; section2 나 주식배당률2%; actual general meeting approved 3065845 shares. Separate cash dividends NOT added to price research.",
+          "publication_date": "2022-03-25"
+        }
+      },
+      "listing": {
+        "date": "2022-04-22",
+        "evidence": {
+          "source": "https://kind.krx.co.kr/external/2022/04/19/000500/20220419001278/70791.htm",
+          "sha256": "fe6e8d25306c7bea10fdaaf624ca115f2e60ad7e50213635f33ddc909c009766",
+          "location": "docs/research/multi-asset-20261018/evidence_div2021/20220419000500_body.html; Actual official additional listing2022-04-22 3065845 stock-dividend shares. Issuance2022-03-25 is NOT credit date.",
+          "publication_date": "2022-04-19"
+        }
+      }
+    }
+  ],
+  "pending_lifecycle_supported_through": "2025-12-31"
+}

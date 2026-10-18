@@ -7,7 +7,7 @@ joint listing close both share legs are delivered once; no cash is fabricated.
 from pathlib import Path
 import hashlib,json,math,re
 import pandas as pd
-CATALOG='config/research/spinoffs_v1.json'
+CATALOG='config/research/spinoffs_v2.json'
 POLICY='defer_full_rebalance_events_v1'
 CONTRACT=dict(version='1',scope='RESEARCH_ONLY continuous quantities before distribution taxes',
  suspension='Every original session must observe flat last close, zero volume and zero/missing reference. Combined cum-right basket mark, not a forward-filled child price.',

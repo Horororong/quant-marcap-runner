@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "strategy_id": "research_size_deciles_2019_2025_event_deferred_v2",
+  "title": "RESEARCH_ONLY · unchanged size deciles2019–2025; independently evidenced2021 dividend lifecycle added",
+  "asset_class": "kr_equity",
+  "universe": {
+    "markets": [
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "require_tradable_on_signal": true,
+    "filters": [
+      {
+        "field": "Marcap",
+        "op": "gte",
+        "value": 10000000000000
+      }
+    ]
+  },
+  "factors": [
+    {
+      "name": "size",
+      "source": "krx",
+      "field": "Marcap",
+      "direction": "high",
+      "weight": 1.0
+    }
+  ],
+  "portfolio": {
+    "selection": "deciles",
+    "weighting": "equal"
+  },
+  "rebalance": {
+    "frequency": "months",
+    "months": [
+      4
+    ],
+    "trading_day": "last"
+  },
+  "execution": {
+    "lag_sessions": 1,
+    "price": "next_close",
+    "nontradable_policy": "defer_full_rebalance_events_v1",
+    "data_loading": "annual_selected_projection"
+  },
+  "cost_scenarios": {
+    "zero": {},
+    "fixed_cost": {
+      "commission_bps": 1.5,
+      "sell_tax_bps": 15.0,
+      "spread_bps": 3.0,
+      "slippage_bps": 5.0
+    }
+  },
+  "period": {
+    "start": "2019-01-01",
+    "end": "2025-12-31",
+    "book_start": "2019-01-01",
+    "book_end": "2025-12-31",
+    "as_of_date": "2025-12-31"
+  },
+  "initial_capital": 10000000,
+  "metadata": {
+    "validation_scope": "KRX PIT large-cap research-window execution regression, not full-history factor validation",
+    "universe_rule": "Original historical signal-day KOSPI/KOSDAQ observations, positive observed Volume on signal; Marcap>=10 trillion KRW retained",
+    "benchmark_return_basis": "price_index_close_without_dividends",
+    "capital_basis": "initial_capital is independent for each decile",
+    "classification": "RESEARCH_ONLY",
+    "investment_use_allowed": false,
+    "official_PIT_certified": false,
+    "baseline_source": "config/strategies/kr_equity_size_deciles_research.json",
+    "scope": "Historical source-panel price/market-cap research; not a total-return or complete corporate-action study",
+    "risk_notice": "No present-day constituent filter; historical completeness and official legal security-state mapping unverified. Cash dividends/rights/delisting recoveries not reconstructed. Fixed costs illustrative, not certified historical tax rates.",
+    "research_assumptions": "Continuous pro-rata rights marked at underlying close (conditional haircut1.0), virtual settlement at official listing close, distribution taxes excluded; Net includes trading costs only; not broker account or PIT certification.",
+    "predeclaration": "2026-10-18 before any new strategy NAV; immutable experiment input",
+    "execution_model": "Whole order waits for every currently tradable share position and target. Original signal frozen; no partial fill, cancellation, replacement, cash advance or future execution quote. Verified event transfers change required shares; unknown rights/spin-offs BLOCK.",
+    "target_model": "Targets allocate liquid NAV only; unpaid rights and receivables stay outside trading budget; own Gross/Net books and post-cost liquid allocation.",
+    "liquidity_rule": "Positive observed signal and actual execution volume; no extra liquidity floor; unknown observations fail",
+    "cash_distribution_basis": "Cash dividends not reconstructed; NOT total return; distribution taxes excluded",
+    "minimum_population_policy": "Deciles require >=10; top10 requires >=10; never reduce count or period",
+    "source_revision": "Before any NAV of this revision: only two newly verified2021 dividend facts/lifecycle through2022 added; all selection, periods, costs and execution model identical to v1; v1 remains immutable."
+  },
+  "benchmark": {
+    "source": "index",
+    "symbol": "KOSPI"
+  },
+  "research": {
+    "version": "1",
+    "event_file": "config/research/stock_dividends_2019_2021_lifecycle2022_v1.json",
+    "event_sha256": "fe70cf914942398a3e8b97d60adcebbe429f363bc19fcfdc16fb9c6e6986df16",
+    "quantity_basis": "continuous_pro_rata",
+    "rights_valuation": "underlying_close_share_equivalent",
+    "conditional_fraction": 1.0,
+    "settlement_basis": "virtual_on_official_listing_close",
+    "settlement_lag_sessions": 0,
+    "distribution_tax_basis": "before_distribution_tax"
+  }
+}

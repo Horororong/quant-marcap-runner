@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "contract": {
+    "version": "1",
+    "scope": "RESEARCH_ONLY continuous quantities before distribution taxes",
+    "suspension": "Every original session must observe flat last close, zero volume and zero/missing reference. Combined cum-right basket mark, not a forward-filled child price.",
+    "settlement": "Virtual simultaneous parent change-listing and child re-listing close; neither actual account receipt nor integer/fractional cash settlement",
+    "valuation": "Frozen combined cum-right last observed value until joint listing; then retained-parent and new-child observed close values. No use of future prices during halt.",
+    "orders": "Both issued share legs become holdings before pending close orders; unpaid proceeds never fund buys",
+    "unsupported": "Non-simultaneous listings, intervening tradable parent, missing suspension rows, integer accounts, fractional cash/tax flows, unknown share terms or reference evidence fail"
+  },
+  "events": [
+    {
+      "version": 1,
+      "scope": "modeled_research",
+      "parent": "003550",
+      "child": "383800",
+      "last_trade_date": "2021-04-28",
+      "record_date": "2021-04-30",
+      "legal_date": "2021-05-01",
+      "listing_date": "2021-05-27",
+      "parent_ratio": 0.9115879,
+      "child_ratio": 0.4420605,
+      "parent_reference": 119500.0,
+      "child_reference": 12650.0,
+      "quantity_basis": "continuous_pro_rata",
+      "halt_valuation": "observed_frozen_cum_right_basket",
+      "settlement": "virtual_on_simultaneous_listing_close",
+      "evidence": [
+        {
+          "path": "docs/research/multi-asset-20261018/evidence_followup/20201126000378_decision.html",
+          "sha256": "b4f7ccba05c134ada1fd9e8db04697f576f00453f78a8c14f6d2106100ded930",
+          "source": "https://kind.krx.co.kr/external/2020/11/26/000378/20201126000891/11345.htm",
+          "publication_date": "2020-11-26",
+          "location": "Sections4 분할비율 a and 1주의금액 b=5; section8 recorddate/fractions; section11 legal date",
+          "role": "terms"
+        },
+        {
+          "path": "docs/research/multi-asset-20261018/evidence/20210524000070_body.html",
+          "sha256": "5d4ba5382b1166fceee836f4d36e4e827f9174b8dc765709f2f2c12b2f33c2c9",
+          "source": "https://kind.krx.co.kr/external/2021/05/24/000070/20210524000152/68155.htm",
+          "publication_date": "2021-05-24",
+          "location": "items2 common share counts,7 listing date,9 code and resumption footnote",
+          "role": "parent_listing"
+        },
+        {
+          "path": "docs/research/multi-asset-20261018/evidence_followup/20210525000477_body.html",
+          "sha256": "a508038e86ccd2cfad97e30d76a435ea744680226e9ae92e1f83b95d6754ac8e",
+          "source": "https://kind.krx.co.kr/external/2021/05/25/000477/20210525001181/68156.htm",
+          "publication_date": "2021-05-25",
+          "location": "common-stock items2 listing date,4 code and5 issued shares",
+          "role": "child_listing"
+        },
+        {
+          "path": "docs/research/multi-asset-20261018/evidence/20210526000318_body.html",
+          "sha256": "f6e5a34bb421cd5f09ecbe5e703a9f505a166c09270baac6ad41b1cd75a1e864",
+          "source": "https://kind.krx.co.kr/external/2021/05/26/000318/20210526001044/99332.htm",
+          "publication_date": "2021-05-26",
+          "location": "items2 evaluation126500 is NOT actual reference;3 first-auction price;6 effective2021-05-27",
+          "role": "parent_reference_method"
+        },
+        {
+          "path": "docs/research/multi-asset-20261018/evidence_followup/20210526000323_body.html",
+          "sha256": "9b4671685c21a3f15082458dc9ea1dd525c475f621cb3a14375a08530ff93538",
+          "source": "https://kind.krx.co.kr/external/2021/05/26/000323/20210526001048/99334.htm",
+          "publication_date": "2021-05-26",
+          "location": "items2 evaluation25300 NOT actual reference;3 first-auction price;6 effective date",
+          "role": "child_reference_method"
+        },
+        {
+          "path": "docs/research/multi-asset-20261018/evidence_quotes/stk_bydd_trd_20210527.json",
+          "sha256": "3ba4e2062b499122f2824983d214b83a2fe376d939fba948c65a12f425f110c4",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/sto/stk_bydd_trd?basDd=20210527",
+          "publication_date": "2021-05-27",
+          "location": "OutBlock_1 rows76 LG and96 LX; TDD_OPNPRC119500 and12650; exact closes/changes/volume/listed shares",
+          "role": "official_quote"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "scope": "modeled_research",
+      "parent": "017670",
+      "child": "402340",
+      "last_trade_date": "2021-10-25",
+      "record_date": "2021-10-29",
+      "legal_date": "2021-11-01",
+      "listing_date": "2021-11-29",
+      "parent_ratio": 3.0368125,
+      "child_ratio": 1.9631875,
+      "parent_reference": 53400.0,
+      "child_reference": 82000.0,
+      "quantity_basis": "continuous_pro_rata",
+      "halt_valuation": "observed_frozen_cum_right_basket",
+      "settlement": "virtual_on_simultaneous_listing_close",
+      "evidence": [
+        {
+          "path": "docs/research/multi-asset-20261018/evidence_skt_terms/20210817001055_terms.html",
+          "source": "https://kind.krx.co.kr/external/2021/08/17/001055/20210817003322/11345.htm",
+          "sha256": "2e3042fe4fd2e806e6ce81cc482b78ea6aa035072fbdf7811cd8136ae27a4b2d",
+          "publication_date": "2021-08-17",
+          "location": "Corrected primary decision section4 ratios AFTER face split500->100: parent0.6073625, child0.3926375; record2021-10-29, legal2021-11-01. Fold5-for1 explicitly, NEVER use capital ratio as old-share delivery.",
+          "role": "terms"
+        },
+        {
+          "path": "docs/research/multi-asset-20261018/evidence_skt_terms/20211102000453_completion.html",
+          "source": "https://kind.krx.co.kr/external/2021/11/02/000453/20211102001062/10810.htm",
+          "sha256": "31f01222824c094276b46325023ec55a1f292408ced12772d0ec4cf376e91c68",
+          "publication_date": "2021-11-02",
+          "location": "Actual completion/approval report confirms face split effective2021-10-28 and completed demerger2021-11-01. Nov29 listing in this report remains PLANNED, corroborated by later official exchange market-day below, not promoted alone to actual listing.",
+          "role": "parent_listing"
+        },
+        {
+          "path": "docs/research/multi-asset-20261018/evidence_skt_quotes/stk_bydd_trd_20211129.json",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/sto/stk_bydd_trd?basDd=20211129",
+          "sha256": "6536fac474c4970e43fd0a139025b847f81ed665c4f961d1c1109886e737f05f",
+          "publication_date": "2021-11-29",
+          "location": "COMPOSITE corroboration only: official traded parent on common virtual-settlement date, LIST_SHRS218833144 and positive volume. No standalone parent change-listing notice, no brokerage receipt or full historical legal-state certification.",
+          "role": "parent_listing"
+        },
+        {
+          "path": "docs/research/multi-asset-20261018/evidence_skt/20211125000535_body.html",
+          "source": "https://kind.krx.co.kr/external/2021/11/25/000535/20211125001109/68156.htm",
+          "sha256": "ecfe8b57fdd9c72c9915a270e36ad92f749587aee835b0801f5c982455f0688d",
+          "publication_date": "2021-11-25",
+          "location": "Items2 actual official child re-listing2021-11-29,4 A402340 and5 issued141467571 shares",
+          "role": "child_listing"
+        },
+        {
+          "path": "docs/research/multi-asset-20261018/evidence_skt/20211126000322_body.html",
+          "source": "https://kind.krx.co.kr/external/2021/11/26/000322/20211126000975/99331.htm",
+          "sha256": "21d4f1760cb849d41eac7d45bb63d0482be3fcfd80030bb00bb4827a2ae77675",
+          "publication_date": "2021-11-26",
+          "location": "Parent simultaneous face split/demerger reference-method notice: first auction price, application2021-11-29. Evaluation61900 is NOT actual reference53400.",
+          "role": "parent_reference_method"
+        },
+        {
+          "path": "docs/research/multi-asset-20261018/evidence_skt/20211126000325_body.html",
+          "source": "https://kind.krx.co.kr/external/2021/11/26/000325/20211126000976/99334.htm",
+          "sha256": "069940a51a6e55e646b3ebc7383e0c596316113700969870d8312487c5253f70",
+          "publication_date": "2021-11-26",
+          "location": "Child first-auction price reference method applicable2021-11-29; evaluation61900 NOT actual reference82000.",
+          "role": "child_reference_method"
+        },
+        {
+          "path": "docs/research/multi-asset-20261018/evidence_skt_quotes/stk_bydd_trd_20211129.json",
+          "source": "https://data-dbg.krx.co.kr/svc/apis/sto/stk_bydd_trd?basDd=20211129",
+          "sha256": "6536fac474c4970e43fd0a139025b847f81ed665c4f961d1c1109886e737f05f",
+          "publication_date": "2021-11-29",
+          "location": "OutBlock_1 row146 parent Open53400 Close57900 FLUC_RT8.43; row137 child Open82000 Close76000 FLUC_RT-7.32. Close-only validation, no use as earlier signal input.",
+          "role": "official_quote"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+test_cancellation_is_real_loss_and_cannot_create_settlement (__main__.EventDeferred.test_cancellation_is_real_loss_and_cannot_create_settlement) ... ok
+test_cash_exchange_receivable_is_outside_full_liquid_target_budget (__main__.EventDeferred.test_cash_exchange_receivable_is_outside_full_liquid_target_budget) ... ok
+test_dividend_release_after_original_share_sale_requires_liquidity (__main__.EventDeferred.test_dividend_release_after_original_share_sale_requires_liquidity) ... ok
+test_full_liquid_targets_independent_two_book_daily_quantities_cash_costs (__main__.EventDeferred.test_full_liquid_targets_independent_two_book_daily_quantities_cash_costs) ... ok
+test_merger_replaces_required_sale_security_before_pending_close_fill (__main__.EventDeferred.test_merger_replaces_required_sale_security_before_pending_close_fill) ... ok
+test_original_contract_does_not_accept_dividend_extension (__main__.EventDeferred.test_original_contract_does_not_accept_dividend_extension) ... ok
+test_post_ex_buyer_has_no_preexisting_entitlement (__main__.EventDeferred.test_post_ex_buyer_has_no_preexisting_entitlement) ... ok
+test_projected_observations_preserve_original_full_source_float_reduction (__main__.EventDeferred.test_projected_observations_preserve_original_full_source_float_reduction) ... ok
+test_two_simultaneous_claims_are_not_spent_or_double_credited (__main__.EventDeferred.test_two_simultaneous_claims_are_not_spent_or_double_credited) ... ok
+test_unknown_spinoff_fails_without_inventing_successor_rights (__main__.EventDeferred.test_unknown_spinoff_fails_without_inventing_successor_rights) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 1.956s
+
+OK

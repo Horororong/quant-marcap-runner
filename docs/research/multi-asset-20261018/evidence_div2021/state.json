@@ -1,0 +1,290 @@
+{
+  "requests": 24,
+  "retries": 0,
+  "responses": [
+    {
+      "file": "068270_20211201_page1.json",
+      "http": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "bytes": 1965,
+      "sha256": "bcb1c8add5eef6c17d636dca3eac632f923cc0f56b435f821a1a7240d5f63c5e",
+      "source": "OpenDART list.json {\"bgn_de\": \"20211201\", \"corp_code\": \"00413046\", \"end_de\": \"20211231\", \"last_reprt_at\": \"N\", \"page_count\": 100, \"page_no\": 1}"
+    },
+    {
+      "file": "068270_20220301_page1.json",
+      "http": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "bytes": 3288,
+      "sha256": "6ec6a17b68eca3f434e566773571721cf5ef9c55bf22a88c2cb909d2e1d4978d",
+      "source": "OpenDART list.json {\"bgn_de\": \"20220301\", \"corp_code\": \"00413046\", \"end_de\": \"20220331\", \"last_reprt_at\": \"N\", \"page_count\": 100, \"page_no\": 1}"
+    },
+    {
+      "file": "091990_20211201_page1.json",
+      "http": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "bytes": 2072,
+      "sha256": "d43cc45bdf42d6c8e7cf5c91db59133c6436b205373baea12a8a3512aeac6ef0",
+      "source": "OpenDART list.json {\"bgn_de\": \"20211201\", \"corp_code\": \"00554024\", \"end_de\": \"20211231\", \"last_reprt_at\": \"N\", \"page_count\": 100, \"page_no\": 1}"
+    },
+    {
+      "file": "091990_20220301_page1.json",
+      "http": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "bytes": 3388,
+      "sha256": "c1ec36462d7372f57b0578287f6b163a5cb51025a432d4737362cf4d7509918a",
+      "source": "OpenDART list.json {\"bgn_de\": \"20220301\", \"corp_code\": \"00554024\", \"end_de\": \"20220331\", \"last_reprt_at\": \"N\", \"page_count\": 100, \"page_no\": 1}"
+    },
+    {
+      "file": "20211217800219.zip.b64",
+      "http": 200,
+      "content_type": "application/x-msdownload;charset=UTF-8",
+      "bytes": 2217,
+      "sha256": "81852a84bef862a23c7d4027d2de787b15cc32d7a5d398a9c6383d5f8c709443",
+      "source": "OpenDART document.xml rcept_no=20211217800219",
+      "storage_encoding": "base64",
+      "raw_bytes": 1661,
+      "raw_sha256": "bb094f1e6b9c2a0459be96ddce7a026f034f310bff5cd3a78c34532b9e335a17"
+    },
+    {
+      "file": "20220325801692.zip.b64",
+      "http": 200,
+      "content_type": "application/x-msdownload;charset=UTF-8",
+      "bytes": 5065,
+      "sha256": "96d288aba27eb0b8e2fef7f397c422d38c05421ca17c021d32edee407a5b4bc7",
+      "source": "OpenDART document.xml rcept_no=20220325801692",
+      "storage_encoding": "base64",
+      "raw_bytes": 3797,
+      "raw_sha256": "d584e083c52795387b25bc926dd52094279cc51bd47ab9e6e7c8b3c7d17e5232"
+    },
+    {
+      "file": "20211217900217.zip.b64",
+      "http": 200,
+      "content_type": "application/x-msdownload;charset=UTF-8",
+      "bytes": 2249,
+      "sha256": "e1fcc5ec9a95fa0f7d04590b98a8ac940b88df6dc82101a483fb47b2e0d56b5b",
+      "source": "OpenDART document.xml rcept_no=20211217900217",
+      "storage_encoding": "base64",
+      "raw_bytes": 1686,
+      "raw_sha256": "56213c1b67864e5b777b875d0bdffbc141fe89ccdf0448e3e2936d133c81a2ad"
+    },
+    {
+      "file": "20220325901111.zip.b64",
+      "http": 200,
+      "content_type": "application/x-msdownload;charset=UTF-8",
+      "bytes": 4717,
+      "sha256": "e6b8b364854d98e1cf1e8f182888a405e0eac6a3de385a608538d94347ee38be",
+      "source": "OpenDART document.xml rcept_no=20220325901111",
+      "storage_encoding": "base64",
+      "raw_bytes": 3537,
+      "raw_sha256": "854cec5b39ea3df559f3aabae04ba7b56e151a0af006e5ecbb6666417a9cca0c"
+    },
+    {
+      "file": "068270_배당락_search.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 3107,
+      "sha256": "7f46d056e10ef14fd6c7a7ba762dba00502d0984909005a320b9194facdee975",
+      "source": "https://kind.krx.co.kr/disclosure/details.do"
+    },
+    {
+      "file": "068270_추가상장_search.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 3101,
+      "sha256": "21a027f22af47d1ffe7d3612e6921059f690d63e179113fb5010ba49c252bf45",
+      "source": "https://kind.krx.co.kr/disclosure/details.do"
+    },
+    {
+      "file": "091990_배당락_search.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 2666,
+      "sha256": "f9713289a384b5c6ea537f71a7e9389c9a4f9f268d341d7f264c4a6ffbfcf6cb",
+      "source": "https://kind.krx.co.kr/disclosure/details.do"
+    },
+    {
+      "file": "091990_추가상장_search.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 2672,
+      "sha256": "ac805c08693e20465981eb0a5d72f9ebd0828791674301e31d03ed8092361296",
+      "source": "https://kind.krx.co.kr/disclosure/details.do"
+    },
+    {
+      "file": "20211228000729_viewer.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 24387,
+      "sha256": "7f714752a4ec7dd332cbf945ac908612f7b9693027bc0d5d91fd34df371594ad",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchInitInfo&acptNo=20211228000729"
+    },
+    {
+      "file": "20211228000729_path.html",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 968,
+      "sha256": "11474f58a58ed7bbe2c53e369bb9824dddc7e4fd7abb4ecc0bca360e53f2306d",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchContents&docNo=20211228003660"
+    },
+    {
+      "file": "20211228000729_body.html",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 3720,
+      "sha256": "35a37fb513905554d59ac6321c2018740fd219976118238ce7a525e7aa027e3d",
+      "source": "https://kind.krx.co.kr/external/2021/12/28/000729/20211228003660/99311.htm"
+    },
+    {
+      "file": "20220419000072_viewer.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 24336,
+      "sha256": "a06379f57efbdb2b8dc38fdf45912a4b6fa0c6c49281be0a6b8b8406992476fc",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchInitInfo&acptNo=20220419000072"
+    },
+    {
+      "file": "20220419000072_path.html",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 968,
+      "sha256": "cd619f52dc5a93d7f98b6f4bd316fc9a4ccc5d5990173712052032adedf48350",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchContents&docNo=20220419000140"
+    },
+    {
+      "file": "20220419000072_body.html",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 658,
+      "sha256": "db253440ca66e8364d4326c58813d8865ee3a749f07734719afc7b85a902107a",
+      "source": "https://kind.krx.co.kr/external/2022/04/19/000072/20220419000140/68154.htm"
+    },
+    {
+      "file": "20211228000767_viewer.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 24423,
+      "sha256": "79060eea71b0b89ef62e9d85f50b0731ad0436bf11ccc87516a8b7b50887a7af",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchInitInfo&acptNo=20211228000767"
+    },
+    {
+      "file": "20211228000767_path.html",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 968,
+      "sha256": "f2635d5ff9670cf30555a53a50e853d9106aaa6450f452630a61711508a7e364",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchContents&docNo=20211228002342"
+    },
+    {
+      "file": "20211228000767_body.html",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 3295,
+      "sha256": "cd5167157890d148e63a180562034b78add77f23dedad571ee0a3ecdfc2fbbee",
+      "source": "https://kind.krx.co.kr/external/2021/12/28/000767/20211228002342/70767.htm"
+    },
+    {
+      "file": "20220419000500_viewer.html",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 24432,
+      "sha256": "a785cfdade04de33017f2fac0d9a2de7873d53bfafc9a06baf42bd2903cd49bd",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchInitInfo&acptNo=20220419000500"
+    },
+    {
+      "file": "20220419000500_path.html",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 968,
+      "sha256": "6d5ac83d8faf36daf9795a3522437074034771bae786cb25bef82e2c6d817551",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchContents&docNo=20220419001278"
+    },
+    {
+      "file": "20220419000500_body.html",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 6686,
+      "sha256": "fe6e8d25306c7bea10fdaaf624ca115f2e60ad7e50213635f33ddc909c009766",
+      "source": "https://kind.krx.co.kr/external/2022/04/19/000500/20220419001278/70791.htm"
+    }
+  ],
+  "candidates": [
+    {
+      "code": "068270",
+      "report": {
+        "corp_code": "00413046",
+        "corp_name": "셀트리온",
+        "stock_code": "068270",
+        "corp_cls": "Y",
+        "report_nm": "주식배당결정",
+        "rcept_no": "20211217800219",
+        "flr_nm": "셀트리온",
+        "rcept_dt": "20211217",
+        "rm": "유"
+      }
+    },
+    {
+      "code": "068270",
+      "report": {
+        "corp_code": "00413046",
+        "corp_name": "셀트리온",
+        "stock_code": "068270",
+        "corp_cls": "Y",
+        "report_nm": "정기주주총회결과",
+        "rcept_no": "20220325801692",
+        "flr_nm": "셀트리온",
+        "rcept_dt": "20220325",
+        "rm": "유"
+      }
+    },
+    {
+      "code": "091990",
+      "report": {
+        "corp_code": "00554024",
+        "corp_name": "셀트리온헬스케어",
+        "stock_code": "091990",
+        "corp_cls": "E",
+        "report_nm": "주식배당결정",
+        "rcept_no": "20211217900217",
+        "flr_nm": "셀트리온헬스케어",
+        "rcept_dt": "20211217",
+        "rm": "코"
+      }
+    },
+    {
+      "code": "091990",
+      "report": {
+        "corp_code": "00554024",
+        "corp_name": "셀트리온헬스케어",
+        "stock_code": "091990",
+        "corp_cls": "E",
+        "report_nm": "정기주주총회결과",
+        "rcept_no": "20220325901111",
+        "flr_nm": "셀트리온헬스케어",
+        "rcept_dt": "20220325",
+        "rm": "코"
+      }
+    },
+    {
+      "code": "068270",
+      "receipt": "20211228000729",
+      "row": " \r\n\t\t\t\t 1 \r\n\t\t\t\t 2021-12-28 16:59 \r\n\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t     셀트리온         \r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t  배당락 기준가격 안내  \r\n\t\t\t\t 유가증권시장본부 \r\n\t\r\n\t\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\t  공시차트  \r\n\t\t\t\t\t  주가차트  \r\n\t\t\t\t\r\n\t\t\t\t \r\n\t\t\t\r\n\t\t\t "
+    },
+    {
+      "code": "068270",
+      "receipt": "20220419000072",
+      "row": " \r\n\t\t\t\t 1 \r\n\t\t\t\t 2022-04-19 16:47 \r\n\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t     셀트리온         \r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t  추가상장(주식배당)  \r\n\t\t\t\t 유가증권시장본부 \r\n\t\r\n\t\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\t  공시차트  \r\n\t\t\t\t\t  주가차트  \r\n\t\t\t\t\r\n\t\t\t\t \r\n\t\t\t\r\n\t\t\t "
+    },
+    {
+      "code": "091990",
+      "receipt": "20211228000767",
+      "row": " \r\n\t\t\t\t 1 \r\n\t\t\t\t 2021-12-28 17:11 \r\n\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t     셀트리온헬스케어     \r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t  배당락(주식배당)  \r\n\t\t\t\t 코스닥시장본부 \r\n\t\r\n\t\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t \r\n\t\t\t\r\n\t\t\t "
+    },
+    {
+      "code": "091990",
+      "receipt": "20220419000500",
+      "row": " \r\n\t\t\t\t 1 \r\n\t\t\t\t 2022-04-19 16:47 \r\n\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t     셀트리온헬스케어     \r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t  추가상장(주식배당)  \r\n\t\t\t\t 코스닥시장본부 \r\n\t\r\n\t\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t \r\n\t\t\t\r\n\t\t\t "
+    }
+  ],
+  "errors": [],
+  "investment_approved": false
+}

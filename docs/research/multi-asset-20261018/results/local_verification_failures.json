@@ -1,0 +1,24 @@
+{
+  "holiday_oracle": {
+    "exit_code": 1,
+    "error": "KeyError: Timestamp('2022-01-31 00:00:00')",
+    "recovery": "Independent next OBSERVED session search; original signal unchanged; recovered306book-days PASS"
+  },
+  "browser": {
+    "exit_code": 1,
+    "error": "SIGTRAP; setsockopt Operation not permitted",
+    "status": "UNVERIFIED_LOCAL_SANDBOX",
+    "resolution": "Actual CI browser separately required"
+  },
+  "obsolete_manifest": {
+    "exit_code": 1,
+    "error": "AssertionError: config/kr_corporate_actions.csv",
+    "reason": "Attempted Stage15 whole-code manifest; exactly727files match and3 authorized code/registry files evolved in earlier stages",
+    "different": [
+      "config/kr_corporate_actions.csv",
+      "scripts/corporate_action_registry.py",
+      "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py"
+    ],
+    "resolution": "Use already established Stage16 preservation owner/prefix pins; do not rebase old manifest"
+  }
+}

@@ -1,0 +1,12 @@
+test_all_ten_deciles_use_same_deferred_engine_and_cost_owner (__main__.Scheduling.test_all_ten_deciles_use_same_deferred_engine_and_cost_owner) ... ok
+test_default_reject_retains_original_halt_failure (__main__.Scheduling.test_default_reject_retains_original_halt_failure) ... ok
+test_delayed_split_sale_independent_gross_net_quantity_cash (__main__.Scheduling.test_delayed_split_sale_independent_gross_net_quantity_cash) ... ok
+test_no_early_fill_and_entire_order_waits_for_target (__main__.Scheduling.test_no_early_fill_and_entire_order_waits_for_target) ... ok
+test_no_missing_hold_price_fill_or_ordinary_return_waiver (__main__.Scheduling.test_no_missing_hold_price_fill_or_ordinary_return_waiver) ... ok
+test_unfilled_end_and_overlap_fail_instead_of_dropping (__main__.Scheduling.test_unfilled_end_and_overlap_fail_instead_of_dropping) ... ok
+test_unobserved_liquidity_shorts_and_illiquid_action_books_rejected (__main__.Scheduling.test_unobserved_liquidity_shorts_and_illiquid_action_books_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.651s
+
+OK

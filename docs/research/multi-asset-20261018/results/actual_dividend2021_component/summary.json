@@ -1,0 +1,73 @@
+{
+  "status": "PASS_TWO_NEW_DIVIDENDS_ACTUAL_PRICE_MODEL_ACCOUNTING",
+  "events": 2,
+  "sessions": 102,
+  "book_days": 306,
+  "max_nav_error_currency": 6.51925802230835e-09,
+  "tolerance_currency": 1e-05,
+  "source_fact_sha256": "fe70cf914942398a3e8b97d60adcebbe429f363bc19fcfdc16fb9c6e6986df16",
+  "source_assertions": [
+    {
+      "file": "20211217800219.zip.b64",
+      "raw_sha256": "bb094f1e6b9c2a0459be96ddce7a026f034f310bff5cd3a78c34532b9e335a17",
+      "format": "CP949 HTML despite XML suffix; not forced XML",
+      "members": [
+        {
+          "name": "20211217800219.xml",
+          "bytes": 6881,
+          "sha256": "0b4f3e874c4b59ba0712ecb6e17fbc20b5edf185011e64617b688207540aca20",
+          "format": "HTML",
+          "strict_xml_valid": false,
+          "strict_xml_error": "mismatched tag: line 73, column 3"
+        }
+      ]
+    },
+    {
+      "file": "20220325801692.zip.b64",
+      "raw_sha256": "d584e083c52795387b25bc926dd52094279cc51bd47ab9e6e7c8b3c7d17e5232",
+      "format": "CP949 HTML despite XML suffix; not forced XML",
+      "members": [
+        {
+          "name": "20220325801692.xml",
+          "bytes": 35817,
+          "sha256": "361c8cb3cada0f8860b77e4bc7d4157bb7540496dd123ab59e8092d0c5cbb0a2",
+          "format": "HTML",
+          "strict_xml_valid": false,
+          "strict_xml_error": "mismatched tag: line 73, column 3"
+        }
+      ]
+    },
+    {
+      "file": "20211217900217.zip.b64",
+      "raw_sha256": "56213c1b67864e5b777b875d0bdffbc141fe89ccdf0448e3e2936d133c81a2ad",
+      "format": "CP949 HTML despite XML suffix; not forced XML",
+      "members": [
+        {
+          "name": "20211217900217.xml",
+          "bytes": 6765,
+          "sha256": "15de423dda4d01b6d148625389ce5c84542f66d7d5b5210fc3d3121650ce4364",
+          "format": "HTML",
+          "strict_xml_valid": false,
+          "strict_xml_error": "mismatched tag: line 73, column 3"
+        }
+      ]
+    },
+    {
+      "file": "20220325901111.zip.b64",
+      "raw_sha256": "854cec5b39ea3df559f3aabae04ba7b56e151a0af006e5ecbb6666417a9cca0c",
+      "format": "CP949 HTML despite XML suffix; not forced XML",
+      "members": [
+        {
+          "name": "20220325901111.xml",
+          "bytes": 30449,
+          "sha256": "bc7a72406dcf31a64b563f10a9a72d1283924fe3db6a8b9777ddc1d4254ae85f",
+          "format": "HTML",
+          "strict_xml_valid": false,
+          "strict_xml_error": "mismatched tag: line 73, column 3"
+        }
+      ]
+    }
+  ],
+  "investment_approved": false,
+  "scope": "Explicit continuous liquid-target component; not a full-period factor result, integer broker account, cash distribution total return or tax/PIT certification"
+}

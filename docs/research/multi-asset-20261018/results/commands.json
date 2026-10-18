@@ -1,0 +1,280 @@
+[
+  {
+    "name": "test_event_deferred_execution.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_event_deferred_execution.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 2.473,
+    "log_sha256": "e8ac06ea9ec70dbd918052b13b49a39542ac92cf96f608ddd7f7a863263a2a3e"
+  },
+  {
+    "name": "test_research_spinoff.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_research_spinoff.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.722,
+    "log_sha256": "3fa035fb98023359fdb79213402dd7e60ab0bf9afcee55edf359fa629763c907"
+  },
+  {
+    "name": "test_execution_scheduling.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_execution_scheduling.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 1.111,
+    "log_sha256": "d886a1e260c12a960a3c8d6ae31548ecc83d0749f23b82f723230fe7b096b713"
+  },
+  {
+    "name": "test_stock_dividend_execution.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_stock_dividend_execution.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 2.027,
+    "log_sha256": "672c94c956c4d93d5d7de82c20dd9291dc1ddff7b8738fd9f2356c5068d297c9"
+  },
+  {
+    "name": "test_stock_dividend_research.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_stock_dividend_research.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 2.062,
+    "log_sha256": "07eeb87508b475a68754161931b2dd58c57bcc5bc5d65a1fe776a9dfd6eb3e32"
+  },
+  {
+    "name": "test_annual_selected_preparation.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_annual_selected_preparation.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.605,
+    "log_sha256": "1dfac0a0437b8f00b43bf3559cf7fee738c68514330e2f20e4b958d5a9b5a210"
+  },
+  {
+    "name": "test_research_planned_readiness.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_research_planned_readiness.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.611,
+    "log_sha256": "cb9cd6d7f76184938cfde8abbd2d430de507b2acf2b99f8d456c0ffc7a5827ec"
+  },
+  {
+    "name": "test_cash_share_exchange.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_cash_share_exchange.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 6.923,
+    "log_sha256": "d2cdcfd7390fba792697345797c8890e6c9ea159862883a7fa0470bcf12caa19"
+  },
+  {
+    "name": "test_research_workbench.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_research_workbench.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.486,
+    "log_sha256": "d2eb4949132a394779649f61f1985f1d83d2d5e099394809d20fa762ff2d325b"
+  },
+  {
+    "name": "test_krx_technical_factor_adapter.py",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/test_krx_technical_factor_adapter.py',run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.455,
+    "log_sha256": "d02f887afd789dbf5a7584c44ab4dfc5c1440fc042f2f605aea2e80deec78e82"
+  },
+  {
+    "name": "generated_contracts",
+    "args": [
+      "-c",
+      "import runpy,sys;sys.path.insert(0,'scripts');sys.argv=['scripts/export_strategy_dsl_contract.py','--check'];runpy.run_path(sys.argv[0],run_name='__main__')"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.389,
+    "log_sha256": "bdb90d50bd169f5de18f6a858635f7da08647763aaab17ca8790e005dbaddd8a"
+  },
+  {
+    "name": "event_contract_original_full2019_2020",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--report-periods",
+      "config/reports/research_2019_2020.json",
+      "--output-dir",
+      "/workspace/research-multi-asset-20261018/final-local-v3/event_contract_original_full2019_2020",
+      "--strategy",
+      "/workspace/research-multi-asset-20261018/final-local-v3/component_original.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 42.473,
+    "log_sha256": "9fec2f269eb2d88aacf717becb911792aedf9f1c90bab7148632ee6976834002"
+  },
+  {
+    "name": "korean_original_full2019_2020",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--report-periods",
+      "config/reports/research_2019_2020.json",
+      "--output-dir",
+      "/workspace/research-multi-asset-20261018/final-local-v3/korean_original_full2019_2020",
+      "--request",
+      "기간:2019-01-01~2020-12-31;시장:코스피·코스닥;필터:시가총액>=10조원;팩터:시가총액 낮은;포트폴리오:10분위;리밸런싱:4월말;체결:1거래일뒤종가;비용:수수료1.5bp,매도세15bp,스프레드3bp,슬리피지5bp;벤치마크:코스피",
+      "--research-model-from",
+      "/workspace/research-multi-asset-20261018/final-local-v3/component_original.json",
+      "--execution-contract-from",
+      "/workspace/research-multi-asset-20261018/final-local-v3/component_original.json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 41.504,
+    "log_sha256": "8f25ef45bb0b3f70a8185ce36a998ecb3747f7af48db809e5a2bd9aabdca3d7b"
+  },
+  {
+    "name": "projected_momentum_full2020",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/research-multi-asset-20261018/final-local-v3/projection_momentum.json",
+      "--report-periods",
+      "config/reports/research_2019_2020.json",
+      "--output-dir",
+      "/workspace/research-multi-asset-20261018/final-local-v3/projected_momentum_full2020"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 16.295,
+    "log_sha256": "0acef41c1c27d562a1dcb81ae872f8477b8cf7ce38531313649997a358c8952c"
+  },
+  {
+    "name": "research_size_deciles_2019_2025_event_deferred_v1",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/quant-marcap-runner/config/strategies/research_size_deciles_2019_2025_event_deferred_v1.json",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/research-multi-asset-20261018/final-local-v3/research_size_deciles_2019_2025_event_deferred_v1"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "seconds": 15.576,
+    "log_sha256": "fcf80d456efca2534e4c6abc007cb1113405d2fc5180b2415665236cbe17353c"
+  },
+  {
+    "name": "research_broad_size_deciles_2001_2025_v1",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/quant-marcap-runner/config/strategies/research_broad_size_deciles_2001_2025_v1.json",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/research-multi-asset-20261018/final-local-v3/research_broad_size_deciles_2001_2025_v1"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "seconds": 103.677,
+    "log_sha256": "c0d759c24f67245f237edc7fddab74438a8c8fbdf4617174356e54d00ed8111e"
+  },
+  {
+    "name": "research_broad_size_top10_2001_2025_v1",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/quant-marcap-runner/config/strategies/research_broad_size_top10_2001_2025_v1.json",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/research-multi-asset-20261018/final-local-v3/research_broad_size_top10_2001_2025_v1"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "seconds": 44.106,
+    "log_sha256": "908303f41f3f11dc06316ebf82c0e37531fbd18f304c96d79ee616a229ea4dd3"
+  },
+  {
+    "name": "research_broad_momentum_top10_2001_2025_v1",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/quant-marcap-runner/config/strategies/research_broad_momentum_top10_2001_2025_v1.json",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/research-multi-asset-20261018/final-local-v3/research_broad_momentum_top10_2001_2025_v1"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "seconds": 70.862,
+    "log_sha256": "aa27564dc812c24d725b5e7eccba82425ce0d65fd6204a1ccf18e26e3667b746"
+  },
+  {
+    "name": "research_size_deciles_2019_2025_event_deferred_v2",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/quant-marcap-runner/config/strategies/research_size_deciles_2019_2025_event_deferred_v2.json",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/research-multi-asset-20261018/final-local-v3/research_size_deciles_2019_2025_event_deferred_v2"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "seconds": 15.482,
+    "log_sha256": "796093a34c1248a56e9f043dafe7bd597ef26a26d9bb94b0f3fe342c5559dc6c"
+  },
+  {
+    "name": "original_strict_2019_2025",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "config/strategies/research_size_deciles_2019_2025_v1.json",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/research-multi-asset-20261018/final-local-v3/original_strict_2019_2025"
+    ],
+    "exit_code": 3,
+    "expected_exit": 3,
+    "seconds": 14.336,
+    "log_sha256": "7004ce8e5ccc833c2e33a8b2ddd86b1d2faac1364fd0d2214c113607074edb6d"
+  }
+]

@@ -9,6 +9,7 @@ import pandas as pd
 HOME=Path(__file__).resolve().parent;ROOT=HOME.parents[2]
 sys.path[:0]=[str(ROOT/'scripts'),str(HOME),str(HOME.parent/'stage15-research-environment-20261017')]
 from verify_real_spinoff import verify as real_spin
+from verify_div2021 import verify as real_div
 from verify_research_nav import verify as ledger
 from test_research_workbench import REQUEST
 
@@ -28,15 +29,26 @@ def validate(out):
  for name,pin in frozen['files'].items():assert (ROOT/name).stat().st_size==pin['bytes'] and sha(ROOT/name)==pin['sha256'],('FROZEN_EVIDENCE_CHANGED',name)
  declared=json.loads((HOME/'predeclaration.json').read_bytes())
  for pin in declared['strategies']:assert sha(ROOT/pin['path'])==pin['sha256'],('PREDECLARED_INPUT_CHANGED',pin['path'])
+ revision=json.loads((HOME/'source_revision.json').read_bytes())
+ for pin in [revision['parent'],revision['new_fact_file'],revision['original_fact_file_preserved'],*revision['strategies']]:assert sha(ROOT/pin['path'])==pin['sha256']
+ old_spec=json.loads((ROOT/revision['parent']['path']).read_bytes());new_spec=json.loads((ROOT/revision['strategies'][0]['path']).read_bytes())
+ for key in old_spec:
+  if key not in ['strategy_id','name','title','description','metadata','research']:assert old_spec[key]==new_spec[key],('SOURCE_REVISION_CHANGED_RULES',key)
  source_count=0
- for folder in ['evidence','evidence_followup','evidence_quotes']:
-  state=json.loads((HOME/folder/'state.json').read_bytes());assert state['retries']==0 and not state['errors']
+ acquisition_gaps=[]
+ for folder in sorted(p.name for p in HOME.glob('evidence*') if (p/'state.json').is_file()):
+  state=json.loads((HOME/folder/'state.json').read_bytes());assert state['retries']==0
+  if state['errors']:
+   assert folder=='evidence_historical' and state['errors']==[dict(reason='ValueError',detail='NO_RETURNED_CANDIDATES')]
+   acquisition_gaps.append(dict(folder=folder,errors=state['errors'],requests=state['requests'],status='UNVERIFIED_NOT_ABSENCE_PROOF'))
   for pin in state['responses']:
    p=HOME/folder/pin['file'];assert p.stat().st_size==pin['bytes'] and sha(p)==pin['sha256'];source_count+=1
  for name in ['test_event_deferred_execution.py','test_research_spinoff.py','test_execution_scheduling.py','test_stock_dividend_execution.py','test_stock_dividend_research.py','test_annual_selected_preparation.py','test_research_planned_readiness.py','test_cash_share_exchange.py','test_research_workbench.py','test_krx_technical_factor_adapter.py']:
   command(name,['-c',"import runpy,sys;sys.path.insert(0,'scripts');runpy.run_path('scripts/"+name+"',run_name='__main__')"])
  command('generated_contracts',['-c',"import runpy,sys;sys.path.insert(0,'scripts');sys.argv=['scripts/export_strategy_dsl_contract.py','--check'];runpy.run_path(sys.argv[0],run_name='__main__')"])
  real=real_spin(out/'actual_lg_lx_component')
+ skt=real_spin(out/'actual_skt_square_component','017670')
+ dividends=real_div(out/'actual_dividend2021_component')
  # A FULL prior successful two-year multi-stock experiment. Explicit new model
  # must not alter its numeric outputs; not a reduced substitute for2019–2025.
  original=ROOT/'config/strategies/research_size_deciles_2019_2020_v1.json'
@@ -73,7 +85,7 @@ def validate(out):
  # Complete requested periods, all portfolios, original predeclared inputs.
  # Any source/event failure blocks that request; other requests still execute.
  requests=[];incidents=[]
- for pin in declared['strategies']:
+ for pin in declared['strategies']+revision['strategies']:
   path=ROOT/pin['path'];name=path.stem
   command(name,['scripts/research_workbench.py','run','--strategy',str(path),'--report-periods','config/reports/research_continuous_2025.json','--output-dir',str(out/name)],3)
   run=out/name;status=json.loads((run/'run_status.json').read_bytes());audit=json.loads((run/'preflight.json').read_bytes());assert status['status']=='data_gap' and not status['nav_ready'] and not status['report_ready']
@@ -81,7 +93,8 @@ def validate(out):
   requests.append(dict(strategy=name,period=audit['requested_period'],status=status['status'],nav_ready=False,report_ready=False,issue_count=len(audit['issues']),diagnostic_only_count=sum(bool(x.get('diagnostic_only')) for x in audit['issues']),first_blocker=audit['first_blocker'],preflight_sha256=sha(run/'preflight.json'),planned_codes=len(audit['planned_selected_codes']),sessions=audit['observed_sessions'],full_preflight_in_ci_artifact=name+'/preflight.json'))
   if '2019_2025_event' in name:
    assert not any(i['kind']=='held_return_reference_gap' and i['security']=='003550' and i['date']=='2021-05-27' for i in audit['issues']),'LG parent/child not actually reconciled'
-   assert '383800' in audit['observation_codes_with_verified_successors']
+   assert {'383800','402340'}.issubset(audit['observation_codes_with_verified_successors'])
+   assert not any(i['kind']=='held_return_reference_gap' and i['security']=='017670' and i['date']=='2021-11-29' for i in audit['issues'])
  # Prove original strict order remains blocked at LG's original scheduled day.
  command('original_strict_2019_2025',['scripts/research_workbench.py','run','--strategy','config/strategies/research_size_deciles_2019_2025_v1.json','--report-periods','config/reports/research_continuous_2025.json','--output-dir',str(out/'original_strict_2019_2025')],3)
  old=json.loads((out/'original_strict_2019_2025/preflight.json').read_bytes())['first_blocker'];assert (old['kind'],old['security'],old['date'])==('planned_trade_not_tradable','003550','2021-05-03')
@@ -92,8 +105,12 @@ def validate(out):
  trades=pd.read_csv(left/'artifacts/execution_trades.csv');dollar=pd.read_csv(out/'original_independent/independent_daily_ledger.csv')
  totals=dollar.groupby(['portfolio','book'],as_index=False).trading_cost.sum();totals.to_csv(out/'original_trading_cost_totals.csv',index=False)
  turn=trades.groupby(['decile','cost_scenario'],as_index=False)[['buy_turnover','sell_turnover','one_way_turnover','net_buy_turnover','net_sell_turnover']].sum();turn.to_csv(out/'original_turnover_totals.csv',index=False)
+ comparison=[]
+ for label,path in [('original_deciles_2019_2020',left/'report/metrics_CURRENT.csv'),('momentum_top3_2020',out/'projected_momentum_full2020/report/metrics_CURRENT.csv'),('size_top1_2024',HOME.parent/'stage15-research-environment-20261017/results/size2024_metrics_CURRENT.csv'),('size_top1_2019_2025',HOME.parent/'stage16-continuous-research-20261018/results/size2019_2025_metrics_CURRENT.csv'),('size_top1_deferred_2001_2025',HOME.parent/'long-execution-20261018/results/long2001_2025/metrics_CURRENT.csv')]:
+  frame=pd.read_csv(path);frame.insert(0,'experiment',label);frame['metric_owner']='CURRENT only; original values copied without recalculation';frame['scope']='RESEARCH_ONLY; no cash-dividend total return or investment certification';comparison.append(frame)
+ pd.concat(comparison,ignore_index=True).to_csv(out/'available_comparison_CURRENT.csv',index=False)
  write(out/'numeric_regression.json',regression)
- summary=dict(status='PASS_COMMON_IMPLEMENTATION_WITH_FULL_REQUESTS_BLOCKED',investment_approved=False,github_sha=os.getenv('GITHUB_SHA'),ci_run_id=os.getenv('GITHUB_RUN_ID'),python=sys.executable,frozen_evidence_files=len(frozen['files']),new_official_responses=source_count,source_requests_this_validation=0,actual_lg_lx=real,original_two_year_independent=model_ledger,korean_original_nav_targets_metrics_exact=True,technical_projection_numeric_exact=True,original_strict_blocker=old,requested_strategies=requests,commands=commands,limitations=['No full requested multi-security NAV accepted; all source blockers retained','No cash-dividend total returns or distribution-tax/broker-account certification','2026 official holiday/index access demonstrated separately; raw original calendars/index stores not changed','No new collection in final validation'])
+ summary=dict(status='PASS_COMMON_IMPLEMENTATION_WITH_FULL_REQUESTS_BLOCKED',investment_approved=False,github_sha=os.getenv('GITHUB_SHA'),ci_run_id=os.getenv('GITHUB_RUN_ID'),python=sys.executable,frozen_evidence_files=len(frozen['files']),new_official_responses=source_count,source_requests_this_validation=0,actual_lg_lx=real,actual_skt_square=skt,actual_2021_dividends=dividends,source_acquisition_gaps=acquisition_gaps,original_two_year_independent=model_ledger,korean_original_nav_targets_metrics_exact=True,technical_projection_numeric_exact=True,original_strict_blocker=old,requested_strategies=requests,commands=commands,limitations=['No full requested multi-security NAV accepted; all source blockers retained','No cash-dividend total returns or distribution-tax/broker-account certification','2026 official holiday/index access demonstrated separately; raw original calendars/index stores not changed','No new collection in final validation'])
  write(out/'summary.json',summary);print(json.dumps({k:v for k,v in summary.items() if k!='commands'},ensure_ascii=False));return summary
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a=p.parse_args();validate(a.output)

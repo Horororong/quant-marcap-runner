@@ -1,0 +1,34 @@
+{
+  "parent": "017670",
+  "child": "402340",
+  "event_date": "2021-11-29",
+  "status": "PASS_ACTUAL_PRICE_RESEARCH_COMPONENT",
+  "sessions": 32,
+  "book_days": 96,
+  "max_error_currency": 5.587935447692871e-09,
+  "tolerance_currency": 1e-05,
+  "source_sha256": "7bc8bb41509a7a568b54fdd82d4fe3205df89436b01b8915c3a3c391918f5fe7",
+  "fact_catalog_sha256": "2f9424d80b22451fead5ea38691158d676e4e54cb9b460f66afeb90ea9da7eb6",
+  "official_price_checks": [
+    {
+      "security": "017670",
+      "reference": 53400.0,
+      "close": 57900.0,
+      "exchange_return": 0.0843,
+      "difference_bps": 0.3033707865159052
+    },
+    {
+      "security": "402340",
+      "reference": 82000.0,
+      "close": 76000.0,
+      "exchange_return": -0.0732,
+      "difference_bps": 0.2926829268297404
+    }
+  ],
+  "investment_approved": false,
+  "scope": "Two-leg simultaneous-listing continuous-quantity component with another real security. Not a full-period factor strategy, integer broker account, dividend total return or investment PIT certification.",
+  "pending_sale_no_cash_advance": true,
+  "entire_order_waits_for_both_legs": true,
+  "original_fixed_lag_unchanged": true,
+  "all_ten_buckets_and_top_n_common_results_exact": true
+}
