@@ -1,3 +1,7 @@
+## 금융 정확성 우선 인계 (2026-10-18)
+
+[재무 백필 수정 보고서](docs/audits/backfill-accuracy-20261018/report.md)와 [재현](docs/audits/backfill-accuracy-20261018/reproduction.md)을 먼저 읽는다. main203842...는 여전히v5로누적71118건; 연구수정미배포. 기존32금액은v8.1에서28PASS/4UNVERIFIED, 독립48은20PASS/28UNVERIFIED이며main에서맞던14개재추출공백이있어운영배포금지다. 518/64/원문60과기존감사보존. 최소20접수번호shadow검토와3998점검800후보를분리; 운영재처리·격리초기화·자동설정변경없음. 신규장기다종목완주0,투자PIT0/6유지. 최종원격SHA/CI는실제GitHub기록을확인한다. 다음우선은14정상값의일반형식지원과별도개발/신규독립표본,유한migration체크포인트다.
+
 ## Multi-security research continuation (2026-10-18)
 
 Read [multi-security current report](docs/research/multi-asset-20261018/report.md) and [usage](docs/research/multi-asset-20261018/README.md) first. Common event-aware pending orders and two-leg demerger accounting are implemented. The complete NEW multi-security2019–2025/2001–2025 requests are still blocked; original successful numeric results are preserved. Fresh actual CI and first_blocker remain authoritative; no investment PIT or cash-dividend total-return approval.

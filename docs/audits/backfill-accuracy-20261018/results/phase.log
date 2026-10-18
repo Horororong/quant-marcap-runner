@@ -1,0 +1,10 @@
+test_deadline_persists_skip_and_does_not_invoke_modern (test_fast_backfill_phase_integration.Wrapper.test_deadline_persists_skip_and_does_not_invoke_modern) ... ok
+test_service_outage_fails_after_durable_status (test_fast_backfill_phase_integration.Wrapper.test_service_outage_fails_after_durable_status) ... ok
+test_natural_completion_still_allows_existing_modern_queue (test_fast_backfill_phase_policy.Phase.test_natural_completion_still_allows_existing_modern_queue) ... ok
+test_other_stop_conditions_and_unknown_are_closed (test_fast_backfill_phase_policy.Phase.test_other_stop_conditions_and_unknown_are_closed) ... ok
+test_previous_timeout_configuration_cannot_start_fresh_phase (test_fast_backfill_phase_policy.Phase.test_previous_timeout_configuration_cannot_start_fresh_phase) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.018s
+
+OK

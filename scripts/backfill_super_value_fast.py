@@ -327,6 +327,8 @@ def main() -> None:
         raise RuntimeError("DART authentication/service failure; saved progress preserved")
     if legacy_result.get("legacy_stop_reason") == "SERVICE_MAINTENANCE_800":
         raise RuntimeError("DART service maintenance (800); saved progress preserved; receipts deferred, not quarantined")
+    if str(legacy_result.get("legacy_stop_reason", "")).startswith("TRANSIENT_"):
+        raise RuntimeError("DART transient service/transport outage; saved progress preserved; receipts deferred")
     if modern_failure is not None:
         raise RuntimeError(f"Modern DART phase failed ({type(modern_failure).__name__}); "
                            "legacy progress and current failure status preserved") from None

@@ -23,7 +23,7 @@ try:
     from scripts.legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
     from scripts.legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION, needs_encoding_recheck
     from scripts.legacy_native_financials import parse_native, select_verified, PARSER_VERSION
-    from scripts.dart_service_status import defer_maintenance
+    from scripts.dart_service_status import defer_maintenance, defer_http_transient
 except ModuleNotFoundError as error:
     if error.name != "scripts":
         raise
@@ -32,7 +32,7 @@ except ModuleNotFoundError as error:
     from legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
     from legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION, needs_encoding_recheck
     from legacy_native_financials import parse_native, select_verified, PARSER_VERSION
-    from dart_service_status import defer_maintenance
+    from dart_service_status import defer_maintenance, defer_http_transient
 
 
 API_KEY = os.getenv("DART_API_KEY", "").strip()
@@ -576,6 +576,9 @@ def fetch_document(rcept_no: str) -> tuple[bytes, str]:
             if RUN_CONTROL is not None:
                 RUN_CONTROL.before_request()
             r=requests.get(f"{BASE}/document.xml",params={"crtfc_key":API_KEY,"rcept_no":rcept_no},timeout=90)
+            if getattr(r, 'status_code', None) == 429:
+                raise RateLimitExceeded('HTTP429; rate limit')
+            defer_http_transient(getattr(r, 'status_code', None), RUN_CONTROL, CollectionPaused)
             r.raise_for_status()
             if r.content[:2] != b"PK":
                 defer_maintenance(r.content, RUN_CONTROL, CollectionPaused)
@@ -597,7 +600,12 @@ def fetch_document(rcept_no: str) -> tuple[bytes, str]:
             last=e
             if attempt<3:
                 time.sleep(2*(attempt+1))
-    raise RuntimeError(f"document fetch failed {last!r}")
+    # The existing four bounded communication attempts are exhausted. Preserve
+    # the receipt for a later scheduled run; do not consume document-error
+    # attempts or include an exception URL/API key in its status text.
+    if RUN_CONTROL is not None:
+        RUN_CONTROL.stop('TRANSIENT_TRANSPORT_EXHAUSTED')
+    raise CollectionPaused('TRANSIENT_TRANSPORT_EXHAUSTED; ' + type(last).__name__)
 
 
 def preserve_document(blob: bytes, receipt: str, sha: str) -> None:

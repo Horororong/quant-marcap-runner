@@ -1,0 +1,21 @@
+sample,receipt,original_stratum,revised_amounts,remaining,reason
+A01,20090928000006,PARSED_4F,4PASS,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,Rounded summary equity differed from exact primary; metadata end-month day1 wrong; not a1000x/sign error.
+A02,20090814001647,PARSED_4F,4PASS,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,Current3month IS revenue/profit mislabeledH1/YTD; OCF cumulative. New explicitYTD cells.
+A03,20090814001572,PARSED_4F,4PASS,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,"Amounts already correct;28period-end failures overlap same32controls. Corrected filed body retained, fullchainUNVERIFIED."
+A04,20091113000204,PARSED_4F,4PASS,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,"Quarter revenue and rounded note profit; two currentOFS summary entries mislabeledCFS. NewOFS primary; fakeCFS withheld, not certified."
+A05,20090925000304,PARSED_PARTIAL,4PASS,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,Missing annotated revenue and positive profit reversed; short fiscal year BUSINESS REPORT must remainFY.
+A06,20090910000055,PARSED_PARTIAL,4PASS,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,Quarter/YTD revenue mixed and annotated profit omitted. Explicit filed body and primary IS retained.
+A07,20091113000302,PARSED_PARTIAL,4PASS,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,Equity1000x; positive quarter profit negated and used instead ofYTD; revenue note alias omitted.
+A08,20090824000170,PARSED_PARTIAL,UNVERIFIED,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,"RMBthousand, no provedKRW conversion; remainUNVERIFIED; fiscal labels/quarter contract not certified."
+A09,20090904000055,NO_DOCUMENT,UNVERIFIED,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,"PreservedAPI014, no original. Public-source absence not certified."
+A10,20090825000210,NO_DOCUMENT,UNVERIFIED,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,"PreservedAPI014, no original. Public-source absence not certified."
+A11,20090819000149,NO_DOCUMENT,UNVERIFIED,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,"PreservedAPI014, no original. Public-source absence not certified."
+A12,20090814001826,NO_DOCUMENT,UNVERIFIED,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,"PreservedAPI014, no original. Public-source absence not certified."
+A13,20090821000040,SOURCE_GAP,UNVERIFIED,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,"Original financial tables exist but invalidXML token; extraction remains blocked, not absence."
+A14,20090928000375,SOURCE_GAP,UNVERIFIED,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,Original financial tables exist but invalidXML/mismatched tags in primary/attachments; structural candidates withheld.
+A15,20090909000078,SOURCE_GAP,UNVERIFIED,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,Original financial tables exist but invalidXML token; structural candidates withheld.
+A16,20090814001689,SOURCE_GAP,UNVERIFIED,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,Original financial tables exist but mismatched closing tag; structural candidates withheld.
+A17,20050131000301,QUARANTINED_ERROR,UNVERIFIED,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,ExplicitOpenDART800 maintenance misclassified permanentERROR; revised transport test defers; existing quarantine not mutated.
+A18,20050107000198,QUARANTINED_ERROR,UNVERIFIED,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,ExplicitOpenDART800 maintenance misclassified permanentERROR; revised transport test defers; existing quarantine not mutated.
+A19,20041115000702,QUARANTINED_ERROR,UNVERIFIED,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,ExplicitOpenDART800 maintenance misclassified permanentERROR; revised transport test defers; existing quarantine not mutated.
+A20,20050429000672,QUARANTINED_ERROR,UNVERIFIED,PIT/identity/correctionUNVERIFIED for all; mainoriginalaudit unchanged,ExplicitOpenDART800 maintenance misclassified permanentERROR; revised transport test defers; existing quarantine not mutated.

@@ -1,0 +1,67 @@
+{
+  "engine_modified": false,
+  "new_multi_completed": false,
+  "existing_full_request_results": "docs/research/long-multi-backfill-20261018/results/requested_comparison.json",
+  "rights_api_status": "Previous401 retained as service access problem; no retry of identical endpoint",
+  "official_alternatives": [
+    {
+      "url": "https://data.krx.co.kr/contents/MDC/STAT/issue/MDCSTAT200.jsp",
+      "location": "footnote4,line32",
+      "finding": "OfficialIPOpage explicitly says recent10years; cannot prove2001 exchange ratio or settlement"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1263043/000119312515160206/d911043d20f.htm",
+      "location": "Information on the Company/history; issuer filing search excerpt",
+      "finding": "Retrospective formation2001-09-01 by stocktransfer and group listing2001-09-10. Ratio, original-015580 cancellation/effective rights, actual delivery not proved; no registry update."
+    },
+    {
+      "url": "https://www.shinhangroup.com/en/about/group/history4",
+      "location": "Private financial holding company history2001-2009",
+      "finding": "Issuerhistory candidate, not share-exchange contract/ratio or price evidence."
+    }
+  ],
+  "required": [
+    {
+      "code": "207940",
+      "date": "2022-02-28",
+      "fields": [
+        "rights certificateISIN/code",
+        "actualMar23-29executedprice/volume",
+        "payment/fundingorrightsdispositionpolicy",
+        "actualadditional-listingtradability"
+      ],
+      "institution": "KRXrights certificate daily-trade service approval or official Marketplace historical extract; KSD/issuer settled listing"
+    },
+    {
+      "code": "015580",
+      "date": "2001-09-10",
+      "fields": [
+        "stocktransfer ratio",
+        "effective entitlement/cancellation",
+        "successorcode/listing",
+        "fractioncash settlement/tradability"
+      ],
+      "institution": "KRXhistoricalcorporateaction notice + Shinhan issuer original stocktransferplan + KSD"
+    },
+    {
+      "code": "037950",
+      "date": "2001-05-08",
+      "fields": [
+        "actualex-actionnotice",
+        "officialreferenceprice",
+        "rightsratio/effectivedate"
+      ],
+      "institution": "KRXKOSDAQ historical notices or issuer original periodic/event disclosure"
+    },
+    {
+      "code": "012170",
+      "date": "2001-06-21",
+      "fields": [
+        "originalprice/reference",
+        "actionclassification",
+        "ratio/settlement"
+      ],
+      "institution": "KRXhistoricaltrading/corporateaction archive"
+    }
+  ]
+}

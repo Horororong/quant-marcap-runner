@@ -1,0 +1,128 @@
+diff --git a/scripts/backfill_dart_legacy_2000_2014.py b/scripts/backfill_dart_legacy_2000_2014.py
+--- a/scripts/backfill_dart_legacy_2000_2014.py
++++ b/scripts/backfill_dart_legacy_2000_2014.py
+@@ -21,6 +21,7 @@
+     from scripts.legacy_financial_fields import (ALIASES, METRIC_STATEMENTS, UNIT_MULTIPLIERS, norm_account, parse_number, choose_metric)
+     from scripts.csv_storage import atomic_write_if_changed
+     from scripts.legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
++    from scripts.dart_service_status import defer_maintenance, defer_http_transient
+     from scripts.legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION, needs_encoding_recheck
+ except ModuleNotFoundError as error:
+     if error.name != "scripts":
+@@ -28,6 +29,7 @@
+     from legacy_financial_fields import (ALIASES, METRIC_STATEMENTS, UNIT_MULTIPLIERS, norm_account, parse_number, choose_metric)
+     from csv_storage import atomic_write_if_changed
+     from legacy_backfill_runtime import CollectionControl, CollectionPaused, collect_bounded
++    from dart_service_status import defer_maintenance, defer_http_transient
+     from legacy_document_quality import inspect_member, empty_parse_status, DIAGNOSTIC_VERSION, needs_encoding_recheck
+ 
+ warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
+@@ -648,8 +650,12 @@
+             if RUN_CONTROL is not None:
+                 RUN_CONTROL.before_request()
+             r=requests.get(f"{BASE}/document.xml",params={"crtfc_key":API_KEY,"rcept_no":rcept_no},timeout=90)
++            if getattr(r, "status_code", None) == 429:
++                raise RateLimitExceeded("HTTP429; rate limit")
++            defer_http_transient(getattr(r, "status_code", None), RUN_CONTROL, CollectionPaused)
+             r.raise_for_status()
+             if r.content[:2] != b"PK":
++                defer_maintenance(r.content, RUN_CONTROL, CollectionPaused)
+                 txt=r.text[:500]
+                 status_match = re.search(r"<status>\s*(\d+)\s*</status>", txt)
+                 if status_match and status_match.group(1) in {"010", "011", "012", "901"}:
+@@ -668,7 +674,9 @@
+             last=e
+             if attempt<3:
+                 time.sleep(2*(attempt+1))
+-    raise RuntimeError(f"document fetch failed {last!r}")
++    if RUN_CONTROL is not None:
++        RUN_CONTROL.stop("TRANSIENT_TRANSPORT_EXHAUSTED")
++    raise CollectionPaused("TRANSIENT_TRANSPORT_EXHAUSTED; " + type(last).__name__)
+ 
+ 
+ def preserve_document(blob: bytes, receipt: str, sha: str) -> None:
+diff --git a/scripts/backfill_super_value_fast.py b/scripts/backfill_super_value_fast.py
+--- a/scripts/backfill_super_value_fast.py
++++ b/scripts/backfill_super_value_fast.py
+@@ -287,8 +287,15 @@
+     # Legacy gets its bounded quota first. Never continue API calls after 020.
+     modern_failure = None
+     modern_result = {"modern_run_tasks": 0, "modern_skipped": True}
+-    if (MODERN_LIMIT > 0 and not legacy_result.get("legacy_rate_limited")
+-            and legacy_result.get("legacy_stop_reason") != "FATAL_API"):
++    try:
++        from scripts.fast_backfill_phase_policy import modern_phase_decision
++    except ModuleNotFoundError as error:
++        if error.name != "scripts":
++            raise
++        from fast_backfill_phase_policy import modern_phase_decision
++    start_modern, reason = modern_phase_decision(MODERN_LIMIT, legacy_result)
++    modern_result["modern_phase_decision"] = reason
++    if start_modern:
+         try:
+             modern_result = modern_fast()
+         except Exception as exc:
+@@ -312,6 +319,8 @@
+     print(pd.DataFrame([row]).to_string(index=False), flush=True)
+     if legacy_result.get("legacy_stop_reason") == "FATAL_API":
+         raise RuntimeError("DART authentication/service failure; saved progress preserved")
++    if legacy_result.get("legacy_stop_reason") == "SERVICE_MAINTENANCE_800" or str(legacy_result.get("legacy_stop_reason", "")).startswith("TRANSIENT_"):
++        raise RuntimeError("DART temporary service outage; progress saved; receipt deferred")
+     if modern_failure is not None:
+         raise RuntimeError(f"Modern DART phase failed ({type(modern_failure).__name__}); "
+                            "legacy progress and current failure status preserved") from None
+diff --git a/scripts/dart_service_status.py b/scripts/dart_service_status.py
+new file mode 100644
+--- /dev/null
++++ b/scripts/dart_service_status.py
+@@ -0,0 +1,33 @@
++"""Classify an explicit OpenDART XML service error, never a financial fact.
++
++800 is system maintenance: stop this batch, preserve existing attempts and
++defer the receipt. No in-process retry or historic quarantine reset.
++Malformed/HTML responses are not silently classified as maintenance.
++"""
++import xml.etree.ElementTree as ET
++
++def service_status(content):
++    try:
++        root = ET.fromstring(content)
++    except (ET.ParseError, TypeError, ValueError):
++        return None
++    if root.tag != 'result':
++        return None
++    status = root.findtext('status')
++    return status.strip() if status is not None else None
++
++def defer_maintenance(content, control, paused_error):
++    if service_status(content) != '800':
++        return
++    if control is not None:
++        control.stop('SERVICE_MAINTENANCE_800')
++    raise paused_error('DART status=800; service maintenance; receipt deferred')
++
++def defer_http_transient(status, control, paused_error):
++    """A bounded transport/service outage is never a permanent document defect."""
++    if status not in {408, 500, 502, 503, 504}:
++        return
++    reason = 'TRANSIENT_HTTP_' + str(status)
++    if control is not None:
++        control.stop(reason)
++    raise paused_error(reason + '; receipt deferred')
+diff --git a/scripts/fast_backfill_phase_policy.py b/scripts/fast_backfill_phase_policy.py
+new file mode 100644
+--- /dev/null
++++ b/scripts/fast_backfill_phase_policy.py
+@@ -0,0 +1,12 @@
++"""Start another API phase only after a naturally completed legacy phase.
++
++A local deadline/request/signal stop is NOT spare budget. This policy never
++changes schedules, quotas, persisted task states or parser certification.
++"""
++
++def modern_phase_decision(limit,legacy):
++ if limit<=0:return False,'DISABLED_BY_BATCH_LIMIT'
++ if legacy.get('legacy_rate_limited'):return False,'LEGACY_RATE_LIMIT'
++ reason=legacy.get('legacy_stop_reason')
++ if reason!='BATCH_COMPLETE':return False,'LEGACY_STOP_'+str(reason or 'UNKNOWN')
++ return True,'LEGACY_BATCH_COMPLETE'

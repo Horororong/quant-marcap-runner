@@ -1,0 +1,202 @@
+[
+  {
+    "name": "runtime",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/financial-repair/runtime/scripts/sandbox_runtime.py",
+      "verify"
+    ],
+    "exit_code": 0,
+    "log": "runtime.log"
+  },
+  {
+    "name": "financial_units",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_financial*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "financial_units.log"
+  },
+  {
+    "name": "service",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_dart_service_status.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "service.log"
+  },
+  {
+    "name": "phase",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_fast_backfill_phase*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "phase.log"
+  },
+  {
+    "name": "source_quality",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_legacy_document_quality.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "source_quality.log"
+  },
+  {
+    "name": "pinned_v7",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/quant-marcap-runner/docs/audits/backfill-accuracy-20261018/replay.py",
+      "--before",
+      "--cohort",
+      "development",
+      "--output",
+      "/workspace/backfill-accuracy-20261018/final-validation/v7"
+    ],
+    "exit_code": 0,
+    "log": "pinned_v7.log"
+  },
+  {
+    "name": "reextract_v81",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/quant-marcap-runner/docs/audits/backfill-accuracy-20261018/replay.py",
+      "--output",
+      "/workspace/backfill-accuracy-20261018/final-validation/v81"
+    ],
+    "exit_code": 0,
+    "log": "reextract_v81.log"
+  },
+  {
+    "name": "independent_controls",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/quant-marcap-runner/docs/audits/backfill-accuracy-20261018/compare.py",
+      "--replay",
+      "/workspace/backfill-accuracy-20261018/final-validation/v81",
+      "--output",
+      "/workspace/backfill-accuracy-20261018/final-validation/audit"
+    ],
+    "exit_code": 0,
+    "log": "independent_controls.log"
+  },
+  {
+    "name": "materialize60",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/quant-marcap-runner/docs/audits/backfill-accuracy-20261018/materialize60.py",
+      "--originals",
+      "/workspace/financial-repair/preserved-originals60.zip",
+      "--output",
+      "/workspace/backfill-accuracy-20261018/final-validation/originals"
+    ],
+    "exit_code": 0,
+    "log": "materialize60.log"
+  },
+  {
+    "name": "replay60",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/quant-marcap-runner/docs/audits/financial-repair-20261014/replay60.py",
+      "--original40",
+      "/workspace/backfill-accuracy-20261018/final-validation/originals/original40",
+      "--holdout20",
+      "/workspace/backfill-accuracy-20261018/final-validation/originals/holdout20",
+      "--runtime",
+      "/workspace/financial-repair/runtime",
+      "--output",
+      "/workspace/backfill-accuracy-20261018/final-validation/replay60"
+    ],
+    "exit_code": 0,
+    "log": "replay60.log"
+  },
+  {
+    "name": "independent_original60",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/quant-marcap-runner/docs/audits/financial-extraction-stage3-20261014/revalidate.py",
+      "--original40",
+      "/workspace/backfill-accuracy-20261018/final-validation/originals/original40",
+      "--holdout20",
+      "/workspace/backfill-accuracy-20261018/final-validation/originals/holdout20",
+      "--replay",
+      "/workspace/backfill-accuracy-20261018/final-validation/replay60",
+      "--output",
+      "/workspace/backfill-accuracy-20261018/final-validation/audit60"
+    ],
+    "exit_code": 0,
+    "log": "independent_original60.log"
+  },
+  {
+    "name": "protected_controls",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/quant-marcap-runner/docs/audits/backfill-accuracy-20261018/verify_protected.py",
+      "--replay",
+      "/workspace/backfill-accuracy-20261018/final-validation/replay60",
+      "--audit",
+      "/workspace/backfill-accuracy-20261018/final-validation/audit60",
+      "--output",
+      "/workspace/backfill-accuracy-20261018/final-validation/protected.json"
+    ],
+    "exit_code": 0,
+    "log": "protected_controls.log"
+  },
+  {
+    "name": "old_bytes_preserved",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/quant-marcap-runner/docs/research/stage16-continuous-research-20261018/preserve.py",
+      "--originals",
+      "/workspace/financial-repair/preserved-originals60.zip",
+      "--output",
+      "/workspace/backfill-accuracy-20261018/final-validation/preservation"
+    ],
+    "exit_code": 0,
+    "log": "old_bytes_preserved.log"
+  }
+]

@@ -18,7 +18,7 @@ except ModuleNotFoundError as error:
         raise
     from legacy_financial_fields import choose_metric, norm_account
 
-PARSER_VERSION = "legacy-v8-primary-appendix-structure"
+PARSER_VERSION = "legacy-v8.1-primary-appendix-report-kind"
 DATE = re.compile(r"(\d{4})\s*[.년/-]\s*(\d{1,2})\s*[.월/-]\s*(\d{1,2})(?:\s*[.일])?")
 HEADING = re.compile(r"(?:연결)?(?:포괄손익계산서|손익계산서|대차대조표|재무상태표|현금흐름표|이익잉여금처분계산서|결손금처리계산서)")
 TERM = re.compile(r"(?:제\s*)?(\d+)\s*(?:\([당전]\))?\s*기")
@@ -332,6 +332,13 @@ def parse_native(text):
     cover_dates = dates(cover.group(1)) if cover else []
     report_end = cover_dates[-1] if len(cover_dates) == 2 else ""
     report_period = kind(cover_dates[0], report_end, " ".join(reader.cover_text)[:180]) if len(cover_dates) == 2 else "QX"
+    # A short/changed fiscal year is still a business report. Duration alone
+    # cannot turn an explicitly filed annual report into an interim half-year.
+    cover_title = compact(" ".join(reader.cover_text))
+    if "사업보고서" in cover_title:
+        report_period = "FY"
+    elif "반기보고서" in cover_title:
+        report_period = "H1"
     correction_file = "정정신고" in compact(text[:50000])
     zone, amendment, contract = False, "UNKNOWN" if correction_file else "ORIGINAL_FILED", None
     observations, issues, present = [], [], False
@@ -469,8 +476,8 @@ def parse_native(text):
                             "numeric_normalization": "terminal_underline" if strip_terminal_underline(token) != compact(token) else "whole_token",
                             "account_normalization": "explicit_account_annotation" if compact(account_without_annotations(label)) != compact(label).strip("= ") else "exact",
                             "parser_version": PARSER_VERSION})
+                        observations[-1]["period"] = report_period if report_period != "QX" else observations[-1]["period"]
                         if contract["statement"] == "BS":
-                            observations[-1]["period"] = report_period
                             observations[-1]["balance_sheet_side"] = bs_sides[ri]
                             if metric == "bonds_payable" and bs_sides[ri] == "ASSET":
                                 observations[-1]["structural_status"] = "UNVERIFIED"

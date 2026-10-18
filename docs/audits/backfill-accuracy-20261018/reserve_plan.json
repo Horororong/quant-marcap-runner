@@ -1,0 +1,11 @@
+{
+  "version":1,
+  "seed":"financial-repair-reserve-20261018-v1",
+  "frozen_before_reserve_source_or_values":true,
+  "artifact":12137798496,
+  "artifact_sha256":"2c54a182b7a9987e6cd024e2e3e80ba6e5bb01caeecb22d8f1f445689d178a5b",
+  "strata":{"PARSED_4F":2,"PARSED_PARTIAL":2},
+  "selection":"Source-available sample from already preserved8MB official-source audit subset; exclude original20,original60,first holdout12. Fixed SHA256(seed:receipt), distinct companies; join original complete filing index BEFORE selection. Freeze selected_receipts before opening money/originals. No replacements for failures or missing evidence; short strata remain short. Access-limited selection is explicitly biased and is not an entire-population error estimate.",
+  "reason":"Initial12 holdout audit is COMPLETE and remains20PASS/28UNVERIFIED for v8.1. Its14 source-correct missing values expose generic section support gaps. For this separately labelled v9 implementation iteration, initial12 are a development regression cohort; their initial verdicts/controls/freeze and all source bytes remain immutable. The original exclusion applied to v8.1 development; do not claim initial12 as fresh blind evidence for v9. This additional reserve is not an outcome-based replacement for them.",
+  "investment_approved":false
+}

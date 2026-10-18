@@ -1,0 +1,108 @@
+{
+  "status": "PASS_REPRODUCTION_AND_PROTECTION",
+  "financial_population_certification": "UNVERIFIED",
+  "investment_PIT": "0/6",
+  "published_main_changed": false,
+  "protected": {
+    "protected518": {
+      "PASS": 518,
+      "FAIL": 0,
+      "UNVERIFIED": 0
+    },
+    "core64": {
+      "PASS": 64,
+      "FAIL": 0,
+      "UNVERIFIED": 0
+    },
+    "old_originals60": "PASS_SHA_CRC_MEMBERS",
+    "new_full60_field_counts": {
+      "PASS": 530,
+      "FAIL": 0,
+      "UNVERIFIED": 186
+    },
+    "scope": "Fixed original controls preserved, no new PIT/financial population certification",
+    "investment_approved": false
+  },
+  "independent_audit": {
+    "zero_tolerance": true,
+    "investment_PIT": "0/6 unchanged",
+    "new_original_collection_calls": 0,
+    "sample_certification": "All sample-level PIT/identity/correction chains remain UNVERIFIED",
+    "cohorts": {
+      "development": {
+        "samples": 8,
+        "fields": 32,
+        "main_amount_verdict": {
+          "FAIL": 12,
+          "PASS": 16,
+          "UNVERIFIED": 4
+        },
+        "v8_amount_verdict": {
+          "PASS": 28,
+          "UNVERIFIED": 4
+        },
+        "main_period_verdict": {
+          "FAIL": 28,
+          "UNVERIFIED": 4
+        },
+        "v8_period_verdict": {
+          "PASS": 28,
+          "UNVERIFIED": 4
+        },
+        "v8_source_verdict": {
+          "PASS": 28,
+          "UNVERIFIED": 4
+        },
+        "v8_contract_verdict": {
+          "PASS": 28,
+          "UNVERIFIED": 4
+        },
+        "error_classes": {
+          "ROUNDED_SUMMARY_PRECISION": 2,
+          "PRIMARY_EXACT_MATCH": 16,
+          "QUARTER_YTD_OR_WRONG_SOURCE": 5,
+          "OMITTED_VALUE": 3,
+          "SIGN_INVERSION": 1,
+          "UNIT_1000X": 1,
+          "NOT_FINANCIAL_CERTIFICATION": 4
+        }
+      },
+      "holdout": {
+        "samples": 12,
+        "fields": 48,
+        "main_amount_verdict": {
+          "FAIL": 20,
+          "PASS": 24,
+          "UNVERIFIED": 4
+        },
+        "v8_amount_verdict": {
+          "PASS": 20,
+          "UNVERIFIED": 28
+        },
+        "main_period_verdict": {
+          "FAIL": 41,
+          "UNVERIFIED": 7
+        },
+        "v8_period_verdict": {
+          "PASS": 20,
+          "UNVERIFIED": 28
+        },
+        "v8_source_verdict": {
+          "PASS": 20,
+          "UNVERIFIED": 28
+        },
+        "v8_contract_verdict": {
+          "PASS": 20,
+          "UNVERIFIED": 28
+        },
+        "error_classes": {
+          "QUARTER_YTD_OR_WRONG_SOURCE": 12,
+          "PRIMARY_EXACT_MATCH": 24,
+          "SIGN_INVERSION": 2,
+          "OMITTED_VALUE": 6,
+          "NOT_FINANCIAL_CERTIFICATION": 4
+        }
+      }
+    }
+  }
+}

@@ -12,5 +12,12 @@
   "new_DART_calls": 0,
   "development_controls": "prior32 unchanged; all28KRW match after explicit primary-appendix section support; four RMB fields remain UNVERIFIED",
   "remaining_development_source_gaps": 4,
-  "correction": "First selector lacked metadata, got2 not12; fixed receipt-index join before monetary review; first receipt list and source artifact retained, no outcome-driven reselection."
+  "correction": "First selector lacked metadata, got2 not12; fixed receipt-index join before monetary review; first receipt list and source artifact retained, no outcome-driven reselection.",
+  "followup": {
+    "parser_version": "legacy-v8.1-primary-appendix-report-kind",
+    "parser_sha256": "7027d8fd0bd082d3a5c26999842c7ce570b47c6b8a7556b00a250164cdb7bc54",
+    "development_reason": "A05 source explicitly BUSINESS REPORT for shortJan-Jun fiscal year; do not label H1 solely by6month duration. Independent A01-A08 manual starts/report kinds replace auditor tautological period_start fallback.",
+    "holdout_used_to_tune_rule": false,
+    "holdout_controls_unchanged": true
+  }
 }

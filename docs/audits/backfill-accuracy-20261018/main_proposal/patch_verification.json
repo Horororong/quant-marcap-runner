@@ -1,0 +1,24 @@
+{
+  "main_base": "2038421602956bf7abe098286d5a2edd554d849b",
+  "base_sha256": {
+    "scripts/backfill_dart_legacy_2000_2014.py": "18677cbb87b619a1af559b4e1b4d8b23cd8a9ddf37b02857136d2c323de1c3a3",
+    "scripts/backfill_super_value_fast.py": "9c55cf862fe725d4c6b2bb64a2f994d1a54ae5b1ffb8d01012b2d05dfc5966a5",
+    "scripts/legacy_financial_fields.py": "9f1a5bc373001d08fdd13a11231b13c912df325187571bd150437ee1f02f1cce"
+  },
+  "patches": {
+    "01_service_and_phase.patch": {
+      "sha256": "a26b859942339c8b8b16bf6eadd70000e13002d4eb074d3d7adb8d70b655adc6",
+      "apply_check": "PASS",
+      "applied_only_to_temporary_fixture": true
+    },
+    "02_financial_shadow_candidate_NOT_AUTO_DEPLOY.patch": {
+      "sha256": "2cb3209bb04da06ba0fe18d439c4e96c56efa2ade236f230c37de84a16a1ce55",
+      "apply_check": "PASS",
+      "applied_only_to_temporary_fixture": true
+    }
+  },
+  "operating_main_changed": false,
+  "financial_deployable": false,
+  "reason": "v8.1 independent holdout misses14 formerly matching values; parser version change would also requeue historical parser states unless explicit bounded migration is designed. Patch02 is for isolated shadow canary only, not scheduled collector deployment.",
+  "rollback_byte_identical": true
+}
