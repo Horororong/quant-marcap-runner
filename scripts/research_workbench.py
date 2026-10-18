@@ -9,17 +9,18 @@ from decimal import Decimal
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 
 WORKBENCH_CONTRACT={
- 'version':'2','entrypoint':'scripts/research_workbench.py',
+ 'version':'3','entrypoint':'scripts/research_workbench.py',
  'commands':['capabilities','inventory','examples','translate','check','run','issues'],
  'korean_input':'exact labeled Korean clauses separated by semicolon; unknown/missing/duplicate clauses rejected',
  'required_clauses':['기간','시장','팩터','포트폴리오','리밸런싱','체결','비용','벤치마크'],
  'optional_clauses':['필터'],'translation':'registered factor/direction aliases and strict StrategySpec only',
  'readiness':'shared planned preflight v1: annual complete signal cross-sections, selected cohorts and pending rights; exact structured incidents; engine liquidity/NAV still mandatory',
  'execution':'run_checked_strategy -> PROJECT -> CURRENT; no alternative backtester/calculator',
+ 'opt_in_execution':'--execution-contract-from a validated predeclared DSL adds only explicit nontradable_policy/data_loading to Korean input; never changes its lag, price or selections',
  'certification':'RESEARCH_ONLY; neither inventory metadata, model assumptions nor software success is PIT approval'}
 ROOT=Path(__file__).resolve().parents[1]
 
-def korean_spec(text,*,research=None,capital=10000000):
+def korean_spec(text,*,research=None,execution_contract=None,capital=10000000):
  from strategy_dsl_aliases import resolve_factor_alias
  from strategy_dsl import StrategySpec
  fields={}
@@ -68,6 +69,9 @@ def korean_spec(text,*,research=None,capital=10000000):
    source_korean_request=text,benchmark_return_basis='price_index_without_distributions',
    scope='historical observed universe, price/market-cap/technical research; cash dividends and full legal history not certified'))
  if research is not None:raw['research']=research
+ if execution_contract is not None:
+  if set(execution_contract)-{'nontradable_policy','data_loading'}:raise ValueError('Execution model file may add only explicit opt-in policy/preparation; Korean lag/price remain unchanged')
+  raw['execution'].update(execution_contract)
  return StrategySpec.from_dict(raw)
 
 def inventory(root):
@@ -114,8 +118,15 @@ def check(path,root,diagnose=False):
  return result
 
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=WORKBENCH_CONTRACT['commands']);p.add_argument('--strategy',type=Path);p.add_argument('--request');p.add_argument('--output',type=Path);p.add_argument('--output-dir',type=Path);p.add_argument('--saved-run',type=Path);p.add_argument('--report-periods',type=Path);p.add_argument('--research-model-from',type=Path);p.add_argument('--diagnose-panel',action='store_true');p.add_argument('--repo-root',type=Path,default=ROOT);a=p.parse_args()
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=WORKBENCH_CONTRACT['commands']);p.add_argument('--strategy',type=Path);p.add_argument('--request');p.add_argument('--output',type=Path);p.add_argument('--output-dir',type=Path);p.add_argument('--saved-run',type=Path);p.add_argument('--report-periods',type=Path);p.add_argument('--research-model-from',type=Path);p.add_argument('--execution-contract-from',type=Path);p.add_argument('--diagnose-panel',action='store_true');p.add_argument('--repo-root',type=Path,default=ROOT);a=p.parse_args()
  try:
+  contract=None
+  if a.execution_contract_from:
+   from strategy_dsl import load_strategy_spec
+   declared=load_strategy_spec(a.execution_contract_from).execution.to_dict()
+   contract={k:v for k,v in declared.items() if k in ['nontradable_policy','data_loading']}
+   if not contract:raise ValueError('No explicit execution/preparation contract in source specification')
+   if a.command not in ['translate','run'] or not a.request:raise ValueError('--execution-contract-from requires a Korean translate/run request')
   if a.command=='capabilities':
    from export_strategy_dsl_contract import build_capabilities
    result=build_capabilities()
@@ -130,7 +141,7 @@ def main():
   elif a.command=='translate':
    if not a.request:raise ValueError('--request required')
    model=json.loads(a.research_model_from.read_text())['research'] if a.research_model_from else None
-   spec=korean_spec(a.request,research=model);result=dict(status='ok',strategy=spec.to_dict(),strategy_fingerprint=spec.fingerprint(),investment_approved=False)
+   spec=korean_spec(a.request,research=model,execution_contract=contract);result=dict(status='ok',strategy=spec.to_dict(),strategy_fingerprint=spec.fingerprint(),investment_approved=False)
   elif a.command=='check':
    if not a.strategy:raise ValueError('--strategy required')
    result=check(a.strategy,a.repo_root,a.diagnose_panel)
@@ -141,7 +152,7 @@ def main():
    else:
     model=json.loads(a.research_model_from.read_text())['research'] if a.research_model_from else None
     with tempfile.TemporaryDirectory(prefix='korean-dsl-') as temporary:
-     f=Path(temporary)/'request.json';f.write_text(json.dumps(korean_spec(a.request,research=model).to_dict(),ensure_ascii=False))
+     f=Path(temporary)/'request.json';f.write_text(json.dumps(korean_spec(a.request,research=model,execution_contract=contract).to_dict(),ensure_ascii=False))
      result=run_checked_strategy(f,a.repo_root,a.output_dir,report_periods=a.report_periods,inspect_planned=True)
   if a.output:
    with a.output.open('x') as stream:json.dump(result['strategy'] if a.command=='translate' else result,stream,ensure_ascii=False,indent=2)

@@ -78,9 +78,19 @@
     "execution": {
       "additionalProperties": false,
       "properties": {
+        "data_loading": {
+          "enum": [
+            "annual_selected_projection"
+          ]
+        },
         "lag_sessions": {
           "minimum": 1,
           "type": "integer"
+        },
+        "nontradable_policy": {
+          "enum": [
+            "defer_full_rebalance"
+          ]
         },
         "price": {
           "enum": [

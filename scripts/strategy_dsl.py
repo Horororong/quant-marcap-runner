@@ -228,6 +228,8 @@ def build_strategy_json_schema() -> dict:
                 "properties": {
                     "lag_sessions": {"type": "integer", "minimum": 1},
                     "price": {"enum": sorted(SUPPORTED_EXECUTION_PRICES)},
+                    "nontradable_policy": {"enum": ["defer_full_rebalance"]},
+                    "data_loading": {"enum": ["annual_selected_projection"]},
                 },
             },
             "cost_scenarios": {
@@ -483,10 +485,18 @@ class RebalanceSpec:
 class ExecutionSpec:
     lag_sessions: int = 1
     price: str = "next_close"
+    nontradable_policy: str | None = None
+    data_loading: str | None = None
+
+    def to_dict(self):
+        return {k: v for k, v in asdict(self).items() if v is not None}
 
     @classmethod
     def from_dict(cls, raw: Mapping[str, Any]) -> "ExecutionSpec":
-        obj = cls(lag_sessions=int(raw.get("lag_sessions", 1)), price=str(raw.get("price", "next_close")).lower())
+        obj = cls(lag_sessions=int(raw.get("lag_sessions", 1)), price=str(raw.get("price", "next_close")).lower(),
+                  nontradable_policy=raw.get("nontradable_policy"), data_loading=raw.get("data_loading"))
+        if obj.nontradable_policy not in (None, "defer_full_rebalance") or obj.data_loading not in (None, "annual_selected_projection"):
+            raise ValueError("unsupported explicit execution/preparation contract")
         if obj.lag_sessions < 1:
             raise ValueError("execution.lag_sessions must be >= 1")
         if obj.price not in SUPPORTED_EXECUTION_PRICES:
@@ -631,6 +641,7 @@ class StrategySpec:
         out = asdict(self)
         if self.research is None: out.pop("research")
         out["rebalance"] = self.rebalance.to_dict()
+        out["execution"] = self.execution.to_dict()
         # Retain normalized JSON/fingerprints of existing top-N strategies.
         if self.portfolio.selection == "top_n":
             out["portfolio"].pop("selection")
@@ -705,7 +716,7 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
         "portfolio": asdict(spec.portfolio),
         "decile_contract": dict(DECILE_RESEARCH_CONTRACT) if spec.portfolio.selection == "deciles" else None,
         "rebalance": spec.rebalance.to_dict(),
-        "execution": asdict(spec.execution),
+        "execution": spec.execution.to_dict(),
         "cost_scenarios": {k: asdict(v) for k, v in spec.cost_scenarios.items()},
         "period": asdict(spec.period),
         "initial_capital": spec.initial_capital,

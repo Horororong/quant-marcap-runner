@@ -849,8 +849,13 @@ class ExecutionAssumptions:
     allow_short: bool = False
     max_gross_exposure: float = 1.0
     weight_tolerance: float = 1e-10
+    nontradable_policy: str = "reject"
 
     def __post_init__(self) -> None:
+        if self.nontradable_policy not in ("reject", "defer_full_rebalance"):
+            raise ValueError("unsupported nontradable_policy")
+        if self.nontradable_policy != "reject" and self.allow_short:
+            raise ValueError("deferred execution supports long-only holdings")
         if not isinstance(self.execution_lag_sessions, int) or self.execution_lag_sessions < 1:
             raise ValueError("execution_lag_sessions는 선견편향 방지를 위해 1 이상의 정수여야 합니다.")
         if self.execution_price != "next_close":
@@ -1103,6 +1108,16 @@ def simulate_target_weight_portfolio(
         if mask.isna().any().any():
             raise AssertionError("tradable_mask가 전체 가격 날짜/자산을 덮지 못합니다.")
         mask = mask.astype(bool)
+
+    deferred_audit = None
+    planned_schedule = schedule.copy()
+    if ex.nontradable_policy == "defer_full_rebalance":
+        if corporate_action_events is not None and not corporate_action_events.empty:
+            if not corporate_action_events["event_type"].eq("stock_split").all():
+                raise ValueError("deferred execution currently supports only split/no-action portfolios; illiquid rights, cash claims and merger lineage need a separately tested pending-order contract")
+        from execution_scheduling import resolve_deferred_schedule
+        schedule, deferred_audit = resolve_deferred_schedule(schedule, weights_signal, px, mask, ex.weight_tolerance)
+        execution_targets = {exec_dt: weights_signal.loc[sig].astype(float) for sig, exec_dt in schedule.items()}
 
     rets = px.pct_change(fill_method=None)
     reference = None
@@ -1418,6 +1433,10 @@ def simulate_target_weight_portfolio(
         {"signal_date": sig, "execution_date": exdt}
         for sig, exdt in schedule.items()
     ])
+    if deferred_audit is not None:
+        import json as _schedule_json
+        schedule_df = pd.DataFrame(deferred_audit)
+        schedule_df["blocked_observations"] = schedule_df["blocked_observations"].map(lambda x: _schedule_json.dumps(x, sort_keys=True))
     daily_nav.attrs["execution_assumptions"] = {
         "execution_lag_sessions": ex.execution_lag_sessions,
         "execution_price": ex.execution_price,

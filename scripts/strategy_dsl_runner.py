@@ -401,6 +401,7 @@ def engine_inputs(spec: StrategySpec, engine) -> tuple[Any, dict[str, Any], Any]
     execution = engine.ExecutionAssumptions(
         execution_lag_sessions=spec.execution.lag_sessions,
         execution_price=spec.execution.price,
+        **({"nontradable_policy": spec.execution.nontradable_policy} if spec.execution.nontradable_policy else {}),
     )
     return cfg, costs, execution
 
@@ -543,17 +544,24 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
         return run_decile_strategy(spec, repo_root, output_dir, postprocess=postprocess)
     plan = compile_execution_plan(spec)
     engine = load_project_engine(repo_root)
-    panel = engine.load_krx_equity_panel(
-        start=spec.period.start,
-        end=spec.period.end,
-        markets=spec.universe.markets,
-        columns=required_panel_columns(spec),
-        repo_root=repo_root,
-    )
-    history_coverage = require_session_coverage(panel, spec.period.start, spec.period.end, spec.universe.markets)
-    target_weights, selections = build_target_weights_from_panel(panel, spec, repo_root=repo_root)
+    prepared = None
+    if spec.execution.data_loading == "annual_selected_projection":
+        from annual_selected_preparation import prepare_annual_selected
+        prepared = prepare_annual_selected(spec, repo_root, engine)
+        panel, history_coverage = prepared["panel"], prepared["history_coverage"]
+        target_weights, selections = prepared["targets"]["top_n"], prepared["selections"]
+    else:
+        panel = engine.load_krx_equity_panel(
+            start=spec.period.start, end=spec.period.end, markets=spec.universe.markets,
+            columns=required_panel_columns(spec), repo_root=repo_root,
+        )
+        history_coverage = require_session_coverage(panel, spec.period.start, spec.period.end, spec.universe.markets)
+        target_weights, selections = build_target_weights_from_panel(panel, spec, repo_root=repo_root)
     assets = list(target_weights.columns)
     close, tradable = close_and_tradable_matrices(panel, assets)
+    if prepared is not None:
+        close = close.reindex(prepared["dates"])
+        tradable = tradable.reindex(prepared["dates"], fill_value=False)
     cfg, costs, execution = engine_inputs(spec, engine)
     corporate_actions = load_strategy_actions(
         repo_root, spec,
@@ -580,6 +588,11 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     out = output_dir or (repo_root / "results" / "dsl" / spec.strategy_id)
     out.mkdir(parents=True, exist_ok=True)
     save_return_reference_audit(result, out)
+    if prepared is not None:
+        (out / "data_preparation.json").write_text(json.dumps(prepared["preparation_audit"], ensure_ascii=False, indent=2) + "\n")
+    if spec.execution.nontradable_policy:
+        pd.concat([r["execution_schedule"].assign(cost_scenario=k) for k, r in result["execution_scenarios"].items()], ignore_index=True).to_csv(out / "execution_schedule.csv", index=False)
+        pd.concat([r["trades"].reset_index().assign(cost_scenario=k) for k, r in result["execution_scenarios"].items()], ignore_index=True).to_csv(out / "execution_trades.csv", index=False)
     (out / "history_coverage.json").write_text(json.dumps(history_coverage, ensure_ascii=False, indent=2), encoding="utf-8")
     daily = result["daily_nav"].rename(columns=lambda c: f"NAV_{c}")
     benchmark_meta = None
@@ -598,7 +611,7 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
     if isinstance(ca_applied, pd.DataFrame) and not ca_applied.empty:
         ca_applied.to_csv(out / "corporate_actions_applied.csv", index=False, encoding="utf-8-sig")
     save_cash_exchange_audits(result, out)
-    coverage = factor_provider_coverage_audit(panel, spec, repo_root)
+    coverage = prepared["provider_coverage"] if prepared is not None else factor_provider_coverage_audit(panel, spec, repo_root)
     if not coverage.empty:
         coverage.to_csv(out / "factor_provider_coverage.csv", index=False, encoding="utf-8-sig")
     (out / "execution_plan.json").write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")

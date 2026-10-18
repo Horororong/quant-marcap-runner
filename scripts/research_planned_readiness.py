@@ -136,6 +136,16 @@ def inspect_planned_strategy(strategy_json,repo_root):
  for label,w in weights.items():
   try:schedule=engine._schedule_signal_execution_dates(dates,w.index,execution.execution_lag_sessions)
   except (ValueError,RuntimeError) as e:issue('execution_schedule_gap',str(e),portfolio=label,classification='contract');continue
+  if spec.execution.nontradable_policy == 'defer_full_rebalance':
+   relevant=[e for e in all_events if e['predecessor_code'] in set(w.columns[w.gt(0).any()]) and e['event_type']!='stock_split']
+   dividend_codes={f['security'] for f in catalog if spec.period.start<=f['ex_date']<=spec.period.end}
+   if relevant or dividend_codes.intersection(w.columns[w.gt(0).any()]):
+    issue('unsupported_pending_order_action_interaction','Deferred orders currently support split/no-action portfolios only',portfolio=label,classification='capability_gap');continue
+   try:
+    from execution_scheduling import resolve_deferred_schedule
+    schedule,delay_audit=resolve_deferred_schedule(schedule,w.reindex(columns=px.columns,fill_value=0),px,px.notna()&px.gt(0)&vol.gt(0),execution.weight_tolerance)
+    result.setdefault('deferred_order_audit',{})[label]=json.loads(pd.DataFrame(delay_audit).to_json(orient='records',date_format='iso'))
+   except (ValueError,RuntimeError) as e:issue('pending_order_execution_gap',str(e),portfolio=label,classification='execution_constraint',verdict='FAIL');continue
   at={d:s for s,d in schedule.items()};schedules.extend(dict(portfolio=label,signal_date=str(s.date()),execution_date=str(d.date())) for s,d in schedule.items())
   executable={d:w.loc[s] for s,d in schedule.items()};normal={}
   for event in all_events:

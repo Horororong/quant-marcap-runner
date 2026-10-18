@@ -1,0 +1,46 @@
+{
+  "requests": 4,
+  "retries": 0,
+  "responses": [
+    {
+      "file": "005930_search.html",
+      "source": "https://kind.krx.co.kr/disclosure/details.do",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 3177,
+      "sha256": "7f8bd5c34b54be5aca771bec3c136f7a40cdd40557ebd9247e95cb064170d60f"
+    },
+    {
+      "file": "20180503000318_viewer.html",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchInitInfo&acptNo=20180503000318",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 24336,
+      "sha256": "7e02f7b87121a1408ace6f6c1d2ee1c97552595c613d9e81b261b58918bcccb7"
+    },
+    {
+      "file": "20180503000318_path.html",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchContents&docNo=20180503000874",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 968,
+      "sha256": "5ab738c6c5251197eaeb3d0bf3d370b33b67534768abfd17e245b9bc19fbd979"
+    },
+    {
+      "file": "20180503000318_body.html",
+      "source": "https://kind.krx.co.kr/external/2018/05/03/000318/20180503000874/68155.htm",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 1098,
+      "sha256": "bf752ec862a850ba862e9d6b9a800ac2ced55b216b2c75f990627577fbc73f8c"
+    }
+  ],
+  "candidates": [
+    {
+      "receipt": "20180503000318",
+      "row": " \r\n\t\t\t\t 1 \r\n\t\t\t\t 2018-05-03 14:58 \r\n\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t     삼성전자           \r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t  변경상장(액면분할)  \r\n\t\t\t\t 유가증권시장본부 \r\n\t\r\n\t\t\t\t \r\n\t\t\t\t\r\n\t\t\t\t\t  공시차트  \r\n\t\t\t\t\t  주가차트  \r\n\t\t\t\t\r\n\t\t\t\t \r\n\t\t\t\r\n\t\t\t "
+    }
+  ],
+  "errors": [],
+  "investment_approved": false
+}

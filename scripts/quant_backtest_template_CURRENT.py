@@ -413,7 +413,10 @@ def max_recovery_duration(nav: pd.Series) -> Dict[str, Any]:
         "months": round(longest_days / 30.4375, 1),
     }
 
-@lru_cache(maxsize=16)
+# A25-year requested report needs >50 distinct year/cross-year calendar keys.
+#16 evicted them between series/benchmark passes, rebuilding the same calendars.
+# Retain bounded coverage; identical named-exchange sessions and metric formulas.
+@lru_cache(maxsize=128)
 def _market_calendar(market_calendar: str, start_year: int, end_year: int):
     import exchange_calendars as xcals
     return xcals.get_calendar(market_calendar, start=f"{start_year-1}-01-01", end=f"{end_year+1}-12-31")

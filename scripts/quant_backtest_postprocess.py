@@ -204,6 +204,11 @@ def report_context(daily_csv: Path, repo_root: Path, title: str) -> tuple[str, d
         factors = ', '.join(f"{f['name']}({f['direction']})" for f in raw['factors'])
         summary = f"{', '.join(raw['universe']['markets'])} · {factors} · {raw['portfolio'].get('number_of_positions', '10분위')} · 선택 월 {raw['rebalance']['months']} 말 신호 · {raw['execution']['lag_sessions']} 거래일 뒤 {raw['execution']['price']} 체결"
         limits.append("고정 비용은 요청 DSL의 가정이며 실제 과거 세율·시장충격을 모두 검증한 결과가 아닙니다.")
+        if raw['execution'].get('nontradable_policy') == 'defer_full_rebalance':
+            summary += " · 거래불가 시 기존·목표 전 종목의 관측 거래 가능 종가까지 주문 전체 대기"
+            limits.append("명시적 체결 지연 연구 계약: 최초 t+lag 종가부터 기존·목표 보유 전부의 양의 종가·거래량을 확인해 첫 가능 종가에 전량 리밸런싱합니다. 실제 종가 전량 체결·시장충격을 인증하지 않으며 원래 고정 체결일 전략과 다릅니다. 충돌 주문·요청 종료 미체결은 실패합니다.")
+        if raw['execution'].get('data_loading') == 'annual_selected_projection':
+            limits.append("연도별 전체 원래 모집단에서 선정을 완료한 뒤 선정 종목·검증된 승계 종목의 가격 관측만 투영합니다. 모집단 축소·현재 생존종목 필터·결측 보간이 아닙니다.")
         if raw.get('metadata'):
             diagnostics['strategy_scope'] = raw['metadata']
         if raw.get('research'):

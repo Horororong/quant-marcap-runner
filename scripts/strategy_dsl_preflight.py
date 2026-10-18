@@ -90,6 +90,10 @@ def preflight_strategy(
             exc=exc,
         )
 
+    if spec.execution.data_loading or spec.execution.nontradable_policy:
+        # Explicit new contracts always need selected-exposure inspection.
+        return preflight_strategy(strategy_json, root, inspect_planned=True)
+
     strategy_id = spec.strategy_id
     fingerprint = spec.fingerprint()
 

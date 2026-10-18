@@ -102,10 +102,14 @@ def execute_decile_nav(
     corporate_actions: pd.DataFrame,
     reference_returns: pd.DataFrame | None = None,
     corporate_action_gaps: pd.DataFrame | None = None,
+    validated_dates: pd.DatetimeIndex | None = None,
 ) -> dict[str, Any]:
     """Use the unchanged PROJECT execution and cost engine for every bucket."""
     assets = sorted(panel["Code"].astype(str).str.zfill(6).unique())
     close, tradable = close_and_tradable_matrices(panel, assets)
+    if validated_dates is not None:
+        close = close.reindex(validated_dates)
+        tradable = tradable.reindex(validated_dates, fill_value=False)
     cfg, costs, execution = engine_inputs(spec, engine)
     daily = pd.DataFrame(index=close.index)
     results = {}
@@ -157,27 +161,36 @@ def run_decile_strategy(
     postprocess: bool = True,
 ) -> dict[str, Any]:
     engine = load_project_engine(repo_root)
-    panel = engine.load_krx_equity_panel(
-        start=spec.period.start, end=spec.period.end,
-        markets=spec.universe.markets, columns=required_panel_columns(spec),
-        repo_root=repo_root,
-    )
-    history_coverage = require_session_coverage(panel, spec.period.start, spec.period.end, spec.universe.markets)
-    targets, membership, audit = build_decile_target_weights_from_panel(panel, spec, repo_root)
-    dates = pd.DatetimeIndex(pd.to_datetime(panel["Date"]).unique()).sort_values()
+    prepared = None
+    if spec.execution.data_loading == "annual_selected_projection":
+        from annual_selected_preparation import prepare_annual_selected
+        prepared = prepare_annual_selected(spec, repo_root, engine)
+        panel, history_coverage = prepared["panel"], prepared["history_coverage"]
+        targets, membership, audit = prepared["targets"], prepared["selections"], prepared["partition_audit"]
+        dates = prepared["dates"]
+    else:
+        panel = engine.load_krx_equity_panel(
+            start=spec.period.start, end=spec.period.end,
+            markets=spec.universe.markets, columns=required_panel_columns(spec), repo_root=repo_root,
+        )
+        history_coverage = require_session_coverage(panel, spec.period.start, spec.period.end, spec.universe.markets)
+        targets, membership, audit = build_decile_target_weights_from_panel(panel, spec, repo_root)
+        dates = pd.DatetimeIndex(pd.to_datetime(panel["Date"]).unique()).sort_values()
     benchmark_meta = benchmark_coverage_audit(repo_root, spec.benchmark, dates)
     scope=(selected_action_scope(repo_root,spec,targets,dates.min(),dates.max()) if spec.research is not None else set(panel['Code']))
     events = load_strategy_actions(repo_root, spec, start=dates.min(), end=dates.max(), asset_codes=scope, registry_loader=load_corporate_actions)
-    result = execute_decile_nav(panel, spec, targets, engine, events, return_reference_matrix(panel, sorted(panel["Code"].astype(str).str.zfill(6).unique())), load_corporate_action_gaps(repo_root))
+    result = execute_decile_nav(panel, spec, targets, engine, events, return_reference_matrix(panel, sorted(panel["Code"].astype(str).str.zfill(6).unique())), load_corporate_action_gaps(repo_root), validated_dates=dates if prepared is not None else None)
     daily = result["daily_nav"]
     if spec.benchmark is not None:
         daily["NAV_Benchmark"] = load_benchmark_nav(repo_root, spec.benchmark, daily.index)
-    coverage = factor_provider_coverage_audit(panel, spec, repo_root)
+    coverage = prepared["provider_coverage"] if prepared is not None else factor_provider_coverage_audit(panel, spec, repo_root)
     plan = compile_execution_plan(spec)
 
     # Fail before writing a partial research result if any of the ten fails.
     out = output_dir or (repo_root / "results" / "dsl" / spec.strategy_id)
     out.mkdir(parents=True, exist_ok=True)
+    if prepared is not None:
+        (out / "data_preparation.json").write_text(json.dumps(prepared["preparation_audit"], ensure_ascii=False, indent=2) + "\n")
     (out / "history_coverage.json").write_text(json.dumps(history_coverage, ensure_ascii=False, indent=2), encoding="utf-8")
     daily.to_csv(out / "daily_nav.csv", index_label="Date")
     membership.to_csv(out / "decile_membership.csv", index=False, encoding="utf-8-sig")

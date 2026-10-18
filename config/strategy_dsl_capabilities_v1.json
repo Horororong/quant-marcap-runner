@@ -98,7 +98,7 @@
     ],
     "version": "2"
   },
-  "corporate_action_registry_version": "8",
+  "corporate_action_registry_version": "9",
   "corporate_actions": {
     "cash_exchange_contract": {
       "actual_coverage": "no cash exchange in production registry; Jeisys actual payment evidence unresolved",
@@ -190,7 +190,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "26",
+  "dsl_machine_contract_version": "27",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -198,7 +198,7 @@
     "lookahead_prevention": "signal-date information cannot be executed before a later trading session",
     "minimum_lag_sessions": 1
   },
-  "execution_engine_version": "v2-16-exec-6",
+  "execution_engine_version": "v2-16-exec-7",
   "execution_prices": [
     "next_close"
   ],
@@ -966,6 +966,23 @@
       ]
     }
   ],
+  "opt_in_data_preparation": {
+    "calendar": "full requested market calendars from complete annual panels, not selected securities",
+    "observations": "selected union and verified recursive merger successors only; no synthetic rows or filling",
+    "policy": "annual_selected_projection",
+    "selection": "existing builders on complete original annual panels, before observation projection",
+    "unsupported": "DART providers remain on original PIT-gated preparation path",
+    "version": "1"
+  },
+  "opt_in_pending_orders": {
+    "earliest": "unchanged signal lag; old positions earn returns through actual execution close",
+    "failure": "overlapping pending orders, end-window pending orders, shorts or interacting illiquid action books fail",
+    "liquidity": "all prior positive holdings and positive targets require observed positive close and volume",
+    "pending": "retain original target; no partial fills, cancellation, replacement, exclusion or cash advance",
+    "policy": "defer_full_rebalance",
+    "scope": "RESEARCH_ONLY modeled close execution, not certified realizable brokerage fills",
+    "version": "1"
+  },
   "performance_template_version": "v2-18",
   "portfolio_selections": [
     "deciles",
@@ -1113,6 +1130,7 @@
     "entrypoint": "scripts/research_workbench.py",
     "execution": "run_checked_strategy -> PROJECT -> CURRENT; no alternative backtester/calculator",
     "korean_input": "exact labeled Korean clauses separated by semicolon; unknown/missing/duplicate clauses rejected",
+    "opt_in_execution": "--execution-contract-from a validated predeclared DSL adds only explicit nontradable_policy/data_loading to Korean input; never changes its lag, price or selections",
     "optional_clauses": [
       "필터"
     ],
@@ -1135,7 +1153,7 @@
       "벤치마크"
     ],
     "translation": "registered factor/direction aliases and strict StrategySpec only",
-    "version": "2"
+    "version": "3"
   },
   "run_orchestration": {
     "automatic_preflight": true,
