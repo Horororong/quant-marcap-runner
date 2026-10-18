@@ -10,7 +10,7 @@ concurrency:
   group: super-value-fast-pit-backfill
   cancel-in-progress: false
 permissions:
-  contents: read
+  contents: write
   actions: read
 jobs:
   bounded-canary:
@@ -34,6 +34,11 @@ jobs:
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_rollout.py --mode operational --max-docs 2 --output "$RUNNER_TEMP/operating-canary"'
+      - name: Transfer public bounded candidates for independent review, no ref update
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_rollout_transfer.py "$RUNNER_TEMP/operating-canary"'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
