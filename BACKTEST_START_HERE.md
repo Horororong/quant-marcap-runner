@@ -1,3 +1,16 @@
+## Long research entrypoint (2026-10-18)
+
+The separate predeclared largest-cap2001–2025 experiment now has complete6168session
+NAV/CURRENT output using explicit all-or-none deferred execution and bounded
+full-universe annual preparation. See
+`docs/research/long-execution-20261018/reproduction.md` and the actual final CI
+for the complete language/projection/independent-accounting evidence.
+`config/strategies/research_size_top1_2001_2025_deferred_v1.json` is a DIFFERENT
+execution specification from the original fixed-lag strategies. Do not rename
+or overwrite the originals. All results remain RESEARCH_ONLY; no cash-dividend
+TR, actual brokerage or investment PIT approval. `research_workbench.py examples`
+now exposes this example and retains the exact blocked original examples.
+
 ## Continuous research user entrypoint (2026-10-18)
 
 Use `scripts/research_workbench.py examples`, `capabilities`, `inventory`, `check`, `run`, and `issues --saved-run`. Full instructions and supported validated periods: [continuous research usage](docs/research/stage16-continuous-research-20261018/README.md). The new successful example is size top1full2019–2025; original long deciles and25year inputs are explicitly blocked. All results remain RESEARCH_ONLY, not financial/investment PIT approval.

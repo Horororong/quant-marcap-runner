@@ -86,6 +86,13 @@ class Preparation(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'original PIT gates'):
                     prepare_annual_selected(spec, root, None)
 
+    def test_unsupported_dart_projection_rejected_before_data_access(self):
+        raw = json.loads((ROOT / 'config/strategies/research_size_top1_2019_2025.json').read_bytes())
+        raw['factors'] = [dict(name='value', source='dart', field='earnings_yield', direction='high')]
+        raw['execution']['data_loading'] = 'annual_selected_projection'
+        with self.assertRaisesRegex(ValueError, 'does not support DART'):
+            StrategySpec.from_dict(raw)
+
     def test_korean_execution_contract_is_explicit_and_cannot_change_lag(self):
         from research_workbench import korean_spec
         from test_research_workbench import REQUEST

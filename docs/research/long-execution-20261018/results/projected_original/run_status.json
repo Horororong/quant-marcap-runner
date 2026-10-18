@@ -1,0 +1,459 @@
+{
+  "run_contract_version": "2",
+  "run_id": "20261018T020851631091Z-5bd87ae6",
+  "status": "ok",
+  "phase": "complete",
+  "started_at": "2026-10-18T02:08:51.631286+00:00",
+  "finished_at": "2026-10-18T02:09:32.193690+00:00",
+  "strategy_id": "stage8_kr_equity_size_deciles_research_2019_2020",
+  "strategy_fingerprint": "b530199c1e53c3aff7d7aec2cd0834fe8bd0285606d1c1f6478ff7a0c058c5bc",
+  "versions": {
+    "schema_version": "1.0",
+    "factor_registry_version": "7",
+    "execution_engine_version": "v2-16-exec-7",
+    "corporate_action_registry_version": "9",
+    "dsl_machine_contract_version": "27",
+    "preflight_contract_version": "3",
+    "history_audit_contract_version": "1",
+    "krx_market_normalization_version": "1",
+    "project_template_version": "v2-16",
+    "performance_template_version": "v2-18"
+  },
+  "mode": "requested_period_report",
+  "nav_ready": true,
+  "report_ready": true,
+  "input_path": "/workspace/research-stage16-20261018/long-execution/final-validation/projection_original_input.json",
+  "output_dir": "/workspace/research-stage16-20261018/long-execution/final-validation/projected_original",
+  "status_file": "/workspace/research-stage16-20261018/long-execution/final-validation/projected_original/run_status.json",
+  "completed_stages": [
+    "input",
+    "preflight",
+    "report_readiness",
+    "execution",
+    "postprocess"
+  ],
+  "outputs": {
+    "daily_nav": "artifacts/daily_nav.csv",
+    "target_weights": "artifacts/target_weights.csv",
+    "metrics": "report/metrics_CURRENT.csv",
+    "chat_manifest": "report/chat_manifest_CURRENT.json",
+    "dashboard": "report/report_CURRENT.html"
+  },
+  "artifacts": {
+    "execution": [
+      {
+        "path": "D01/cash_balances_gross_fixed_cost.csv",
+        "bytes": 16197
+      },
+      {
+        "path": "D01/cash_balances_gross_zero.csv",
+        "bytes": 16197
+      },
+      {
+        "path": "D01/cash_balances_net_fixed_cost.csv",
+        "bytes": 16199
+      },
+      {
+        "path": "D01/cash_balances_net_zero.csv",
+        "bytes": 16197
+      },
+      {
+        "path": "D01/daily_nav.csv",
+        "bytes": 29748
+      },
+      {
+        "path": "D01/held_return_checks.csv",
+        "bytes": 39539
+      },
+      {
+        "path": "D01/return_reference_audit.json",
+        "bytes": 284
+      },
+      {
+        "path": "D01/stock_dividend_books_fixed_cost.json",
+        "bytes": 786832
+      },
+      {
+        "path": "D01/stock_dividend_books_zero.json",
+        "bytes": 787625
+      },
+      {
+        "path": "D01/stock_dividend_price_checks_fixed_cost.json",
+        "bytes": 790
+      },
+      {
+        "path": "D01/stock_dividend_price_checks_zero.json",
+        "bytes": 790
+      },
+      {
+        "path": "D01/target_weights.csv",
+        "bytes": 578
+      },
+      {
+        "path": "D02/cash_balances_gross_fixed_cost.csv",
+        "bytes": 16406
+      },
+      {
+        "path": "D02/cash_balances_gross_zero.csv",
+        "bytes": 16406
+      },
+      {
+        "path": "D02/cash_balances_net_fixed_cost.csv",
+        "bytes": 16407
+      },
+      {
+        "path": "D02/cash_balances_net_zero.csv",
+        "bytes": 16406
+      },
+      {
+        "path": "D02/daily_nav.csv",
+        "bytes": 29747
+      },
+      {
+        "path": "D02/held_return_checks.csv",
+        "bytes": 39499
+      },
+      {
+        "path": "D02/return_reference_audit.json",
+        "bytes": 284
+      },
+      {
+        "path": "D02/stock_dividend_books_fixed_cost.json",
+        "bytes": 658231
+      },
+      {
+        "path": "D02/stock_dividend_books_zero.json",
+        "bytes": 658403
+      },
+      {
+        "path": "D02/stock_dividend_price_checks_fixed_cost.json",
+        "bytes": 769
+      },
+      {
+        "path": "D02/stock_dividend_price_checks_zero.json",
+        "bytes": 769
+      },
+      {
+        "path": "D02/target_weights.csv",
+        "bytes": 578
+      },
+      {
+        "path": "D03/daily_nav.csv",
+        "bytes": 29734
+      },
+      {
+        "path": "D03/held_return_checks.csv",
+        "bytes": 39519
+      },
+      {
+        "path": "D03/return_reference_audit.json",
+        "bytes": 284
+      },
+      {
+        "path": "D03/target_weights.csv",
+        "bytes": 578
+      },
+      {
+        "path": "D04/daily_nav.csv",
+        "bytes": 29823
+      },
+      {
+        "path": "D04/held_return_checks.csv",
+        "bytes": 39473
+      },
+      {
+        "path": "D04/return_reference_audit.json",
+        "bytes": 284
+      },
+      {
+        "path": "D04/target_weights.csv",
+        "bytes": 619
+      },
+      {
+        "path": "D05/daily_nav.csv",
+        "bytes": 29821
+      },
+      {
+        "path": "D05/held_return_checks.csv",
+        "bytes": 39469
+      },
+      {
+        "path": "D05/return_reference_audit.json",
+        "bytes": 284
+      },
+      {
+        "path": "D05/target_weights.csv",
+        "bytes": 619
+      },
+      {
+        "path": "D06/daily_nav.csv",
+        "bytes": 29682
+      },
+      {
+        "path": "D06/held_return_checks.csv",
+        "bytes": 39439
+      },
+      {
+        "path": "D06/return_reference_audit.json",
+        "bytes": 284
+      },
+      {
+        "path": "D06/target_weights.csv",
+        "bytes": 619
+      },
+      {
+        "path": "D07/daily_nav.csv",
+        "bytes": 29764
+      },
+      {
+        "path": "D07/held_return_checks.csv",
+        "bytes": 39515
+      },
+      {
+        "path": "D07/return_reference_audit.json",
+        "bytes": 284
+      },
+      {
+        "path": "D07/target_weights.csv",
+        "bytes": 574
+      },
+      {
+        "path": "D08/cash_balances_gross_fixed_cost.csv",
+        "bytes": 15107
+      },
+      {
+        "path": "D08/cash_balances_gross_zero.csv",
+        "bytes": 15107
+      },
+      {
+        "path": "D08/cash_balances_net_fixed_cost.csv",
+        "bytes": 15107
+      },
+      {
+        "path": "D08/cash_balances_net_zero.csv",
+        "bytes": 15107
+      },
+      {
+        "path": "D08/daily_nav.csv",
+        "bytes": 29719
+      },
+      {
+        "path": "D08/held_return_checks.csv",
+        "bytes": 39537
+      },
+      {
+        "path": "D08/return_reference_audit.json",
+        "bytes": 284
+      },
+      {
+        "path": "D08/stock_dividend_books_fixed_cost.json",
+        "bytes": 659527
+      },
+      {
+        "path": "D08/stock_dividend_books_zero.json",
+        "bytes": 659499
+      },
+      {
+        "path": "D08/stock_dividend_price_checks_fixed_cost.json",
+        "bytes": 773
+      },
+      {
+        "path": "D08/stock_dividend_price_checks_zero.json",
+        "bytes": 773
+      },
+      {
+        "path": "D08/target_weights.csv",
+        "bytes": 574
+      },
+      {
+        "path": "D09/cash_balances_gross_fixed_cost.csv",
+        "bytes": 15115
+      },
+      {
+        "path": "D09/cash_balances_gross_zero.csv",
+        "bytes": 15115
+      },
+      {
+        "path": "D09/cash_balances_net_fixed_cost.csv",
+        "bytes": 15107
+      },
+      {
+        "path": "D09/cash_balances_net_zero.csv",
+        "bytes": 15115
+      },
+      {
+        "path": "D09/daily_nav.csv",
+        "bytes": 29746
+      },
+      {
+        "path": "D09/held_return_checks.csv",
+        "bytes": 39539
+      },
+      {
+        "path": "D09/return_reference_audit.json",
+        "bytes": 284
+      },
+      {
+        "path": "D09/stock_dividend_books_fixed_cost.json",
+        "bytes": 788913
+      },
+      {
+        "path": "D09/stock_dividend_books_zero.json",
+        "bytes": 788959
+      },
+      {
+        "path": "D09/stock_dividend_price_checks_fixed_cost.json",
+        "bytes": 829
+      },
+      {
+        "path": "D09/stock_dividend_price_checks_zero.json",
+        "bytes": 829
+      },
+      {
+        "path": "D09/target_weights.csv",
+        "bytes": 574
+      },
+      {
+        "path": "D10/daily_nav.csv",
+        "bytes": 29672
+      },
+      {
+        "path": "D10/held_return_checks.csv",
+        "bytes": 39483
+      },
+      {
+        "path": "D10/return_reference_audit.json",
+        "bytes": 284
+      },
+      {
+        "path": "D10/target_weights.csv",
+        "bytes": 574
+      },
+      {
+        "path": "benchmark_coverage.json",
+        "bytes": 253
+      },
+      {
+        "path": "daily_nav.csv",
+        "bytes": 257872
+      },
+      {
+        "path": "data_preparation.json",
+        "bytes": 3981
+      },
+      {
+        "path": "decile_contract.json",
+        "bytes": 733
+      },
+      {
+        "path": "decile_membership.csv",
+        "bytes": 9745
+      },
+      {
+        "path": "decile_partition_audit.csv",
+        "bytes": 151
+      },
+      {
+        "path": "execution_plan.json",
+        "bytes": 4196
+      },
+      {
+        "path": "execution_schedule.csv",
+        "bytes": 1408
+      },
+      {
+        "path": "execution_trades.csv",
+        "bytes": 515769
+      },
+      {
+        "path": "held_return_checks.csv",
+        "bytes": 433558
+      },
+      {
+        "path": "history_coverage.json",
+        "bytes": 1722
+      },
+      {
+        "path": "return_reference_audit.json",
+        "bytes": 3212
+      },
+      {
+        "path": "strategy_fingerprint.txt",
+        "bytes": 65
+      },
+      {
+        "path": "target_weights.csv",
+        "bytes": 2169
+      }
+    ],
+    "report": [
+      {
+        "path": "benchmark_statistics_CURRENT.csv",
+        "bytes": 12526
+      },
+      {
+        "path": "chat_manifest_CURRENT.json",
+        "bytes": 15342386
+      },
+      {
+        "path": "daily_nav_canonical.csv",
+        "bytes": 257021
+      },
+      {
+        "path": "metrics_CURRENT.csv",
+        "bytes": 24378
+      },
+      {
+        "path": "report_CURRENT.html",
+        "bytes": 9234027
+      }
+    ]
+  },
+  "error": null,
+  "requested_report_contract_version": "1",
+  "report_complete": true,
+  "period_readiness": {
+    "longest": {
+      "id": "longest",
+      "label": "RESEARCH_ONLY · 2019~2020 전체",
+      "start": "longest",
+      "end": "latest",
+      "status": "ready",
+      "reason": null,
+      "ready": true,
+      "requested_start": "2019-01-02",
+      "requested_end": "2020-12-30",
+      "actual_start": "2019-01-02",
+      "actual_end": "2020-12-30",
+      "observations": 494
+    },
+    "year2019": {
+      "id": "year2019",
+      "label": "2019년",
+      "start": "2019-01-01",
+      "end": "2019-12-31",
+      "status": "ready",
+      "reason": null,
+      "ready": true,
+      "requested_start": "2019-01-01",
+      "requested_end": "2019-12-31",
+      "actual_start": "2019-01-02",
+      "actual_end": "2019-12-30",
+      "observations": 246
+    },
+    "year2020": {
+      "id": "year2020",
+      "label": "2020년",
+      "start": "2020-01-01",
+      "end": "2020-12-31",
+      "status": "ready",
+      "reason": null,
+      "ready": true,
+      "requested_start": "2020-01-01",
+      "requested_end": "2020-12-31",
+      "actual_start": "2020-01-02",
+      "actual_end": "2020-12-30",
+      "observations": 248
+    }
+  }
+}

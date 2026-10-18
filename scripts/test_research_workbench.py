@@ -4,6 +4,21 @@ from research_workbench import korean_spec,WORKBENCH_CONTRACT
 ROOT=Path(__file__).resolve().parents[1]
 REQUEST='기간:2019-01-01~2020-12-31;시장:코스피·코스닥;필터:시가총액>=10조원;팩터:시가총액 낮은;포트폴리오:10분위;리밸런싱:4월말;체결:1거래일뒤종가;비용:수수료1.5bp,매도세15bp,스프레드3bp,슬리피지5bp;벤치마크:코스피'
 class Workbench(unittest.TestCase):
+ def test_cli_preserves_failed_vs_data_gap_exit_contract(self):
+  import contextlib,io
+  from unittest.mock import patch
+  from research_workbench import main
+  for status,code in [('failed',4),('data_gap',3),('capability_gap',2),('ok',0)]:
+   with patch('sys.argv',['research_workbench.py','check','--strategy','synthetic.json']),patch('research_workbench.check',return_value={'status':status}),contextlib.redirect_stdout(io.StringIO()) as captured:
+    self.assertEqual(main(),code)
+    self.assertEqual(json.loads(captured.getvalue())['status'],status)
+ def test_cli_file_access_error_remains_data_gap(self):
+  import contextlib,io
+  from unittest.mock import patch
+  from research_workbench import main
+  with patch('sys.argv',['research_workbench.py','check','--strategy','synthetic.json']),patch('research_workbench.check',side_effect=FileNotFoundError('explicit synthetic missing source')),contextlib.redirect_stdout(io.StringIO()) as captured:
+   self.assertEqual(main(),3)
+   self.assertEqual(json.loads(captured.getvalue())['status'],'data_gap')
  def test_translation_matches_original_selection_execution_costs(self):
   original=json.loads((ROOT/'config/strategies/research_size_deciles_2019_2020_v1.json').read_text());s=korean_spec(REQUEST,research=original['research']).to_dict()
   for key in ['universe','portfolio','rebalance','execution','cost_scenarios','period','benchmark','initial_capital']:

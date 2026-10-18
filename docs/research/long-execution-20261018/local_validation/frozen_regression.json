@@ -1,0 +1,722 @@
+{
+  "status": "PASS_FROZEN_REGRESSION_WITH_EXPLICIT_CONTRACT_EVOLUTION",
+  "preserved_archive_files": 151,
+  "exact_files": 130,
+  "contract_files": 9,
+  "volatile_envelopes_preserved_only": 12,
+  "checks": [
+    {
+      "file": "original/artifacts/D01/cash_balances_gross_fixed_cost.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "49479b38a995f2c551bfff682d6bd420df18b3cd89929182f9f0c0d13f3dff8c"
+    },
+    {
+      "file": "original/artifacts/D01/cash_balances_gross_zero.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "49479b38a995f2c551bfff682d6bd420df18b3cd89929182f9f0c0d13f3dff8c"
+    },
+    {
+      "file": "original/artifacts/D01/cash_balances_net_fixed_cost.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "0bc64b845781751e5c6c5e63849000077fb150735145131b72d6e1bce355c236"
+    },
+    {
+      "file": "original/artifacts/D01/cash_balances_net_zero.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "49479b38a995f2c551bfff682d6bd420df18b3cd89929182f9f0c0d13f3dff8c"
+    },
+    {
+      "file": "original/artifacts/D01/daily_nav.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "e606524f61c089df4ecc8343745d4de2bf7f2df820cb4604d6dc9eb8a33ec1a7"
+    },
+    {
+      "file": "original/artifacts/D01/held_return_checks.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "d712b2bf890e4cd3f11c929afce1b3e0612dc4fdf985fa454c68fc7f50c4f64d"
+    },
+    {
+      "file": "original/artifacts/D01/return_reference_audit.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "fbe5ad5deefd9203452d6b28fbd191210a0ac5857e5b18fe15e46df0ba0ae77c"
+    },
+    {
+      "file": "original/artifacts/D01/stock_dividend_books_fixed_cost.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "2fbbe16a4c4d77194a5f6a8ee284cd0113363c40e5c6b7572dd38868b75e8983"
+    },
+    {
+      "file": "original/artifacts/D01/stock_dividend_books_zero.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "231274a90ab2fec02aa3cdb833a849ed5e477c80cdfa6153ec74696ccbf2a8ac"
+    },
+    {
+      "file": "original/artifacts/D01/stock_dividend_price_checks_fixed_cost.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "bc22a32dfe6a16a62ce5be829c7c8ee2da14fcec27866885fb3d6b70d2032306"
+    },
+    {
+      "file": "original/artifacts/D01/stock_dividend_price_checks_zero.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "bc22a32dfe6a16a62ce5be829c7c8ee2da14fcec27866885fb3d6b70d2032306"
+    },
+    {
+      "file": "original/artifacts/D01/target_weights.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "0cb9b481894ee938bd9058c3634ea9bc1a4a311a461622ca5d9433a95f9cc147"
+    },
+    {
+      "file": "original/artifacts/D02/cash_balances_gross_fixed_cost.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "28f7c8d4280fc29447e3ae1a27cdd66da1a8327a11744390eeb5aab24071552c"
+    },
+    {
+      "file": "original/artifacts/D02/cash_balances_gross_zero.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "28f7c8d4280fc29447e3ae1a27cdd66da1a8327a11744390eeb5aab24071552c"
+    },
+    {
+      "file": "original/artifacts/D02/cash_balances_net_fixed_cost.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "78b37a4d73469881001a40b715034db4b6d563911df88185d6f0652485234504"
+    },
+    {
+      "file": "original/artifacts/D02/cash_balances_net_zero.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "28f7c8d4280fc29447e3ae1a27cdd66da1a8327a11744390eeb5aab24071552c"
+    },
+    {
+      "file": "original/artifacts/D02/daily_nav.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "c60024a437bffcf19da338aee8fe6796af9a0fc7693afd3c0ed322b0597ef7a2"
+    },
+    {
+      "file": "original/artifacts/D02/held_return_checks.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "87553da5367a943ae0ef95f6e9e22d841225ab3b2a25e314d6235d11c8ad6e52"
+    },
+    {
+      "file": "original/artifacts/D02/return_reference_audit.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "fbe5ad5deefd9203452d6b28fbd191210a0ac5857e5b18fe15e46df0ba0ae77c"
+    },
+    {
+      "file": "original/artifacts/D02/stock_dividend_books_fixed_cost.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "6149f3761bc5d37259a56334ce06b7f827cd80b20ec3dd097ccec66da86888c9"
+    },
+    {
+      "file": "original/artifacts/D02/stock_dividend_books_zero.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "469ca0f18afa27c30fde92ca2237b0b6fc837906d3870ce9e2139dcc6665e1ea"
+    },
+    {
+      "file": "original/artifacts/D02/stock_dividend_price_checks_fixed_cost.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "7c87f1483529d56c17bbee6d2abf600a9869453fb57e1207e1533bb428957352"
+    },
+    {
+      "file": "original/artifacts/D02/stock_dividend_price_checks_zero.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "7c87f1483529d56c17bbee6d2abf600a9869453fb57e1207e1533bb428957352"
+    },
+    {
+      "file": "original/artifacts/D02/target_weights.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "9d88b301cf23fa0a840c619a1dd341a00661cad594947edf1a96c21ac5c68fcc"
+    },
+    {
+      "file": "original/artifacts/D03/daily_nav.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "0c0ba5daf9f7b7fe119f0680b41dc2566297888f290b729d793b489cc942ff4c"
+    },
+    {
+      "file": "original/artifacts/D03/held_return_checks.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "ff9fd8da75961d61749792ffce292b0982852f06ce71428844e83b531df171ca"
+    },
+    {
+      "file": "original/artifacts/D03/return_reference_audit.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "651a363f21529e0bd949059fc1cd6052cab19b2c312c8a3512a207ceaa24c32a"
+    },
+    {
+      "file": "original/artifacts/D03/target_weights.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "3c59f1c91aa32557cbd66bef46aed4bcd1f8191e5c04aaeb3868aea4237796c6"
+    },
+    {
+      "file": "original/artifacts/D04/daily_nav.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "bd2f502239bb11718294b57e0710b9e558e21dedb41594748a39800a64919bec"
+    },
+    {
+      "file": "original/artifacts/D04/held_return_checks.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "9f18fcd8ca7812de6d99b006452bf044aebf4ed41ad5a7facdaece3092fb406e"
+    },
+    {
+      "file": "original/artifacts/D04/return_reference_audit.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "424cc0336c2e7014ba6c1469688d78568c4642c96354b310bf4b62996806f8b7"
+    },
+    {
+      "file": "original/artifacts/D04/target_weights.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "282209ed39cdbb488a47c087ecc0e32b428836eae028396e18073d82e459cbb8"
+    },
+    {
+      "file": "original/artifacts/D05/daily_nav.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "e250450fc04b7724d2cdef830410521406342a994248220ecfd907411f082a19"
+    },
+    {
+      "file": "original/artifacts/D05/held_return_checks.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "e4fcc16e98f075dfc31fba2e810407bd0450c5b1a0e6292227c2f93ea02ba340"
+    },
+    {
+      "file": "original/artifacts/D05/return_reference_audit.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "424cc0336c2e7014ba6c1469688d78568c4642c96354b310bf4b62996806f8b7"
+    },
+    {
+      "file": "original/artifacts/D05/target_weights.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "c28ad8b4913518d19b8640862829f22a8ac0fd37cf21702d838d608d933307a0"
+    },
+    {
+      "file": "original/artifacts/D06/daily_nav.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "4e34acaeec31c586eb90b6a7fe905510a16e6130cf5c04d65d465e3d13467551"
+    },
+    {
+      "file": "original/artifacts/D06/held_return_checks.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "05ca7ccb518b656c32c78639b5c01e106a19b11e0aa9171ba669e30268da5986"
+    },
+    {
+      "file": "original/artifacts/D06/return_reference_audit.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "424cc0336c2e7014ba6c1469688d78568c4642c96354b310bf4b62996806f8b7"
+    },
+    {
+      "file": "original/artifacts/D06/target_weights.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "c695a95c1a9e897622f2f154a48e9ad2181a93a3d795a1886806cece918190f0"
+    },
+    {
+      "file": "original/artifacts/D07/daily_nav.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "7a435518e8b7a81525dc47f4467b3d2802300fd205abf337b75e098416a54481"
+    },
+    {
+      "file": "original/artifacts/D07/held_return_checks.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "4ad6097fbbd4a11704df58f5ef49add827c722ff2b079addb2c7e5dd3774dde3"
+    },
+    {
+      "file": "original/artifacts/D07/return_reference_audit.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "1a7387635c63a7e01cca60224db08c1f78771567e3dd0e58b477c010b36f6dbc"
+    },
+    {
+      "file": "original/artifacts/D07/target_weights.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "fbd948dda1a92efb29315170e0ae534c0076f53a9f2e57bae7ca1f86dfa146c1"
+    },
+    {
+      "file": "original/artifacts/D08/cash_balances_gross_fixed_cost.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "3422f403783ce11bd801fb561fe2b2444d84426ce1187890a212841ac5017819"
+    },
+    {
+      "file": "original/artifacts/D08/cash_balances_gross_zero.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "3422f403783ce11bd801fb561fe2b2444d84426ce1187890a212841ac5017819"
+    },
+    {
+      "file": "original/artifacts/D08/cash_balances_net_fixed_cost.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "758a22b5ea5dd63a1c0eb9e8e50b23db39a9da12baaf0f6a77ddf929acbefef1"
+    },
+    {
+      "file": "original/artifacts/D08/cash_balances_net_zero.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "3422f403783ce11bd801fb561fe2b2444d84426ce1187890a212841ac5017819"
+    },
+    {
+      "file": "original/artifacts/D08/daily_nav.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "51a0f6d3d370096956aa62cdd1d1ee5802c28514a10ec8a419fb99a31f90e72f"
+    },
+    {
+      "file": "original/artifacts/D08/held_return_checks.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "9e154f072f341659906b4898b3c695517f38c8f371bee331a03d18ea110a7e72"
+    },
+    {
+      "file": "original/artifacts/D08/return_reference_audit.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "59634b48f98742e7c706dc24c9b4e7da0750a268567f92f0172ae4ea7ee83f05"
+    },
+    {
+      "file": "original/artifacts/D08/stock_dividend_books_fixed_cost.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "a56b1573308f0e5a413e0cbe9683fac46c42c4a3845a8d49a3d9a83cb577c9c4"
+    },
+    {
+      "file": "original/artifacts/D08/stock_dividend_books_zero.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "6175b1c65d0f173714fac998674c60fd729413cd05f8b88f80d2ea021e2e55c0"
+    },
+    {
+      "file": "original/artifacts/D08/stock_dividend_price_checks_fixed_cost.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "48fc8de514de905a5b43de0979ba3d22a082fc02d32ad1a8ed07e53fb60c37b0"
+    },
+    {
+      "file": "original/artifacts/D08/stock_dividend_price_checks_zero.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "48fc8de514de905a5b43de0979ba3d22a082fc02d32ad1a8ed07e53fb60c37b0"
+    },
+    {
+      "file": "original/artifacts/D08/target_weights.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "60fd5608490c49a025d7f2bd18b00d018f19a860bf9f0c0f119897f8f99b2f5f"
+    },
+    {
+      "file": "original/artifacts/D09/cash_balances_gross_fixed_cost.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "3de64c152d002160b60312603d7bde69c64d79e65e37ad734abe9ea34dba2046"
+    },
+    {
+      "file": "original/artifacts/D09/cash_balances_gross_zero.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "3de64c152d002160b60312603d7bde69c64d79e65e37ad734abe9ea34dba2046"
+    },
+    {
+      "file": "original/artifacts/D09/cash_balances_net_fixed_cost.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "1d16f9664d6e21bea2548e248b9606effd35185403a4ac9af06d730bae73e62e"
+    },
+    {
+      "file": "original/artifacts/D09/cash_balances_net_zero.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "3de64c152d002160b60312603d7bde69c64d79e65e37ad734abe9ea34dba2046"
+    },
+    {
+      "file": "original/artifacts/D09/daily_nav.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "4578d39933c883b3ee4d73849f8cc8d9ccdce4504ad73c4dcb828567af8bc0b9"
+    },
+    {
+      "file": "original/artifacts/D09/held_return_checks.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "4c119f2dc5f833f7e16584928b4440e839972e760d019da134b1d11a8a8c3bf1"
+    },
+    {
+      "file": "original/artifacts/D09/return_reference_audit.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "59634b48f98742e7c706dc24c9b4e7da0750a268567f92f0172ae4ea7ee83f05"
+    },
+    {
+      "file": "original/artifacts/D09/stock_dividend_books_fixed_cost.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "3407d3748e5c6c600a476f326475bf008c46dc4843624ce074bff4e2d1e0df9e"
+    },
+    {
+      "file": "original/artifacts/D09/stock_dividend_books_zero.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "c0f3582f9b9d1e081958dce39ce9021e05034529f0e3f5b629370704a829b2b5"
+    },
+    {
+      "file": "original/artifacts/D09/stock_dividend_price_checks_fixed_cost.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "59f21c8bee28a1991489d1aa3764bf87c1e0a97f921a628201204c02d912be59"
+    },
+    {
+      "file": "original/artifacts/D09/stock_dividend_price_checks_zero.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "59f21c8bee28a1991489d1aa3764bf87c1e0a97f921a628201204c02d912be59"
+    },
+    {
+      "file": "original/artifacts/D09/target_weights.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "5fff4cb814afe3d12c394258a7cd9e688e8788625fdc5bf2fca1c813f8711a47"
+    },
+    {
+      "file": "original/artifacts/D10/daily_nav.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "bf9c21e93db7389692052772641e8d484a210c92093711cb1f90f3ce71921db6"
+    },
+    {
+      "file": "original/artifacts/D10/held_return_checks.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "a24c9cf0d1b62183af1016959dd15108ce7baee044cdd7a3361436f60045ba1f"
+    },
+    {
+      "file": "original/artifacts/D10/return_reference_audit.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "1a7387635c63a7e01cca60224db08c1f78771567e3dd0e58b477c010b36f6dbc"
+    },
+    {
+      "file": "original/artifacts/D10/target_weights.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "e4d8c70a8aa4ec32765304d08648743c85a48b20f4df24a7f4b5ea8fcf53935e"
+    },
+    {
+      "file": "original/artifacts/benchmark_coverage.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "8e8ebeb6302923ad49c62288c693965d95a2c2ff156eb788afcad86b14a42977"
+    },
+    {
+      "file": "original/artifacts/daily_nav.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "2320ebe7bef0fa27262abf8164121695cc1d0124df2f5b9131f3003109dc16cc"
+    },
+    {
+      "file": "original/artifacts/decile_contract.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "34268a726dae6fb7f25c3fbd061a38227afd09594ed261f18f743c19c7de33ed"
+    },
+    {
+      "file": "original/artifacts/decile_membership.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "ee3ea9d1a49af128ec86247a4f71e33e6840e91066cc7624de1394d877192934"
+    },
+    {
+      "file": "original/artifacts/decile_partition_audit.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "cbce606273df41a136c2fe055944dbc575ef3892561b8e76cc8c6e7f323b38aa"
+    },
+    {
+      "file": "original/artifacts/execution_plan.json",
+      "status": "INTENTIONAL_CONTRACT_EVOLUTION",
+      "before_sha256": "ed96946ced5525d0a45bdb1a22d99da38ddb829bbb33885b529bd80031f201f7",
+      "after_sha256": "36b0d9056b5ba593b611f78bf4f180a5b7ba583fb2ae2028e47e8798a727c309",
+      "reason": "Only explicit machine/engine/registry contract version fields evolved; all other execution plan values unchanged"
+    },
+    {
+      "file": "original/artifacts/execution_schedule.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "e83b54202c1f3657fed0dbd72eb98c01820d10775b21167270037633f1413b24"
+    },
+    {
+      "file": "original/artifacts/execution_trades.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "cabaa69bd23cbbf09ea1fd8eb58d74d060da6fb5d3a971165bf63ab324935238"
+    },
+    {
+      "file": "original/artifacts/held_return_checks.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "30e37635632d4f96c6a9fde5886210a72468f9d9f7cc606faaa8fcc474c3cb08"
+    },
+    {
+      "file": "original/artifacts/history_coverage.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "beb81854eb7a7d8d76b369b456ace674388fd29f721be5d90d76f0de93f1670f"
+    },
+    {
+      "file": "original/artifacts/return_reference_audit.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "e7e18a80b42d1438272e53ed03dc87f5a1fbd5b6d8794f0ce1a69c68640deb0a"
+    },
+    {
+      "file": "original/artifacts/strategy_fingerprint.txt",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "9ee24b14f9c63dd0acb82f49175dbe8041110d4a8a9e67c253b23ae4ee502aeb"
+    },
+    {
+      "file": "original/artifacts/target_weights.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "8e8b1e2cb75212ad44564c0f0457505d98a15437145d1af06e5c89e79f6770e8"
+    },
+    {
+      "file": "original/execution_plan.json",
+      "status": "INTENTIONAL_CONTRACT_EVOLUTION",
+      "before_sha256": "fc28f1601979d85e3ba7690828b4e1de68bd20d0e315cf8383c45bc90dfe92b8",
+      "after_sha256": "344136882981279c6046fb901033907e896230c7698df3cbc31eddb7666ccc46",
+      "reason": "Only explicit machine/engine/registry contract version fields evolved; all other execution plan values unchanged"
+    },
+    {
+      "file": "original/preflight.json",
+      "status": "INTENTIONAL_CONTRACT_EVOLUTION",
+      "before_sha256": "a66adb6cf7f6ae3d48152e9d9a8efe26a3133e53c086deda443cad478a8e56a3",
+      "after_sha256": "e254830917cea9a59cf3aac50a683dc4670a88ac2a153c194163a5a82d9baa16",
+      "reason": "Planned-readiness v1 replaces source-only research workbench preflight; original inputs/dates/rows/benchmark retained and all planned exposures now inspected"
+    },
+    {
+      "file": "original/report/benchmark_statistics_CURRENT.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "5aee9ea35b6ee3270e75d43c65e4a28c257e332ca7f68b67432e1bfad8fecceb"
+    },
+    {
+      "file": "original/report/daily_nav_canonical.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "ef2561bb720d50bf0a5344385aa01bc5b060d541d5d7f5e117db05d13b048b74"
+    },
+    {
+      "file": "original/report/metrics_CURRENT.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "f15b31947a430b0f2c043683541a06671db7e85243e1523e062ee724f3d24153"
+    },
+    {
+      "file": "original/report_periods.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "c734eb8b37d37cd46340abe2647dd58500a9b508c1e53f72770bde86a033c490"
+    },
+    {
+      "file": "original/report_readiness.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "40cddff2cd8aa9bf02389687e98b9703a0b8b5eacf98760e7dcc0a0b39298c7e"
+    },
+    {
+      "file": "original/strategy_input.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "46b9f0ce7e4e748b2bfe320c286a02590d01be23af0829223b959e1b445ef9e0"
+    },
+    {
+      "file": "original/strategy_normalized.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "17f67adc1bfa187de41ba0cb1a9b80bc4f6089e5e51c329af489175287d94bd3"
+    },
+    {
+      "file": "momentum2020/artifacts/benchmark_coverage.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "8737094b7fcd1f0c464aacdba633a28fcbeee3f3dfa275f0a077bb6961c26e66"
+    },
+    {
+      "file": "momentum2020/artifacts/cash_balances_gross_fixed_cost.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "401b66ad157d4b954fa02e9204d8961f708d4af41e4a612bad0b6d957df0b76c"
+    },
+    {
+      "file": "momentum2020/artifacts/cash_balances_gross_zero.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "401b66ad157d4b954fa02e9204d8961f708d4af41e4a612bad0b6d957df0b76c"
+    },
+    {
+      "file": "momentum2020/artifacts/cash_balances_net_fixed_cost.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "4184a4f300e14f9fb5cff3b9fa0fc200d693b0bd013eb64446de6b86393cd773"
+    },
+    {
+      "file": "momentum2020/artifacts/cash_balances_net_zero.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "401b66ad157d4b954fa02e9204d8961f708d4af41e4a612bad0b6d957df0b76c"
+    },
+    {
+      "file": "momentum2020/artifacts/daily_nav.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "6bef0c932b1c2b65519be01136ca9d7c6ef89519724b75eb8b0110d5fb40eb16"
+    },
+    {
+      "file": "momentum2020/artifacts/execution_plan.json",
+      "status": "INTENTIONAL_CONTRACT_EVOLUTION",
+      "before_sha256": "0314a2cc1612ef0a5371457acf4c4c693faa77cd02f95588bd11833d6c7347b2",
+      "after_sha256": "8c2b97086adef45fab315e15f3db82a453a49a8565e1785cb5917a54ea305643",
+      "reason": "Only explicit machine/engine/registry contract version fields evolved; all other execution plan values unchanged"
+    },
+    {
+      "file": "momentum2020/artifacts/factor_provider_coverage.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "24da4bb032aae1554c40836e75ba2cf5f2084d242128a9543156d944e6bb9456"
+    },
+    {
+      "file": "momentum2020/artifacts/held_return_checks.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "0495921d24b68671f71efe86eda3aa4bc39868ade37fa85be6fa0dc11af395f5"
+    },
+    {
+      "file": "momentum2020/artifacts/history_coverage.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "def4893dd59baca09ab81062b97a901f205ef1016846eb0af7fffc60e80bae80"
+    },
+    {
+      "file": "momentum2020/artifacts/return_reference_audit.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "4011e22f903a9486e4a51bc598b039b9d92eaf4a6f25991bc79735bebd9cd4dc"
+    },
+    {
+      "file": "momentum2020/artifacts/selections.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "e4d2cb07a5a721a4392f32cb8f124589c0e7adc4a7a7d755f6f27fe1e5669239"
+    },
+    {
+      "file": "momentum2020/artifacts/stock_dividend_books_fixed_cost.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "d37425f17a2b9ac98bf89b65b4ad77cbcdf953e3914fccf98f1740031ce900b1"
+    },
+    {
+      "file": "momentum2020/artifacts/stock_dividend_books_zero.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "93e198a54cd342d1e9c1ec749134a80687a16d6cc1b707a576261c140a728848"
+    },
+    {
+      "file": "momentum2020/artifacts/stock_dividend_price_checks_fixed_cost.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "6b2fe25cc0eeae8703af3c17c6a1ab8ee38a522e4052523e5fd68e93a456752c"
+    },
+    {
+      "file": "momentum2020/artifacts/stock_dividend_price_checks_zero.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "6b2fe25cc0eeae8703af3c17c6a1ab8ee38a522e4052523e5fd68e93a456752c"
+    },
+    {
+      "file": "momentum2020/artifacts/strategy_fingerprint.txt",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "3d97cb1b89099480948adb571dc6dee1b2c604fcefcc7cb58a388b2bec99ad52"
+    },
+    {
+      "file": "momentum2020/artifacts/target_weights.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "10c1d378882dd800fae8d79e8bce43d85c9d41448757f3972e6d7af6b267cda5"
+    },
+    {
+      "file": "momentum2020/execution_plan.json",
+      "status": "INTENTIONAL_CONTRACT_EVOLUTION",
+      "before_sha256": "65b3f574dae5eec602b4c5fcb1be20c364bbdf14fd2a8d8df2fb0609b5fcb02d",
+      "after_sha256": "4f630514082e0fd6045e6e23c927bf57a0d12e2f50ccb8e33c2fa066f76cf4b1",
+      "reason": "Only explicit machine/engine/registry contract version fields evolved; all other execution plan values unchanged"
+    },
+    {
+      "file": "momentum2020/preflight.json",
+      "status": "INTENTIONAL_CONTRACT_EVOLUTION",
+      "before_sha256": "2f27210c4f18b9aa99bf0368f4eeab279da0535c60b80dca4219ca86bae8c046",
+      "after_sha256": "9bdb0f60ba4026b32b158da2747db502f9f9a7d683b8e06ad38cb7a3f8d20cbb",
+      "reason": "Planned-readiness v1 replaces source-only research workbench preflight; original inputs/dates/rows/benchmark retained and all planned exposures now inspected"
+    },
+    {
+      "file": "momentum2020/report/benchmark_statistics_CURRENT.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "452e7e66430476ab3f3dfe4d56d1a71f547c65e45047cdac0127ee3d282a9d7e"
+    },
+    {
+      "file": "momentum2020/report/daily_nav_canonical.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "d3890bb829373b828944157cb3b70ba99213130627d25255c8d287935b0617b3"
+    },
+    {
+      "file": "momentum2020/report/metrics_CURRENT.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "b6170f319fcd20fecd64faea4304d463db47fb0ab47810bebe4794d96ef0e2df"
+    },
+    {
+      "file": "momentum2020/report_periods.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "c734eb8b37d37cd46340abe2647dd58500a9b508c1e53f72770bde86a033c490"
+    },
+    {
+      "file": "momentum2020/report_readiness.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "5586db65308c934a253d6ee9052952da31ac10a2433b1c2887ce2f04ddae1703"
+    },
+    {
+      "file": "momentum2020/strategy_input.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "0870359e61ead14a5a30bfd234c00c9ebcf1e88203675e206e5decc442c5d10c"
+    },
+    {
+      "file": "momentum2020/strategy_normalized.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "03502c17ba32b2f6bffe9d16ff98643c9c59510e199b08f380789b91854a00a4"
+    },
+    {
+      "file": "size2024/artifacts/benchmark_coverage.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "06641af9b0cd1067a4f724684d1faeeac01f9b04a37b48b26ce5caca38a5f474"
+    },
+    {
+      "file": "size2024/artifacts/daily_nav.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "47888164238553907324d01f85486acf572e060d1734ab21bf28dae47d687cde"
+    },
+    {
+      "file": "size2024/artifacts/execution_plan.json",
+      "status": "INTENTIONAL_CONTRACT_EVOLUTION",
+      "before_sha256": "6c29b719a0f16f055ec41c4bd8d6c8cf763d66fbf4174ddf7c663f0c9f9f457d",
+      "after_sha256": "6abc568b70ed1e7da295fdb07d7acf6597ee1017887b41620f7506d20f911fa3",
+      "reason": "Only explicit machine/engine/registry contract version fields evolved; all other execution plan values unchanged"
+    },
+    {
+      "file": "size2024/artifacts/held_return_checks.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "1e046242a201e20233b77a84b15794b6f701abd6ab63a94dc9d85bb24b834c43"
+    },
+    {
+      "file": "size2024/artifacts/history_coverage.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "ab6e015e6ff6f9d44f32eedfa45893887af00c8fe8f1040604493cd313073051"
+    },
+    {
+      "file": "size2024/artifacts/return_reference_audit.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "4d868ae7056f1d824dbd25cdf501f94ca35bfb4a7934024d37682109b97480b4"
+    },
+    {
+      "file": "size2024/artifacts/selections.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "3adb8e6e7acf5781e1a28bcae117c0d9b28ed2020b5531656f33342fa1dbdf9e"
+    },
+    {
+      "file": "size2024/artifacts/strategy_fingerprint.txt",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "29578db320be1e4d6e12b67a747d589f73e3849d4a8cb7236b3cea81764ab356"
+    },
+    {
+      "file": "size2024/artifacts/target_weights.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "d43f73c61b14b838548cfdcf9036d0aecc14b746b98e145de1fdd7508505906d"
+    },
+    {
+      "file": "size2024/execution_plan.json",
+      "status": "INTENTIONAL_CONTRACT_EVOLUTION",
+      "before_sha256": "0d3da19772852191112cd6339f09e092e8816fe8916eecc1163b7bec8682eab8",
+      "after_sha256": "9a6963b316f4f41dd512c91111587f4d93f65f1e88fdc06680a83247075aaab3",
+      "reason": "Only explicit machine/engine/registry contract version fields evolved; all other execution plan values unchanged"
+    },
+    {
+      "file": "size2024/preflight.json",
+      "status": "INTENTIONAL_CONTRACT_EVOLUTION",
+      "before_sha256": "1190d2352760abdc22ea2dcc7f4f63350980cd735a0113b207ca4e074df4d836",
+      "after_sha256": "f625013c850e302c88054bcd5abad5dd4d7dc39d52296a227ccd49d7d57baf65",
+      "reason": "Planned-readiness v1 replaces source-only research workbench preflight; original inputs/dates/rows/benchmark retained and all planned exposures now inspected"
+    },
+    {
+      "file": "size2024/report/benchmark_statistics_CURRENT.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "df5669808a19a18dd741ec9436bddcd54d408d34d0c4aca4f96f46f6e4affc4a"
+    },
+    {
+      "file": "size2024/report/daily_nav_canonical.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "bd0a4f247c5e71b454bd844723c300194dbd2106aac0da66d729af86799d08ec"
+    },
+    {
+      "file": "size2024/report/metrics_CURRENT.csv",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "65bbe014b07f5e3f3eaeec23352c4ac53c0c0551a96aac7aa9cfcd97ed60a74c"
+    },
+    {
+      "file": "size2024/report_periods.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "bac10c9a8c99d3656120efd3f322cb1e3c2fd11db5799b432c644781d8765cc7"
+    },
+    {
+      "file": "size2024/report_readiness.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "2189edb3682279e00e2bc1a7e7038968657dea6896354e9a809e9b47cd548a2b"
+    },
+    {
+      "file": "size2024/strategy_input.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "d9c8c25297e09d442d19e9523b119ca1f7229699b7925862f2dc2912201e7443"
+    },
+    {
+      "file": "size2024/strategy_normalized.json",
+      "status": "EXACT_FROZEN_BYTES",
+      "sha256": "80cd6d46ab9cc4e2baef3ae337d50d840280adfc4fc339c6d02870bf5e0d187a"
+    }
+  ]
+}

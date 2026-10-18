@@ -34,6 +34,15 @@
       "numeric_validation": "docs/research/stage16-continuous-research-20261018/numeric_manifest.json",
       "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_size_top1_2019_2025.json",
       "execution": "Same run command after fresh preflight; --report-periods config/reports/research_continuous_2025.json"
+    },
+    {
+      "strategy": "config/strategies/research_size_top1_2001_2025_deferred_v1.json",
+      "period": "2001-01-01..2025-12-31",
+      "status": "RESEARCH_ONLY_EXAMPLE",
+      "numeric_validation": "docs/research/long-execution-20261018/numeric_manifest.json",
+      "readiness_command": "scripts/research_workbench.py check --strategy config/strategies/research_size_top1_2001_2025_deferred_v1.json",
+      "execution": "Same run command with --report-periods config/reports/research_continuous_2025.json",
+      "distinction": "Separate predeclared full-order deferred execution; NOT the original fixed-lag top1 or original decile strategy; trading-cost Net, cash distributions not reconstructed"
     }
   ],
   "blocked_examples": [

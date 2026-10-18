@@ -1,0 +1,69 @@
+test_dart_not_silently_moved_around_existing_pit_gate (__main__.Preparation.test_dart_not_silently_moved_around_existing_pit_gate) ... ok
+test_deciles_use_same_preparation_without_dropping_eligible_population (__main__.Preparation.test_deciles_use_same_preparation_without_dropping_eligible_population) ... FAIL
+test_full_source_top_n_matches_old_builder_then_projects_observations (__main__.Preparation.test_full_source_top_n_matches_old_builder_then_projects_observations) ... FAIL
+test_implicit_legacy_execution_and_fingerprint_preserved (__main__.Preparation.test_implicit_legacy_execution_and_fingerprint_preserved) ... ok
+
+======================================================================
+FAIL: test_deciles_use_same_preparation_without_dropping_eligible_population (__main__.Preparation.test_deciles_use_same_preparation_without_dropping_eligible_population)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "scripts/test_annual_selected_preparation.py", line 74, in test_deciles_use_same_preparation_without_dropping_eligible_population
+    pd.testing.assert_frame_equal(got['selections'], membership)
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/util/_decorators.py", line 220, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/_testing/asserters.py", line 1302, in assert_frame_equal
+    assert_index_equal(
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/_testing/asserters.py", line 353, in assert_index_equal
+    _testing.assert_almost_equal(
+  File "pandas/_libs/testing.pyx", line 53, in pandas._libs.testing.assert_almost_equal
+  File "pandas/_libs/testing.pyx", line 171, in pandas._libs.testing.assert_almost_equal
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/_testing/asserters.py", line 619, in raise_assert_detail
+    raise AssertionError(msg)
+AssertionError: DataFrame.columns are different
+
+DataFrame.columns values are different (56.25 %)
+[left]:  Index(['Amount', 'ChangesRatio', 'Close', 'Code', 'Date', 'Marcap', 'Market',
+       'Name', 'Volume', 'factor_rank__size', 'composite_score', 'decile',
+       'bucket_size', 'target_weight', 'eligible_count', 'signal_date'],
+      dtype='str')
+[right]: Index(['Date', 'Code', 'Name', 'Market', 'Close', 'Volume', 'Amount', 'Marcap',
+       'ChangesRatio', 'factor_rank__size', 'composite_score', 'decile',
+       'bucket_size', 'target_weight', 'eligible_count', 'signal_date'],
+      dtype='str')
+At positional index 0, first diff: Amount != Date
+
+======================================================================
+FAIL: test_full_source_top_n_matches_old_builder_then_projects_observations (__main__.Preparation.test_full_source_top_n_matches_old_builder_then_projects_observations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "scripts/test_annual_selected_preparation.py", line 61, in test_full_source_top_n_matches_old_builder_then_projects_observations
+    pd.testing.assert_frame_equal(got['selections'], selections)
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/util/_decorators.py", line 220, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/_testing/asserters.py", line 1302, in assert_frame_equal
+    assert_index_equal(
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/_testing/asserters.py", line 353, in assert_index_equal
+    _testing.assert_almost_equal(
+  File "pandas/_libs/testing.pyx", line 53, in pandas._libs.testing.assert_almost_equal
+  File "pandas/_libs/testing.pyx", line 171, in pandas._libs.testing.assert_almost_equal
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/_testing/asserters.py", line 619, in raise_assert_detail
+    raise AssertionError(msg)
+AssertionError: DataFrame.columns are different
+
+DataFrame.columns values are different (69.23077 %)
+[left]:  Index(['Amount', 'ChangesRatio', 'Close', 'Code', 'Date', 'Marcap', 'Market',
+       'Name', 'Volume', 'factor_rank__size', 'composite_score',
+       'target_weight', 'signal_date'],
+      dtype='str')
+[right]: Index(['Date', 'Code', 'Name', 'Market', 'Close', 'Volume', 'Amount', 'Marcap',
+       'ChangesRatio', 'factor_rank__size', 'composite_score', 'target_weight',
+       'signal_date'],
+      dtype='str')
+At positional index 0, first diff: Amount != Date
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.159s
+
+FAILED (failures=2)

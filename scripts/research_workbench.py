@@ -157,7 +157,10 @@ def main():
   if a.output:
    with a.output.open('x') as stream:json.dump(result['strategy'] if a.command=='translate' else result,stream,ensure_ascii=False,indent=2)
   print(json.dumps({k:v for k,v in result.items() if k!='artifacts'},ensure_ascii=False,indent=2,default=str))
-  return 0 if result.get('status','ok')=='ok' else 3
+  from strategy_dsl_run import exit_code_for_run
+  return exit_code_for_run({'status':result.get('status','ok')})
  except (ValueError,KeyError,TypeError,OSError) as e:
-  print(json.dumps(dict(status='capability_gap' if isinstance(e,(ValueError,KeyError,TypeError)) else 'data_gap',error={'type':type(e).__name__,'message':str(e)},investment_approved=False),ensure_ascii=False));return 2
+  from strategy_dsl_run import exit_code_for_run
+  status='capability_gap' if isinstance(e,(ValueError,KeyError,TypeError)) else 'data_gap'
+  print(json.dumps(dict(status=status,error={'type':type(e).__name__,'message':str(e)},investment_approved=False),ensure_ascii=False));return exit_code_for_run({'status':status})
 if __name__=='__main__':raise SystemExit(main())

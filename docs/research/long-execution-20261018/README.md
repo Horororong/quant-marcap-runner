@@ -24,5 +24,7 @@ calendar and provider audits. No current-member master or source-gap fill.
 
 This model is RESEARCH_ONLY, not the original fixed-lag strategy and not an
 investment PIT certificate. Source facts, modeled execution, price checks and
-economic/account verification are separate. No performance has yet been
-computed for this new specification.
+economic/account verification are separate. The initial predeclaration commit computed no performance for this new
+specification. Subsequent actual execution and its limitations are recorded in
+[report.md](report.md), [results/summary.json](results/summary.json) and
+[reproduction.md](reproduction.md).

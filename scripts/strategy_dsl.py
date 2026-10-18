@@ -608,6 +608,11 @@ class StrategySpec:
         rebalance = RebalanceSpec.from_dict(raw.get("rebalance", {}))
         validate_factor_strategy_constraints(factors, rebalance.months, universe.filters,
                                             rebalance.dart_period_policy)
+        execution = ExecutionSpec.from_dict(raw.get("execution", {}))
+        if execution.data_loading == "annual_selected_projection":
+            from factor_registry import external_sources, external_filter_sources
+            if "dart" in set(external_sources(factors)) | set(external_filter_sources(universe.filters)):
+                raise ValueError("annual_selected_projection does not support DART; use original PIT-gated preparation")
         costs_raw = raw.get("cost_scenarios", {})
         if not isinstance(costs_raw, Mapping) or not costs_raw:
             raise ValueError("cost_scenarios must be a non-empty object")
@@ -628,7 +633,7 @@ class StrategySpec:
             factors=factors,
             portfolio=PortfolioSpec.from_dict(raw["portfolio"]),
             rebalance=rebalance,
-            execution=ExecutionSpec.from_dict(raw.get("execution", {})),
+            execution=execution,
             cost_scenarios=costs,
             period=PeriodSpec.from_dict(raw["period"]),
             benchmark=benchmark,

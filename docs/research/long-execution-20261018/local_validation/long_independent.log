@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/workspace/quant-marcap-runner/docs/research/long-execution-20261018/verify_long_ledger.py", line 124, in <module>
+    verify(a.run, a.output)
+  File "/workspace/quant-marcap-runner/docs/research/long-execution-20261018/verify_long_ledger.py", line 41, in verify
+    pd.testing.assert_index_equal(actual.index, dates.rename('Date'))
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/_testing/asserters.py", line 270, in assert_index_equal
+    _check_types(left, right, obj=obj)
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/_testing/asserters.py", line 264, in _check_types
+    assert_attr_equal("dtype", left, right, obj=obj)
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/_testing/asserters.py", line 448, in assert_attr_equal
+    raise_assert_detail(obj, msg, left_attr, right_attr)
+  File "/workspace/financial-repair/runtime/.venv/lib/python3.12/site-packages/pandas/_testing/asserters.py", line 619, in raise_assert_detail
+    raise AssertionError(msg)
+AssertionError: Index are different
+
+Attribute "dtype" are different
+[left]:  datetime64[us]
+[right]: datetime64[ns]

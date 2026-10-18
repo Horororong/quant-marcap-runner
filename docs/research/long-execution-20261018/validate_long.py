@@ -46,6 +46,8 @@ def main(out, check):
     preserved = json.loads((HOME / 'stage16_frozen_manifest.json').read_bytes())
     for path, pin in preserved['files'].items():
         assert (ROOT / path).stat().st_size == pin['bytes'] and sha(ROOT / path) == pin['sha256'], path
+    prefix = preserved['prior_registry_prefix']
+    assert hashlib.sha256((ROOT / prefix['path']).read_bytes()[:prefix['bytes']]).hexdigest() == prefix['sha256'], 'Stage16 action rows must remain byte-identical prefix'
     command('financial_original_preservation', ['docs/research/stage16-continuous-research-20261018/preserve.py', '--output', str(out / 'financial-preservation')])
 
     source = ROOT / 'config/strategies/research_size_top1_2001_2025_deferred_v1.json'
@@ -65,6 +67,11 @@ def main(out, check):
         assert preparation['sessions'] == 6168 and preparation['selected_codes'] == ['000660', '005930']
         assert len(preparation['annual']) == 25
     independent = long_ledger(out / 'long2001_2025', out / 'long_independent')
+    left_spec = json.loads((out / 'long2001_2025/strategy_normalized.json').read_bytes())
+    right_spec = json.loads((out / 'korean2001_2025/strategy_normalized.json').read_bytes())
+    for field in ['universe', 'portfolio', 'rebalance', 'execution', 'cost_scenarios', 'period', 'benchmark', 'initial_capital', 'research']:
+        assert left_spec[field] == right_spec[field], ('Korean contract differs', field)
+    assert [{k: v for k, v in f.items() if k != 'name'} for f in left_spec['factors']] == [{k: v for k, v in f.items() if k != 'name'} for f in right_spec['factors']]
     pins = {}
     for name in ['artifacts/daily_nav.csv', 'artifacts/target_weights.csv', 'artifacts/selections.csv',
                  'report/metrics_CURRENT.csv', 'report/daily_nav_canonical.csv']:
@@ -93,6 +100,10 @@ def main(out, check):
     for path in ['artifacts/daily_nav.csv', 'report/metrics_CURRENT.csv', 'report/daily_nav_canonical.csv']:
         pin = original_pins['original/' + path]
         assert (run / path).stat().st_size == pin['bytes'] and sha(run / path) == pin['sha256'], ('Original decile numerical regression', path)
+    frozen = json.loads((HOME.parent / 'stage16-continuous-research-20261018/regression_baseline.json').read_bytes())['files']
+    for path in ['artifacts/target_weights.csv', 'artifacts/decile_membership.csv', 'artifacts/execution_schedule.csv', 'artifacts/execution_trades.csv']:
+        pin = frozen['original/' + path]
+        assert (run / path).stat().st_size == pin['bytes'] and sha(run / path) == pin['sha256'], ('Projection changed original selection/order bytes', path)
     projected_accounting = original_ledger(run, out / 'projected_original_independent')
     summary = dict(status='PASS_EXPLICIT_LONG_RESEARCH_CONTRACT', github_sha=os.getenv('GITHUB_SHA'), ci_run_id=os.getenv('GITHUB_RUN_ID'),
                    python=sys.executable, investment_approved=False, long_accounting=independent, original_deciles_projection=projected_accounting,

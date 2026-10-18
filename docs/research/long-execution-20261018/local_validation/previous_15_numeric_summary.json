@@ -1,0 +1,65 @@
+{
+  "status": "PASS_RESEARCH_ENVIRONMENT",
+  "scope": "RESEARCH_ONLY continuous pretax model, not account/PIT certification",
+  "investment_use_allowed": false,
+  "python": "/workspace/financial-repair/runtime/.venv/bin/python",
+  "github_sha": null,
+  "run_id": null,
+  "accounting": {
+    "original": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 14820,
+      "portfolios": 10,
+      "sessions": 494,
+      "max_nav_error": 8.568167686462402e-08,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    },
+    "haircut90": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 14820,
+      "portfolios": 10,
+      "sessions": 494,
+      "max_nav_error": 8.568167686462402e-08,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    },
+    "listing_lag1": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 14820,
+      "portfolios": 10,
+      "sessions": 494,
+      "max_nav_error": 8.568167686462402e-08,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    },
+    "momentum2020": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 744,
+      "portfolios": 1,
+      "sessions": 248,
+      "max_nav_error": 3.725290298461914e-08,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    },
+    "size2024": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 732,
+      "portfolios": 1,
+      "sessions": 244,
+      "max_nav_error": 1.1175870895385742e-08,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    }
+  },
+  "korean_nav_targets_metrics_bytes_identical": true,
+  "sensitivity_selection_timing_invariant": true,
+  "numeric_identity_checked": true,
+  "browser": "separate required CI step; local sandbox browser unavailable",
+  "commands": 19
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS_POST_COMPLETION_RELEASE_CHECKS",
+  "numeric_pins_equal": true,
+  "language_contracts_equal_except_registered_factor_label": true,
+  "projection_original_selection_target_execution_bytes_equal": true,
+  "stage16_registry_prefix_preserved": true,
+  "first_failed_report_NAV_equals_complete_NAV": true,
+  "note": "These explicit read-only checks supplement the completed local --check=false fresh validation; CI will run fresh --check=true from the final committed tree. No expected values updated."
+}

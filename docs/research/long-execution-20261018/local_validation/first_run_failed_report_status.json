@@ -1,0 +1,101 @@
+{
+  "run_contract_version": "2",
+  "run_id": "20261018T015535966500Z-c19140e6",
+  "status": "failed",
+  "phase": "postprocess",
+  "started_at": "2026-10-18T01:55:35.966651+00:00",
+  "finished_at": "2026-10-18T02:02:30.725254+00:00",
+  "strategy_id": "research_size_top1_2001_2025_deferred_v1",
+  "strategy_fingerprint": "4bef80bec68bd7df44496f40426db3b3cffb7f6f76b1f0da316a76006b37ea21",
+  "versions": {
+    "schema_version": "1.0",
+    "factor_registry_version": "7",
+    "execution_engine_version": "v2-16-exec-7",
+    "corporate_action_registry_version": "9",
+    "dsl_machine_contract_version": "27",
+    "preflight_contract_version": "3",
+    "history_audit_contract_version": "1",
+    "krx_market_normalization_version": "1",
+    "project_template_version": "v2-16",
+    "performance_template_version": "v2-18"
+  },
+  "mode": "requested_period_report",
+  "nav_ready": true,
+  "report_ready": false,
+  "input_path": "/workspace/quant-marcap-runner/config/strategies/research_size_top1_2001_2025_deferred_v1.json",
+  "output_dir": "/workspace/research-stage16-20261018/long-execution/long2001_2025",
+  "status_file": "/workspace/research-stage16-20261018/long-execution/long2001_2025/run_status.json",
+  "completed_stages": [
+    "input",
+    "preflight",
+    "report_readiness",
+    "execution"
+  ],
+  "outputs": {
+    "daily_nav": "artifacts/daily_nav.csv",
+    "target_weights": "artifacts/target_weights.csv",
+    "runtime_incident": "runtime_incident.json",
+    "diagnostic_dashboard": "diagnostic_CURRENT.html"
+  },
+  "artifacts": {
+    "execution": [
+      {
+        "path": "benchmark_coverage.json",
+        "bytes": 254
+      },
+      {
+        "path": "corporate_actions_applied.csv",
+        "bytes": 308
+      },
+      {
+        "path": "daily_nav.csv",
+        "bytes": 519499
+      },
+      {
+        "path": "data_preparation.json",
+        "bytes": 29473
+      },
+      {
+        "path": "execution_plan.json",
+        "bytes": 3496
+      },
+      {
+        "path": "execution_schedule.csv",
+        "bytes": 2635
+      },
+      {
+        "path": "execution_trades.csv",
+        "bytes": 592808
+      },
+      {
+        "path": "held_return_checks.csv",
+        "bytes": 516919
+      },
+      {
+        "path": "history_coverage.json",
+        "bytes": 21019
+      },
+      {
+        "path": "return_reference_audit.json",
+        "bytes": 284
+      },
+      {
+        "path": "selections.csv",
+        "bytes": 3682
+      },
+      {
+        "path": "strategy_fingerprint.txt",
+        "bytes": 65
+      },
+      {
+        "path": "target_weights.csv",
+        "bytes": 501
+      }
+    ]
+  },
+  "error": {
+    "type": "TimeoutExpired",
+    "message": "Command '['/workspace/financial-repair/runtime/.venv/bin/python', '/workspace/quant-marcap-runner/scripts/quant_backtest_postprocess.py', '--daily-csv', '/workspace/research-stage16-20261018/long-execution/long2001_2025/artifacts/daily_nav.csv', '--series', 'NAV_Gross,NAV_Net_zero,NAV_Net_fixed_cost,NAV_Benchmark', '--title', 'RESEARCH_ONLY · 2001–2025 largest-cap, explicit all-or-none deferred close execution', '--book-start', '2001-01-01', '--book-end', '2025-12-31', '--output-dir', '/workspace/research-stage16-20261018/long-execution/long2001_2025/_report', '--initial-capital', '10000000.0', '--as-of-date', '2025-12-31', '--market-calendar', 'XKRX', '--report-periods', '/workspace/research-stage16-20261018/long-execution/long2001_2025/report_periods.json', '--benchmark-series', 'NAV_Benchmark']' timed out after 300 seconds"
+  },
+  "requested_report_contract_version": "1"
+}

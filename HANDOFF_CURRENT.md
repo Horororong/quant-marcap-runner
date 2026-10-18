@@ -1,3 +1,40 @@
+# Explicit long execution continuation (2026-10-18)
+
+Read `docs/research/long-execution-20261018/README.md`, `report.md` and
+`reproduction.md` before the historical checkpoints below. Always read live
+remote SHA and actual job results; this document cannot attest its own future CI.
+
+- The earlier Stage16 final remote5eb2951fdba20fa8ccac298aed92610f15c24782
+  completed CI39083315071 successfully, including old E2E, new full2019–2025
+  top1, browser, original60 and financial preservation. Artifact12119563583
+  (`stage16-continuous-research`) retains29242834bytes.
+- New separate predeclared top1deferred2001–2025 has complete6168session
+  Gross/Net NAV and CURRENT report. Independent raw-source ranking, quantity,
+  cash and first-liquid-close checks match18504book-days; tolerance remains1e-5KRW.
+  Original fixed-lag2001–2025 top1 still fails2018-05-02. Original long decile
+  blockers and2026 source/benchmark gaps remain unchanged.
+- Exact new execution/preparation flags are explicit DSL fingerprint inputs;
+  normal omitted fields retain old fingerprints. No exclusions or replaced
+  factor universes; top_n and deciles share PROJECT. DART projection is rejected
+  before source access. Dividend/cash/merger interactions with deferred orders
+  are currently unsupported and fail explicitly.
+- Official Samsung change-listing20180503000318 confirms50:1 and2018-05-04.
+  Only4public requests,0retries in CI39087969598; original response hashes retained.
+  Source collection is retired to its exact successful SHA. No broker-credit claim.
+- CURRENT long-report failure was calendar cache thrashing:16entries were
+  insufficient for>50year/cross-year keys. Bounded128entry reuse leaves exact
+  sessions/formulas unchanged. The first300second failure and successful NAV
+  are preserved; postprocessor timeout stays300seconds.
+- Financial518/core64/original60, original151file archive and Stage16raw
+  evidence/results are protected. Frozen pins are never regenerated to pass.
+  The Stage16 executable baseline checker has an explicitly reviewed version
+  tuple update toexec7/registry9/machine27; all other old plan values stay exact.
+- Final CI uses `[stage16] [long-research]`: existing complete regression plus
+  parallel fresh25year JSON/Korean/projection/independent ledger and browser job.
+  No new source collection is part of final CI. Read actual status and artifacts.
+
+Previous checkpoints follow unchanged for historical context.
+
 # Continuous research checkpoint (2026-10-18)
 
 Read docs/research/stage16-continuous-research-20261018/README.md and stage16_report.md first for the new workbench path. Starting remote019075550256b9796fd5475fe8d6aa43a6d53b21/CI39078538435 was verified. Current live SHA/CI must be read from GitHub; publication/CI metadata is emitted as GITHUB_SHA/RunID in the actual artifact, not inferred from this checkpoint.

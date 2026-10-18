@@ -1,5 +1,36 @@
 # Strategy DSL v1
 
+## Explicit long-horizon execution and preparation (2026-10-18)
+
+Optional `execution.nontradable_policy="defer_full_rebalance"` is a distinct
+research execution contract. The default remains rejection of untradable
+scheduled trades. Original targets and earliest lag stay fixed; the entire
+rebalance waits until every old/target holding has an observed positive close
+and positive volume. Old positions earn returns through that actual close.
+Overlapping pending orders and end-of-window pending orders fail. The current
+opt-in supports split/no-action long-only portfolios; stock-dividend books,
+cash claims and merger interactions fail rather than silently using this model.
+Ordinary held-return1bp and unknown-event gates remain mandatory.
+
+Optional `execution.data_loading="annual_selected_projection"` selects from
+every full original annual universe using the existing registered builders,
+then projects observations onto selected codes and verified successors. Full
+market calendars/provider audits survive projection. Missing observations are
+not synthesized. DART preparation is unsupported by this new path and is
+rejected before data access; existing financial PIT paths/gates remain intact.
+
+Omitting both fields preserves existing canonical DSL/fingerprints. Explicit
+fields alter the fingerprint and plan; preparation and pending-order audits
+are saved alongside NAV. Top-N and deciles call the same PROJECT implementation.
+Controlled Korean input can opt into only those two fields through
+`--execution-contract-from <validated-predeclared-DSL>`; it cannot change the
+request's lag, price, factor, selections or costs.
+
+The full2001–2025 separately predeclared largest-cap example and exact commands
+are in `docs/research/long-execution-20261018/reproduction.md`. Its results are
+RESEARCH_ONLY and do not turn the blocked original fixed-lag strategies into
+successful runs. Machine contracts are generated from the owners as usual.
+
 ## Goal
 
 Natural language is translated by an AI layer into a deterministic JSON strategy specification. The backtest engine never executes free-form model reasoning. The same JSON + same data + same engine version must produce the same target weights and NAV.
