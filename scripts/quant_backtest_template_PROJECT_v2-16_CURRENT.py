@@ -850,8 +850,11 @@ class ExecutionAssumptions:
     max_gross_exposure: float = 1.0
     weight_tolerance: float = 1e-10
     nontradable_policy: str = "reject"
+    aggregation_assets: tuple[str, ...] | None = None
 
     def __post_init__(self) -> None:
+        if self.aggregation_assets is not None and (self.nontradable_policy != "defer_full_rebalance_events_v1" or not isinstance(self.aggregation_assets,tuple) or len(set(self.aggregation_assets))!=len(self.aggregation_assets)):
+            raise ValueError("explicit event-aware model requires unique original aggregation asset tuple")
         if self.nontradable_policy not in ("reject", "defer_full_rebalance", "defer_full_rebalance_events_v1"):
             raise ValueError("unsupported nontradable_policy")
         if self.nontradable_policy != "reject" and self.allow_short:
@@ -1096,6 +1099,13 @@ def simulate_target_weight_portfolio(
     if (px.dropna() <= 0).any().any():
         raise AssertionError("close_prices에 0 이하 가격이 있습니다.")
     assets = list(px.columns)
+    if ex.aggregation_assets is not None and not set(assets).issubset(ex.aggregation_assets):
+        raise ValueError("original aggregation layout omits observed execution assets")
+    def asset_sum(values):
+        # Preserve legacy pairwise floating reduction after observation
+        # projection. These are ZERO weights only, never future/unselected
+        # prices, factor inputs, eligibility or fabricated observations.
+        return values.sum() if ex.aggregation_assets is None else values.reindex(ex.aggregation_assets,fill_value=0.).sum()
     weights_signal = _validate_target_weights(target_weights, assets, ex)
     schedule = _schedule_signal_execution_dates(px.index, weights_signal.index, ex.execution_lag_sessions)
     execution_targets = {exec_dt: weights_signal.loc[sig].astype(float) for sig, exec_dt in schedule.items()}
@@ -1148,11 +1158,29 @@ def simulate_target_weight_portfolio(
     cash_events = pd.DataFrame()
     stock_events = corporate_action_events
     dividend_events = pd.DataFrame()
+    spinoff_events = pd.DataFrame()
     if corporate_action_events is not None and not corporate_action_events.empty:
         cash_events = corporate_action_events.loc[corporate_action_events["event_type"].eq(CASH_EVENT)].copy()
         stock_events = corporate_action_events.loc[~corporate_action_events["event_type"].eq(CASH_EVENT)].copy()
         dividend_events = stock_events.loc[stock_events["event_type"].eq("stock_dividend")].copy()
         stock_events = stock_events.loc[~stock_events["event_type"].eq("stock_dividend")].copy()
+        spinoff_events = stock_events.loc[stock_events["event_type"].eq("stock_spinoff")].copy()
+        stock_events = stock_events.loc[~stock_events["event_type"].eq("stock_spinoff")].copy()
+        if not spinoff_events.empty:
+            if corporate_action_events.duplicated(["event_date","predecessor_code"]).any():
+                raise ValueError("duplicate corporate action overlaps spin-off")
+            import json as _spin_json
+            for record in spinoff_events.to_dict('records'):
+                contract=_spin_json.loads(record['spin_off_contract'])
+                if not {'parent','child','last_trade_date','listing_date'}.issubset(contract):raise ValueError('invalid spin-off contract')
+                involved={contract['parent'],contract['child']}
+                other=corporate_action_events.loc[~corporate_action_events.event_type.eq('stock_spinoff')]
+                if not other.empty:
+                    active=pd.to_datetime(other.event_date).between(pd.Timestamp(contract['last_trade_date']),pd.Timestamp(contract['listing_date']),inclusive='right')
+                    touch=other.predecessor_code.isin(involved)|other.successor_code.isin(involved)
+                    if (active&touch).any():raise ValueError('interacting event inside spin-off locked basket unsupported')
+        if not spinoff_events.empty and ex.nontradable_policy != "defer_full_rebalance_events_v1":
+            raise ValueError("spin-off research requires explicit event-aware liquid-target contract")
         if not dividend_events.empty:
             dividend_events["event_date"] = pd.to_datetime(dividend_events["event_date"]).dt.normalize()
             involved = set(dividend_events["predecessor_code"])
@@ -1176,6 +1204,12 @@ def simulate_target_weight_portfolio(
         if volumes.index.duplicated().any() or volumes.columns.duplicated().any():
             raise ValueError("source_volumes has duplicate dates or codes")
         volumes = volumes.reindex(index=px.index, columns=assets).apply(pd.to_numeric, errors="coerce")
+    if not spinoff_events.empty:
+        from research_spinoff import normalize
+        if ex.allow_short: raise ValueError("spin-off short accounting unsupported")
+        spin_actions = normalize(px, spinoff_events, mask, volumes, reference, execution_targets)
+        if not spin_actions.empty:
+            corporate_actions = spin_actions if corporate_actions.empty else pd.concat([corporate_actions,spin_actions],ignore_index=True)
     if not cash_events.empty:
         cash_actions = normalize_cash_exchanges(px, cash_events, mask, volumes, reference, execution_targets, corporate_actions)
         if not cash_actions.empty:
@@ -1253,6 +1287,11 @@ def simulate_target_weight_portfolio(
             # This changes only the independent source-price comparison. The
             # economic return r (share_ratio * close / last_close) still owns
             # Gross/Net NAV, quantities, turnover and cash without alteration.
+            for action in actions_by_date.get(dt, []):
+                if action['event_type']=='stock_spinoff':
+                    pred=action['predecessor_code']
+                    comparison[pred]=float(px.at[dt,pred])/float(action['parent_reference'])-1.
+                    finite[pred]=np.isfinite(observed[pred]) and np.isfinite(comparison[pred])
             difference = (comparison - observed).abs() * 10_000.0
             bad = checked & (~finite | (difference > HELD_RETURN_TOLERANCE_BPS))
             if bad.any():
@@ -1282,11 +1321,11 @@ def simulate_target_weight_portfolio(
                     quantities[b][security] = (float(w[security]) * nav / float(px.iloc[i - 1][security])
                                                if w[security] else 0.)
         sleeve = dividends.phase(str(dt.date()), px.loc[dt].to_dict(), quantities)
-        portfolio_return = float((current_w * r).sum()) + sleeve["Gross"][0] / gross_nav
+        portfolio_return = float(asset_sum(current_w * r)) + sleeve["Gross"][0] / gross_nav
         if portfolio_return <= -1.0:
             raise RuntimeError(f"포트폴리오 NAV가 0 이하가 됩니다: {dt.date()}")
         gross_nav *= 1.0 + portfolio_return
-        net_return = float((net_w * r).sum()) + sleeve["Net"][0] / net_nav
+        net_return = float(asset_sum(net_w * r)) + sleeve["Net"][0] / net_nav
         if net_return <= -1.0:
             raise RuntimeError("Net NAV becomes non-positive")
         net_nav *= 1.0 + net_return
@@ -1316,6 +1355,11 @@ def simulate_target_weight_portfolio(
                             "settled": False,
                         })
                     current_w[pred] = net_w[pred] = 0.0
+                elif action['event_type']=='stock_spinoff':
+                    child=action['child_code']
+                    ratio=float(action['child_ratio'])*float(action['child_price'])/float(action['basket_value_per_old_share'])
+                    for w in (current_w,net_w):
+                        basket=float(w[pred]);w[pred]=basket*(1.-ratio);w[child]+=basket*ratio
                 elif pred != succ:
                     net_w[succ] = float(net_w[succ]) + float(net_w[pred])
                     net_w[pred] = 0.0
@@ -1335,6 +1379,8 @@ def simulate_target_weight_portfolio(
                     "transferred_weight": transferred_weight,
                     "source": action.get("source", ""),
                 })
+                if action['event_type']=='stock_spinoff':
+                    corporate_action_rows[-1].update(child_code=action['child_code'],child_ratio=action['child_ratio'],child_price=action['child_price'],parent_reference=action['parent_reference'],child_reference=action['child_reference'],spin_off_contract=action['spin_off_contract'])
                 contract=action.get('market_reference_contract')
                 if isinstance(contract,str) and contract:
                     from corporate_action_reference import validate_reference
@@ -1373,7 +1419,7 @@ def simulate_target_weight_portfolio(
                     raise RuntimeError("illiquid claims exceed NAV; cannot finance order")
                 target = requested_target * (1.0 - pending_gross / gross_nav)
                 net_target = requested_target * (1.0 - pending_net / net_nav)
-            if pending_gross > 0 and float(target.sum()) + pending_gross / gross_nav > 1.0 + ex.weight_tolerance:
+            if pending_gross > 0 and float(asset_sum(target)) + pending_gross / gross_nav > 1.0 + ex.weight_tolerance:
                 raise RuntimeError("insufficient settled cash: target weights include unpaid cash receivable")
             if mask is not None:
                 changing = ((target - current_w).abs() > ex.weight_tolerance) | ((net_target - net_w).abs() > ex.weight_tolerance)
@@ -1384,11 +1430,11 @@ def simulate_target_weight_portfolio(
                         f"assets={list(blocked[blocked].index)}"
                    )
             diff = target - current_w
-            buy_to = float(diff.clip(lower=0.0).sum())
-            sell_to = float((-diff.clip(upper=0.0)).sum())
+            buy_to = float(asset_sum(diff.clip(lower=0.0)))
+            sell_to = float(asset_sum(-diff.clip(upper=0.0)))
             net_diff = net_target - net_w
-            net_buy_to = float(net_diff.clip(lower=0).sum())
-            net_sell_to = float((-net_diff.clip(upper=0)).sum())
+            net_buy_to = float(asset_sum(net_diff.clip(lower=0)))
+            net_sell_to = float(asset_sum(-net_diff.clip(upper=0)))
             net_cost_fraction = float(calculate_trading_cost_fraction(
                 pd.Series([net_buy_to], index=[dt]),
                 pd.Series([net_sell_to], index=[dt]), costs,
@@ -1396,7 +1442,7 @@ def simulate_target_weight_portfolio(
             net_nav *= 1.0 - net_cost_fraction
             if liquid_targets:
                 net_target = requested_target * (1.0 - pending_net / net_nav)
-            if pending_net > 0 and float(net_target.sum()) + pending_net / net_nav > 1.0 + ex.weight_tolerance:
+            if pending_net > 0 and float(asset_sum(net_target)) + pending_net / net_nav > 1.0 + ex.weight_tolerance:
                 raise RuntimeError("insufficient settled cash after costs: net receivable cannot fund trades")
             cost_fraction = net_cost_fraction
             current_w = target
@@ -1428,13 +1474,13 @@ def simulate_target_weight_portfolio(
             "cost_fraction": cost_fraction,
         })
         wr = {"Date": dt, **{a: float(current_w[a]) for a in assets}}
-        wr["Cash"] = float(1.0 - current_w.sum() - pending_gross / gross_nav)
-        if not cash_events.empty or dividends.plans:
+        wr["Cash"] = float(1.0 - asset_sum(current_w) - pending_gross / gross_nav)
+        if not cash_events.empty or dividends.plans or ex.nontradable_policy == "defer_full_rebalance_events_v1":
             wr["CashReceivable"] = (pending_gross - sleeve["Gross"][1]) / gross_nav
             if dividends.plans:
                 wr["StockDividendIlliquid"] = sleeve["Gross"][1] / gross_nav
             nwr = {"Date": dt, **{a: float(net_w[a]) for a in assets}}
-            nwr["Cash"] = float(1.0 - net_w.sum() - pending_net / net_nav)
+            nwr["Cash"] = float(1.0 - asset_sum(net_w) - pending_net / net_nav)
             nwr["CashReceivable"] = (pending_net - sleeve["Net"][1]) / net_nav
             if dividends.plans:
                 nwr["StockDividendIlliquid"] = sleeve["Net"][1] / net_nav

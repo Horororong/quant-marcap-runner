@@ -20,6 +20,15 @@ CONTRACT = {
 }
 
 
+class PendingOrderError(ValueError):
+    def __init__(self, message, date, pending):
+        super().__init__(message)
+        self.date=date
+        self.origin_signal=pending['signal']
+        self.planned_date=pending['planned']
+        self.blocked=pending['blocked'][-1] if pending['blocked'] else None
+
+
 def resolve_deferred_schedule(schedule, target_weights, prices, tradable, tolerance=1e-10, *, events=None):
     if not np.isfinite(tolerance) or tolerance < 0:
         raise ValueError("deferred schedule requires finite nonnegative tolerance")
@@ -45,7 +54,7 @@ def resolve_deferred_schedule(schedule, target_weights, prices, tradable, tolera
     # Event plans are validated by the common book BEFORE use. The scheduler
     # tracks only whether a nonzero tradable position can exist, never value.
     records = [] if events is None or events.empty else events.to_dict('records')
-    permitted = {'stock_split', 'stock_merger', 'cash_share_exchange', 'stock_dividend'}
+    permitted = {'stock_split', 'stock_merger', 'cash_share_exchange', 'stock_dividend', 'stock_spinoff'}
     if any(x['event_type'] not in permitted for x in records):
         raise ValueError('pending_order_unsupported_event: independently evidenced event book required')
     dividends = None
@@ -82,6 +91,12 @@ def resolve_deferred_schedule(schedule, target_weights, prices, tradable, tolera
             if date != pd.Timestamp(event['event_date']):
                 continue
             pred, succ = event['predecessor_code'], event.get('successor_code')
+            if event['event_type']=='stock_spinoff':
+                from research_spinoff import validate
+                import json
+                contract=validate(json.loads(event['spin_off_contract']))
+                if pred in held:
+                    held.add(contract['child'])
             if pred in held and event['event_type'] in {'stock_merger','cash_share_exchange'}:
                 held.remove(pred)
                 if event['event_type']=='stock_merger':
@@ -90,7 +105,7 @@ def resolve_deferred_schedule(schedule, target_weights, prices, tradable, tolera
             pending['required'] = held | pending['target']
         if date in at:
             if pending is not None:
-                raise ValueError(f"pending_order_conflict: original signal {pending['signal'].date()} remains unfilled at new execution {date.date()}")
+                raise PendingOrderError(f"pending_order_conflict: original signal {pending['signal'].date()} remains unfilled at new execution {date.date()}",date,pending)
             signal = at[date]
             row = target_weights.loc[signal]
             target = set(row.index[row.gt(tolerance)])
@@ -111,7 +126,7 @@ def resolve_deferred_schedule(schedule, target_weights, prices, tradable, tolera
         held = pending['target']
         pending = None
     if pending is not None:
-        raise ValueError(f"pending_order_at_requested_end: signal {pending['signal'].date()}, planned {pending['planned'].date()}, last {prices.index[-1].date()}, blocked {pending['blocked'][-1]}")
+        raise PendingOrderError(f"pending_order_at_requested_end: signal {pending['signal'].date()}, planned {pending['planned'].date()}, last {prices.index[-1].date()}, blocked {pending['blocked'][-1]}",prices.index[-1],pending)
     if len(resolved) != len(schedule):
         raise ValueError("deferred schedule did not account for every original signal")
     return resolved, audit
@@ -120,7 +135,7 @@ def resolve_deferred_schedule(schedule, target_weights, prices, tradable, tolera
 EVENT_CONTRACT = {
     "version": "1", "policy": "defer_full_rebalance_events_v1",
     "orders": CONTRACT["pending"], "liquidity": CONTRACT["liquidity"],
-    "events": "Validated splits, stock mergers, fixed cash exchange and stock dividends only; unknown spin-offs fail",
+    "events": "Validated splits, stock mergers, fixed cash exchange, stock dividends and explicit simultaneous-listing research spin-offs; unknown events fail",
     "rights": "Ex-date opening holders only; cancellation removes right; listing creates tradable holding even after original-share sale",
     "allocation": "Requested weights apply to liquid NAV, separately for Gross/Net; claims remain outside cash budget; fees on pre-cost liquid targets, post-cost liquid allocation",
     "scope": "RESEARCH_ONLY continuous quantities, distribution taxes excluded; no actual brokerage settlement certification",

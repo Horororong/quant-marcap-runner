@@ -121,6 +121,8 @@ def execute_decile_nav(
             successors = set(corporate_actions.loc[
                 corporate_actions["predecessor_code"].isin(used) & corporate_actions["event_type"].ne("cash_share_exchange"), "successor_code"
             ])
+            if 'child_code' in corporate_actions:
+                successors.update(corporate_actions.loc[corporate_actions.predecessor_code.isin(used)&corporate_actions.event_type.eq('stock_spinoff'),'child_code'].dropna())
             if successors.issubset(used):
                 break
             used.update(successors)

@@ -99,6 +99,46 @@ class EventDeferred(unittest.TestCase):
         base=self.engine._schedule_signal_execution_dates(d,w.index,1)
         schedule,_=resolve_deferred_schedule(base,w,p,mask,events=ev)
         self.assertEqual(schedule[d[8]],d[10])
+    def test_merger_replaces_required_sale_security_before_pending_close_fill(self):
+        d=pd.bdate_range('2024-01-02',periods=6)
+        p=pd.DataFrame({'000001':[100.,100.,float('nan'),float('nan'),float('nan'),float('nan')], '000002':[50.,55.,58.,60.,66.,70.], '000003':[100.]*6},index=d)
+        mask=p.notna();mask.loc[d[3],'000002']=False
+        targets=pd.DataFrame([[1.,0.,0.],[0.,0.,1.]],index=d[[0,2]],columns=p.columns)
+        ev=pd.DataFrame([dict(event_date=d[3],event_type='stock_merger',predecessor_code='000001',successor_code='000002',share_ratio=2.,cash_per_share=0.,source='synthetic')])
+        ref=p.pct_change(fill_method=None)
+        r=self.engine.simulate_target_weight_portfolio(p,targets,initial_capital=10000.,tradable_mask=mask,corporate_action_events=ev,reference_returns=ref,execution_assumptions=self.engine.ExecutionAssumptions(nontradable_policy=POLICY))
+        self.assertEqual(r['execution_schedule'].iloc[1].execution_date,d[4])
+        self.assertAlmostEqual(r['daily_nav'].at[d[4],'Gross']*10000,13200.)
+        self.assertEqual(r['weights'].at[d[4],'000002'],0.)
+
+    def test_cash_exchange_receivable_is_outside_full_liquid_target_budget(self):
+        from test_cash_share_exchange import fixture as cash_fixture
+        d,p,v,mask,ref,targets,ev=cash_fixture()
+        targets.iloc[1]=[0.,1.];targets=targets.iloc[:2]
+        r=self.engine.simulate_target_weight_portfolio(p,targets,initial_capital=10000.,tradable_mask=mask,source_volumes=v,corporate_action_events=ev,reference_returns=ref,execution_assumptions=self.engine.ExecutionAssumptions(nontradable_policy=POLICY))
+        # First60 shares become7200 fixed cash claim; other20 shares gain to120.
+        # Cash2000 does not earn the stock decline. The existing20 shares
+        # decline120->90 before the actual day4 close: liquid=2000+20*90.
+        self.assertAlmostEqual(r['daily_nav'].at[d[4],'Gross']*10000,7200+2000+20*90)
+        self.assertAlmostEqual(r['weights'].at[d[4],'000002']*r['daily_nav'].at[d[4],'Gross']*10000,2000+20*90)
+        self.assertEqual(r['weights'].at[d[4],'Cash'],0.)
+        # At payment cash becomes liquid exactly once, value unchanged by receipt.
+        self.assertGreater(r['weights'].at[d[6],'Cash'],0.)
+
+    def test_projected_observations_preserve_original_full_source_float_reduction(self):
+        import numpy as np
+        d=pd.bdate_range('2024-01-02',periods=120);names=[f'{i:06d}' for i in range(1,2427)];used=[names[i] for i in [325,725,1817]]
+        raw=np.random.default_rng(42).normal(0,.01,(120,3));small=pd.DataFrame(100*np.cumprod(1+raw,axis=0),index=d,columns=used)
+        full=pd.DataFrame(100.,index=d,columns=names);full[used]=small
+        weight=pd.DataFrame(0.,index=d[:1],columns=names);weight[used]=1/3
+        base=self.engine.simulate_target_weight_portfolio(full,weight,initial_capital=10000.,tradable_mask=full.notna())
+        projected=self.engine.simulate_target_weight_portfolio(small,weight[used],initial_capital=10000.,tradable_mask=small.notna(),execution_assumptions=self.engine.ExecutionAssumptions(nontradable_policy=POLICY,aggregation_assets=tuple(names)))
+        pd.testing.assert_frame_equal(base['daily_nav'],projected['daily_nav'],check_exact=True)
+        pd.testing.assert_frame_equal(base['trades'],projected['trades'],check_exact=True)
+        pd.testing.assert_frame_equal(base['weights'][used+['Cash']],projected['weights'][used+['Cash']],check_exact=True)
+        with self.assertRaisesRegex(ValueError,'omits'):
+            self.engine.simulate_target_weight_portfolio(small,weight[used],tradable_mask=small.notna(),execution_assumptions=self.engine.ExecutionAssumptions(nontradable_policy=POLICY,aggregation_assets=tuple(used[:2])))
+
     def test_unknown_spinoff_fails_without_inventing_successor_rights(self):
         d,p,w,ev,_=fixture();ev['event_type']='spin_off'
         with self.assertRaisesRegex(ValueError,'unsupported_event'):

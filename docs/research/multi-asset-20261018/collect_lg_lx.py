@@ -22,6 +22,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--followup', action='store_true')
+    p.add_argument('--historical', action='store_true')
     a = p.parse_args()
     a.output.mkdir(parents=True, exist_ok=False)
     state = dict(requests=0, retries=0, responses=[], candidates=[], errors=[], investment_approved=False)
@@ -53,9 +54,12 @@ def main():
             # initial-listing. This is a changed, bounded search, not a retry.
             queries = [('A383800', '', '재상장'), ('A383800', '', '기준가격')]
             capture('https://kind.krx.co.kr/external/2020/11/26/000378/20201126000891/11345.htm', '20201126000378_decision.html')
-        for code, company, title in queries:
+        queries=[(*q,'2021-05-20','2021-05-31') for q in queries]
+        if a.historical:
+            queries=[('A015580','','주식이전','2001-08-01','2001-09-10'),('A012170','','변경상장','2001-06-15','2001-06-21')]
+        for code, company, title, start, end in queries:
             params = dict(method='searchDetailsSub', forward='details_sub', currentPageSize='100', pageIndex='1',
-                          orderMode='0', orderStat='D', fromDate='2021-05-20', toDate='2021-05-31',
+                          orderMode='0', orderStat='D', fromDate=start, toDate=end,
                           searchCodeType='char', repIsuSrtCd=code, searchCorpName=company,
                           oldSearchCorpName=company, reportNm=title, reportNmTemp=title)
             text = capture('https://kind.krx.co.kr/disclosure/details.do', code+'_'+title+'_search.html', parse.urlencode(params).encode())

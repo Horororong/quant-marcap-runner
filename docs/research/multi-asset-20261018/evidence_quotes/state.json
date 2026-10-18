@@ -1,0 +1,130 @@
+{
+  "requests": 9,
+  "retries": 0,
+  "responses": [
+    {
+      "file": "stk_bydd_trd_20210527.json",
+      "source": "https://data-dbg.krx.co.kr/svc/apis/sto/stk_bydd_trd?basDd=20210527",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 289845,
+      "sha256": "3ba4e2062b499122f2824983d214b83a2fe376d939fba948c65a12f425f110c4"
+    },
+    {
+      "file": "kospi_dd_trd_20260918.json",
+      "source": "https://data-dbg.krx.co.kr/svc/apis/idx/kospi_dd_trd?basDd=20260918",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 15169,
+      "sha256": "82bd2b6b4060b9ebfa1bd9b9c7cbd061195d89981d5ac6409d232bdf3f0070db"
+    },
+    {
+      "file": "holiday_search.html",
+      "source": "https://kind.krx.co.kr/disclosure/details.do",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 3810,
+      "sha256": "11bca08224455e2feff524286631943e49a7965c07a588de9775469858abbf2f"
+    },
+    {
+      "file": "20260520000117_viewer.html",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchInitInfo&acptNo=20260520000117",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 24430,
+      "sha256": "0b5f4cee63591e092a1e534641b672a7c69ed08a7d2d765a8ea986c1fd8415b7"
+    },
+    {
+      "file": "20260520000117_path.html",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchContents&docNo=20260520000009",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 968,
+      "sha256": "ec3b96a89b5e0239bdd034fa481aa7ed112ea4b69b9ffe55042cf11b4f637d72"
+    },
+    {
+      "file": "20260520000117_body.html",
+      "source": "https://kind.krx.co.kr/external/2026/05/20/000117/20260520000009/99340.htm",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 2878,
+      "sha256": "d14a9c175f2f0bab156f38417040903ae06b026f60d8e103783836d6aca48ce4"
+    },
+    {
+      "file": "20260520000121_viewer.html",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchInitInfo&acptNo=20260520000121",
+      "http": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 24400,
+      "sha256": "3c657992e80c3c486b6895d45167a4a83a63908d951ccb74cf466c4d784929f7"
+    },
+    {
+      "file": "20260520000121_path.html",
+      "source": "https://kind.krx.co.kr/common/disclsviewer.do?method=searchContents&docNo=20260520000184",
+      "http": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 968,
+      "sha256": "962c30d671f2de8950c51ef8fcfc72cde08febc8b51f5a520ed72794ff836963"
+    },
+    {
+      "file": "20260520000121_body.html",
+      "source": "https://kind.krx.co.kr/external/2026/05/20/000121/20260520000184/71985.htm",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 2838,
+      "sha256": "b99bd870eebb36c1e433ca431d7db27dfbf0f5cd3a0aeb75b1063073a52ccda0"
+    }
+  ],
+  "target_rows": [
+    {
+      "source_row_index": 76,
+      "security": "003550",
+      "date": "2021-05-27",
+      "raw_api_row": {
+        "BAS_DD": "20210527",
+        "ISU_CD": "003550",
+        "ISU_NM": "LG",
+        "MKT_NM": "KOSPI",
+        "SECT_TP_NM": "",
+        "TDD_CLSPRC": "108500",
+        "CMPPREVDD_PRC": "-11000",
+        "FLUC_RT": "-9.21",
+        "TDD_OPNPRC": "119500",
+        "TDD_HGPRC": "122500",
+        "TDD_LWPRC": "107500",
+        "ACC_TRDVOL": "1781390",
+        "ACC_TRDVAL": "197709186500",
+        "MKTCAP": "17067157740500",
+        "LIST_SHRS": "157300993"
+      }
+    },
+    {
+      "source_row_index": 96,
+      "security": "383800",
+      "date": "2021-05-27",
+      "raw_api_row": {
+        "BAS_DD": "20210527",
+        "ISU_CD": "383800",
+        "ISU_NM": "LX홀딩스",
+        "MKT_NM": "KOSPI",
+        "SECT_TP_NM": "",
+        "TDD_CLSPRC": "12000",
+        "CMPPREVDD_PRC": "-650",
+        "FLUC_RT": "-5.14",
+        "TDD_OPNPRC": "12650",
+        "TDD_HGPRC": "14300",
+        "TDD_LWPRC": "12000",
+        "ACC_TRDVOL": "11609074",
+        "ACC_TRDVAL": "151239034650",
+        "MKTCAP": "915368280000",
+        "LIST_SHRS": "76280690"
+      }
+    }
+  ],
+  "errors": [],
+  "scope": "one new stock market-day and one index-service access probe; no raw data repair",
+  "investment_approved": false,
+  "index_probe": {
+    "nonempty": true
+  }
+}

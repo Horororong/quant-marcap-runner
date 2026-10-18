@@ -7,7 +7,7 @@ def verify(runs,output):
  m=json.loads((HOME/'regression_baseline.json').read_text());checks=[]
  # Explicit approved owner evolution for additive opt-in contracts and official Samsung split.
  # Frozen archive/numeric pins remain untouched; all other plan fields still exact.
- versions=dict(execution_engine_version='v2-16-exec-8',corporate_action_registry_version='9',dsl_machine_contract_version='28')
+ versions=dict(execution_engine_version='v2-16-exec-9',corporate_action_registry_version='9',dsl_machine_contract_version='29')
  for name,pin in m['files'].items():
   if pin['comparison']!='exact_baseline':continue
   raw=(runs/name).read_bytes();actual=hashlib.sha256(raw).hexdigest()

@@ -563,6 +563,9 @@ def run_strategy(spec_path: Path, repo_root: Path, output_dir: Path | None = Non
         close = close.reindex(prepared["dates"])
         tradable = tradable.reindex(prepared["dates"], fill_value=False)
     cfg, costs, execution = engine_inputs(spec, engine)
+    if prepared is not None and spec.execution.nontradable_policy=='defer_full_rebalance_events_v1':
+        from dataclasses import replace
+        execution=replace(execution,aggregation_assets=tuple(prepared['source_assets']))
     corporate_actions = load_strategy_actions(
         repo_root, spec,
         registry_loader=load_corporate_actions,

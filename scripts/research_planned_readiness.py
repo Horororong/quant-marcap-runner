@@ -22,7 +22,7 @@ def inspect_planned_strategy(strategy_json,repo_root):
  from strategy_dsl_deciles import partition_deciles
  from krx_history_audit import session_coverage_audit
  from corporate_action_registry import load_corporate_actions,load_corporate_action_gaps
- root=Path(repo_root).resolve();issues=[];warnings=[];by_key={}
+ root=Path(repo_root).resolve();issues=[];warnings=[];by_key={};diagnostic_portfolios=set()
  result=dict(preflight_contract_version=PREFLIGHT_CONTRACT_VERSION,planned_readiness_contract_version=VERSION,status='data_gap',ready_for_execution=False,
   phase='compile',contract=CONTRACT,issues=issues,warnings=warnings,investment_approved=False)
  def issue(kind,detail,*,code=None,date=None,portfolio=None,required=None,classification='historical_fact',verdict='UNVERIFIED',**extra):
@@ -36,6 +36,7 @@ def inspect_planned_strategy(strategy_json,repo_root):
    return old
   row=dict(kind=kind,classification=classification,verdict=verdict,security=code,date=date,portfolio=portfolio,detail=detail,
    required=required or 'Inspect exact original source and common contract; never fill/exclude/override',occurrences=1,affected_through=date,**extra)
+  if portfolio in diagnostic_portfolios:row['diagnostic_only']=True
   row['incident_id']=hashlib.sha256(json.dumps({k:row.get(k) for k in ['kind','security','date','portfolio','event_id','market']},sort_keys=True).encode()).hexdigest()[:20]
   issues.append(row);by_key[key]=row;return row
  try:spec=load_strategy_spec(strategy_json);plan=compile_execution_plan(spec)
@@ -44,6 +45,7 @@ def inspect_planned_strategy(strategy_json,repo_root):
  result.update(strategy_id=spec.strategy_id,strategy_fingerprint=spec.fingerprint(),requested_period=dict(start=spec.period.start,end=spec.period.end),versions={k:v for k,v in plan.items() if k.endswith('_version')},factor_sources=plan['data_contract']['factor_sources'],phase='sources')
  controls=['config/kr_corporate_actions.csv','config/kr_corporate_action_references.json','config/kr_corporate_action_gaps.json']
  if spec.research:controls.append(spec.research['event_file'])
+ if spec.execution.nontradable_policy=='defer_full_rebalance_events_v1':controls.append('config/research/spinoffs_v1.json')
  if spec.benchmark:controls.append('data/indices/'+spec.benchmark.symbol+'.csv')
  result['control_files']=[dict(path=name,bytes=(root/name).stat().st_size,sha256=hashlib.sha256((root/name).read_bytes()).hexdigest()) for name in controls if (root/name).is_file()]
  engine=load_project_engine(root);_,_,execution=engine_inputs(spec,engine)
@@ -93,7 +95,8 @@ def inspect_planned_strategy(strategy_json,repo_root):
  result.update(source_files=provenance,history_coverage_by_year=coverage,signal_populations=populations,provider_coverage=provider)
  dates=pd.DatetimeIndex(date_parts).unique().sort_values()
  def finish():
-  result['first_blocker']=min((x for x in issues if x['date']),key=lambda x:(x['date'],x['security'] or '',x['portfolio'] or '')) if any(x['date'] for x in issues) else (issues[0] if issues else None)
+  actual_issues=[x for x in issues if not x.get('diagnostic_only')]
+  result['first_blocker']=min((x for x in actual_issues if x['date']),key=lambda x:(x['date'],x['security'] or '',x['portfolio'] or '')) if any(x['date'] for x in actual_issues) else (actual_issues[0] if actual_issues else None)
   if issues:
    b=result['first_blocker'];result['error']=dict(type='PlannedReadinessGap',message=f"{b['kind']}: {b['security']}@{b['date']}: {b['detail']}",incident_id=b['incident_id'])
   return result
@@ -114,6 +117,8 @@ def inspect_planned_strategy(strategy_json,repo_root):
   successors=set(events.loc[events.predecessor_code.isin(selected)&events.event_type.eq('stock_merger'),'successor_code'])
   if successors.issubset(selected):break
   selected.update(successors)
+ from research_spinoff import expand_successors
+ selected=expand_successors(root,spec,selected,dates[0],dates[-1])
  result['observation_codes_with_verified_successors']=sorted(selected)
  pieces=[]
  for p in provenance:
@@ -147,6 +152,7 @@ def inspect_planned_strategy(strategy_json,repo_root):
     schedule,delay_audit=resolve_deferred_schedule(schedule,w.reindex(columns=px.columns,fill_value=0),px,px.notna()&px.gt(0)&vol.gt(0),execution.weight_tolerance)
     result.setdefault('deferred_order_audit',{})[label]=json.loads(pd.DataFrame(delay_audit).to_json(orient='records',date_format='iso'))
    except (ValueError,RuntimeError) as e:issue('pending_order_execution_gap',str(e),portfolio=label,classification='execution_constraint',verdict='FAIL');continue
+  action_rows=pd.DataFrame(columns=['event_type'])
   if spec.execution.nontradable_policy == 'defer_full_rebalance_events_v1':
    try:
     from execution_scheduling import resolve_deferred_schedule
@@ -155,8 +161,18 @@ def inspect_planned_strategy(strategy_json,repo_root):
     schedule,delay_audit=resolve_deferred_schedule(schedule,w.reindex(columns=px.columns,fill_value=0),px,px.notna()&px.gt(0)&vol.gt(0),execution.weight_tolerance,events=action_rows)
     result.setdefault('deferred_order_audit',{})[label]=json.loads(pd.DataFrame(delay_audit).to_json(orient='records',date_format='iso'))
    except (ValueError,RuntimeError,KeyError) as e:
-    issue('pending_order_event_contract_gap',str(e),portfolio=label,classification='execution_constraint',required='Exact verified share/rights lineage and executable lifecycle; no guessed event. Other source diagnostics below use original earliest schedule, not certified actual fills.')
+    issue('pending_order_event_contract_gap',str(e),portfolio=label,date=getattr(e,'date',None),origin_signal=str(getattr(e,'origin_signal','')),planned_date=str(getattr(e,'planned_date','')),last_blocked=getattr(e,'blocked',None),classification='execution_constraint',required='Exact verified share/rights lineage and executable lifecycle; no guessed event. Other source diagnostics below use original earliest schedule, not certified actual fills.')
+    diagnostic_portfolios.add(label)
     result.setdefault('diagnostic_schedule_only',[]).append(label)
+  spin_normal={}
+  if spec.execution.nontradable_policy=='defer_full_rebalance_events_v1':
+   try:
+    from research_spinoff import normalize
+    spin_rows=action_rows.loc[action_rows.event_type.eq('stock_spinoff')]
+    spin_actions=normalize(px,spin_rows,px.notna()&px.gt(0)&vol.gt(0),vol,refs,{d:w.loc[s] for s,d in schedule.items()})
+    spin_normal={(pd.Timestamp(a['event_date']),a['predecessor_code']):a for a in spin_actions.to_dict('records')}
+   except (ValueError,RuntimeError,KeyError,UnboundLocalError) as e:
+    issue('spin_off_contract_gap',str(e),portfolio=label,classification='historical_fact')
   at={d:s for s,d in schedule.items()};schedules.extend(dict(portfolio=label,signal_date=str(s.date()),execution_date=str(d.date())) for s,d in schedule.items())
   executable={d:w.loc[s] for s,d in schedule.items()};normal={}
   for event in all_events:
@@ -198,6 +214,9 @@ def inspect_planned_strategy(strategy_json,repo_root):
      if available and math.isfinite(p[i,j]) and p[i,j]>0:
       value=p[i,j]/float(fact['reference_price'])-1;basis='official_dividend_reference'
      else:issue('missing_available_event_reference','Official reference not usable by this close',code=code,date=dt,portfolio=label)
+    spin=spin_normal.get((dt,code))
+    if spin:
+     value=p[i,j]/float(spin['parent_reference'])-1;basis='official_spinoff_parent_reference'
     difference=abs(value-reference)*10000 if math.isfinite(value) and math.isfinite(reference) else None
     known_quote_contract=basis in ['stock_merger','registered_suspension'] and math.isfinite(value)
     if (not math.isfinite(p[i,j]) or p[i,j]<=0) and not known_quote_contract:issue('missing_held_quote','Positive planned holding has no finite positive close',code=code,date=dt,portfolio=label,origin_signal=held.get(code),required='Exact historical observations or independently verified cessation/disposal contract; never interpolate or remove security')
@@ -207,6 +226,8 @@ def inspect_planned_strategy(strategy_json,repo_root):
    for event in all_events:
     if pd.Timestamp(event['event_date'])==dt and event['predecessor_code'] in held and event['event_type']=='stock_merger':
      origin=held.pop(event['predecessor_code']);held[event['successor_code']]=origin
+   for (event_date,security),spin in spin_normal.items():
+    if event_date==dt and security in held:held[spin['child_code']]=held[security]
    if dt in at:
     sig=at[dt];nextheld={c:str(sig.date()) for c in w.columns[w.loc[sig].gt(execution.weight_tolerance)]}
     for code in set(held)|set(nextheld):

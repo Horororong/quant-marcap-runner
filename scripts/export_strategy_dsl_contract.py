@@ -114,6 +114,8 @@ def build_capabilities() -> dict:
         "trading_day_rules": sorted(SUPPORTED_TRADING_DAY_RULES),
         "execution_prices": sorted(SUPPORTED_EXECUTION_PRICES),
         "opt_in_pending_orders": __import__("execution_scheduling").CONTRACT,
+        "opt_in_event_pending_orders": __import__("execution_scheduling").EVENT_CONTRACT,
+        "opt_in_simultaneous_spinoff_research": __import__("research_spinoff").CONTRACT,
         "opt_in_data_preparation": __import__("annual_selected_preparation").CONTRACT,
         "execution_constraints": {
             "minimum_lag_sessions": 1,

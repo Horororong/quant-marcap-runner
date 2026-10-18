@@ -27,7 +27,8 @@ def selected_action_scope(repo_root, spec, targets, start, end):
    successors=set(events.loc[events.predecessor_code.isin(used)&events.event_type.eq('stock_merger'),'successor_code'])
    if successors.issubset(used):break
    used.update(successors)
- return used
+ from research_spinoff import expand_successors
+ return expand_successors(repo_root,spec,used,start,end)
 
 def model_schema():
  return {'type':'object','additionalProperties':False,'required':sorted(FIELDS),'properties':{
@@ -52,6 +53,10 @@ def load_strategy_actions(repo_root,spec,*,start=None,end=None,asset_codes=None,
  # Preserve the common caller's operational-registry dependency (including
  # fail-closed missing-registry tests); research facts only compose with it.
  base=(registry_loader or load_corporate_actions)(repo_root,start=start,end=end,asset_codes=asset_codes)
+ if spec.execution.nontradable_policy=='defer_full_rebalance_events_v1':
+  from research_spinoff import load_events
+  spin=load_events(repo_root,start=start,end=end,asset_codes=asset_codes)
+  if not spin.empty:base=pd.concat([base,spin],ignore_index=True)
  model=spec.research
  if model is None:return base
  validate_model(model)

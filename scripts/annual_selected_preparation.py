@@ -42,6 +42,7 @@ def prepare_annual_selected(spec, root, engine):
     targets = {}
     date_parts = []
     selected = set()
+    source_assets = set()
     source_rows = 0
     for year in range(pd.Timestamp(spec.period.start).year, pd.Timestamp(spec.period.end).year + 1):
         start, end = max(spec.period.start, f'{year}-01-01'), min(spec.period.end, f'{year}-12-31')
@@ -52,6 +53,7 @@ def prepare_annual_selected(spec, root, engine):
         coverage = require_session_coverage(panel, start, end, spec.universe.markets)
         annual.append(dict(year=year, source=pin, history_coverage=coverage))
         source_rows += len(panel)
+        source_assets.update(panel.Code.astype(str))
         date_parts.extend(pd.to_datetime(panel.Date).unique())
         # An annual fragment without a requested rebalance month is still
         # required for observation/calendar coverage, but has no new targets.
@@ -85,6 +87,8 @@ def prepare_annual_selected(spec, root, engine):
         if extra.issubset(observation_codes):
             break
         observation_codes.update(extra)
+    from research_spinoff import expand_successors
+    observation_codes = expand_successors(root,spec,observation_codes,dates[0],dates[-1])
     pieces = []
     for entry in annual:
         year = entry['year']
@@ -105,7 +109,18 @@ def prepare_annual_selected(spec, root, engine):
                  selected_codes=sorted(selected), observation_codes=sorted(observation_codes),
                  sessions=len(dates), annual=annual, strategy_fingerprint=spec.fingerprint(),
                  investment_approved=False)
-    return dict(panel=panel, targets=weights, selections=pd.concat(selection, ignore_index=True),
+    if spec.execution.nontradable_policy == 'defer_full_rebalance_events_v1':
+        import json
+        from research_spinoff import CATALOG,CONTRACT as spin_contract
+        from execution_scheduling import EVENT_CONTRACT
+        from execution_contract import EXECUTION_ENGINE_VERSION
+        catalog=root/CATALOG
+        binding=dict(strategy_fingerprint=spec.fingerprint(),engine=EXECUTION_ENGINE_VERSION,pending_order_contract=EVENT_CONTRACT,spinoff_model=spin_contract,event_catalog=dict(path=CATALOG,sha256=file_sha(catalog)))
+        binding['numeric_reduction']='Original full-source zero-weight asset order for top_n; per-bucket positive/successor order for deciles. Zero padding only, no unselected price reads or universe filtering.'
+        binding['source_assets']=sorted(source_assets)
+        audit['research_execution_binding']=binding
+        audit['research_execution_fingerprint']=hashlib.sha256(json.dumps(binding,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+    return dict(panel=panel, source_assets=sorted(source_assets), targets=weights, selections=pd.concat(selection, ignore_index=True),
                 partition_audit=pd.concat(partitions, ignore_index=True) if partitions else pd.DataFrame(),
                 provider_coverage=pd.concat(provider, ignore_index=True) if provider else pd.DataFrame(),
                 dates=dates, history_coverage=dict(status='complete', annual=[x['history_coverage'] for x in annual]),

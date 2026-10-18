@@ -208,6 +208,9 @@ def report_context(daily_csv: Path, repo_root: Path, title: str) -> tuple[str, d
             summary += " · 거래불가 시 기존·목표 전 종목의 관측 거래 가능 종가까지 주문 전체 대기"
             limits.append("명시적 체결 지연 연구 계약: 최초 t+lag 종가부터 기존·목표 보유 전부의 양의 종가·거래량을 확인해 첫 가능 종가에 전량 리밸런싱합니다. 실제 종가 전량 체결·시장충격을 인증하지 않으며 원래 고정 체결일 전략과 다릅니다. 충돌 주문·요청 종료 미체결은 실패합니다.")
         if raw['execution'].get('nontradable_policy') == 'defer_full_rebalance_events_v1':
+            prepared=run_dir/'artifacts/data_preparation.json'
+            if prepared.is_file():diagnostics['data_preparation.json']=json.loads(prepared.read_bytes())
+            limits.append('동시 재상장 인적분할은 관측된 거래정지 종가를 권리 포함 묶음의 동결 평가로 사용한 뒤, 공식 동시 상장일 종가에 양쪽 주식으로 가상 전환합니다. 개별 계좌 입고·정수 단주 현금·세금을 인증하지 않으며, 그 외 인적분할은 별도 근거 계약 없이는 차단합니다.')
             limits.append('이 별도 계약의 목표비중은 권리·미수금을 제외한 유동 NAV에 적용합니다. Gross/Net별 보유량·권리·현금과 비용을 분리하며 미수 매도대금·미입고 권리를 매수 재원으로 쓰지 않습니다. 미지원 분할·승계 사건은 차단합니다.')
         if raw['execution'].get('data_loading') == 'annual_selected_projection':
             limits.append("연도별 전체 원래 모집단에서 선정을 완료한 뒤 선정 종목·검증된 승계 종목의 가격 관측만 투영합니다. 모집단 축소·현재 생존종목 필터·결측 보간이 아닙니다.")
