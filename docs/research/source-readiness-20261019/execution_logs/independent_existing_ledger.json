@@ -1,0 +1,11 @@
+{
+  "status": "PASS_MODEL_ACCOUNTING",
+  "rows": 576,
+  "sessions": 192,
+  "max_absolute_error": 2.7939677238464355e-08,
+  "currency_tolerance": 1e-05,
+  "official_extension_days": 5,
+  "zero_advanced_sale_cash": true,
+  "source": "Original parquet plus direct raw official STK JSON fields, NOT production append loader",
+  "investment_approved": false
+}

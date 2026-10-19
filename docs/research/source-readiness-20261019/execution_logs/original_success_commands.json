@@ -1,0 +1,135 @@
+[
+  {
+    "name": "test_fast_backfill_phase*.py",
+    "args": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_fast_backfill_phase*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "seconds": 0.412,
+    "log_file": "test_fast_backfill_phase_.py-413b2a1c.log",
+    "log_sha256": "da48f670c0c116b6511c40aa8eda91fde3719e89a304a570e93fe18bd8f3d997"
+  },
+  {
+    "name": "test_dart_service_status.py",
+    "args": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_dart_service_status.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "seconds": 0.081,
+    "log_file": "test_dart_service_status.py-2c94339f.log",
+    "log_sha256": "c3a76a68154ac80e47f00f4e4b3ea0f0c0daf56278c696dd1127046a429f5e40"
+  },
+  {
+    "name": "test_audited_source_extensions.py",
+    "args": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_audited_source_extensions.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "seconds": 1.011,
+    "log_file": "test_audited_source_extensions.py-578cc679.log",
+    "log_sha256": "1ae7b88b0bd82cc04dc13023e2da0c969ab1c19061531731a5cf4079e9a44791"
+  },
+  {
+    "name": "independent_financial",
+    "args": [
+      "docs/research/long-multi-backfill-20261018/verify_independent_audit.py",
+      "--output",
+      "/workspace/source-readiness-original-success-regression/financial"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "seconds": 0.11,
+    "log_file": "independent_financial-88391340.log",
+    "log_sha256": "5a1336d9da17237cb3eb5ab1647f453c079d81adc0c7c79d207007647c9b22a2"
+  },
+  {
+    "name": "inventory",
+    "args": [
+      "scripts/research_workbench.py",
+      "inventory",
+      "--output",
+      "/workspace/source-readiness-original-success-regression/inventory.json"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "seconds": 0.701,
+    "log_file": "inventory-b11a85b2.log",
+    "log_sha256": "5ccb3807a5eaf59a3607c9b46e3e46eb3918cfef35b49c1578dccf69c42842fe"
+  },
+  {
+    "name": "examples",
+    "args": [
+      "scripts/research_workbench.py",
+      "examples",
+      "--output",
+      "/workspace/source-readiness-original-success-regression/examples.json"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "seconds": 0.535,
+    "log_file": "examples-c590b3c9.log",
+    "log_sha256": "bfffea6cc571d6823c5e0a963e49e0cf3cef3e19bd12d12a045a2eea58b01351"
+  },
+  {
+    "name": "json",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "config/strategies/research_size_top1_2026_asof1016_v1.json",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/source-readiness-original-success-regression/json"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "seconds": 18.625,
+    "log_file": "json-02bd175f.log",
+    "log_sha256": "ac2549019865f3cc797343ed60a5a564af13dc4649d7878a94677239d8922e25"
+  },
+  {
+    "name": "korean",
+    "args": [
+      "scripts/research_workbench.py",
+      "run",
+      "--request",
+      "기간:2026-01-01~2026-10-16;시장:코스피·코스닥;필터:시가총액>=10조원;팩터:시가총액 높은;포트폴리오:상위1개;리밸런싱:4월말;체결:1거래일뒤종가;비용:수수료1.5bp,매도세15bp,스프레드3bp,슬리피지5bp;벤치마크:코스피",
+      "--research-model-from",
+      "config/strategies/research_size_top1_2026_asof1016_v1.json",
+      "--report-periods",
+      "config/reports/research_continuous_2025.json",
+      "--output-dir",
+      "/workspace/source-readiness-original-success-regression/korean"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "seconds": 16.118,
+    "log_file": "korean-e35fbb1a.log",
+    "log_sha256": "944742c1c86906f5d10ec75aeb388ba20017229fde913b3cc8d8b0f857a6e157"
+  }
+]

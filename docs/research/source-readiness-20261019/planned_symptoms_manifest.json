@@ -1,0 +1,22 @@
+{
+  "compressed_sha256": "3f0387e20dc6d85300c137827310a7ac767bc1af5878fec7b3ff601b3bd94142",
+  "input_scope": "Preserved original full-period planned-readiness-v2 issues; no new source collection or new NAV",
+  "inputs": [
+    {
+      "strategy": "research_size_deciles_2019_2025_event_deferred_v2",
+      "original_preflight_sha256": "d0755aab0215d335e921f4ea99a55d7ec0071ce28b3b87dca70800b1b6b422e6"
+    },
+    {
+      "strategy": "research_broad_size_deciles_2001_2025_v1",
+      "original_preflight_sha256": "c937be64ab28b11a340aae2c74f3592d0ab06fc331361aef6f5246b0025f1bed"
+    },
+    {
+      "strategy": "research_broad_size_top10_2001_2025_v1",
+      "original_preflight_sha256": "818ee83195811b7b1fa347ab946dec0f61ca23d169bea3a1c29386d1c733d956"
+    },
+    {
+      "strategy": "research_broad_momentum_top10_2001_2025_v1",
+      "original_preflight_sha256": "02989b0e1fb0d0670d45d02ed073683a05c8e5066e590f05dd18dc8c1abf9715"
+    }
+  ]
+}

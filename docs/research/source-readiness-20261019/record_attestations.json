@@ -1,0 +1,38 @@
+{
+  "scope": "Human independent source attestation for one named primary OFS equity field at one actual signal; not entire-document/global-correction/investment certification",
+  "records": [
+    {
+      "receipt": "20100331001582",
+      "metric": "equity",
+      "scope": "OFS",
+      "signal_date": "2010-04-30",
+      "version_relationship": {
+        "verdict": "PASS",
+        "chain_id": "DART-20100331001582-primary-dcm2591068",
+        "version_rank": 0,
+        "asof_closed_through": "2010-04-30",
+        "scope": "Named original primary body available before this signal; CFS attachment is a separately dated document and is excluded from this field. No claim of no corrections throughout all history.",
+        "evidence": [
+          "Official viewer family explicitly identifies only primary business-report receipt20100331001582 dated2010-03-31 and node25/dcm2591068 for XI financial statements.",
+          "OpenDART last_reprt_at=N,20100301-20100501,all1page: the named business report is the only business-report candidate for FY2009 in this bounded interval; no unlinked correction is selected by title similarity.",
+          "Official node25 rendered body captured once: cb78f57965c2d1beae36121088ef1f591df08e334ca23f2229f03e00f3c224da. Primary OFS current FY2009 equity at table1,row93,column1 exactly131,053,210,651 KRW and agrees with original ZIP main table166,row93,column1.",
+          "Official att option/dcm2651030 separately dates added CFS audit2010-04-30; neither its audit-valid date nor the parent receipt date is substituted for its publication date. No CFS field is imported into this primary OFS value."
+        ],
+        "full_correction_history_certified": false,
+        "primary_section": {
+          "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20100331001582&dcmNo=2591068&eleId=25&offset=592088&length=125209&dtd=dart3.xsd",
+          "sha256": "cb78f57965c2d1beae36121088ef1f591df08e334ca23f2229f03e00f3c224da",
+          "table": 1,
+          "row": 93,
+          "column": 1,
+          "literal": "131,053,210,651",
+          "account": "자본총계",
+          "period_end": "2009-12-31",
+          "unit": "원"
+        }
+      }
+    }
+  ],
+  "investment_approved": false,
+  "operating_factor_provider_admission": false
+}

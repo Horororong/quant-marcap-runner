@@ -1,0 +1,22 @@
+test_fast_backfill_phase*.py 0
+test_dart_service_status.py 0
+test_audited_source_extensions.py 0
+independent_financial 0
+inventory 0
+examples 0
+json 0
+korean 0
+Traceback (most recent call last):
+  File "/workspace/research-source-readiness-20261019/docs/research/long-multi-backfill-20261018/validate_continuation.py", line 61, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--check',action='store_true');a=p.parse_args();verify(a.output,a.check)
+                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/research-source-readiness-20261019/docs/research/long-multi-backfill-20261018/validate_continuation.py", line 52, in verify
+    raw=(ROOT/p).read_bytes();assert len(raw)==pin['bytes'] and hashlib.sha256(raw).hexdigest()==pin['sha256'],p
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/research-source-readiness-20261019/docs/research/long-execution-20261018/README.md'

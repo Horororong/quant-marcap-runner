@@ -1,0 +1,14 @@
+test_amount_unit_or_issuer_change_invalidates_numeric_attestation (test_financial_record_readiness.RecordReadiness.test_amount_unit_or_issuer_change_invalidates_numeric_attestation) ... ok
+test_closed_first_session_interval_and_separate_signal_proof (test_financial_record_readiness.RecordReadiness.test_closed_first_session_interval_and_separate_signal_proof) ... ok
+test_correction_before_after_and_no_fallback_from_bad_current_value (test_financial_record_readiness.RecordReadiness.test_correction_before_after_and_no_fallback_from_bad_current_value) ... ok
+test_exact_field_member_hash_binding_and_period_scope_required (test_financial_record_readiness.RecordReadiness.test_exact_field_member_hash_binding_and_period_scope_required) ... ok
+test_late_attachment_never_uses_parent_receipt_date (test_financial_record_readiness.RecordReadiness.test_late_attachment_never_uses_parent_receipt_date) ... ok
+test_next_session_close_separate_from_clock_execution_and_investment (test_financial_record_readiness.RecordReadiness.test_next_session_close_separate_from_clock_execution_and_investment) ... ok
+test_no_current_master_weekday_or_unbounded_chain_certification (test_financial_record_readiness.RecordReadiness.test_no_current_master_weekday_or_unbounded_chain_certification) ... ok
+test_non_session_cannot_be_a_close_signal (test_financial_record_readiness.RecordReadiness.test_non_session_cannot_be_a_close_signal) ... ok
+test_same_day_correction_uses_explicit_version_order_only (test_financial_record_readiness.RecordReadiness.test_same_day_correction_uses_explicit_version_order_only) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+OK

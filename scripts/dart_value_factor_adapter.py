@@ -563,6 +563,44 @@ def build_raw_value_inputs(signal: pd.Timestamp, period_cache: dict[tuple[int, s
     return out.drop(columns=["complete", "fs_priority"])
 
 
+def calculate_value_factors(raw: pd.DataFrame, cross_section: pd.DataFrame, signal: pd.Timestamp, period_policy: str) -> pd.DataFrame:
+    """Common arithmetic only; caller must satisfy provider/PIT/universe gates.
+
+    Exposed for independent source-to-factor diagnostics, never for loading or
+    certifying legacy data. The operating provider retains coverage_report().
+    """
+    marcap = cross_section[["Code", "Marcap"]].copy()
+    marcap["Code"] = marcap["Code"].astype(str).str.zfill(6)
+    marcap["Marcap"] = pd.to_numeric(marcap["Marcap"], errors="coerce")
+    out = raw.merge(marcap, on="Code", how="inner")
+    valid_mc = out["Marcap"].notna() & (out["Marcap"] > 0)
+    out["earnings_yield"] = np.where(valid_mc, out["net_income_q"] / out["Marcap"], np.nan)
+    out["book_to_price"] = np.where(valid_mc, out["equity"] / out["Marcap"], np.nan)
+    out["cashflow_yield"] = np.where(valid_mc, out["ocf_q"] / out["Marcap"], np.nan)
+    out["sales_yield"] = np.where(valid_mc, out["revenue_q"] / out["Marcap"], np.nan)
+
+    valid_equity = out["equity"].notna() & (out["equity"] > 0)
+    valid_revenue = out["revenue_q"].notna() & (out["revenue_q"] > 0)
+    out["quarterly_roe"] = np.where(
+        valid_equity, out["net_income_q"] / out["equity"], np.nan
+    )
+    out["quarterly_net_margin"] = np.where(
+        valid_revenue, out["net_income_q"] / out["revenue_q"], np.nan
+    )
+    out["quarterly_ocf_margin"] = np.where(
+        valid_revenue, out["ocf_q"] / out["revenue_q"], np.nan
+    )
+    out["signal_date"] = signal
+    period_columns = (["report_year", "report_period"]
+                      if period_policy == "latest_disclosed_quarter" else [])
+    return out[[
+        "Code", "signal_date", "available_date", "fs_div",
+        "equity", "revenue_q", "net_income_q", "ocf_q",
+        *VALUE_FACTOR_FIELDS,
+        *period_columns,
+    ]].copy()
+
+
 class DartValueFactorAdapter:
     def __init__(self, repo_root: str | Path, period_policy: str = "legacy_april_october"):
         validate_period_policy(period_policy)
@@ -605,33 +643,4 @@ class DartValueFactorAdapter:
         if raw.empty:
             return raw
 
-        marcap = cross_section[["Code", "Marcap"]].copy()
-        marcap["Code"] = marcap["Code"].astype(str).str.zfill(6)
-        marcap["Marcap"] = pd.to_numeric(marcap["Marcap"], errors="coerce")
-        out = raw.merge(marcap, on="Code", how="inner")
-        valid_mc = out["Marcap"].notna() & (out["Marcap"] > 0)
-        out["earnings_yield"] = np.where(valid_mc, out["net_income_q"] / out["Marcap"], np.nan)
-        out["book_to_price"] = np.where(valid_mc, out["equity"] / out["Marcap"], np.nan)
-        out["cashflow_yield"] = np.where(valid_mc, out["ocf_q"] / out["Marcap"], np.nan)
-        out["sales_yield"] = np.where(valid_mc, out["revenue_q"] / out["Marcap"], np.nan)
-
-        valid_equity = out["equity"].notna() & (out["equity"] > 0)
-        valid_revenue = out["revenue_q"].notna() & (out["revenue_q"] > 0)
-        out["quarterly_roe"] = np.where(
-            valid_equity, out["net_income_q"] / out["equity"], np.nan
-        )
-        out["quarterly_net_margin"] = np.where(
-            valid_revenue, out["net_income_q"] / out["revenue_q"], np.nan
-        )
-        out["quarterly_ocf_margin"] = np.where(
-            valid_revenue, out["ocf_q"] / out["revenue_q"], np.nan
-        )
-        out["signal_date"] = signal
-        period_columns = (["report_year", "report_period"]
-                          if self.period_policy == "latest_disclosed_quarter" else [])
-        return out[[
-            "Code", "signal_date", "available_date", "fs_div",
-            "equity", "revenue_q", "net_income_q", "ocf_q",
-            *VALUE_FACTOR_FIELDS,
-            *period_columns,
-        ]].copy()
+        return calculate_value_factors(raw, cross_section, signal, self.period_policy)

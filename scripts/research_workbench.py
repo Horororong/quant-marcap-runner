@@ -138,9 +138,10 @@ def main():
    result=json.loads((a.repo_root/'config/research/validated_examples_v1.json').read_text())
   elif a.command=='issues':
    if not a.saved_run:raise ValueError('--saved-run required')
-   found={name:json.loads((a.saved_run/name).read_text()) for name in ['readiness_incidents.json','runtime_incident.json'] if (a.saved_run/name).is_file()}
+   found={name:json.loads((a.saved_run/name).read_text()) for name in ['readiness_incidents.json','runtime_incident.json','preflight.json'] if (a.saved_run/name).is_file()}
    if not found:raise ValueError('No preserved structured incidents in this run')
-   result=dict(status='ok',saved_incidents=found,scope='Exact previous diagnostics only; current inputs must pass fresh preflight before execution',investment_approved=False)
+   from research_incident_groups import summarize_saved
+   result=dict(status='ok',saved_incidents=found,incident_groups=summarize_saved(found),scope='Exact previous diagnostics only; current inputs must pass fresh preflight before execution',investment_approved=False)
   elif a.command=='translate':
    if not a.request:raise ValueError('--request required')
    model=json.loads(a.research_model_from.read_text())['research'] if a.research_model_from else None

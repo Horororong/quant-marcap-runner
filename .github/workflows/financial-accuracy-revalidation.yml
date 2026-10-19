@@ -64,7 +64,7 @@ permissions:
   actions: read
 jobs:
   financial-signal-official-market-proof:
-    if: github.run_attempt == 1 && (contains(github.event.head_commit.message, '[financial-signal-market-proof]') || contains(github.event.head_commit.message, '[financial-signal-body-proof]'))
+    if: github.run_attempt == 1 && ((github.sha == 'd438c6c6acbab2ede4679fef650f439d51b968f6' && contains(github.event.head_commit.message, '[financial-signal-market-proof]')) || (github.sha == '762ba9ed2dd05a9f08a342e525c33802dec8e127' && contains(github.event.head_commit.message, '[financial-signal-body-proof]')))
     permissions:
       contents: write
     runs-on: ubuntu-latest
