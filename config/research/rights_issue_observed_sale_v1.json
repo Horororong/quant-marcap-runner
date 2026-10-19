@@ -1,0 +1,13 @@
+{
+  "contract": "subscription-rights-cash-v1",
+  "policy": "sell_observed_rights",
+  "scope": "RESEARCH_ONLY; not connected to public allocator or registered actual event",
+  "quantity": "continuous pro-rata research, separately from whole-account fractional rights",
+  "execution": "first verified rights trading-session close after known listing; official exact security and observed execution price required",
+  "settlement": "explicit observed settlement basis/date; proceeds are receivable until then",
+  "pending_valuation": "explicit as-of evidence-backed rights marks required every session; no default intrinsic/zero value",
+  "unavailable_input": "BLOCK_NAV; never infer quote, settlement day, fractional cash or subscribe using future issue price",
+  "distribution_tax_basis": "before_distribution_tax",
+  "alternative": "funded_subscription is a different predeclared policy requiring as-of confirmed price, actual payment and tradability; no automatic switch",
+  "investment_approved": false
+}

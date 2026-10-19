@@ -120,6 +120,7 @@ jobs:
           "$PY" -I -m unittest discover -s tests -p test_financial_record_readiness.py -v
           "$PY" -I -m unittest discover -s scripts -p test_research_incident_groups.py -v
           "$PY" -I -m unittest discover -s scripts -p test_factor_code_refactor.py -v
+          "$PY" -I -m unittest discover -s scripts -p test_subscription_rights.py -v
           "$PY" -I -m unittest discover -s scripts -p test_dart_snapshot_selection.py -v
           "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/test_research_planned_readiness.py",run_name="__main__")'
           timeout 150 "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/test_dart_dsl_super_value.py",run_name="__main__")'
@@ -958,5 +959,35 @@ jobs:
             ${{ runner.temp }}/financial-repair/krx-research
             ${{ runner.temp }}/financial-repair/preserved60-verification
             ${{ runner.temp }}/financial-repair/verify.json
+          if-no-files-found: error
+          retention-days: 90
+
+  rights-public-interface-once:
+    if: github.event_name == 'push' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[rights-public-path]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Same pinned kit; no installation
+        run: |
+          python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: Inspect one different official public interface; no denied API and no retry
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/inspect_rights_public_path.py --output "$RUNNER_TEMP/rights-public"'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rights-public-interface-not-price-certification
+          path: |
+            ${{ runner.temp }}/rights-public
+            ${{ runner.temp }}/runtime.json
           if-no-files-found: error
           retention-days: 90
