@@ -121,6 +121,7 @@ jobs:
           "$PY" -I -m unittest discover -s scripts -p test_research_incident_groups.py -v
           "$PY" -I -m unittest discover -s scripts -p test_factor_code_refactor.py -v
           "$PY" -I -m unittest discover -s scripts -p test_subscription_rights.py -v
+          "$PY" -I -m unittest discover -s scripts -p "test_stock_dividend*.py" -v
           "$PY" -I -m unittest discover -s scripts -p test_dart_snapshot_selection.py -v
           "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/test_research_planned_readiness.py",run_name="__main__")'
           timeout 150 "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/test_dart_dsl_super_value.py",run_name="__main__")'
@@ -963,7 +964,7 @@ jobs:
           retention-days: 90
 
   rights-public-interface-once:
-    if: github.event_name == 'push' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[rights-public-path]')
+    if: github.event_name == 'push' && github.sha == 'e3fa313870607cce5294597b9b905b451fa17a86' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[rights-public-path]')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:

@@ -39,3 +39,17 @@ Data Marketplace 일별시세 export(2022-03-23~29,종목코드/종가/거래량
 연결하지 않는다. 입력 미충족 상태에서 포괄 예외나 반환 수익률 override를
 추가하지 않는다. 사건연계10분위2019~2025 전체 재실행/NAV 신규 발급0이다.
 새 단일종목 연구로 대체하지 않았고 기존 성공 수치/PIT 게이트는 그대로다.
+
+
+실제 대체 경로 결과: 연구 커밋e3fa313870607cce5294597b9b905b451fa17a86의
+CI39245076709/job118034923183은 공식 Data Marketplace 위 URL에 단1회 요청하여
+HTTP403을 받았다. 응답 body/키를 시세로 보존하지 않았고 status/URL/error만
+official-public-interface.json.gz.b64에 보존했다. compressed SHA256
+6b92aae84477edd6bca32915a030347d87933c00b29c375a7caff42afd1ba448,
+blob dc247a21d44e26fb39c6be8c337dfd4f8a7fc2c5,artifact12183761102다.
+inspection job SUCCESS는 장애 기록 성공이며 시세 확보0/UNVERIFIED다.
+403만으로 필요한 계정/사이트 설정을 확정하지 않는다. 공식 권리시세 서비스
+승인 또는 로그인 가능한 사용자의 공식 export가 필요하다. 우회/추가 재시도는 없다.
+기존 공시의 예정 거래기간이 실제 체결가나 실제 신주 입고를 증명하지 않는다.
+합성 새 장부4시험과 기존 주식배당55시험을 통과했지만 실제 사건 등록0,
+신규2019~2025 다종목 완주0이다. source job은 이 완료 SHA/attempt1로 봉인했다.
