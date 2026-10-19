@@ -1,0 +1,684 @@
+[
+  {
+    "chunk": "chunk00",
+    "status": {
+      "run_id": "LOCAL",
+      "commit": "LOCAL",
+      "started_at_utc": "2026-10-19T06:07:58.773936+00:00",
+      "status": "COMPLETE_CANDIDATES_HELD",
+      "current_receipt": "20100331001605",
+      "current_stage": "CHECKPOINT_DURABLE",
+      "completed": 20,
+      "last_checkpoint": "20100331001605",
+      "automatic_publication": "HELD",
+      "financial_population_certification": "UNVERIFIED",
+      "investment_PIT": "0/6",
+      "elapsed_seconds": 47.745,
+      "updated_at_utc": "2026-10-19T06:08:46.519039+00:00",
+      "stop_reason": "BATCH_COMPLETE",
+      "results": [
+        {
+          "receipt": "20100331001574",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001575",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001576",
+          "status": "PARSED_4F",
+          "rows": 19
+        },
+        {
+          "receipt": "20100331001578",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001579",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001580",
+          "status": "PARSED_4F",
+          "rows": 15
+        },
+        {
+          "receipt": "20100331001581",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001582",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001583",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001585",
+          "status": "PARSED_4F",
+          "rows": 37
+        },
+        {
+          "receipt": "20100331001586",
+          "status": "PARSED_4F",
+          "rows": 15
+        },
+        {
+          "receipt": "20100331001587",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001588",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001593",
+          "status": "PARSED_PARTIAL",
+          "rows": 7
+        },
+        {
+          "receipt": "20100331001594",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001596",
+          "status": "PARSED_4F",
+          "rows": 19
+        },
+        {
+          "receipt": "20100331001599",
+          "status": "PARSED_4F",
+          "rows": 15
+        },
+        {
+          "receipt": "20100331001600",
+          "status": "PARSED_PARTIAL",
+          "rows": 11
+        },
+        {
+          "receipt": "20100331001601",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001605",
+          "status": "PARSED_4F",
+          "rows": 18
+        }
+      ],
+      "finished_at_utc": "2026-10-19T06:08:46.519032+00:00"
+    }
+  },
+  {
+    "chunk": "chunk01",
+    "status": {
+      "run_id": "LOCAL",
+      "commit": "LOCAL",
+      "started_at_utc": "2026-10-19T06:08:46.525044+00:00",
+      "status": "COMPLETE_CANDIDATES_HELD",
+      "current_receipt": "20100331001637",
+      "current_stage": "CHECKPOINT_DURABLE",
+      "completed": 20,
+      "last_checkpoint": "20100331001637",
+      "automatic_publication": "HELD",
+      "financial_population_certification": "UNVERIFIED",
+      "investment_PIT": "0/6",
+      "elapsed_seconds": 45.517,
+      "updated_at_utc": "2026-10-19T06:09:32.042127+00:00",
+      "stop_reason": "BATCH_COMPLETE",
+      "results": [
+        {
+          "receipt": "20100331001606",
+          "status": "SOURCE_GAP",
+          "rows": 0
+        },
+        {
+          "receipt": "20100331001607",
+          "status": "PARSED_4F",
+          "rows": 16
+        },
+        {
+          "receipt": "20100331001609",
+          "status": "PARSED_4F",
+          "rows": 16
+        },
+        {
+          "receipt": "20100331001610",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001612",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001615",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001616",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001617",
+          "status": "PARSED_4F",
+          "rows": 15
+        },
+        {
+          "receipt": "20100331001618",
+          "status": "PARSED_4F",
+          "rows": 13
+        },
+        {
+          "receipt": "20100331001619",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001623",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001625",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001627",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001628",
+          "status": "PARSED_4F",
+          "rows": 19
+        },
+        {
+          "receipt": "20100331001630",
+          "status": "PARSED_4F",
+          "rows": 19
+        },
+        {
+          "receipt": "20100331001631",
+          "status": "PARSED_PARTIAL",
+          "rows": 11
+        },
+        {
+          "receipt": "20100331001632",
+          "status": "PARSED_4F",
+          "rows": 20
+        },
+        {
+          "receipt": "20100331001634",
+          "status": "PARSED_4F",
+          "rows": 15
+        },
+        {
+          "receipt": "20100331001636",
+          "status": "PARSED_4F",
+          "rows": 15
+        },
+        {
+          "receipt": "20100331001637",
+          "status": "PARSED_4F",
+          "rows": 19
+        }
+      ],
+      "finished_at_utc": "2026-10-19T06:09:32.042120+00:00"
+    }
+  },
+  {
+    "chunk": "chunk02",
+    "status": {
+      "run_id": "LOCAL",
+      "commit": "LOCAL",
+      "started_at_utc": "2026-10-19T06:09:32.047285+00:00",
+      "status": "COMPLETE_CANDIDATES_HELD",
+      "current_receipt": "20100331001671",
+      "current_stage": "CHECKPOINT_DURABLE",
+      "completed": 20,
+      "last_checkpoint": "20100331001671",
+      "automatic_publication": "HELD",
+      "financial_population_certification": "UNVERIFIED",
+      "investment_PIT": "0/6",
+      "elapsed_seconds": 50.272,
+      "updated_at_utc": "2026-10-19T06:10:22.319424+00:00",
+      "stop_reason": "BATCH_COMPLETE",
+      "results": [
+        {
+          "receipt": "20100331001640",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001641",
+          "status": "PARSED_4F",
+          "rows": 11
+        },
+        {
+          "receipt": "20100331001644",
+          "status": "PARSED_PARTIAL",
+          "rows": 11
+        },
+        {
+          "receipt": "20100331001647",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001648",
+          "status": "PARSED_4F",
+          "rows": 33
+        },
+        {
+          "receipt": "20100331001649",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001650",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001651",
+          "status": "PARSED_4F",
+          "rows": 19
+        },
+        {
+          "receipt": "20100331001655",
+          "status": "PARSED_4F",
+          "rows": 16
+        },
+        {
+          "receipt": "20100331001656",
+          "status": "SOURCE_GAP",
+          "rows": 0
+        },
+        {
+          "receipt": "20100331001658",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001661",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001662",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001663",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001664",
+          "status": "SOURCE_GAP",
+          "rows": 0
+        },
+        {
+          "receipt": "20100331001665",
+          "status": "SOURCE_GAP",
+          "rows": 0
+        },
+        {
+          "receipt": "20100331001667",
+          "status": "PARSED_4F",
+          "rows": 11
+        },
+        {
+          "receipt": "20100331001668",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001670",
+          "status": "PARSED_4F",
+          "rows": 11
+        },
+        {
+          "receipt": "20100331001671",
+          "status": "PARSED_4F",
+          "rows": 14
+        }
+      ],
+      "finished_at_utc": "2026-10-19T06:10:22.319416+00:00"
+    }
+  },
+  {
+    "chunk": "chunk03",
+    "status": {
+      "run_id": "LOCAL",
+      "commit": "LOCAL",
+      "started_at_utc": "2026-10-19T06:10:22.326181+00:00",
+      "status": "COMPLETE_CANDIDATES_HELD",
+      "current_receipt": "20100331001698",
+      "current_stage": "CHECKPOINT_DURABLE",
+      "completed": 20,
+      "last_checkpoint": "20100331001698",
+      "automatic_publication": "HELD",
+      "financial_population_certification": "UNVERIFIED",
+      "investment_PIT": "0/6",
+      "elapsed_seconds": 62.495,
+      "updated_at_utc": "2026-10-19T06:11:24.821246+00:00",
+      "stop_reason": "BATCH_COMPLETE",
+      "results": [
+        {
+          "receipt": "20100331001672",
+          "status": "PARSED_4F",
+          "rows": 15
+        },
+        {
+          "receipt": "20100331001673",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001676",
+          "status": "PARSED_4F",
+          "rows": 19
+        },
+        {
+          "receipt": "20100331001677",
+          "status": "PARSED_4F",
+          "rows": 16
+        },
+        {
+          "receipt": "20100331001678",
+          "status": "PARSED_4F",
+          "rows": 16
+        },
+        {
+          "receipt": "20100331001679",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001680",
+          "status": "SOURCE_GAP",
+          "rows": 0
+        },
+        {
+          "receipt": "20100331001682",
+          "status": "SOURCE_GAP",
+          "rows": 0
+        },
+        {
+          "receipt": "20100331001683",
+          "status": "PARSED_4F",
+          "rows": 11
+        },
+        {
+          "receipt": "20100331001684",
+          "status": "PARSED_4F",
+          "rows": 30
+        },
+        {
+          "receipt": "20100331001687",
+          "status": "PARSED_4F",
+          "rows": 19
+        },
+        {
+          "receipt": "20100331001688",
+          "status": "PARSED_4F",
+          "rows": 15
+        },
+        {
+          "receipt": "20100331001689",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001690",
+          "status": "SOURCE_GAP",
+          "rows": 0
+        },
+        {
+          "receipt": "20100331001691",
+          "status": "PARSED_4F",
+          "rows": 16
+        },
+        {
+          "receipt": "20100331001693",
+          "status": "PARSED_4F",
+          "rows": 16
+        },
+        {
+          "receipt": "20100331001695",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001696",
+          "status": "EXTRACTION_FAILED",
+          "rows": 0
+        },
+        {
+          "receipt": "20100331001697",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001698",
+          "status": "PARSED_4F",
+          "rows": 18
+        }
+      ],
+      "finished_at_utc": "2026-10-19T06:11:24.821238+00:00"
+    }
+  },
+  {
+    "chunk": "chunk04",
+    "status": {
+      "run_id": "LOCAL",
+      "commit": "LOCAL",
+      "started_at_utc": "2026-10-19T06:11:24.826559+00:00",
+      "status": "COMPLETE_CANDIDATES_HELD",
+      "current_receipt": "20100331001730",
+      "current_stage": "CHECKPOINT_DURABLE",
+      "completed": 20,
+      "last_checkpoint": "20100331001730",
+      "automatic_publication": "HELD",
+      "financial_population_certification": "UNVERIFIED",
+      "investment_PIT": "0/6",
+      "elapsed_seconds": 48.597,
+      "updated_at_utc": "2026-10-19T06:12:13.423360+00:00",
+      "stop_reason": "BATCH_COMPLETE",
+      "results": [
+        {
+          "receipt": "20100331001699",
+          "status": "PARSED_4F",
+          "rows": 16
+        },
+        {
+          "receipt": "20100331001700",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001701",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001704",
+          "status": "PARSED_4F",
+          "rows": 11
+        },
+        {
+          "receipt": "20100331001705",
+          "status": "PARSED_4F",
+          "rows": 22
+        },
+        {
+          "receipt": "20100331001707",
+          "status": "PARSED_4F",
+          "rows": 16
+        },
+        {
+          "receipt": "20100331001708",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001710",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001711",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001712",
+          "status": "PARSED_4F",
+          "rows": 15
+        },
+        {
+          "receipt": "20100331001714",
+          "status": "PARSED_4F",
+          "rows": 11
+        },
+        {
+          "receipt": "20100331001715",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001716",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001717",
+          "status": "PARSED_4F",
+          "rows": 17
+        },
+        {
+          "receipt": "20100331001718",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001724",
+          "status": "PARSED_4F",
+          "rows": 11
+        },
+        {
+          "receipt": "20100331001726",
+          "status": "PARSED_4F",
+          "rows": 16
+        },
+        {
+          "receipt": "20100331001727",
+          "status": "PARSED_PARTIAL",
+          "rows": 19
+        },
+        {
+          "receipt": "20100331001728",
+          "status": "PARSED_4F",
+          "rows": 16
+        },
+        {
+          "receipt": "20100331001730",
+          "status": "SOURCE_GAP",
+          "rows": 0
+        }
+      ],
+      "finished_at_utc": "2026-10-19T06:12:13.423353+00:00"
+    }
+  },
+  {
+    "chunk": "chunk05",
+    "status": {
+      "run_id": "LOCAL",
+      "commit": "LOCAL",
+      "started_at_utc": "2026-10-19T06:12:13.429047+00:00",
+      "status": "COMPLETE_CANDIDATES_HELD",
+      "current_receipt": "20100331001757",
+      "current_stage": "CHECKPOINT_DURABLE",
+      "completed": 10,
+      "last_checkpoint": "20100331001757",
+      "automatic_publication": "HELD",
+      "financial_population_certification": "UNVERIFIED",
+      "investment_PIT": "0/6",
+      "elapsed_seconds": 26.734,
+      "updated_at_utc": "2026-10-19T06:12:40.163193+00:00",
+      "stop_reason": "BATCH_COMPLETE",
+      "results": [
+        {
+          "receipt": "20100331001733",
+          "status": "PARSED_4F",
+          "rows": 36
+        },
+        {
+          "receipt": "20100331001741",
+          "status": "PARSED_4F",
+          "rows": 11
+        },
+        {
+          "receipt": "20100331001742",
+          "status": "PARSED_4F",
+          "rows": 13
+        },
+        {
+          "receipt": "20100331001744",
+          "status": "PARSED_4F",
+          "rows": 11
+        },
+        {
+          "receipt": "20100331001745",
+          "status": "SOURCE_GAP",
+          "rows": 0
+        },
+        {
+          "receipt": "20100331001746",
+          "status": "PARSED_4F",
+          "rows": 16
+        },
+        {
+          "receipt": "20100331001748",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001753",
+          "status": "PARSED_4F",
+          "rows": 18
+        },
+        {
+          "receipt": "20100331001754",
+          "status": "PARSED_4F",
+          "rows": 16
+        },
+        {
+          "receipt": "20100331001757",
+          "status": "PARSED_4F",
+          "rows": 18
+        }
+      ],
+      "finished_at_utc": "2026-10-19T06:12:40.163185+00:00"
+    }
+  }
+]

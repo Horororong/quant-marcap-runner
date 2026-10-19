@@ -4,8 +4,34 @@ import hashlib
 import re
 import xml.etree.ElementTree as ET
 
-DIAGNOSTIC_VERSION = "legacy-document-quality-v2"
+DIAGNOSTIC_VERSION = "legacy-document-quality-v3-literal-labels"
 SUPPORTED_ENCODINGS = {"utf-8", "utf8", "cp949", "euc-kr", "euckr"}
+
+
+def literal_label_view(text: str) -> tuple[str, list[dict]]:
+    """Escape only unpaired Korean prose labels in the XML STRUCTURAL view.
+
+    DART's element vocabulary is ASCII. Legacy documents also contain literal
+    <당기>, <주석 19>, etc inside text. This is not permission to repair malformed
+    markup: tags with attributes, closing/pair tags, ASCII names, comments and
+    CDATA remain untouched. The numerical parser still consumes original bytes.
+    Offsets and literal strings make every view-only transformation auditable.
+    """
+    protected = [(m.start(), m.end()) for m in re.finditer(
+        r'''<!--.*?-->|<!\[CDATA\[.*?\]\]>|<[A-Za-z_:][\w.:-]*(?:\s+[\w.:-]+\s*=\s*(?:"[^"]*"|'[^']*'))+\s*/?>''', text, re.S)]
+    changes = []
+    def replace(match):
+        label = match.group(1)
+        if not re.search('[가-힣]', label):
+            return match.group(0)
+        if any(a <= match.start() < b for a, b in protected):
+            return match.group(0)
+        if re.search(r'</\s*' + re.escape(label) + r'\s*>', text):
+            return match.group(0)
+        changes.append({'offset': match.start(), 'literal': match.group(0)})
+        return '&lt;' + label + '&gt;'
+    view = re.sub(r'<([ \t]*[A-Za-z0-9가-힣][A-Za-z0-9가-힣 \t().,:·ㆍ/%\-]*)>', replace, text)
+    return view, changes
 
 
 def inspect_member(data: bytes, member: str) -> dict:
@@ -44,10 +70,15 @@ def inspect_member(data: bytes, member: str) -> dict:
     # The pre-existing HTML parser supports literal &, e.g. M&A / Buy & Sell.
     # Inspect structure through its XML-escaped view; raw input and numerical
     # content are unchanged and still parsed from the original decoded text.
-    structural, count = re.subn(r'&(?!(?:#\d+|#x[\da-fA-F]+|amp|lt|gt|apos|quot);)', '&amp;', text)
+    structural, labels = literal_label_view(text)
+    structural, count = re.subn(r'&(?!(?:#\d+|#x[\da-fA-F]+|amp|lt|gt|apos|quot);)', '&amp;', structural)
     if count:
         result["warnings"].append("LEGACY_HTML_AMPERSAND_SYNTAX")
         result["ampersand_escapes_for_structure"] = count
+    if labels:
+        result["warnings"].append("LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY")
+        result["literal_label_view"] = labels
+        result["structural_view_sha256"] = hashlib.sha256(structural.encode('utf-8')).hexdigest()
     try:
         ET.fromstring(structural)
     except ET.ParseError as error:

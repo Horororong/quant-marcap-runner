@@ -9,6 +9,36 @@ permissions:
   contents: read
   actions: read
 jobs:
+  source-publication-proof:
+    if: github.event_name == 'push' && github.sha == '4d7cd140566b5e84b209c5e68ed6bb0f0e9f8f82' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[source-readiness-proof]')
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore and verify pinned kit; no pip
+        run: |
+          python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: Three existing filing viewers and bounded official metadata only
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_publication_probe.py --output "$RUNNER_TEMP/publication-proof"'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: official-publication-proof
+          path: |
+            ${{ runner.temp }}/publication-proof
+            ${{ runner.temp }}/runtime.json
+          if-no-files-found: error
+          retention-days: 90
   source-validation100-replay:
     if: github.event_name == 'pull_request' || contains(github.event.head_commit.message, '[financial-fixed-kit-only]')
     runs-on: ubuntu-latest
@@ -28,8 +58,10 @@ jobs:
       - name: Exact canonical financial bytes and frozen independent control/publication checks
         run: |
           PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
-          "$PY" -I -c 'import base64,gzip,os;from pathlib import Path;a=Path(os.environ["RUNNER_TEMP"])/"replay100/subjects_v92.json.gz.b64";b=Path("docs/audits/financial-validation-100-20261019/subjects_v92.json.gz.b64");assert gzip.decompress(base64.b64decode(a.read_bytes()))==gzip.decompress(base64.b64decode(b.read_bytes())),"CANONICAL_FINANCIAL_BYTES_DIFFER"'
+          "$PY" -I -c 'import base64,gzip,os;from pathlib import Path;a=Path(os.environ["RUNNER_TEMP"])/"replay100/subjects_v92.json.gz.b64";b=Path("docs/audits/financial-source-readiness-20261019/subjects_quality_v3.json.gz.b64");assert gzip.decompress(base64.b64decode(a.read_bytes()))==gzip.decompress(base64.b64decode(b.read_bytes())),"CANONICAL_FINANCIAL_BYTES_DIFFER"'
           "$PY" -I scripts/financial_review_gate.py docs/audits/financial-validation-100-20261019 --check
+          "$PY" -I scripts/financial_review_gate.py docs/audits/financial-source-readiness-20261019 --check
+          "$PY" -I scripts/financial_source_readiness_audit.py docs/audits/financial-source-readiness-20261019 --check
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -135,7 +167,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
-          for file in backfill_dart_legacy_2000_2014.py backfill_super_value_fast.py legacy_native_financials.py legacy_financial_fields.py legacy_parser_migration.py dart_service_status.py dart_http.py; do
+          for file in backfill_dart_legacy_2000_2014.py backfill_super_value_fast.py legacy_native_financials.py legacy_document_quality.py legacy_financial_fields.py legacy_parser_migration.py dart_service_status.py dart_http.py; do
             cp "scripts/$file" "audit-reference/scripts/$file"
           done
           cp scripts/test_dart_service_status.py audit-reference/scripts/test_dart_service_status.py

@@ -1,0 +1,4602 @@
+[
+  {
+    "receipt": "20100331001574",
+    "cohort": "prior10",
+    "archive_sha256": "7a20cb8265944cbd9a7352a9d37e2fdd07382401ef3fff118664e98795bb2c12",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001574_00761.xml",
+        "sha256": "ab0471ddc203243d04c16ab382b782e8dbccfb5d0c9c6e3047d724149575df33",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 18,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001574.xml",
+        "sha256": "9956fb8f7076aa537cfa33b752b8e2ce3457664a7bc577e8eb2ad7f6b2f5d5a3",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001574_00760.xml",
+        "sha256": "35900bf6236b75c6fa92ca3a0970d99c8e8d5ab3cf46d1f0ea7042003008b9a7",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 14,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001575",
+    "cohort": "prior10",
+    "archive_sha256": "b4d37f06ce59719f61f4dd5f5c1dd46957c9a36d45feabf1b4b8e37203baed80",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001575.xml",
+        "sha256": "253e4e33d6a3d55b37bdfc83bf435c294cbdeb7c8b5b26f35a93c51da94e8af8",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001575_00761.xml",
+        "sha256": "91799c44617ed51a1172f3345c5c15024b178c3799898e7aded336670b822c08",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001575_00760.xml",
+        "sha256": "cfbc61bde563769f1b652438c91417385d0ecf4f14aa42db14d45d982369a024",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001576",
+    "cohort": "prior10",
+    "archive_sha256": "ee1b51c34f731e1ae0c2dc452c1e8d6ad3c813ddd2643a8b39f8a2f028635bd1",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001576.xml",
+        "sha256": "b08dc104b3a7bb7a7461ec944a29a10bbb7acc07e337fc433e13638da91bc2d4",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001576_00760.xml",
+        "sha256": "6a7fca1701dff9deb7ea0a76d230f904b7d411c19cbb511a57fd2cb0e4a82197",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001578",
+    "cohort": "prior10",
+    "archive_sha256": "c1498ad32315562ed4f7cfa2f781c941d04eb2b6f85fd8a41104698ba0ebc45c",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001578.xml",
+        "sha256": "a2795c3ae070cbaa981780dcaac9febe3021756dee8a984dcd0aa8271a70289d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001578_00760.xml",
+        "sha256": "a85ae740463475ffd965312b1fee2e564475c03d451f3734117c9f9ac4715df8",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001579",
+    "cohort": "prior10",
+    "archive_sha256": "47af43f885cffc31616134814a25133c76fd3879be37e46a0a3d501b79e1a026",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001579_00760.xml",
+        "sha256": "d483608f6377466e6533d590c9fa58fbc792cc780449e410114e34dcde769c1d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 7,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001579.xml",
+        "sha256": "8ec7f76debd94cb30d2d02db86a8b305d78d22799e95c48746875ad50f490017",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 7,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001579_00761.xml",
+        "sha256": "6bdeea9ddde1b7ef86354dd568072c012c60783c2f18ee642438b3a2326dfa8a",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 7,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001580",
+    "cohort": "prior10",
+    "archive_sha256": "b73e7f9d018051da0162cfd17e2c0262e78683da71aacbc1e612eaeafcedf670",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001580.xml",
+        "sha256": "e41125f4d20765870d87bc18d17d1cacb85c0ada4097c67a3301c45a3acc5ffc",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001580_00760.xml",
+        "sha256": "916632731754a9ef2d20d681a57827eb348231df708013a00146a586e5faebca",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001581",
+    "cohort": "prior10",
+    "archive_sha256": "850d0b65854bc8363f97f79f4813acc456b86c10c640c4ab1ed8698e7f34ccc4",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001581.xml",
+        "sha256": "c7bb9caffe1773ee93c02d1daf319bffc14eebb01cecc766eb24e79583ef64d7",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001582",
+    "cohort": "prior10",
+    "archive_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001582.xml",
+        "sha256": "ac34be631af65e6c911138792fbff6e3c5b8a3a3176ba610382dec77af27d284",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001582_00761.xml",
+        "sha256": "da452fdb406e91b3221ce8aca62f1394da4da2d1e8bf90aa1f1af9c485c75768",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001582_00760.xml",
+        "sha256": "70ab7767341397b3cea16278aac111d9c5933595954ded61ff54e840aa1ac235",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001583",
+    "cohort": "prior10",
+    "archive_sha256": "553555374fc156f91a6181302def5fd7c8ae8451e87fc49642c816a9b17d9bdf",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001583_00760.xml",
+        "sha256": "7ee3f8b2588c137110106deacce9d4f32377c29ad461cec659bf4426d9210f9b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 16,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001583.xml",
+        "sha256": "363a37d84746e6fea461421c3beec33856b2b7466b250d242977f99a5a0cb8fd",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 6,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001585",
+    "cohort": "prior10",
+    "archive_sha256": "25f5a31902f5a7e75a3c6a125995501fec4a426ffe3952d6d7e42fb37bc93873",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001585.xml",
+        "sha256": "34a8fa6a6d9261199b1a021659dd9fbe1f8ad1a11a3de100d5891bcb28395420",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001585_00760.xml",
+        "sha256": "e9f8b007391730a9c11d30672598f080f6fea849fbaefa2d6c64ab772a582b79",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 7,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001585_00761.xml",
+        "sha256": "74b065a2c104ece01b3745c7db2ee82d18cdbe87bdd55c91da53cd9ac9dedb0b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 4,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001586",
+    "cohort": "new100",
+    "archive_sha256": "d3d926a91e29be43018d22876cdf293524a1389f5908757cd0d3987e9c2828ba",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001586.xml",
+        "sha256": "92224032e5e5af80899aad27543578de0f45cb066c46c9a89fa91c450d93400d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001587",
+    "cohort": "new100",
+    "archive_sha256": "afe524822e397362e8436a0010a2b573af813f5131276b26a65aeed6095855da",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001587_00760.xml",
+        "sha256": "0a7f902b5ba3a904dedb33986b9b9c634debfdfbc129d63683803d1ff0f00b3d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001587.xml",
+        "sha256": "785824eeef81ea90edb98ce1336f2f8591a786df39a1bd7632ec3eebaf5c0c70",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001588",
+    "cohort": "new100",
+    "archive_sha256": "329379abedcda392318d56491c7db4590e3ac62d0f632b1b7b7bcc91a7c94422",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001588_00761.xml",
+        "sha256": "e328b483e2f4c14f5e97a788fb65bdef027a864d2845261078c8c7f7e0133f8c",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 10,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001588.xml",
+        "sha256": "cad70675beeff9fb1ff47d6b7debf12bb8ce2ef5ce48104274c23c86152ebfa0",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 8,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001588_00760.xml",
+        "sha256": "da801176966a0179df56eba65e5a6cac4fc8dfdf85aa9d5451da7bb287a05889",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 8,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001593",
+    "cohort": "new100",
+    "archive_sha256": "ff55b920cb4058af39932165c9fba01852c94cbf4fae13b92d22d7e6cc5d3c64",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_PARTIAL",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001593.xml",
+        "sha256": "a9b2f19e358331e9831931159421a4a26eaaf935d478429a2c03d11dd24f589a",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 16,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001593_00760.xml",
+        "sha256": "5641978d8a76a1068cd4ddd354457da559c59dba808c45684471f22f2386a67c",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001593_00761.xml",
+        "sha256": "86a47757953724e98053887f10d06f3c753fc317d0bc8543351c4d98dacae846",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001594",
+    "cohort": "new100",
+    "archive_sha256": "1ea3c40cd267173318ca4bf4fcf8f4c50313dd31d035bf772f400e5e7e979484",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001594_00760.xml",
+        "sha256": "bff75594e44aef9f0a03b3d37924cdfe8f862102b42db0dcc4bd4382eab715eb",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001594_00761.xml",
+        "sha256": "a0db4e2cee0a6e1319cc364169102519a759dd4198322c8467b10663fa8db805",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 4,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001594.xml",
+        "sha256": "ded9786b394da2d8cd6216d54ac58f4431cfc981d18895ab7ded3e8c484ca684",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001596",
+    "cohort": "new100",
+    "archive_sha256": "8545e15c4cf610ed47b98c22d5b042425c822103a4c42949b1f6ad924c7157fa",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001596_00760.xml",
+        "sha256": "888b620163d742153d89150647e45ccb9637accd2968357d7e25b9bd6dc5e638",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001596_00761.xml",
+        "sha256": "97f03c43392c106dfaf5412076c7f95d009347e57adbe0dc417cbc4175b1f474",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001596.xml",
+        "sha256": "f9c891c49df464a06fa6b8a503735880dd4ac41d7d9a83128afc7f8e4e60bc34",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001599",
+    "cohort": "new100",
+    "archive_sha256": "cd0249ad7bcca35636a6823c900987e9291c05c199e4cafd832476a5d61867f7",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001599.xml",
+        "sha256": "b2ad9f4edb41f8d4f4da85c870a63df58361fe3a9e5feaf5e7f3b5dd4419e53e",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001599_00760.xml",
+        "sha256": "01400262a14fea7e37fc168c306dc32b6f0c9acbe6d90961b5751ac2ff555968",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 69,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001600",
+    "cohort": "new100",
+    "archive_sha256": "1181f0a4570116ee0cb4f2665ec90deed8e147bb36ccde6740718876cff9f6c5",
+    "archive_crc": "PASS",
+    "before": "PARSED_PARTIAL",
+    "after": "PARSED_PARTIAL",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001600.xml",
+        "sha256": "da446278a74f8b68cf500f786e0e468e06e5b06d1fcf55025b21022400c16550",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001600_00760.xml",
+        "sha256": "93124ed4caf94e4a98d54b833ece0f26a028186667503ed48ccbe847cb592a09",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001601",
+    "cohort": "new100",
+    "archive_sha256": "83f976c4639a4ec4196d62ca5f94cb34a15559850c971e84f35b534ea5fdc0a7",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001601_00761.xml",
+        "sha256": "ce6acb4171614b95d57f350d5a5b9c62dfd37842290dacf5bd7d307efa32d59c",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 17,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001601_00760.xml",
+        "sha256": "96a905776da79af7e20384b70bfcf485edf2b8c71cce8a83d26ef37d479a2c96",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 11,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001601.xml",
+        "sha256": "b9b7d67850ec1619855128d309705bc27c916617cd6bbd56579197dae0f7159f",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 10,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001605",
+    "cohort": "new100",
+    "archive_sha256": "5bad36d2c851c0db3022d5f1e09e9d12b513040597baaebdd1bd60abf5a35126",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001605_00760.xml",
+        "sha256": "884f4dff66af1b7fbcc6297f3e0e0172ec929056b33fc5e3be39f49ceb8330c3",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 3,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001605.xml",
+        "sha256": "fbeb4d6859137c3e85ad42a068b07089c73c918347d334cd19d65fa0db98e30e",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001605_00761.xml",
+        "sha256": "2b75fe04e48efe3006d41ef6d03c58a16923a6a4474bde62f2aef647dade2de7",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 4,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001606",
+    "cohort": "new100",
+    "archive_sha256": "2a38fca5cbab235f78238a8c893d3ec077f4c74f2b5f69bb4b4ffe88acd70e64",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "SOURCE_GAP",
+    "category": "UNSUPPORTED_SOURCE_MARKUP_REMAINS",
+    "members": [
+      {
+        "member": "20100331001606_00761.xml",
+        "sha256": "56351d99a1e82060e0a60068d562aa460f569f30f0fdb2931340fd900a1260f1",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 3,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001606_00760.xml",
+        "sha256": "a8c8b8ad67723ce89d12bbcb804f528f20e2307a8a193af8467d79ff1a93c70f",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 25,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001606.xml",
+        "sha256": "5592ddb981981d2a57880bea85fe56a256e1e0da3ed7d28fbcf65a593bad5452",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 5,
+        "xml_error": "not well-formed (invalid token): line 3478, column 25"
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001607",
+    "cohort": "new100",
+    "archive_sha256": "df35ca45bd96240ad582ae684b807b25436abc25b56ad45dc7cf0988ba1ef3f8",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001607.xml",
+        "sha256": "9107d54dd7e2e8b0af14df314798144375f6ca76bd85c059e37a676cfa5ff04b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 7,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001607_00760.xml",
+        "sha256": "6a8062e7acf66f5d4f35cb80ac167a974caf7c56a38e63bc46d7453ed4993ff7",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 14,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001607_00761.xml",
+        "sha256": "88a010259134088a6122793fb244bbe0ced7848d28c11da2120301f1ad4e3c52",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 24,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001609",
+    "cohort": "new100",
+    "archive_sha256": "3d0ec2789e333fff712ade657c4d0b5361fb631e2cc845eaf7fc25bb9a8cf9db",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001609.xml",
+        "sha256": "a84970ba4155bb6498419a1e2154e5c058cbc7b3a88f082d669eba2e2a468d9b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001609_00761.xml",
+        "sha256": "b7c50cdba2567d4ed5fc07433f86d871be5c95defe3ade945a7a25c1d4dc987d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001609_00760.xml",
+        "sha256": "5576780585dcb01dec366f2ea6676b6b7a80592302797beaf756a1bfde7d52b4",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001610",
+    "cohort": "new100",
+    "archive_sha256": "f0f2603d34a5c4e82462a8dfe3ed16ce1229d6da9d3910c49487d6a7fd841f00",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001610.xml",
+        "sha256": "46870773210cbc994a427b5482117acb73197770b99437b71a30a3bdb9ae7039",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001610_00760.xml",
+        "sha256": "c30705472af1be9a12aa1776c1840b0908adc8fc308756954671c6f20c5dca79",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 14,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001612",
+    "cohort": "new100",
+    "archive_sha256": "d49d6239531b77d2a7fc986cf7c4f860a056001dcdc5f1e5626e984680570945",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001612_00760.xml",
+        "sha256": "4a9b9c5ed5719224ebf7d07b4afc6d0773bb0c1d233cb670c08bf9fac4d30ea1",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001612.xml",
+        "sha256": "60133646ac68c26785c9f112616a9637ee0a96ce8787754e56294169c2987247",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001615",
+    "cohort": "new100",
+    "archive_sha256": "c50ee195a18a2a224496a69db017f7af593e559ca3f2077c8f10acc6a1741eb9",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001615_00760.xml",
+        "sha256": "0aad462704b860b9feb8b6a8c5eb9af4cb79e8f04ff56f87c43da9b11db8f32d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001615.xml",
+        "sha256": "5fef818277ad4ad023b7a7f77809869e6c5a1f66f4904ebffae602aad259497b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001615_00761.xml",
+        "sha256": "c4d5402520c4a482f532ea553a853c737fb61881576350eb6ac3ec88f67c7acc",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001616",
+    "cohort": "new100",
+    "archive_sha256": "c34061fd45e85a60b85ca59e99c040ff1ae6ab8c58d3ed66e3cb45343a29b8c4",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001616_00761.xml",
+        "sha256": "b53f4b72441434c2658d495242303338f40b14474d331a79340aa1cd57c276f1",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001616_00760.xml",
+        "sha256": "2f470a623be1b6bd329b0359724367dc8ba1d658971197c5c54b04b772ace143",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001616.xml",
+        "sha256": "787e8fd48b694295a2c5889ab60734ac35e213e804bb07760224c78754de8046",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001617",
+    "cohort": "new100",
+    "archive_sha256": "ae1387cb6615cc260773cbe72b5e2d79f4c0e54ca6026ee69d96bc8b974cf2ac",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001617.xml",
+        "sha256": "3a396ab51ec4fdab16222dd9816a43c51daa4a3f635d335c2d8d7741685c764d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001617_00760.xml",
+        "sha256": "62c7da353cd9793c57c2911f7437dedfd3cef974973aacac6270ed443de2d94f",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 18,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001618",
+    "cohort": "new100",
+    "archive_sha256": "1c6348717f2507a5a559c99bcec2ee7568bbcb4895c50323542828d149afd5ee",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001618.xml",
+        "sha256": "7a0e87256c74f775d195a4f87480ae79eb2a4bcb0f6fe9a64db3122457f0a546",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001618_00760.xml",
+        "sha256": "d8a3bf6cdba6f5b472d627fd2027aed6e5cd8bd13cf0e4b2915567c8f459c137",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 4,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001619",
+    "cohort": "new100",
+    "archive_sha256": "1a7eb7699979484603e1ff81f12a83416014a7a3c804fbd690271f5a37461f5a",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001619.xml",
+        "sha256": "87a205f4b7aaccf3572cb19308f245603edbca2ef3e6a8700327e8fadad3a58c",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001623",
+    "cohort": "new100",
+    "archive_sha256": "7e2d0138be8c2eb60843f25670034c623f925427523e0ce81068a0c222ff381c",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001623_00760.xml",
+        "sha256": "3fd190915a87e741a5b543bcb4891314a1b72d2b127488070f39277417a6103e",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001623.xml",
+        "sha256": "d3f8117bb9e76b9077c06a992f18fb0f1d30e8e6604209284b3739bb9ea2a2c3",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001623_00761.xml",
+        "sha256": "8cff2e815cfa7ab05542c8b76cd0088a4282f500e21dab61a911ed54797c333d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001625",
+    "cohort": "new100",
+    "archive_sha256": "4723b41bd9a87a0118b5a4bbc7004b5958017bcdff483d1b613c85af83ce2245",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001625_00761.xml",
+        "sha256": "87ec8ae34b0e3a59fbecc2e7bd1ef1b07ac557cb00111b66d1698d8323969add",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 22,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001625.xml",
+        "sha256": "56fabf3808389bab64dfa6e1d854017aad2474af631db9f6a3a3901558ecf95e",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001625_00760.xml",
+        "sha256": "5500ce692616fa8a8b36bd529bb9f838782da08df25c9dbe66b0646c1c238d7a",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 25,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001627",
+    "cohort": "new100",
+    "archive_sha256": "9b1354a67c7440179dd7726d3a56c1abe771ac1286ca7906fd57a43d41e5f5e6",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001627_00760.xml",
+        "sha256": "61d081193dc4025a68fe106bee48a1aa5fa9be70c4384e9f444a2b4a23f04f13",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001627.xml",
+        "sha256": "5056f1f29c59e91e8bd5360c50817a97f6468e1009ee1e12c0e83778fe908e87",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001627_00761.xml",
+        "sha256": "a8d5af44b8b4016efcc526287716f05e59b0d7f13b34a95ea620aea80b4a8a62",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001628",
+    "cohort": "new100",
+    "archive_sha256": "be9962e53b5288db28770e75672b93e0e5c00156fbfa9ff1ed4d5239f497b083",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001628_00760.xml",
+        "sha256": "236a5d0405fdd859dd3b99778799dd80d84a980da7a4bc8e4fcb44ffb156baef",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001628_00761.xml",
+        "sha256": "abc5871e67eaa67a5238c2daa670eb6f7777d7da520f4e73409fe013b1e88851",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 10,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001628.xml",
+        "sha256": "6b6ab3003b8431f6ba8631b7dc36fc291a3d418729c36599fb258abdeaaecb88",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001630",
+    "cohort": "new100",
+    "archive_sha256": "0967b035d264aa9e52cb603015898845fdde98dfddc6e3bcd46270b14899d2a5",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001630_00760.xml",
+        "sha256": "1c5f5cdc8760e38582502b72a91b34062f8500150dacde22a237e4260d36ead7",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 63,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001630.xml",
+        "sha256": "86187af88e482e90aad4aa6b8ad3e94e4a0656de182d93d047308164285f304c",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 7,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001630_00761.xml",
+        "sha256": "e76465f13b308eca9d38a742741685651a95b9558dc279057404049618a63efa",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 61,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001631",
+    "cohort": "new100",
+    "archive_sha256": "ea0d256cb1e90f91eb296c21ca9c75633510606db1888db609072f803604d839",
+    "archive_crc": "PASS",
+    "before": "PARSED_PARTIAL",
+    "after": "PARSED_PARTIAL",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001631.xml",
+        "sha256": "b981eca887da31dd6721fe3ba2f3eae7df4edddc7b9760dc9a43ab893f7ff3df",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001631_00760.xml",
+        "sha256": "a362122ac9966f0c00887ca6027e2f1019d7d76968a215a623c1ea3b46a45431",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001632",
+    "cohort": "new100",
+    "archive_sha256": "c9c7f4d5c9dc0507af0e616eb2a8e4ed1b043dde6324b1ad37afe961ae19946b",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001632_00760.xml",
+        "sha256": "2ad10fcf99154822894d041685b2bbceef7c3fd967ce41cfc14b2de5f68e68d1",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001632.xml",
+        "sha256": "85b714ba70acb2bef2671081b9cc409b99598afefd10649e892477c76c0ddea7",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001634",
+    "cohort": "new100",
+    "archive_sha256": "c327780beba19efd296bf17fb6e21efcc21ae2cc22afac3381fb8a618e731de6",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001634_00760.xml",
+        "sha256": "7662eac4bcda6e8b2af75f9a55bdf6a85fc3e0facf2264f98b779e2c87b936b5",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001634.xml",
+        "sha256": "02dd7af6de05810b8c8f3c6d0f36eea781c0dda76898b1c1157b712ec5d09440",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 9,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001636",
+    "cohort": "new100",
+    "archive_sha256": "6dc26d269ef7602183ce2d71495a9226ac001af673717982d1331d871a3587c2",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001636.xml",
+        "sha256": "96aa83711e6dbf07fcce7c15231a953bd8c68fe1797442206d253b914f41163a",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 23,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001636_00761.xml",
+        "sha256": "ab3b6f87bda9c6edf044c9d0041e1c143295b491fc6b1447bea1889ada916e5e",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001636_00760.xml",
+        "sha256": "a1806115baec92807bbac52324e901b460776572a17d597e5f9e7d056a25e1ab",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001637",
+    "cohort": "new100",
+    "archive_sha256": "e59efa54017c963831cec66a018bcfd12106c7904f2d6a96115e71fa26f62347",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001637_00760.xml",
+        "sha256": "8a5b006d48ab32f6bd7c228579d7dd921a5d7eeb0de5f78793b755200fbd6068",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 24,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001637.xml",
+        "sha256": "56855703a3eaf566f10e2ac08433729d2b1661ce9e9fb30a636a591405f5b00a",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 3,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001640",
+    "cohort": "new100",
+    "archive_sha256": "cfdd2e70b979848001c0b5b57ed14dbe15aae9e1b82a2f1f1c883cde9736cfab",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001640_00760.xml",
+        "sha256": "2ad142b9e030f1f85aa6b63e46549f77746120ec423df209f011fa00e9b5b78e",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 8,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001640_00761.xml",
+        "sha256": "3e04900535b57aa5d5011eac3375fd10a15a3225583790f49a7398d6a74d41c5",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001640.xml",
+        "sha256": "001f612dccb3a04f89c302317bf560cf2b813edad48ee6b6c4a587ceae834d74",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 13,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001641",
+    "cohort": "new100",
+    "archive_sha256": "9fa01e98f730c808d8bc4cf73d7dbae6569bb8590bff1df5588e1dffd49a94b8",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001641.xml",
+        "sha256": "fe25b0580d46d7bc57d4ac9e646670eb94abe75057517f4bac647d48765362f5",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001641_00760.xml",
+        "sha256": "0b7adb7976cf359413d279cab4b26d6e696724e47a452296b8713a36ba75c196",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001641_00761.xml",
+        "sha256": "9a340e5d501fe55eadcc30b97da5dec58142421e19129da3dd64858954d3c84c",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001644",
+    "cohort": "new100",
+    "archive_sha256": "dd9f3b423e112c79caa998a608b3e4a71e01c4751be0af5c550388064e585adb",
+    "archive_crc": "PASS",
+    "before": "PARSED_PARTIAL",
+    "after": "PARSED_PARTIAL",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001644_00760.xml",
+        "sha256": "5dd44c2cc2d5452ffe6c830e4f824e2e14cdf3facf4cf9bb0257bf81f86e29f4",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001644.xml",
+        "sha256": "36b898c5e55f0bd354fc50a3e638af1eaab366a05b6ab32a8c99d7553b7a50ae",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001647",
+    "cohort": "new100",
+    "archive_sha256": "09247eb6c4fd3ebc1b47ea151dcacad8a9d81bee397832f1309947878161fd85",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001647_00760.xml",
+        "sha256": "c7480facc581ea0d370b87d72e3a358cee6a0d7cd3101591d3da8dca65431804",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001647.xml",
+        "sha256": "374ad962ea7b6c101e17f932f9eb52d84d85283d2d1df7092ac18a145fc4ec16",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001648",
+    "cohort": "new100",
+    "archive_sha256": "ef45e98d95e2828b48f63d679c32021d738f256bf02e38c9a1c860680711e42a",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001648.xml",
+        "sha256": "b623fb843e179f5bb4574af3b1c01dcc918582dfde5cfca63122bcb540e8c0f6",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001648_00761.xml",
+        "sha256": "13459371b94dd362844d4679d873ba6fe6bdbb586564fe702395efb1dfc128f6",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 28,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001648_00760.xml",
+        "sha256": "f3940f49a6d712ef7738b66df909937758e40bd055c2613a24551bbfbd964bde",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 24,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001649",
+    "cohort": "new100",
+    "archive_sha256": "3f77ce63c179b475574051cb6fefe2d4ba5eb7a75bb06817d12a982b6a950d97",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001649.xml",
+        "sha256": "292d4d7ec20c37b0e7d4caab57da2eb2771f9149d5e840fe1ad7260f8e6411e5",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 12,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001649_00761.xml",
+        "sha256": "48ff778e0ddc1ff26610f6741c3c7c30a174c89216004dc2534f8e3c1474a07b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 53,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001649_00760.xml",
+        "sha256": "ed2d350afada91b76b342d7213d182f14798af6502649ed99bbdebb37934c551",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 46,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001650",
+    "cohort": "new100",
+    "archive_sha256": "5a5c0f9e455e2084bc349607e5f6849774c9cc9ac7d11599ebc81c351c5f91b6",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001650.xml",
+        "sha256": "bb541f9b40bdf3d8d590ce5f44cc6b2cc782db7560b0d3883dc0095516d2c1a9",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001651",
+    "cohort": "new100",
+    "archive_sha256": "4b9ef12c1c27eee5e6e9b15732b9406637b84edff0cd98fd722ed93dd039d69f",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001651.xml",
+        "sha256": "cd42b30daa411b82a00b35973e4eeff56250d6553033c9610480545714733636",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 10,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001651_00760.xml",
+        "sha256": "3d4b9992e28bb2239f55bda708d6a49af4133e9401bfa31b62bc960a1f49f882",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 3,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001655",
+    "cohort": "new100",
+    "archive_sha256": "3ff1b6c6f11be73a28bd0ba68d837504baf68344e29eaa3fc2344e1fec5a7867",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001655_00760.xml",
+        "sha256": "ec1a498ba4f7479ca38f278e310f08da239aa896a2a2952e433712efde0d2646",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 6,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001655.xml",
+        "sha256": "f29309f99c5ed59937bdf3e9e8a89285c21b7e90f4fd611c6310cb55a7c122f3",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001655_00761.xml",
+        "sha256": "bf4e7f5f26c110c4a25b4b3167c3bef914f1de4259d93d35d29186d3fbae2474",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 6,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001656",
+    "cohort": "new100",
+    "archive_sha256": "3d2da427116e208515805edc6cf6c7eaa246540729dc34671df55c9ec9446447",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "SOURCE_GAP",
+    "category": "UNSUPPORTED_SOURCE_MARKUP_REMAINS",
+    "members": [
+      {
+        "member": "20100331001656_00760.xml",
+        "sha256": "3e82119f616ae71d8989223b3fc5d718f190b69d1b397643841f9f448ea31b6e",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001656.xml",
+        "sha256": "ed3f7115d709b033e0e14a752f480017695bc98bc6929763b914dbfdec5aee21",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": "not well-formed (invalid token): line 2572, column 10"
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001658",
+    "cohort": "new100",
+    "archive_sha256": "5a7e725d5c618607332929ecef25917be8e87b2bc2821ab638c381f270ad1d43",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001658_00761.xml",
+        "sha256": "e683b279df7f2b61d7b28f61661cf3c91da08ad7c19dfb195b599922990f6332",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 58,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001658_00760.xml",
+        "sha256": "3dd43a6b1e3f5f61c8ac09a4ad27b159793efeeef1cd4f10fd46b93dd17f1626",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 46,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001658.xml",
+        "sha256": "cbc5393681e84fde8099ddfcff9ed75d4f42204095d59c82c78d5aee8b50d213",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 3,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001661",
+    "cohort": "new100",
+    "archive_sha256": "9d63ed180eb2aee1f760cfb156c6f2301f0f4b6e40e097a5352e0645154ae27b",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001661.xml",
+        "sha256": "ffc953637b7fc25207f3d9f527a274278d4fa3d25eba0ba335831b23b038a0f4",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001662",
+    "cohort": "new100",
+    "archive_sha256": "6559cdc2cc76c94b23e8c344608fc58db58578a87cf21a0dc9f7d0c5acf2d61a",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001662_00760.xml",
+        "sha256": "87b690f2f48f98b01cc6338eba0cd7ff0707508765e694f11eb626e7d512c4bf",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001662.xml",
+        "sha256": "0cb4e0de97a55eafb6451970afea61aed42659b8653f8c917b21b972695a098a",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001662_00761.xml",
+        "sha256": "63318b079f9d0d99f84661a927eafefe1f75966267f102a1dfd7cdb87698d8c6",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001663",
+    "cohort": "new100",
+    "archive_sha256": "826ea1905d916c848b6debfbb59ef2f8189f213a4103f9ebd90d0333a3c2069e",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001663.xml",
+        "sha256": "2e1d5653e16dac19135684f075023a0cd09e5322ec1d713f8c817c7be7ccfdeb",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001663_00760.xml",
+        "sha256": "d66dcdb336287b4e752493856b231e30441972887dc7f41735e1a5590c4fed8b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001664",
+    "cohort": "new100",
+    "archive_sha256": "67b09ce6a9e67120f0572da51244f9d6fa41251eb873de1eb1cf3181d6663c50",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "SOURCE_GAP",
+    "category": "UNSUPPORTED_SOURCE_MARKUP_REMAINS",
+    "members": [
+      {
+        "member": "20100331001664.xml",
+        "sha256": "5c02e7546171e7039007e9f8239613fb35d776d0cc2eae34bdad4c30e9096b60",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001664_00760.xml",
+        "sha256": "35ccfa71e463ddb59902bca19b2c794735a87a50fad84dc6e492b60ffec8af46",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 16,
+        "xml_error": "not well-formed (invalid token): line 3644, column 41"
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001665",
+    "cohort": "new100",
+    "archive_sha256": "59977318853ba7a4ce90941abc7c58d6df35593a4ddb00e2864542356c42c314",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "SOURCE_GAP",
+    "category": "UNSUPPORTED_SOURCE_MARKUP_REMAINS",
+    "members": [
+      {
+        "member": "20100331001665.xml",
+        "sha256": "06cad8e8cc3537e0e1cb80a722f55ea1f8bcdd2c66ca5f21de3ebcca154155a8",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 6,
+        "xml_error": "not well-formed (invalid token): line 2393, column 44"
+      },
+      {
+        "member": "20100331001665_00760.xml",
+        "sha256": "abc64a6152bb3fb4b2374eb372aca36f064a189156eacecbbd38c89c5064d303",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001667",
+    "cohort": "new100",
+    "archive_sha256": "6139fd0416bee9614b3b6177c387cfa57475fcf9013cc4f5760954946c272968",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001667_00761.xml",
+        "sha256": "908ab86299851ed78a5a524dde7f66e15f9f8e43aca63ce91cfbb67277098927",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001667.xml",
+        "sha256": "533114a971f2b1f356393777d0867aa9e783d3ce6280c2758d963745d8a643d9",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001667_00760.xml",
+        "sha256": "7f7aa49f892752add43072da42fe7d3f1bb3b088cd4030e20b5b40e6ffb6d9e4",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001668",
+    "cohort": "new100",
+    "archive_sha256": "a304a2eb6ceee29dcc816e3a16806aff7e202f4b813672ff633069f7d0ba6ba8",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001668_00760.xml",
+        "sha256": "c2f394855c90be1a2fd6028cd26624b071678f9dbd3f9a0bf85e8d50f7896636",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001668.xml",
+        "sha256": "c08c302661369ec1c3293379433a2602d3a23223a63473fb35e0cf7b53e43a41",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001670",
+    "cohort": "new100",
+    "archive_sha256": "29a417c85296b93234965207c77ea1274a49680e9553dfd2d86604c0978d05c8",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001670_00760.xml",
+        "sha256": "07f59f4d5386d8f0b460f16914c4bd781ada771ceb9acd002f193c92ff97cf99",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001670_00761.xml",
+        "sha256": "f08302bf7e22c809779901544eccdf065110aaa0a11d1b47501365f82a365f0d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001670.xml",
+        "sha256": "9eca68b3aa0604fc24500a80d4748578bacdc5a663343a17b8edda186fe73819",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001671",
+    "cohort": "new100",
+    "archive_sha256": "9e97a37cfc360c60b1cd6aedbd95851a5a323ede1cf36c05d5cc51d25cb6f244",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001671.xml",
+        "sha256": "93767e81f48043bf7ee77e5657f7c67266477257cab63654fdc8bc8cf2d820b2",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001671_00760.xml",
+        "sha256": "aec2549a121abe42a685090612884181e29a4d8bdd126e0a30a4aaa2f5c121fb",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001672",
+    "cohort": "new100",
+    "archive_sha256": "b91ef3622c54273bb9f1782e57354abf2699d62965c4545831f597f3a29c02cb",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001672_00760.xml",
+        "sha256": "4ac4ae2d28b24fdcbae95a4cf89261b0e944bf8242832236382d5de5dfab54e5",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001672.xml",
+        "sha256": "37a4b49b329b9d5b6771d3ad2cc2e38213b40c6d74b0a1843d2c6db9c6fb3f84",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001673",
+    "cohort": "new100",
+    "archive_sha256": "1ef890296c83ea04e489eef4f95bb87832ac187c2c584f7eb1be0b6f12eb302a",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001673.xml",
+        "sha256": "99a9b15b9e87841852da6611fb20915ec3f7639f7678c333668468ac81d62081",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001673_00761.xml",
+        "sha256": "103cd9becf732eab38a4ee9613c38a7eef18155c9762a82cee221a1b36fc7864",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001673_00760.xml",
+        "sha256": "2b6602f3ace8f7abd3df12bafa95fd45a00b66d8bc06772956ec97aafc70f0a8",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001676",
+    "cohort": "new100",
+    "archive_sha256": "64cde18114a0551c340d6ebabf189c54daf310f0f2e5f9bb6425769fd02734c2",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001676.xml",
+        "sha256": "98972ca8983abddd97885d603f9d8c1967501f159c040ba37c9aea0d7df0a46b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001676_00760.xml",
+        "sha256": "d4dd456d408e6220d715a784e2419d178cf6be6c8aa685b3a70a26b93f6af93c",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 13,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001677",
+    "cohort": "new100",
+    "archive_sha256": "7bd6cdc7b4da21f9be96e864f7dce35f600e5f5f743196c0e8c89d3cfda13116",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001677_00760.xml",
+        "sha256": "619089fa00fcb752c83d9ee3fa95ec04a9642b85a4df0faa9100f134cac729f3",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 4,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001677.xml",
+        "sha256": "be36174b742ec6b9122a5a5f6bd00019397fd61d7aa81d2cd2079029ee69b318",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 6,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001678",
+    "cohort": "new100",
+    "archive_sha256": "224686cb6c740fdbe2939358370c4e0cea2bb44b85d930fe50d20dbf8e582afc",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001678.xml",
+        "sha256": "ed06017f6fe5c9b9e52fcc5d531114fe0de5ef469ce006a8b6481c32317bcddf",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001678_00760.xml",
+        "sha256": "c401e3b5765e1f08c1819d86891a47534b2ab9d3a9ca79659587ee46d87b5e24",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001679",
+    "cohort": "new100",
+    "archive_sha256": "b8cd31e212010219e62daebd7eb9ce17c4bd37c3258485a63db5c9e134b270de",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001679_00760.xml",
+        "sha256": "b8fc80b9b948f848a6a77cf5fc81f65ecdbe819edb33ec071d1a0c011a38e5b8",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001679.xml",
+        "sha256": "b86ba78b75d9b2bedc2acc72dd79f1237745df6f5410aab042e8f1d6086eef4c",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001679_00761.xml",
+        "sha256": "29b43fb09edbe32ffddd4a23e534fc917ebf19c02a19d7da5c29b98f21238921",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001680",
+    "cohort": "new100",
+    "archive_sha256": "95b9ae1e4710caeb0ce0b079708c12ff0d36665bacdcf0e7aa65518069f2d129",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "SOURCE_GAP",
+    "category": "UNSUPPORTED_SOURCE_MARKUP_REMAINS",
+    "members": [
+      {
+        "member": "20100331001680_00761.xml",
+        "sha256": "d99bac244c69f44ba00d07e4c91cc1b27acee386d2d9846a9bd17d3bdebcef82",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001680_00760.xml",
+        "sha256": "070529288fcb9867bb7ee016a2fa168b061e2c0c2341c43c1c5d556e65ab0a52",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001680.xml",
+        "sha256": "901bfc06fe8435aa679f2a2f2f1ba7c1aadb72bf1a32cce86b5a8ab8bf1e8a4d",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 5,
+        "xml_error": "not well-formed (invalid token): line 4621, column 29"
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001682",
+    "cohort": "new100",
+    "archive_sha256": "b577f7b8e0ceb48967ba99ba76c27f77754ec08395a4ddb1e7703b6b9fb3bde0",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "SOURCE_GAP",
+    "category": "UNSUPPORTED_SOURCE_MARKUP_REMAINS",
+    "members": [
+      {
+        "member": "20100331001682.xml",
+        "sha256": "ec64b584859ede38d8e68b7fe29e9140b55bde10c4eb211d7e5cd4a7f6913f75",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": "not well-formed (invalid token): line 4389, column 72"
+      },
+      {
+        "member": "20100331001682_00760.xml",
+        "sha256": "835a2f2f2aab46ca919cd7b11f9c40286cb84955145bb20efb9871faef01b58b",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 24,
+        "xml_error": "not well-formed (invalid token): line 4780, column 70"
+      },
+      {
+        "member": "20100331001682_00761.xml",
+        "sha256": "ea0d79f9062ada1692c3e1803c03ba2d985f8b6e8659bf1e561e30cdebfa6cf9",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 27,
+        "xml_error": "not well-formed (invalid token): line 5064, column 70"
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001683",
+    "cohort": "new100",
+    "archive_sha256": "bc132819a6036386d95a735106929e5d09d7910d548de35aa42d697d3b5b757b",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001683.xml",
+        "sha256": "2f8b98b5704cb20ee197fe6bba26f04225939c4df76fe44f27b5258fec66df54",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001683_00761.xml",
+        "sha256": "09ff92557fc67749e10441d44ec62384fa7437478550a7a5dbc706c3be4fc1ae",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001683_00760.xml",
+        "sha256": "22fb5bac617dc9892ce6dada9dc1321d871d48b4e6b575d9219bc6745d18f252",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001684",
+    "cohort": "new100",
+    "archive_sha256": "6bc7f03bb9069e0b3002280b0c9fe96b95a22564965ecab870ace78fbfb02529",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001684_00760.xml",
+        "sha256": "282d4b75e6df95fdaaaa6d2b7c3748e8920645e64aa4c29481e6f6a7a6cc2dcc",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 59,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001684_00761.xml",
+        "sha256": "98a74dac6bb9cc18c796112aa6e6d87e742ccb094a8ccba59602a030fe9b594d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 52,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001684.xml",
+        "sha256": "4bb421cba91fb9e6e950e70261cf10dddce5d3dc1d96e643ba00fff65a12bda3",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 10,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001687",
+    "cohort": "new100",
+    "archive_sha256": "84d43f6cc051b2598edaa010519e9c8b7155da30eacc2c8bc8f5be0d02e31653",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001687.xml",
+        "sha256": "fe99a91cd0ed68f5e425aa7eabcc390f0c508c34c1f36ae9e77896a4127636c7",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001687_00761.xml",
+        "sha256": "609d3a51a17cfa779678464d35c50757f5dfd9ee169c2ba526b12a01031a89f2",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001687_00760.xml",
+        "sha256": "fd6f506505efc3ce4a55451744c2891c0d8ec9f2c91e6d2c424469d9a408ee81",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001688",
+    "cohort": "new100",
+    "archive_sha256": "347e91f9db84423ac408bc30a7b1f4e8e858981669d1520daab8ba58d49ecb23",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001688_00760.xml",
+        "sha256": "19a8325698ffeb79e10e56f0bf213be5588abe09f8eb2555378a86b4cf917e8e",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 6,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001688.xml",
+        "sha256": "b1407b4c9bbf3906994f713b684f7140b8e70b023d844f2875b30171bf545907",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 12,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001689",
+    "cohort": "new100",
+    "archive_sha256": "5bc07f907b12109d0722f874e45b98ffb2d476a0e9c8b1f61055c2975a1111c1",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001689_00761.xml",
+        "sha256": "cab5e11a3c403ecb2096739ff0fc3301b5e4724844d50f7307a659d3d0a44311",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 4,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001689.xml",
+        "sha256": "509b86f96860dbee8edc193c02e04bcaad6eedf86a87280a457892b094470db2",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 4,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001689_00760.xml",
+        "sha256": "eba27314ff4a9a0707891e95293461b19b111817287f5ec08dc5e3c3ccb7d303",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001690",
+    "cohort": "new100",
+    "archive_sha256": "6b1db84f0268875be91e064fe6f775c9f78ee79d79f991837a8b7fee3aa4dc83",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "SOURCE_GAP",
+    "category": "UNSUPPORTED_SOURCE_MARKUP_REMAINS",
+    "members": [
+      {
+        "member": "20100331001690.xml",
+        "sha256": "3ca385c0dcb55ecffcf092b6470c01f9458d0c0155d5ae8d9a95558c894fe4a3",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 38,
+        "xml_error": "not well-formed (invalid token): line 2192, column 142"
+      },
+      {
+        "member": "20100331001690_00760.xml",
+        "sha256": "f0b970f0deae5adf219df5120bebca9d8e5d0e1376bf7ff08b06bb7032ae1071",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 34,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001690_00761.xml",
+        "sha256": "b698120c923da144b28c3b4dea095c05f0b5634dfb3bc522b7508d14bbba5034",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001691",
+    "cohort": "new100",
+    "archive_sha256": "6bedafc2f46eec538c4ad872cdafc55ecef51b349d0b3ff476eb35cc502a23bb",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001691.xml",
+        "sha256": "addf74b9626490123326faad5d400726940a63f270918a3ccd0a80dc03805d1b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001691_00760.xml",
+        "sha256": "70df3b88921ebe7f37f17342967421a279a73c9e05167b6f9fc3ee13240dd4f5",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 20,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001693",
+    "cohort": "new100",
+    "archive_sha256": "7973108317fc3ba9fbd0348c8af55376c517cf30a3e7fb855217c7a6e8e633ba",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001693_00760.xml",
+        "sha256": "2c3fc6eb1c07da7c9c931c0b83394e28c3ee9d654ba123d67ab60c84c3cfc84d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001693.xml",
+        "sha256": "f922d415713c1d25589d14337ee5b3a59cd257f76a2bc253b85262eec775745f",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001695",
+    "cohort": "new100",
+    "archive_sha256": "5d20ab47bfcd72328b7d29510cdd8be59e5216bfaa09ced639a3a71096afb3d8",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001695.xml",
+        "sha256": "de3495be8709bd816a2f47331caf27c307084819a6e29ef52c5c74512d3dec15",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001695_00760.xml",
+        "sha256": "362d904edcc8533b3bc9cf8399632ad7fe43ce0f4c93fb8722a832f4068fb938",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001695_00761.xml",
+        "sha256": "c8b7ef77512dceb4f679186c926fdc37446b4e27395a4395366b8f42c98cd21b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001696",
+    "cohort": "new100",
+    "archive_sha256": "4f97a188dce38b4e221b304fc5348df6a60a2d3b93e760a7c9477b4a647edd8c",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "EXTRACTION_FAILED",
+    "category": "UNSUPPORTED_PRIMARY_TABLE_OR_COVER",
+    "members": [
+      {
+        "member": "20100331001696.xml",
+        "sha256": "732195e96999d3a3d0db4814bef703febabad523c751e470df9606e6e5de83c5",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 3,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001697",
+    "cohort": "new100",
+    "archive_sha256": "5210d02079d1b5c2ec04cf1c8d5474036e5e348fb869c3e267ef5c6dd943a3ed",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001697_00760.xml",
+        "sha256": "b36dd106006fda446746d098ad17614aca40be8d7b3fc890bc06275a29e74e6a",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001697.xml",
+        "sha256": "d74cd0411c356daabbc3bb90f4417bd002dc0ac5878064212c4583f7e5fe2c62",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001697_00761.xml",
+        "sha256": "09be4da10c16b679a40533a13258e4cd8f086174d1f02594e4d9ebce1861f36d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001698",
+    "cohort": "new100",
+    "archive_sha256": "dde2f34086adf66f4f25f107f345e82b9d7d67e7e480cecae2b7471329aad18d",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001698_00761.xml",
+        "sha256": "9ce06fe182be5ab3f3c32fa8743c63e88b173ed05a4da86d06c10d80d8d5dc7f",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 25,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001698_00760.xml",
+        "sha256": "378fae3e4907fe8c936755651c6717a60b0c12c470d59929d580ee7e9412fb75",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 17,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001698.xml",
+        "sha256": "6264523e5f38f37072ed1b3a7eb905d0ae3cb15c22ee3e7648d86b0007c55007",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 19,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001699",
+    "cohort": "new100",
+    "archive_sha256": "4c7c81415cab594d22e710daffc6c9781ea51e997c79891dc8675e51fa311ac7",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001699.xml",
+        "sha256": "427b5bd3003fda6b91d7d521f72893453745e5d4bf3cfa1fced7b7c9a86569c2",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001699_00760.xml",
+        "sha256": "57102a1620fcdbe89ce265afb78032068403e55e9eeea5d509ede74c22c8720c",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001699_00761.xml",
+        "sha256": "1157e8a8680c0c6bf7becbdbce9c15426877f394b35beaf380687d129f17fb4a",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001700",
+    "cohort": "new100",
+    "archive_sha256": "0ef88ad400f3b24a04ad6364d3e9b2470cb669d127c4732cee78f47ce0903962",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001700.xml",
+        "sha256": "d54e26c56f973e668e6953089527d6bc52a0b1ab61b5e38896f55bfb561587a7",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 3,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001700_00761.xml",
+        "sha256": "58376594545dc89606f76925e773b02b74b1dc8be03be0ab86075d2737685792",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 54,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001700_00760.xml",
+        "sha256": "74a5bd7c13cdb24a6003706dc028a471fd92030de2edaa9de19b8944c203419b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 20,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001701",
+    "cohort": "new100",
+    "archive_sha256": "aa566406bbd83364c08954de5e2a8512969a97bb1f344f34807dab39a2bb7a8f",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001701_00760.xml",
+        "sha256": "396914c8638ea69947fcd941bfd72d23a92182210e51c8abe773137d5ac2b650",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001701.xml",
+        "sha256": "47e368ebdcb6f0d8da414e163a5b43298186bc22fe1f16e08229c6d6476bae3f",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001704",
+    "cohort": "new100",
+    "archive_sha256": "d2399dfa88e9b67c5eb204e530ad635708d45561de82aa9184f4e73fe69d9ffb",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001704_00760.xml",
+        "sha256": "8cfd44bec021405b8845dfc8871d3d1a23f33b8f8b39749f4daa39c215617532",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001704.xml",
+        "sha256": "e03c2ae8c3901b867f84017778378e9d10867f9bf9279e89318ee3a038d3f722",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001704_00761.xml",
+        "sha256": "6de9a53dcaa6d1e3b317d90d13f9c6508878d83e100c3461b794f752964baae4",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001705",
+    "cohort": "new100",
+    "archive_sha256": "faa0f716fe101f9259465c2eee5f7f7c6f3d3f174e04532debd4601b992b6f28",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001705.xml",
+        "sha256": "e8a7b3438e4ab6cafa6abc4e8bfd6e3993c56e15849229cdb0db2634185a5df7",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 3,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001705_00760.xml",
+        "sha256": "5c45d7aaf63bf2970240bc7c75c8af03210162deaf2d511b064e1bf9fc593855",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 6,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001707",
+    "cohort": "new100",
+    "archive_sha256": "c58b381e4625d36d42eccdd8cf06652505c01ab5bb8134657653baca64f9534d",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001707_00760.xml",
+        "sha256": "41caf105e45a5eb9f5657f90345577d3d178a1a3dfaf3549d3342fc8c86ab21d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 3,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001707.xml",
+        "sha256": "4ea30e01b165d2e9be91d4d84fefa32e18cd180bee81928cee9b3e2ffa2631bb",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001708",
+    "cohort": "new100",
+    "archive_sha256": "c1100157a15e8dcbee7d50815f767870a2700f2133b2953b6394cf0282ae5a66",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001708.xml",
+        "sha256": "fa82caf09a460fbeecf30b3a2e0f4cf996675f84b6aef260b2b90b3cb96e649b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001708_00760.xml",
+        "sha256": "f648f10be1ec440b180c893728aa42f9e2c6f4fd9d39f9807e33a3cea50095e2",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001710",
+    "cohort": "new100",
+    "archive_sha256": "9eeab565ec9e09eec5949d620c0be90377cbc946a9ed2a4cc66483e066d6c7fe",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001710.xml",
+        "sha256": "e9deb0fa9bc09599c05c7163c65e141a507a7757fab0f5486e5624c7bf4f1e39",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 10,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001710_00760.xml",
+        "sha256": "68bf7580aa06f21b551791a008e16e5a8bbdc5ed13366e08a1dba902a513ef86",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 9,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001711",
+    "cohort": "new100",
+    "archive_sha256": "d41542e9e3e9e452189f97a3cbbb1d9de0c38a0028b6e449a62280cd37121522",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001711_00760.xml",
+        "sha256": "76e1ceb68c6d138cfa483768e8e99508b4cd165f45dd9586e595f2bf40018707",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001711.xml",
+        "sha256": "2340d1d803017cab8ed62bca23f8e44d6a56770f1aae0e3f9555b3cfff4fee9d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001712",
+    "cohort": "new100",
+    "archive_sha256": "81d7a8d7675d3704168dfbfa4a2c3bbcc83c4f437abbf457bec9126ba39f9e07",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001712.xml",
+        "sha256": "903fbf648e65bfa014c7d52142b015fc481cbc4e7ce652a746441979b898608b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 18,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001712_00760.xml",
+        "sha256": "64b801bbfd737aa5a4a54294b1061bfd4d34b61b54c1d56174b39c77184a6d83",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 18,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001714",
+    "cohort": "new100",
+    "archive_sha256": "0e45aa233a3429e8fc7b657ff7b7433b1eae9c84a0cc869e8a28a6778899cdc9",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001714_00760.xml",
+        "sha256": "9da96bb9d38d2fe0f98016c68642b02a830f245918c68d0618b48243b9ac20da",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001714.xml",
+        "sha256": "80dd3ac9aa9b79d89892a58b2e857324e3fd0aae047599011d259b27d9ab030c",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001714_00761.xml",
+        "sha256": "c0b644a53b0c902953fa658e63ef7080632103fa24ab428ea630b80ed07aefbe",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001715",
+    "cohort": "new100",
+    "archive_sha256": "2a2d3d3df58cd173f25747a424879c57bbd1ccb8670d5d763246aea82623969d",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001715.xml",
+        "sha256": "8306b12c8692ececbbefdc0e17fca35c32582065d3b8e50ecd4e122993db9bb3",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 12,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001715_00760.xml",
+        "sha256": "5c5df0209f9e3c839a757f27190ff6529ab90e6af98a55995bdc888a150f72bb",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 12,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001716",
+    "cohort": "new100",
+    "archive_sha256": "4618008b2887d22a6fec398eb4644cfb9d1c03a83f2f6fb02dd8e78e829f44ed",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001716.xml",
+        "sha256": "c566d255d4ca49fcc69e33e32c61596ce86df9c520e290fe0ff9c427755c2dc0",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 99,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001716_00760.xml",
+        "sha256": "250c226977b3ae3efef1bc6fecc9345986fe826ba87e6400931570bb5dd8e1eb",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001717",
+    "cohort": "new100",
+    "archive_sha256": "014662253c132b2ff9cbe9f45992f6a598aa27f4e0674e097e0a37fe7e38a58b",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001717_00760.xml",
+        "sha256": "c5b6b128a1af493bf554f78b5119df2d809c70a78859d20f13e72fc78b3101c5",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001717_00761.xml",
+        "sha256": "b4238ddf55aee0b921f2f9274301cf5a6d660b7ef2af039bfe125f10977d0315",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001717.xml",
+        "sha256": "55f052553425c414b72c4ce4c5e99ac6a6feebaee06afc8611c1f69153321f50",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001718",
+    "cohort": "new100",
+    "archive_sha256": "0eb3bef2598ba47082beda41e4fd4fd187a530f4192dc9a259bf88be95b8f956",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001718.xml",
+        "sha256": "9a196e24f3488185a754308edf996de2a0e9aaf29d4122de996b6079bf0222b9",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 6,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001718_00760.xml",
+        "sha256": "2ad2ae89ac7dbe578591171707d0a1351b989431fa56d16e9b836098cb999094",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 31,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001724",
+    "cohort": "new100",
+    "archive_sha256": "9ab718a6324d054b390f71e8655f12c70524e12cd72d91cecd22c2052edbeecb",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001724.xml",
+        "sha256": "0106da87cd6480f2d27b022b0a2e89f480a779aa3a9cffdd546d8f24563bd3ba",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001724_00760.xml",
+        "sha256": "4fe68695888b202fb268be2ad3f09d9d7c982eb958a52ddd19e1fe00e9e8ec33",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001724_00761.xml",
+        "sha256": "04080b3f9a64f5cba058c91d6fea20c448460e0e3bb32cf53e625bf306409085",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001726",
+    "cohort": "new100",
+    "archive_sha256": "0a40a02638ba860f347b99b9de0f49a5c901cfda9b60bff6ab3101b38743e37d",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001726.xml",
+        "sha256": "6b4d1914bd6a447888468fc49001f22a47b5f1294059e2e84234a5151e6e8a8f",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001726_00760.xml",
+        "sha256": "3fc5e03645146bc2ecaeab0ba2c7be2e64297cdc73eec3f77a09d27389c3ca24",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001726_00761.xml",
+        "sha256": "79c74b1077a6c1ca93bb4ed8e21a18ecc616e7df1d999c79b439200f1ce22a35",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001727",
+    "cohort": "new100",
+    "archive_sha256": "a27a5ee13a5dbf60a6e00f66e1312e36bbb9e4310bdf76e972475f3cffe8c033",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_PARTIAL",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001727_00761.xml",
+        "sha256": "d7a39ad382c01dfcffb61768e7870fb8500b92eb7f4ee5a5f60ef5638ba453ba",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001727.xml",
+        "sha256": "764da91dec85f8b45214d5d2ee947de99f87747c5119e4e4d01dd2da3d286505",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001727_00760.xml",
+        "sha256": "ccb6450f76187c1b0315c3b28bbcd61cacd2b0fc808ffb734b42eaa3fbefeeaa",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001728",
+    "cohort": "new100",
+    "archive_sha256": "d51d580cdcc6692cfc55542dcadd4e8891de389192ffb34753e3c75674def98f",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001728.xml",
+        "sha256": "3dd3fc1fa1a0d6d6daa9039e401e60162387ed0cd97796b7bea0c2fa020dcd28",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 16,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001728_00760.xml",
+        "sha256": "e2b4d273cc01a65adda4d0827ec24ea3971b4f3b2c060bdb37f8666245fca85c",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 53,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001730",
+    "cohort": "new100",
+    "archive_sha256": "1405eba8035be15979615c32180f1882dcf745d54fe05774a934300175fe56e5",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "SOURCE_GAP",
+    "category": "UNSUPPORTED_SOURCE_MARKUP_REMAINS",
+    "members": [
+      {
+        "member": "20100331001730.xml",
+        "sha256": "f3e9c65696a58f04a85d7c1b0fab3ca52b7b2537e6fc11be94c52f6d6b6b5787",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 34,
+        "xml_error": "not well-formed (invalid token): line 6888, column 20"
+      },
+      {
+        "member": "20100331001730_00761.xml",
+        "sha256": "e2ec2b9442c3bbce958f7b9226a10bd06d5836583f1916cc24f7631c66b70e90",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 19,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001730_00760.xml",
+        "sha256": "0c3cb7ba57d7cbeeaa54af6295c95ed5b70dc3a1566dd500cf6e6a8200764c18",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 17,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001733",
+    "cohort": "new100",
+    "archive_sha256": "1eabaf9ceccd474b6bfb9eaa714a607de5f76f7e6e60a94ca174c5e5db3f1db4",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001733.xml",
+        "sha256": "011d6932a4b0b440726919bcdfe1703581c46e5c61f5f903c34287b39c6225cc",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 6,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001733_00760.xml",
+        "sha256": "eb2d4c481d7877677236299e50425f2f9ad0e9273517fef56aec4f8704a15523",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001733_00761.xml",
+        "sha256": "42846880f443d12ee32f107c996f852277afdabf896ef8ddf7ca353520a78e8d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001741",
+    "cohort": "new100",
+    "archive_sha256": "1005905d6c088f4c08d632a1efe8b1777921a02373c3481066fd97f286be2405",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001741.xml",
+        "sha256": "49e020489505f485de3e2bb59ef115bffb950b1d4ba8ec667c9719fcd6123f55",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001741_00761.xml",
+        "sha256": "48ec8bd25e1e3ba3b2addaa6560be8dce141ee0cc573eaa5f0b98888997fa2ab",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001741_00760.xml",
+        "sha256": "96ff488e94bc7a24220b7b49dab56434418a810081bba45de07681544ac15011",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001742",
+    "cohort": "new100",
+    "archive_sha256": "b74867034e6c52d13e81d742723bc0d4a811199aab2d710ecebd0369b0d058b5",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001742_00760.xml",
+        "sha256": "15f202b7f48b8fe58ad7450a2a6584ad611a7b1945e304a7ed6f816cb6497b64",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001742_00761.xml",
+        "sha256": "9bb8a77e41cd47bd4ec494986057268ad3ea82973994db53941a1653ef311c12",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 2,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001742.xml",
+        "sha256": "575f6c690296429af06c375b872e5597e6bee252492013d0b4da812eb220981c",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001744",
+    "cohort": "new100",
+    "archive_sha256": "431d273cb38bc99b9ca88daba15f439a7d3ac015ff829dfe644aee1c20e1978d",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001744_00761.xml",
+        "sha256": "66c57a5dc3a5bf2892cc41e02dc6c02b608ef6e49bc2550332c5e6a410feeb8e",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001744_00760.xml",
+        "sha256": "0f7bd8d9aa910d068f1c400ae292e9507406d51c365f327cfa532e7d78cd222a",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001744.xml",
+        "sha256": "6a569e0527ab2a79f696a002a05f35ea2fb21c5f95983e1b17ab42ae9c961793",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001745",
+    "cohort": "new100",
+    "archive_sha256": "096132d22567fabf43125f7fb489b79845c47465050cd22197c4d8f185c32350",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "SOURCE_GAP",
+    "category": "UNSUPPORTED_SOURCE_MARKUP_REMAINS",
+    "members": [
+      {
+        "member": "20100331001745_00760.xml",
+        "sha256": "72913eccde84969b23c92b25769fb68e548791d115ba9db4079ca54f0eb79bfc",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 23,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001745.xml",
+        "sha256": "e31e736483849cae04115c27cb6ac5bcb007ba4d74cd5ed2312c15f7e023aaa1",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 46,
+        "xml_error": "not well-formed (invalid token): line 2680, column 589"
+      },
+      {
+        "member": "20100331001745_00761.xml",
+        "sha256": "9d9c0d9c63a3d1a21b424102beda8662d3c489fb6ed1685fbc91db1b77cd490c",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 31,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001746",
+    "cohort": "new100",
+    "archive_sha256": "1a386e1017490d089ebc7f0f84207efbba92e1cf9089913e770b1fa31708a405",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001746.xml",
+        "sha256": "29e06041fe61a47d3881cbcf335633b1c12c5f03c449cf25dbb6091c94786314",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001746_00760.xml",
+        "sha256": "a65e03a5e2515b51f527618994cb988fc8096e0d3b35d5bf02772f48bc785b36",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 29,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001746_00761.xml",
+        "sha256": "4a52ceb957b5bf94d064b5620f360e811d09c4821129ea18f5ae780ec38d69ff",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 31,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001748",
+    "cohort": "new100",
+    "archive_sha256": "a02824666641ebf1bfeab5ea4358cce3a2f547d4490db5ca867b1c45e87e6d2d",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001748.xml",
+        "sha256": "3eedcaa9f9c5b383b7b3b9ff0d3eb526ba9b6de5915ec1a8e7187e37fef8c49e",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001748_00760.xml",
+        "sha256": "4473fc1de50d45ac91ff47da8666d951662fbc016114f9a2625ec0b5d478a02b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001753",
+    "cohort": "new100",
+    "archive_sha256": "058bf580734585e2e43f46649aa7bf2f532c5de91f54046aedfe521cadbc2b03",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001753_00761.xml",
+        "sha256": "473841bfc37212a3d0dd8eb498330065e4a0b71bb0faa85dd6455cabe477824e",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001753.xml",
+        "sha256": "936a233bb0ccdb00a9e2c8c72fb6da40c87ccb841ac048664d6b8312f2bd255c",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 1,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001753_00760.xml",
+        "sha256": "9c3dc85e9bb95a07be79ce18600a80015c64be58784e10af33eae92985751991",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001754",
+    "cohort": "new100",
+    "archive_sha256": "6dbb667f7974ab5a8eb8c8d5a51d01bf32c9a8a64f46a912dec14417aa3f3d72",
+    "archive_crc": "PASS",
+    "before": "SOURCE_GAP",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001754.xml",
+        "sha256": "fe7fc6a77b8f73460e0a60447b3aa20fe7c4d074d9c9b71b18940288226f79db",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "literal_labels": 3,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  },
+  {
+    "receipt": "20100331001757",
+    "cohort": "new100",
+    "archive_sha256": "fb57cf8ce8ab1e52f7d616e2d18efef66aac873b232d81d895d8f4a040bd8e29",
+    "archive_crc": "PASS",
+    "before": "PARSED_4F",
+    "after": "PARSED_4F",
+    "category": "VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION",
+    "members": [
+      {
+        "member": "20100331001757_00760.xml",
+        "sha256": "1e32c4ad57472dec9dfd9d358bbc1fea565c4f12f8cb4be2888b224a7e3927c3",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001757_00761.xml",
+        "sha256": "a904ed8291f07d743b1cae72c49603ab7d72b1f0501f162fc60fe41ad7ab4dd4",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      },
+      {
+        "member": "20100331001757.xml",
+        "sha256": "91c1a28b042a2e21e04ab981e95b5475af042933ad83afebb916cb2ed8232519",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "literal_labels": 0,
+        "xml_error": null
+      }
+    ],
+    "financial_absence": "NOT_CERTIFIED",
+    "new_HTTP_calls": 0
+  }
+]

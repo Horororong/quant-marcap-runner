@@ -1,0 +1,14 @@
+{
+  "run_id": 39209643206,
+  "head_sha": "09df72e0d209e352250dbae1384ff1e5fee78a91",
+  "job_id": 117919952060,
+  "exit_code": 1,
+  "error": "AssertionError: ('REPRODUCTION_DIFF', 'reconciliation.json')",
+  "failed_command": "scripts/financial_source_readiness_audit.py docs/audits/financial-source-readiness-20261019 --check",
+  "passed_before_failure": ["Actual110 replay canonical JSON bytes", "Original independent85 PASS/7 UNVERIFIED", "New independent199 PASS/28 UNVERIFIED", "Separate fixed-kit protected financial job"],
+  "root_cause": "Unsorted filesystem glob order in old_publication_hashes changes JSON insertion order between local creation and git checkout.",
+  "independent_reproduction": "Reverse creation order directories reproduce unequal old order; sorted publication_hashes returns identical bytes. Full parsed reconciliation JSON remains exactly equal before/after; only serialization changes.",
+  "financial_controls_changed": false,
+  "old_reconciliation_preserved": "reconciliation_before_order_fix.json",
+  "retry_without_fix": false
+}
