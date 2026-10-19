@@ -3,6 +3,13 @@ on:
   push:
     branches: ['fix/financial-accuracy-20261014']
     paths:
+      - 'scripts/financial_record_readiness.py'
+      - 'scripts/financial_publication_evidence.py'
+      - 'scripts/financial_source_grid.py'
+      - 'scripts/research_incident_groups.py'
+      - 'scripts/test_research_incident_groups.py'
+      - 'tests/test_financial_record_readiness.py'
+      - 'docs/research/source-readiness-20261019/**'
       - 'scripts/legacy_native_financials.py'
       - 'scripts/legacy_parser_migration.py'
       - 'scripts/dart_service_status.py'
@@ -56,6 +63,70 @@ permissions:
   contents: read
   actions: read
 jobs:
+  financial-signal-official-market-proof:
+    if: github.run_attempt == 1 && contains(github.event.head_commit.message, '[financial-signal-market-proof]')
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore exact fixed kit; no pip
+        run: |
+          python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: Only four cash-market 2010 responses; no operating writes
+        env:
+          KRX_AUTH_KEY: ${{ secrets.KRX_AUTH_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/collect_financial_signal_market.py --output "$RUNNER_TEMP/market-proof"'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: financial-signal-official-market-proof
+          path: |
+            ${{ runner.temp }}/market-proof
+            ${{ runner.temp }}/runtime.json
+          if-no-files-found: error
+          retention-days: 90
+  source-readiness-and-incident-regression:
+    if: contains(github.event.head_commit.message, '[source-readiness]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore exact pinned kit and verify
+        run: |
+          python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: As-of boundaries, common factor owner, existing DART E2E and readiness regressions
+        run: |
+          PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
+          "$PY" -I -m unittest discover -s tests -p test_financial_record_readiness.py -v
+          "$PY" -I -m unittest discover -s scripts -p test_research_incident_groups.py -v
+          "$PY" -I -m unittest discover -s scripts -p test_dart_snapshot_selection.py -v
+          "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/test_research_planned_readiness.py",run_name="__main__")'
+          timeout 150 "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/test_dart_dsl_super_value.py",run_name="__main__")'
+          "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");sys.argv=["scripts/export_strategy_dsl_contract.py","--check"];runpy.run_path(sys.argv[0],run_name="__main__")'
+          "$PY" -I docs/research/source-readiness-20261019/reproduce.py --check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: source-readiness-and-common-factor
+          path: |
+            ${{ runner.temp }}/runtime.json
+            docs/research/source-readiness-20261019/actual_signal_result.json
+            docs/research/source-readiness-20261019/incident_groups.json.gz.b64
+          if-no-files-found: error
+          retention-days: 90
   financial-backfill-existing-sources:
     if: ${{ github.run_attempt == 1 && (((github.sha == '14804b081585bbb5769c76ff6182cc69135eb6a1' || github.sha == '9b6634c5f2326127c6fb6ad6d76a809edf12558c') && contains(github.event.head_commit.message, '[financial-backfill-source]')) || (github.sha == '98ee6462c6da3d33e43529a00bc95b988a4dbfed' && contains(github.event.head_commit.message, '[financial-reserve-source]'))) }}
     permissions:
