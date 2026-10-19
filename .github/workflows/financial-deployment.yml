@@ -10,7 +10,7 @@ permissions:
   actions: read
 jobs:
   source-publication-proof:
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/deploy/financial-backfill-v9-') && github.run_attempt == 1 && contains(github.event.head_commit.message, '[source-readiness-proof]')
+    if: github.event_name == 'push' && github.sha == '4d7cd140566b5e84b209c5e68ed6bb0f0e9f8f82' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[source-readiness-proof]')
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -58,8 +58,10 @@ jobs:
       - name: Exact canonical financial bytes and frozen independent control/publication checks
         run: |
           PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
-          "$PY" -I -c 'import base64,gzip,os;from pathlib import Path;a=Path(os.environ["RUNNER_TEMP"])/"replay100/subjects_v92.json.gz.b64";b=Path("docs/audits/financial-validation-100-20261019/subjects_v92.json.gz.b64");assert gzip.decompress(base64.b64decode(a.read_bytes()))==gzip.decompress(base64.b64decode(b.read_bytes())),"CANONICAL_FINANCIAL_BYTES_DIFFER"'
+          "$PY" -I -c 'import base64,gzip,os;from pathlib import Path;a=Path(os.environ["RUNNER_TEMP"])/"replay100/subjects_v92.json.gz.b64";b=Path("docs/audits/financial-source-readiness-20261019/subjects_quality_v3.json.gz.b64");assert gzip.decompress(base64.b64decode(a.read_bytes()))==gzip.decompress(base64.b64decode(b.read_bytes())),"CANONICAL_FINANCIAL_BYTES_DIFFER"'
           "$PY" -I scripts/financial_review_gate.py docs/audits/financial-validation-100-20261019 --check
+          "$PY" -I scripts/financial_review_gate.py docs/audits/financial-source-readiness-20261019 --check
+          "$PY" -I scripts/financial_source_readiness_audit.py docs/audits/financial-source-readiness-20261019 --check
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -165,7 +167,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
-          for file in backfill_dart_legacy_2000_2014.py backfill_super_value_fast.py legacy_native_financials.py legacy_financial_fields.py legacy_parser_migration.py dart_service_status.py dart_http.py; do
+          for file in backfill_dart_legacy_2000_2014.py backfill_super_value_fast.py legacy_native_financials.py legacy_document_quality.py legacy_financial_fields.py legacy_parser_migration.py dart_service_status.py dart_http.py; do
             cp "scripts/$file" "audit-reference/scripts/$file"
           done
           cp scripts/test_dart_service_status.py audit-reference/scripts/test_dart_service_status.py

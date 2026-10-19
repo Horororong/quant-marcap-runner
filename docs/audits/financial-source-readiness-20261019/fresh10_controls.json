@@ -1,0 +1,1374 @@
+{
+  "controls": [
+    {
+      "id": "fresh10-20100331001586-equity",
+      "receipt": "20100331001586",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001586.xml",
+      "member_sha256": "92224032e5e5af80899aad27543578de0f45cb066c46c9a89fa91c450d93400d",
+      "archive_sha256": "d3d926a91e29be43018d22876cdf293524a1389f5908757cd0d3987e9c2828ba",
+      "table": 82,
+      "row": 84,
+      "column": 1,
+      "literal": "106,177,266",
+      "account_literal": "자본총계",
+      "unit": "천원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term37, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 82,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 82,
+          "literal": "제37기"
+        },
+        {
+          "table": 82,
+          "literal": "(단위 : 천원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001586-revenue",
+      "receipt": "20100331001586",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001586.xml",
+      "member_sha256": "92224032e5e5af80899aad27543578de0f45cb066c46c9a89fa91c450d93400d",
+      "archive_sha256": "d3d926a91e29be43018d22876cdf293524a1389f5908757cd0d3987e9c2828ba",
+      "table": 84,
+      "row": 1,
+      "column": 1,
+      "literal": "281,048,578",
+      "account_literal": "매출액",
+      "unit": "천원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term37, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 84,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 84,
+          "literal": "제37기"
+        },
+        {
+          "table": 84,
+          "literal": "(단위 : 천원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001586-net_income",
+      "receipt": "20100331001586",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001586.xml",
+      "member_sha256": "92224032e5e5af80899aad27543578de0f45cb066c46c9a89fa91c450d93400d",
+      "archive_sha256": "d3d926a91e29be43018d22876cdf293524a1389f5908757cd0d3987e9c2828ba",
+      "table": 84,
+      "row": 59,
+      "column": 1,
+      "literal": "11,480,683",
+      "account_literal": "당기순이익",
+      "unit": "천원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term37, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 84,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 84,
+          "literal": "제37기"
+        },
+        {
+          "table": 84,
+          "literal": "(단위 : 천원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001586-ocf",
+      "receipt": "20100331001586",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001586.xml",
+      "member_sha256": "92224032e5e5af80899aad27543578de0f45cb066c46c9a89fa91c450d93400d",
+      "archive_sha256": "d3d926a91e29be43018d22876cdf293524a1389f5908757cd0d3987e9c2828ba",
+      "table": 90,
+      "row": 1,
+      "column": 1,
+      "literal": "23,553,155",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "천원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term37, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 90,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 90,
+          "literal": "제37기"
+        },
+        {
+          "table": 90,
+          "literal": "(단위 : 천원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001588-equity",
+      "receipt": "20100331001588",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001588.xml",
+      "member_sha256": "cad70675beeff9fb1ff47d6b7debf12bb8ce2ef5ce48104274c23c86152ebfa0",
+      "archive_sha256": "329379abedcda392318d56491c7db4590e3ac62d0f632b1b7b7bcc91a7c94422",
+      "table": 73,
+      "row": 115,
+      "column": 1,
+      "literal": "37,952,412,081",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term10, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 73,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 73,
+          "literal": "제10기"
+        },
+        {
+          "table": 73,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001588-revenue",
+      "receipt": "20100331001588",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001588.xml",
+      "member_sha256": "cad70675beeff9fb1ff47d6b7debf12bb8ce2ef5ce48104274c23c86152ebfa0",
+      "archive_sha256": "329379abedcda392318d56491c7db4590e3ac62d0f632b1b7b7bcc91a7c94422",
+      "table": 75,
+      "row": 1,
+      "column": 1,
+      "literal": "80,777,337,230",
+      "account_literal": "매출액",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term10, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 75,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 75,
+          "literal": "제10기"
+        },
+        {
+          "table": 75,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001588-net_income",
+      "receipt": "20100331001588",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001588.xml",
+      "member_sha256": "cad70675beeff9fb1ff47d6b7debf12bb8ce2ef5ce48104274c23c86152ebfa0",
+      "archive_sha256": "329379abedcda392318d56491c7db4590e3ac62d0f632b1b7b7bcc91a7c94422",
+      "table": 75,
+      "row": 74,
+      "column": 1,
+      "literal": "(5,552,475,504)",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term10, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 75,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 75,
+          "literal": "제10기"
+        },
+        {
+          "table": 75,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001588-ocf",
+      "receipt": "20100331001588",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001588.xml",
+      "member_sha256": "cad70675beeff9fb1ff47d6b7debf12bb8ce2ef5ce48104274c23c86152ebfa0",
+      "archive_sha256": "329379abedcda392318d56491c7db4590e3ac62d0f632b1b7b7bcc91a7c94422",
+      "table": 81,
+      "row": 1,
+      "column": 1,
+      "literal": "(5,283,634,519)",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term10, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 81,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 81,
+          "literal": "제10기"
+        },
+        {
+          "table": 81,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001605-equity",
+      "receipt": "20100331001605",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001605.xml",
+      "member_sha256": "fbeb4d6859137c3e85ad42a068b07089c73c918347d334cd19d65fa0db98e30e",
+      "archive_sha256": "5bad36d2c851c0db3022d5f1e09e9d12b513040597baaebdd1bd60abf5a35126",
+      "table": 109,
+      "row": 93,
+      "column": 1,
+      "literal": "84,206,720,497",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term18, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 109,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 109,
+          "literal": "제18기"
+        },
+        {
+          "table": 109,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001605-ocf",
+      "receipt": "20100331001605",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001605.xml",
+      "member_sha256": "fbeb4d6859137c3e85ad42a068b07089c73c918347d334cd19d65fa0db98e30e",
+      "archive_sha256": "5bad36d2c851c0db3022d5f1e09e9d12b513040597baaebdd1bd60abf5a35126",
+      "table": 117,
+      "row": 1,
+      "column": 1,
+      "literal": "16,157,935,220",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term18, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 117,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 117,
+          "literal": "제18기"
+        },
+        {
+          "table": 117,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001606-equity",
+      "receipt": "20100331001606",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001606.xml",
+      "member_sha256": "5592ddb981981d2a57880bea85fe56a256e1e0da3ed7d28fbcf65a593bad5452",
+      "archive_sha256": "2a38fca5cbab235f78238a8c893d3ec077f4c74f2b5f69bb4b4ffe88acd70e64",
+      "table": 40,
+      "row": 96,
+      "column": 1,
+      "literal": "39,737,947,760",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term34, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 40,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 40,
+          "literal": "제34기"
+        },
+        {
+          "table": 40,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001606-revenue",
+      "receipt": "20100331001606",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001606.xml",
+      "member_sha256": "5592ddb981981d2a57880bea85fe56a256e1e0da3ed7d28fbcf65a593bad5452",
+      "archive_sha256": "2a38fca5cbab235f78238a8c893d3ec077f4c74f2b5f69bb4b4ffe88acd70e64",
+      "table": 42,
+      "row": 1,
+      "column": 1,
+      "literal": "13,977,461,476",
+      "account_literal": "매출액",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term34, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 42,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 42,
+          "literal": "제34기"
+        },
+        {
+          "table": 42,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001606-net_income",
+      "receipt": "20100331001606",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001606.xml",
+      "member_sha256": "5592ddb981981d2a57880bea85fe56a256e1e0da3ed7d28fbcf65a593bad5452",
+      "archive_sha256": "2a38fca5cbab235f78238a8c893d3ec077f4c74f2b5f69bb4b4ffe88acd70e64",
+      "table": 42,
+      "row": 74,
+      "column": 1,
+      "literal": "(8,415,947,587)",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term34, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 42,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 42,
+          "literal": "제34기"
+        },
+        {
+          "table": 42,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001606-ocf",
+      "receipt": "20100331001606",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001606.xml",
+      "member_sha256": "5592ddb981981d2a57880bea85fe56a256e1e0da3ed7d28fbcf65a593bad5452",
+      "archive_sha256": "2a38fca5cbab235f78238a8c893d3ec077f4c74f2b5f69bb4b4ffe88acd70e64",
+      "table": 48,
+      "row": 1,
+      "column": 1,
+      "literal": "(1,150,562,768)",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term34, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 48,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 48,
+          "literal": "제34기"
+        },
+        {
+          "table": 48,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001615-equity",
+      "receipt": "20100331001615",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001615.xml",
+      "member_sha256": "5fef818277ad4ad023b7a7f77809869e6c5a1f66f4904ebffae602aad259497b",
+      "archive_sha256": "c50ee195a18a2a224496a69db017f7af593e559ca3f2077c8f10acc6a1741eb9",
+      "table": 107,
+      "row": 95,
+      "column": 1,
+      "literal": "145,750,617,853",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term42, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 107,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 107,
+          "literal": "제42기"
+        },
+        {
+          "table": 107,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001615-revenue",
+      "receipt": "20100331001615",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001615.xml",
+      "member_sha256": "5fef818277ad4ad023b7a7f77809869e6c5a1f66f4904ebffae602aad259497b",
+      "archive_sha256": "c50ee195a18a2a224496a69db017f7af593e559ca3f2077c8f10acc6a1741eb9",
+      "table": 109,
+      "row": 1,
+      "column": 1,
+      "literal": "69,235,755,489",
+      "account_literal": "매출액",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term42, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 109,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 109,
+          "literal": "제42기"
+        },
+        {
+          "table": 109,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001615-net_income",
+      "receipt": "20100331001615",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001615.xml",
+      "member_sha256": "5fef818277ad4ad023b7a7f77809869e6c5a1f66f4904ebffae602aad259497b",
+      "archive_sha256": "c50ee195a18a2a224496a69db017f7af593e559ca3f2077c8f10acc6a1741eb9",
+      "table": 109,
+      "row": 81,
+      "column": 1,
+      "literal": "(8,862,374,249)",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term42, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 109,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 109,
+          "literal": "제42기"
+        },
+        {
+          "table": 109,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001615-ocf",
+      "receipt": "20100331001615",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001615.xml",
+      "member_sha256": "5fef818277ad4ad023b7a7f77809869e6c5a1f66f4904ebffae602aad259497b",
+      "archive_sha256": "c50ee195a18a2a224496a69db017f7af593e559ca3f2077c8f10acc6a1741eb9",
+      "table": 115,
+      "row": 1,
+      "column": 1,
+      "literal": "10,209,901,337",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term42, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 115,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 115,
+          "literal": "제42기"
+        },
+        {
+          "table": 115,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001616-equity",
+      "receipt": "20100331001616",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001616.xml",
+      "member_sha256": "787e8fd48b694295a2c5889ab60734ac35e213e804bb07760224c78754de8046",
+      "archive_sha256": "c34061fd45e85a60b85ca59e99c040ff1ae6ab8c58d3ed66e3cb45343a29b8c4",
+      "table": 90,
+      "row": 81,
+      "column": 1,
+      "literal": "58,572,597,080",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term24, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 90,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 90,
+          "literal": "제24기"
+        },
+        {
+          "table": 90,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001616-revenue",
+      "receipt": "20100331001616",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001616.xml",
+      "member_sha256": "787e8fd48b694295a2c5889ab60734ac35e213e804bb07760224c78754de8046",
+      "archive_sha256": "c34061fd45e85a60b85ca59e99c040ff1ae6ab8c58d3ed66e3cb45343a29b8c4",
+      "table": 92,
+      "row": 1,
+      "column": 1,
+      "literal": "92,246,558,947",
+      "account_literal": "Ⅰ.매출액",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term24, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 92,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 92,
+          "literal": "제24기"
+        },
+        {
+          "table": 92,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001616-net_income",
+      "receipt": "20100331001616",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001616.xml",
+      "member_sha256": "787e8fd48b694295a2c5889ab60734ac35e213e804bb07760224c78754de8046",
+      "archive_sha256": "c34061fd45e85a60b85ca59e99c040ff1ae6ab8c58d3ed66e3cb45343a29b8c4",
+      "table": 92,
+      "row": 68,
+      "column": 1,
+      "literal": "2,940,980,537",
+      "account_literal": "Ⅹ.당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term24, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 92,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 92,
+          "literal": "제24기"
+        },
+        {
+          "table": 92,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001616-ocf",
+      "receipt": "20100331001616",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001616.xml",
+      "member_sha256": "787e8fd48b694295a2c5889ab60734ac35e213e804bb07760224c78754de8046",
+      "archive_sha256": "c34061fd45e85a60b85ca59e99c040ff1ae6ab8c58d3ed66e3cb45343a29b8c4",
+      "table": 98,
+      "row": 1,
+      "column": 1,
+      "literal": "(4,769,435,048)",
+      "account_literal": "Ⅰ.영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term24, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 98,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 98,
+          "literal": "제24기"
+        },
+        {
+          "table": 98,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001634-equity",
+      "receipt": "20100331001634",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001634.xml",
+      "member_sha256": "02dd7af6de05810b8c8f3c6d0f36eea781c0dda76898b1c1157b712ec5d09440",
+      "archive_sha256": "c327780beba19efd296bf17fb6e21efcc21ae2cc22afac3381fb8a618e731de6",
+      "table": 81,
+      "row": 96,
+      "column": 1,
+      "literal": "63,875,852,291",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term20, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 81,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 81,
+          "literal": "제20기"
+        },
+        {
+          "table": 81,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001634-revenue",
+      "receipt": "20100331001634",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001634.xml",
+      "member_sha256": "02dd7af6de05810b8c8f3c6d0f36eea781c0dda76898b1c1157b712ec5d09440",
+      "archive_sha256": "c327780beba19efd296bf17fb6e21efcc21ae2cc22afac3381fb8a618e731de6",
+      "table": 83,
+      "row": 1,
+      "column": 1,
+      "literal": "34,405,029,290",
+      "account_literal": "영업수익",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term20, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 83,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 83,
+          "literal": "제20기"
+        },
+        {
+          "table": 83,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001634-net_income",
+      "receipt": "20100331001634",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001634.xml",
+      "member_sha256": "02dd7af6de05810b8c8f3c6d0f36eea781c0dda76898b1c1157b712ec5d09440",
+      "archive_sha256": "c327780beba19efd296bf17fb6e21efcc21ae2cc22afac3381fb8a618e731de6",
+      "table": 83,
+      "row": 72,
+      "column": 1,
+      "literal": "(5,536,278,285)",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term20, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 83,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 83,
+          "literal": "제20기"
+        },
+        {
+          "table": 83,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001634-ocf",
+      "receipt": "20100331001634",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001634.xml",
+      "member_sha256": "02dd7af6de05810b8c8f3c6d0f36eea781c0dda76898b1c1157b712ec5d09440",
+      "archive_sha256": "c327780beba19efd296bf17fb6e21efcc21ae2cc22afac3381fb8a618e731de6",
+      "table": 89,
+      "row": 1,
+      "column": 1,
+      "literal": "16,949,895,796",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term20, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 89,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 89,
+          "literal": "제20기"
+        },
+        {
+          "table": 89,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001718-equity",
+      "receipt": "20100331001718",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001718.xml",
+      "member_sha256": "9a196e24f3488185a754308edf996de2a0e9aaf29d4122de996b6079bf0222b9",
+      "archive_sha256": "0eb3bef2598ba47082beda41e4fd4fd187a530f4192dc9a259bf88be95b8f956",
+      "table": 85,
+      "row": 74,
+      "column": 1,
+      "literal": "21,726,037,831",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term36, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 85,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 85,
+          "literal": "제36기"
+        },
+        {
+          "table": 85,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001718-revenue",
+      "receipt": "20100331001718",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001718.xml",
+      "member_sha256": "9a196e24f3488185a754308edf996de2a0e9aaf29d4122de996b6079bf0222b9",
+      "archive_sha256": "0eb3bef2598ba47082beda41e4fd4fd187a530f4192dc9a259bf88be95b8f956",
+      "table": 87,
+      "row": 1,
+      "column": 1,
+      "literal": "65,943,568,028",
+      "account_literal": "Ⅰ.매출액",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term36, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 87,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 87,
+          "literal": "제36기"
+        },
+        {
+          "table": 87,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001718-ocf",
+      "receipt": "20100331001718",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001718.xml",
+      "member_sha256": "9a196e24f3488185a754308edf996de2a0e9aaf29d4122de996b6079bf0222b9",
+      "archive_sha256": "0eb3bef2598ba47082beda41e4fd4fd187a530f4192dc9a259bf88be95b8f956",
+      "table": 93,
+      "row": 1,
+      "column": 1,
+      "literal": "(3,807,473,407)",
+      "account_literal": "Ⅰ.영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term36, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 93,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 93,
+          "literal": "제36기"
+        },
+        {
+          "table": 93,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001728-equity",
+      "receipt": "20100331001728",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001728.xml",
+      "member_sha256": "3dd3fc1fa1a0d6d6daa9039e401e60162387ed0cd97796b7bea0c2fa020dcd28",
+      "archive_sha256": "d51d580cdcc6692cfc55542dcadd4e8891de389192ffb34753e3c75674def98f",
+      "table": 47,
+      "row": 93,
+      "column": 1,
+      "literal": "48,885,146,349",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term19, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 47,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 47,
+          "literal": "제19기"
+        },
+        {
+          "table": 47,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001728-revenue",
+      "receipt": "20100331001728",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001728.xml",
+      "member_sha256": "3dd3fc1fa1a0d6d6daa9039e401e60162387ed0cd97796b7bea0c2fa020dcd28",
+      "archive_sha256": "d51d580cdcc6692cfc55542dcadd4e8891de389192ffb34753e3c75674def98f",
+      "table": 49,
+      "row": 1,
+      "column": 1,
+      "literal": "98,913,118,082",
+      "account_literal": "Ⅰ.매출액",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term19, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 49,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 49,
+          "literal": "제19기"
+        },
+        {
+          "table": 49,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001728-net_income",
+      "receipt": "20100331001728",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001728.xml",
+      "member_sha256": "3dd3fc1fa1a0d6d6daa9039e401e60162387ed0cd97796b7bea0c2fa020dcd28",
+      "archive_sha256": "d51d580cdcc6692cfc55542dcadd4e8891de389192ffb34753e3c75674def98f",
+      "table": 49,
+      "row": 69,
+      "column": 1,
+      "literal": "(4,235,485,743)",
+      "account_literal": "Ⅹ.당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term19, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 49,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 49,
+          "literal": "제19기"
+        },
+        {
+          "table": 49,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001728-ocf",
+      "receipt": "20100331001728",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001728.xml",
+      "member_sha256": "3dd3fc1fa1a0d6d6daa9039e401e60162387ed0cd97796b7bea0c2fa020dcd28",
+      "archive_sha256": "d51d580cdcc6692cfc55542dcadd4e8891de389192ffb34753e3c75674def98f",
+      "table": 55,
+      "row": 1,
+      "column": 1,
+      "literal": "407,673,907",
+      "account_literal": "Ⅰ.영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term19, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 55,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 55,
+          "literal": "제19기"
+        },
+        {
+          "table": 55,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001754-equity",
+      "receipt": "20100331001754",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001754.xml",
+      "member_sha256": "fe7fc6a77b8f73460e0a60447b3aa20fe7c4d074d9c9b71b18940288226f79db",
+      "archive_sha256": "6dbb667f7974ab5a8eb8c8d5a51d01bf32c9a8a64f46a912dec14417aa3f3d72",
+      "table": 96,
+      "row": 82,
+      "column": 1,
+      "literal": "135,667,704,383",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term11, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 96,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 96,
+          "literal": "제11기"
+        },
+        {
+          "table": 96,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001754-revenue",
+      "receipt": "20100331001754",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001754.xml",
+      "member_sha256": "fe7fc6a77b8f73460e0a60447b3aa20fe7c4d074d9c9b71b18940288226f79db",
+      "archive_sha256": "6dbb667f7974ab5a8eb8c8d5a51d01bf32c9a8a64f46a912dec14417aa3f3d72",
+      "table": 98,
+      "row": 1,
+      "column": 1,
+      "literal": "378,239,437,119",
+      "account_literal": "매출액",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term11, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 98,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 98,
+          "literal": "제11기"
+        },
+        {
+          "table": 98,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001754-net_income",
+      "receipt": "20100331001754",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001754.xml",
+      "member_sha256": "fe7fc6a77b8f73460e0a60447b3aa20fe7c4d074d9c9b71b18940288226f79db",
+      "archive_sha256": "6dbb667f7974ab5a8eb8c8d5a51d01bf32c9a8a64f46a912dec14417aa3f3d72",
+      "table": 98,
+      "row": 72,
+      "column": 1,
+      "literal": "20,190,038,508",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term11, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 98,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 98,
+          "literal": "제11기"
+        },
+        {
+          "table": 98,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "fresh10-20100331001754-ocf",
+      "receipt": "20100331001754",
+      "cohort": "post-label-rule-fresh10",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001754.xml",
+      "member_sha256": "fe7fc6a77b8f73460e0a60447b3aa20fe7c4d074d9c9b71b18940288226f79db",
+      "archive_sha256": "6dbb667f7974ab5a8eb8c8d5a51d01bf32c9a8a64f46a912dec14417aa3f3d72",
+      "table": 104,
+      "row": 1,
+      "column": 1,
+      "literal": "17,888,847,003",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "New independent numeric control from previously only document-reviewed source: primary XI OFS current term11, first current monetary cell, explicit FY2009/unit. Actual filed body; no segment, prior or note substitution. No document-wide PIT certification.",
+      "header_proofs": [
+        {
+          "table": 104,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 104,
+          "literal": "제11기"
+        },
+        {
+          "table": 104,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    }
+  ],
+  "expectations_frozen_before_final_candidate_comparison": true
+}
