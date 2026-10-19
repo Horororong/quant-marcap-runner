@@ -105,8 +105,9 @@ jobs:
             cp "scripts/$file" "audit-reference/scripts/$file"
           done
           cp scripts/test_dart_service_status.py audit-reference/scripts/test_dart_service_status.py
+          cp scripts/financial_candidate_regression.py audit-reference/docs/audits/backfill-accuracy-20261018/candidate_regression.py
           "$PY" -I audit-reference/docs/audits/version-pit-stage6-20261014/verify_preserved60.py --output "$RUNNER_TEMP/preserved60"
-          "$PY" -I audit-reference/docs/audits/backfill-accuracy-20261018/validate.py --check --originals "$RUNNER_TEMP/preserved60/originals60.zip" --runtime "$RUNNER_TEMP/fixed/runtime" --output "$RUNNER_TEMP/protected-financial-audit"
+          "$PY" -I audit-reference/docs/audits/backfill-accuracy-20261018/candidate_regression.py --candidate-manifest "$GITHUB_WORKSPACE/docs/audits/financial-validation-100-20261019/parser_candidate.json" --check --originals "$RUNNER_TEMP/preserved60/originals60.zip" --runtime "$RUNNER_TEMP/fixed/runtime" --output "$RUNNER_TEMP/protected-financial-audit"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

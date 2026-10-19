@@ -68,5 +68,16 @@
       "blob_sha": "aad8c5f8f42afa33fafe14c3bba9dbe0c43b451d",
       "cohort": "prior10"
     }
-  ]
+  ],
+  "additional_controls": [
+    {
+      "path": "postfix_controls.json",
+      "sha256": "d288155a056a709a8631700178b96045489b8f468bdab421fb7887782275d16c"
+    }
+  ],
+  "cohort_roles": {
+    "new100": "Initial28 now regression cohort after scope-boundary fix",
+    "postfix_holdout": "Previously unused20, expected values frozen before candidate9.2 output",
+    "prior10": "Original canary evidence re-review, not independent holdout"
+  }
 }

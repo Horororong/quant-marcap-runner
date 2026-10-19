@@ -96,24 +96,38 @@ def verify(control,subject,source):
         outcome.update(verdict='FAIL',reason=str(error));return outcome,None
 def audit(root):
     root=Path(root);manifest=json.loads((root/'source_manifest.json').read_text());controls=json.loads((root/'controls.json').read_text())['controls']
+    extra_hashes={}
+    for extra in manifest.get('additional_controls',[]):
+        raw=(root/extra['path']).read_bytes()
+        if sha(raw)!=extra['sha256']:raise ValueError('ADDITIONAL_FROZEN_CONTROL_HASH')
+        controls.extend(json.loads(raw)['controls']);extra_hashes[extra['path']]=sha(raw)
     files={}
     for pack in manifest['packs']:
         for name,data in unpack(root/pack['path'],pack['compressed_sha256']).items():
             if name.startswith(('results/','native/','collection/','quality/')):
                 if name in files and files[name]!=data:raise ValueError('PACK_SOURCE_COLLISION')
                 files[name]=data
+    replacement={}
+    if manifest.get('subject_override'):
+        obj=manifest['subject_override'];raw=base64.b64decode((root/obj['path']).read_bytes())
+        if sha(raw)!=obj['compressed_sha256']:raise ValueError('CANDIDATE_SUBJECT_HASH')
+        payload=json.loads(gzip.decompress(raw))
+        if payload['new_HTTP_calls']!=0:raise ValueError('REPLAY_MUST_NOT_RECOLLECT')
+        replacement=payload['subjects']
+        if set(replacement)!={Path(k).stem for k in files if k.startswith('results/')}:raise ValueError('REPLAY_RECEIPT_POPULATION_CHANGED')
+        if any(s['parser_version']!=obj['parser_version']for s in replacement.values()):raise ValueError('REPLAY_PARSER_VERSION')
     details=[];published={};cache={}
     for c in controls:
         receipt=c['receipt']
         if receipt not in cache:cache[receipt]=grids(files,receipt)
-        subjects=json.loads(files['results/'+receipt+'.json'])['rows']
+        subjects=(replacement[receipt]if replacement else json.loads(files['results/'+receipt+'.json']))['rows']
         result,row=verify(c,subjects,cache[receipt]);details.append(result)
         if row is not None:
             key=(receipt,row['scope'],row['metric'],row['period_start'],row['period_end'])
             if key in published:raise ValueError('DUPLICATE_PUBLICATION_CONTROL')
             published[key]=row
     control_sha=sha((root/'controls.json').read_bytes());code_sha=sha(Path(__file__).read_bytes());manifest_sha=sha((root/'source_manifest.json').read_bytes())
-    for row in published.values():row.update(review_controls_sha256=control_sha,review_code_sha256=code_sha,review_source_manifest_sha256=manifest_sha)
+    for row in published.values():row.update(review_controls_sha256=control_sha,additional_review_controls_sha256=extra_hashes,review_code_sha256=code_sha,review_source_manifest_sha256=manifest_sha)
     fields=[d for d in details if d['record_type']=='financial_field']
     counts={v:sum(d['verdict']==v for d in fields)for v in ['PASS','FAIL','UNVERIFIED']}
     documents={}

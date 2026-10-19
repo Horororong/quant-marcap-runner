@@ -59,11 +59,25 @@ def worker(meta_path,result_path):
     from scripts import backfill_dart_legacy_2000_2014 as collector
     from scripts.dart_http import progress
     meta=json.loads(meta_path.read_text())
+    cache=os.getenv('FINANCIAL_VALIDATION_SOURCE_CACHE')
+    if cache:
+        # Explicit immutable-source replay. Missing/wrong cache NEVER falls
+        # through to the HTTP collector or increments a collection checkpoint.
+        collector.fetch_document=cached_document(Path(cache),meta['rcept_no'],meta['_source_cache_sha256'])
     collector.RUN_CONTROL=collector.CollectionControl(max_requests=2,max_seconds=75,min_interval=0.5)
     progress('document_start',receipt=meta['rcept_no'])
     rows,state=collector.process_filing(meta)
     progress('document_end',receipt=meta['rcept_no'],stop_reason=collector.RUN_CONTROL.stop_reason)
     atomic(result_path,dict(meta=meta,rows=rows,state=state,parser_version=collector.PARSER_VERSION,stop_reason=collector.RUN_CONTROL.stop_reason))
+def cached_document(cache,receipt,expected_sha):
+    paths=list(cache.glob(receipt+'-*.zip'))
+    if len(paths)!=1:raise ValueError('READONLY_CACHE_MISSING_OR_AMBIGUOUS')
+    blob=paths[0].read_bytes()
+    if sha(blob)!=expected_sha:raise ValueError('READONLY_CACHE_SOURCE_HASH')
+    def fetch(requested):
+        if requested!=receipt:raise ValueError('READONLY_CACHE_RECEIPT_MISMATCH')
+        return blob,expected_sha
+    return fetch
 def run_batch(metas,out,*,document_seconds=90,total_seconds=600,worker_script=None):
     if not metas or len(metas)>100: raise ValueError('Expected1..100 frozen receipts')
     if not (0<document_seconds<=90 and document_seconds<=total_seconds<=600): raise ValueError('Invalid bounded budgets')

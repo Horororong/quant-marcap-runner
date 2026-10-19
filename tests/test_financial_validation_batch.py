@@ -3,7 +3,16 @@ from unittest.mock import patch
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from scripts.financial_validation_batch import canonical,collect,digest,review_selection,rank,freeze,CONTRACT
+from scripts.financial_rollout import cached_document
 class BatchBoundaries(unittest.TestCase):
+    def test_offline_cache_requires_exact_archive_and_never_falls_through(self):
+        with tempfile.TemporaryDirectory()as t:
+            root=Path(t)
+            with self.assertRaisesRegex(ValueError,'MISSING'):cached_document(root,'receipt','wrong')
+            (root/'receipt-archive.zip').write_bytes(b'synthetic-original')
+            with self.assertRaisesRegex(ValueError,'SOURCE_HASH'):cached_document(root,'receipt','wrong')
+            fetch=cached_document(root,'receipt',digest(b'synthetic-original'));self.assertEqual(fetch('receipt')[0],b'synthetic-original')
+            with self.assertRaisesRegex(ValueError,'RECEIPT_MISMATCH'):fetch('other')
     def plan(self):return dict(contract=CONTRACT,samples=[dict(rcept_no=str(i))for i in range(100)],primary_review=[str(i)for i in range(20)])
     def test_selection_tamper_refused_before_HTTP(self):
         with tempfile.TemporaryDirectory()as t:

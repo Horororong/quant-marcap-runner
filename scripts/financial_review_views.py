@@ -4,7 +4,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from financial_review_gate import unpack,grids
 from financial_validation_batch import review_selection
-def main(root,out):
+def main(root,out,selection=None):
     manifest=json.loads((root/'source_manifest.json').read_text());files={};plans=[]
     for pack in manifest['packs']:
         data=unpack(root/pack['path'],pack['compressed_sha256'])
@@ -13,7 +13,9 @@ def main(root,out):
         if 'batch_plan.json'in data:plans.append(json.loads(data['batch_plan.json']))
     if not plans or any(p!=plans[0]for p in plans):raise ValueError('BATCH_PLAN_MISMATCH')
     plan=plans[0];statuses={Path(k).stem:json.loads(v)for k,v in files.items()if k.startswith('quality/')}
-    selected=review_selection(plan,statuses);out.mkdir(parents=True,exist_ok=False)
+    selected=json.loads(selection.read_text())['receipts']if selection else review_selection(plan,statuses)
+    if not set(selected).issubset({s['rcept_no']for s in plan['samples']}):raise ValueError('REVIEW_OUTSIDE_AUTHORIZED100')
+    out.mkdir(parents=True,exist_ok=False)
     (out/'selection.json').write_text(json.dumps(dict(receipts=selected,selection_sha256=plan['selection_sha256'],rule=plan['independent_review_rule'],before_production_amounts=True),indent=2)+'\n')
     profiles=[];pattern=re.compile(r'자본총계|자본합계|매출액|영업수익|당기순이익|당기순손실|영업활동.*현금|영업활동으로')
     for receipt in selected:
@@ -28,4 +30,4 @@ def main(root,out):
         profiles.append(dict(receipt=receipt,state=statuses.get(receipt,{}).get('extraction_state'),candidate_count=statuses.get(receipt,{}).get('field_count'),members=len(members)))
     (out/'profiles.json').write_text(json.dumps(profiles,ensure_ascii=False,indent=2)+'\n');print(json.dumps(profiles))
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('root',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args();main(a.root,a.output)
+    p=argparse.ArgumentParser();p.add_argument('root',type=Path);p.add_argument('--output',type=Path,required=True);p.add_argument('--selection',type=Path);a=p.parse_args();main(a.root,a.output,a.selection)
