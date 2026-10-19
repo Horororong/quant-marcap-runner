@@ -135,7 +135,13 @@ def run(root,out,event):
     try:check_gate(config,state,now,event)
     except ValueError as e:
         out.mkdir(parents=True,exist_ok=False);atomic(out/'gate.json',dict(status='NO_COLLECTION',reason=str(e),observed_head=head,observed_state=state));print(json.dumps(dict(status='NO_COLLECTION',reason=str(e))));return 0
-    run_id=os.environ['GITHUB_RUN_ID'];plan=freeze(root,state,run_id)
+    run_id=os.environ['GITHUB_RUN_ID']
+    try:plan=freeze(root,state,run_id)
+    except ValueError as exc:
+        state.update(phase='HOLD_PRECHECK_FAILURE',precheck_error=str(exc),failed_run_id=run_id)
+        out.mkdir(parents=True,exist_ok=False);atomic(out/'gate.json',state)
+        api.commit({STATE:raw(state)},current,root,'Hold finite source observation after queue/checkpoint precheck failure [skip ci]')
+        raise
     out.mkdir(parents=True,exist_ok=False);atomic(out/'batch_plan.json',plan)
     slot=dict(run_id=run_id,day_kst=local_day(now),started_at_utc=stamp(),reserved_documents=len(plan['samples']),status='RUNNING',selection_sha256=plan['selection_sha256'],start_checkpoint=state['last_checkpoint'])
     state['runs'].append(slot);state['phase']='RUNNING';reserved=raw(state)
