@@ -1,14 +1,64 @@
 name: Financial bounded deployment evidence
 on:
   push:
-    branches: ['deploy/financial-backfill-v9-20261018', main]
+    branches: ['deploy/financial-backfill-v9-*', main]
   pull_request:
     branches: [main]
-    paths: ['scripts/*financial*', 'scripts/*dart*', 'scripts/*legacy*', '.github/workflows/financial-deployment.yml', 'config/financial_backfill_rollout.json', 'data/financials/legacy_2000_2014/quality_v9/**', 'docs/audits/financial-deployment-20261018/**']
+    paths: ['scripts/*financial*', 'scripts/*dart*', 'scripts/*legacy*', 'tests/test_financial*', '.github/workflows/financial-deployment.yml', 'config/financial_backfill_rollout.json', 'data/financials/legacy_2000_2014/quality_v9/**', 'docs/audits/financial-deployment-20261018/**', 'docs/audits/financial-validation-100-20261019/**']
 permissions:
   contents: read
   actions: read
 jobs:
+  finite-validation100:
+    needs: fixed-kit-financial-validation
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/deploy/financial-backfill-v9-') && github.run_attempt == 1 && contains(github.event.head_commit.message, '[financial-validation100]')
+    permissions:
+      contents: write
+    concurrency:
+      group: super-value-fast-pit-backfill
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore pinned kit; no dependency installation
+        run: |
+          python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: Freeze100 untouched receipts and review rule BEFORE HTTP or amounts
+        run: |
+          mkdir -p "$RUNNER_TEMP/validation100"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_validation_batch.py freeze --plan "$RUNNER_TEMP/validation100/batch_plan.json"
+      - name: Five finite20-document runs; HOLD and no data publication
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
+          for chunk in 0 1 2 3 4; do
+            code=0
+            "$PY" -I scripts/financial_validation_batch.py collect --plan "$RUNNER_TEMP/validation100/batch_plan.json" --output "$RUNNER_TEMP/validation100" --chunk "$chunk" || code=$?
+            folder=$(printf 'chunk%02d' "$chunk")
+            cp "$RUNNER_TEMP/validation100/batch_plan.json" "$RUNNER_TEMP/validation100/$folder/batch_plan.json"
+            "$PY" -I scripts/financial_rollout_transfer.py "$RUNNER_TEMP/validation100/$folder"
+            if [ "$code" -ne 0 ]; then exit "$code"; fi
+          done
+          "$PY" -I scripts/financial_validation_batch.py review-selection --plan "$RUNNER_TEMP/validation100/batch_plan.json" --output "$RUNNER_TEMP/validation100"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: finite-validation100-sources-and-checkpoints-HELD
+          path: |
+            ${{ runner.temp }}/validation100
+            ${{ runner.temp }}/runtime.json
+          if-no-files-found: error
+          retention-days: 90
   fixed-kit-financial-validation:
     if: github.event_name == 'pull_request' || contains(github.event.head_commit.message, '[financial-fixed-kit-only]')
     runs-on: ubuntu-latest

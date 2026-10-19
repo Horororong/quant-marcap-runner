@@ -4,7 +4,7 @@ from pathlib import Path
 from urllib import request
 def main(folder):
     files={}
-    for pattern in ['native/*.zip','service-responses/*.xml','results/*.json','collection/*.json','quality/*.json','selection.json','run_status.json']:
+    for pattern in ['native/*.zip','service-responses/*.xml','results/*.json','collection/*.json','quality/*.json','selection.json','run_status.json','batch_plan.json']:
         for p in folder.glob(pattern): files[str(p.relative_to(folder))]=base64.b64encode(p.read_bytes()).decode()
     raw=json.dumps(dict(files=files),separators=(',',':')).encode()
     for name in ['DART_API_KEY','GH_TOKEN']:
