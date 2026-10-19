@@ -10,6 +10,12 @@ sys.path.insert(0,str(Path(__file__).resolve().parent))
 from financial_review_gate import audit,unpack,grids,verify
 from legacy_document_quality import inspect_member,DIAGNOSTIC_VERSION
 def sha(b):return hashlib.sha256(b).hexdigest()
+def publication_hashes(repo):
+    result={}
+    for suffix in ['metrics','reviewed_batches/validation100_20261019/metrics']:
+        folder=repo/'data/financials/legacy_2000_2014/quality_v9'/suffix
+        for p in sorted(folder.glob('*.json')):result[str(p.relative_to(repo))]=sha(p.read_bytes())
+    return result
 def read_subjects(path):return json.loads(gzip.decompress(base64.b64decode(path.read_bytes())))['subjects']
 def main(root,check=False):
     old=root.parent/'financial-validation-100-20261019';manifest=json.loads((old/'source_manifest.json').read_text());files={}
@@ -52,10 +58,8 @@ def main(root,check=False):
         category='UNSUPPORTED_SOURCE_MARKUP_REMAINS'if any(m['issues']for m in members)else'UNSUPPORTED_PRIMARY_TABLE_OR_COVER'if not after[receipt]['rows']else'VALIDATED_STRUCTURAL_VIEW_NOT_FINANCIAL_CERTIFICATION'
         source.append(dict(receipt=receipt,cohort='new100'if receipt in hundred else'prior10',archive_sha256=sha(blob),archive_crc='PASS',before=old_state,after=new_state,category=category,members=members,financial_absence='NOT_CERTIFIED',new_HTTP_calls=0))
     new_gaps={x['receipt']for x in source if x['after']=='SOURCE_GAP'}
-    original93={}
     repo=root.parents[2]
-    for p in (repo/'data/financials/legacy_2000_2014/quality_v9/metrics').glob('*.json'):original93[str(p.relative_to(repo))]=sha(p.read_bytes())
-    for p in (repo/'data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics').glob('*.json'):original93[str(p.relative_to(repo))]=sha(p.read_bytes())
+    original93=publication_hashes(repo)
     result=dict(documents=110,new100=100,prior10=10,overlap=sorted(hundred&ten),previous_candidates_new100=435,previous_candidates_all110=prior_count,
         prior_publication=dict(original8=8,new100=82,prior_bank_released3=3,total=93,previous_held43_release3_remaining40=40,modified=False),
         prior_reviewed_new100=48,prior_unreviewed_new100=52,prior_source_gap_new100=71,overlap_unreviewed_and_gap=44,
@@ -71,7 +75,9 @@ def main(root,check=False):
     outputs={'reconciliation.json':result,'source_classification.json':source}
     for name,obj in outputs.items():
         data=(json.dumps(obj,ensure_ascii=False,indent=2)+'\n').encode();p=root/name
-        if check:assert p.read_bytes()==data,('REPRODUCTION_DIFF',name)
+        if check:
+            previous=p.read_bytes()
+            assert previous==data,('REPRODUCTION_DIFF',name,'JSON_ORDER_ONLY'if json.loads(previous)==obj else 'SEMANTIC_DIFFERENCE')
         else:p.write_bytes(data)
     if not check:
         with(root/'field_details.csv').open('w',newline='',encoding='utf-8')as f:

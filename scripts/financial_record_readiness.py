@@ -49,8 +49,12 @@ def assess(row,signal_date,attestation,calendar):
         if(mapping.get('stock_code')!=row.get('stock_code')or not date.fromisoformat(mapping['from'])<=signal<=date.fromisoformat(mapping['through'])):
             dimensions['historical_security_mapping']='UNVERIFIED'
     temporal='PASS'if available and signal>=date.fromisoformat(available)else'FAIL'if available else'UNVERIFIED'
-    if available and signal_date not in calendar.get('sessions',[]):
+    separately_verified=calendar.get('additional_verified_sessions',{}).get(signal_date,{})
+    signal_proved=signal_date in calendar.get('sessions',[])or(separately_verified.get('verdict')=='PASS'and bool(separately_verified.get('evidence')))
+    if available and not signal_proved:
         temporal='UNVERIFIED'
+    if dimensions['publication']=='PASS' and signal<=date.fromisoformat(pub['date']):
+        temporal='FAIL'
     dimensions['signal_availability']=temporal
     ready=all(v=='PASS'for v in dimensions.values())
     return dict(contract=VERSION,binding=binding(row),signal_date=signal_date,dimensions=dimensions,

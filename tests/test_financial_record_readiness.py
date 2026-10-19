@@ -35,4 +35,10 @@ class RecordReadiness(unittest.TestCase):
    r,c=self.fixture();r['row'][field]=value;self.assertFalse(assess(r['row'],'2010-04-01',r['attestation'],c)['research_record_ready'])
  def test_non_session_cannot_be_a_close_signal(self):
   r,c=self.fixture();self.assertFalse(assess(r['row'],'2010-04-03',r['attestation'],c)['research_record_ready'])
+ def test_closed_first_session_interval_and_separate_signal_proof(self):
+  r,c=self.fixture();c['coverage_end']='2010-04-01';c['sessions']=['2010-03-31','2010-04-01']
+  self.assertEqual(assess(r['row'],'2010-04-30',r['attestation'],c)['dimensions']['signal_availability'],'UNVERIFIED')
+  c['additional_verified_sessions']={'2010-04-30':dict(verdict='PASS',evidence=['SYNTHETIC independent actual signal-market response'])}
+  self.assertEqual(assess(r['row'],'2010-04-30',r['attestation'],c)['dimensions']['signal_availability'],'PASS')
+  c['verdict']='UNVERIFIED';self.assertEqual(assess(r['row'],'2010-03-31',r['attestation'],c)['dimensions']['signal_availability'],'FAIL')
 if __name__=='__main__':unittest.main()
