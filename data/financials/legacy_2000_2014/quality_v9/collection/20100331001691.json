@@ -1,0 +1,21 @@
+{
+  "rcept_no": "20100331001691",
+  "source_status": "DURABLE",
+  "source_version": "opendart-document-v1",
+  "archives": [
+    {
+      "path": "native/20100331001691-6bedafc2f46eec538c4ad872cdafc55ecef51b349d0b3ff476eb35cc502a23bb.zip",
+      "bytes": 98876,
+      "sha256": "6bedafc2f46eec538c4ad872cdafc55ecef51b349d0b3ff476eb35cc502a23bb"
+    }
+  ],
+  "run_id": "39192948146",
+  "updated_at_utc": "2026-10-19T03:29:24.063655+00:00",
+  "source_pack_path": "docs/audits/financial-validation-100-20261019/sources_chunk03.json.gz.b64",
+  "source_pack_compressed_sha256": "f4de1dcf807abd6bf59c1c3e04ad64b084a4918323fb9110cf491eb57e8ea045",
+  "source_artifact_id": 12161881840,
+  "collection_stage": "COMPLETE_SOURCE_DURABLE",
+  "validation_stage": "SEPARATE_LEDGER",
+  "publication_stage": "SEPARATE_REVIEWED_SUBSET",
+  "automatic_collection": "HOLD"
+}

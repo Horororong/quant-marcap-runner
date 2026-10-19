@@ -1,0 +1,10 @@
+{
+  "parser_version": "legacy-v9.2-statement-boundary-guard",
+  "parser_sha256": "3cff54f28e3081a1a014e5e12ad56ed13ea36d2d16e16af7aeef0aa0dd1c2773",
+  "prior_parser_version": "legacy-v9.1-primary-source-metadata",
+  "prior_parser_sha256": "f0992d1dee23643f43e9701740b0a20eabf7df8019c5f7bd435cc1b50945261e",
+  "change": "Invalidate inherited scope/statement contract at isolated statement-title tables; do not infer unsupported following headers.",
+  "financial_expected_controls": "Unchanged original22 and protected518/64/60; no financial golden rebaseline",
+  "postfix_holdout_controls_sha256": "d288155a056a709a8631700178b96045489b8f468bdab421fb7887782275d16c",
+  "source_new_HTTP_calls": 0
+}

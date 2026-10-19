@@ -1,0 +1,2047 @@
+{
+  "records": [
+    {
+      "receipt": "20100331001609",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001609.xml",
+          "sha256": "a84970ba4155bb6498419a1e2154e5c058cbc7b3a88f082d669eba2e2a468d9b",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 5267, column 30",
+          "excerpt": "<SPAN USERMARK=\" B\"><예측정보에 대한 주의사항>&cr;</SPAN>  동 사업보고서에는 미래에 발생할 것으로 예상 또는  전망한  예측정보를 포함하고 있습니다. 예측정보는 현재의 당사의 사업환경을 고려하여 작성된 것으로 동 예측정보는 미래 사업환경과 관련된 다양한 가정에 기초하고 있습니다. 그러므로 예측 정보는 여러가지 변수(회사 내, 외부 요인 등) 에 따",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001609_00760.xml",
+          "sha256": "5576780585dcb01dec366f2ea6676b6b7a80592302797beaf756a1bfde7d52b4",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 3315, column 14",
+          "excerpt": "<P><재무상태표의 주요 항목에 미치는 영향></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001605",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001605_00760.xml",
+          "sha256": "884f4dff66af1b7fbcc6297f3e0e0172ec929056b33fc5e3be39f49ceb8330c3",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 3358, column 48",
+          "excerpt": "<TD COLSPAN=\"6\" WIDTH=\"745\" HEIGHT=\"30\"><시장성 없는 지분증권></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001605_00761.xml",
+          "sha256": "2b75fe04e48efe3006d41ef6d03c58a16923a6a4474bde62f2aef647dade2de7",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 2821, column 52",
+          "excerpt": "<TD COLSPAN=\"5\" WIDTH=\"595\" HEIGHT=\"30\"><연결대상종속회사></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001619",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001619.xml",
+          "sha256": "87a205f4b7aaccf3572cb19308f245603edbca2ef3e6a8700327e8fadad3a58c",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 11282, column 55",
+          "excerpt": "<TD WIDTH=\"292\" HEIGHT=\"30\" VALIGN=\"MIDDLE\">- 원안대로 승인 <100억원></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001607",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT+UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001607.xml",
+          "sha256": "9107d54dd7e2e8b0af14df314798144375f6ca76bd85c059e37a676cfa5ff04b",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "mismatched tag: line 1947, column 170",
+          "excerpt": "nvironment Business International, Inc., The Global Environmental Industry: a Market and Needs Assessment , 1996&cr;&cr;</SPAN>  환경산업은 공공재적 특성이 강하고 인위적 시장창출산업이며 기술중시형 복합&cr;  산업이란 성격을 띄고 있습니다. 환경산업의 분류 체계는 국가마다 필요에 따라 &cr;  다르게 정하고 있으며 산업화가 진전됨에 따라 환경산업도 날로 다양화하고 광범위&cr;  해지는 추세에 있습니다. &cr; &cr;  산업연구원이 2004.",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001607_00760.xml",
+          "sha256": "6a8062e7acf66f5d4f35cb80ac167a974caf7c56a38e63bc46d7453ed4993ff7",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "mismatched tag: line 2812, column 827",
+          "excerpt": "                                                                            (단위: 천원)</P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001607_00761.xml",
+          "sha256": "88a010259134088a6122793fb244bbe0ced7848d28c11da2120301f1ad4e3c52",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3114, column 208",
+          "excerpt": " 사업연도말 자산총액이 100억원 이상인 회사이며, 전기는 직전 사업연도말 자산총액이 70억원 이상인 회사입니다. 당기 및 전기말 현재 연결대상 종속회사의 현황은 다음과 같습니다.&cr;<당기></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001618",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001618_00760.xml",
+          "sha256": "d8a3bf6cdba6f5b472d627fd2027aed6e5cd8bd13cf0e4b2915567c8f459c137",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 2915, column 39",
+          "excerpt": "<TD WIDTH=\"197\" HEIGHT=\"30\"><시장성없는 지분증권></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001600",
+      "state": "PARSED_PARTIAL",
+      "original_candidate_fields": 11,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001610",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT+UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001610.xml",
+          "sha256": "46870773210cbc994a427b5482117acb73197770b99437b71a30a3bdb9ae7039",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 9761, column 38",
+          "excerpt": "<P>취득원가를 재무상태표가액으로 하고 있습니다.&cr;  <2009년도 재고조사> &cr;  1. 재고실사일자 : 2010년 1월 5일 ~ 2010년 1월 9일&cr;    - 재고 실사일과 보고기간 종료일 사이의 재고자산 차이의 확인요령&cr;     : 당사의 출고 증빙 및 외부 업체의 인수증으로 대체함.&cr;  2. 재고실사 참여 입회자 : 외부감사인(안진회계법인)&cr;  3.",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001610_00760.xml",
+          "sha256": "c30705472af1be9a12aa1776c1840b0908adc8fc308756954671c6f20c5dca79",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3366, column 27",
+          "excerpt": "<P>(1) 매도가능증권&cr;<당기></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001596",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 19,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001601",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT+UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001601_00761.xml",
+          "sha256": "ce6acb4171614b95d57f350d5a5b9c62dfd37842290dacf5bd7d307efa32d59c",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 3749, column 41",
+          "excerpt": "<TD WIDTH=\"845\" HEIGHT=\"30\" COLSPAN=\"9\">< 연결대상 종속회사 ></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001601_00760.xml",
+          "sha256": "96a905776da79af7e20384b70bfcf485edf2b8c71cce8a83d26ef37d479a2c96",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3695, column 67",
+          "excerpt": "<TD COLSPAN=\"8\" VALIGN=\"MIDDLE\" WIDTH=\"834\" HEIGHT=\"30\"><시장성있는주식></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001601.xml",
+          "sha256": "b9b7d67850ec1619855128d309705bc27c916617cd6bbd56579197dae0f7159f",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 8675, column 49",
+          "excerpt": "<TD COLSPAN=\"5\" WIDTH=\"782\" HEIGHT=\"30\"><당사가 원고인 사건></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001616",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001616_00761.xml",
+          "sha256": "b53f4b72441434c2658d495242303338f40b14474d331a79340aa1cd57c276f1",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 4164, column 37",
+          "excerpt": "<TD WIDTH=\"179\" HEIGHT=\"30\"><단기차입금></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001616_00760.xml",
+          "sha256": "2f470a623be1b6bd329b0359724367dc8ba1d658971197c5c54b04b772ace143",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 4460, column 37",
+          "excerpt": "<TD WIDTH=\"179\" HEIGHT=\"30\"><단기차입금></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001616.xml",
+          "sha256": "787e8fd48b694295a2c5889ab60734ac35e213e804bb07760224c78754de8046",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3761, column 37",
+          "excerpt": "<TD WIDTH=\"179\" HEIGHT=\"30\"><단기차입금></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001612",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001612.xml",
+          "sha256": "60133646ac68c26785c9f112616a9637ee0a96ce8787754e56294169c2987247",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 993, column 79",
+          "excerpt": "<P>다. 보통주외의 주식&cr;                                                 <상환주식></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001593",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001593.xml",
+          "sha256": "a9b2f19e358331e9831931159421a4a26eaaf935d478429a2c03d11dd24f589a",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 699, column 29",
+          "excerpt": "<SPAN USERMARK=\" B\"> <휴대폰 부품 사업부문></SPAN>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001615",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001615_00760.xml",
+          "sha256": "0aad462704b860b9feb8b6a8c5eb9af4cb79e8f04ff56f87c43da9b11db8f32d",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 7200, column 34",
+          "excerpt": "<TD WIDTH=\"299\" HEIGHT=\"30\"><자산></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001615.xml",
+          "sha256": "5fef818277ad4ad023b7a7f77809869e6c5a1f66f4904ebffae602aad259497b",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 6594, column 34",
+          "excerpt": "<TD WIDTH=\"299\" HEIGHT=\"30\"><자산></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001615_00761.xml",
+          "sha256": "c4d5402520c4a482f532ea553a853c737fb61881576350eb6ac3ec88f67c7acc",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 9409, column 34",
+          "excerpt": "<TD WIDTH=\"299\" HEIGHT=\"30\"><자산></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001587",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001587.xml",
+          "sha256": "785824eeef81ea90edb98ce1336f2f8591a786df39a1bd7632ec3eebaf5c0c70",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 7008, column 114",
+          "excerpt": "<TD WIDTH=\"303\" HEIGHT=\"99\">▶1심: 원고 일부승소-<월간조선>에 정정보도문 게재 및 원고에게 5천만원 지급 판결(2009.7.2)&cr;▶2심: 청구소송 관련 피고측 항소</TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001617",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001617_00760.xml",
+          "sha256": "62c7da353cd9793c57c2911f7437dedfd3cef974973aacac6270ed443de2d94f",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 2756, column 9",
+          "excerpt": "<P><당기></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001599",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001599_00760.xml",
+          "sha256": "01400262a14fea7e37fc168c306dc32b6f0c9acbe6d90961b5751ac2ff555968",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 257, column 107",
+          "excerpt": "<TE WIDTH=\"281\" HEIGHT=\"30\" ACODE=\"11110000040000\" ADELIM=\"0\" ALEVEL=\"2\" USERMARK=\" P32\">1.현금및현금성자산<주석16></TE>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001606",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001606_00761.xml",
+          "sha256": "56351d99a1e82060e0a60068d562aa460f569f30f0fdb2931340fd900a1260f1",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3710, column 149",
+          "excerpt": "수관계자와의 주요 채권ㆍ채무&cr;<당기>                                                                                             (단위: 천원)</P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001606_00760.xml",
+          "sha256": "a8c8b8ad67723ce89d12bbcb804f528f20e2307a8a193af8467d79ff1a93c70f",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3035, column 110",
+          "excerpt": "<P><당기>                                                                                             (단위: 천원)</P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001606.xml",
+          "sha256": "5592ddb981981d2a57880bea85fe56a256e1e0da3ed7d28fbcf65a593bad5452",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 1883, column 29",
+          "excerpt": "<SPAN USERMARK=\" B\"><당사 상표등록 내역></SPAN>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001588",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001588_00761.xml",
+          "sha256": "e328b483e2f4c14f5e97a788fb65bdef027a864d2845261078c8c7f7e0133f8c",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 4852, column 10",
+          "excerpt": "<P><당기말></P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001588.xml",
+          "sha256": "cad70675beeff9fb1ff47d6b7debf12bb8ce2ef5ce48104274c23c86152ebfa0",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 10029, column 10",
+          "excerpt": "<P><당기말></P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001588_00760.xml",
+          "sha256": "da801176966a0179df56eba65e5a6cac4fc8dfdf85aa9d5451da7bb287a05889",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 5053, column 10",
+          "excerpt": "<P><당기말></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001586",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001586.xml",
+          "sha256": "92224032e5e5af80899aad27543578de0f45cb066c46c9a89fa91c450d93400d",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 1465, column 15",
+          "excerpt": "<P> <해외건설 진출국가 및 진출업체 현황>                                              </P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001594",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001594_00761.xml",
+          "sha256": "a0db4e2cee0a6e1319cc364169102519a759dd4198322c8467b10663fa8db805",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3988, column 66",
+          "excerpt": "<TD COLSPAN=\"6\" VALIGN=\"MIDDLE\" WIDTH=\"729\" HEIGHT=\"30\"><단기투자자산></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001623",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 18,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001627",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001627.xml",
+          "sha256": "5056f1f29c59e91e8bd5360c50817a97f6468e1009ee1e12c0e83778fe908e87",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 1121, column 29",
+          "excerpt": "<IMG-CAPTION ATOC=\"N\"><회로 상의 칩 바리스터 기능도 및 ESD 감쇄 그래프></IMG-CAPTION>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001637",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001637_00760.xml",
+          "sha256": "8a5b006d48ab32f6bd7c228579d7dd921a5d7eeb0de5f78793b755200fbd6068",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 2618, column 48",
+          "excerpt": "<TD WIDTH=\"297\" HEIGHT=\"30\" VALIGN=\"BOTTOM\"><당 기> </TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001637.xml",
+          "sha256": "56855703a3eaf566f10e2ac08433729d2b1661ce9e9fb30a636a591405f5b00a",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3230, column 90",
+          "excerpt": "<TD ALIGN=\"RIGHT\" WIDTH=\"300\" HEIGHT=\"30\"><손익계산서>                                       </TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001656",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001656.xml",
+          "sha256": "ed3f7115d709b033e0e14a752f480017695bc98bc6929763b914dbfdec5aee21",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 2572, column 10",
+          "excerpt": "<P> 대표이사 <--> 담당임원 <--> 팀장 <-->  생산팀</P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001644",
+      "state": "PARSED_PARTIAL",
+      "original_candidate_fields": 11,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001650",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 18,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001641",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 11,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001655",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001655_00760.xml",
+          "sha256": "ec1a498ba4f7479ca38f278e310f08da239aa896a2a2952e433712efde0d2646",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 7172, column 35",
+          "excerpt": "<TD WIDTH=\"204\" HEIGHT=\"30\"><유동성></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001655_00761.xml",
+          "sha256": "bf4e7f5f26c110c4a25b4b3167c3bef914f1de4259d93d35d29186d3fbae2474",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 7122, column 35",
+          "excerpt": "<TD WIDTH=\"204\" HEIGHT=\"30\"><유동성></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001647",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001647.xml",
+          "sha256": "374ad962ea7b6c101e17f932f9eb52d84d85283d2d1df7092ac18a145fc4ec16",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 4778, column 139",
+          "excerpt": "RMARK=\"F-GL\">다. 요약연결재무정보</SPAN>&cr;1) 당기(제4기)  연결재무제표 작성&cr;    - 해당사항 없음-&cr;     당사는 2009.12.31 현재 외감법시행령 부칙<제21254호,2009.1.6> 제8조 ②, 외감법시행령 부칙<제21969호, 2009. 12. 31>제7조 에 의거하여 연결재무제표 연결에 포함하는 회사가 없습니다.&cr; ",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001636",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001636.xml",
+          "sha256": "96aa83711e6dbf07fcce7c15231a953bd8c68fe1797442206d253b914f41163a",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 977, column 1362",
+          "excerpt": " 7조 2,560억원을 기록하였습니다.&cr;(출처: 광고계 동향)&cr;&cr;<매체별 광고비 현황>                                                                    (단위:억원, %)</P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001651",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001651.xml",
+          "sha256": "cd42b30daa411b82a00b35973e4eeff56250d6553033c9610480545714733636",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 257, column 242",
+          "excerpt": "5. 12.12   대표이사 변경(승항배, 승만호 각자대표 → 승만호 대표이사 )&cr;    2006. 03.31  주식배당 115,110천원(230,220주)&cr;                   < 자본금 7,270,110천원 14,540,220주>&cr;    2006. 10.04   최대주주 변경(주)엠와이에이치(구 :오진관광 주식회사)&cr;    2007.  3. 26   주식배당  363,498,500원(726,997주)&cr;                     <자본금 7,633,608,500원 15,267,217주>&cr;   ",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001651_00760.xml",
+          "sha256": "3d4b9992e28bb2239f55bda708d6a49af4133e9401bfa31b62bc960a1f49f882",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 3421, column 8",
+          "excerpt": "<P><오진상사(주)></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001630",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT+UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001630_00760.xml",
+          "sha256": "1c5f5cdc8760e38582502b72a91b34062f8500150dacde22a237e4260d36ead7",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 254, column 114",
+          "excerpt": "<TE WIDTH=\"300\" HEIGHT=\"30\" ACODE=\"11110000040000\" ADELIM=\"0\" ALEVEL=\"2\" USERMARK=\" P32\">1.현금및현금성자산           <주석 18></TE>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001630.xml",
+          "sha256": "86187af88e482e90aad4aa6b8ad3e94e4a0656de182d93d047308164285f304c",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "mismatched tag: line 616, column 549",
+          "excerpt": "목적달성에 부수 또는 수반하거나 직접, 간접으로 회사에 유익한 기타 사업의 수행</TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001630_00761.xml",
+          "sha256": "e76465f13b308eca9d38a742741685651a95b9558dc279057404049618a63efa",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 253, column 112",
+          "excerpt": "<TE WIDTH=\"292\" HEIGHT=\"30\" ACODE=\"11110000040000\" ADELIM=\"0\" ALEVEL=\"2\" USERMARK=\" P32\">1.현금및현금성자산         <주석 18></TE>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001625",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001625_00761.xml",
+          "sha256": "87ec8ae34b0e3a59fbecc2e7bd1ef1b07ac557cb00111b66d1698d8323969add",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3177, column 48",
+          "excerpt": "<TD WIDTH=\"760\" HEIGHT=\"30\" COLSPAN=\"5\"><유동자산></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001625.xml",
+          "sha256": "56fabf3808389bab64dfa6e1d854017aad2474af631db9f6a3a3901558ecf95e",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 2531, column 31",
+          "excerpt": "<IMG-CAPTION ATOC=\"N\"><연구조직도></IMG-CAPTION>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001625_00760.xml",
+          "sha256": "5500ce692616fa8a8b36bd529bb9f838782da08df25c9dbe66b0646c1c238d7a",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3232, column 48",
+          "excerpt": "<TD COLSPAN=\"5\" WIDTH=\"601\" HEIGHT=\"30\"><유동자산></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001632",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 20,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001648",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001648_00761.xml",
+          "sha256": "13459371b94dd362844d4679d873ba6fe6bdbb586564fe702395efb1dfc128f6",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3301, column 191",
+          "excerpt": " 현황은 다음과 같습니다.&cr;&cr;<당기>                                                                   (원화단위: 천원, 외화단위: 천)</P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001648_00760.xml",
+          "sha256": "f3940f49a6d712ef7738b66df909937758e40bd055c2613a24551bbfbd964bde",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3714, column 9",
+          "excerpt": "<P><전기></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001640",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT+UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001640_00760.xml",
+          "sha256": "2ad142b9e030f1f85aa6b63e46549f77746120ec423df209f011fa00e9b5b78e",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 3665, column 64",
+          "excerpt": "<P>&cr;(1) 당기말과 전기말 현재 지분법적용투자주식의 내역은 다음과 같습니다.&cr; <당 기>                                                                                          (단위 : 천원)</P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001640.xml",
+          "sha256": "001f612dccb3a04f89c302317bf560cf2b813edad48ee6b6c4a587ceae834d74",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 1731, column 22",
+          "excerpt": "<P USERMARK=\"F-GL11\">< 주당순이익 산출근거>                                                                    (단위:원/주)</P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001631",
+      "state": "PARSED_PARTIAL",
+      "original_candidate_fields": 11,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001634",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001634.xml",
+          "sha256": "02dd7af6de05810b8c8f3c6d0f36eea781c0dda76898b1c1157b712ec5d09440",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "mismatched tag: line 5842, column 385",
+          "excerpt": "수한도 승인의 건&cr;    - 보수한도 : 5천만원&cr;5. 정관 일부 변경의 건&cr;6. 주식매수선택권 부여의 건    </TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001649",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001649.xml",
+          "sha256": "292d4d7ec20c37b0e7d4caab57da2eb2771f9149d5e840fe1ad7260f8e6411e5",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 2041, column 35",
+          "excerpt": "<TD WIDTH=\"300\" HEIGHT=\"30\"><당기말></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001649_00761.xml",
+          "sha256": "48ff778e0ddc1ff26610f6741c3c7c30a174c89216004dc2534f8e3c1474a07b",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 246, column 104",
+          "excerpt": "<TE WIDTH=\"304\" HEIGHT=\"30\" ACODE=\"11110000040000\" ADELIM=\"0\" ALEVEL=\"2\" USERMARK=\" P32\">1. 현금및현금성자산<주석 4, 14></TE>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001649_00760.xml",
+          "sha256": "ed2d350afada91b76b342d7213d182f14798af6502649ed99bbdebb37934c551",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 250, column 107",
+          "excerpt": "<TE WIDTH=\"285\" HEIGHT=\"30\" ACODE=\"11110000040000\" ADELIM=\"0\" ALEVEL=\"2\" USERMARK=\" P32\">1. 현금및현금성자산<주석4></TE>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001628",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001628_00760.xml",
+          "sha256": "236a5d0405fdd859dd3b99778799dd80d84a980da7a4bc8e4fcb44ffb156baef",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 5730, column 47",
+          "excerpt": "<TD COLSPAN=\"6\" WIDTH=\"649\" HEIGHT=\"30\"><주식 ></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001628_00761.xml",
+          "sha256": "abc5871e67eaa67a5238c2daa670eb6f7777d7da520f4e73409fe013b1e88851",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 3757, column 15",
+          "excerpt": "<P><회계연도중 종속회사 지배력 상실시>&cr;회계기간 개시일부터 지배력 상실일까지의 기간에 해당하는 순손익액만 별도로 표시하고 있습니다.&cr;</P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001628.xml",
+          "sha256": "6b6ab3003b8431f6ba8631b7dc36fc291a3d418729c36599fb258abdeaaecb88",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 5396, column 31",
+          "excerpt": "<P USERMARK=\"F-GL\"><회계연도중 종속회사 지배력 상실시>&cr;회계기간 개시일부터 지배력 상실일까지의 기간에 해당하는 순손익액만 별도로 표시하고 있습니다.&cr;</P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001683",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 11,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001673",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 18,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001680",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001680.xml",
+          "sha256": "901bfc06fe8435aa679f2a2f2f1ba7c1aadb72bf1a32cce86b5a8ab8bf1e8a4d",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 1301, column 570",
+          "excerpt": "리 서비스)의 중요성을 인지하여 MPS시장 선점을 위해 필요한 Solution을 구축하기 위해 Consulting Provider에 필요한 모든 역량을 집중하고 있습니다.  &cr;&cr;<디지털미디어 영업부문 주요제품 시장점유율 추이></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001662",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 18,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001670",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 11,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001682",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT+UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001682.xml",
+          "sha256": "ec64b584859ede38d8e68b7fe29e9140b55bde10c4eb211d7e5cd4a7f6913f75",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 4389, column 72",
+          "excerpt": "<TD WIDTH=\"159\" HEIGHT=\"168\">①만기환율≥920.0원 ⇒US$2,000ⅹ920.0원&cr;②만기환율<920.0원&cr;⇒거래없음&cr;③만기환율≤915.0&cr;⇒거래소멸</TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001682_00760.xml",
+          "sha256": "835a2f2f2aab46ca919cd7b11f9c40286cb84955145bb20efb9871faef01b58b",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3311, column 77",
+          "excerpt": "<P>&cr;(2) 당기 및 전기말 현재 시장성 있는 지분증권의 내용은 다음과 같습니다. &cr;&cr;<당기말></P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001682_00761.xml",
+          "sha256": "ea0d79f9062ada1692c3e1803c03ba2d985f8b6e8659bf1e561e30cdebfa6cf9",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 2811, column 496",
+          "excerpt": "으로 처리함.&cr;&cr;한편, 회사 및 상기 연결대상 종속회사의 당기 및 전기말 현재 주요 재무현황 및 당기및 전기 중 주요경영성과는 다음과 같습니다.&cr;&cr;<당 기></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001667",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 11,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001664",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001664.xml",
+          "sha256": "5c02e7546171e7039007e9f8239613fb35d776d0cc2eae34bdad4c30e9096b60",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 11193, column 57",
+          "excerpt": "<TD WIDTH=\"715\" HEIGHT=\"30\" COLSPAN=\"6\" VALIGN=\"MIDDLE\">< 당사가 피고인 사건 ></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001664_00760.xml",
+          "sha256": "35ccfa71e463ddb59902bca19b2c794735a87a50fad84dc6e492b60ffec8af46",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 3616, column 41",
+          "excerpt": "<TD COLSPAN=\"3\" WIDTH=\"726\" HEIGHT=\"30\">< 계열회사 및 특수관계인 ></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001663",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001663_00760.xml",
+          "sha256": "d66dcdb336287b4e752493856b231e30441972887dc7f41735e1a5590c4fed8b",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 4695, column 41",
+          "excerpt": "<P>&cr;(*) 유통보통주식수 산정내역&cr;<당기></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001679",
+      "state": "PARSED_PARTIAL",
+      "original_candidate_fields": 16,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001671",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001671.xml",
+          "sha256": "93767e81f48043bf7ee77e5657f7c67266477257cab63654fdc8bc8cf2d820b2",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 1156, column 81",
+          "excerpt": "<P>(2) 생산능력의 산출근거&cr;(가) 산출기준 및 산출방법 : 최대 생산능력 * 평균가동시간&cr;       <최대 생산 능력>&cr;    * 크라운 CAP :        403,200개 / HR&cr;    * 알루미늄 CAP :  1,297,320개 / HR&cr;    * WHITE CAP :         72,000개 / HR&cr;    * PLASTIC CAP :   111,600개 / HR&cr;    * 인쇄판         :    ",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001665",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001665.xml",
+          "sha256": "06cad8e8cc3537e0e1cb80a722f55ea1f8bcdd2c66ca5f21de3ebcca154155a8",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 1187, column 53",
+          "excerpt": "<TD ALIGN=\"CENTER\" WIDTH=\"657\" HEIGHT=\"30\"><터치스크린 시장 규모 전망></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001676",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001676_00760.xml",
+          "sha256": "d4dd456d408e6220d715a784e2419d178cf6be6c8aa685b3a70a26b93f6af93c",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 2988, column 575",
+          "excerpt": "cr;1-6. 2009년 11월 2일자로 신주인수권행사를 통해 631,155주(행사가액 2,535원)가 추가로 상장이 되었습니다.<주석13참조>&cr;</P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001658",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001658_00761.xml",
+          "sha256": "e683b279df7f2b61d7b28f61661cf3c91da08ad7c19dfb195b599922990f6332",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3191, column 9",
+          "excerpt": "<P><당기></P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001658_00760.xml",
+          "sha256": "3dd43a6b1e3f5f61c8ac09a4ad27b159793efeeef1cd4f10fd46b93dd17f1626",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 4071, column 9",
+          "excerpt": "<P><당기></P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001658.xml",
+          "sha256": "cbc5393681e84fde8099ddfcff9ed75d4f42204095d59c82c78d5aee8b50d213",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 6161, column 67",
+          "excerpt": "<TD WIDTH=\"594\" HEIGHT=\"30\">「은행업감독업무시행세칙」 <별표12>의 무수익여신 산정대상여신 기준</TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001668",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001668.xml",
+          "sha256": "c08c302661369ec1c3293379433a2602d3a23223a63473fb35e0cf7b53e43a41",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 7143, column 8",
+          "excerpt": "<P><손 익 계 산 서(포 괄 손 익 계 산 서)></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001684",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001684_00760.xml",
+          "sha256": "282d4b75e6df95fdaaaa6d2b7c3748e8920645e64aa4c29481e6f6a7a6cc2dcc",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 258, column 105",
+          "excerpt": "<TE WIDTH=\"307\" HEIGHT=\"30\" ACODE=\"11110000040000\" ADELIM=\"0\" ALEVEL=\"2\" USERMARK=\" P32\">1. 현금및현금성자산 <주석 19></TE>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001684_00761.xml",
+          "sha256": "98a74dac6bb9cc18c796112aa6e6d87e742ccb094a8ccba59602a030fe9b594d",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 255, column 103",
+          "excerpt": "<TE WIDTH=\"319\" HEIGHT=\"30\" ACODE=\"11114000020000\" ADELIM=\"0\" ALEVEL=\"2\" USERMARK=\" P32\">2. 단기투자자산 <주석 4></TE>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001684.xml",
+          "sha256": "4bb421cba91fb9e6e950e70261cf10dddce5d3dc1d96e643ba00fff65a12bda3",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 2263, column 10",
+          "excerpt": "<P><인적분할 후></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001678",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001678.xml",
+          "sha256": "ed06017f6fe5c9b9e52fcc5d531114fe0de5ef469ce006a8b6481c32317bcddf",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 1412, column 11",
+          "excerpt": "<P><연도별 국내 시스템에어컨 설치 현황></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001661",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001661.xml",
+          "sha256": "ffc953637b7fc25207f3d9f527a274278d4fa3d25eba0ba335831b23b038a0f4",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 2651, column 18",
+          "excerpt": "<P>&cr;<매출액 및 손익변동 주요원인>&cr;매출액은 전년대비 1.3% 소폭 증가하였습니다. 사업부문별로 매출액의 증감을 살펴보면 산업용품 전체시장 증가하지 않았으나 충전공구 등 신제품 매출의 증가로&cr;산업용품의 매출액은 전년대비 7.5%증가하였습니다.&cr;반면, 전장품은 연초 완성차 업체의 조업단축에 따라 전년대비 9%정도 매출액이&cr;감",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001672",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001672.xml",
+          "sha256": "37a4b49b329b9d5b6771d3ad2cc2e38213b40c6d74b0a1843d2c6db9c6fb3f84",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 6424, column 116",
+          "excerpt": "<TD WIDTH=\"331\" HEIGHT=\"99\">2.제32기 이익잉여금처분계산서 승인의 건&cr;  <배당> &cr;  -.주당배당금 : 150원&cr;  -.시가배당율 : 3.2%</TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001677",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001677_00760.xml",
+          "sha256": "619089fa00fcb752c83d9ee3fa95ec04a9642b85a4df0faa9100f134cac729f3",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 3337, column 49",
+          "excerpt": "<TD COLSPAN=\"9\" WIDTH=\"1016\" HEIGHT=\"30\"><시장성 있는 지분증권></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001677.xml",
+          "sha256": "be36174b742ec6b9122a5a5f6bd00019397fd61d7aa81d2cd2079029ee69b318",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 3492, column 64",
+          "excerpt": "<TD WIDTH=\"780\" HEIGHT=\"30\" VALIGN=\"MIDDLE\" COLSPAN=\"8\"><시장성 있는 지분증권></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001688",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001688_00760.xml",
+          "sha256": "19a8325698ffeb79e10e56f0bf213be5588abe09f8eb2555378a86b4cf917e8e",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 2762, column 73",
+          "excerpt": "<P>&cr;기말 현재 당사가 보유하고 있는 매도가능증권의 내역은 다음과 같습니다.&cr;&cr;<당기말></P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001688.xml",
+          "sha256": "b1407b4c9bbf3906994f713b684f7140b8e70b023d844f2875b30171bf545907",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 1125, column 85",
+          "excerpt": "<SPAN USERMARK=\" B\">나. 합병, 분할(합병), 포괄적 주식교환.이전, 중요한 영업의양수.도  등&cr;</SPAN><해당사항 없음>&cr;&cr;",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001711",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 18,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001691",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001691_00760.xml",
+          "sha256": "70df3b88921ebe7f37f17342967421a279a73c9e05167b6f9fc3ee13240dd4f5",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3302, column 154",
+          "excerpt": "과 같습니다.&cr;&cr;<당기>                                                                                            (단위 : 천원)</P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001708",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 17,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001704",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 11,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001687",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 19,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001710",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001710.xml",
+          "sha256": "e9deb0fa9bc09599c05c7163c65e141a507a7757fab0f5486e5624c7bf4f1e39",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 3516, column 64",
+          "excerpt": "<TD COLSPAN=\"6\" VALIGN=\"MIDDLE\" WIDTH=\"711\" HEIGHT=\"30\"><시장성 없는 지분증권></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001710_00760.xml",
+          "sha256": "68bf7580aa06f21b551791a008e16e5a8bbdc5ed13366e08a1dba902a513ef86",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 3680, column 64",
+          "excerpt": "<TD COLSPAN=\"6\" VALIGN=\"MIDDLE\" WIDTH=\"711\" HEIGHT=\"30\"><시장성 없는 지분증권></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001697",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 18,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001698",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001698_00761.xml",
+          "sha256": "9ce06fe182be5ab3f3c32fa8743c63e88b173ed05a4da86d06c10d80d8d5dc7f",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3242, column 41",
+          "excerpt": "<TD WIDTH=\"211\" HEIGHT=\"30\"><유동성만기보유증권></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001698_00760.xml",
+          "sha256": "378fae3e4907fe8c936755651c6717a60b0c12c470d59929d580ee7e9412fb75",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3086, column 41",
+          "excerpt": "<TD WIDTH=\"184\" HEIGHT=\"30\"><유동성만기보유증권></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001698.xml",
+          "sha256": "6264523e5f38f37072ed1b3a7eb905d0ae3cb15c22ee3e7648d86b0007c55007",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 2299, column 2735",
+          "excerpt": " 소비자에게 공급된다.&cr;&cr;- 참고 <천연가스의 단위> </P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001699",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 16,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001705",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001705.xml",
+          "sha256": "e8a7b3438e4ab6cafa6abc4e8bfd6e3993c56e15849229cdb0db2634185a5df7",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 7491, column 46",
+          "excerpt": "<P>&cr;※ LG데이콤 및 LG파워콤 관련 사항은 <제28기 LG데이콤 감사보고서> 및 <제10기 LG파워콤 감사보고서>의 주석을 참조하시기 바랍니다.&cr;</P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001705_00760.xml",
+          "sha256": "5c45d7aaf63bf2970240bc7c75c8af03210162deaf2d511b064e1bf9fc593855",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 8567, column 36",
+          "excerpt": "<TD WIDTH=\"232\" HEIGHT=\"30\"><지배회사></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001700",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001700.xml",
+          "sha256": "d54e26c56f973e668e6953089527d6bc52a0b1ab61b5e38896f55bfb561587a7",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 4093, column 36",
+          "excerpt": "<TD WIDTH=\"254\" HEIGHT=\"30\"><제26기></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001700_00761.xml",
+          "sha256": "58376594545dc89606f76925e773b02b74b1dc8be03be0ab86075d2737685792",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 307, column 106",
+          "excerpt": "<TE WIDTH=\"314\" HEIGHT=\"30\" ACODE=\"11110000040000\" ADELIM=\"0\" ALEVEL=\"2\" USERMARK=\" P32\"> 1. 현금및현금성자산 <주석2,14,20></TE>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001700_00760.xml",
+          "sha256": "74a5bd7c13cdb24a6003706dc028a471fd92030de2edaa9de19b8944c203419b",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 2750, column 9",
+          "excerpt": "<P><당기></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001690",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT+UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001690.xml",
+          "sha256": "3ca385c0dcb55ecffcf092b6470c01f9458d0c0155d5ae8d9a95558c894fe4a3",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 2192, column 142",
+          "excerpt": "65\" HEIGHT=\"145\">(1) 대상기간중 환율이 990원 이상에서 한번도 거래되지 않은 경우&cr;  i) 만기환율 ≤ 955원:&cr;      955원에 대표통화금액 매도.&cr;  ii) 955원 < 만기환율 < 990원:&cr;      계약이행내용없음. </TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001690_00760.xml",
+          "sha256": "f0b970f0deae5adf219df5120bebca9d8e5d0e1376bf7ff08b06bb7032ae1071",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3733, column 34",
+          "excerpt": "<TD WIDTH=\"301\" HEIGHT=\"30\"><당기></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001690_00761.xml",
+          "sha256": "b698120c923da144b28c3b4dea095c05f0b5634dfb3bc522b7508d14bbba5034",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 6581, column 34",
+          "excerpt": "<TD WIDTH=\"301\" HEIGHT=\"30\"><전기></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001696",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001696.xml",
+          "sha256": "732195e96999d3a3d0db4814bef703febabad523c751e470df9606e6e5de83c5",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3817, column 49",
+          "excerpt": "<P>나. 판매경로 및 판매방법&cr;&cr;<판매조직>&cr;</P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001689",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT+UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001689_00761.xml",
+          "sha256": "cab5e11a3c403ecb2096739ff0fc3301b5e4724844d50f7307a659d3d0a44311",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 2346, column 82",
+          "excerpt": "<TD WIDTH=\"826\" HEIGHT=\"28\" COLSPAN=\"9\" VALIGN=\"MIDDLE\" USERMARK=\"F-10\"><연결대상 종속회사></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001689.xml",
+          "sha256": "509b86f96860dbee8edc193c02e04bcaad6eedf86a87280a457892b094470db2",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 5873, column 4",
+          "excerpt": "<P>< 국내 >&cr;</P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001712",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001712.xml",
+          "sha256": "903fbf648e65bfa014c7d52142b015fc481cbc4e7ce652a746441979b898608b",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 8466, column 7",
+          "excerpt": "<P><당 기></P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001712_00760.xml",
+          "sha256": "64b801bbfd737aa5a4a54294b1061bfd4d34b61b54c1d56174b39c77184a6d83",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 2862, column 7",
+          "excerpt": "<P><당 기></P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001695",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001695_00760.xml",
+          "sha256": "362d904edcc8533b3bc9cf8399632ad7fe43ce0f4c93fb8722a832f4068fb938",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3945, column 53",
+          "excerpt": "<TD WIDTH=\"200\" VALIGN=\"MIDDLE\" HEIGHT=\"30\"><비유동자산></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001695_00761.xml",
+          "sha256": "c8b7ef77512dceb4f679186c926fdc37446b4e27395a4395366b8f42c98cd21b",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3739, column 34",
+          "excerpt": "<TD WIDTH=\"159\" HEIGHT=\"30\"><자산></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001707",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT+UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001707_00760.xml",
+          "sha256": "41caf105e45a5eb9f5657f90345577d3d178a1a3dfaf3549d3342fc8c86ab21d",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 2431, column 52",
+          "excerpt": "<TD WIDTH=\"111\" ALIGN=\"CENTER\" HEIGHT=\"30\"><비상장주식></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001707.xml",
+          "sha256": "4ea30e01b165d2e9be91d4d84fefa32e18cd180bee81928cee9b3e2ffa2631bb",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "mismatched tag: line 1732, column 236",
+          "excerpt": " 것으로 기대되는데, 가상화 환경으로의 전환은 기존 사일로(silo) 방식 IT 환경과의 결별을 의미합니다. 이렇게 되면 2010년에는 물리적 환경과 가상화 환경의 통합 관리 문제가 보다 중요하게 제기될 가능성이 높습니다.</P>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001693",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 16,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001701",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 17,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001724",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 11,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001718",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001718.xml",
+          "sha256": "9a196e24f3488185a754308edf996de2a0e9aaf29d4122de996b6079bf0222b9",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 1958, column 197",
+          "excerpt": "단위:원).&cr;&cr;<당기>                                                                                              </P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001718_00760.xml",
+          "sha256": "2ad2ae89ac7dbe578591171707d0a1351b989431fa56d16e9b836098cb999094",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 335, column 101",
+          "excerpt": "<TE WIDTH=\"249\" HEIGHT=\"30\" ACODE=\"11122000010000\" ADELIM=\"0\" ALEVEL=\"2\" USERMARK=\" P32\">2.단기금융상품<주석3,9></TE>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001757",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 18,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001742",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT+UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001742_00761.xml",
+          "sha256": "9bb8a77e41cd47bd4ec494986057268ad3ea82973994db53941a1653ef311c12",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 4535, column 110",
+          "excerpt": "<P>&cr;12. 외화자산 및 외화부채&cr;&cr;당기 및 전기말 현재 지배회사 및 국내종속회사의 외화자산과 외화부채의 내역은 다음과 같습니다.&cr;<외화자산></P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001742.xml",
+          "sha256": "575f6c690296429af06c375b872e5597e6bee252492013d0b4da812eb220981c",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 1749, column 467",
+          "excerpt": "ED, 교류 구동용 LED Chip/package 등 LED 전반에 걸쳐 뛰어난 성과를 내고 있습니다.&cr; 특히 교류 구동용 LED Chip의 경우, 2007년 유럽 일렉트로닉사 선정 <2006년 최우수 제품상>을 수상하였고, 그 해 12월에는 LED 패키지 세계최초 CE인증 획득 및 독일 TUV 인증도 획득하였습니다.&cr;또한 2008년 12월에는 한국에서 2008 대한민국 기술대상 수상 및 10대 신기술로 선정되기도 하였습니다.&cr; 향후 LED가 간접조명 및 직접조명용에 이르는 조명시장에 많은 부분을 차지할 것으로 예상되며 이러한 조명시",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001726",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT+UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001726.xml",
+          "sha256": "6b4d1914bd6a447888468fc49001f22a47b5f1294059e2e84234a5151e6e8a8f",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 3041, column 22",
+          "excerpt": "<P USERMARK=\"F-DU B\">< 영업의 경과 및 성과 ></P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001726_00760.xml",
+          "sha256": "3fc5e03645146bc2ecaeab0ba2c7be2e64297cdc73eec3f77a09d27389c3ca24",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 4939, column 52",
+          "excerpt": "<TD ALIGN=\"CENTER\" WIDTH=\"174\" HEIGHT=\"30\"><법정적립금></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001726_00761.xml",
+          "sha256": "79c74b1077a6c1ca93bb4ed8e21a18ecc616e7df1d999c79b439200f1ce22a35",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 4524, column 52",
+          "excerpt": "<TD WIDTH=\"174\" HEIGHT=\"30\" ALIGN=\"CENTER\"><법정적립금></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001745",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT+UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001745_00760.xml",
+          "sha256": "72913eccde84969b23c92b25769fb68e548791d115ba9db4079ca54f0eb79bfc",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3304, column 209",
+          "excerpt": "\"><당기>                                                                                                                 (단위 : 천원)</TH>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001745.xml",
+          "sha256": "e31e736483849cae04115c27cb6ac5bcb007ba4d74cd5ed2312c15f7e023aaa1",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 2680, column 589",
+          "excerpt": "효과적인 금액은 손익계산서의 영업외비용으로 처리하였습니다.&cr;&cr;2) 당사 보유 Window Knock-in,Knock-out Option(KIKO)의 손익구조&cr;- 만기일환율 <  Knock-out환율 : 통화옵션거래손익 없음.</P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001745_00761.xml",
+          "sha256": "9d9c0d9c63a3d1a21b424102beda8662d3c489fb6ed1685fbc91db1b77cd490c",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3337, column 209",
+          "excerpt": "\"><당기>                                                                                                                 (단위 : 천원)</TH>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001715",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001715.xml",
+          "sha256": "8306b12c8692ececbbefdc0e17fca35c32582065d3b8e50ecd4e122993db9bb3",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 8526, column 33",
+          "excerpt": "<TD WIDTH=\"300\" HEIGHT=\"30\"><전  기></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001715_00760.xml",
+          "sha256": "5c5df0209f9e3c839a757f27190ff6529ab90e6af98a55995bdc888a150f72bb",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 3242, column 33",
+          "excerpt": "<TD WIDTH=\"300\" HEIGHT=\"30\"><전  기></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001716",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001716.xml",
+          "sha256": "c566d255d4ca49fcc69e33e32c61596ce86df9c520e290fe0ff9c427755c2dc0",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 1901, column 33",
+          "excerpt": "<TD WIDTH=\"509\" HEIGHT=\"306\"><개 요>&cr;o 사업자별 개별 설치되어 있는 PCS 기지국을 공용시스템으로 개발&cr;&cr;<연구개발 내용>&cr;o PCS 공용 기지국 시스템 개발&cr;&cr;<추진결과>&cr;o 공용 기지국 시스템 규격 확정&cr;o 개발 및 인증 시험 완료&cr;o 시범 운용 실시&cr;&cr;<개발효과>&cr;o 공용시스템 개발에",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001746",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001746_00760.xml",
+          "sha256": "a65e03a5e2515b51f527618994cb988fc8096e0d3b35d5bf02772f48bc785b36",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3584, column 35",
+          "excerpt": "<TD WIDTH=\"300\" HEIGHT=\"30\"><당기말></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001746_00761.xml",
+          "sha256": "4a52ceb957b5bf94d064b5620f360e811d09c4821129ea18f5ae780ec38d69ff",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3758, column 34",
+          "excerpt": "<TD WIDTH=\"301\" HEIGHT=\"30\"><당기></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001753",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001753.xml",
+          "sha256": "936a233bb0ccdb00a9e2c8c72fb6da40c87ccb841ac048664d6b8312f2bd255c",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 9720, column 279",
+          "excerpt": "영하였습니다. 당기발생 장기악성재고의 경우, 현업 재고자산관리자에 의해서 매월 확인이 되어왔으며, 관련내역은 현업 부서장 결재를 득한후, 재고자산평가손실로 인식하여 재고자산 계정에 차감표시 하였습니다.&cr; &cr;<2009년 말 재고자산 실사내역등> &cr; ① 실사일자:  2010.01.05&cr;                    대차대조표일이후 발생한 재고자산의 입출내역 확인 후 비교대사 &cr; ② 재고실사시 감사인 입회하에 재고실사 &cr;&cr;",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001754",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001754.xml",
+          "sha256": "fe7fc6a77b8f73460e0a60447b3aa20fe7c4d074d9c9b71b18940288226f79db",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "mismatched tag: line 470, column 1778",
+          "excerpt": "",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001728",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001728.xml",
+          "sha256": "3dd3fc1fa1a0d6d6daa9039e401e60162387ed0cd97796b7bea0c2fa020dcd28",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 7452, column 34",
+          "excerpt": "<TD WIDTH=\"301\" HEIGHT=\"30\"><당기></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001728_00760.xml",
+          "sha256": "e2b4d273cc01a65adda4d0827ec24ea3971b4f3b2c060bdb37f8666245fca85c",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 252, column 103",
+          "excerpt": "<TE WIDTH=\"279\" HEIGHT=\"30\" ACODE=\"11110000040000\" ADELIM=\"0\" ALEVEL=\"2\" USERMARK=\" P32\">1.현금및현금성자산<주석 3, 12></TE>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001748",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 18,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001733",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001733.xml",
+          "sha256": "011d6932a4b0b440726919bcdfe1703581c46e5c61f5f903c34287b39c6225cc",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 6995, column 22",
+          "excerpt": "<P>&cr;<사업부문별 매출현황></P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001733_00760.xml",
+          "sha256": "eb2d4c481d7877677236299e50425f2f9ad0e9273517fef56aec4f8704a15523",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 8828, column 65",
+          "excerpt": "<TD COLSPAN=\"6\" WIDTH=\"865\" HEIGHT=\"30\" VALIGN=\"MIDDLE\"><당사가 원고인 사건></TD>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001733_00761.xml",
+          "sha256": "42846880f443d12ee32f107c996f852277afdabf896ef8ddf7ca353520a78e8d",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 10635, column 81",
+          "excerpt": "<TD COLSPAN=\"6\" WIDTH=\"884\" HEIGHT=\"28\" VALIGN=\"MIDDLE\" USERMARK=\"F-10\"><당사가 원고인 사건></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001744",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 11,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001730",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT+UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001730.xml",
+          "sha256": "f3e9c65696a58f04a85d7c1b0fab3ca52b7b2537e6fc11be94c52f6d6b6b5787",
+          "category": "UNVERIFIED_XML_BOUNDARY_OR_MARKUP",
+          "error": "not well-formed (invalid token): line 6755, column 20",
+          "excerpt": "<P USERMARK=\"F-11\">< 두산건설(주) ></P>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001730_00761.xml",
+          "sha256": "e2ec2b9442c3bbce958f7b9226a10bd06d5836583f1916cc24f7631c66b70e90",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 3603, column 104",
+          "excerpt": "<TH COLSPAN=\"2\" ALIGN=\"CENTER\" WIDTH=\"318\" HEIGHT=\"30\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"><자본계정 상계></TH>",
+          "document_closing_tag": true
+        },
+        {
+          "member": "20100331001730_00760.xml",
+          "sha256": "0c3cb7ba57d7cbeeaa54af6295c95ed5b70dc3a1566dd500cf6e6a8200764c18",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "mismatched tag: line 3683, column 64",
+          "excerpt": "<TD WIDTH=\"698\" HEIGHT=\"30\" VALIGN=\"MIDDLE\" COLSPAN=\"6\"><지분증권></TD>",
+          "document_closing_tag": true
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001741",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 11,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001717",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 17,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001714",
+      "state": "PARSED_4F",
+      "original_candidate_fields": 11,
+      "source_collection": "DURABLE",
+      "source_gap_category": "NOT_A_SOURCE_GAP",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": []
+    },
+    {
+      "receipt": "20100331001727",
+      "state": "SOURCE_GAP",
+      "original_candidate_fields": 0,
+      "source_collection": "DURABLE",
+      "source_gap_category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+      "financial_absence": "NOT_CERTIFIED",
+      "bad_members": [
+        {
+          "member": "20100331001727.xml",
+          "sha256": "764da91dec85f8b45214d5d2ee947de99f87747c5119e4e4d01dd2da3d286505",
+          "category": "UNSUPPORTED_KOREAN_ANGLE_TEXT",
+          "error": "not well-formed (invalid token): line 2591, column 77",
+          "excerpt": "<SPAN USERMARK=\" 0X000000 !B\">바이오메탄서울(주)는 2008년 08월 12일 서울특별시와 체결한 <서남 물재생센터 바이오가스 차량연료화 사업 시행 협약서>에 따라 서남 물재생센터 바이오가스 차량 연료화 시설의 건설, 관리운영 등을 위하여 2008년 12월 설립되었습니다.</SPAN>",
+          "document_closing_tag": true
+        }
+      ]
+    }
+  ],
+  "count": 100,
+  "first_error_categories": {
+    "UNSUPPORTED_KOREAN_ANGLE_TEXT": 52,
+    "UNVERIFIED_XML_BOUNDARY_OR_MARKUP": 6,
+    "UNSUPPORTED_KOREAN_ANGLE_TEXT+UNVERIFIED_XML_BOUNDARY_OR_MARKUP": 13,
+    "NOT_A_SOURCE_GAP": 29
+  },
+  "limitation": "First strict syntax failures classified only; not proof that no other damage exists. No financial absence or authoritative version inferred from rejection."
+}

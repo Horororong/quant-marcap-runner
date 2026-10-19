@@ -1,0 +1,92 @@
+{
+  "collection_code_sha": "322e8d6683be3cfdc98ad1df409a524240330a91",
+  "collection_run": 39192948146,
+  "source_artifact": {
+    "id": 12161881840,
+    "node_id": "MDg6QXJ0aWZhY3QxMjE2MTg4MTg0MA==",
+    "name": "finite-validation100-sources-and-checkpoints-HELD",
+    "size_in_bytes": 13776186,
+    "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12161881840",
+    "archive_download_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/artifacts/12161881840/zip",
+    "expired": false,
+    "digest": "sha256:40cf835da16e74cd71af90c3aa5620533079ee74b6d81027b1ed15a0c314f6b6",
+    "created_at": "2026-10-19T03:36:10Z",
+    "updated_at": "2026-10-19T03:36:10Z",
+    "expires_at": "2027-01-17T03:04:47Z",
+    "workflow_run": {
+      "id": 39192948146,
+      "repository_id": 1338843100,
+      "head_repository_id": 1338843100,
+      "head_branch": "deploy/financial-backfill-v9-validation100-20261019",
+      "head_sha": "322e8d6683be3cfdc98ad1df409a524240330a91"
+    }
+  },
+  "packs": [
+    {
+      "blob_sha": "de062445bf29ba9ac1ad1d9d12bdd298608adb40",
+      "compressed_sha256": "b6bb012c06c9af875f2a0f167da51fea06c55125bcffb6067d56ac84cf0150d2",
+      "bytes": 2527012,
+      "financial_certification": "UNVERIFIED",
+      "automatic_publication": false,
+      "path": "sources_chunk00.json.gz.b64"
+    },
+    {
+      "blob_sha": "192e445ede5f22e20d3d46c8de6161d0161a546e",
+      "compressed_sha256": "7d2be90ba8d05dfe67a8d2dad6aab16fc2648718add20dadea838477ccd58def",
+      "bytes": 2620054,
+      "financial_certification": "UNVERIFIED",
+      "automatic_publication": false,
+      "path": "sources_chunk01.json.gz.b64"
+    },
+    {
+      "blob_sha": "a31f3dc29bf6e88bb3df5ef628cdfed66d5918d3",
+      "compressed_sha256": "29b81d22fe6f6c3eecbdbafbc8b5fee2ad88a0a011c8d8b9bdbecb22358d154d",
+      "bytes": 2697761,
+      "financial_certification": "UNVERIFIED",
+      "automatic_publication": false,
+      "path": "sources_chunk02.json.gz.b64"
+    },
+    {
+      "blob_sha": "9b6098ad96bc0ce68a7c84b609d66a2ba5140970",
+      "compressed_sha256": "f4de1dcf807abd6bf59c1c3e04ad64b084a4918323fb9110cf491eb57e8ea045",
+      "bytes": 2718162,
+      "financial_certification": "UNVERIFIED",
+      "automatic_publication": false,
+      "path": "sources_chunk03.json.gz.b64"
+    },
+    {
+      "blob_sha": "fdc4d5e7fca01bf6cd75549a4b2b1ca0d7b5e3cc",
+      "compressed_sha256": "57e06797b07b143f028b8fc61c9201cd7e09bc7586aa23fa009377adee75a460",
+      "bytes": 2863456,
+      "financial_certification": "UNVERIFIED",
+      "automatic_publication": false,
+      "path": "sources_chunk04.json.gz.b64"
+    },
+    {
+      "path": "../financial-deployment-20261018/operating_originals.json.gz.b64",
+      "compressed_sha256": "b7f743566098c248907a2c2a1bc7bd790a08e8b6e22ca6e5561ce45bb2f4bd68",
+      "blob_sha": "aad8c5f8f42afa33fafe14c3bba9dbe0c43b451d",
+      "cohort": "prior10"
+    }
+  ],
+  "additional_controls": [
+    {
+      "path": "postfix_controls.json",
+      "sha256": "d288155a056a709a8631700178b96045489b8f468bdab421fb7887782275d16c"
+    }
+  ],
+  "cohort_roles": {
+    "new100": "Initial28 now regression cohort after scope-boundary fix",
+    "postfix_holdout": "Previously unused20, expected values frozen before candidate9.2 output",
+    "prior10": "Original canary evidence re-review, not independent holdout"
+  },
+  "subject_override": {
+    "path": "subjects_v92.json.gz.b64",
+    "compressed_sha256": "bd9e85121e0df249d16b7aa9e35278e67dba361487d418ecb64ef58bdf647bd8",
+    "canonical_sha256": "0dc619535bf5de5effd171aa60e1a8aab354227cb8e8670b775778bd6df2fa68",
+    "parser_version": "legacy-v9.2-statement-boundary-guard",
+    "source_mode": "PRESERVED_ZIP_CACHE_NO_HTTP",
+    "raw_replay_pack_sha256": "3308b9e0f119e6fc5d36d0bcf2a21dbf5a3bc10f24b5982af1fe0c2954b38d2e",
+    "snapshot_contract": "financial-subject-snapshot-v1-no-execution-clock"
+  }
+}

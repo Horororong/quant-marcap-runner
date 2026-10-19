@@ -18,7 +18,7 @@ class LegacyParser(unittest.TestCase):
     def test_unheaded_loss_never_becomes_proved_current_money(self):
         self.assertEqual(table_candidates('<H2>손익계산서</H2><P>단위:천원</P><TABLE><TR><TD>당기순손실</TD><TD>5,787</TD></TR></TABLE>'),[])
     def test_explicit_current_parser_and_separate_checkpoint_contract(self):
-        self.assertEqual(PARSER_VERSION,'legacy-v9.1-primary-source-metadata')
+        self.assertEqual(PARSER_VERSION,'legacy-v9.2-statement-boundary-guard')
         from scripts.legacy_parser_migration import require_explicit_migration,ParserMigrationRequired
         with self.assertRaises(ParserMigrationRequired):require_explicit_migration([dict(rcept_no='synthetic',status='PARSED_4F',parser_version='legacy-v5-single-amount')],PARSER_VERSION)
     def test_ambiguous_or_missing_cells_are_not_invented(self):

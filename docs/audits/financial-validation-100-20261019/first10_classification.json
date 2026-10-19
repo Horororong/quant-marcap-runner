@@ -1,0 +1,300 @@
+{
+  "source_run": 39174955546,
+  "source_gap_documents": 7,
+  "records": [
+    {
+      "receipt": "20100331001574",
+      "archive_crc": "PASS",
+      "original_collection": "DURABLE",
+      "extraction": "HELD_SOURCE_GAP",
+      "financial_table_presence": true,
+      "download_or_wrong_document_error": "NO_EVIDENCE_OBSERVED; receipt-named original ZIP contains full main/attachments",
+      "members": [
+        {
+          "member": "20100331001574_00761.xml",
+          "sha256": "ab0471ddc203243d04c16ab382b782e8dbccfb5d0c9c6e3047d724149575df33",
+          "xml_validation": "REJECTED",
+          "original_error": "mismatched tag: line 3120, column 200",
+          "error_location_excerpt": "당기 중에 처분(처분가액 4,000백만원)하였습니다(주석14 참조).&cr;&cr;나. 당기와 전기 중 지분법적용투자주식의 투자차액 변동은 다음과 같습니다(단위 천원).&cr;<당기></P>",
+          "complete_document_closing_tag": true,
+          "classification": "UNSUPPORTED_LEGACY_KOREAN_ANGLE_TEXT",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        },
+        {
+          "member": "20100331001574.xml",
+          "sha256": "9956fb8f7076aa537cfa33b752b8e2ce3457664a7bc577e8eb2ad7f6b2f5d5a3",
+          "xml_validation": "PASS",
+          "original_error": "",
+          "error_location_excerpt": "",
+          "complete_document_closing_tag": true,
+          "classification": "STRICT_XML_VALID_MEMBER",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        },
+        {
+          "member": "20100331001574_00760.xml",
+          "sha256": "35900bf6236b75c6fa92ca3a0970d99c8e8d5ab3cf46d1f0ea7042003008b9a7",
+          "xml_validation": "REJECTED",
+          "original_error": "mismatched tag: line 3080, column 9",
+          "error_location_excerpt": "<P><당기></P>",
+          "complete_document_closing_tag": true,
+          "classification": "UNSUPPORTED_LEGACY_KOREAN_ANGLE_TEXT",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        }
+      ],
+      "resolution": "CLASSIFIED_NOT_REPAIRED; no values released from tolerant view"
+    },
+    {
+      "receipt": "20100331001575",
+      "archive_crc": "PASS",
+      "original_collection": "DURABLE",
+      "extraction": "HELD_SOURCE_GAP",
+      "financial_table_presence": true,
+      "download_or_wrong_document_error": "NO_EVIDENCE_OBSERVED; receipt-named original ZIP contains full main/attachments",
+      "members": [
+        {
+          "member": "20100331001575.xml",
+          "sha256": "253e4e33d6a3d55b37bdfc83bf435c294cbdeb7c8b5b26f35a93c51da94e8af8",
+          "xml_validation": "PASS",
+          "original_error": "",
+          "error_location_excerpt": "",
+          "complete_document_closing_tag": true,
+          "classification": "STRICT_XML_VALID_MEMBER",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        },
+        {
+          "member": "20100331001575_00761.xml",
+          "sha256": "91799c44617ed51a1172f3345c5c15024b178c3799898e7aded336670b822c08",
+          "xml_validation": "REJECTED",
+          "original_error": "mismatched tag: line 3580, column 53",
+          "error_location_excerpt": "<TD VALIGN=\"MIDDLE\" WIDTH=\"166\" HEIGHT=\"30\"><비유동자산></TD>",
+          "complete_document_closing_tag": true,
+          "classification": "UNSUPPORTED_LEGACY_KOREAN_ANGLE_TEXT",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        },
+        {
+          "member": "20100331001575_00760.xml",
+          "sha256": "cfbc61bde563769f1b652438c91417385d0ecf4f14aa42db14d45d982369a024",
+          "xml_validation": "REJECTED",
+          "original_error": "mismatched tag: line 3416, column 53",
+          "error_location_excerpt": "<TD VALIGN=\"MIDDLE\" WIDTH=\"122\" HEIGHT=\"30\"><비유동자산></TD>",
+          "complete_document_closing_tag": true,
+          "classification": "UNSUPPORTED_LEGACY_KOREAN_ANGLE_TEXT",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        }
+      ],
+      "resolution": "CLASSIFIED_NOT_REPAIRED; no values released from tolerant view"
+    },
+    {
+      "receipt": "20100331001576",
+      "archive_crc": "PASS",
+      "original_collection": "DURABLE",
+      "extraction": "HELD_SOURCE_GAP",
+      "financial_table_presence": true,
+      "download_or_wrong_document_error": "NO_EVIDENCE_OBSERVED; receipt-named original ZIP contains full main/attachments",
+      "members": [
+        {
+          "member": "20100331001576.xml",
+          "sha256": "b08dc104b3a7bb7a7461ec944a29a10bbb7acc07e337fc433e13638da91bc2d4",
+          "xml_validation": "REJECTED",
+          "original_error": "not well-formed (invalid token): line 3385, column 56",
+          "error_location_excerpt": "<P>                                                <손 익 계 산 서>&cr;                              제 4기 (2009. 1. 1 부터 2009.12. 31 까지) </P>",
+          "complete_document_closing_tag": true,
+          "classification": "UNSUPPORTED_LEGACY_KOREAN_ANGLE_TEXT",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        },
+        {
+          "member": "20100331001576_00760.xml",
+          "sha256": "6a7fca1701dff9deb7ea0a76d230f904b7d411c19cbb511a57fd2cb0e4a82197",
+          "xml_validation": "PASS",
+          "original_error": "",
+          "error_location_excerpt": "",
+          "complete_document_closing_tag": true,
+          "classification": "STRICT_XML_VALID_MEMBER",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        }
+      ],
+      "resolution": "CLASSIFIED_NOT_REPAIRED; no values released from tolerant view"
+    },
+    {
+      "receipt": "20100331001579",
+      "archive_crc": "PASS",
+      "original_collection": "DURABLE",
+      "extraction": "HELD_SOURCE_GAP",
+      "financial_table_presence": true,
+      "download_or_wrong_document_error": "NO_EVIDENCE_OBSERVED; receipt-named original ZIP contains full main/attachments",
+      "members": [
+        {
+          "member": "20100331001579_00760.xml",
+          "sha256": "d483608f6377466e6533d590c9fa58fbc792cc780449e410114e34dcde769c1d",
+          "xml_validation": "REJECTED",
+          "original_error": "mismatched tag: line 3248, column 66",
+          "error_location_excerpt": "<TD COLSPAN=\"7\" VALIGN=\"MIDDLE\" WIDTH=\"726\" HEIGHT=\"30\"><장기투자증권></TD>",
+          "complete_document_closing_tag": true,
+          "classification": "UNSUPPORTED_LEGACY_KOREAN_ANGLE_TEXT",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        },
+        {
+          "member": "20100331001579.xml",
+          "sha256": "8ec7f76debd94cb30d2d02db86a8b305d78d22799e95c48746875ad50f490017",
+          "xml_validation": "REJECTED",
+          "original_error": "mismatched tag: line 9606, column 66",
+          "error_location_excerpt": "<TD COLSPAN=\"7\" VALIGN=\"MIDDLE\" WIDTH=\"726\" HEIGHT=\"30\"><장기투자증권></TD>",
+          "complete_document_closing_tag": true,
+          "classification": "UNSUPPORTED_LEGACY_KOREAN_ANGLE_TEXT",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        },
+        {
+          "member": "20100331001579_00761.xml",
+          "sha256": "6bdeea9ddde1b7ef86354dd568072c012c60783c2f18ee642438b3a2326dfa8a",
+          "xml_validation": "REJECTED",
+          "original_error": "not well-formed (invalid token): line 3185, column 104",
+          "error_location_excerpt": "<TH COLSPAN=\"2\" ALIGN=\"CENTER\" WIDTH=\"368\" HEIGHT=\"30\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"><자본계정 상계></TH>",
+          "complete_document_closing_tag": true,
+          "classification": "UNSUPPORTED_LEGACY_KOREAN_ANGLE_TEXT",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        }
+      ],
+      "resolution": "CLASSIFIED_NOT_REPAIRED; no values released from tolerant view"
+    },
+    {
+      "receipt": "20100331001581",
+      "archive_crc": "PASS",
+      "original_collection": "DURABLE",
+      "extraction": "HELD_SOURCE_GAP",
+      "financial_table_presence": true,
+      "download_or_wrong_document_error": "NO_EVIDENCE_OBSERVED; receipt-named original ZIP contains full main/attachments",
+      "members": [
+        {
+          "member": "20100331001581.xml",
+          "sha256": "c7bb9caffe1773ee93c02d1daf319bffc14eebb01cecc766eb24e79583ef64d7",
+          "xml_validation": "REJECTED",
+          "original_error": "not well-formed (invalid token): line 3664, column 1141",
+          "error_location_excerpt": "해 기존주주가 증자형식으로 신주를 발행하는 경우&cr;&cr;                        <신주의 배당기산일> &cr;&cr; 회사가 유상증자, 무상증자 및 주식배당에 의하여 신주를 발행하는 경우 신주에 대한 이익의 배당에 관하여는 신주를 발행할 때가 속하는 영업년도의 직전 영업년도말에 발행된 것으로 본다.</TD>",
+          "complete_document_closing_tag": true,
+          "classification": "UNSUPPORTED_LEGACY_KOREAN_ANGLE_TEXT",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        }
+      ],
+      "resolution": "CLASSIFIED_NOT_REPAIRED; no values released from tolerant view"
+    },
+    {
+      "receipt": "20100331001583",
+      "archive_crc": "PASS",
+      "original_collection": "DURABLE",
+      "extraction": "HELD_SOURCE_GAP",
+      "financial_table_presence": true,
+      "download_or_wrong_document_error": "NO_EVIDENCE_OBSERVED; receipt-named original ZIP contains full main/attachments",
+      "members": [
+        {
+          "member": "20100331001583_00760.xml",
+          "sha256": "7ee3f8b2588c137110106deacce9d4f32377c29ad461cec659bf4426d9210f9b",
+          "xml_validation": "REJECTED",
+          "original_error": "mismatched tag: line 3180, column 48",
+          "error_location_excerpt": "<TD COLSPAN=\"3\" WIDTH=\"658\" HEIGHT=\"30\"><유동자산></TD>",
+          "complete_document_closing_tag": true,
+          "classification": "UNSUPPORTED_LEGACY_KOREAN_ANGLE_TEXT",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        },
+        {
+          "member": "20100331001583.xml",
+          "sha256": "363a37d84746e6fea461421c3beec33856b2b7466b250d242977f99a5a0cb8fd",
+          "xml_validation": "REJECTED",
+          "original_error": "mismatched tag: line 4417, column 166",
+          "error_location_excerpt": "IFRS 도입준비 완료&cr; - 임직원 교육 및 회계시스템 정비 지속실시&cr;&cr;<세부계획>&cr;- 2010년 4월 IFRS 도입영향분석 회계법인 용역의뢰 예정</P>",
+          "complete_document_closing_tag": true,
+          "classification": "UNSUPPORTED_LEGACY_KOREAN_ANGLE_TEXT",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        }
+      ],
+      "resolution": "CLASSIFIED_NOT_REPAIRED; no values released from tolerant view"
+    },
+    {
+      "receipt": "20100331001585",
+      "archive_crc": "PASS",
+      "original_collection": "DURABLE",
+      "extraction": "HELD_SOURCE_GAP",
+      "financial_table_presence": true,
+      "download_or_wrong_document_error": "NO_EVIDENCE_OBSERVED; receipt-named original ZIP contains full main/attachments",
+      "members": [
+        {
+          "member": "20100331001585.xml",
+          "sha256": "34a8fa6a6d9261199b1a021659dd9fbe1f8ad1a11a3de100d5891bcb28395420",
+          "xml_validation": "PASS",
+          "original_error": "",
+          "error_location_excerpt": "",
+          "complete_document_closing_tag": true,
+          "classification": "STRICT_XML_VALID_MEMBER",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        },
+        {
+          "member": "20100331001585_00760.xml",
+          "sha256": "e9f8b007391730a9c11d30672598f080f6fea849fbaefa2d6c64ab772a582b79",
+          "xml_validation": "REJECTED",
+          "original_error": "mismatched tag: line 6483, column 89",
+          "error_location_excerpt": "<TH WIDTH=\"871\" HEIGHT=\"30\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\" COLSPAN=\"3\"><종속회사></TH>",
+          "complete_document_closing_tag": true,
+          "classification": "UNSUPPORTED_LEGACY_KOREAN_ANGLE_TEXT",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        },
+        {
+          "member": "20100331001585_00761.xml",
+          "sha256": "74b065a2c104ece01b3745c7db2ee82d18cdbe87bdd55c91da53cd9ac9dedb0b",
+          "xml_validation": "REJECTED",
+          "original_error": "mismatched tag: line 12363, column 9",
+          "error_location_excerpt": "<P><당기></P>",
+          "complete_document_closing_tag": true,
+          "classification": "UNSUPPORTED_LEGACY_KOREAN_ANGLE_TEXT",
+          "binary_damage": "NOT_ESTABLISHED",
+          "financial_absence": "NOT_ESTABLISHED"
+        }
+      ],
+      "resolution": "CLASSIFIED_NOT_REPAIRED; no values released from tolerant view"
+    }
+  ],
+  "cfs": {
+    "receipt": "20100331001582",
+    "member": "20100331001582_00761.xml",
+    "financial_tables_present": true,
+    "expected_core_fields": 4,
+    "parsed_candidates": 0,
+    "reason": "Standalone auditor cover lacks business-report 사업연도 marker and primary business-report section zone; parser report_period_end empty. Not absent CFS.",
+    "status": "UNVERIFIED_PARSER_COVERAGE_AND_ATTACHMENT_CHRONOLOGY",
+    "controls": "Prior operating_controls.json: CFS4 source numbers and coordinates retained, not published",
+    "attachment_report_validity_date": "2010-04-19",
+    "index_receipt_date": "2010-03-31",
+    "date_evidence_literal": "이 감사보고서는 감사보고서일(2010년 4월 19일)현재로 유효한 것입니다.",
+    "availability_conclusion": "Attachment audit validity postdates indexed original receipt; do not backdate it. Actual addition/publication version relation is UNVERIFIED."
+  },
+  "ocf": {
+    "receipt": "20100331001580",
+    "scope": "OFS",
+    "period_start": "2009-01-01",
+    "period_end": "2009-12-31",
+    "unit": "원",
+    "main_ocf": "2274870860",
+    "attachment_ocf": "2274103227",
+    "difference": "767633",
+    "main_cf_profit": "-705129840",
+    "main_is_and_attachment_profit": "-705897473",
+    "profit_difference": "767633",
+    "explanation": "The OCF difference equals the main cash-flow reconciliation profit difference; primary IS and auditor IS agree. This locates inconsistency in CF but does not authenticate which version is authoritative.",
+    "correction_relation": "UNVERIFIED",
+    "disposition": "Hold CF; old document-wide hold/15 candidates preserved until a version-specific independent review releases unaffected fields. No new release in this classification."
+  }
+}

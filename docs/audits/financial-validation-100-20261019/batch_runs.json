@@ -1,0 +1,597 @@
+[
+  {
+    "run_id": "39192948146",
+    "commit": "322e8d6683be3cfdc98ad1df409a524240330a91",
+    "started_at_utc": "2026-10-19T03:17:02.464883+00:00",
+    "status": "COMPLETE_CANDIDATES_HELD",
+    "current_receipt": "20100331001619",
+    "current_stage": "CHECKPOINT_DURABLE",
+    "completed": 20,
+    "last_checkpoint": "20100331001619",
+    "automatic_publication": "HELD",
+    "financial_population_certification": "UNVERIFIED",
+    "investment_PIT": "0/6",
+    "elapsed_seconds": 215.391,
+    "updated_at_utc": "2026-10-19T03:20:37.855440+00:00",
+    "stop_reason": "BATCH_COMPLETE",
+    "results": [
+      {
+        "receipt": "20100331001586",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001587",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001588",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001593",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001594",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001596",
+        "status": "PARSED_4F",
+        "rows": 19
+      },
+      {
+        "receipt": "20100331001599",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001600",
+        "status": "PARSED_PARTIAL",
+        "rows": 11
+      },
+      {
+        "receipt": "20100331001601",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001605",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001606",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001607",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001609",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001610",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001612",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001615",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001616",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001617",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001618",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001619",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      }
+    ],
+    "finished_at_utc": "2026-10-19T03:20:37.855428+00:00"
+  },
+  {
+    "run_id": "39192948146",
+    "commit": "322e8d6683be3cfdc98ad1df409a524240330a91",
+    "started_at_utc": "2026-10-19T03:20:39.186120+00:00",
+    "status": "COMPLETE_CANDIDATES_HELD",
+    "current_receipt": "20100331001656",
+    "current_stage": "CHECKPOINT_DURABLE",
+    "completed": 20,
+    "last_checkpoint": "20100331001656",
+    "automatic_publication": "HELD",
+    "financial_population_certification": "UNVERIFIED",
+    "investment_PIT": "0/6",
+    "elapsed_seconds": 222.512,
+    "updated_at_utc": "2026-10-19T03:24:21.698290+00:00",
+    "stop_reason": "BATCH_COMPLETE",
+    "results": [
+      {
+        "receipt": "20100331001623",
+        "status": "PARSED_4F",
+        "rows": 18
+      },
+      {
+        "receipt": "20100331001625",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001627",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001628",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001630",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001631",
+        "status": "PARSED_PARTIAL",
+        "rows": 11
+      },
+      {
+        "receipt": "20100331001632",
+        "status": "PARSED_4F",
+        "rows": 20
+      },
+      {
+        "receipt": "20100331001634",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001636",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001637",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001640",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001641",
+        "status": "PARSED_4F",
+        "rows": 11
+      },
+      {
+        "receipt": "20100331001644",
+        "status": "PARSED_PARTIAL",
+        "rows": 11
+      },
+      {
+        "receipt": "20100331001647",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001648",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001649",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001650",
+        "status": "PARSED_4F",
+        "rows": 18
+      },
+      {
+        "receipt": "20100331001651",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001655",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001656",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      }
+    ],
+    "finished_at_utc": "2026-10-19T03:24:21.698280+00:00"
+  },
+  {
+    "run_id": "39192948146",
+    "commit": "322e8d6683be3cfdc98ad1df409a524240330a91",
+    "started_at_utc": "2026-10-19T03:24:23.075622+00:00",
+    "status": "COMPLETE_CANDIDATES_HELD",
+    "current_receipt": "20100331001684",
+    "current_stage": "CHECKPOINT_DURABLE",
+    "completed": 20,
+    "last_checkpoint": "20100331001684",
+    "automatic_publication": "HELD",
+    "financial_population_certification": "UNVERIFIED",
+    "investment_PIT": "0/6",
+    "elapsed_seconds": 232.229,
+    "updated_at_utc": "2026-10-19T03:28:15.304728+00:00",
+    "stop_reason": "BATCH_COMPLETE",
+    "results": [
+      {
+        "receipt": "20100331001658",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001661",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001662",
+        "status": "PARSED_4F",
+        "rows": 18
+      },
+      {
+        "receipt": "20100331001663",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001664",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001665",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001667",
+        "status": "PARSED_4F",
+        "rows": 11
+      },
+      {
+        "receipt": "20100331001668",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001670",
+        "status": "PARSED_4F",
+        "rows": 11
+      },
+      {
+        "receipt": "20100331001671",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001672",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001673",
+        "status": "PARSED_4F",
+        "rows": 18
+      },
+      {
+        "receipt": "20100331001676",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001677",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001678",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001679",
+        "status": "PARSED_PARTIAL",
+        "rows": 16
+      },
+      {
+        "receipt": "20100331001680",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001682",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001683",
+        "status": "PARSED_4F",
+        "rows": 11
+      },
+      {
+        "receipt": "20100331001684",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      }
+    ],
+    "finished_at_utc": "2026-10-19T03:28:15.304715+00:00"
+  },
+  {
+    "run_id": "39192948146",
+    "commit": "322e8d6683be3cfdc98ad1df409a524240330a91",
+    "started_at_utc": "2026-10-19T03:28:17.017609+00:00",
+    "status": "COMPLETE_CANDIDATES_HELD",
+    "current_receipt": "20100331001712",
+    "current_stage": "CHECKPOINT_DURABLE",
+    "completed": 20,
+    "last_checkpoint": "20100331001712",
+    "automatic_publication": "HELD",
+    "financial_population_certification": "UNVERIFIED",
+    "investment_PIT": "0/6",
+    "elapsed_seconds": 228.315,
+    "updated_at_utc": "2026-10-19T03:32:05.332737+00:00",
+    "stop_reason": "BATCH_COMPLETE",
+    "results": [
+      {
+        "receipt": "20100331001687",
+        "status": "PARSED_4F",
+        "rows": 19
+      },
+      {
+        "receipt": "20100331001688",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001689",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001690",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001691",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001693",
+        "status": "PARSED_4F",
+        "rows": 16
+      },
+      {
+        "receipt": "20100331001695",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001696",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001697",
+        "status": "PARSED_4F",
+        "rows": 18
+      },
+      {
+        "receipt": "20100331001698",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001699",
+        "status": "PARSED_4F",
+        "rows": 16
+      },
+      {
+        "receipt": "20100331001700",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001701",
+        "status": "PARSED_4F",
+        "rows": 17
+      },
+      {
+        "receipt": "20100331001704",
+        "status": "PARSED_4F",
+        "rows": 11
+      },
+      {
+        "receipt": "20100331001705",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001707",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001708",
+        "status": "PARSED_4F",
+        "rows": 17
+      },
+      {
+        "receipt": "20100331001710",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001711",
+        "status": "PARSED_4F",
+        "rows": 18
+      },
+      {
+        "receipt": "20100331001712",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      }
+    ],
+    "finished_at_utc": "2026-10-19T03:32:05.332726+00:00"
+  },
+  {
+    "run_id": "39192948146",
+    "commit": "322e8d6683be3cfdc98ad1df409a524240330a91",
+    "started_at_utc": "2026-10-19T03:32:06.820794+00:00",
+    "status": "COMPLETE_CANDIDATES_HELD",
+    "current_receipt": "20100331001757",
+    "current_stage": "CHECKPOINT_DURABLE",
+    "completed": 20,
+    "last_checkpoint": "20100331001757",
+    "automatic_publication": "HELD",
+    "financial_population_certification": "UNVERIFIED",
+    "investment_PIT": "0/6",
+    "elapsed_seconds": 240.448,
+    "updated_at_utc": "2026-10-19T03:36:07.268566+00:00",
+    "stop_reason": "BATCH_COMPLETE",
+    "results": [
+      {
+        "receipt": "20100331001714",
+        "status": "PARSED_4F",
+        "rows": 11
+      },
+      {
+        "receipt": "20100331001715",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001716",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001717",
+        "status": "PARSED_4F",
+        "rows": 17
+      },
+      {
+        "receipt": "20100331001718",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001724",
+        "status": "PARSED_4F",
+        "rows": 11
+      },
+      {
+        "receipt": "20100331001726",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001727",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001728",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001730",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001733",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001741",
+        "status": "PARSED_4F",
+        "rows": 11
+      },
+      {
+        "receipt": "20100331001742",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001744",
+        "status": "PARSED_4F",
+        "rows": 11
+      },
+      {
+        "receipt": "20100331001745",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001746",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001748",
+        "status": "PARSED_4F",
+        "rows": 18
+      },
+      {
+        "receipt": "20100331001753",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001754",
+        "status": "SOURCE_GAP",
+        "rows": 0
+      },
+      {
+        "receipt": "20100331001757",
+        "status": "PARSED_4F",
+        "rows": 18
+      }
+    ],
+    "finished_at_utc": "2026-10-19T03:36:07.268552+00:00"
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "status": "PASS_ALL_FINANCIAL_COLUMNS_IDENTICAL",
+  "changed_metadata_column": "revised_parser",
+  "rows": 88,
+  "prior_parser": "legacy-v9.1-primary-source-metadata",
+  "candidate_parser": "legacy-v9.2-statement-boundary-guard",
+  "numeric_period_scope_source_verdict_columns": "UNCHANGED",
+  "original_golden_files_modified": false
+}

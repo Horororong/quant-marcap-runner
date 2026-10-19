@@ -1,0 +1,427 @@
+{
+  "controls": [
+    {
+      "receipt": "20100331001580",
+      "member": "20100331001580.xml",
+      "metric": "equity",
+      "scope": "OFS",
+      "table": 67,
+      "row": 70,
+      "column": 1,
+      "literal": "29,262,420,531",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "instant",
+      "member_sha256": "e41125f4d20765870d87bc18d17d1cacb85c0ada4097c67a3301c45a3acc5ffc",
+      "archive_sha256": "b73e7f9d018051da0162cfd17e2c0262e78683da71aacbc1e612eaeafcedf670",
+      "id": "prior10-20100331001580-OFS-equity",
+      "cohort": "prior10",
+      "account_literal": "자본총계",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independently re-read primary current FY2009 exact monetary cell; source scope, current-column header, account and won unit proved. Same-archive OFS auditor BS/IS corroborate. CF discrepancy is isolated and held; no correction-chain or PIT inference.",
+      "header_proofs": [
+        {
+          "table": 67,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 67,
+          "literal": "(단위 : 원)"
+        }
+      ],
+      "corroborating_sources": [
+        {
+          "member": "20100331001580_00760.xml",
+          "member_sha256": "916632731754a9ef2d20d681a57827eb348231df708013a00146a586e5faebca",
+          "table": 6,
+          "row": 63,
+          "column": 2,
+          "literal": "29,262,420,531",
+          "account_literal": "자 본 총 계",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "",
+          "period_end": "2009-12-31"
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001580",
+      "member": "20100331001580.xml",
+      "metric": "revenue",
+      "scope": "OFS",
+      "table": 69,
+      "row": 1,
+      "column": 1,
+      "literal": "3,086,981,570",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "cumulative",
+      "member_sha256": "e41125f4d20765870d87bc18d17d1cacb85c0ada4097c67a3301c45a3acc5ffc",
+      "archive_sha256": "b73e7f9d018051da0162cfd17e2c0262e78683da71aacbc1e612eaeafcedf670",
+      "id": "prior10-20100331001580-OFS-revenue",
+      "cohort": "prior10",
+      "account_literal": "영업수익",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independently re-read primary current FY2009 exact monetary cell; source scope, current-column header, account and won unit proved. Same-archive OFS auditor BS/IS corroborate. CF discrepancy is isolated and held; no correction-chain or PIT inference.",
+      "header_proofs": [
+        {
+          "table": 69,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 69,
+          "literal": "(단위 : 원)"
+        }
+      ],
+      "corroborating_sources": [
+        {
+          "member": "20100331001580_00760.xml",
+          "member_sha256": "916632731754a9ef2d20d681a57827eb348231df708013a00146a586e5faebca",
+          "table": 9,
+          "row": 1,
+          "column": 2,
+          "literal": "3,086,981,570",
+          "account_literal": "Ⅰ.영업수익",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31"
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001580",
+      "member": "20100331001580.xml",
+      "metric": "net_income",
+      "scope": "OFS",
+      "table": 69,
+      "row": 71,
+      "column": 1,
+      "literal": "(705,897,473)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "cumulative",
+      "member_sha256": "e41125f4d20765870d87bc18d17d1cacb85c0ada4097c67a3301c45a3acc5ffc",
+      "archive_sha256": "b73e7f9d018051da0162cfd17e2c0262e78683da71aacbc1e612eaeafcedf670",
+      "id": "prior10-20100331001580-OFS-net_income",
+      "cohort": "prior10",
+      "account_literal": "당기순이익(손실)",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independently re-read primary current FY2009 exact monetary cell; source scope, current-column header, account and won unit proved. Same-archive OFS auditor BS/IS corroborate. CF discrepancy is isolated and held; no correction-chain or PIT inference.",
+      "header_proofs": [
+        {
+          "table": 69,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 69,
+          "literal": "(단위 : 원)"
+        }
+      ],
+      "corroborating_sources": [
+        {
+          "member": "20100331001580_00760.xml",
+          "member_sha256": "916632731754a9ef2d20d681a57827eb348231df708013a00146a586e5faebca",
+          "table": 9,
+          "row": 63,
+          "column": 2,
+          "literal": "(705,897,473)",
+          "account_literal": "Ⅷ.당기순이익(손실)(주석21)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31"
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001580",
+      "member": "20100331001580.xml",
+      "metric": "ocf",
+      "scope": "OFS",
+      "table": 75,
+      "row": 1,
+      "column": 1,
+      "literal": "2,274,870,860",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "cumulative",
+      "member_sha256": "e41125f4d20765870d87bc18d17d1cacb85c0ada4097c67a3301c45a3acc5ffc",
+      "archive_sha256": "b73e7f9d018051da0162cfd17e2c0262e78683da71aacbc1e612eaeafcedf670",
+      "id": "prior10-20100331001580-OFS-ocf",
+      "cohort": "prior10",
+      "account_literal": "영업활동으로인한현금흐름",
+      "statement": "CF",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independently re-read primary current FY2009 exact monetary cell; source scope, current-column header, account and won unit proved. Same-archive OFS auditor BS/IS corroborate. CF discrepancy is isolated and held; no correction-chain or PIT inference.",
+      "header_proofs": [
+        {
+          "table": 75,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 75,
+          "literal": "(단위 : 원)"
+        }
+      ],
+      "corroborating_sources": [
+        {
+          "member": "20100331001580_00760.xml",
+          "member_sha256": "916632731754a9ef2d20d681a57827eb348231df708013a00146a586e5faebca",
+          "table": 19,
+          "row": 1,
+          "column": 2,
+          "literal": "2,274,103,227",
+          "account_literal": "Ⅰ.영업활동으로인한현금흐름",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31"
+        }
+      ],
+      "hold_reason": "SOURCE_CF_CONFLICT_NO_AUTHORITY_TO_CHOOSE_OR_AVERAGE"
+    },
+    {
+      "receipt": "20100331001582",
+      "member": "20100331001582_00761.xml",
+      "metric": "equity",
+      "scope": "CFS",
+      "table": 7,
+      "row": 114,
+      "column": 2,
+      "literal": "221,308,938,747",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "instant",
+      "member_sha256": "da452fdb406e91b3221ce8aca62f1394da4da2d1e8bf90aa1f1af9c485c75768",
+      "archive_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+      "id": "prior10-20100331001582-CFS-equity",
+      "cohort": "prior10",
+      "account_literal": "자본총계",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Explicit consolidated auditor statement, FY2009 current term39, won unit. Auditor validity2010-04-19 postdates original2010-03-31; numeric source identity only, no backdating and no CFS-from-OFS substitution.",
+      "header_proofs": [
+        {
+          "table": 7,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 7,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001582",
+      "member": "20100331001582_00761.xml",
+      "metric": "revenue",
+      "scope": "CFS",
+      "table": 10,
+      "row": 1,
+      "column": 2,
+      "literal": "1,230,823,505,081",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "cumulative",
+      "member_sha256": "da452fdb406e91b3221ce8aca62f1394da4da2d1e8bf90aa1f1af9c485c75768",
+      "archive_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+      "id": "prior10-20100331001582-CFS-revenue",
+      "cohort": "prior10",
+      "account_literal": "Ⅰ.매출액(주석2,24,29)",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Explicit consolidated auditor statement, FY2009 current term39, won unit. Auditor validity2010-04-19 postdates original2010-03-31; numeric source identity only, no backdating and no CFS-from-OFS substitution.",
+      "header_proofs": [
+        {
+          "table": 10,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 10,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001582",
+      "member": "20100331001582_00761.xml",
+      "metric": "net_income",
+      "scope": "CFS",
+      "table": 10,
+      "row": 81,
+      "column": 2,
+      "literal": "61,671,053,547",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "cumulative",
+      "member_sha256": "da452fdb406e91b3221ce8aca62f1394da4da2d1e8bf90aa1f1af9c485c75768",
+      "archive_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+      "id": "prior10-20100331001582-CFS-net_income",
+      "cohort": "prior10",
+      "account_literal": "ⅩⅠ.당기순이익",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Explicit consolidated auditor statement, FY2009 current term39, won unit. Auditor validity2010-04-19 postdates original2010-03-31; numeric source identity only, no backdating and no CFS-from-OFS substitution.",
+      "header_proofs": [
+        {
+          "table": 10,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 10,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001582",
+      "member": "20100331001582_00761.xml",
+      "metric": "ocf",
+      "scope": "CFS",
+      "table": 16,
+      "row": 1,
+      "column": 2,
+      "literal": "102,326,347,617",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "cumulative",
+      "member_sha256": "da452fdb406e91b3221ce8aca62f1394da4da2d1e8bf90aa1f1af9c485c75768",
+      "archive_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+      "id": "prior10-20100331001582-CFS-ocf",
+      "cohort": "prior10",
+      "account_literal": "Ⅰ.영업활동으로인한현금흐름",
+      "statement": "CF",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Explicit consolidated auditor statement, FY2009 current term39, won unit. Auditor validity2010-04-19 postdates original2010-03-31; numeric source identity only, no backdating and no CFS-from-OFS substitution.",
+      "header_proofs": [
+        {
+          "table": 16,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 16,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "prior10-source-gap-20100331001574",
+      "receipt": "20100331001574",
+      "cohort": "prior10",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001574.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "First strict-XML rejection caused by unescaped Korean angle text. ZIP and financial tables preserved; not established as binary damage or actual absence. No numerical value released."
+    },
+    {
+      "id": "prior10-source-gap-20100331001575",
+      "receipt": "20100331001575",
+      "cohort": "prior10",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001575.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "First strict-XML rejection caused by unescaped Korean angle text. ZIP and financial tables preserved; not established as binary damage or actual absence. No numerical value released."
+    },
+    {
+      "id": "prior10-source-gap-20100331001576",
+      "receipt": "20100331001576",
+      "cohort": "prior10",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001576.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "First strict-XML rejection caused by unescaped Korean angle text. ZIP and financial tables preserved; not established as binary damage or actual absence. No numerical value released."
+    },
+    {
+      "id": "prior10-source-gap-20100331001579",
+      "receipt": "20100331001579",
+      "cohort": "prior10",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001579.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "First strict-XML rejection caused by unescaped Korean angle text. ZIP and financial tables preserved; not established as binary damage or actual absence. No numerical value released."
+    },
+    {
+      "id": "prior10-source-gap-20100331001581",
+      "receipt": "20100331001581",
+      "cohort": "prior10",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001581.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "First strict-XML rejection caused by unescaped Korean angle text. ZIP and financial tables preserved; not established as binary damage or actual absence. No numerical value released."
+    },
+    {
+      "id": "prior10-source-gap-20100331001583",
+      "receipt": "20100331001583",
+      "cohort": "prior10",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001583.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "First strict-XML rejection caused by unescaped Korean angle text. ZIP and financial tables preserved; not established as binary damage or actual absence. No numerical value released."
+    },
+    {
+      "id": "prior10-source-gap-20100331001585",
+      "receipt": "20100331001585",
+      "cohort": "prior10",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001585.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "First strict-XML rejection caused by unescaped Korean angle text. ZIP and financial tables preserved; not established as binary damage or actual absence. No numerical value released."
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "receipts": [
+    "20100331001586",
+    "20100331001588",
+    "20100331001605",
+    "20100331001606",
+    "20100331001616",
+    "20100331001617",
+    "20100331001631",
+    "20100331001634",
+    "20100331001640",
+    "20100331001647",
+    "20100331001651",
+    "20100331001667",
+    "20100331001671",
+    "20100331001673",
+    "20100331001678",
+    "20100331001679",
+    "20100331001683",
+    "20100331001687",
+    "20100331001689",
+    "20100331001693",
+    "20100331001697",
+    "20100331001699",
+    "20100331001714",
+    "20100331001728",
+    "20100331001745",
+    "20100331001748",
+    "20100331001753",
+    "20100331001754"
+  ],
+  "selection_sha256": "96297e4e36e7ded191feb049d1cc18a290e9daf4c7138bf76edd3ab1e9744dec",
+  "rule": {
+    "primary": "lowest SHA256(seed|receipt)20 receipts, fixed before HTTP",
+    "augment": "All extracted documents if total extracted<=20; otherwise at least10 extracted, plus first2 of every observed extraction state, ordered by same seed",
+    "conflicts": "All discovered source conflicts held regardless of sample",
+    "expected_values": "Human literal controls frozen from independent raw grids before opening production row amounts; no parser-derived expectations",
+    "after_fix": "A sample used to change parser becomes regression, fresh unused holdout required"
+  },
+  "before_production_amounts": true
+}

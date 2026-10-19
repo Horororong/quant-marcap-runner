@@ -1,0 +1,214 @@
+[
+  {
+    "name": "runtime",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/financial-repair/runtime/scripts/sandbox_runtime.py",
+      "verify"
+    ],
+    "exit_code": 0,
+    "log": "runtime.log"
+  },
+  {
+    "name": "financial_units",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_financial*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "financial_units.log"
+  },
+  {
+    "name": "service",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_dart_service_status.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "service.log"
+  },
+  {
+    "name": "phase",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_fast_backfill_phase*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "phase.log"
+  },
+  {
+    "name": "source_quality",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_legacy_document_quality.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "source_quality.log"
+  },
+  {
+    "name": "main_patch_apply_and_rollback",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/financial-v92-reference/docs/audits/backfill-accuracy-20261018/candidate_patch_regression.py",
+      "--candidate-manifest",
+      "/workspace/financial-batch100-20261019/docs/audits/financial-validation-100-20261019/parser_candidate.json"
+    ],
+    "exit_code": 0,
+    "log": "main_patch_apply_and_rollback.log"
+  },
+  {
+    "name": "pinned_v7",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/financial-v92-reference/docs/audits/backfill-accuracy-20261018/replay.py",
+      "--before",
+      "--cohort",
+      "development",
+      "--output",
+      "/workspace/financial-v92-protected-audit/v7"
+    ],
+    "exit_code": 0,
+    "log": "pinned_v7.log"
+  },
+  {
+    "name": "reextract_v91",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/financial-v92-reference/docs/audits/backfill-accuracy-20261018/replay.py",
+      "--output",
+      "/workspace/financial-v92-protected-audit/v91"
+    ],
+    "exit_code": 0,
+    "log": "reextract_v91.log"
+  },
+  {
+    "name": "independent_controls",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/financial-v92-reference/docs/audits/backfill-accuracy-20261018/compare.py",
+      "--replay",
+      "/workspace/financial-v92-protected-audit/v91",
+      "--output",
+      "/workspace/financial-v92-protected-audit/audit"
+    ],
+    "exit_code": 0,
+    "log": "independent_controls.log"
+  },
+  {
+    "name": "materialize60",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/financial-v92-reference/docs/audits/backfill-accuracy-20261018/materialize60.py",
+      "--originals",
+      "/workspace/financial-repair/preserved-originals60.zip",
+      "--output",
+      "/workspace/financial-v92-protected-audit/originals"
+    ],
+    "exit_code": 0,
+    "log": "materialize60.log"
+  },
+  {
+    "name": "replay60",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/financial-v92-reference/docs/audits/financial-repair-20261014/replay60.py",
+      "--original40",
+      "/workspace/financial-v92-protected-audit/originals/original40",
+      "--holdout20",
+      "/workspace/financial-v92-protected-audit/originals/holdout20",
+      "--runtime",
+      "/workspace/financial-repair/runtime",
+      "--output",
+      "/workspace/financial-v92-protected-audit/replay60"
+    ],
+    "exit_code": 0,
+    "log": "replay60.log"
+  },
+  {
+    "name": "independent_original60",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/financial-v92-reference/docs/audits/financial-extraction-stage3-20261014/revalidate.py",
+      "--original40",
+      "/workspace/financial-v92-protected-audit/originals/original40",
+      "--holdout20",
+      "/workspace/financial-v92-protected-audit/originals/holdout20",
+      "--replay",
+      "/workspace/financial-v92-protected-audit/replay60",
+      "--output",
+      "/workspace/financial-v92-protected-audit/audit60"
+    ],
+    "exit_code": 0,
+    "log": "independent_original60.log"
+  },
+  {
+    "name": "protected_controls",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/financial-v92-reference/docs/audits/backfill-accuracy-20261018/verify_protected.py",
+      "--replay",
+      "/workspace/financial-v92-protected-audit/replay60",
+      "--audit",
+      "/workspace/financial-v92-protected-audit/audit60",
+      "--output",
+      "/workspace/financial-v92-protected-audit/protected.json"
+    ],
+    "exit_code": 0,
+    "log": "protected_controls.log"
+  },
+  {
+    "name": "old_bytes_preserved",
+    "command": [
+      "/workspace/financial-repair/runtime/.venv/bin/python",
+      "-I",
+      "/workspace/financial-v92-reference/docs/research/stage16-continuous-research-20261018/preserve.py",
+      "--originals",
+      "/workspace/financial-repair/preserved-originals60.zip",
+      "--output",
+      "/workspace/financial-v92-protected-audit/preservation"
+    ],
+    "exit_code": 0,
+    "log": "old_bytes_preserved.log"
+  }
+]

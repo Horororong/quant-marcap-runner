@@ -1,0 +1,3733 @@
+{
+  "contract": "independent-source-review-v1",
+  "seed": "financial-validation-100-20261019-v1",
+  "expectations": "Human typed main source values and selected current source coordinates; auxiliary literals copied from independently read auditor grids. No production row amounts opened.",
+  "selection_sha256": "96297e4e36e7ded191feb049d1cc18a290e9daf4c7138bf76edd3ab1e9744dec",
+  "controls": [
+    {
+      "id": "new100-20100331001631-OFS-equity",
+      "receipt": "20100331001631",
+      "cohort": "new100",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001631.xml",
+      "member_sha256": "b981eca887da31dd6721fe3ba2f3eae7df4edddc7b9760dc9a43ab893f7ff3df",
+      "archive_sha256": "ea0d256cb1e90f91eb296c21ca9c75633510606db1888db609072f803604d839",
+      "table": 105,
+      "row": 26,
+      "column": 1,
+      "literal": "3,185,323,470",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term3, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 105,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 105,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 105,
+          "literal": "제3기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 거북선3호 선박투자회사 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 3 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 거북선3호선박투자회사 대 표 이 사 : 신 주 선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석 흔 욱 (전 화) 02-559-",
+      "corroborating_sources": [
+        {
+          "member": "20100331001631_00760.xml",
+          "member_sha256": "a362122ac9966f0c00887ca6027e2f1019d7d76968a215a623c1ea3b46a45431",
+          "table": 6,
+          "row": 26,
+          "column": 2,
+          "literal": "3,185,323,470",
+          "account_literal": "자 본 총 계",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001631-OFS-revenue",
+      "receipt": "20100331001631",
+      "cohort": "new100",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001631.xml",
+      "member_sha256": "b981eca887da31dd6721fe3ba2f3eae7df4edddc7b9760dc9a43ab893f7ff3df",
+      "archive_sha256": "ea0d256cb1e90f91eb296c21ca9c75633510606db1888db609072f803604d839",
+      "table": 107,
+      "row": 1,
+      "column": 1,
+      "literal": "",
+      "account_literal": "영업수익",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "UNVERIFIED",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term3, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 107,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 107,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 107,
+          "literal": "제3기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 거북선3호 선박투자회사 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 3 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 거북선3호선박투자회사 대 표 이 사 : 신 주 선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석 흔 욱 (전 화) 02-559-",
+      "corroborating_sources": [
+        {
+          "member": "20100331001631_00760.xml",
+          "member_sha256": "a362122ac9966f0c00887ca6027e2f1019d7d76968a215a623c1ea3b46a45431",
+          "table": 8,
+          "row": 1,
+          "column": 2,
+          "literal": "-",
+          "account_literal": "Ⅰ. 영업수익(주석2)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ],
+      "reason": "CURRENT_REVENUE_TOTAL_BLANK; auditor dash. No zero, prior-period fallback or subaccount sum inferred."
+    },
+    {
+      "id": "new100-20100331001631-OFS-net_income",
+      "receipt": "20100331001631",
+      "cohort": "new100",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001631.xml",
+      "member_sha256": "b981eca887da31dd6721fe3ba2f3eae7df4edddc7b9760dc9a43ab893f7ff3df",
+      "archive_sha256": "ea0d256cb1e90f91eb296c21ca9c75633510606db1888db609072f803604d839",
+      "table": 107,
+      "row": 19,
+      "column": 1,
+      "literal": "(1,352,885,638)",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term3, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 107,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 107,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 107,
+          "literal": "제3기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 거북선3호 선박투자회사 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 3 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 거북선3호선박투자회사 대 표 이 사 : 신 주 선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석 흔 욱 (전 화) 02-559-",
+      "corroborating_sources": [
+        {
+          "member": "20100331001631_00760.xml",
+          "member_sha256": "a362122ac9966f0c00887ca6027e2f1019d7d76968a215a623c1ea3b46a45431",
+          "table": 8,
+          "row": 19,
+          "column": 2,
+          "literal": "1,352,885,638",
+          "account_literal": "Ⅷ. 당기순손실",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": true
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001631-OFS-ocf",
+      "receipt": "20100331001631",
+      "cohort": "new100",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001631.xml",
+      "member_sha256": "b981eca887da31dd6721fe3ba2f3eae7df4edddc7b9760dc9a43ab893f7ff3df",
+      "archive_sha256": "ea0d256cb1e90f91eb296c21ca9c75633510606db1888db609072f803604d839",
+      "table": 113,
+      "row": 1,
+      "column": 1,
+      "literal": "(1,103,999,253)",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term3, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 113,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 113,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 113,
+          "literal": "제3기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 거북선3호 선박투자회사 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 3 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 거북선3호선박투자회사 대 표 이 사 : 신 주 선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석 흔 욱 (전 화) 02-559-",
+      "corroborating_sources": [
+        {
+          "member": "20100331001631_00760.xml",
+          "member_sha256": "a362122ac9966f0c00887ca6027e2f1019d7d76968a215a623c1ea3b46a45431",
+          "table": 15,
+          "row": 1,
+          "column": 2,
+          "literal": "(1,103,999,253)",
+          "account_literal": "Ⅰ. 영업활동으로 인한 현금흐름",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001667-OFS-equity",
+      "receipt": "20100331001667",
+      "cohort": "new100",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001667.xml",
+      "member_sha256": "533114a971f2b1f356393777d0867aa9e783d3ce6280c2758d963745d8a643d9",
+      "archive_sha256": "6139fd0416bee9614b3b6177c387cfa57475fcf9013cc4f5760954946c272968",
+      "table": 81,
+      "row": 29,
+      "column": 1,
+      "literal": "8,731,811,603",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term6, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 81,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 81,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 81,
+          "literal": "제6기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 아시아퍼시픽2호 선박투자회사 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 6 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 아시아퍼시픽2호 선박투자회사 대 표 이 사 : 신주선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석흔욱 (전 화) 02-5",
+      "corroborating_sources": [
+        {
+          "member": "20100331001667_00760.xml",
+          "member_sha256": "7f7aa49f892752add43072da42fe7d3f1bb3b088cd4030e20b5b40e6ffb6d9e4",
+          "table": 7,
+          "row": 28,
+          "column": 2,
+          "literal": "8,731,811,603",
+          "account_literal": "자 본 총 계",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001667-OFS-revenue",
+      "receipt": "20100331001667",
+      "cohort": "new100",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001667.xml",
+      "member_sha256": "533114a971f2b1f356393777d0867aa9e783d3ce6280c2758d963745d8a643d9",
+      "archive_sha256": "6139fd0416bee9614b3b6177c387cfa57475fcf9013cc4f5760954946c272968",
+      "table": 83,
+      "row": 1,
+      "column": 1,
+      "literal": "875,433,066",
+      "account_literal": "영업수익",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term6, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 83,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 83,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 83,
+          "literal": "제6기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 아시아퍼시픽2호 선박투자회사 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 6 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 아시아퍼시픽2호 선박투자회사 대 표 이 사 : 신주선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석흔욱 (전 화) 02-5",
+      "corroborating_sources": [
+        {
+          "member": "20100331001667_00760.xml",
+          "member_sha256": "7f7aa49f892752add43072da42fe7d3f1bb3b088cd4030e20b5b40e6ffb6d9e4",
+          "table": 10,
+          "row": 1,
+          "column": 2,
+          "literal": "875,433,066",
+          "account_literal": "Ⅰ.영업수익(주석9)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001667-OFS-net_income",
+      "receipt": "20100331001667",
+      "cohort": "new100",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001667.xml",
+      "member_sha256": "533114a971f2b1f356393777d0867aa9e783d3ce6280c2758d963745d8a643d9",
+      "archive_sha256": "6139fd0416bee9614b3b6177c387cfa57475fcf9013cc4f5760954946c272968",
+      "table": 83,
+      "row": 26,
+      "column": 1,
+      "literal": "536,277,091",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term6, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 83,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 83,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 83,
+          "literal": "제6기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 아시아퍼시픽2호 선박투자회사 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 6 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 아시아퍼시픽2호 선박투자회사 대 표 이 사 : 신주선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석흔욱 (전 화) 02-5",
+      "corroborating_sources": [
+        {
+          "member": "20100331001667_00760.xml",
+          "member_sha256": "7f7aa49f892752add43072da42fe7d3f1bb3b088cd4030e20b5b40e6ffb6d9e4",
+          "table": 10,
+          "row": 26,
+          "column": 2,
+          "literal": "536,277,091&cr;=============",
+          "account_literal": "Ⅷ.당기순이익",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001667-OFS-ocf",
+      "receipt": "20100331001667",
+      "cohort": "new100",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001667.xml",
+      "member_sha256": "533114a971f2b1f356393777d0867aa9e783d3ce6280c2758d963745d8a643d9",
+      "archive_sha256": "6139fd0416bee9614b3b6177c387cfa57475fcf9013cc4f5760954946c272968",
+      "table": 89,
+      "row": 1,
+      "column": 1,
+      "literal": "540,010,583",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term6, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 89,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 89,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 89,
+          "literal": "제6기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 아시아퍼시픽2호 선박투자회사 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 6 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 아시아퍼시픽2호 선박투자회사 대 표 이 사 : 신주선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석흔욱 (전 화) 02-5",
+      "corroborating_sources": [
+        {
+          "member": "20100331001667_00760.xml",
+          "member_sha256": "7f7aa49f892752add43072da42fe7d3f1bb3b088cd4030e20b5b40e6ffb6d9e4",
+          "table": 20,
+          "row": 1,
+          "column": 2,
+          "literal": "540,010,583",
+          "account_literal": "Ⅰ. 영업활동으로 인한 현금흐름",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001673-OFS-equity",
+      "receipt": "20100331001673",
+      "cohort": "new100",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001673.xml",
+      "member_sha256": "99a9b15b9e87841852da6611fb20915ec3f7639f7678c333668468ac81d62081",
+      "archive_sha256": "1ef890296c83ea04e489eef4f95bb87832ac187c2c584f7eb1be0b6f12eb302a",
+      "table": 116,
+      "row": 84,
+      "column": 1,
+      "literal": "71,165,668,275",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term47, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 116,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 116,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 116,
+          "literal": "제47기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 삼영화학공업(주) L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 47 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : 삼영화학공업(주) 대 표 이 사 : 이 종 기 본 점 소 재 지 : 서울특별시 중구 소공동 70번지 (전 화) 02-771-7670 (홈페이지) http://www.sycc.co.kr 작 성 책 임 자 : (직 책) 팀 장 (성 명) 박 현 일 (전 화) 02-771-7670 목 차 Ⅰ. 회사의 개요",
+      "corroborating_sources": [
+        {
+          "member": "20100331001673_00760.xml",
+          "member_sha256": "2b6602f3ace8f7abd3df12bafa95fd45a00b66d8bc06772956ec97aafc70f0a8",
+          "table": 7,
+          "row": 83,
+          "column": 2,
+          "literal": "71,165,668,275",
+          "account_literal": "자 본 총 계",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001673-OFS-revenue",
+      "receipt": "20100331001673",
+      "cohort": "new100",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001673.xml",
+      "member_sha256": "99a9b15b9e87841852da6611fb20915ec3f7639f7678c333668468ac81d62081",
+      "archive_sha256": "1ef890296c83ea04e489eef4f95bb87832ac187c2c584f7eb1be0b6f12eb302a",
+      "table": 118,
+      "row": 1,
+      "column": 1,
+      "literal": "159,727,503,656",
+      "account_literal": "매출액",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term47, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 118,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 118,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 118,
+          "literal": "제47기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 삼영화학공업(주) L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 47 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : 삼영화학공업(주) 대 표 이 사 : 이 종 기 본 점 소 재 지 : 서울특별시 중구 소공동 70번지 (전 화) 02-771-7670 (홈페이지) http://www.sycc.co.kr 작 성 책 임 자 : (직 책) 팀 장 (성 명) 박 현 일 (전 화) 02-771-7670 목 차 Ⅰ. 회사의 개요",
+      "corroborating_sources": [
+        {
+          "member": "20100331001673_00760.xml",
+          "member_sha256": "2b6602f3ace8f7abd3df12bafa95fd45a00b66d8bc06772956ec97aafc70f0a8",
+          "table": 9,
+          "row": 1,
+          "column": 2,
+          "literal": "159,727,503,656",
+          "account_literal": "I.매출액",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001673-OFS-net_income",
+      "receipt": "20100331001673",
+      "cohort": "new100",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001673.xml",
+      "member_sha256": "99a9b15b9e87841852da6611fb20915ec3f7639f7678c333668468ac81d62081",
+      "archive_sha256": "1ef890296c83ea04e489eef4f95bb87832ac187c2c584f7eb1be0b6f12eb302a",
+      "table": 118,
+      "row": 66,
+      "column": 1,
+      "literal": "7,666,309,253",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term47, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 118,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 118,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 118,
+          "literal": "제47기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 삼영화학공업(주) L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 47 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : 삼영화학공업(주) 대 표 이 사 : 이 종 기 본 점 소 재 지 : 서울특별시 중구 소공동 70번지 (전 화) 02-771-7670 (홈페이지) http://www.sycc.co.kr 작 성 책 임 자 : (직 책) 팀 장 (성 명) 박 현 일 (전 화) 02-771-7670 목 차 Ⅰ. 회사의 개요",
+      "corroborating_sources": [
+        {
+          "member": "20100331001673_00760.xml",
+          "member_sha256": "2b6602f3ace8f7abd3df12bafa95fd45a00b66d8bc06772956ec97aafc70f0a8",
+          "table": 9,
+          "row": 71,
+          "column": 2,
+          "literal": "7,666,309,253",
+          "account_literal": "X.당기순이익(손실)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001673-OFS-ocf",
+      "receipt": "20100331001673",
+      "cohort": "new100",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001673.xml",
+      "member_sha256": "99a9b15b9e87841852da6611fb20915ec3f7639f7678c333668468ac81d62081",
+      "archive_sha256": "1ef890296c83ea04e489eef4f95bb87832ac187c2c584f7eb1be0b6f12eb302a",
+      "table": 124,
+      "row": 1,
+      "column": 1,
+      "literal": "17,738,477,710",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term47, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 124,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 124,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 124,
+          "literal": "제47기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 삼영화학공업(주) L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 47 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : 삼영화학공업(주) 대 표 이 사 : 이 종 기 본 점 소 재 지 : 서울특별시 중구 소공동 70번지 (전 화) 02-771-7670 (홈페이지) http://www.sycc.co.kr 작 성 책 임 자 : (직 책) 팀 장 (성 명) 박 현 일 (전 화) 02-771-7670 목 차 Ⅰ. 회사의 개요",
+      "corroborating_sources": [
+        {
+          "member": "20100331001673_00760.xml",
+          "member_sha256": "2b6602f3ace8f7abd3df12bafa95fd45a00b66d8bc06772956ec97aafc70f0a8",
+          "table": 16,
+          "row": 1,
+          "column": 2,
+          "literal": "17,738,477,710",
+          "account_literal": "I.영업활동으로인한현금흐름",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001679-OFS-equity",
+      "receipt": "20100331001679",
+      "cohort": "new100",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001679.xml",
+      "member_sha256": "b86ba78b75d9b2bedc2acc72dd79f1237745df6f5410aab042e8f1d6086eef4c",
+      "archive_sha256": "b8cd31e212010219e62daebd7eb9ce17c4bd37c3258485a63db5c9e134b270de",
+      "table": 149,
+      "row": 109,
+      "column": 1,
+      "literal": "624,490,594,088",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term43, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 149,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 149,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 149,
+          "literal": "제43기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 대한해운주식회사 C ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 43 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : 대 한 해 운 주 식 회 사 대 표 이 사 : 사 장 김 창 식 본 점 소 재 지 : 서울특별시 강남구 삼성동 145-9 (전 화) 02-3701-0114 (홈페이지) http://www.korealines.co.kr 작 성 책 임 자 : (직 책) 경영지원본부장 (성 명) 김 칠 봉 (전 화) 02-",
+      "corroborating_sources": [
+        {
+          "member": "20100331001679_00760.xml",
+          "member_sha256": "b8fc80b9b948f848a6a77cf5fc81f65ecdbe819edb33ec071d1a0c011a38e5b8",
+          "table": 9,
+          "row": 105,
+          "column": 2,
+          "literal": "624,490,594,088",
+          "account_literal": "자 본 총 계",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001679-OFS-revenue",
+      "receipt": "20100331001679",
+      "cohort": "new100",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001679.xml",
+      "member_sha256": "b86ba78b75d9b2bedc2acc72dd79f1237745df6f5410aab042e8f1d6086eef4c",
+      "archive_sha256": "b8cd31e212010219e62daebd7eb9ce17c4bd37c3258485a63db5c9e134b270de",
+      "table": 151,
+      "row": 1,
+      "column": 1,
+      "literal": "2,279,323,214,008",
+      "account_literal": "매출액",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term43, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 151,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 151,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 151,
+          "literal": "제43기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 대한해운주식회사 C ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 43 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : 대 한 해 운 주 식 회 사 대 표 이 사 : 사 장 김 창 식 본 점 소 재 지 : 서울특별시 강남구 삼성동 145-9 (전 화) 02-3701-0114 (홈페이지) http://www.korealines.co.kr 작 성 책 임 자 : (직 책) 경영지원본부장 (성 명) 김 칠 봉 (전 화) 02-",
+      "corroborating_sources": [
+        {
+          "member": "20100331001679_00760.xml",
+          "member_sha256": "b8fc80b9b948f848a6a77cf5fc81f65ecdbe819edb33ec071d1a0c011a38e5b8",
+          "table": 11,
+          "row": 1,
+          "column": 2,
+          "literal": "2,279,323,214,008",
+          "account_literal": "I. 매출액(주7)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001679-OFS-net_income",
+      "receipt": "20100331001679",
+      "cohort": "new100",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001679.xml",
+      "member_sha256": "b86ba78b75d9b2bedc2acc72dd79f1237745df6f5410aab042e8f1d6086eef4c",
+      "archive_sha256": "b8cd31e212010219e62daebd7eb9ce17c4bd37c3258485a63db5c9e134b270de",
+      "table": 151,
+      "row": 62,
+      "column": 1,
+      "literal": "(593,095,779,528)",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term43, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 151,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 151,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 151,
+          "literal": "제43기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 대한해운주식회사 C ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 43 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : 대 한 해 운 주 식 회 사 대 표 이 사 : 사 장 김 창 식 본 점 소 재 지 : 서울특별시 강남구 삼성동 145-9 (전 화) 02-3701-0114 (홈페이지) http://www.korealines.co.kr 작 성 책 임 자 : (직 책) 경영지원본부장 (성 명) 김 칠 봉 (전 화) 02-",
+      "corroborating_sources": [
+        {
+          "member": "20100331001679_00760.xml",
+          "member_sha256": "b8fc80b9b948f848a6a77cf5fc81f65ecdbe819edb33ec071d1a0c011a38e5b8",
+          "table": 11,
+          "row": 61,
+          "column": 2,
+          "literal": "(593,095,779,528)",
+          "account_literal": "X. 당기순이익(손실)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001679-OFS-ocf",
+      "receipt": "20100331001679",
+      "cohort": "new100",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001679.xml",
+      "member_sha256": "b86ba78b75d9b2bedc2acc72dd79f1237745df6f5410aab042e8f1d6086eef4c",
+      "archive_sha256": "b8cd31e212010219e62daebd7eb9ce17c4bd37c3258485a63db5c9e134b270de",
+      "table": 157,
+      "row": 1,
+      "column": 1,
+      "literal": "(628,328,494,987)",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term43, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 157,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 157,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 157,
+          "literal": "제43기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 대한해운주식회사 C ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 43 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : 대 한 해 운 주 식 회 사 대 표 이 사 : 사 장 김 창 식 본 점 소 재 지 : 서울특별시 강남구 삼성동 145-9 (전 화) 02-3701-0114 (홈페이지) http://www.korealines.co.kr 작 성 책 임 자 : (직 책) 경영지원본부장 (성 명) 김 칠 봉 (전 화) 02-",
+      "corroborating_sources": [
+        {
+          "member": "20100331001679_00760.xml",
+          "member_sha256": "b8fc80b9b948f848a6a77cf5fc81f65ecdbe819edb33ec071d1a0c011a38e5b8",
+          "table": 18,
+          "row": 1,
+          "column": 2,
+          "literal": "(628,328,494,987)",
+          "account_literal": "Ⅰ. 영업활동으로 인한 현금흐름",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001683-OFS-equity",
+      "receipt": "20100331001683",
+      "cohort": "new100",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001683.xml",
+      "member_sha256": "2f8b98b5704cb20ee197fe6bba26f04225939c4df76fe44f27b5258fec66df54",
+      "archive_sha256": "bc132819a6036386d95a735106929e5d09d7910d548de35aa42d697d3b5b757b",
+      "table": 82,
+      "row": 29,
+      "column": 1,
+      "literal": "8,729,303,053",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term6, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 82,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 82,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 82,
+          "literal": "제6기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 아시아퍼시픽3호 선박투자회사 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 6 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 아시아퍼시픽3호 선박투자회사 대 표 이 사 : 신주선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석흔욱 (전 화) 02-5",
+      "corroborating_sources": [
+        {
+          "member": "20100331001683_00760.xml",
+          "member_sha256": "22fb5bac617dc9892ce6dada9dc1321d871d48b4e6b575d9219bc6745d18f252",
+          "table": 7,
+          "row": 29,
+          "column": 2,
+          "literal": "8,729,303,053",
+          "account_literal": "자 본 총 계",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001683-OFS-revenue",
+      "receipt": "20100331001683",
+      "cohort": "new100",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001683.xml",
+      "member_sha256": "2f8b98b5704cb20ee197fe6bba26f04225939c4df76fe44f27b5258fec66df54",
+      "archive_sha256": "bc132819a6036386d95a735106929e5d09d7910d548de35aa42d697d3b5b757b",
+      "table": 84,
+      "row": 1,
+      "column": 1,
+      "literal": "873,489,650",
+      "account_literal": "영업수익",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term6, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 84,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 84,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 84,
+          "literal": "제6기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 아시아퍼시픽3호 선박투자회사 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 6 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 아시아퍼시픽3호 선박투자회사 대 표 이 사 : 신주선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석흔욱 (전 화) 02-5",
+      "corroborating_sources": [
+        {
+          "member": "20100331001683_00760.xml",
+          "member_sha256": "22fb5bac617dc9892ce6dada9dc1321d871d48b4e6b575d9219bc6745d18f252",
+          "table": 10,
+          "row": 1,
+          "column": 2,
+          "literal": "873,489,650",
+          "account_literal": "Ⅰ.영업수익(주석9)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001683-OFS-net_income",
+      "receipt": "20100331001683",
+      "cohort": "new100",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001683.xml",
+      "member_sha256": "2f8b98b5704cb20ee197fe6bba26f04225939c4df76fe44f27b5258fec66df54",
+      "archive_sha256": "bc132819a6036386d95a735106929e5d09d7910d548de35aa42d697d3b5b757b",
+      "table": 84,
+      "row": 26,
+      "column": 1,
+      "literal": "536,449,619",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term6, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 84,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 84,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 84,
+          "literal": "제6기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 아시아퍼시픽3호 선박투자회사 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 6 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 아시아퍼시픽3호 선박투자회사 대 표 이 사 : 신주선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석흔욱 (전 화) 02-5",
+      "corroborating_sources": [
+        {
+          "member": "20100331001683_00760.xml",
+          "member_sha256": "22fb5bac617dc9892ce6dada9dc1321d871d48b4e6b575d9219bc6745d18f252",
+          "table": 10,
+          "row": 26,
+          "column": 2,
+          "literal": "536,449,619&cr;============",
+          "account_literal": "Ⅷ.당기순이익",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001683-OFS-ocf",
+      "receipt": "20100331001683",
+      "cohort": "new100",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001683.xml",
+      "member_sha256": "2f8b98b5704cb20ee197fe6bba26f04225939c4df76fe44f27b5258fec66df54",
+      "archive_sha256": "bc132819a6036386d95a735106929e5d09d7910d548de35aa42d697d3b5b757b",
+      "table": 90,
+      "row": 1,
+      "column": 1,
+      "literal": "544,113,629",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term6, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 90,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 90,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 90,
+          "literal": "제6기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 아시아퍼시픽3호 선박투자회사 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 6 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 아시아퍼시픽3호 선박투자회사 대 표 이 사 : 신주선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석흔욱 (전 화) 02-5",
+      "corroborating_sources": [
+        {
+          "member": "20100331001683_00760.xml",
+          "member_sha256": "22fb5bac617dc9892ce6dada9dc1321d871d48b4e6b575d9219bc6745d18f252",
+          "table": 20,
+          "row": 1,
+          "column": 2,
+          "literal": "544,113,629",
+          "account_literal": "Ⅰ. 영업활동으로 인한 현금흐름",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001687-OFS-equity",
+      "receipt": "20100331001687",
+      "cohort": "new100",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001687.xml",
+      "member_sha256": "fe99a91cd0ed68f5e425aa7eabcc390f0c508c34c1f36ae9e77896a4127636c7",
+      "archive_sha256": "84d43f6cc051b2598edaa010519e9c8b7155da30eacc2c8bc8f5be0d02e31653",
+      "table": 98,
+      "row": 123,
+      "column": 1,
+      "literal": "81,434,816,544",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term31, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 98,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 98,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 98,
+          "literal": "제31기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 신성홀딩스 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 31 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 주식회사 신성홀딩스 대 표 이 사 : 이 완 근 본 점 소 재 지 : 경기도 성남시 분당구 백현동 404-1 (전 화) 031-788-9500 (홈페이지) http://www.shinsung.co.kr 작 성 책 임 자 : (직 책) 상무(보) (성 명) 이 지 선 (전 화) 031-788-9453 목 차 【",
+      "corroborating_sources": [
+        {
+          "member": "20100331001687_00760.xml",
+          "member_sha256": "fd6f506505efc3ce4a55451744c2891c0d8ec9f2c91e6d2c424469d9a408ee81",
+          "table": 6,
+          "row": 111,
+          "column": 2,
+          "literal": "81,434,816,544",
+          "account_literal": "자 본 총 계",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001687-OFS-revenue",
+      "receipt": "20100331001687",
+      "cohort": "new100",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001687.xml",
+      "member_sha256": "fe99a91cd0ed68f5e425aa7eabcc390f0c508c34c1f36ae9e77896a4127636c7",
+      "archive_sha256": "84d43f6cc051b2598edaa010519e9c8b7155da30eacc2c8bc8f5be0d02e31653",
+      "table": 100,
+      "row": 1,
+      "column": 1,
+      "literal": "66,716,721,285",
+      "account_literal": "Ⅰ.매출액",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term31, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 100,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 100,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 100,
+          "literal": "제31기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 신성홀딩스 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 31 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 주식회사 신성홀딩스 대 표 이 사 : 이 완 근 본 점 소 재 지 : 경기도 성남시 분당구 백현동 404-1 (전 화) 031-788-9500 (홈페이지) http://www.shinsung.co.kr 작 성 책 임 자 : (직 책) 상무(보) (성 명) 이 지 선 (전 화) 031-788-9453 목 차 【",
+      "corroborating_sources": [
+        {
+          "member": "20100331001687_00760.xml",
+          "member_sha256": "fd6f506505efc3ce4a55451744c2891c0d8ec9f2c91e6d2c424469d9a408ee81",
+          "table": 9,
+          "row": 1,
+          "column": 2,
+          "literal": "66,716,721,285",
+          "account_literal": "Ⅰ. 매출액(주석14,28)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001687-OFS-net_income",
+      "receipt": "20100331001687",
+      "cohort": "new100",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001687.xml",
+      "member_sha256": "fe99a91cd0ed68f5e425aa7eabcc390f0c508c34c1f36ae9e77896a4127636c7",
+      "archive_sha256": "84d43f6cc051b2598edaa010519e9c8b7155da30eacc2c8bc8f5be0d02e31653",
+      "table": 100,
+      "row": 88,
+      "column": 1,
+      "literal": "(24,740,824,110)",
+      "account_literal": "XⅢ.당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term31, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 100,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 100,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 100,
+          "literal": "제31기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 신성홀딩스 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 31 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 주식회사 신성홀딩스 대 표 이 사 : 이 완 근 본 점 소 재 지 : 경기도 성남시 분당구 백현동 404-1 (전 화) 031-788-9500 (홈페이지) http://www.shinsung.co.kr 작 성 책 임 자 : (직 책) 상무(보) (성 명) 이 지 선 (전 화) 031-788-9453 목 차 【",
+      "corroborating_sources": [
+        {
+          "member": "20100331001687_00760.xml",
+          "member_sha256": "fd6f506505efc3ce4a55451744c2891c0d8ec9f2c91e6d2c424469d9a408ee81",
+          "table": 9,
+          "row": 85,
+          "column": 2,
+          "literal": "(24,740,824,110)",
+          "account_literal": "XII. 당기순이익(손실)(주석 16)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001687-OFS-ocf",
+      "receipt": "20100331001687",
+      "cohort": "new100",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001687.xml",
+      "member_sha256": "fe99a91cd0ed68f5e425aa7eabcc390f0c508c34c1f36ae9e77896a4127636c7",
+      "archive_sha256": "84d43f6cc051b2598edaa010519e9c8b7155da30eacc2c8bc8f5be0d02e31653",
+      "table": 106,
+      "row": 1,
+      "column": 1,
+      "literal": "(21,164,038,750)",
+      "account_literal": "Ⅰ.영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term31, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 106,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 106,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 106,
+          "literal": "제31기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 신성홀딩스 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 31 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 주식회사 신성홀딩스 대 표 이 사 : 이 완 근 본 점 소 재 지 : 경기도 성남시 분당구 백현동 404-1 (전 화) 031-788-9500 (홈페이지) http://www.shinsung.co.kr 작 성 책 임 자 : (직 책) 상무(보) (성 명) 이 지 선 (전 화) 031-788-9453 목 차 【",
+      "corroborating_sources": [
+        {
+          "member": "20100331001687_00760.xml",
+          "member_sha256": "fd6f506505efc3ce4a55451744c2891c0d8ec9f2c91e6d2c424469d9a408ee81",
+          "table": 19,
+          "row": 1,
+          "column": 2,
+          "literal": "(21,164,038,750)",
+          "account_literal": "I. 영업활동으로 인한 현금흐름",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001693-OFS-equity",
+      "receipt": "20100331001693",
+      "cohort": "new100",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001693.xml",
+      "member_sha256": "f922d415713c1d25589d14337ee5b3a59cd257f76a2bc253b85262eec775745f",
+      "archive_sha256": "7973108317fc3ba9fbd0348c8af55376c517cf30a3e7fb855217c7a6e8e633ba",
+      "table": 136,
+      "row": 90,
+      "column": 1,
+      "literal": "53,395,343,492",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term4, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 136,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 136,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 136,
+          "literal": "제4기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)진도에프앤 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 4 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : (주)진도에프앤 대 표 이 사 : 임영준 본 점 소 재 지 : 서울시 구로구 구로동 222-31 (전 화)02-850-8263 (홈페이지) http://www.jindofn.co.kr 작 성 책 임 자 : (직 책) 이사 (성 명)강낙현 (전 화) 02-850-8260 목 차 I. 회사의 개요 1. 회사",
+      "corroborating_sources": [
+        {
+          "member": "20100331001693_00760.xml",
+          "member_sha256": "2c3fc6eb1c07da7c9c931c0b83394e28c3ee9d654ba123d67ab60c84c3cfc84d",
+          "table": 7,
+          "row": 84,
+          "column": 2,
+          "literal": "53,395,343,492",
+          "account_literal": "자 본 총 계",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001693-OFS-revenue",
+      "receipt": "20100331001693",
+      "cohort": "new100",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001693.xml",
+      "member_sha256": "f922d415713c1d25589d14337ee5b3a59cd257f76a2bc253b85262eec775745f",
+      "archive_sha256": "7973108317fc3ba9fbd0348c8af55376c517cf30a3e7fb855217c7a6e8e633ba",
+      "table": 138,
+      "row": 1,
+      "column": 1,
+      "literal": "80,587,940,928",
+      "account_literal": "매출액",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term4, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 138,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 138,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 138,
+          "literal": "제4기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)진도에프앤 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 4 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : (주)진도에프앤 대 표 이 사 : 임영준 본 점 소 재 지 : 서울시 구로구 구로동 222-31 (전 화)02-850-8263 (홈페이지) http://www.jindofn.co.kr 작 성 책 임 자 : (직 책) 이사 (성 명)강낙현 (전 화) 02-850-8260 목 차 I. 회사의 개요 1. 회사",
+      "corroborating_sources": [
+        {
+          "member": "20100331001693_00760.xml",
+          "member_sha256": "2c3fc6eb1c07da7c9c931c0b83394e28c3ee9d654ba123d67ab60c84c3cfc84d",
+          "table": 10,
+          "row": 1,
+          "column": 2,
+          "literal": "80,587,940,928",
+          "account_literal": "Ⅰ. 매 출 액(주석 2, 16)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001693-OFS-net_income",
+      "receipt": "20100331001693",
+      "cohort": "new100",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001693.xml",
+      "member_sha256": "f922d415713c1d25589d14337ee5b3a59cd257f76a2bc253b85262eec775745f",
+      "archive_sha256": "7973108317fc3ba9fbd0348c8af55376c517cf30a3e7fb855217c7a6e8e633ba",
+      "table": 138,
+      "row": 70,
+      "column": 1,
+      "literal": "3,574,126,013",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term4, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 138,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 138,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 138,
+          "literal": "제4기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)진도에프앤 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 4 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : (주)진도에프앤 대 표 이 사 : 임영준 본 점 소 재 지 : 서울시 구로구 구로동 222-31 (전 화)02-850-8263 (홈페이지) http://www.jindofn.co.kr 작 성 책 임 자 : (직 책) 이사 (성 명)강낙현 (전 화) 02-850-8260 목 차 I. 회사의 개요 1. 회사",
+      "corroborating_sources": [
+        {
+          "member": "20100331001693_00760.xml",
+          "member_sha256": "2c3fc6eb1c07da7c9c931c0b83394e28c3ee9d654ba123d67ab60c84c3cfc84d",
+          "table": 10,
+          "row": 65,
+          "column": 2,
+          "literal": "3,574,126,013",
+          "account_literal": "Ⅹ.당기순이익(손실)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001693-OFS-ocf",
+      "receipt": "20100331001693",
+      "cohort": "new100",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001693.xml",
+      "member_sha256": "f922d415713c1d25589d14337ee5b3a59cd257f76a2bc253b85262eec775745f",
+      "archive_sha256": "7973108317fc3ba9fbd0348c8af55376c517cf30a3e7fb855217c7a6e8e633ba",
+      "table": 144,
+      "row": 1,
+      "column": 1,
+      "literal": "(5,201,463,940)",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term4, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 144,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 144,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 144,
+          "literal": "제4기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)진도에프앤 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 4 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : (주)진도에프앤 대 표 이 사 : 임영준 본 점 소 재 지 : 서울시 구로구 구로동 222-31 (전 화)02-850-8263 (홈페이지) http://www.jindofn.co.kr 작 성 책 임 자 : (직 책) 이사 (성 명)강낙현 (전 화) 02-850-8260 목 차 I. 회사의 개요 1. 회사",
+      "corroborating_sources": [
+        {
+          "member": "20100331001693_00760.xml",
+          "member_sha256": "2c3fc6eb1c07da7c9c931c0b83394e28c3ee9d654ba123d67ab60c84c3cfc84d",
+          "table": 20,
+          "row": 1,
+          "column": 2,
+          "literal": "(5,201,463,940)",
+          "account_literal": "Ⅰ. 영업활동으로 인한 현금흐름",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001697-OFS-equity",
+      "receipt": "20100331001697",
+      "cohort": "new100",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001697.xml",
+      "member_sha256": "d74cd0411c356daabbc3bb90f4417bd002dc0ac5878064212c4583f7e5fe2c62",
+      "archive_sha256": "5210d02079d1b5c2ec04cf1c8d5474036e5e348fb869c3e267ef5c6dd943a3ed",
+      "table": 110,
+      "row": 89,
+      "column": 1,
+      "literal": "32,143,605,906",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term19, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 110,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 110,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 110,
+          "literal": "제19기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)중앙디자인 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 19 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : (주)중앙디자인 대 표 이 사 : 변인근, 임명환, 최의종 본 점 소 재 지 : 서울특별시 중구 남창동 51-1 (전 화)02-311-6500 (홈페이지) http://www.jad.co.kr 작 성 책 임 자 : (직 책) 대표이사 (성 명) 임 명 환 (전 화) 02-311-6500 목 차 【 대표",
+      "corroborating_sources": [
+        {
+          "member": "20100331001697_00760.xml",
+          "member_sha256": "b36dd106006fda446746d098ad17614aca40be8d7b3fc890bc06275a29e74e6a",
+          "table": 5,
+          "row": 82,
+          "column": 2,
+          "literal": "32,143,605,906",
+          "account_literal": "자 본 총 계",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001697-OFS-revenue",
+      "receipt": "20100331001697",
+      "cohort": "new100",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001697.xml",
+      "member_sha256": "d74cd0411c356daabbc3bb90f4417bd002dc0ac5878064212c4583f7e5fe2c62",
+      "archive_sha256": "5210d02079d1b5c2ec04cf1c8d5474036e5e348fb869c3e267ef5c6dd943a3ed",
+      "table": 112,
+      "row": 1,
+      "column": 1,
+      "literal": "113,731,233,201",
+      "account_literal": "매출액",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term19, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 112,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 112,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 112,
+          "literal": "제19기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)중앙디자인 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 19 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : (주)중앙디자인 대 표 이 사 : 변인근, 임명환, 최의종 본 점 소 재 지 : 서울특별시 중구 남창동 51-1 (전 화)02-311-6500 (홈페이지) http://www.jad.co.kr 작 성 책 임 자 : (직 책) 대표이사 (성 명) 임 명 환 (전 화) 02-311-6500 목 차 【 대표",
+      "corroborating_sources": [
+        {
+          "member": "20100331001697_00760.xml",
+          "member_sha256": "b36dd106006fda446746d098ad17614aca40be8d7b3fc890bc06275a29e74e6a",
+          "table": 8,
+          "row": 1,
+          "column": 2,
+          "literal": "113,731,233,201",
+          "account_literal": "Ⅰ.매출액(주석2,18,27)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001697-OFS-net_income",
+      "receipt": "20100331001697",
+      "cohort": "new100",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001697.xml",
+      "member_sha256": "d74cd0411c356daabbc3bb90f4417bd002dc0ac5878064212c4583f7e5fe2c62",
+      "archive_sha256": "5210d02079d1b5c2ec04cf1c8d5474036e5e348fb869c3e267ef5c6dd943a3ed",
+      "table": 112,
+      "row": 69,
+      "column": 1,
+      "literal": "(15,584,880,038)",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term19, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 112,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 112,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 112,
+          "literal": "제19기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)중앙디자인 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 19 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : (주)중앙디자인 대 표 이 사 : 변인근, 임명환, 최의종 본 점 소 재 지 : 서울특별시 중구 남창동 51-1 (전 화)02-311-6500 (홈페이지) http://www.jad.co.kr 작 성 책 임 자 : (직 책) 대표이사 (성 명) 임 명 환 (전 화) 02-311-6500 목 차 【 대표",
+      "corroborating_sources": [
+        {
+          "member": "20100331001697_00760.xml",
+          "member_sha256": "b36dd106006fda446746d098ad17614aca40be8d7b3fc890bc06275a29e74e6a",
+          "table": 8,
+          "row": 64,
+          "column": 2,
+          "literal": "(15,584,880,038)",
+          "account_literal": "Ⅹ.당기순이익(주석24)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001697-OFS-ocf",
+      "receipt": "20100331001697",
+      "cohort": "new100",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001697.xml",
+      "member_sha256": "d74cd0411c356daabbc3bb90f4417bd002dc0ac5878064212c4583f7e5fe2c62",
+      "archive_sha256": "5210d02079d1b5c2ec04cf1c8d5474036e5e348fb869c3e267ef5c6dd943a3ed",
+      "table": 118,
+      "row": 1,
+      "column": 1,
+      "literal": "(4,533,964,718)",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term19, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 118,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 118,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 118,
+          "literal": "제19기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)중앙디자인 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 19 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : (주)중앙디자인 대 표 이 사 : 변인근, 임명환, 최의종 본 점 소 재 지 : 서울특별시 중구 남창동 51-1 (전 화)02-311-6500 (홈페이지) http://www.jad.co.kr 작 성 책 임 자 : (직 책) 대표이사 (성 명) 임 명 환 (전 화) 02-311-6500 목 차 【 대표",
+      "corroborating_sources": [
+        {
+          "member": "20100331001697_00760.xml",
+          "member_sha256": "b36dd106006fda446746d098ad17614aca40be8d7b3fc890bc06275a29e74e6a",
+          "table": 18,
+          "row": 1,
+          "column": 2,
+          "literal": "(4,533,964,718)",
+          "account_literal": "Ⅰ.영업활동으로 인한 현금흐름",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001699-OFS-equity",
+      "receipt": "20100331001699",
+      "cohort": "new100",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001699.xml",
+      "member_sha256": "427b5bd3003fda6b91d7d521f72893453745e5d4bf3cfa1fced7b7c9a86569c2",
+      "archive_sha256": "4c7c81415cab594d22e710daffc6c9781ea51e997c79891dc8675e51fa311ac7",
+      "table": 105,
+      "row": 112,
+      "column": 1,
+      "literal": "13,625,856,374",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term22, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 105,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 105,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 105,
+          "literal": "제22기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)터보테크 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 22 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010 년 3 월 31 일 회 사 명 : (주)터보테크 대 표 이 사 : 박 치 민 본 점 소 재 지 : 충남 아산 음봉면 소동리 33-10 (전 화) 041-545-8813 (홈페이지) http://www.turbotek.co.kr 작 성 책 임 자 : (직 책) 상무 (성 명) 정 해 관 (전 화) 02-2059-2600 목 차 【 대표",
+      "corroborating_sources": [
+        {
+          "member": "20100331001699_00760.xml",
+          "member_sha256": "57102a1620fcdbe89ce265afb78032068403e55e9eeea5d509ede74c22c8720c",
+          "table": 6,
+          "row": 105,
+          "column": 2,
+          "literal": "13,625,856,374",
+          "account_literal": "자 본 총 계",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001699-OFS-revenue",
+      "receipt": "20100331001699",
+      "cohort": "new100",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001699.xml",
+      "member_sha256": "427b5bd3003fda6b91d7d521f72893453745e5d4bf3cfa1fced7b7c9a86569c2",
+      "archive_sha256": "4c7c81415cab594d22e710daffc6c9781ea51e997c79891dc8675e51fa311ac7",
+      "table": 107,
+      "row": 1,
+      "column": 1,
+      "literal": "3,789,907,109",
+      "account_literal": "매출액",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term22, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 107,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 107,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 107,
+          "literal": "제22기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)터보테크 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 22 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010 년 3 월 31 일 회 사 명 : (주)터보테크 대 표 이 사 : 박 치 민 본 점 소 재 지 : 충남 아산 음봉면 소동리 33-10 (전 화) 041-545-8813 (홈페이지) http://www.turbotek.co.kr 작 성 책 임 자 : (직 책) 상무 (성 명) 정 해 관 (전 화) 02-2059-2600 목 차 【 대표",
+      "corroborating_sources": [
+        {
+          "member": "20100331001699_00760.xml",
+          "member_sha256": "57102a1620fcdbe89ce265afb78032068403e55e9eeea5d509ede74c22c8720c",
+          "table": 9,
+          "row": 1,
+          "column": 2,
+          "literal": "3,789,907,109",
+          "account_literal": "Ⅰ. 매출액(주석 2,18,25)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001699-OFS-net_income",
+      "receipt": "20100331001699",
+      "cohort": "new100",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001699.xml",
+      "member_sha256": "427b5bd3003fda6b91d7d521f72893453745e5d4bf3cfa1fced7b7c9a86569c2",
+      "archive_sha256": "4c7c81415cab594d22e710daffc6c9781ea51e997c79891dc8675e51fa311ac7",
+      "table": 107,
+      "row": 74,
+      "column": 1,
+      "literal": "(5,786,445,757)",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term22, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 107,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 107,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 107,
+          "literal": "제22기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)터보테크 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 22 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010 년 3 월 31 일 회 사 명 : (주)터보테크 대 표 이 사 : 박 치 민 본 점 소 재 지 : 충남 아산 음봉면 소동리 33-10 (전 화) 041-545-8813 (홈페이지) http://www.turbotek.co.kr 작 성 책 임 자 : (직 책) 상무 (성 명) 정 해 관 (전 화) 02-2059-2600 목 차 【 대표",
+      "corroborating_sources": [
+        {
+          "member": "20100331001699_00760.xml",
+          "member_sha256": "57102a1620fcdbe89ce265afb78032068403e55e9eeea5d509ede74c22c8720c",
+          "table": 9,
+          "row": 58,
+          "column": 2,
+          "literal": "5,786,445,757",
+          "account_literal": "X. 당기순손실",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": true
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001699-OFS-ocf",
+      "receipt": "20100331001699",
+      "cohort": "new100",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001699.xml",
+      "member_sha256": "427b5bd3003fda6b91d7d521f72893453745e5d4bf3cfa1fced7b7c9a86569c2",
+      "archive_sha256": "4c7c81415cab594d22e710daffc6c9781ea51e997c79891dc8675e51fa311ac7",
+      "table": 113,
+      "row": 1,
+      "column": 1,
+      "literal": "(2,577,997,175)",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term22, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 113,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 113,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 113,
+          "literal": "제22기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)터보테크 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 22 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010 년 3 월 31 일 회 사 명 : (주)터보테크 대 표 이 사 : 박 치 민 본 점 소 재 지 : 충남 아산 음봉면 소동리 33-10 (전 화) 041-545-8813 (홈페이지) http://www.turbotek.co.kr 작 성 책 임 자 : (직 책) 상무 (성 명) 정 해 관 (전 화) 02-2059-2600 목 차 【 대표",
+      "corroborating_sources": [
+        {
+          "member": "20100331001699_00760.xml",
+          "member_sha256": "57102a1620fcdbe89ce265afb78032068403e55e9eeea5d509ede74c22c8720c",
+          "table": 19,
+          "row": 1,
+          "column": 2,
+          "literal": "(2,577,997,175)",
+          "account_literal": "I. 영업활동으로 인한 현금흐름",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001714-OFS-equity",
+      "receipt": "20100331001714",
+      "cohort": "new100",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001714.xml",
+      "member_sha256": "80dd3ac9aa9b79d89892a58b2e857324e3fd0aae047599011d259b27d9ab030c",
+      "archive_sha256": "0e45aa233a3429e8fc7b657ff7b7433b1eae9c84a0cc869e8a28a6778899cdc9",
+      "table": 82,
+      "row": 29,
+      "column": 1,
+      "literal": "6,144,130,209",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term6, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 82,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 82,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 82,
+          "literal": "제6기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 아시아퍼시픽4호 선박투자회사 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 6 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 아시아퍼시픽4호 선박투자회사 대 표 이 사 : 신주선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석흔욱 (전 화) 02-5",
+      "corroborating_sources": [
+        {
+          "member": "20100331001714_00760.xml",
+          "member_sha256": "9da96bb9d38d2fe0f98016c68642b02a830f245918c68d0618b48243b9ac20da",
+          "table": 7,
+          "row": 28,
+          "column": 2,
+          "literal": "6,144,130,209",
+          "account_literal": "자 본 총 계",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001714-OFS-revenue",
+      "receipt": "20100331001714",
+      "cohort": "new100",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001714.xml",
+      "member_sha256": "80dd3ac9aa9b79d89892a58b2e857324e3fd0aae047599011d259b27d9ab030c",
+      "archive_sha256": "0e45aa233a3429e8fc7b657ff7b7433b1eae9c84a0cc869e8a28a6778899cdc9",
+      "table": 84,
+      "row": 1,
+      "column": 1,
+      "literal": "708,668,707",
+      "account_literal": "영업수익",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term6, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 84,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 84,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 84,
+          "literal": "제6기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 아시아퍼시픽4호 선박투자회사 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 6 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 아시아퍼시픽4호 선박투자회사 대 표 이 사 : 신주선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석흔욱 (전 화) 02-5",
+      "corroborating_sources": [
+        {
+          "member": "20100331001714_00760.xml",
+          "member_sha256": "9da96bb9d38d2fe0f98016c68642b02a830f245918c68d0618b48243b9ac20da",
+          "table": 10,
+          "row": 1,
+          "column": 2,
+          "literal": "708,668,707",
+          "account_literal": "Ⅰ.영업수익(주석9)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001714-OFS-net_income",
+      "receipt": "20100331001714",
+      "cohort": "new100",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001714.xml",
+      "member_sha256": "80dd3ac9aa9b79d89892a58b2e857324e3fd0aae047599011d259b27d9ab030c",
+      "archive_sha256": "0e45aa233a3429e8fc7b657ff7b7433b1eae9c84a0cc869e8a28a6778899cdc9",
+      "table": 84,
+      "row": 26,
+      "column": 1,
+      "literal": "362,317,623",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term6, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 84,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 84,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 84,
+          "literal": "제6기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 아시아퍼시픽4호 선박투자회사 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 6 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 아시아퍼시픽4호 선박투자회사 대 표 이 사 : 신주선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석흔욱 (전 화) 02-5",
+      "corroborating_sources": [
+        {
+          "member": "20100331001714_00760.xml",
+          "member_sha256": "9da96bb9d38d2fe0f98016c68642b02a830f245918c68d0618b48243b9ac20da",
+          "table": 10,
+          "row": 26,
+          "column": 2,
+          "literal": "362,317,623&cr;============",
+          "account_literal": "Ⅷ.당기순이익",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001714-OFS-ocf",
+      "receipt": "20100331001714",
+      "cohort": "new100",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001714.xml",
+      "member_sha256": "80dd3ac9aa9b79d89892a58b2e857324e3fd0aae047599011d259b27d9ab030c",
+      "archive_sha256": "0e45aa233a3429e8fc7b657ff7b7433b1eae9c84a0cc869e8a28a6778899cdc9",
+      "table": 90,
+      "row": 1,
+      "column": 1,
+      "literal": "368,770,354",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term6, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 90,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 90,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 90,
+          "literal": "제6기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 아시아퍼시픽4호 선박투자회사 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 6 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 아시아퍼시픽4호 선박투자회사 대 표 이 사 : 신주선 본 점 소 재 지 : 부산광역시 영도구 남항동3가 141-165 (전 화) 02-559-1900 (홈페이지) http://www.koreashipfinance.com 작 성 책 임 자 : (직 책) 이사 (성 명) 석흔욱 (전 화) 02-5",
+      "corroborating_sources": [
+        {
+          "member": "20100331001714_00760.xml",
+          "member_sha256": "9da96bb9d38d2fe0f98016c68642b02a830f245918c68d0618b48243b9ac20da",
+          "table": 20,
+          "row": 1,
+          "column": 2,
+          "literal": "368,770,354",
+          "account_literal": "Ⅰ. 영업활동으로 인한 현금흐름",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001748-OFS-equity",
+      "receipt": "20100331001748",
+      "cohort": "new100",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001748.xml",
+      "member_sha256": "3eedcaa9f9c5b383b7b3b9ff0d3eb526ba9b6de5915ec1a8e7187e37fef8c49e",
+      "archive_sha256": "a02824666641ebf1bfeab5ea4358cce3a2f547d4490db5ca867b1c45e87e6d2d",
+      "table": 100,
+      "row": 98,
+      "column": 1,
+      "literal": "48,392,357,213",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term14, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 100,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 100,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 100,
+          "literal": "제14기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 주식회사 아이피에스 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 14 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : (주)아이피에스 대 표 이 사 : 문상영 본 점 소 재 지 : 경기도 평택시 지제동 33번지 (전 화) 031-659-2000 (홈페이지) http://www.ips-tech.com 작 성 책 임 자 : (직 책) 전 무 (성 명) 정 명 조 (전 화) 031-659-2000 목 차 【 대표이사 등",
+      "corroborating_sources": [
+        {
+          "member": "20100331001748_00760.xml",
+          "member_sha256": "4473fc1de50d45ac91ff47da8666d951662fbc016114f9a2625ec0b5d478a02b",
+          "table": 6,
+          "row": 83,
+          "column": 2,
+          "literal": "48,392,357,213",
+          "account_literal": "자 본 총 계",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001748-OFS-revenue",
+      "receipt": "20100331001748",
+      "cohort": "new100",
+      "metric": "revenue",
+      "scope": "OFS",
+      "member": "20100331001748.xml",
+      "member_sha256": "3eedcaa9f9c5b383b7b3b9ff0d3eb526ba9b6de5915ec1a8e7187e37fef8c49e",
+      "archive_sha256": "a02824666641ebf1bfeab5ea4358cce3a2f547d4490db5ca867b1c45e87e6d2d",
+      "table": 102,
+      "row": 1,
+      "column": 1,
+      "literal": "50,056,024,965",
+      "account_literal": "매출액",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term14, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 102,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 102,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 102,
+          "literal": "제14기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 주식회사 아이피에스 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 14 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : (주)아이피에스 대 표 이 사 : 문상영 본 점 소 재 지 : 경기도 평택시 지제동 33번지 (전 화) 031-659-2000 (홈페이지) http://www.ips-tech.com 작 성 책 임 자 : (직 책) 전 무 (성 명) 정 명 조 (전 화) 031-659-2000 목 차 【 대표이사 등",
+      "corroborating_sources": [
+        {
+          "member": "20100331001748_00760.xml",
+          "member_sha256": "4473fc1de50d45ac91ff47da8666d951662fbc016114f9a2625ec0b5d478a02b",
+          "table": 9,
+          "row": 1,
+          "column": 2,
+          "literal": "50,056,024,965",
+          "account_literal": "Ⅰ. 매출액",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001748-OFS-net_income",
+      "receipt": "20100331001748",
+      "cohort": "new100",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001748.xml",
+      "member_sha256": "3eedcaa9f9c5b383b7b3b9ff0d3eb526ba9b6de5915ec1a8e7187e37fef8c49e",
+      "archive_sha256": "a02824666641ebf1bfeab5ea4358cce3a2f547d4490db5ca867b1c45e87e6d2d",
+      "table": 102,
+      "row": 81,
+      "column": 1,
+      "literal": "2,347,594,417",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term14, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 102,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 102,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 102,
+          "literal": "제14기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 주식회사 아이피에스 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 14 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : (주)아이피에스 대 표 이 사 : 문상영 본 점 소 재 지 : 경기도 평택시 지제동 33번지 (전 화) 031-659-2000 (홈페이지) http://www.ips-tech.com 작 성 책 임 자 : (직 책) 전 무 (성 명) 정 명 조 (전 화) 031-659-2000 목 차 【 대표이사 등",
+      "corroborating_sources": [
+        {
+          "member": "20100331001748_00760.xml",
+          "member_sha256": "4473fc1de50d45ac91ff47da8666d951662fbc016114f9a2625ec0b5d478a02b",
+          "table": 9,
+          "row": 59,
+          "column": 2,
+          "literal": "2,347,594,417&cr;=============",
+          "account_literal": "X. 당기순이익(주석18)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-20100331001748-OFS-ocf",
+      "receipt": "20100331001748",
+      "cohort": "new100",
+      "metric": "ocf",
+      "scope": "OFS",
+      "member": "20100331001748.xml",
+      "member_sha256": "3eedcaa9f9c5b383b7b3b9ff0d3eb526ba9b6de5915ec1a8e7187e37fef8c49e",
+      "archive_sha256": "a02824666641ebf1bfeab5ea4358cce3a2f547d4490db5ca867b1c45e87e6d2d",
+      "table": 108,
+      "row": 1,
+      "column": 1,
+      "literal": "9,524,086,772",
+      "account_literal": "영업활동으로인한현금흐름",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "CF",
+      "source_section": "XI. 재무제표 등 / current primary OFS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent raw source review: primary business-report OFS term14, current2009 first monetary column, explicit won unit. Comparison columns2008/2007 are excluded; no segment, notes or CFS substitution. Core source amount checked separately from all PIT/identity/version availability claims.",
+      "header_proofs": [
+        {
+          "table": 108,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 108,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 108,
+          "literal": "제14기"
+        }
+      ],
+      "source_company_cover_excerpt": "사업보고서 1.1 주식회사 아이피에스 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 14 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : (주)아이피에스 대 표 이 사 : 문상영 본 점 소 재 지 : 경기도 평택시 지제동 33번지 (전 화) 031-659-2000 (홈페이지) http://www.ips-tech.com 작 성 책 임 자 : (직 책) 전 무 (성 명) 정 명 조 (전 화) 031-659-2000 목 차 【 대표이사 등",
+      "corroborating_sources": [
+        {
+          "member": "20100331001748_00760.xml",
+          "member_sha256": "4473fc1de50d45ac91ff47da8666d951662fbc016114f9a2625ec0b5d478a02b",
+          "table": 19,
+          "row": 1,
+          "column": 2,
+          "literal": "9,524,086,772",
+          "account_literal": "I. 영업활동으로 인한 현금흐름",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "negative_account": false
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001586",
+      "receipt": "20100331001586",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001586.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 동아지질 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 정정신고(보고)-대표이사등의확인 정 정 신 고 (보고) 2010년 3월 31일 1. 정정대상 공시서류 : 사업보고서 2. 정정대상 공시서류의 최초제출일 : 2010년 3월 31일 3. 정정사유 : 기재사항 추가 4. 정정사항 항 목 정 정 전 정 정 후 IV. 감사인의 감사의견 등 - 다. 내부회계관리제도&cr; 회계감사인은 경영자의 내부회계관리제도 운영실태평가보고서에 대한 검토결과, 중요성의 관점에서 내부회계관리제도 모범규준의 제5장 '중소기업에 대한 적용'의 규정에 따라 작성되었다는 의견을 표명",
+      "financial_table_locations": [
+        {
+          "member": "20100331001586.xml",
+          "tables": [
+            14,
+            43,
+            46,
+            51,
+            53,
+            56,
+            82,
+            84,
+            86,
+            88,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001588",
+      "receipt": "20100331001588",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001588.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)미성포리테크 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 10 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : 주식회사 미성포리테크 대 표 이 사 : 김종달 본 점 소 재 지 : 경기도 부천시 원미구 춘의동 120-7 (전 화)032-680-2900 (홈페이지) http://www.mspt.co.kr 작 성 책 임 자 : (직 책) 대 표 이 사 (성 명) 김 종 달 (전 화)032-680-2900 목 차 &",
+      "financial_table_locations": [
+        {
+          "member": "20100331001588_00761.xml",
+          "tables": [
+            7,
+            9,
+            11,
+            13,
+            76
+          ]
+        },
+        {
+          "member": "20100331001588.xml",
+          "tables": [
+            9,
+            17,
+            21,
+            33,
+            34,
+            44,
+            45,
+            46,
+            73,
+            75,
+            77,
+            79,
+            81,
+            122,
+            137
+          ]
+        },
+        {
+          "member": "20100331001588_00760.xml",
+          "tables": [
+            7,
+            9,
+            12,
+            14,
+            16,
+            85,
+            110
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001605",
+      "receipt": "20100331001605",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001605.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 한솔홈데코 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 18 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3 월 31 일 회 사 명 : (주)한솔홈데코 대 표 이 사 : 고 명 호 본 점 소 재 지 : 서울시 동작구 신대방동 395-70 전문건설회관 27층 (전 화)02-3284-3881 (홈페이지) http://www.hansolhomedeco.co.kr 작 성 책 임 자 : (직 책)경영지원본부장 (성 명) 이 천 현 (전 화)02-3",
+      "financial_table_locations": [
+        {
+          "member": "20100331001605_00760.xml",
+          "tables": [
+            13,
+            17,
+            20,
+            23
+          ]
+        },
+        {
+          "member": "20100331001605.xml",
+          "tables": [
+            16,
+            50,
+            59,
+            69,
+            77,
+            79,
+            81,
+            109,
+            111,
+            113,
+            115,
+            117
+          ]
+        },
+        {
+          "member": "20100331001605_00761.xml",
+          "tables": [
+            9,
+            12,
+            15,
+            18,
+            60,
+            63
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001606",
+      "receipt": "20100331001606",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001606.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 브이지엑스인터내셔널(주) L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr; (제 34 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년03월31일 회 사 명 : 브이지엑스인터내셔널(주) 대 표 이 사 : 김병진 본 점 소 재 지 : 서울 강남구 대치동 944-1 (전 화)02-2222-3400 (홈페이지) http://www.vgxi.com 작 성 책 임 자 : (직 책)차장 (성 명)박한모 (전 화)02-2222-3400 목 차 Ⅰ. 회사의 개요 -------",
+      "financial_table_locations": [
+        {
+          "member": "20100331001606_00761.xml",
+          "tables": [
+            7,
+            9,
+            11,
+            63
+          ]
+        },
+        {
+          "member": "20100331001606_00760.xml",
+          "tables": [
+            8,
+            11,
+            13,
+            15,
+            66,
+            74,
+            76
+          ]
+        },
+        {
+          "member": "20100331001606.xml",
+          "tables": [
+            9,
+            12,
+            18,
+            34,
+            38,
+            40,
+            42,
+            44,
+            46,
+            48
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001616",
+      "receipt": "20100331001616",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001616.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 명문제약주식회사 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 24 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 명문제약(주) 대 표 이 사 : 이규혁,우석민 본 점 소 재 지 : 경기도 화성시 향남읍 상신리 901-1 (전 화)031-350-4000 (홈페이지) http://www.mmpharm.co.kr 작 성 책 임 자 : (직 책)경영지원2본부장 (성 명)김홍년 (전 화)02-6711-2005 목 차 【 대",
+      "financial_table_locations": [
+        {
+          "member": "20100331001616_00761.xml",
+          "tables": [
+            9,
+            12,
+            15,
+            114,
+            118
+          ]
+        },
+        {
+          "member": "20100331001616_00760.xml",
+          "tables": [
+            9,
+            13,
+            16,
+            19,
+            65,
+            73,
+            74
+          ]
+        },
+        {
+          "member": "20100331001616.xml",
+          "tables": [
+            7,
+            18,
+            25,
+            30,
+            41,
+            55,
+            90,
+            92,
+            94,
+            96,
+            98,
+            107
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001617",
+      "receipt": "20100331001617",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001617.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 태경화학 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 40 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : 태경화학주식회사 대 표 이 사 : 고윤석 본 점 소 재 지 : 서울시 강서구 등촌1동 652-12 (전 화)02-3661-8011 (홈페이지) http://www.taekyungchem.co.kr 작 성 책 임 자 : (직 책)대표이사 (성 명)고윤석 (전 화)02-3661-8011 목 차 【 대표이사 등의 ",
+      "financial_table_locations": [
+        {
+          "member": "20100331001617.xml",
+          "tables": [
+            10,
+            13,
+            37,
+            44,
+            45,
+            47,
+            67,
+            76,
+            78,
+            80,
+            82,
+            84
+          ]
+        },
+        {
+          "member": "20100331001617_00760.xml",
+          "tables": [
+            11,
+            15,
+            18,
+            21,
+            48,
+            54,
+            56,
+            66
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001634",
+      "receipt": "20100331001634",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001634.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)드래곤플라이 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 20 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 주식회사 드래곤플라이 대 표 이 사 : 박 철 우 본 점 소 재 지 : 서울특별시 강남구 논현동 30-10 드래곤플라이빌딩 (전 화) 02) 2017-7835 (홈페이지) http://www.dragonflygame.com 작 성 책 임 자 : (직 책) 이 사 (성 명) 남 형 주 (전 화) 02) ",
+      "financial_table_locations": [
+        {
+          "member": "20100331001634_00760.xml",
+          "tables": [
+            8,
+            12,
+            15,
+            18,
+            46,
+            62,
+            72,
+            73,
+            76
+          ]
+        },
+        {
+          "member": "20100331001634.xml",
+          "tables": [
+            13,
+            31,
+            35,
+            46,
+            48,
+            50,
+            81,
+            83,
+            85,
+            87,
+            89
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001640",
+      "receipt": "20100331001640",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001640.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 삼화콘덴서공업(주) L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 54 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : 삼화콘덴서공업주식회사 대 표 이 사 : 황 호진 본 점 소 재 지 : 경기도 용인시 처인구 남사면 북리 124 (전 화) 031-332-6441 (홈페이지) http://www.samwha.com 작 성 책 임 자 : (직 책)관리본부장 (성 명) 권 기정 (전 화)031-332-6441 목 차 §",
+      "financial_table_locations": [
+        {
+          "member": "20100331001640_00760.xml",
+          "tables": [
+            7,
+            10,
+            14,
+            17,
+            20,
+            59,
+            75,
+            79
+          ]
+        },
+        {
+          "member": "20100331001640_00761.xml",
+          "tables": [
+            6,
+            8,
+            10,
+            12,
+            48
+          ]
+        },
+        {
+          "member": "20100331001640.xml",
+          "tables": [
+            14,
+            15,
+            56,
+            59,
+            72,
+            75,
+            76,
+            78,
+            121,
+            123,
+            125,
+            127,
+            129
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001647",
+      "receipt": "20100331001647",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001647.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 세원셀론텍 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 4 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 세원셀론텍 주식회사 공 동 대 표 이 사 : 장정호, 송용장 본 점 소 재 지 : 서울특별시 영등포구 여의도동 23-2 굿모닝신한증권 10층 (전 화) 02-2167-9000 (홈페이지) http://sewoncellontech.com 작 성 책 임 자 : (직 책) 경영지원본부장 (성 명) 김명섭 (전 화) ",
+      "financial_table_locations": [
+        {
+          "member": "20100331001647_00760.xml",
+          "tables": [
+            10,
+            14,
+            17,
+            20,
+            73,
+            76,
+            79,
+            87,
+            88,
+            89,
+            90
+          ]
+        },
+        {
+          "member": "20100331001647.xml",
+          "tables": [
+            19,
+            22,
+            25,
+            75,
+            79,
+            85,
+            98,
+            99,
+            111,
+            161,
+            163,
+            165,
+            167,
+            169
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001651",
+      "receipt": "20100331001651",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001651.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)서부트럭터미날 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 30 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010 년 3 월 31 일 회 사 명 : (주)서부트럭터미날 대 표 이 사 : 승 만 호 본 점 소 재 지 : 서울시 양천구 신정동 812 (전 화) 02 - 2689 - 0035 (홈페이지) http://www.seobutt.com 작 성 책 임 자 : (직 책) 과 장 (성 명) 김 동 혁 (전 화) 02 -2689 - 0035 목",
+      "financial_table_locations": [
+        {
+          "member": "20100331001651.xml",
+          "tables": [
+            8,
+            13,
+            18,
+            23,
+            31,
+            46,
+            92,
+            94,
+            96,
+            98,
+            100,
+            102,
+            115,
+            147,
+            149,
+            152,
+            153,
+            156,
+            157,
+            158,
+            159
+          ]
+        },
+        {
+          "member": "20100331001651_00760.xml",
+          "tables": [
+            7,
+            10,
+            14,
+            17,
+            20,
+            33,
+            64,
+            66,
+            69,
+            70,
+            73,
+            74,
+            75,
+            76
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001671",
+      "receipt": "20100331001671",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001671.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 삼화왕관주식회사 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 44 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : 삼화왕관 주식회사 대 표 이 사 : 최 광 주 본 점 소 재 지 : 경기도 안산시 단원구 성곡동 601 (전 화) 02-510-4437 (홈페이지) http://www.samhwa.co.kr 작 성 책 임 자 : (직 책) 상 무 (성 명) 김 무 환 (전 화) 02-510-4410 목 차 【 대표이사",
+      "financial_table_locations": [
+        {
+          "member": "20100331001671.xml",
+          "tables": [
+            7,
+            31,
+            34,
+            46,
+            48,
+            50,
+            80,
+            82,
+            84,
+            86,
+            88
+          ]
+        },
+        {
+          "member": "20100331001671_00760.xml",
+          "tables": [
+            6,
+            9,
+            13,
+            16,
+            19,
+            63,
+            78,
+            81,
+            84,
+            90
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001678",
+      "receipt": "20100331001678",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001678.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 (주)트루맥스 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 13 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3 월 31 일 회 사 명 : 주식회사 트루맥스 대 표 이 사 : 유 성 훈 본 점 소 재 지 : 서울시 강남구 역삼동 605-3 역삼빌딩 (전 화)02-540-4855 (홈페이지) http:// www.truemax.co.kr 작 성 책 임 자 : (직 책)대 표 이 사 (성 명)유 성 훈 (전 화)02-540-4855 목 차 【",
+      "financial_table_locations": [
+        {
+          "member": "20100331001678.xml",
+          "tables": [
+            9,
+            16,
+            21,
+            35,
+            37,
+            65,
+            67,
+            69,
+            71,
+            73,
+            103,
+            104,
+            113,
+            116,
+            117
+          ]
+        },
+        {
+          "member": "20100331001678_00760.xml",
+          "tables": [
+            7,
+            9,
+            12,
+            14,
+            16,
+            46,
+            47,
+            56,
+            59,
+            60
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001689",
+      "receipt": "20100331001689",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001689.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 진로 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 58 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : ㈜ 진 로 대 표 이 사 : 윤 종 웅 본 점 소 재 지 : 서울 서초구 서초동 1445-14 (전 화) 02-520-3114 (홈페이지) http://jinro.com 작 성 책 임 자 : (직 책) 경리팀장 (성 명) 권 대 은 (전 화) 02-520-3181 목 차 【 대표이사 등의 확인 】 ---------",
+      "financial_table_locations": [
+        {
+          "member": "20100331001689_00761.xml",
+          "tables": [
+            10,
+            13,
+            16,
+            65,
+            67,
+            69
+          ]
+        },
+        {
+          "member": "20100331001689.xml",
+          "tables": [
+            2,
+            28,
+            29,
+            81,
+            84,
+            89,
+            102,
+            103,
+            180,
+            182,
+            184,
+            186,
+            188
+          ]
+        },
+        {
+          "member": "20100331001689_00760.xml",
+          "tables": [
+            12,
+            16,
+            19,
+            22,
+            74,
+            76,
+            78,
+            82
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001728",
+      "receipt": "20100331001728",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001728.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 제이씨현시스템(주) N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 19 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3월 31일 회 사 명 : 제이씨현시스템㈜ 대 표 이 사 : 차 현 배 본 점 소 재 지 : 서울시 용산구 신계동 6-1 (전 화) 02-2105-9100 (홈페이지) http://www.jchyun.com 작 성 책 임 자 : (직 책) 부사장 (성 명) 정 연 식 (전 화) 02-2105-9103 목 차 Ⅰ. 회사의 개요-",
+      "financial_table_locations": [
+        {
+          "member": "20100331001728.xml",
+          "tables": [
+            7,
+            12,
+            13,
+            20,
+            45,
+            47,
+            49,
+            51,
+            53,
+            55,
+            140,
+            144,
+            148,
+            158
+          ]
+        },
+        {
+          "member": "20100331001728_00760.xml",
+          "tables": [
+            6,
+            9,
+            13,
+            16,
+            19,
+            106,
+            110,
+            114,
+            124
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001745",
+      "receipt": "20100331001745",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001745.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 케이제이프리텍 L ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 11 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 03월 31일 회 사 명 : 주식회사 케이제이프리텍 대 표 이 사 : 홍 준 기 본 점 소 재 지 : 경기도 화성시 반월동 594-1 (전 화) 031-230-6800 (홈페이지) http://www.kjpretech.com 작 성 책 임 자 : (직 책) 상무이사 (성 명) 류 훈 (전 화) 031-230-6800 목 차 【 대표",
+      "financial_table_locations": [
+        {
+          "member": "20100331001745_00760.xml",
+          "tables": [
+            6,
+            8,
+            11,
+            13,
+            15,
+            73,
+            74
+          ]
+        },
+        {
+          "member": "20100331001745.xml",
+          "tables": [
+            11,
+            38,
+            51,
+            67,
+            77,
+            79,
+            114,
+            116,
+            118,
+            120,
+            122,
+            180,
+            181
+          ]
+        },
+        {
+          "member": "20100331001745_00761.xml",
+          "tables": [
+            6,
+            8,
+            10,
+            12,
+            77
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001753",
+      "receipt": "20100331001753",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001753.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 이건산업(주) C ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 사 업 보 고 서 &cr;&cr;&cr; (제 38 기) 사업연도 2009년 01월 01일 부터 2009년 12월 31일 까지 금융위원회 한국거래소 귀중 2010년 3 월 31 일 회 사 명 : 이건산업주식회사 대 표 이 사 : 이춘만 본 점 소 재 지 : 인천시 남구 도화동 967-3 (전 화) 032-760-0369 (홈페이지) http://www.eagon.com 작 성 책 임 자 : (직 책) 대표이사 (성 명)이춘만 (전 화)032-760-0875 목 차 【 대표이사 등의 확인 】 확",
+      "financial_table_locations": [
+        {
+          "member": "20100331001753_00761.xml",
+          "tables": [
+            12,
+            15,
+            18,
+            24,
+            25,
+            95,
+            120,
+            123,
+            126
+          ]
+        },
+        {
+          "member": "20100331001753.xml",
+          "tables": [
+            20,
+            57,
+            60,
+            63,
+            113,
+            117,
+            119,
+            121,
+            131,
+            133,
+            135,
+            137
+          ]
+        },
+        {
+          "member": "20100331001753_00760.xml",
+          "tables": [
+            9,
+            12,
+            15,
+            18,
+            55,
+            90,
+            113,
+            114,
+            116,
+            119
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new100-document-20100331001754",
+      "receipt": "20100331001754",
+      "cohort": "new100",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001754.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "Preserved native ZIP and visible financial tables, but strict XML validation rejected member(s); unsupported structure/damage not independently resolved. Not absence, no source-number publication.",
+      "source_company_cover_excerpt": "사업보고서 1.1 리바트 N ◆click◆ 정정문서 작성시 『정오표』 삽입 정정신고(보고)-대표이사등의확인.LCommon 정정신고(보고)-대표이사등의확인 정 정 신 고 (보고) 2010년 03월 31일 1. 정정대상 공시서류 : 사업보고서 2. 정정대상 공시서류의 최초제출일 : 2010년 03월 31일 3. 정정사유 : 기재사항 누락 4. 정정사항 항 목 정 정 전 정 정 후 VII. 주주에 관한 사항&cr; 주주의 분포 - 주주의 분포(아래 참조) 주주의 분포&cr;2009년 12월 31일 현재 (단위 : 명,주,%) 구 분 주주수(명) 비율(%) 주식수(주) 비율(%) 소액주주 합계 1,408 98.39 8,100,",
+      "financial_table_locations": [
+        {
+          "member": "20100331001754.xml",
+          "tables": [
+            14,
+            54,
+            56,
+            65,
+            96,
+            98,
+            100,
+            102,
+            104
+          ]
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001580",
+      "member": "20100331001580.xml",
+      "metric": "equity",
+      "scope": "OFS",
+      "table": 67,
+      "row": 70,
+      "column": 1,
+      "literal": "29,262,420,531",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "instant",
+      "member_sha256": "e41125f4d20765870d87bc18d17d1cacb85c0ada4097c67a3301c45a3acc5ffc",
+      "archive_sha256": "b73e7f9d018051da0162cfd17e2c0262e78683da71aacbc1e612eaeafcedf670",
+      "id": "prior10-20100331001580-OFS-equity",
+      "cohort": "prior10",
+      "account_literal": "자본총계",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independently re-read primary current FY2009 exact monetary cell; source scope, current-column header, account and won unit proved. Same-archive OFS auditor BS/IS corroborate. CF discrepancy is isolated and held; no correction-chain or PIT inference.",
+      "header_proofs": [
+        {
+          "table": 67,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 67,
+          "literal": "(단위 : 원)"
+        }
+      ],
+      "corroborating_sources": [
+        {
+          "member": "20100331001580_00760.xml",
+          "member_sha256": "916632731754a9ef2d20d681a57827eb348231df708013a00146a586e5faebca",
+          "table": 6,
+          "row": 63,
+          "column": 2,
+          "literal": "29,262,420,531",
+          "account_literal": "자 본 총 계",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "",
+          "period_end": "2009-12-31"
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001580",
+      "member": "20100331001580.xml",
+      "metric": "revenue",
+      "scope": "OFS",
+      "table": 69,
+      "row": 1,
+      "column": 1,
+      "literal": "3,086,981,570",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "cumulative",
+      "member_sha256": "e41125f4d20765870d87bc18d17d1cacb85c0ada4097c67a3301c45a3acc5ffc",
+      "archive_sha256": "b73e7f9d018051da0162cfd17e2c0262e78683da71aacbc1e612eaeafcedf670",
+      "id": "prior10-20100331001580-OFS-revenue",
+      "cohort": "prior10",
+      "account_literal": "영업수익",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independently re-read primary current FY2009 exact monetary cell; source scope, current-column header, account and won unit proved. Same-archive OFS auditor BS/IS corroborate. CF discrepancy is isolated and held; no correction-chain or PIT inference.",
+      "header_proofs": [
+        {
+          "table": 69,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 69,
+          "literal": "(단위 : 원)"
+        }
+      ],
+      "corroborating_sources": [
+        {
+          "member": "20100331001580_00760.xml",
+          "member_sha256": "916632731754a9ef2d20d681a57827eb348231df708013a00146a586e5faebca",
+          "table": 9,
+          "row": 1,
+          "column": 2,
+          "literal": "3,086,981,570",
+          "account_literal": "Ⅰ.영업수익",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31"
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001580",
+      "member": "20100331001580.xml",
+      "metric": "net_income",
+      "scope": "OFS",
+      "table": 69,
+      "row": 71,
+      "column": 1,
+      "literal": "(705,897,473)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "cumulative",
+      "member_sha256": "e41125f4d20765870d87bc18d17d1cacb85c0ada4097c67a3301c45a3acc5ffc",
+      "archive_sha256": "b73e7f9d018051da0162cfd17e2c0262e78683da71aacbc1e612eaeafcedf670",
+      "id": "prior10-20100331001580-OFS-net_income",
+      "cohort": "prior10",
+      "account_literal": "당기순이익(손실)",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independently re-read primary current FY2009 exact monetary cell; source scope, current-column header, account and won unit proved. Same-archive OFS auditor BS/IS corroborate. CF discrepancy is isolated and held; no correction-chain or PIT inference.",
+      "header_proofs": [
+        {
+          "table": 69,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 69,
+          "literal": "(단위 : 원)"
+        }
+      ],
+      "corroborating_sources": [
+        {
+          "member": "20100331001580_00760.xml",
+          "member_sha256": "916632731754a9ef2d20d681a57827eb348231df708013a00146a586e5faebca",
+          "table": 9,
+          "row": 63,
+          "column": 2,
+          "literal": "(705,897,473)",
+          "account_literal": "Ⅷ.당기순이익(손실)(주석21)",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31"
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001580",
+      "member": "20100331001580.xml",
+      "metric": "ocf",
+      "scope": "OFS",
+      "table": 75,
+      "row": 1,
+      "column": 1,
+      "literal": "2,274,870,860",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "cumulative",
+      "member_sha256": "e41125f4d20765870d87bc18d17d1cacb85c0ada4097c67a3301c45a3acc5ffc",
+      "archive_sha256": "b73e7f9d018051da0162cfd17e2c0262e78683da71aacbc1e612eaeafcedf670",
+      "id": "prior10-20100331001580-OFS-ocf",
+      "cohort": "prior10",
+      "account_literal": "영업활동으로인한현금흐름",
+      "statement": "CF",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independently re-read primary current FY2009 exact monetary cell; source scope, current-column header, account and won unit proved. Same-archive OFS auditor BS/IS corroborate. CF discrepancy is isolated and held; no correction-chain or PIT inference.",
+      "header_proofs": [
+        {
+          "table": 75,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 75,
+          "literal": "(단위 : 원)"
+        }
+      ],
+      "corroborating_sources": [
+        {
+          "member": "20100331001580_00760.xml",
+          "member_sha256": "916632731754a9ef2d20d681a57827eb348231df708013a00146a586e5faebca",
+          "table": 19,
+          "row": 1,
+          "column": 2,
+          "literal": "2,274,103,227",
+          "account_literal": "Ⅰ.영업활동으로인한현금흐름",
+          "unit": "원",
+          "scope": "OFS",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31"
+        }
+      ],
+      "hold_reason": "SOURCE_CF_CONFLICT_NO_AUTHORITY_TO_CHOOSE_OR_AVERAGE"
+    },
+    {
+      "receipt": "20100331001582",
+      "member": "20100331001582_00761.xml",
+      "metric": "equity",
+      "scope": "CFS",
+      "table": 7,
+      "row": 114,
+      "column": 2,
+      "literal": "221,308,938,747",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "instant",
+      "member_sha256": "da452fdb406e91b3221ce8aca62f1394da4da2d1e8bf90aa1f1af9c485c75768",
+      "archive_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+      "id": "prior10-20100331001582-CFS-equity",
+      "cohort": "prior10",
+      "account_literal": "자본총계",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Explicit consolidated auditor statement, FY2009 current term39, won unit. Auditor validity2010-04-19 postdates original2010-03-31; numeric source identity only, no backdating and no CFS-from-OFS substitution.",
+      "header_proofs": [
+        {
+          "table": 7,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 7,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001582",
+      "member": "20100331001582_00761.xml",
+      "metric": "revenue",
+      "scope": "CFS",
+      "table": 10,
+      "row": 1,
+      "column": 2,
+      "literal": "1,230,823,505,081",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "cumulative",
+      "member_sha256": "da452fdb406e91b3221ce8aca62f1394da4da2d1e8bf90aa1f1af9c485c75768",
+      "archive_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+      "id": "prior10-20100331001582-CFS-revenue",
+      "cohort": "prior10",
+      "account_literal": "Ⅰ.매출액(주석2,24,29)",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Explicit consolidated auditor statement, FY2009 current term39, won unit. Auditor validity2010-04-19 postdates original2010-03-31; numeric source identity only, no backdating and no CFS-from-OFS substitution.",
+      "header_proofs": [
+        {
+          "table": 10,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 10,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001582",
+      "member": "20100331001582_00761.xml",
+      "metric": "net_income",
+      "scope": "CFS",
+      "table": 10,
+      "row": 81,
+      "column": 2,
+      "literal": "61,671,053,547",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "cumulative",
+      "member_sha256": "da452fdb406e91b3221ce8aca62f1394da4da2d1e8bf90aa1f1af9c485c75768",
+      "archive_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+      "id": "prior10-20100331001582-CFS-net_income",
+      "cohort": "prior10",
+      "account_literal": "ⅩⅠ.당기순이익",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Explicit consolidated auditor statement, FY2009 current term39, won unit. Auditor validity2010-04-19 postdates original2010-03-31; numeric source identity only, no backdating and no CFS-from-OFS substitution.",
+      "header_proofs": [
+        {
+          "table": 10,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 10,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "receipt": "20100331001582",
+      "member": "20100331001582_00761.xml",
+      "metric": "ocf",
+      "scope": "CFS",
+      "table": 16,
+      "row": 1,
+      "column": 2,
+      "literal": "102,326,347,617",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "report_period": "FY",
+      "basis": "cumulative",
+      "member_sha256": "da452fdb406e91b3221ce8aca62f1394da4da2d1e8bf90aa1f1af9c485c75768",
+      "archive_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+      "id": "prior10-20100331001582-CFS-ocf",
+      "cohort": "prior10",
+      "account_literal": "Ⅰ.영업활동으로인한현금흐름",
+      "statement": "CF",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Explicit consolidated auditor statement, FY2009 current term39, won unit. Auditor validity2010-04-19 postdates original2010-03-31; numeric source identity only, no backdating and no CFS-from-OFS substitution.",
+      "header_proofs": [
+        {
+          "table": 16,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 16,
+          "literal": "(단위 : 원)"
+        }
+      ]
+    },
+    {
+      "id": "prior10-source-gap-20100331001574",
+      "receipt": "20100331001574",
+      "cohort": "prior10",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001574.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "First strict-XML rejection caused by unescaped Korean angle text. ZIP and financial tables preserved; not established as binary damage or actual absence. No numerical value released."
+    },
+    {
+      "id": "prior10-source-gap-20100331001575",
+      "receipt": "20100331001575",
+      "cohort": "prior10",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001575.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "First strict-XML rejection caused by unescaped Korean angle text. ZIP and financial tables preserved; not established as binary damage or actual absence. No numerical value released."
+    },
+    {
+      "id": "prior10-source-gap-20100331001576",
+      "receipt": "20100331001576",
+      "cohort": "prior10",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001576.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "First strict-XML rejection caused by unescaped Korean angle text. ZIP and financial tables preserved; not established as binary damage or actual absence. No numerical value released."
+    },
+    {
+      "id": "prior10-source-gap-20100331001579",
+      "receipt": "20100331001579",
+      "cohort": "prior10",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001579.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "First strict-XML rejection caused by unescaped Korean angle text. ZIP and financial tables preserved; not established as binary damage or actual absence. No numerical value released."
+    },
+    {
+      "id": "prior10-source-gap-20100331001581",
+      "receipt": "20100331001581",
+      "cohort": "prior10",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001581.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "First strict-XML rejection caused by unescaped Korean angle text. ZIP and financial tables preserved; not established as binary damage or actual absence. No numerical value released."
+    },
+    {
+      "id": "prior10-source-gap-20100331001583",
+      "receipt": "20100331001583",
+      "cohort": "prior10",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001583.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "First strict-XML rejection caused by unescaped Korean angle text. ZIP and financial tables preserved; not established as binary damage or actual absence. No numerical value released."
+    },
+    {
+      "id": "prior10-source-gap-20100331001585",
+      "receipt": "20100331001585",
+      "cohort": "prior10",
+      "record_type": "document",
+      "metric": "__document__",
+      "scope": "UNVERIFIED",
+      "member": "20100331001585.xml",
+      "table": 0,
+      "row": 0,
+      "column": 0,
+      "semantic_verdict": "UNVERIFIED",
+      "reason": "First strict-XML rejection caused by unescaped Korean angle text. ZIP and financial tables preserved; not established as binary damage or actual absence. No numerical value released."
+    }
+  ]
+}

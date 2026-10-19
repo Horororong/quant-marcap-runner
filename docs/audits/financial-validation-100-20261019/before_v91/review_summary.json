@@ -1,0 +1,93 @@
+{
+  "contract": "independent-source-review-v1",
+  "controls_sha256": "7bfccc1e6f3713cc8ebc1d95bdef7edde883952d9db5e5a46c4e29b916675ba0",
+  "review_code_sha256": "d900f368d05c8765d1649bd1dd9bbb0bda6db4d24ba23b4a72113ec2fcab9f94",
+  "source_manifest_sha256": "7ffef747a9e8b2f5abb31aa276415d6e53208f78f850eff5b3c4fc855e4d9b2b",
+  "counts": {
+    "PASS": 45,
+    "FAIL": 0,
+    "UNVERIFIED": 7
+  },
+  "cohorts": {
+    "new100": {
+      "documents": 28,
+      "financial_fields": {
+        "PASS": 42,
+        "FAIL": 0,
+        "UNVERIFIED": 2
+      },
+      "document_counts": {
+        "PASS": 9,
+        "FAIL": 0,
+        "UNVERIFIED": 19
+      }
+    },
+    "prior10": {
+      "documents": 9,
+      "financial_fields": {
+        "PASS": 3,
+        "FAIL": 0,
+        "UNVERIFIED": 5
+      },
+      "document_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 9
+      }
+    }
+  },
+  "extraction_coverage_counts": {
+    "PASS": 45,
+    "FAIL": 5,
+    "UNVERIFIED": 2
+  },
+  "reviewed_documents": 37,
+  "document_counts": {
+    "PASS": 9,
+    "FAIL": 0,
+    "UNVERIFIED": 28
+  },
+  "document_verdicts": {
+    "20100331001574": "UNVERIFIED",
+    "20100331001575": "UNVERIFIED",
+    "20100331001576": "UNVERIFIED",
+    "20100331001579": "UNVERIFIED",
+    "20100331001580": "UNVERIFIED",
+    "20100331001581": "UNVERIFIED",
+    "20100331001582": "UNVERIFIED",
+    "20100331001583": "UNVERIFIED",
+    "20100331001585": "UNVERIFIED",
+    "20100331001586": "UNVERIFIED",
+    "20100331001588": "UNVERIFIED",
+    "20100331001605": "UNVERIFIED",
+    "20100331001606": "UNVERIFIED",
+    "20100331001616": "UNVERIFIED",
+    "20100331001617": "UNVERIFIED",
+    "20100331001631": "UNVERIFIED",
+    "20100331001634": "UNVERIFIED",
+    "20100331001640": "UNVERIFIED",
+    "20100331001647": "UNVERIFIED",
+    "20100331001651": "UNVERIFIED",
+    "20100331001667": "PASS",
+    "20100331001671": "UNVERIFIED",
+    "20100331001673": "PASS",
+    "20100331001678": "UNVERIFIED",
+    "20100331001679": "UNVERIFIED",
+    "20100331001683": "PASS",
+    "20100331001687": "PASS",
+    "20100331001689": "UNVERIFIED",
+    "20100331001693": "PASS",
+    "20100331001697": "PASS",
+    "20100331001699": "PASS",
+    "20100331001714": "PASS",
+    "20100331001728": "UNVERIFIED",
+    "20100331001745": "UNVERIFIED",
+    "20100331001748": "PASS",
+    "20100331001753": "UNVERIFIED",
+    "20100331001754": "UNVERIFIED"
+  },
+  "source_review_scope": "Only frozen reviewed items; never entire document PIT or population accuracy",
+  "published_eligible_fields": 45,
+  "backtest_eligible": false,
+  "investment_PIT": "0/6"
+}

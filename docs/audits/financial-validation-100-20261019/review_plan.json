@@ -1,0 +1,17 @@
+{
+  "contract": "financial-validation-batch-v1",
+  "seed": "financial-validation-100-20261019-v1",
+  "authorized_ceiling": 100,
+  "start_after": "20100331001585",
+  "ordering": "rcept_dt,rcept_no; exclude all historical classifications and durable first10; freeze exact list before HTTP",
+  "primary_review": "Lowest20 SHA256(seed|receipt), frozen with full100 list before values",
+  "augment": "All extracted documents if at most20; otherwise lowest10 by same hash. Also first2 by hash of each observed extraction state. No replacement of failures.",
+  "human_controls": "Read independent raw HTMLParser cell grids, statement headers and periods; freeze literal expectations before production row amount comparison. Same parser reproducibility is not independent accuracy.",
+  "failure": "On service/rate/worker/time failure, preserve artifacts and stop; do not continue past failed chunk or restart automatically",
+  "budgets": {"document_seconds":90,"chunk_seconds":600,"chunk_documents":20},
+  "publication": "Only explicitly reviewed fields passing independent source-coordinate, Decimal amount and semantic controls; conflicts and unsupported cases held",
+  "investment_PIT": "0/6",
+  "backtest_eligible": false,
+  "automatic_collection": "HOLD",
+  "automatic_publication": "HOLD"
+}

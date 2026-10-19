@@ -38,7 +38,8 @@ def select_new(index,old_states,collection,limit):
     # ALL older classifications, including ERROR800 quarantine, stay untouched.
     old={r['rcept_no'] for r in old_states}
     durable={r['rcept_no'] for r in collection if r.get('source_status') in {'DURABLE','API014'}}
-    unique={r['rcept_no']:r for r in index if r.get('rcept_no') and r.get('rcept_no') not in old|durable and len(r.get('stock_code',''))==6}
+    blocked=old|durable
+    unique={r['rcept_no']:r for r in index if r.get('rcept_no') and r.get('rcept_no') not in blocked and len(r.get('stock_code',''))==6}
     return sorted(unique.values(),key=lambda r:(r.get('rcept_dt',''),r['rcept_no']))[:limit]
 def complete_checkpoint(out,meta,result):
     receipt=meta['rcept_no'];state=result['state'];raw=[]
@@ -58,11 +59,25 @@ def worker(meta_path,result_path):
     from scripts import backfill_dart_legacy_2000_2014 as collector
     from scripts.dart_http import progress
     meta=json.loads(meta_path.read_text())
+    cache=os.getenv('FINANCIAL_VALIDATION_SOURCE_CACHE')
+    if cache:
+        # Explicit immutable-source replay. Missing/wrong cache NEVER falls
+        # through to the HTTP collector or increments a collection checkpoint.
+        collector.fetch_document=cached_document(Path(cache),meta['rcept_no'],meta['_source_cache_sha256'])
     collector.RUN_CONTROL=collector.CollectionControl(max_requests=2,max_seconds=75,min_interval=0.5)
     progress('document_start',receipt=meta['rcept_no'])
     rows,state=collector.process_filing(meta)
     progress('document_end',receipt=meta['rcept_no'],stop_reason=collector.RUN_CONTROL.stop_reason)
     atomic(result_path,dict(meta=meta,rows=rows,state=state,parser_version=collector.PARSER_VERSION,stop_reason=collector.RUN_CONTROL.stop_reason))
+def cached_document(cache,receipt,expected_sha):
+    paths=list(cache.glob(receipt+'-*.zip'))
+    if len(paths)!=1:raise ValueError('READONLY_CACHE_MISSING_OR_AMBIGUOUS')
+    blob=paths[0].read_bytes()
+    if sha(blob)!=expected_sha:raise ValueError('READONLY_CACHE_SOURCE_HASH')
+    def fetch(requested):
+        if requested!=receipt:raise ValueError('READONLY_CACHE_RECEIPT_MISMATCH')
+        return blob,expected_sha
+    return fetch
 def run_batch(metas,out,*,document_seconds=90,total_seconds=600,worker_script=None):
     if not metas or len(metas)>100: raise ValueError('Expected1..100 frozen receipts')
     if not (0<document_seconds<=90 and document_seconds<=total_seconds<=600): raise ValueError('Invalid bounded budgets')
