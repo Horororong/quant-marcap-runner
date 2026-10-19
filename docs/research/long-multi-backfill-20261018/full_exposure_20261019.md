@@ -55,3 +55,12 @@ the corrected counts with the earlier9970/9960 version.
 Financial production work remains a separate main-only minimal PR. This research
 branch is not merged into main; its parser certification is not applied to new
 production documents.
+
+CI correction:39193534970 accidentally also selected the pre-v8 `fixed-kit` job.
+It failed at Stage5's historical source-code hash pin for
+`scripts/legacy_native_financials.py`; that pin describes the old parser, not
+the current post-v8 financial audit contract. No preservation file or expected
+hash was changed. The existing scope guard now routes `[financial-backfill]`
+to the already implemented `financial-backfill-repair` job, which actually
+checks current extraction, source controls and518/64/60. The historical job is
+explicitly skipped for this scope and is not reported as PASS.
