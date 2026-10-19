@@ -158,7 +158,7 @@ def run(root,out,event):
     transfers=[]
     for i in range(0,len(plan['samples']),20):
         folder=out/f'preserved{i//20:02d}';folder.mkdir();subset={s['rcept_no']for s in plan['samples'][i:i+20]}
-        for base in ['native','results','collection','quality']:
+        for base in ['native','service-responses','results','collection','quality']:
             for p in (batch/base).glob('*'):
                 if any(p.name.startswith(r)for r in subset):
                     dest=folder/base/p.name;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(p.read_bytes())
