@@ -1,0 +1,191 @@
+{
+  "method": "Existing full-period planned exposure, no changed selection/execution. Symptoms are not official action counts. After earliest unresolved incident actual fills/holdings remain uncertified.",
+  "source_reference": "0d3669bd45a77d7d7cc03cabcac1fad7963461ff; planned-readiness-v2 preserved source artifact",
+  "strategies": [
+    {
+      "strategy": "research_size_deciles_2019_2025_event_deferred_v2",
+      "source_sha256": "d0755aab0215d335e921f4ea99a55d7ec0071ce28b3b87dca70800b1b6b422e6",
+      "source_path": "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_size_deciles_2019_2025_event_deferred_v2/preflight.json",
+      "issues": 17,
+      "diagnostic_only": 2,
+      "planned_codes": 63,
+      "observed_sessions": 1719,
+      "unique_symptoms": 17,
+      "groups": [
+        {
+          "kind": "held_return_reference_gap",
+          "classification": "historical_fact",
+          "count": 13
+        },
+        {
+          "kind": "missing_held_quote",
+          "classification": "historical_fact",
+          "count": 2
+        },
+        {
+          "kind": "pending_order_event_contract_gap",
+          "classification": "execution_constraint",
+          "count": 1
+        },
+        {
+          "kind": "planned_trade_not_tradable",
+          "classification": "historical_fact",
+          "count": 1
+        }
+      ],
+      "first_uncertainty_by_portfolio": {
+        "D01": "2025-11-24",
+        "D02": "2022-02-28",
+        "D03": "2022-12-28",
+        "D06": "2023-08-03",
+        "D08": "2022-05-09",
+        "D10": "2022-12-28"
+      },
+      "new_NAV_completed": false
+    },
+    {
+      "strategy": "research_broad_size_deciles_2001_2025_v1",
+      "source_sha256": "c937be64ab28b11a340aae2c74f3592d0ab06fc331361aef6f5246b0025f1bed",
+      "source_path": "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_broad_size_deciles_2001_2025_v1/preflight.json",
+      "issues": 9997,
+      "diagnostic_only": 9687,
+      "planned_codes": 3990,
+      "observed_sessions": 6168,
+      "unique_symptoms": 9923,
+      "groups": [
+        {
+          "kind": "held_return_reference_gap",
+          "classification": "historical_fact",
+          "count": 6622
+        },
+        {
+          "kind": "known_unresolved_event",
+          "classification": "historical_fact",
+          "count": 129
+        },
+        {
+          "kind": "missing_held_quote",
+          "classification": "historical_fact",
+          "count": 1003
+        },
+        {
+          "kind": "pending_order_event_contract_gap",
+          "classification": "execution_constraint",
+          "count": 10
+        },
+        {
+          "kind": "planned_trade_not_tradable",
+          "classification": "execution_constraint",
+          "count": 1282
+        },
+        {
+          "kind": "planned_trade_not_tradable",
+          "classification": "historical_fact",
+          "count": 951
+        }
+      ],
+      "first_uncertainty_by_portfolio": {
+        "D01": "2002-05-02",
+        "D02": "2002-05-02",
+        "D03": "2001-05-29",
+        "D04": "2001-05-31",
+        "D05": "2001-05-08",
+        "D06": "2001-05-08",
+        "D07": "2001-05-14",
+        "D08": "2001-05-28",
+        "D09": "2001-05-14",
+        "D10": "2001-07-02"
+      },
+      "new_NAV_completed": false
+    },
+    {
+      "strategy": "research_broad_size_top10_2001_2025_v1",
+      "source_sha256": "818ee83195811b7b1fa347ab946dec0f61ca23d169bea3a1c29386d1c733d956",
+      "source_path": "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_broad_size_top10_2001_2025_v1/preflight.json",
+      "issues": 21,
+      "diagnostic_only": 18,
+      "planned_codes": 35,
+      "observed_sessions": 6168,
+      "unique_symptoms": 21,
+      "groups": [
+        {
+          "kind": "held_return_reference_gap",
+          "classification": "historical_fact",
+          "count": 10
+        },
+        {
+          "kind": "missing_held_quote",
+          "classification": "historical_fact",
+          "count": 5
+        },
+        {
+          "kind": "pending_order_event_contract_gap",
+          "classification": "execution_constraint",
+          "count": 1
+        },
+        {
+          "kind": "planned_trade_not_tradable",
+          "classification": "execution_constraint",
+          "count": 2
+        },
+        {
+          "kind": "planned_trade_not_tradable",
+          "classification": "historical_fact",
+          "count": 3
+        }
+      ],
+      "first_uncertainty_by_portfolio": {
+        "top_n": "2001-09-10"
+      },
+      "new_NAV_completed": false
+    },
+    {
+      "strategy": "research_broad_momentum_top10_2001_2025_v1",
+      "source_sha256": "02989b0e1fb0d0670d45d02ed073683a05c8e5066e590f05dd18dc8c1abf9715",
+      "source_path": "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_broad_momentum_top10_2001_2025_v1/preflight.json",
+      "issues": 101,
+      "diagnostic_only": 91,
+      "planned_codes": 232,
+      "observed_sessions": 6168,
+      "unique_symptoms": 101,
+      "groups": [
+        {
+          "kind": "held_return_reference_gap",
+          "classification": "historical_fact",
+          "count": 70
+        },
+        {
+          "kind": "missing_held_quote",
+          "classification": "historical_fact",
+          "count": 10
+        },
+        {
+          "kind": "pending_order_event_contract_gap",
+          "classification": "execution_constraint",
+          "count": 1
+        },
+        {
+          "kind": "planned_trade_not_tradable",
+          "classification": "execution_constraint",
+          "count": 11
+        },
+        {
+          "kind": "planned_trade_not_tradable",
+          "classification": "historical_fact",
+          "count": 9
+        }
+      ],
+      "first_uncertainty_by_portfolio": {
+        "top_n": "2001-06-21"
+      },
+      "new_NAV_completed": false
+    }
+  ],
+  "total_unique_cross_strategy_symptoms": 9926,
+  "investment_approved": false,
+  "new_multi_strategy_completions": 0,
+  "details_csv_sha256": "434ce161a0d6461e7dfca09fcdb81df7667f535c866bd3b8614f28c265e3987e",
+  "details_compressed_sha256": "b2b8b00a99f707b3302cae085ff1e88a19997bae9c87e52f5cf3c6e7d2b8206a",
+  "details_rows": 10136,
+  "source_scope": "Preserved planned-readiness-v2 whole-period diagnosis at research0d3669; no fresh price fetch or execution."
+}
