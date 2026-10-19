@@ -64,7 +64,7 @@ permissions:
   actions: read
 jobs:
   financial-signal-official-market-proof:
-    if: github.run_attempt == 1 && contains(github.event.head_commit.message, '[financial-signal-market-proof]')
+    if: github.run_attempt == 1 && (contains(github.event.head_commit.message, '[financial-signal-market-proof]') || contains(github.event.head_commit.message, '[financial-signal-body-proof]'))
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -83,7 +83,12 @@ jobs:
         env:
           KRX_AUTH_KEY: ${{ secrets.KRX_AUTH_KEY }}
           GH_TOKEN: ${{ github.token }}
-        run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/collect_financial_signal_market.py --output "$RUNNER_TEMP/market-proof"'
+        run: |
+          if [[ "${{ contains(github.event.head_commit.message, '[financial-signal-body-proof]') }}" == "true" ]]; then
+            "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/collect_financial_signal_market.py --dart-section --output "$RUNNER_TEMP/market-proof"
+          else
+            "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/collect_financial_signal_market.py --output "$RUNNER_TEMP/market-proof"
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
