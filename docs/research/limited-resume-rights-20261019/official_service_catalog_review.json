@@ -1,0 +1,18 @@
+{
+  "url": "https://openapi.krx.co.kr/contents/OPP/USES/service/OPPUSES002_S2.cmd?BO_ID=YieGrzzJtKhbaNLuKmhz",
+  "checked_date_kst": "2026-10-19",
+  "source_kind": "Official rendered catalog page read by web connector; not raw quote response",
+  "api_name": "신주인수권증서 일별매매정보",
+  "registered": "2022-07-04",
+  "catalog_updated": "2026-01-16",
+  "declared_history_start": "2010-02-12",
+  "locations": {
+    "name": "lines55-64",
+    "auth_header": "line94 AUTH_KEY; sample key value neither read nor copied",
+    "service_application": "lines100-111"
+  },
+  "use": "Names the specific service/application to check; does not prove the current key approval, historical quotes, actual disposal or subscription settlement",
+  "old_denied_api_retried": false,
+  "quote_rows_acquired": 0,
+  "investment_certification": false
+}

@@ -57,3 +57,14 @@ inspection job SUCCESS는 장애 기록 성공이며 시세 확보0/UNVERIFIED�
 정수 계좌 경계에서 권리/납입 수량이 정수여도 Decimal 타입으로 거래가능 주식을
 되돌리던 신규 부장부의 타입 문제를 확인하여 정수 release로 유지했다. 단주를
 버리거나 연속수량 결과를 바꾸지 않았다. 정수/단주 거부 회귀를 추가했다.
+
+
+공식 서비스 신청 위치는
+https://openapi.krx.co.kr/contents/OPP/USES/service/OPPUSES002_S2.cmd?BO_ID=YieGrzzJtKhbaNLuKmhz
+이다.2026-10-19 웹 connector로 공식 catalog의 서비스명/신청란,AUTH_KEY
+header 안내와2010-02-12 이후 제공 설명을 직접 확인했다. 확인 위치는
+공식 rendered page55~64/94/100~111행이며 official_service_catalog_review.json에
+원문 URL·범위를 기록했다. 역사 데이터 제공기간은 PIT 인증이 아니다.
+현재 키에 해당 서비스가 승인됐는지는 이 공개 페이지가 증명하지 않는다.
+주식의 신주인수권증권(sw)과 이 사건의 신주인수권증서(sr)를 혼동해 다른
+시세를 쓰지 않는다. 이전401 endpoint에 추가 요청하지 않았다.
