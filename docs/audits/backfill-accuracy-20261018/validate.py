@@ -2,7 +2,7 @@
 import argparse,hashlib,json,subprocess,sys
 from pathlib import Path
 HOME=Path(__file__).resolve().parent;ROOT=HOME.parents[2]
-def main(out,originals,runtime,check):
+def main(out,originals,runtime,check,approved_code_refactor=None):
  out.mkdir(parents=True,exist_ok=False);commands=[]
  def run(name,args):
   c=[sys.executable,'-I',*map(str,args)];r=subprocess.run(c,cwd=ROOT,capture_output=True,text=True);(out/(name+'.log')).write_text(r.stdout+r.stderr);commands.append(dict(name=name,command=c,exit_code=r.returncode,log=name+'.log'));(out/'commands.json').write_text(json.dumps(commands,indent=2)+'\n');assert r.returncode==0,(name,r.returncode)
@@ -18,7 +18,10 @@ def main(out,originals,runtime,check):
  run('replay60',[ROOT/'docs/audits/financial-repair-20261014/replay60.py','--original40',out/'originals/original40','--holdout20',out/'originals/holdout20','--runtime',runtime,'--output',out/'replay60'])
  run('independent_original60',[ROOT/'docs/audits/financial-extraction-stage3-20261014/revalidate.py','--original40',out/'originals/original40','--holdout20',out/'originals/holdout20','--replay',out/'replay60','--output',out/'audit60'])
  run('protected_controls',[HOME/'verify_protected.py','--replay',out/'replay60','--audit',out/'audit60','--output',out/'protected.json'])
- run('old_bytes_preserved',[ROOT/'docs/research/stage16-continuous-research-20261018/preserve.py','--originals',originals,'--output',out/'preservation'])
+ if approved_code_refactor:
+  run('old_bytes_preserved',[ROOT/'docs/research/source-readiness-20261019/preserve_refactor.py','--approval',approved_code_refactor,'--originals',originals,'--output',out/'preservation'])
+ else:
+  run('old_bytes_preserved',[ROOT/'docs/research/stage16-continuous-research-20261018/preserve.py','--originals',originals,'--output',out/'preservation'])
  report=json.loads((out/'audit/summary.json').read_text());assert report['cohorts']['development']['revised_amount_verdict']=={'PASS':28,'UNVERIFIED':4};assert report['cohorts']['holdout']['revised_amount_verdict']=={'PASS':44,'UNVERIFIED':4};assert report['cohorts']['reserve']['revised_amount_verdict']=={'PASS':8}
  assert all('FAIL'not in report['cohorts'][k]['revised_contract_verdict'] for k in report['cohorts'])
  if check:
@@ -26,4 +29,4 @@ def main(out,originals,runtime,check):
  result=dict(status='PASS_REPRODUCTION_AND_PROTECTION',financial_population_certification='UNVERIFIED',investment_PIT='0/6',published_main_changed=False,protected=json.loads((out/'protected.json').read_text()),independent_audit=report)
  (out/'validation_summary.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps(result,ensure_ascii=False))
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--originals',type=Path,required=True);p.add_argument('--runtime',type=Path,required=True);p.add_argument('--check',action='store_true');a=p.parse_args();main(a.output,a.originals,a.runtime,a.check)
+ p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--originals',type=Path,required=True);p.add_argument('--runtime',type=Path,required=True);p.add_argument('--check',action='store_true');p.add_argument('--approved-code-refactor',type=Path);a=p.parse_args();main(a.output,a.originals,a.runtime,a.check,a.approved_code_refactor)

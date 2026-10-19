@@ -1,0 +1,15 @@
+{
+  "run_id": 39212349110,
+  "head_sha": "ec13f37e73cb8b94d0816e82ac575a10b465a203",
+  "job_id": 117928352956,
+  "exit_code": 1,
+  "outer_error": "AssertionError: ('old_bytes_preserved', 1)",
+  "independently_reproduced_nested_error": "scripts/dart_value_factor_adapter.py",
+  "original_code_pin_sha256": "051b8d6a27fedb98032251ca37d4c4139b26127074bcbdd5428feb917f20af0a",
+  "passed_before_failure": ["Original22 independent financial controls", "Original60 re-extraction and independent audit", "Protected518 and64", "Separate real source/as-of/DART E2E job", "Separate original NAV/independent ledger/browser job"],
+  "root_cause": "Original preservation contract pins complete source bytes; extracting arithmetic into a common function intentionally changes code bytes despite identical equations and gates.",
+  "resolution": "Keep original849 manifest/owner and financial/NAV/source expectations unchanged. Explicitly approve ONE code-file transition only after whole-module AST proof: source/gate prefix unchanged, exact helper call, arithmetic/policy statements identical, all other AST identical. Derived code manifest is temporary and audited;848 original pins remain exact,1 declared code pin is separately checked. Original verifier and original60/518/64 checks still execute.",
+  "negative_tests": ["Alter equation: reject", "Remove provider gate: reject", "Add undeclared module statement: reject"],
+  "original_financial_or_NAV_goldens_modified": false,
+  "retry_without_fix": false
+}

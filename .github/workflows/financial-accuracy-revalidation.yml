@@ -3,6 +3,8 @@ on:
   push:
     branches: ['fix/financial-accuracy-20261014']
     paths:
+      - 'scripts/verify_factor_code_refactor.py'
+      - 'scripts/test_factor_code_refactor.py'
       - 'scripts/financial_record_readiness.py'
       - 'scripts/financial_publication_evidence.py'
       - 'scripts/financial_source_grid.py'
@@ -117,6 +119,7 @@ jobs:
           PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
           "$PY" -I -m unittest discover -s tests -p test_financial_record_readiness.py -v
           "$PY" -I -m unittest discover -s scripts -p test_research_incident_groups.py -v
+          "$PY" -I -m unittest discover -s scripts -p test_factor_code_refactor.py -v
           "$PY" -I -m unittest discover -s scripts -p test_dart_snapshot_selection.py -v
           "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/test_research_planned_readiness.py",run_name="__main__")'
           timeout 150 "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/test_dart_dsl_super_value.py",run_name="__main__")'
@@ -191,7 +194,7 @@ jobs:
           "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/version-pit-stage6-20261014/verify_preserved60.py --output "$RUNNER_TEMP/preserved60"
       - name: Actual extraction, independent original controls, 518 and64 and bounded transient recovery
         run: |
-          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/backfill-accuracy-20261018/validate.py --check --originals "$RUNNER_TEMP/preserved60/originals60.zip" --runtime "$RUNNER_TEMP/financial-repair/runtime" --output "$RUNNER_TEMP/financial-repair-validation"
+          "$RUNNER_TEMP/financial-repair/runtime/.venv/bin/python" -I docs/audits/backfill-accuracy-20261018/validate.py --check --approved-code-refactor docs/research/source-readiness-20261019/factor_refactor.json --originals "$RUNNER_TEMP/preserved60/originals60.zip" --runtime "$RUNNER_TEMP/financial-repair/runtime" --output "$RUNNER_TEMP/financial-repair-validation"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -1,0 +1,25 @@
+{
+  "original_manifest_sha256": "e21e3a4bac5c664b419cae80325f17d5ebafa01b096a1d590d80d011bdbce39f",
+  "original_manifest_modified": false,
+  "derived_manifest_sha256": "51e60293692c142c0dcd5e6f44f46bddfbb043ea105acbbbc887a8acf8e103c1",
+  "changed_code_path": "scripts/dart_value_factor_adapter.py",
+  "before": {
+    "bytes": 28639,
+    "sha256": "051b8d6a27fedb98032251ca37d4c4139b26127074bcbdd5428feb917f20af0a"
+  },
+  "after": {
+    "bytes": 28988,
+    "sha256": "858104fbb169f1e7f4a6a6a0765ba49e45c13ee47a346191c13e4a3ff5bd5a84"
+  },
+  "proof": {
+    "status": "PASS_EXACT_AST_EXTRACTION",
+    "provider_gate_and_source_path": "UNCHANGED",
+    "arithmetic_and_period_policy": "UNCHANGED",
+    "all_other_module_AST": "UNCHANGED",
+    "financial_or_strategy_goldens_changed": false
+  },
+  "unchanged_original_file_pins": 848,
+  "explicit_new_code_pin_count": 1,
+  "owner_exit_code": 0,
+  "investment_approved": false
+}

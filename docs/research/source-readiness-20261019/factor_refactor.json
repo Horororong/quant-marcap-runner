@@ -1,0 +1,15 @@
+{
+  "path": "scripts/dart_value_factor_adapter.py",
+  "before_source": "prior_factor_owner.py.txt",
+  "before": {
+    "bytes": 28639,
+    "sha256": "051b8d6a27fedb98032251ca37d4c4139b26127074bcbdd5428feb917f20af0a"
+  },
+  "after": {
+    "bytes": 28988,
+    "sha256": "858104fbb169f1e7f4a6a6a0765ba49e45c13ee47a346191c13e4a3ff5bd5a84"
+  },
+  "original_manifest_sha256": "e21e3a4bac5c664b419cae80325f17d5ebafa01b096a1d590d80d011bdbce39f",
+  "change": "Exactly move existing arithmetic statements to calculate_value_factors; provider coverage/source path and all other module AST unchanged.",
+  "financial_and_NAV_goldens_modified": false
+}

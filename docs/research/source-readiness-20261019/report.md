@@ -145,3 +145,14 @@ CURRENT hash 및 독립576장부일이 일치했다. 전체 wrapper는 sparse �
 복구해211핀을 확인하고 완료된8명령/로그·수치 결과를 재사용했다. 이를 wrapper
 전체 exit0으로 바꿔 적지 않는다. local_original_success_recovery.json에 실패와
 끝단 복구0을 구분하고,최종 CI의 완전 checkout에서 원래 wrapper 전체를 실행한다.
+
+첫 연구 최종 CI39212349110은 실제 source/as-of/E2E와 기존 NAV/장부/브라우저가
+성공했지만 금융 job의 코드 바이트 보존에서 실패했다. 원래849핀 중 팩터 소유
+파일051b...가 산술 함수 추출로 바뀐 것이 원인이다. 금융·NAV 기대값이나 원래
+manifest/보존 owner를 바꾸지 않는다. 원래 소스 bytes를 보존하고 전체 모듈 AST로
+정확한 문장 이동·같은 입력·기존 provider gate·수식을 입증한 **한 코드 파일**만
+명시적으로 승인한다. 나머지848핀은 원래 해시 그대로다. 임시 파생 manifest와
+기존 보존 owner로849개 모두를 검증하며,보호518/64/60 검사도 그대로 실행한다.
+수식·gate·그 밖의 모듈 변경은 거부 시험으로 확인했다. 이 옵션을 지정하지 않은
+기존 명령은 계속 원본 코드 바이트를 요구한다. 상세는 factor_refactor.json,
+prior_factor_owner.py.txt,실제 CI 실패 기록과 code_contract_evolution 산출물이다.
