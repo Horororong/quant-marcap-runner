@@ -3,6 +3,11 @@ on:
   push:
     branches: ['fix/financial-accuracy-20261014']
     paths:
+      - 'scripts/subscription_rights.py'
+      - 'scripts/test_subscription_rights.py'
+      - 'scripts/inspect_rights_public_path.py'
+      - 'config/research/rights_issue_observed_sale_v1.json'
+      - 'docs/research/limited-resume-rights-20261019/**'
       - 'scripts/verify_factor_code_refactor.py'
       - 'scripts/test_factor_code_refactor.py'
       - 'scripts/financial_record_readiness.py'
