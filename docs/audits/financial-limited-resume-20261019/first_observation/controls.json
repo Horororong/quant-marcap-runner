@@ -1,0 +1,2032 @@
+{
+  "contract": "independent-source-review-v1",
+  "frozen_before_candidate_comparison": true,
+  "controls": [
+    {
+      "id": "first-observation-20100331001758-OFS-equity",
+      "receipt": "20100331001758",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001758.xml",
+      "member_sha256": "836ae563672f5579bd54b0017cb9d2cdb43b72ff60e15aff04d6d6e5cdf44932",
+      "archive_sha256": "67a04c36be297ff84f8ab67344caad1f50f567ddc7f37e4673e3bd4e3da59bfc",
+      "table": 131,
+      "row": 100,
+      "column": 1,
+      "literal": "470,066,033,986",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term54, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 131,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 131,
+          "literal": "제54기"
+        },
+        {
+          "table": 131,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 131,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001758-OFS-net_income",
+      "receipt": "20100331001758",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001758.xml",
+      "member_sha256": "836ae563672f5579bd54b0017cb9d2cdb43b72ff60e15aff04d6d6e5cdf44932",
+      "archive_sha256": "67a04c36be297ff84f8ab67344caad1f50f567ddc7f37e4673e3bd4e3da59bfc",
+      "table": 133,
+      "row": 71,
+      "column": 1,
+      "literal": "37,056,349,457",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term54, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 131,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 133,
+          "literal": "제54기"
+        },
+        {
+          "table": 133,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 133,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 133,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001764-OFS-equity",
+      "receipt": "20100331001764",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001764.xml",
+      "member_sha256": "c6f0c90f8d363e25efdc8eda2cb50a21cbcd63204a13bb1f90fdfede02a47f3c",
+      "archive_sha256": "287a2e24fa2394183b6783aca2b7e1212ac45ed4c50ccb8cae5a38ad4074ecba",
+      "table": 138,
+      "row": 144,
+      "column": 1,
+      "literal": "51,671,526,763",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term21, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 138,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 138,
+          "literal": "제21기"
+        },
+        {
+          "table": 138,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 138,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001764-OFS-net_income",
+      "receipt": "20100331001764",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001764.xml",
+      "member_sha256": "c6f0c90f8d363e25efdc8eda2cb50a21cbcd63204a13bb1f90fdfede02a47f3c",
+      "archive_sha256": "287a2e24fa2394183b6783aca2b7e1212ac45ed4c50ccb8cae5a38ad4074ecba",
+      "table": 140,
+      "row": 82,
+      "column": 1,
+      "literal": "(71,203,325,437)",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term21, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 138,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 140,
+          "literal": "제21기"
+        },
+        {
+          "table": 140,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 140,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 140,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001768-OFS-equity",
+      "receipt": "20100331001768",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001768.xml",
+      "member_sha256": "792bef1bfc12e711b07f2d5da7153ac06ee8c885434a01c99f506bb0f3006845",
+      "archive_sha256": "19ea0cb9b51af78cd51972f754fbaaecbf5d341864b9799571fa673922e1d6ad",
+      "table": 81,
+      "row": 27,
+      "column": 1,
+      "literal": "14,637,018,693",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term6, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 81,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 81,
+          "literal": "제6기"
+        },
+        {
+          "table": 81,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 81,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001768-OFS-net_income",
+      "receipt": "20100331001768",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001768.xml",
+      "member_sha256": "792bef1bfc12e711b07f2d5da7153ac06ee8c885434a01c99f506bb0f3006845",
+      "archive_sha256": "19ea0cb9b51af78cd51972f754fbaaecbf5d341864b9799571fa673922e1d6ad",
+      "table": 83,
+      "row": 22,
+      "column": 1,
+      "literal": "935,712,084",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term6, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 81,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 83,
+          "literal": "제6기"
+        },
+        {
+          "table": 83,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 83,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 83,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001784-OFS-equity",
+      "receipt": "20100331001784",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001784.xml",
+      "member_sha256": "341a30d179a4089a808fe3b7d1e84f0ff80b9fbdb4cd7e73d9bc6a31820fc09c",
+      "archive_sha256": "73aeeb28915db864276d9d1fb33623afa79663ebbb430f32fabb127574e38969",
+      "table": 100,
+      "row": 120,
+      "column": 1,
+      "literal": "35,608,721,325",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term14, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 100,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 100,
+          "literal": "제14기"
+        },
+        {
+          "table": 100,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 100,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001784-OFS-net_income",
+      "receipt": "20100331001784",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001784.xml",
+      "member_sha256": "341a30d179a4089a808fe3b7d1e84f0ff80b9fbdb4cd7e73d9bc6a31820fc09c",
+      "archive_sha256": "73aeeb28915db864276d9d1fb33623afa79663ebbb430f32fabb127574e38969",
+      "table": 102,
+      "row": 78,
+      "column": 1,
+      "literal": "(37,457,243,995)",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term14, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 100,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 102,
+          "literal": "제14기"
+        },
+        {
+          "table": 102,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 102,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 102,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001801-OFS-equity",
+      "receipt": "20100331001801",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001801.xml",
+      "member_sha256": "9d5acc81e8a9b6bfe1636baec4e565376eed27f52854d8192149a0a607491d5c",
+      "archive_sha256": "5520bf5ae094382490ae2d7e972b5f2197af5ea1f909abfc95a7b750d1be0645",
+      "table": 100,
+      "row": 97,
+      "column": 1,
+      "literal": "145,157,991,648",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term40, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 100,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 100,
+          "literal": "제40기"
+        },
+        {
+          "table": 100,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 100,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001801-OFS-net_income",
+      "receipt": "20100331001801",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001801.xml",
+      "member_sha256": "9d5acc81e8a9b6bfe1636baec4e565376eed27f52854d8192149a0a607491d5c",
+      "archive_sha256": "5520bf5ae094382490ae2d7e972b5f2197af5ea1f909abfc95a7b750d1be0645",
+      "table": 102,
+      "row": 66,
+      "column": 1,
+      "literal": "14,527,189,725",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term40, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 100,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 102,
+          "literal": "제40기"
+        },
+        {
+          "table": 102,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 102,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 102,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001804-OFS-equity",
+      "receipt": "20100331001804",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001804.xml",
+      "member_sha256": "d4b541042ee1bdf497e3fa6d2dac897e6c652366539103b2c837999e8e73e30a",
+      "archive_sha256": "0b5d97802c61672d57282dc3c7c2856aeafce53943533b40feafcb260b296b0d",
+      "table": 114,
+      "row": 99,
+      "column": 1,
+      "literal": "20,258,754,072",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term37, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 114,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 114,
+          "literal": "제37기"
+        },
+        {
+          "table": 114,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 114,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001804-OFS-net_income",
+      "receipt": "20100331001804",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001804.xml",
+      "member_sha256": "d4b541042ee1bdf497e3fa6d2dac897e6c652366539103b2c837999e8e73e30a",
+      "archive_sha256": "0b5d97802c61672d57282dc3c7c2856aeafce53943533b40feafcb260b296b0d",
+      "table": 116,
+      "row": 79,
+      "column": 1,
+      "literal": "356,737,086",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term37, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 114,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 116,
+          "literal": "제37기"
+        },
+        {
+          "table": 116,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 116,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 116,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001807-OFS-equity",
+      "receipt": "20100331001807",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001807.xml",
+      "member_sha256": "215aaadd1c14b9fc3b88802caa5ad8ed4c6f16975d219ab416b7f999efbd6748",
+      "archive_sha256": "839b8129ba53230e4fdc00e5aedcb3f339114d3d925213a32575d3a79d9a1775",
+      "table": 72,
+      "row": 71,
+      "column": 1,
+      "literal": "90,363,414,401",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term13, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 72,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 72,
+          "literal": "제13기"
+        },
+        {
+          "table": 72,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 72,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001807-OFS-net_income",
+      "receipt": "20100331001807",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001807.xml",
+      "member_sha256": "215aaadd1c14b9fc3b88802caa5ad8ed4c6f16975d219ab416b7f999efbd6748",
+      "archive_sha256": "839b8129ba53230e4fdc00e5aedcb3f339114d3d925213a32575d3a79d9a1775",
+      "table": 74,
+      "row": 62,
+      "column": 1,
+      "literal": "16,126,784,927",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term13, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 72,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 74,
+          "literal": "제13기"
+        },
+        {
+          "table": 74,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 74,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 74,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001814-OFS-equity",
+      "receipt": "20100331001814",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001814.xml",
+      "member_sha256": "1c10c4997b608dd524119c8be20db5c5a1ebe8f54ed24e3848f42fb27e448aeb",
+      "archive_sha256": "6624ab1496703f6cf8d91f4e5054d1287e53c09bbc3668ad3ad033a85d3271ec",
+      "table": 105,
+      "row": 97,
+      "column": 1,
+      "literal": "35,391,099,684",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term37, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 105,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 105,
+          "literal": "제37기"
+        },
+        {
+          "table": 105,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 105,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001814-OFS-net_income",
+      "receipt": "20100331001814",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001814.xml",
+      "member_sha256": "1c10c4997b608dd524119c8be20db5c5a1ebe8f54ed24e3848f42fb27e448aeb",
+      "archive_sha256": "6624ab1496703f6cf8d91f4e5054d1287e53c09bbc3668ad3ad033a85d3271ec",
+      "table": 107,
+      "row": 75,
+      "column": 1,
+      "literal": "(13,979,740,772)",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term37, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 105,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 107,
+          "literal": "제37기"
+        },
+        {
+          "table": 107,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 107,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 107,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001815-OFS-equity",
+      "receipt": "20100331001815",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001815.xml",
+      "member_sha256": "78350177bad5451289e56f38bfe5a22a73a873ddb69d5b68621e6780c08ed241",
+      "archive_sha256": "ca7f420c38b053372352f3e532d3ad1951e50d89ed5129da52d19c61495b2074",
+      "table": 137,
+      "row": 91,
+      "column": 1,
+      "literal": "1,207,749,531,630",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term46, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 137,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 137,
+          "literal": "제46기"
+        },
+        {
+          "table": 137,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 137,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001815-OFS-net_income",
+      "receipt": "20100331001815",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001815.xml",
+      "member_sha256": "78350177bad5451289e56f38bfe5a22a73a873ddb69d5b68621e6780c08ed241",
+      "archive_sha256": "ca7f420c38b053372352f3e532d3ad1951e50d89ed5129da52d19c61495b2074",
+      "table": 139,
+      "row": 85,
+      "column": 1,
+      "literal": "127,456,667,002",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term46, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 137,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 139,
+          "literal": "제46기"
+        },
+        {
+          "table": 139,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 139,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 139,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001819-OFS-equity",
+      "receipt": "20100331001819",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001819.xml",
+      "member_sha256": "9859a47372b5cdd20ddb98bc3392529378311cfef9ae1feaaddd015be1302739",
+      "archive_sha256": "36e5327b9fdce4a5ba592a5929abb8983656e057808cc4084d6ad47aab313e5b",
+      "table": 125,
+      "row": 90,
+      "column": 1,
+      "literal": "205,194,749,889",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term32, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 125,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 125,
+          "literal": "제32기"
+        },
+        {
+          "table": 125,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 125,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001819-OFS-net_income",
+      "receipt": "20100331001819",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001819.xml",
+      "member_sha256": "9859a47372b5cdd20ddb98bc3392529378311cfef9ae1feaaddd015be1302739",
+      "archive_sha256": "36e5327b9fdce4a5ba592a5929abb8983656e057808cc4084d6ad47aab313e5b",
+      "table": 127,
+      "row": 73,
+      "column": 1,
+      "literal": "24,416,197,952",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term32, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 125,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 127,
+          "literal": "제32기"
+        },
+        {
+          "table": 127,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 127,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 127,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001822-OFS-equity",
+      "receipt": "20100331001822",
+      "cohort": "predeclared-state-augmentation",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001822.xml",
+      "member_sha256": "72060bc182d3145be2e3e8623c043c05bb9f7bba684e3331074b38d156cb55ea",
+      "archive_sha256": "10f1e6aebdf5f245bd4026a030d494cf64cd94813c33eb89064c0e3989408c13",
+      "table": 71,
+      "row": 92,
+      "column": 1,
+      "literal": "14,940,496,927",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term13, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 71,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 71,
+          "literal": "제13기"
+        },
+        {
+          "table": 71,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 71,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001822-OFS-net_income",
+      "receipt": "20100331001822",
+      "cohort": "predeclared-state-augmentation",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001822.xml",
+      "member_sha256": "72060bc182d3145be2e3e8623c043c05bb9f7bba684e3331074b38d156cb55ea",
+      "archive_sha256": "10f1e6aebdf5f245bd4026a030d494cf64cd94813c33eb89064c0e3989408c13",
+      "table": 73,
+      "row": 67,
+      "column": 1,
+      "literal": "7,265,064,249",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term13, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 71,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 73,
+          "literal": "제13기"
+        },
+        {
+          "table": 73,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 73,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 73,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001826-OFS-equity",
+      "receipt": "20100331001826",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001826.xml",
+      "member_sha256": "5f57a145d77f34a4c1f5b7fcc9dd87e7cad96b1b67b31b6b4440b3283865ffe0",
+      "archive_sha256": "352311325317c0f4a3d51bebf557cd7787ee8a99fd72685df4889fa93d627abb",
+      "table": 101,
+      "row": 106,
+      "column": 1,
+      "literal": "40,051,591,531",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term11, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 101,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 101,
+          "literal": "제11기"
+        },
+        {
+          "table": 101,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 101,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001826-OFS-net_income",
+      "receipt": "20100331001826",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001826.xml",
+      "member_sha256": "5f57a145d77f34a4c1f5b7fcc9dd87e7cad96b1b67b31b6b4440b3283865ffe0",
+      "archive_sha256": "352311325317c0f4a3d51bebf557cd7787ee8a99fd72685df4889fa93d627abb",
+      "table": 103,
+      "row": 98,
+      "column": 1,
+      "literal": "(16,314,914,908)",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term11, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 101,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 103,
+          "literal": "제11기"
+        },
+        {
+          "table": 103,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 103,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 103,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001835-OFS-equity",
+      "receipt": "20100331001835",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001835.xml",
+      "member_sha256": "1c6d60d9aa4b8d4e722b13a7584d0318475d1472ecedb4517db057b75d7f1a9e",
+      "archive_sha256": "a9171a5e443941cfb1dce6738d023d9ddcfa1288b4df08f9cc2790e57aa670e9",
+      "table": 76,
+      "row": 60,
+      "column": 1,
+      "literal": "40,052,790,855",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term27, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 76,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 76,
+          "literal": "제27기"
+        },
+        {
+          "table": 76,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 76,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001835-OFS-net_income",
+      "receipt": "20100331001835",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001835.xml",
+      "member_sha256": "1c6d60d9aa4b8d4e722b13a7584d0318475d1472ecedb4517db057b75d7f1a9e",
+      "archive_sha256": "a9171a5e443941cfb1dce6738d023d9ddcfa1288b4df08f9cc2790e57aa670e9",
+      "table": 78,
+      "row": 45,
+      "column": 1,
+      "literal": "3,927,159,362",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term27, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 76,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 78,
+          "literal": "제27기"
+        },
+        {
+          "table": 78,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 78,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 78,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001841-OFS-equity",
+      "receipt": "20100331001841",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001841.xml",
+      "member_sha256": "3ed7dc92795ce8d15ef739ddd44f1dfd4e15794fbfadb3a946d8558d379004dc",
+      "archive_sha256": "0745d21893b2f1a23d49c1c01165a79702b3510585713d7981435834483ae2c8",
+      "table": 86,
+      "row": 87,
+      "column": 1,
+      "literal": "181,583,062,201",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term13, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 86,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 86,
+          "literal": "제13기"
+        },
+        {
+          "table": 86,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 86,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001841-OFS-net_income",
+      "receipt": "20100331001841",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001841.xml",
+      "member_sha256": "3ed7dc92795ce8d15ef739ddd44f1dfd4e15794fbfadb3a946d8558d379004dc",
+      "archive_sha256": "0745d21893b2f1a23d49c1c01165a79702b3510585713d7981435834483ae2c8",
+      "table": 88,
+      "row": 73,
+      "column": 1,
+      "literal": "7,195,138,501",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term13, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 86,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 88,
+          "literal": "제13기"
+        },
+        {
+          "table": 88,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 88,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 88,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001846-OFS-equity",
+      "receipt": "20100331001846",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001846.xml",
+      "member_sha256": "a596de7a8b42299a32b2e6ccbadd6d7a51ba81a9210e34e4666f822875475b95",
+      "archive_sha256": "0fcbd4b4dd3d98b57fc5ca354f152e9b7fea0a4af7985a9680c249994188229c",
+      "table": 102,
+      "row": 120,
+      "column": 1,
+      "literal": "86,210,034,855",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term46, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 102,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 102,
+          "literal": "제46기"
+        },
+        {
+          "table": 102,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 102,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001846-OFS-net_income",
+      "receipt": "20100331001846",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001846.xml",
+      "member_sha256": "a596de7a8b42299a32b2e6ccbadd6d7a51ba81a9210e34e4666f822875475b95",
+      "archive_sha256": "0fcbd4b4dd3d98b57fc5ca354f152e9b7fea0a4af7985a9680c249994188229c",
+      "table": 104,
+      "row": 60,
+      "column": 1,
+      "literal": "9,066,084,541",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term46, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 102,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 104,
+          "literal": "제46기"
+        },
+        {
+          "table": 104,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 104,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 104,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001855-OFS-equity",
+      "receipt": "20100331001855",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001855.xml",
+      "member_sha256": "c8fdcb9e2b44ddb29b811387971ca63cf264e0fa0ecb9649c20a9f940ae76854",
+      "archive_sha256": "73a7fe50cd8d33bfd500a869eced2f388a915129bb98dce2cc0d66f5725a6cc2",
+      "table": 49,
+      "row": 88,
+      "column": 1,
+      "literal": "271,541,843,079",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term30, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 49,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 49,
+          "literal": "제30기"
+        },
+        {
+          "table": 49,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 49,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001855-OFS-net_income",
+      "receipt": "20100331001855",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001855.xml",
+      "member_sha256": "c8fdcb9e2b44ddb29b811387971ca63cf264e0fa0ecb9649c20a9f940ae76854",
+      "archive_sha256": "73a7fe50cd8d33bfd500a869eced2f388a915129bb98dce2cc0d66f5725a6cc2",
+      "table": 51,
+      "row": 74,
+      "column": 1,
+      "literal": "45,205,971,014",
+      "account_literal": "Ⅹ.당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term30, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 49,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 51,
+          "literal": "제30기"
+        },
+        {
+          "table": 51,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 51,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 51,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001857-OFS-equity",
+      "receipt": "20100331001857",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001857.xml",
+      "member_sha256": "c3e154a7213dbf68232af18e1db609011273894569b61d372cf275d48aede300",
+      "archive_sha256": "947138c7e0d9ec380b797d69107bec8de7b308f5b5de7891316684fdaafc8482",
+      "table": 132,
+      "row": 132,
+      "column": 1,
+      "literal": "72,021,484,995",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term23, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 132,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 132,
+          "literal": "제23기"
+        },
+        {
+          "table": 132,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 132,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001857-OFS-net_income",
+      "receipt": "20100331001857",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001857.xml",
+      "member_sha256": "c3e154a7213dbf68232af18e1db609011273894569b61d372cf275d48aede300",
+      "archive_sha256": "947138c7e0d9ec380b797d69107bec8de7b308f5b5de7891316684fdaafc8482",
+      "table": 134,
+      "row": 90,
+      "column": 1,
+      "literal": "(6,332,271,835)",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-04-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term23, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 132,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 134,
+          "literal": "제23기"
+        },
+        {
+          "table": 134,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 134,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 134,
+          "literal": "2009년 04월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001873-OFS-equity",
+      "receipt": "20100331001873",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001873.xml",
+      "member_sha256": "e0dd442ce02fcfb5b197b5c9a0a35ef1b6342a9c14790c9af05862aac2abc4cf",
+      "archive_sha256": "62c11bdbdca9828dfc34babbf13b2d4b7461b22c449d1a60da8663a1907dc652",
+      "table": 108,
+      "row": 74,
+      "column": 1,
+      "literal": "27,382,404,063",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term11, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 108,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 108,
+          "literal": "제11기"
+        },
+        {
+          "table": 108,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 108,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001873-OFS-net_income",
+      "receipt": "20100331001873",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001873.xml",
+      "member_sha256": "e0dd442ce02fcfb5b197b5c9a0a35ef1b6342a9c14790c9af05862aac2abc4cf",
+      "archive_sha256": "62c11bdbdca9828dfc34babbf13b2d4b7461b22c449d1a60da8663a1907dc652",
+      "table": 110,
+      "row": 79,
+      "column": 1,
+      "literal": "(7,509,684,490)",
+      "account_literal": "XIV.당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term11, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 108,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 110,
+          "literal": "제11기"
+        },
+        {
+          "table": 110,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 110,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 110,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001875-OFS-equity",
+      "receipt": "20100331001875",
+      "cohort": "predeclared-state-augmentation",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001875.xml",
+      "member_sha256": "3e45278b718bfdd4178abd71aa942606b17cde24fc811d67e49ad88f77beec23",
+      "archive_sha256": "5b640b2c70e4e25314f55ae40e99a2c32a0b4dc3d83f56a064653f3b58593aa1",
+      "table": 83,
+      "row": 127,
+      "column": 1,
+      "literal": "5,883,596,216",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-03-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "UNVERIFIED",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term27, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 83,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 83,
+          "literal": "제27기"
+        },
+        {
+          "table": 83,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 83,
+          "literal": "2009년 12월 31일"
+        }
+      ],
+      "reason": "WHOLE_DOCUMENT_PERIOD_CONFLICT: BS current header2009-03-31 vs annual cover/IS2009-12-31; no date correction assumed"
+    },
+    {
+      "id": "first-observation-20100331001875-OFS-net_income",
+      "receipt": "20100331001875",
+      "cohort": "predeclared-state-augmentation",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001875.xml",
+      "member_sha256": "3e45278b718bfdd4178abd71aa942606b17cde24fc811d67e49ad88f77beec23",
+      "archive_sha256": "5b640b2c70e4e25314f55ae40e99a2c32a0b4dc3d83f56a064653f3b58593aa1",
+      "table": 85,
+      "row": 104,
+      "column": 1,
+      "literal": "2,283,128,008",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "UNVERIFIED",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term27, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 83,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 85,
+          "literal": "제27기"
+        },
+        {
+          "table": 85,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 85,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 85,
+          "literal": "2009년 01월 01일"
+        }
+      ],
+      "reason": "WHOLE_DOCUMENT_PERIOD_CONFLICT: BS current header2009-03-31 vs annual cover/IS2009-12-31; no date correction assumed"
+    },
+    {
+      "id": "first-observation-20100331001898-OFS-equity",
+      "receipt": "20100331001898",
+      "cohort": "predeclared-state-augmentation",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001898.xml",
+      "member_sha256": "de354acb65667eda81b801f09005ef357a7a3be054e37c6f19d92e2cc2ba3218",
+      "archive_sha256": "749c49537038c1c870f09346385d721dc023e9a5d7fee4857f8bb1f104bdebab",
+      "table": 157,
+      "row": 120,
+      "column": 1,
+      "literal": "211,405,139,010",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term21, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 157,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 157,
+          "literal": "제21기"
+        },
+        {
+          "table": 157,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 157,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001898-OFS-net_income",
+      "receipt": "20100331001898",
+      "cohort": "predeclared-state-augmentation",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001898.xml",
+      "member_sha256": "de354acb65667eda81b801f09005ef357a7a3be054e37c6f19d92e2cc2ba3218",
+      "archive_sha256": "749c49537038c1c870f09346385d721dc023e9a5d7fee4857f8bb1f104bdebab",
+      "table": 159,
+      "row": 79,
+      "column": 1,
+      "literal": "25,731,716,018",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term21, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 157,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 159,
+          "literal": "제21기"
+        },
+        {
+          "table": 159,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 159,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 159,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001901-OFS-equity",
+      "receipt": "20100331001901",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001901.xml",
+      "member_sha256": "e34d57f1feeb5faf57f9ef4edbf050f93ae160157d48da0fc15f63676e00e8ed",
+      "archive_sha256": "e3978c2d429566bf52d306c18435e6abe4fb9561591965f0c5ec8efea8064914",
+      "table": 85,
+      "row": 122,
+      "column": 1,
+      "literal": "195,369,764,463",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term29, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 85,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 85,
+          "literal": "제29기"
+        },
+        {
+          "table": 85,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 85,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001901-OFS-net_income",
+      "receipt": "20100331001901",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001901.xml",
+      "member_sha256": "e34d57f1feeb5faf57f9ef4edbf050f93ae160157d48da0fc15f63676e00e8ed",
+      "archive_sha256": "e3978c2d429566bf52d306c18435e6abe4fb9561591965f0c5ec8efea8064914",
+      "table": 87,
+      "row": 74,
+      "column": 1,
+      "literal": "(15,999,240,488)",
+      "account_literal": "당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term29, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 85,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 87,
+          "literal": "제29기"
+        },
+        {
+          "table": 87,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 87,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 87,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001919-OFS-equity",
+      "receipt": "20100331001919",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001919.xml",
+      "member_sha256": "11e648b70765063c1e6d7ca7aa96625f8ae04db0ebc29b32c32142e96c8bf525",
+      "archive_sha256": "5ddc268de408c34dfb8de3efe64490a4fb21bce9a855021c199d076b0320f57a",
+      "table": 90,
+      "row": 81,
+      "column": 1,
+      "literal": "180,945,955,377",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term31, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 90,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 90,
+          "literal": "제31기"
+        },
+        {
+          "table": 90,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 90,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001919-OFS-net_income",
+      "receipt": "20100331001919",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001919.xml",
+      "member_sha256": "11e648b70765063c1e6d7ca7aa96625f8ae04db0ebc29b32c32142e96c8bf525",
+      "archive_sha256": "5ddc268de408c34dfb8de3efe64490a4fb21bce9a855021c199d076b0320f57a",
+      "table": 92,
+      "row": 58,
+      "column": 1,
+      "literal": "17,353,072,195",
+      "account_literal": "Ⅹ.당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term31, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 90,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 92,
+          "literal": "제31기"
+        },
+        {
+          "table": 92,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 92,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 92,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001920-OFS-equity",
+      "receipt": "20100331001920",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "equity",
+      "scope": "OFS",
+      "member": "20100331001920.xml",
+      "member_sha256": "9f1c39b2aa7dbdd7a2598341e7fd22c96e7d7fcaf522fd02918c0d456386196c",
+      "archive_sha256": "c5a90749ea8f82f35bd988469a8b83d80753eeb2225f1090c24376efa87e0f94",
+      "table": 89,
+      "row": 82,
+      "column": 1,
+      "literal": "288,177,108,044",
+      "account_literal": "자본총계",
+      "unit": "원",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "basis": "instant",
+      "report_period": "FY",
+      "statement": "BS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term67, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 89,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 89,
+          "literal": "제67기"
+        },
+        {
+          "table": 89,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 89,
+          "literal": "2009년 12월 31일"
+        }
+      ]
+    },
+    {
+      "id": "first-observation-20100331001920-OFS-net_income",
+      "receipt": "20100331001920",
+      "cohort": "fixed-primary20",
+      "record_type": "financial_field",
+      "metric": "net_income",
+      "scope": "OFS",
+      "member": "20100331001920.xml",
+      "member_sha256": "9f1c39b2aa7dbdd7a2598341e7fd22c96e7d7fcaf522fd02918c0d456386196c",
+      "archive_sha256": "c5a90749ea8f82f35bd988469a8b83d80753eeb2225f1090c24376efa87e0f94",
+      "table": 91,
+      "row": 63,
+      "column": 1,
+      "literal": "5,208,862,754",
+      "account_literal": "Ⅹ.당기순이익(손실)",
+      "unit": "원",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "basis": "cumulative",
+      "report_period": "FY",
+      "statement": "IS",
+      "semantic_verdict": "PASS",
+      "semantic_rationale": "Independent original-grid review: XI individual whole-company primary statement, current term67, column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.",
+      "header_proofs": [
+        {
+          "table": 89,
+          "literal": "XBRL 개별재무제표"
+        },
+        {
+          "table": 91,
+          "literal": "제67기"
+        },
+        {
+          "table": 91,
+          "literal": "(단위 : 원)"
+        },
+        {
+          "table": 91,
+          "literal": "2009년 12월 31일"
+        },
+        {
+          "table": 91,
+          "literal": "2009년 01월 01일"
+        }
+      ]
+    }
+  ]
+}

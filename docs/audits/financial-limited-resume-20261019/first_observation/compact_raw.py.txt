@@ -1,0 +1,21 @@
+import sys,json,re,zipfile,hashlib
+from pathlib import Path
+sys.path.insert(0,'/workspace/financial-resume-20261019/scripts')
+from financial_source_grid import Grid
+p=json.loads(Path('/workspace/first-observation-plan.json').read_text());m=json.loads(Path('/workspace/first-observation-manifest.json').read_text());receipts=sys.argv[1:]or m['summary']['review_selection']
+for receipt in receipts:
+ print('DOC',receipt,next(s['corp_name']for s in p['samples']if s['rcept_no']==receipt))
+ z=zipfile.ZipFile(next(Path('/workspace/first-observation-raw/native').glob(receipt+'-*.zip')))
+ if receipt+'.xml'not in z.namelist():print('NO_MAIN',z.namelist());continue
+ b=z.read(receipt+'.xml')
+ for enc in ['utf-8','cp949','euc-kr']:
+  try:t=b.decode(enc);assert t.encode(enc)==b;break
+  except(UnicodeError,AssertionError):pass
+ else:print('ENCODING_U');continue
+ g=Grid();g.feed(t)
+ for table in g.tables:
+  rows=table['rows'];hits=[]
+  if not rows or not re.search('과.?목',re.sub(r'\s','', ' '.join(rows[0]))):continue
+  for i,row in enumerate(rows):
+   if row and re.fullmatch(r'(?:[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩIVX0-9.()]+)?(?:자본총계|당기순이익(?:\(손실\))?|당기순손실(?:\(이익\))?)',re.sub(r'\s','',row[0])):hits.append((i,row[:5]))
+  if hits:print(json.dumps({'table':table['index'],'context':' '.join(table['context'].split())[-450:],'head':rows[:2],'hits':hits},ensure_ascii=False))

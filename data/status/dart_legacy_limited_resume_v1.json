@@ -104,10 +104,41 @@
     "20100331001937"
   ],
   "contract": "limited-source-observation-v1",
-  "first_review": null,
+  "first_review": {
+    "all_unreviewed_candidates_held": true,
+    "automatic_financial_publication": "HOLD",
+    "backtest_eligible": false,
+    "code_sha": "f754b3eeb17493bd3254303e3a2ec52990f76ac7",
+    "coverage": {
+      "FAIL": 6,
+      "PASS": 38,
+      "UNVERIFIED": 2
+    },
+    "files": {
+      "controls.json": "1c00ca6209151ed99929a51b8d50b3a70223ac76ead12ebf0df1dbefb165555a",
+      "review_plan.json": "d402dfdf5de223ca9b7e0f2b3e14d820e53cac567b9a35dd76ccec4485f30a1b",
+      "review_summary.json": "d77c6cd27e6749b09313904981c149c41a58e465758882e5a0028de098b88bdc",
+      "reviewed_rows.json": "3d3ea99ea55efda7740822fcde23909ac64c4b95217757b2ee4790d2195ec347",
+      "source_manifest.json": "30bd36f97116d1104fb857a082fd60031ea42bb965ec156fd0f5f92ff1ed6698"
+    },
+    "financial_fields": {
+      "FAIL": 0,
+      "PASS": 38,
+      "UNVERIFIED": 8
+    },
+    "investment_PIT": "0/6",
+    "new_batch_financial_fields_published": 0,
+    "reviewed_documents": 23,
+    "run_id": "39248507369",
+    "scope": "Source-only finite continuation; only frozen23x2 financial controls reviewed; not all1363 candidates or investment/PIT",
+    "selected_documents": 100,
+    "source_archives_crc": 100,
+    "source_commit": "f391dc01355b4eeb26ee0f209fa97e5f5ef43900",
+    "status": "PASS_SOURCE_SAMPLE_NOT_POPULATION_CERTIFICATION"
+  },
   "investment_PIT": "0/6",
   "last_checkpoint": "20100331001937",
-  "phase": "WAIT_FIRST_REVIEW",
+  "phase": "READY_NEXT",
   "runs": [
     {
       "candidate_fields": 1363,

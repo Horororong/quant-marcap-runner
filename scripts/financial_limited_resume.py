@@ -19,6 +19,7 @@ BASE=Path('data/financials/legacy_2000_2014/quality_v9/limited_resume_v1')
 INDEX=Path('data/financials/legacy_2000_2014/legacy_filings.csv.gz')
 OLD=Path('data/status/dart_legacy_backfill_state.csv')
 CONTRACT='limited-source-observation-v1'
+SOURCE_OWNERS={'scripts/legacy_native_financials.py','scripts/legacy_financial_fields.py','scripts/legacy_document_quality.py','scripts/backfill_dart_legacy_2000_2014.py','scripts/dart_http.py','scripts/dart_service_status.py'}
 SEED='limited-source-observation-20261019-v1'
 UTC=timezone.utc;KST=timezone(timedelta(hours=9))
 def sha(b):return hashlib.sha256(b).hexdigest()
@@ -28,9 +29,14 @@ def stamp():return datetime.now(UTC).isoformat()
 def local_day(now):return now.astimezone(KST).date().isoformat()
 def initial():return dict(contract=CONTRACT,phase='READY_FIRST',last_checkpoint='20100331001757',runs=[],completed_receipts=[],automatic_financial_publication='HOLD',backtest_eligible=False,investment_PIT='0/6',first_review=None)
 def check_gate(config,state,now,event):
+    from scripts.legacy_native_financials import PARSER_VERSION
+    from scripts.legacy_document_quality import DIAGNOSTIC_VERSION
     if config['contract']!=CONTRACT or config['mode']!='LIMITED_OBSERVATION':raise ValueError('LIMITED_GATE_CLOSED')
     if config['max_documents_per_run']!=100 or config['max_runs']!=3 or config['max_total_documents']!=300 or config['document_seconds']!=90 or config['run_seconds']!=600:raise ValueError('LIMIT_CONTRACT_CHANGED')
     if config['automatic_financial_publication']!='HOLD' or config['backtest_eligible']is not False:raise ValueError('PUBLICATION_OR_INVESTMENT_GATE')
+    if set(config['source_code_sha256'])!=SOURCE_OWNERS:raise ValueError('APPROVED_SOURCE_OWNER_SET_CHANGED')
+    if config['investment_PIT']!='0/6' or state['investment_PIT']!='0/6' or state['backtest_eligible']is not False or state['automatic_financial_publication']!='HOLD':raise ValueError('PIT_OR_PUBLICATION_STATE_PROMOTION')
+    if config['parser_version']!=PARSER_VERSION or config['source_diagnostic_version']!=DIAGNOSTIC_VERSION:raise ValueError('UNAPPROVED_PARSER_OR_DIAGNOSTIC_VERSION')
     if state['contract']!=CONTRACT or state['phase']not in {'READY_FIRST','READY_NEXT'}:raise ValueError('OBSERVATION_STOPPED_OR_UNREVIEWED')
     if len(state['runs'])>=3 or sum(r['reserved_documents']for r in state['runs'])>=300:raise ValueError('AUTHORIZED_OBSERVATION_EXHAUSTED')
     if any(r['day_kst']==local_day(now)for r in state['runs']):raise ValueError('ONCE_PER_KST_DAY')
@@ -136,7 +142,13 @@ def run(root,out,event):
     except ValueError as e:
         out.mkdir(parents=True,exist_ok=False);atomic(out/'gate.json',dict(status='NO_COLLECTION',reason=str(e),observed_head=head,observed_state=state));print(json.dumps(dict(status='NO_COLLECTION',reason=str(e))));return 0
     run_id=os.environ['GITHUB_RUN_ID']
-    try:plan=freeze(root,state,run_id)
+    try:
+        for name,expected in config['source_code_sha256'].items():
+            if sha((root/name).read_bytes())!=expected:raise ValueError('UNAPPROVED_SOURCE_CODE:'+name)
+        if state['runs']:
+            from scripts.financial_limited_review import verify_approval
+            verify_approval(root,state)
+        plan=freeze(root,state,run_id)
     except ValueError as exc:
         state.update(phase='HOLD_PRECHECK_FAILURE',precheck_error=str(exc),failed_run_id=run_id)
         out.mkdir(parents=True,exist_ok=False);atomic(out/'gate.json',state)
@@ -148,7 +160,10 @@ def run(root,out,event):
     reservation=api.commit({STATE:reserved,BASE/'runs'/run_id/'selection.json':raw(plan)},current,root,'Reserve bounded source observation '+run_id+' [skip ci]')
     atomic(out/'reservation.json',dict(commit=reservation,state_sha256=sha(reserved)))
     batch=out/'batch';code=1;failure=''
-    try:code=run_batch(plan['samples'],batch,result_validator=validate_result)
+    def live(status):
+        if status['current_stage']in {'WORKER_START','CHECKPOINT_DURABLE','DEFERRED'}:
+            print(json.dumps({k:status.get(k)for k in ['current_receipt','current_stage','completed','last_checkpoint','elapsed_seconds']}),flush=True)
+    try:code=run_batch(plan['samples'],batch,result_validator=validate_result,status_callback=live)
     except Exception as e:failure=type(e).__name__+':'+str(e) if isinstance(e,ValueError)else type(e).__name__
     if not(batch/'run_status.json').exists():raise ValueError('NO_BATCH_CHECKPOINT_LEASE_STAYS_RUNNING')
     summary=summarize(batch,plan);atomic(out/'summary.json',summary)

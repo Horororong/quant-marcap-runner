@@ -1,0 +1,20 @@
+{
+  "failed_operations": [
+    {
+      "operation": "update new branch ref without create",
+      "error": "GitHub422 Reference does not exist",
+      "applied": false
+    },
+    {
+      "operation": "PR before branch existed",
+      "error": "GitHub422 head invalid",
+      "applied": false
+    }
+  ],
+  "recovery": "create_branch at preserved commit3f5bb7d, then PR43; no force and no duplicate commit",
+  "research_CI_no_run": {
+    "sha": "d254bbb4c56cdbe929fd475ec00cd4864fbdd68f",
+    "cause": "existing push paths omitted newly added rights source/tests",
+    "fix": "add exact rights code/config/doc paths in ef0d30a; final CI39246051284 success, earlier no-run not PASS"
+  }
+}
