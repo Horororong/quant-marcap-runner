@@ -26,7 +26,8 @@ class IndependentGate(unittest.TestCase):
         c,r,s=self.fixture();r[0]['backtest_eligible']=True;self.assertEqual(verify(c,r,s)[0]['verdict'],'FAIL')
     def test_sign_and_multiplier_independent_decimal_and_no_guessing(self):
         self.assertEqual(normalize('(1,234)','천원'),-1234000);self.assertEqual(normalize('500','원',True),-500)
-        for raw in ['-','1,23','123 456','100=','']:
+        self.assertEqual(normalize('536,277,091&cr;=============','원'),536277091)
+        for raw in ['-','1,23','123 456','100=','100&cr;EPS2','100&cr;===50','']:
             with self.assertRaises(ValueError):normalize(raw,'원')
     def test_different_current_amount_in_corresponding_source_is_held(self):
         c,r,s=self.fixture();g=Grid();g.feed('<table><tr><td>매출액</td><td>2,000</td></tr></table>');s['auditor.xml']=(g,'other','archive')

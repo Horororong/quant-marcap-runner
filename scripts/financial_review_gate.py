@@ -15,6 +15,10 @@ def sha(data):return hashlib.sha256(data).hexdigest()
 def normalize(literal,unit,negative_account=False):
     if unit not in UNITS:raise ValueError('UNSUPPORTED_UNIT')
     text=literal.strip();negative=False
+    # A native explicit line-break entity followed solely by total-rule marks
+    # cannot contain a second amount/EPS. Keep every other suffix unsupported.
+    decoration=re.fullmatch(r'(.+)&cr;([=_]{2,})',text)
+    if decoration:text=decoration.group(1).strip()
     if text.startswith(('△','▲','Δ')):negative=True;text=text[1:].strip()
     if text.startswith('(')and text.endswith(')'):negative=True;text=text[1:-1].strip()
     text=text.replace('−','-').replace('－','-')
@@ -108,6 +112,8 @@ def audit(root):
             key=(receipt,row['scope'],row['metric'],row['period_start'],row['period_end'])
             if key in published:raise ValueError('DUPLICATE_PUBLICATION_CONTROL')
             published[key]=row
+    control_sha=sha((root/'controls.json').read_bytes());code_sha=sha(Path(__file__).read_bytes());manifest_sha=sha((root/'source_manifest.json').read_bytes())
+    for row in published.values():row.update(review_controls_sha256=control_sha,review_code_sha256=code_sha,review_source_manifest_sha256=manifest_sha)
     fields=[d for d in details if d['record_type']=='financial_field']
     counts={v:sum(d['verdict']==v for d in fields)for v in ['PASS','FAIL','UNVERIFIED']}
     documents={}
@@ -119,7 +125,7 @@ def audit(root):
     for cohort in sorted({d['cohort']for d in details}):
         subset=[d for d in details if d['cohort']==cohort];rs={d['receipt']for d in subset}
         cohorts[cohort]=dict(documents=len(rs),financial_fields={v:sum(d['verdict']==v and d['record_type']=='financial_field'for d in subset)for v in counts},document_counts={v:sum(documents[r]==v for r in rs)for v in counts})
-    return dict(contract=VERSION,counts=counts,cohorts=cohorts,extraction_coverage_counts={v:sum(d['extraction_coverage']==v for d in fields)for v in counts},reviewed_documents=len(documents),document_counts=doc_counts,document_verdicts=documents,source_review_scope='Only frozen reviewed items; never entire document PIT or population accuracy',published_eligible_fields=len(published),backtest_eligible=False,investment_PIT='0/6'),details,list(published.values())
+    return dict(contract=VERSION,controls_sha256=control_sha,review_code_sha256=code_sha,source_manifest_sha256=manifest_sha,counts=counts,cohorts=cohorts,extraction_coverage_counts={v:sum(d['extraction_coverage']==v for d in fields)for v in counts},reviewed_documents=len(documents),document_counts=doc_counts,document_verdicts=documents,source_review_scope='Only frozen reviewed items; never entire document PIT or population accuracy',published_eligible_fields=len(published),backtest_eligible=False,investment_PIT='0/6'),details,list(published.values())
 def check_publication(audit_root,rows):
     repo=audit_root.parents[2]
     status=json.loads((repo/'data/status/dart_legacy_validation100_status.json').read_text())
