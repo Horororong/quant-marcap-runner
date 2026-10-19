@@ -38,7 +38,8 @@ def select_new(index,old_states,collection,limit):
     # ALL older classifications, including ERROR800 quarantine, stay untouched.
     old={r['rcept_no'] for r in old_states}
     durable={r['rcept_no'] for r in collection if r.get('source_status') in {'DURABLE','API014'}}
-    unique={r['rcept_no']:r for r in index if r.get('rcept_no') and r.get('rcept_no') not in old|durable and len(r.get('stock_code',''))==6}
+    blocked=old|durable
+    unique={r['rcept_no']:r for r in index if r.get('rcept_no') and r.get('rcept_no') not in blocked and len(r.get('stock_code',''))==6}
     return sorted(unique.values(),key=lambda r:(r.get('rcept_dt',''),r['rcept_no']))[:limit]
 def complete_checkpoint(out,meta,result):
     receipt=meta['rcept_no'];state=result['state'];raw=[]

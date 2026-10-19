@@ -16,6 +16,8 @@ BASE=Path('data/financials/legacy_2000_2014/quality_v9')
 def digest(data):return hashlib.sha256(data).hexdigest()
 def canonical(obj):return json.dumps(obj,sort_keys=True,ensure_ascii=False,separators=(',',':')).encode()
 def freeze(root,out):
+    if (root/'data/status/dart_legacy_validation100_status.json').exists():
+        raise ValueError('AUTHORIZED100_ALREADY_CONSUMED_NO_AUTOMATIC_EXPANSION')
     config=json.loads((root/'config/financial_backfill_rollout.json').read_text())
     if config['mode']!='HOLD' or config['automatic_publication_enabled'] or config['automatic_schedule_enabled']:
         raise ValueError('GLOBAL_HOLD_REQUIRED')
@@ -26,6 +28,7 @@ def freeze(root,out):
     state_path=root/'data/status/dart_legacy_backfill_state.csv'
     index=read_csv(index_path);old=read_csv(state_path)
     collected=[json.loads(p.read_text())for p in sorted((root/BASE/'collection').glob('*.json'))]
+    if len(collected)!=10:raise ValueError('EXACT_PRIOR10_REQUIRED_NO_AUTOMATIC_EXPANSION')
     samples=select_new(index,old,collected,100)
     if len(samples)!=100 or any(s['rcept_no']<=CHECKPOINT for s in samples):
         raise ValueError('EXPECTED_NEXT100_AFTER_CHECKPOINT')

@@ -62,7 +62,9 @@ def check(root):
             assert row['official_publication_verdict']==row['historical_identity_verdict']==row['correction_chain_verdict']=='UNVERIFIED'
             key=(receipt,row['metric'],row['scope']);assert key not in actual_stored;actual_stored.add(key);verified+=1
     assert verified==summary['published_fields']==8
-    assert len(list((root/BASE/'collection').glob('*.json')))==len(receipts)
+    # This immutable regression certifies only the original10. Later batches
+    # have their own independent source/control ledger and must not replace it.
+    assert receipts.issubset({p.stem for p in (root/BASE/'collection').glob('*.json')})
     conflicts=json.loads((root/HOME/'operating_source_conflicts.json').read_text())
     for conflict in conflicts:
         observed=[]

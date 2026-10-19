@@ -89,6 +89,9 @@ jobs:
           if [[ -f docs/audits/financial-deployment-20261018/operating_summary.json ]]; then
             "$PY" -I scripts/financial_operating_evidence.py
           fi
+          if [[ -f docs/audits/financial-validation-100-20261019/controls.json ]]; then
+            "$PY" -I scripts/financial_review_gate.py docs/audits/financial-validation-100-20261019 --check
+          fi
       - uses: actions/checkout@v4
         with:
           ref: 0d3669bd45a77d7d7cc03cabcac1fad7963461ff

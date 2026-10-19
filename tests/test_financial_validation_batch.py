@@ -1,7 +1,8 @@
-import hashlib,json,sys,tempfile,unittest
+import hashlib,json,sys,tempfile,unittest,os
+from unittest.mock import patch
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
-from scripts.financial_validation_batch import canonical,collect,digest,review_selection,rank,CONTRACT
+from scripts.financial_validation_batch import canonical,collect,digest,review_selection,rank,freeze,CONTRACT
 class BatchBoundaries(unittest.TestCase):
     def plan(self):return dict(contract=CONTRACT,samples=[dict(rcept_no=str(i))for i in range(100)],primary_review=[str(i)for i in range(20)])
     def test_selection_tamper_refused_before_HTTP(self):
@@ -22,4 +23,14 @@ class BatchBoundaries(unittest.TestCase):
         a=review_selection(plan,s)
         for x in s.values():x['amount']='changed'
         self.assertEqual(a,review_selection(plan,s));self.assertGreaterEqual(len(a),20)
+    def test_consumed_batch_cannot_expand_automatically(self):
+        with tempfile.TemporaryDirectory()as t:
+            root=Path(t);p=root/'data/status/dart_legacy_validation100_status.json';p.parent.mkdir(parents=True);p.write_text('{}')
+            with self.assertRaisesRegex(ValueError,'ALREADY_CONSUMED'):freeze(root,root/'plan.json')
+    def test_actions_retry_cannot_recollect_frozen100(self):
+        with tempfile.TemporaryDirectory()as t:
+            root=Path(t);obj=self.plan();obj['selection_sha256']=digest(canonical(obj['samples']));p=root/'plan.json';p.write_text(json.dumps(obj))
+            with patch.dict(os.environ,{'GITHUB_RUN_ATTEMPT':'2'}):
+                with self.assertRaisesRegex(ValueError,'NO_AUTOMATIC_RUN_RETRY'):collect(p,root/'out',0)
+            self.assertFalse((root/'out').exists())
 if __name__=='__main__':unittest.main()
