@@ -9,6 +9,40 @@ permissions:
   contents: read
   actions: read
 jobs:
+  source-validation100-replay:
+    if: github.event_name == 'pull_request' || contains(github.event.head_commit.message, '[financial-fixed-kit-only]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore original pinned offline kit
+        run: |
+          python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: Actual common collector on frozen100 and prior10; no HTTP credentials or recollection
+        run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_validation_replay.py docs/audits/financial-validation-100-20261019 --output "$RUNNER_TEMP/replay100"'
+      - name: Exact canonical financial bytes and frozen independent control/publication checks
+        run: |
+          PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
+          "$PY" -I -c 'import base64,gzip,os;from pathlib import Path;a=Path(os.environ["RUNNER_TEMP"])/"replay100/subjects_v92.json.gz.b64";b=Path("docs/audits/financial-validation-100-20261019/subjects_v92.json.gz.b64");assert gzip.decompress(base64.b64decode(a.read_bytes()))==gzip.decompress(base64.b64decode(b.read_bytes())),"CANONICAL_FINANCIAL_BYTES_DIFFER"'
+          "$PY" -I scripts/financial_review_gate.py docs/audits/financial-validation-100-20261019 --check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: canonical-source100-replay-NO-HTTP
+          path: |
+            ${{ runner.temp }}/replay100/summary.json
+            ${{ runner.temp }}/replay100/subjects_v92.json.gz.b64
+            ${{ runner.temp }}/replay100/chunk*/run_status.json
+            ${{ runner.temp }}/replay100/chunk*/workers/*/worker.log
+            ${{ runner.temp }}/replay100/chunk*/workers/*/progress.jsonl
+            ${{ runner.temp }}/runtime.json
+          if-no-files-found: error
+          retention-days: 90
   finite-validation100:
     needs: fixed-kit-financial-validation
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/deploy/financial-backfill-v9-') && github.run_attempt == 1 && contains(github.event.head_commit.message, '[financial-validation100]')
@@ -106,6 +140,7 @@ jobs:
           done
           cp scripts/test_dart_service_status.py audit-reference/scripts/test_dart_service_status.py
           cp scripts/financial_candidate_regression.py audit-reference/docs/audits/backfill-accuracy-20261018/candidate_regression.py
+          cp scripts/financial_candidate_patch_regression.py audit-reference/docs/audits/backfill-accuracy-20261018/candidate_patch_regression.py
           "$PY" -I audit-reference/docs/audits/version-pit-stage6-20261014/verify_preserved60.py --output "$RUNNER_TEMP/preserved60"
           "$PY" -I audit-reference/docs/audits/backfill-accuracy-20261018/candidate_regression.py --candidate-manifest "$GITHUB_WORKSPACE/docs/audits/financial-validation-100-20261019/parser_candidate.json" --check --originals "$RUNNER_TEMP/preserved60/originals60.zip" --runtime "$RUNNER_TEMP/fixed/runtime" --output "$RUNNER_TEMP/protected-financial-audit"
       - uses: actions/upload-artifact@v4

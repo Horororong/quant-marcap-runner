@@ -4,6 +4,12 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'scripts'))
 from financial_review_gate import unpack
 from financial_rollout import atomic,run_batch,sha
+def canonical_subjects(subjects):
+    # Raw worker results/progress remain intact. Only the execution clock is
+    # excluded from the explicitly versioned financial comparison snapshot.
+    clean=json.loads(json.dumps(subjects))
+    for result in clean.values():result['state'].pop('updated_at_utc',None)
+    return json.dumps(dict(subjects=clean,new_HTTP_calls=0,source_mode='IMMUTABLE_OFFICIAL_ZIP_CACHE',snapshot_contract='financial-subject-snapshot-v1-no-execution-clock'),ensure_ascii=False,separators=(',',':'),sort_keys=True).encode()
 def main(root,out):
     manifest=json.loads((root/'source_manifest.json').read_text());files={};samples={}
     for pack in manifest['packs']:
@@ -24,13 +30,13 @@ def main(root,out):
             folder=out/f'chunk{i//20:02d}'
             code=run_batch(metas[i:i+20],folder)
             if code:raise RuntimeError('OFFLINE_REPLAY_STOPPED_CHECKPOINT_PRESERVED')
-            for p in (folder/'results').glob('*.json'):subjects[p.stem]=json.loads(p.read_text())
+            for p in sorted((folder/'results').glob('*.json')):subjects[p.stem]=json.loads(p.read_text())
     finally:
         if old is None:os.environ.pop('FINANCIAL_VALIDATION_SOURCE_CACHE',None)
         else:os.environ['FINANCIAL_VALIDATION_SOURCE_CACHE']=old
-    packed=gzip.compress(json.dumps(dict(subjects=subjects,new_HTTP_calls=0,source_mode='IMMUTABLE_OFFICIAL_ZIP_CACHE'),ensure_ascii=False,separators=(',',':')).encode(),mtime=0)
+    raw=canonical_subjects(subjects);packed=gzip.compress(raw,mtime=0)
     (out/'subjects_v92.json.gz.b64').write_bytes(base64.b64encode(packed)+b'\n')
-    summary=dict(documents=len(subjects),new_HTTP_calls=0,compressed_sha256=sha(packed),rows=sum(len(s['rows'])for s in subjects.values()),parser_version=next(iter(subjects.values()))['parser_version'])
+    summary=dict(documents=len(subjects),new_HTTP_calls=0,compressed_sha256=sha(packed),canonical_sha256=sha(raw),rows=sum(len(s['rows'])for s in subjects.values()),parser_version=next(iter(subjects.values()))['parser_version'])
     atomic(out/'summary.json',summary);print(json.dumps(summary))
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('root',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args();main(a.root,a.output)

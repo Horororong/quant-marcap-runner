@@ -79,5 +79,14 @@
     "new100": "Initial28 now regression cohort after scope-boundary fix",
     "postfix_holdout": "Previously unused20, expected values frozen before candidate9.2 output",
     "prior10": "Original canary evidence re-review, not independent holdout"
+  },
+  "subject_override": {
+    "path": "subjects_v92.json.gz.b64",
+    "compressed_sha256": "bd9e85121e0df249d16b7aa9e35278e67dba361487d418ecb64ef58bdf647bd8",
+    "canonical_sha256": "0dc619535bf5de5effd171aa60e1a8aab354227cb8e8670b775778bd6df2fa68",
+    "parser_version": "legacy-v9.2-statement-boundary-guard",
+    "source_mode": "PRESERVED_ZIP_CACHE_NO_HTTP",
+    "raw_replay_pack_sha256": "3308b9e0f119e6fc5d36d0bcf2a21dbf5a3bc10f24b5982af1fe0c2954b38d2e",
+    "snapshot_contract": "financial-subject-snapshot-v1-no-execution-clock"
   }
 }

@@ -9,6 +9,7 @@ class IndependentGate(unittest.TestCase):
         c=dict(id='synthetic',receipt='synthetic',metric='revenue',scope='OFS',member='main.xml',table=0,row=0,column=1,literal='1,000',account_literal='매출액',member_sha256='member',archive_sha256='archive',semantic_verdict='PASS',header_proofs=[dict(table=0,literal='OFS2009FY 원')],period_start='2009-01-01',period_end='2009-12-31',basis='annual',report_period='FY',unit='원')
         row=dict(metric='revenue',scope='OFS',source_member='main.xml',amount_krw='1000',table_index=0,row_index=0,value_col=1,period_start='2009-01-01',period_end='2009-12-31',measurement_basis='annual',period='FY',unit='원',source_member_sha256='member',document_sha256='archive',backtest_eligible=False)
         c['statement']='IS';row['statement']='IS';row['unit_multiplier']='1'
+        row.update(structural_status='PASS',amendment_region='FILED_BODY',fiscal_year=2009)
         c['semantic_rationale']='Synthetic primary IS current FY2009 OFS KRW monetary cell; no comparative or EPS selection.'
         return c,[row],{'main.xml':(g,'member','archive')}
     def test_raw_literals_and_semantic_control_required_not_parser_replay(self):
@@ -33,4 +34,7 @@ class IndependentGate(unittest.TestCase):
         c,r,s=self.fixture();g=Grid();g.feed('<table><tr><td>매출액</td><td>2,000</td></tr></table>');s['auditor.xml']=(g,'other','archive')
         c['corroborating_sources']=[dict(member='auditor.xml',table=0,row=0,column=1,literal='2,000',account_literal='매출액',member_sha256='other',unit='원',scope='OFS',period_start='2009-01-01',period_end='2009-12-31')]
         d,p=verify(c,r,s);self.assertEqual(d['verdict'],'UNVERIFIED');self.assertEqual(d['reason'],'INDEPENDENT_CROSS_MEMBER_CONFLICT');self.assertIsNone(p)
+    def test_earlier_correction_region_or_unknown_fiscal_identity_not_published(self):
+        c,r,s=self.fixture();r[0]['amendment_region']='BEFORE';self.assertIsNone(verify(c,r,s)[1])
+        c,r,s=self.fixture();r[0]['fiscal_year']=2010;c['report_period']='FY';self.assertEqual(verify(c,r,s)[0]['verdict'],'FAIL')
 if __name__=='__main__':unittest.main()

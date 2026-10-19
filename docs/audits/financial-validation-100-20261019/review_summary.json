@@ -1,0 +1,126 @@
+{
+  "contract": "independent-source-review-v1",
+  "controls_sha256": "7bfccc1e6f3713cc8ebc1d95bdef7edde883952d9db5e5a46c4e29b916675ba0",
+  "review_code_sha256": "1f70b3b79e78425ae0117f0943595673910238f95a2b648b7ea6f09ea42d4b8e",
+  "source_manifest_sha256": "6d1ab2987d1e37c240d3e2600617cbf486a80100157f1a9d0f73bbdf6a1b4c0e",
+  "counts": {
+    "PASS": 85,
+    "FAIL": 0,
+    "UNVERIFIED": 7
+  },
+  "cohorts": {
+    "new100": {
+      "documents": 28,
+      "financial_fields": {
+        "PASS": 43,
+        "FAIL": 0,
+        "UNVERIFIED": 1
+      },
+      "document_counts": {
+        "PASS": 10,
+        "FAIL": 0,
+        "UNVERIFIED": 18
+      }
+    },
+    "postfix_holdout": {
+      "documents": 20,
+      "financial_fields": {
+        "PASS": 39,
+        "FAIL": 0,
+        "UNVERIFIED": 1
+      },
+      "document_counts": {
+        "PASS": 9,
+        "FAIL": 0,
+        "UNVERIFIED": 11
+      }
+    },
+    "prior10": {
+      "documents": 9,
+      "financial_fields": {
+        "PASS": 3,
+        "FAIL": 0,
+        "UNVERIFIED": 5
+      },
+      "document_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 9
+      }
+    }
+  },
+  "extraction_coverage_counts": {
+    "PASS": 85,
+    "FAIL": 4,
+    "UNVERIFIED": 3
+  },
+  "reviewed_documents": 57,
+  "document_counts": {
+    "PASS": 19,
+    "FAIL": 0,
+    "UNVERIFIED": 38
+  },
+  "document_verdicts": {
+    "20100331001574": "UNVERIFIED",
+    "20100331001575": "UNVERIFIED",
+    "20100331001576": "UNVERIFIED",
+    "20100331001579": "UNVERIFIED",
+    "20100331001580": "UNVERIFIED",
+    "20100331001581": "UNVERIFIED",
+    "20100331001582": "UNVERIFIED",
+    "20100331001583": "UNVERIFIED",
+    "20100331001585": "UNVERIFIED",
+    "20100331001586": "UNVERIFIED",
+    "20100331001588": "UNVERIFIED",
+    "20100331001593": "UNVERIFIED",
+    "20100331001605": "UNVERIFIED",
+    "20100331001606": "UNVERIFIED",
+    "20100331001607": "UNVERIFIED",
+    "20100331001615": "UNVERIFIED",
+    "20100331001616": "UNVERIFIED",
+    "20100331001617": "UNVERIFIED",
+    "20100331001623": "PASS",
+    "20100331001631": "UNVERIFIED",
+    "20100331001632": "PASS",
+    "20100331001634": "UNVERIFIED",
+    "20100331001640": "UNVERIFIED",
+    "20100331001641": "PASS",
+    "20100331001644": "UNVERIFIED",
+    "20100331001647": "UNVERIFIED",
+    "20100331001648": "UNVERIFIED",
+    "20100331001650": "PASS",
+    "20100331001651": "UNVERIFIED",
+    "20100331001658": "UNVERIFIED",
+    "20100331001661": "UNVERIFIED",
+    "20100331001665": "UNVERIFIED",
+    "20100331001667": "PASS",
+    "20100331001670": "PASS",
+    "20100331001671": "UNVERIFIED",
+    "20100331001672": "UNVERIFIED",
+    "20100331001673": "PASS",
+    "20100331001678": "UNVERIFIED",
+    "20100331001679": "PASS",
+    "20100331001683": "PASS",
+    "20100331001687": "PASS",
+    "20100331001689": "UNVERIFIED",
+    "20100331001693": "PASS",
+    "20100331001697": "PASS",
+    "20100331001699": "PASS",
+    "20100331001704": "PASS",
+    "20100331001708": "PASS",
+    "20100331001714": "PASS",
+    "20100331001715": "UNVERIFIED",
+    "20100331001718": "UNVERIFIED",
+    "20100331001728": "UNVERIFIED",
+    "20100331001741": "PASS",
+    "20100331001745": "UNVERIFIED",
+    "20100331001748": "PASS",
+    "20100331001753": "UNVERIFIED",
+    "20100331001754": "UNVERIFIED",
+    "20100331001757": "PASS"
+  },
+  "source_review_scope": "Only frozen reviewed items; never entire document PIT or population accuracy",
+  "published_eligible_fields": 85,
+  "backtest_eligible": false,
+  "investment_PIT": "0/6"
+}

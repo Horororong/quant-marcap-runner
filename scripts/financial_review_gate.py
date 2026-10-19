@@ -83,6 +83,9 @@ def verify(control,subject,source):
             return outcome,None
         outcome['extraction_coverage']='PASS'
         row=matches[0];outcome['source_value']=str(expected);outcome['extracted_value']=str(row['amount_krw'])
+        if row.get('structural_status')!='PASS' or row.get('amendment_region')not in {'FILED_BODY','AFTER','ORIGINAL_FILED'}:
+            outcome['reason']='STRUCTURE_OR_FILED_REGION_UNVERIFIED';return outcome,None
+        if control['report_period']=='FY' and row.get('fiscal_year')!=int(control['period_end'][:4]):raise ValueError('FISCAL_IDENTITY_MISMATCH')
         if Decimal(str(row['amount_krw']))!=expected:outcome.update(amount='FAIL',verdict='FAIL',reason='AMOUNT_MISMATCH');return outcome,None
         outcome['amount']='PASS'
         actual=(row['table_index'],row['row_index'],row['value_col'],row['period_start'],row['period_end'],row['measurement_basis'],row['period'],row['statement'],row['unit'],Decimal(str(row['unit_multiplier'])),row['source_member_sha256'],row['document_sha256'])
