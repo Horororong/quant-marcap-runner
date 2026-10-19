@@ -78,7 +78,7 @@ def cached_document(cache,receipt,expected_sha):
         if requested!=receipt:raise ValueError('READONLY_CACHE_RECEIPT_MISMATCH')
         return blob,expected_sha
     return fetch
-def run_batch(metas,out,*,document_seconds=90,total_seconds=600,worker_script=None):
+def run_batch(metas,out,*,document_seconds=90,total_seconds=600,worker_script=None,result_validator=None):
     if not metas or len(metas)>100: raise ValueError('Expected1..100 frozen receipts')
     if not (0<document_seconds<=90 and document_seconds<=total_seconds<=600): raise ValueError('Invalid bounded budgets')
     out.mkdir(parents=True,exist_ok=False)
@@ -127,6 +127,8 @@ def run_batch(metas,out,*,document_seconds=90,total_seconds=600,worker_script=No
             if code!=0 or not (folder/'result.json').exists():
                 stop['reason']='WORKER_FAILURE';save(worker_exit_code=code);break
             result=json.loads((folder/'result.json').read_text())
+            if result_validator is not None:
+                result_validator(meta,result,out)
             collection,quality=complete_checkpoint(out,meta,result)
             results.append(dict(receipt=receipt,status=result['state']['status'],rows=len(result['rows'])))
             save(completed=len(results),last_checkpoint=receipt,current_stage='CHECKPOINT_DURABLE')

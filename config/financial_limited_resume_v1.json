@@ -1,0 +1,17 @@
+{
+  "contract": "limited-source-observation-v1",
+  "mode": "LIMITED_OBSERVATION",
+  "max_documents_per_run": 100,
+  "max_runs": 3,
+  "max_total_documents": 300,
+  "maximum_runs_per_kst_day": 1,
+  "document_seconds": 90,
+  "run_seconds": 600,
+  "expires_at_utc": "2026-10-23T23:59:59+00:00",
+  "automatic_financial_publication": "HOLD",
+  "backtest_eligible": false,
+  "investment_PIT": "0/6",
+  "first_review_required_before_schedules": true,
+  "legacy_v5_and_2000_collection": "DISABLED",
+  "quarantine": "Document-local unsupported sources continue; service, source hash, common validation, worker, lease or publication failure stops all subsequent observations. No quarantine resets."
+}

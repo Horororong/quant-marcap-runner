@@ -62,6 +62,7 @@ jobs:
           "$PY" -I scripts/financial_review_gate.py docs/audits/financial-validation-100-20261019 --check
           "$PY" -I scripts/financial_review_gate.py docs/audits/financial-source-readiness-20261019 --check
           "$PY" -I scripts/financial_source_readiness_audit.py docs/audits/financial-source-readiness-20261019 --check
+          "$PY" -I scripts/financial_verified_subset.py --check
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -252,6 +253,41 @@ jobs:
           path: |
             ${{ runner.temp }}/selected/selected_receipts.json
             ${{ runner.temp }}/selected/transfer.json
+            ${{ runner.temp }}/runtime.json
+          if-no-files-found: error
+          retention-days: 90
+
+  limited-observation-first:
+    needs: [fixed-kit-financial-validation, source-validation100-replay]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[financial-resume-first]')
+    permissions:
+      contents: write
+    concurrency:
+      group: super-value-fast-pit-backfill
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore same pinned offline kit and verify
+        run: |
+          python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: One reserved actual source observation, at most100; all financial candidates HELD
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+        run: '"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_limited_resume.py --event first-approved-push --output "$RUNNER_TEMP/limited-observation"'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: limited-source-observation-first-HELD
+          path: |
+            ${{ runner.temp }}/limited-observation
             ${{ runner.temp }}/runtime.json
           if-no-files-found: error
           retention-days: 90
