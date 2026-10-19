@@ -2,8 +2,9 @@ test_insufficient_payment_and_duplicate_entitlement_atomic (test_subscription_ri
 test_missing_mark_future_evidence_and_new_buyer_no_right (test_subscription_rights.Rights.test_missing_mark_future_evidence_and_new_buyer_no_right) ... ok
 test_sale_receivable_cannot_fund_trades_and_independent_cash (test_subscription_rights.Rights.test_sale_receivable_cannot_fund_trades_and_independent_cash) ... ok
 test_subscription_payment_locked_release_no_second_gain (test_subscription_rights.Rights.test_subscription_payment_locked_release_no_second_gain) ... ok
+test_whole_account_fraction_refused_and_whole_release_remains_integer (test_subscription_rights.Rights.test_whole_account_fraction_refused_and_whole_release_remains_integer) ... ok
 
 ----------------------------------------------------------------------
-Ran 4 tests in 0.005s
+Ran 5 tests in 0.006s
 
 OK

@@ -10,6 +10,15 @@ def mark(s,v='4'):return dict(event_id='a',session=s,unit_value=v,evidence=E,rat
 def book(c='0',q='100',policy='sell_observed_rights'):return RightsIssueBook(c,{'000001':D(q)},scope='synthetic',quantity_policy='synthetic_pro_rata',policy=policy)
 def state(b):return copy.deepcopy({**b.__dict__,'owner':b.owner.__dict__})
 class Rights(unittest.TestCase):
+    def test_whole_account_fraction_refused_and_whole_release_remains_integer(self):
+        b=RightsIssueBook('100',{'000001':100},scope='synthetic',quantity_policy='whole',policy='funded_subscription')
+        b.close('2022-02-01',{'000001':'10'},entitlements=[T],marks=[mark('2022-02-01')])
+        b.close('2022-02-02',{'000001':'10'},subscriptions=[dict(event_id='a',quantity='10',unit_price='6',payment_date='2022-02-02',evidence=E)])
+        b.close('2022-02-03',{'000001':'10'},releases=[dict(event_id='a',quantity='10',actual_date='2022-02-03',evidence=E,basis='verified_actual_credit_and_listing')])
+        self.assertIs(type(b.owner.shares['000001']),int)
+        b=RightsIssueBook('100',{'000001':99},scope='synthetic',quantity_policy='whole',policy='funded_subscription')
+        with self.assertRaisesRegex(ValueError,'FRACTIONAL_RIGHTS_UNSUPPORTED'):
+            b.close('2022-02-01',{'000001':'10'},entitlements=[T],marks=[mark('2022-02-01')])
     def test_sale_receivable_cannot_fund_trades_and_independent_cash(self):
         for opening_cash,shares,fee in [('100','100','0'),('90','99','1')]:
             b=book(opening_cash,shares);q=D(shares)/10

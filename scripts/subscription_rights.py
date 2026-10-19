@@ -65,7 +65,8 @@ class RightsIssueBook:
             proof(r['evidence'],fact=True);c=self.claims[r['event_id']]
             if day(r['actual_date'])!=dt or number(r['quantity'],'released quantity',positive=True)!=c['paid_shares']:raise ValueError('EXACT_RELEASE_QUANTITY_AND_DATE_REQUIRED')
             if r['basis']not in {'verified_actual_credit_and_listing','explicit_virtual_listing'}or(r['basis']=='explicit_virtual_listing'and scope!='modeled_research'):raise ValueError('ACCOUNT_VS_VIRTUAL_LISTING_BASIS_REQUIRED')
-            security=c['security'];self.owner.shares[security]=self.owner.shares.get(security,0)+c['paid_shares'];c['paid_shares']=Decimal(0)
+            security=c['security'];released=int(c['paid_shares'])if self.owner.quantity_policy=='whole'else c['paid_shares']
+            self.owner.shares[security]=self.owner.shares.get(security,0)+released;c['paid_shares']=Decimal(0)
             actions.append(dict(action='paid_shares_tradable',event=r['event_id'],quantity=r['quantity'],basis=r['basis'],no_second_income=True))
         # Reuse common share/cash/fee accounting. Pending rights, paid locked
         # shares, and unsettled proceeds are outside the spendable sleeve.
