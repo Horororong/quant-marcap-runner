@@ -1,0 +1,19 @@
+{
+  "rcept_no": "20100331001585",
+  "parser_version": "legacy-v9.1-primary-source-metadata",
+  "quality_version": "financial-quality-v1-source-linked-not-PIT",
+  "extraction_state": "SOURCE_GAP",
+  "field_count": 0,
+  "financial_accuracy": "UNVERIFIED_SOURCE_GAP",
+  "availability_status": "UNVERIFIED",
+  "backtest_eligible": false,
+  "document_sha256": "25f5a31902f5a7e75a3c6a125995501fec4a426ffe3952d6d7e42fb37bc93873",
+  "rejection_reason": "[{\"member\": \"20100331001585.xml\", \"bytes\": 1177489, \"sha256\": \"34a8fa6a6d9261199b1a021659dd9fbe1f8ad1a11a3de100d5891bcb28395420\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 1785}, {\"member\": \"20100331001585_00760.xml\", \"bytes\": 349999, \"sha256\": \"e9f8b007391730a9c11d30672598f080f6fea849fbaefa2d6c64ab772a582b79\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 330, \"xml_error\": \"mismatched tag: line 6483, column 89\"}, {\"member\": \"20100331001585_00761.xml\", \"bytes\": 602709, \"sha256\": \"74b065a2c104ece01b3745c7db2ee82d18cdbe87bdd55c91da53cd9ac9dedb0b\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 419, \"xml_error\": \"mismatched tag: line 12363, column 9\"}]",
+  "updated_at_utc": "2026-10-18T23:09:24.636118+00:00",
+  "structural_candidate_count": 0,
+  "published_field_count": 0,
+  "source_audited_field_count": 0,
+  "publication_status": "HELD",
+  "unpublished_candidate_count": 0,
+  "source_artifact_id": 12153773795
+}

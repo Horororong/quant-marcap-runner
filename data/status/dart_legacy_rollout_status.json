@@ -1,0 +1,58 @@
+{
+  "merge_sha": "63ad9b8fe26ff619dafd11935619ca7f61be530b",
+  "operating_run": 39174955546,
+  "status": "COMPLETE_CANDIDATES_HELD",
+  "elapsed_seconds": 45.497,
+  "selected_documents": 10,
+  "completed_documents": 10,
+  "classification_counts": {
+    "SOURCE_GAP": 7,
+    "PARSED_4F": 3
+  },
+  "structural_candidates": 51,
+  "audited_controls": 16,
+  "source_amount_counts": {
+    "PASS": 12,
+    "UNVERIFIED": 4
+  },
+  "publication_counts": {
+    "PASS_SOURCE_ONLY": 8,
+    "UNVERIFIED_HELD": 8
+  },
+  "published_documents": 2,
+  "published_fields": 8,
+  "unpublished_structural_candidates": 43,
+  "unextracted_CFS_controls": 4,
+  "source_conflict_documents": 1,
+  "last_checkpoint": "20100331001585",
+  "historical_v5_rewritten": false,
+  "old22_reprocessed_in_main": false,
+  "historical3998_reset": false,
+  "automatic_collection": "HOLD",
+  "automatic_publication": "HOLD",
+  "investment_PIT": "0/6",
+  "financial_population_certification": "UNVERIFIED",
+  "source_artifact_id": 12153773795,
+  "source_transfer_blob": "aad8c5f8f42afa33fafe14c3bba9dbe0c43b451d",
+  "source_transfer_sha256": "b7f743566098c248907a2c2a1bc7bd790a08e8b6e22ca6e5561ce45bb2f4bd68",
+  "canary_consumed": true,
+  "code_status": "DEPLOYED_BOUNDED",
+  "quality_version": "financial-quality-v1-source-linked-not-PIT",
+  "parser_version": "legacy-v9.1-primary-source-metadata",
+  "updated_at_utc": "2026-10-18T23:09:24.638497+00:00",
+  "source_states_durable": 10,
+  "legacy_v5_snapshot": {
+    "processed": 72028,
+    "four_fields": 14046,
+    "partial": 9624,
+    "NO_METRICS": 10203,
+    "NO_DOCUMENT": 2048,
+    "SOURCE_GAP": 36107,
+    "pending": 38971,
+    "quarantine": 4021,
+    "updated_at_utc": "2026-10-18T19:37:25.711357+00:00",
+    "financial_quality": "INDEPENDENT_SOURCE_AUDIT_REQUIRED"
+  },
+  "new_untouched_queue_remaining": 38961,
+  "queue_count_basis": "Prior38971 minus10 disjoint never-classified receipts; v5 counts not re-labelled as v9."
+}

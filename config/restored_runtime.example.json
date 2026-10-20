@@ -1,0 +1,10 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "runtime_environment_variable": "QUANT_PINNED_RUNTIME",
+  "current_runtime": "/workspace/quant-restore-b5aaa7f/runtime",
+  "runtime_portability": "Pass --runtime with the newly restored kit directory on another host. Do not copy an installed venv or use system Python for research calculations.",
+  "secret_names_only": ["GH_BACKUP_TOKEN", "DART_API_KEY", "KRX_API_KEY"],
+  "secret_setup": "Provision only the identity actually needed through environment secret bindings; never put secret values in JSON, Git or backup. Financial source workers use their existing GitHub workflow secrets.",
+  "new_output_directories_required": true,
+  "operating_main_policy": "Preserved separately; no automatic merge, collection or financial publication caused by restoration."
+}

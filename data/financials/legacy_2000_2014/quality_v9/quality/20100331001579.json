@@ -1,0 +1,19 @@
+{
+  "rcept_no": "20100331001579",
+  "parser_version": "legacy-v9.1-primary-source-metadata",
+  "quality_version": "financial-quality-v1-source-linked-not-PIT",
+  "extraction_state": "SOURCE_GAP",
+  "field_count": 0,
+  "financial_accuracy": "UNVERIFIED_SOURCE_GAP",
+  "availability_status": "UNVERIFIED",
+  "backtest_eligible": false,
+  "document_sha256": "47af43f885cffc31616134814a25133c76fd3879be37e46a0a3d501b79e1a026",
+  "rejection_reason": "[{\"member\": \"20100331001579_00760.xml\", \"bytes\": 340907, \"sha256\": \"d483608f6377466e6533d590c9fa58fbc792cc780449e410114e34dcde769c1d\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 214, \"xml_error\": \"mismatched tag: line 3248, column 66\"}, {\"member\": \"20100331001579.xml\", \"bytes\": 602615, \"sha256\": \"8ec7f76debd94cb30d2d02db86a8b305d78d22799e95c48746875ad50f490017\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 742, \"xml_error\": \"mismatched tag: line 9606, column 66\"}, {\"member\": \"20100331001579_00761.xml\", \"bytes\": 353123, \"sha256\": \"6bdeea9ddde1b7ef86354dd568072c012c60783c2f18ee642438b3a2326dfa8a\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 226, \"xml_error\": \"not well-formed (invalid token): line 3185, column 104\"}]",
+  "updated_at_utc": "2026-10-18T23:09:00.051608+00:00",
+  "structural_candidate_count": 0,
+  "published_field_count": 0,
+  "source_audited_field_count": 0,
+  "publication_status": "HELD",
+  "unpublished_candidate_count": 0,
+  "source_artifact_id": 12153773795
+}

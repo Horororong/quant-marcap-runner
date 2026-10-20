@@ -1,0 +1,3762 @@
+{
+  "count": 751,
+  "bytes": 1373060882,
+  "files": [
+    {
+      "path": "data/derived/daily/adj_close_daily.csv",
+      "bytes": 3032770,
+      "sha256": "63a89145f28b7cf48acf4730c45f39dfee34b926f9fba5d8ebabd8ab1174a655"
+    },
+    {
+      "path": "data/derived/daily/close_daily.csv",
+      "bytes": 2919974,
+      "sha256": "26af23fca99a7cdd2d1515720cfcc63a3ec8817fc2279f604be91e38adea791e"
+    },
+    {
+      "path": "data/derived/daily/open_daily.csv",
+      "bytes": 2902752,
+      "sha256": "2885dbddbb91e1327d02a69cbad83d5d59d276f4b6a18a80eff9cd6941cd4087"
+    },
+    {
+      "path": "data/derived/daily/volume_daily.csv",
+      "bytes": 1710574,
+      "sha256": "e3d0ade6ffd5e8e7b7ca5a5b57b37fe9a34b3ab1d55135f25114de5552cddc3b"
+    },
+    {
+      "path": "data/etf_kr/069500_KODEX200.csv",
+      "bytes": 281383,
+      "sha256": "5cd265542c38e2599cfbb0d4c6b8b7be23e1e7787715725294eebcf11af789fb"
+    },
+    {
+      "path": "data/etf_kr/114460_ACE국고채3년.csv",
+      "bytes": 263661,
+      "sha256": "f7a618587290e9cd6f965dca72091e53a5b1ed74e2a5b6494b11bd14707eb085"
+    },
+    {
+      "path": "data/etf_kr/148070_KOSEF국고채10년.csv",
+      "bytes": 236198,
+      "sha256": "17174b512af7874fad504807d39c311f940c041115f8aebb7565e6e7c9204b8c"
+    },
+    {
+      "path": "data/etf_kr/302190_TIGER중장기국채.csv",
+      "bytes": 120832,
+      "sha256": "35f3c45c0fdbb148758111122042e34e8c21f774df6f4824ad3fd7782dd1b8cd"
+    },
+    {
+      "path": "data/etf_kr/451530_TIGER국고채30년스트립액티브.csv",
+      "bytes": 53347,
+      "sha256": "e6316d59497bdaeb1bf053defda4190977c49faff4fc3994bb0a6aec8642aee1"
+    },
+    {
+      "path": "data/etf_kr/_data_summary.csv",
+      "bytes": 713,
+      "sha256": "6e383cae57b757bdc0ab9b89cfd55284ddbb929e0168a822b7c47f5fc9b9f659"
+    },
+    {
+      "path": "data/etf_us/AGG.csv",
+      "bytes": 628089,
+      "sha256": "ec9ed711da05c9a02ec6b3832e3d27e9f7d0b2f11ea1e9f1425084f341bb29b8"
+    },
+    {
+      "path": "data/etf_us/BIL.csv",
+      "bytes": 515239,
+      "sha256": "950436a7bb4de7040382616ed2d4bb80e6a21bab017fd64361d87ccfb7ba2719"
+    },
+    {
+      "path": "data/etf_us/BND.csv",
+      "bytes": 518867,
+      "sha256": "12fb75c7033a64e7c37e21575bda75d8743ad05250a2fbf4d7c5e4ffe8458e34"
+    },
+    {
+      "path": "data/etf_us/BWX.csv",
+      "bytes": 519695,
+      "sha256": "137be33c0148cc3e2ef3e4478f8b9c5452d6e3638957ba0880936ea9eabca318"
+    },
+    {
+      "path": "data/etf_us/DBC.csv",
+      "bytes": 569531,
+      "sha256": "4a54487310e94d13b4c81dad191e4b4b3e106c3fe6d949ec07874c2a34749fc2"
+    },
+    {
+      "path": "data/etf_us/EDV.csv",
+      "bytes": 494599,
+      "sha256": "e2b3d43def3d6c58a64ae0a0bbb1c5b7cea16b754cf9a93e4e9b31580cddf253"
+    },
+    {
+      "path": "data/etf_us/EEM.csv",
+      "bytes": 649475,
+      "sha256": "edd43283c5989d11a8cdf53cdad9556267ef4c40a51dcb8bd924b24383e5170b"
+    },
+    {
+      "path": "data/etf_us/EFA.csv",
+      "bytes": 683405,
+      "sha256": "b70f2313a2a98dc8c47c8e3e621a6ac6192dec0820c8b935a4ff29b3f5d14246"
+    },
+    {
+      "path": "data/etf_us/EMLC.csv",
+      "bytes": 443476,
+      "sha256": "b822b50dd3ea7bdb96450ea2226e8469481e3e29d72f98f4b6e74c37722e792c"
+    },
+    {
+      "path": "data/etf_us/EWJ.csv",
+      "bytes": 769223,
+      "sha256": "362ced17f7da60e6af18d30f46140768799462559032c7838cab27171150ee34"
+    },
+    {
+      "path": "data/etf_us/GLD.csv",
+      "bytes": 601107,
+      "sha256": "59a972490e642cc7ccfc1a2e28667343bd32a72594f5c108c4287b1aa26d3a79"
+    },
+    {
+      "path": "data/etf_us/HYG.csv",
+      "bytes": 518981,
+      "sha256": "c36cb61c0958f4c9c0348d8a963321c7c7293820f47e84fa49b74189acb17a5d"
+    },
+    {
+      "path": "data/etf_us/IEF.csv",
+      "bytes": 653751,
+      "sha256": "4a6a9a397ed45a4140004f6b56402d9d46280a690045b7556540ef2ff286d851"
+    },
+    {
+      "path": "data/etf_us/IWD.csv",
+      "bytes": 709996,
+      "sha256": "1b650073459906137f65a2d04ba6f7fd4476d390425a9262d69a36713fffb295"
+    },
+    {
+      "path": "data/etf_us/IWM.csv",
+      "bytes": 714345,
+      "sha256": "a1a79d4e7f929b239e09d351fd5ff61f7676eba53201d20824aa9725057a4c0a"
+    },
+    {
+      "path": "data/etf_us/IWN.csv",
+      "bytes": 708138,
+      "sha256": "316b66f91bb1a1f2a9d73dc927f48e1dacdee62124493c6e7e58eaab167b3919"
+    },
+    {
+      "path": "data/etf_us/LQD.csv",
+      "bytes": 662969,
+      "sha256": "dff53a7f4d15907a088dd915275ee5bf716ffacc441b62d6e078dff052afb22d"
+    },
+    {
+      "path": "data/etf_us/LTPZ.csv",
+      "bytes": 451493,
+      "sha256": "4b91ba564385cd2b71a7d26bc02e8ecc1612cb623cf267932d92ef8b35205f51"
+    },
+    {
+      "path": "data/etf_us/MTUM.csv",
+      "bytes": 365269,
+      "sha256": "c0876043f2700a06a8f55dfca826d7e7b50b8d7509f386b70f673b5639ed604f"
+    },
+    {
+      "path": "data/etf_us/QQQ.csv",
+      "bytes": 739621,
+      "sha256": "c69f717e47fc791d0e170d39254b35cd52079454ade2ed0a539b2a347ca6d65d"
+    },
+    {
+      "path": "data/etf_us/REM.csv",
+      "bytes": 524148,
+      "sha256": "acfbb5f2e98895e410ceb0b597c6b20be3cddd9ba69f3b2c99668075ccb58fa9"
+    },
+    {
+      "path": "data/etf_us/SHY.csv",
+      "bytes": 643048,
+      "sha256": "8ec12ee95ae0858ac2c8d83d9f539cdd65628c015474eb72ae8b39a1d9b9cd0a"
+    },
+    {
+      "path": "data/etf_us/SPY.csv",
+      "bytes": 852793,
+      "sha256": "3916f0bb572304d521f93a9100d7514c79a087064c6914a23aae08198f393e0b"
+    },
+    {
+      "path": "data/etf_us/TLT.csv",
+      "bytes": 659075,
+      "sha256": "b7d4a9984bbdfe70dc0c828f14e49ff487ae93344c16fbc55164f993a2a0c3d2"
+    },
+    {
+      "path": "data/etf_us/VGK.csv",
+      "bytes": 582671,
+      "sha256": "ddab10031889f228559d2a94283d54ee01b9464271152877c4dea77c7e33c806"
+    },
+    {
+      "path": "data/etf_us/VNQ.csv",
+      "bytes": 589367,
+      "sha256": "9f856d097e14975c91585de41cd523065395b30f64ed6591bd5dd8761facbaf3"
+    },
+    {
+      "path": "data/etf_us/VT.csv",
+      "bytes": 492364,
+      "sha256": "22a7fe1befb11c5cf2a189c297dc3319f76f4e5b8c7c693a4fd1ff7481ba116d"
+    },
+    {
+      "path": "data/etf_us/VWO.csv",
+      "bytes": 589592,
+      "sha256": "5cde8deae4a01e285ba96cb6caf24870598f64c1fcd427d3f81c3a9dfd6c6541"
+    },
+    {
+      "path": "data/etf_us/_data_summary.csv",
+      "bytes": 1864,
+      "sha256": "7b84967ad6dd935e244fcba11178d2560886a115b13fbef092c5f0cfe13f8bfe"
+    },
+    {
+      "path": "data/financials/corp_master.csv",
+      "bytes": 230998,
+      "sha256": "ad1be4f350e7698235af0b7bc3d3445d1d11aa0a9b940deb71621e2b1133a56b"
+    },
+    {
+      "path": "data/financials/dart_errors_00000_00299.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_00238_00537.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_00269_00568.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_00300_00599.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_00538_00837.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_00569_00868.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_00600_00899.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_00838_01137.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_00869_01168.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_00900_01199.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_01138_01437.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_01169_01468.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_01200_01499.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_01438_01737.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_01469_01768.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_01500_01799.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_01738_02037.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_01769_02068.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_01800_02099.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_02038_02337.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_02069_02368.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_02100_02399.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_02338_02637.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_02369_02668.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_02400_02699.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_02638_02937.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_02669_02968.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_02700_02999.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_02938_03237.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_02969_03268.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_03000_03299.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_03238_03537.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_03269_03568.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_03300_03599.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_03538_03837.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_03569_03868.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_03600_03899.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_03838_03933.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_03869_04168.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_03900_03933.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_errors_03900_04199.csv",
+      "bytes": 4,
+      "sha256": "b42f2099187886def637d6aa840022266e05cb6c987a9394e708e23cd505eb46"
+    },
+    {
+      "path": "data/financials/dart_historical_code_map.csv",
+      "bytes": 340065,
+      "sha256": "9d3ae3e05a496b3545f40d16867b5388fc91de4df5d8f083462135d27d452b49"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2015_FY_CFS_11322b6902a4b96e.csv.gz",
+      "bytes": 3040501,
+      "sha256": "9d8347509df913a9e017ec4d0744bcbb6db039bbbe144f8f376dbc61a65e6368"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2015_FY_CFS_d736fc0577b01af7.csv.gz",
+      "bytes": 3519428,
+      "sha256": "a306a64e8f92ca8d3e7811d5825f8fb78b23ec95497fa0acc30f4d8268ce4177"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2015_FY_OFS_91ba2ed1195f22e7.csv.gz",
+      "bytes": 1029244,
+      "sha256": "039924c54b2866834da3ca99a9ee14ad8db94041a9a9fdeff3a0092bb149c5ea"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2015_FY_OFS_a862d06f617ed703.csv.gz",
+      "bytes": 3336440,
+      "sha256": "6c4b56c3c03830702eb91a0073e3bece0dab15d4e213595385c1660b979dc60f"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2015_FY_OFS_ef9c67e1495f19aa.csv.gz",
+      "bytes": 2729399,
+      "sha256": "08f12eeed221a18bac2a838b7e448cb14d79632c64c28a9c8daba1dc47754deb"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_FY_CFS_244018d534b3ec4e.csv.gz",
+      "bytes": 382670,
+      "sha256": "9fa85d3d519ae27941825231260150686e2019c6bdff15c1661cd99c1cd97552"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_FY_CFS_4fc620f38ff162e8.csv.gz",
+      "bytes": 2967337,
+      "sha256": "0e76df8fc88c47e02f314ae5397e9d85aef5526345844923ec8d5ada973af29a"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_FY_CFS_e30fb3b726df27ea.csv.gz",
+      "bytes": 3517019,
+      "sha256": "f19edd846f32edd2a2268a97894dc8ca1195601ac4e55949f8986fa2d6d5275b"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_FY_OFS_07f0fc85f46d8ff1.csv.gz",
+      "bytes": 3130822,
+      "sha256": "1c0ac7f4e210f2d386f40388995b99c98f8088c4fc7538b8747851bd8c60a5aa"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_FY_OFS_2bde1ec353ce7ae6.csv.gz",
+      "bytes": 754504,
+      "sha256": "9892a025ef26a77bc72aee16c962f91550008467c9fa543fe4422e9dcc62d527"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_FY_OFS_e30b5b39f5720ecc.csv.gz",
+      "bytes": 3281062,
+      "sha256": "84ee1d3f9bee6974e897e82ad6f8836c8d22610de8d26de6603bfa22af549e19"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_H1_CFS_8f711d6ba6ab6d87.csv.gz",
+      "bytes": 3620291,
+      "sha256": "ba6cd796ceefd2cebfb421e4bd49bcbac791866f820dc7019642ee7e4215797d"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_H1_CFS_9b984c79454c1d67.csv.gz",
+      "bytes": 4201028,
+      "sha256": "eab3af5adb17f04d4c91a22c057aca126016cc44c6d8da987f32f872b0247171"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_H1_OFS_96035d4cabc30611.csv.gz",
+      "bytes": 2629082,
+      "sha256": "3e5c5c7477f2da6812f70bffaff2f580ee3de0e3bbc01bfa975ac962b0b1b4cf"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_H1_OFS_9e91b1be2f4e0466.csv.gz",
+      "bytes": 3900457,
+      "sha256": "873482c3593ec19dd8499617ad28a27c6e63e4af3ff80bc3f525de7dc9e8145c"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_H1_OFS_d0590143decd772a.csv.gz",
+      "bytes": 1683116,
+      "sha256": "ae948b60749297d47dfb16dd77528ff2143f8c1a2a58c06c43de16cb0446265a"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_Q1_CFS_3c571137a5d9bf75.csv.gz",
+      "bytes": 457488,
+      "sha256": "8dbe748a78e1cbe364e5fdf42034fee64a9d1a9aebd91156dc8e8fd5d77f51c3"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_Q1_CFS_ed64a1fe9142e567.csv.gz",
+      "bytes": 2779631,
+      "sha256": "cee3e9e151cf5cd5e9123eaca60fd5d1502329b7fa118a786173d6afb4cae0e7"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_Q1_CFS_f736df178947e36c.csv.gz",
+      "bytes": 4018383,
+      "sha256": "d4b0a1a5a9e009fdce0aed7bc592d7bbfa185611d9a49e57828c6414b2b28cb3"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_Q1_OFS_61e5f9b6ce0e84b7.csv.gz",
+      "bytes": 3804050,
+      "sha256": "a802690b2c0d5efdf57c4f7d4e22f22a3648c82f94d837e9f77cd19a5e3665be"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_Q1_OFS_ace8595718c38460.csv.gz",
+      "bytes": 211762,
+      "sha256": "603b0de0c478eead8b2d401ebe7c77f4ecefa8d3b4eac5eef406065e00e79aeb"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_Q1_OFS_eb7d09a1de7cc518.csv.gz",
+      "bytes": 3651297,
+      "sha256": "30ee4f8d81e89521583925e79a70e267f2e8f1cdfe6f99c649015201b4043118"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_Q3_CFS_3391d0a53a9cdc9f.csv.gz",
+      "bytes": 1838081,
+      "sha256": "e56fcdee99dbf2c4ac07790135e714643dc48c9588e74a8ce76fdc39a9c464fb"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_Q3_CFS_42859b11266e967f.csv.gz",
+      "bytes": 4229318,
+      "sha256": "495c15753db1675ef78ddad0e193ba893d11be1fc6660d8925d402cc0b8c43e5"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_Q3_CFS_63c76766135184a1.csv.gz",
+      "bytes": 1944157,
+      "sha256": "3ba70808fc7accd3b65f5dc2c1c3712d951655d448adb2b6be383333609d54d3"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_Q3_OFS_68fd085399f0f015.csv.gz",
+      "bytes": 4012765,
+      "sha256": "0f220cca2b9a007c769dddcf39f5017507816a4172ec7ffadfa0f73b1df57ed7"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_Q3_OFS_8dc0db2b610c3484.csv.gz",
+      "bytes": 3909873,
+      "sha256": "ea11a862347009685614bc4550d7886fedd0a27b867a6faa54e95010f2a8d944"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2016_Q3_OFS_938dbf659a598f98.csv.gz",
+      "bytes": 456880,
+      "sha256": "25a533899fd96b37bf7c009571188a2731cb5e62ce36be3b082742e27a7bc705"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_FY_CFS_ae7dd44639706cdd.csv.gz",
+      "bytes": 3545132,
+      "sha256": "3b9624c1e94687ab27d154ffcea50b2c0b0b3fa7da80714100336df55818a990"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_FY_CFS_b50224f285aca4df.csv.gz",
+      "bytes": 363238,
+      "sha256": "190c19b59144c3d1818d5c1bb028238e209cf0a46b0d1bfc856376d599352960"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_FY_CFS_e50b3ce6b1c62e0e.csv.gz",
+      "bytes": 15025,
+      "sha256": "321c0da09e98f3b4f74f6d879e96a1be619dea87e71587e9a45c853908c144b9"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_FY_CFS_e9c2fdcbf7d36f30.csv.gz",
+      "bytes": 3667643,
+      "sha256": "c548e3a99bfeb635a83546ca8519a1ee23074150002e22468aa8426325527933"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_FY_OFS_502be1945cc00fc6.csv.gz",
+      "bytes": 2457988,
+      "sha256": "19381949d74c9319131d06c052c80ba3457a96ba0fdd3cba8064db39757d0995"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_FY_OFS_b25135285709940b.csv.gz",
+      "bytes": 1881733,
+      "sha256": "3cf9221cf66c303ea423043f5ac3bf5e125b7871f1c6e4d86646bd268724b0a2"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_FY_OFS_f0766cb122a984f9.csv.gz",
+      "bytes": 3408319,
+      "sha256": "0665f8568dac4589aead4ebe3dfc082b13b1b7de250ffb4a188090c8188f253a"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_H1_CFS_10b795d17579e98b.csv.gz",
+      "bytes": 2606752,
+      "sha256": "4eb7649c15ef1b7cc4fe106583d447cfbb93bf74f0bf73b8e36066c9703f23ba"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_H1_CFS_6f786d7e53263fcf.csv.gz",
+      "bytes": 82824,
+      "sha256": "314f3bae5fda71d2d8a3ba2f1406e188d59648078053049adfd09f886bf650b9"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_H1_CFS_ca2d7a3f372f36b1.csv.gz",
+      "bytes": 3296459,
+      "sha256": "cb672fa2f9641e8cbf26572b55a6d9b9cecd7165f935bc78f4282c2ac1d6b79b"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_H1_OFS_2d3484a93b5a81fe.csv.gz",
+      "bytes": 3044786,
+      "sha256": "57034470025cab18070ce5c49234800342a6a6af30849bae6b4bc2bd6edc2b0f"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_H1_OFS_944bbee8632861c4.csv.gz",
+      "bytes": 547556,
+      "sha256": "1edddf2cd597ed009720fdfe3ee1d609b2330683e76f78537e397577727a5b38"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_H1_OFS_f6330998fdc26fd4.csv.gz",
+      "bytes": 2513328,
+      "sha256": "e5816d7d931cf607753501169efd92ece21102dd6ab1f5eb46aa675c2ae79715"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_Q1_CFS_63ad2d10e4b4252f.csv.gz",
+      "bytes": 1977991,
+      "sha256": "79568abe3ddb04d323559eece17e22e77e0954dbe3170d9b24a8fbfaaad30c27"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_Q1_CFS_7c4f1cf1cfc54784.csv.gz",
+      "bytes": 3749826,
+      "sha256": "3e3e9e200c2ed6b09ba9d9d1c5e4bfa66b93bf7b94e67532a43efa404d0f72d7"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_Q1_CFS_b993953b84283a48.csv.gz",
+      "bytes": 1344280,
+      "sha256": "ee260a04e8dc9db8c29c5c4eec97c3ca060776e41495f0ab30f40d360d9415e3"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_Q1_OFS_35a87be31255f785.csv.gz",
+      "bytes": 305353,
+      "sha256": "bb887fc2e129224a71dec5897727b1db0fe812daa8f3bdbc274d41ff4464c28c"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_Q1_OFS_a41355ee11878239.csv.gz",
+      "bytes": 3528619,
+      "sha256": "e34e2a3c99861ac934f770969efe7b2fb000783e2dfddb1c5c2c3962401a12a7"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_Q1_OFS_a8a0069b55a20b08.csv.gz",
+      "bytes": 3446666,
+      "sha256": "20c3ff2b59b4c89dee7f8122ae54b53af7588cb9a465b03cc98340d545b9ffcd"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_Q3_CFS_3fc06ca764574932.csv.gz",
+      "bytes": 3534517,
+      "sha256": "26fb6d2951903ceb68816a8ab1d3c820241fa7a7ee3309335e21c53ca3c330f9"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_Q3_CFS_bed5778e57ebcce5.csv.gz",
+      "bytes": 1433678,
+      "sha256": "f92d46d70414b28a70f9f05264ac7d6a822de4731f44c75dfe019608586aeeda"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_Q3_CFS_f4092f3020003997.csv.gz",
+      "bytes": 1698688,
+      "sha256": "d711de0c6e869129a4902f9a7837ce9db55bce1f906ae51e0f2db08ef2baacc3"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_Q3_OFS_320361cecf84e85f.csv.gz",
+      "bytes": 3279338,
+      "sha256": "84e9e6f7a27aa60fbd20d2fab4bfa2c13a112a3cce6da30e9b841b427bc5322f"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_Q3_OFS_56849a31db523d49.csv.gz",
+      "bytes": 302014,
+      "sha256": "2976f480c8cd59a04bbf5c777ed8cca3b9598d8895acbd915cab5c2aac2b1ff2"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2017_Q3_OFS_625f3b6b0f9b7276.csv.gz",
+      "bytes": 3205813,
+      "sha256": "f7c6eaadeeb00026b6f6325c7b3c4bbeb7fcb6fd854d845b918a0c9bcff78499"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_FY_CFS_18d785617002a4ac.csv.gz",
+      "bytes": 821605,
+      "sha256": "3b0a4455fd277e97d515ad2c2d9c73cb899a8e3a4cde9afe11ede0ed5dc489b9"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_FY_CFS_a23f313ee8ae38d0.csv.gz",
+      "bytes": 3641638,
+      "sha256": "c4d9292c5f14fbf5ba83a7d6f0c71ee5ade405d5fdbb679a96831941845cb200"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_FY_CFS_bd4dafc49297d58d.csv.gz",
+      "bytes": 62660,
+      "sha256": "028e10e3a147a994202331d53bc9a095ef36f4378d7971789a9b7875756bb9c4"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_FY_CFS_dc4cae0a6fd47432.csv.gz",
+      "bytes": 3728046,
+      "sha256": "3f285c18140b5b0a5a493516f0d269f8eeee7cfe9589f878f0e7e679c5e9e819"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_FY_OFS_52e9001e76fc1b30.csv.gz",
+      "bytes": 3431390,
+      "sha256": "b05a291d7c325a2229f4425b063d93f794c0cbf1c68b1a0b0a910f4c39c55da5"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_FY_OFS_8edaec4161078e17.csv.gz",
+      "bytes": 3392777,
+      "sha256": "560c2ed28feb3c206ee4904f0c22cb0306db1e1ee278368cde8c7823d4ddd826"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_FY_OFS_d530774fc470a520.csv.gz",
+      "bytes": 1368195,
+      "sha256": "545fd901e291ea8b2cf6f72dc1f098a78a9fc15534266ba80e176d27bb98d67d"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_H1_CFS_4426d27aafa94a76.csv.gz",
+      "bytes": 3214103,
+      "sha256": "04fddfb8c497b54d7f612025f69bd6105f14a40d75c0443e2069baef8dac0144"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_H1_CFS_98d57e3beaea9541.csv.gz",
+      "bytes": 3424622,
+      "sha256": "0675d10389e5d2fc3b7635a2081fc95c72e6ac2144d72a5880cfb96e3c831df5"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_H1_OFS_2dea0be8fcffa959.csv.gz",
+      "bytes": 2507532,
+      "sha256": "3c53cdca943bcafff09f7fe1fa03b342991dc92b84d190101eaf2b78778f1914"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_H1_OFS_6b58da9d25b8bd7c.csv.gz",
+      "bytes": 3178220,
+      "sha256": "11b772328d24ce1afcaea1ebf31ff2782f6c5ef84d501effcae67fc42a08b7d7"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_H1_OFS_de89f7bbdfd91de6.csv.gz",
+      "bytes": 950702,
+      "sha256": "e1f0f624d342b0ddc81d26c906b1756b7e5cba72019bec195eb816446e0ba3aa"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_Q1_CFS_51f7443be2b737e6.csv.gz",
+      "bytes": 694575,
+      "sha256": "8fdb56c42a83b6906c8fd0a660451f4ca23f9c7025a2f96f30422de0c0bc02b4"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_Q1_CFS_60777fba35e6921c.csv.gz",
+      "bytes": 2053550,
+      "sha256": "d6ccbdb73a3f99637cb679572225dd2b5bc3cb349cc3141320d6196fbe5e0579"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_Q1_CFS_eae323f0390236d9.csv.gz",
+      "bytes": 3228902,
+      "sha256": "dfec7218637cdb5298ab1fbba014e24ff9f2ab500c8f579ef721f63a4cefa55a"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_Q1_OFS_d88051797f140261.csv.gz",
+      "bytes": 2994182,
+      "sha256": "c85f75f7f9ccf5cf3e41c5f082e913e92ddcdf954f5bd795ed1a852119fdcf0b"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_Q1_OFS_ee695f8627952e9a.csv.gz",
+      "bytes": 442184,
+      "sha256": "67ebc6e246611d2d4f50c0a53e5f829fefeb1e7afef56f749a99ed11dfd21efc"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_Q1_OFS_fcb5cd5e667414d5.csv.gz",
+      "bytes": 2541270,
+      "sha256": "d9159755ffee246c4847dd062e0a69713d17f06e7cb55461299f8e252ecfa4de"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_Q3_CFS_3af0cf763554510f.csv.gz",
+      "bytes": 72819,
+      "sha256": "4b2d9dd2c0d0b8d3bb793d95a1a3bd967d7c0d1aa72d64f2677fb3296a8bc01f"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_Q3_CFS_3d45b6bb2dd6e938.csv.gz",
+      "bytes": 3321227,
+      "sha256": "04a218baab24b961a7ac7086a347ca22d45adf47fa6ee22285aca6d99cf9d0f3"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_Q3_CFS_96b8e80256a906c2.csv.gz",
+      "bytes": 3456311,
+      "sha256": "d9e8943abb5940c10fa4c4cfed3dcd96408be184611dd5528d370e0729708ae0"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_Q3_CFS_f93aed1bf1e89a61.csv.gz",
+      "bytes": 41881,
+      "sha256": "30bb697a29f427f506d10686f63b9abf6d40e75f1b72c682ed4b9a09d5b3482b"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_Q3_OFS_28b0c087637d2a68.csv.gz",
+      "bytes": 3215845,
+      "sha256": "2a7b44daf7ecf56405d846c1085d08ca23b366e4cc01e7b6b1cd0598637bc251"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_Q3_OFS_665f56153d9949da.csv.gz",
+      "bytes": 1301386,
+      "sha256": "42275372000e085c62b59ab55a8b3b6e0167eb1ea7fe0f5c9a60de687c45fa6d"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2018_Q3_OFS_6d30e745b298b76b.csv.gz",
+      "bytes": 2334897,
+      "sha256": "0a3afe84ffa2ab3021134e45ee8ddf96ddcf7a38259cfa64e0f7dacbd386c8cd"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_FY_CFS_3ecc706ad7ba6e21.csv.gz",
+      "bytes": 861714,
+      "sha256": "44977e048d3980c562fa2e126d298beb748888002c4c917799a5b5b267a592e6"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_FY_CFS_68adf0f319460d0c.csv.gz",
+      "bytes": 445014,
+      "sha256": "2d0a46074031864db9410b04af8ebb7d553a3533443e179a9a0ca6c7e7ad447f"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_FY_CFS_7ec60103534e6e2c.csv.gz",
+      "bytes": 3654125,
+      "sha256": "124ca8122fa135c25ee0864fe23a6ce726ed16057e42f35e8c079600bed701d2"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_FY_CFS_d68c3aee7fae6c67.csv.gz",
+      "bytes": 3738831,
+      "sha256": "734e312700ce342e80fa466172cd04695d63a738165d3f1609c0725ba77815dd"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_FY_OFS_3913e1026fd12d1a.csv.gz",
+      "bytes": 16870,
+      "sha256": "edd59ef08e8655282dfe8ed2027d14d1afe93c01dc6820d3775ea553b2223d73"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_FY_OFS_eb0aba954088c8d8.csv.gz",
+      "bytes": 85587,
+      "sha256": "60fd80f9f5a9122db26bc96959c8fd8f7230a94abc5f8f5b961fbaa3eb25f128"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_H1_CFS_8c92a13ea6fcf9ce.csv.gz",
+      "bytes": 1182869,
+      "sha256": "3ed6d9240a464d9c7a073e48aae48b003c33d8a18c712cb429001d22379ca9f3"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_H1_CFS_8daf4cdc9f2868f9.csv.gz",
+      "bytes": 2257550,
+      "sha256": "5350b953dc4c5e865e2d42a69b668b11d9f84407b15b694b0a9e3e19d948e4f5"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_H1_CFS_a7582d6553f13976.csv.gz",
+      "bytes": 3433361,
+      "sha256": "241ec2f141dcead744337de74848aa8359a1908b7575afdb99546491fbb72432"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_H1_OFS_06c3a91b33f291e2.csv.gz",
+      "bytes": 3117325,
+      "sha256": "8f765fb164494965c8482b1151330e14ba7d9ff321298b743d01fd9a59e46c43"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_H1_OFS_3479306132e703e6.csv.gz",
+      "bytes": 26559,
+      "sha256": "52a85ec3835f3bc3eb784ecd3cecaf26ae5815eb6f0be59d1bb83bea8d23f2c6"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_H1_OFS_bb01a77dd97bff66.csv.gz",
+      "bytes": 3195686,
+      "sha256": "290ef4d7e1ea2c3ce415335c8ad0e1d0ba59a7d31200d80249a8d5b6698ffac8"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_H1_OFS_e4c938ea50a4e8da.csv.gz",
+      "bytes": 472262,
+      "sha256": "845606d8f9fbe423c449127a51497f9bb8a5202a5e44fed89bb777e217410fef"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_Q1_CFS_55e1386abd19e2fb.csv.gz",
+      "bytes": 1432725,
+      "sha256": "4d650cbc1405eecb42eaca803e8cad332a51c2fb7cb9c0d00ae40b2e7f57e421"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_Q1_CFS_b899ff3c053cc655.csv.gz",
+      "bytes": 1587111,
+      "sha256": "c2f6747a5719e86eaf20db8df8f5f0bdee335ee82749110f1d7b28fd969889d1"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_Q1_CFS_c7261421cf3860c2.csv.gz",
+      "bytes": 3180224,
+      "sha256": "2de0175fd8d60aefcfaa3b290c479f5f6f76b5283c9c1a1f13a9159af0574971"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_Q1_OFS_98364b634ad0d040.csv.gz",
+      "bytes": 2874050,
+      "sha256": "eed63c139333302d91c9c179fb0a1e7c9a7534ef85a445f1145e85b3524eb5f8"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_Q1_OFS_ce5cbedbe4e70626.csv.gz",
+      "bytes": 3013644,
+      "sha256": "5ea49da81cce43c3a1d976ddd34e19f49ef6300096a1ec4f433ba523d8f0dcce"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_Q1_OFS_e6469e71a7ac2b7a.csv.gz",
+      "bytes": 265393,
+      "sha256": "25667102ca9b3f2bb14c3075e4207255684ecd0683971e49f5ed9669f3494005"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_Q3_CFS_7f14fbd204ae418b.csv.gz",
+      "bytes": 401550,
+      "sha256": "c5a34c18927996ac20a3277115b60e70c2eb7b7018f5cac1dd1086514eba9f3d"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_Q3_CFS_c7082436accf076c.csv.gz",
+      "bytes": 3376635,
+      "sha256": "f4606bc8e5ee6780771819a9564f6fd8d893c0d06c7dad49cae9c496def6b601"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_Q3_CFS_e342bce4c0889fb1.csv.gz",
+      "bytes": 3485420,
+      "sha256": "4f101a8d9d5a7e33d9d6d9206bb28ee414a646365b06695f7209064084c24d89"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_Q3_OFS_7acd143d8963afe1.csv.gz",
+      "bytes": 729930,
+      "sha256": "2d42c5908d438d91be956a780c42c351f08cc1a390a9fe678592de5f761eaff3"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_Q3_OFS_b9db430476682654.csv.gz",
+      "bytes": 3236933,
+      "sha256": "12af16c6845c5f1da4c4c14db7cfc65253b33007997af117dc90edff67dbf4d0"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2019_Q3_OFS_c3f79ac82fc13078.csv.gz",
+      "bytes": 3161182,
+      "sha256": "68eeef14e18233e4ff5943b47021d2f6efe8ba06d5c6569aa9d8a63f65db0600"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_FY_CFS_0e3049c20bed20cd.csv.gz",
+      "bytes": 135633,
+      "sha256": "5d30b524bbc7a1a5b6a360e18b4561591b09cbb6c6d5ffdd6c196fa319e5a972"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_FY_CFS_3c4e96a779e835a3.csv.gz",
+      "bytes": 70039,
+      "sha256": "b1dea81dffe22ab29fba55a55fbf308ea9e4006c756205fbb30f7767200dddd1"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_FY_CFS_58b3cfeaed009e67.csv.gz",
+      "bytes": 6394,
+      "sha256": "25b2ebfb9bc54026644d34625aff6ef1fc4ff6f3d1824e6f33f5b00fc6ca2981"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_FY_CFS_7776a320f889c566.csv.gz",
+      "bytes": 136110,
+      "sha256": "3d00a4590a72c22d12cfc9e0c53bc88f3f391f83ea7600115604f31eed3bd6b9"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_FY_CFS_7ddcabff22540225.csv.gz",
+      "bytes": 111757,
+      "sha256": "a9a26236acd28b8f3f849880d0d782cea4db37f3499486f36dac869ff3ff6740"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_FY_CFS_a2a3188331578c80.csv.gz",
+      "bytes": 139447,
+      "sha256": "d7c683eef6021cd726e1ff927e40bc8dcb872f813988af4665b2d690b4309a19"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_FY_OFS_08ea5edddff149e0.csv.gz",
+      "bytes": 85964,
+      "sha256": "e7ebfb66d12408ab3632553c608a772b65e37e904859fc3f151d8c388298a0d1"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_FY_OFS_52640fe5dfb851be.csv.gz",
+      "bytes": 18543,
+      "sha256": "7fce41f564f08e85f701c9855f0689c54dcf69c6207228e1acf3a27303af8b1b"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_H1_CFS_3db21a1f4efb0804.csv.gz",
+      "bytes": 1672330,
+      "sha256": "397f03e528cc99376809003707ad347127f3f2110e8e4ff22853b004eef50919"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_H1_CFS_65ed944a35e9ca26.csv.gz",
+      "bytes": 62008,
+      "sha256": "7278a37a3d9dd978a5e87e1be2ac7ce53e0148ab6f97350070920ba4ba5628ef"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_H1_CFS_a082b47d99f08491.csv.gz",
+      "bytes": 3466441,
+      "sha256": "5d545ffc5a382b9a976a665e44c2804e241d91d4db35e5a393952eb046e7d011"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_H1_CFS_b6eddfd8e32cfdf9.csv.gz",
+      "bytes": 112845,
+      "sha256": "bf3afdcded974b4c514e223c09b0ceb9e16fd7123a863a2d288ae4ccec42fe55"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_H1_CFS_ce44cc1dcf6eef54.csv.gz",
+      "bytes": 1562,
+      "sha256": "41eef0db2274821f177e4630207b148d8d2219a51affe93c594f951aa23e8006"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_H1_OFS_360ff932a1be8b4e.csv.gz",
+      "bytes": 79899,
+      "sha256": "f94c3c03add675c978dffa3a8f76bd8cf9803669cdebbdc4a06c89c80292eb68"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_H1_OFS_b270ad7ac27c06b7.csv.gz",
+      "bytes": 14968,
+      "sha256": "822d613375c208442d940c396d272715ff11dac9115157067494fd7ee2f22ebc"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_Q1_CFS_4f24e9983e7e168d.csv.gz",
+      "bytes": 110786,
+      "sha256": "d9b8eccc82928c86555ebe016c8f2451e0271f672c9218c60a8badd97f5f081e"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_Q1_CFS_9c187f4a189bdf98.csv.gz",
+      "bytes": 3125500,
+      "sha256": "23fe1d266b51b76024d69dc2e695ded3e35d00e320a76a659703aadcc860c4fe"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_Q1_CFS_d33500806e39dca3.csv.gz",
+      "bytes": 3258333,
+      "sha256": "d973b8920e32d0cfd6dd089e52317a96b7b9656ba323b80dce11151355ab141a"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_Q1_OFS_9185b28ca4dc35a6.csv.gz",
+      "bytes": 44925,
+      "sha256": "13bef104d3a58d029c5aacbe83f9da56132b3b1e9abd9c24bb89b9f9adbeca03"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_Q1_OFS_b2713a12950c57c7.csv.gz",
+      "bytes": 39636,
+      "sha256": "1af5a5957e547a25f48906e80576651963ce890478b5332e607a00dca4f60efe"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_Q3_CFS_0e0ba13a2c36cc25.csv.gz",
+      "bytes": 25983,
+      "sha256": "9d50679e4ffa01c9ee21be0cf03a71896c00410da3ea712a030f72bce997ae1c"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_Q3_CFS_3fbc6a03bcf48ca8.csv.gz",
+      "bytes": 60863,
+      "sha256": "5d254ce017d054653726ebe5db178ad1b6d142e00cf1a7c444ab00e7d110ea6b"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_Q3_CFS_452725e01a38e5a3.csv.gz",
+      "bytes": 128938,
+      "sha256": "04201cb38660fc5bcb9017d44d8e024b370b33926f479b381aee7926597b4970"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_Q3_CFS_b069d50bdfed83b9.csv.gz",
+      "bytes": 140480,
+      "sha256": "cdf374def6b2a5ecc89fb27d5d560674ff08ba1b7126036179b7d15e04758604"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_Q3_CFS_b898e4e18eac6957.csv.gz",
+      "bytes": 132860,
+      "sha256": "32a621a4e043828b4f735d8db5f5186b05c2d50bfa077082dd7ef8307c1517d7"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_Q3_CFS_fa4675c69ee204d9.csv.gz",
+      "bytes": 93224,
+      "sha256": "23490ef1af3d88dc1cd31d1008e60db1632dcec63fb5ea76ac99d69a49744b00"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_Q3_OFS_d8301834845f7633.csv.gz",
+      "bytes": 59009,
+      "sha256": "01abecd4b709deae07d0427983afb715ef62d296f35d838b2dc195855b37d1f8"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2020_Q3_OFS_d9340255c6a4bc16.csv.gz",
+      "bytes": 37199,
+      "sha256": "7c2f4db2b7cb79a14cfd76b1c2c397318bcd5eec615424d00699b851dc405bed"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_FY_CFS_0b414334821ffd4b.csv.gz",
+      "bytes": 3695791,
+      "sha256": "20a6966b8c0bf1b83babcb0dfd348ccf9ee521c0ed5bc7e1da0f02dd07cac314"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_FY_CFS_4175ce8f2ddcc0d1.csv.gz",
+      "bytes": 1775946,
+      "sha256": "19f3bfe7ddffffb8e0870df05c3a70a370dd73beefd35e2135bb9666f9680811"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_FY_CFS_afa6051d0b35eb4c.csv.gz",
+      "bytes": 3766872,
+      "sha256": "f35618471e63bb7a3e3e6629d15c1ea698bd8f94848d878f67c1a3120c4d31a3"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_H1_CFS_030b3dbb3265f417.csv.gz",
+      "bytes": 137533,
+      "sha256": "a141a66b562f47719af2d85b03d85de0c54f92f3e3c8001c2ad98e5cbb351b88"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_H1_CFS_8d383e03c1427106.csv.gz",
+      "bytes": 193858,
+      "sha256": "b8929e42ed5162b3f9dbf6145dee557f0f31410460dd38d27b63c8604b3bc2c2"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_H1_CFS_9515679000a1fc73.csv.gz",
+      "bytes": 111589,
+      "sha256": "0459173a9654f536fabbbb3f0d70373f5e2e9f6361597f1dec17bbb764903314"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_H1_CFS_9e2068663cdae2b6.csv.gz",
+      "bytes": 58351,
+      "sha256": "67f4def2e5a41705e988f6cd0c571ab73008d71e2a2f4bdbdf04eb8e12f19e69"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_H1_CFS_ed7039b76e8e1916.csv.gz",
+      "bytes": 136854,
+      "sha256": "2e9a3accad803cab32393f34e69e09ed6a312f92c36bcb6c8efbd016ecd4b543"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_H1_CFS_fe5dc386df67e546.csv.gz",
+      "bytes": 133106,
+      "sha256": "167e096f8b358a268c03ffaacf63d6595a514fc389165a14ad4f3b7ce21be765"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_Q1_CFS_2b2e42be00bf4fcd.csv.gz",
+      "bytes": 3104546,
+      "sha256": "988b6ffc71e0d2ffa4a7f4e89cfb33cb838d31a518c65f34bd95c9f6d4ce65cf"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_Q1_CFS_b4a8af6d3b3fe0e8.csv.gz",
+      "bytes": 3222503,
+      "sha256": "703065090749d7959d97c15eeaed3f07cb842aa63b63454a77a0c1aabfdbf076"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_Q1_CFS_c1a7714eaebce204.csv.gz",
+      "bytes": 277374,
+      "sha256": "1f462166515a86a431e153949bf1057dbe2e684e79fea93ed21db4fc6f609c7f"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_Q3_CFS_422cb41fa4939b41.csv.gz",
+      "bytes": 3465251,
+      "sha256": "da3d4e0ca069978a430e43a8372ce7c3d31a8fa8a091ff9e1b2fd178512af248"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_Q3_CFS_5d499fc370c074e1.csv.gz",
+      "bytes": 1487154,
+      "sha256": "304ae50acdc8f89b0570bc5ac4a50673136a735d49cb001a23e20a4490c3cbb0"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2021_Q3_CFS_ca9ed3ec527a7a3b.csv.gz",
+      "bytes": 2759276,
+      "sha256": "4aa9b0a35ae14c62281fffda7a34140a1c07166762fc5dd22e3a54e15f18a1b0"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2022_FY_CFS_48245802becfce18.csv.gz",
+      "bytes": 880214,
+      "sha256": "214f8db3da8f8a1b9c1a88f024259bde0f9019b38b2a9e2ff9c410563b88d153"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2022_FY_CFS_729160611edd231e.csv.gz",
+      "bytes": 1172841,
+      "sha256": "7877eb1c398bb26ee60b3c526aa60d27c94584d171112a7cf6c24b276b9a63b8"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2022_FY_CFS_776e240296dda632.csv.gz",
+      "bytes": 3773451,
+      "sha256": "c1459d953eb32a588e8152b4d269d36025ff8b37317c006c0e19c375eef6b68f"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2022_FY_CFS_d7dca91a8806302d.csv.gz",
+      "bytes": 3690112,
+      "sha256": "a91d06c73634dffeac8b366e8a46a64acf3e3ca2fae52e3daf1a62bfc36ef081"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2022_H1_CFS_c39fd8f5f94484a6.csv.gz",
+      "bytes": 874040,
+      "sha256": "9552b3f713c2bbc92d2eed36cf688be8a0e20d5a36b1491b00034835f1f090ea"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2022_H1_CFS_c3ef1efa5c5bd4d5.csv.gz",
+      "bytes": 3315336,
+      "sha256": "f650614b544aa159c3e48016b4bb5b8cebd6ff567b0ca2fc667ec8efcb576178"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2022_H1_CFS_d06c3e772fa04cdd.csv.gz",
+      "bytes": 3436862,
+      "sha256": "d14af78edca1557f402d58ab3184b484abcbeee39d6bdecd66f3962895a238c1"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2022_Q1_CFS_0743bb5eb024763a.csv.gz",
+      "bytes": 259911,
+      "sha256": "56c047cbfcd39c086344b6f43a6848686121c16530d7dc250cc78a668f8f09d3"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2022_Q1_CFS_871d4794f940e0be.csv.gz",
+      "bytes": 3235228,
+      "sha256": "1e5893ca95d5b5987ec82027961bf763b50e5e3ae5838168ebea8c0f9b074dc6"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2022_Q1_CFS_a002ed1103d44ff0.csv.gz",
+      "bytes": 3085307,
+      "sha256": "d5b0ca8d012be73d2f415a43421815edcdd3a730ada0bbbe26107f02f10abef8"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2022_Q1_CFS_fd6bf8159536f7d9.csv.gz",
+      "bytes": 202540,
+      "sha256": "dc72886bc1ae86440433cd1b06590a62c1bd6dda26f33e6eeb6c8fd7ff442738"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2022_Q3_CFS_1fa9f4304d5b1740.csv.gz",
+      "bytes": 1213029,
+      "sha256": "29df796253ff02a8b9ee0477980dcd8fbb66290ca28b6ed879329042e3de7f11"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2022_Q3_CFS_3ff7da0263de5571.csv.gz",
+      "bytes": 3285672,
+      "sha256": "e4bd46bc8e713e830266204f5114d719d54756d5250f3e00d60008c974c8ff5c"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2022_Q3_CFS_96a07a5dd36246f4.csv.gz",
+      "bytes": 3436466,
+      "sha256": "a10af9189565acbedc41e943a72ccbf049c54afa53727c96dfa8d3bb5f171c08"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2023_FY_CFS_2b41ea06a0089c1c.csv.gz",
+      "bytes": 1379796,
+      "sha256": "765dfa37e086d5286e04877a46a4d6847e5e50465fdcf5aa96104bca54fdd45a"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2023_FY_CFS_82b7e115494ea36e.csv.gz",
+      "bytes": 3703325,
+      "sha256": "4e925275bcae6225b9db54cf86c8f563b27f73a6167e01b418a483702ec4f054"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2023_FY_CFS_a897cce209bbbfa0.csv.gz",
+      "bytes": 1285107,
+      "sha256": "23275c7a8d80c1372ede00b0a0d7fae18e45502303ac826bec94c7a37c9b8baf"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2023_FY_CFS_ff1452769242952c.csv.gz",
+      "bytes": 3769389,
+      "sha256": "ac90aa35a2803cc095f712214fb594f5ee8eda4f0fc71b14dc7787759b24c7af"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2023_H1_CFS_33b5fb6f81336829.csv.gz",
+      "bytes": 277353,
+      "sha256": "f57af86b59245a32ba8577bf2ea43c4fcafcb5fe0eb5896fd3acb33ab1d3b7c5"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2023_H1_CFS_85f26f6a40b762e2.csv.gz",
+      "bytes": 793472,
+      "sha256": "1e62610a9faea7cc51c228c9a39bba07c378a9c2c539f3996efae725bb8de261"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2023_H1_CFS_ea2fe70a84e8678b.csv.gz",
+      "bytes": 3462340,
+      "sha256": "b2358b024f8e856f6b425b7800faf431ac90c04e4c0750d4b0dc074eaa078b83"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2023_H1_CFS_fd4800904cac3704.csv.gz",
+      "bytes": 3279473,
+      "sha256": "9e8646d465618463b87fe7f78f56323e45283022ca1d8e089f57ce31df980c7c"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2023_Q1_CFS_82011cd3deb95b6b.csv.gz",
+      "bytes": 623136,
+      "sha256": "be613f99620b2d00e35badd57f5a08f32e5bb58c482d1785026f2f4183e59571"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2023_Q1_CFS_fcfe363efa6ed535.csv.gz",
+      "bytes": 3115179,
+      "sha256": "aff1a28e90c62cf0c765c36a06bc41fc0552215ec24ee9a08d2a48175603db98"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2023_Q1_CFS_fdc0b72a342055bc.csv.gz",
+      "bytes": 3256521,
+      "sha256": "a908544e1386d2c09abfce3ab5f37d1cd8fb6cef784d55fb67c0ca30d94db2a3"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2023_Q3_CFS_64dcb22c756d191c.csv.gz",
+      "bytes": 1560012,
+      "sha256": "86a4e5081ce1413b1e4bf00fc42a220c47fd5f5b22b880d8c1d66ef10a7646ec"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2023_Q3_CFS_a24d36556e1999eb.csv.gz",
+      "bytes": 3539750,
+      "sha256": "54fbc1b755410735313eea323125638dc1a4f13b5033a5df6a0cdabed5818779"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2023_Q3_CFS_df6852d19976c0c4.csv.gz",
+      "bytes": 3423237,
+      "sha256": "220119b13b5b061f9aa413183a53ad398d18562279d4a1b8d90d5c215c5c2866"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_FY_CFS_1445c308551d290b.csv.gz",
+      "bytes": 3713471,
+      "sha256": "433cbf1d8568709a0794f8fb5b2e19d6db37ae347b337f65ce85a351c9057ea0"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_FY_CFS_3659e4aa1a480cee.csv.gz",
+      "bytes": 2211128,
+      "sha256": "9aaaca5194efde953bd5b045a48f459b146823316f53051e0b8ab6a844cfb641"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_FY_CFS_860270648c75260a.csv.gz",
+      "bytes": 170161,
+      "sha256": "e81e48b80c6479382222145e6a3ef1f7db30ad2dcb2248502ad888e060918aef"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_FY_CFS_b3e394a4363df339.csv.gz",
+      "bytes": 3871153,
+      "sha256": "b41b5744d07dbb1be939e74464e331cc319005fb6e351d9c4ad4074169f49cfe"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_FY_CFS_ccf8f32114922d12.csv.gz",
+      "bytes": 422398,
+      "sha256": "bcf7105058056bcdb90687949a5ab528b1ea702a8636de6276f603a4daa01d42"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_H1_CFS_679f64996bce4164.csv.gz",
+      "bytes": 3515073,
+      "sha256": "2418cbfe31524e7273bd260cddfa29aae16196cd1828c19ac40339dfda7ba080"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_H1_CFS_e28d94d72188703d.csv.gz",
+      "bytes": 3391750,
+      "sha256": "84bb0a7b9cf6ca2a72722b917140c4627b5246dd91e58af0e205cf362f1935a8"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_H1_CFS_e345bef042fdf3fa.csv.gz",
+      "bytes": 1453057,
+      "sha256": "92cb07562f1e928794426e9a5495fef062fa14f4f7ff3fcffd05908a6807a792"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_Q1_CFS_2b8419c7067ca747.csv.gz",
+      "bytes": 1431934,
+      "sha256": "5c8af78ce7e3480da69b23ddede157fe9ad057541c72c3c437d969fe9c81fd83"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_Q1_CFS_af9a39e73b7f430e.csv.gz",
+      "bytes": 3323630,
+      "sha256": "6abcc59c8001e074c999188991c902837d37176e7975ddeab69d58bee000b90e"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_Q1_CFS_b668fee2b5809700.csv.gz",
+      "bytes": 2697930,
+      "sha256": "41be59ffd0aa59b483f91d6686c262e6f6ac64ba54c1ccb344002866d7dd8aff"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_Q3_CFS_7b687c53489d0de3.csv.gz",
+      "bytes": 3462209,
+      "sha256": "f5e82543ffeb5c08edb8fdd7a412cd14c5f3122e4bd3ea6f823da846f9b6c474"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_Q3_CFS_8c41d084788cc967.csv.gz",
+      "bytes": 21039,
+      "sha256": "3beb0cddc4082601d45f0893f502efbdbfec44c1b8eb73bdc16a4e3b34e0fbab"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_Q3_CFS_906f5ad4d88d9414.csv.gz",
+      "bytes": 63912,
+      "sha256": "696fd8e21faa622e1a39e0d98e9d2372a2a00c596de71ad1acab8f1d7b015bee"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_Q3_CFS_99dc43c61fd5d873.csv.gz",
+      "bytes": 2065862,
+      "sha256": "07c2a721382957f9831521d8a9e5a4f285fab0007cb114bfe70cf35b33321a33"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2024_Q3_CFS_9f8a8f195605d155.csv.gz",
+      "bytes": 3074216,
+      "sha256": "1aa9164598665d76b33ac52ef6d2524862d8b3b31ac08b066aa4b51235923dfc"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2025_H1_CFS_031a993b002e92be.csv.gz",
+      "bytes": 637127,
+      "sha256": "3f9b35f69639d493f4dca8df20caad1f0c2fc96e8f888e8a4f7430ea0746d8dc"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2025_H1_CFS_143a8878efab98ab.csv.gz",
+      "bytes": 3485876,
+      "sha256": "91783567492424db893935d4369bad5ace38198849b9123912473f1ed0e80a73"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2025_H1_CFS_ea5869a49b71b82d.csv.gz",
+      "bytes": 93873,
+      "sha256": "ecfb861f2fe4a4bcc3bfe88a5e17f4b0662ee994764d088a97190af94606ccc0"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2025_Q1_CFS_2df6e8431d5fead2.csv.gz",
+      "bytes": 137313,
+      "sha256": "c9383e523861d19412d3fc550645cdfc6e0040c09bcdbddeafe7b08bb1bbd6f5"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2025_Q1_CFS_3cbe4e1e384e3caf.csv.gz",
+      "bytes": 3293965,
+      "sha256": "287c0afe12ef9b93d1f2dab4f57980efcde410a075398655ae5350663a80898b"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2025_Q1_CFS_55a35b9d38b61913.csv.gz",
+      "bytes": 2798364,
+      "sha256": "be1b04458048ec2ddc82ae00346da0b0892e5b8bc71f53a23c32b05384091cf5"
+    },
+    {
+      "path": "data/financials/full_history/dart_full_2025_Q1_CFS_58f13ca3abd24ffa.csv.gz",
+      "bytes": 1377092,
+      "sha256": "6da22c211b6dfdba5eccdf80369a2bda224042d78226de636d0bd4d0532c3d0b"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2002_12efc4423dbd.csv.gz",
+      "bytes": 2799334,
+      "sha256": "56879b2fb61a2bc5595a230c1f4a5066ca739261d9c6091bab1499b2e55cc19f"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2002_249c0ba16c98.csv.gz",
+      "bytes": 1101946,
+      "sha256": "960ecd4e6b161c1326740fc07db62c12c406c59677a14387a136d0f050e1a135"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2002_289c51f7242a.csv.gz",
+      "bytes": 2720425,
+      "sha256": "7674098d92ab96f1712d474cdc9735ae5b76d355258980ac2501d545f5d150c2"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2002_3e809ead8316.csv.gz",
+      "bytes": 2462351,
+      "sha256": "cf9a7e32972fa0ba79b41a0a49bc2e24c20f5f169968f149046f66de95fd5b07"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2002_64dcafcc301d.csv.gz",
+      "bytes": 2381318,
+      "sha256": "d20e70f4129186c6fa8d5aef682d9d71ab6de54bf40e4e58967d531e762e6997"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2002_95f542416135.csv.gz",
+      "bytes": 23195,
+      "sha256": "a4963f906062620e3dd00254f12f620d73b78c6f7b75dc40f178c08586a5658e"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2002_a258d782fd24.csv.gz",
+      "bytes": 346947,
+      "sha256": "a152daf66e6bb173753c012c530f1d9062c0dbebb32195420a60d4eb8769998e"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2002_ac83c22fa3f6.csv.gz",
+      "bytes": 482631,
+      "sha256": "c4a40d719a881f7cd013e01aa9d3f426583e0275ef77cfd160e916d2a6001778"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2002_ced28db3c015.csv.gz",
+      "bytes": 2195354,
+      "sha256": "dcc7b4117b4bea00bbd4795ce780097cebe872ba551fbd7300b61a9e027d358b"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2002_efff6ffa6421.csv.gz",
+      "bytes": 2764743,
+      "sha256": "e4e183d05801705df9956dfecb486a1fbcdef6a10301f5ae10486b68c777046a"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2003_167e95b19da2.csv.gz",
+      "bytes": 1288051,
+      "sha256": "9c2b166fb2a44d64bec12d4d12f0ec804419b7031bdabdd692efc8f79c4630d0"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2003_43980bd17769.csv.gz",
+      "bytes": 353601,
+      "sha256": "0ee3a77ddf35502cbe3987d38b1262fec7bf7b9a899d2337c7d4383f3620b54c"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2003_5302de4eca3d.csv.gz",
+      "bytes": 2809994,
+      "sha256": "f816b63becffe3e2ce9a4aaccefadfb4bb127fabaff00e9793524f4d3ffaaacd"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2003_70a5545a8db6.csv.gz",
+      "bytes": 420887,
+      "sha256": "997a85a7e7c037dcde3d59b23a5e10a7f3515ee3ad4a8f0cf2f2a692d1871ef9"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2003_c4012d462fff.csv.gz",
+      "bytes": 413677,
+      "sha256": "1752f90650994e69b916686d2f92d4b0cdcce9a5e4370abeedf23e83582e2afa"
+    },
+    {
+      "path": "data/financials/legacy/candidate_rows/dart_legacy_candidates_2003_ca22d8aa5b68.csv.gz",
+      "bytes": 351316,
+      "sha256": "e96210aacff0f836e5b8466e0a84be5f53e2cca8f52c6b104a192129c97c3314"
+    },
+    {
+      "path": "data/financials/legacy/dart_legacy_code_map.csv",
+      "bytes": 242428,
+      "sha256": "83f43a0d8a87db65c09b74cc8851c3ec8646710d8e1e508ee0b5de91fc465672"
+    },
+    {
+      "path": "data/financials/legacy/dart_legacy_report_catalog.csv.gz",
+      "bytes": 1983965,
+      "sha256": "58659eb3163d47db9271b2cb50cbd4ce8fbb7f962ac40fd579452c63a348d7be"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/krx_name_intervals.csv.gz",
+      "bytes": 87278,
+      "sha256": "0ee9c77eeebca6ef7a2a5d4a9c695a16831d409ee51749e3784cb9f1b1ed104d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/legacy_filings.csv.gz",
+      "bytes": 3221691,
+      "sha256": "310001c3e9ed429684da5008983ccfa8d27cd92a16659dd18a1060c6e112406c"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_1998.csv.gz",
+      "bytes": 1577,
+      "sha256": "18d986873b426d6a7a69d76694722481666948c5d68dc7d442439bbd1167ff91"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_1999.csv.gz",
+      "bytes": 808863,
+      "sha256": "5dd3c67cb7bb6ba094cbeae9232ac35e48ce3a456ff4678bb9e46e41adf23ac4"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2000.csv.gz",
+      "bytes": 853962,
+      "sha256": "7c6cc453d9890b2065cf908a9d411646abb0e04fa99ddd0f2d000e1ac2d2b998"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2001.csv.gz",
+      "bytes": 2625092,
+      "sha256": "64dc9be820beaeba1bb651ee10a1d968292092fdbd38bb5e6881dd40e5656bc6"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2002.csv.gz",
+      "bytes": 5813797,
+      "sha256": "a3af424fcf27b5bc6040a583a872b74fb830307f1385c97358832e3b7b1bd35f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2003.csv.gz",
+      "bytes": 4327977,
+      "sha256": "fd493598839912085ae77d5c4a52ba8b69ca318634038e9687d983edec1d898f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2004.csv.gz",
+      "bytes": 2909983,
+      "sha256": "926332e31e7e2e41fc13d1562b054b3155fdbb142a0fd86bed7d4cc1ea92abab"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2005.csv.gz",
+      "bytes": 3764925,
+      "sha256": "e7f6996612d52a4073dd556389e63dd27cc46d34cdb0eddeacd4f7972e8235eb"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2006.csv.gz",
+      "bytes": 3996757,
+      "sha256": "c6fb2029069e72a7fa9a45c17d8f6b3ab4bfeef145a5ea8fde8e74e14386451f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2007.csv.gz",
+      "bytes": 4642962,
+      "sha256": "9ff497bbac4dd9ba8613273ddc8ec9aafa5e2ca30888075fbe936c50218790c8"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2008.csv.gz",
+      "bytes": 4697190,
+      "sha256": "0e880bdd94a46fb1f5e8238a35e1db253ff862c731f5b448380b87ca17eae10d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2009.csv.gz",
+      "bytes": 4044766,
+      "sha256": "9047d40d559c6b9b443352c7681a50b8a662b69f977dcd3b3d3e5d80290d2ec6"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2010.csv.gz",
+      "bytes": 121424,
+      "sha256": "92370d7ea8c76c882e04a1c3657443907ececaf450bfead184341777c7fab1b2"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001574.json",
+      "bytes": 661,
+      "sha256": "3236f7bebcecff7ffd5f943ca73a49eaf0cac8533ed9173be8b51e8c6528fb8f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001575.json",
+      "bytes": 661,
+      "sha256": "0724cdcf27933278c3e0e4b549efa845f62f7486731fccaa132d4d63965ad5e3"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001576.json",
+      "bytes": 661,
+      "sha256": "a5913d5f9a81e9625dbd67c5cdb571f9beead40c57a67d8ce4bba48dcd59fbfd"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001578.json",
+      "bytes": 660,
+      "sha256": "ad4619f2e6795f0bf641f3998ab408b0038141296452195dfe7ddfced8ccd1fa"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001579.json",
+      "bytes": 661,
+      "sha256": "be06581008e6b0517b20cb8dc7360acb335d7e3ab7ccf11f08b555d49de507fe"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001580.json",
+      "bytes": 660,
+      "sha256": "ad18cc387efd50a87983511386ee0a6a64b8534f4c06221a399075223a795410"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001581.json",
+      "bytes": 660,
+      "sha256": "5bf041d0854d9c05b1e664658c0f3f8e99541bfca8c681c318c6e4f1b4f79192"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001582.json",
+      "bytes": 661,
+      "sha256": "8957f659f92ed296697f7de6eaedd315005b6a350165dc4fb7d92483915db9c1"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001583.json",
+      "bytes": 661,
+      "sha256": "8c01dca21852210ac8cef2c8f88698d76885d99f3168c2619003e586bf5fad38"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001585.json",
+      "bytes": 661,
+      "sha256": "6261af3cb5ec3b2e998b78c7fbc726da0abc68d2c29c38f0f5a4aeed8532a95a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001586.json",
+      "bytes": 852,
+      "sha256": "a6bf9ad38ff6a8203bd437ee1f102d4f8591ac0a2007f39dbee49520fb14dba3"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001587.json",
+      "bytes": 853,
+      "sha256": "9042f1de2f470214c0ad2635b7658b43933f4c9fd9a7235fdab4db6a199d01c7"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001588.json",
+      "bytes": 853,
+      "sha256": "c4eb18d82426ea6dc218e4b9e25f6ec38e5d62773c545a3a464d73c82f7249cc"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001593.json",
+      "bytes": 853,
+      "sha256": "18d42ecc9e4aec4d53a27983965b098db53a4e74f83551f0026ea778b07c9be3"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001594.json",
+      "bytes": 853,
+      "sha256": "3ad2a2a36d700d706d1a5cb14987c921ab84f5bca2a173e5ab73fb5197b6aa5f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001596.json",
+      "bytes": 853,
+      "sha256": "100d7f10d235e6f1c2130f3f1443917a8483ca3c32a326748724c843ca9e52ca"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001599.json",
+      "bytes": 852,
+      "sha256": "71edb1dcc318633194f44bb35a5ac1976f229745ab4c365b94dff3b3a49b4efd"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001600.json",
+      "bytes": 852,
+      "sha256": "a973a63c1e101d564fb244156daecb532f7918298ccea6e1057ff311c31c20c7"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001601.json",
+      "bytes": 853,
+      "sha256": "5a137db2b5caf74b217a1e71c4ace8a2b97bc6564277930b7adf186ed5b572d0"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001605.json",
+      "bytes": 853,
+      "sha256": "c947ca92dbf8a9089123d96032672e61f89ee0417bde3cf7507d726d30947e1e"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001606.json",
+      "bytes": 853,
+      "sha256": "ccf3a95f545caa9a98f8dea6d3bfc3c92c9c379ce008ca5e6b52356036ac3bb4"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001607.json",
+      "bytes": 853,
+      "sha256": "dba623cd637989c69c78b13e75b30c79d462f5359d7d3372d08d78dc161456bb"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001609.json",
+      "bytes": 853,
+      "sha256": "04c1cad6e61ffb908d8f4c66c388563cf7cae1586aeb4f2970bd1496678e9ef1"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001610.json",
+      "bytes": 853,
+      "sha256": "32fa7e6a5614f6c4f0ec93bb45c04f3f2750ce0c68d7015217d63a97085e5bb0"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001612.json",
+      "bytes": 853,
+      "sha256": "195fabe9a071871a2e95462fb123364a42b65311a751c6f2c3027af2f8f6d10b"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001615.json",
+      "bytes": 853,
+      "sha256": "60074d46d4fd207dbf81976a7742d7d08547f985aff13a053218e0f951997e53"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001616.json",
+      "bytes": 853,
+      "sha256": "27e53114f1646a97c6bc40c5d37e37cab04c625797bf2731099884a8cd95cb18"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001617.json",
+      "bytes": 852,
+      "sha256": "60aad8d1426fe8d314f118642f9bd5712751932ff781e77ad2cb89840484170a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001618.json",
+      "bytes": 852,
+      "sha256": "072c757ef4b1db8a7180e96e3746afb69d19621aab17c6a88b91a15bd6fe66a0"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001619.json",
+      "bytes": 852,
+      "sha256": "b00c7d3ae69c17d54f0a45e27c749be3e3e6e6d0009718c6d6df9e2ab43a956d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001623.json",
+      "bytes": 853,
+      "sha256": "224f441c7f8db6848050f57ab526899dd137fdd34d05bea81ecfb93547a1c1cc"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001625.json",
+      "bytes": 853,
+      "sha256": "1d9add1f653147d023294775a30e174430372a8e9884601de8aea64f27022df1"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001627.json",
+      "bytes": 853,
+      "sha256": "1a33c9c09bfc64c37c0715f1a7e6b21ad7d15985c440b1d6fd4c4830fed8a3eb"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001628.json",
+      "bytes": 853,
+      "sha256": "277d8f1c99e269403c1902e9066179960e69afea0ddd11f18a3a2aa1ffceecbc"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001630.json",
+      "bytes": 853,
+      "sha256": "1721ce1799c32ee4c02511483a89d79a89d9aeb28297e7a984d9b579a277af21"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001631.json",
+      "bytes": 852,
+      "sha256": "0e0eef15d510e0c5edd6abacabb527d7cfee8d77ce11e3efac02785f80d5dac0"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001632.json",
+      "bytes": 852,
+      "sha256": "bdcf5b86af10d605e756c2123ba0e93ef9040a87c1adae8534c467e4ffe3be8e"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001634.json",
+      "bytes": 852,
+      "sha256": "115159a467e47ce6da4fadb95c47ae3656437496717523e0520d7d4b3312d9ab"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001636.json",
+      "bytes": 853,
+      "sha256": "9bf8fa877750e84b63985801745bb12ca5a7b43f7ef53cbfacdda1275388c4b7"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001637.json",
+      "bytes": 852,
+      "sha256": "1cc1b87152d4bdb1b52ce6f11b22997fc077d081a5e15b81cb94c77d6823cd82"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001640.json",
+      "bytes": 853,
+      "sha256": "82bc51ff262de20c03588359a7888f27cc9184f1d3c21102e50c5f6f00ad9f3c"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001641.json",
+      "bytes": 852,
+      "sha256": "28e2077d0689e6c70e7cb6aa63eaaa665ad5db551a8fef703f773e464281ce44"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001644.json",
+      "bytes": 852,
+      "sha256": "675d922545b316d259eb4980f794f415ab201bd36255828683c80fd14b8aa700"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001647.json",
+      "bytes": 853,
+      "sha256": "2db4ce4e30fcad8a9375090bd51d275083c23cab467ceccb81533ed16db7e061"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001648.json",
+      "bytes": 853,
+      "sha256": "92b60cb0c9bcb096bdfb3f6516da19061fd1c1ef68eb8919fb44d56e7ad0324f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001649.json",
+      "bytes": 853,
+      "sha256": "3ec1e127c62ea515590845fb9fa478e15f440692d6657bfa198033d812c5dfd6"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001650.json",
+      "bytes": 852,
+      "sha256": "f0b2e2f0900ca602eef39e8b6df6088dcea834d6979475052520f0871a2f3ad0"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001651.json",
+      "bytes": 853,
+      "sha256": "88017920fcd5fc1aa9e77c36a2d4ceb14b782af8a0207db9353f40d2411bd0b9"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001655.json",
+      "bytes": 853,
+      "sha256": "e0ad37fa7ea10265c6c022d5d84723581e0342b158e58d3b9357f94b3caafcbe"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001656.json",
+      "bytes": 853,
+      "sha256": "621f2d20ce47149c6fab1d4526c97833bab9364a99fc4f14227ce8964520993b"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001658.json",
+      "bytes": 853,
+      "sha256": "626c2c89df0a7844d2a0d098cca161fcb776bd008929b34f5a3e757e8ea1a66d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001661.json",
+      "bytes": 852,
+      "sha256": "0f542e30b6679fa9ddd0a771d4138337661ea0f8b7128255c12246dd2229cb92"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001662.json",
+      "bytes": 853,
+      "sha256": "33003ae8e7025f7e451185ef3fae7f2bb568ec4e5397ed9fa792b7104aa3dc6f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001663.json",
+      "bytes": 852,
+      "sha256": "13bb3c51e4f9dc0ae1b1306f81884790484bdbc3d1662e8567d613658b9865d9"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001664.json",
+      "bytes": 853,
+      "sha256": "aed9f19dd68d2d9965c9ae1a20853952a8a369cee11f07df73e9c4597ef5a94c"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001665.json",
+      "bytes": 852,
+      "sha256": "8979ad397925fb0203dcb6deaf80cc6e2a911088e7e37ed83cadfba8aa4e26c0"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001667.json",
+      "bytes": 852,
+      "sha256": "e2c6c9f2fb666b568198376d882d686f25a14781e89ed2a037d28d424fbdf50c"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001668.json",
+      "bytes": 853,
+      "sha256": "c415059df68dc3004c913d7925eb3a6d72841705c3c16e4a8120c5895f84e475"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001670.json",
+      "bytes": 852,
+      "sha256": "f85ef6b9690155b7c0c2afea3eb9858473795dddb16f5dfba27dfcb007263896"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001671.json",
+      "bytes": 853,
+      "sha256": "288a61d79f783fe9b1597389bbc3031aebe67fdb6788584de2625bd980daa80d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001672.json",
+      "bytes": 852,
+      "sha256": "01a5e2577338ed7c7fa5815f0ea69f149840d0f7ef7f88de5a28d2b360a89e5a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001673.json",
+      "bytes": 853,
+      "sha256": "434b31a58b92dc75db918430494212ab2266f70931bb029bf8ebe32daf243864"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001676.json",
+      "bytes": 852,
+      "sha256": "e010d8264bd9f22dd3ba93c340631310cece3c3c13eaf7c57b622301dbb0e0ff"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001677.json",
+      "bytes": 853,
+      "sha256": "cf612a98511079cc2a865f9789d30f7758d4edc60fb2f84efe974ff4661a1ad0"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001678.json",
+      "bytes": 853,
+      "sha256": "88f47a3a594058edbe0b1835854d840a08591921d3b973732be9df51dff93571"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001679.json",
+      "bytes": 853,
+      "sha256": "7a903745e369b732fe439aeee607515e82bf845b664a507431a3612e1a10e9c3"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001680.json",
+      "bytes": 853,
+      "sha256": "896f49ebc535034ae91f16282db7b149fd38e818f4e08573baeb25ae052a9245"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001682.json",
+      "bytes": 853,
+      "sha256": "612c4da7c9b9e6f5a61f0e55cd338aaea31145766f77298c59826a96f34031fb"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001683.json",
+      "bytes": 852,
+      "sha256": "d17e4af38f59977862cb8f581a655d55606a174b628077bf3eb52b80680453ee"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001684.json",
+      "bytes": 853,
+      "sha256": "fbdce0af0357c02205cbd9667728449582f400d75d54d7cd4050175e673bdf87"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001687.json",
+      "bytes": 853,
+      "sha256": "7361afe5ffac6514f2dfed36377a9e9c30d45229920967e853dc2d9cb0d5deb4"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001688.json",
+      "bytes": 853,
+      "sha256": "1c24677de293157fb89b4ebe5ef81659cc16614a19f524d8ad03dbb9ef5833a0"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001689.json",
+      "bytes": 853,
+      "sha256": "4df65b866c0717e8fa982953b3ee47c5ef0e850dc62c0f3e0fefe5beed12e733"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001690.json",
+      "bytes": 853,
+      "sha256": "98428ef636877ff22e2e88560ae40db4d84ff072b44706c0d0bb8acab5f546e1"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001691.json",
+      "bytes": 852,
+      "sha256": "b34530adbd7d48515887c07432e1dc1880516924d6ca2ffbb36612f97a9a3d5c"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001693.json",
+      "bytes": 853,
+      "sha256": "23b7ef5a45b007803cc11996e5da907db575a151a1d5a8a11f1bea6d2cb7b52b"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001695.json",
+      "bytes": 853,
+      "sha256": "4c71dfd92c9a19df3cd98c53f0bed8bf9948a0a2a30f03ab8d88176ddc728a12"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001696.json",
+      "bytes": 852,
+      "sha256": "fef277a0f4382aa8056cc5c0e45d9bf7e8123f9321cbc8b372a80ad195b31229"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001697.json",
+      "bytes": 853,
+      "sha256": "d7067d8a45f32223b5aa10dc2d27871f157cf3d294d47236aaa8180c71558607"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001698.json",
+      "bytes": 853,
+      "sha256": "aa65fde2e1c603d268bdcbabf872bdf48b84a3af039cb5569dc332092ad6b088"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001699.json",
+      "bytes": 853,
+      "sha256": "62393d975dada2bf1821bad87666e40e9e4e7ab9686eccb5098f171d2aafdc02"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001700.json",
+      "bytes": 853,
+      "sha256": "916ed8db7a23e723a0798ca8bfee175de53e12a45a0284d9eb9cb3cb5379fcce"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001701.json",
+      "bytes": 852,
+      "sha256": "6f3e3d94717a1a175111f9e7bfcef5594c339cda5d9602a3fdd2525963262d2e"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001704.json",
+      "bytes": 852,
+      "sha256": "4cda26ebd50a38efbcf22170e04f35798d28f2ae499a51dd9088ac8a13e73f05"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001705.json",
+      "bytes": 853,
+      "sha256": "609bbc1598ddfc34f25d44cf57ab5995c53be056d075e328cdd82f990b7dd4fe"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001707.json",
+      "bytes": 852,
+      "sha256": "a1a8feddd22002aaa8032bc27d159da61fd1fc9beff2ef62218a9dc007b0493d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001708.json",
+      "bytes": 853,
+      "sha256": "3c7c7583c91edcb72d2dc9da00a355363759edb0807ec4beeec0ff0a5dead874"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001710.json",
+      "bytes": 853,
+      "sha256": "4c9ed3d096d48c7bc4128cfa36e2d786bb8bce45431a363cf0891ab959a4020f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001711.json",
+      "bytes": 853,
+      "sha256": "453aa8d82997ca2cab71f4660a71813638a24ed5f836277a5c05a36c0ef10664"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001712.json",
+      "bytes": 853,
+      "sha256": "4122223081956d184baec0b22fd82ca48fde5f526045896db8cfa3a7e0c1ff8e"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001714.json",
+      "bytes": 852,
+      "sha256": "056928c5a4494fec7b6c862ed24618a89e893feeccd791188bdf2a76c439c068"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001715.json",
+      "bytes": 853,
+      "sha256": "3c6cc1860c3e9c388c64b9164a1e782b84b0cad6aee8a47b271af7c4cb8f2803"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001716.json",
+      "bytes": 852,
+      "sha256": "2fff6d21a2d775cf130da232faed91199e1923f7381a17705aa7ab43a8379edc"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001717.json",
+      "bytes": 853,
+      "sha256": "cb8fbc079505a0a0ca0cd2f03bb84e2e2f4d39e13122b43667dfb5c1ffdec442"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001718.json",
+      "bytes": 852,
+      "sha256": "ad31b9cd4a38b279e402c87b63e5e3bfc0b78913f5c4febaaa865f590b2e3d3b"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001724.json",
+      "bytes": 852,
+      "sha256": "3412dce21ec4fd40b6cc82253386854ad4a9714cfeee362f1926ba9b00dca63d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001726.json",
+      "bytes": 853,
+      "sha256": "570a095978c13bd3ef224b676d1f49b84972b246e5df64b52ef4fa9f632c509c"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001727.json",
+      "bytes": 853,
+      "sha256": "a687eafa9cf25240cf1b18a8c3827ab2e0d0d79483ac863d8bab2cdea4ecd942"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001728.json",
+      "bytes": 853,
+      "sha256": "b05dd2cf31e6a47418119f46b42f92e5d36593316de4874886a33fd84b942481"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001730.json",
+      "bytes": 853,
+      "sha256": "f73c5ee77db3d034c68ed107fa398c25c0ebef7c6551a3167969cfbc78183314"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001733.json",
+      "bytes": 853,
+      "sha256": "390deba09b12a498737b4506d489549088472a897a0508f985f17c37d7dd2833"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001741.json",
+      "bytes": 852,
+      "sha256": "c44f8c51b277a14bcd13a5745d25dbf708233db3636c56ca971a060fcd9ee562"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001742.json",
+      "bytes": 853,
+      "sha256": "35fc5a3131268c4d8934026fc36c1346b6adcfaae2487e43181f9dce449aab93"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001744.json",
+      "bytes": 852,
+      "sha256": "187dea44920a6f18c830944b28c74d1ea114d83e0bc173d8f854995a81a601a2"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001745.json",
+      "bytes": 853,
+      "sha256": "b2b564be724b9e9da12c56886135716514d2c51794c1b595dd99862a07b43e26"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001746.json",
+      "bytes": 853,
+      "sha256": "93cf480c8baa7a39fd90ac316486fac510e10fec7943d3334eea9760f9d4226b"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001748.json",
+      "bytes": 853,
+      "sha256": "a2e7ad69e710d96614ce021e15f944da61faec6febe9512862a62546c65cb26c"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001753.json",
+      "bytes": 853,
+      "sha256": "49b007d2055425b63ad2c1eb5b51b69ac95f7216dbb491bf60b1144160d2d2c4"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001754.json",
+      "bytes": 852,
+      "sha256": "3e43ad4eb5f1bc5fee11a436991055792bc5229eb558bf94a7be517fd2cb99be"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/collection/20100331001757.json",
+      "bytes": 853,
+      "sha256": "de52dea856be62704fdf7f32f630a7f9c725abc58b7e5fc43cdc666f29978b29"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/limited_resume_v1/runs/39248507369/manifest.json",
+      "bytes": 220772,
+      "sha256": "0700992fc90e9e0cc0d7c6014586b1d8335f49d80f12a9bd624231215ff6659d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/limited_resume_v1/runs/39248507369/selection.json",
+      "bytes": 67419,
+      "sha256": "a577cfcb80af1dcd2e73f61b6603fdc2cd6181dbfe7641e3bb5170819df5e4a3"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/limited_resume_v1/runs/39248507369/sources00.json.gz.b64",
+      "bytes": 3368241,
+      "sha256": "c74aadadb096b73205ba6f6c4c63effd5adeb50aa88cbb30577dd6f82d4a0c2d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/limited_resume_v1/runs/39248507369/sources01.json.gz.b64",
+      "bytes": 3823085,
+      "sha256": "6fb12f928305d74a41c72500f1394811d1daaf9b142da2a3c4e6fe482e7ac585"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/limited_resume_v1/runs/39248507369/sources02.json.gz.b64",
+      "bytes": 3635569,
+      "sha256": "bb1029fde7e4066aa9e0667381c8aa6fff95c35a3b3b25a2c2843e800cca5514"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/limited_resume_v1/runs/39248507369/sources03.json.gz.b64",
+      "bytes": 3632805,
+      "sha256": "640367b699e2619b1c7dab8d9bad8f183295a2293384e18c8b8ffbf6b52cb964"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/limited_resume_v1/runs/39248507369/sources04.json.gz.b64",
+      "bytes": 3431421,
+      "sha256": "4fc3f916ac875c4db3f2147cead07c77aba9fdbd11b0615fff4b29e4c0c83933"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/metrics/20100331001578.json",
+      "bytes": 10999,
+      "sha256": "facbfd51f6e2449b6c09e6ffe3e9276ef1e56c23b6d607b4697168a2c859614a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/metrics/20100331001582.json",
+      "bytes": 11017,
+      "sha256": "4975dd2e3cbd3ccd948406309f8e9064bf16172b3c8d80988e55ae2e164cf17a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001574.json",
+      "bytes": 2046,
+      "sha256": "c8d2a299a58cb55577943d407ae13e1e67aefc5b6d680a8f4cb70f5d624487eb"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001575.json",
+      "bytes": 2046,
+      "sha256": "53421b263e6dd270ea02266ae168a4503be51206be0feb395fb7ffa66251a729"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001576.json",
+      "bytes": 1585,
+      "sha256": "205a36fa957118175bea8124d50fec48600de0299d05901262af5a0b1527ae86"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001578.json",
+      "bytes": 963,
+      "sha256": "438a750b203237d57fc8f5a1affcd79dd00f929d968bb73a4e5fd10fbc2e5695"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001579.json",
+      "bytes": 2157,
+      "sha256": "998c9cd3cd1fa36e36018bbad3f6245711b557bd45ef44ee23789652ab321efe"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001580.json",
+      "bytes": 1637,
+      "sha256": "db71b10b0c1f2b2a45f7d65a07ccc3d2178faec15ba1b8c40cd060ee7c2b170d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001581.json",
+      "bytes": 1202,
+      "sha256": "a213a2bd918ad96db2a5d165a31dd8574ed849a691f0e1beccd278b619c78fd5"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001582.json",
+      "bytes": 963,
+      "sha256": "be2b3ca9733376c1a4766c956a1ff21d589e425eeba4b56a5872d651066f9e57"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001583.json",
+      "bytes": 1663,
+      "sha256": "ee24d145393449cd2d824a313e46af4d557bc647988b47afab31d9b454d89b15"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001585.json",
+      "bytes": 2048,
+      "sha256": "fe16ff6e323719b96d5cd4c14b1e251af2a87f4f15d5a5cf450f3db4d4396b52"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001586.json",
+      "bytes": 1613,
+      "sha256": "49272f15e5218692eb94253b9bd6cc438f5e51e4cd9096806b7976d83efb7847"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001587.json",
+      "bytes": 1984,
+      "sha256": "0cff434fcecf51cd9e3732df2b762c04e53c254adb8999427c05c4fbd6b5a042"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001588.json",
+      "bytes": 2553,
+      "sha256": "b7811d9ee581f9ab2cadb4a3422410bae2b2efda8011db7cbf98b5b61c4d5f30"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001593.json",
+      "bytes": 2382,
+      "sha256": "df3e95057ad2572086959655d82c29769e04eb36b95baf14bc2cc33bbd8c8cb5"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001594.json",
+      "bytes": 2367,
+      "sha256": "003b5035e5e06696685c6c7441aed67d13a100b01f57efce1930455df6bf368b"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001596.json",
+      "bytes": 1415,
+      "sha256": "84d7b2782863c5b9369f21331facdf3b5681efe0f8a051a9f112dc03cf78d6e6"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001599.json",
+      "bytes": 1982,
+      "sha256": "880b92f7610b6bba42379de6d9fe2f479fa880eca84df1ae050c6608bd05ed4c"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001600.json",
+      "bytes": 1338,
+      "sha256": "669c8679824a0051403519093660782de4fcf1d656574579171b4846e0998253"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001601.json",
+      "bytes": 2587,
+      "sha256": "92b45643b2b982431f445817e6a012afaffbdb3ba136d7abe5550d8329fa5e30"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001605.json",
+      "bytes": 2476,
+      "sha256": "75225fc04ceb6955d3de79d41f4699c27cd9b73178c60feb1eb073f4de1cd5b9"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001606.json",
+      "bytes": 2571,
+      "sha256": "eb88820e92ff652192a7a91e6d416fac0fbecf66ca43b92ab167c91d80b08c29"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001607.json",
+      "bytes": 2556,
+      "sha256": "0315bb565095e7cc196e9326411a87ef16dfa86710e85e8e808e3184744b6c63"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001609.json",
+      "bytes": 2494,
+      "sha256": "71d20268f9e35698d7b9f736d4aa1fb75b164175d52402037990479b64cc68a7"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001610.json",
+      "bytes": 2092,
+      "sha256": "6a48b4aa98a03a0f4c42d4166f29444f3f6edc3f55a106f6cfc195171c99640a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001612.json",
+      "bytes": 1982,
+      "sha256": "f88d40a3e6e923e53c72c9e18d717067fa63fab225defdc5ab9f3463c1f701ae"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001615.json",
+      "bytes": 2552,
+      "sha256": "860249344614ac1b5fb924e1b361137241deee2aeea642d820e9f982ac9bad7a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001616.json",
+      "bytes": 2552,
+      "sha256": "c8eee9ececcde5c71fe2abe02413c3a90bcb98a1cbada4fee06707ac5e9d83e6"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001617.json",
+      "bytes": 1979,
+      "sha256": "6ccdd96149b279e6bcc0fa4e787a39d4faf5f901ec4e2b8a38a27fb7fff28fb8"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001618.json",
+      "bytes": 1999,
+      "sha256": "398d352cf4ed26a7678c7e2517a9497c0f8ab02a34f907cefa9bcb44c93be812"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001619.json",
+      "bytes": 1615,
+      "sha256": "b818fc92a5f2486ce3012b7633a7844970ae4e05648ba674dd784ac79a5fbf13"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001623.json",
+      "bytes": 1462,
+      "sha256": "3151084076613a5347837fc10a5094d5e181ea7b9888dc127154eaa542feb54e"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001625.json",
+      "bytes": 2553,
+      "sha256": "80a474bfa696ab4aed95bb8fa46e70b659573373ff60490887a5501f6c9ca19b"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001627.json",
+      "bytes": 2384,
+      "sha256": "98cbaafc6af693d873e7dc2553e8c1a1e41f55b778f9e2d51174747ea52a03d1"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001628.json",
+      "bytes": 2588,
+      "sha256": "e2ac251497f5d584eaa232fcafdf40dd741a78572aaf4e0e9b6d60a4e117649f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001630.json",
+      "bytes": 2588,
+      "sha256": "63d888f1332043d35578ce1f673eb41b38b01e7f53c8ebfd77986d72dcda81dc"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001631.json",
+      "bytes": 1478,
+      "sha256": "a8046600a9db51d23885f76b7985c52cea751c749a4ef8f5077811d7a133e57d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001632.json",
+      "bytes": 1653,
+      "sha256": "0b64c8f2792c004895f0850499f27e909c46e2026c17284a465651421012cff6"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001634.json",
+      "bytes": 1982,
+      "sha256": "19219de905d3f01866a1fcef34368b82adce398ff92184d18066d236458dac70"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001636.json",
+      "bytes": 2385,
+      "sha256": "2c691d048b6d640de61da941ceb65837818c47d0a44cd35f2810eb7715d60e73"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001637.json",
+      "bytes": 2092,
+      "sha256": "f908189a1ddcdb97fe1dca128dd83172fb8b22886bf2122a330ff6b6b5a0994a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001640.json",
+      "bytes": 2493,
+      "sha256": "d8061191ec2b740d59c7a8221628703c3fbf1038fc8a95155a2dd487b1338f8d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001641.json",
+      "bytes": 1461,
+      "sha256": "65f37395b7c9f073f793f2738e331f529cdb8475027501469d2f5baba1b07387"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001644.json",
+      "bytes": 1478,
+      "sha256": "1c915ee4ed194a92c2223d5a14e907f920ac6d629243405bf4ce1f79cb979549"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001647.json",
+      "bytes": 1999,
+      "sha256": "977bb70f372311c644915c711e4f443e4714e8e4a7ffde1b2a0eb3c7ec4f4d3f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001648.json",
+      "bytes": 2461,
+      "sha256": "30310e7f5b87c680f27167b87d7d637bf2925f9dd975a6bccf4047b2c72cd285"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001649.json",
+      "bytes": 2570,
+      "sha256": "ceefedbf4dde5ad0324e56243be8015032224dfec4bbd04da7f5371c826bacd4"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001650.json",
+      "bytes": 1358,
+      "sha256": "36ad5e2a47cc0a99d6b7d1d23aeb786b3cc5a8f5e7d0e43e4eab2aa92f6ef0b7"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001651.json",
+      "bytes": 2108,
+      "sha256": "6baa21d66e37397cb99ea6f6c3f864b597d48d855a2b974eaf9368851c3dcbd0"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001655.json",
+      "bytes": 2460,
+      "sha256": "d8c98088241d833c640cb47833034c40ee2bea3591285a5ff61b8a2aadfa8f30"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001656.json",
+      "bytes": 2000,
+      "sha256": "1f1cb33783ff89f906a102c031defd346106b7222f94c12f9268d19f631f28c2"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001658.json",
+      "bytes": 2552,
+      "sha256": "ea04165131c64d20a802a259410068aef68ba321cf2f1d6dfadb79e35238e89c"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001661.json",
+      "bytes": 1613,
+      "sha256": "938cb0d230c01f5a533edf3f4eed0ccfb46feb331b09bb5e93f12f81a3c1ce51"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001662.json",
+      "bytes": 1328,
+      "sha256": "c39b7c1dc9c0f1492b54605eb7b124e5834d4739548c1d08a514e39d93a788cd"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001663.json",
+      "bytes": 1982,
+      "sha256": "b862497186f8dfd4e4b769797fd071068d65faf1da4a291766b282dd360550b3"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001664.json",
+      "bytes": 2110,
+      "sha256": "8d03b8daa62f652b7bcddace428b8acddbbf01000e167b8853babbd2e89e7143"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001665.json",
+      "bytes": 1998,
+      "sha256": "2d637a1b2ff4631408d6b41992323f076888e6a239d6ece95b217c175a3d4dfd"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001667.json",
+      "bytes": 1461,
+      "sha256": "0431881c54de60adbe378e9660e166e394989345bf1cf361c68461132a8066c1"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001668.json",
+      "bytes": 1998,
+      "sha256": "7e1151341c62f41dc537e9965a332d846992c3fa6b96c5a26252e49d55ae1e22"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001670.json",
+      "bytes": 1461,
+      "sha256": "6eee1a7cf193d26d700317d84bbd818526106bc4f9cbc0e877ae4306c43f8090"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001671.json",
+      "bytes": 1998,
+      "sha256": "bd8ccf9942236f5d2b16c27e536a2868c638666374482135ed8d24650b838684"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001672.json",
+      "bytes": 1982,
+      "sha256": "217074456e5f6fbe09f5f3e48203d3971dfd671af188c75e022f0ee1b0abf5e9"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001673.json",
+      "bytes": 1358,
+      "sha256": "0ea6d6aaeb270af97c041aadd6887d1c8acd78426a1375ad3ee158dd51474334"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001676.json",
+      "bytes": 1983,
+      "sha256": "74bafe13a1fe3a4e476beb07ba52e36f6be26fa3716673fc8745baf125ec017f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001677.json",
+      "bytes": 2109,
+      "sha256": "b01d1584591baf433d1c6fef564320dd652f40e8a3df1e3b675121efc22353ad"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001678.json",
+      "bytes": 1998,
+      "sha256": "6dd726015bceda264a09ec2ad82af02153a44af4b2e8f031c5db78d28be4a5ee"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001679.json",
+      "bytes": 2534,
+      "sha256": "90656014b97ca41a86eae1a9cf0c452943ef54fed42e2d0f211d63483dfbbe6c"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001680.json",
+      "bytes": 2389,
+      "sha256": "f14a4f7562ba193f4e77d5affa04f9e2fe232a3fd8aff49ed757be6569cdbdce"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001682.json",
+      "bytes": 2589,
+      "sha256": "136bef538d81b966907ae592333191f4cec7dbf56feddda6447724dbf3e821e9"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001683.json",
+      "bytes": 1461,
+      "sha256": "6972da0ddf8a41f7cdc931aba57410e568f2a15629a063a948015b936a9dd1ff"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001684.json",
+      "bytes": 2604,
+      "sha256": "b7c42555d5ea83d098238de22504c12070050251a115e9c4435ba051178f7c08"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001687.json",
+      "bytes": 1552,
+      "sha256": "0959ae4b355fa2c209d6303e80bd723e15bb94752430d3ae846edf82259c5295"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001688.json",
+      "bytes": 2092,
+      "sha256": "005921fbef02e2a0eadb195e533bb2934acdb5ca7564b0f2100dd34481fbe7aa"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001689.json",
+      "bytes": 2493,
+      "sha256": "0084b857e685cce7ad25859ba94e0517d73977054ca3b5e913a2145ace91433d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001690.json",
+      "bytes": 2571,
+      "sha256": "72cce94a448a788a93c100dd579e30363d2674e8e93b892c40375bd1c5a0ae25"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001691.json",
+      "bytes": 1983,
+      "sha256": "5da6d298539cd57a9fdfb5b5cff88fe59e83f0e72dbd9f88ab2663a0d466c151"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001693.json",
+      "bytes": 1462,
+      "sha256": "1d4830ded40f7194aa223d558307e51d944ddadde7142b5d2ef36a1c3277e562"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001695.json",
+      "bytes": 2460,
+      "sha256": "2c694ae4cae43737e563b89fb7d22ec0f2b1d5d338729b756e85d35cbd8ae126"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001696.json",
+      "bytes": 1598,
+      "sha256": "f92e79f932a68fac8b2af06aa1610a10202a6f569ae33e5ecc1eb98958bea66b"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001697.json",
+      "bytes": 1358,
+      "sha256": "9ba8005089e29b88f528ac3e96edab3f0888102d07cd1dc01ba9e18bad4db330"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001698.json",
+      "bytes": 2572,
+      "sha256": "64c80a1026a51991276f4229218e7630ea03891498687453bb365b9d214539e9"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001699.json",
+      "bytes": 1656,
+      "sha256": "fad02b9eda08d6e3e8d55627b04b7d17d17c1748c78c307a4fdcc97c0f0c56a9"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001700.json",
+      "bytes": 2569,
+      "sha256": "7a3ecf35bc8310135004fa4473adcb36729bc682bcc58adca88e1eab47a7295e"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001701.json",
+      "bytes": 1327,
+      "sha256": "02ef87ed026496fadb7e4277eb83ff476f684624904457c993b420f1a3b23687"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001704.json",
+      "bytes": 1461,
+      "sha256": "670563f588919cf29ba6ee186a47ad5b7ea23d88ad329e03af2fb3b1f585e3cf"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001705.json",
+      "bytes": 2093,
+      "sha256": "ca57ccb5ff85e3c5fc8a9320fe519e967d73de2bcc0111646a9753bbe11e530a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001707.json",
+      "bytes": 2076,
+      "sha256": "bd5925087f131bd991301300e7ca0e44a2e81e526d42472ce9e70bda8a88140c"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001708.json",
+      "bytes": 1462,
+      "sha256": "f5b976ceb14f099f22c5de4ac9aa3f228e5abba3490ce13d8811ac7708137493"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001710.json",
+      "bytes": 2109,
+      "sha256": "89e8e2d341c550b215c1437070a21f623d2377d94c3d83c9378770b12ab6a45f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001711.json",
+      "bytes": 1223,
+      "sha256": "452eff38ac43f6a02a80f72a17e3fe7b0af0eb4cef119d152a102f003c475fba"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001712.json",
+      "bytes": 2107,
+      "sha256": "edbb5295adb2bf49898ef579c21bf9a48bc087246a226b62877f5ce0c680a6aa"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001714.json",
+      "bytes": 1461,
+      "sha256": "d88d0d6525eb103c6fbc16f642cceb62ba9f3949819e2a171b20083ede4e8d84"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001715.json",
+      "bytes": 2109,
+      "sha256": "1b920a47eed47baba9447946ffd213da52b8195d167b54a37e7ecbc997a47561"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001716.json",
+      "bytes": 1999,
+      "sha256": "0897ab10c20ca14f248085d2c4eb1b7975d228c2c5d007ea866dea129245660c"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001717.json",
+      "bytes": 1328,
+      "sha256": "e3df5997968e4079ac773a13becbd12ee9c94d44793f1e701efca7344c7ae0f7"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001718.json",
+      "bytes": 2092,
+      "sha256": "4a73b9dd8b0b2992c631b6c2acc45eb11e356942afd896c5b43d827f2c1161af"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001724.json",
+      "bytes": 1327,
+      "sha256": "a33467589735c74bf68658fc60ffceafcadf0d62c50dd6653d4623a02b506528"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001726.json",
+      "bytes": 2570,
+      "sha256": "5dcd10727b5f61a5564b00c4344d22450918a8791b2198868c6d25dbc7ac3d09"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001727.json",
+      "bytes": 2385,
+      "sha256": "454ec0add3fc0d7def080cc47637e280117d3fec085e508b7c21f85696ded17f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001728.json",
+      "bytes": 2091,
+      "sha256": "45a224980f67fb444cb46078d430215d0f329822f65cf9362c69d7d19de5458f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001730.json",
+      "bytes": 2590,
+      "sha256": "a0987c333596fa9993da2b080b665c9a17b8edb0ae6a4f56fcb44a3ebe6770f8"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001733.json",
+      "bytes": 2606,
+      "sha256": "35e63729db2bfd1f40e60624cad81c915cc7596362f1587faa158dfb53eceba4"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001741.json",
+      "bytes": 1461,
+      "sha256": "aea76fb561b1f2744a494ea32a02a9e428f7b335cebf4e1812b7c59f8099f440"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001742.json",
+      "bytes": 2479,
+      "sha256": "e5e6c6d4b846456db9201f318c77991782adfc7d22608c72a6c5f4b5e83132e7"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001744.json",
+      "bytes": 1327,
+      "sha256": "9f28a188a856ffa9b4635972024c72396bfc63c65dcd014e82b3115a202b1443"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001745.json",
+      "bytes": 2571,
+      "sha256": "7f83e3fc2e12d827604950002d09ae2f9e39f582aaae9b8cb35104486cc5ea3a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001746.json",
+      "bytes": 2460,
+      "sha256": "cb97f25ee1da1219503be1499052a4defcd83fd8f603d7fd829f29a255b8abf7"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001748.json",
+      "bytes": 1455,
+      "sha256": "9c5c47b68910def8a87713ccd4acea0dae09b4088e8612885d95e5ee776cf43a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001753.json",
+      "bytes": 2384,
+      "sha256": "a63b243a10f57f671b1586edfd5ef93f6d5562d5e61f09b50ae4364daa911621"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001754.json",
+      "bytes": 1597,
+      "sha256": "51c500495446a940001fad0e77cf91d3e2367f14b245384136df5bf0b005e8aa"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/quality/20100331001757.json",
+      "bytes": 1653,
+      "sha256": "c9f6f5934d4625609a40bcbac1742ec06b25a986acfd0c0e7161ce880b994e51"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001586.json",
+      "bytes": 14661,
+      "sha256": "79e85a3a80d5d8bdf6328d76257e8ed4181981763bbe0d482daf29e6fba70435"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001587.json",
+      "bytes": 14683,
+      "sha256": "4960eaefba77b22340d7127b25dab2bba684e743977ecd59daca1daad0712282"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001588.json",
+      "bytes": 14698,
+      "sha256": "6c5ec306cff518ec838cc193cd6c368240d228a090b6ff9e7c9a20539ca5f996"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001594.json",
+      "bytes": 14841,
+      "sha256": "93f55d99ab2a920dc1e47941a71ec5f4d6c964107ec895900712adbe40bb35ce"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001596.json",
+      "bytes": 14793,
+      "sha256": "6049fbf4bf707cf3a28fb8bd93405d033ebc46312360b7380de1ad3bd1d82892"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001599.json",
+      "bytes": 14737,
+      "sha256": "09156d37faba151e1db9e3ac2cbdf89c631d79b3beace1ec0883ff80544df95a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001600.json",
+      "bytes": 11179,
+      "sha256": "f35affc2a6a17e7ba8b87a7de8be810de822166eb6c9d03cf7f6bfe934639e62"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001601.json",
+      "bytes": 14804,
+      "sha256": "54831274287788c33a8f173603cefc819804ea4f985414a24f77639ae9eb36b1"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001605.json",
+      "bytes": 7512,
+      "sha256": "a4a57c84d6daabf262ca7edf98d863c2a549263f6263b802f0a64d58beab7fb1"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001609.json",
+      "bytes": 14819,
+      "sha256": "9562337d7dbb001697c315c5e199d65a7e9000bfa9ac6b490aaa53f587eee474"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001610.json",
+      "bytes": 14655,
+      "sha256": "11e30ffa351f291bfaea9559cfadcb8dbe6bba6c2fd5211c5b45aa5a93cc066b"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001612.json",
+      "bytes": 7532,
+      "sha256": "9893bfd91021a709fbe41cc7c1f535a1258ee561e3bd77f38b6a9b113ed99d86"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001615.json",
+      "bytes": 14691,
+      "sha256": "1eda249f0d91a0c0c7423c1f3e6301f50d9df155860208d65ff32382712ff7c5"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001616.json",
+      "bytes": 14691,
+      "sha256": "93cee7f756ed498a856f448498b770c4e9ced4f6ad59fe7a69f821068e03a2c5"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001618.json",
+      "bytes": 14770,
+      "sha256": "143386b71b5bb930384431929991fdc9c5f2d7bda1ff8227e15d6842ab9509a6"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001619.json",
+      "bytes": 14800,
+      "sha256": "4cfbc3d52e44ad5089c2ac48761242e64bd6128c389ae1918e7466795f3d1a81"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001625.json",
+      "bytes": 14821,
+      "sha256": "a75a1451ede08708a9f7fa8c4c1f789a612d970adad4e6b8aa4f8cee786e69ea"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001627.json",
+      "bytes": 7537,
+      "sha256": "64690d3c71fea6d6f33a678808118d8743d11177d0a91bdfc2bdf7079bb483ca"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001628.json",
+      "bytes": 11203,
+      "sha256": "05bf266d8ca82710d162c098196a10fd6c5989ec2838f2b63d153e4947c58fdd"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001630.json",
+      "bytes": 14720,
+      "sha256": "03925665a5e709c1f33da96968611f84e76ccf2726a143d00770ffc9a521f2a3"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001634.json",
+      "bytes": 14645,
+      "sha256": "1de077fef24dd7a58f2360f30004578a6f0608c84def44580f28dff168639cfc"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001636.json",
+      "bytes": 14761,
+      "sha256": "5f4827614601182ed84e2f4467e9f62dcb1a7fe3481fd4cbd0d7391acfff5548"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001637.json",
+      "bytes": 14745,
+      "sha256": "77b6ce4782cb0e230990640c279988583936b194b8bcbaec400277a1cabd10e1"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001649.json",
+      "bytes": 14769,
+      "sha256": "bc5b0b92900fdccf1c60c264bb3dfe691dd61193a1fa35441eb63d49cff3263f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001655.json",
+      "bytes": 14779,
+      "sha256": "7ad400c5beb8bfd66f6f6ab8b500d11ba40828baf677dc226c5af8d77f432e79"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001662.json",
+      "bytes": 14775,
+      "sha256": "66f02dd15b2591e89d5c8736329e1929ea999f64decb2faefc0a0d61207351a9"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001663.json",
+      "bytes": 14691,
+      "sha256": "948ee07f80468b1ea0940a5ae9795db914a36a940aae2d7f04b38b653cb88048"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001668.json",
+      "bytes": 14754,
+      "sha256": "72f4515b802e342f2aac2c250e88f6b804dffbcea16e17ddbbac62b4bcbf344c"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001676.json",
+      "bytes": 14686,
+      "sha256": "72b2d53e1b84a9008bb2530fda2d75e2b00033b2022e580ae58a13dfce1a3d1d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001677.json",
+      "bytes": 11135,
+      "sha256": "cdef8541f316afb3bfa208793c93556371071000a1d60920ab63ade594bfd391"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001684.json",
+      "bytes": 14769,
+      "sha256": "db411c8fbbd0ea3cbe432b2e6cdf72391fa88fa66f736ec0d6d3bd2b075cae38"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001688.json",
+      "bytes": 14758,
+      "sha256": "bb8b29bd59455c356551e53364f79d38004cbdd96794b667865f9861099f2b83"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001691.json",
+      "bytes": 14752,
+      "sha256": "91ca2d67374dc1946bf0db232aace206ec1e423e0d199364f7cff9f54ed76658"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001695.json",
+      "bytes": 11175,
+      "sha256": "6af7daa1e858a6bb103c4a0dbc8a306e8cb78abd47b8d945b977eb9f46bf4f62"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001698.json",
+      "bytes": 14806,
+      "sha256": "bf1e083c7d1ec53f4112a8aadcaf2e0af6285dec66b2805fe6d862bff6c2aa21"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001700.json",
+      "bytes": 14809,
+      "sha256": "d4f00419f80f573645e36feb877cfe45bcc938c71d1185aa60dfc5b58abbef17"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001701.json",
+      "bytes": 14729,
+      "sha256": "69e20fd4905182c4c445371dc7dea5363d6c14fe086949a6c2788637d282eab7"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001705.json",
+      "bytes": 14785,
+      "sha256": "c636ba43a13af2a77215c2952a6329547a898adc4b5cca4628e14ca13181cb3d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001707.json",
+      "bytes": 14701,
+      "sha256": "2335efa9d4cfb0821ceecb8ebee5a7ef0eb6d84f379bba6ce072743e62c5e820"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001710.json",
+      "bytes": 14821,
+      "sha256": "60bc031c78d3e10bd1b97d0108c93e194d6db772391f06e96508fe6bd25f341d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001711.json",
+      "bytes": 14707,
+      "sha256": "91fb5ca704af4d433bd75e872c8bb1af184095a2a69bb7a8a828c187cd36bdc5"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001712.json",
+      "bytes": 11096,
+      "sha256": "5b566622f3d484ee9a11093c452894b9743541a6e9962fb2b6dbf230f05185ab"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001716.json",
+      "bytes": 14689,
+      "sha256": "418de0b2ae9d2747f3e28222b4ad83407845bdc178bcfef483ad140286f9797e"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001717.json",
+      "bytes": 14858,
+      "sha256": "80bf7ba24067004cd4a7ff0b707d40dff04936b13127099a2691c6b8ff858613"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001718.json",
+      "bytes": 11024,
+      "sha256": "5583ab810df35431fe29a1d958d9f9c3f08aa062425d24744d6d1f365299b3ec"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001724.json",
+      "bytes": 14831,
+      "sha256": "e70cec0b6e3781b5d3325cc1391dc1f42d18ed88838aeb070c333362bd6b70d3"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001726.json",
+      "bytes": 14746,
+      "sha256": "28d56adf98dc9595103a38cc68a83c23e8bcdd87b4d534f16a7111f3f2518d74"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001728.json",
+      "bytes": 14665,
+      "sha256": "38737481a67d79ce56e0e15e38f081110e75a924f823797ac88e4735eb03846a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001733.json",
+      "bytes": 14754,
+      "sha256": "0b69aa0b78bacbb9b232831e63426218b636fd264dbf5bdc221f769ef352c96a"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001742.json",
+      "bytes": 14770,
+      "sha256": "56928aeb39d34cc1931cfc1345177daab9a5911a60febe1b35b3736467e86b96"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001744.json",
+      "bytes": 14831,
+      "sha256": "4e87b0091f0d4cf697b8df43c88b266cece3765211853cb93d53dbe1c13d5747"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001746.json",
+      "bytes": 11190,
+      "sha256": "bb99d10909a7b50fd18bbdeb01a0c713d3f74808a371c73810b580a50f71d66b"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/source_readiness_20261019/metrics/20100331001754.json",
+      "bytes": 14689,
+      "sha256": "4e37511f163eac871f59c5edbc44792c17157f51b315cafaf9f8eacefac26cff"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001580.json",
+      "bytes": 10723,
+      "sha256": "1afcdfa05a0c2957dbe903280892344a6ed3f6235ce8b4cccf5edba63ab074d8"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001623.json",
+      "bytes": 14801,
+      "sha256": "e370a700ab247afeb1924231ad3e722b9f7e41553dae30f088c1db3b2f5e31d5"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001631.json",
+      "bytes": 11156,
+      "sha256": "f9c588a47c69156bd8b2a7cc8e6d834d3746191a5c70d64dd6038bfc5ec319b1"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001632.json",
+      "bytes": 14708,
+      "sha256": "4f929828fde41530a868775b82cb41d2d30af4470b5495162affcca2ebf305b2"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001641.json",
+      "bytes": 14832,
+      "sha256": "606e35b84a952181b486f52e5eedbe91e87d74145881b5e9dacd2e1e2daddc46"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001644.json",
+      "bytes": 11194,
+      "sha256": "ac839afeefdb5eba8fbdd4f4be25ad74be9ab8590778fc8957506d65a9a6b4eb"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001650.json",
+      "bytes": 15471,
+      "sha256": "ef2df6ce5eba4b445f8381b9d26c6af0dbdf75e10dee69dda3eff18c0fefaf69"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001667.json",
+      "bytes": 14784,
+      "sha256": "109344266a04e1aaabeb98f0a850ef9258294cc7e5eca74a0cbfb21478aaf352"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001670.json",
+      "bytes": 14832,
+      "sha256": "f689b1914e44a763ace0b497a3c67a5e979a8b134b06c01fc663f9aed9cdf89d"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001673.json",
+      "bytes": 14704,
+      "sha256": "344e07636c1ffc7e57b754eabb88bec4e35a5cd472676b30729a9d88db27d6b4"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001679.json",
+      "bytes": 14707,
+      "sha256": "33b33886dbd223bb765487a1306a284b9be538eb67725e8fdbe18b09019079d5"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001683.json",
+      "bytes": 14784,
+      "sha256": "f98377f4b2bb39c3aaf42a359972985dcbb4ae0cfe3bdc660ef43488a4e3e691"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001687.json",
+      "bytes": 14775,
+      "sha256": "40b27764bd47b77006d8682db383401f154ab41319fb56ef9bd0cf61b9de1cf1"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001693.json",
+      "bytes": 14634,
+      "sha256": "db1d9f16877056b6f04de2c2987aa64ce38f60583864ee4846dee315d066fd2c"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001697.json",
+      "bytes": 14752,
+      "sha256": "0d714dde7cb06083c82488a3f115922a56f0c95d7e3a6690c66fe5bfd5fc1333"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001699.json",
+      "bytes": 14729,
+      "sha256": "91c5046223e6e327eccadc1178147b79ec18c328b06f2e1510ac5c35021db812"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001704.json",
+      "bytes": 14832,
+      "sha256": "a7ddc3e42b2450883166eca22181bfd3fb663dc44d4b70ff8ff3f4aba300dce9"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001708.json",
+      "bytes": 14813,
+      "sha256": "9377e3570a1dd6eb0e56231a9d9d9749ad6e390e0e09ff3916158eedde48d5a1"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001714.json",
+      "bytes": 14784,
+      "sha256": "fd2a7c67dc92582b535eabd5ed2149acc1beb78df5753e1a61745386bb067489"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001741.json",
+      "bytes": 14832,
+      "sha256": "757d8e42fd6aa909ab56fa632795234a3e8bda2cc5e9a0ade10bac32d02110d1"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001748.json",
+      "bytes": 14676,
+      "sha256": "44094cf730b5cde2d6aca3c2badc7ce013e59a90801b4557ec4f3579e9f0c64f"
+    },
+    {
+      "path": "data/financials/legacy_2000_2014/quality_v9/reviewed_batches/validation100_20261019/metrics/20100331001757.json",
+      "bytes": 14794,
+      "sha256": "ff1bdaa1a661832e2a34bfa82fb6f787666eb3c3118008efa2f4303e0c0b0736"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_00000_00299.csv.gz",
+      "bytes": 8619314,
+      "sha256": "c0240065ea00f79a945c5c53504803ce13563e259a900680b097372c2fedff52"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_00238_00537.csv.gz",
+      "bytes": 7154273,
+      "sha256": "5fea33475b9da399df1ad2de9c4794d8e9af512acf91ee8877420c1aae70ff33"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_00269_00568.csv.gz",
+      "bytes": 7280118,
+      "sha256": "dc6170de299d4cb066a5e4e62d203b1fb507e678eb6d42bc3228372adcabd219"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_00300_00599.csv.gz",
+      "bytes": 7791762,
+      "sha256": "b31c9e993a3742f3cd9eaf137f9ef0a989add827045dca7980cccd4754955279"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_00538_00837.csv.gz",
+      "bytes": 6443850,
+      "sha256": "d4060f7bb97c3fe846da13c12bad3f16ef116afeb23c9a16f3874eaf1750b5bc"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_00569_00868.csv.gz",
+      "bytes": 6099748,
+      "sha256": "3d2202ccd8f02241c0ada899babe5c15475772001b049bb4431be234eb94c071"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_00600_00899.csv.gz",
+      "bytes": 7146764,
+      "sha256": "d740a655657c442ca39fd325afa3220405ae25e46f2a60b41090fa610f52959f"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_00838_01137.csv.gz",
+      "bytes": 5738352,
+      "sha256": "7d6f021f8b925d7e1c784949fb080d2b7c01c2bb35b076537fafe91c3b44dec2"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_00869_01168.csv.gz",
+      "bytes": 5796496,
+      "sha256": "96a31685fa490c46b3a0281d80e31b823121ada47727efb7dd473b3660e9a16f"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_00900_01199.csv.gz",
+      "bytes": 6180563,
+      "sha256": "9f59238711d6f5ac29850588d6c3c449e583b704277da68b978e7c8109a0ac67"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_01138_01437.csv.gz",
+      "bytes": 4968626,
+      "sha256": "b3bdd6f4835faba60e5b32c54e9553a6d0d366381c27eb0ecb25233b9e214774"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_01169_01468.csv.gz",
+      "bytes": 4958351,
+      "sha256": "dfd944daaae45f533425ab89428ca7f02603830a4d65b3a57bdee731ea02d1a5"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_01200_01499.csv.gz",
+      "bytes": 5945721,
+      "sha256": "074dce0ccc24ee5f385e6bd4924b4cc4992ebc9551b9fef3c59f43fe3a888c1a"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_01438_01737.csv.gz",
+      "bytes": 4812952,
+      "sha256": "0efe57ec2b76b415b17a3eb44fb78c5a007c0a40d946a80559fbe55f0bd34463"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_01469_01768.csv.gz",
+      "bytes": 4809077,
+      "sha256": "71f3b3c07e1a47e0a73555d2efce1efbb1df47f77a5b2a1119d7b49cc3330030"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_01500_01799.csv.gz",
+      "bytes": 6040760,
+      "sha256": "50fa081ffe640391f3928d9c32262330d6f2c7a94492c9a886cf43ea1ba86a06"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_01738_02037.csv.gz",
+      "bytes": 5430233,
+      "sha256": "0b4e5ebac410d7b706afbb455f2292ecb259d1ce52824f6d6d4ae87007ca250c"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_01769_02068.csv.gz",
+      "bytes": 5585337,
+      "sha256": "3013656f66150457c7d2dd742cdd0076ac156d290b8eb83ff6e76d1785804b56"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_01800_02099.csv.gz",
+      "bytes": 6428859,
+      "sha256": "7b0a2f539ce70eebb22b894b730d5ceca4db19ce9f4d906c6487d89421f3ac35"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_02038_02337.csv.gz",
+      "bytes": 6142340,
+      "sha256": "86f9223546903d65b5a39c5f4ef59b94f6893a851c6b0462cac8b737efe8dddc"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_02069_02368.csv.gz",
+      "bytes": 6087773,
+      "sha256": "a12f45fd69a81f75c21e5b0be87c65c3c7e1f029dd4c25b4016a9dc73af00ff8"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_02100_02399.csv.gz",
+      "bytes": 7298622,
+      "sha256": "486dd48c0fac184bebccef01e242e21dafe5cf33f7acf2655df7d11b6ed00cd9"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_02338_02637.csv.gz",
+      "bytes": 5549799,
+      "sha256": "e73981f1558cb1d3e48f93e3a3e21395d2801cf895ef03968853a9daeccd360f"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_02369_02668.csv.gz",
+      "bytes": 5557380,
+      "sha256": "7829aa708576e5b7105fa68e38bf5d66be3f07d9a6ac94a107fa4bee2ec70bfd"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_02400_02699.csv.gz",
+      "bytes": 6807136,
+      "sha256": "79207485d2169ad5850b46daafef5e3cf13432e15565838679be468937e5cf6c"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_02638_02937.csv.gz",
+      "bytes": 4794455,
+      "sha256": "5dfa1dd7d12b0b376d3bef919a6bf5527bdb7b59d3a523ce345a7e9cce1ef255"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_02669_02968.csv.gz",
+      "bytes": 4604605,
+      "sha256": "700cf99cf29e998c3bcf5a3b47f14f21781e265b56764f249c351a83c93e7212"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_02700_02999.csv.gz",
+      "bytes": 5619283,
+      "sha256": "7d96bd6e6cc412bfa37fab7e6c604b0d4c915e370b8aa3396f89f64cbf53e658"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_02938_03237.csv.gz",
+      "bytes": 6133278,
+      "sha256": "ee0e64ccd7e24959d26963cf4e181a7b3d0ef53a4a83794975cb8b9758215438"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_02969_03268.csv.gz",
+      "bytes": 4896790,
+      "sha256": "ad853c4a9f61199975ac3e702855adc448968bbeebeaa20bb5a671503b679fd2"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_03000_03299.csv.gz",
+      "bytes": 6303701,
+      "sha256": "4cb3c5aa96160edca2039bc854619bebbe2c26fdc21e2804b42fe07a36be0346"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_03238_03537.csv.gz",
+      "bytes": 5712011,
+      "sha256": "e251b925a90fd264108c5cc6546016d7deeb41b5e5501db9cfcd7f4b035c7e6b"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_03269_03568.csv.gz",
+      "bytes": 4235786,
+      "sha256": "416ae03f0a03e55f9309d935bbe43c101a8cb08da8afd5e63ab471ed7c731887"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_03300_03599.csv.gz",
+      "bytes": 5339135,
+      "sha256": "5abbb6e577829f707e9184ec4b8cc0eae46e6184a2873f936bb53877c91212d7"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_03538_03837.csv.gz",
+      "bytes": 3322245,
+      "sha256": "7d35c2f1cf4232e603c6873d6c468fe14dea12e098bbd6299d4209a4754aedaf"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_03569_03868.csv.gz",
+      "bytes": 2256878,
+      "sha256": "80c62bb6da2dacb88be3dd7d982f3bb746d0ce6451d761cb95798f9899c42350"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_03600_03899.csv.gz",
+      "bytes": 2709215,
+      "sha256": "3733372b1701b73d0c27e3554132a217e88d9e677135456d62faea9cc3cdcd7a"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_03838_03933.csv.gz",
+      "bytes": 936362,
+      "sha256": "dc317386ebd238e164dd53d1125ccd644d16ce19235e9a6e9bebb2787bfd93fd"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_03869_04168.csv.gz",
+      "bytes": 6812772,
+      "sha256": "6271deb521f6c0aa3fb6be220d3f5ceedf6310c91f6192cb6b6c21e85f246a3e"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_03900_03933.csv.gz",
+      "bytes": 587273,
+      "sha256": "762e549041144def042b6a6dc0f92578ef1a7452c3775fdeebcb370306e73422"
+    },
+    {
+      "path": "data/financials/recent_batches/dart_recent_03900_04199.csv.gz",
+      "bytes": 7333504,
+      "sha256": "aa0451fbfff9a9def30daa83402709c566dea2c7db727221a722f6739fe308d7"
+    },
+    {
+      "path": "data/fx/USDKRW.csv",
+      "bytes": 588958,
+      "sha256": "47721ecf757c20f512e071fb79cec459a5c99ae9e69fcbd9c9bdc7bbbfd04d18"
+    },
+    {
+      "path": "data/fx/USDKRW_FRED_LONG.csv",
+      "bytes": 212658,
+      "sha256": "b21ca2ae97e0107095c1bc8a2d0324cb6f60b004b6b594e9acdb51f4488d8096"
+    },
+    {
+      "path": "data/indices/DOW.csv",
+      "bytes": 774229,
+      "sha256": "5436ef2a89a28faf73cfd7563821437eaf915b338c2452ef03e722e711fe0bd5"
+    },
+    {
+      "path": "data/indices/KOSDAQ.csv",
+      "bytes": 730365,
+      "sha256": "a7c8b969af3197c66e4d23a36bcc0b61141bbf4b5a289d941387e43fbd46889b"
+    },
+    {
+      "path": "data/indices/KOSDAQ150.csv",
+      "bytes": 247577,
+      "sha256": "10cab83c557b3a4c4210837f9e5e572a4a33a4eabf195a1721226fa04d758fd9"
+    },
+    {
+      "path": "data/indices/KOSPI.csv",
+      "bytes": 763682,
+      "sha256": "bc5a9590454b10078b6156c4ea0e92562f7b780630ab71c09ca1344fc9ed15a0"
+    },
+    {
+      "path": "data/indices/KOSPI200.csv",
+      "bytes": 782480,
+      "sha256": "6c372c6c8b4c715adbc9e76200c34bcb7ca0a1562671d5a55c73f038a092a5d4"
+    },
+    {
+      "path": "data/indices/NASDAQ_COMPOSITE.csv",
+      "bytes": 836359,
+      "sha256": "b04b9b6512b54c779e4284c9a0fb39874503c3200b8fdc61f4952abc6da6aeb9"
+    },
+    {
+      "path": "data/indices/SP500.csv",
+      "bytes": 860795,
+      "sha256": "c0a7add2519dcdfb488e052734516eab197c65e2409005b40ba16bdef7221865"
+    },
+    {
+      "path": "data/indices/SP500_LONG.csv",
+      "bytes": 2657966,
+      "sha256": "47d82b9abe0dcb1898271d2aa1c8baffb206dec1a89137bc3c25652fcc646263"
+    },
+    {
+      "path": "data/indices/VIX.csv",
+      "bytes": 849585,
+      "sha256": "9c5093df85d8577931b3bf72a1e71beefd0a679faf929b0fd09b1151ceec0a04"
+    },
+    {
+      "path": "data/krx_equities/derived/amount_daily.csv",
+      "bytes": 6220527,
+      "sha256": "ab2671913015db82c398bef00e84ab2c84904cb5eb0c2090fc08944c100900c6"
+    },
+    {
+      "path": "data/krx_equities/derived/close_daily.csv",
+      "bytes": 3843604,
+      "sha256": "526af5aedc40a3fb20e11b1011046035a3ee1bc4581587af4a79a0b50a9a32e7"
+    },
+    {
+      "path": "data/krx_equities/derived/marcap_daily.csv",
+      "bytes": 7622716,
+      "sha256": "f2e69f2480152ddeb4312bc9b68f0169efe6829389feafa16a93f39cd6a96a13"
+    },
+    {
+      "path": "data/krx_equities/derived/open_daily.csv",
+      "bytes": 3786693,
+      "sha256": "e1289858954be03c309cf74a0c51e1dc1766082888eea60b8086400d129a49bb"
+    },
+    {
+      "path": "data/krx_equities/derived/shares_daily.csv",
+      "bytes": 5646195,
+      "sha256": "1a9bbac9d811489df2db094ab411b65068b7acc09822e949e14239b2b00c16cb"
+    },
+    {
+      "path": "data/krx_equities/derived/volume_daily.csv",
+      "bytes": 4298772,
+      "sha256": "e7cd62d4ad48a2004cd425a0a80d850f40047ad4d577f8c0fd181a6004d37824"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-1995.parquet",
+      "bytes": 5693960,
+      "sha256": "0ff41cc9d0ba828cd1090ef680637d517ae855c61114d31c6cc3b533cb656265"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-1996.parquet",
+      "bytes": 9971055,
+      "sha256": "9df7503cb38ab961ae38033f9baf554b263ee39ae942c33878e4632e29201cf9"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-1997.parquet",
+      "bytes": 11087566,
+      "sha256": "a05140edd59baa98256245936681b0d5d6a09a319eb09e888792a9c8733e04e1"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-1998.parquet",
+      "bytes": 11125938,
+      "sha256": "a26d59ffeb6c9eb33d800e0d4110529c57698f9b8f93670a011805a13b64c082"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-1999.parquet",
+      "bytes": 10757174,
+      "sha256": "0f1b6c08302dbb6a861c875dfc3f2b9af852133a922876d3c0537825550232ef"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2000.parquet",
+      "bytes": 12514655,
+      "sha256": "95f223cd734df7d10fb3dd445c1264296278008b85c94299154cfef19a00cc09"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2001.parquet",
+      "bytes": 13471290,
+      "sha256": "ad145ee4f1e2c5fd2f253a34c391bf57d39f043691dc59c9cb891a36205a19c1"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2002.parquet",
+      "bytes": 14758343,
+      "sha256": "09ea814403611b8ec00ebb0a9adf3fcc9f80fb9f39ef50302fd131fbc8deef33"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2003.parquet",
+      "bytes": 15043384,
+      "sha256": "65cd695a31708aa050538abb4244a7930b762d4e51297676385baff58f0ce301"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2004.parquet",
+      "bytes": 15219629,
+      "sha256": "a085b1bc6935e894cb6ef0a2e4f0b9bda9e1a9257dca051e9773042b2d66262d"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2005.parquet",
+      "bytes": 15765754,
+      "sha256": "5e2bacb56b469b175db9b4bb443bc55d41caf0088505ff2e01adb1e644f115be"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2006.parquet",
+      "bytes": 16187925,
+      "sha256": "44fa52a1003407b2c3f3a0bad129f929b42ca78fbe0cf337ad4edddeae1a0809"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2007.parquet",
+      "bytes": 17171636,
+      "sha256": "cb09cb6818991e77995f65f006128104332f4722a14861aadcb0747a7d70b0c3"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2008.parquet",
+      "bytes": 17588742,
+      "sha256": "82c6786de7111921c8f5ea0b699ce769f0b699b9b34b243ca397193d5363f52f"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2009.parquet",
+      "bytes": 18098687,
+      "sha256": "0e234b9e1aca7d2f42ef22c5afca8fefcfc144c1bdb4460c169edec2adc7d13a"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2010.parquet",
+      "bytes": 17668181,
+      "sha256": "efd4e041a96bfc2630e0c6e356031dde094995f06632162a0ccfb82e7fb38989"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2011.parquet",
+      "bytes": 18017782,
+      "sha256": "a164ed6d5efd3c7e41e40900a9add9340ca06cf9ec7d201b20c6fedf52c0ef59"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2012.parquet",
+      "bytes": 18061003,
+      "sha256": "0a6be46ebbaa9af390efd036c344d17a90fe9f7dbfd01be0472078731a7f00b4"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2013.parquet",
+      "bytes": 17656360,
+      "sha256": "d3b8d8edff905bb648ebdccc88736f830bc620f6c594e859d5e9a48655ca6fd3"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2014.parquet",
+      "bytes": 17514656,
+      "sha256": "c13f8d85129d42bcae8823bf8c5d2a950ba85f76d5e675ede2bfbeb6f4cbb672"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2015.parquet",
+      "bytes": 18447680,
+      "sha256": "8f8e79b707762297900f560bc2d502bc90e09772bb0d6fc7febeebad231cfd11"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2016.parquet",
+      "bytes": 18683506,
+      "sha256": "70e21cbcbfee8703f6078b374ad209ecc14caac02b584db5477d8d38c334d4a8"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2017.parquet",
+      "bytes": 18839233,
+      "sha256": "980fc0100205839175b64ac88b358bbdb7fc4b9d20f642715454524ce0abdabd"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2018.parquet",
+      "bytes": 19948936,
+      "sha256": "8326cbb45607c5a38532aed3412d74ab08ff7b28485b9442515c40ee2960b863"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2019.parquet",
+      "bytes": 20548266,
+      "sha256": "c60efce88cf71814174b574b429d1e277b03a1add373eaf91406c692f5ae185e"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2020.parquet",
+      "bytes": 21987765,
+      "sha256": "b8457fa399a3801558f06264bb2a16c444d1517caf7505fc3e7c24d7c9d036fd"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2021.parquet",
+      "bytes": 23000593,
+      "sha256": "7bc8bb41509a7a568b54fdd82d4fe3205df89436b01b8915c3a3c391918f5fe7"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2022.parquet",
+      "bytes": 23137995,
+      "sha256": "1b3b9ffc070d2ace9cff9b1ed485dc1438d1f132660e56a9986824cb4f329075"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2023.parquet",
+      "bytes": 24152135,
+      "sha256": "76aef2d0109276cc5e5d869da63a74cc253810d34238b83c85745ae573e18809"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2024.parquet",
+      "bytes": 24906850,
+      "sha256": "aa1c1f7546fd17bcc4adb997b7e02a62b0f7a41199db99ea1784c0cb5e42f329"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2025.parquet",
+      "bytes": 25434255,
+      "sha256": "c6fcafccdf89125384c87730d432c7c89662c4035e25d40df9d9345f116f10a7"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2026.parquet",
+      "bytes": 20022389,
+      "sha256": "b968a71a42eb96b2ff3d7d5fc300e237758eb8e4357f4f404f2c6fe8f5de1d26"
+    },
+    {
+      "path": "data/macro/FED_FUNDS_EFFECTIVE.csv",
+      "bytes": 331204,
+      "sha256": "9adae660a9ff7cbc31f039cbf9786a7a6fba772f6c228ad8e545c2b288d8a186"
+    },
+    {
+      "path": "data/macro/US10Y.csv",
+      "bytes": 237030,
+      "sha256": "52154f45bb908e8ccb32106995c40ddad0e0c0587803a7ed4f46fcfb56ecc1b1"
+    },
+    {
+      "path": "data/macro/US10Y2Y_SPREAD.csv",
+      "bytes": 211103,
+      "sha256": "fc530e9e31051505279eaf33eb384325d14e7eeaa646af42c751bb46cdff49b0"
+    },
+    {
+      "path": "data/macro/US2Y.csv",
+      "bytes": 210126,
+      "sha256": "97503d8feaff4a0cf26b9600744bcab0959b22cdc9d8045b7d64dfad922afb45"
+    },
+    {
+      "path": "data/macro/US_CPI.csv",
+      "bytes": 11861,
+      "sha256": "b45505a87e2424b9a4f042a224a0a7a36f1370f4e1e80e3ea505b49e6098d043"
+    },
+    {
+      "path": "data/macro/US_INDUSTRIAL_PRODUCTION.csv",
+      "bytes": 12986,
+      "sha256": "85af6d110ee591dd887378dba0435b9881d05ae39b72c4f63409a241a8697617"
+    },
+    {
+      "path": "data/macro/US_UNEMPLOYMENT.csv",
+      "bytes": 10245,
+      "sha256": "64d03528103e7ad85af2cdfb096f95b0695077bd539e5fa0ce29183114fe2543"
+    },
+    {
+      "path": "data/proxy_long/derived/permanent_portfolio_asset_returns_daily.csv",
+      "bytes": 1687810,
+      "sha256": "319b9418449ffe8d886ec781cefe9d8e29f5271b2b9203393982e20a74cee508"
+    },
+    {
+      "path": "data/proxy_long/raw/GOLD_LBMA_PM_USD.csv",
+      "bytes": 248583,
+      "sha256": "5cbd305ef1a78816a8e009d29291c29133ee01555ff7ca942eee06a0cadd412b"
+    },
+    {
+      "path": "data/proxy_long/raw/KR_HOUSING_BOND_5Y_YIELD.csv",
+      "bytes": 7699,
+      "sha256": "f8d68298e8e1769966b3736448cef8dc5351c54cb43d61ddd58310f401138c22"
+    },
+    {
+      "path": "data/proxy_long/raw/NASDAQNQKRT.csv",
+      "bytes": 122396,
+      "sha256": "085f4161276ee7207169d54810234acadf05c7d1976576f0e2bd62ee88482109"
+    },
+    {
+      "path": "data/proxy_long/raw/OECD_KR_SHARE_PRICE_MONTHLY.csv",
+      "bytes": 11611,
+      "sha256": "9624b1e1dddc8bddfa258a3af68293a5e0211e5416442467a2f6dd18303306b5"
+    },
+    {
+      "path": "data/proxy_long/raw/OECD_US_SHARE_PRICE_MONTHLY.csv",
+      "bytes": 17384,
+      "sha256": "8ecb7e47a1057264daf59ae6c5481acc256e1ef6d0edb9bf5068c3ea61e48550"
+    },
+    {
+      "path": "data/proxy_long/raw/SHILLER_SP500_MONTHLY.csv",
+      "bytes": 19722,
+      "sha256": "a0d26c1aff5a6941a21ca2ed3fb2651399bfaeaa05cfe8e83d65143ef43d2ac4"
+    },
+    {
+      "path": "data/proxy_long/raw/SP500_PRICE.csv",
+      "bytes": 1550549,
+      "sha256": "d86e890f5a21a897b29c803d3060b259b6637507933260abe9c9fbf34e7363ae"
+    },
+    {
+      "path": "data/proxy_long/raw/US_10Y_YIELD.csv",
+      "bytes": 234293,
+      "sha256": "0150cfd5faf12be382777b97cdf8588a6c3cfb400d42fccf2dae9d9971003199"
+    },
+    {
+      "path": "data/proxy_long/raw/US_20Y_YIELD.csv",
+      "bytes": 227750,
+      "sha256": "5eaad028ecd705fe23caa554abfb786a6471440fc335e308243206cc08700741"
+    },
+    {
+      "path": "data/proxy_long/raw/US_30Y_YIELD.csv",
+      "bytes": 205088,
+      "sha256": "4e6c224957117596cfe8e9b8e0f59ab6f5671af7990993e02cf9eafe65f7d680"
+    },
+    {
+      "path": "data/proxy_long/raw/US_3M_TBILL.csv",
+      "bytes": 233523,
+      "sha256": "ec316d92aaf001f7b23c04a96f5022d77ea76e36125ad88105830956eca3c5a6"
+    },
+    {
+      "path": "data/research_extensions/official_2026_equities_through1016.csv.gz.b64",
+      "bytes": 972425,
+      "sha256": "58590ec0bebac6faa548d40477f27c8c9f86891190b178130efca94b77d1ae1f"
+    },
+    {
+      "path": "data/research_extensions/official_2026_index_KOSPI_through1016.csv.gz.b64",
+      "bytes": 221,
+      "sha256": "de7112af0ab7121d1bca15dca6b0dac1c6ae0088f7008082b00ef3c80b3b3cf9"
+    },
+    {
+      "path": "data/status/dart_full_backfill_state.csv",
+      "bytes": 12506437,
+      "sha256": "7aee1ccffaf5bab6ed9a2c9da64ffde868187e66dd99a8cbc430a96c76f897e8"
+    },
+    {
+      "path": "data/status/dart_full_backfill_status.csv",
+      "bytes": 309,
+      "sha256": "10e9a93441b3ff4567cd8aa0cee63ffa4a6119df098c388bbb42bf01e5697e74"
+    },
+    {
+      "path": "data/status/dart_legacy_backfill_state.csv",
+      "bytes": 33028663,
+      "sha256": "9a60b3f794f2a4673d8dc32d2cc8b5014c326bbc8861300e09d5bede1a4ccb5b"
+    },
+    {
+      "path": "data/status/dart_legacy_backfill_status.csv",
+      "bytes": 1012,
+      "sha256": "ba0c8e3636871f5818f6425820345d99d681e3f5aea7303c3a3e5a2991f374de"
+    },
+    {
+      "path": "data/status/dart_legacy_coverage_by_period.csv",
+      "bytes": 6179,
+      "sha256": "6970a340e3463cd8208387f6c5f2c37998d2fccde063de6bf802fad6e95d6ddc"
+    },
+    {
+      "path": "data/status/dart_legacy_index_state.csv",
+      "bytes": 9259,
+      "sha256": "0f0bd7e79c83c0399c1efbe78f5d8ce77628c19dc7303fd5bea27fb04028b52b"
+    },
+    {
+      "path": "data/status/dart_legacy_limited_resume_v1.json",
+      "bytes": 6068,
+      "sha256": "74060065a50cc424af60bbb9f70e14b8546d4a6ec1317597e71994ea2490c36f"
+    },
+    {
+      "path": "data/status/dart_legacy_parse_state.csv",
+      "bytes": 974352,
+      "sha256": "c445e3fda0b311f76b28868d4422de12ca24a00779efe09c14cb4c73d1f73fb2"
+    },
+    {
+      "path": "data/status/dart_legacy_rollout_status.json",
+      "bytes": 1940,
+      "sha256": "4fd7f72e662bc4684f946c216b1b1460b5442bd1c696f3464d0e83af30679d88"
+    },
+    {
+      "path": "data/status/dart_legacy_search_state.csv",
+      "bytes": 153665,
+      "sha256": "cb17fb4a7088f5574b3112644e07145374a52632712ae84ab90b46053377497b"
+    },
+    {
+      "path": "data/status/dart_legacy_source_quarantine.csv",
+      "bytes": 33400,
+      "sha256": "4abef8f4171fd1f0ec64047fc46274e73a0efd13caea316d492fa9849ce569dc"
+    },
+    {
+      "path": "data/status/dart_legacy_status.csv",
+      "bytes": 306,
+      "sha256": "b6f7a10a4fa2015523c48f8ee7acaec6345e529af4c53285a4e8e118cca978c0"
+    },
+    {
+      "path": "data/status/dart_legacy_validation100_status.json",
+      "bytes": 2019,
+      "sha256": "21ab541c0f11a949a7ce9103c12e6adc36c854728d1495230c93f604953a8e74"
+    },
+    {
+      "path": "data/status/dart_pit_coverage_by_period.csv",
+      "bytes": 3962,
+      "sha256": "f5f06d672d51238a4a6d23871ec7b27d5de7a7df7333697d37214065f24b3671"
+    },
+    {
+      "path": "data/status/dart_pit_coverage_status.csv",
+      "bytes": 274,
+      "sha256": "607fae9897dd5decce92844fcf06e76497afdcc5d0b5e608c4a2afb8b9500a9a"
+    },
+    {
+      "path": "data/status/dart_rotation_state.csv",
+      "bytes": 158,
+      "sha256": "12ddd6f67ccecce3f4b66fe907b43018b27aa60cfa3729c8d706427d90b92465"
+    },
+    {
+      "path": "data/status/dart_status.csv",
+      "bytes": 202,
+      "sha256": "7e46d52e6dfd6e6acef1ca6ed87b235375245eccd88058ccf22e8047321b2219"
+    },
+    {
+      "path": "data/status/krx_equities_manifest.csv",
+      "bytes": 2830,
+      "sha256": "598432a93417c8b19893c2083a71491a614221f3f00fd6377527bca476abdaef"
+    },
+    {
+      "path": "data/status/krx_equities_status.csv",
+      "bytes": 481,
+      "sha256": "b10686e211239da25f6c62a370ea194e573eaae7cbffe7c0f73c5719b9e8a94b"
+    },
+    {
+      "path": "data/status/legacy_pit_audit_sample.csv",
+      "bytes": 52075,
+      "sha256": "ef35a76bee34bc895b85499a22d22c5743f6969bd9464941a17632498a9931ac"
+    },
+    {
+      "path": "data/status/legacy_pit_audit_summary.csv",
+      "bytes": 327,
+      "sha256": "56929af6c2cd97962c0a2e8cbd5d13beb0d1d477afa18780d3ee3196065d565e"
+    },
+    {
+      "path": "data/status/public_data_status.csv",
+      "bytes": 1453,
+      "sha256": "ea5dfe53be97a32909dae4bd4579def68ae22bc63fd2b863465075057fc60895"
+    },
+    {
+      "path": "data/status/super_value_fast_backfill_status.csv",
+      "bytes": 521,
+      "sha256": "9eb1264b607624ab9cbe03c8922432fb740ad7b2a6bada58223f236461b625b0"
+    },
+    {
+      "path": "data/status/super_value_signal_backfill_status.csv",
+      "bytes": 347,
+      "sha256": "a3817e7f534c053c2cdfe0a8f97196c19b4f453d2a5457e6cbf0afb2d5ca6a23"
+    }
+  ],
+  "accuracy": "Identity/loading checks only; no new financial/PIT certification"
+}

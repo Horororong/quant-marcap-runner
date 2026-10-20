@@ -1,0 +1,19 @@
+{
+  "rcept_no": "20100331001583",
+  "parser_version": "legacy-v9.1-primary-source-metadata",
+  "quality_version": "financial-quality-v1-source-linked-not-PIT",
+  "extraction_state": "SOURCE_GAP",
+  "field_count": 0,
+  "financial_accuracy": "UNVERIFIED_SOURCE_GAP",
+  "availability_status": "UNVERIFIED",
+  "backtest_eligible": false,
+  "document_sha256": "553555374fc156f91a6181302def5fd7c8ae8451e87fc49642c816a9b17d9bdf",
+  "rejection_reason": "[{\"member\": \"20100331001583_00760.xml\", \"bytes\": 354081, \"sha256\": \"7ee3f8b2588c137110106deacce9d4f32377c29ad461cec659bf4426d9210f9b\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 261, \"xml_error\": \"mismatched tag: line 3180, column 48\"}, {\"member\": \"20100331001583.xml\", \"bytes\": 566927, \"sha256\": \"363a37d84746e6fea461421c3beec33856b2b7466b250d242977f99a5a0cb8fd\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 1005, \"xml_error\": \"mismatched tag: line 4417, column 166\"}]",
+  "updated_at_utc": "2026-10-18T23:09:16.922256+00:00",
+  "structural_candidate_count": 0,
+  "published_field_count": 0,
+  "source_audited_field_count": 0,
+  "publication_status": "HELD",
+  "unpublished_candidate_count": 0,
+  "source_artifact_id": 12153773795
+}

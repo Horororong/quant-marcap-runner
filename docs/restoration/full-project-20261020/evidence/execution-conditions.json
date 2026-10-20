@@ -1,0 +1,248 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "executable": "/workspace/quant-restore-b5aaa7f/runtime/.venv/bin/python",
+  "machine": "x86_64",
+  "system": {
+    "os": {
+      "exit_code": 0,
+      "output": "Linux b2d89d8dd153 6.18.55 #1 SMP Wed Oct 14 19:45:18 UTC 2026 x86_64 GNU/Linux"
+    },
+    "glibc": {
+      "exit_code": 0,
+      "output": "glibc 2.41"
+    },
+    "node": {
+      "exit_code": 0,
+      "output": "v24.19.0"
+    },
+    "chromium": {
+      "exit_code": 0,
+      "output": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)"
+    }
+  },
+  "timezone": {
+    "os": [
+      "UTC",
+      "UTC"
+    ],
+    "user": "Asia/Seoul",
+    "policy": "UTC timestamps, KST daily observation budgets, XKRX sessions"
+  },
+  "environment_variable_names": [
+    {
+      "name": "BATCH_SCHEDULE",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "DART_API_KEY",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "DART_BACKFILL_TASKS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "DART_BACKFILL_WORKERS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "DART_FULL_BACKFILL_TASKS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "DART_FULL_BACKFILL_WORKERS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "DART_LEGACY_DOCUMENTS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "DART_LEGACY_SEARCH_CORPS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "DART_LEGACY_WORKERS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "ECOS_API_KEY",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "GH_TOKEN",
+      "present": true,
+      "values_recorded": false
+    },
+    {
+      "name": "GITHUB_EVENT_NAME",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "GITHUB_OUTPUT",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "GITHUB_RUN_ATTEMPT",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "GITHUB_RUN_ID",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "KRX_AUTH_KEY",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_AUDIT_SAMPLE",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_DART_CHECKPOINT_SIZE",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_DART_END_YEAR",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_DART_EVIDENCE_DIR",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_DART_INDEX_TASKS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_DART_MAX_DOCS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_DART_MAX_REQUESTS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_DART_MAX_SECONDS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_DART_REQUEST_INTERVAL",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_DART_RUN_REPORT",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_DART_SOURCE_DIR",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_DART_SOURCE_MAX_BYTES",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_DART_START_YEAR",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_DART_WORKERS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "LEGACY_SOURCE_ARTIFACT_DIR",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "QUANT_REPO_ROOT",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "STAGE13_LEDGER_OUTPUT",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "SUPER_VALUE_FAST_LEGACY_DOCS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "SUPER_VALUE_FAST_LEGACY_INDEX_TASKS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "SUPER_VALUE_FAST_LEGACY_WORKERS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "SUPER_VALUE_FAST_MODERN_TASKS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "SUPER_VALUE_FAST_MODERN_WORKERS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "SUPER_VALUE_SIGNAL_BATCH",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "SUPER_VALUE_SIGNAL_TASKS",
+      "present": false,
+      "values_recorded": false
+    },
+    {
+      "name": "SUPER_VALUE_SIGNAL_WORKERS",
+      "present": false,
+      "values_recorded": false
+    }
+  ],
+  "CURRENT": {
+    "path": "scripts/quant_backtest_template_CURRENT.py",
+    "sha256": "a210dd98d041069814d8d544c70d9b531ffc89da25c9e9bd310bff6bbd3b202b",
+    "version": "v2-18",
+    "metrics_owner": "CURRENT.calculate_metrics invoked by quant_backtest_postprocess.py; PROJECT owns execution",
+    "execution_engine_version": "v2-16-exec-10"
+  },
+  "cache": "No previous PC cache image available; runtime rebuilds bounded library caches; generated bytecode excluded",
+  "source_OS": "Original PC OS/system packages inaccessible; pinned kit target is CPython3.11/3.12 Linux x86_64 glibc>=2.28",
+  "secret_policy": "Names/presence only. No environment dump, secret contents or credential files. GH backup secret present; DART/KRX local access must be separately provisioned."
+}
