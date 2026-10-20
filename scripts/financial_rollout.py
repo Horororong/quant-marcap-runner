@@ -78,7 +78,7 @@ def cached_document(cache,receipt,expected_sha):
         if requested!=receipt:raise ValueError('READONLY_CACHE_RECEIPT_MISMATCH')
         return blob,expected_sha
     return fetch
-def run_batch(metas,out,*,document_seconds=90,total_seconds=600,worker_script=None,result_validator=None):
+def run_batch(metas,out,*,document_seconds=90,total_seconds=600,worker_script=None,result_validator=None,status_callback=None):
     if not metas or len(metas)>100: raise ValueError('Expected1..100 frozen receipts')
     if not (0<document_seconds<=90 and document_seconds<=total_seconds<=600): raise ValueError('Invalid bounded budgets')
     out.mkdir(parents=True,exist_ok=False)
@@ -87,6 +87,7 @@ def run_batch(metas,out,*,document_seconds=90,total_seconds=600,worker_script=No
     atomic(out/'selection.json',dict(samples=metas,frozen_at_utc=now(),before_HTTP=True))
     def save(**kw):
         status.update(kw,elapsed_seconds=round(time.monotonic()-started,3),updated_at_utc=now());atomic(out/'run_status.json',status)
+        if status_callback is not None:status_callback(dict(status))
     def signal_stop(signum,frame): stop['reason']='SIGNAL_'+str(signum)
     previous={s:signal.getsignal(s) for s in (signal.SIGTERM,signal.SIGINT)}
     for s in previous: signal.signal(s,signal_stop)

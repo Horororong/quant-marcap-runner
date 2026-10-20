@@ -1,0 +1,79 @@
+{
+  "contract": "independent-source-review-v1",
+  "controls_sha256": "1c00ca6209151ed99929a51b8d50b3a70223ac76ead12ebf0df1dbefb165555a",
+  "review_code_sha256": "1f70b3b79e78425ae0117f0943595673910238f95a2b648b7ea6f09ea42d4b8e",
+  "source_manifest_sha256": "30bd36f97116d1104fb857a082fd60031ea42bb965ec156fd0f5f92ff1ed6698",
+  "counts": {
+    "PASS": 38,
+    "FAIL": 0,
+    "UNVERIFIED": 8
+  },
+  "cohorts": {
+    "fixed-primary20": {
+      "documents": 20,
+      "financial_fields": {
+        "PASS": 38,
+        "FAIL": 0,
+        "UNVERIFIED": 2
+      },
+      "document_counts": {
+        "PASS": 19,
+        "FAIL": 0,
+        "UNVERIFIED": 1
+      }
+    },
+    "predeclared-state-augmentation": {
+      "documents": 3,
+      "financial_fields": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 6
+      },
+      "document_counts": {
+        "PASS": 0,
+        "FAIL": 0,
+        "UNVERIFIED": 3
+      }
+    }
+  },
+  "extraction_coverage_counts": {
+    "PASS": 38,
+    "FAIL": 6,
+    "UNVERIFIED": 2
+  },
+  "reviewed_documents": 23,
+  "document_counts": {
+    "PASS": 19,
+    "FAIL": 0,
+    "UNVERIFIED": 4
+  },
+  "document_verdicts": {
+    "20100331001758": "PASS",
+    "20100331001764": "PASS",
+    "20100331001768": "PASS",
+    "20100331001784": "PASS",
+    "20100331001801": "PASS",
+    "20100331001804": "PASS",
+    "20100331001807": "PASS",
+    "20100331001814": "PASS",
+    "20100331001815": "PASS",
+    "20100331001819": "PASS",
+    "20100331001822": "UNVERIFIED",
+    "20100331001826": "UNVERIFIED",
+    "20100331001835": "PASS",
+    "20100331001841": "PASS",
+    "20100331001846": "PASS",
+    "20100331001855": "PASS",
+    "20100331001857": "PASS",
+    "20100331001873": "PASS",
+    "20100331001875": "UNVERIFIED",
+    "20100331001898": "UNVERIFIED",
+    "20100331001901": "PASS",
+    "20100331001919": "PASS",
+    "20100331001920": "PASS"
+  },
+  "source_review_scope": "Only frozen reviewed items; never entire document PIT or population accuracy",
+  "published_eligible_fields": 38,
+  "backtest_eligible": false,
+  "investment_PIT": "0/6"
+}

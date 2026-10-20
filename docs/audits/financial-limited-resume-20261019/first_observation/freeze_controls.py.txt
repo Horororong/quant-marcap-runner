@@ -1,0 +1,57 @@
+"""Frozen human choices from raw primary XI grids, before parser amounts opened."""
+import sys,json,zipfile,hashlib,re
+from pathlib import Path
+sys.path.insert(0,'/workspace/financial-resume-20261019/scripts')
+from financial_source_grid import Grid
+ROOT=Path('/workspace/financial-resume-20261019');HOME=ROOT/'docs/audits/financial-limited-resume-20261019/first_observation'
+# Audit controls only. These receipts/coordinates are never extraction rules.
+CHOICES={
+'1758':(54,131,100,'470,066,033,986',133,71,'37,056,349,457'),
+'1764':(21,138,144,'51,671,526,763',140,82,'(71,203,325,437)'),
+'1768':(6,81,27,'14,637,018,693',83,22,'935,712,084'),
+'1784':(14,100,120,'35,608,721,325',102,78,'(37,457,243,995)'),
+'1801':(40,100,97,'145,157,991,648',102,66,'14,527,189,725'),
+'1804':(37,114,99,'20,258,754,072',116,79,'356,737,086'),
+'1807':(13,72,71,'90,363,414,401',74,62,'16,126,784,927'),
+'1814':(37,105,97,'35,391,099,684',107,75,'(13,979,740,772)'),
+'1815':(46,137,91,'1,207,749,531,630',139,85,'127,456,667,002'),
+'1819':(32,125,90,'205,194,749,889',127,73,'24,416,197,952'),
+'1822':(13,71,92,'14,940,496,927',73,67,'7,265,064,249'),
+'1826':(11,101,106,'40,051,591,531',103,98,'(16,314,914,908)'),
+'1835':(27,76,60,'40,052,790,855',78,45,'3,927,159,362'),
+'1841':(13,86,87,'181,583,062,201',88,73,'7,195,138,501'),
+'1846':(46,102,120,'86,210,034,855',104,60,'9,066,084,541'),
+'1855':(30,49,88,'271,541,843,079',51,74,'45,205,971,014'),
+'1857':(23,132,132,'72,021,484,995',134,90,'(6,332,271,835)'),
+'1873':(11,108,74,'27,382,404,063',110,79,'(7,509,684,490)'),
+'1875':(27,83,127,'5,883,596,216',85,104,'2,283,128,008'),
+'1898':(21,157,120,'211,405,139,010',159,79,'25,731,716,018'),
+'1901':(29,85,122,'195,369,764,463',87,74,'(15,999,240,488)'),
+'1919':(31,90,81,'180,945,955,377',92,58,'17,353,072,195'),
+'1920':(67,89,82,'288,177,108,044',91,63,'5,208,862,754')}
+controls=[]
+for suffix,choice in CHOICES.items():
+ receipt='2010033100'+suffix;term,bs,br,bv,ins,ir,iv=choice
+ archive=next(Path('/workspace/first-observation-raw/native').glob(receipt+'-*.zip'));blob=archive.read_bytes();member=receipt+'.xml'
+ with zipfile.ZipFile(archive)as z:data=z.read(member)
+ for enc in ['utf-8','cp949','euc-kr']:
+  try:text=data.decode(enc);assert text.encode(enc)==data;break
+  except(UnicodeError,AssertionError):pass
+ else:raise ValueError('SOURCE_ENCODING')
+ g=Grid();g.feed(text)
+ for metric,table,row,literal,statement in [('equity',bs,br,bv,'BS'),('net_income',ins,ir,iv,'IS')]:
+  assert g.tables[table]['rows'][row][1]==literal,(receipt,table,row,'SOURCE_LITERAL_CHANGED')
+  start='2009-04-01'if suffix=='1857'else'2009-01-01';end='2009-12-31'
+  if metric=='equity':start=''
+  c=dict(id='first-observation-'+receipt+'-OFS-'+metric,receipt=receipt,cohort='fixed-primary20'if receipt in json.loads((HOME/'review_plan.json').read_text())['primary_review']else'predeclared-state-augmentation',record_type='financial_field',metric=metric,scope='OFS',member=member,member_sha256=hashlib.sha256(data).hexdigest(),archive_sha256=hashlib.sha256(blob).hexdigest(),table=table,row=row,column=1,literal=literal,account_literal=g.tables[table]['rows'][row][0],unit='원',period_start=start,period_end=end,basis='instant'if metric=='equity'else'cumulative',report_period='FY',statement=statement,semantic_verdict='PASS',semantic_rationale='Independent original-grid review: XI individual whole-company primary statement, current term'+str(term)+', column1; not prior year, dividend summary, segment, merger proforma, cash-flow profit reconciliation or EPS. Source period and unit explicit. Exact chosen literals/coordinates fixed before reading candidate amounts. Filing/attachment version and historical security mapping remain UNVERIFIED.',header_proofs=[dict(table=bs,literal='XBRL 개별재무제표'),dict(table=table,literal='제'+str(term)+'기'),dict(table=table,literal='(단위 : 원)'),dict(table=table,literal='2009년 12월 31일')])
+  if metric=='net_income':c['header_proofs'].append(dict(table=table,literal='2009년 04월 01일'if suffix=='1857'else'2009년 01월 01일'))
+  if suffix=='1875':
+   c.update(semantic_verdict='UNVERIFIED',reason='WHOLE_DOCUMENT_PERIOD_CONFLICT: BS current header2009-03-31 vs annual cover/IS2009-12-31; no date correction assumed')
+   if metric=='equity':c['period_end']='2009-03-31'
+  controls.append(c)
+target=HOME/'controls.json';assert not target.exists(),'FROZEN_CONTROLS_NEVER_OVERWRITTEN'
+target.write_text(json.dumps(dict(contract='independent-source-review-v1',frozen_before_candidate_comparison=True,controls=controls),ensure_ascii=False,indent=2)+'\n')
+manifest=json.loads(Path('/workspace/first-observation-manifest.json').read_text());packs=[]
+for i,p in enumerate(manifest['transfers']):packs.append({**p,'path':'../../../../data/financials/legacy_2000_2014/quality_v9/limited_resume_v1/runs/39248507369/sources'+str(i).zfill(2)+'.json.gz.b64'})
+(HOME/'source_manifest.json').write_text(json.dumps(dict(packs=packs),indent=2)+'\n')
+print(json.dumps(dict(documents=len(CHOICES),fields=len(controls),controls_sha256=hashlib.sha256(target.read_bytes()).hexdigest(),candidate_amounts_opened=False)))
