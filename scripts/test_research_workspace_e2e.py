@@ -15,7 +15,12 @@ def main():
             if not select.select([server.stdout],[],[],30)[0]:raise RuntimeError('SERVER_START_TIMEOUT')
             ready=json.loads(server.stdout.readline());assert ready['status']=='ready',ready
             with(out/'browser.log').open('w')as log:
-                subprocess.run(['node',str(ROOT/'scripts/verify_research_workspace.cjs'),ready['url'],str(out/'browser')],check=True,stdout=log,stderr=subprocess.STDOUT,timeout=1200)
+                try:
+                    subprocess.run(['node',str(ROOT/'scripts/verify_research_workspace.cjs'),ready['url'],str(out/'browser')],check=True,stdout=log,stderr=subprocess.STDOUT,timeout=1200)
+                except(subprocess.CalledProcessError,subprocess.TimeoutExpired):
+                    log.flush()
+                    print((out/'browser.log').read_text()[-16000:],file=sys.stderr)
+                    raise
         finally:
             server.terminate()
             try:server.wait(timeout=10)

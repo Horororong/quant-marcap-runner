@@ -2,10 +2,10 @@
 const fs=require('fs'),path=require('path'),os=require('os'),assert=require('assert/strict');
 const {spawn}=require('child_process');
 const url=process.argv[2],output=path.resolve(process.argv[3]);fs.mkdirSync(output,{recursive:true});
-const executable=process.env.CHROMIUM_EXECUTABLE||['/usr/bin/chromium','/usr/bin/google-chrome','/usr/bin/google-chrome-stable'].find(fs.existsSync);
+const executable=process.env.CHROMIUM_EXECUTABLE||['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium'].find(fs.existsSync);
 if(!executable)throw Error('BROWSER_UNAVAILABLE: UNVERIFIED; no installation');
 const profile=fs.mkdtempSync(path.join(os.tmpdir(),'workspace-browser-'));
-const child=spawn(executable,['--headless','--no-sandbox','--disable-dev-shm-usage','--disable-background-networking','--no-first-run','--remote-debugging-pipe','--user-data-dir='+profile],{stdio:['ignore','ignore','pipe','pipe','pipe']});
+const child=spawn(executable,['--headless','--no-sandbox','--disable-gpu','--no-startup-window','--disable-dev-shm-usage','--disable-background-networking','--no-first-run','--remote-debugging-pipe','--user-data-dir='+profile],{stdio:['ignore','ignore','pipe','pipe','pipe']});
 let sequence=0,buffer='',session,stderr='';const pending=new Map(),errors=[],checks=[];
 child.stderr.on('data',d=>stderr+=d);
 child.on('exit',(code,signal)=>{for(const p of pending.values()){clearTimeout(p.timer);p.reject(Error('Browser exit '+code+'/'+signal));}pending.clear();});
@@ -32,6 +32,8 @@ async function run(mode,expected='ok'){
  return job;
 }
 (async()=>{try{
+ const browserVersion=await send('Browser.getVersion',{},null);
+ checkpoint({step:'browser_protocol_ready',status:'ok',executable,browser:browserVersion});
  const target=await send('Target.createTarget',{url:'about:blank'},null);session=(await send('Target.attachToTarget',{targetId:target.targetId,flatten:true},null)).sessionId;
  await send('Page.enable');await send('Runtime.enable');await send('Page.navigate',{url});await until('window.workspaceReady===true');
  const runs=[];

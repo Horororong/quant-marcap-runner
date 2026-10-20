@@ -79,7 +79,7 @@ permissions:
   actions: read
 jobs:
   workspace-ci-failure-diagnostic:
-    if: github.run_attempt == 1 && contains(github.event.head_commit.message, '[workspace-ci-diagnostic]')
+    if: github.sha == 'dfa2b8ac6eac26b9321dec38f97e228a1923a5ca' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[workspace-ci-diagnostic]')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
