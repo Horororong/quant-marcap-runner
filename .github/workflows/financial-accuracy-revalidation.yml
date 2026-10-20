@@ -78,8 +78,19 @@ permissions:
   contents: read
   actions: read
 jobs:
+  workspace-ci-failure-diagnostic:
+    if: github.run_attempt == 1 && contains(github.event.head_commit.message, '[workspace-ci-diagnostic]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Read the existing small failure artifact; no engine/data rerun
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/Horororong/quant-marcap-runner/actions/artifacts/12266305825/zip > "$RUNNER_TEMP/workspace-failure.zip"
+          python -c 'import os,pathlib,zipfile; p=pathlib.Path(os.environ["RUNNER_TEMP"])/"workspace-failure.zip"; assert p.stat().st_size<1048576; z=zipfile.ZipFile(p); assert z.testzip() is None; [(print(n),print(z.read(n).decode())) for n in z.namelist() if n.endswith(("failure.json","browser.log","server-stderr.log"))]'
   actual-local-research-workspace:
-    if: contains(github.event.head_commit.message, '[research-workspace]')
+    if: contains(github.event.head_commit.message, '[research-workspace]') && !contains(github.event.head_commit.message, '[workspace-ci-diagnostic]')
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
