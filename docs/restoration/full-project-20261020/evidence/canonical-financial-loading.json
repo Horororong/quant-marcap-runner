@@ -1,0 +1,79 @@
+{
+  "canonical_loader": [
+    {
+      "year": 2015,
+      "status": "CANONICAL_RAW_LOADED",
+      "rows": 30251,
+      "columns": [
+        "rcept_no",
+        "sj_div",
+        "account_id",
+        "account_nm",
+        "thstrm_amount",
+        "stock_code",
+        "requested_year",
+        "period",
+        "fs_div_requested",
+        "filing_date",
+        "thstrm_add_amount"
+      ],
+      "code_count": 1833,
+      "missing_filing_dates": 0
+    },
+    {
+      "year": 2020,
+      "status": "CANONICAL_RAW_LOADED",
+      "rows": 21023,
+      "columns": [
+        "rcept_no",
+        "sj_div",
+        "account_id",
+        "account_nm",
+        "thstrm_amount",
+        "stock_code",
+        "requested_year",
+        "period",
+        "fs_div_requested",
+        "filing_date",
+        "thstrm_add_amount"
+      ],
+      "code_count": 2197,
+      "missing_filing_dates": 0
+    }
+  ],
+  "coverage": {
+    "status": "EXISTING_COVERAGE_GATE_PASS",
+    "coverage": [
+      {
+        "year": 2019,
+        "period": "Q3",
+        "completed_codes": 2387,
+        "expected_codes": 2387,
+        "ratio": 1.0,
+        "cfs_ok_codes": 1668,
+        "cfs_no_data_codes": 719,
+        "ofs_fallback_terminal_codes": 719,
+        "cfs_raw_shards": 3,
+        "ofs_raw_shards": 3,
+        "raw_ok": true,
+        "signal_date": "2020-04-29 00:00:00"
+      },
+      {
+        "year": 2019,
+        "period": "FY",
+        "completed_codes": 2387,
+        "expected_codes": 2387,
+        "ratio": 1.0,
+        "cfs_ok_codes": 1695,
+        "cfs_no_data_codes": 692,
+        "ofs_fallback_terminal_codes": 692,
+        "cfs_raw_shards": 4,
+        "ofs_raw_shards": 2,
+        "raw_ok": true,
+        "signal_date": "2020-04-29 00:00:00"
+      }
+    ]
+  },
+  "legacy_helper": "krx_backtest_data.load_dart_financial_rows expects stock_code; real source shards have _stock_code; unchanged original limitation. Use registered DartValueFactorAdapter, not guessed PIT mapping.",
+  "certification": "No new financial/PIT certification"
+}

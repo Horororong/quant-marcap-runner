@@ -1,0 +1,14 @@
+{
+  "gate": "OPEN_CONDITIONAL",
+  "phase": "READY_NEXT",
+  "runs": 1,
+  "reserved_documents": 100,
+  "remaining_ceiling": 200,
+  "local_DART_API_KEY_present": false,
+  "publication": "HOLD",
+  "investment_PIT": "0/6",
+  "source_code": "preserved-main",
+  "workflow_skipped_reason": "backfill-super-value-fast/bounded-canary if condition admits only marked push or explicit bounded_verification dispatch; scheduled event false; skipped job has zero steps/logs",
+  "collector_workflow": "backfill-dart-legacy-2000-2014.yml",
+  "collection_started": false
+}

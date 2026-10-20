@@ -1,0 +1,580 @@
+{
+  "original_PC_backup": {
+    "sha256": "725991950af01331042c74b05b1a52bcb3fc9ebb1502839a2a6fd5eac9844f4d",
+    "status": "NOT_AVAILABLE",
+    "required": "Original backup bytes or an exact preserved artifact and matching SHA256"
+  },
+  "missing_historical_paths": {
+    "//workspace/attachments": {
+      "reference_count": 3,
+      "examples": [
+        {
+          "file": "docs/INLINE_RESULTS_STATUS.md",
+          "reference": "/workspace/attachments/quant-inline-results/{wealth,log2,drawdown}.png",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/REPORT_BROWSER_RECOVERY.md",
+          "reference": "/workspace/attachments/report-browser-recovery/verified-artifact",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/REPORT_DELIVERY_COMPLETION.md",
+          "reference": "/workspace/attachments/quant-report-kit-822c435f/runtime",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/scratch": {
+      "reference_count": 23,
+      "examples": [
+        {
+          "file": "docs/DART_CORP_RESPONSE_REPAIR_20261012.md",
+          "reference": "/workspace/scratch/laa-recovery/runtime/.venv/bin/python",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/DART_CORP_RESPONSE_REPAIR_20261012.md",
+          "reference": "/workspace/scratch/dart-repair",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/DART_CORP_RESPONSE_REPAIR_20261012.md",
+          "reference": "/workspace/scratch/laa-recovery/runtime/.venv/bin/python",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/DART_CORP_RESPONSE_REPAIR_20261012.md",
+          "reference": "/workspace/scratch/laa-recovery/runtime/scripts/sandbox_runtime.py",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/financial-repair": {
+      "reference_count": 232,
+      "examples": [
+        {
+          "file": "docs/research/stage12-stock-dividend-20261016/reproduction.md",
+          "reference": "/workspace/financial-repair/runtime/.venv/bin/python",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage12-stock-dividend-20261016/reproduction.md",
+          "reference": "/workspace/financial-repair/runtime/kit_manifest.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage12-stock-dividend-20261016/reproduction.md",
+          "reference": "/workspace/financial-repair/runtime/.venv/bin/python",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage12-stock-dividend-20261016/reproduction.md",
+          "reference": "/workspace/financial-repair/runtime/scripts/sandbox_runtime.py",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/long-multi-backfill-20261018": {
+      "reference_count": 100,
+      "examples": [
+        {
+          "file": "docs/research/long-multi-backfill-20261018/full_exposure_scope_20261019.json",
+          "reference": "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_size_deciles_2019_2025_event_deferred_v2/preflight.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/long-multi-backfill-20261018/full_exposure_scope_20261019.json",
+          "reference": "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_broad_size_deciles_2001_2025_v1/preflight.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/long-multi-backfill-20261018/full_exposure_scope_20261019.json",
+          "reference": "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_broad_size_top10_2001_2025_v1/preflight.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/long-multi-backfill-20261018/full_exposure_scope_20261019.json",
+          "reference": "/workspace/long-multi-backfill-20261018/final-multi-prefix-synced/research_broad_momentum_top10_2001_2025_v1/preflight.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/research-stage15-20261017": {
+      "reference_count": 4,
+      "examples": [
+        {
+          "file": "docs/research/stage15-research-environment-20261017/progress.json",
+          "reference": "/workspace/research-stage15-20261017/final-environment",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage16-continuous-research-20261018/regression_baseline.json",
+          "reference": "/workspace/research-stage15-20261017/final-environment/original",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage16-continuous-research-20261018/regression_baseline.json",
+          "reference": "/workspace/research-stage15-20261017/final-environment/momentum2020",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage16-continuous-research-20261018/regression_baseline.json",
+          "reference": "/workspace/research-stage15-20261017/final-environment/size2024",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/research-stage16-20261018": {
+      "reference_count": 28,
+      "examples": [
+        {
+          "file": "docs/research/stage16-continuous-research-20261018/regression_baseline.json",
+          "reference": "/workspace/research-stage16-20261018/stage15_original_successful_runs.zip",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage16-continuous-research-20261018/stage16_reproduction.md",
+          "reference": "/workspace/research-stage16-20261018/runtime_verify.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage16-continuous-research-20261018/stage16_reproduction.md",
+          "reference": "/workspace/research-stage16-20261018/regression_final",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage16-continuous-research-20261018/stage16_reproduction.md",
+          "reference": "/workspace/research-stage16-20261018/full-regression",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/research-stage9-20261015": {
+      "reference_count": 3,
+      "examples": [
+        {
+          "file": "docs/research/stage9-stock-dividend-20261015/preservation.json",
+          "reference": "/workspace/research-stage9-20261015/runtime-verify.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage9-stock-dividend-20261015/reproduction.md",
+          "reference": "/workspace/research-stage9-20261015/runtime-verify.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage9-stock-dividend-20261015/reproduction.md",
+          "reference": "/workspace/research-stage9-20261015/arithmetic.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/research-stage14-20261017": {
+      "reference_count": 1,
+      "examples": [
+        {
+          "file": "docs/research/stage14-celltrion-2019-20261017/stage14_reproduction.md",
+          "reference": "/workspace/research-stage14-20261017/{sources,history,listing,corrected,body}",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/research-stage11-20261016": {
+      "reference_count": 3,
+      "examples": [
+        {
+          "file": "docs/research/stage11-official-event-evidence-20261016/preservation.json",
+          "reference": "/workspace/research-stage11-20261016/runtime-verify.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage11-official-event-evidence-20261016/reproduction.md",
+          "reference": "/workspace/research-stage11-20261016/runtime-verify.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage11-official-event-evidence-20261016/reproduction.md",
+          "reference": "/workspace/research-stage11-20261016/calculations.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/research-stage8-20261015": {
+      "reference_count": 9,
+      "examples": [
+        {
+          "file": "docs/research/stage8-2019-2020-20261015/research_report.md",
+          "reference": "/workspace/research-stage8-20261015/top1-run/report/report_CURRENT.html",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage8-2019-2020-20261015/research_status.json",
+          "reference": "/workspace/research-stage8-20261015/deciles-run",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage8-2019-2020-20261015/research_status.json",
+          "reference": "/workspace/research-stage8-20261015/top1-run",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage8-2019-2020-20261015/research_status.json",
+          "reference": "/workspace/research-stage8-20261015",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/quant-marcap-runner": {
+      "reference_count": 61,
+      "examples": [
+        {
+          "file": "docs/research/stage8-2019-2020-20261015/research_status.json",
+          "reference": "/workspace/quant-marcap-runner/docs/research/stage8-2019-2020-20261015/deciles_research_only.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage8-2019-2020-20261015/research_status.json",
+          "reference": "/workspace/quant-marcap-runner/docs/research/stage8-2019-2020-20261015/report_periods.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage8-2019-2020-20261015/research_status.json",
+          "reference": "/workspace/quant-marcap-runner/docs/research/stage8-2019-2020-20261015/top1_research_only.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage8-2019-2020-20261015/research_status.json",
+          "reference": "/workspace/quant-marcap-runner/docs/research/stage8-2019-2020-20261015/report_periods.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/research-stage9-followup-20261015": {
+      "reference_count": 2,
+      "examples": [
+        {
+          "file": "docs/research/stage9-followup-20261015/preservation.json",
+          "reference": "/workspace/research-stage9-followup-20261015/runtime-verify.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/stage9-followup-20261015/reproduction.md",
+          "reference": "/workspace/research-stage9-followup-20261015/runtime-verify.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/quant-marcap-runner에서": {
+      "reference_count": 1,
+      "examples": [
+        {
+          "file": "docs/research/stage9-followup-20261015/reproduction.md",
+          "reference": "/workspace/quant-marcap-runner에서",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/top10-readiness.json": {
+      "reference_count": 1,
+      "examples": [
+        {
+          "file": "docs/research/multi-asset-20261018/README.md",
+          "reference": "/workspace/top10-readiness.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/multi-asset-fresh": {
+      "reference_count": 1,
+      "examples": [
+        {
+          "file": "docs/research/multi-asset-20261018/reproduction.md",
+          "reference": "/workspace/multi-asset-fresh",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/deciles-2019-2025-fresh": {
+      "reference_count": 2,
+      "examples": [
+        {
+          "file": "docs/research/multi-asset-20261018/reproduction.md",
+          "reference": "/workspace/deciles-2019-2025-fresh",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/multi-asset-20261018/reproduction.md",
+          "reference": "/workspace/deciles-2019-2025-fresh",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/decile-issues.json": {
+      "reference_count": 1,
+      "examples": [
+        {
+          "file": "docs/research/multi-asset-20261018/reproduction.md",
+          "reference": "/workspace/decile-issues.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/research-source-readiness-20261019": {
+      "reference_count": 9,
+      "examples": [
+        {
+          "file": "docs/research/source-readiness-20261019/execution_logs/final_financial_commands.json",
+          "reference": "/workspace/research-source-readiness-20261019/docs/audits/backfill-accuracy-20261018/test_main_proposal.py",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/source-readiness-20261019/execution_logs/final_financial_commands.json",
+          "reference": "/workspace/research-source-readiness-20261019/docs/audits/backfill-accuracy-20261018/replay.py",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/source-readiness-20261019/execution_logs/final_financial_commands.json",
+          "reference": "/workspace/research-source-readiness-20261019/docs/audits/backfill-accuracy-20261018/replay.py",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/source-readiness-20261019/execution_logs/final_financial_commands.json",
+          "reference": "/workspace/research-source-readiness-20261019/docs/audits/backfill-accuracy-20261018/compare.py",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/research-readiness-final-financial-validation": {
+      "reference_count": 16,
+      "examples": [
+        {
+          "file": "docs/research/source-readiness-20261019/execution_logs/final_financial_commands.json",
+          "reference": "/workspace/research-readiness-final-financial-validation/v7",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/source-readiness-20261019/execution_logs/final_financial_commands.json",
+          "reference": "/workspace/research-readiness-final-financial-validation/v91",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/source-readiness-20261019/execution_logs/final_financial_commands.json",
+          "reference": "/workspace/research-readiness-final-financial-validation/v91",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/source-readiness-20261019/execution_logs/final_financial_commands.json",
+          "reference": "/workspace/research-readiness-final-financial-validation/audit",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/source-readiness-original-success-regression": {
+      "reference_count": 5,
+      "examples": [
+        {
+          "file": "docs/research/source-readiness-20261019/execution_logs/original_success_commands.json",
+          "reference": "/workspace/source-readiness-original-success-regression/financial",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/source-readiness-20261019/execution_logs/original_success_commands.json",
+          "reference": "/workspace/source-readiness-original-success-regression/inventory.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/source-readiness-20261019/execution_logs/original_success_commands.json",
+          "reference": "/workspace/source-readiness-original-success-regression/examples.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/source-readiness-20261019/execution_logs/original_success_commands.json",
+          "reference": "/workspace/source-readiness-original-success-regression/json",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/research-multi-asset-20261018": {
+      "reference_count": 26,
+      "examples": [
+        {
+          "file": "docs/research/multi-asset-20261018/results/commands.json",
+          "reference": "/workspace/research-multi-asset-20261018/final-local-v3/event_contract_original_full2019_2020",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/multi-asset-20261018/results/commands.json",
+          "reference": "/workspace/research-multi-asset-20261018/final-local-v3/component_original.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/multi-asset-20261018/results/commands.json",
+          "reference": "/workspace/research-multi-asset-20261018/final-local-v3/korean_original_full2019_2020",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/research/multi-asset-20261018/results/commands.json",
+          "reference": "/workspace/research-multi-asset-20261018/final-local-v3/component_original.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/quant-audit-20261004": {
+      "reference_count": 22,
+      "examples": [
+        {
+          "file": "docs/audits/data-readiness-20261004/export_result.json",
+          "reference": "/workspace/quant-audit-20261004/requested-report-verified.zip",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/audits/data-readiness-20261004/default_gate_status.json",
+          "reference": "/workspace/quant-audit-20261004/runtime/config/strategies/kr_equity_report_validation_2019_2020.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/audits/data-readiness-20261004/default_gate_status.json",
+          "reference": "/workspace/quant-audit-20261004/default-gate",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/audits/data-readiness-20261004/default_gate_status.json",
+          "reference": "/workspace/quant-audit-20261004/default-gate/run_status.json",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/backfill-accuracy-20261018": {
+      "reference_count": 16,
+      "examples": [
+        {
+          "file": "docs/audits/backfill-accuracy-20261018/results/commands.json",
+          "reference": "/workspace/backfill-accuracy-20261018/final-v91-validation/v7",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/audits/backfill-accuracy-20261018/results/commands.json",
+          "reference": "/workspace/backfill-accuracy-20261018/final-v91-validation/v91",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/audits/backfill-accuracy-20261018/results/commands.json",
+          "reference": "/workspace/backfill-accuracy-20261018/final-v91-validation/v91",
+          "exists": false,
+          "kind": "historical_documentation"
+        },
+        {
+          "file": "docs/audits/backfill-accuracy-20261018/results/commands.json",
+          "reference": "/workspace/backfill-accuracy-20261018/final-v91-validation/audit",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    },
+    "//workspace/stage6-delivery": {
+      "reference_count": 1,
+      "examples": [
+        {
+          "file": "docs/audits/version-pit-stage6-20261014/finalization-20261015/evidence/original-integrity.json",
+          "reference": "/workspace/stage6-delivery/stage6-apply-j5tlwf0v",
+          "exists": false,
+          "kind": "historical_documentation"
+        }
+      ],
+      "recovery": "Use pinned Git source/evidence where committed. Original prior-session folders need the original backup or named GitHub CI artifacts; expired/unavailable artifacts cannot be assumed restored."
+    }
+  },
+  "scope": "Missing historical references are recorded, not replaced with empty folders. Existing original and minimum runtime folders remain preserved."
+}

@@ -1,0 +1,10 @@
+test_common_guard_failure_stops_before_checkpoint_or_next_worker (__main__.Limited.test_common_guard_failure_stops_before_checkpoint_or_next_worker) ... ok
+test_document_reject_then_next_document_complete_without_values (__main__.Limited.test_document_reject_then_next_document_complete_without_values) ... ok
+test_first_schedule_review_daily_total_and_failure_gates (__main__.Limited.test_first_schedule_review_daily_total_and_failure_gates) ... ok
+test_kst_midnight_not_utc_midnight (__main__.Limited.test_kst_midnight_not_utc_midnight) ... ok
+test_publication_schema_never_certifies_a_source_gap (__main__.Limited.test_publication_schema_never_certifies_a_source_gap) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.318s
+
+OK
