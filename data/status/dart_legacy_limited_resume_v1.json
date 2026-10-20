@@ -101,7 +101,64 @@
     "20100331001927",
     "20100331001928",
     "20100331001929",
-    "20100331001937"
+    "20100331001937",
+    "20100331001938",
+    "20100331001942",
+    "20100331001943",
+    "20100331001944",
+    "20100331001949",
+    "20100331001950",
+    "20100331001951",
+    "20100331001953",
+    "20100331001954",
+    "20100331001955",
+    "20100331001960",
+    "20100331001961",
+    "20100331001962",
+    "20100331001963",
+    "20100331001966",
+    "20100331001972",
+    "20100331001974",
+    "20100331001977",
+    "20100331001980",
+    "20100331001981",
+    "20100331001982",
+    "20100331001983",
+    "20100331001986",
+    "20100331001987",
+    "20100331001990",
+    "20100331001993",
+    "20100331001994",
+    "20100331001996",
+    "20100331001997",
+    "20100331001998",
+    "20100331002001",
+    "20100331002002",
+    "20100331002003",
+    "20100331002007",
+    "20100331002013",
+    "20100331002017",
+    "20100331002018",
+    "20100331002019",
+    "20100331002024",
+    "20100331002026",
+    "20100331002027",
+    "20100331002028",
+    "20100331002029",
+    "20100331002030",
+    "20100331002033",
+    "20100331002034",
+    "20100331002035",
+    "20100331002036",
+    "20100331002037",
+    "20100331002038",
+    "20100331002039",
+    "20100331002042",
+    "20100331002043",
+    "20100331002045",
+    "20100331002046",
+    "20100331002053",
+    "20100331002054"
   ],
   "contract": "limited-source-observation-v1",
   "first_review": {
@@ -137,8 +194,8 @@
     "status": "PASS_SOURCE_SAMPLE_NOT_POPULATION_CERTIFICATION"
   },
   "investment_PIT": "0/6",
-  "last_checkpoint": "20100331001937",
-  "phase": "RUNNING",
+  "last_checkpoint": "20100331002054",
+  "phase": "HOLD_FAILURE",
   "runs": [
     {
       "candidate_fields": 1363,
@@ -198,13 +255,59 @@
       ]
     },
     {
+      "candidate_fields": 871,
+      "completed_at_utc": "2026-10-20T22:05:26.300520+00:00",
+      "counts": {
+        "PARSED_4F": 48,
+        "SOURCE_GAP": 9
+      },
       "day_kst": "2026-10-21",
+      "durable_documents": 57,
+      "reservation_commit": "f84bf2d9433726e763fda62a05f3b75979e35c1d",
       "reserved_documents": 100,
       "run_id": "39504052321",
       "selection_sha256": "2082528da7e6a1eb3a15fc112b6992ecabea8806122a198a749c4d8682b3e50a",
       "start_checkpoint": "20100331001937",
       "started_at_utc": "2026-10-20T21:55:16.083985+00:00",
-      "status": "RUNNING"
+      "status": "STOPPED",
+      "stop_reason": "RUN_WALL_BUDGET",
+      "transfers": [
+        {
+          "automatic_publication": false,
+          "blob_sha": "0eb5706fd5b0516ea212c084e3daf343c73aa6ce",
+          "bytes": 2965575,
+          "compressed_sha256": "4f6cff17102aff83d24f6d2b4bff9fcc97d3b22611be4de6a4875005c8dc5213",
+          "financial_certification": "UNVERIFIED"
+        },
+        {
+          "automatic_publication": false,
+          "blob_sha": "6e1d3fca6402f4fb9e8e5bd14f75ee462224e65d",
+          "bytes": 2651421,
+          "compressed_sha256": "b907eb14d2f9ff4adf9fbb5d2502cf20fce123e5ea0d7556f7aebac32c015afe",
+          "financial_certification": "UNVERIFIED"
+        },
+        {
+          "automatic_publication": false,
+          "blob_sha": "87c1620ff513b177549704a9ca5128abe6e9ec9d",
+          "bytes": 2543599,
+          "compressed_sha256": "360925b71e6784416b28878567b0b4dc1fee48f36976db3832bb57fcadbb4ca7",
+          "financial_certification": "UNVERIFIED"
+        },
+        {
+          "automatic_publication": false,
+          "blob_sha": "065679e4c6107752ce8c9704e62743ac91dffdfc",
+          "bytes": 3205,
+          "compressed_sha256": "2d3b9cbc6926914192a4aa1d7f272fabacff64c17c93f4b017491fa7181da7c3",
+          "financial_certification": "UNVERIFIED"
+        },
+        {
+          "automatic_publication": false,
+          "blob_sha": "20cea52eff4c9aafd85fcdc166f56cf63d2359ed",
+          "bytes": 3095,
+          "compressed_sha256": "f0509fbd474ff1922a458a6bde04d61d4b9d3bc7197d16674ed87d9870284fd5",
+          "financial_certification": "UNVERIFIED"
+        }
+      ]
     }
   ]
 }
