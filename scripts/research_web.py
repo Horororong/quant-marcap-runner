@@ -42,6 +42,16 @@ def report_rows(directory):
     path=directory/'run/report/metrics_CURRENT.csv'
     if not path.is_file():return []
     with path.open(newline='',encoding='utf-8-sig')as f:return list(csv.DictReader(f))
+def saved_run_provenance(directory):
+    """Display the saved execution's inputs, never current editor/repo defaults."""
+    run=directory/'run';paths={name:run/name for name in ['strategy_normalized.json','preflight.json','run_status.json']}
+    missing=[name for name,p in paths.items()if not p.is_file()]
+    if missing:return dict(status='unavailable',missing=missing,scope='Historical run provenance is absent; do not substitute current settings')
+    spec=read(paths['strategy_normalized.json']);preflight=read(paths['preflight.json']);state=read(paths['run_status.json'])
+    return dict(status='saved_execution_snapshot',strategy_id=spec['strategy_id'],strategy_fingerprint=state.get('strategy_fingerprint'),
+        run_id=state.get('run_id'),period=spec['period'],cost_scenarios=spec['cost_scenarios'],benchmark=spec.get('benchmark'),
+        data_files=preflight.get('source_files',[]),control_files=preflight.get('control_files',[]),versions=state.get('versions',{}),
+        classification='RESEARCH_ONLY',investment_approved=False,scope='Saved source hashes and trading-cost assumptions; no new financial/PIT or cash-dividend total-return certification')
 def requirements(root,payload):
     path=root/'config/research/evidence_requirements_v1.json'
     if not path.exists():return []
@@ -127,6 +137,7 @@ class Workspace:
                 state=job.get('engine_status',{})
                 if not(state.get('nav_ready')and state.get('report_ready')):raise ValueError('실제 검증된 NAV/보고서 없는 실행은 성공으로 표시할 수 없습니다')
                 job['metrics']=report_rows(folder);job['report_url']='/runs/'+jid+'/run/report/report_CURRENT.html'
+                job['provenance']=saved_run_provenance(folder)
         return job
     def comparison(self,ids):
         if not 2<=len(ids)<=6 or len(ids)!=len(set(ids)):raise ValueError('서로 다른 성공 실행 2~6개를 선택하세요')

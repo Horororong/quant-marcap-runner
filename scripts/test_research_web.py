@@ -1,11 +1,24 @@
 import json,tempfile,unittest
 from pathlib import Path
 from unittest.mock import patch
-from research_web import Workspace,identifier,requirements,browser_numbers
+from research_web import Workspace,identifier,requirements,browser_numbers,saved_run_provenance
 from research_language import translate
 from test_research_language import TEXT
 ROOT=Path(__file__).resolve().parents[1]
 class WorkspaceContract(unittest.TestCase):
+ def test_reopened_result_uses_saved_cost_and_source_not_current_editor(self):
+  with tempfile.TemporaryDirectory()as t:
+   folder=Path(t);run=folder/'run';run.mkdir();saved=translate(TEXT)['strategy']
+   (run/'strategy_normalized.json').write_text(json.dumps(saved))
+   (run/'preflight.json').write_text(json.dumps(dict(source_files=[dict(path='data/original.parquet',sha256='preserved-source')],control_files=[])))
+   (run/'run_status.json').write_text(json.dumps(dict(run_id='saved-execution',strategy_fingerprint='saved-fingerprint',versions={})))
+   edited=translate('수수료를 2.5bp로 변경',base=saved)
+   actual=saved_run_provenance(folder)
+   self.assertEqual(actual['cost_scenarios']['fixed_cost']['commission_bps'],1.5)
+   self.assertEqual(edited['strategy']['cost_scenarios']['fixed_cost']['commission_bps'],2.5)
+   self.assertEqual(actual['data_files'][0]['sha256'],'preserved-source');self.assertEqual(actual['run_id'],'saved-execution')
+   (run/'preflight.json').unlink()
+   self.assertEqual(saved_run_provenance(folder)['status'],'unavailable')
  def test_browser_cannot_round_unsafe_integer_into_a_valid_strategy(self):
   with self.assertRaisesRegex(ValueError,'BROWSER_UNSAFE_INTEGER'):
    browser_numbers({'threshold':9007199254740993})
