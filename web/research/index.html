@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>퀀트 연구 작업공간</title><link rel="stylesheet" href="/app.css"></head>
+<body><header><div><span class="eyebrow">QUANT · RESEARCH WORKSPACE</span><h1>조건을 확인하고, 실행을 비교하세요.</h1><p>같은 DSL과 공통 엔진, CURRENT 성과 계산을 사용하는 로컬 연구 공간입니다.</p></div><span class="badge">RESEARCH_ONLY</span></header>
+<main><aside><h2>1. 전략 설명</h2><label for="example">기존 검증 예제 / 차단 요청</label><select id="example"><option value="">예제를 선택하세요</option></select><p class="small">예제의 연구 계약도 아래에 표시합니다. 예제 선택은 새 실행의 성공을 보장하지 않습니다.</p>
+<label for="request">한국어 요청 또는 수정 요청</label><textarea id="request" rows="10" placeholder="2024년 코스피·코스닥에서 시가총액이 큰 순으로 상위1종목 동일비중으로 구성하고 4월말 리밸런싱"></textarea>
+<label class="inline"><input id="amend" type="checkbox"> 현재 확인한 DSL을 기준으로 조건 수정</label><p class="small">수정 예: 수수료를 2.5bp로 변경 / 종목 수를 3개로 변경 / 기간을 2024년으로 변경</p>
+<label for="model">명시적으로 선택할 연구·체결 계약</label><select id="model"><option value="">추가 계약 없음 — 자료/기업행위 부족 시 차단</option></select>
+<button id="interpret" class="primary">조건 해석</button><details><summary>JSON 전략 사용</summary><textarea id="json-input" rows="10" aria-label="JSON 전략"></textarea><button id="preview-json">JSON 조건 확인</button></details>
+<div class="notice"><strong>제한된 한국어 규칙 해석</strong><p>외부 모델은 연결되지 않았습니다. 등록된 단일 팩터·월말·상위N/10분위를 지원하며, 모호하거나 해석되지 않은 조건은 거부합니다.</p></div>
+<h2>저장한 전략</h2><label for="name">저장 이름</label><input id="name" maxlength="120" value="나의 연구 전략"><button id="save" disabled>현재 전략 저장</button><select id="saved"><option value="">저장 전략 불러오기</option></select><button id="load" disabled>불러오기</button><button id="download" disabled>DSL JSON 내보내기</button>
+</aside><section class="workspace"><article><div class="section-top"><h2>2. 해석한 조건</h2><span id="fingerprint" class="small"></span></div><div id="conditions" class="empty">아직 확인한 전략이 없습니다.</div><div id="defaults"></div><details><summary>정규화 DSL · 연구 계약 · 출처 fingerprint</summary><pre id="dsl"></pre></details>
+<label class="confirm"><input id="confirm" type="checkbox" disabled> 위 조건·기본값·연구 가정과 투자 사용 불가 범위를 확인했습니다.</label><div class="buttons"><button id="check" disabled>3. 자료 준비도 확인</button><button id="run" class="primary" disabled>4. 백테스트 실행</button></div></article>
+<article aria-live="polite"><div class="section-top"><h2>진행과 자료 요구</h2><span id="phase" class="badge neutral">대기</span></div><p id="status">조건을 해석한 뒤 확인해 주세요.</p><pre id="diagnostic" hidden></pre><div id="evidence"></div></article>
+<article><div class="section-top"><h2>5. 실행 결과</h2><button id="refresh">저장 실행 새로고침</button></div><p class="small">성공한 검증 NAV만 표시합니다. Net은 설정한 거래비용 차감 후이며 배당 관련 세후 성과가 아닙니다. 현금배당 미반영 성과를 총수익률로 표시하지 않습니다.</p><div id="run-list"></div><button id="compare" disabled>선택한 실행 비교</button><div id="result"></div></article>
+<article><h2>6. 비교</h2><p class="small">각 실행의 실제 전체 기간을 표시합니다. 서로 다른 기간은 같은 기간 성과인 것처럼 합치지 않습니다. 수치와 차트는 기존 CURRENT 산출물입니다.</p><div id="comparison"></div></article>
+</section></main><div id="error" role="alert" hidden></div><script src="/app.js"></script></body></html>

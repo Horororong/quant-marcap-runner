@@ -1,0 +1,13 @@
+{
+  "version": "1",
+  "scope": "Actionable evidence requirements only; never event registration or return override",
+  "events": [{
+    "security": "207940",
+    "date": "2022-02-28",
+    "status": "UNVERIFIED — 실제 권리 입력 부족",
+    "required_inputs": ["정확한 신주인수권증서 코드와 2022-03-23~29 공식 일별 종가·거래량", "매각/청약의 사전 선택, 실제 거래·결제 조건과 사용 가능한 현금", "거래 전 pending 권리의 날짜별 명시적 평가 입력·근거", "청약을 선택하면 당시 확정 청약단가·납입일·실제 신주 거래 가능일"],
+    "already_observed": "공식 기준가760000원과 기존 공시의 배정 조건은 재사용; 미래 확정값 소급 금지",
+    "engine_scope": "공통 권리 부장부와 합성 검증은 실제 사건 인증과 별개. 필수 입력이 없으면 NAV 차단. 기존401/403 경로 재호출 없음.",
+    "evidence": "docs/research/limited-resume-rights-20261019/report.md"
+  }]
+}

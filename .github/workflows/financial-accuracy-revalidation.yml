@@ -3,6 +3,14 @@ on:
   push:
     branches: ['fix/financial-accuracy-20261014']
     paths:
+      - 'scripts/research_language.py'
+      - 'scripts/research_web.py'
+      - 'scripts/test_research_language.py'
+      - 'scripts/test_research_web.py'
+      - 'scripts/test_research_workspace_e2e.py'
+      - 'scripts/verify_research_workspace.cjs'
+      - 'web/research/**'
+      - 'docs/RESEARCH_LOCAL_WORKSPACE.md'
       - 'scripts/subscription_rights.py'
       - 'scripts/test_subscription_rights.py'
       - 'scripts/inspect_rights_public_path.py'
@@ -70,6 +78,36 @@ permissions:
   contents: read
   actions: read
 jobs:
+  actual-local-research-workspace:
+    if: contains(github.event.head_commit.message, '[research-workspace]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore and verify the original pinned kit; no pip
+        run: |
+          python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: Language, transport confirmation, and real-data browser E2E
+        run: |
+          PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
+          "$PY" -I -m unittest discover -s scripts -p test_research_language.py -v
+          "$PY" -I -m unittest discover -s scripts -p test_research_web.py -v
+          "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");sys.argv=["scripts/export_strategy_dsl_contract.py","--check"];runpy.run_path(sys.argv[0],run_name="__main__")'
+          "$PY" -I scripts/test_research_workspace_e2e.py --output "$RUNNER_TEMP/research-workspace"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: actual-local-research-workspace
+          path: |
+            ${{ runner.temp }}/runtime.json
+            ${{ runner.temp }}/research-workspace
+          if-no-files-found: error
+          retention-days: 90
   financial-signal-official-market-proof:
     if: github.run_attempt == 1 && ((github.sha == 'd438c6c6acbab2ede4679fef650f439d51b968f6' && contains(github.event.head_commit.message, '[financial-signal-market-proof]')) || (github.sha == '762ba9ed2dd05a9f08a342e525c33802dec8e127' && contains(github.event.head_commit.message, '[financial-signal-body-proof]')))
     permissions:
