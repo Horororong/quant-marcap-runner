@@ -138,7 +138,7 @@
   },
   "investment_PIT": "0/6",
   "last_checkpoint": "20100331001937",
-  "phase": "READY_NEXT",
+  "phase": "RUNNING",
   "runs": [
     {
       "candidate_fields": 1363,
@@ -196,6 +196,15 @@
           "financial_certification": "UNVERIFIED"
         }
       ]
+    },
+    {
+      "day_kst": "2026-10-21",
+      "reserved_documents": 100,
+      "run_id": "39504052321",
+      "selection_sha256": "2082528da7e6a1eb3a15fc112b6992ecabea8806122a198a749c4d8682b3e50a",
+      "start_checkpoint": "20100331001937",
+      "started_at_utc": "2026-10-20T21:55:16.083985+00:00",
+      "status": "RUNNING"
     }
   ]
 }
