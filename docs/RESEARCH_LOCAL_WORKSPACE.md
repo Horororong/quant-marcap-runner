@@ -65,3 +65,11 @@ E2E는 설치된 Chromium/Chrome과 Node 내장 CDP만 사용한다. 브라우�
 Stage15 NAV 해시와 독립 원시가격·수량·권리·현금 장부를 재사용한다.
 합성/표본/PIT 인증은 이 결과와 별개다. 실제 CI 상태는 해당 커밋의 Actions와
 `actual-local-research-workspace` artifact에서 확인한다.
+
+웹 전용 CI는 기준 `0552ad2` 이후 변경이 명시한 UI·전송·회귀·사용법 파일에만
+한정되는지 검사한다. 금융 파서·원본·엔진 변경은 이 경로로 통과할 수 없다.
+최초 게시 CI39425158415의 과거 Stage2 artifact 복원은
+`503: Egress is over the account limit`로 실패했다. 같은 요청을 재시도하지 않는다.
+이 웹 전용 검증은 pre-v8 금융 재처리/독립 감사의 대체 PASS가 아니다.
+보존 원문60건의 외부 artifact 재다운로드 인증과 기존 금융값의 정확성 범위는
+기존 감사에 남겨 두며, 웹 변경에서 이를 새로 인증했다고 표시하지 않는다.
