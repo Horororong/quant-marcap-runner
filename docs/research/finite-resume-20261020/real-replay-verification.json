@@ -1,0 +1,22 @@
+{
+  "status": "PASS_REAL_SOURCE_REPLAY_AND_RESUME",
+  "new_HTTP_requests": 0,
+  "new_source_documents": 0,
+  "source": "Two immutable existing original ZIPs",
+  "checks": [
+    {
+      "receipt": "20100331001943",
+      "candidate_rows": 16,
+      "exact_original_candidates": true
+    },
+    {
+      "receipt": "20100331001944",
+      "candidate_rows": 16,
+      "exact_original_candidates": true
+    }
+  ],
+  "collection_files": 2,
+  "first_checkpoint_bytes_preserved": true,
+  "financial_publication": 0,
+  "scope": "Real source parsing/coordinator recovery only; live collection blocked by daily gate"
+}

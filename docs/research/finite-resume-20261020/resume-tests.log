@@ -1,0 +1,10 @@
+test_changed_selection_or_source_hash_is_hard_failure (test_financial_batch_resume.Resume.test_changed_selection_or_source_hash_is_hard_failure) ... ok
+test_count_pause_resume_skips_durable_without_rewrite (test_financial_batch_resume.Resume.test_count_pause_resume_skips_durable_without_rewrite) ... ok
+test_insufficient_admission_time_yields_before_worker (test_financial_batch_resume.Resume.test_insufficient_admission_time_yields_before_worker) ... ok
+test_same_day_and_three_attempt_caps_remain_closed (test_financial_batch_resume.Resume.test_same_day_and_three_attempt_caps_remain_closed) ... ok
+test_sigkill_after_raw_source_resumes_without_redownload (test_financial_batch_resume.Resume.test_sigkill_after_raw_source_resumes_without_redownload) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.708s
+
+OK

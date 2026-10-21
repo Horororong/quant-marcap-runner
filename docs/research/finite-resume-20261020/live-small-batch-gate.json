@@ -1,0 +1,19 @@
+{
+  "checked_at_utc": "2026-10-20T22:52:37.465165+00:00",
+  "state_changed": false,
+  "HTTP_collection_requests": 0,
+  "original_phase": "HOLD_FAILURE",
+  "checkpoint": "20100331002054",
+  "gate": "BLOCKED",
+  "reason": "ONCE_PER_KST_DAY",
+  "pending_reserved_receipts": 43,
+  "first_two": [
+    "20100331002062",
+    "20100331002063"
+  ],
+  "new_reservation": 0,
+  "execution_attempts_used": 2,
+  "max_execution_attempts": 3,
+  "next_daily_window_utc": "2026-10-21T15:00:00+00:00",
+  "activation": "Operational PR must be reviewed/applied; no main mutation in this development run"
+}

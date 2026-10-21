@@ -38,12 +38,39 @@ def check_gate(config,state,now,event):
     if config['investment_PIT']!='0/6' or state['investment_PIT']!='0/6' or state['backtest_eligible']is not False or state['automatic_financial_publication']!='HOLD':raise ValueError('PIT_OR_PUBLICATION_STATE_PROMOTION')
     if config['parser_version']!=PARSER_VERSION or config['source_diagnostic_version']!=DIAGNOSTIC_VERSION:raise ValueError('UNAPPROVED_PARSER_OR_DIAGNOSTIC_VERSION')
     if state['contract']!=CONTRACT or state['phase']not in {'READY_FIRST','READY_NEXT'}:raise ValueError('OBSERVATION_STOPPED_OR_UNREVIEWED')
-    if len(state['runs'])>=3 or sum(r['reserved_documents']for r in state['runs'])>=300:raise ValueError('AUTHORIZED_OBSERVATION_EXHAUSTED')
-    if any(r['day_kst']==local_day(now)for r in state['runs']):raise ValueError('ONCE_PER_KST_DAY')
+    attempts=state['runs']+[segment for r in state['runs']for segment in r.get('resume_segments',[])]
+    if len(attempts)>=3 or sum(r['reserved_documents']for r in state['runs'])>=300:raise ValueError('AUTHORIZED_OBSERVATION_EXHAUSTED')
+    if any(r['day_kst']==local_day(now)for r in attempts):raise ValueError('ONCE_PER_KST_DAY')
     if state['runs']:
         if (state.get('first_review')or{}).get('status')!='PASS_SOURCE_SAMPLE_NOT_POPULATION_CERTIFICATION':raise ValueError('FIRST_ACTUAL_REVIEW_REQUIRED')
     elif event!='first-approved-push':raise ValueError('FIRST_RUN_REQUIRES_APPROVED_PUSH')
     if now>datetime.fromisoformat(config['expires_at_utc']):raise ValueError('OBSERVATION_WINDOW_EXPIRED')
+def check_recovery_gate(config,state,now,parent_run,batch_documents):
+    """Explicit continuation of an existing reservation; never reset a HOLD.
+
+    Count continuations as executions against the original three-run ceiling,
+    and retain the original100-document reservation rather than reserving again.
+    """
+    if state['phase']not in {'HOLD_FAILURE','PAUSED_QUEUE'}:raise ValueError('RECOVERY_PHASE_CLOSED')
+    if not 1<=batch_documents<=25:raise ValueError('RECOVERY_SMALL_BATCH_REQUIRED')
+    parents=[r for r in state['runs']if r['run_id']==parent_run]
+    if len(parents)!=1 or parents[0]is not state['runs'][-1]:raise ValueError('RECOVERY_PARENT_NOT_LAST')
+    parent=parents[0]
+    if state['phase']=='HOLD_FAILURE'and parent.get('stop_reason')!='RUN_WALL_BUDGET':raise ValueError('RECOVERY_COMMON_FAILURE_STILL_HELD')
+    attempts=[r for r in state['runs']]+[segment for r in state['runs']for segment in r.get('resume_segments',[])]
+    if len(attempts)>=config['max_runs']:raise ValueError('AUTHORIZED_EXECUTION_ATTEMPTS_EXHAUSTED')
+    if any(r['day_kst']==local_day(now)for r in attempts):raise ValueError('ONCE_PER_KST_DAY')
+    candidate=json.loads(json.dumps(state));candidate['phase']='READY_NEXT'
+    check_gate(config,candidate,now,'schedule')
+    if len(state['completed_receipts'])!=len(set(state['completed_receipts'])):raise ValueError('DUPLICATE_DURABLE_RECEIPTS')
+    return parent
+def freeze_recovery(root,state,parent_run,run_id):
+    prior=json.loads((root/BASE/'runs'/parent_run/'selection.json').read_text())
+    if sha(raw(prior['samples']))!=prior['selection_sha256']:raise ValueError('RECOVERY_SELECTION_HASH')
+    complete=set(state['completed_receipts']);samples=[s for s in prior['samples']if s['rcept_no']not in complete]
+    if not samples or any(s['rcept_no']<=state['last_checkpoint']for s in samples):raise ValueError('RECOVERY_CHECKPOINT_QUEUE')
+    if len(samples)>100 or len({s['rcept_no']for s in samples})!=len(samples):raise ValueError('RECOVERY_QUEUE_SIZE')
+    return dict(prior,run_id=run_id,parent_run_id=parent_run,start_checkpoint=state['last_checkpoint'],samples=samples,selection_sha256=sha(raw(samples)),original_selection_sha256=prior['selection_sha256'],new_document_reservation=0)
 def freeze(root,state,run_id):
     index=read_csv(root/INDEX);old=read_csv(root/OLD)
     previous=[json.loads(p.read_text())for p in sorted((root/'data/financials/legacy_2000_2014/quality_v9/collection').glob('*.json'))]
@@ -134,11 +161,13 @@ class GitHub:
                 elif self.content(p,commit)!=b:raise ValueError('POST_COMMIT_READBACK_FAILURE')
             return commit
         raise ValueError('CONCURRENT_MAIN_CHANGED_TWICE')
-def run(root,out,event):
+def run(root,out,event,parent_run=None,batch_documents=25):
     if os.getenv('GITHUB_REF')!='refs/heads/main'or os.getenv('GITHUB_RUN_ATTEMPT','1')!='1':raise ValueError('MAIN_FIRST_ATTEMPT_ONLY')
     api=GitHub();head=api.head();current=api.content(STATE,head)
     state=json.loads(current)if current else initial();config=json.loads((root/CONFIG).read_text());now=datetime.now(UTC)
-    try:check_gate(config,state,now,event)
+    try:
+        if parent_run:check_recovery_gate(config,state,now,parent_run,batch_documents)
+        else:check_gate(config,state,now,event)
     except ValueError as e:
         out.mkdir(parents=True,exist_ok=False);atomic(out/'gate.json',dict(status='NO_COLLECTION',reason=str(e),observed_head=head,observed_state=state));print(json.dumps(dict(status='NO_COLLECTION',reason=str(e))));return 0
     run_id=os.environ['GITHUB_RUN_ID']
@@ -148,7 +177,7 @@ def run(root,out,event):
         if state['runs']:
             from scripts.financial_limited_review import verify_approval
             verify_approval(root,state)
-        plan=freeze(root,state,run_id)
+        plan=freeze_recovery(root,state,parent_run,run_id)if parent_run else freeze(root,state,run_id)
     except ValueError as exc:
         state.update(phase='HOLD_PRECHECK_FAILURE',precheck_error=str(exc),failed_run_id=run_id)
         out.mkdir(parents=True,exist_ok=False);atomic(out/'gate.json',state)
@@ -156,14 +185,19 @@ def run(root,out,event):
         raise
     out.mkdir(parents=True,exist_ok=False);atomic(out/'batch_plan.json',plan)
     slot=dict(run_id=run_id,day_kst=local_day(now),started_at_utc=stamp(),reserved_documents=len(plan['samples']),status='RUNNING',selection_sha256=plan['selection_sha256'],start_checkpoint=state['last_checkpoint'])
-    state['runs'].append(slot);state['phase']='RUNNING';reserved=raw(state)
+    slot['batch_document_limit']=batch_documents
+    if parent_run:
+        slot.update(parent_run_id=parent_run,reserved_documents=0,prior_phase=state['phase'])
+        state['runs'][-1].setdefault('resume_segments',[]).append(slot)
+    else:state['runs'].append(slot)
+    state['phase']='RUNNING';reserved=raw(state)
     reservation=api.commit({STATE:reserved,BASE/'runs'/run_id/'selection.json':raw(plan)},current,root,'Reserve bounded source observation '+run_id+' [skip ci]')
     atomic(out/'reservation.json',dict(commit=reservation,state_sha256=sha(reserved)))
     batch=out/'batch';code=1;failure=''
     def live(status):
         if status['current_stage']in {'WORKER_START','CHECKPOINT_DURABLE','DEFERRED'}:
             print(json.dumps({k:status.get(k)for k in ['current_receipt','current_stage','completed','last_checkpoint','elapsed_seconds']}),flush=True)
-    try:code=run_batch(plan['samples'],batch,result_validator=validate_result,status_callback=live)
+    try:code=run_batch(plan['samples'],batch,result_validator=validate_result,status_callback=live,max_documents=batch_documents)
     except Exception as e:failure=type(e).__name__+':'+str(e) if isinstance(e,ValueError)else type(e).__name__
     if not(batch/'run_status.json').exists():raise ValueError('NO_BATCH_CHECKPOINT_LEASE_STAYS_RUNNING')
     summary=summarize(batch,plan);atomic(out/'summary.json',summary)
@@ -179,11 +213,12 @@ def run(root,out,event):
                     dest=folder/base/p.name;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(p.read_bytes())
         atomic(folder/'selection.json',dict(samples=[s for s in plan['samples']if s['rcept_no']in subset]))
         atomic(folder/'run_status.json',summary['run_status']);transfer(folder);transfers.append(json.loads((folder/'transfer.json').read_text()))
-    slot.update(status='COMPLETE'if code==0 else'STOPPED',completed_at_utc=stamp(),durable_documents=summary['durable_terminal_documents'],counts=summary['counts'],candidate_fields=summary['candidate_fields'],reservation_commit=reservation,transfers=transfers,stop_reason=failure or summary['run_status']['stop_reason'])
+    pending=summary['run_status'].get('remaining_receipts',[])
+    slot.update(status=('PAUSED'if pending else'COMPLETE')if code==0 else'STOPPED',completed_at_utc=stamp(),durable_documents=summary['durable_terminal_documents'],counts=summary['counts'],candidate_fields=summary['candidate_fields'],reservation_commit=reservation,transfers=transfers,stop_reason=failure or summary['run_status']['stop_reason'],remaining_receipts=pending)
     state['completed_receipts'].extend(summary['completed_receipts'])
     ordered=[s['rcept_no']for s in plan['samples']if s['rcept_no']in set(summary['completed_receipts'])]
     if ordered:state['last_checkpoint']=ordered[-1]
-    state['phase']='WAIT_FIRST_REVIEW'if code==0 and len(state['runs'])==1 else('READY_NEXT'if code==0 and len(state['runs'])<3 else'OBSERVATION_COMPLETE'if code==0 else'HOLD_FAILURE')
+    state['phase']='HOLD_FAILURE'if code else'WAIT_FIRST_REVIEW'if not parent_run and len(state['runs'])==1 else'PAUSED_QUEUE'if pending else'READY_NEXT'if len(state['runs'])<3 else'OBSERVATION_COMPLETE'
     if len(state['completed_receipts'])!=len(set(state['completed_receipts'])):raise ValueError('DUPLICATE_DURABLE_RECEIPTS')
     manifest=dict(summary=summary,transfers=transfers,plan_sha256=sha(raw(plan)),financial_publication='HOLD',code_sha=os.environ['GITHUB_SHA'])
     output_files={STATE:raw(state),BASE/'runs'/run_id/'manifest.json':raw(manifest)}
@@ -193,4 +228,4 @@ def run(root,out,event):
     print(json.dumps(dict(status=state['phase'],commit=final,processed=summary['processed_results'],durable=summary['durable_terminal_documents'],counts=summary['counts'],candidate_fields=summary['candidate_fields'],financial_fields_published=0)))
     return code
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--event',choices=['first-approved-push','schedule'],required=True);a=p.parse_args();raise SystemExit(run(ROOT,a.output,a.event))
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--event',choices=['first-approved-push','schedule'],required=True);p.add_argument('--resume-parent-run');p.add_argument('--batch-documents',type=int,choices=range(1,26),default=25);a=p.parse_args();raise SystemExit(run(ROOT,a.output,a.event,a.resume_parent_run,a.batch_documents))
