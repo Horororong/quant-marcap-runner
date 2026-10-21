@@ -1,0 +1,15 @@
+test_changed_selection_or_source_hash_is_hard_failure (test_financial_batch_resume.Resume.test_changed_selection_or_source_hash_is_hard_failure) ... ok
+test_count_pause_resume_skips_durable_without_rewrite (test_financial_batch_resume.Resume.test_count_pause_resume_skips_durable_without_rewrite) ... ok
+test_insufficient_admission_time_yields_before_worker (test_financial_batch_resume.Resume.test_insufficient_admission_time_yields_before_worker) ... ok
+test_same_day_and_three_attempt_caps_remain_closed (test_financial_batch_resume.Resume.test_same_day_and_three_attempt_caps_remain_closed) ... ok
+test_sigkill_after_raw_source_resumes_without_redownload (test_financial_batch_resume.Resume.test_sigkill_after_raw_source_resumes_without_redownload) ... ok
+test_common_guard_failure_stops_before_checkpoint_or_next_worker (test_financial_limited_resume.Limited.test_common_guard_failure_stops_before_checkpoint_or_next_worker) ... ok
+test_document_reject_then_next_document_complete_without_values (test_financial_limited_resume.Limited.test_document_reject_then_next_document_complete_without_values) ... ok
+test_first_schedule_review_daily_total_and_failure_gates (test_financial_limited_resume.Limited.test_first_schedule_review_daily_total_and_failure_gates) ... ok
+test_kst_midnight_not_utc_midnight (test_financial_limited_resume.Limited.test_kst_midnight_not_utc_midnight) ... ok
+test_publication_schema_never_certifies_a_source_gap (test_financial_limited_resume.Limited.test_publication_schema_never_certifies_a_source_gap) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 1.035s
+
+OK

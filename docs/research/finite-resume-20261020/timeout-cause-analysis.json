@@ -1,0 +1,321 @@
+{
+  "completed_documents": 57,
+  "sum_document_seconds": 599.4269999999999,
+  "median_document_seconds": 9.834000000000003,
+  "max_document": {
+    "receipt": "20100331001980",
+    "worker_and_validation_checkpoint_seconds": 28.286,
+    "end": 217.139
+  },
+  "last_completed": {
+    "receipt": "20100331002054",
+    "worker_and_validation_checkpoint_seconds": 6.420999999999935,
+    "end": 599.507
+  },
+  "last_started": "20100331002062",
+  "last_start_seconds": 599.508,
+  "deferred": {
+    "current_receipt": "20100331002062",
+    "current_stage": "DEFERRED",
+    "completed": 57,
+    "last_checkpoint": "20100331002054",
+    "elapsed_seconds": 600.018
+  },
+  "infinite_retry_evidence": false,
+  "old_stage_breakdown": {
+    "download": "UNINSTRUMENTED",
+    "parsing": "UNINSTRUMENTED; parse_member heartbeats exist",
+    "validation": "NOT_SEPARATELY_TIMED",
+    "checkpoint": "NOT_SEPARATELY_TIMED; immediately followed by next start",
+    "waiting": "Parent poll0.1sec; no prolonged retry in retained log"
+  },
+  "cause": "Sequential100-document selection exceeded600sec; new worker admitted at599.508sec with0.492sec left, then forcibly deferred. No start-admission reserve.",
+  "new_instrumentation": "Per-receipt worker/validation/checkpoint timings and original worker monotonic progress; explicit remaining queue and safe admission reserve",
+  "documents": [
+    {
+      "receipt": "20100331001938",
+      "worker_and_validation_checkpoint_seconds": 18.501,
+      "end": 18.503
+    },
+    {
+      "receipt": "20100331001942",
+      "worker_and_validation_checkpoint_seconds": 9.411999999999999,
+      "end": 27.916
+    },
+    {
+      "receipt": "20100331001943",
+      "worker_and_validation_checkpoint_seconds": 7.036000000000001,
+      "end": 34.953
+    },
+    {
+      "receipt": "20100331001944",
+      "worker_and_validation_checkpoint_seconds": 6.619,
+      "end": 41.573
+    },
+    {
+      "receipt": "20100331001949",
+      "worker_and_validation_checkpoint_seconds": 5.43,
+      "end": 47.004
+    },
+    {
+      "receipt": "20100331001950",
+      "worker_and_validation_checkpoint_seconds": 8.024000000000001,
+      "end": 55.031
+    },
+    {
+      "receipt": "20100331001951",
+      "worker_and_validation_checkpoint_seconds": 19.554000000000002,
+      "end": 74.586
+    },
+    {
+      "receipt": "20100331001953",
+      "worker_and_validation_checkpoint_seconds": 10.227999999999994,
+      "end": 84.815
+    },
+    {
+      "receipt": "20100331001954",
+      "worker_and_validation_checkpoint_seconds": 10.021999999999991,
+      "end": 94.838
+    },
+    {
+      "receipt": "20100331001955",
+      "worker_and_validation_checkpoint_seconds": 13.534999999999997,
+      "end": 108.374
+    },
+    {
+      "receipt": "20100331001960",
+      "worker_and_validation_checkpoint_seconds": 7.620999999999995,
+      "end": 115.996
+    },
+    {
+      "receipt": "20100331001961",
+      "worker_and_validation_checkpoint_seconds": 17.27499999999999,
+      "end": 133.272
+    },
+    {
+      "receipt": "20100331001962",
+      "worker_and_validation_checkpoint_seconds": 6.619,
+      "end": 139.893
+    },
+    {
+      "receipt": "20100331001963",
+      "worker_and_validation_checkpoint_seconds": 6.419000000000011,
+      "end": 146.323
+    },
+    {
+      "receipt": "20100331001966",
+      "worker_and_validation_checkpoint_seconds": 8.827999999999975,
+      "end": 155.152
+    },
+    {
+      "receipt": "20100331001972",
+      "worker_and_validation_checkpoint_seconds": 9.838000000000022,
+      "end": 164.991
+    },
+    {
+      "receipt": "20100331001974",
+      "worker_and_validation_checkpoint_seconds": 10.713999999999999,
+      "end": 175.706
+    },
+    {
+      "receipt": "20100331001977",
+      "worker_and_validation_checkpoint_seconds": 13.14500000000001,
+      "end": 188.852
+    },
+    {
+      "receipt": "20100331001980",
+      "worker_and_validation_checkpoint_seconds": 28.286,
+      "end": 217.139
+    },
+    {
+      "receipt": "20100331001981",
+      "worker_and_validation_checkpoint_seconds": 9.331000000000017,
+      "end": 226.471
+    },
+    {
+      "receipt": "20100331001982",
+      "worker_and_validation_checkpoint_seconds": 18.982,
+      "end": 245.454
+    },
+    {
+      "receipt": "20100331001983",
+      "worker_and_validation_checkpoint_seconds": 11.929999999999978,
+      "end": 257.385
+    },
+    {
+      "receipt": "20100331001986",
+      "worker_and_validation_checkpoint_seconds": 11.529999999999973,
+      "end": 268.916
+    },
+    {
+      "receipt": "20100331001987",
+      "worker_and_validation_checkpoint_seconds": 7.824000000000012,
+      "end": 276.741
+    },
+    {
+      "receipt": "20100331001990",
+      "worker_and_validation_checkpoint_seconds": 6.118999999999971,
+      "end": 282.861
+    },
+    {
+      "receipt": "20100331001993",
+      "worker_and_validation_checkpoint_seconds": 8.326999999999998,
+      "end": 291.189
+    },
+    {
+      "receipt": "20100331001994",
+      "worker_and_validation_checkpoint_seconds": 7.624000000000024,
+      "end": 298.814
+    },
+    {
+      "receipt": "20100331001996",
+      "worker_and_validation_checkpoint_seconds": 8.523000000000025,
+      "end": 307.338
+    },
+    {
+      "receipt": "20100331001997",
+      "worker_and_validation_checkpoint_seconds": 5.430999999999983,
+      "end": 312.77
+    },
+    {
+      "receipt": "20100331001998",
+      "worker_and_validation_checkpoint_seconds": 11.125,
+      "end": 323.896
+    },
+    {
+      "receipt": "20100331002001",
+      "worker_and_validation_checkpoint_seconds": 11.834000000000003,
+      "end": 335.731
+    },
+    {
+      "receipt": "20100331002002",
+      "worker_and_validation_checkpoint_seconds": 6.6229999999999905,
+      "end": 342.355
+    },
+    {
+      "receipt": "20100331002003",
+      "worker_and_validation_checkpoint_seconds": 9.834000000000003,
+      "end": 352.19
+    },
+    {
+      "receipt": "20100331002007",
+      "worker_and_validation_checkpoint_seconds": 7.520000000000039,
+      "end": 359.711
+    },
+    {
+      "receipt": "20100331002013",
+      "worker_and_validation_checkpoint_seconds": 10.713999999999999,
+      "end": 370.426
+    },
+    {
+      "receipt": "20100331002017",
+      "worker_and_validation_checkpoint_seconds": 10.23599999999999,
+      "end": 380.663
+    },
+    {
+      "receipt": "20100331002018",
+      "worker_and_validation_checkpoint_seconds": 6.911000000000001,
+      "end": 387.575
+    },
+    {
+      "receipt": "20100331002019",
+      "worker_and_validation_checkpoint_seconds": 14.846000000000004,
+      "end": 402.422
+    },
+    {
+      "receipt": "20100331002024",
+      "worker_and_validation_checkpoint_seconds": 8.226999999999975,
+      "end": 410.65
+    },
+    {
+      "receipt": "20100331002026",
+      "worker_and_validation_checkpoint_seconds": 6.425999999999988,
+      "end": 417.077
+    },
+    {
+      "receipt": "20100331002027",
+      "worker_and_validation_checkpoint_seconds": 10.02600000000001,
+      "end": 427.104
+    },
+    {
+      "receipt": "20100331002028",
+      "worker_and_validation_checkpoint_seconds": 9.925000000000011,
+      "end": 437.033
+    },
+    {
+      "receipt": "20100331002029",
+      "worker_and_validation_checkpoint_seconds": 8.427999999999997,
+      "end": 445.463
+    },
+    {
+      "receipt": "20100331002030",
+      "worker_and_validation_checkpoint_seconds": 11.716000000000008,
+      "end": 457.183
+    },
+    {
+      "receipt": "20100331002033",
+      "worker_and_validation_checkpoint_seconds": 19.450999999999965,
+      "end": 476.635
+    },
+    {
+      "receipt": "20100331002034",
+      "worker_and_validation_checkpoint_seconds": 8.827999999999975,
+      "end": 485.464
+    },
+    {
+      "receipt": "20100331002035",
+      "worker_and_validation_checkpoint_seconds": 7.711000000000013,
+      "end": 493.177
+    },
+    {
+      "receipt": "20100331002036",
+      "worker_and_validation_checkpoint_seconds": 6.019999999999982,
+      "end": 499.198
+    },
+    {
+      "receipt": "20100331002037",
+      "worker_and_validation_checkpoint_seconds": 13.435999999999979,
+      "end": 512.635
+    },
+    {
+      "receipt": "20100331002038",
+      "worker_and_validation_checkpoint_seconds": 4.923000000000002,
+      "end": 517.559
+    },
+    {
+      "receipt": "20100331002039",
+      "worker_and_validation_checkpoint_seconds": 15.035000000000082,
+      "end": 532.595
+    },
+    {
+      "receipt": "20100331002042",
+      "worker_and_validation_checkpoint_seconds": 4.408999999999992,
+      "end": 537.005
+    },
+    {
+      "receipt": "20100331002043",
+      "worker_and_validation_checkpoint_seconds": 14.037000000000035,
+      "end": 551.043
+    },
+    {
+      "receipt": "20100331002045",
+      "worker_and_validation_checkpoint_seconds": 14.418000000000006,
+      "end": 565.462
+    },
+    {
+      "receipt": "20100331002046",
+      "worker_and_validation_checkpoint_seconds": 14.365000000000009,
+      "end": 579.828
+    },
+    {
+      "receipt": "20100331002053",
+      "worker_and_validation_checkpoint_seconds": 13.254999999999995,
+      "end": 593.085
+    },
+    {
+      "receipt": "20100331002054",
+      "worker_and_validation_checkpoint_seconds": 6.420999999999935,
+      "end": 599.507
+    }
+  ]
+}

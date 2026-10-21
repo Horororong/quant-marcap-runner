@@ -1,0 +1,54 @@
+test_actual_loader_retains_dataframe_contract (test_dart_corp_code.CorpCodeTests.test_actual_loader_retains_dataframe_contract) ... ok
+test_actual_loader_typed_quota_and_fatal_errors (test_dart_corp_code.CorpCodeTests.test_actual_loader_typed_quota_and_fatal_errors) ... ok
+test_ambiguous_archive_fails (test_dart_corp_code.CorpCodeTests.test_ambiguous_archive_fails) ... ok
+test_current_status_published_before_modern_failure (test_dart_corp_code.CorpCodeTests.test_current_status_published_before_modern_failure) ... {"phase": "legacy_start", "limit": 1}
+{"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": "BATCH_COMPLETE", "completed": 1475}
+{"phase": "modern_decision", "start": true, "reason": "LEGACY_BATCH_COMPLETE", "limit": 1}
+                     mode modern_run_tasks  modern_failed modern_failure_type modern_failure_kind modern_failure_status  modern_failure_attempts  modern_rate_limited  legacy_run_docs legacy_stop_reason                   updated_at_utc
+SUPER_VALUE_FAST_BACKFILL             None           True       CorpCodeError    invalid_response                                              1                 True             1475     BATCH_COMPLETE 2026-10-21T02:43:23.335474+00:00
+ok
+test_generic_exception_details_not_published (test_dart_corp_code.CorpCodeTests.test_generic_exception_details_not_published) ... {"phase": "legacy_start", "limit": 1}
+{"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": "BATCH_COMPLETE", "completed": 1475}
+{"phase": "modern_decision", "start": true, "reason": "LEGACY_BATCH_COMPLETE", "limit": 1}
+                     mode modern_run_tasks  modern_failed modern_failure_type modern_failure_kind modern_failure_status modern_failure_attempts  modern_rate_limited  legacy_run_docs legacy_stop_reason                   updated_at_utc
+SUPER_VALUE_FAST_BACKFILL             None           True          ValueError  modern_phase_error                                          None                False             1475     BATCH_COMPLETE 2026-10-21T02:43:23.344121+00:00
+ok
+test_html_body_is_not_assumed_transient (test_dart_corp_code.CorpCodeTests.test_html_body_is_not_assumed_transient) ... ok
+test_http_quota_and_forbidden_do_not_retry (test_dart_corp_code.CorpCodeTests.test_http_quota_and_forbidden_do_not_retry) ... ok
+test_invalid_mapping_never_becomes_empty_success (test_dart_corp_code.CorpCodeTests.test_invalid_mapping_never_becomes_empty_success) ... ok
+test_no_modern_calls_after_legacy_quota (test_dart_corp_code.CorpCodeTests.test_no_modern_calls_after_legacy_quota) ... {"phase": "legacy_start", "limit": 1}
+{"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": null, "completed": null}
+{"phase": "modern_decision", "start": false, "reason": "LEGACY_RATE_LIMIT", "limit": 1}
+                     mode  modern_run_tasks  modern_skipped modern_phase_decision  legacy_rate_limited                   updated_at_utc
+SUPER_VALUE_FAST_BACKFILL                 0            True     LEGACY_RATE_LIMIT                 True 2026-10-21T02:43:23.350286+00:00
+ok
+test_non_xml_first_member_is_not_chosen (test_dart_corp_code.CorpCodeTests.test_non_xml_first_member_is_not_chosen) ... ok
+test_quota_and_auth_and_maintenance_do_not_retry (test_dart_corp_code.CorpCodeTests.test_quota_and_auth_and_maintenance_do_not_retry) ... ok
+test_recent_loader_uses_same_checked_response_and_keeps_filter (test_dart_corp_code.CorpCodeTests.test_recent_loader_uses_same_checked_response_and_keeps_filter) ... ok
+test_success_path_still_preserves_both_counts (test_dart_corp_code.CorpCodeTests.test_success_path_still_preserves_both_counts) ... {"phase": "legacy_start", "limit": 1}
+{"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": "BATCH_COMPLETE", "completed": 1475}
+{"phase": "modern_decision", "start": true, "reason": "LEGACY_BATCH_COMPLETE", "limit": 1}
+                     mode  modern_run_tasks  legacy_run_docs legacy_stop_reason                   updated_at_utc
+SUPER_VALUE_FAST_BACKFILL              1000             1475     BATCH_COMPLETE 2026-10-21T02:43:23.363042+00:00
+ok
+test_timeout_exhaustion_redacts_transport (test_dart_corp_code.CorpCodeTests.test_timeout_exhaustion_redacts_transport) ... ok
+test_timeout_recovers_with_bounded_attempts (test_dart_corp_code.CorpCodeTests.test_timeout_recovers_with_bounded_attempts) ... ok
+test_transient_http_retry_recovers (test_dart_corp_code.CorpCodeTests.test_transient_http_retry_recovers) ... ok
+test_truncated_zip_and_xml_and_empty_list_fail (test_dart_corp_code.CorpCodeTests.test_truncated_zip_and_xml_and_empty_list_fail) ... ok
+test_unknown_or_deadline_legacy_stop_never_starts_modern (test_dart_corp_code.CorpCodeTests.test_unknown_or_deadline_legacy_stop_never_starts_modern) ... {"phase": "legacy_start", "limit": 1}
+{"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": null, "completed": 2}
+{"phase": "modern_decision", "start": false, "reason": "LEGACY_STOP_UNKNOWN", "limit": 1}
+                     mode  modern_run_tasks  modern_skipped modern_phase_decision  legacy_run_docs                   updated_at_utc
+SUPER_VALUE_FAST_BACKFILL                 0            True   LEGACY_STOP_UNKNOWN                2 2026-10-21T02:43:23.369364+00:00
+{"phase": "legacy_start", "limit": 1}
+{"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": "DEADLINE", "completed": 2}
+{"phase": "modern_decision", "start": false, "reason": "LEGACY_STOP_DEADLINE", "limit": 1}
+                     mode  modern_run_tasks  modern_skipped modern_phase_decision  legacy_run_docs legacy_stop_reason                   updated_at_utc
+SUPER_VALUE_FAST_BACKFILL                 0            True  LEGACY_STOP_DEADLINE                2           DEADLINE 2026-10-21T02:43:23.375360+00:00
+ok
+test_valid_zip (test_dart_corp_code.CorpCodeTests.test_valid_zip) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.071s
+
+OK
