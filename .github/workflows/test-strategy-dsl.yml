@@ -9,7 +9,7 @@ on:
       suite:
         description: Research or bounded collection coordinator
         type: choice
-        options: [research, collection]
+        options: [research, collection, integration]
         default: research
 permissions:
   contents: read
@@ -40,21 +40,32 @@ jobs:
           python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
       - name: Language and saved-result provenance contracts
-        if: inputs.suite == 'research'
+        if: inputs.suite == 'research' || inputs.suite == 'integration'
         run: |
           PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
           "$PY" -I -m unittest discover -s scripts -p test_research_language.py -v
           "$PY" -I -m unittest discover -s scripts -p test_research_web.py -v
           "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");sys.argv=["scripts/export_strategy_dsl_contract.py","--check"];runpy.run_path(sys.argv[0],run_name="__main__")'
       - name: Real browser, common engine, CURRENT, independent books
-        if: inputs.suite == 'research'
+        if: inputs.suite == 'research' || inputs.suite == 'integration'
         run: |
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/test_research_workspace_e2e.py --output "$RUNNER_TEMP/research-workspace"
-      - name: Bounded coordinator and real SIGKILL recovery tests
-        if: inputs.suite == 'collection'
+      - name: Original frozen inputs and130 strict files
+        if: inputs.suite == 'integration'
         run: |
-          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume","test_dart_corp_code"]);r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/test_frozen_integration.py --output "$RUNNER_TEMP/frozen-regression"
+      - name: Bounded coordinator and real SIGKILL recovery tests
+        if: inputs.suite == 'collection' || inputs.suite == 'integration'
+        run: |
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume","test_dart_corp_code","test_legacy_backfill_resume"]);r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import hashlib,json;from pathlib import Path;c=json.loads(Path("config/financial_limited_resume_v1.json").read_text());assert all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==v for p,v in c["source_code_sha256"].items());print("PASS_APPROVED_SOURCE_OWNERS_UNCHANGED")'
+      - name: Readiness guards; real preflight and known-event blocking
+        if: inputs.suite == 'integration'
+        run: |
+          PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
+          "$PY" -I -m unittest discover -s scripts -p test_research_planned_readiness.py -v
+          "$PY" -I -c 'import sys,runpy;sys.path.insert(0,"scripts");runpy.run_path("scripts/test_strategy_dsl_preflight.py",run_name="__main__")'
+          "$PY" -I -c 'import sys,runpy;sys.path.insert(0,"scripts");runpy.run_path("scripts/test_corporate_action_preflight.py",run_name="__main__")'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -63,4 +74,5 @@ jobs:
             ${{ runner.temp }}/checked-target.txt
             ${{ runner.temp }}/runtime.json
             ${{ runner.temp }}/research-workspace
+            ${{ runner.temp }}/frozen-regression
           retention-days: 90
