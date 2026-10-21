@@ -93,3 +93,7 @@ gh workflow run backfill-dart-legacy-2000-2014.yml --repo Horororong/quant-marca
 이번29문서 증거와 합산 장부,23원인별 미검증,누락 우선순위,현재 gate,승인·전달 영수증은 연구브랜치의 이 폴더 및 HANDOFF_CURRENT.md로 보존한다. 이전19문서 증거는 원래 docs/research/operating-source-review-20261021 그대로 참조한다. 이 증분에 원문ZIP/현재12envelope/v5archive를 다시 포함하지 않는다.
 
 다음 의미 검토 high-water receipt는 없다. 기존 후보48문서/871개 판정은 끝났고 새 근거가 필요한23개가 정확한 다음 작업목록이다. P1STC/CJ추출 수리, annex/미등록 account/whole-filing 누락 검증, 실제사용가능일과 정정체인/PIT가 남았다. 수집 checkpoint는 이 의미 검토 장부와 별개인20100331002054다.
+
+## 이번 증분 원격 게시의 실제 상태
+
+로컬 증거 commit b83fcab263100dd889e050cae3732d6e5d90c215의 새25파일/약17MB 감사 자료를 공개 GitHub 연구브랜치에 게시하는 명령은 자동 승인 검토에서 시작 전에 거부됐다. 사유는 exact v5의 외부 전송 승인에 이 이후 생성된 새 source evidence/파생 자료가 포함되지 않는다는 것이다. 원격 게시/새 draft 전송은 하지 않았다. 승인된v5의 원격 검증은 이미 성공했다. 이번 후속 delta는 로컬 Git/새 로컬v6백업으로만 보존하며 새 정확한 payload에 대한 공개 게시 승인이 필요하다.

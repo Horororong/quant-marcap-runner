@@ -1,0 +1,15 @@
+{
+  "status": "BLOCKED_BY_AUTOMATIC_APPROVAL_REVIEW",
+  "repository": "Horororong/quant-marcap-runner",
+  "visibility": "public",
+  "local_evidence_commit": "b83fcab263100dd889e050cae3732d6e5d90c215",
+  "requested_action": "Publish the new source-review batch2 evidence commits on integrate/research-collection-20261021",
+  "review_reason": "The exact v5 archive approval does not authorize the later 25-file, 17MB source-evidence and derived-artifact payload for public egress.",
+  "command_started": false,
+  "new_payload_uploaded": false,
+  "v5_approved_delivery_already_verified": true,
+  "required_user_action": "Explicit approval to publish the final batch2 local commit and its new source-review evidence to this public repository. Do not retry or use another upload route before that approval.",
+  "classification": "RESEARCH_ONLY",
+  "financial_publication": "HOLD",
+  "PIT": "UNVERIFIED"
+}

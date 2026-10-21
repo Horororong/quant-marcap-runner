@@ -1,3 +1,7 @@
+## 2026-10-21 이번 증분의 공개 게시 승인 대기
+
+새29문서 증거 commit b83fcab263100dd889e050cae3732d6e5d90c215는 로컬에만 있다. 정확한v5에 대한 승인은 이미 이행했으나 자동 승인 검토가 이후 생성된25파일/17MB 감사 자료의 공개 GitHub 게시를 별도 승인 대상으로 판단해 git publication 명령을 시작 전에 거부했다. 이번 증분은 아직 원격 보존됐다고 주장하지 않는다. 사용자 승인 전 다른 경로/축소 payload로 우회 전송하지 않는다. 승인 대상은 이 새 증거 commit 및 이 차단 영수증/인계 기록을 포함한 후속 commit이다. 변경분은 별도 로컬v6증분 백업에 보존한다. 보고서: docs/research/source-review-batch2-20261021/REPORT.md
+
 ## 2026-10-21 v5 전달 완료 및29문서 후속 감사
 
 - v5 exact8635482bytes/46files/SHA256c1de9872045c0d1d066b37fb7aab5f968f986c5854bda1083f238a261ff46490는 이번 명시승인 후 공개 저장소의 새draft419190338로 보존했다. 설정된 비밀값/토큰/개인키 검출0; 인증원격다운로드/별도tmp에서 전체SHA·CRC·46파일 해시PASS. [release](https://github.com/Horororong/quant-marcap-runner/releases/tag/untagged-78757edecdfa41d49e4b). 기존 pending 문서는 당시 스냅샷이며 새 delivery receipt가 최신이다.
