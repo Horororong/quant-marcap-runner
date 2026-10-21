@@ -4,7 +4,7 @@ All results RESEARCH_ONLY. No existing151-file baseline pin, tolerance, input, s
 
 |Frozen files|Count|Verdict/meaning|
 |---|---:|---|
-|Strict original bytes|130|Final integrated UI executions are compared with unchanged151-file manifest; selection/weights/fills/books/NAV/CURRENT/strategy/fingerprint are NOT exceptions.|
+|Strict original bytes|130|Final integrated exact original-input executions are compared with unchanged151-file manifest; selection/weights/fills/books/NAV/CURRENT/strategy/fingerprint are NOT exceptions.|
 |Execution plans|6|Only three version fields change: exec5→10, CA7→9, DSL25→30. All other plan fields must equal originalJSON. No trade/cost/result differences are permitted.|
 |Preflight|3|Structured planned-readiness contract, annual source/calendar checks, selected exposures and source/control hashes replace the old source-only envelope. Distinct planned codes33/3/1 are not a reduced universe. Full yearly signal cross-sections are scored before selected-code diagnostics. Source missing, calendar mismatch, unknown corporate actions, missing held quotes/reference returns, insufficient population and untradable original execution remain blockers. Runtime engine still applies1bp held-return, actual liquidity, cost, PIT and CURRENT gates.|
 |Old envelopes|12|UNVERIFIED before/after field comparison: original bytes not locally available through currently supported transfer. Per-file currentSHA/size/schema and substantive-field warnings inenvelope-12-verdicts.json. Not labelled harmless timestamp/path/ID changes.|
