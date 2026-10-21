@@ -53,7 +53,7 @@ jobs:
       - name: Bounded coordinator and real SIGKILL recovery tests
         if: inputs.suite == 'collection'
         run: |
-          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume"]);r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume","test_dart_corp_code"]);r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import hashlib,json;from pathlib import Path;c=json.loads(Path("config/financial_limited_resume_v1.json").read_text());assert all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==v for p,v in c["source_code_sha256"].items());print("PASS_APPROVED_SOURCE_OWNERS_UNCHANGED")'
       - uses: actions/upload-artifact@v4
         if: always()
