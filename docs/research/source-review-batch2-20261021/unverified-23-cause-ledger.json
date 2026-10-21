@@ -1,0 +1,347 @@
+[
+  {
+    "receipt": "20100331001944",
+    "scope": "OFS",
+    "metric": "current_portion_long_term_debt",
+    "source_label": "유동성사채",
+    "source_table": 87,
+    "source_row": 56,
+    "findings": [
+      "CURRENT_BOND_COMPONENT_NOT_PROVED_TOTAL_CURRENT_LONG_TERM_DEBT"
+    ],
+    "previous_reviewed_12": true,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001949",
+    "scope": "OFS",
+    "metric": "cost_of_sales",
+    "source_label": "Ⅱ.영업비용",
+    "source_table": 63,
+    "source_row": 5,
+    "findings": [
+      "OPERATING_EXPENSE_IS_NOT_PROVED_COST_OF_SALES"
+    ],
+    "previous_reviewed_12": true,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001951",
+    "scope": "OFS",
+    "metric": "bonds_payable",
+    "source_label": "사채",
+    "source_table": 149,
+    "source_row": 81,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": true,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001955",
+    "scope": "OFS",
+    "metric": "bonds_payable",
+    "source_label": "(1)사채",
+    "source_table": 163,
+    "source_row": 71,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": true,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001961",
+    "scope": "OFS",
+    "metric": "bonds_payable",
+    "source_label": "(1)사채",
+    "source_table": 171,
+    "source_row": 83,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": true,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001961",
+    "scope": "CFS",
+    "metric": "bonds_payable",
+    "source_label": "1. 사채",
+    "source_table": 181,
+    "source_row": 83,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": true,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001962",
+    "scope": "OFS",
+    "metric": "cost_of_sales",
+    "source_label": "영업비용",
+    "source_table": 69,
+    "source_row": 2,
+    "findings": [
+      "OPERATING_EXPENSE_IS_NOT_PROVED_COST_OF_SALES"
+    ],
+    "previous_reviewed_12": true,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001972",
+    "scope": "OFS",
+    "metric": "current_portion_long_term_debt",
+    "source_label": "유동성사채",
+    "source_table": 127,
+    "source_row": 49,
+    "findings": [
+      "CURRENT_BOND_COMPONENT_NOT_PROVED_TOTAL_CURRENT_LONG_TERM_DEBT"
+    ],
+    "previous_reviewed_12": true,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001977",
+    "scope": "OFS",
+    "metric": "cost_of_sales",
+    "source_label": "Ⅱ.영업비용",
+    "source_table": 185,
+    "source_row": 11,
+    "findings": [
+      "OPERATING_EXPENSE_IS_NOT_PROVED_COST_OF_SALES"
+    ],
+    "previous_reviewed_12": true,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001980",
+    "scope": "CFS",
+    "metric": "bonds_payable",
+    "source_label": "1.사채(주석2,12,16,24)",
+    "source_table": 125,
+    "source_row": 94,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": true,
+    "prior_SK_control": true,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001982",
+    "scope": "OFS",
+    "metric": "bonds_payable",
+    "source_label": "(2)사채",
+    "source_table": 125,
+    "source_row": 76,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": true,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001982",
+    "scope": "CFS",
+    "metric": "bonds_payable",
+    "source_label": "1. 사 채(주석 11)",
+    "source_table": 135,
+    "source_row": 91,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": true,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001986",
+    "scope": "OFS",
+    "metric": "bonds_payable",
+    "source_label": "사채",
+    "source_table": 111,
+    "source_row": 81,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": false,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001986",
+    "scope": "OFS",
+    "metric": "current_portion_long_term_debt",
+    "source_label": "유동성장기차입금",
+    "source_table": 111,
+    "source_row": 77,
+    "findings": [
+      "CURRENT_COMPONENT_NOT_PROVED_TOTAL_CURRENT_LONG_TERM_DEBT"
+    ],
+    "previous_reviewed_12": false,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001997",
+    "scope": "OFS",
+    "metric": "bonds_payable",
+    "source_label": "사채",
+    "source_table": 151,
+    "source_row": 78,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": false,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331001997",
+    "scope": "OFS",
+    "metric": "current_portion_long_term_debt",
+    "source_label": "유동성사채",
+    "source_table": 151,
+    "source_row": 73,
+    "findings": [
+      "CURRENT_COMPONENT_NOT_PROVED_TOTAL_CURRENT_LONG_TERM_DEBT"
+    ],
+    "previous_reviewed_12": false,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331002001",
+    "scope": "OFS",
+    "metric": "bonds_payable",
+    "source_label": "사채",
+    "source_table": 105,
+    "source_row": 70,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": false,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331002003",
+    "scope": "OFS",
+    "metric": "bonds_payable",
+    "source_label": "사채",
+    "source_table": 101,
+    "source_row": 92,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": false,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331002019",
+    "scope": "OFS",
+    "metric": "bonds_payable",
+    "source_label": "사채(주2,11)",
+    "source_table": 84,
+    "source_row": 80,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": false,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331002033",
+    "scope": "OFS",
+    "metric": "bonds_payable",
+    "source_label": "사채(주15)",
+    "source_table": 137,
+    "source_row": 89,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": false,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331002037",
+    "scope": "OFS",
+    "metric": "bonds_payable",
+    "source_label": "사채(주9)",
+    "source_table": 83,
+    "source_row": 56,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": false,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331002046",
+    "scope": "CFS",
+    "metric": "bonds_payable",
+    "source_label": "1. 사채(주석11)",
+    "source_table": 89,
+    "source_row": 90,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": false,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  },
+  {
+    "receipt": "20100331002046",
+    "scope": "OFS",
+    "metric": "bonds_payable",
+    "source_label": "사채",
+    "source_table": 132,
+    "source_row": 86,
+    "findings": [
+      "NONCURRENT_BOND_LINE_VS_TOTAL_BOND_DEFINITION_UNRESOLVED"
+    ],
+    "previous_reviewed_12": false,
+    "prior_SK_control": false,
+    "reopen_only_with": "Explicit account-definition evidence / proved aggregate or approved concept contract; no alias-only promotion",
+    "PIT": "UNVERIFIED"
+  }
+]

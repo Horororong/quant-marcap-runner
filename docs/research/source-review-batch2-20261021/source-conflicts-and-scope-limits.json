@@ -1,0 +1,44 @@
+[
+  {
+    "receipt": "20100331001990",
+    "type": "COMPARATIVE_PERIOD_NOT_FULL_YEAR",
+    "evidence": "Term33 comparative is 2008-12-01..2008-12-31; term32 is 2007-12-01..2008-11-30. Current term34 is full 2009.",
+    "effect": "Do not label comparative as full FY2008"
+  },
+  {
+    "receipt": "20100331001993",
+    "type": "SOURCE_CROSS_STATEMENT_CONFLICT",
+    "evidence": "BS table70 equity112274988298 vs preceding capital-change ending equity112274988297; 1KRW. IS profit7435596123 vs preceding capital-change7435596122.",
+    "effect": "Literal BS/IS row match does not resolve source inconsistency. No tolerance or value replacement"
+  },
+  {
+    "receipt": "20100331002001",
+    "type": "SOURCE_CAPITAL_CHANGE_PRINT_CONFLICT",
+    "evidence": "Table113 prefix contains current profit574371236 vs total571371236, ending total0; primary BS equity20378926851 and primary IS profit574371236.",
+    "effect": "No capital-change reconciliation certification; reported primary candidate not replaced"
+  },
+  {
+    "receipt": "20100331002002",
+    "type": "SOURCE_PARENTHESES_STALE_TEXT",
+    "evidence": "BS profit commentary in prefix shows prior negative3911485520; actual current IS109 positive1035190305 agrees CF115 current. Parenthetical commentary is not current-column evidence.",
+    "effect": "Use source-proved current monetary column; do not relabel prior commentary"
+  },
+  {
+    "receipt": "20100331002003",
+    "type": "SOURCE_CROSS_STATEMENT_CONFLICT",
+    "evidence": "BS equity15708393854 vs capital-change ending15708593854 (200000KRW). Prior IS profit-4719654038 vs prior CF-8597485308.",
+    "effect": "Current literal-row source check only; cross-statement/recast comparability unverified"
+  },
+  {
+    "receipt": "20100331002046",
+    "type": "SOURCE_COMPARATIVE_DATE_PRINT_CONFLICT",
+    "evidence": "CFS term34 header prints 2007-01-01..2008-12-31; current term36 is 2009-01-01..2009-12-31.",
+    "effect": "Do not certify historical comparative dates from this header"
+  },
+  {
+    "receipt": "20100331001983",
+    "type": "ADDITIONAL_ANNEX_SCOPE_NOT_FULLY_EXTRACTED",
+    "evidence": "Annex00761 has CFS primaryBS7/IS10/CF16 current2009, including revenue4642600859 and OCF-4951563026; existing17candidates are OFS only.",
+    "effect": "OFS existing-candidate completion does not certify annex/CFS extraction completeness"
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-21T05:28:04.927857+00:00",
+  "repository": "Horororong/quant-marcap-runner",
+  "visibility": "public",
+  "private": false,
+  "draft_is_not_a_privacy_boundary": true,
+  "archive_bytes": 8635482,
+  "archive_sha256": "c1de9872045c0d1d066b37fb7aab5f968f986c5854bda1083f238a261ff46490",
+  "payload_files": 46,
+  "configured_secret_values_checked": 2,
+  "secret_value_hits": [],
+  "patterns_checked": [
+    "github_token",
+    "private_key",
+    "aws_access_key",
+    "credential_url",
+    "literal_secret_assignment"
+  ],
+  "public_suitability": "APPROVED_SCOPE: public DART source excerpts, RESEARCH_ONLY outputs, source provenance and recovery instructions. Workspace paths/run IDs are operational metadata, not credentials. No detected credential values or private keys; no private account records included.",
+  "user_explicit_approval": true
+}

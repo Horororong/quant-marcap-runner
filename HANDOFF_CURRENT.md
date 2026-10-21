@@ -1,3 +1,11 @@
+## 2026-10-21 v5 전달 완료 및29문서 후속 감사
+
+- v5 exact8635482bytes/46files/SHA256c1de9872045c0d1d066b37fb7aab5f968f986c5854bda1083f238a261ff46490는 이번 명시승인 후 공개 저장소의 새draft419190338로 보존했다. 설정된 비밀값/토큰/개인키 검출0; 인증원격다운로드/별도tmp에서 전체SHA·CRC·46파일 해시PASS. [release](https://github.com/Horororong/quant-marcap-runner/releases/tag/untagged-78757edecdfa41d49e4b). 기존 pending 문서는 당시 스냅샷이며 새 delivery receipt가 최신이다.
+- 큐로홀딩스부터29문서523개 판정 완료: 신규512PASS/11UV, 누적848PASS/23reviewedUV/0NOT_REVIEWED.48문서의 기존 후보 판정 완료이며9SOURCE_GAP·모든871PIT·whole-filing extraction은 미인증이다. 기존12UV는 그대로 보존했다.
+- 기존46+신규54행=100원문 present/output absent행,54key. STCzone8key와CJtoken1presentation case를P1으로 분리. 개념 충돌42감가상각+3유동성장기부채+1사채key는fail-closed 유지. 생산 parser/version/승인 sourcehash 변경없음, 게시0.
+- 현재livegateONCE_PER_KST_DAY,HTTP0,mainfd232d.../HOLD_FAILURE 유지. checkpoint20100331002054 COMPLETED, next2062/2063,실행2/3·예약200/300·pending43. UTC15:00후에도 모든livegate재확인필수.남은1execution만 승인;자동다음batch금지.
+- 새 증거/보고/원인별23건/다음수리조건/전달영수증/manifest: [source-review-batch2](docs/research/source-review-batch2-20261021/REPORT.md). 과거12envelopeUNVERIFIED,130strict/기존CI39540516627/751hashaudit는 반복하지 않았다. RESEARCH_ONLY,financialpublicationHOLD/PIT0/6 유지.
+
 ## 2026-10-21 운영 반영·문서별 감사 후속
 
 - 검증된 통합 production code 기준305cb673f4768907945bc2752753810c4975c37c와 고정 kit CI39540516627SUCCESS를 재사용했다. 복원/751개 전체 hash/통합 CI를 반복하지 않았다.

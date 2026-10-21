@@ -1,0 +1,3546 @@
+{
+  "primary_tables": 159,
+  "declared_source_rows": 992,
+  "source_present_candidate_absent_rows": 100,
+  "metric_scope_keys": 54,
+  "groups": [
+    {
+      "receipt": "20100331001943",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001943",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 69,
+          "row": 21,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "28,589,300",
+            "40,639,468",
+            "68,189,894"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "28589300",
+          "unit": "원",
+          "term": 18,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001943",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 75,
+          "row": 6,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "1,434,990,365",
+            "1,439,379,189",
+            "1,224,297,355"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "1434990365",
+          "unit": "원",
+          "term": 18,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001943",
+      "scope": "OFS",
+      "metric": "amortization",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001943",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 69,
+          "row": 34,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "1,670,532",
+            "",
+            ""
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "1670532",
+          "unit": "원",
+          "term": 18,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001943",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 75,
+          "row": 9,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "5,797,483",
+            "",
+            ""
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "5797483",
+          "unit": "원",
+          "term": 18,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001944",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001944",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 89,
+          "row": 29,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "542,149,701",
+            "318,428,721",
+            "335,387,594"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "542149701",
+          "unit": "원",
+          "term": 50,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001944",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 95,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "3,148,266,832",
+            "3,833,048,165",
+            "1,482,402,221"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "3148266832",
+          "unit": "원",
+          "term": 50,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001950",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001950",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 104,
+          "row": 42,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "135,705,674",
+            "132,895,166",
+            "132,453,970"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "135705674",
+          "unit": "원",
+          "term": 13,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001950",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 110,
+          "row": 4,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "419,673,695",
+            "432,351,195",
+            "498,046,055"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "419673695",
+          "unit": "원",
+          "term": 13,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001951",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001951",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 151,
+          "row": 21,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "912,242,863",
+            "1,134,314,222",
+            "1,092,294,452"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "912242863",
+          "unit": "원",
+          "term": 33,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001951",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 157,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "7,507,293,281",
+            "8,644,449,092",
+            "8,368,852,674"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "7507293281",
+          "unit": "원",
+          "term": 33,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001951",
+      "scope": "OFS",
+      "metric": "amortization",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001951",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 151,
+          "row": 22,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "586,595,858",
+            "628,803,288",
+            "539,369,982"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "586595858",
+          "unit": "원",
+          "term": 33,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001951",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 157,
+          "row": 6,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "609,375,709",
+            "650,503,322",
+            "542,353,474"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "609375709",
+          "unit": "원",
+          "term": 33,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001953",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001953",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 104,
+          "row": 28,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "74,932,988",
+            "78,018,096",
+            "52,126,837"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "74932988",
+          "unit": "원",
+          "term": 15,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001953",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 110,
+          "row": 4,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "1,746,722,766",
+            "1,513,617,265",
+            "2,712,748,357"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "1746722766",
+          "unit": "원",
+          "term": 15,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001954",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001954",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 84,
+          "row": 29,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "1,004,426",
+            "42,376,003",
+            "19,622,572"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "1004426",
+          "unit": "원",
+          "term": 16,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001954",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 90,
+          "row": 4,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "845,862,672",
+            "1,002,912,203",
+            "145,110,555"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "845862672",
+          "unit": "원",
+          "term": 16,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001954",
+      "scope": "OFS",
+      "metric": "amortization",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001954",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 84,
+          "row": 31,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "28,067,527",
+            "11,855,469",
+            "11,395,234"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "28067527",
+          "unit": "원",
+          "term": 16,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001954",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 90,
+          "row": 5,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "927,429,776",
+            "1,307,948,698",
+            "161,180,272"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "927429776",
+          "unit": "원",
+          "term": 16,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001962",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001962",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 69,
+          "row": 12,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "382,706,018",
+            "397,786,037",
+            "277,525,302"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "382706018",
+          "unit": "원",
+          "term": 13,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001962",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 75,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "471,238,495",
+            "465,707,136",
+            "336,794,398"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "471238495",
+          "unit": "원",
+          "term": 13,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001963",
+      "scope": "OFS",
+      "metric": "amortization",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001963",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 76,
+          "row": 26,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "16,664,983",
+            "16,615,822",
+            "14,319,096"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "16664983",
+          "unit": "원",
+          "term": 10,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001963",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 82,
+          "row": 6,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "576,149,352",
+            "838,319,164",
+            "537,258,614"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "576149352",
+          "unit": "원",
+          "term": 10,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001963",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001963",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 76,
+          "row": 27,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "73,324,911",
+            "62,948,819",
+            "61,885,527"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "73324911",
+          "unit": "원",
+          "term": 10,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001963",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 82,
+          "row": 4,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "167,229,945",
+            "144,647,847",
+            "149,705,502"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "167229945",
+          "unit": "원",
+          "term": 10,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001966",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001966",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 108,
+          "row": 17,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "123,150,719",
+            "83,621,873",
+            "123,033,610"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "123150719",
+          "unit": "원",
+          "term": 10,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001966",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 114,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "719,480,087",
+            "503,515,193",
+            "569,331,735"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "719480087",
+          "unit": "원",
+          "term": 10,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001966",
+      "scope": "OFS",
+      "metric": "amortization",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001966",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 108,
+          "row": 32,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "3,881,991",
+            "1,374,188",
+            "1,794,529"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "3881991",
+          "unit": "원",
+          "term": 10,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001966",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 114,
+          "row": 7,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "34,896,543",
+            "21,553,067",
+            "16,236,595"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "34896543",
+          "unit": "원",
+          "term": 10,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "metric": "revenue",
+      "source_row_count": 1,
+      "priority": "P1",
+      "cause": "CONFIRMED_ZONE_CONTROL_FLOW_DEFECT",
+      "source_rows": [
+        {
+          "receipt": "20100331001972",
+          "scope": "CFS",
+          "family": "IS",
+          "table": 60,
+          "row": 1,
+          "label": "Ⅰ.매출액(주석 2,16)",
+          "cells": [
+            "Ⅰ.매출액(주석 2,16)",
+            "",
+            "3,507,674,422",
+            "",
+            "4,269,031,549"
+          ],
+          "metrics": [
+            "revenue"
+          ],
+          "current_physical_columns": [
+            1,
+            2
+          ],
+          "metric": "revenue",
+          "current_column": 2,
+          "source_amount": "3507674422",
+          "unit": "원",
+          "term": 22,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Fix ordinary see-notes sentence vs actual notes entry; source-date/column/unit/scope guards and approved-source migration remain required",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "metric": "cost_of_sales",
+      "source_row_count": 1,
+      "priority": "P1",
+      "cause": "CONFIRMED_ZONE_CONTROL_FLOW_DEFECT",
+      "source_rows": [
+        {
+          "receipt": "20100331001972",
+          "scope": "CFS",
+          "family": "IS",
+          "table": 60,
+          "row": 5,
+          "label": "Ⅱ.매출원가(주석 16)",
+          "cells": [
+            "Ⅱ.매출원가(주석 16)",
+            "",
+            "2,192,294,089",
+            "",
+            "2,442,983,236"
+          ],
+          "metrics": [
+            "cost_of_sales"
+          ],
+          "current_physical_columns": [
+            1,
+            2
+          ],
+          "metric": "cost_of_sales",
+          "current_column": 2,
+          "source_amount": "2192294089",
+          "unit": "원",
+          "term": 22,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Fix ordinary see-notes sentence vs actual notes entry; source-date/column/unit/scope guards and approved-source migration remain required",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "metric": "gross_profit",
+      "source_row_count": 1,
+      "priority": "P1",
+      "cause": "CONFIRMED_ZONE_CONTROL_FLOW_DEFECT",
+      "source_rows": [
+        {
+          "receipt": "20100331001972",
+          "scope": "CFS",
+          "family": "IS",
+          "table": 60,
+          "row": 9,
+          "label": "Ⅲ.매출총이익",
+          "cells": [
+            "Ⅲ.매출총이익",
+            "",
+            "1,315,380,333",
+            "",
+            "1,826,048,313"
+          ],
+          "metrics": [
+            "gross_profit"
+          ],
+          "current_physical_columns": [
+            1,
+            2
+          ],
+          "metric": "gross_profit",
+          "current_column": 2,
+          "source_amount": "1315380333",
+          "unit": "원",
+          "term": 22,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Fix ordinary see-notes sentence vs actual notes entry; source-date/column/unit/scope guards and approved-source migration remain required",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "metric": "depreciation",
+      "source_row_count": 1,
+      "priority": "P1",
+      "cause": "CONFIRMED_ZONE_CONTROL_FLOW_DEFECT",
+      "source_rows": [
+        {
+          "receipt": "20100331001972",
+          "scope": "CFS",
+          "family": "IS",
+          "table": 60,
+          "row": 18,
+          "label": "8.감가상각비(주석 2,6)",
+          "cells": [
+            "8.감가상각비(주석 2,6)",
+            "280,329,158",
+            "",
+            "120,951,455",
+            ""
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1,
+            2
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "280329158",
+          "unit": "원",
+          "term": 22,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Fix ordinary see-notes sentence vs actual notes entry; source-date/column/unit/scope guards and approved-source migration remain required",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "metric": "amortization",
+      "source_row_count": 1,
+      "priority": "P1",
+      "cause": "CONFIRMED_ZONE_CONTROL_FLOW_DEFECT",
+      "source_rows": [
+        {
+          "receipt": "20100331001972",
+          "scope": "CFS",
+          "family": "IS",
+          "table": 60,
+          "row": 19,
+          "label": "9.무형자산상각비(주석 2,9)",
+          "cells": [
+            "9.무형자산상각비(주석 2,9)",
+            "127,621,339",
+            "",
+            "129,592,201",
+            ""
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1,
+            2
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "127621339",
+          "unit": "원",
+          "term": 22,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Fix ordinary see-notes sentence vs actual notes entry; source-date/column/unit/scope guards and approved-source migration remain required",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "metric": "operating_income",
+      "source_row_count": 1,
+      "priority": "P1",
+      "cause": "CONFIRMED_ZONE_CONTROL_FLOW_DEFECT",
+      "source_rows": [
+        {
+          "receipt": "20100331001972",
+          "scope": "CFS",
+          "family": "IS",
+          "table": 60,
+          "row": 37,
+          "label": "Ⅴ.영업손실",
+          "cells": [
+            "Ⅴ.영업손실",
+            "",
+            "5,134,536,307",
+            "",
+            "7,473,424,134"
+          ],
+          "metrics": [
+            "operating_income"
+          ],
+          "current_physical_columns": [
+            1,
+            2
+          ],
+          "metric": "operating_income",
+          "current_column": 2,
+          "source_amount": "-5134536307",
+          "unit": "원",
+          "term": 22,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Fix ordinary see-notes sentence vs actual notes entry; source-date/column/unit/scope guards and approved-source migration remain required",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "metric": "net_income",
+      "source_row_count": 1,
+      "priority": "P1",
+      "cause": "CONFIRMED_ZONE_CONTROL_FLOW_DEFECT",
+      "source_rows": [
+        {
+          "receipt": "20100331001972",
+          "scope": "CFS",
+          "family": "IS",
+          "table": 60,
+          "row": 61,
+          "label": "Ⅹ.당기순손실",
+          "cells": [
+            "Ⅹ.당기순손실",
+            "",
+            "9,844,112,035",
+            "",
+            "7,915,070,516"
+          ],
+          "metrics": [
+            "net_income"
+          ],
+          "current_physical_columns": [
+            1,
+            2
+          ],
+          "metric": "net_income",
+          "current_column": 2,
+          "source_amount": "-9844112035",
+          "unit": "원",
+          "term": 22,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Fix ordinary see-notes sentence vs actual notes entry; source-date/column/unit/scope guards and approved-source migration remain required",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "metric": "ocf",
+      "source_row_count": 1,
+      "priority": "P1",
+      "cause": "CONFIRMED_ZONE_CONTROL_FLOW_DEFECT",
+      "source_rows": [
+        {
+          "receipt": "20100331001972",
+          "scope": "CFS",
+          "family": "CF",
+          "table": 64,
+          "row": 1,
+          "label": "Ⅰ.영업활동으로인한현금흐름",
+          "cells": [
+            "Ⅰ.영업활동으로인한현금흐름",
+            "",
+            "(4,481,694,015)",
+            "",
+            "703,370,753"
+          ],
+          "metrics": [
+            "ocf"
+          ],
+          "current_physical_columns": [
+            1,
+            2
+          ],
+          "metric": "ocf",
+          "current_column": 2,
+          "source_amount": "-4481694015",
+          "unit": "원",
+          "term": 22,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Fix ordinary see-notes sentence vs actual notes entry; source-date/column/unit/scope guards and approved-source migration remain required",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001977",
+      "scope": "OFS",
+      "metric": "bonds_payable",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "BOND_AGGREGATE_VS_COMPONENT_COLLISION",
+      "source_rows": [
+        {
+          "receipt": "20100331001977",
+          "scope": "OFS",
+          "family": "BS",
+          "table": 183,
+          "row": 69,
+          "label": "(2)사채",
+          "cells": [
+            "(2)사채",
+            "4,402,349",
+            "6,136,179",
+            "4,731,112"
+          ],
+          "metrics": [
+            "bonds_payable"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "bonds_payable",
+          "current_column": 1,
+          "source_amount": "4402349",
+          "unit": "백만원",
+          "term": 27,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001977",
+          "scope": "OFS",
+          "family": "BS",
+          "table": 183,
+          "row": 70,
+          "label": "1.회사채",
+          "cells": [
+            "1.회사채",
+            "4,200,000",
+            "5,920,000",
+            "4,337,000"
+          ],
+          "metrics": [
+            "bonds_payable"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "bonds_payable",
+          "current_column": 1,
+          "source_amount": "4200000",
+          "unit": "백만원",
+          "term": 27,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Keep conflicting amounts withheld",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001980",
+      "scope": "CFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001980",
+          "scope": "CFS",
+          "family": "IS",
+          "table": 127,
+          "row": 7,
+          "label": "3.감가상각비",
+          "cells": [
+            "3.감가상각비",
+            "236,825,784",
+            "203,159,529",
+            "164,578,325"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "236825784",
+          "unit": "천원",
+          "term": 48,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001980",
+          "scope": "CFS",
+          "family": "CF",
+          "table": 131,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "3,288,318,606",
+            "3,149,874,257",
+            "2,476,416,354"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "3288318606",
+          "unit": "천원",
+          "term": 48,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001980",
+      "scope": "CFS",
+      "metric": "amortization",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001980",
+          "scope": "CFS",
+          "family": "IS",
+          "table": 127,
+          "row": 8,
+          "label": "4.무형자산상각비",
+          "cells": [
+            "4.무형자산상각비",
+            "190,976,583",
+            "182,883,531",
+            "262,426,972"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "190976583",
+          "unit": "천원",
+          "term": 48,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001980",
+          "scope": "CFS",
+          "family": "CF",
+          "table": 131,
+          "row": 6,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "900,679,077",
+            "953,296,471",
+            "609,826,742"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "900679077",
+          "unit": "천원",
+          "term": 48,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001981",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001981",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 76,
+          "row": 29,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "309,434,164",
+            "225,555,540",
+            "168,477,415"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "309434164",
+          "unit": "원",
+          "term": 13,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001981",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 82,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "507,681,062",
+            "392,746,654",
+            "318,877,825"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "507681062",
+          "unit": "원",
+          "term": 13,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002038",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002038",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 169,
+          "row": 24,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "84,081,669",
+            "119,881,230",
+            "71,128,182"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "84081669",
+          "unit": "원",
+          "term": 29,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002038",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 175,
+          "row": 14,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "2,527,823,334",
+            "1,832,043,292",
+            "1,521,774,762"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "2527823334",
+          "unit": "원",
+          "term": 29,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001983",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001983",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 94,
+          "row": 24,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "55,097,075",
+            "48,624,192",
+            "86,624,782"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "55097075",
+          "unit": "원",
+          "term": 22,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001983",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 100,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "156,289,413",
+            "216,277,362",
+            "205,017,683"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "156289413",
+          "unit": "원",
+          "term": 22,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001986",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001986",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 113,
+          "row": 25,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "93,416,901",
+            "94,766,593",
+            "121,232,653"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "93416901",
+          "unit": "원",
+          "term": 54,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001986",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 119,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "6,061,918,174",
+            "8,256,434,792",
+            "9,149,302,569"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "6061918174",
+          "unit": "원",
+          "term": 54,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001990",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001990",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 64,
+          "row": 42,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "106,541,604",
+            "9,130,900",
+            "172,140,837"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "106541604",
+          "unit": "원",
+          "term": 34,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001990",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 70,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "547,357,809",
+            "70,329,171",
+            "729,498,968"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "547357809",
+          "unit": "원",
+          "term": 34,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001994",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001994",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 94,
+          "row": 34,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "348,966,316",
+            "279,444,165",
+            "147,261,665"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "348966316",
+          "unit": "원",
+          "term": 30,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001994",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 100,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "717,850,520",
+            "971,157,388",
+            "1,074,539,691"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "717850520",
+          "unit": "원",
+          "term": 30,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001994",
+      "scope": "OFS",
+      "metric": "amortization",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001994",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 94,
+          "row": 60,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "1,000,384,430",
+            "447,176,360",
+            "348,674,410"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "1000384430",
+          "unit": "원",
+          "term": 30,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001994",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 100,
+          "row": 7,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "1,000,384,431",
+            "447,176,360",
+            "348,674,410"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "1000384431",
+          "unit": "원",
+          "term": 30,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001996",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001996",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 109,
+          "row": 29,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "45,639,827",
+            "48,697,875",
+            "65,213,045"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "45639827",
+          "unit": "원",
+          "term": 35,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001996",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 115,
+          "row": 4,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "1,632,094,293",
+            "1,431,193,114",
+            "1,319,008,716"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "1632094293",
+          "unit": "원",
+          "term": 35,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001997",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001997",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 153,
+          "row": 18,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "480,970,014",
+            "458,372,499",
+            "379,471,575"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "480970014",
+          "unit": "원",
+          "term": 21,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001997",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 159,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "1,755,968,551",
+            "1,504,204,050",
+            "1,426,800,455"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "1755968551",
+          "unit": "원",
+          "term": 21,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331001998",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331001998",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 107,
+          "row": 18,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "576,374",
+            "992,253",
+            "1,116,941"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "576374",
+          "unit": "천원",
+          "term": 42,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331001998",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 113,
+          "row": 6,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "950,550",
+            "1,368,733",
+            "1,552,121"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "950550",
+          "unit": "천원",
+          "term": 42,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002001",
+      "scope": "OFS",
+      "metric": "current_portion_long_term_debt",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "BOND_OR_BORROWING_COMPONENT_VS_TOTAL_DEFINITION_COLLISION",
+      "source_rows": [
+        {
+          "receipt": "20100331002001",
+          "scope": "OFS",
+          "family": "BS",
+          "table": 105,
+          "row": 65,
+          "label": "유동성사채",
+          "cells": [
+            "유동성사채",
+            "600,000,000",
+            "400,000,000",
+            "0"
+          ],
+          "metrics": [
+            "current_portion_long_term_debt"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "current_portion_long_term_debt",
+          "current_column": 1,
+          "source_amount": "600000000",
+          "unit": "원",
+          "term": 21,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002001",
+          "scope": "OFS",
+          "family": "BS",
+          "table": 105,
+          "row": 67,
+          "label": "유동성장기부채",
+          "cells": [
+            "유동성장기부채",
+            "3,683,240,000",
+            "6,917,400,000",
+            "5,638,650,794"
+          ],
+          "metrics": [
+            "current_portion_long_term_debt"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "current_portion_long_term_debt",
+          "current_column": 1,
+          "source_amount": "3683240000",
+          "unit": "원",
+          "term": 21,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Prove aggregate definition and source composition before changing selection",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002001",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002001",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 107,
+          "row": 18,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "90,164,972",
+            "125,316,620",
+            "178,571,318"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "90164972",
+          "unit": "원",
+          "term": 21,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002001",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 113,
+          "row": 4,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "3,231,596,449",
+            "3,787,523,364",
+            "4,540,885,566"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "3231596449",
+          "unit": "원",
+          "term": 21,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002003",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002003",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 103,
+          "row": 27,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "43,930,830",
+            "31,461,953",
+            "12,570,320"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "43930830",
+          "unit": "원",
+          "term": 18,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002003",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 109,
+          "row": 4,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "578,937,724",
+            "591,881,739",
+            "609,337,003"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "578937724",
+          "unit": "원",
+          "term": 18,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002007",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002007",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 74,
+          "row": 29,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "158,881,009",
+            "123,752,735",
+            "71,589,609"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "158881009",
+          "unit": "원",
+          "term": 8,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002007",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 80,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "1,448,064,365",
+            "1,263,205,208",
+            "784,213,522"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "1448064365",
+          "unit": "원",
+          "term": 8,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002007",
+      "scope": "OFS",
+      "metric": "amortization",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002007",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 74,
+          "row": 44,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "3,721,472,362",
+            "3,111,992,493",
+            "2,805,657,330"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "3721472362",
+          "unit": "원",
+          "term": 8,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002007",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 80,
+          "row": 6,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "4,961,242,934",
+            "3,111,992,493",
+            "2,805,657,330"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "4961242934",
+          "unit": "원",
+          "term": 8,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002017",
+      "scope": "CFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002017",
+          "scope": "CFS",
+          "family": "IS",
+          "table": 54,
+          "row": 24,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "830,765,207",
+            "",
+            "881,352,474",
+            ""
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1,
+            2
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "830765207",
+          "unit": "원",
+          "term": 19,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002017",
+          "scope": "CFS",
+          "family": "CF",
+          "table": 58,
+          "row": 6,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "5,166,046,713",
+            "",
+            "6,320,169,525",
+            ""
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1,
+            2
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "5166046713",
+          "unit": "원",
+          "term": 19,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002017",
+      "scope": "CFS",
+      "metric": "amortization",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002017",
+          "scope": "CFS",
+          "family": "IS",
+          "table": 54,
+          "row": 28,
+          "label": "무형자산상각비(주9)",
+          "cells": [
+            "무형자산상각비(주9)",
+            "629,386,366",
+            "",
+            "762,731,775",
+            ""
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1,
+            2
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "629386366",
+          "unit": "원",
+          "term": 19,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002017",
+          "scope": "CFS",
+          "family": "CF",
+          "table": 58,
+          "row": 7,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "6,169,525,919",
+            "",
+            "6,130,871,537",
+            ""
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1,
+            2
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "6169525919",
+          "unit": "원",
+          "term": 19,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002017",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002017",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 110,
+          "row": 22,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "583,937,918",
+            "569,711,250",
+            "512,889,248"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "583937918",
+          "unit": "원",
+          "term": 19,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002017",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 116,
+          "row": 7,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "4,919,219,424",
+            "6,008,528,301",
+            "6,807,939,885"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "4919219424",
+          "unit": "원",
+          "term": 19,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002017",
+      "scope": "OFS",
+      "metric": "amortization",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002017",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 110,
+          "row": 26,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "96,329,543",
+            "324,497,514",
+            "319,505,566"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "96329543",
+          "unit": "원",
+          "term": 19,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002017",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 116,
+          "row": 8,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "5,636,469,096",
+            "5,692,637,276",
+            "6,444,556,425"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "5636469096",
+          "unit": "원",
+          "term": 19,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002019",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002019",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 86,
+          "row": 50,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "210,418,874",
+            "157,953,776",
+            "147,798,814"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "210418874",
+          "unit": "원",
+          "term": 39,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002019",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 92,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "2,291,820,558",
+            "1,345,688,761",
+            "1,039,841,779"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "2291820558",
+          "unit": "원",
+          "term": 39,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002024",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002024",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 83,
+          "row": 28,
+          "label": "감가상각비(주7,28)",
+          "cells": [
+            "감가상각비(주7,28)",
+            "29,545,680",
+            "34,541,875",
+            "57,022,682"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "29545680",
+          "unit": "원",
+          "term": 23,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002024",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 89,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "481,614,612",
+            "466,483,591",
+            "514,329,949"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "481614612",
+          "unit": "원",
+          "term": 23,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002026",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002026",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 168,
+          "row": 27,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "112,684,893",
+            "108,332,083",
+            "114,001,993"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "112684893",
+          "unit": "원",
+          "term": 33,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002026",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 174,
+          "row": 4,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "949,825,540",
+            "1,128,874,336",
+            "1,049,583,666"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "949825540",
+          "unit": "원",
+          "term": 33,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002026",
+      "scope": "OFS",
+      "metric": "amortization",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002026",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 168,
+          "row": 28,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "39,127,838",
+            "38,755,454",
+            "24,032,075"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "39127838",
+          "unit": "원",
+          "term": 33,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002026",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 174,
+          "row": 9,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "43,276,738",
+            "42,751,545",
+            "27,487,775"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "43276738",
+          "unit": "원",
+          "term": 33,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002027",
+      "scope": "OFS",
+      "metric": "current_portion_long_term_debt",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "BOND_OR_BORROWING_COMPONENT_VS_TOTAL_DEFINITION_COLLISION",
+      "source_rows": [
+        {
+          "receipt": "20100331002027",
+          "scope": "OFS",
+          "family": "BS",
+          "table": 87,
+          "row": 63,
+          "label": "유동성장기차입금",
+          "cells": [
+            "유동성장기차입금",
+            "164,280,000",
+            "164,280,000",
+            "204,280,000"
+          ],
+          "metrics": [
+            "current_portion_long_term_debt"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "current_portion_long_term_debt",
+          "current_column": 1,
+          "source_amount": "164280000",
+          "unit": "원",
+          "term": 28,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002027",
+          "scope": "OFS",
+          "family": "BS",
+          "table": 87,
+          "row": 64,
+          "label": "유동성사채",
+          "cells": [
+            "유동성사채",
+            "2,950,000,000",
+            "",
+            ""
+          ],
+          "metrics": [
+            "current_portion_long_term_debt"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "current_portion_long_term_debt",
+          "current_column": 1,
+          "source_amount": "2950000000",
+          "unit": "원",
+          "term": 28,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Prove aggregate definition and source composition before changing selection",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002027",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002027",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 89,
+          "row": 36,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "61,765,497",
+            "75,754,963",
+            "205,708,886"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "61765497",
+          "unit": "원",
+          "term": 28,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002027",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 95,
+          "row": 5,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "486,448,255",
+            "439,731,933",
+            "422,138,246"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "486448255",
+          "unit": "원",
+          "term": 28,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002033",
+      "scope": "OFS",
+      "metric": "current_portion_long_term_debt",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "BOND_OR_BORROWING_COMPONENT_VS_TOTAL_DEFINITION_COLLISION",
+      "source_rows": [
+        {
+          "receipt": "20100331002033",
+          "scope": "OFS",
+          "family": "BS",
+          "table": 137,
+          "row": 78,
+          "label": "유동성사채(주15)",
+          "cells": [
+            "유동성사채(주15)",
+            "100,000,000,000",
+            "144,000,000,000",
+            "131,000,000,000"
+          ],
+          "metrics": [
+            "current_portion_long_term_debt"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "current_portion_long_term_debt",
+          "current_column": 1,
+          "source_amount": "100000000000",
+          "unit": "원",
+          "term": 41,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002033",
+          "scope": "OFS",
+          "family": "BS",
+          "table": 137,
+          "row": 82,
+          "label": "유동성장기차입금(주16)",
+          "cells": [
+            "유동성장기차입금(주16)",
+            "9,376,900,000",
+            "23,102,800,000",
+            "13,102,800,000"
+          ],
+          "metrics": [
+            "current_portion_long_term_debt"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "current_portion_long_term_debt",
+          "current_column": 1,
+          "source_amount": "9376900000",
+          "unit": "원",
+          "term": 41,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Prove aggregate definition and source composition before changing selection",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002033",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002033",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 139,
+          "row": 13,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "1,158,707,107",
+            "1,248,003,201",
+            "872,042,987"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "1158707107",
+          "unit": "원",
+          "term": 41,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002033",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 145,
+          "row": 8,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "27,832,110,308",
+            "31,777,809,897",
+            "33,062,896,603"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "27832110308",
+          "unit": "원",
+          "term": 41,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002033",
+      "scope": "OFS",
+      "metric": "amortization",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002033",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 139,
+          "row": 14,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "8,544,894,833",
+            "4,875,547,201",
+            "3,865,497,555"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "8544894833",
+          "unit": "원",
+          "term": 41,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002033",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 145,
+          "row": 9,
+          "label": "무형자산상각비",
+          "cells": [
+            "무형자산상각비",
+            "8,758,977,461",
+            "4,875,547,201",
+            "3,865,497,555"
+          ],
+          "metrics": [
+            "amortization"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "amortization",
+          "current_column": 1,
+          "source_amount": "8758977461",
+          "unit": "원",
+          "term": 41,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002053",
+      "scope": "OFS",
+      "metric": "depreciation",
+      "source_row_count": 2,
+      "priority": "P2",
+      "cause": "IS_COMPONENT_VS_CF_ADJUSTMENT_CONCEPT_COLLISION_TRACE_REQUIRED",
+      "source_rows": [
+        {
+          "receipt": "20100331002053",
+          "scope": "OFS",
+          "family": "IS",
+          "table": 187,
+          "row": 28,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "84,133,966",
+            "216,750,345",
+            "143,206,686"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "84133966",
+          "unit": "원",
+          "term": 22,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        },
+        {
+          "receipt": "20100331002053",
+          "scope": "OFS",
+          "family": "CF",
+          "table": 193,
+          "row": 4,
+          "label": "감가상각비",
+          "cells": [
+            "감가상각비",
+            "658,131,768",
+            "327,551,709",
+            "387,130,437"
+          ],
+          "metrics": [
+            "depreciation"
+          ],
+          "current_physical_columns": [
+            1
+          ],
+          "metric": "depreciation",
+          "current_column": 1,
+          "source_amount": "658131768",
+          "unit": "원",
+          "term": 22,
+          "verdict": "SOURCE_PRESENT_CANDIDATE_ABSENT",
+          "PIT": "UNVERIFIED",
+          "publication": "HOLD"
+        }
+      ],
+      "next_action": "Separate statement-specific concept schema; never select an arbitrary amount or sum different accounting meanings",
+      "financial_publication": "HOLD",
+      "PIT": "UNVERIFIED"
+    }
+  ],
+  "additional_P1": {
+    "receipt": "20100331001982",
+    "scope": "CFS",
+    "metric": "total_assets",
+    "table": 135,
+    "row": 73,
+    "reason": "CURRENT_TOKEN_LINEBREAK_AND_UNDERLINE_REJECTED",
+    "raw": "4,877,276,061&cr;=============",
+    "next_action": "Prove line-break/decoration token boundary; never join two numeric tokens. Preserve original bytes and require independent source value plus whole PASS regression before parser migration"
+  },
+  "presentation_groups": 14,
+  "scope_limit": "Registered aliases in manually designated primary BS/IS/CF tables; not full filing/notes/attachments/unsupported account completeness"
+}

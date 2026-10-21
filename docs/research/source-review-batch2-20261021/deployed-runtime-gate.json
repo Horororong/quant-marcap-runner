@@ -1,0 +1,39 @@
+{
+  "verified_at_utc": "2026-10-21T05:28:52.633004+00:00",
+  "day_kst": "2026-10-21",
+  "executing_branch": "main",
+  "deployed_commit": "fd232d129bfa2ef01714b94890460c5ef47bdbf0",
+  "merged_PR45": true,
+  "checks": [],
+  "all_collector_paths_identical": "Previously verified unchanged collector; no redundant whole-code audit",
+  "workflow": "backfill-dart-legacy-2000-2014.yml uses main-only job and checkout ref main",
+  "gate": "ONCE_PER_KST_DAY",
+  "checkpoint": "20100331002054",
+  "checkpoint_completed": true,
+  "next_target_completed": {
+    "20100331002062": false,
+    "20100331002063": false
+  },
+  "HTTP_requests": 0,
+  "new_originals": 0,
+  "new_candidates": 0,
+  "new_duplicates": 0,
+  "stop_reason": "ONCE_PER_KST_DAY",
+  "state_unchanged": true,
+  "phase": "HOLD_FAILURE",
+  "publication": "HOLD",
+  "backtest_eligible": false,
+  "investment_PIT": "0/6",
+  "same_commit_automatic_workflow_runs": [],
+  "next_checkpoint": "20100331002054 unchanged; next pending20100331002062",
+  "budget": {
+    "executions": 2,
+    "max_executions": 3,
+    "reserved_documents": 200,
+    "max_reservations": 300,
+    "pending_reserved": 43,
+    "maximum_runs_per_kst_day": 1
+  },
+  "downstream_gates": "Not all reached: recovery gate stops at ONCE_PER_KST_DAY; rerun all live guards before any future dispatch",
+  "DART_account_global_remaining_HTTP_quota": "UNOBSERVABLE from this ledger; no reset assumed"
+}

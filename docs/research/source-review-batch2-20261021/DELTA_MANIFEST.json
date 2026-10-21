@@ -1,0 +1,144 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "payload": "New29 source-review evidence only; old originals/kits/backups reused",
+  "base_research_commit": "397d311e212765b872106b3596814a705ecb178d",
+  "production_integration_commit": "305cb673f4768907945bc2752753810c4975c37c",
+  "operating_main": "fd232d129bfa2ef01714b94890460c5ef47bdbf0",
+  "pinned_kit": "26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd",
+  "original_source_commit": "a9da665e77eb06e09232c9fa1b382b1e3ea31d4f",
+  "original_source_remote_paths": [
+    "data/financials/legacy_2000_2014/quality_v9/limited_resume_v1/runs/39504052321/sources00.json.gz.b64",
+    "data/financials/legacy_2000_2014/quality_v9/limited_resume_v1/runs/39504052321/sources01.json.gz.b64",
+    "data/financials/legacy_2000_2014/quality_v9/limited_resume_v1/runs/39504052321/sources02.json.gz.b64",
+    "data/financials/legacy_2000_2014/quality_v9/limited_resume_v1/runs/39504052321/sources03.json.gz.b64",
+    "data/financials/legacy_2000_2014/quality_v9/limited_resume_v1/runs/39504052321/sources04.json.gz.b64"
+  ],
+  "original_source_already_preserved_in": "v2 backup; original remote Git objects; reuse no new DART request",
+  "files": [
+    {
+      "path": "REPORT.md",
+      "bytes": 11717,
+      "sha256": "5cd1a41cb68ee8551fe3a638cadc31d454aa403958264d2589488ee27bd79eef"
+    },
+    {
+      "path": "all-48-document-review-ledger.json",
+      "bytes": 33501,
+      "sha256": "08778bfec4585fc147c917e28f9b733af61cc56b255e736a748489708e26873d"
+    },
+    {
+      "path": "all-57-document-status.json",
+      "bytes": 32969,
+      "sha256": "4d5b0db500f2fc6eafccd74675ab92c17bd83fe2167002e47fbbb64ea3529bd7"
+    },
+    {
+      "path": "all-871-candidate-decisions.json",
+      "bytes": 2243035,
+      "sha256": "44a435088c87c5bb7aa8513d3ae61a6e0d1723a3f3cdc2a45b162085266ed9f1"
+    },
+    {
+      "path": "all-extraction-coverage-priorities.json",
+      "bytes": 101216,
+      "sha256": "e5e07980fca84fa718c451eb18053caa7c4ea58a66629a58e731e462e0fe3c03"
+    },
+    {
+      "path": "candidate-review-523.json",
+      "bytes": 1328819,
+      "sha256": "2e76166a347fb6d8706d4d7b8007e26ef92d6f787d6931276c1c0db5b0ea6094"
+    },
+    {
+      "path": "combined-summary.json",
+      "bytes": 1072,
+      "sha256": "6aaf489a4e69da5d3386e43c32ddb969c7393e43dc514ba08777088ade2411d8"
+    },
+    {
+      "path": "deployed-runtime-gate.json",
+      "bytes": 1411,
+      "sha256": "3d05ae3561b9d1850807c7aed9a91cee06f73bdd5d6903b8e82816a770ff9dc1"
+    },
+    {
+      "path": "document-source-evidence.json",
+      "bytes": 7128508,
+      "sha256": "d573a2a94411d7e38bc2c95b5da54be7979f402106877964ed85e9427e52381c"
+    },
+    {
+      "path": "primary-table-inventory.json",
+      "bytes": 6297247,
+      "sha256": "97d36e7e4cf00b724afd0a0bedd05f5e6af0aa476889b26b46769083df6447e0"
+    },
+    {
+      "path": "review-consistency-check.json",
+      "bytes": 409,
+      "sha256": "24927f1a82cc1d3d1398f059519a24fa43fe06989ac151efc74d3003e7a6cd7b"
+    },
+    {
+      "path": "source-conflicts-and-scope-limits.json",
+      "bytes": 2359,
+      "sha256": "3c7550e7ffc644d63d13cfe9b0d0389d7aa9d9e9617429bb7d3d452dc54a80be"
+    },
+    {
+      "path": "tools/build_document_evidence.py",
+      "bytes": 4963,
+      "sha256": "2b9c743270f520c21c472728e79c29f83202e30a5a30e5b0f832ccedc9e22863"
+    },
+    {
+      "path": "tools/check_live_gate.py",
+      "bytes": 2612,
+      "sha256": "014a20f0857de0507f533fb353167302a4a878e0bd66ed8487d014a0f771a041"
+    },
+    {
+      "path": "tools/deliver_v5.py",
+      "bytes": 6009,
+      "sha256": "6252e2988d0c64730a9429a91327785b6c2fa52f97235a7543f7548ba2c3738f"
+    },
+    {
+      "path": "tools/finish_batch.py",
+      "bytes": 8939,
+      "sha256": "ea0581613cca6d95132eff93e8b1deb0e86f88de7ce80021e49eab5e44d126be"
+    },
+    {
+      "path": "tools/independent_inventory.py",
+      "bytes": 6620,
+      "sha256": "e00406dff53e36c54ca10b67ce3d4331ef4fdddde91d013647db0d4dc70f2a1d"
+    },
+    {
+      "path": "tools/preflight_v5.py",
+      "bytes": 3042,
+      "sha256": "8a8e1458c7e78ac965210da61e11130a65e78a9146b0732694958f032ea811a5"
+    },
+    {
+      "path": "tools/review_523.py",
+      "bytes": 9208,
+      "sha256": "209d9df46fe0b5fdae66729916fe481f4f45fa8f2ddc9698e7aed9874a09e401"
+    },
+    {
+      "path": "tools/write_report.py",
+      "bytes": 17099,
+      "sha256": "922ee1a716a6a96ba475f2329ec995dbf4bd47b9b4beeab5aca9da946cf2b885"
+    },
+    {
+      "path": "unverified-23-cause-ledger.json",
+      "bytes": 11385,
+      "sha256": "81cee2cf85dece5c2f4c5c9a22b3ec8ae326e8305d4f021b56c29550c83b14ea"
+    },
+    {
+      "path": "v5-delivery/DELIVERY_COMPLETED.json",
+      "bytes": 4476,
+      "sha256": "05092ad0b669a816f55746ad9efdebb5afcff8821e9bffe961ea52868837d1e0"
+    },
+    {
+      "path": "v5-delivery/TRANSFER_PREFLIGHT.json",
+      "bytes": 870,
+      "sha256": "99424f72ef3ac9e6d42f50f2afcbbe2b0cc87903b79bbc23bf6dbce6b0775b09"
+    },
+    {
+      "path": "v5-delivery/USER_APPROVAL_FOR_V5.json",
+      "bytes": 423,
+      "sha256": "44ab262fe5fa5b9093bbd78c0c39a27a624c06e7dcc307f98d7dd812b1658614"
+    },
+    {
+      "path": "v5-delivery/download_manifest_text.json",
+      "bytes": 1202,
+      "sha256": "f83c81f62a54e3b2633e12f70722a9c4d8aa0e63a8ed5a9b70cd0aa8700c3e87"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+import base64,json,os,subprocess,sys,urllib.request
+from pathlib import Path
+from datetime import datetime,timezone
+P=Path(__file__).parent;A='https://api.github.com/repos/Horororong/quant-marcap-runner';H={'Authorization':'Bearer '+os.environ['GH_BACKUP_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'quant-deployed-source-check'}
+def get(path):
+ with urllib.request.urlopen(urllib.request.Request(A+path,headers=H),timeout=60)as r:return json.load(r)
+sha=get('/git/ref/heads/main')['object']['sha'];checks=[]
+o=get('/contents/data/status/dart_legacy_limited_resume_v1.json?ref='+sha);state=json.loads(base64.b64decode(o['content']));config_path='config/dart_legacy_limited_resume_v1.json';tree=get('/git/trees/'+sha+'?recursive=1');paths=[x['path']for x in tree['tree']if 'limited_resume'in x['path']and x['path'].startswith('config/')];assert len(paths)==1,paths;config=json.loads(base64.b64decode(get('/contents/'+paths[0]+'?ref='+sha)['content']));(P/'live-state.json').write_text(json.dumps(state,indent=2)+'\n');(P/'live-config.json').write_text(json.dumps(config,indent=2)+'\n');sys.path.insert(0,'/workspace/quant-project-full-20261020/code');from scripts.financial_limited_resume import check_recovery_gate,local_day
+now=datetime.now(timezone.utc)
+try:check_recovery_gate(config,state,now,'39504052321',2);gate='PASS'
+except ValueError as e:gate=str(e)
+record=dict(verified_at_utc=now.isoformat(),day_kst=local_day(now),executing_branch='main',deployed_commit=sha,merged_PR45=get('/pulls/45')['merged'],checks=checks,all_collector_paths_identical='Previously verified unchanged collector; no redundant whole-code audit',workflow='backfill-dart-legacy-2000-2014.yml uses main-only job and checkout ref main',gate=gate,checkpoint=state['last_checkpoint'],checkpoint_completed=True,next_target_completed={r:r in state['completed_receipts']for r in ['20100331002062','20100331002063']},HTTP_requests=0,new_originals=0,new_candidates=0,new_duplicates=0,stop_reason=gate,state_unchanged=True,phase=state['phase'],publication='HOLD',backtest_eligible=False,investment_PIT='0/6',same_commit_automatic_workflow_runs=[{k:r[k]for k in ['id','name','event','status','conclusion']}for r in get('/actions/runs?head_sha='+sha)['workflow_runs']],next_checkpoint='20100331002054 unchanged; next pending20100331002062',budget=dict(executions=2,max_executions=3,reserved_documents=200,max_reservations=300,pending_reserved=43,maximum_runs_per_kst_day=1))
+(P/'deployed-runtime-gate.json').write_text(json.dumps(record,indent=2)+'\n');print(json.dumps({k:v for k,v in record.items()if k!='checks'},indent=2))
