@@ -8,7 +8,7 @@ from research_planned_readiness import inspect_planned_strategy
 ROOT=Path(__file__).resolve().parents[1]
 
 class PlannedReadiness(unittest.TestCase):
- def fixture(self,mutate=None,deciles=False,deferred=False):
+ def fixture(self,mutate=None,deciles=False,deferred=False,no_signals=False,incomplete_calendar=False):
   dates=pd.to_datetime(['2024-05-02','2024-05-03','2024-05-07','2024-05-08'])
   rows=[dict(Date=d,Code=c,Market='KOSPI',Name=c,Close=100.,Volume=10.,Marcap=2e13,ChangesRatio=0.) for d in dates for c in ['000001','000002']]
   panel=pd.DataFrame(rows)
@@ -25,7 +25,7 @@ class PlannedReadiness(unittest.TestCase):
    # fixtures. Real shared selection equivalence is tested in actual-data CI.
    from strategy_dsl_runner import load_project_engine
    real=load_project_engine(ROOT);engine._schedule_signal_execution_dates=real._schedule_signal_execution_dates
-   with patch('strategy_dsl_runner.load_project_engine',return_value=engine),patch('strategy_dsl_runner.engine_inputs',return_value=(None,None,SimpleNamespace(execution_lag_sessions=1,weight_tolerance=1e-10))),patch('strategy_dsl_runner.scored_signals_from_panel',return_value=[(dates[0],ranked)]),patch('strategy_dsl_runner.signal_dates_from_panel',return_value=[dates[0]]),patch('strategy_dsl_runner.factor_provider_coverage_audit',return_value=pd.DataFrame()),patch('strategy_dsl_runner.benchmark_coverage_audit',return_value=dict(status='complete')),patch('krx_history_audit.session_coverage_audit',return_value=dict(status='complete')):
+   with patch('strategy_dsl_runner.load_project_engine',return_value=engine),patch('strategy_dsl_runner.engine_inputs',return_value=(None,None,SimpleNamespace(execution_lag_sessions=1,weight_tolerance=1e-10))),patch('strategy_dsl_runner.scored_signals_from_panel',return_value=[(dates[0],ranked)]),patch('strategy_dsl_runner.signal_dates_from_panel',return_value=[]if no_signals else[dates[0]]),patch('strategy_dsl_runner.factor_provider_coverage_audit',return_value=pd.DataFrame()),patch('strategy_dsl_runner.benchmark_coverage_audit',return_value=dict(status='complete')),patch('krx_history_audit.session_coverage_audit',return_value=dict(status='incomplete',markets={})if incomplete_calendar else dict(status='complete')):
     return inspect_planned_strategy(path,root)
  def test_unheld_discontinuity_does_not_block(self):
   def change(x,d):x.loc[x.Code.eq('000002'),'ChangesRatio']=50.
@@ -53,5 +53,17 @@ class PlannedReadiness(unittest.TestCase):
  def test_unsupported_input_does_not_read_sources(self):
   with tempfile.TemporaryDirectory() as td:
    p=Path(td)/'bad.json';p.write_text('{}');r=inspect_planned_strategy(p,td);self.assertEqual(r['status'],'capability_gap');self.assertEqual(r['phase'],'compile')
+ def test_empty_full_period_remains_blocked_and_calendar_gap_is_not_hidden(self):
+  r=self.fixture(no_signals=True);self.assertFalse(r['ready_for_execution']);self.assertEqual(r['first_blocker']['kind'],'no_rebalance_signals');self.assertEqual(r['first_blocker']['classification'],'strategy_definition')
+  missing=self.fixture(no_signals=True,incomplete_calendar=True);self.assertFalse(missing['ready_for_execution']);self.assertEqual(missing['first_blocker']['kind'],'market_calendar_scope_unverified')
+ def test_empty_annual_fragment_preserves_strict_signal_owner_default(self):
+  from strategy_dsl import StrategySpec
+  from strategy_dsl_runner import signal_dates_from_panel
+  raw=json.loads((ROOT/'config/strategies/research_size_top1_2024.json').read_text());raw['period']=dict(start='2019-12-02',end='2020-12-30',book_start='2019-12-02',book_end='2020-12-30',as_of_date='2020-12-30');spec=StrategySpec.from_dict(raw)
+  fragment=pd.DataFrame(dict(Date=pd.to_datetime(['2019-12-02','2019-12-30'])))
+  with self.assertRaisesRegex(RuntimeError,'no rebalance'):signal_dates_from_panel(fragment,spec)
+  self.assertEqual(signal_dates_from_panel(fragment,spec,allow_empty=True),[])
+  complete=pd.concat([fragment,pd.DataFrame(dict(Date=pd.to_datetime(['2020-04-29','2020-04-30','2020-05-04'])))])
+  self.assertEqual(signal_dates_from_panel(complete,spec),[pd.Timestamp('2020-04-30')])
 
 if __name__=='__main__':unittest.main(verbosity=2)

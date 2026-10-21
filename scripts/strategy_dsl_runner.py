@@ -187,7 +187,7 @@ def _transform_factor(values: pd.Series, transform: str) -> pd.Series:
     raise ValueError(f"unsupported transform: {transform}")
 
 
-def signal_dates_from_panel(panel: pd.DataFrame, spec: StrategySpec) -> list[pd.Timestamp]:
+def signal_dates_from_panel(panel: pd.DataFrame, spec: StrategySpec, *, allow_empty: bool = False) -> list[pd.Timestamp]:
     dates = pd.DatetimeIndex(pd.to_datetime(panel["Date"]).dropna().unique()).sort_values()
     start = pd.Timestamp(spec.period.start).normalize()
     end = pd.Timestamp(spec.period.end).normalize()
@@ -198,7 +198,7 @@ def signal_dates_from_panel(panel: pd.DataFrame, spec: StrategySpec) -> list[pd.
             m = dates[(dates.year == year) & (dates.month == month)]
             if len(m):
                 out.append(pd.Timestamp(m[-1]).normalize())
-    if not out:
+    if not out and not allow_empty:
         raise RuntimeError("no rebalance signal dates in requested period")
     return sorted(set(out))
 
@@ -519,7 +519,8 @@ def save_cash_exchange_audits(result: dict[str, Any], out: Path) -> None:
 
 
 def run_current_postprocess(spec: StrategySpec, repo_root: Path, out: Path, daily: pd.DataFrame, *,
-                            capture_output: bool = False, daily_csv: Path | None = None, report_periods: Path | None = None):
+                            capture_output: bool = False, daily_csv: Path | None = None, report_periods: Path | None = None,
+                            isolated: bool = True):
     series = ",".join(daily.columns)
     cmd = [
         sys.executable, str(repo_root / POSTPROCESS_FILE),
@@ -537,6 +538,10 @@ def run_current_postprocess(spec: StrategySpec, repo_root: Path, out: Path, dail
         cmd.extend(["--report-periods", str(report_periods)])
     if spec.benchmark is not None:
         cmd.extend(["--benchmark-series", "NAV_Benchmark"])
+    if isolated:
+        # Isolated transport for CURRENT; use only the explicitly selected
+        # trusted project scripts directory, never a system-Python fallback.
+        cmd=[sys.executable,'-I','-c','import runpy,sys;from pathlib import Path;sys.path.insert(0,str(Path(sys.argv[1]).resolve().parent));sys.argv=sys.argv[1:];runpy.run_path(sys.argv[0],run_name="__main__")',*cmd[1:]]
     return subprocess.run(cmd, cwd=repo_root, check=True, capture_output=capture_output, text=capture_output, timeout=300)
 
 

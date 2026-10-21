@@ -84,11 +84,18 @@ def inspect_planned_strategy(strategy_json,repo_root):
       for day in market_audit.get(direction,[]):issue('market_calendar_source_mismatch',direction,market=market,date=day,required='Official cash-equity calendar and source-day agreement; no assumed weekdays or filling')
     if len(issues)==emitted_before:issue('market_calendar_scope_unverified',json.dumps(c),date=start,required='Complete official market-day/source audit; unexplained non-complete state cannot authorize execution')
    dates=pd.DatetimeIndex(pd.to_datetime(panel.Date).unique()).sort_values();date_parts.extend(dates)
+   # A partial first/last year may contain no configured signal month. Keep
+   # every source/calendar observation; do not misclassify that cash-only
+   # annual fragment as missing provider data. Whole-period signal refusal
+   # and every source/calendar error remain mandatory below.
+   expected_signals=signal_dates_from_panel(panel,spec,allow_empty=True)
+   if not expected_signals:
+    del panel
+    continue
    audit=factor_provider_coverage_audit(panel,spec,root)
    if not audit.empty:
     provider.extend(json.loads(audit.to_json(orient='records',date_format='iso')))
     if 'raw_ok' in audit and not audit.raw_ok.all():issue('provider_lookback_incomplete','Registered provider reports insufficient original history',date=start,required='Complete registered lookback/source window; no shortening or substitute factor')
-   expected_signals=signal_dates_from_panel(panel,spec)
    try:
     for signal,ranked in scored_signals_from_panel(panel,spec,root):
      n=len(ranked);minimum=10 if spec.portfolio.selection=='deciles' else spec.portfolio.number_of_positions
@@ -119,7 +126,9 @@ def inspect_planned_strategy(strategy_json,repo_root):
  result['krx_panel']=dict(actual_start=str(dates[0].date()),actual_end=str(dates[-1].date()),rows=total_rows,distinct_planned_codes=len(selected),markets=list(spec.universe.markets))
  result['signal_dates']=sorted({r['signal_date'] for r in populations})
  result['history_coverage']=dict(status='complete' if all(c['status']=='complete' for c in coverage) else 'incomplete',annual=coverage)
- if not selected:return finish()
+ if not selected:
+  if not populations and not issues:issue('no_rebalance_signals','Requested full period contains no configured rebalance signal',date=spec.period.start,classification='strategy_definition',verdict='FAIL',required='Choose an explicitly different period or rebalance definition; no invented initial positions or signals')
+  return finish()
  weights={label:pd.DataFrame(rows).reindex(columns=sorted(selected)).fillna(0).sort_index() for label,rows in targets.items()}
  events=load_corporate_actions(root,start=dates[0],end=dates[-1]);gaps=load_corporate_action_gaps(root)
  # Successor observations follow verified lineage AFTER selection. This does
