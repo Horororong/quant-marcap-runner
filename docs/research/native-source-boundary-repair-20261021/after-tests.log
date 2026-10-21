@@ -1,0 +1,13 @@
+test_native_entity_does_not_join_or_guess_numeric_boundaries (test_native_source_boundary_repairs.NativeBreakDecoration.test_native_entity_does_not_join_or_guess_numeric_boundaries) ... ok
+test_one_scalar_then_native_linebreak_and_terminal_rule (test_native_source_boundary_repairs.NativeBreakDecoration.test_one_scalar_then_native_linebreak_and_terminal_rule) ... ok
+test_parsed_cell_keeps_original_token_and_records_normalization (test_native_source_boundary_repairs.NativeBreakDecoration.test_parsed_cell_keeps_original_token_and_records_normalization) ... ok
+test_citation_inside_primary_section_preserves_current_source_contract (test_native_source_boundary_repairs.NoteReferenceBoundary.test_citation_inside_primary_section_preserves_current_source_contract) ... ok
+test_citation_never_opens_an_unproved_or_excluded_section (test_native_source_boundary_repairs.NoteReferenceBoundary.test_citation_never_opens_an_unproved_or_excluded_section) ... ok
+test_contradictory_current_amounts_are_not_selected (test_native_source_boundary_repairs.NoteReferenceBoundary.test_contradictory_current_amounts_are_not_selected) ... ok
+test_current_period_and_unit_must_remain_proved (test_native_source_boundary_repairs.NoteReferenceBoundary.test_current_period_and_unit_must_remain_proved) ... ok
+test_real_note_entry_after_citation_still_closes (test_native_source_boundary_repairs.NoteReferenceBoundary.test_real_note_entry_after_citation_still_closes) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.027s
+
+OK

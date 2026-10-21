@@ -1,0 +1,382 @@
+{
+  "status": "PASS_9_NEW_HELD_SOURCE_ROW_CONTROLS",
+  "records": [
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "statement": "IS",
+      "metric": "revenue",
+      "source_archive": "chunk00/native/20100331001972-216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848.zip",
+      "source_archive_sha256": "216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848",
+      "source_member": "20100331001972.xml",
+      "source_member_sha256": "7c2d6dc60663e64a29f68ff46793859ea490df34278a6e5e9f88b3822db8a50e",
+      "table": 60,
+      "row": 1,
+      "current_physical_column": 2,
+      "current_header": [
+        "과 목",
+        "제 22 (당) 기&cr;금 액",
+        "제 21 (전) 기&cr;금 액"
+      ],
+      "current_column_header_attrs": [
+        " ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"284\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"250\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"249\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\""
+      ],
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "header": "D WIDTH=\"314\" HEIGHT=\"30\" USERMARK=\" P16\">5.연결결손금(주석 15) (20,631,261,248) (10,787,149,213) Ⅱ.소수주주지분 - - 자 본 총 계 19,397,821,779 27,292,926,187 부 채 와 자 본 총 계 25,325,865,163 41,476,856,315 &cr; \"연결재무제표에 대한 주석 참조\" 연 결 손 익 계 산 서 제 22(당) 기 2009년 1월 1일부터 2009년 12월 31일까지 제 21(전) 기 2008년 1월 1일부터 2008년 12월 31일까지 주식회사 에스티씨라이프 (단위 : 원)",
+      "source_row_label": "Ⅰ.매출액(주석 2,16)",
+      "source_raw_amount": "3,507,674,422",
+      "source_comparative_cells": [
+        "",
+        "4,269,031,549"
+      ],
+      "reference_term": 22,
+      "reference_unit": "원",
+      "independent_amount_krw": "3507674422",
+      "source_row_semantics": "PASS",
+      "scope_limit": "Reported original current accounting line only; ISdepreciation/amortization are SG&A components, not inferred company totals",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED",
+      "publication": "HOLD"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "statement": "IS",
+      "metric": "cost_of_sales",
+      "source_archive": "chunk00/native/20100331001972-216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848.zip",
+      "source_archive_sha256": "216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848",
+      "source_member": "20100331001972.xml",
+      "source_member_sha256": "7c2d6dc60663e64a29f68ff46793859ea490df34278a6e5e9f88b3822db8a50e",
+      "table": 60,
+      "row": 5,
+      "current_physical_column": 2,
+      "current_header": [
+        "과 목",
+        "제 22 (당) 기&cr;금 액",
+        "제 21 (전) 기&cr;금 액"
+      ],
+      "current_column_header_attrs": [
+        " ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"284\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"250\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"249\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\""
+      ],
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "header": "D WIDTH=\"314\" HEIGHT=\"30\" USERMARK=\" P16\">5.연결결손금(주석 15) (20,631,261,248) (10,787,149,213) Ⅱ.소수주주지분 - - 자 본 총 계 19,397,821,779 27,292,926,187 부 채 와 자 본 총 계 25,325,865,163 41,476,856,315 &cr; \"연결재무제표에 대한 주석 참조\" 연 결 손 익 계 산 서 제 22(당) 기 2009년 1월 1일부터 2009년 12월 31일까지 제 21(전) 기 2008년 1월 1일부터 2008년 12월 31일까지 주식회사 에스티씨라이프 (단위 : 원)",
+      "source_row_label": "Ⅱ.매출원가(주석 16)",
+      "source_raw_amount": "2,192,294,089",
+      "source_comparative_cells": [
+        "",
+        "2,442,983,236"
+      ],
+      "reference_term": 22,
+      "reference_unit": "원",
+      "independent_amount_krw": "2192294089",
+      "source_row_semantics": "PASS",
+      "scope_limit": "Reported original current accounting line only; ISdepreciation/amortization are SG&A components, not inferred company totals",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED",
+      "publication": "HOLD"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "statement": "IS",
+      "metric": "gross_profit",
+      "source_archive": "chunk00/native/20100331001972-216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848.zip",
+      "source_archive_sha256": "216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848",
+      "source_member": "20100331001972.xml",
+      "source_member_sha256": "7c2d6dc60663e64a29f68ff46793859ea490df34278a6e5e9f88b3822db8a50e",
+      "table": 60,
+      "row": 9,
+      "current_physical_column": 2,
+      "current_header": [
+        "과 목",
+        "제 22 (당) 기&cr;금 액",
+        "제 21 (전) 기&cr;금 액"
+      ],
+      "current_column_header_attrs": [
+        " ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"284\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"250\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"249\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\""
+      ],
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "header": "D WIDTH=\"314\" HEIGHT=\"30\" USERMARK=\" P16\">5.연결결손금(주석 15) (20,631,261,248) (10,787,149,213) Ⅱ.소수주주지분 - - 자 본 총 계 19,397,821,779 27,292,926,187 부 채 와 자 본 총 계 25,325,865,163 41,476,856,315 &cr; \"연결재무제표에 대한 주석 참조\" 연 결 손 익 계 산 서 제 22(당) 기 2009년 1월 1일부터 2009년 12월 31일까지 제 21(전) 기 2008년 1월 1일부터 2008년 12월 31일까지 주식회사 에스티씨라이프 (단위 : 원)",
+      "source_row_label": "Ⅲ.매출총이익",
+      "source_raw_amount": "1,315,380,333",
+      "source_comparative_cells": [
+        "",
+        "1,826,048,313"
+      ],
+      "reference_term": 22,
+      "reference_unit": "원",
+      "independent_amount_krw": "1315380333",
+      "source_row_semantics": "PASS",
+      "scope_limit": "Reported original current accounting line only; ISdepreciation/amortization are SG&A components, not inferred company totals",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED",
+      "publication": "HOLD"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "statement": "IS",
+      "metric": "depreciation",
+      "source_archive": "chunk00/native/20100331001972-216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848.zip",
+      "source_archive_sha256": "216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848",
+      "source_member": "20100331001972.xml",
+      "source_member_sha256": "7c2d6dc60663e64a29f68ff46793859ea490df34278a6e5e9f88b3822db8a50e",
+      "table": 60,
+      "row": 18,
+      "current_physical_column": 1,
+      "current_header": [
+        "과 목",
+        "제 22 (당) 기&cr;금 액",
+        "제 21 (전) 기&cr;금 액"
+      ],
+      "current_column_header_attrs": [
+        " ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"284\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"250\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"249\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\""
+      ],
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "header": "D WIDTH=\"314\" HEIGHT=\"30\" USERMARK=\" P16\">5.연결결손금(주석 15) (20,631,261,248) (10,787,149,213) Ⅱ.소수주주지분 - - 자 본 총 계 19,397,821,779 27,292,926,187 부 채 와 자 본 총 계 25,325,865,163 41,476,856,315 &cr; \"연결재무제표에 대한 주석 참조\" 연 결 손 익 계 산 서 제 22(당) 기 2009년 1월 1일부터 2009년 12월 31일까지 제 21(전) 기 2008년 1월 1일부터 2008년 12월 31일까지 주식회사 에스티씨라이프 (단위 : 원)",
+      "source_row_label": "8.감가상각비(주석 2,6)",
+      "source_raw_amount": "280,329,158",
+      "source_comparative_cells": [
+        "120,951,455",
+        ""
+      ],
+      "reference_term": 22,
+      "reference_unit": "원",
+      "independent_amount_krw": "280329158",
+      "source_row_semantics": "PASS",
+      "scope_limit": "Reported original current accounting line only; ISdepreciation/amortization are SG&A components, not inferred company totals",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED",
+      "publication": "HOLD"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "statement": "IS",
+      "metric": "amortization",
+      "source_archive": "chunk00/native/20100331001972-216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848.zip",
+      "source_archive_sha256": "216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848",
+      "source_member": "20100331001972.xml",
+      "source_member_sha256": "7c2d6dc60663e64a29f68ff46793859ea490df34278a6e5e9f88b3822db8a50e",
+      "table": 60,
+      "row": 19,
+      "current_physical_column": 1,
+      "current_header": [
+        "과 목",
+        "제 22 (당) 기&cr;금 액",
+        "제 21 (전) 기&cr;금 액"
+      ],
+      "current_column_header_attrs": [
+        " ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"284\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"250\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"249\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\""
+      ],
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "header": "D WIDTH=\"314\" HEIGHT=\"30\" USERMARK=\" P16\">5.연결결손금(주석 15) (20,631,261,248) (10,787,149,213) Ⅱ.소수주주지분 - - 자 본 총 계 19,397,821,779 27,292,926,187 부 채 와 자 본 총 계 25,325,865,163 41,476,856,315 &cr; \"연결재무제표에 대한 주석 참조\" 연 결 손 익 계 산 서 제 22(당) 기 2009년 1월 1일부터 2009년 12월 31일까지 제 21(전) 기 2008년 1월 1일부터 2008년 12월 31일까지 주식회사 에스티씨라이프 (단위 : 원)",
+      "source_row_label": "9.무형자산상각비(주석 2,9)",
+      "source_raw_amount": "127,621,339",
+      "source_comparative_cells": [
+        "129,592,201",
+        ""
+      ],
+      "reference_term": 22,
+      "reference_unit": "원",
+      "independent_amount_krw": "127621339",
+      "source_row_semantics": "PASS",
+      "scope_limit": "Reported original current accounting line only; ISdepreciation/amortization are SG&A components, not inferred company totals",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED",
+      "publication": "HOLD"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "statement": "IS",
+      "metric": "operating_income",
+      "source_archive": "chunk00/native/20100331001972-216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848.zip",
+      "source_archive_sha256": "216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848",
+      "source_member": "20100331001972.xml",
+      "source_member_sha256": "7c2d6dc60663e64a29f68ff46793859ea490df34278a6e5e9f88b3822db8a50e",
+      "table": 60,
+      "row": 37,
+      "current_physical_column": 2,
+      "current_header": [
+        "과 목",
+        "제 22 (당) 기&cr;금 액",
+        "제 21 (전) 기&cr;금 액"
+      ],
+      "current_column_header_attrs": [
+        " ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"284\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"250\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"249\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\""
+      ],
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "header": "D WIDTH=\"314\" HEIGHT=\"30\" USERMARK=\" P16\">5.연결결손금(주석 15) (20,631,261,248) (10,787,149,213) Ⅱ.소수주주지분 - - 자 본 총 계 19,397,821,779 27,292,926,187 부 채 와 자 본 총 계 25,325,865,163 41,476,856,315 &cr; \"연결재무제표에 대한 주석 참조\" 연 결 손 익 계 산 서 제 22(당) 기 2009년 1월 1일부터 2009년 12월 31일까지 제 21(전) 기 2008년 1월 1일부터 2008년 12월 31일까지 주식회사 에스티씨라이프 (단위 : 원)",
+      "source_row_label": "Ⅴ.영업손실",
+      "source_raw_amount": "5,134,536,307",
+      "source_comparative_cells": [
+        "",
+        "7,473,424,134"
+      ],
+      "reference_term": 22,
+      "reference_unit": "원",
+      "independent_amount_krw": "-5134536307",
+      "source_row_semantics": "PASS",
+      "scope_limit": "Reported original current accounting line only; ISdepreciation/amortization are SG&A components, not inferred company totals",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED",
+      "publication": "HOLD"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "statement": "IS",
+      "metric": "net_income",
+      "source_archive": "chunk00/native/20100331001972-216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848.zip",
+      "source_archive_sha256": "216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848",
+      "source_member": "20100331001972.xml",
+      "source_member_sha256": "7c2d6dc60663e64a29f68ff46793859ea490df34278a6e5e9f88b3822db8a50e",
+      "table": 60,
+      "row": 61,
+      "current_physical_column": 2,
+      "current_header": [
+        "과 목",
+        "제 22 (당) 기&cr;금 액",
+        "제 21 (전) 기&cr;금 액"
+      ],
+      "current_column_header_attrs": [
+        " ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"284\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"250\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"249\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\""
+      ],
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "header": "D WIDTH=\"314\" HEIGHT=\"30\" USERMARK=\" P16\">5.연결결손금(주석 15) (20,631,261,248) (10,787,149,213) Ⅱ.소수주주지분 - - 자 본 총 계 19,397,821,779 27,292,926,187 부 채 와 자 본 총 계 25,325,865,163 41,476,856,315 &cr; \"연결재무제표에 대한 주석 참조\" 연 결 손 익 계 산 서 제 22(당) 기 2009년 1월 1일부터 2009년 12월 31일까지 제 21(전) 기 2008년 1월 1일부터 2008년 12월 31일까지 주식회사 에스티씨라이프 (단위 : 원)",
+      "source_row_label": "Ⅹ.당기순손실",
+      "source_raw_amount": "9,844,112,035",
+      "source_comparative_cells": [
+        "",
+        "7,915,070,516"
+      ],
+      "reference_term": 22,
+      "reference_unit": "원",
+      "independent_amount_krw": "-9844112035",
+      "source_row_semantics": "PASS",
+      "scope_limit": "Reported original current accounting line only; ISdepreciation/amortization are SG&A components, not inferred company totals",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED",
+      "publication": "HOLD"
+    },
+    {
+      "receipt": "20100331001972",
+      "scope": "CFS",
+      "statement": "CF",
+      "metric": "ocf",
+      "source_archive": "chunk00/native/20100331001972-216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848.zip",
+      "source_archive_sha256": "216b01188e9073fce01fa379d64a8ce746fb77d9bcb253c6ea8b8a6814c8b848",
+      "source_member": "20100331001972.xml",
+      "source_member_sha256": "7c2d6dc60663e64a29f68ff46793859ea490df34278a6e5e9f88b3822db8a50e",
+      "table": 64,
+      "row": 1,
+      "current_physical_column": 2,
+      "current_header": [
+        "과 목",
+        "제 22 (당) 기&cr;금 액",
+        "제 21 (전) 기&cr;금 액"
+      ],
+      "current_column_header_attrs": [
+        " ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"383\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"254\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"254\" HEIGHT=\"53\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\""
+      ],
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "header": "IGN=\"MIDDLE\" WIDTH=\"127\" HEIGHT=\"30\">- 158,145,182 당기순손실(주석 20) - - - (9,844,112,035) (9,844,112,035) 2009. 12. 31(당기말) 33,401,145,500 9,026,643,640 (603,139,907) (1,795,566,206) (20,631,261,248) 19,397,821,779 &cr; \"연결재무제표에 대한 주석 참조\" 연 결 현 금 흐 름 표 제 22(당) 기 2009년 1월 1일부터 2009년 12월 31일까지 제 21(전) 기 2008년 1월 1일부터 2008년 12월 31일까지 주식회사 에스티씨라이프 (단위 : 원)",
+      "source_row_label": "Ⅰ.영업활동으로인한현금흐름",
+      "source_raw_amount": "(4,481,694,015)",
+      "source_comparative_cells": [
+        "",
+        "703,370,753"
+      ],
+      "reference_term": 22,
+      "reference_unit": "원",
+      "independent_amount_krw": "-4481694015",
+      "source_row_semantics": "PASS",
+      "scope_limit": "Reported original current accounting line only; ISdepreciation/amortization are SG&A components, not inferred company totals",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED",
+      "publication": "HOLD"
+    },
+    {
+      "receipt": "20100331001982",
+      "scope": "CFS",
+      "statement": "BS",
+      "metric": "total_assets",
+      "source_archive": "chunk01/native/20100331001982-0107b7a39a486e16114f9f3c60982d70ec964a77dfc0dd1daab73d6a891f89c0.zip",
+      "source_archive_sha256": "0107b7a39a486e16114f9f3c60982d70ec964a77dfc0dd1daab73d6a891f89c0",
+      "source_member": "20100331001982.xml",
+      "source_member_sha256": "098e5e3eb5e7ae6ca754fe4b6cf8e436acb9882661d9b0e0d00315a07af3c180",
+      "table": 135,
+      "row": 73,
+      "current_physical_column": 2,
+      "current_header": [
+        "과 목",
+        "제 3 (당) 기",
+        "제 2 (전) 기"
+      ],
+      "current_column_header_attrs": [
+        " ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"306\" HEIGHT=\"30\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"232\" HEIGHT=\"30\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\"",
+        " COLSPAN=\"2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\" WIDTH=\"230\" HEIGHT=\"30\" ACOPYCOL=\"Y\" ADELETECOL=\"Y\" AMOVECOL=\"N\""
+      ],
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "header": "/TR> Ⅴ.현금의증가(감소) 137,727,063 1,492,641 (8,008,892) Ⅵ.기초의현금 13,875,545 12,382,904 20,391,796 Ⅶ.기말의현금 151,602,608 13,875,545 12,382,904 2. 연결 재무제표&cr; 연 결 재 무 상 태 표 제 3 기 2009년 12월 31일 현재 제 2 기 2008년 12월 31일 현재 &cr;CJ제일제당주식회사 및 종속회사 (단위 : 천원)",
+      "source_row_label": "자 산 총 계",
+      "source_raw_amount": "4,877,276,061&cr;=============",
+      "source_comparative_cells": [
+        "",
+        "4,706,794,895&cr;============="
+      ],
+      "reference_term": 3,
+      "reference_unit": "천원",
+      "independent_amount_krw": "4877276061000",
+      "source_row_semantics": "PASS",
+      "scope_limit": "Reported original current accounting line only; ISdepreciation/amortization are SG&A components, not inferred company totals",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED",
+      "publication": "HOLD"
+    }
+  ],
+  "checks": {
+    "STC_revenue_minus_cost_equals_gross": true,
+    "CJ_assets_equals_previously_audited_liabilities_plus_equity": true,
+    "independent_original_source_amounts": 9
+  },
+  "existing_operating_candidates_871_unchanged": true,
+  "original_semantic_PASS": 848,
+  "original_reviewed_UNVERIFIED": 23,
+  "proposed_research_additions_source_semantics_PASS": 9,
+  "all_proposed_880_source_row_semantics": {
+    "PASS": 857,
+    "UNVERIFIED": 23
+  },
+  "operating_candidate_count_remains": 871,
+  "PIT": "UNVERIFIED",
+  "financial_publication": 0,
+  "scope_limit": "Offline proposed parser output only; no migration or operational dataset replacement; source-row PASS is not investment or whole-filing certification"
+}

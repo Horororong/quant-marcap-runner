@@ -1,0 +1,35 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "research_parser": "legacy-v9.3-note-reference-token-guard",
+  "approved_operating_parser": "legacy-v9.2-statement-boundary-guard",
+  "approved_config_bytes_unchanged": true,
+  "source_hash_contract_unchanged": true,
+  "changed_source_file": "scripts/legacy_native_financials.py",
+  "research_source_sha256": "4bfb127ac05505e0543952ee8e9d90c7541c031f2751767e247845cae2ced0fb",
+  "old_approved_source_sha256": "3cff54f28e3081a1a014e5e12ad56ed13ea36d2d16e16af7aeef0aa0dd1c2773",
+  "approved_contract_rejects_new_parser": true,
+  "local_related_suite": {
+    "total": 114,
+    "PASS": 112,
+    "ERROR": 2,
+    "reason": "UNAPPROVED_PARSER_OR_DIAGNOSTIC_VERSION in old live-config acceptance tests",
+    "expectations_or_fixtures_weakened": false
+  },
+  "new_boundary_tests": 9,
+  "remote_CI": "NOT_RUN_NEW_SOURCE_NOT_AUTHORIZED_FOR_PUBLIC_EGRESS",
+  "old_CI39540516627": "Historical305cb success; does not validate this changed parser",
+  "operating_main_unchanged": "fd232d129bfa2ef01714b94890460c5ef47bdbf0",
+  "operating_candidate_count": 871,
+  "original_source_row_semantics": {
+    "PASS": 848,
+    "UNVERIFIED": 23
+  },
+  "proposed_only_additions": 9,
+  "proposed_source_row_semantics": {
+    "PASS": 857,
+    "UNVERIFIED": 23
+  },
+  "migration_authorized": false,
+  "financial_publication": "HOLD",
+  "PIT": "UNVERIFIED"
+}

@@ -1,3 +1,11 @@
+## 2026-10-21 새9.3 원문 추출 수리 — 로컬만, 운영 migration 미승인
+
+- 별도fix/native-source-boundaries-20261021, /workspace/quant-parser-repair-20261021/code에서 STC주석참조와CJnativebreak숫자 장식을 수정했다. 기본workspace01731c7/백업v1~v6는 보존했다.
+- 57원문 old9.2 replay=저장871일치;new9.3도 기존871의 금융·출처 비교필드 변경/삭제0. 기존848PASS/23UV/9SOURCE_GAP 유지. 새오프라인9후보(STC8,CJ1)는 별도 독립원문행PASS. 제안880=857source-rowPASS+23UV;운영데이터871은 그대로다. 금융게시0/PIT미인증.
+- 새9경계시험PASS;관련114시험112PASS/2ERROR. 두오류는9.2승인config가9.3을거부한것이며fixture/config/hash를바꾸지않았다. 명시적 migration/새원격CI/운영배포는아직미완료다.
+- 실제main9.2 livegate07:53UTC/16:53KST는ONCE_PER_KST_DAY,HTTP0;HOLD_FAILURE/checkpoint2054완료,next2062/2063,pending43,실행2/3.새parser미승인과실제main의일일제한은별개다.
+- 새감사payload 공개Git전송은자동승인검토거부후 추가승인대기. 이번 수정도 원격미게시/새CI미실행. 이미승인·검증된v5는재전송하지않는다. 보고/원문controls/회귀/실제test오류: [수리증거](docs/research/native-source-boundary-repair-20261021/REPORT.md).
+
 ## 2026-10-21 이번 증분의 공개 게시 승인 대기
 
 새29문서 증거 commit b83fcab263100dd889e050cae3732d6e5d90c215는 로컬에만 있다. 정확한v5에 대한 승인은 이미 이행했으나 자동 승인 검토가 이후 생성된25파일/17MB 감사 자료의 공개 GitHub 게시를 별도 승인 대상으로 판단해 git publication 명령을 시작 전에 거부했다. 이번 증분은 아직 원격 보존됐다고 주장하지 않는다. 사용자 승인 전 다른 경로/축소 payload로 우회 전송하지 않는다. 승인 대상은 이 새 증거 commit 및 이 차단 영수증/인계 기록을 포함한 후속 commit이다. 변경분은 별도 로컬v6증분 백업에 보존한다. 보고서: docs/research/source-review-batch2-20261021/REPORT.md

@@ -18,7 +18,7 @@ except ModuleNotFoundError as error:
         raise
     from legacy_financial_fields import choose_metric, norm_account
 
-PARSER_VERSION = "legacy-v9.2-statement-boundary-guard"
+PARSER_VERSION = "legacy-v9.3-note-reference-token-guard"
 DATE = re.compile(r"(\d{4})\s*[.년/-]\s*(\d{1,2})\s*[.월/-]\s*(\d{1,2})(?:\s*[.일])?")
 HEADING = re.compile(r"(?:연결)?(?:포괄손익계산서|손익계산서|대차대조표|재무상태표|현금흐름표|이익잉여금처분계산서|결손금처리계산서)")
 TERM = re.compile(r"(?:제\s*)?(\d+)\s*(?:\([당전]\))?\s*기")
@@ -56,8 +56,12 @@ def financial_account(label, statement):
 
 
 def strip_terminal_underline(raw):
-    """Only a trailing run of >=2 '=' or '_' characters; no prefix guessing."""
-    return re.sub(r"(?:={2,}|_{2,})$", "", compact(raw))
+    """A terminal rule may follow DART's literal line-break entity.
+
+    The entity is removed only immediately before the rule, never between
+    digits. The caller still validates the remaining whole numeric token.
+    """
+    return re.sub(r"(?:&cr;)?(?:={2,}|_{2,})$", "", compact(raw))
 
 
 def decimal_amount(raw, account="", metric=""):
@@ -362,7 +366,12 @@ def parse_native(text):
         # Opening this section does not authenticate any number: every table
         # still needs a fresh primary statement heading, current term/dates,
         # explicit unit and an unambiguous physical amount column.
-        events = list(re.finditer(r"4[.]재무제표|가[.]재무제표|다[.]연결재무제표|(?:XI|Ⅺ|ⅩⅠ)[.](?:부속명세서|재무제표등)|부문별재무현황|사업부문별재무|합병전[ㆍ·]?후|외화자산과부채|주석", prefix))
+        # This exact ordinary citation is not entry into a notes section.
+        # Removing it cannot open a closed zone; real notes/segment markers
+        # elsewhere in the prefix still close it. Dates, scope, unit and
+        # physical current-column evidence below remain mandatory.
+        boundary_prefix = re.sub(r"(?:연결)?재무제표에대한주석참조", "", prefix)
+        events = list(re.finditer(r"4[.]재무제표|가[.]재무제표|다[.]연결재무제표|(?:XI|Ⅺ|ⅩⅠ)[.](?:부속명세서|재무제표등)|부문별재무현황|사업부문별재무|합병전[ㆍ·]?후|외화자산과부채|주석", boundary_prefix))
         for event in events:
             zone = (event.group() in {"4.재무제표", "가.재무제표", "다.연결재무제표"}
                     or bool(re.fullmatch(r"(?:XI|Ⅺ|ⅩⅠ)[.](?:부속명세서|재무제표등)", event.group())))
@@ -491,7 +500,8 @@ def parse_native(text):
                             "structural_status": "PASS" if source_ok else "UNVERIFIED",
                             "availability_status": "UNVERIFIED", "backtest_eligible": False,
                             "value_basis": "explicit current term and measurement basis from original headers",
-                            "numeric_normalization": "terminal_underline" if strip_terminal_underline(token) != compact(token) else "whole_token",
+                            "numeric_normalization": ("native_linebreak_terminal_underline" if re.search(r"&cr;(?:={2,}|_{2,})$", compact(token))
+                                                      else "terminal_underline" if strip_terminal_underline(token) != compact(token) else "whole_token"),
                             "account_normalization": "explicit_account_annotation" if compact(account_without_annotations(label)) != compact(label).strip("= ") else "exact",
                             "parser_version": PARSER_VERSION})
                         observations[-1]["period"] = report_period if report_period != "QX" else observations[-1]["period"]
