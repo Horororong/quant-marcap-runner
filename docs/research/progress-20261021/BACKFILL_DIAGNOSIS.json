@@ -1,0 +1,76 @@
+{
+  "observed_at_utc": "2026-10-21T08:49:01.023187+00:00",
+  "date_kst": "2026-10-21",
+  "actual_operating_commit": "fd232d129bfa2ef01714b94890460c5ef47bdbf0",
+  "policy": "PROJECT_INTERNAL; not an OpenDART externally reported quota",
+  "maximum_runs_per_kst_day": 1,
+  "execution_attempts": 2,
+  "maximum_executions": 3,
+  "remaining_executions": 1,
+  "reserved_documents": 200,
+  "maximum_reservations": 300,
+  "gate": "ONCE_PER_KST_DAY",
+  "source_HTTP_this_task": 0,
+  "gate_failure_charged": false,
+  "reserved_zero_HTTP_attempt_would_count": true,
+  "next_daily_window_kst": "2026-10-22T00:00:00+09:00",
+  "next_daily_window_utc": "2026-10-21T15:00:00+00:00",
+  "automatic_permission": false,
+  "last_successful_source": {
+    "archives": [
+      {
+        "bytes": 79260,
+        "path": "native/20100331002054-ed72d7c45213fb92ddb7ef7a82738fab138dd236c49af465dd7cd6bd0971b2c2.zip",
+        "sha256": "ed72d7c45213fb92ddb7ef7a82738fab138dd236c49af465dd7cd6bd0971b2c2"
+      }
+    ],
+    "rcept_no": "20100331002054",
+    "run_id": "39504052321",
+    "source_status": "DURABLE",
+    "source_version": "opendart-document-v1",
+    "updated_at_utc": "2026-10-20T22:05:20.561506+00:00"
+  },
+  "completed_checkpoint": "20100331002054",
+  "pending_documents": 43,
+  "next_targets": [
+    "20100331002062",
+    "20100331002063"
+  ],
+  "next_target_state": {
+    "20100331002062": "DEFERRED old worker -15; not durable, possible prior HTTP attempt cannot be excluded",
+    "20100331002063": "PENDING; no completed or durable record"
+  },
+  "historical_HTTP_total": "NOT_PROVABLE from published summary/parent logs: 57 successful archived responses; retries and interrupted2062 not counted exactly",
+  "new_HTTP_total": 0,
+  "operating_source_owners": [
+    {
+      "path": "scripts/legacy_native_financials.py",
+      "sha256": "3cff54f28e3081a1a014e5e12ad56ed13ea36d2d16e16af7aeef0aa0dd1c2773"
+    },
+    {
+      "path": "scripts/legacy_financial_fields.py",
+      "sha256": "e2c3f1d1c821dced7fcd2a11fbb4ec74c40b0f4016f3745fbaaf7a053b228163"
+    },
+    {
+      "path": "scripts/legacy_document_quality.py",
+      "sha256": "c9be4765ab971a1115cdc0991f36acb5212636ef41e98fd190416b168c21e1fb"
+    },
+    {
+      "path": "scripts/backfill_dart_legacy_2000_2014.py",
+      "sha256": "ce3ef9e0d86a2e80dd03e744f26b686ed04a73d03b552cbc5b95e9c22d495a41"
+    },
+    {
+      "path": "scripts/dart_http.py",
+      "sha256": "f4d3584e3bd57dcdcf0bd03c5fcad47c234a49864c76c9ea19cb3ac4846ee6e5"
+    },
+    {
+      "path": "scripts/dart_service_status.py",
+      "sha256": "b05e2f5bc95bb69c62203f6b950d5fa4a955c640f797446e7834bed671140695"
+    }
+  ],
+  "operating_collector_sha256": "9e22619536198d2abd453dad7db5002e62b01dfad4cb09c754fa4a6d49b3dfed",
+  "schedule": "05:17 KST configured; latest actual schedule NO_COLLECTION/OBSERVATION_STOPPED_OR_UNREVIEWED; no parent input, no automatic HOLD recovery",
+  "hold": "HOLD_FAILURE retained; financial publication HOLD; backtest_eligible False; investment PIT0/6",
+  "next_execution": "main workflow_dispatch resume_parent_run=39504052321,batch_documents=2; reread every live gate; consumes final execution slot",
+  "further_batches": "Not authorized after final slot; need renewed finite execution budget, not daily-limit bypass"
+}

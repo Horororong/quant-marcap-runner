@@ -1,0 +1,165 @@
+Job 118368531147
+2026-10-19T23:39:31.7360060Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-19T23:39:32.6104137Z ##[group]Run actions/checkout@v4
+2026-10-19T23:39:32.6111645Z   sparse-checkout-cone-mode: true
+2026-10-19T23:39:32.6115002Z   allow-unsafe-pr-checkout: false
+2026-10-19T23:40:01.8065040Z ##[group]Determining the checkout info
+2026-10-19T23:40:01.8110402Z [command]/usr/bin/git sparse-checkout disable
+2026-10-19T23:40:01.8264461Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-19T23:40:06.7997880Z ##[group]Run actions/setup-python@v5
+2026-10-19T23:40:11.7456702Z Original pinned kit release SHA/CRC verified; no artifact download or pip
+2026-10-19T23:40:27.8552055Z {"status": "NO_COLLECTION", "reason": "OBSERVATION_STOPPED_OR_UNREVIEWED"}
+2026-10-19T23:40:28.7880196Z Post job cleanup.
+2026-10-19T23:40:28.9560137Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+
+Job 118908409363
+2026-10-20T21:54:14.3424813Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-20T21:54:15.8015979Z ##[group]Run actions/checkout@v4
+2026-10-20T21:54:15.8020009Z   sparse-checkout-cone-mode: true
+2026-10-20T21:54:15.8021603Z   allow-unsafe-pr-checkout: false
+2026-10-20T21:54:15.8802687Z Temporarily overriding HOME='/home/runner/work/_temp/1dbe94c0-1ec6-4cf6-bed1-d54384825901' before making global git config changes
+2026-10-20T21:54:15.8803560Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-20T21:54:15.8806473Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/quant-marcap-runner/quant-marcap-runner
+2026-10-20T21:54:48.6863003Z ##[group]Determining the checkout info
+2026-10-20T21:54:48.6890967Z [command]/usr/bin/git sparse-checkout disable
+2026-10-20T21:54:48.6983538Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-20T21:54:55.5230656Z Original pinned kit release SHA/CRC verified; no artifact download or pip
+2026-10-20T21:55:21.0590556Z {"current_receipt": "20100331001938", "current_stage": "WORKER_START", "completed": 0, "last_checkpoint": null, "elapsed_seconds": 0.002}
+2026-10-20T21:55:36.1510945Z {"receipt": "20100331001938", "stage": "parse_member", "elapsed_seconds": 15.01, "last_checkpoint": null}
+2026-10-20T21:55:39.5598980Z {"current_receipt": "20100331001938", "current_stage": "CHECKPOINT_DURABLE", "completed": 1, "last_checkpoint": "20100331001938", "elapsed_seconds": 18.503}
+2026-10-20T21:55:39.5608403Z {"current_receipt": "20100331001942", "current_stage": "WORKER_START", "completed": 1, "last_checkpoint": "20100331001938", "elapsed_seconds": 18.504}
+2026-10-20T21:55:48.9729691Z {"current_receipt": "20100331001942", "current_stage": "CHECKPOINT_DURABLE", "completed": 2, "last_checkpoint": "20100331001942", "elapsed_seconds": 27.916}
+2026-10-20T21:55:48.9738808Z {"current_receipt": "20100331001943", "current_stage": "WORKER_START", "completed": 2, "last_checkpoint": "20100331001942", "elapsed_seconds": 27.917}
+2026-10-20T21:55:56.0098468Z {"current_receipt": "20100331001943", "current_stage": "CHECKPOINT_DURABLE", "completed": 3, "last_checkpoint": "20100331001943", "elapsed_seconds": 34.953}
+2026-10-20T21:55:56.0107788Z {"current_receipt": "20100331001944", "current_stage": "WORKER_START", "completed": 3, "last_checkpoint": "20100331001943", "elapsed_seconds": 34.954}
+2026-10-20T21:56:02.6303902Z {"current_receipt": "20100331001944", "current_stage": "CHECKPOINT_DURABLE", "completed": 4, "last_checkpoint": "20100331001944", "elapsed_seconds": 41.573}
+2026-10-20T21:56:02.6313381Z {"current_receipt": "20100331001949", "current_stage": "WORKER_START", "completed": 4, "last_checkpoint": "20100331001944", "elapsed_seconds": 41.574}
+2026-10-20T21:56:08.0630638Z {"current_receipt": "20100331001949", "current_stage": "CHECKPOINT_DURABLE", "completed": 5, "last_checkpoint": "20100331001949", "elapsed_seconds": 47.004}
+2026-10-20T21:56:08.0639364Z {"current_receipt": "20100331001950", "current_stage": "WORKER_START", "completed": 5, "last_checkpoint": "20100331001949", "elapsed_seconds": 47.007}
+2026-10-20T21:56:16.0881930Z {"current_receipt": "20100331001950", "current_stage": "CHECKPOINT_DURABLE", "completed": 6, "last_checkpoint": "20100331001950", "elapsed_seconds": 55.031}
+2026-10-20T21:56:16.0890312Z {"current_receipt": "20100331001951", "current_stage": "WORKER_START", "completed": 6, "last_checkpoint": "20100331001950", "elapsed_seconds": 55.032}
+2026-10-20T21:56:31.1029176Z {"receipt": "20100331001951", "stage": "read_start", "elapsed_seconds": 15.01, "last_checkpoint": "20100331001950"}
+2026-10-20T21:56:35.6433853Z {"current_receipt": "20100331001951", "current_stage": "CHECKPOINT_DURABLE", "completed": 7, "last_checkpoint": "20100331001951", "elapsed_seconds": 74.586}
+2026-10-20T21:56:35.6443343Z {"current_receipt": "20100331001953", "current_stage": "WORKER_START", "completed": 7, "last_checkpoint": "20100331001951", "elapsed_seconds": 74.587}
+2026-10-20T21:56:45.8722436Z {"current_receipt": "20100331001953", "current_stage": "CHECKPOINT_DURABLE", "completed": 8, "last_checkpoint": "20100331001953", "elapsed_seconds": 84.815}
+2026-10-20T21:56:45.8731350Z {"current_receipt": "20100331001954", "current_stage": "WORKER_START", "completed": 8, "last_checkpoint": "20100331001953", "elapsed_seconds": 84.816}
+2026-10-20T21:56:55.8948558Z {"current_receipt": "20100331001954", "current_stage": "CHECKPOINT_DURABLE", "completed": 9, "last_checkpoint": "20100331001954", "elapsed_seconds": 94.838}
+2026-10-20T21:56:55.8956702Z {"current_receipt": "20100331001955", "current_stage": "WORKER_START", "completed": 9, "last_checkpoint": "20100331001954", "elapsed_seconds": 94.839}
+2026-10-20T21:57:09.4314110Z {"current_receipt": "20100331001955", "current_stage": "CHECKPOINT_DURABLE", "completed": 10, "last_checkpoint": "20100331001955", "elapsed_seconds": 108.374}
+2026-10-20T21:57:09.4322719Z {"current_receipt": "20100331001960", "current_stage": "WORKER_START", "completed": 10, "last_checkpoint": "20100331001955", "elapsed_seconds": 108.375}
+2026-10-20T21:57:17.0535738Z {"current_receipt": "20100331001960", "current_stage": "CHECKPOINT_DURABLE", "completed": 11, "last_checkpoint": "20100331001960", "elapsed_seconds": 115.996}
+2026-10-20T21:57:17.0544563Z {"current_receipt": "20100331001961", "current_stage": "WORKER_START", "completed": 11, "last_checkpoint": "20100331001960", "elapsed_seconds": 115.997}
+2026-10-20T21:57:32.0690223Z {"receipt": "20100331001961", "stage": "parse_member", "elapsed_seconds": 15.01, "last_checkpoint": "20100331001960"}
+2026-10-20T21:57:34.3304754Z {"current_receipt": "20100331001961", "current_stage": "CHECKPOINT_DURABLE", "completed": 12, "last_checkpoint": "20100331001961", "elapsed_seconds": 133.272}
+2026-10-20T21:57:34.3313895Z {"current_receipt": "20100331001962", "current_stage": "WORKER_START", "completed": 12, "last_checkpoint": "20100331001961", "elapsed_seconds": 133.274}
+2026-10-20T21:57:40.9598563Z {"current_receipt": "20100331001962", "current_stage": "CHECKPOINT_DURABLE", "completed": 13, "last_checkpoint": "20100331001962", "elapsed_seconds": 139.893}
+2026-10-20T21:57:40.9607572Z {"current_receipt": "20100331001963", "current_stage": "WORKER_START", "completed": 13, "last_checkpoint": "20100331001962", "elapsed_seconds": 139.904}
+2026-10-20T21:57:47.3803353Z {"current_receipt": "20100331001963", "current_stage": "CHECKPOINT_DURABLE", "completed": 14, "last_checkpoint": "20100331001963", "elapsed_seconds": 146.323}
+2026-10-20T21:57:47.3812519Z {"current_receipt": "20100331001966", "current_stage": "WORKER_START", "completed": 14, "last_checkpoint": "20100331001963", "elapsed_seconds": 146.324}
+2026-10-20T21:57:56.2092764Z {"current_receipt": "20100331001966", "current_stage": "CHECKPOINT_DURABLE", "completed": 15, "last_checkpoint": "20100331001966", "elapsed_seconds": 155.152}
+2026-10-20T21:57:56.2101737Z {"current_receipt": "20100331001972", "current_stage": "WORKER_START", "completed": 15, "last_checkpoint": "20100331001966", "elapsed_seconds": 155.153}
+2026-10-20T21:58:06.0486346Z {"current_receipt": "20100331001972", "current_stage": "CHECKPOINT_DURABLE", "completed": 16, "last_checkpoint": "20100331001972", "elapsed_seconds": 164.991}
+2026-10-20T21:58:06.0494767Z {"current_receipt": "20100331001974", "current_stage": "WORKER_START", "completed": 16, "last_checkpoint": "20100331001972", "elapsed_seconds": 164.992}
+2026-10-20T21:58:16.7635753Z {"current_receipt": "20100331001974", "current_stage": "CHECKPOINT_DURABLE", "completed": 17, "last_checkpoint": "20100331001974", "elapsed_seconds": 175.706}
+2026-10-20T21:58:16.7775406Z {"current_receipt": "20100331001977", "current_stage": "WORKER_START", "completed": 17, "last_checkpoint": "20100331001974", "elapsed_seconds": 175.707}
+2026-10-20T21:58:29.9092595Z {"current_receipt": "20100331001977", "current_stage": "CHECKPOINT_DURABLE", "completed": 18, "last_checkpoint": "20100331001977", "elapsed_seconds": 188.852}
+2026-10-20T21:58:29.9101793Z {"current_receipt": "20100331001980", "current_stage": "WORKER_START", "completed": 18, "last_checkpoint": "20100331001977", "elapsed_seconds": 188.853}
+2026-10-20T21:58:44.9255831Z {"receipt": "20100331001980", "stage": "read_start", "elapsed_seconds": 15.01, "last_checkpoint": "20100331001977"}
+2026-10-20T21:58:58.1960384Z {"current_receipt": "20100331001980", "current_stage": "CHECKPOINT_DURABLE", "completed": 19, "last_checkpoint": "20100331001980", "elapsed_seconds": 217.139}
+2026-10-20T21:58:58.1969479Z {"current_receipt": "20100331001981", "current_stage": "WORKER_START", "completed": 19, "last_checkpoint": "20100331001980", "elapsed_seconds": 217.14}
+2026-10-20T21:59:07.5283014Z {"current_receipt": "20100331001981", "current_stage": "CHECKPOINT_DURABLE", "completed": 20, "last_checkpoint": "20100331001981", "elapsed_seconds": 226.471}
+2026-10-20T21:59:07.5292370Z {"current_receipt": "20100331001982", "current_stage": "WORKER_START", "completed": 20, "last_checkpoint": "20100331001981", "elapsed_seconds": 226.472}
+2026-10-20T21:59:22.5461940Z {"receipt": "20100331001982", "stage": "parse_member", "elapsed_seconds": 15.02, "last_checkpoint": "20100331001981"}
+2026-10-20T21:59:26.5109248Z {"current_receipt": "20100331001982", "current_stage": "CHECKPOINT_DURABLE", "completed": 21, "last_checkpoint": "20100331001982", "elapsed_seconds": 245.454}
+2026-10-20T21:59:26.5117758Z {"current_receipt": "20100331001983", "current_stage": "WORKER_START", "completed": 21, "last_checkpoint": "20100331001982", "elapsed_seconds": 245.455}
+2026-10-20T21:59:38.4424880Z {"current_receipt": "20100331001983", "current_stage": "CHECKPOINT_DURABLE", "completed": 22, "last_checkpoint": "20100331001983", "elapsed_seconds": 257.385}
+2026-10-20T21:59:38.4435114Z {"current_receipt": "20100331001986", "current_stage": "WORKER_START", "completed": 22, "last_checkpoint": "20100331001983", "elapsed_seconds": 257.386}
+2026-10-20T21:59:49.9731228Z {"current_receipt": "20100331001986", "current_stage": "CHECKPOINT_DURABLE", "completed": 23, "last_checkpoint": "20100331001986", "elapsed_seconds": 268.916}
+2026-10-20T21:59:49.9739462Z {"current_receipt": "20100331001987", "current_stage": "WORKER_START", "completed": 23, "last_checkpoint": "20100331001986", "elapsed_seconds": 268.917}
+2026-10-20T21:59:57.7978985Z {"current_receipt": "20100331001987", "current_stage": "CHECKPOINT_DURABLE", "completed": 24, "last_checkpoint": "20100331001987", "elapsed_seconds": 276.741}
+2026-10-20T21:59:57.7987629Z {"current_receipt": "20100331001990", "current_stage": "WORKER_START", "completed": 24, "last_checkpoint": "20100331001987", "elapsed_seconds": 276.742}
+2026-10-20T22:00:03.9185742Z {"current_receipt": "20100331001990", "current_stage": "CHECKPOINT_DURABLE", "completed": 25, "last_checkpoint": "20100331001990", "elapsed_seconds": 282.861}
+2026-10-20T22:00:03.9194545Z {"current_receipt": "20100331001993", "current_stage": "WORKER_START", "completed": 25, "last_checkpoint": "20100331001990", "elapsed_seconds": 282.862}
+2026-10-20T22:00:12.2465833Z {"current_receipt": "20100331001993", "current_stage": "CHECKPOINT_DURABLE", "completed": 26, "last_checkpoint": "20100331001993", "elapsed_seconds": 291.189}
+2026-10-20T22:00:12.2474537Z {"current_receipt": "20100331001994", "current_stage": "WORKER_START", "completed": 26, "last_checkpoint": "20100331001993", "elapsed_seconds": 291.19}
+2026-10-20T22:00:19.8711995Z {"current_receipt": "20100331001994", "current_stage": "CHECKPOINT_DURABLE", "completed": 27, "last_checkpoint": "20100331001994", "elapsed_seconds": 298.814}
+2026-10-20T22:00:19.8720038Z {"current_receipt": "20100331001996", "current_stage": "WORKER_START", "completed": 27, "last_checkpoint": "20100331001994", "elapsed_seconds": 298.815}
+2026-10-20T22:00:28.3952036Z {"current_receipt": "20100331001996", "current_stage": "CHECKPOINT_DURABLE", "completed": 28, "last_checkpoint": "20100331001996", "elapsed_seconds": 307.338}
+2026-10-20T22:00:28.3962205Z {"current_receipt": "20100331001997", "current_stage": "WORKER_START", "completed": 28, "last_checkpoint": "20100331001996", "elapsed_seconds": 307.339}
+2026-10-20T22:00:33.8271917Z {"current_receipt": "20100331001997", "current_stage": "CHECKPOINT_DURABLE", "completed": 29, "last_checkpoint": "20100331001997", "elapsed_seconds": 312.77}
+2026-10-20T22:00:33.8280531Z {"current_receipt": "20100331001998", "current_stage": "WORKER_START", "completed": 29, "last_checkpoint": "20100331001997", "elapsed_seconds": 312.771}
+2026-10-20T22:00:44.9531806Z {"current_receipt": "20100331001998", "current_stage": "CHECKPOINT_DURABLE", "completed": 30, "last_checkpoint": "20100331001998", "elapsed_seconds": 323.896}
+2026-10-20T22:00:44.9540116Z {"current_receipt": "20100331002001", "current_stage": "WORKER_START", "completed": 30, "last_checkpoint": "20100331001998", "elapsed_seconds": 323.897}
+2026-10-20T22:00:56.7884496Z {"current_receipt": "20100331002001", "current_stage": "CHECKPOINT_DURABLE", "completed": 31, "last_checkpoint": "20100331002001", "elapsed_seconds": 335.731}
+2026-10-20T22:00:56.7893038Z {"current_receipt": "20100331002002", "current_stage": "WORKER_START", "completed": 31, "last_checkpoint": "20100331002001", "elapsed_seconds": 335.732}
+2026-10-20T22:01:03.4124968Z {"current_receipt": "20100331002002", "current_stage": "CHECKPOINT_DURABLE", "completed": 32, "last_checkpoint": "20100331002002", "elapsed_seconds": 342.355}
+2026-10-20T22:01:03.4134133Z {"current_receipt": "20100331002003", "current_stage": "WORKER_START", "completed": 32, "last_checkpoint": "20100331002002", "elapsed_seconds": 342.356}
+2026-10-20T22:01:13.2471739Z {"current_receipt": "20100331002003", "current_stage": "CHECKPOINT_DURABLE", "completed": 33, "last_checkpoint": "20100331002003", "elapsed_seconds": 352.19}
+2026-10-20T22:01:13.2480103Z {"current_receipt": "20100331002007", "current_stage": "WORKER_START", "completed": 33, "last_checkpoint": "20100331002003", "elapsed_seconds": 352.191}
+2026-10-20T22:01:20.7687142Z {"current_receipt": "20100331002007", "current_stage": "CHECKPOINT_DURABLE", "completed": 34, "last_checkpoint": "20100331002007", "elapsed_seconds": 359.711}
+2026-10-20T22:01:20.7695391Z {"current_receipt": "20100331002013", "current_stage": "WORKER_START", "completed": 34, "last_checkpoint": "20100331002007", "elapsed_seconds": 359.712}
+2026-10-20T22:01:31.4835748Z {"current_receipt": "20100331002013", "current_stage": "CHECKPOINT_DURABLE", "completed": 35, "last_checkpoint": "20100331002013", "elapsed_seconds": 370.426}
+2026-10-20T22:01:31.4844979Z {"current_receipt": "20100331002017", "current_stage": "WORKER_START", "completed": 35, "last_checkpoint": "20100331002013", "elapsed_seconds": 370.427}
+2026-10-20T22:01:41.7202476Z {"current_receipt": "20100331002017", "current_stage": "CHECKPOINT_DURABLE", "completed": 36, "last_checkpoint": "20100331002017", "elapsed_seconds": 380.663}
+2026-10-20T22:01:41.7211171Z {"current_receipt": "20100331002018", "current_stage": "WORKER_START", "completed": 36, "last_checkpoint": "20100331002017", "elapsed_seconds": 380.664}
+2026-10-20T22:01:48.6319723Z {"current_receipt": "20100331002018", "current_stage": "CHECKPOINT_DURABLE", "completed": 37, "last_checkpoint": "20100331002018", "elapsed_seconds": 387.575}
+2026-10-20T22:01:48.6329362Z {"current_receipt": "20100331002019", "current_stage": "WORKER_START", "completed": 37, "last_checkpoint": "20100331002018", "elapsed_seconds": 387.576}
+2026-10-20T22:02:03.4794301Z {"current_receipt": "20100331002019", "current_stage": "CHECKPOINT_DURABLE", "completed": 38, "last_checkpoint": "20100331002019", "elapsed_seconds": 402.422}
+2026-10-20T22:02:03.4804420Z {"current_receipt": "20100331002024", "current_stage": "WORKER_START", "completed": 38, "last_checkpoint": "20100331002019", "elapsed_seconds": 402.423}
+2026-10-20T22:02:11.7070919Z {"current_receipt": "20100331002024", "current_stage": "CHECKPOINT_DURABLE", "completed": 39, "last_checkpoint": "20100331002024", "elapsed_seconds": 410.65}
+2026-10-20T22:02:11.7080543Z {"current_receipt": "20100331002026", "current_stage": "WORKER_START", "completed": 39, "last_checkpoint": "20100331002024", "elapsed_seconds": 410.651}
+2026-10-20T22:02:18.1345047Z {"current_receipt": "20100331002026", "current_stage": "CHECKPOINT_DURABLE", "completed": 40, "last_checkpoint": "20100331002026", "elapsed_seconds": 417.077}
+2026-10-20T22:02:18.1355110Z {"current_receipt": "20100331002027", "current_stage": "WORKER_START", "completed": 40, "last_checkpoint": "20100331002026", "elapsed_seconds": 417.078}
+2026-10-20T22:02:28.1642230Z {"current_receipt": "20100331002027", "current_stage": "CHECKPOINT_DURABLE", "completed": 41, "last_checkpoint": "20100331002027", "elapsed_seconds": 427.104}
+2026-10-20T22:02:28.1662890Z {"current_receipt": "20100331002028", "current_stage": "WORKER_START", "completed": 41, "last_checkpoint": "20100331002027", "elapsed_seconds": 427.108}
+2026-10-20T22:02:38.0907738Z {"current_receipt": "20100331002028", "current_stage": "CHECKPOINT_DURABLE", "completed": 42, "last_checkpoint": "20100331002028", "elapsed_seconds": 437.033}
+2026-10-20T22:02:38.0917655Z {"current_receipt": "20100331002029", "current_stage": "WORKER_START", "completed": 42, "last_checkpoint": "20100331002028", "elapsed_seconds": 437.035}
+2026-10-20T22:02:46.5228341Z {"current_receipt": "20100331002029", "current_stage": "CHECKPOINT_DURABLE", "completed": 43, "last_checkpoint": "20100331002029", "elapsed_seconds": 445.463}
+2026-10-20T22:02:46.5244771Z {"current_receipt": "20100331002030", "current_stage": "WORKER_START", "completed": 43, "last_checkpoint": "20100331002029", "elapsed_seconds": 445.467}
+2026-10-20T22:02:58.2398183Z {"current_receipt": "20100331002030", "current_stage": "CHECKPOINT_DURABLE", "completed": 44, "last_checkpoint": "20100331002030", "elapsed_seconds": 457.183}
+2026-10-20T22:02:58.2408183Z {"current_receipt": "20100331002033", "current_stage": "WORKER_START", "completed": 44, "last_checkpoint": "20100331002030", "elapsed_seconds": 457.184}
+2026-10-20T22:03:13.2557448Z {"receipt": "20100331002033", "stage": "parse_member", "elapsed_seconds": 15.01, "last_checkpoint": "20100331002030"}
+2026-10-20T22:03:17.6927811Z {"current_receipt": "20100331002033", "current_stage": "CHECKPOINT_DURABLE", "completed": 45, "last_checkpoint": "20100331002033", "elapsed_seconds": 476.635}
+2026-10-20T22:03:17.6936390Z {"current_receipt": "20100331002034", "current_stage": "WORKER_START", "completed": 45, "last_checkpoint": "20100331002033", "elapsed_seconds": 476.636}
+2026-10-20T22:03:26.5218028Z {"current_receipt": "20100331002034", "current_stage": "CHECKPOINT_DURABLE", "completed": 46, "last_checkpoint": "20100331002034", "elapsed_seconds": 485.464}
+2026-10-20T22:03:26.5227207Z {"current_receipt": "20100331002035", "current_stage": "WORKER_START", "completed": 46, "last_checkpoint": "20100331002034", "elapsed_seconds": 485.466}
+2026-10-20T22:03:34.2345392Z {"current_receipt": "20100331002035", "current_stage": "CHECKPOINT_DURABLE", "completed": 47, "last_checkpoint": "20100331002035", "elapsed_seconds": 493.177}
+2026-10-20T22:03:34.2355287Z {"current_receipt": "20100331002036", "current_stage": "WORKER_START", "completed": 47, "last_checkpoint": "20100331002035", "elapsed_seconds": 493.178}
+2026-10-20T22:03:40.2552154Z {"current_receipt": "20100331002036", "current_stage": "CHECKPOINT_DURABLE", "completed": 48, "last_checkpoint": "20100331002036", "elapsed_seconds": 499.198}
+2026-10-20T22:03:40.2561347Z {"current_receipt": "20100331002037", "current_stage": "WORKER_START", "completed": 48, "last_checkpoint": "20100331002036", "elapsed_seconds": 499.199}
+2026-10-20T22:03:53.6921417Z {"current_receipt": "20100331002037", "current_stage": "CHECKPOINT_DURABLE", "completed": 49, "last_checkpoint": "20100331002037", "elapsed_seconds": 512.635}
+2026-10-20T22:03:53.6930677Z {"current_receipt": "20100331002038", "current_stage": "WORKER_START", "completed": 49, "last_checkpoint": "20100331002037", "elapsed_seconds": 512.636}
+2026-10-20T22:03:58.6164891Z {"current_receipt": "20100331002038", "current_stage": "CHECKPOINT_DURABLE", "completed": 50, "last_checkpoint": "20100331002038", "elapsed_seconds": 517.559}
+2026-10-20T22:03:58.6175842Z {"current_receipt": "20100331002039", "current_stage": "WORKER_START", "completed": 50, "last_checkpoint": "20100331002038", "elapsed_seconds": 517.56}
+2026-10-20T22:04:13.6522334Z {"current_receipt": "20100331002039", "current_stage": "CHECKPOINT_DURABLE", "completed": 51, "last_checkpoint": "20100331002039", "elapsed_seconds": 532.595}
+2026-10-20T22:04:13.6532201Z {"current_receipt": "20100331002042", "current_stage": "WORKER_START", "completed": 51, "last_checkpoint": "20100331002039", "elapsed_seconds": 532.596}
+2026-10-20T22:04:18.0622314Z {"current_receipt": "20100331002042", "current_stage": "CHECKPOINT_DURABLE", "completed": 52, "last_checkpoint": "20100331002042", "elapsed_seconds": 537.005}
+2026-10-20T22:04:18.0631029Z {"current_receipt": "20100331002043", "current_stage": "WORKER_START", "completed": 52, "last_checkpoint": "20100331002042", "elapsed_seconds": 537.006}
+2026-10-20T22:04:32.0999351Z {"current_receipt": "20100331002043", "current_stage": "CHECKPOINT_DURABLE", "completed": 53, "last_checkpoint": "20100331002043", "elapsed_seconds": 551.043}
+2026-10-20T22:04:32.1008928Z {"current_receipt": "20100331002045", "current_stage": "WORKER_START", "completed": 53, "last_checkpoint": "20100331002043", "elapsed_seconds": 551.044}
+2026-10-20T22:04:46.5194633Z {"current_receipt": "20100331002045", "current_stage": "CHECKPOINT_DURABLE", "completed": 54, "last_checkpoint": "20100331002045", "elapsed_seconds": 565.462}
+2026-10-20T22:04:46.5204174Z {"current_receipt": "20100331002046", "current_stage": "WORKER_START", "completed": 54, "last_checkpoint": "20100331002045", "elapsed_seconds": 565.463}
+2026-10-20T22:05:00.8859446Z {"current_receipt": "20100331002046", "current_stage": "CHECKPOINT_DURABLE", "completed": 55, "last_checkpoint": "20100331002046", "elapsed_seconds": 579.828}
+2026-10-20T22:05:00.8869927Z {"current_receipt": "20100331002053", "current_stage": "WORKER_START", "completed": 55, "last_checkpoint": "20100331002046", "elapsed_seconds": 579.83}
+2026-10-20T22:05:14.1426424Z {"current_receipt": "20100331002053", "current_stage": "CHECKPOINT_DURABLE", "completed": 56, "last_checkpoint": "20100331002053", "elapsed_seconds": 593.085}
+2026-10-20T22:05:14.1436082Z {"current_receipt": "20100331002054", "current_stage": "WORKER_START", "completed": 56, "last_checkpoint": "20100331002053", "elapsed_seconds": 593.086}
+2026-10-20T22:05:20.5641837Z {"current_receipt": "20100331002054", "current_stage": "CHECKPOINT_DURABLE", "completed": 57, "last_checkpoint": "20100331002054", "elapsed_seconds": 599.507}
+2026-10-20T22:05:20.5650414Z {"current_receipt": "20100331002062", "current_stage": "WORKER_START", "completed": 57, "last_checkpoint": "20100331002054", "elapsed_seconds": 599.508}
+2026-10-20T22:05:21.0743264Z {"current_receipt": "20100331002062", "current_stage": "DEFERRED", "completed": 57, "last_checkpoint": "20100331002054", "elapsed_seconds": 600.017}
+2026-10-20T22:05:21.0750420Z {"current_receipt": "20100331002062", "current_stage": "DEFERRED", "completed": 57, "last_checkpoint": "20100331002054", "elapsed_seconds": 600.018}
+2026-10-20T22:05:33.1216293Z {"status": "HOLD_FAILURE", "commit": "a9da665e77eb06e09232c9fa1b382b1e3ea31d4f", "processed": 57, "durable": 57, "counts": {"SOURCE_GAP": 9, "PARSED_4F": 48}, "candidate_fields": 871, "financial_fields_published": 0}
+2026-10-20T22:05:35.3969479Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+
+Job 118939160413
+2026-10-20T23:10:39.2431561Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-20T23:10:40.0332792Z ##[group]Run actions/checkout@v4
+2026-10-20T23:10:40.0346028Z   sparse-checkout-cone-mode: true
+2026-10-20T23:10:40.0351055Z   allow-unsafe-pr-checkout: false
+2026-10-20T23:11:16.0145537Z ##[group]Determining the checkout info
+2026-10-20T23:11:16.0228978Z [command]/usr/bin/git sparse-checkout disable
+2026-10-20T23:11:16.0354070Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-20T23:11:19.9878806Z Updating files:  58% (1002/1726)
+2026-10-20T23:11:27.6764428Z Original pinned kit release SHA/CRC verified; no artifact download or pip
+2026-10-20T23:11:45.1546964Z {"status": "NO_COLLECTION", "reason": "OBSERVATION_STOPPED_OR_UNREVIEWED"}
+2026-10-20T23:11:46.6014776Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

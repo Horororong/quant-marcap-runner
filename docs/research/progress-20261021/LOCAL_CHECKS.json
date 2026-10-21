@@ -1,0 +1,15 @@
+{
+  "local_user_tests": 18,
+  "tests_status": "PASS",
+  "real_browser_and_server_restart": "PASS",
+  "js_syntax": "PASS",
+  "generated_strategy_dsl_contract": "PASS",
+  "final_feature_remote_ci": "NOT_RUN; exact ba26-only public approval",
+  "unchanged_engine_regressions": "Preserved prior exact305cb CI39540516627 and130strict baseline; no new engine/DSL/provider edits",
+  "failures_resolved": [
+    "Local socket blocked in default sandbox; loopback-capable execution used",
+    "Browser fixture selected incorrect cost option fixed_cost; actual CURRENT contract net:fixed_cost used",
+    "Isolated -I export contract CLI requires explicit trusted scripts import path; runpy check PASS"
+  ],
+  "research_only": true
+}

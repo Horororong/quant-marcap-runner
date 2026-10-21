@@ -1,0 +1,35 @@
+{
+  "branch": "fix/native-source-boundaries-20261021",
+  "head": "ba26c3684fea72e0fe01e0c49fbc09f10982a12e",
+  "base": "2f5f9d16438dd4fede017a7fe325f60c21154661",
+  "commits": [
+    {
+      "commit": "ba26c3684fea72e0fe01e0c49fbc09f10982a12e",
+      "tree": "efb563cf0ea48df29f05801dfc84111a2d6e730f",
+      "changed_paths": [
+        "HANDOFF_CURRENT.md",
+        "config/financial_limited_resume_v1.json",
+        "docs/research/parser-approval-20261021/APPROVED_PUBLICATION_RECEIPT.json",
+        "docs/research/parser-approval-20261021/APPROVED_REMOTE_READBACK.json",
+        "docs/research/parser-approval-20261021/APPROVED_TRANSFER_MANIFEST.json",
+        "docs/research/parser-approval-20261021/APPROVED_TRANSFER_MANIFEST.json.sha256",
+        "docs/research/parser-approval-20261021/CANDIDATE_ACCOUNTING.json",
+        "docs/research/parser-approval-20261021/CI_CONTRACT.json",
+        "docs/research/parser-approval-20261021/EVIDENCE_MANIFEST.json",
+        "docs/research/parser-approval-20261021/LIVE_GATE.json",
+        "docs/research/parser-approval-20261021/REAPPROVAL_RECORD.json",
+        "docs/research/parser-approval-20261021/REAPPROVED_TESTS.log",
+        "docs/research/parser-approval-20261021/REPORT.md",
+        "docs/research/parser-approval-20261021/UNVERIFIED_12_TO_23.md",
+        "docs/research/parser-approval-20261021/UNVERIFIED_23_VALUE_LEDGER.json",
+        "docs/research/parser-approval-20261021/USER_APPROVAL.json",
+        "docs/research/parser-approval-20261021/V7_REMOTE_COVERAGE.json",
+        "scripts/check_native_source_review_evidence.py",
+        "tests/fixtures/financial_limited_resume_approved_v9_2.json",
+        "tests/test_native_source_boundary_repairs.py"
+      ]
+    }
+  ],
+  "remote_exact": true,
+  "main_changed": false
+}

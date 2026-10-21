@@ -14,7 +14,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parent))
 from research_language import translate,response,confirmation_digest,SUPPORT
 from strategy_dsl import StrategySpec
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='local-research-workspace-v1.1-json-transport'
+VERSION='local-research-workspace-v1.2-saved-comparisons'
 def browser_numbers(value):
     """Match JSON.stringify's integral-number representation before preview.
 
@@ -95,8 +95,40 @@ class Workspace:
         record=dict(id=sid,name=name,created_at=now(),strategy=s.to_dict(),fingerprint=s.fingerprint(),language_request=o.get('text',''),investment_approved=False)
         write(self.store/'strategies'/str(sid+'.json'),record);return record
     def saved(self,kind):
-        if kind not in {'strategies','jobs'}:raise ValueError('알 수 없는 저장 유형')
+        if kind not in {'strategies','jobs','comparisons'}:raise ValueError('알 수 없는 저장 유형')
         return [read(p)for p in sorted((self.store/kind).glob('*.json'),reverse=True)]
+    def comparison_snapshot(self,job):
+        # Bind a saved comparison to the actual successful run, not editor state
+        # or a client-supplied performance table. No metric recalculation.
+        run=self.store/'runs'/identifier(job['id'])/'run'
+        names=['strategy_normalized.json','preflight.json','run_status.json',
+            'artifacts/daily_nav.csv','report/metrics_CURRENT.csv',
+            'report/report_CURRENT.html','report/chat_manifest_CURRENT.json']
+        files=[]
+        for name in names:
+            p=run/name
+            if not p.is_file():raise ValueError('COMPARISON_SOURCE_MISSING: '+job['id']+'/'+name)
+            files.append(dict(path=name,bytes=p.stat().st_size,sha256=hashlib.sha256(p.read_bytes()).hexdigest()))
+        return dict(id=job['id'],fingerprint=job['fingerprint'],period=job['period'],
+            provenance=job['provenance'],files=files)
+    def save_comparison(self,o):
+        name=o.get('name','');ids=o.get('run_ids')
+        if not isinstance(name,str)or not name.strip()or len(name)>120:raise ValueError('비교 이름은 1~120자입니다')
+        if not isinstance(ids,list):raise ValueError('비교할 실행 ID 목록이 필요합니다')
+        result=self.comparison(ids)
+        record=dict(id=uuid.uuid4().hex,name=name.strip(),created_at=now(),contract='saved-current-comparison-v1',
+            run_ids=ids,runs=[self.comparison_snapshot(j)for j in result['runs']],
+            classification='RESEARCH_ONLY',investment_approved=False,
+            scope='Saved ordered run identities and CURRENT artifact hashes; full run periods, no common-period recalculation. Chart zoom/period selections are not saved.')
+        write(self.store/'comparisons'/str(record['id']+'.json'),record)
+        return record
+    def reopen_comparison(self,cid):
+        record=read(self.store/'comparisons'/str(identifier(cid)+'.json'))
+        if record.get('contract')!='saved-current-comparison-v1':raise ValueError('지원하지 않는 저장 비교 계약')
+        result=self.comparison(record['run_ids'])
+        actual=[self.comparison_snapshot(j)for j in result['runs']]
+        if actual!=record['runs']:raise ValueError('COMPARISON_SOURCE_CHANGED: 저장 당시 실행·자료·성과와 달라졌습니다. 기존 비교를 덮어쓰지 않습니다')
+        return dict(**result,saved_comparison=record)
     def submit(self,o,mode):
         if mode not in {'check','run'}:raise ValueError('잘못된 실행 모드')
         browser_numbers(o['strategy'])  # reject unsafe integers without rewriting a confirmed snapshot
@@ -171,6 +203,8 @@ def handler(workspace):
                 if path=='/api/catalog':return self.reply(workspace.catalog())
                 if path=='/api/strategies':return self.reply(workspace.saved('strategies'))
                 if path=='/api/jobs':return self.reply(workspace.saved('jobs'))
+                if path=='/api/comparisons':return self.reply(workspace.saved('comparisons'))
+                if path.startswith('/api/comparisons/'):return self.reply(workspace.reopen_comparison(path.rsplit('/',1)[-1]))
                 if path.startswith('/api/jobs/'):return self.reply(workspace.status(path.rsplit('/',1)[-1]))
                 if path=='/api/compare':return self.reply(workspace.comparison(parse_qs(u.query).get('id',[])))
                 if path.startswith('/runs/'):
@@ -195,6 +229,7 @@ def handler(workspace):
                 o=json.loads(self.rfile.read(n));path=urlsplit(self.path).path
                 if path=='/api/preview':return self.reply(workspace.preview(o))
                 if path=='/api/strategies':return self.reply(workspace.save_strategy(o),201)
+                if path=='/api/comparisons':return self.reply(workspace.save_comparison(o),201)
                 if path in {'/api/check','/api/run'}:return self.reply(workspace.submit(o,path.rsplit('/',1)[-1]),202)
                 self.reply({'error':'없는 경로'},404)
             except(ValueError,KeyError,TypeError,FileNotFoundError)as e:self.reply({'status':'rejected','error':str(e)},400)

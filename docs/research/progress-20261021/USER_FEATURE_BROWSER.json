@@ -1,0 +1,363 @@
+{
+  "status": "PASS_BROWSER_AND_SERVER_RESTART",
+  "browser": {
+    "status": "PASS_REAL_SAVED_COMPARISON_BROWSER",
+    "saved_comparison_id": "4daa132c04204f31a91cefaaa62b9434",
+    "run_ids": [
+      "7b496084b63f4bd5990f59f9fc5df766",
+      "49a7431c6c6247ce98ee0bb37d0a3b56"
+    ],
+    "record": {
+      "id": "4daa132c04204f31a91cefaaa62b9434",
+      "name": "비용 변경 전후 · 보존된 실제 2024 실행",
+      "created_at": "2026-10-21T08:45:13.717958+00:00",
+      "contract": "saved-current-comparison-v1",
+      "run_ids": [
+        "7b496084b63f4bd5990f59f9fc5df766",
+        "49a7431c6c6247ce98ee0bb37d0a3b56"
+      ],
+      "runs": [
+        {
+          "id": "7b496084b63f4bd5990f59f9fc5df766",
+          "fingerprint": "67b9e6ed37e42841d001ee05edc0fb2b5b9e44de172c4e17f939c3c3b2f9e8b1",
+          "period": {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "book_start": "2024-01-01",
+            "book_end": "2024-12-31",
+            "as_of_date": "2024-12-31"
+          },
+          "provenance": {
+            "status": "saved_execution_snapshot",
+            "strategy_id": "research_93781295bfdc3d8b",
+            "strategy_fingerprint": "67b9e6ed37e42841d001ee05edc0fb2b5b9e44de172c4e17f939c3c3b2f9e8b1",
+            "run_id": "20261021T033835905876Z-bf7b2dfb",
+            "period": {
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "book_start": "2024-01-01",
+              "book_end": "2024-12-31",
+              "as_of_date": "2024-12-31"
+            },
+            "cost_scenarios": {
+              "zero": {
+                "commission_bps": 0,
+                "sell_tax_bps": 0,
+                "spread_bps": 0,
+                "slippage_bps": 0,
+                "market_impact_bps": 0
+              },
+              "fixed_cost": {
+                "commission_bps": 1.5,
+                "sell_tax_bps": 15,
+                "spread_bps": 3,
+                "slippage_bps": 5,
+                "market_impact_bps": 0
+              }
+            },
+            "benchmark": {
+              "source": "index",
+              "symbol": "KOSPI"
+            },
+            "data_files": [
+              {
+                "path": "data/krx_equities/yearly/marcap-2024.parquet",
+                "bytes": 24906850,
+                "sha256": "aa1c1f7546fd17bcc4adb997b7e02a62b0f7a41199db99ea1784c0cb5e42f329"
+              }
+            ],
+            "control_files": [
+              {
+                "path": "config/kr_corporate_actions.csv",
+                "bytes": 5049,
+                "sha256": "46da96743753f015780b8b2a1bfd1304137532eebd401e0e653b6462a5f1fed6"
+              },
+              {
+                "path": "config/kr_corporate_action_references.json",
+                "bytes": 648,
+                "sha256": "50ba2f70a525d6e8778cd49128b5cb4174a82885a0bae13d334f62190e07c092"
+              },
+              {
+                "path": "config/kr_corporate_action_gaps.json",
+                "bytes": 351,
+                "sha256": "6b550b783e1666c187ed52b115c429f00dbae49b80a627fadfe72209ca7398e3"
+              },
+              {
+                "path": "data/indices/KOSPI.csv",
+                "bytes": 763682,
+                "sha256": "bc5a9590454b10078b6156c4ea0e92562f7b780630ab71c09ca1344fc9ed15a0"
+              }
+            ],
+            "versions": {
+              "schema_version": "1.0",
+              "factor_registry_version": "7",
+              "execution_engine_version": "v2-16-exec-10",
+              "corporate_action_registry_version": "9",
+              "dsl_machine_contract_version": "30",
+              "preflight_contract_version": "3",
+              "history_audit_contract_version": "1",
+              "krx_market_normalization_version": "1",
+              "project_template_version": "v2-16",
+              "performance_template_version": "v2-18"
+            },
+            "classification": "RESEARCH_ONLY",
+            "investment_approved": false,
+            "scope": "Saved source hashes and trading-cost assumptions; no new financial/PIT or cash-dividend total-return certification"
+          },
+          "files": [
+            {
+              "path": "strategy_normalized.json",
+              "bytes": 1857,
+              "sha256": "4205b7de977f0e135a977708211ec62a9f0f974f07fa477446fc6ff5d0757f6f"
+            },
+            {
+              "path": "preflight.json",
+              "bytes": 5896,
+              "sha256": "90d303196b965bba3145353013be3d861aa4e40192dade55ae15f134b16fe283"
+            },
+            {
+              "path": "run_status.json",
+              "bytes": 3383,
+              "sha256": "20583de6cf86db75fec66d2583c6c7e36d716c7a09142b981c4a5baa2241e61b"
+            },
+            {
+              "path": "artifacts/daily_nav.csv",
+              "bytes": 17365,
+              "sha256": "47888164238553907324d01f85486acf572e060d1734ab21bf28dae47d687cde"
+            },
+            {
+              "path": "report/metrics_CURRENT.csv",
+              "bytes": 1298,
+              "sha256": "31f59197807e01a19c3d4125f2fcd703cd39d1de4856bce43db0b050e6a6f0cd"
+            },
+            {
+              "path": "report/report_CURRENT.html",
+              "bytes": 4989562,
+              "sha256": "c7a992c3657283c723ebc3f94ea327ffb86bf45b2055f6770352fab148caf2ea"
+            },
+            {
+              "path": "report/chat_manifest_CURRENT.json",
+              "bytes": 555646,
+              "sha256": "3dc6301294cb18e6959365109bf2dec676580f69f6ffb71c309a44a5882b5ace"
+            }
+          ]
+        },
+        {
+          "id": "49a7431c6c6247ce98ee0bb37d0a3b56",
+          "fingerprint": "3c2f2bde573963b35f66b369f4288d3cef1ff7fdb4e9c583fd24c860fa030484",
+          "period": {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "book_start": "2024-01-01",
+            "book_end": "2024-12-31",
+            "as_of_date": "2024-12-31"
+          },
+          "provenance": {
+            "status": "saved_execution_snapshot",
+            "strategy_id": "research_cbc970d184d1d78f",
+            "strategy_fingerprint": "3c2f2bde573963b35f66b369f4288d3cef1ff7fdb4e9c583fd24c860fa030484",
+            "run_id": "20261021T033858696635Z-9b925645",
+            "period": {
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "book_start": "2024-01-01",
+              "book_end": "2024-12-31",
+              "as_of_date": "2024-12-31"
+            },
+            "cost_scenarios": {
+              "zero": {
+                "commission_bps": 0,
+                "sell_tax_bps": 0,
+                "spread_bps": 0,
+                "slippage_bps": 0,
+                "market_impact_bps": 0
+              },
+              "fixed_cost": {
+                "commission_bps": 2.5,
+                "sell_tax_bps": 15,
+                "spread_bps": 3,
+                "slippage_bps": 5,
+                "market_impact_bps": 0
+              }
+            },
+            "benchmark": {
+              "source": "index",
+              "symbol": "KOSPI"
+            },
+            "data_files": [
+              {
+                "path": "data/krx_equities/yearly/marcap-2024.parquet",
+                "bytes": 24906850,
+                "sha256": "aa1c1f7546fd17bcc4adb997b7e02a62b0f7a41199db99ea1784c0cb5e42f329"
+              }
+            ],
+            "control_files": [
+              {
+                "path": "config/kr_corporate_actions.csv",
+                "bytes": 5049,
+                "sha256": "46da96743753f015780b8b2a1bfd1304137532eebd401e0e653b6462a5f1fed6"
+              },
+              {
+                "path": "config/kr_corporate_action_references.json",
+                "bytes": 648,
+                "sha256": "50ba2f70a525d6e8778cd49128b5cb4174a82885a0bae13d334f62190e07c092"
+              },
+              {
+                "path": "config/kr_corporate_action_gaps.json",
+                "bytes": 351,
+                "sha256": "6b550b783e1666c187ed52b115c429f00dbae49b80a627fadfe72209ca7398e3"
+              },
+              {
+                "path": "data/indices/KOSPI.csv",
+                "bytes": 763682,
+                "sha256": "bc5a9590454b10078b6156c4ea0e92562f7b780630ab71c09ca1344fc9ed15a0"
+              }
+            ],
+            "versions": {
+              "schema_version": "1.0",
+              "factor_registry_version": "7",
+              "execution_engine_version": "v2-16-exec-10",
+              "corporate_action_registry_version": "9",
+              "dsl_machine_contract_version": "30",
+              "preflight_contract_version": "3",
+              "history_audit_contract_version": "1",
+              "krx_market_normalization_version": "1",
+              "project_template_version": "v2-16",
+              "performance_template_version": "v2-18"
+            },
+            "classification": "RESEARCH_ONLY",
+            "investment_approved": false,
+            "scope": "Saved source hashes and trading-cost assumptions; no new financial/PIT or cash-dividend total-return certification"
+          },
+          "files": [
+            {
+              "path": "strategy_normalized.json",
+              "bytes": 1857,
+              "sha256": "7630713da77780cc477df242dc5f066dfa48bfb2c1295168a583a05b0cef1c64"
+            },
+            {
+              "path": "preflight.json",
+              "bytes": 5896,
+              "sha256": "0072a0a393a83ac14751179bb616c75e9e5fd1bb366e3dbb384a76e537603ea6"
+            },
+            {
+              "path": "run_status.json",
+              "bytes": 3383,
+              "sha256": "bb91f055f5d0225d34b3b732857304b4ff15445d277f45635eee2daf525d3959"
+            },
+            {
+              "path": "artifacts/daily_nav.csv",
+              "bytes": 17402,
+              "sha256": "8d860e03d545a2ab775dd7715f3382af95db71f86083f7869ea9d3b9273cc2a2"
+            },
+            {
+              "path": "report/metrics_CURRENT.csv",
+              "bytes": 1298,
+              "sha256": "d205c5ea944212b4354133763cc88a9d0787c15d97749d92b7dec59b731106f4"
+            },
+            {
+              "path": "report/report_CURRENT.html",
+              "bytes": 4989668,
+              "sha256": "94b432a2ea0ab79ac71dca979269834472f426943dd556fef5d245943448c57d"
+            },
+            {
+              "path": "report/chat_manifest_CURRENT.json",
+              "bytes": 555858,
+              "sha256": "243cdd0ad8db6e19e04b0778abde2278f98259b6f66e1961f623d6621cb534e7"
+            }
+          ]
+        }
+      ],
+      "classification": "RESEARCH_ONLY",
+      "investment_approved": false,
+      "scope": "Saved ordered run identities and CURRENT artifact hashes; full run periods, no common-period recalculation. Chart zoom/period selections are not saved."
+    },
+    "checks": [
+      {
+        "step": "save_real_current_comparison",
+        "status": "ok",
+        "id": "4daa132c04204f31a91cefaaa62b9434",
+        "runs": [
+          "7b496084b63f4bd5990f59f9fc5df766",
+          "49a7431c6c6247ce98ee0bb37d0a3b56"
+        ],
+        "costs": [
+          1.5,
+          2.5
+        ]
+      },
+      {
+        "step": "reload_reopen_current_three_charts_and_cost_control",
+        "status": "ok",
+        "id": "4daa132c04204f31a91cefaaa62b9434",
+        "proof": [
+          {
+            "period_options": [
+              "longest"
+            ],
+            "costs": [
+              "all",
+              "gross",
+              "net:zero",
+              "net:fixed_cost"
+            ],
+            "charts": [
+              {
+                "id": "wealth",
+                "traces": 4
+              },
+              {
+                "id": "log2",
+                "traces": 4
+              },
+              {
+                "id": "drawdown",
+                "traces": 4
+              }
+            ],
+            "log_axis": "log",
+            "metrics": true,
+            "period": "longest"
+          },
+          {
+            "period_options": [
+              "longest"
+            ],
+            "costs": [
+              "all",
+              "gross",
+              "net:zero",
+              "net:fixed_cost"
+            ],
+            "charts": [
+              {
+                "id": "wealth",
+                "traces": 4
+              },
+              {
+                "id": "log2",
+                "traces": 4
+              },
+              {
+                "id": "drawdown",
+                "traces": 4
+              }
+            ],
+            "log_axis": "log",
+            "metrics": true,
+            "period": "longest"
+          }
+        ]
+      }
+    ],
+    "errors": [],
+    "engine_rerun": false,
+    "source": "Copied previously validated real CURRENT runs; original files untouched",
+    "investment_approved": false
+  },
+  "original_and_copy_unchanged": 52,
+  "original_proof_sha256": "a0df083b775e04a6069824b366b021b16e2088744fe7a1c4eccdcc9a8e8d1477",
+  "no_collection": true,
+  "no_engine_rerun": true,
+  "investment_approved": false
+}

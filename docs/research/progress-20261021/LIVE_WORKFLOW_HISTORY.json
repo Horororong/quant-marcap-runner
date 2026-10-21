@@ -1,0 +1,407 @@
+{
+  "observed_at_utc": "2026-10-21T08:38:11.419296+00:00",
+  "main": "fd232d129bfa2ef01714b94890460c5ef47bdbf0",
+  "workflow_history": [
+    {
+      "id": 39513249271,
+      "event": "schedule",
+      "head_branch": "main",
+      "head_sha": "a9da665e77eb06e09232c9fa1b382b1e3ea31d4f",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-20T23:10:34Z",
+      "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39513249271",
+      "jobs": [
+        {
+          "id": 118939160413,
+          "name": "limited-source-observation",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-20T23:10:38Z",
+          "completed_at": "2026-10-20T23:11:49Z",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-20T23:10:38Z",
+              "completed_at": "2026-10-20T23:10:39Z"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-20T23:10:39Z",
+              "completed_at": "2026-10-20T23:11:20Z"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-20T23:11:20Z",
+              "completed_at": "2026-10-20T23:11:20Z"
+            },
+            {
+              "name": "Restore original pinned kit; no Internet dependency installation",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-20T23:11:20Z",
+              "completed_at": "2026-10-20T23:11:44Z"
+            },
+            {
+              "name": "Once per KST day, maximum3 reservations and300 documents; first actual review required",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-20T23:11:44Z",
+              "completed_at": "2026-10-20T23:11:45Z"
+            },
+            {
+              "name": "Run actions/upload-artifact@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6,
+              "started_at": "2026-10-20T23:11:45Z",
+              "completed_at": "2026-10-20T23:11:46Z"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-20T23:11:46Z",
+              "completed_at": "2026-10-20T23:11:46Z"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 12,
+              "started_at": "2026-10-20T23:11:46Z",
+              "completed_at": "2026-10-20T23:11:46Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 13,
+              "started_at": "2026-10-20T23:11:46Z",
+              "completed_at": "2026-10-20T23:11:46Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 39504052321,
+      "event": "workflow_dispatch",
+      "head_branch": "main",
+      "head_sha": "55e8efcb02e1021f57448131df5e411eafca2ab9",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-20T21:54:09Z",
+      "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39504052321",
+      "jobs": [
+        {
+          "id": 118908409363,
+          "name": "limited-source-observation",
+          "status": "completed",
+          "conclusion": "failure",
+          "started_at": "2026-10-20T21:54:13Z",
+          "completed_at": "2026-10-20T22:05:37Z",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-20T21:54:14Z",
+              "completed_at": "2026-10-20T21:54:15Z"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-20T21:54:15Z",
+              "completed_at": "2026-10-20T21:54:52Z"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-20T21:54:52Z",
+              "completed_at": "2026-10-20T21:54:52Z"
+            },
+            {
+              "name": "Restore original pinned kit; no Internet dependency installation",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-20T21:54:52Z",
+              "completed_at": "2026-10-20T21:55:10Z"
+            },
+            {
+              "name": "Once per KST day, maximum3 reservations and300 documents; first actual review required",
+              "status": "completed",
+              "conclusion": "failure",
+              "number": 5,
+              "started_at": "2026-10-20T21:55:10Z",
+              "completed_at": "2026-10-20T22:05:33Z"
+            },
+            {
+              "name": "Run actions/upload-artifact@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6,
+              "started_at": "2026-10-20T22:05:33Z",
+              "completed_at": "2026-10-20T22:05:35Z"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 11,
+              "started_at": "2026-10-20T22:05:35Z",
+              "completed_at": "2026-10-20T22:05:35Z"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 12,
+              "started_at": "2026-10-20T22:05:35Z",
+              "completed_at": "2026-10-20T22:05:35Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 13,
+              "started_at": "2026-10-20T22:05:35Z",
+              "completed_at": "2026-10-20T22:05:35Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 39342913576,
+      "event": "schedule",
+      "head_branch": "main",
+      "head_sha": "f391dc01355b4eeb26ee0f209fa97e5f5ef43900",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-19T23:39:27Z",
+      "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39342913576",
+      "jobs": [
+        {
+          "id": 118368531147,
+          "name": "limited-source-observation",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-19T23:39:30Z",
+          "completed_at": "2026-10-19T23:40:31Z",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-19T23:39:31Z",
+              "completed_at": "2026-10-19T23:39:32Z"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-19T23:39:32Z",
+              "completed_at": "2026-10-19T23:40:06Z"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-19T23:40:06Z",
+              "completed_at": "2026-10-19T23:40:06Z"
+            },
+            {
+              "name": "Restore original pinned kit; no Internet dependency installation",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-19T23:40:06Z",
+              "completed_at": "2026-10-19T23:40:27Z"
+            },
+            {
+              "name": "Once per KST day, maximum3 reservations and300 documents; first actual review required",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-19T23:40:27Z",
+              "completed_at": "2026-10-19T23:40:27Z"
+            },
+            {
+              "name": "Run actions/upload-artifact@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6,
+              "started_at": "2026-10-19T23:40:27Z",
+              "completed_at": "2026-10-19T23:40:28Z"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-19T23:40:28Z",
+              "completed_at": "2026-10-19T23:40:28Z"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 12,
+              "started_at": "2026-10-19T23:40:28Z",
+              "completed_at": "2026-10-19T23:40:28Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 13,
+              "started_at": "2026-10-19T23:40:28Z",
+              "completed_at": "2026-10-19T23:40:28Z"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "execution_ledger": [
+    {
+      "candidate_fields": 1363,
+      "completed_at_utc": "2026-10-19T12:19:01.793004+00:00",
+      "counts": {
+        "EXTRACTION_FAILED": 1,
+        "PARSED_4F": 84,
+        "PARSED_PARTIAL": 1,
+        "SOURCE_GAP": 14
+      },
+      "day_kst": "2026-10-19",
+      "durable_documents": 100,
+      "reservation_commit": "5d6413f83dfda342f29b756e95a221e6fff3b572",
+      "reserved_documents": 100,
+      "run_id": "39248507369",
+      "selection_sha256": "ed377b007fa475fa7a5c03baa643a67eda765d43f899837440c161e63b74e401",
+      "start_checkpoint": "20100331001757",
+      "started_at_utc": "2026-10-19T12:10:16.766893+00:00",
+      "status": "COMPLETE",
+      "stop_reason": "BATCH_COMPLETE",
+      "transfers": [
+        {
+          "automatic_publication": false,
+          "blob_sha": "e23c1050412c1cf7114465006918bd4c27dac86e",
+          "bytes": 2526180,
+          "compressed_sha256": "d50540c66b7605f8aefafe48c2df692ef10d01372f245671b96db578d31a2dbe",
+          "financial_certification": "UNVERIFIED"
+        },
+        {
+          "automatic_publication": false,
+          "blob_sha": "496a1216841d718edd77cba1c39e5fb4e0eda2d2",
+          "bytes": 2867311,
+          "compressed_sha256": "72d48e6238ee2829b6f292d74a6b663d0a39826478c61d3ce34e93c8068d84c7",
+          "financial_certification": "UNVERIFIED"
+        },
+        {
+          "automatic_publication": false,
+          "blob_sha": "b174ed5458c83481d5a5e0814450ebae021497a2",
+          "bytes": 2726675,
+          "compressed_sha256": "2b6990706429a79e23ab5fc6f04b3b78bf76e60814405bf2ae65432338d23594",
+          "financial_certification": "UNVERIFIED"
+        },
+        {
+          "automatic_publication": false,
+          "blob_sha": "8846c0b8a0cf839d8e64a6162282bfd0e6789fa3",
+          "bytes": 2724601,
+          "compressed_sha256": "45720b2586725f12dbbf71b7de2e3526b00311fd3777249d9ea6884737805e30",
+          "financial_certification": "UNVERIFIED"
+        },
+        {
+          "automatic_publication": false,
+          "blob_sha": "a946acb2a81bd3c12fdc754c58eaab60d863e9a4",
+          "bytes": 2573563,
+          "compressed_sha256": "172a43219ae404cf463d05d07248734ac1e14b477977fce5aea4ff19a93b5968",
+          "financial_certification": "UNVERIFIED"
+        }
+      ]
+    },
+    {
+      "candidate_fields": 871,
+      "completed_at_utc": "2026-10-20T22:05:26.300520+00:00",
+      "counts": {
+        "PARSED_4F": 48,
+        "SOURCE_GAP": 9
+      },
+      "day_kst": "2026-10-21",
+      "durable_documents": 57,
+      "reservation_commit": "f84bf2d9433726e763fda62a05f3b75979e35c1d",
+      "reserved_documents": 100,
+      "run_id": "39504052321",
+      "selection_sha256": "2082528da7e6a1eb3a15fc112b6992ecabea8806122a198a749c4d8682b3e50a",
+      "start_checkpoint": "20100331001937",
+      "started_at_utc": "2026-10-20T21:55:16.083985+00:00",
+      "status": "STOPPED",
+      "stop_reason": "RUN_WALL_BUDGET",
+      "transfers": [
+        {
+          "automatic_publication": false,
+          "blob_sha": "0eb5706fd5b0516ea212c084e3daf343c73aa6ce",
+          "bytes": 2965575,
+          "compressed_sha256": "4f6cff17102aff83d24f6d2b4bff9fcc97d3b22611be4de6a4875005c8dc5213",
+          "financial_certification": "UNVERIFIED"
+        },
+        {
+          "automatic_publication": false,
+          "blob_sha": "6e1d3fca6402f4fb9e8e5bd14f75ee462224e65d",
+          "bytes": 2651421,
+          "compressed_sha256": "b907eb14d2f9ff4adf9fbb5d2502cf20fce123e5ea0d7556f7aebac32c015afe",
+          "financial_certification": "UNVERIFIED"
+        },
+        {
+          "automatic_publication": false,
+          "blob_sha": "87c1620ff513b177549704a9ca5128abe6e9ec9d",
+          "bytes": 2543599,
+          "compressed_sha256": "360925b71e6784416b28878567b0b4dc1fee48f36976db3832bb57fcadbb4ca7",
+          "financial_certification": "UNVERIFIED"
+        },
+        {
+          "automatic_publication": false,
+          "blob_sha": "065679e4c6107752ce8c9704e62743ac91dffdfc",
+          "bytes": 3205,
+          "compressed_sha256": "2d3b9cbc6926914192a4aa1d7f272fabacff64c17c93f4b017491fa7181da7c3",
+          "financial_certification": "UNVERIFIED"
+        },
+        {
+          "automatic_publication": false,
+          "blob_sha": "20cea52eff4c9aafd85fcdc166f56cf63d2359ed",
+          "bytes": 3095,
+          "compressed_sha256": "f0509fbd474ff1922a458a6bde04d61d4b9d3bc7197d16674ed87d9870284fd5",
+          "financial_certification": "UNVERIFIED"
+        }
+      ]
+    }
+  ],
+  "completed_receipt_count": 157,
+  "state_sha256": "f93dc03884fcceb2e8351f1de1bba191b96d8ef6669195721f30dd1177a406d3"
+}

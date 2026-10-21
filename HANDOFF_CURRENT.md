@@ -1,3 +1,11 @@
+## 2026-10-21 ba26 원격 CI 성공·수집 정체 확인·비교 저장 기능
+
+- ba26c3684fea72e0fe01e0c49fbc09f10982a12e의20파일173,495바이트를 승인 범위대로 공개 연구 브랜치에 fast-forward 게시했다. 원격20파일 SHA256 일치. 실제 checkout ba26인 고정kit Actions39570616865 SUCCESS/115시험+880증거. 선택적 commit-status API만403으로 미설정(재시도 없음); 실제 CI 성공과 구분한다.
+- 새 기능은 별도 feat/saved-comparisons-20261021, `/workspace/quant-parser-repair-20261021/code`. 이름 붙인 성공 실행 비교 저장/재열기, 원본7파일 해시 바인딩, 변경/누락 시 차단을 추가했다. 로컬18시험 및 보존된 실제 CURRENT2실행의 브라우저·서버 재시작 검증PASS. 새 기능 원격 게시/CI는 ba26 한정 승인 밖으로 아직 미실행. 현재 최종 SHA는 `git rev-parse HEAD` 및 새 증분 FINAL_STATUS.md 참조.
+- 실제 main fd232d1, parser9.2, HOLD_FAILURE/checkpoint20100331002054 유지. 오늘 기회는 KST10/21 06:55 실행39504052321의57원문/871후보가 사용했다. 마지막 원문 저장07:05:20KST. 최근 예약 success는 NO_COLLECTION으로 수집0. 요청 전 차단은 실행 횟수를 차감하지 않는다. 현재 실행2/3·예약200/300·pending43·next2062/2063. 이번HTTP0, 다음 창KST10/22 00:00 이후도 livegate 재확인 필수.2문서시험은 마지막 실행 슬롯을 사용하므로 후속배치에는 추가 유한 실행 예산이 필요하다.
+- 기존871=848PASS/23UV,오프라인9source-rowPASS 제안 포함880=857PASS/0FAIL/23UV/미검토0. 이번 신규원문/후보/의미판정/PIT 증가0. SOURCE_GAP9 별도,880PIT/whole-filing완전성 미인증,금융게시HOLD. 기존130엄격회귀/3전략/옛12envelope상세미검증 상태는 재실행·재분류 없이 유지.
+- 자세한 증가분 표·실제 실행 이력·지원범위·백업/로컬의존성: [진척 보고](docs/research/progress-20261021/REPORT.md), [재개 명령](docs/research/progress-20261021/RESUME.md). 전체 복원/큰 백업 전송은 반복하지 않았다.
+
 ## 2026-10-21 공개 전송 이행 및9.3 연구 재승인
 
 - 사용자명시승인43파일17498747bytes/2f5f9d1을 공개 fix/native-source-boundaries-20261021에 게시·원격43blob/tree/head검증PASS. manifest SHA256bab48693cc5ae3f8a88fcd566debe8aa2289c98dff86baf542dc02b53720240c,비밀값검출0/제외0. 이전 pending/rejection은 역사이며 이 exact전송은해소됐다.
