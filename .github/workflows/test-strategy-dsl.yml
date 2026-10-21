@@ -6,6 +6,11 @@ on:
         description: Full immutable research commit to validate
         required: true
         type: string
+      suite:
+        description: Research or bounded collection coordinator
+        type: choice
+        options: [research, collection]
+        default: research
 permissions:
   contents: read
 jobs:
@@ -27,18 +32,29 @@ jobs:
           python-version: '3.12'
       - name: Official pinned kit only; no Internet pip
         run: |
-          python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/fixed"
+          if [ "${{ inputs.suite }}" = collection ]; then
+            python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          else
+            python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/fixed"
+          fi
           python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
       - name: Language and saved-result provenance contracts
+        if: inputs.suite == 'research'
         run: |
           PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
           "$PY" -I -m unittest discover -s scripts -p test_research_language.py -v
           "$PY" -I -m unittest discover -s scripts -p test_research_web.py -v
           "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");sys.argv=["scripts/export_strategy_dsl_contract.py","--check"];runpy.run_path(sys.argv[0],run_name="__main__")'
       - name: Real browser, common engine, CURRENT, independent books
+        if: inputs.suite == 'research'
         run: |
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/test_research_workspace_e2e.py --output "$RUNNER_TEMP/research-workspace"
+      - name: Bounded coordinator and real SIGKILL recovery tests
+        if: inputs.suite == 'collection'
+        run: |
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume"]);r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import hashlib,json;from pathlib import Path;c=json.loads(Path("config/financial_limited_resume_v1.json").read_text());assert all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==v for p,v in c["source_code_sha256"].items());print("PASS_APPROVED_SOURCE_OWNERS_UNCHANGED")'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
