@@ -1,0 +1,24 @@
+{
+  "head": "08dfad14e1bb2e0d9cb9fdca5b8a6979ad79c1fa",
+  "message": "Refresh recent DART financials",
+  "parents": [
+    "fd232d129bfa2ef01714b94890460c5ef47bdbf0"
+  ],
+  "files": [
+    {
+      "path": "data/financials/recent_batches/dart_recent_02400_02699.csv.gz",
+      "status": "modified",
+      "patch": null
+    },
+    {
+      "path": "data/status/dart_rotation_state.csv",
+      "status": "modified",
+      "patch": "@@ -1,2 +1,2 @@\n ﻿batch_size,batch_start_offset,cycle_completed,next_offset,total_matched_companies,updated_at_utc\n-300,2100,False,2400,3935,2026-10-21T00:45:58.939725+00:00\n+300,2400,False,2700,3935,2026-10-21T09:31:46.459204+00:00"
+    },
+    {
+      "path": "data/status/dart_status.csv",
+      "status": "modified",
+      "patch": "@@ -1,2 +1,2 @@\n ﻿batch_start_offset,companies_attempted,errors,next_offset,records,status,total_matched_companies,updated_at_utc,years\n-2100,300,0,2400,315530,OK,3935,2026-10-21T00:45:58.939725+00:00,\"2024,2025,2026\"\n+2400,300,0,2700,297773,OK,3935,2026-10-21T09:31:46.459204+00:00,\"2024,2025,2026\""
+    }
+  ]
+}

@@ -1,0 +1,547 @@
+{
+  "status": "LOCAL_ONLY_RECOVERY_INVENTORY",
+  "remote_public_code": "29b6c4a2c277f6b2070e4bf70da54899f9fe4bcf",
+  "remote_driver": "2997930ea4cfe67c04441648dd066bc1e50efca7",
+  "archives": [
+    {
+      "backup": "quant-parser-repair-v7-20261021",
+      "archive": "quant-parser-repair-v7-20261021-local.zip",
+      "archive_bytes": 118024,
+      "archive_uploaded": false,
+      "code_status": "Code through29b now remotely published, bundle/code copies not required if remote Git remains available",
+      "exact_store_files": [],
+      "exact_store_file_count": 0,
+      "exact_store_bytes": 0,
+      "recovery_importance": "Archive/backup-only manifests and historical verification metadata; no claim that archive upload is needed for already-public code",
+      "notes": "Preserve archive unchanged. Git branch publication did not upload this ZIP."
+    },
+    {
+      "backup": "quant-parser-approval-v8-20261021",
+      "archive": "quant-parser-approval-v8-20261021-local.zip",
+      "archive_bytes": 121847,
+      "archive_uploaded": false,
+      "code_status": "Code through29b now remotely published, bundle/code copies not required if remote Git remains available",
+      "exact_store_files": [],
+      "exact_store_file_count": 0,
+      "exact_store_bytes": 0,
+      "recovery_importance": "Archive/backup-only manifests and historical verification metadata; no claim that archive upload is needed for already-public code",
+      "notes": "Preserve archive unchanged. Git branch publication did not upload this ZIP."
+    },
+    {
+      "backup": "quant-user-comparisons-v9-20261021",
+      "archive": "quant-user-comparisons-v9-20261021.zip",
+      "archive_bytes": 3349124,
+      "archive_uploaded": false,
+      "code_status": "Code through29b now remotely published, bundle/code copies not required if remote Git remains available",
+      "exact_store_files": [
+        {
+          "path": "store/comparisons/4daa132c04204f31a91cefaaa62b9434.json",
+          "bytes": 9446,
+          "sha256": "1f9d682dc2123ffab09bd5eb322b4ffffa08b7a07822ee188ba4900f343fb587"
+        },
+        {
+          "path": "store/jobs/49a7431c6c6247ce98ee0bb37d0a3b56.json",
+          "bytes": 3126,
+          "sha256": "f0ed1bb6accf5c780ac7a651677d57358adb9620255a9c76f2498e72ac512042"
+        },
+        {
+          "path": "store/jobs/7b496084b63f4bd5990f59f9fc5df766.json",
+          "bytes": 3392,
+          "sha256": "2668b15075b479b6d4d5b1a7ddc2626bb28802f55f9cd27e95eb71f895c7d816"
+        },
+        {
+          "path": "store/runs/49a7431c6c6247ce98ee0bb37d0a3b56/run/artifacts/daily_nav.csv",
+          "bytes": 17402,
+          "sha256": "8d860e03d545a2ab775dd7715f3382af95db71f86083f7869ea9d3b9273cc2a2"
+        },
+        {
+          "path": "store/runs/49a7431c6c6247ce98ee0bb37d0a3b56/run/preflight.json",
+          "bytes": 5896,
+          "sha256": "0072a0a393a83ac14751179bb616c75e9e5fd1bb366e3dbb384a76e537603ea6"
+        },
+        {
+          "path": "store/runs/49a7431c6c6247ce98ee0bb37d0a3b56/run/report/chat_manifest_CURRENT.json",
+          "bytes": 555858,
+          "sha256": "243cdd0ad8db6e19e04b0778abde2278f98259b6f66e1961f623d6621cb534e7"
+        },
+        {
+          "path": "store/runs/49a7431c6c6247ce98ee0bb37d0a3b56/run/report/metrics_CURRENT.csv",
+          "bytes": 1298,
+          "sha256": "d205c5ea944212b4354133763cc88a9d0787c15d97749d92b7dec59b731106f4"
+        },
+        {
+          "path": "store/runs/49a7431c6c6247ce98ee0bb37d0a3b56/run/report/report_CURRENT.html",
+          "bytes": 4989668,
+          "sha256": "94b432a2ea0ab79ac71dca979269834472f426943dd556fef5d245943448c57d"
+        },
+        {
+          "path": "store/runs/49a7431c6c6247ce98ee0bb37d0a3b56/run/run_status.json",
+          "bytes": 3383,
+          "sha256": "bb91f055f5d0225d34b3b732857304b4ff15445d277f45635eee2daf525d3959"
+        },
+        {
+          "path": "store/runs/49a7431c6c6247ce98ee0bb37d0a3b56/run/strategy_normalized.json",
+          "bytes": 1857,
+          "sha256": "7630713da77780cc477df242dc5f066dfa48bfb2c1295168a583a05b0cef1c64"
+        },
+        {
+          "path": "store/runs/7b496084b63f4bd5990f59f9fc5df766/run/artifacts/daily_nav.csv",
+          "bytes": 17365,
+          "sha256": "47888164238553907324d01f85486acf572e060d1734ab21bf28dae47d687cde"
+        },
+        {
+          "path": "store/runs/7b496084b63f4bd5990f59f9fc5df766/run/preflight.json",
+          "bytes": 5896,
+          "sha256": "90d303196b965bba3145353013be3d861aa4e40192dade55ae15f134b16fe283"
+        },
+        {
+          "path": "store/runs/7b496084b63f4bd5990f59f9fc5df766/run/report/chat_manifest_CURRENT.json",
+          "bytes": 555646,
+          "sha256": "3dc6301294cb18e6959365109bf2dec676580f69f6ffb71c309a44a5882b5ace"
+        },
+        {
+          "path": "store/runs/7b496084b63f4bd5990f59f9fc5df766/run/report/metrics_CURRENT.csv",
+          "bytes": 1298,
+          "sha256": "31f59197807e01a19c3d4125f2fcd703cd39d1de4856bce43db0b050e6a6f0cd"
+        },
+        {
+          "path": "store/runs/7b496084b63f4bd5990f59f9fc5df766/run/report/report_CURRENT.html",
+          "bytes": 4989562,
+          "sha256": "c7a992c3657283c723ebc3f94ea327ffb86bf45b2055f6770352fab148caf2ea"
+        },
+        {
+          "path": "store/runs/7b496084b63f4bd5990f59f9fc5df766/run/run_status.json",
+          "bytes": 3383,
+          "sha256": "20583de6cf86db75fec66d2583c6c7e36d716c7a09142b981c4a5baa2241e61b"
+        },
+        {
+          "path": "store/runs/7b496084b63f4bd5990f59f9fc5df766/run/strategy_normalized.json",
+          "bytes": 1857,
+          "sha256": "4205b7de977f0e135a977708211ec62a9f0f974f07fa477446fc6ff5d0757f6f"
+        }
+      ],
+      "exact_store_file_count": 17,
+      "exact_store_bytes": 11166333,
+      "recovery_importance": "Exact saved original result/comparison reopening needs these local bytes",
+      "notes": "v9 source2024 minimal snapshot is a v10 exact-store dependency; v10 includes source momentum and new period run/analysis. New CI artifact has different IDs and is not a byte-identical replacement."
+    },
+    {
+      "backup": "quant-pit-period-v10-20261021",
+      "archive": "quant-pit-period-v10-20261021.zip",
+      "archive_bytes": 5294738,
+      "archive_uploaded": false,
+      "code_status": "Code through29b now remotely published, bundle/code copies not required if remote Git remains available",
+      "exact_store_files": [
+        {
+          "path": "store/comparisons/59603a34602740a5a67f36034da8b2e2.json",
+          "bytes": 10811,
+          "sha256": "f93df4950896fc47ae34dcc4d102fb04f65a9c9a4144e60741d679d467da992c"
+        },
+        {
+          "path": "store/comparisons/e917c722324544c4b46932f28b3d83a1.json",
+          "bytes": 10723,
+          "sha256": "17f5922ee1f358bbf7631801ac45d4ece7fe5adce4858c96a783ce8e29dd06db"
+        },
+        {
+          "path": "store/jobs/0ac31aceb6324aad9685897f27e78f00.json",
+          "bytes": 6137,
+          "sha256": "39a89a7528f37d082a0bb0005dbd90f75163aa537f441cfbd18b791a8eae03ff"
+        },
+        {
+          "path": "store/jobs/2b16191b9d1547519d26fc3bd1a2c39e.json",
+          "bytes": 3393,
+          "sha256": "e177ca9a2205919cb7c5409497205d10e96ad123a79b84d3764dd1bc48a046d9"
+        },
+        {
+          "path": "store/jobs/4d9e2c2a0daa4e56935a42160c443284.json",
+          "bytes": 3594,
+          "sha256": "76341925ca907cab75032e48f0c0a8626b53d5356178941eab4f9488b0c1af69"
+        },
+        {
+          "path": "store/jobs/57204b30c165494d9493170a3004511c.json",
+          "bytes": 6052,
+          "sha256": "ecd1ce0decb5300965edcfa4486591b197d6593f6ae117ce9d0921f21081a2da"
+        },
+        {
+          "path": "store/jobs/f2f26f38b56d41d78a3b87583b0b2548.json",
+          "bytes": 16078,
+          "sha256": "6b9ca82e9d6b084f4747a851e47af36264ac0c87104890fc110bf71d2ba3dc93"
+        },
+        {
+          "path": "store/runs/0ac31aceb6324aad9685897f27e78f00/run/analysis_context.json",
+          "bytes": 927,
+          "sha256": "b70bf91fc7d3c06f1d17d90a61531a1d85b3897ddc58798155c6e9f993b22ef6"
+        },
+        {
+          "path": "store/runs/0ac31aceb6324aad9685897f27e78f00/run/artifacts/daily_nav.csv",
+          "bytes": 17365,
+          "sha256": "47888164238553907324d01f85486acf572e060d1734ab21bf28dae47d687cde"
+        },
+        {
+          "path": "store/runs/0ac31aceb6324aad9685897f27e78f00/run/execution_plan.json",
+          "bytes": 2903,
+          "sha256": "2d0de37ad7a5455af08e8d87640fde734bda9c1cfa05967642b12bb580317ad6"
+        },
+        {
+          "path": "store/runs/0ac31aceb6324aad9685897f27e78f00/run/preflight.json",
+          "bytes": 5896,
+          "sha256": "90d303196b965bba3145353013be3d861aa4e40192dade55ae15f134b16fe283"
+        },
+        {
+          "path": "store/runs/0ac31aceb6324aad9685897f27e78f00/run/report_periods.json",
+          "bytes": 281,
+          "sha256": "f5be096d7b4387a49e1abd4e245afd35a28a7dad29afea47266cf34329d2de6e"
+        },
+        {
+          "path": "store/runs/0ac31aceb6324aad9685897f27e78f00/run/run_status.json",
+          "bytes": 5012,
+          "sha256": "f1a06195da6e6efb997c0309a8e5c88969ae5a858d6427b82e50797303f0a46b"
+        },
+        {
+          "path": "store/runs/0ac31aceb6324aad9685897f27e78f00/run/strategy_normalized.json",
+          "bytes": 1857,
+          "sha256": "4205b7de977f0e135a977708211ec62a9f0f974f07fa477446fc6ff5d0757f6f"
+        },
+        {
+          "path": "store/runs/0ac31aceb6324aad9685897f27e78f00/worker.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "store/runs/0ac31aceb6324aad9685897f27e78f00/worker_result.json",
+          "bytes": 1159,
+          "sha256": "db7f1dd608fd15690e86930aa85091f439731dff29afa06653ac05c3051d5391"
+        },
+        {
+          "path": "store/runs/2b16191b9d1547519d26fc3bd1a2c39e/run/artifacts/daily_nav.csv",
+          "bytes": 17694,
+          "sha256": "6bef0c932b1c2b65519be01136ca9d7c6ef89519724b75eb8b0110d5fb40eb16"
+        },
+        {
+          "path": "store/runs/2b16191b9d1547519d26fc3bd1a2c39e/run/preflight.json",
+          "bytes": 7547,
+          "sha256": "01152edd7f3399af6abd0f23e817d8199149ceb161f252653beaa34147fd1add"
+        },
+        {
+          "path": "store/runs/2b16191b9d1547519d26fc3bd1a2c39e/run/report/chat_manifest_CURRENT.json",
+          "bytes": 566187,
+          "sha256": "3b69fae5d90d7c5b20f81bb7da9e969348411ce711c92d53eade7e6e8972cdec"
+        },
+        {
+          "path": "store/runs/2b16191b9d1547519d26fc3bd1a2c39e/run/report/metrics_CURRENT.csv",
+          "bytes": 1283,
+          "sha256": "8c80d8432ce99746eb04a08d263e7b7db456b9784230aeb7a89a7ce476320f9f"
+        },
+        {
+          "path": "store/runs/2b16191b9d1547519d26fc3bd1a2c39e/run/report/report_CURRENT.html",
+          "bytes": 4994146,
+          "sha256": "4e8a74f707bcde9a16881ce29acffa59a5615353c65ba61f27cc47a5175141d3"
+        },
+        {
+          "path": "store/runs/2b16191b9d1547519d26fc3bd1a2c39e/run/run_status.json",
+          "bytes": 4211,
+          "sha256": "e1bbfd2404672754e17d97e6cc428431a3eaf2b3dd1aee357d8380c8cb5d9155"
+        },
+        {
+          "path": "store/runs/2b16191b9d1547519d26fc3bd1a2c39e/run/strategy_normalized.json",
+          "bytes": 2360,
+          "sha256": "7ed60b2837971d1c500c6d968ea9e39f6fd5f617a6feefc1b09e88edf2c284ea"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/benchmark_coverage.json",
+          "bytes": 253,
+          "sha256": "37290fd24707b4657d080b5ad7892584161f3db8789e8058d1389f18ecd77d0e"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/cash_balances_gross_fixed_cost.csv",
+          "bytes": 7962,
+          "sha256": "30036ca08205c243f130d2a29eeaf840ccaab3bb181454d20201c74cfe128aae"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/cash_balances_gross_zero.csv",
+          "bytes": 7962,
+          "sha256": "30036ca08205c243f130d2a29eeaf840ccaab3bb181454d20201c74cfe128aae"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/cash_balances_net_fixed_cost.csv",
+          "bytes": 7962,
+          "sha256": "cfefe2a21446a02e209011642799b43362026314811d6227c8dd43213f7fd47d"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/cash_balances_net_zero.csv",
+          "bytes": 7962,
+          "sha256": "30036ca08205c243f130d2a29eeaf840ccaab3bb181454d20201c74cfe128aae"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/daily_nav.csv",
+          "bytes": 18523,
+          "sha256": "a9111df8f467e8dcff0d334dff36e6513320829e05419c8fe1937e66de5ce474"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/execution_plan.json",
+          "bytes": 3474,
+          "sha256": "bd85eb09fe7f85280d32c235563488f2fc8bf600529a1126ac22eabd72a7727e"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/factor_provider_coverage.csv",
+          "bytes": 127,
+          "sha256": "24da4bb032aae1554c40836e75ba2cf5f2084d242128a9543156d944e6bb9456"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/held_return_checks.csv",
+          "bytes": 19689,
+          "sha256": "89e327e51f6fa688a3d72a34425d26c39571df31ecb20065b6d809e55874d462"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/history_coverage.json",
+          "bytes": 733,
+          "sha256": "f401281e5f2f2b5fc62fdf0eac9019fe2467835c7eab83242f82462a0f48aff7"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/return_reference_audit.json",
+          "bytes": 282,
+          "sha256": "4011e22f903a9486e4a51bc598b039b9d92eaf4a6f25991bc79735bebd9cd4dc"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/selections.csv",
+          "bytes": 710,
+          "sha256": "44e08f001f8ba1f0c61e86f9bd848aa124f5681669e0bc45e534be0d7e7b0fcc"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/stock_dividend_books_fixed_cost.json",
+          "bytes": 558057,
+          "sha256": "7932d9241de6390ac3da40b40c9ee31460cc224669529ad70b9f843bfa616af1"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/stock_dividend_books_zero.json",
+          "bytes": 558069,
+          "sha256": "c55d660e5414cd8bb5bbfacedfb5b1f83c08d1c8f7d27d2b9bfcf0a0293e4038"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/stock_dividend_price_checks_fixed_cost.json",
+          "bytes": 1539,
+          "sha256": "6b2fe25cc0eeae8703af3c17c6a1ab8ee38a522e4052523e5fd68e93a456752c"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/stock_dividend_price_checks_zero.json",
+          "bytes": 1539,
+          "sha256": "6b2fe25cc0eeae8703af3c17c6a1ab8ee38a522e4052523e5fd68e93a456752c"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/strategy_fingerprint.txt",
+          "bytes": 65,
+          "sha256": "46037ab3c601cd1a05d0db69f31831484a0c936dea594dfb20f0db27618fbce3"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/artifacts/target_weights.csv",
+          "bytes": 26776,
+          "sha256": "5c7c7819588c1160432abc105a50c234e7c9cdbc2800a44816e428b1da88c24a"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/execution_plan.json",
+          "bytes": 3475,
+          "sha256": "06f3a964e10f46cbd5045e95f192222b332676b222dad48298cc36ae0cf79e55"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/postprocess.log",
+          "bytes": 224,
+          "sha256": "3280a9c4913f7ac43387035f69395209e9f612bbdb872704c21939e709e46398"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/preflight.json",
+          "bytes": 9637,
+          "sha256": "1753318d3973857b109fb7f57ec354890a5882baa86e75a9e7470eafd071ea80"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/readiness_incidents.json",
+          "bytes": 1479,
+          "sha256": "47a3525d9fc84179fa1795f21665f9eb242b45b86625b787759244a57cc41a3e"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/report/benchmark_statistics_CURRENT.csv",
+          "bytes": 502,
+          "sha256": "e39d22db0a8f87dc9a8b9eacc947088cf18bdc678e21a7285162b2999ef2748b"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/report/chat_manifest_CURRENT.json",
+          "bytes": 607139,
+          "sha256": "9bd8e7fa82d878d553375a1db6ff43fd10278397276f52d24d1015821fa8d600"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/report/daily_nav_canonical.csv",
+          "bytes": 18472,
+          "sha256": "517e4d53fe72af306918addd3ef2528ca15a6cefb2990950738ea064d71c6837"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/report/metrics_CURRENT.csv",
+          "bytes": 1421,
+          "sha256": "30462f0f08ea996b57fd9ffe272c7c12481cb4b45397f1b56b91da93f1318225"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/report/report_CURRENT.html",
+          "bytes": 5005977,
+          "sha256": "0099a48e4e2efc76cb57e8f6db92ebf97239b2ad9831297064e0c0ccbdcda281"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/report_periods.json",
+          "bytes": 145,
+          "sha256": "480b421ced637c5da2fd2f4d3c5340b79b5c8c7f75dcf035bd45e28f49febdeb"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/report_readiness.json",
+          "bytes": 559,
+          "sha256": "8b4598ee8508d84157f2383540ebd706aefe690caad69e740766e0de6ddbebab"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/run_status.json",
+          "bytes": 4232,
+          "sha256": "3fb0b6d9fcb45287ff214ecbd7eb999ccbef2e0dd551dbfefba763527a0afd88"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/strategy_input.json",
+          "bytes": 2360,
+          "sha256": "2ec6b90e539fb514bda139511b9815c1b78423b5566b6f984ca46468aa973b14"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/strategy_normalized.json",
+          "bytes": 2360,
+          "sha256": "2ec6b90e539fb514bda139511b9815c1b78423b5566b6f984ca46468aa973b14"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/run/workspace_operation.json",
+          "bytes": 388,
+          "sha256": "7d483420205a0a0c8b88a18c478d37f5577120e4e6119394a93de4be9e117af3"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/strategy.json",
+          "bytes": 2360,
+          "sha256": "2ec6b90e539fb514bda139511b9815c1b78423b5566b6f984ca46468aa973b14"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/worker.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/worker_result.json",
+          "bytes": 2208,
+          "sha256": "460b506063e1b934260e0f1f974df7db476d60fad3f09582806c11f16dc04db5"
+        },
+        {
+          "path": "store/runs/4d9e2c2a0daa4e56935a42160c443284/workspace_operation.json",
+          "bytes": 388,
+          "sha256": "7d483420205a0a0c8b88a18c478d37f5577120e4e6119394a93de4be9e117af3"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/run/analysis_context.json",
+          "bytes": 927,
+          "sha256": "7ff0db497b40ea3cb9c8ecc48860a37ea2529e651f5fb9a5593ff8b210ad27c9"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/run/artifacts/daily_nav.csv",
+          "bytes": 17365,
+          "sha256": "47888164238553907324d01f85486acf572e060d1734ab21bf28dae47d687cde"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/run/execution_plan.json",
+          "bytes": 2903,
+          "sha256": "2d0de37ad7a5455af08e8d87640fde734bda9c1cfa05967642b12bb580317ad6"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/run/postprocess.log",
+          "bytes": 223,
+          "sha256": "1bbfadb95af6323df64e34588f37dbee1a86e11c73c75d09eba8bf5e771ff5dc"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/run/preflight.json",
+          "bytes": 5896,
+          "sha256": "90d303196b965bba3145353013be3d861aa4e40192dade55ae15f134b16fe283"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/run/report/benchmark_statistics_CURRENT.csv",
+          "bytes": 924,
+          "sha256": "aa6745c693df3a22c20cf51ac7bc7350eeaedce4fee4001d368acea06de78269"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/run/report/chat_manifest_CURRENT.json",
+          "bytes": 796211,
+          "sha256": "e431d418370f9f831690252ba51f1fc51f13456d7c0a9e53f5b82a29c7db4e6d"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/run/report/daily_nav_canonical.csv",
+          "bytes": 17285,
+          "sha256": "bd0a4f247c5e71b454bd844723c300194dbd2106aac0da66d729af86799d08ec"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/run/report/metrics_CURRENT.csv",
+          "bytes": 2253,
+          "sha256": "0845de11c44ed24cdba945871626f562585608383e5cb556f008ac2d18659916"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/run/report/report_CURRENT.html",
+          "bytes": 5060648,
+          "sha256": "e5dc4b61db1f4b4d8ff8b42089db1459e05f8f88c8882820cda51206b9c2d74f"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/run/report_periods.json",
+          "bytes": 281,
+          "sha256": "3b35260b0d86b7577cb2efe712b58e138c7a56d260f7b1ab755a56af8fe36444"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/run/run_status.json",
+          "bytes": 5049,
+          "sha256": "7b8afa0e747013e2889577ffafe0328448057b225e9c9cc5350feb3711a9df49"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/run/strategy_normalized.json",
+          "bytes": 1857,
+          "sha256": "4205b7de977f0e135a977708211ec62a9f0f974f07fa477446fc6ff5d0757f6f"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/worker.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "store/runs/57204b30c165494d9493170a3004511c/worker_result.json",
+          "bytes": 1082,
+          "sha256": "923e68ce17cd332a1f83263fa4cad29ac554ebceb05cb521e687195f7ec16374"
+        },
+        {
+          "path": "store/runs/f2f26f38b56d41d78a3b87583b0b2548/strategy.json",
+          "bytes": 2360,
+          "sha256": "2ec6b90e539fb514bda139511b9815c1b78423b5566b6f984ca46468aa973b14"
+        },
+        {
+          "path": "store/runs/f2f26f38b56d41d78a3b87583b0b2548/worker.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "store/runs/f2f26f38b56d41d78a3b87583b0b2548/worker_result.json",
+          "bytes": 14426,
+          "sha256": "6c561b8a5e23deae1462cac6cf0e5f4d90ed520cb4516d8cbdee05dc4b482953"
+        }
+      ],
+      "exact_store_file_count": 78,
+      "exact_store_bytes": 18500316,
+      "recovery_importance": "Exact saved original result/comparison reopening needs these local bytes",
+      "notes": "v9 source2024 minimal snapshot is a v10 exact-store dependency; v10 includes source momentum and new period run/analysis. New CI artifact has different IDs and is not a byte-identical replacement."
+    }
+  ],
+  "new_local_work": {
+    "branch": "research/finite-source-linkage-20261021",
+    "paths": [
+      "scripts/reviewed_annual_income_query.py",
+      "scripts/test_reviewed_annual_income_query.py",
+      "scripts/verify_reviewed_annual_income.py",
+      "/workspace/quant-pit-deploy-20261021/annual-pit-reviewed/ANNUAL_PIT_CASES.json",
+      "/workspace/quant-pit-deploy-20261021/FROZEN_41_DOCUMENT_GAP_MAP.csv",
+      "/workspace/quant-pit-deploy-20261021/APPROVED_FINITE_COLLECTION_SCOPE.json"
+    ],
+    "purpose": "New bounded2field PIT review and approved finite-budget handoff; rawsource already remote, new interpretation/code/checkpoints local until separately preserved"
+  },
+  "whole_remote_only_restoration": "NOT_PERFORMED; previous accepted remote751source audit is not repeated",
+  "v10_upload_authorized": false,
+  "no_repeated_remote_archive_transfer": true
+}

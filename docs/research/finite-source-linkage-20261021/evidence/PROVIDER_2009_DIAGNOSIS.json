@@ -1,0 +1,82 @@
+{
+  "provider_coverage": [
+    {
+      "year": 2009,
+      "period": "Q3",
+      "completed_codes": 0,
+      "expected_codes": 1495,
+      "ratio": 0.0,
+      "cfs_ok_codes": 0,
+      "cfs_no_data_codes": 0,
+      "ofs_fallback_terminal_codes": 0,
+      "cfs_raw_shards": 0,
+      "ofs_raw_shards": 0,
+      "raw_ok": true,
+      "signal_date": "2010-04-01 00:00:00"
+    },
+    {
+      "year": 2009,
+      "period": "FY",
+      "completed_codes": 0,
+      "expected_codes": 1495,
+      "ratio": 0.0,
+      "cfs_ok_codes": 0,
+      "cfs_no_data_codes": 0,
+      "ofs_fallback_terminal_codes": 0,
+      "cfs_raw_shards": 0,
+      "ofs_raw_shards": 0,
+      "raw_ok": true,
+      "signal_date": "2010-04-01 00:00:00"
+    }
+  ],
+  "definition": "0/1495 counts canonical CFS-first terminal source-completion status among conservatively historically mapped stocks, not count of documents, semanticPASS or PITPASS",
+  "canonical2009_state_rows": 0,
+  "legacy_reuse": [
+    {
+      "period": "Q3",
+      "canonical_status_rows": 0,
+      "canonical_shards": 0,
+      "legacy_normalized_rows": 13271,
+      "legacy_unique_receipts": 683,
+      "legacy_stock_hints": 650,
+      "legacy_expected_stock_hint_intersection": 538,
+      "catalog_unique_receipts": 2231,
+      "catalog_expected_stock_hint_intersection": 1452,
+      "legacy_versions": {
+        "legacy-v5-single-amount": 13271
+      },
+      "warning": "Legacy rows/catalog are not attested operating provider input or raw-original availability proof"
+    },
+    {
+      "period": "FY",
+      "canonical_status_rows": 0,
+      "canonical_shards": 0,
+      "legacy_normalized_rows": 5202,
+      "legacy_unique_receipts": 288,
+      "legacy_stock_hints": 281,
+      "legacy_expected_stock_hint_intersection": 243,
+      "catalog_unique_receipts": 2430,
+      "catalog_expected_stock_hint_intersection": 1482,
+      "legacy_versions": {
+        "legacy-v5-single-amount": 5202
+      },
+      "warning": "Legacy rows/catalog are not attested operating provider input or raw-original availability proof"
+    }
+  ],
+  "frozen41": {
+    "unique_receipts": 41,
+    "unique_stock_hints": 41,
+    "existing_v5_receipts": 0,
+    "existing_v5_rows": 0,
+    "existing_fields": {}
+  },
+  "diagnosis": {
+    "raw_absent": "Canonical full_history2009shards absent; worldwide/original-DART absence NOT inferred",
+    "connection": "Existing legacy normalized rows are outside canonical provider schema, not connected and not equivalent in period/scope",
+    "semantic": "Oldv5 source_qualityPASS/parser confidence not current independent semantic attestation",
+    "PIT": "Publication/version/historic identity evidence missing for population"
+  },
+  "action": "Reuse old candidates to locate exact originals; do not mark canonicalCFS OK or copyv5 into full_history. Only explicitly reviewed field-scoped bindings may query existing snapshot owner; retain whole-population gate.",
+  "new_source_HTTP": 0,
+  "raw_ok_caveat": "raw_ok=True with0CFS/OFS OK codes is vacuous shard-consistency, NOT existence/completeness proof; ratio0 blocks before loading."
+}

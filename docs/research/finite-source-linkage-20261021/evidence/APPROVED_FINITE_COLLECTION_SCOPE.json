@@ -1,0 +1,87 @@
+{
+  "status": "USER_APPROVED_CONDITIONAL_NOT_ACTIVE",
+  "parent_run": "39504052321",
+  "trial": {
+    "receipts": [
+      "20100331002062",
+      "20100331002063"
+    ],
+    "executions": 1,
+    "total_HTTP_ceiling_including_retries": 4,
+    "seconds": 600,
+    "uses_existing_final_slot": true
+  },
+  "followup": {
+    "batches": [
+      {
+        "documents": 21,
+        "maximum_DART_HTTP_requests": 42,
+        "receipts": [
+          "20100331002066",
+          "20100331002067",
+          "20100331002072",
+          "20100331002073",
+          "20100331002075",
+          "20100331002084",
+          "20100331002085",
+          "20100331002089",
+          "20100331002091",
+          "20100331002094",
+          "20100331002095",
+          "20100331002096",
+          "20100331002097",
+          "20100331002098",
+          "20100331002100",
+          "20100331002102",
+          "20100331002103",
+          "20100331002104",
+          "20100331002105",
+          "20100331002112",
+          "20100331002116"
+        ]
+      },
+      {
+        "documents": 20,
+        "maximum_DART_HTTP_requests": 40,
+        "receipts": [
+          "20100331002117",
+          "20100331002119",
+          "20100331002120",
+          "20100331002121",
+          "20100331002124",
+          "20100331002127",
+          "20100331002132",
+          "20100331002133",
+          "20100331002136",
+          "20100331002137",
+          "20100331002138",
+          "20100331002146",
+          "20100331002149",
+          "20100331002153",
+          "20100331002154",
+          "20100331002155",
+          "20100331002159",
+          "20100331002160",
+          "20100331002163",
+          "20100331002164"
+        ]
+      }
+    ],
+    "maximum_executions": 2,
+    "total_HTTP_ceiling_including_retries": 82,
+    "seconds_each": 600,
+    "daily_limit": 1,
+    "requires_trial_success_conditions": [
+      "raw stored/integrity/candidates success",
+      "no duplicates/checkpoint corruption",
+      "normal bounded exit and resume saved",
+      "no quota/auth/actual collection failure"
+    ],
+    "same_budget_reapproval_needed": false
+  },
+  "freeze_source_sha256": "c7e2f3852abf77c914affd999d99a1214100f9743aca9eac2cd7397d0ad88bf8",
+  "receipt_order_sha256": "7bfafadb83322a9c7e2d358fd3c0f9331784b7597770c133ed83fb3e78283904",
+  "mapping_file": "FROZEN_41_DOCUMENT_GAP_MAP.csv",
+  "mapping_sha256": "53c70d22eedd65d13f82edd0c90cc62e96bf751d0b5fd6a15bcc4f5d753b5591",
+  "scope": "Budget approval only; no main merge, no original ledger reset; supplemental operating contract not deployed"
+}

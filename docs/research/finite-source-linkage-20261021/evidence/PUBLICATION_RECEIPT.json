@@ -1,0 +1,70 @@
+{
+  "branch": "fix/native-source-boundaries-20261021",
+  "head": "29b6c4a2c277f6b2070e4bf70da54899f9fe4bcf",
+  "base": "7c2269aaeeaf146ed95aeaed24f59411c0e09730",
+  "commits": [
+    {
+      "commit": "9365b9f51e052198ac50537e858ab1799b966763",
+      "tree": "1bb7074bebeb432f43b7cf04554640508a84cb56",
+      "changed_paths": [
+        "docs/research/pit-period-20261021/FRAGMENT_FIX.md",
+        "scripts/research_planned_readiness.py",
+        "scripts/strategy_dsl_runner.py",
+        "scripts/test_research_planned_readiness.py"
+      ]
+    },
+    {
+      "commit": "29b6c4a2c277f6b2070e4bf70da54899f9fe4bcf",
+      "tree": "ae3abc20b5c589fd415d9956d556f3460fc46730",
+      "changed_paths": [
+        "HANDOFF_CURRENT.md",
+        "docs/research/pit-period-20261021/REPORT.md",
+        "docs/research/pit-period-20261021/RESUME.md",
+        "docs/research/pit-period-20261021/evidence/APPROVED_FEATURE_CI_EXCERPTS.log",
+        "docs/research/pit-period-20261021/evidence/APPROVED_FEATURE_CI_FINAL.json",
+        "docs/research/pit-period-20261021/evidence/APPROVED_FEATURE_CI_RESULT_OBJECTS.json",
+        "docs/research/pit-period-20261021/evidence/APPROVED_FEATURE_MANIFEST.json",
+        "docs/research/pit-period-20261021/evidence/APPROVED_FEATURE_MANIFEST.json.sha256",
+        "docs/research/pit-period-20261021/evidence/DATA_COVERAGE.json",
+        "docs/research/pit-period-20261021/evidence/DSL_LIFECYCLE.log",
+        "docs/research/pit-period-20261021/evidence/FEATURE_PUBLICATION_RECEIPT.json",
+        "docs/research/pit-period-20261021/evidence/INITIAL_FAILURE_CAUSE.json",
+        "docs/research/pit-period-20261021/evidence/LEGACY_VERSION_STATE.json",
+        "docs/research/pit-period-20261021/evidence/LIVE_COLLECTION_GATE.json",
+        "docs/research/pit-period-20261021/evidence/LOCAL_CHECKS.json",
+        "docs/research/pit-period-20261021/evidence/NEXT_FINITE_BACKFILL_BUDGET_PROPOSAL.json",
+        "docs/research/pit-period-20261021/evidence/OBSERVATION_COHORTS.json",
+        "docs/research/pit-period-20261021/evidence/PERIOD_BROWSER_AND_INDEPENDENT.json",
+        "docs/research/pit-period-20261021/evidence/PIT_CASE.json",
+        "docs/research/pit-period-20261021/evidence/PIT_FINAL_QUERY_CHECK.json",
+        "docs/research/pit-period-20261021/evidence/RELATED_TESTS.log",
+        "docs/research/pit-period-20261021/evidence/RERUN_COMPARISON_SAVE_REOPEN.json",
+        "docs/research/pit-period-20261021/evidence/RERUN_PREFLIGHT_CONTEXT.json",
+        "docs/research/pit-period-20261021/evidence/REVIEWED_QUERY_FINAL6_TESTS.log",
+        "docs/research/pit-period-20261021/evidence/UNAVAILABLE_PERIOD.json",
+        "docs/research/pit-period-20261021/evidence/analysis_metrics_CURRENT.csv",
+        "docs/research/pit-period-20261021/evidence/candidate_coverage_by_security_field.csv",
+        "docs/research/pit-period-20261021/evidence/krx_year_coverage.csv",
+        "docs/research/pit-period-20261021/evidence/legacy_field_scope_summary.csv",
+        "docs/research/pit-period-20261021/evidence/modern_year_period_coverage.csv",
+        "docs/research/pit-period-20261021/evidence/rerun_metrics_CURRENT.csv",
+        "scripts/quant_backtest_postprocess.py",
+        "scripts/research_language.py",
+        "scripts/research_period_analysis.py",
+        "scripts/research_web.py",
+        "scripts/reviewed_financial_query.py",
+        "scripts/summarize_research_coverage.py",
+        "scripts/test_research_period_analysis.py",
+        "scripts/test_research_periods_e2e.py",
+        "scripts/test_reviewed_financial_query.py",
+        "scripts/verify_research_periods.cjs",
+        "scripts/verify_saved_research_comparisons.cjs",
+        "scripts/verify_source_pit_case.py",
+        "web/research/app.js",
+        "web/research/index.html"
+      ]
+    }
+  ],
+  "remote_exact": true,
+  "main_changed": false
+}

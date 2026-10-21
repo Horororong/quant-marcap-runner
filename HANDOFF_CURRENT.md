@@ -1,3 +1,15 @@
+# Latest continuation: approved29b CI and finite source linkage —2026-10-21
+
+Read docs/research/finite-source-linkage-20261021/REPORT.md and RESUME.md. Approved29b6c4a2c277f6b2070e4bf70da54899f9fe4bcf published to fix/native-source-boundaries-20261021; separate driver2997930ea4cfe67c04441648dd066bc1e50efca7. Exact-checkout integrationCI39604804071 and periodCI39604801251 bothSUCCESS;130exact/9contract/12historicalUV preserved. No Internetpip/mainmerge/v10ZIPupload. main advanced independently to08dfad14e1bb2e0d9cb9fdca5b8a6979ad79c1fa for modern recentdata, legacy source code unchanged.
+
+New local research/finite-source-linkage-20261021: two Sajo OFS calendarFY2009 annual revenue328527137799/netincome34326086558KRW fields,4/1+4/30 source-gated existing-provider queriesPASS; newunique2/newfield-signal4 outside157/880. Same-day/future unclosed chain blocked. Annual≠Q4; no whole-population/financial/PIT gate changes.12focusedtestsPASS. This newer localcode has NOT been published or remote-CI-tested.
+
+HTTP0/newraw0/checkpoint02054complete,next02062deferred/02063pending,43remaining;10/21KST dailygate closed. Existing finalslot2doc/<=4HTTP/600sec approved, plus conditional41doc/2additionalexecutions/<=82HTTP/600sec each already explicitly approved; DO NOT ASK TO REAPPROVE SAME BUDGET. Frozen41order/map evidence exists. Conditions require actual trial success. Existing main's protected3runcontract needs separate minimal supplemental deployment before extra2runs; no reset, mainmerge notauthorized, no future execution armed. Next10/22KSTwindow requires all live checks.
+
+New full backup not sent. Exact old savedcomparison stores remainlocal in preservedv9/v10 despite all29bcode nowremote. Newreport/payload/verification status /workspace/quant-pit-deploy-20261021/FINAL_STATUS.md. Do not repeat restoration/751audit/successful29bCI/oldarchive transfers without changes.
+
+---
+
 # Latest continuation: PIT and exact-period user flow —2026-10-21
 
 RESEARCH_ONLY. Active worktree `/workspace/quant-parser-repair-20261021/code`, branch `feat/pit-analysis-period-20261021`. Follow [the current report](docs/research/pit-period-20261021/REPORT.md) and [resume commands](docs/research/pit-period-20261021/RESUME.md); final SHA/backup manifest are in `/workspace/quant-pit-period-20261021/FINAL_STATUS.md`.

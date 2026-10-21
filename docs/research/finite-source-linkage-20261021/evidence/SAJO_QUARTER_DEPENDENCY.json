@@ -1,0 +1,39 @@
+{
+  "issuer": "사조산업/007160/00124799",
+  "Q3_catalog": [
+    {
+      "rcept_no": "20091116000562",
+      "report_nm": "분기보고서 (2009.09)",
+      "rcept_dt": "2009-11-16",
+      "period_end": "2009-09-01"
+    }
+  ],
+  "Q3_legacy_rows": 31,
+  "Q3_legacy_receipts": [
+    "20091116000562"
+  ],
+  "Q3_legacy_fields": [
+    "amortization",
+    "capex_intangibles",
+    "cash_and_equivalents",
+    "cost_of_sales",
+    "current_assets",
+    "current_liabilities",
+    "current_portion_long_term_debt",
+    "depreciation",
+    "equity",
+    "gross_profit",
+    "long_term_borrowings",
+    "net_income",
+    "ocf",
+    "operating_income",
+    "ppe",
+    "revenue",
+    "short_term_borrowings",
+    "total_assets",
+    "total_liabilities"
+  ],
+  "reason": "Annual source-only query is validated; no same-scopeQ3 attestation/native bytes linked, so Q4 and whole-universe ranking remain unavailable",
+  "new_HTTP_authorized_for_this_gap": false,
+  "approved43_receipts_scope": "No SajoQ3 filing in current frozen43; use existing preserved source first, otherwise separate source budget/authorization needed"
+}

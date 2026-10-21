@@ -1,0 +1,54 @@
+{
+  "code_sha": "29b6c4a2c277f6b2070e4bf70da54899f9fe4bcf",
+  "driver_commit_sha": "2997930ea4cfe67c04441648dd066bc1e50efca7",
+  "driver_file_sha256": "110c12a2bbed0ee9dc11fa001fe9fffc4a87fd985f5af5a087c0da8c2ecbb59f",
+  "driver_bytes": 8152,
+  "driver_included_in_49_files": false,
+  "readback": {
+    "files": 49,
+    "sha256": "ALL_MATCH",
+    "code_target": "29b6c4a2c277f6b2070e4bf70da54899f9fe4bcf",
+    "driver_sha256": "MATCH",
+    "main": "08dfad14e1bb2e0d9cb9fdca5b8a6979ad79c1fa"
+  },
+  "code_manifest_sha256": "54a30918d92ad0c585490017a73265849aad2fbbeda1ed9ebe3e860d2c4efae7",
+  "runs": [
+    {
+      "suite": "integration",
+      "id": 39604804071,
+      "head_sha": "2997930ea4cfe67c04441648dd066bc1e50efca7",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39604804071",
+      "created_at": "2026-10-21T13:04:28Z",
+      "actual_checkout_sha": "29b6c4a2c277f6b2070e4bf70da54899f9fe4bcf",
+      "job_id": 119238151855,
+      "artifact": {
+        "id": 12348063178,
+        "bytes": 19025454,
+        "retention_days": 90
+      },
+      "log_sha256": "35d8ca2732bc2b6d6a8a08e715f21e718ceffcc4eeb940c92d0ca8b00f5756ab"
+    },
+    {
+      "suite": "pit_period",
+      "id": 39604801251,
+      "head_sha": "2997930ea4cfe67c04441648dd066bc1e50efca7",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39604801251",
+      "created_at": "2026-10-21T13:04:27Z",
+      "actual_checkout_sha": "29b6c4a2c277f6b2070e4bf70da54899f9fe4bcf",
+      "job_id": 119238140762,
+      "artifact": {
+        "id": 12347513604,
+        "bytes": 20474744,
+        "retention_days": 90
+      },
+      "log_sha256": "bf009365d803f6d7ee94e1e3846c52c4c1d09e9265dd2f7a5c50289613100a0d"
+    }
+  ],
+  "internet_pip_installations": 0,
+  "source_HTTP": 0,
+  "new_annual_query_included": false
+}

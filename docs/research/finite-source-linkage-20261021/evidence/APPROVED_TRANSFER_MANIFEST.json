@@ -1,0 +1,285 @@
+{
+  "status": "EXPLICIT_USER_APPROVED_PUBLIC_RESEARCH_AND_CI",
+  "repository": "Horororong/quant-marcap-runner",
+  "intended_branch": "fix/native-source-boundaries-20261021",
+  "local_branch": "feat/pit-analysis-period-20261021",
+  "base": "7c2269aaeeaf146ed95aeaed24f59411c0e09730",
+  "head": "29b6c4a2c277f6b2070e4bf70da54899f9fe4bcf",
+  "fix_commit": "9365b9f51e052198ac50537e858ab1799b966763",
+  "files": [
+    {
+      "path": "HANDOFF_CURRENT.md",
+      "bytes": 80931,
+      "sha256": "53abf190cd2e5654dd8246375e4d69354398a472bd948512c061e1d552a2988e"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/FRAGMENT_FIX.md",
+      "bytes": 1781,
+      "sha256": "9dfa3d7669450ae3eaf13fb2b462fe74a5b41693afab15fdaecc5ab7939a958c"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/REPORT.md",
+      "bytes": 21768,
+      "sha256": "00847344a6e1acae5e1b8df18ba03963bb3451058237e09ea0bbede4770b97d9"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/RESUME.md",
+      "bytes": 3718,
+      "sha256": "dff98e0a8b58d61ff1ba0e45137fbac0de91b8aeea656be5c426e5d17bfe4b16"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/APPROVED_FEATURE_CI_EXCERPTS.log",
+      "bytes": 6041,
+      "sha256": "7890552d6ba19b9f0859d22515c10f8135afe9a9cbe83080d39a36082e3d2724"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/APPROVED_FEATURE_CI_FINAL.json",
+      "bytes": 1299,
+      "sha256": "29a0c6d904c4f1d605a9b6ff492223ebbd0263db2aff52395b75471e01a59469"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/APPROVED_FEATURE_CI_RESULT_OBJECTS.json",
+      "bytes": 2758,
+      "sha256": "f589788a8740f2d8930b35f5bfc7e2aa4288fba3d1bc02d4302682a7def22014"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/APPROVED_FEATURE_MANIFEST.json",
+      "bytes": 5699,
+      "sha256": "46a9a5422377ab62d71e977151b0fc80b66081d60cf86f4bd5df38e91bcfc5be"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/APPROVED_FEATURE_MANIFEST.json.sha256",
+      "bytes": 97,
+      "sha256": "dab55258f72a60e280ee05e37552f6bff30f7bf05237ffca31680241b28f3836"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/DATA_COVERAGE.json",
+      "bytes": 92814,
+      "sha256": "245c9519500e017749ac49739ab21db2850eab1372e8b6f7c605d2c8b691e2e6"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/DSL_LIFECYCLE.log",
+      "bytes": 141,
+      "sha256": "db2f3653654cdd9732d725dc6bb078acccf7b241729dbd4479d12fbf3b4f012d"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/FEATURE_PUBLICATION_RECEIPT.json",
+      "bytes": 1696,
+      "sha256": "75bbf733b4ff3487b0a12a17f197ef187953485cebe83812d30586b845749df8"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/INITIAL_FAILURE_CAUSE.json",
+      "bytes": 1219,
+      "sha256": "ef09c9652dcfb01fc1cbe46722b9b4476ef87ab2a205c01021d648fee08c9377"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/LEGACY_VERSION_STATE.json",
+      "bytes": 1711,
+      "sha256": "c6569f318b41911234a505df86789d03d1dd8a9cc276d7b62795379f39a67a4f"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/LIVE_COLLECTION_GATE.json",
+      "bytes": 15636,
+      "sha256": "8e90edb3518259f3d0c4892ce2f2a7fdba4145865c20dc84689904cf72c5420d"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/LOCAL_CHECKS.json",
+      "bytes": 1541,
+      "sha256": "566c2d66f3fbbcebf48caa29e9256fbb6fd065cf1e9219616f663b6ad79dc8c4"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/NEXT_FINITE_BACKFILL_BUDGET_PROPOSAL.json",
+      "bytes": 4431,
+      "sha256": "c7e2f3852abf77c914affd999d99a1214100f9743aca9eac2cd7397d0ad88bf8"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/OBSERVATION_COHORTS.json",
+      "bytes": 5991,
+      "sha256": "92c79772878601c4d887db9b60040ba2079dfb9de3531503eb56369d23939e0a"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/PERIOD_BROWSER_AND_INDEPENDENT.json",
+      "bytes": 6053,
+      "sha256": "070c9b2afe80d6174b8849ed64da6f73ca69fa49d43a565a834ff06ad6b32957"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/PIT_CASE.json",
+      "bytes": 10726,
+      "sha256": "820d0abf204fc7b73930b5f1a2069b338a9852b72e2ecfafc3569f845657382a"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/PIT_FINAL_QUERY_CHECK.json",
+      "bytes": 3323,
+      "sha256": "11e733f0659aea50a2c80a9c31f17410b09b97595cb4dcdb639aafaae418f3e9"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/RELATED_TESTS.log",
+      "bytes": 9136,
+      "sha256": "7b8d4f8f7c7c479aa9b91f7968c8b565179bba1dd7b5ec15149cdbe9048e25ec"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/RERUN_COMPARISON_SAVE_REOPEN.json",
+      "bytes": 745,
+      "sha256": "87ff72cf5d7bc46ae26b57dcebaec4715ce2d5bb5915ebcf2f4691b36a3e0666"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/RERUN_PREFLIGHT_CONTEXT.json",
+      "bytes": 1859,
+      "sha256": "e16e95458d5bbaa4d1228681a52ed10ccc91d7312bcbb0db238e6b0b3f096af8"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/REVIEWED_QUERY_FINAL6_TESTS.log",
+      "bytes": 1176,
+      "sha256": "d3a52777abaad673560e5b1b48b802e569403adeab35ab57dd07a76084a54a2f"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/UNAVAILABLE_PERIOD.json",
+      "bytes": 1159,
+      "sha256": "db7f1dd608fd15690e86930aa85091f439731dff29afa06653ac05c3051d5391"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/analysis_metrics_CURRENT.csv",
+      "bytes": 2253,
+      "sha256": "0845de11c44ed24cdba945871626f562585608383e5cb556f008ac2d18659916"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/candidate_coverage_by_security_field.csv",
+      "bytes": 196100,
+      "sha256": "eb6ee25295145bd6a8d65f814b55bddb05bb47207bbe4ba87fa52ee5dfdecdce"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/krx_year_coverage.csv",
+      "bytes": 12929,
+      "sha256": "1aab2838286ede9e4903e0858a940705cfa29a4672ddc010e625d62e3e34c133"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/legacy_field_scope_summary.csv",
+      "bytes": 1957,
+      "sha256": "8cc61bea4578deb4d7b4016ccfe9ff24d68d10a2b7d75727b4508286e1fb6f46"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/modern_year_period_coverage.csv",
+      "bytes": 15396,
+      "sha256": "89c7b884b7a2f2a739df5b7d9ff275201f53ea71dc6fda121af639c4cd4667fb"
+    },
+    {
+      "path": "docs/research/pit-period-20261021/evidence/rerun_metrics_CURRENT.csv",
+      "bytes": 1421,
+      "sha256": "30462f0f08ea996b57fd9ffe272c7c12481cb4b45397f1b56b91da93f1318225"
+    },
+    {
+      "path": "scripts/quant_backtest_postprocess.py",
+      "bytes": 28051,
+      "sha256": "2f96df5f615b15454806ed1203cfcf996fe26121536dd1642cceb7856fae4ccd"
+    },
+    {
+      "path": "scripts/research_language.py",
+      "bytes": 9243,
+      "sha256": "f0bfc1c0f6df642fdd3f219eab3e08965703f785ebf80a19f091c6a7c5875ae3"
+    },
+    {
+      "path": "scripts/research_period_analysis.py",
+      "bytes": 4565,
+      "sha256": "c9abb37c21fdb3e4f38d3cd3627d36faf595750ceb60c0ba92896ce3d0080a93"
+    },
+    {
+      "path": "scripts/research_planned_readiness.py",
+      "bytes": 25214,
+      "sha256": "a2ceac84326593d4aad06c6bc31cc0c003f71a335e0e50eef3a6fa85226f16d6"
+    },
+    {
+      "path": "scripts/research_web.py",
+      "bytes": 21169,
+      "sha256": "9e4848c08f27903edc2033f56ad41c25ca9d833ffc03380398d0e2a7d7e18dbe"
+    },
+    {
+      "path": "scripts/reviewed_financial_query.py",
+      "bytes": 2740,
+      "sha256": "9fc98016fca1b9aa2557baa801bf44432bc5282272141082f89d3dc5213601c8"
+    },
+    {
+      "path": "scripts/strategy_dsl_runner.py",
+      "bytes": 30326,
+      "sha256": "e4fad7d5aabaac7069360a5059502851911cd78d17f90edba8ce7013fcd7afc6"
+    },
+    {
+      "path": "scripts/summarize_research_coverage.py",
+      "bytes": 9553,
+      "sha256": "ea2cfcaa4d7cca57ef8d53c5346d7776494ec6428b74e6c4a803524175384613"
+    },
+    {
+      "path": "scripts/test_research_period_analysis.py",
+      "bytes": 4218,
+      "sha256": "4f50e22bfc9c6bf32876449a944d7bb2184a42a4845e3084c00152feb4839191"
+    },
+    {
+      "path": "scripts/test_research_periods_e2e.py",
+      "bytes": 4114,
+      "sha256": "4fbb370ceb1a7b5aa4849512c84adc0489ddecb458b00e5b025c5cfee6a58bb3"
+    },
+    {
+      "path": "scripts/test_research_planned_readiness.py",
+      "bytes": 6628,
+      "sha256": "64553af355e44e8aa056feb74f7684b281981b52ce1be8fdd8f924c27821de2e"
+    },
+    {
+      "path": "scripts/test_reviewed_financial_query.py",
+      "bytes": 3236,
+      "sha256": "241c450541e3be38c522916717e8e7571be829e393e393f6092bf91dc5c9b6d1"
+    },
+    {
+      "path": "scripts/verify_research_periods.cjs",
+      "bytes": 13339,
+      "sha256": "2f1a8613c5894af500d242eefb834f2ec074f129dd592ed3c97a640bc7a5f960"
+    },
+    {
+      "path": "scripts/verify_saved_research_comparisons.cjs",
+      "bytes": 8716,
+      "sha256": "fbbc0f563ac9233eec49e31b52c3be383d7db46a3e2370df4e8fdb758f2b849b"
+    },
+    {
+      "path": "scripts/verify_source_pit_case.py",
+      "bytes": 7555,
+      "sha256": "b886d92e9d99a8734fc2ffa0637ae960b00645cf4f935a4cd6265d2b14a224c8"
+    },
+    {
+      "path": "web/research/app.js",
+      "bytes": 15026,
+      "sha256": "016798fa148146b420083c9407299e79342d7a3454c2ffbfd3f84ffc759de2a0"
+    },
+    {
+      "path": "web/research/index.html",
+      "bytes": 5863,
+      "sha256": "942ab88754232766653ea9fb90f57e1f295d00f317a2061c21616c4cede2d7ab"
+    }
+  ],
+  "total_files": 49,
+  "total_bytes": 713061,
+  "proposed_ci_driver": {
+    "status": "PREPARED_NOT_PUBLISHED_NOT_EXECUTED",
+    "base_driver_commit": "fe04aba1aa9bdd46a955fe2068fa044799e1842c",
+    "file": "fixed-ci-pit-period-PROPOSED.yml",
+    "bytes": 8152,
+    "sha256": "110c12a2bbed0ee9dc11fa001fe9fffc4a87fd985f5af5a087c0da8c2ecbb59f",
+    "separate_from_new_code_delta": true,
+    "target_suite": "pit_period",
+    "source_HTTP": 0,
+    "internet_pip": false
+  },
+  "driver_included_in_feature_files": false,
+  "secrets_detected": 0,
+  "exclusions": [],
+  "main_merge": false,
+  "source_HTTP": 0,
+  "prepared_at": "2026-10-21T13:02:40.933390+00:00",
+  "repository_visibility": "public",
+  "public_suitability": "Public source filings, research code and evidence; no private account material or credential values detected",
+  "driver_included_in_49_files": false,
+  "total_public_bytes": 721213,
+  "ci_suites": [
+    "pit_period",
+    "integration"
+  ],
+  "archive_upload": false,
+  "main_before": "08dfad14e1bb2e0d9cb9fdca5b8a6979ad79c1fa"
+}
