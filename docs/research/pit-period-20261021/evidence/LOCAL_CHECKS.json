@@ -1,0 +1,26 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "local_unique_unit_scope": 56,
+  "execution_notes": "Related54passed,then final query6passed replacing priorquery4;not56inoneinvocation",
+  "generated_contract": "PASS",
+  "generated_contract_command": "dedicated python -I;trusted scripts path;export_strategy_dsl_contract.py --check",
+  "original_v9_comparison_reopen": {
+    "id": "4daa132c04204f31a91cefaaa62b9434",
+    "status": "PASS_UNCHANGED"
+  },
+  "code_owner_files_unchanged_since_period_E2E": {
+    "research_web.py": "9e4848c08f27903edc2033f56ad41c25ca9d833ffc03380398d0e2a7d7e18dbe",
+    "research_language.py": "f0bfc1c0f6df642fdd3f219eab3e08965703f785ebf80a19f091c6a7c5875ae3",
+    "research_period_analysis.py": "c9abb37c21fdb3e4f38d3cd3627d36faf595750ceb60c0ba92896ce3d0080a93",
+    "strategy_dsl_runner.py": "e4fad7d5aabaac7069360a5059502851911cd78d17f90edba8ce7013fcd7afc6",
+    "research_planned_readiness.py": "a2ceac84326593d4aad06c6bc31cc0c003f71a335e0e50eef3a6fa85226f16d6",
+    "quant_backtest_postprocess.py": "2f96df5f615b15454806ed1203cfcf996fe26121536dd1642cceb7856fae4ccd",
+    "quant_backtest_template_CURRENT.py": "a210dd98d041069814d8d544c70d9b531ffc89da25c9e9bd310bff6bbd3b202b"
+  },
+  "helper_iteration_notes": [
+    "Original source decoded with strict encoding roundtrip; no lossy decoding",
+    "Provider period_policy argument explicit",
+    "Exact Korean source concept fallback; no fabricated IFRS ID",
+    "Finite numeric/accounting period/BS/scope checks verified without re-parsing original sources"
+  ]
+}

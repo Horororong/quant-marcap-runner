@@ -14,7 +14,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parent))
 from research_language import translate,response,confirmation_digest,SUPPORT
 from strategy_dsl import StrategySpec
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='local-research-workspace-v1.2-saved-comparisons'
+VERSION='local-research-workspace-v1.3-analysis-periods'
 def browser_numbers(value):
     """Match JSON.stringify's integral-number representation before preview.
 
@@ -48,10 +48,13 @@ def saved_run_provenance(directory):
     missing=[name for name,p in paths.items()if not p.is_file()]
     if missing:return dict(status='unavailable',missing=missing,scope='Historical run provenance is absent; do not substitute current settings')
     spec=read(paths['strategy_normalized.json']);preflight=read(paths['preflight.json']);state=read(paths['run_status.json'])
-    return dict(status='saved_execution_snapshot',strategy_id=spec['strategy_id'],strategy_fingerprint=state.get('strategy_fingerprint'),
+    result=dict(status='saved_execution_snapshot',strategy_id=spec['strategy_id'],strategy_fingerprint=state.get('strategy_fingerprint'),
         run_id=state.get('run_id'),period=spec['period'],cost_scenarios=spec['cost_scenarios'],benchmark=spec.get('benchmark'),
         data_files=preflight.get('source_files',[]),control_files=preflight.get('control_files',[]),versions=state.get('versions',{}),
         classification='RESEARCH_ONLY',investment_approved=False,scope='Saved source hashes and trading-cost assumptions; no new financial/PIT or cash-dividend total-return certification')
+    if (run/'analysis_context.json').is_file():result['analysis_context']=read(run/'analysis_context.json')
+    if (run/'workspace_operation.json').is_file():result['workspace_operation']=read(run/'workspace_operation.json')
+    return result
 def requirements(root,payload):
     path=root/'config/research/evidence_requirements_v1.json'
     if not path.exists():return []
@@ -104,6 +107,8 @@ class Workspace:
         names=['strategy_normalized.json','preflight.json','run_status.json',
             'artifacts/daily_nav.csv','report/metrics_CURRENT.csv',
             'report/report_CURRENT.html','report/chat_manifest_CURRENT.json']
+        if job['mode']=='analysis':names+=['analysis_context.json','report_periods.json']
+        elif (run/'workspace_operation.json').is_file():names+=['workspace_operation.json']
         files=[]
         for name in names:
             p=run/name
@@ -119,7 +124,7 @@ class Workspace:
         record=dict(id=uuid.uuid4().hex,name=name.strip(),created_at=now(),contract='saved-current-comparison-v1',
             run_ids=ids,runs=[self.comparison_snapshot(j)for j in result['runs']],
             classification='RESEARCH_ONLY',investment_approved=False,
-            scope='Saved ordered run identities and CURRENT artifact hashes; full run periods, no common-period recalculation. Chart zoom/period selections are not saved.')
+            scope='Saved ordered result identities and CURRENT hashes; declared backtest/analysis periods, no implied common period. Chart zoom/selector state is not saved.')
         write(self.store/'comparisons'/str(record['id']+'.json'),record)
         return record
     def reopen_comparison(self,cid):
@@ -138,8 +143,26 @@ class Workspace:
         write(folder/'strategy.json',s.to_dict())
         job=dict(id=jid,mode=mode,status='queued',created_at=now(),fingerprint=s.fingerprint(),period=s.period.to_dict()if hasattr(s.period,'to_dict')else s.to_dict()['period'],name=s.title,
             source_request=o.get('text',''),confirmed_digest=o['confirmation_digest'],workspace_contract=VERSION,investment_approved=False)
+        if mode=='run':
+            job['operation']=dict(kind='backtest_execution',engine_executed=True,starting_holdings='none',starting_cash=s.initial_capital,
+                warmup='Registered factor providers require exact pre-signal history; no shortened lookbacks or filling',strategy_fingerprint=s.fingerprint())
+            if o.get('rerun_from_job_id'):
+                source=self.status(identifier(o['rerun_from_job_id']))
+                if source['mode']!='run'or source['status']!='ok':raise ValueError('재실행 기준은 성공한 원래 백테스트여야 합니다')
+                job['operation']['rerun_from_job_id']=source['id']
         write(self.store/'jobs'/str(jid+'.json'),job)
         self.pool.submit(self.execute,jid);return job
+    def analyze(self,o):
+        from research_period_analysis import period_request
+        periods=period_request(o.get('start'),o.get('end'));source=self.status(identifier(o.get('source_job_id')))
+        if source['mode']!='run'or source['status']!='ok':raise ValueError('성공한 원래 백테스트 NAV만 분석할 수 있습니다')
+        snapshot=self.comparison_snapshot(source);jid=uuid.uuid4().hex
+        (self.store/'runs'/jid).mkdir(parents=True,exist_ok=False)
+        job=dict(id=jid,mode='analysis',status='queued',created_at=now(),fingerprint=source['fingerprint'],
+            period=dict(start=periods[0]['start'],end=periods[0]['end']),name='기존 NAV 하위기간 분석',
+            source_job_id=source['id'],source_snapshot=snapshot,operation='existing_nav_analysis',engine_rerun=False,
+            workspace_contract=VERSION,investment_approved=False)
+        write(self.store/'jobs'/str(jid+'.json'),job);self.pool.submit(self.execute,jid);return job
     def execute(self,jid):
         path=self.store/'jobs'/str(jid+'.json');job=read(path);folder=self.store/'runs'/jid
         job.update(status='running',started_at=now());write(path,job)
@@ -165,7 +188,7 @@ class Workspace:
         if actual.is_file():job['engine_status']=read(actual)
         if job['status']in {'ok','data_gap','failed','capability_gap'}:
             job['required_evidence']=requirements(self.root,job)
-            if job['mode']=='run'and job['status']=='ok':
+            if job['mode']in {'run','analysis'}and job['status']=='ok':
                 state=job.get('engine_status',{})
                 if not(state.get('nav_ready')and state.get('report_ready')):raise ValueError('실제 검증된 NAV/보고서 없는 실행은 성공으로 표시할 수 없습니다')
                 job['metrics']=report_rows(folder);job['report_url']='/runs/'+jid+'/run/report/report_CURRENT.html'
@@ -174,7 +197,7 @@ class Workspace:
     def comparison(self,ids):
         if not 2<=len(ids)<=6 or len(ids)!=len(set(ids)):raise ValueError('서로 다른 성공 실행 2~6개를 선택하세요')
         jobs=[self.status(j)for j in ids]
-        if any(j['mode']!='run'or j['status']!='ok'for j in jobs):raise ValueError('성공한 실제 실행만 비교할 수 있습니다')
+        if any(j['mode']not in {'run','analysis'}or j['status']!='ok'for j in jobs):raise ValueError('성공한 실제 실행·검증 NAV 분석만 비교할 수 있습니다')
         return dict(status='ok',runs=jobs,scope='CURRENT metrics and existing interactive reports side by side. Different periods remain explicitly labeled; no recalculation or implied common-period performance.',investment_approved=False)
 def worker(root,store,jid):
     path=store/'jobs'/str(identifier(jid)+'.json');job=read(path);folder=store/'runs'/jid
@@ -182,11 +205,16 @@ def worker(root,store,jid):
         if job['mode']=='check':
             from research_workbench import check
             result=check(folder/'strategy.json',root)
+        elif job['mode']=='analysis':
+            from research_period_analysis import analyze_saved_nav
+            result=analyze_saved_nav(root,store,job,folder)
         else:
             from strategy_dsl_run import run_checked_strategy
+            if job.get('operation'):write(folder/'workspace_operation.json',job['operation'])
             result=run_checked_strategy(folder/'strategy.json',root,folder/'run',report_periods=root/'config/reports/research_continuous_2025.json',inspect_planned=True)
+            if job.get('operation')and(folder/'run').is_dir():write(folder/'run/workspace_operation.json',job['operation'])
         result={k:v for k,v in result.items()if k!='artifacts'}
-    except (ValueError,KeyError,TypeError)as e:result=dict(status='capability_gap',error=dict(type=type(e).__name__,message=str(e)),investment_approved=False)
+    except (ValueError,KeyError,TypeError)as e:result=dict(status='failed'if job['mode']=='analysis'else'capability_gap',error=dict(type=type(e).__name__,message=str(e)),investment_approved=False)
     except Exception as e:result=dict(status='failed',error=dict(type=type(e).__name__,message=str(e)),investment_approved=False)
     write(folder/'worker_result.json',result)
     return {'ok':0,'capability_gap':2,'data_gap':3,'failed':4}.get(result['status'],4)
@@ -229,6 +257,7 @@ def handler(workspace):
                 o=json.loads(self.rfile.read(n));path=urlsplit(self.path).path
                 if path=='/api/preview':return self.reply(workspace.preview(o))
                 if path=='/api/strategies':return self.reply(workspace.save_strategy(o),201)
+                if path=='/api/analyze':return self.reply(workspace.analyze(o),202)
                 if path=='/api/comparisons':return self.reply(workspace.save_comparison(o),201)
                 if path in {'/api/check','/api/run'}:return self.reply(workspace.submit(o,path.rsplit('/',1)[-1]),202)
                 self.reply({'error':'없는 경로'},404)

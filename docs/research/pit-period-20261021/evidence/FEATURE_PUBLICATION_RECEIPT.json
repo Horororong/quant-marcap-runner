@@ -1,0 +1,37 @@
+{
+  "branch": "fix/native-source-boundaries-20261021",
+  "head": "7c2269aaeeaf146ed95aeaed24f59411c0e09730",
+  "base": "ba26c3684fea72e0fe01e0c49fbc09f10982a12e",
+  "commits": [
+    {
+      "commit": "7c2269aaeeaf146ed95aeaed24f59411c0e09730",
+      "tree": "a60167061053d23a86c952a6d584d631c0a4f10a",
+      "changed_paths": [
+        "HANDOFF_CURRENT.md",
+        "docs/research/progress-20261021/APPROVED_BA_TRANSFER_MANIFEST.json",
+        "docs/research/progress-20261021/APPROVED_BA_TRANSFER_MANIFEST.json.sha256",
+        "docs/research/progress-20261021/BACKFILL_DIAGNOSIS.json",
+        "docs/research/progress-20261021/BA_COMMIT_STATUS.json",
+        "docs/research/progress-20261021/BA_PUBLICATION_RECEIPT.json",
+        "docs/research/progress-20261021/BA_REMOTE_VERIFIED.json",
+        "docs/research/progress-20261021/LIVE_WORKFLOW_HISTORY.json",
+        "docs/research/progress-20261021/LOCAL_CHECKS.json",
+        "docs/research/progress-20261021/REMOTE_CI_LOG_EXCERPTS.log",
+        "docs/research/progress-20261021/REPORT.md",
+        "docs/research/progress-20261021/RESUME.md",
+        "docs/research/progress-20261021/SOURCE_HTTP_LOG_EXCERPTS.log",
+        "docs/research/progress-20261021/USER_FEATURE_BROWSER.json",
+        "docs/research/progress-20261021/USER_FEATURE_TESTS.log",
+        "docs/research/progress-20261021/runtime-verify.json",
+        "scripts/research_web.py",
+        "scripts/test_saved_comparisons_e2e.py",
+        "scripts/test_saved_research_comparisons.py",
+        "scripts/verify_saved_research_comparisons.cjs",
+        "web/research/app.js",
+        "web/research/index.html"
+      ]
+    }
+  ],
+  "remote_exact": true,
+  "main_changed": false
+}

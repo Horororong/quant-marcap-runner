@@ -1,0 +1,175 @@
+{
+  "status": "PASS_REAL_PERIOD_WORKSPACE",
+  "browser": {
+    "status": "PASS_PERIOD_BROWSER",
+    "source_run": "7b496084b63f4bd5990f59f9fc5df766",
+    "momentum_source": "2b16191b9d1547519d26fc3bd1a2c39e",
+    "analysis_id": "57204b30c165494d9493170a3004511c",
+    "analysis_gap_id": "0ac31aceb6324aad9685897f27e78f00",
+    "comparison_id": "59603a34602740a5a67f36034da8b2e2",
+    "rerun_id": "4d9e2c2a0daa4e56935a42160c443284",
+    "checks": [
+      {
+        "step": "display_range_only_no_job_no_metric_change",
+        "status": "ok"
+      },
+      {
+        "step": "existing_nav_canonical_subperiod",
+        "status": "ok",
+        "id": "57204b30c165494d9493170a3004511c",
+        "source": "7b496084b63f4bd5990f59f9fc5df766",
+        "baseline": "2024-05-31",
+        "ending": "2024-10-31"
+      },
+      {
+        "step": "analysis_and_original_comparison_saved_reopened",
+        "status": "ok",
+        "id": "59603a34602740a5a67f36034da8b2e2"
+      },
+      {
+        "step": "missing_period_fail_closed_no_source_full_fallback",
+        "status": "ok",
+        "id": "0ac31aceb6324aad9685897f27e78f00"
+      },
+      {
+        "step": "check",
+        "status": "ok",
+        "id": "f2f26f38b56d41d78a3b87583b0b2548",
+        "period": {
+          "start": "2019-12-02",
+          "end": "2020-12-30",
+          "book_start": "2019-12-02",
+          "book_end": "2020-12-30",
+          "as_of_date": "2020-12-30"
+        },
+        "fingerprint": "61129400643f84ff8cf661288256262ac81d8f43a7257acc268e88f9e6312dcc"
+      },
+      {
+        "step": "run",
+        "status": "ok",
+        "id": "4d9e2c2a0daa4e56935a42160c443284",
+        "period": {
+          "start": "2019-12-02",
+          "end": "2020-12-30",
+          "book_start": "2019-12-02",
+          "book_end": "2020-12-30",
+          "as_of_date": "2020-12-30"
+        },
+        "fingerprint": "61129400643f84ff8cf661288256262ac81d8f43a7257acc268e88f9e6312dcc",
+        "report_url": "/runs/4d9e2c2a0daa4e56935a42160c443284/run/report/report_CURRENT.html"
+      },
+      {
+        "step": "new_period_common_engine_rerun_confirmed",
+        "status": "ok",
+        "id": "4d9e2c2a0daa4e56935a42160c443284",
+        "period": {
+          "start": "2019-12-02",
+          "end": "2020-12-30",
+          "book_start": "2019-12-02",
+          "book_end": "2020-12-30",
+          "as_of_date": "2020-12-30"
+        },
+        "initial": {
+          "kind": "backtest_execution",
+          "engine_executed": true,
+          "starting_holdings": "none",
+          "starting_cash": 10000000,
+          "warmup": "Registered factor providers require exact pre-signal history; no shortened lookbacks or filling",
+          "strategy_fingerprint": "61129400643f84ff8cf661288256262ac81d8f43a7257acc268e88f9e6312dcc",
+          "rerun_from_job_id": "2b16191b9d1547519d26fc3bd1a2c39e"
+        }
+      }
+    ],
+    "errors": [],
+    "investment_approved": false,
+    "analysis_detail": {
+      "periods": [
+        "selection",
+        "source_full"
+      ],
+      "selected": "selection",
+      "analysis": {
+        "operation": "existing_nav_analysis",
+        "engine_rerun": false,
+        "analysis_id": "57204b30c165494d9493170a3004511c",
+        "source_job_id": "7b496084b63f4bd5990f59f9fc5df766",
+        "source_engine_run_id": "20261021T033835905876Z-bf7b2dfb",
+        "source_strategy_fingerprint": "67b9e6ed37e42841d001ee05edc0fb2b5b9e44de172c4e17f939c3c3b2f9e8b1",
+        "source_backtest_period": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "book_start": "2024-01-01",
+          "book_end": "2024-12-31",
+          "as_of_date": "2024-12-31"
+        },
+        "requested_analysis_period": {
+          "start": "2024-06-03",
+          "end": "2024-10-31"
+        },
+        "source_nav_sha256": "47888164238553907324d01f85486acf572e060d1734ab21bf28dae47d687cde",
+        "position_rule": "Retain source holdings/cash/fees; never reset at analysis start. CURRENT rebases to preceding observed NAV.",
+        "metrics_owner": "CURRENT",
+        "classification": "RESEARCH_ONLY",
+        "investment_approved": false
+      },
+      "charts": [
+        4,
+        4,
+        4
+      ],
+      "period": {
+        "status": "ready",
+        "ready": true,
+        "label": "기존 NAV 하위기간 · 엔진 재실행 없음",
+        "actual_start": "2024-06-03",
+        "actual_end": "2024-10-31",
+        "requested_start": "2024-06-03",
+        "requested_end": "2024-10-31",
+        "baseline_date": "2024-05-31",
+        "ending_asset_label": "해당 기간 종료자산",
+        "ending_asset_date": "2024-10-31",
+        "initial_capital": 10000,
+        "currency": "USD standardized",
+        "fx_applied": false,
+        "additional_contributions": 0,
+        "risk_observations_full": 101,
+        "monthly_statistical_samples": 5,
+        "log_ticks": {
+          "values": [
+            0.5,
+            1,
+            2
+          ],
+          "labels": [
+            "0.5배",
+            "1배",
+            "2배"
+          ]
+        },
+        "calendar": "XKRX",
+        "risk_frequency": "daily",
+        "limitations": [
+          "짧은 표본의 실행·보고 검증입니다. 장기 투자 검증 결과가 아닙니다."
+        ]
+      }
+    }
+  },
+  "source_nav_unchanged": "47888164238553907324d01f85486acf572e060d1734ab21bf28dae47d687cde",
+  "source_backtests_preserved_files": 61,
+  "analysis_engine_executions": 0,
+  "new_backtest_executions": 1,
+  "independent_rerun": {
+    "status": "PASS_MODEL_ACCOUNTING",
+    "rows": 804,
+    "portfolios": 1,
+    "sessions": 268,
+    "max_nav_error": 3.725290298461914e-08,
+    "numerical_tolerance_currency": 1e-05,
+    "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+    "investment_approved": false
+  },
+  "canonical_analysis_baseline": "2024-05-31",
+  "new_executable_period": "momentum3-1 top3 2019-12-02..2020-12-30",
+  "source_HTTP": 0,
+  "investment_approved": false
+}

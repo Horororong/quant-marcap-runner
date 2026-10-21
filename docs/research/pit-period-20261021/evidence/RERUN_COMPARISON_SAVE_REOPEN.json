@@ -1,0 +1,29 @@
+{
+  "status": "PASS_RERUN_COMPARISON_SAVE_REOPEN",
+  "comparison": {
+    "id": "e917c722324544c4b46932f28b3d83a1",
+    "periods": [
+      {
+        "start": "2019-12-02",
+        "end": "2020-12-30",
+        "book_start": "2019-12-02",
+        "book_end": "2020-12-30",
+        "as_of_date": "2020-12-30"
+      },
+      {
+        "start": "2020-01-01",
+        "end": "2020-12-31",
+        "book_start": "2020-01-01",
+        "book_end": "2020-12-31",
+        "as_of_date": "2020-12-31"
+      }
+    ],
+    "fingerprints": [
+      "61129400643f84ff8cf661288256262ac81d8f43a7257acc268e88f9e6312dcc",
+      "21e178470dcd516e2318a454e5b1da6659b2aca52809e6b1f4fa28216014d05d"
+    ]
+  },
+  "engine_executions": 0,
+  "source_HTTP": 0,
+  "errors": []
+}

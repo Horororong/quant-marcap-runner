@@ -1,0 +1,67 @@
+{
+  "scope": "Snapshot state counts by parser version; state is not proof every original archive is preserved, nor source accuracy/PIT",
+  "file": "data/status/dart_legacy_backfill_state.csv",
+  "legacy_data_files_in_manifest": 319,
+  "state_groups": [
+    {
+      "parser_version": "legacy-v3-book",
+      "status": "PARSED_4F",
+      "state_rows": 4,
+      "unique_receipts": 4
+    },
+    {
+      "parser_version": "legacy-v4-book",
+      "status": "NO_DOCUMENT",
+      "state_rows": 1203,
+      "unique_receipts": 1203
+    },
+    {
+      "parser_version": "legacy-v4-book",
+      "status": "NO_METRICS",
+      "state_rows": 3,
+      "unique_receipts": 3
+    },
+    {
+      "parser_version": "legacy-v4-book",
+      "status": "PARSED_PARTIAL",
+      "state_rows": 2,
+      "unique_receipts": 2
+    },
+    {
+      "parser_version": "legacy-v5-single-amount",
+      "status": "ERROR",
+      "state_rows": 4021,
+      "unique_receipts": 4021
+    },
+    {
+      "parser_version": "legacy-v5-single-amount",
+      "status": "NO_DOCUMENT",
+      "state_rows": 847,
+      "unique_receipts": 847
+    },
+    {
+      "parser_version": "legacy-v5-single-amount",
+      "status": "NO_METRICS",
+      "state_rows": 10242,
+      "unique_receipts": 10242
+    },
+    {
+      "parser_version": "legacy-v5-single-amount",
+      "status": "PARSED_4F",
+      "state_rows": 14047,
+      "unique_receipts": 14047
+    },
+    {
+      "parser_version": "legacy-v5-single-amount",
+      "status": "PARSED_PARTIAL",
+      "state_rows": 9625,
+      "unique_receipts": 9625
+    },
+    {
+      "parser_version": "legacy-v5-single-amount",
+      "status": "SOURCE_GAP",
+      "state_rows": 36066,
+      "unique_receipts": 36066
+    }
+  ]
+}

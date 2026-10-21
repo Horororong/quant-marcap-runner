@@ -1,0 +1,33 @@
+{
+  "cause": "Annual planner treated signal-free2019December as missing provider inputs although2020April signal exists in whole request",
+  "original_failure": [
+    {
+      "id": "6e57d4a17129499184f1329a64a386d6",
+      "status": "data_gap",
+      "period": {
+        "start": "2019-12-02",
+        "end": "2020-12-30",
+        "book_start": "2019-12-02",
+        "book_end": "2020-12-30",
+        "as_of_date": "2020-12-30"
+      },
+      "error": {
+        "kind": "source_or_provider_gap",
+        "classification": "historical_fact",
+        "verdict": "UNVERIFIED",
+        "security": null,
+        "date": "2019-12-02",
+        "portfolio": null,
+        "detail": "no rebalance signal dates in requested period",
+        "required": "Provide exact 2019 source/schema/provider inputs under original contract",
+        "occurrences": 1,
+        "affected_through": "2019-12-02",
+        "incident_id": "d2f440568bebdddd9465"
+      }
+    }
+  ],
+  "fix_commit": "9365b9f51e052198ac50537e858ab1799b966763",
+  "original_local_evidence": "/workspace/quant-pit-period-20261021/period-e2e",
+  "resolved_real_period": "momentum3-1 top3 2019-12-02..2020-12-30",
+  "no_period_universe_or_expected_value_changes": true
+}

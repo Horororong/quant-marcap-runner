@@ -1,0 +1,63 @@
+{
+  "status": "ok",
+  "strategy_fingerprint": "61129400643f84ff8cf661288256262ac81d8f43a7257acc268e88f9e6312dcc",
+  "technical_lookback": {
+    "momentum_3_1": {
+      "required_sessions": 63,
+      "skip_sessions": 21,
+      "owner": "registered technical provider; exact original per-code window, no shortening"
+    }
+  },
+  "provider_coverage": [
+    {
+      "source": "technical",
+      "signal_date": "2020-04-29T00:00:00.000",
+      "field": "momentum_3_1",
+      "required_sessions": 63,
+      "available_sessions": 63,
+      "ratio": 1.0,
+      "raw_ok": true
+    }
+  ],
+  "technical_history_files": [
+    {
+      "path": "data/krx_equities/yearly/marcap-2017.parquet",
+      "bytes": 18839233,
+      "sha256": "980fc0100205839175b64ac88b358bbdb7fc4b9d20f642715454524ce0abdabd"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2018.parquet",
+      "bytes": 19948936,
+      "sha256": "8326cbb45607c5a38532aed3412d74ab08ff7b28485b9442515c40ee2960b863"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2019.parquet",
+      "bytes": 20548266,
+      "sha256": "c60efce88cf71814174b574b429d1e277b03a1add373eaf91406c692f5ae185e"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2020.parquet",
+      "bytes": 21987765,
+      "sha256": "b8457fa399a3801558f06264bb2a16c444d1517caf7505fc3e7c24d7c9d036fd"
+    }
+  ],
+  "signal_dates": [
+    "2020-04-29"
+  ],
+  "source_files": [
+    {
+      "path": "data/krx_equities/yearly/marcap-2019.parquet",
+      "bytes": 20548266,
+      "sha256": "c60efce88cf71814174b574b429d1e277b03a1add373eaf91406c692f5ae185e"
+    },
+    {
+      "path": "data/krx_equities/yearly/marcap-2020.parquet",
+      "bytes": 21987765,
+      "sha256": "b8457fa399a3801558f06264bb2a16c444d1517caf7505fc3e7c24d7c9d036fd"
+    }
+  ],
+  "requested_period": {
+    "start": "2019-12-02",
+    "end": "2020-12-30"
+  }
+}

@@ -45,7 +45,7 @@ async function run(mode,expected='ok'){
  const cid=await evaluate("document.getElementById('saved-comparisons').value");
  const record=await evaluate("api('/api/comparisons/'+document.getElementById('saved-comparisons').value)");
  assert.deepEqual(record.saved_comparison.run_ids,runs);assert.equal(record.saved_comparison.runs.length,2);
- assert(record.saved_comparison.runs.every(r=>r.files.length===7&&r.files.every(f=>/^[0-9a-f]{64}$/.test(f.sha256))));
+ assert(record.saved_comparison.runs.every(r=>r.files.length===(r.provenance.workspace_operation?8:7)&&r.files.every(f=>/^[0-9a-f]{64}$/.test(f.sha256))));
  const costs=record.runs.map(r=>r.provenance.cost_scenarios.fixed_cost.commission_bps).sort();
  assert.deepEqual(costs,[1.5,2.5]);
  checkpoint({step:'save_real_current_comparison',status:'ok',id:cid,runs,costs});

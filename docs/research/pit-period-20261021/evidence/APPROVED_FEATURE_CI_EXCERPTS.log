@@ -1,0 +1,64 @@
+2026-10-21T09:13:32.2015189Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-21T09:13:32.2017180Z Worker ID: {3fb125bd-9036-4af2-b51a-c5dff3098af5}
+2026-10-21T09:13:32.2018527Z Cloud: Azure
+2026-10-21T09:13:32.2038187Z Cache mode: write
+2026-10-21T09:13:33.0273097Z   ref: 7c2269aaeeaf146ed95aeaed24f59411c0e09730
+2026-10-21T09:13:33.0281819Z   lfs: false
+2026-10-21T09:13:33.1453323Z Temporarily overriding HOME='/home/runner/work/_temp/8501800b-f0a2-4374-a062-a9c987069883' before making global git config changes
+2026-10-21T09:13:33.1818232Z ##[endgroup]
+2026-10-21T09:13:33.1819033Z ##[group]Setting up auth
+2026-10-21T09:13:33.1826995Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-21T09:13:33.1863121Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-21T09:13:33.2983678Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 7c2269aaeeaf146ed95aeaed24f59411c0e09730
+2026-10-21T09:14:08.5243886Z  * branch            7c2269aaeeaf146ed95aeaed24f59411c0e09730 -> FETCH_HEAD
+2026-10-21T09:14:08.5365842Z [command]/usr/bin/git checkout --progress --force 7c2269aaeeaf146ed95aeaed24f59411c0e09730
+2026-10-21T09:14:12.7902537Z Updating files:  41% (1188/2897)
+2026-10-21T09:14:12.8180615Z Updating files:  45% (1304/2897)
+2026-10-21T09:14:12.8318608Z Updating files:  51% (1478/2897)
+2026-10-21T09:14:12.9039857Z Updating files:  63% (1826/2897)
+2026-10-21T09:14:12.9118378Z Updating files:  64% (1855/2897)
+2026-10-21T09:14:12.9345085Z Updating files:  65% (1884/2897)
+2026-10-21T09:14:12.9386818Z Updating files:  66% (1913/2897)
+2026-10-21T09:14:12.9650415Z Updating files:  80% (2318/2897)
+2026-10-21T09:14:12.9701866Z Updating files:  81% (2347/2897)
+2026-10-21T09:14:13.1855339Z Updating files:  89% (2579/2897)
+2026-10-21T09:14:13.1887603Z Updating files:  90% (2608/2897)
+2026-10-21T09:14:13.2181997Z Note: switching to '7c2269aaeeaf146ed95aeaed24f59411c0e09730'.
+2026-10-21T09:14:13.2182541Z 
+2026-10-21T09:14:13.2182904Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-21T09:14:13.2183830Z changes and commit them, and you can discard any commits you make in this
+2026-10-21T09:14:13.2184660Z state without impacting any branches by switching back to a branch.
+2026-10-21T09:14:13.2185136Z 
+2026-10-21T09:14:13.2185443Z If you want to create a new branch to retain commits you create, you may
+2026-10-21T09:14:13.2186227Z do so (now or later) by using -c with the switch command. Example:
+2026-10-21T09:14:13.2186677Z 
+2026-10-21T09:14:13.2186869Z   git switch -c <new-branch-name>
+2026-10-21T09:14:13.2187136Z 
+2026-10-21T09:14:13.2187304Z Or undo this operation with:
+2026-10-21T09:14:13.2187560Z 
+2026-10-21T09:14:13.2187701Z   git switch -
+2026-10-21T09:14:13.2187901Z 
+2026-10-21T09:14:13.2188282Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-21T09:14:13.2188827Z 
+2026-10-21T09:14:13.2189213Z HEAD is now at 7c2269a feat: save and reopen source-bound CURRENT comparisons [skip ci]
+2026-10-21T09:14:13.2500803Z 7c2269aaeeaf146ed95aeaed24f59411c0e09730
+2026-10-21T09:14:13.2983313Z   TARGET_SHA: 7c2269aaeeaf146ed95aeaed24f59411c0e09730
+2026-10-21T09:14:13.3228318Z ##[group]Run actions/setup-python@v5
+2026-10-21T09:14:13.3232518Z   freethreaded: false
+2026-10-21T09:14:15.6765900Z Original pinned kit release SHA/CRC verified; no artifact download or pip
+2026-10-21T09:14:34.0434763Z   "kit_id": "26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd",
+2026-10-21T09:14:35.3653182Z test_variations_have_exact_new_conditions (test_research_language.Language.test_variations_have_exact_new_conditions) ... ok
+2026-10-21T09:14:35.3654942Z Ran 6 tests in 0.050s
+2026-10-21T09:14:36.2660671Z Ran 6 tests in 0.057s
+2026-10-21T09:19:17.0537018Z {"status": "PASS_MODEL_ACCOUNTING", "rows": 732, "portfolios": 1, "sessions": 244, "max_nav_error": 1.1175870895385742e-08, "numerical_tolerance_currency": 1e-05, "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification", "investment_approved": false}
+2026-10-21T09:19:17.0541704Z {"status": "PASS_REAL_WORKSPACE_E2E", "equivalent_json_artifacts": {"daily_nav.csv": "47888164238553907324d01f85486acf572e060d1734ab21bf28dae47d687cde", "target_weights.csv": "d43f73c61b14b838548cfdcf9036d0aecc14b746b98e145de1fdd7508505906d", "selections.csv": "d1a4965589726335bfdcb1f248be251520dc8e7e77a5dd7eefe15c29aeedca5c", "held_return_checks.csv": "1e046242a201e20233b77a84b15794b6f701abd6ab63a94dc9d85bb24b834c43"
+2026-10-21T09:19:17.7455789Z Ran 6 tests in 0.113s
+2026-10-21T09:19:23.1867430Z {"status": "PASS_BROWSER_AND_SERVER_RESTART", "original_and_copy_unchanged": 52, "original_proof_sha256": "3408072cedb62ed9c812033caf4ad528499b0aa799ecb0209f81808f6e625dbf", "no_collection": true, "no_engine_rerun": true, "investment_approved": false}
+2026-10-21T09:19:23.2614240Z   name: pinned-kit-target-7c2269aaeeaf146ed95aeaed24f59411c0e09730
+2026-10-21T09:19:23.2618416Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T09:19:23.2618868Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T09:19:23.5298818Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-21T09:19:25.4827916Z Uploaded bytes 13730918
+2026-10-21T09:19:25.7991350Z Artifact pinned-kit-target-7c2269aaeeaf146ed95aeaed24f59411c0e09730.zip successfully finalized. Artifact ID 12333099694
+2026-10-21T09:19:25.7992573Z Artifact pinned-kit-target-7c2269aaeeaf146ed95aeaed24f59411c0e09730 has been successfully uploaded! Final size is 13730918 bytes. Artifact ID is 12333099694
+2026-10-21T09:19:26.0778138Z Temporarily overriding HOME='/home/runner/work/_temp/e6ba0217-ffc6-4fae-8069-94bc323e5187' before making global git config changes

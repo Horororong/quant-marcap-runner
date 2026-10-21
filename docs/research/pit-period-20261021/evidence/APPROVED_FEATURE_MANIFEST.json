@@ -1,0 +1,143 @@
+{
+  "base": "ba26c3684fea72e0fe01e0c49fbc09f10982a12e",
+  "files": [
+    {
+      "path": "docs/research/progress-20261021/APPROVED_BA_TRANSFER_MANIFEST.json",
+      "bytes": 4528,
+      "sha256": "b55f88d2bd12c0ccba6131772f7edea67a08f9e8ec24192e963ccb6dda882a83"
+    },
+    {
+      "path": "docs/research/progress-20261021/APPROVED_BA_TRANSFER_MANIFEST.json.sha256",
+      "bytes": 101,
+      "sha256": "02347a3b72f1199e552fd10191f4ba29775947bcc46a8d4cd6d6ebd7c44a900e"
+    },
+    {
+      "path": "docs/research/progress-20261021/BACKFILL_DIAGNOSIS.json",
+      "bytes": 3262,
+      "sha256": "4e6ead87eefe7dd82efaedec45f16df835ef630fb908fb6ae4999160b47613fa"
+    },
+    {
+      "path": "docs/research/progress-20261021/BA_COMMIT_STATUS.json",
+      "bytes": 274,
+      "sha256": "000f85954beba16275389245478e9213355e7200e3ece235a51c385dba07c04e"
+    },
+    {
+      "path": "docs/research/progress-20261021/BA_PUBLICATION_RECEIPT.json",
+      "bytes": 1778,
+      "sha256": "78ae654849b133438dba7bca5c35e6bf1e38a874a083e6e05ee44915283f8bc1"
+    },
+    {
+      "path": "docs/research/progress-20261021/BA_REMOTE_VERIFIED.json",
+      "bytes": 734,
+      "sha256": "49816bc6623f13f02e5c91043d66d437229047f33c6a8e4da0ec9cc4b631f94d"
+    },
+    {
+      "path": "docs/research/progress-20261021/LIVE_WORKFLOW_HISTORY.json",
+      "bytes": 14909,
+      "sha256": "5c9ca137e40e2cd48ce44dfe6168eaa1fecf13de169a2eb5fefd3412a687c667"
+    },
+    {
+      "path": "docs/research/progress-20261021/LOCAL_CHECKS.json",
+      "bytes": 722,
+      "sha256": "72f300b15e60201477d39858a6f61d32a48cfd1cb288dc0ce4ccb9aac15f9e9b"
+    },
+    {
+      "path": "docs/research/progress-20261021/REMOTE_CI_LOG_EXCERPTS.log",
+      "bytes": 4862,
+      "sha256": "7b5dea915f4db184a2d48aef57ff8ca90889153a88bd4d9ab1b89880548a96e7"
+    },
+    {
+      "path": "docs/research/progress-20261021/REPORT.md",
+      "bytes": 14687,
+      "sha256": "1060ed924e2bd8eb8f84c675ae65ed1430ee2684239140e349c43c085e9649af"
+    },
+    {
+      "path": "docs/research/progress-20261021/RESUME.md",
+      "bytes": 3092,
+      "sha256": "ea0c9e2c4ae742cb40555db2798ff6f633e19ec8ed53a8fa520a005c05637662"
+    },
+    {
+      "path": "docs/research/progress-20261021/SOURCE_HTTP_LOG_EXCERPTS.log",
+      "bytes": 26570,
+      "sha256": "e05ad983ff76b5ff40d7948dbe961a48edd9520ea18c578b4444431c25af1237"
+    },
+    {
+      "path": "docs/research/progress-20261021/USER_FEATURE_BROWSER.json",
+      "bytes": 12973,
+      "sha256": "a97288e5087bcea2f7b4122a824491807266ce93e6220f2424b8f944d8ecaf60"
+    },
+    {
+      "path": "docs/research/progress-20261021/USER_FEATURE_TESTS.log",
+      "bytes": 3091,
+      "sha256": "53b6ae1e8c96613954bb430aae70d888f09b617dc3fbcc46671edc34ff67819f"
+    },
+    {
+      "path": "docs/research/progress-20261021/runtime-verify.json",
+      "bytes": 21113,
+      "sha256": "a2776816a1db5c3a67a035d2985185c1bbf03a3e3d566b1e9e29efbfe57e2de4"
+    },
+    {
+      "path": "scripts/test_saved_comparisons_e2e.py",
+      "bytes": 3071,
+      "sha256": "c29dd2d63d9467d35ff1cb40fdf59d8d2567975c9a43ef56fc96e80010d3144c"
+    },
+    {
+      "path": "scripts/test_saved_research_comparisons.py",
+      "bytes": 3885,
+      "sha256": "09d17604f7d22d06d1c34676fa3caa3d35dd646bf7c743e92afe403abf9536c8"
+    },
+    {
+      "path": "scripts/verify_saved_research_comparisons.cjs",
+      "bytes": 8679,
+      "sha256": "b3e5a8b0ee497a9219ddf97955e77d539e447066973efe2c17e8919e78e68bf3"
+    },
+    {
+      "path": "HANDOFF_CURRENT.md",
+      "bytes": 79059,
+      "sha256": "5972ce0bf6c4880285e4586505d0e4e68a4e6db438e3f7b8a4be04a3183365dd"
+    },
+    {
+      "path": "scripts/research_web.py",
+      "bytes": 18548,
+      "sha256": "8467d7470aa48817fd75fbf26c587b7bb38d3de12cfe8e54c3fcb618c91800b0"
+    },
+    {
+      "path": "web/research/app.js",
+      "bytes": 12176,
+      "sha256": "379c067ee4b995b44feefca6230f33153c49bf7996688bf8bf8e1ff07863c523"
+    },
+    {
+      "path": "web/research/index.html",
+      "bytes": 5807,
+      "sha256": "b967f17c796fdddfcebdbfeb465ca33931dc4a155a0e78ce3f05383a06a86d62"
+    }
+  ],
+  "total_files": 22,
+  "total_bytes": 243921,
+  "secret_findings": [],
+  "remote_published": false,
+  "approval_scope": "New named-comparison feature/evidence; exact ba26 approval does not cover this later increment",
+  "repository": "Horororong/quant-marcap-runner",
+  "head": "7c2269aaeeaf146ed95aeaed24f59411c0e09730",
+  "local_branch": "feat/saved-comparisons-20261021",
+  "target_public_branch": "fix/native-source-boundaries-20261021",
+  "proposed_ci": {
+    "driver_branch": "ci/fixed-kit-restored-20261020",
+    "driver_parent": "da7885a1afb1f0edc3a59ed0e70f7c463ef5bd9e",
+    "path": ".github/workflows/test-strategy-dsl.yml",
+    "file": "/workspace/quant-progress-20261021/fixed-ci-workspace-PROPOSED.yml",
+    "bytes": 6703,
+    "sha256": "87f470538d3356659d897093ef33f16a865228d752c21b16eb70af2719f8951b",
+    "suite": "workspace",
+    "actual_checkout": "7c2269aaeeaf146ed95aeaed24f59411c0e09730",
+    "checks": "18 contracts; actual common-engine browser E2E with independent books; named comparison browser/server restart; original kit only",
+    "status": "PREPARED_NOT_PUBLISHED_NOT_DISPATCHED"
+  },
+  "exclusions": "No main merge, no archive upload, no source HTTP, no financial publication or PIT unlock",
+  "user_approval": "Explicit approval this turn:22 feature files243921bytes and separate6703byte driver; public research branch and exact target fixed-kit CI only",
+  "secrets_detected": 0,
+  "driver_included_in_22_files": false,
+  "total_public_payload_bytes": 250624,
+  "driver_publication_branch": "ci/fixed-kit-restored-20261020",
+  "prepared_at": "2026-10-21T09:12:33.460173+00:00"
+}

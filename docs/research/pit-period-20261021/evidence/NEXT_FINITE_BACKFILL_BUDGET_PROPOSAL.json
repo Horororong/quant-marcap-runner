@@ -1,0 +1,128 @@
+{
+  "status": "PROPOSAL_NOT_ACTIVE_NOT_AUTHORIZED_NOT_DEPLOYED",
+  "parent_run": "39504052321",
+  "existing_authorization": {
+    "executions_used": 2,
+    "executions_remaining": 1,
+    "reserved_documents": 200,
+    "reservation_ceiling": 300,
+    "maximum_runs_per_KST_day": 1
+  },
+  "current_trial": {
+    "receipts": [
+      "20100331002062",
+      "20100331002063"
+    ],
+    "documents": 2,
+    "maximum_DART_HTTP_requests": 4,
+    "maximum_retries_per_document": 1,
+    "run_wall_seconds": 600,
+    "document_wall_seconds": 90,
+    "worker_HTTP_control_seconds": 75,
+    "coordinator_shutdown_reserve_seconds": 15,
+    "actual_new_documents": 0,
+    "actual_DART_HTTP_requests": 0,
+    "actual_elapsed_seconds": null,
+    "checkpoint_before": "20100331002054",
+    "checkpoint_after": "20100331002054",
+    "gate": "ONCE_PER_KST_DAY",
+    "next_window_KST": "2026-10-22T00:00:00+09:00",
+    "no_dispatch_while_closed": true
+  },
+  "provisional_followup": {
+    "preconditions": [
+      "Existing2-document trial really succeeds",
+      "Record actual HTTP/time/source/candidate counts and checkpoint",
+      "Reread live budget/auth/concurrency/quality gates"
+    ],
+    "additional_executions": 2,
+    "maximum_new_unique_documents": 41,
+    "maximum_DART_HTTP_requests": 82,
+    "run_wall_seconds_each": 600,
+    "maximum_runs_per_KST_day": 1,
+    "document_reservations_added": 0,
+    "parent_reservation_reused": true,
+    "batches": [
+      {
+        "documents": 21,
+        "maximum_DART_HTTP_requests": 42,
+        "receipts": [
+          "20100331002066",
+          "20100331002067",
+          "20100331002072",
+          "20100331002073",
+          "20100331002075",
+          "20100331002084",
+          "20100331002085",
+          "20100331002089",
+          "20100331002091",
+          "20100331002094",
+          "20100331002095",
+          "20100331002096",
+          "20100331002097",
+          "20100331002098",
+          "20100331002100",
+          "20100331002102",
+          "20100331002103",
+          "20100331002104",
+          "20100331002105",
+          "20100331002112",
+          "20100331002116"
+        ]
+      },
+      {
+        "documents": 20,
+        "maximum_DART_HTTP_requests": 40,
+        "receipts": [
+          "20100331002117",
+          "20100331002119",
+          "20100331002120",
+          "20100331002121",
+          "20100331002124",
+          "20100331002127",
+          "20100331002132",
+          "20100331002133",
+          "20100331002136",
+          "20100331002137",
+          "20100331002138",
+          "20100331002146",
+          "20100331002149",
+          "20100331002153",
+          "20100331002154",
+          "20100331002155",
+          "20100331002159",
+          "20100331002160",
+          "20100331002163",
+          "20100331002164"
+        ]
+      }
+    ],
+    "approval_design": "Separate explicit supplemental finite-resume approval/ledger; preserve original3-execution ledger, all HOLD/PIT/expiry controls and no automatic fourth run. Minimal operating PR required; not authorized by research publication.",
+    "original_expiry_UTC": "2026-10-23T23:59:59+00:00",
+    "renew_expiry_if_needed": "Requires explicit approval, never automatic",
+    "expected_effect": "At most41remaining2009FY filings from frozen reservation; gaps in raw source/extraction evidence shrink. Does not fill2009Q3/full1495issuer source requirement or certify PIT.",
+    "completion_guarantee": false,
+    "early_yield": "Keep incomplete receipts and checkpoint; no additional execution beyond approved two",
+    "correction_named_filings": [
+      {
+        "receipt": "20100331002136",
+        "report_name": "[기재정정]사업보고서 (2009.12)",
+        "company_hint": "우신시스템",
+        "stock_code_hint": "017370",
+        "scope": "Title is a lead, not a verified correction graph"
+      }
+    ]
+  },
+  "observed_prior_timing": {
+    "source_run": "39504052321",
+    "durable_documents": 57,
+    "run_wall_budget_seconds": 600,
+    "complete_checkpoint_intervals_median_seconds": 9.83477,
+    "complete_checkpoint_intervals_p95_seconds": 19.452389,
+    "scope": "Combined download/startup/parse/save intervals; not pure HTTP latency. Actual2-document trial is still blocked, so this is provisional, not post-trial budgeting."
+  },
+  "financial_publication": "HOLD",
+  "backtest_eligible": false,
+  "investment_PIT": "0/6",
+  "main_merge_authorized": false
+}

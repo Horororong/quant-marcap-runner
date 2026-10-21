@@ -1,0 +1,11 @@
+test_future_balance_date_cannot_be_attested_into_an_old_publication (test_reviewed_financial_query.ReviewedQuery.test_future_balance_date_cannot_be_attested_into_an_old_publication) ... ok
+test_later_correction_never_overwrites_past_and_unverified_current_never_falls_back (test_reviewed_financial_query.ReviewedQuery.test_later_correction_never_overwrites_past_and_unverified_current_never_falls_back) ... ok
+test_no_annual_profit_or_unit_guessing (test_reviewed_financial_query.ReviewedQuery.test_no_annual_profit_or_unit_guessing) ... ok
+test_publication_boundary_uses_existing_provider_after_source_gate (test_reviewed_financial_query.ReviewedQuery.test_publication_boundary_uses_existing_provider_after_source_gate) ... ok
+test_unbound_or_unclosed_record_yields_no_provider_value (test_reviewed_financial_query.ReviewedQuery.test_unbound_or_unclosed_record_yields_no_provider_value) ... ok
+test_unparseable_audited_amount_never_becomes_zero_or_nan_result (test_reviewed_financial_query.ReviewedQuery.test_unparseable_audited_amount_never_becomes_zero_or_nan_result) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.055s
+
+OK

@@ -1,0 +1,31 @@
+{
+  "status": "data_gap",
+  "error": {
+    "type": "CURRENT_ANALYSIS_PERIOD_UNAVAILABLE",
+    "message": "요청 종료일이 자료 기준일보다 늦습니다."
+  },
+  "operation": {
+    "operation": "existing_nav_analysis",
+    "engine_rerun": false,
+    "analysis_id": "0ac31aceb6324aad9685897f27e78f00",
+    "source_job_id": "7b496084b63f4bd5990f59f9fc5df766",
+    "source_engine_run_id": "20261021T033835905876Z-bf7b2dfb",
+    "source_strategy_fingerprint": "67b9e6ed37e42841d001ee05edc0fb2b5b9e44de172c4e17f939c3c3b2f9e8b1",
+    "source_backtest_period": {
+      "start": "2024-01-01",
+      "end": "2024-12-31",
+      "book_start": "2024-01-01",
+      "book_end": "2024-12-31",
+      "as_of_date": "2024-12-31"
+    },
+    "requested_analysis_period": {
+      "start": "2028-01-01",
+      "end": "2028-12-31"
+    },
+    "source_nav_sha256": "47888164238553907324d01f85486acf572e060d1734ab21bf28dae47d687cde",
+    "position_rule": "Retain source holdings/cash/fees; never reset at analysis start. CURRENT rebases to preceding observed NAV.",
+    "metrics_owner": "CURRENT",
+    "classification": "RESEARCH_ONLY",
+    "investment_approved": false
+  }
+}

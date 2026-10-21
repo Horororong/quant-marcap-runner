@@ -1,0 +1,84 @@
+{
+  "status": "PASS_FINAL_GUARDS_ON_FROZEN_REAL_EVIDENCE",
+  "queries": {
+    "2010-03-30": {
+      "status": "UNAVAILABLE",
+      "reason": "NOT_YET_PUBLIC_UNDER_NEXT_SESSION_RULE",
+      "signal_date": "2010-03-30",
+      "provider_owner": "dart_value_factor_adapter.report_snapshots/latest_snapshot",
+      "readiness_owner": "financial_record_readiness.select_asof",
+      "strategy_population_ready": false,
+      "operating_store_modified": false,
+      "investment_approved": false,
+      "classification": "RESEARCH_ONLY",
+      "value": null
+    },
+    "2010-03-31": {
+      "status": "UNAVAILABLE",
+      "reason": "NOT_YET_PUBLIC_UNDER_NEXT_SESSION_RULE",
+      "signal_date": "2010-03-31",
+      "provider_owner": "dart_value_factor_adapter.report_snapshots/latest_snapshot",
+      "readiness_owner": "financial_record_readiness.select_asof",
+      "strategy_population_ready": false,
+      "operating_store_modified": false,
+      "investment_approved": false,
+      "classification": "RESEARCH_ONLY",
+      "value": null
+    },
+    "2010-04-01": {
+      "status": "PASS",
+      "reason": "LATEST_AVAILABLE_VERSION",
+      "signal_date": "2010-04-01",
+      "provider_owner": "dart_value_factor_adapter.report_snapshots/latest_snapshot",
+      "readiness_owner": "financial_record_readiness.select_asof",
+      "strategy_population_ready": false,
+      "operating_store_modified": false,
+      "investment_approved": false,
+      "classification": "RESEARCH_ONLY",
+      "value": {
+        "stock_code": "007160",
+        "scope": "OFS",
+        "equity_current": 131053210651.0,
+        "source_amount_krw": "131053210651",
+        "period_end": "2009-12-31",
+        "receipt": "20100331001582",
+        "publication_date": "2010-03-31",
+        "usable_from_close": "2010-04-01",
+        "source_binding": {
+          "rcept_no": "20100331001582",
+          "document_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+          "source_member": "20100331001582.xml",
+          "source_member_sha256": "ac34be631af65e6c911138792fbff6e3c5b8a3a3176ba610382dec77af27d284",
+          "corp_code": "00124799",
+          "stock_code": "007160",
+          "metric": "equity",
+          "scope": "OFS",
+          "statement": "BS",
+          "period_start": "",
+          "period_end": "2009-12-31",
+          "measurement_basis": "instant",
+          "unit": "원",
+          "unit_multiplier": "1",
+          "amount_krw": "131053210651"
+        },
+        "evidence_fingerprint": "edad7347256c731da9b06f607eb38b63bc061cfea130bbac5087ecbeb45934d3",
+        "concept_mapping": "Existing exact Korean total-equity alias; no invented IFRS source ID"
+      }
+    },
+    "2010-05-03": {
+      "status": "UNVERIFIED",
+      "reason": "CHAIN_NOT_CLOSED_AT_SIGNAL",
+      "signal_date": "2010-05-03",
+      "provider_owner": "dart_value_factor_adapter.report_snapshots/latest_snapshot",
+      "readiness_owner": "financial_record_readiness.select_asof",
+      "strategy_population_ready": false,
+      "operating_store_modified": false,
+      "investment_approved": false,
+      "classification": "RESEARCH_ONLY",
+      "value": null
+    }
+  },
+  "new_source_HTTP": 0,
+  "source_case_sha256": "820d0abf204fc7b73930b5f1a2069b338a9852b72e2ecfafc3569f845657382a",
+  "no_raw_source_reparse": true
+}

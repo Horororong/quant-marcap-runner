@@ -3,7 +3,7 @@
 <body><header><div><span class="eyebrow">QUANT · RESEARCH WORKSPACE</span><h1>조건을 확인하고, 실행을 비교하세요.</h1><p>같은 DSL과 공통 엔진, CURRENT 성과 계산을 사용하는 로컬 연구 공간입니다.</p></div><span class="badge">RESEARCH_ONLY</span></header>
 <main><aside><h2>1. 전략 설명</h2><label for="example">기존 검증 예제 / 차단 요청</label><select id="example"><option value="">예제를 선택하세요</option></select><p class="small">예제의 연구 계약도 아래에 표시합니다. 예제 선택은 새 실행의 성공을 보장하지 않습니다.</p>
 <label for="request">한국어 요청 또는 수정 요청</label><textarea id="request" rows="10" placeholder="2024년 코스피·코스닥에서 시가총액이 큰 순으로 상위1종목 동일비중으로 구성하고 4월말 리밸런싱"></textarea>
-<label class="inline"><input id="amend" type="checkbox"> 현재 확인한 DSL을 기준으로 조건 수정</label><p class="small">수정 예: 수수료를 2.5bp로 변경 / 종목 수를 3개로 변경 / 기간을 2024년으로 변경</p>
+<label class="inline"><input id="amend" type="checkbox"> 현재 확인한 DSL을 기준으로 조건 수정</label><p class="small">수정 예: 수수료를 2.5bp로 변경 / 종목 수를 3개로 변경 / 기간을 2024년으로 변경 / 기간을 2019-12-02부터 2020-12-30까지로 변경</p>
 <label for="model">명시적으로 선택할 연구·체결 계약</label><select id="model"><option value="">추가 계약 없음 — 자료/기업행위 부족 시 차단</option></select>
 <button id="interpret" class="primary">조건 해석</button><details><summary>JSON 전략 사용</summary><textarea id="json-input" rows="10" aria-label="JSON 전략"></textarea><button id="preview-json">JSON 조건 확인</button></details>
 <div class="notice"><strong>제한된 한국어 규칙 해석</strong><p>외부 모델은 연결되지 않았습니다. 등록된 단일 팩터·월말·상위N/10분위를 지원하며, 모호하거나 해석되지 않은 조건은 거부합니다.</p></div>

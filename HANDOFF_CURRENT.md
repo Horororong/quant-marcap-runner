@@ -1,3 +1,15 @@
+# Latest continuation: PIT and exact-period user flow —2026-10-21
+
+RESEARCH_ONLY. Active worktree `/workspace/quant-parser-repair-20261021/code`, branch `feat/pit-analysis-period-20261021`. Follow [the current report](docs/research/pit-period-20261021/REPORT.md) and [resume commands](docs/research/pit-period-20261021/RESUME.md); final SHA/backup manifest are in `/workspace/quant-pit-period-20261021/FINAL_STATUS.md`.
+
+Approved7c2269aaeeaf146ed95aeaed24f59411c0e09730 is published fast-forward and exact-checkout pinned-kit CI39575278064 SUCCESS; driverfe04aba1aa9bdd46a955fe2068fa044799e1842c is separate6,703bytes and excluded from22files. No main merge. New local fix9365b9f51e052198ac50537e858ab1799b966763 and subsequent feature are NOT covered by that CI/publication approval.
+
+New real scope: existing NAV2024-06-03..10-31 analysis through CURRENT; display-only zoom creates no run; new momentum2019-12-02..2020-12-30 common-engine268sessions with independent raw-price/cash/quantity PASS; both original/analysis and original/rerun comparison save/reopen PASS. New source field×signal pair1 at2010-04-01 for Sajo equity, prior canary outside880; same-day blocked, correction scope bounded, real correction pair not certified. No880PIT promotions/no new semantic PASS. Source HTTP0 due actual internal daily gate,2/3executions,checkpoint02054 complete,next02062/02063,pending43. New window10/22KST requires live guards; no future resume armed. FinancialHOLD/PIT0/6 unchanged.
+
+Do not rerun full751 audit, completed restoration, old130/57replay or approved7c CI without changes. Data coverage reuses accepted snapshots and separates157=100+57,57=48candidate docs+9SOURCE_GAP,880=871operating+9held. Proposed conditional41doc/2extraexecution budget is inactive and needs post-trial measurement plus explicit finite authorization/minimal operating approval.
+
+---
+
 ## 2026-10-21 ba26 원격 CI 성공·수집 정체 확인·비교 저장 기능
 
 - ba26c3684fea72e0fe01e0c49fbc09f10982a12e의20파일173,495바이트를 승인 범위대로 공개 연구 브랜치에 fast-forward 게시했다. 원격20파일 SHA256 일치. 실제 checkout ba26인 고정kit Actions39570616865 SUCCESS/115시험+880증거. 선택적 commit-status API만403으로 미설정(재시도 없음); 실제 CI 성공과 구분한다.

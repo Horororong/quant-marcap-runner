@@ -193,6 +193,10 @@ def report_context(daily_csv: Path, repo_root: Path, title: str) -> tuple[str, d
         path = run_dir / name
         if path.is_file():
             diagnostics[name] = json.loads(path.read_text())
+    analysis=run_dir/'analysis_context.json'
+    if analysis.is_file():diagnostics['analysis_context.json']=json.loads(analysis.read_text())
+    operation=run_dir.parent/'workspace_operation.json'
+    if operation.is_file():diagnostics['workspace_operation.json']=json.loads(operation.read_text())
     kit = repo_root / "kit_manifest.json"
     if kit.is_file():
         manifest = json.loads(kit.read_text())
@@ -225,6 +229,11 @@ def report_context(daily_csv: Path, repo_root: Path, title: str) -> tuple[str, d
             limits.insert(0,"이 예제는 실행·보고 소프트웨어 검증용입니다. 알파·OOS·시장 전체·장기 투자 검증 결과가 아닙니다.")
     else:
         summary = title
+    if analysis.is_file():
+        summary='기존 NAV 하위기간 분석 · 엔진 재실행 없음 · '+summary
+        limits.insert(0,'기존 백테스트의 보유종목·현금·비용 경로를 유지합니다. 분석 시작일에 초기화하지 않으며 CURRENT가 직전 NAV를 기준으로 재보고합니다. 차트 확대는 표시 범위만 바꾸고 성과표를 재계산하지 않습니다.')
+    elif operation.is_file():
+        limits.insert(0,'새 백테스트 실행: 요청 시작일은 보유종목 없이 DSL 초기자산 전액 현금으로 시작합니다. 최초 유효 신호와 체결까지 대기하며 기존 실행의 보유·현금을 이어받지 않습니다. 사전 팩터 관측은 기존 provider가 검사합니다.')
     return summary, diagnostics, limits
 
 

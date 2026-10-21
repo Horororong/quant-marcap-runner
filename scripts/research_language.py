@@ -39,6 +39,9 @@ def translate(text,*,research=None,execution_contract=None,base=None):
             if m:
                 if raw['portfolio']['selection']!='top_n':raise ValueError('10분위의 종목 수는 직접 변경할 수 없습니다')
                 raw['portfolio']['number_of_positions']=int(m[1]);changes.append('number_of_positions');continue
+            m=re.fullmatch(r'기간(?:을)?\s*(\d{4}-\d{2}-\d{2})\s*(?:부터|~)\s*(\d{4}-\d{2}-\d{2})\s*까지(?:로)?\s*(?:변경|바꿔(?:줘)?)',part)
+            if m:
+                start,end=m[1],m[2];raw['period']=dict(start=start,end=end,book_start=start,book_end=end,as_of_date=end);changes.append('period');continue
             m=re.fullmatch(r'기간(?:을)?\s*(\d{4})년(?:으로|로)?\s*(?:변경|바꿔(?:줘)?)',part)
             if m:
                 y=m[1];raw['period']=dict(start=y+'-01-01',end=y+'-12-31',book_start=y+'-01-01',book_end=y+'-12-31',as_of_date=y+'-12-31');changes.append('period');continue
