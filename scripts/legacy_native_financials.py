@@ -18,7 +18,7 @@ except ModuleNotFoundError as error:
         raise
     from legacy_financial_fields import choose_metric, norm_account
 
-PARSER_VERSION = "legacy-v9.1-primary-source-metadata"
+PARSER_VERSION = "legacy-v9.2-statement-boundary-guard"
 DATE = re.compile(r"(\d{4})\s*[.년/-]\s*(\d{1,2})\s*[.월/-]\s*(\d{1,2})(?:\s*[.일])?")
 HEADING = re.compile(r"(?:연결)?(?:포괄손익계산서|손익계산서|대차대조표|재무상태표|현금흐름표|이익잉여금처분계산서|결손금처리계산서)")
 TERM = re.compile(r"(?:제\s*)?(\d+)\s*(?:\([당전]\))?\s*기")
@@ -375,6 +375,15 @@ def parse_native(text):
         if heading_matches:
             contract = source_contract(table["prefix"])
         header_text = " ".join(cell_text(c) for row in rows for c in row)
+        # Native forms can put a new statement title INSIDE a one-cell table.
+        # Its following date table has no heading prefix. Never carry an older
+        # OFS/statement contract across this explicit boundary. Unsupported
+        # following headers remain unverified; a fresh proved prefix can reopen.
+        title_only = re.fullmatch(rf"(?:\d{{1,2}}[.])?{HEADING.pattern}(?:\({HEADING.pattern}\))?", compact(header_text))
+        if title_only:
+            contract = None
+            issues.append({"table": table["index"], "reason": "ISOLATED_STATEMENT_HEADING_RESETS_CONTEXT"})
+            continue
         header_only = (any(TERM.search(cell_text(c)) and dates(cell_text(c)) for row in rows for c in row)
                        and not any(financial_account(line, st)[0] for row in rows for c in row
                                    for line in c["lines"] for st in ("BS", "IS", "CF")))

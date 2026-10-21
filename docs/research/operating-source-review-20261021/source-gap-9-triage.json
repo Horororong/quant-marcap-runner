@@ -1,0 +1,815 @@
+[
+  {
+    "receipt": "20100331001938",
+    "company": "효성",
+    "report_name": "사업보고서 (2009.12)",
+    "original_extraction_state": "SOURCE_GAP",
+    "original_candidate_count": 0,
+    "original_diagnostic_summary": [
+      {
+        "member": "20100331001938_00760.xml",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": null
+      },
+      {
+        "member": "20100331001938_00761.xml",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": "not well-formed (invalid token): line 10874, column 41"
+      },
+      {
+        "member": "20100331001938.xml",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": null
+      }
+    ],
+    "original_structural_issues": "[{\"member\": \"20100331001938_00760.xml\", \"table\": 22, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331001938.xml\", \"table\": 130, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331001938.xml\", \"table\": 141, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331001938.xml\", \"table\": 144, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331001938.xml\", \"table\": 146, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}]",
+    "source_archive": "chunk00/native/20100331001938-d46762e93ba368c4e128aff45f2f8bb3d033f5a59aec68c7acc942e8ecc1af86.zip",
+    "source_archive_sha256": "d46762e93ba368c4e128aff45f2f8bb3d033f5a59aec68c7acc942e8ecc1af86",
+    "members": [
+      {
+        "name": "20100331001938_00760.xml",
+        "bytes": 696966,
+        "sha256": "9699854dbe8cb1b92ca485eaf44a0260b14148316cf631e1a0adac2304a31242",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 0,
+          "revenue": 10,
+          "net_income": 8,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          "ABLE> 본 감사인은 첨부된 주식회사 효성의 2009년 12월 31일과 2008년 12월 31일 현재의재무상태표와 동일로 종료되는 양 회계연도의 손익계산서, 이익잉여금처분계산서, 자본변동표 및 현금흐름표를 감사하였습니다. 이 재무제표를 작성할 책임은 회사 경영자에게 있으며 본 감사인의 책임은 동 재무제표에 대하여 감사를 실시하고 이를 근거로 이 재무제표에 대하여 의견을 표명하는 것입니다. 2009년과 2008년 12월",
+          " 첨부된 주식회사 효성의 2009년 12월 31일과 2008년 12월 31일 현재의재무상태표와 동일로 종료되는 양 회계연도의 손익계산서, 이익잉여금처분계산서, 자본변동표 및 현금흐름표를 감사하였습니다. 이 재무제표를 작성할 책임은 회사 경영자에게 있으며 본 감사인의 책임은 동 재무제표에 대하여 감사를 실시하고 이를 근거로 이 재무제표에 대하여 의견을 표명하는 것입니다. 2009년과 2008년 12월 31일 현재 자산총액의 각각 10.5%와 ",
+          "과 2008년 12월 31일 현재의재무상태표와 동일로 종료되는 양 회계연도의 손익계산서, 이익잉여금처분계산서, 자본변동표 및 현금흐름표를 감사하였습니다. 이 재무제표를 작성할 책임은 회사 경영자에게 있으며 본 감사인의 책임은 동 재무제표에 대하여 감사를 실시하고 이를 근거로 이 재무제표에 대하여 의견을 표명하는 것입니다. 2009년과 2008년 12월 31일 현재 자산총액의 각각 10.5%와 9.4%를 차지하고 있는 지분법적용투자주식에 해당"
+        ]
+      },
+      {
+        "name": "20100331001938_00761.xml",
+        "bytes": 751416,
+        "sha256": "57e4c6b708470484ad5d9ebc7d0ad544b7d18ef28b2edeade147f8c4b1a6f0f7",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 4,
+          "revenue": 20,
+          "net_income": 8,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          " &cr;본 감사인은 첨부된 주식회사 효성과 그 종속회사의 2009년 12월 31일과 2008년 12월 31일 현재의 연결재무상태표와 동일로 종료되는 양 회계연도의 연결손익계산서, 연결자본변동표 및 연결현금흐름표를 감사하였습니다. 이 연결재무제표를 작성할 책임은 회사 경영자에게 있으며, 본 감사인의 책임은 동 연결재무제표에 대하여 감사를실시하고 이를 근거로 이 연결재무제표에 대하여 의견을 표명하는데 있습니다. 다만,2009년 12월 31일과 2008",
+          " 그 종속회사의 2009년 12월 31일과 2008년 12월 31일 현재의 연결재무상태표와 동일로 종료되는 양 회계연도의 연결손익계산서, 연결자본변동표 및 연결현금흐름표를 감사하였습니다. 이 연결재무제표를 작성할 책임은 회사 경영자에게 있으며, 본 감사인의 책임은 동 연결재무제표에 대하여 감사를실시하고 이를 근거로 이 연결재무제표에 대하여 의견을 표명하는데 있습니다. 다만,2009년 12월 31일과 2008년 12월 31일 현재 주식회사 효성과 그 종속",
+          "31일과 2008년 12월 31일 현재의 연결재무상태표와 동일로 종료되는 양 회계연도의 연결손익계산서, 연결자본변동표 및 연결현금흐름표를 감사하였습니다. 이 연결재무제표를 작성할 책임은 회사 경영자에게 있으며, 본 감사인의 책임은 동 연결재무제표에 대하여 감사를실시하고 이를 근거로 이 연결재무제표에 대하여 의견을 표명하는데 있습니다. 다만,2009년 12월 31일과 2008년 12월 31일 현재 주식회사 효성과 그 종속회사의 자산총액(내부거래 제거전)의"
+        ]
+      },
+      {
+        "name": "20100331001938.xml",
+        "bytes": 841288,
+        "sha256": "aa0c2f1bd7afcd658aaec7b6608229cc72bf09110e4b1cf5ea7ce6c512349838",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 7,
+          "revenue": 12,
+          "net_income": 17,
+          "ocf": 3
+        },
+        "heading_context_samples": [
+          "만원입니다. 또한 &cr; 해외 현지법인들을 위하여 지급보증을 제공 하고 있습니다. 한편 회사는 당기 &cr; 대차대조표일 이후에 HYOSUNG AMERICA INC. 외 3개사에 125,741백만원을&cr; 출자하였습니다. &cr; &cr; 바. 한국채택국제회계기준 준비 상황 &cr; 회사는 2011회계연도부터 모든 상장회사에 적용되는 한국채택국제회계기준의 &cr;",
+          "일부 계정과목에 대한 &cr; 분류를 변경하였습니다. 한편, 당기순이익에 주기로 기재되던 주당순이익을 &cr; 손익계산서 본문에 표시하는 방식으로 변경하고, 연결포괄손익계산서를 연결&cr; 손익계산서의 주석으로 작성하였습니다.&cr;&cr; 4) 기업회계기준 제정 및 변경&cr; ① 제54기(2008년)&cr; 회사는 2008년 2월 22일에 개정된 회계기준적용의견서 06-02 '종속회사, &cr; 지분법적용 ",
+          "니다. 한편, 당기순이익에 주기로 기재되던 주당순이익을 &cr; 손익계산서 본문에 표시하는 방식으로 변경하고, 연결포괄손익계산서를 연결&cr; 손익계산서의 주석으로 작성하였습니다.&cr;&cr; 4) 기업회계기준 제정 및 변경&cr; ① 제54기(2008년)&cr; 회사는 2008년 2월 22일에 개정된 회계기준적용의견서 06-02 '종속회사, &cr; 지분법적용 피투자주식회사 및 조인트벤처의 지분에 대한 투자자산과 "
+        ]
+      }
+    ],
+    "triage": "COMPLETED_EVIDENCE_INVENTORY_NOT_FINANCIAL_REVIEW",
+    "source_absence": "UNVERIFIED",
+    "extraction_completeness": "UNVERIFIED_SOURCE_GAP",
+    "PIT": "UNVERIFIED",
+    "action": "Retain gate and original bytes. Strict XML errors may reflect custom DART entities/encoding, not absent financial data. Review exact service/member diagnostics and independent original viewer evidence before any parser migration or recollection."
+  },
+  {
+    "receipt": "20100331001942",
+    "company": "전북은행",
+    "report_name": "[기재정정]사업보고서 (2009.12)",
+    "original_extraction_state": "SOURCE_GAP",
+    "original_candidate_count": 0,
+    "original_diagnostic_summary": [
+      {
+        "member": "20100331001942.xml",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": "not well-formed (invalid token): line 1087, column 8"
+      }
+    ],
+    "original_structural_issues": "[{\"member\": \"20100331001942.xml\", \"table\": 202, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331001942.xml\", \"table\": 214, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}]",
+    "source_archive": "chunk00/native/20100331001942-8787b5df65a66542ed5ce675395f548ac003278c59eb5e58b38ab6efb1f8dbf1.zip",
+    "source_archive_sha256": "8787b5df65a66542ed5ce675395f548ac003278c59eb5e58b38ab6efb1f8dbf1",
+    "members": [
+      {
+        "name": "20100331001942.xml",
+        "bytes": 919812,
+        "sha256": "99038ec1c7f5f1a53a03d977e60de878078ab346e86103d3d03d2fe9eecb8c02",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 11,
+          "revenue": 10,
+          "net_income": 27,
+          "ocf": 2
+        },
+        "heading_context_samples": [
+          " 확정급여채무로 계상 &cr; 대차대조표일 현재 임직원 퇴직금 규정에 따라 당기말 현재 1년이상 근속한 전임직원이 일시에 퇴직할 경우에 지급하여야할 퇴직금추계액을 퇴직급여충당부채로 설정 <SECTION-1 ",
+          "SERMARK=\"F-GL\">본 감사인은 첨부된 주식회사 전북은행의 2009년 12월 31일과 2008년 12월 31일 현재의 재무상태표와 동일로 종료되는 회계연도의 손익계산서, 이익잉여금처분계산서,자본변동표 및 현금흐름표를 감사하였습니다. 이 재무제표를 작성할 책임은 은행 경영자에게 있으며 본 감사인의 책임은 동 재무제표에 대하여 감사를 실시하고 이를 근거로 이 재무제표에 대하여 의견을 표명하는데 있습니다. <SPAN USERMARK=\"F",
+          "첨부된 주식회사 전북은행의 2009년 12월 31일과 2008년 12월 31일 현재의 재무상태표와 동일로 종료되는 회계연도의 손익계산서, 이익잉여금처분계산서,자본변동표 및 현금흐름표를 감사하였습니다. 이 재무제표를 작성할 책임은 은행 경영자에게 있으며 본 감사인의 책임은 동 재무제표에 대하여 감사를 실시하고 이를 근거로 이 재무제표에 대하여 의견을 표명하는데 있습니다. &cr; <SP"
+        ]
+      }
+    ],
+    "triage": "COMPLETED_EVIDENCE_INVENTORY_NOT_FINANCIAL_REVIEW",
+    "source_absence": "UNVERIFIED",
+    "extraction_completeness": "UNVERIFIED_SOURCE_GAP",
+    "PIT": "UNVERIFIED",
+    "action": "Retain gate and original bytes. Strict XML errors may reflect custom DART entities/encoding, not absent financial data. Review exact service/member diagnostics and independent original viewer evidence before any parser migration or recollection."
+  },
+  {
+    "receipt": "20100331001974",
+    "company": "네오티스",
+    "report_name": "사업보고서 (2009.12)",
+    "original_extraction_state": "SOURCE_GAP",
+    "original_candidate_count": 0,
+    "original_diagnostic_summary": [
+      {
+        "member": "20100331001974.xml",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": "not well-formed (invalid token): line 1010, column 28"
+      },
+      {
+        "member": "20100331001974_00760.xml",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": null
+      }
+    ],
+    "original_structural_issues": "[{\"member\": \"20100331001974.xml\", \"table\": 76, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331001974.xml\", \"table\": 80, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331001974.xml\", \"table\": 81, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331001974.xml\", \"table\": 174, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331001974_00760.xml\", \"table\": 22, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+    "source_archive": "chunk00/native/20100331001974-4ff0ca8c4f2ccbf50344e6dd537be1870345223e01d2f01b889039b8040ffc7d.zip",
+    "source_archive_sha256": "4ff0ca8c4f2ccbf50344e6dd537be1870345223e01d2f01b889039b8040ffc7d",
+    "members": [
+      {
+        "name": "20100331001974.xml",
+        "bytes": 814257,
+        "sha256": "94710c8c38b9338ec740c0218184f275698088e84314ed18f5d944ae32c16f73",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 7,
+          "revenue": 20,
+          "net_income": 29,
+          "ocf": 2
+        },
+        "heading_context_samples": [
+          "로서 취득 당시 만기일이 1개월 이내인 것을 현금및현금성자산으로 처리하고 있습니다.&cr;&cr;마. 대손충당금&cr;회사는 대차대조표일 현재의 매출채권과 기타채권 잔액에 대하여 합리적이고 객관적인 기준에 따라 산출한 대손추산액을 대손충당금으로 설정하고 있습니다.&cr; 바. 재고자산&cr;회사의 재고자산의 수량은 계속기록법과 정기적으로 실시하는 실지재고조사에 의하여 확정되며, 총평균법을 적용하여 산정한 원가로 ",
+          "자산의 시가가 취득원가보다 하락한 경우에는 시가(제품, 상품 및 재공품 시가는 순실현가능가액, 원재료 시가는 현행대체원가)를 대차대조표가액으로 하고 있습니다. 다만, 재고자산의 평가손실을 초래했던 상황이 해소되어 새로운 시가가 장부금액보다 상승한 경우에는 최초의 장부금액을 초과하지 않는 범위 내에서 평가손실을 환입하고 있으며, 재고자산평가손실의 환입은 매출원가에서 차감하여 표시하고 있습니다.&cr; 사. 유가증권",
+          " 분류하고 있습니다. 단기매매증권은 단기투자자산으로 분류하고, 매도가능증권 및 만기보유증권은 장기투자자산으로 분류하고 있으나 대차대조표일로부터 1년 이내에 만기가 도래하거나 또는 매도 등에의하여 처분할 것이 거의 확실한 경우에는 단기투자자산으로 분류하고 있습니다.&cr; 만기보유증권은 상각후취득원가로 평가하며, 단기매매증권과 매도가능증권은 공정가액으로 평가하고 있습니다, 다만, 매도가능증권 중 시장성이 없는 지분증권의 공정가액을 신뢰성 있게 측정할 수 "
+        ]
+      },
+      {
+        "name": "20100331001974_00760.xml",
+        "bytes": 244141,
+        "sha256": "fa0dde99a2427d14c3d4a9f390ca5f0a6ae362fe0e85445a683d932862990f77",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 2,
+          "revenue": 2,
+          "net_income": 12,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          " &cr; 본 감사인은 첨부된 주식회사 네오티스의 2009년 12월 31일과 2008년 12월 31일 현재의 재무상태표와 동일로 종료되는 양 회계연도의 손익계산서, 이익잉여금처분계산서, 자본변동표 및 현금흐름표를 감사하였습니다. 이 재무제표를 작성할 책임은 회사경영자에게 있으며 본 감사인의 책임은 동 재무제표에 대하여 감사를 실시하고 이를 근거로 이 재무제표에 대하여 의견을 표명하는데 있습니다.&cr;&cr;본 감사인은 대한민국의 회계감",
+          "된 주식회사 네오티스의 2009년 12월 31일과 2008년 12월 31일 현재의 재무상태표와 동일로 종료되는 양 회계연도의 손익계산서, 이익잉여금처분계산서, 자본변동표 및 현금흐름표를 감사하였습니다. 이 재무제표를 작성할 책임은 회사경영자에게 있으며 본 감사인의 책임은 동 재무제표에 대하여 감사를 실시하고 이를 근거로 이 재무제표에 대하여 의견을 표명하는데 있습니다.&cr;&cr;본 감사인은 대한민국의 회계감사기준에 따라 감사를 실시하였습니다. 이 기",
+          " 2008년 12월 31일 현재의 재무상태표와 동일로 종료되는 양 회계연도의 손익계산서, 이익잉여금처분계산서, 자본변동표 및 현금흐름표를 감사하였습니다. 이 재무제표를 작성할 책임은 회사경영자에게 있으며 본 감사인의 책임은 동 재무제표에 대하여 감사를 실시하고 이를 근거로 이 재무제표에 대하여 의견을 표명하는데 있습니다.&cr;&cr;본 감사인은 대한민국의 회계감사기준에 따라 감사를 실시하였습니다. 이 기준은 본 감사인이 재무제표가 중요하게 왜곡표시되지"
+        ]
+      }
+    ],
+    "triage": "COMPLETED_EVIDENCE_INVENTORY_NOT_FINANCIAL_REVIEW",
+    "source_absence": "UNVERIFIED",
+    "extraction_completeness": "UNVERIFIED_SOURCE_GAP",
+    "PIT": "UNVERIFIED",
+    "action": "Retain gate and original bytes. Strict XML errors may reflect custom DART entities/encoding, not absent financial data. Review exact service/member diagnostics and independent original viewer evidence before any parser migration or recollection."
+  },
+  {
+    "receipt": "20100331002013",
+    "company": "인크레더블버즈",
+    "report_name": "[첨부추가]사업보고서 (2009.12)",
+    "original_extraction_state": "SOURCE_GAP",
+    "original_candidate_count": 0,
+    "original_diagnostic_summary": [
+      {
+        "member": "20100331002013.xml",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": "mismatched tag: line 9563, column 274"
+      },
+      {
+        "member": "20100331002013_00761.xml",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": null
+      },
+      {
+        "member": "20100331002013_00760.xml",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": null
+      }
+    ],
+    "original_structural_issues": "[{\"member\": \"20100331002013.xml\", \"table\": 121, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002013_00760.xml\", \"table\": 22, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+    "source_archive": "chunk01/native/20100331002013-13f545486ab50e1aa61d9f37698e895c6d90c8118f887120419a7d07844a87ad.zip",
+    "source_archive_sha256": "13f545486ab50e1aa61d9f37698e895c6d90c8118f887120419a7d07844a87ad",
+    "members": [
+      {
+        "name": "20100331002013.xml",
+        "bytes": 437671,
+        "sha256": "5d95d948d785513aa99ffd2425e2dc5943a3e4140c586d207b6a8740e5721c53",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 4,
+          "revenue": 10,
+          "net_income": 10,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          "습니다.&cr;&cr;(1) 현금및현금성자산&cr;통화 및 타인발행수표 등 통화대용증권과 당좌예금, 보통예금 및 현금성자산을 재무상태표상 현금및현금성자산으로 계상하고 있습니다. 이 경우 현금성자산이라 함은 큰 거래비용 없이 현금으로 전환이 용이하고 이자율 변동에 따른 가치변동의 위험이 중요하지 않은 금융상품으로서 취득 당시 만기일(또는 상환일)이 3개월 이내에 도래하는 것을 말합니다.&cr;&cr;(2) 대손충당금&cr;회사는 매출채권, 미수금, 장ㆍ단",
+          "취득원가는 유가증권 취득을 위하여 제공한 대가의 시장가격에 취득부대비용을 가산하고 이에 총평균법을 적용하여 산정한 취득원가를 재무상태표 가액으로계상하고 있습니다. 만기보유증권은 상각 후 취득원가로 평가하고 있으며 단기매매증권과 매도가능증권은 공정가액으로 평가하고 있습니다. 다만, 매도가능증권 중 시장성이 없는 지분증권의 공정가액을 신뢰성 있게 측정할 수 없는 경우에는 취득원가로 평가하고 있습니다. &cr;&cr;시장성 있는 유가증권의 평가는 시장가격을 ",
+          "래에 부담하게 될 법인세 부담액은 이연법인세부채로 인식하고 있습니다. 이연법인세자산(부채)은 관련된 자산항목 또는 부채항목의 재무상태표상 분류에 따라 유동자산(부채) 또는 기타비유동자산(부채)으로 분류하며 유동 및 비유동 구분내의 이연법인세자산(부채)과 미지급법인세 및 미수법인세환급액이 동일한 과세당국과 관련된 경우에는 각각 상계하여 표시하고있습니다. 법인세비용은 당기법인세부담액(법인세에 부가되는 세액 포함)에 당기 이연법인세 변동액과 전기이전의 기간과"
+        ]
+      },
+      {
+        "name": "20100331002013_00761.xml",
+        "bytes": 367434,
+        "sha256": "b51e0251501e67bfd1d78b86654e732ef40ca33f0094aeab1a2063088e838a5b",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 0,
+          "revenue": 6,
+          "net_income": 10,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          "PY=\"Y\" ADELETE=\"Y\"> 연결재무상태표 ---------------------------------- 3 <TR ACOPY=\"Y\" ADELE",
+          "PY=\"Y\" ADELETE=\"Y\"> 연결손익계산서 ---------------------------------- 6 <TR ACOPY=\"Y\" ADELE",
+          "PY=\"Y\" ADELETE=\"Y\"> 연결현금흐름표 ---------------------------------- 10 <TR ACOPY=\"Y\" ADEL"
+        ]
+      },
+      {
+        "name": "20100331002013_00760.xml",
+        "bytes": 360217,
+        "sha256": "004c098ed11750a54af8502f8d3b4a9453dec7d4221b6c796f142dd43019a243",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 0,
+          "revenue": 4,
+          "net_income": 10,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          "COPY=\"Y\" ADELETE=\"Y\"> 재무상태표 ---------------------------------- 3 <TR ACOPY=\"Y\" ADELE",
+          "COPY=\"Y\" ADELETE=\"Y\"> 손익계산서 ---------------------------------- 6 <TR ACOPY=\"Y\" ADELE",
+          "COPY=\"Y\" ADELETE=\"Y\"> 현금흐름표 ---------------------------------- 11 <TR ACOPY=\"Y\" ADEL"
+        ]
+      }
+    ],
+    "triage": "COMPLETED_EVIDENCE_INVENTORY_NOT_FINANCIAL_REVIEW",
+    "source_absence": "UNVERIFIED",
+    "extraction_completeness": "UNVERIFIED_SOURCE_GAP",
+    "PIT": "UNVERIFIED",
+    "action": "Retain gate and original bytes. Strict XML errors may reflect custom DART entities/encoding, not absent financial data. Review exact service/member diagnostics and independent original viewer evidence before any parser migration or recollection."
+  },
+  {
+    "receipt": "20100331002018",
+    "company": "디지텍시스템스",
+    "report_name": "사업보고서 (2009.12)",
+    "original_extraction_state": "SOURCE_GAP",
+    "original_candidate_count": 0,
+    "original_diagnostic_summary": [
+      {
+        "member": "20100331002018_00760.xml",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": null
+      },
+      {
+        "member": "20100331002018.xml",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": "not well-formed (invalid token): line 974, column 1899"
+      }
+    ],
+    "original_structural_issues": "[{\"member\": \"20100331002018_00760.xml\", \"table\": 22, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002018.xml\", \"table\": 75, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+    "source_archive": "chunk01/native/20100331002018-dd706b37e4138455de5cd75f31c3eab91589027cab8c281913d8bf746cee69db.zip",
+    "source_archive_sha256": "dd706b37e4138455de5cd75f31c3eab91589027cab8c281913d8bf746cee69db",
+    "members": [
+      {
+        "name": "20100331002018_00760.xml",
+        "bytes": 285244,
+        "sha256": "a98eb5c40349b422a8bd65a7250fd1fdc0c2d4a0b26a65dae6eabde243c5ea4e",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 1,
+          "revenue": 4,
+          "net_income": 12,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          "> 1. 재무상태표······························· 3 <TD ALIGN=\"RIGHT\" WIDTH=\"38",
+          "> 2. 손익계산서······························· 6 <TD ALIGN=\"RIGHT\" WIDTH=\"38",
+          "> 5. 현금흐름표······························· 10 <TD ALIGN=\"RIGHT\" WIDTH=\"3"
+        ]
+      },
+      {
+        "name": "20100331002018.xml",
+        "bytes": 375168,
+        "sha256": "22ad62c607c54d380ecdbdf2fe7daab9da498f98fd0ddc77b5f9309fd04b7387",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 3,
+          "revenue": 11,
+          "net_income": 14,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          " 만기일이 3개월이내인 것을 현금 및 현금성자산으로 처리하고 있습니다.&cr;&cr;(3) 대손충당금&cr;당사는 제10기 대차대조표일 현재 매출채권,미수금 등 채권 잔액의 회수가능성에 대한 개별분석 및 과거의 대손경험률을 토대로 하여 예상되는 대손추정액을 대손충당금으로 설정하고 있습니다. &cr;(4) 재고자산&cr;&cr;당사의 재고자산 수량은 계속기록법에 따라 파악되고, 당기말 현재 재고실사에 의거 확정되며, 총평균법에 의하여 산정",
+          "하고 있습니다. 단기매매증권은 단기투자자산으로 분류하고, 매도가능증권 및 만기보유증권은 장기투자증권으로 분류하고 있으나 당기 대차대조표일로부터 1년 이내에 만기가 도래하거나 또는 매도 등에 의하여 처분할 것이 거의 확실한 경우에는 단기투자자산으로 분류하고 있습니다.&cr;&cr;만기보유증권은 상각후취득원가로 평가하며, 단기매매증권과 매도가능증권은 공정가액으로 평가하고 있습니다. 다만, 매도가능증권 중 시장성이 없는 지분증권의 공정가액을 신뢰성있게 측정할",
+          "지분법적용투자주식&cr;&cr;당사는 유가증권 중 중대한 영향력을 행사할 수 있는 주식은 지분법을 적용하여 평가한 가액을 당기대차대조표가액으로 하고, 취득시점 이후 지분법피투자회사의 순자산가액변동이 당기순이익 또는 당기순손실로 인하여 발생한 경우는 지분법손익의 과목으로 당기손익으로, 지분법피투자회사의 오류 및 회계변경에 의해 전기이월미처분이익잉여금의증가 또는 감소로 인한 경우에는 투자회사의 재무제표에 미치는 영향을 고려하여 당기손익이나 지분법이익잉여금변"
+        ]
+      }
+    ],
+    "triage": "COMPLETED_EVIDENCE_INVENTORY_NOT_FINANCIAL_REVIEW",
+    "source_absence": "UNVERIFIED",
+    "extraction_completeness": "UNVERIFIED_SOURCE_GAP",
+    "PIT": "UNVERIFIED",
+    "action": "Retain gate and original bytes. Strict XML errors may reflect custom DART entities/encoding, not absent financial data. Review exact service/member diagnostics and independent original viewer evidence before any parser migration or recollection."
+  },
+  {
+    "receipt": "20100331002030",
+    "company": "윌비스",
+    "report_name": "[첨부추가]사업보고서 (2009.12)",
+    "original_extraction_state": "SOURCE_GAP",
+    "original_candidate_count": 0,
+    "original_diagnostic_summary": [
+      {
+        "member": "20100331002030_00761.xml",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": null
+      },
+      {
+        "member": "20100331002030_00760.xml",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": null
+      },
+      {
+        "member": "20100331002030.xml",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": "not well-formed (invalid token): line 971, column 434"
+      }
+    ],
+    "original_structural_issues": "[{\"member\": \"20100331002030_00760.xml\", \"table\": 15, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002030.xml\", \"table\": 65, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002030.xml\", \"table\": 71, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002030.xml\", \"table\": 73, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002030.xml\", \"table\": 75, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002030.xml\", \"table\": 76, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002030.xml\", \"table\": 77, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002030.xml\", \"table\": 79, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002030.xml\", \"table\": 80, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}]",
+    "source_archive": "chunk02/native/20100331002030-ba73d436f4c73e0cc89688262d340681903515fcf79e0b0316d27744b1e04e92.zip",
+    "source_archive_sha256": "ba73d436f4c73e0cc89688262d340681903515fcf79e0b0316d27744b1e04e92",
+    "members": [
+      {
+        "name": "20100331002030_00761.xml",
+        "bytes": 375783,
+        "sha256": "192d686a6f013c2990aa84ebcd9565c49f12d05fb44bac1709ee293f151b9deb",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 1,
+          "revenue": 8,
+          "net_income": 15,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          ";&cr;외부감사인의 감사보고서 ………………………………………………………… 1&cr;&cr;연결재무제표&cr;&cr; 연결재무상태표 …………………………………………………………………… 3 &cr;&cr; 연결손익계산서 …………………………………………………………………… 6&cr;&cr; 연결자본변동표 …………………………………………………………………… 9&cr; &cr; 연결현금흐름표 …………………………………………………………………… 10&cr;&cr",
+          "cr;연결재무제표&cr;&cr; 연결재무상태표 …………………………………………………………………… 3 &cr;&cr; 연결손익계산서 …………………………………………………………………… 6&cr;&cr; 연결자본변동표 …………………………………………………………………… 9&cr; &cr; 연결현금흐름표 …………………………………………………………………… 10&cr;&cr; 연결재무제표에 대한 주석 ……………………………………………………… 13&cr;&",
+          "………………… 6&cr;&cr; 연결자본변동표 …………………………………………………………………… 9&cr; &cr; 연결현금흐름표 …………………………………………………………………… 10&cr;&cr; 연결재무제표에 대한 주석 ……………………………………………………… 13&cr;&cr; &cr; &cr;&cr; <SECTION-1 ACLASS=\"MANDATORY\" APART"
+        ]
+      },
+      {
+        "name": "20100331002030_00760.xml",
+        "bytes": 415575,
+        "sha256": "71d257ed0a162034adccd7bd38a446d94b320d1c2930e1a998247ad7f47cc143",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 1,
+          "revenue": 8,
+          "net_income": 17,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          " 본 감사인은 첨부된 주식회사 윌비스(구. 주식회사 미래와사람)의 2009년 12월 31일과 2008년 12월 31일 현재의 재무상태표와 동일로 종료되는 회계연도의 손익계산서, 이익잉여금처분계산서, 자본변동표 및 현금흐름표를 감사하였습니다. 이 재무제표를 작성할 책임은 회사경영자에게 있으며 본 감사인의 책임은 동 재무제표에 대하여 감사를 실시하고 이를 근거로 이 재무제표에 대하여 의견을 표명하는 것입니다. &cr;&cr; 본 감사인은 회계감사기준에 ",
+          ". 주식회사 미래와사람)의 2009년 12월 31일과 2008년 12월 31일 현재의 재무상태표와 동일로 종료되는 회계연도의 손익계산서, 이익잉여금처분계산서, 자본변동표 및 현금흐름표를 감사하였습니다. 이 재무제표를 작성할 책임은 회사경영자에게 있으며 본 감사인의 책임은 동 재무제표에 대하여 감사를 실시하고 이를 근거로 이 재무제표에 대하여 의견을 표명하는 것입니다. &cr;&cr; 본 감사인은 회계감사기준에 따라 감사를 실시하였습니다. 이 기준은 ",
+          "일과 2008년 12월 31일 현재의 재무상태표와 동일로 종료되는 회계연도의 손익계산서, 이익잉여금처분계산서, 자본변동표 및 현금흐름표를 감사하였습니다. 이 재무제표를 작성할 책임은 회사경영자에게 있으며 본 감사인의 책임은 동 재무제표에 대하여 감사를 실시하고 이를 근거로 이 재무제표에 대하여 의견을 표명하는 것입니다. &cr;&cr; 본 감사인은 회계감사기준에 따라 감사를 실시하였습니다. 이 기준은 본 감사인이 재무제표가 중대하게 왜곡표시되지 아니"
+        ]
+      },
+      {
+        "name": "20100331002030.xml",
+        "bytes": 473219,
+        "sha256": "33d9265ee1291ad0cdd93a447447a5a940085a0e34d15a80db982aecca7605fa",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 3,
+          "revenue": 18,
+          "net_income": 17,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          "이하고 이자율 변동에 따른 가치변동의 위험이 중요하지 않은 유가증권 및 단기금융상품을 현금및현금성자산으로 계상하고 있습니다. 현금흐름표상의 현금은 이러한 현금및현금성자산을 의미합니다. &cr;다. 장·단기 금융상품&cr;당사는 금융기관이 취급하는 정기예금 ·정기적금 ·사용이 제한되어 있는 예금 및기타 정형화된 상품 등으로 단기적 자금운용목적으로 소유하거나 기한이 1년이내에 도래하는 것을 단기금융상품으로 계상하고 있으며, 단기금융상품에 속하지",
+          "가에 부대비용을 가산하고 이에 제품ㆍ상품ㆍ원재료ㆍ저장품은 이동평균법을, 미착품에 대하여는 개별법을 적용하여 산정한 취득원가를 대차대조표가액으로 하고 있습니다. &cr; 다만, 재고자산의 시가(제품, 상품 및 재공품은 순실현가능가액, 원자재는 현행대체원가)가 장부가액 이하로 하락하여 발생하는 평가손실은 재고자산의 차감 계정으로 표시하고 매출원가에 가산하고 있으며, 평가손실을 초래했던 상황이 해소되어 새로운 시가가 장부가액보다 상승한 경우에는 ",
+          "이를 상환기간에 걸쳐 유효이자율법에 의하여 상각하여 취득원가와 이자수익에 가감하고 있으며, 이러한 상각후 취득원가로 평가하여 대차대조표가액으로 계상하고 있습니다. 단기매매증권과 매도가능증권은 공정가액으로 평가하고 있습니다. 시장성있는 유가증권은 시장가격을 공정가액으로 보며 시장가격은 대차대조표일 현재의 종가로 하고 있습니다. 매도가능증권 중시장성이 없는 지분증권의 공정가액을 신뢰성 있게 측정할 수 있는 경우를 제외하고는 취득원가로 평가하고 있습니다.<"
+        ]
+      }
+    ],
+    "triage": "COMPLETED_EVIDENCE_INVENTORY_NOT_FINANCIAL_REVIEW",
+    "source_absence": "UNVERIFIED",
+    "extraction_completeness": "UNVERIFIED_SOURCE_GAP",
+    "PIT": "UNVERIFIED",
+    "action": "Retain gate and original bytes. Strict XML errors may reflect custom DART entities/encoding, not absent financial data. Review exact service/member diagnostics and independent original viewer evidence before any parser migration or recollection."
+  },
+  {
+    "receipt": "20100331002035",
+    "company": "휴먼텍코리아",
+    "report_name": "사업보고서 (2009.12)",
+    "original_extraction_state": "SOURCE_GAP",
+    "original_candidate_count": 0,
+    "original_diagnostic_summary": [
+      {
+        "member": "20100331002035_00760.xml",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": null
+      },
+      {
+        "member": "20100331002035.xml",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": "not well-formed (invalid token): line 251, column 42"
+      }
+    ],
+    "original_structural_issues": "[{\"member\": \"20100331002035.xml\", \"table\": 50, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002035.xml\", \"table\": 56, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}]",
+    "source_archive": "chunk02/native/20100331002035-fd2ab294d3b1371db271fab8cb48df19903a1832b3472ef987705c638eb7dbcb.zip",
+    "source_archive_sha256": "fd2ab294d3b1371db271fab8cb48df19903a1832b3472ef987705c638eb7dbcb",
+    "members": [
+      {
+        "name": "20100331002035_00760.xml",
+        "bytes": 429458,
+        "sha256": "d23f759a9171841f1e735126a4197f4d4dc8a769239a6973061afe84bed89a10",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 2,
+          "revenue": 3,
+          "net_income": 6,
+          "ocf": 2
+        },
+        "heading_context_samples": [
+          "------------------------------- 1&cr;&cr;&cr; 재무제표&cr;&cr; 재무상태표 -------------------------------------------------- 2&cr;&cr; 손익계산서 -------------------------------------------------- 5&cr;&cr; 이익잉여금처분계산서 ---------------------",
+          " -------------------------------------------------- 2&cr;&cr; 손익계산서 -------------------------------------------------- 5&cr;&cr; 이익잉여금처분계산서 ----------------------------------------- 7&cr; 자본변동표 --------------------------",
+          "----------------------------------------------- 8 &cr; 현금흐름표 --------------------------------------------------- 9&cr;&cr; 재무제표에 대한 주석 ------------------------------------------ 12&cr;&cr;&cr;참고자료&cr; 내부회계관리제도 검토의견----"
+        ]
+      },
+      {
+        "name": "20100331002035.xml",
+        "bytes": 328631,
+        "sha256": "1220fda9cf70af9b16bcab73f78b427ffceda5346c49b6ef926fa80bfbed506e",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 3,
+          "revenue": 7,
+          "net_income": 10,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          "액면가액의 차이를 상환기간에 걸쳐 유효이자율법으로 상각하여 취득원가와 이자수익에 가감하고 있으며, 이러한 상각 후 취득원가를 재무상태표 가액으로 계상하고 있습니다.&cr; 단기매매증권과 매도가능증권은 공정가치로 평가하고 있습니다. 시장성있는 유가증권은 시장가격을 공정가치로 보며 시장가격은 보고기간종료일 현재의 종가로 하고 있습니다. 다만, 매도가능증권 중 시장성이 없는 지분증권의 공정가치를 신뢰성 있게측정할 수 없는 경우에는 취득원가로 평가",
+          " 범위안에서 이연법인세자산을 인식하고 있습니다.&cr;&cr;이연법인세자산과 이연법인세부채는 관련된 자산항목 또는 부채항목의 재무상태표상분류에 따라 유동자산(유동부채) 또는 기타비유동자산(기타비유동부채)으로 분류하며, 동일한 과세당국과 관련된 이연법인세자산과 부채를 각각 상계하여 표시하고 있습니다.&cr;&cr;(13) 공사손실충당부채&cr;당사는 공사와 관련하여 향후 공사손실의 발생이 예상되는 경우에는 동 예상손실을 공사손실충당부채로 인식하고 있습니다",
+          "ME> 재무상태표(대차대조표) <TD ALIGN=\"CENTER"
+        ]
+      }
+    ],
+    "triage": "COMPLETED_EVIDENCE_INVENTORY_NOT_FINANCIAL_REVIEW",
+    "source_absence": "UNVERIFIED",
+    "extraction_completeness": "UNVERIFIED_SOURCE_GAP",
+    "PIT": "UNVERIFIED",
+    "action": "Retain gate and original bytes. Strict XML errors may reflect custom DART entities/encoding, not absent financial data. Review exact service/member diagnostics and independent original viewer evidence before any parser migration or recollection."
+  },
+  {
+    "receipt": "20100331002042",
+    "company": "한국토지신탁",
+    "report_name": "사업보고서 (2009.12)",
+    "original_extraction_state": "SOURCE_GAP",
+    "original_candidate_count": 0,
+    "original_diagnostic_summary": [
+      {
+        "member": "20100331002042_00760.xml",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": null
+      },
+      {
+        "member": "20100331002042.xml",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": "not well-formed (invalid token): line 1674, column 9"
+      }
+    ],
+    "original_structural_issues": "[{\"member\": \"20100331002042_00760.xml\", \"table\": 22, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002042.xml\", \"table\": 94, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002042.xml\", \"table\": 100, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002042.xml\", \"table\": 102, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002042.xml\", \"table\": 104, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002042.xml\", \"table\": 105, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002042.xml\", \"table\": 106, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002042.xml\", \"table\": 107, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002042.xml\", \"table\": 108, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}]",
+    "source_archive": "chunk02/native/20100331002042-ceaeee783c2fc0f2b7a353c2dccfa287ebb791df755030fc276330082e0c8837.zip",
+    "source_archive_sha256": "ceaeee783c2fc0f2b7a353c2dccfa287ebb791df755030fc276330082e0c8837",
+    "members": [
+      {
+        "name": "20100331002042_00760.xml",
+        "bytes": 238843,
+        "sha256": "7ace8f0e38ad5374aa13602d73829a7a527add9513e6e1d39a290af2e58ab924",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 1,
+          "revenue": 3,
+          "net_income": 7,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          "/TD> &cr;재무상태표(대차대조표)--------------------------------------- &cr; <TD WIDTH=\"24\" HEIGHT=\"",
+          "TD WIDTH=\"24\" HEIGHT=\"53\"> &cr;재무상태표(대차대조표)--------------------------------------- &cr; </",
+          "/TD> &cr;손익계산서 ------------------------------------------------- &cr; <TD WIDTH=\"24\" HEI"
+        ]
+      },
+      {
+        "name": "20100331002042.xml",
+        "bytes": 468912,
+        "sha256": "b0c26db5cb9231bad6caae9c6215ce1224195d1377837bcc6affc5fa7f1b8d44",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 6,
+          "revenue": 12,
+          "net_income": 11,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          "액은 법률이 개정된 회계연도의 법인세비용에서 가감하고 있습니다. 또한, 이연법인세자산(부채)는 관련 자산 또는 부채 항목의 재무상태표상 분류에 따라 재무상태표상 유동자산(부채)의 유동이연법인세자산(부채) 또는 비유동자산(부채)의 이연법인세자산(부채)로 분류하고, 세무상결손금에 따라 인식하게되는 이연법인세자산의 경우 처럼 재무상태표상 자산항목 또는 부채항목과 관련되지 않은 이연법인세자산(부채)는 일시적차이의 예상소멸시기에 따라서 유동이연법인세자산(부채)",
+          "도의 법인세비용에서 가감하고 있습니다. 또한, 이연법인세자산(부채)는 관련 자산 또는 부채 항목의 재무상태표상 분류에 따라 재무상태표상 유동자산(부채)의 유동이연법인세자산(부채) 또는 비유동자산(부채)의 이연법인세자산(부채)로 분류하고, 세무상결손금에 따라 인식하게되는 이연법인세자산의 경우 처럼 재무상태표상 자산항목 또는 부채항목과 관련되지 않은 이연법인세자산(부채)는 일시적차이의 예상소멸시기에 따라서 유동이연법인세자산(부채)와 이연법인세자산(부채)로",
+          "부채) 또는 비유동자산(부채)의 이연법인세자산(부채)로 분류하고, 세무상결손금에 따라 인식하게되는 이연법인세자산의 경우 처럼 재무상태표상 자산항목 또는 부채항목과 관련되지 않은 이연법인세자산(부채)는 일시적차이의 예상소멸시기에 따라서 유동이연법인세자산(부채)와 이연법인세자산(부채)로 분류하고 있습니다. &cr; 9) 신탁위험충당금&cr;회사는 금융투자업규정시행세칙에 의거, 신탁업무의 손해배상에 충당하기 위하여 토지신탁 이외의 신탁에 대한"
+        ]
+      }
+    ],
+    "triage": "COMPLETED_EVIDENCE_INVENTORY_NOT_FINANCIAL_REVIEW",
+    "source_absence": "UNVERIFIED",
+    "extraction_completeness": "UNVERIFIED_SOURCE_GAP",
+    "PIT": "UNVERIFIED",
+    "action": "Retain gate and original bytes. Strict XML errors may reflect custom DART entities/encoding, not absent financial data. Review exact service/member diagnostics and independent original viewer evidence before any parser migration or recollection."
+  },
+  {
+    "receipt": "20100331002045",
+    "company": "코오롱아이넷",
+    "report_name": "[첨부추가]사업보고서 (2009.12)",
+    "original_extraction_state": "SOURCE_GAP",
+    "original_candidate_count": 0,
+    "original_diagnostic_summary": [
+      {
+        "member": "20100331002045_00761.xml",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": null
+      },
+      {
+        "member": "20100331002045_00760.xml",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": null
+      },
+      {
+        "member": "20100331002045.xml",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "resolved_encoding": "cp949",
+        "xml_error": "not well-formed (invalid token): line 1813, column 35"
+      }
+    ],
+    "original_structural_issues": "[{\"member\": \"20100331002045.xml\", \"table\": 98, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+    "source_archive": "chunk02/native/20100331002045-0916cc1d9dcc2379898746e9d963c82fa6983d9d89808a6424e474add82fcef0.zip",
+    "source_archive_sha256": "0916cc1d9dcc2379898746e9d963c82fa6983d9d89808a6424e474add82fcef0",
+    "members": [
+      {
+        "name": "20100331002045_00761.xml",
+        "bytes": 427760,
+        "sha256": "daa027e2c18cb7e7879860e1f26c2bdab57d6518a6af469f933138724d5811e9",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 3,
+          "revenue": 7,
+          "net_income": 9,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          " 연결재무상태표- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 4 &cr; <TD WID",
+          " 연결손익계산서 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 7 &cr; <TD WIDT",
+          "; 연결현금흐름표 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 11 &cr; <TD WIDT"
+        ]
+      },
+      {
+        "name": "20100331002045_00760.xml",
+        "bytes": 406222,
+        "sha256": "7a41ce756e9c787b351f819720a493586285574fb1d4bb6151d929abca5864a1",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 0,
+          "revenue": 9,
+          "net_income": 8,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          " 재무상태표 ------------------------------------------------------- 4 <TD ALIGN=\"RIGHT\" WIDTH=\"308\" HEIGHT=\"30\"",
+          " 손익계산서 ------------------------------------------------------- 7 ",
+          " 현금흐름표 ------------------------------------------------------- 11 "
+        ]
+      },
+      {
+        "name": "20100331002045.xml",
+        "bytes": 786824,
+        "sha256": "b8a3ccd90bc06fc51e386fe9d0aa66e3963d39a5d635f0a40fd629719cf9e296",
+        "independent_decode": "cp949",
+        "stdlib_XML_no_external_resolution": "UNVERIFIED_OR_INVALID_XML",
+        "XML_error": "not well-formed (invalid token): line 7, column 29",
+        "raw_financial_label_mentions": {
+          "equity": 6,
+          "revenue": 30,
+          "net_income": 15,
+          "ocf": 1
+        },
+        "heading_context_samples": [
+          "GHT=\"30\" ALIGN=\"CENTER\"> 재무상태표 77 <TD WIDTH=\"37\" HEIGHT=\"3",
+          "GHT=\"30\" ALIGN=\"CENTER\"> 손익계산서 80 <TD WIDTH=\"37\" HEIGHT=\"3",
+          "GHT=\"30\" ALIGN=\"CENTER\"> 현금흐름표 84 <TD WIDTH=\"37\" HEIGHT=\"3"
+        ]
+      }
+    ],
+    "triage": "COMPLETED_EVIDENCE_INVENTORY_NOT_FINANCIAL_REVIEW",
+    "source_absence": "UNVERIFIED",
+    "extraction_completeness": "UNVERIFIED_SOURCE_GAP",
+    "PIT": "UNVERIFIED",
+    "action": "Retain gate and original bytes. Strict XML errors may reflect custom DART entities/encoding, not absent financial data. Review exact service/member diagnostics and independent original viewer evidence before any parser migration or recollection."
+  }
+]

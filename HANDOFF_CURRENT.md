@@ -1,3 +1,15 @@
+## 2026-10-21 운영 반영·문서별 감사 후속
+
+- 검증된 통합 production code 기준305cb673f4768907945bc2752753810c4975c37c와 고정 kit CI39540516627SUCCESS를 재사용했다. 복원/751개 전체 hash/통합 CI를 반복하지 않았다.
+- 최소 수집PR45를 병합했다. 운영main 반영 commit fd232d129bfa2ef01714b94890460c5ef47bdbf0, 수집/config/workflow/test14경로가 통합305cb와 동일하다. 전체 연구 브랜치는main에 병합하지 않았다.
+- 병합 후KST2026-10-21 13:21 gateONCE_PER_KST_DAY, sourceHTTP0/원문0/후보0/중복0. HOLD_FAILURE와 완료checkpoint20100331002054 유지; 다음예약2062/2063, 잔여실행1회, 게시HOLD/PIT0/6. 실제HTTP/재개성공 미확보로 실패상태를 수동 해제하지 않았다.
+- 기존 후보348개/19문서를 판정:336PASS(+323), 검토후UNVERIFIED12(기존SK사채1+새11), 미검토523/29문서. 9SOURCE_GAP 문서는 별도member triage이며 금융/완전성 인증이 아니다. 전체871PIT와 전체공시 완전성 미인증.
+- independent primary66표에서 source-present/output-absent46행/27metric-scope key 및CJ CFS 자산총계 presentation 누락을 발견했다. 원문값으로운영값을채우거나parser/hash/gate를변경하지않았다.
+- 다음audit checkpoint20100331001983(큐로홀딩스17개), 기존 미검증1개는20100331001980/CFS/bonds_payable. 57개 전체상태와남은정확한목록:docs/research/operating-source-review-20261021/REPORT.md 및JSON.
+- 과거envelope12개는상세비교UNVERIFIED고정. 현재12개출력bytes와새manifest는향후기준일뿐 과거를인증하지않는다. 실행/연구코드는바꾸지않은 감사문서변경이다.
+
+---
+
 ## 금융 정확성 최종 인계 (2026-10-18)
 
 [보고서](docs/audits/backfill-accuracy-20261018/report.md)와[재현](docs/audits/backfill-accuracy-20261018/reproduction.md)을먼저읽는다. main203842.../v5/누적71118은그대로이며연구수정미배포. v9.1은기존32통제28P/4U,첫48통제44P/4U,추가8통제8P를원문대조했다. 첫48의v8.1결과20P/28U와14정상값누락은삭제하지않고별도보존;후속공통섹션·정정템플릿·원문FY수정으로해소. 추가reserve는독립접수번호2건/같은2기업/부분층부족을명시. 518/64/원문60/기존849핀보존. 최소22접수번호shadow복구,4source-gap·4API014·3998서비스후보를구분한다. 운영수집이이전파서상태를자동재대기시키지않도록새migration가드는수집/coverage이전에중단한다. main적용·자동실행변경·운영데이터수정없음. 남은우선작업은수집durability와금융품질버전의명시적분리·유한migration게시절차,외화/원문손상/공개·정정·역사매핑근거다. 신규장기다종목완주0,투자PIT0/6유지. 최종SHA/CI는실제원격기록을확인한다.

@@ -1,0 +1,58 @@
+name: Legacy DART finite source observation; financial publication HOLD
+on:
+  schedule:
+    - cron: '17 20 * * *'
+  workflow_dispatch:
+    inputs:
+      resume_parent_run:
+        description: Existing reservation to continue after cause-specific and daily gates
+        type: string
+        default: ''
+      batch_documents:
+        description: Small source-only segment,1..25; does not reserve extra documents
+        type: number
+        default: 2
+concurrency:
+  group: super-value-fast-pit-backfill
+  cancel-in-progress: false
+permissions:
+  contents: write
+  actions: read
+jobs:
+  limited-source-observation:
+    if: github.ref == 'refs/heads/main' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore original pinned kit; no Internet dependency installation
+        run: |
+          python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: Once per KST day, maximum3 reservations and300 documents; first actual review required
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+          RESUME_PARENT_RUN: ${{ inputs.resume_parent_run || '' }}
+          BATCH_DOCUMENTS: ${{ inputs.batch_documents || '25' }}
+        run: |
+          args=()
+          if [ -n "$RESUME_PARENT_RUN" ]; then args+=(--resume-parent-run "$RESUME_PARENT_RUN"); fi
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_limited_resume.py --event schedule --output "$RUNNER_TEMP/limited-observation" --batch-documents "$BATCH_DOCUMENTS" "${args[@]}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: limited-source-observation-HELD
+          path: |
+            ${{ runner.temp }}/limited-observation
+            ${{ runner.temp }}/runtime.json
+          if-no-files-found: error
+          retention-days: 90
+# 05:17 Asia/Seoul. Code ledger enforces caps even if dispatch/schedule duplicates.
+# No legacy-v5,2000,modern collection fallback and no automatic metric publication.

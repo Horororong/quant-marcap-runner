@@ -2,10 +2,12 @@
 import ast
 import importlib.util
 import io
+import json
 import os
 from pathlib import Path
 import sys
 import tempfile
+import time
 import unittest
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
@@ -155,8 +157,9 @@ class CorpCodeTests(unittest.TestCase):
 
     def main(self, path, modern_call, legacy_result=None):
         namespace = {"os": os, "datetime": datetime, "timezone": timezone, "pd": pd,
+                     "time": time, "json": json, "LEGACY_LIMIT": 1,
                      "MODERN_LIMIT": 1, "STATUS_FILE": path,
-                     "legacy_fast": Mock(return_value=legacy_result or {"legacy_run_docs": 1475}),
+                     "legacy_fast": Mock(return_value=legacy_result or {"legacy_run_docs": 1475, "legacy_stop_reason": "BATCH_COMPLETE"}),
                      "modern_fast": modern_call, "modern": SimpleNamespace(RateLimitExceeded=RuntimeError),
                      "legacy": SimpleNamespace(atomic_write_if_changed=atomic_write_if_changed)}
         return source_function("backfill_super_value_fast.py", "main", namespace)
@@ -195,6 +198,15 @@ class CorpCodeTests(unittest.TestCase):
             path = Path(tmp) / "status.csv"
             self.main(path, Mock(return_value={"modern_run_tasks": 1000}))()
             self.assertEqual(pd.read_csv(path).iloc[0].modern_run_tasks, 1000)
+
+    def test_unknown_or_deadline_legacy_stop_never_starts_modern(self):
+        for result in ({"legacy_run_docs": 2}, {"legacy_run_docs": 2, "legacy_stop_reason": "DEADLINE"}):
+            with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {"DART_API_KEY": "private-test-key"}):
+                modern_call = Mock(side_effect=AssertionError("unexpected network"))
+                path = Path(tmp) / "status.csv"
+                self.main(path, modern_call, result)()
+                modern_call.assert_not_called()
+                self.assertTrue(pd.read_csv(path).iloc[0].modern_skipped)
 
 
 if __name__ == "__main__":

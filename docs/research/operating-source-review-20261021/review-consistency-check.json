@@ -1,0 +1,12 @@
+{
+  "status": "PASS_AUDIT_EVIDENCE_CONSISTENCY",
+  "unique_reviewed_candidate_keys": 348,
+  "all_57_statuses_present": true,
+  "manual_source_anchor_checks": 9,
+  "previous_UNVERIFIED_preserved": true,
+  "counts_partition": "336PASS+12reviewedUNVERIFIED+523NOT_REVIEWED=871",
+  "document_partition": "19candidate decisions complete+9source-gap triaged+29not reviewed=57",
+  "source_TABLE_inventory_count": 66,
+  "old_runtime_or_integration_CI_repeated": false,
+  "PIT_or_publication_promoted": false
+}

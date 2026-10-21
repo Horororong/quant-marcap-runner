@@ -1,0 +1,386 @@
+{
+  "observed_at_utc": "2026-10-21T04:18:36.448318+00:00",
+  "day_kst": "2026-10-21",
+  "repository_permissions": {
+    "admin": true,
+    "maintain": true,
+    "push": true,
+    "triage": true,
+    "pull": true
+  },
+  "allow_merge_commit": true,
+  "allow_squash_merge": true,
+  "allow_rebase_merge": true,
+  "main": "9d000150badd662bb48813eebeb9f5ead7c756cd",
+  "PR_head": "34b2728878a562b22fa8b75645c944df51ee4b78",
+  "PR_state": {
+    "state": "open",
+    "draft": true,
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "node_id": "PR_kwDOT80f3M8AAAABJsWKQg",
+    "maintainer_can_modify": false
+  },
+  "branch": {
+    "name": "main",
+    "commit": {
+      "sha": "9d000150badd662bb48813eebeb9f5ead7c756cd",
+      "node_id": "C_kwDOT80f3NoAKDlkMDAwMTUwYmFkZDY2MmJiNDg4MTNlZWJlYjlmNWVhZDdjNzU2Y2Q",
+      "commit": {
+        "author": {
+          "name": "github-actions[bot]",
+          "email": "41898282+github-actions[bot]@users.noreply.github.com",
+          "date": "2026-10-21T01:17:36Z"
+        },
+        "committer": {
+          "name": "github-actions[bot]",
+          "email": "41898282+github-actions[bot]@users.noreply.github.com",
+          "date": "2026-10-21T01:17:36Z"
+        },
+        "message": "Update DART financials",
+        "tree": {
+          "sha": "2a0e02de9cdcac3ed74d7c5b051db809ece84d90",
+          "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/trees/2a0e02de9cdcac3ed74d7c5b051db809ece84d90"
+        },
+        "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/commits/9d000150badd662bb48813eebeb9f5ead7c756cd",
+        "comment_count": 0,
+        "verification": {
+          "verified": false,
+          "reason": "unsigned",
+          "signature": null,
+          "payload": null,
+          "verified_at": null
+        }
+      },
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/commits/9d000150badd662bb48813eebeb9f5ead7c756cd",
+      "html_url": "https://github.com/Horororong/quant-marcap-runner/commit/9d000150badd662bb48813eebeb9f5ead7c756cd",
+      "comments_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/commits/9d000150badd662bb48813eebeb9f5ead7c756cd/comments",
+      "author": {
+        "login": "github-actions[bot]",
+        "id": 41898282,
+        "node_id": "MDM6Qm90NDE4OTgyODI=",
+        "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/github-actions%5Bbot%5D",
+        "html_url": "https://github.com/apps/github-actions",
+        "followers_url": "https://api.github.com/users/github-actions%5Bbot%5D/followers",
+        "following_url": "https://api.github.com/users/github-actions%5Bbot%5D/following{/other_user}",
+        "gists_url": "https://api.github.com/users/github-actions%5Bbot%5D/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/github-actions%5Bbot%5D/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/github-actions%5Bbot%5D/subscriptions",
+        "organizations_url": "https://api.github.com/users/github-actions%5Bbot%5D/orgs",
+        "repos_url": "https://api.github.com/users/github-actions%5Bbot%5D/repos",
+        "events_url": "https://api.github.com/users/github-actions%5Bbot%5D/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/github-actions%5Bbot%5D/received_events",
+        "type": "Bot",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "github-actions[bot]",
+        "id": 41898282,
+        "node_id": "MDM6Qm90NDE4OTgyODI=",
+        "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/github-actions%5Bbot%5D",
+        "html_url": "https://github.com/apps/github-actions",
+        "followers_url": "https://api.github.com/users/github-actions%5Bbot%5D/followers",
+        "following_url": "https://api.github.com/users/github-actions%5Bbot%5D/following{/other_user}",
+        "gists_url": "https://api.github.com/users/github-actions%5Bbot%5D/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/github-actions%5Bbot%5D/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/github-actions%5Bbot%5D/subscriptions",
+        "organizations_url": "https://api.github.com/users/github-actions%5Bbot%5D/orgs",
+        "repos_url": "https://api.github.com/users/github-actions%5Bbot%5D/repos",
+        "events_url": "https://api.github.com/users/github-actions%5Bbot%5D/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/github-actions%5Bbot%5D/received_events",
+        "type": "Bot",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "3ecdc3aa39d891bb2f860f6a6433ddf44876325e",
+          "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/commits/3ecdc3aa39d891bb2f860f6a6433ddf44876325e",
+          "html_url": "https://github.com/Horororong/quant-marcap-runner/commit/3ecdc3aa39d891bb2f860f6a6433ddf44876325e"
+        }
+      ]
+    },
+    "_links": {
+      "self": "https://api.github.com/repos/Horororong/quant-marcap-runner/branches/main",
+      "html": "https://github.com/Horororong/quant-marcap-runner/tree/main"
+    },
+    "protected": false,
+    "protection": {
+      "enabled": false,
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      }
+    },
+    "protection_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/branches/main/protection"
+  },
+  "protection": {
+    "HTTP_error": 403
+  },
+  "rules": [],
+  "reviews": [],
+  "check_runs": {
+    "total_count": 0,
+    "check_runs": []
+  },
+  "statuses": {
+    "state": "pending",
+    "statuses": [],
+    "sha": "34b2728878a562b22fa8b75645c944df51ee4b78",
+    "total_count": 0,
+    "repository": {
+      "id": 1338843100,
+      "node_id": "R_kgDOT80f3A",
+      "name": "quant-marcap-runner",
+      "full_name": "Horororong/quant-marcap-runner",
+      "private": false,
+      "owner": {
+        "login": "Horororong",
+        "id": 43639259,
+        "node_id": "MDQ6VXNlcjQzNjM5MjU5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/43639259?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Horororong",
+        "html_url": "https://github.com/Horororong",
+        "followers_url": "https://api.github.com/users/Horororong/followers",
+        "following_url": "https://api.github.com/users/Horororong/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Horororong/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Horororong/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Horororong/subscriptions",
+        "organizations_url": "https://api.github.com/users/Horororong/orgs",
+        "repos_url": "https://api.github.com/users/Horororong/repos",
+        "events_url": "https://api.github.com/users/Horororong/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Horororong/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/Horororong/quant-marcap-runner",
+      "description": "quant-marcap-runner",
+      "fork": false,
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner",
+      "forks_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/forks",
+      "keys_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/teams",
+      "hooks_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/hooks",
+      "issue_events_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/events",
+      "assignees_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/tags",
+      "blobs_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/languages",
+      "stargazers_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/stargazers",
+      "contributors_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/contributors",
+      "subscribers_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/subscribers",
+      "subscription_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/subscription",
+      "commits_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/merges",
+      "archive_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/downloads",
+      "issues_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/labels{/name}",
+      "releases_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/deployments"
+    },
+    "commit_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/commits/34b2728878a562b22fa8b75645c944df51ee4b78",
+    "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/commits/34b2728878a562b22fa8b75645c944df51ee4b78/status"
+  },
+  "files": [
+    {
+      "path": ".github/workflows/backfill-dart-legacy-2000-2014.yml",
+      "status": "modified"
+    },
+    {
+      "path": "docs/research/finite-resume-20261020/AUTOMATIC_CI_SCOPE.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/research/finite-resume-20261020/LEGACY_AUTO_CI_BASELINE_PROOF.json",
+      "status": "added"
+    },
+    {
+      "path": "docs/research/finite-resume-20261020/LEGACY_SIX.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/research/finite-resume-20261020/README.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/research/finite-resume-20261020/corp-code-final-tests.log",
+      "status": "added"
+    },
+    {
+      "path": "docs/research/finite-resume-20261020/live-small-batch-gate.json",
+      "status": "added"
+    },
+    {
+      "path": "docs/research/finite-resume-20261020/real-replay-verification.json",
+      "status": "added"
+    },
+    {
+      "path": "docs/research/finite-resume-20261020/resume-all-tests.log",
+      "status": "added"
+    },
+    {
+      "path": "docs/research/finite-resume-20261020/resume-tests.log",
+      "status": "added"
+    },
+    {
+      "path": "docs/research/finite-resume-20261020/rollout-final-tests.log",
+      "status": "added"
+    },
+    {
+      "path": "docs/research/finite-resume-20261020/timeout-cause-analysis.json",
+      "status": "added"
+    },
+    {
+      "path": "scripts/financial_limited_resume.py",
+      "status": "modified"
+    },
+    {
+      "path": "scripts/financial_rollout.py",
+      "status": "modified"
+    },
+    {
+      "path": "tests/fixtures/legacy_filings_index_20261021.csv.gz",
+      "status": "added"
+    },
+    {
+      "path": "tests/fixtures/limited_resume_state_20261021.json",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_dart_corp_code.py",
+      "status": "modified"
+    },
+    {
+      "path": "tests/test_financial_batch_resume.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_legacy_backfill_resume.py",
+      "status": "modified"
+    }
+  ],
+  "collector_comparisons": [
+    {
+      "path": ".github/workflows/backfill-dart-legacy-2000-2014.yml",
+      "PR_sha256": "4c27d32ebffebc96c029b59e7ddd0f4b12d221c1716c7afaf225a779f538576e",
+      "integration_sha256": "4c27d32ebffebc96c029b59e7ddd0f4b12d221c1716c7afaf225a779f538576e",
+      "equal": true
+    },
+    {
+      "path": "scripts/backfill_dart_legacy_2000_2014.py",
+      "PR_sha256": "ce3ef9e0d86a2e80dd03e744f26b686ed04a73d03b552cbc5b95e9c22d495a41",
+      "integration_sha256": "ce3ef9e0d86a2e80dd03e744f26b686ed04a73d03b552cbc5b95e9c22d495a41",
+      "equal": true
+    },
+    {
+      "path": "scripts/dart_http.py",
+      "PR_sha256": "f4d3584e3bd57dcdcf0bd03c5fcad47c234a49864c76c9ea19cb3ac4846ee6e5",
+      "integration_sha256": "f4d3584e3bd57dcdcf0bd03c5fcad47c234a49864c76c9ea19cb3ac4846ee6e5",
+      "equal": true
+    },
+    {
+      "path": "scripts/dart_service_status.py",
+      "PR_sha256": "b05e2f5bc95bb69c62203f6b950d5fa4a955c640f797446e7834bed671140695",
+      "integration_sha256": "b05e2f5bc95bb69c62203f6b950d5fa4a955c640f797446e7834bed671140695",
+      "equal": true
+    },
+    {
+      "path": "scripts/financial_limited_resume.py",
+      "PR_sha256": "9e22619536198d2abd453dad7db5002e62b01dfad4cb09c754fa4a6d49b3dfed",
+      "integration_sha256": "9e22619536198d2abd453dad7db5002e62b01dfad4cb09c754fa4a6d49b3dfed",
+      "equal": true
+    },
+    {
+      "path": "scripts/financial_rollout.py",
+      "PR_sha256": "49b8521b87c2187102cc578601b4449597e7aa4eb4b491a176b85025f297a57c",
+      "integration_sha256": "49b8521b87c2187102cc578601b4449597e7aa4eb4b491a176b85025f297a57c",
+      "equal": true
+    },
+    {
+      "path": "scripts/legacy_document_quality.py",
+      "PR_sha256": "c9be4765ab971a1115cdc0991f36acb5212636ef41e98fd190416b168c21e1fb",
+      "integration_sha256": "c9be4765ab971a1115cdc0991f36acb5212636ef41e98fd190416b168c21e1fb",
+      "equal": true
+    },
+    {
+      "path": "scripts/legacy_financial_fields.py",
+      "PR_sha256": "e2c3f1d1c821dced7fcd2a11fbb4ec74c40b0f4016f3745fbaaf7a053b228163",
+      "integration_sha256": "e2c3f1d1c821dced7fcd2a11fbb4ec74c40b0f4016f3745fbaaf7a053b228163",
+      "equal": true
+    },
+    {
+      "path": "scripts/legacy_native_financials.py",
+      "PR_sha256": "3cff54f28e3081a1a014e5e12ad56ed13ea36d2d16e16af7aeef0aa0dd1c2773",
+      "integration_sha256": "3cff54f28e3081a1a014e5e12ad56ed13ea36d2d16e16af7aeef0aa0dd1c2773",
+      "equal": true
+    },
+    {
+      "path": "tests/fixtures/legacy_filings_index_20261021.csv.gz",
+      "PR_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "integration_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal": true
+    },
+    {
+      "path": "tests/fixtures/limited_resume_state_20261021.json",
+      "PR_sha256": "3f5e490526455769680c909f6aceb394fbdcbf748b7e7a28c1ba16b0f1c7af20",
+      "integration_sha256": "3f5e490526455769680c909f6aceb394fbdcbf748b7e7a28c1ba16b0f1c7af20",
+      "equal": true
+    },
+    {
+      "path": "tests/test_dart_corp_code.py",
+      "PR_sha256": "5c48f58819eb4fcc5dcbeba18a41410a61f8e6713fca3c4f32651ffa60d1aab3",
+      "integration_sha256": "5c48f58819eb4fcc5dcbeba18a41410a61f8e6713fca3c4f32651ffa60d1aab3",
+      "equal": true
+    },
+    {
+      "path": "tests/test_financial_batch_resume.py",
+      "PR_sha256": "b261f175ec4149a11a8d9b950ade55c5477572cf9f7a660002568b29616578d9",
+      "integration_sha256": "b261f175ec4149a11a8d9b950ade55c5477572cf9f7a660002568b29616578d9",
+      "equal": true
+    },
+    {
+      "path": "tests/test_legacy_backfill_resume.py",
+      "PR_sha256": "2a93ecb28817b9aa2edae7a9a1bdff670ee8daf7d2a98d29e2654b1b478cfca2",
+      "integration_sha256": "2a93ecb28817b9aa2edae7a9a1bdff670ee8daf7d2a98d29e2654b1b478cfca2",
+      "equal": true
+    }
+  ],
+  "collection_code_identical": true,
+  "workflow_branch": "main; checkout ref main; job main-only",
+  "gate": "ONCE_PER_KST_DAY",
+  "checkpoint": "20100331002054",
+  "checkpoint_completed": true,
+  "next_target_completed": {
+    "20100331002062": false,
+    "20100331002063": false
+  },
+  "phase": "HOLD_FAILURE",
+  "reserved": 200,
+  "executions": 2,
+  "HTTP_requests": 0,
+  "ledger_mutated": false
+}
