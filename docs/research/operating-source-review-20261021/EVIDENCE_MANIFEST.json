@@ -1,0 +1,148 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "source_collection_run": "39504052321",
+  "source_packs_commit": "a9da665e77eb06e09232c9fa1b382b1e3ea31d4f",
+  "deployed_collection_commit": "fd232d129bfa2ef01714b94890460c5ef47bdbf0",
+  "verified_integration": "305cb673f4768907945bc2752753810c4975c37c",
+  "CI_reused": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39540516627",
+  "new_CI_run": false,
+  "raw_source_files_modified": false,
+  "financial_values_published": 0,
+  "files": [
+    {
+      "path": "REPORT.md",
+      "bytes": 11404,
+      "sha256": "3616544bd0166ceb279a02217a04e048d33c01bf101901d99b6754a7be74213a"
+    },
+    {
+      "path": "all-57-document-status.json",
+      "bytes": 27741,
+      "sha256": "202668f31a2b2d8eb34897cbd348ea94be309046c9b14f6096685547dd16e9c9"
+    },
+    {
+      "path": "candidate-review-348.json",
+      "bytes": 914219,
+      "sha256": "daa7139a0522c4d151a9455fa91b366d23921e5e265d3aacda364d778f789fc5"
+    },
+    {
+      "path": "deployed-runtime-gate.json",
+      "bytes": 4271,
+      "sha256": "68fd68ba24ace103b7e20615f4654e6a7740aefcbcf46f08396c006c44a8a6be"
+    },
+    {
+      "path": "deployment-inspection.json",
+      "bytes": 17723,
+      "sha256": "900f66fca350bbba40c3bbd5ad1cda2f273abb342649af0b6e34d9c52c21be1f"
+    },
+    {
+      "path": "deployment-workflow.yml",
+      "bytes": 2531,
+      "sha256": "4c27d32ebffebc96c029b59e7ddd0f4b12d221c1716c7afaf225a779f538576e"
+    },
+    {
+      "path": "document-review-ledger.json",
+      "bytes": 13643,
+      "sha256": "ca362d27f7194b4740d106b6728d2d990b50a97bb6028a7627f857e0b82064d0"
+    },
+    {
+      "path": "document-source-evidence.json",
+      "bytes": 4526359,
+      "sha256": "f0774da178787f2349f9f21481ce1097b0da61681514ace14db23b04712b9507"
+    },
+    {
+      "path": "extraction-coverage-findings.json",
+      "bytes": 45950,
+      "sha256": "568f46eba292f9589fc7d4c0d2710d7a69808136cb84ef8ce7131f38812ce27a"
+    },
+    {
+      "path": "future-baseline-305-manifest.json",
+      "bytes": 4312,
+      "sha256": "361253bc3de8b68597b83fee1304aac22390d8a659b08fbe3603b675bfce144e"
+    },
+    {
+      "path": "mark-ready-result.json",
+      "bytes": 263,
+      "sha256": "78f75cedd94cf149093f31c94ed964948f97474d1bd92cc393698d7e31a1a3fd"
+    },
+    {
+      "path": "operating-merge.json",
+      "bytes": 123,
+      "sha256": "e88e5e772fe910bafdcc5aa9a27d6234f0d4777263e5005c440fb9866eaf4065"
+    },
+    {
+      "path": "primary-table-inventory.json",
+      "bytes": 4007959,
+      "sha256": "3cde1e15013749416f21c0d37e513c63d1b47e74644721668cec14c05653fec5"
+    },
+    {
+      "path": "remaining-29-documents.json",
+      "bytes": 12754,
+      "sha256": "17fa0f18450c6b9df74277d29025eec317d7781ddd11dd2d031a42cc5ce791fb"
+    },
+    {
+      "path": "review-consistency-check.json",
+      "bytes": 502,
+      "sha256": "7930c1160f29914f59483af7ba07b35be57f8a48196f1434fff7e14d24f935be"
+    },
+    {
+      "path": "runtime-verify.json",
+      "bytes": 21113,
+      "sha256": "a2776816a1db5c3a67a035d2985185c1bbf03a3e3d566b1e9e29efbfe57e2de4"
+    },
+    {
+      "path": "semantic-summary.json",
+      "bytes": 1063,
+      "sha256": "c797068c4cf34549ec4e1323f579990c0125daa8e7d8e4af734b7f7d9fa80e4f"
+    },
+    {
+      "path": "source-gap-9-triage.json",
+      "bytes": 57330,
+      "sha256": "db8ed1763f2422b4b486a17a8a63110367fdc4413afadf412f941c645820e94d"
+    },
+    {
+      "path": "stc-source-zone-diagnosis.json",
+      "bytes": 2602,
+      "sha256": "2ecf7ca30fa254495d890e97d9addc289ef82bd147df8f33a3cb4c9710059648"
+    },
+    {
+      "path": "targeted-parser-diagnostic.json",
+      "bytes": 1294,
+      "sha256": "54043145faba9f5dceb564be19553bffa88c244fecfb7f094d0c3636c345688e"
+    },
+    {
+      "path": "tools/build_document_evidence.py",
+      "bytes": 4765,
+      "sha256": "e1e46d75c9aa51f46c12d7dd45d9368316bfdbbdd2467563f99f147ed3fdf8d0"
+    },
+    {
+      "path": "tools/diagnose_stc_zone.py",
+      "bytes": 2588,
+      "sha256": "8139a5062274c732448c9f4c5bf51f4bd0af56d4dd7accca87ef61fccfb91c63"
+    },
+    {
+      "path": "tools/finish_review_ledgers.py",
+      "bytes": 3959,
+      "sha256": "8aa52489d14fce04519b9bbcac6047665152cc7abb917c6b4ce0ee386e820712"
+    },
+    {
+      "path": "tools/independent_inventory.py",
+      "bytes": 5962,
+      "sha256": "74174221b20dcba716793731d246e12d93052163b16cb8dd94c6f9407a71e115"
+    },
+    {
+      "path": "tools/preserve_current_envelopes.py",
+      "bytes": 1919,
+      "sha256": "40729b4c3ad70ec0a92c66161526c0b20d5cc42d4808b22b3121440edcbe077f"
+    },
+    {
+      "path": "tools/review_348.py",
+      "bytes": 9913,
+      "sha256": "384e5e12019d5697b1cf11af9425e1ff822831ce04a6c764d84301d7d5aa4cfa"
+    },
+    {
+      "path": "tools/triage_gaps.py",
+      "bytes": 2902,
+      "sha256": "89830654353cc4c4abe4778741a5a44240c20bc4ec6d8b309f6556b3f8c49656"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "baseline_version": "current-integration-305-envelopes-v1",
+  "code_commit": "305cb673f4768907945bc2752753810c4975c37c",
+  "fixed_kit_id": "26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd",
+  "local_run_source": "/workspace/quant-integration-20261021/frozen-final",
+  "execution_provenance": "Local exact-input executions from the working tree subsequently committed as305cb; production strategy/engine/input files identical. Final exact-target remote CI39540516627 independently passes130 strict bytes, not an assertion these12 are remote artifact bytes.",
+  "CI": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39540516627",
+  "files": [
+    {
+      "path": "original/postprocess.log",
+      "bytes": 173,
+      "sha256": "c2188d97a484ded5e5ff47728e60a7aae8085dc910708c65f52bd7c9767dfdf2",
+      "past_original_comparison": "UNVERIFIED",
+      "future_baseline": "EXACT_PRESERVED_CURRENT_BYTES"
+    },
+    {
+      "path": "original/run_status.json",
+      "bytes": 10814,
+      "sha256": "797195537d5a2b3d09c60bb258100656451ccc60fcf9cca055bc60c65625e5cb",
+      "past_original_comparison": "UNVERIFIED",
+      "future_baseline": "EXACT_PRESERVED_CURRENT_BYTES"
+    },
+    {
+      "path": "original/report/chat_manifest_CURRENT.json",
+      "bytes": 15342224,
+      "sha256": "9f951ac61c6a912ded772f53bd21b580aab4bbb455cfbbefb95460c6b936e06a",
+      "past_original_comparison": "UNVERIFIED",
+      "future_baseline": "EXACT_PRESERVED_CURRENT_BYTES"
+    },
+    {
+      "path": "original/report/report_CURRENT.html",
+      "bytes": 9233909,
+      "sha256": "50e7c5498a6577f80fde8dc0011451b5fb4ba156356e74db55dd691402989816",
+      "past_original_comparison": "UNVERIFIED",
+      "future_baseline": "EXACT_PRESERVED_CURRENT_BYTES"
+    },
+    {
+      "path": "momentum2020/postprocess.log",
+      "bytes": 178,
+      "sha256": "3dd5b43db3e2d61906105aca80052dd96eda387fbdbd42f48781ddcb8b50e382",
+      "past_original_comparison": "UNVERIFIED",
+      "future_baseline": "EXACT_PRESERVED_CURRENT_BYTES"
+    },
+    {
+      "path": "momentum2020/run_status.json",
+      "bytes": 4854,
+      "sha256": "f15453cca575678aa400ea8467f1083d501a82e17065eba9fb53b45a61dffd95",
+      "past_original_comparison": "UNVERIFIED",
+      "future_baseline": "EXACT_PRESERVED_CURRENT_BYTES"
+    },
+    {
+      "path": "momentum2020/report/chat_manifest_CURRENT.json",
+      "bytes": 1113888,
+      "sha256": "e06febe6b5d32c8714d48336a5d7d0f89901e88572ac0033b26c704a49118cc9",
+      "past_original_comparison": "UNVERIFIED",
+      "future_baseline": "EXACT_PRESERVED_CURRENT_BYTES"
+    },
+    {
+      "path": "momentum2020/report/report_CURRENT.html",
+      "bytes": 5150244,
+      "sha256": "81d300fc4b5103f0d31396fd1b7cd5cf31f5ab54105259cef806d1636d48dc45",
+      "past_original_comparison": "UNVERIFIED",
+      "future_baseline": "EXACT_PRESERVED_CURRENT_BYTES"
+    },
+    {
+      "path": "size2024/postprocess.log",
+      "bytes": 173,
+      "sha256": "7eee45116689cdb1148269a0e15b79ff1805d835b376e17d720e6bd17fde43ab",
+      "past_original_comparison": "UNVERIFIED",
+      "future_baseline": "EXACT_PRESERVED_CURRENT_BYTES"
+    },
+    {
+      "path": "size2024/run_status.json",
+      "bytes": 3247,
+      "sha256": "a838560b1be8b5fffe67634ed80db23f8b4e23a68552548411b5a6dcd2c05a57",
+      "past_original_comparison": "UNVERIFIED",
+      "future_baseline": "EXACT_PRESERVED_CURRENT_BYTES"
+    },
+    {
+      "path": "size2024/report/chat_manifest_CURRENT.json",
+      "bytes": 557154,
+      "sha256": "e446cdc0bc69e9fec3fee0037bca07d0629b3f7da23c680467a966d086ac8b42",
+      "past_original_comparison": "UNVERIFIED",
+      "future_baseline": "EXACT_PRESERVED_CURRENT_BYTES"
+    },
+    {
+      "path": "size2024/report/report_CURRENT.html",
+      "bytes": 4991090,
+      "sha256": "bef153c1685af642ce197907889ae4ee0219d62f7c79fd35d4884672b593634b",
+      "past_original_comparison": "UNVERIFIED",
+      "future_baseline": "EXACT_PRESERVED_CURRENT_BYTES"
+    }
+  ],
+  "strict_old_regression": {
+    "exact": 130,
+    "explicit_contract_changes": 9,
+    "past_envelopes_unverified": 12
+  },
+  "old_baseline_modified": false,
+  "past_original_bytes_newly_obtained": false,
+  "past_detail_comparison": "UNVERIFIED_ALL12",
+  "new_full_CI_or_strategy_run": false,
+  "classification": "RESEARCH_ONLY"
+}

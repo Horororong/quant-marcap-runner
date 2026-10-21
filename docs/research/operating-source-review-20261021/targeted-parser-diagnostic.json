@@ -1,0 +1,52 @@
+[
+  {
+    "receipt": "20100331001972",
+    "observations": [],
+    "purpose": "DIAGNOSTIC_ONLY; not independent financial verification; no network, no publication"
+  },
+  {
+    "receipt": "20100331001977",
+    "observations": [
+      {
+        "member": "20100331001977.xml",
+        "metric": "bonds_payable",
+        "scope": "OFS",
+        "family": "BS",
+        "table": 183,
+        "row": 69,
+        "raw": "4,402,349",
+        "amount": "4402349000000",
+        "period": [
+          "",
+          "2009-12-31"
+        ],
+        "status": "PASS",
+        "region": "FILED_BODY",
+        "reason": null
+      },
+      {
+        "member": "20100331001977.xml",
+        "metric": "bonds_payable",
+        "scope": "OFS",
+        "family": "BS",
+        "table": 183,
+        "row": 70,
+        "raw": "4,200,000",
+        "amount": "4200000000000",
+        "period": [
+          "",
+          "2009-12-31"
+        ],
+        "status": "PASS",
+        "region": "FILED_BODY",
+        "reason": null
+      }
+    ],
+    "purpose": "DIAGNOSTIC_ONLY; not independent financial verification; no network, no publication"
+  },
+  {
+    "receipt": "20100331001982",
+    "observations": [],
+    "purpose": "DIAGNOSTIC_ONLY; not independent financial verification; no network, no publication"
+  }
+]

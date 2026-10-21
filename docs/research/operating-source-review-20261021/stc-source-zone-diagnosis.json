@@ -1,0 +1,87 @@
+{
+  "receipt": "20100331001972",
+  "diagnosis": "A primary CFS statement header is parsed, but preceding 연결재무제표에대한주석참조 closes the zone; subsequent primary CFS IS/CF heading does not reopen it. Original output has no such candidates. Financial absence is NOT established.",
+  "trace": [
+    {
+      "table": 58,
+      "zone": true,
+      "prefix": "",
+      "matched_zone_tokens": [],
+      "prefix_contract": null,
+      "fresh_header_contract": null
+    },
+    {
+      "table": 59,
+      "zone": false,
+      "prefix": "&cr;\"연결재무제표에대한주석참조\"연결손익계산서",
+      "matched_zone_tokens": [
+        "주석"
+      ],
+      "prefix_contract": null,
+      "fresh_header_contract": {
+        "statement": "IS",
+        "scope": "CFS",
+        "term": "22",
+        "period_start": "2009-01-01",
+        "period_end": "2009-12-31",
+        "heading": "연결손익계산서"
+      }
+    },
+    {
+      "table": 60,
+      "zone": false,
+      "prefix": "",
+      "matched_zone_tokens": [],
+      "prefix_contract": null,
+      "fresh_header_contract": null
+    },
+    {
+      "table": 61,
+      "zone": false,
+      "prefix": "&cr;\"연결재무제표에대한주석참조\"연결자본변동표",
+      "matched_zone_tokens": [
+        "주석"
+      ],
+      "prefix_contract": null,
+      "fresh_header_contract": null
+    },
+    {
+      "table": 62,
+      "zone": false,
+      "prefix": "",
+      "matched_zone_tokens": [],
+      "prefix_contract": null,
+      "fresh_header_contract": null
+    },
+    {
+      "table": 63,
+      "zone": false,
+      "prefix": "&cr;\"연결재무제표에대한주석참조\"연결현금흐름표",
+      "matched_zone_tokens": [
+        "주석"
+      ],
+      "prefix_contract": null,
+      "fresh_header_contract": {
+        "statement": "CF",
+        "scope": "CFS",
+        "term": "22",
+        "period_start": "2009-01-01",
+        "period_end": "2009-12-31",
+        "heading": "연결현금흐름표"
+      }
+    },
+    {
+      "table": 64,
+      "zone": false,
+      "prefix": "",
+      "matched_zone_tokens": [],
+      "prefix_contract": null,
+      "fresh_header_contract": null
+    }
+  ],
+  "classification": "PARSER_CONTROL_FLOW_GAP_DIAGNOSTIC_ONLY",
+  "production_code_changed": false,
+  "approved_source_owner_hashes_changed": false,
+  "financial_values_published": 0,
+  "next_fix": "Separate an ordinary see-notes sentence from entry into a note/business segment; retain statement date/current-column/unit/scope gates and regression-test original source before any reviewed parser migration."
+}

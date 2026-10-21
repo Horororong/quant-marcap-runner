@@ -1,0 +1,122 @@
+{
+  "verified_at_utc": "2026-10-21T04:21:48.309901+00:00",
+  "day_kst": "2026-10-21",
+  "executing_branch": "main",
+  "deployed_commit": "fd232d129bfa2ef01714b94890460c5ef47bdbf0",
+  "merged_PR45": true,
+  "checks": [
+    {
+      "path": ".github/workflows/backfill-dart-legacy-2000-2014.yml",
+      "integration_blob": "7ca250b4b2100ef9fe6fa00e81f3753adcf44ae2",
+      "operating_blob": "7ca250b4b2100ef9fe6fa00e81f3753adcf44ae2",
+      "equal": true
+    },
+    {
+      "path": "scripts/backfill_dart_legacy_2000_2014.py",
+      "integration_blob": "262755b223495f38090028d7cc8171e1bee28f52",
+      "operating_blob": "262755b223495f38090028d7cc8171e1bee28f52",
+      "equal": true
+    },
+    {
+      "path": "scripts/dart_http.py",
+      "integration_blob": "28ce263aef76fb0759fd94a912a73ae988fef36f",
+      "operating_blob": "28ce263aef76fb0759fd94a912a73ae988fef36f",
+      "equal": true
+    },
+    {
+      "path": "scripts/dart_service_status.py",
+      "integration_blob": "78d30ec3ec236a239456a27c7cbf456bfa947d5e",
+      "operating_blob": "78d30ec3ec236a239456a27c7cbf456bfa947d5e",
+      "equal": true
+    },
+    {
+      "path": "scripts/financial_limited_resume.py",
+      "integration_blob": "5452276493b78d7f78b96c53b8e77d86692a0614",
+      "operating_blob": "5452276493b78d7f78b96c53b8e77d86692a0614",
+      "equal": true
+    },
+    {
+      "path": "scripts/financial_rollout.py",
+      "integration_blob": "65139a20fec83b3485885505608d9159f15f812a",
+      "operating_blob": "65139a20fec83b3485885505608d9159f15f812a",
+      "equal": true
+    },
+    {
+      "path": "scripts/legacy_document_quality.py",
+      "integration_blob": "aee45ced8eecdd5436f8a5a4f59abe176d93eb27",
+      "operating_blob": "aee45ced8eecdd5436f8a5a4f59abe176d93eb27",
+      "equal": true
+    },
+    {
+      "path": "scripts/legacy_financial_fields.py",
+      "integration_blob": "4a423e133069b6e1d5bdc1eaf4d147bd74ad2def",
+      "operating_blob": "4a423e133069b6e1d5bdc1eaf4d147bd74ad2def",
+      "equal": true
+    },
+    {
+      "path": "scripts/legacy_native_financials.py",
+      "integration_blob": "e9fc24dcc55219f0b64e74204fb1cb5b054f9d1a",
+      "operating_blob": "e9fc24dcc55219f0b64e74204fb1cb5b054f9d1a",
+      "equal": true
+    },
+    {
+      "path": "tests/fixtures/legacy_filings_index_20261021.csv.gz",
+      "integration_blob": "6f4da4ad9a4671a5f38ee6c2e6e876497710ae17",
+      "operating_blob": "6f4da4ad9a4671a5f38ee6c2e6e876497710ae17",
+      "equal": true
+    },
+    {
+      "path": "tests/fixtures/limited_resume_state_20261021.json",
+      "integration_blob": "9d7c7a283e3c8589cc9e1e61caa5e54f3e658fdb",
+      "operating_blob": "9d7c7a283e3c8589cc9e1e61caa5e54f3e658fdb",
+      "equal": true
+    },
+    {
+      "path": "tests/test_dart_corp_code.py",
+      "integration_blob": "16d1dd114024ff817e90be8f96da617fe2486ddb",
+      "operating_blob": "16d1dd114024ff817e90be8f96da617fe2486ddb",
+      "equal": true
+    },
+    {
+      "path": "tests/test_financial_batch_resume.py",
+      "integration_blob": "cbde7c5a56cba403f0da43c557c7335765e04b26",
+      "operating_blob": "cbde7c5a56cba403f0da43c557c7335765e04b26",
+      "equal": true
+    },
+    {
+      "path": "tests/test_legacy_backfill_resume.py",
+      "integration_blob": "4d7c1eead7ee3f0e2097e4434047cc344ce1f06d",
+      "operating_blob": "4d7c1eead7ee3f0e2097e4434047cc344ce1f06d",
+      "equal": true
+    }
+  ],
+  "all_collector_paths_identical": true,
+  "workflow": "backfill-dart-legacy-2000-2014.yml uses main-only job and checkout ref main",
+  "gate": "ONCE_PER_KST_DAY",
+  "checkpoint": "20100331002054",
+  "checkpoint_completed": true,
+  "next_target_completed": {
+    "20100331002062": false,
+    "20100331002063": false
+  },
+  "HTTP_requests": 0,
+  "new_originals": 0,
+  "new_candidates": 0,
+  "new_duplicates": 0,
+  "stop_reason": "ONCE_PER_KST_DAY",
+  "state_unchanged": true,
+  "phase": "HOLD_FAILURE",
+  "publication": "HOLD",
+  "backtest_eligible": false,
+  "investment_PIT": "0/6",
+  "same_commit_automatic_workflow_runs": [],
+  "next_checkpoint": "20100331002054 unchanged; next pending20100331002062",
+  "budget": {
+    "executions": 2,
+    "max_executions": 3,
+    "reserved_documents": 200,
+    "max_reservations": 300,
+    "pending_reserved": 43,
+    "maximum_runs_per_kst_day": 1
+  }
+}
