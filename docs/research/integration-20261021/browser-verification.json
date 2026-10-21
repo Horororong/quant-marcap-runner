@@ -1,0 +1,288 @@
+{
+  "status": "PASS_REAL_WORKSPACE_E2E",
+  "browser": {
+    "status": "PASS_BROWSER_ACTUAL_WORKSPACE",
+    "runs": [
+      {
+        "name": "research_size_top1_2024",
+        "id": "8d66e10c6050451a9294c558b6bdb334"
+      },
+      {
+        "name": "research_momentum_top3_2020",
+        "id": "2b16191b9d1547519d26fc3bd1a2c39e"
+      },
+      {
+        "name": "research_size_deciles_2019_2020_v1",
+        "id": "2c939d7747a145e4949d610d3b06c028"
+      },
+      {
+        "name": "json_same_top1",
+        "id": "7b496084b63f4bd5990f59f9fc5df766"
+      },
+      {
+        "name": "amended_top1",
+        "id": "49a7431c6c6247ce98ee0bb37d0a3b56"
+      }
+    ],
+    "blocked_id": "c31b0ebc85d34f879c3e2d09553e42be",
+    "checks": [
+      {
+        "step": "browser_protocol_ready",
+        "status": "ok",
+        "executable": "/usr/bin/chromium",
+        "browser": {
+          "protocolVersion": "1.3",
+          "product": "Chrome/151.0.7922.173",
+          "revision": "@a96602f30358e9b5d256a0464e7e4d4bec223004",
+          "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+          "jsVersion": "15.1.206.23"
+        }
+      },
+      {
+        "step": "check",
+        "status": "ok",
+        "id": "bd3732f3a508457b9ea45fa4c3f7a345",
+        "period": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "book_start": "2024-01-01",
+          "book_end": "2024-12-31",
+          "as_of_date": "2024-12-31"
+        },
+        "fingerprint": "67b9e6ed37e42841d001ee05edc0fb2b5b9e44de172c4e17f939c3c3b2f9e8b1"
+      },
+      {
+        "step": "run",
+        "status": "ok",
+        "id": "8d66e10c6050451a9294c558b6bdb334",
+        "period": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "book_start": "2024-01-01",
+          "book_end": "2024-12-31",
+          "as_of_date": "2024-12-31"
+        },
+        "fingerprint": "67b9e6ed37e42841d001ee05edc0fb2b5b9e44de172c4e17f939c3c3b2f9e8b1",
+        "report_url": "/runs/8d66e10c6050451a9294c558b6bdb334/run/report/report_CURRENT.html"
+      },
+      {
+        "step": "example_complete",
+        "name": "research_size_top1_2024",
+        "id": "8d66e10c6050451a9294c558b6bdb334",
+        "status": "ok"
+      },
+      {
+        "step": "check",
+        "status": "ok",
+        "id": "05cbd73a140349498b651ca8625e02ce",
+        "period": {
+          "start": "2020-01-01",
+          "end": "2020-12-31",
+          "book_start": "2020-01-01",
+          "book_end": "2020-12-31",
+          "as_of_date": "2020-12-31"
+        },
+        "fingerprint": "21e178470dcd516e2318a454e5b1da6659b2aca52809e6b1f4fa28216014d05d"
+      },
+      {
+        "step": "run",
+        "status": "ok",
+        "id": "2b16191b9d1547519d26fc3bd1a2c39e",
+        "period": {
+          "start": "2020-01-01",
+          "end": "2020-12-31",
+          "book_start": "2020-01-01",
+          "book_end": "2020-12-31",
+          "as_of_date": "2020-12-31"
+        },
+        "fingerprint": "21e178470dcd516e2318a454e5b1da6659b2aca52809e6b1f4fa28216014d05d",
+        "report_url": "/runs/2b16191b9d1547519d26fc3bd1a2c39e/run/report/report_CURRENT.html"
+      },
+      {
+        "step": "example_complete",
+        "name": "research_momentum_top3_2020",
+        "id": "2b16191b9d1547519d26fc3bd1a2c39e",
+        "status": "ok"
+      },
+      {
+        "step": "check",
+        "status": "ok",
+        "id": "29fba6e4b4814e19b1623ee03dd9afac",
+        "period": {
+          "start": "2019-01-01",
+          "end": "2020-12-31",
+          "book_start": "2019-01-01",
+          "book_end": "2020-12-31",
+          "as_of_date": "2020-12-31"
+        },
+        "fingerprint": "1633bed674e7c31c6beaeadc013b766a6036a7ceb98edc19bcef9d7dce09137c"
+      },
+      {
+        "step": "run",
+        "status": "ok",
+        "id": "2c939d7747a145e4949d610d3b06c028",
+        "period": {
+          "start": "2019-01-01",
+          "end": "2020-12-31",
+          "book_start": "2019-01-01",
+          "book_end": "2020-12-31",
+          "as_of_date": "2020-12-31"
+        },
+        "fingerprint": "1633bed674e7c31c6beaeadc013b766a6036a7ceb98edc19bcef9d7dce09137c",
+        "report_url": "/runs/2c939d7747a145e4949d610d3b06c028/run/report/report_CURRENT.html"
+      },
+      {
+        "step": "example_complete",
+        "name": "research_size_deciles_2019_2020_v1",
+        "id": "2c939d7747a145e4949d610d3b06c028",
+        "status": "ok"
+      },
+      {
+        "step": "check",
+        "status": "ok",
+        "id": "4ecbea61344848e6bb682c400a41c1e1",
+        "period": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "book_start": "2024-01-01",
+          "book_end": "2024-12-31",
+          "as_of_date": "2024-12-31"
+        },
+        "fingerprint": "67b9e6ed37e42841d001ee05edc0fb2b5b9e44de172c4e17f939c3c3b2f9e8b1"
+      },
+      {
+        "step": "run",
+        "status": "ok",
+        "id": "7b496084b63f4bd5990f59f9fc5df766",
+        "period": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "book_start": "2024-01-01",
+          "book_end": "2024-12-31",
+          "as_of_date": "2024-12-31"
+        },
+        "fingerprint": "67b9e6ed37e42841d001ee05edc0fb2b5b9e44de172c4e17f939c3c3b2f9e8b1",
+        "report_url": "/runs/7b496084b63f4bd5990f59f9fc5df766/run/report/report_CURRENT.html"
+      },
+      {
+        "step": "check",
+        "status": "ok",
+        "id": "6fc71bf76f9840b5bde0740fac44fb29",
+        "period": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "book_start": "2024-01-01",
+          "book_end": "2024-12-31",
+          "as_of_date": "2024-12-31"
+        },
+        "fingerprint": "3c2f2bde573963b35f66b369f4288d3cef1ff7fdb4e9c583fd24c860fa030484"
+      },
+      {
+        "step": "run",
+        "status": "ok",
+        "id": "49a7431c6c6247ce98ee0bb37d0a3b56",
+        "period": {
+          "start": "2024-01-01",
+          "end": "2024-12-31",
+          "book_start": "2024-01-01",
+          "book_end": "2024-12-31",
+          "as_of_date": "2024-12-31"
+        },
+        "fingerprint": "3c2f2bde573963b35f66b369f4288d3cef1ff7fdb4e9c583fd24c860fa030484",
+        "report_url": "/runs/49a7431c6c6247ce98ee0bb37d0a3b56/run/report/report_CURRENT.html"
+      },
+      {
+        "step": "saved_reload_json_amend_compare",
+        "status": "ok"
+      },
+      {
+        "step": "unsupported_rejected",
+        "status": "ok"
+      },
+      {
+        "step": "check",
+        "status": "data_gap",
+        "id": "c31b0ebc85d34f879c3e2d09553e42be",
+        "period": {
+          "start": "2019-01-01",
+          "end": "2025-12-31",
+          "book_start": "2019-01-01",
+          "book_end": "2025-12-31",
+          "as_of_date": "2025-12-31"
+        },
+        "fingerprint": "c7c5193e70ad97ac85dc14194b2bf4679996553f78a9fa8727c69c70490237f6"
+      },
+      {
+        "step": "run",
+        "status": "data_gap",
+        "id": "69e0cc3464fe424c80b750f2bb8bad42",
+        "period": {
+          "start": "2019-01-01",
+          "end": "2025-12-31",
+          "book_start": "2019-01-01",
+          "book_end": "2025-12-31",
+          "as_of_date": "2025-12-31"
+        },
+        "fingerprint": "c7c5193e70ad97ac85dc14194b2bf4679996553f78a9fa8727c69c70490237f6"
+      }
+    ],
+    "errors": [],
+    "investment_approved": false
+  },
+  "equivalent_json_artifacts": {
+    "daily_nav.csv": "47888164238553907324d01f85486acf572e060d1734ab21bf28dae47d687cde",
+    "target_weights.csv": "d43f73c61b14b838548cfdcf9036d0aecc14b746b98e145de1fdd7508505906d",
+    "selections.csv": "d1a4965589726335bfdcb1f248be251520dc8e7e77a5dd7eefe15c29aeedca5c",
+    "held_return_checks.csv": "1e046242a201e20233b77a84b15794b6f701abd6ab63a94dc9d85bb24b834c43"
+  },
+  "original_nav_preserved": {
+    "research_size_top1_2024": "47888164238553907324d01f85486acf572e060d1734ab21bf28dae47d687cde",
+    "research_momentum_top3_2020": "6bef0c932b1c2b65519be01136ca9d7c6ef89519724b75eb8b0110d5fb40eb16",
+    "research_size_deciles_2019_2020_v1": "2320ebe7bef0fa27262abf8164121695cc1d0124df2f5b9131f3003109dc16cc"
+  },
+  "independent_books": {
+    "research_size_top1_2024": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 732,
+      "portfolios": 1,
+      "sessions": 244,
+      "max_nav_error": 1.1175870895385742e-08,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    },
+    "research_momentum_top3_2020": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 744,
+      "portfolios": 1,
+      "sessions": 248,
+      "max_nav_error": 3.725290298461914e-08,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    },
+    "research_size_deciles_2019_2020_v1": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 14820,
+      "portfolios": 10,
+      "sessions": 494,
+      "max_nav_error": 8.568167686462402e-08,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    },
+    "amended_top1": {
+      "status": "PASS_MODEL_ACCOUNTING",
+      "rows": 732,
+      "portfolios": 1,
+      "sessions": 244,
+      "max_nav_error": 1.1175870895385742e-08,
+      "numerical_tolerance_currency": 1e-05,
+      "scope": "raw-price independent quantity/cash validation of explicit continuous pretax model; not historical account/PIT certification",
+      "investment_approved": false
+    }
+  },
+  "cost_change": "Gross unchanged; fixed-cost Net changed; canonical engine/CURRENT only",
+  "investment_approved": false,
+  "external_model_connected": false
+}

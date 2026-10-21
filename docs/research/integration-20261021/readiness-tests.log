@@ -1,0 +1,12 @@
+test_actual_selected_future_date_is_precise (test_research_planned_readiness.PlannedReadiness.test_actual_selected_future_date_is_precise) ... ok
+test_execution_day_no_volume_does_not_move_trade (test_research_planned_readiness.PlannedReadiness.test_execution_day_no_volume_does_not_move_trade) ... ok
+test_later_pending_conflict_does_not_hide_earlier_held_return_failure (test_research_planned_readiness.PlannedReadiness.test_later_pending_conflict_does_not_hide_earlier_held_return_failure) ... ok
+test_missing_quote_remains_unknown_and_persisted_range (test_research_planned_readiness.PlannedReadiness.test_missing_quote_remains_unknown_and_persisted_range) ... ok
+test_original_population_rule_never_relaxed (test_research_planned_readiness.PlannedReadiness.test_original_population_rule_never_relaxed) ... ok
+test_unheld_discontinuity_does_not_block (test_research_planned_readiness.PlannedReadiness.test_unheld_discontinuity_does_not_block) ... ok
+test_unsupported_input_does_not_read_sources (test_research_planned_readiness.PlannedReadiness.test_unsupported_input_does_not_read_sources) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.102s
+
+OK

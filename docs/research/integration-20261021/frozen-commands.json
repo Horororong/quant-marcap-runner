@@ -1,0 +1,56 @@
+[
+  {
+    "label": "size2024",
+    "command": [
+      "/workspace/quant-restore-b5aaa7f/runtime/.venv/bin/python",
+      "-B",
+      "-I",
+      "/workspace/quant-project-full-20261020/code/scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/quant-project-full-20261020/code/config/strategies/research_size_top1_2024.json",
+      "--report-periods",
+      "/workspace/quant-project-full-20261020/code/config/reports/research_2024.json",
+      "--output-dir",
+      "/workspace/quant-integration-20261021/frozen-final/size2024"
+    ],
+    "exit_code": 0,
+    "seconds": 18.151517453999986
+  },
+  {
+    "label": "momentum2020",
+    "command": [
+      "/workspace/quant-restore-b5aaa7f/runtime/.venv/bin/python",
+      "-B",
+      "-I",
+      "/workspace/quant-project-full-20261020/code/scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/quant-project-full-20261020/code/config/strategies/research_momentum_top3_2020.json",
+      "--report-periods",
+      "/workspace/quant-project-full-20261020/code/config/reports/research_2019_2020.json",
+      "--output-dir",
+      "/workspace/quant-integration-20261021/frozen-final/momentum2020"
+    ],
+    "exit_code": 0,
+    "seconds": 23.32885127699774
+  },
+  {
+    "label": "original",
+    "command": [
+      "/workspace/quant-restore-b5aaa7f/runtime/.venv/bin/python",
+      "-B",
+      "-I",
+      "/workspace/quant-project-full-20261020/code/scripts/research_workbench.py",
+      "run",
+      "--strategy",
+      "/workspace/quant-project-full-20261020/code/config/strategies/research_size_deciles_2019_2020_v1.json",
+      "--report-periods",
+      "/workspace/quant-project-full-20261020/code/config/reports/research_2019_2020.json",
+      "--output-dir",
+      "/workspace/quant-integration-20261021/frozen-final/original"
+    ],
+    "exit_code": 0,
+    "seconds": 46.743265686000086
+  }
+]

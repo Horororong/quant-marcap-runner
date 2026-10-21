@@ -1,0 +1,21 @@
+{
+  "requirement_lock_runtime_files_changed": false,
+  "internet_pip_runs_excluded": [
+    39533190193,
+    39533190291
+  ],
+  "source_owners": {
+    "scripts/legacy_native_financials.py": true,
+    "scripts/legacy_financial_fields.py": true,
+    "scripts/legacy_document_quality.py": true,
+    "scripts/backfill_dart_legacy_2000_2014.py": true,
+    "scripts/dart_http.py": true,
+    "scripts/dart_service_status.py": true
+  },
+  "runtime_verify": "/workspace/quant-development-20261020/integration-runtime-verify.json",
+  "fixed_kit_sha256": "f76f38e1c9ed9401cd3607db67100cf6211d8c96fc5dadcbda13eff940984784",
+  "promoted_internet_pip_runtime_or_kit": false,
+  "old_CI_artifacts_not_used_as_input": true,
+  "final_driver": "09674bef31c90e1be093bf29e0d383ba6db4679c",
+  "final_driver_installer": "Official pinned archive/bootstrap only, no Internet dependency resolution"
+}

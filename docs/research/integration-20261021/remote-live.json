@@ -1,0 +1,45 @@
+{
+  "now_utc": "2026-10-21T03:30:40.685772+00:00",
+  "day_kst": "2026-10-21",
+  "head": "9d000150badd662bb48813eebeb9f5ead7c756cd",
+  "pr": {
+    "number": 45,
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/pull/45",
+    "state": "open",
+    "draft": true,
+    "mergeable": true,
+    "mergeable_state": "clean"
+  },
+  "pr_head": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1",
+  "pr_base": "9d000150badd662bb48813eebeb9f5ead7c756cd",
+  "research": "1872467ae3d31f5c17617a1791b1e48ed812c11e",
+  "ops": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1",
+  "merge_base": "3e9c42a1d3e028874eefb84c958a65d23083d088",
+  "ahead": 55,
+  "behind": 89,
+  "gate": "ONCE_PER_KST_DAY",
+  "phase": "HOLD_FAILURE",
+  "checkpoint": "20100331002054",
+  "checkpoint_completed": true,
+  "attempts": [
+    {
+      "run_id": "39248507369",
+      "day_kst": "2026-10-19",
+      "reserved_documents": 100,
+      "status": "COMPLETE",
+      "stop_reason": "BATCH_COMPLETE"
+    },
+    {
+      "run_id": "39504052321",
+      "day_kst": "2026-10-21",
+      "reserved_documents": 100,
+      "status": "STOPPED",
+      "stop_reason": "RUN_WALL_BUDGET"
+    }
+  ],
+  "HTTP_collection_requests": 0,
+  "new_documents": 0,
+  "new_candidates": 0,
+  "next_daily_window_utc": "2026-10-21T15:00:00+00:00",
+  "state_changed": false
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "path": "scripts/backfill_dart_legacy_2000_2014.py",
+    "old_sha256": "ac41ca72c7f3c6f50df458c3ae7c524dde35b018e6112d03c34938040139a00d",
+    "new_sha256": "ce3ef9e0d86a2e80dd03e744f26b686ed04a73d03b552cbc5b95e9c22d495a41",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "scripts/dart_http.py",
+    "old_sha256": null,
+    "new_sha256": "f4d3584e3bd57dcdcf0bd03c5fcad47c234a49864c76c9ea19cb3ac4846ee6e5",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "scripts/financial_limited_resume.py",
+    "old_sha256": null,
+    "new_sha256": "9e22619536198d2abd453dad7db5002e62b01dfad4cb09c754fa4a6d49b3dfed",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "scripts/financial_limited_review.py",
+    "old_sha256": null,
+    "new_sha256": "aa5da2ef2692f93a83d164f925bd232a56033f4fd465673d220c142c58cfb838",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "scripts/financial_review_gate.py",
+    "old_sha256": null,
+    "new_sha256": "1f70b3b79e78425ae0117f0943595673910238f95a2b648b7ea6f09ea42d4b8e",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "scripts/financial_rollout.py",
+    "old_sha256": null,
+    "new_sha256": "49b8521b87c2187102cc578601b4449597e7aa4eb4b491a176b85025f297a57c",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "scripts/financial_rollout_transfer.py",
+    "old_sha256": null,
+    "new_sha256": "fa01b097e039be3c5be95315616d04b5b6b55195bbc8a847e99a6ee420d55366",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "scripts/financial_validation_batch.py",
+    "old_sha256": null,
+    "new_sha256": "4c59d1178fc4ea6ed604ca3d67f45cd795d252b6e1f70b8902d3e47a3016cc67",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "scripts/legacy_document_quality.py",
+    "old_sha256": "2f97ff48d181bd6e8fa1e2e39455c77b019232774881bdad813812d67e3263dd",
+    "new_sha256": "c9be4765ab971a1115cdc0991f36acb5212636ef41e98fd190416b168c21e1fb",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "scripts/legacy_native_financials.py",
+    "old_sha256": "f0992d1dee23643f43e9701740b0a20eabf7df8019c5f7bd435cc1b50945261e",
+    "new_sha256": "3cff54f28e3081a1a014e5e12ad56ed13ea36d2d16e16af7aeef0aa0dd1c2773",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "scripts/restore_pinned_financial_kit.py",
+    "old_sha256": null,
+    "new_sha256": "92e3e3603f984fbdf95d862651181cc83d35282d249bd91703cb2a8c51aab5a2",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "tests/test_dart_corp_code.py",
+    "old_sha256": "0934b6ae7832881d721cc211aea783a9bfeba6c503737890dfd1decf94448547",
+    "new_sha256": "5c48f58819eb4fcc5dcbeba18a41410a61f8e6713fca3c4f32651ffa60d1aab3",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "tests/test_financial_batch_resume.py",
+    "old_sha256": null,
+    "new_sha256": "8c480d2c244ad74ceaa662e6519a70e3bf3161a50d0305da82df8bb75a7251a9",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "tests/test_financial_limited_resume.py",
+    "old_sha256": null,
+    "new_sha256": "7cbf575b2b85712f7d11615c971d070693b8f216738edb65c3b8e2edaa0eaae2",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "tests/test_financial_rollout.py",
+    "old_sha256": null,
+    "new_sha256": "c7a8166e0f3e2ea15988539c82291bd8fcc205deaf9b242d1cb1a9638e109be4",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "tests/test_legacy_backfill_resume.py",
+    "old_sha256": "90ae400a203e2d32e29d1da2b82c47d1eeeb7b73976f4df38a69e96939e88ac1",
+    "new_sha256": "1fe07fedc8936fb0d9318c71bc9567e38e5e4e5cc6c0b041263b2e1772ca85d6",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": "config/financial_limited_resume_v1.json",
+    "old_sha256": null,
+    "new_sha256": "054ea855ecb0d83720463de4deb5696b38ce19fb7fd06a1cfc190e83ac825884",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  },
+  {
+    "path": ".github/workflows/backfill-dart-legacy-2000-2014.yml",
+    "old_sha256": "321c0cfccabf12d8fbb6f2e30c0712906f06e8277a648a3b4aa6cbf2d6b9af0e",
+    "new_sha256": "4c27d32ebffebc96c029b59e7ddd0f4b12d221c1716c7afaf225a779f538576e",
+    "source_commit": "4cb7014693f554b22151b6ea36b5f628e0ad3cd1"
+  }
+]

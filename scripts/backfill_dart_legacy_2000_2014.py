@@ -15,7 +15,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
-import requests
+try:
+    from scripts import dart_http as requests
+except ModuleNotFoundError as error:
+    if error.name != "scripts": raise
+    import dart_http as requests
 
 try:
     from scripts.legacy_financial_fields import (ALIASES, METRIC_STATEMENTS, UNIT_MULTIPLIERS, norm_account, parse_number, choose_metric)
@@ -573,16 +577,19 @@ def select_best_candidates(cands: list[dict]) -> list[dict]:
 
 def fetch_document(rcept_no: str) -> tuple[bytes, str]:
     last=None
-    for attempt in range(4):
+    for attempt in range(2):
         try:
             if RUN_CONTROL is not None:
                 RUN_CONTROL.before_request()
-            r=requests.get(f"{BASE}/document.xml",params={"crtfc_key":API_KEY,"rcept_no":rcept_no},timeout=90)
+            requests.progress("http_start",receipt=rcept_no,attempt=attempt+1)
+            r=requests.get(f"{BASE}/document.xml",params={"crtfc_key":API_KEY,"rcept_no":rcept_no},timeout=35)
+            requests.progress("http_received",receipt=rcept_no,attempt=attempt+1,http_status=r.status_code,bytes=len(r.content))
             if getattr(r, 'status_code', None) == 429:
                 raise RateLimitExceeded('HTTP429; rate limit')
             defer_http_transient(getattr(r, 'status_code', None), RUN_CONTROL, CollectionPaused)
             r.raise_for_status()
             if r.content[:2] != b"PK":
+                requests.preserve_error_response(r.content, rcept_no)
                 defer_maintenance(r.content, RUN_CONTROL, CollectionPaused)
                 txt=r.text[:500]
                 status_match = re.search(r"<status>\s*(\d+)\s*</status>", txt)
@@ -600,8 +607,9 @@ def fetch_document(rcept_no: str) -> tuple[bytes, str]:
             raise
         except (requests.Timeout, requests.ConnectionError) as e:
             last=e
-            if attempt<3:
-                time.sleep(2*(attempt+1))
+            if attempt<1:
+                requests.progress("http_retry",receipt=rcept_no,attempt=attempt+1)
+                time.sleep(2)
     # The existing four bounded communication attempts are exhausted. Preserve
     # the receipt for a later scheduled run; do not consume document-error
     # attempts or include an exception URL/API key in its status text.
@@ -638,6 +646,7 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
     try:
         blob, sha=fetch_document(rcept)
         preserve_document(blob, rcept, sha)
+        requests.progress("source_preserved",receipt=rcept,bytes=len(blob))
         all_cands=[]
         diagnostics=[]
         structural_issues=[]
@@ -650,6 +659,7 @@ def process_filing(meta: dict) -> tuple[list[dict], dict]:
                     diagnostic = inspect_member(data, n)
                     diagnostics.append(diagnostic)
                     text = data.decode(diagnostic["resolved_encoding"]) if diagnostic.get("resolved_encoding") else decode_legacy(data)
+                    requests.progress("parse_member",receipt=rcept)
                     parsed = parse_native(text)
                     financial_data_present |= parsed["financial_data_present"]
                     structural_issues.extend({"member": n, **issue} for issue in parsed["issues"])
