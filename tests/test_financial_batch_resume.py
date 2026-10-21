@@ -66,7 +66,7 @@ class Resume(unittest.TestCase):
   next((self.p/'batch/native').glob('*.zip')).write_bytes(b'corrupt')
   with self.assertRaisesRegex(ValueError,'SOURCE_HASH'):self.call(metas,resume=True)
  def test_same_day_and_three_attempt_caps_remain_closed(self):
-  c=json.loads((ROOT/limited.CONFIG).read_text());s=json.loads((ROOT/limited.STATE).read_text());now=datetime(2026,10,20,23,tzinfo=timezone.utc)
+  c=json.loads((ROOT/limited.CONFIG).read_text());s=json.loads((ROOT/'tests/fixtures/limited_resume_state_20261021.json').read_text());now=datetime(2026,10,20,23,tzinfo=timezone.utc)
   with self.assertRaisesRegex(ValueError,'ONCE_PER_KST_DAY'):limited.check_recovery_gate(c,s,now,'39504052321',2)
   later=datetime(2026,10,21,15,tzinfo=timezone.utc);limited.check_recovery_gate(c,s,later,'39504052321',2)
   s['runs'][-1]['resume_segments']=[dict(day_kst='2026-10-22')]
