@@ -9,7 +9,7 @@ on:
       suite:
         description: Research or bounded collection coordinator
         type: choice
-        options: [research, collection, integration]
+        options: [research, collection, integration, parser]
         default: research
 permissions:
   contents: read
@@ -66,6 +66,16 @@ jobs:
           "$PY" -I -m unittest discover -s scripts -p test_research_planned_readiness.py -v
           "$PY" -I -c 'import sys,runpy;sys.path.insert(0,"scripts");runpy.run_path("scripts/test_strategy_dsl_preflight.py",run_name="__main__")'
           "$PY" -I -c 'import sys,runpy;sys.path.insert(0,"scripts");runpy.run_path("scripts/test_corporate_action_preflight.py",run_name="__main__")'
+      - name: Native parser approval, protection boundaries and real interruption recovery
+        if: inputs.suite == 'parser'
+        run: |
+          PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
+          "$PY" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_native_source_boundary_repairs","test_financial_accuracy_repair","test_financial_backfill_v8","test_financial_extraction_stage3","test_financial_record_readiness","test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume","test_legacy_backfill_resume"]);r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
+          "$PY" -I scripts/check_native_source_review_evidence.py --output "$RUNNER_TEMP/parser-source-evidence.json"
+          "$PY" -I -c 'import hashlib,json;from pathlib import Path;c=json.loads(Path("config/financial_limited_resume_v1.json").read_text());assert all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==v for p,v in c["source_code_sha256"].items());print("PASS_EXPLICITLY_REVIEWED_SOURCE_OWNERS")'
+          "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");sys.argv=["scripts/export_strategy_dsl_contract.py","--check"];runpy.run_path(sys.argv[0],run_name="__main__")'
+          echo "Exact checkout: ${{ inputs.target_sha }}" >> "$GITHUB_STEP_SUMMARY"
+          cat "$RUNNER_TEMP/parser-source-evidence.json" >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -75,4 +85,5 @@ jobs:
             ${{ runner.temp }}/runtime.json
             ${{ runner.temp }}/research-workspace
             ${{ runner.temp }}/frozen-regression
+            ${{ runner.temp }}/parser-source-evidence.json
           retention-days: 90
