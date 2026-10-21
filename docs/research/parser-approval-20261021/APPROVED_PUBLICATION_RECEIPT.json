@@ -1,0 +1,80 @@
+{
+  "branch": "fix/native-source-boundaries-20261021",
+  "head": "2f5f9d16438dd4fede017a7fe325f60c21154661",
+  "base": "397d311e212765b872106b3596814a705ecb178d",
+  "commits": [
+    {
+      "commit": "b83fcab263100dd889e050cae3732d6e5d90c215",
+      "tree": "5dd6c3476d1a45daaacd03fc9b7ac15b64a207b3",
+      "changed_paths": [
+        "HANDOFF_CURRENT.md",
+        "docs/research/source-review-batch2-20261021/DELTA_MANIFEST.json",
+        "docs/research/source-review-batch2-20261021/REPORT.md",
+        "docs/research/source-review-batch2-20261021/all-48-document-review-ledger.json",
+        "docs/research/source-review-batch2-20261021/all-57-document-status.json",
+        "docs/research/source-review-batch2-20261021/all-871-candidate-decisions.json",
+        "docs/research/source-review-batch2-20261021/all-extraction-coverage-priorities.json",
+        "docs/research/source-review-batch2-20261021/candidate-review-523.json",
+        "docs/research/source-review-batch2-20261021/combined-summary.json",
+        "docs/research/source-review-batch2-20261021/deployed-runtime-gate.json",
+        "docs/research/source-review-batch2-20261021/document-source-evidence.json",
+        "docs/research/source-review-batch2-20261021/primary-table-inventory.json",
+        "docs/research/source-review-batch2-20261021/review-consistency-check.json",
+        "docs/research/source-review-batch2-20261021/source-conflicts-and-scope-limits.json",
+        "docs/research/source-review-batch2-20261021/tools/build_document_evidence.py",
+        "docs/research/source-review-batch2-20261021/tools/check_live_gate.py",
+        "docs/research/source-review-batch2-20261021/tools/deliver_v5.py",
+        "docs/research/source-review-batch2-20261021/tools/finish_batch.py",
+        "docs/research/source-review-batch2-20261021/tools/independent_inventory.py",
+        "docs/research/source-review-batch2-20261021/tools/preflight_v5.py",
+        "docs/research/source-review-batch2-20261021/tools/review_523.py",
+        "docs/research/source-review-batch2-20261021/tools/write_report.py",
+        "docs/research/source-review-batch2-20261021/unverified-23-cause-ledger.json",
+        "docs/research/source-review-batch2-20261021/v5-delivery/DELIVERY_COMPLETED.json",
+        "docs/research/source-review-batch2-20261021/v5-delivery/TRANSFER_PREFLIGHT.json",
+        "docs/research/source-review-batch2-20261021/v5-delivery/USER_APPROVAL_FOR_V5.json",
+        "docs/research/source-review-batch2-20261021/v5-delivery/download_manifest_text.json"
+      ]
+    },
+    {
+      "commit": "7c9ea5c4b333a5dfb12b63c7f703f66fcdb47be3",
+      "tree": "db9265aed4b4130e7e67693604debdd960ea38a5",
+      "changed_paths": [
+        "HANDOFF_CURRENT.md",
+        "docs/research/source-review-batch2-20261021/PUBLICATION_PENDING_APPROVAL.json",
+        "docs/research/source-review-batch2-20261021/REPORT.md"
+      ]
+    },
+    {
+      "commit": "01731c73ff3d8023d1747d5d1b11cfacad509eb0",
+      "tree": "47ca5220e74c4788d9351505de0f7618cb150f21",
+      "changed_paths": [
+        "docs/research/source-review-batch2-20261021/DELTA_MANIFEST.json"
+      ]
+    },
+    {
+      "commit": "2f5f9d16438dd4fede017a7fe325f60c21154661",
+      "tree": "d2f44f10e3e9b48be785fc75a27065cb941810d1",
+      "changed_paths": [
+        "HANDOFF_CURRENT.md",
+        "docs/research/native-source-boundary-repair-20261021/EVIDENCE_MANIFEST.json",
+        "docs/research/native-source-boundary-repair-20261021/MIGRATION_AND_TEST_STATUS.json",
+        "docs/research/native-source-boundary-repair-20261021/REPORT.md",
+        "docs/research/native-source-boundary-repair-20261021/after-tests.log",
+        "docs/research/native-source-boundary-repair-20261021/before-tests.log",
+        "docs/research/native-source-boundary-repair-20261021/focused-regression.log",
+        "docs/research/native-source-boundary-repair-20261021/live-gate.json",
+        "docs/research/native-source-boundary-repair-20261021/new-9-independent-source-controls.json",
+        "docs/research/native-source-boundary-repair-20261021/original-57-replay.json",
+        "docs/research/native-source-boundary-repair-20261021/related-suite.log",
+        "docs/research/native-source-boundary-repair-20261021/tools/audit_new_source_rows.py",
+        "docs/research/native-source-boundary-repair-20261021/tools/replay_originals.py",
+        "docs/research/native-source-boundary-repair-20261021/tools/write_handoff.py",
+        "scripts/legacy_native_financials.py",
+        "tests/test_native_source_boundary_repairs.py"
+      ]
+    }
+  ],
+  "remote_exact": true,
+  "main_changed": false
+}

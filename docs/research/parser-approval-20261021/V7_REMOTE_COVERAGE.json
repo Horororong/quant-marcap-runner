@@ -1,0 +1,102 @@
+{
+  "v7_archive_uploaded": false,
+  "remote_git_commit": "2f5f9d16438dd4fede017a7fe325f60c21154661",
+  "remote_git_delta_files": [
+    {
+      "path": "HANDOFF_CURRENT.md",
+      "sha256": "22e4d311cf5df33c383fcde7dcbaed039212c4223e17c92a636ad75925f6acff",
+      "git_blob": "1d1c1c0a3ff0365ab085a5ebffc49fe706e061b2"
+    },
+    {
+      "path": "docs/research/native-source-boundary-repair-20261021/EVIDENCE_MANIFEST.json",
+      "sha256": "dca8cd7ee6aa44344d567b51a2d756b276be7487e56c210037980af4022f2dfc",
+      "git_blob": "3d4a36eba91f78c6e1ecd6f7bfe0282e1042d7da"
+    },
+    {
+      "path": "docs/research/native-source-boundary-repair-20261021/MIGRATION_AND_TEST_STATUS.json",
+      "sha256": "28fef29c419c39daf37ef6d6e2341fbd9ca42589cd5a68a1e7e50c94727fe248",
+      "git_blob": "251fc0f2be2518655dfb5447af70e09c55c82f20"
+    },
+    {
+      "path": "docs/research/native-source-boundary-repair-20261021/REPORT.md",
+      "sha256": "ec590bd89a4dfdf7e59a3de318c3e68679f70872e614d35fe9f3b62e76cfd93a",
+      "git_blob": "42aa0c002c3ad6ba5a67ea16d17a34c1c757a685"
+    },
+    {
+      "path": "docs/research/native-source-boundary-repair-20261021/after-tests.log",
+      "sha256": "853fb1fc136d9cd38f91156e899e3ffd6529596a84c38a95d05302867399c6db",
+      "git_blob": "8942b24e2e5a1d1e419ac2f2524ad54cf3d87a94"
+    },
+    {
+      "path": "docs/research/native-source-boundary-repair-20261021/before-tests.log",
+      "sha256": "45a115ab1ec3b31cc30d4dcf46b474196d60d846158f87fa40b9fb50c1f031e1",
+      "git_blob": "9d4561dcdc24e744e2078557ae77f6c5971d3c43"
+    },
+    {
+      "path": "docs/research/native-source-boundary-repair-20261021/focused-regression.log",
+      "sha256": "fcfb9f1682b2ba563e31d34e0ecd441928a183356ee0c6f8d0a59b1e52cc6363",
+      "git_blob": "3a071d9323a5d154ac37381807164252877155c5"
+    },
+    {
+      "path": "docs/research/native-source-boundary-repair-20261021/live-gate.json",
+      "sha256": "9dd03ab4ad9bf98d34a286d6036d84bbfe9ea28c7effd604a4c42b94ab60cd9c",
+      "git_blob": "5ac6bad3f756e87384948fa97d6560ab03eb35cc"
+    },
+    {
+      "path": "docs/research/native-source-boundary-repair-20261021/new-9-independent-source-controls.json",
+      "sha256": "5a448385cc7c54f32c3ed0ff51139bb0472a1b5c22b4aa9d010ff0a3f8a1bd83",
+      "git_blob": "18c73df9f03d9fe10509433a4e7b18a7c762e376"
+    },
+    {
+      "path": "docs/research/native-source-boundary-repair-20261021/original-57-replay.json",
+      "sha256": "ebc7e911bbcccd47c2fc230999d66cbc3686c6f3b7fb475cb4959c5667d21fcf",
+      "git_blob": "c1b1e9fe4bcd63b1717b3488ad6fbe1ad19d136a"
+    },
+    {
+      "path": "docs/research/native-source-boundary-repair-20261021/related-suite.log",
+      "sha256": "222d09ba6f4ff626f205cb7e11e5042228816344029a90c0c56319a7749eafde",
+      "git_blob": "db222b8689d17be3dbaf8de9694005161a56e605"
+    },
+    {
+      "path": "docs/research/native-source-boundary-repair-20261021/tools/audit_new_source_rows.py",
+      "sha256": "0571a85b6703149d3c66a9287a9e39346447ac430a48497d8f8a78d3aa1b7547",
+      "git_blob": "9a8d0005d17ffc407c117df2ecbf5bfebc840e10"
+    },
+    {
+      "path": "docs/research/native-source-boundary-repair-20261021/tools/replay_originals.py",
+      "sha256": "48139f518a1925be7dc33a527bcf2c29ec72733410d3ced918ab51413e161512",
+      "git_blob": "83b42f19d5aea856cea201d2c25ae82d6acec7ea"
+    },
+    {
+      "path": "docs/research/native-source-boundary-repair-20261021/tools/write_handoff.py",
+      "sha256": "31f5a180803ec3800678d9494e12c8d526dd1e982e8a7d8e4321842813865353",
+      "git_blob": "114afe3a43903c04d1d7089dca25e8699dd32a83"
+    },
+    {
+      "path": "scripts/legacy_native_financials.py",
+      "sha256": "4bfb127ac05505e0543952ee8e9d90c7541c031f2751767e247845cae2ced0fb",
+      "git_blob": "d47e9faa01f3727f894b705006a754021f35caf9"
+    },
+    {
+      "path": "tests/test_native_source_boundary_repairs.py",
+      "sha256": "4e3fbb30b52d5f1e0e099479a23053dc645ae2a8b01f012aed7b6cc623133cdc",
+      "git_blob": "c967a69603e42d160418c7ca16528e528609db3d"
+    }
+  ],
+  "backup_payload_files_not_uploaded": [
+    "CODE_STATE.json",
+    "RESUME.md",
+    "code-delta.bundle",
+    "runtime-verify.json"
+  ],
+  "other_not_uploaded": [
+    "quant-parser-repair-v7-20261021-local.zip",
+    "archive.sha256",
+    "MANIFEST.json",
+    "VERIFICATION.json",
+    "FINAL_STATUS.md"
+  ],
+  "remote_tree_receipt": "APPROVED_REMOTE_READBACK.json",
+  "base_v6_code_commit_remote_as_ancestor": "01731c73ff3d8023d1747d5d1b11cfacad509eb0",
+  "scope": "Git reconstructs changed code/evidence. Complete v7 ZIP/bundle/recovery metadata is not a remote uploaded backup."
+}

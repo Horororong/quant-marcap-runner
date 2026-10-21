@@ -1,0 +1,48 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "authorization": "Current user explicitly directs renewing approval settings if new parser preserves protection conditions; no main merge or financial gate release authorized",
+  "prior_research_code": "2f5f9d16438dd4fede017a7fe325f60c21154661",
+  "reason": "Normal explicit parser identity and source hash reapproval after bounded offline source replay; prior rejection at check_gate parser_version equality, before downstream source hash check. No evidence of weakened protection contracts.",
+  "changed_config_fields": [
+    "parser_version",
+    "source_code_sha256.scripts/legacy_native_financials.py"
+  ],
+  "old_parser": "legacy-v9.2-statement-boundary-guard",
+  "new_parser": "legacy-v9.3-note-reference-token-guard",
+  "old_hash": "3cff54f28e3081a1a014e5e12ad56ed13ea36d2d16e16af7aeef0aa0dd1c2773",
+  "new_hash": "4bfb127ac05505e0543952ee8e9d90c7541c031f2751767e247845cae2ced0fb",
+  "preserved_fields": [
+    "contract",
+    "mode",
+    "max_documents_per_run",
+    "max_runs",
+    "max_total_documents",
+    "maximum_runs_per_kst_day",
+    "document_seconds",
+    "run_seconds",
+    "expires_at_utc",
+    "automatic_financial_publication",
+    "backtest_eligible",
+    "investment_PIT",
+    "first_review_required_before_schedules",
+    "legacy_v5_and_2000_collection",
+    "quarantine",
+    "source_diagnostic_version"
+  ],
+  "other_five_source_hashes_unchanged": true,
+  "prior_approval_fixture_sha256": "054ea855ecb0d83720463de4deb5696b38ce19fb7fd06a1cfc190e83ac825884",
+  "approved_scope": "Research branch reviewed9.3 source version only. No queue replay, old candidate replacement, HOLD reset or operational main rollout.",
+  "evidence": {
+    "original_documents": 57,
+    "old_candidates_preserved": 871,
+    "source_gap_unchanged": 9,
+    "new_candidates_source_controlled": 9,
+    "whole_filing_certification": false,
+    "PIT": false
+  },
+  "operating_main_config_changed": false,
+  "first_review_unchanged": true,
+  "execution_budget_unchanged": true,
+  "financial_publication": "HOLD",
+  "investment_PIT": "0/6"
+}

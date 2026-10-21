@@ -1,0 +1,27 @@
+{
+  "contract": "limited-source-observation-v1",
+  "mode": "LIMITED_OBSERVATION",
+  "max_documents_per_run": 100,
+  "max_runs": 3,
+  "max_total_documents": 300,
+  "maximum_runs_per_kst_day": 1,
+  "document_seconds": 90,
+  "run_seconds": 600,
+  "expires_at_utc": "2026-10-23T23:59:59+00:00",
+  "automatic_financial_publication": "HOLD",
+  "backtest_eligible": false,
+  "investment_PIT": "0/6",
+  "first_review_required_before_schedules": true,
+  "legacy_v5_and_2000_collection": "DISABLED",
+  "quarantine": "Document-local unsupported sources continue; service, source hash, common validation, worker, lease or publication failure stops all subsequent observations. No quarantine resets.",
+  "parser_version": "legacy-v9.2-statement-boundary-guard",
+  "source_diagnostic_version": "legacy-document-quality-v3-literal-labels",
+  "source_code_sha256": {
+    "scripts/legacy_native_financials.py": "3cff54f28e3081a1a014e5e12ad56ed13ea36d2d16e16af7aeef0aa0dd1c2773",
+    "scripts/legacy_financial_fields.py": "e2c3f1d1c821dced7fcd2a11fbb4ec74c40b0f4016f3745fbaaf7a053b228163",
+    "scripts/legacy_document_quality.py": "c9be4765ab971a1115cdc0991f36acb5212636ef41e98fd190416b168c21e1fb",
+    "scripts/backfill_dart_legacy_2000_2014.py": "ce3ef9e0d86a2e80dd03e744f26b686ed04a73d03b552cbc5b95e9c22d495a41",
+    "scripts/dart_http.py": "f4d3584e3bd57dcdcf0bd03c5fcad47c234a49864c76c9ea19cb3ac4846ee6e5",
+    "scripts/dart_service_status.py": "b05e2f5bc95bb69c62203f6b950d5fa4a955c640f797446e7834bed671140695"
+  }
+}

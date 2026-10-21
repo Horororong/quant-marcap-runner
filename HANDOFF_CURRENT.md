@@ -1,3 +1,12 @@
+## 2026-10-21 공개 전송 이행 및9.3 연구 재승인
+
+- 사용자명시승인43파일17498747bytes/2f5f9d1을 공개 fix/native-source-boundaries-20261021에 게시·원격43blob/tree/head검증PASS. manifest SHA256bab48693cc5ae3f8a88fcd566debe8aa2289c98dff86baf542dc02b53720240c,비밀값검출0/제외0. 이전 pending/rejection은 역사이며 이 exact전송은해소됐다.
+- 사용자가 보호조건을충족하면설정갱신하도록지시해 연구config parser_version9.3+native sourcehash4bfb127...만갱신,나머지제한/5hash/owner/first-review/HOLD/PIT동일. 기존2시험기대값그대로,새옛설정거부fixture는정확한2f5f9d1의9.2승인snapshot. 로컬115/115PASS.
+- 원래871=848source-rowPASS+23UV유지. 신규9source-rowPASS/PIT미검증이 중복없이더해진오프라인제안880=857PASS+23UV. 운영장부871교체없음.12→23은기존미검토에서새로상세검토한11건이며기존판정재분류0. 값별표/23ledger보존.
+- 최종불변commit의고정kit parserCI: CI_CONTRACT.json에driver/dispatch범위. 실제checkout전체SHA와run/joblog,최종GitHubcommitstatus가결과근거. 종료영수증은 /workspace/quant-parser-approval-20261021/FINAL_STATUS.md 및v8local metadata. 과거39540516627은이번9.3CI가아니다.
+- main9.2/state/금융게이트변경없음. 실제HTTP는livegate허용때만기존2건;닫혀있으면0요청. checkpoint2054완료,next2062/2063,pending43,2/3실행. 새main병합승인은없다.
+- v7 delta16개코드/증거는Git원격보존. v7ZIP/checksum/복구bundle/backupmetadata 업로드는하지않음. archive업로드로세지않는다. 상세: [게시·재승인 보고](docs/research/parser-approval-20261021/REPORT.md).
+
 ## 2026-10-21 새9.3 원문 추출 수리 — 로컬만, 운영 migration 미승인
 
 - 별도fix/native-source-boundaries-20261021, /workspace/quant-parser-repair-20261021/code에서 STC주석참조와CJnativebreak숫자 장식을 수정했다. 기본workspace01731c7/백업v1~v6는 보존했다.

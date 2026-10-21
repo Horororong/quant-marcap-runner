@@ -98,14 +98,32 @@ class ApprovalBoundary(unittest.TestCase):
         import json
         from datetime import datetime, timezone
         from scripts.financial_limited_resume import check_gate, initial
-        config = json.loads((Path(__file__).resolve().parents[1] /
-                             'config/financial_limited_resume_v1.json').read_text())
+        # This test's subject is the immutable OLD approval, not whichever
+        # parser the current reviewed configuration authorizes.
+        config = json.loads((Path(__file__).resolve().parent /
+                             'fixtures/financial_limited_resume_approved_v9_2.json').read_text())
         state = initial()
         before = json.dumps(state, sort_keys=True)
         self.assertEqual(config['parser_version'], 'legacy-v9.2-statement-boundary-guard')
         with self.assertRaisesRegex(ValueError, 'UNAPPROVED_PARSER_OR_DIAGNOSTIC_VERSION'):
             check_gate(config, state, datetime(2026, 10, 21, tzinfo=timezone.utc), 'schedule')
         self.assertEqual(json.dumps(state, sort_keys=True), before)
+
+    def test_reviewed_config_preserves_all_old_protection_limits(self):
+        import hashlib
+        import json
+        root = Path(__file__).resolve().parents[1]
+        old = json.loads((root / 'tests/fixtures/financial_limited_resume_approved_v9_2.json').read_text())
+        current = json.loads((root / 'config/financial_limited_resume_v1.json').read_text())
+        for key in old:
+            if key not in {'parser_version', 'source_code_sha256'}:
+                self.assertEqual(current[key], old[key], key)
+        self.assertEqual(set(current['source_code_sha256']), set(old['source_code_sha256']))
+        for name, pin in current['source_code_sha256'].items():
+            self.assertEqual(hashlib.sha256((root / name).read_bytes()).hexdigest(), pin, name)
+            if name != 'scripts/legacy_native_financials.py':
+                self.assertEqual(pin, old['source_code_sha256'][name], name)
+        self.assertNotEqual(current['parser_version'], old['parser_version'])
 
 
 if __name__ == '__main__':

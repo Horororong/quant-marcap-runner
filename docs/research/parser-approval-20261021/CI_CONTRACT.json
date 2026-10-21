@@ -1,0 +1,18 @@
+{
+  "driver_commit": "da7885a1afb1f0edc3a59ed0e70f7c463ef5bd9e",
+  "driver_branch": "ci/fixed-kit-restored-20261020",
+  "workflow": "test-strategy-dsl.yml",
+  "suite": "parser",
+  "target": "Final commit containing this document on fix/native-source-boundaries-20261021; exact immutable SHA passed as target_sha and asserted after checkout",
+  "fixed_kit_id": "26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd",
+  "fixed_kit_sha256": "f76f38e1c9ed9401cd3607db67100cf6211d8c96fc5dadcbda13eff940984784",
+  "internet_pip": false,
+  "checks": [
+    "115parser/protection/collection/SIGKILL recovery tests",
+    "source module hashes and880unique evidence population",
+    "generated StrategyDSL contracts"
+  ],
+  "original_full57_replay": "Reused unchanged9.3source-byte evidence; not repeated",
+  "old_browser130integration": "Unchanged; not repeated",
+  "authoritative_final_result": "GitHub Actions run/job log and commit status on exact target. Receipt saved beside /workspace/quant-parser-approval-20261021/FINAL_STATUS.md and local v8 metadata after completion."
+}
