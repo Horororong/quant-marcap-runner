@@ -9,7 +9,7 @@ on:
       suite:
         description: Research or bounded collection coordinator
         type: choice
-        options: [research, collection, integration, parser]
+        options: [research, collection, integration, parser, workspace]
         default: research
 permissions:
   contents: read
@@ -40,16 +40,22 @@ jobs:
           python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
       - name: Language and saved-result provenance contracts
-        if: inputs.suite == 'research' || inputs.suite == 'integration'
+        if: inputs.suite == 'research' || inputs.suite == 'integration' || inputs.suite == 'workspace'
         run: |
           PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
           "$PY" -I -m unittest discover -s scripts -p test_research_language.py -v
           "$PY" -I -m unittest discover -s scripts -p test_research_web.py -v
           "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");sys.argv=["scripts/export_strategy_dsl_contract.py","--check"];runpy.run_path(sys.argv[0],run_name="__main__")'
       - name: Real browser, common engine, CURRENT, independent books
-        if: inputs.suite == 'research' || inputs.suite == 'integration'
+        if: inputs.suite == 'research' || inputs.suite == 'integration' || inputs.suite == 'workspace'
         run: |
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/test_research_workspace_e2e.py --output "$RUNNER_TEMP/research-workspace"
+      - name: Named CURRENT comparison guards and browser reopen
+        if: inputs.suite == 'workspace'
+        run: |
+          PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
+          "$PY" -I -m unittest discover -s scripts -p test_saved_research_comparisons.py -v
+          "$PY" -I scripts/test_saved_comparisons_e2e.py --source-store "$RUNNER_TEMP/research-workspace/store" --source-proof "$RUNNER_TEMP/research-workspace/browser/verification.json" --output "$RUNNER_TEMP/saved-comparisons"
       - name: Original frozen inputs and130 strict files
         if: inputs.suite == 'integration'
         run: |
@@ -86,4 +92,5 @@ jobs:
             ${{ runner.temp }}/research-workspace
             ${{ runner.temp }}/frozen-regression
             ${{ runner.temp }}/parser-source-evidence.json
+            ${{ runner.temp }}/saved-comparisons
           retention-days: 90
