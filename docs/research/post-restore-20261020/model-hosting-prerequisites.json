@@ -1,0 +1,22 @@
+{
+  "credential_presence": {
+    "OPENAI_API_KEY": false,
+    "ANTHROPIC_API_KEY": false,
+    "AZURE_OPENAI_API_KEY": false
+  },
+  "SDK_presence": {
+    "openai": false,
+    "anthropic": false
+  },
+  "approved_model_budget": null,
+  "external_model_connected": false,
+  "network_install_performed": false,
+  "hosting": {
+    "bind": "127.0.0.1",
+    "port": 8765,
+    "user_authentication": false,
+    "CORS": false,
+    "local_request_header": true,
+    "external_phone_access_verified": false
+  }
+}

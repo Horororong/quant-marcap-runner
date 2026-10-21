@@ -1,0 +1,9 @@
+{
+  "target_commit": "5bb0523bb192598c51923549a21fd5a87ae87366",
+  "workflow_driver_commit": "12296994def8c6b622554bb632a6d96d3b1b93d1",
+  "workflow_branch": "ci/fixed-kit-restored-20261020",
+  "scope": "Driver checkout explicitly targets immutable target; no main change or dependency upgrade",
+  "dispatch": {
+    "status": 204
+  }
+}

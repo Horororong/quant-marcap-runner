@@ -1,0 +1,1770 @@
+{
+  "exact_files": 130,
+  "contract_exceptions": [
+    {
+      "path": "original/execution_plan.json",
+      "changes": [
+        {
+          "field": "/corporate_action_registry_version",
+          "before": "7",
+          "after": "9"
+        },
+        {
+          "field": "/dsl_machine_contract_version",
+          "before": "25",
+          "after": "30"
+        },
+        {
+          "field": "/execution_engine_version",
+          "before": "v2-16-exec-5",
+          "after": "v2-16-exec-10"
+        }
+      ]
+    },
+    {
+      "path": "original/preflight.json",
+      "changes": [
+        {
+          "field": "/contract",
+          "before": "<ABSENT>",
+          "after": {
+            "version": "2",
+            "scope": "planned positive cohorts and pending rights; no NAV/cost/drift; not investment certification",
+            "source": "annual bounded-memory reads, all historical signal cross-sections before selected-observation projection",
+            "failures": "structured facts/model/definition/capability/contract incidents; no event inference or universe exclusion",
+            "diagnostic_boundary": "A later failed order retains resolved liquidity schedule before its planned date; fallback exposures only from that date are diagnostic, never certified fills or NAV",
+            "limits": "execution liquidity/weight drift still require common engine; possible trade constraints remain warnings"
+          }
+        },
+        {
+          "field": "/control_files",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "path": "config/kr_corporate_actions.csv",
+              "bytes": 5049,
+              "sha256": "46da96743753f015780b8b2a1bfd1304137532eebd401e0e653b6462a5f1fed6"
+            },
+            {
+              "path": "config/kr_corporate_action_references.json",
+              "bytes": 648,
+              "sha256": "50ba2f70a525d6e8778cd49128b5cb4174a82885a0bae13d334f62190e07c092"
+            },
+            {
+              "path": "config/kr_corporate_action_gaps.json",
+              "bytes": 351,
+              "sha256": "6b550b783e1666c187ed52b115c429f00dbae49b80a627fadfe72209ca7398e3"
+            },
+            {
+              "path": "config/research/stock_dividends_2019_2020.json",
+              "bytes": 5440,
+              "sha256": "c09b687cdc02ae342d7d314d0627f36683eee3627ae42825f0889e6975886b4f"
+            },
+            {
+              "path": "data/indices/KOSPI.csv",
+              "bytes": 763682,
+              "sha256": "bc5a9590454b10078b6156c4ea0e92562f7b780630ab71c09ca1344fc9ed15a0"
+            }
+          ]
+        },
+        {
+          "field": "/corporate_action_audit",
+          "before": {
+            "coverage": "known evidence gaps only; historical corporate-action completeness remains unverified",
+            "policy": "shared signal selection and lag; positive planned holdings; no NAV, drift or cost calculation",
+            "selection_performed": false,
+            "known_gap_count": 0,
+            "executed_target_count": 0,
+            "exposures": []
+          },
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/explained_registered_prices",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "portfolio": "D01",
+              "security": "091990",
+              "date": "2019-12-27",
+              "basis": "official_dividend_reference",
+              "difference_bps": 0.4249084249087487
+            },
+            {
+              "portfolio": "D02",
+              "security": "091990",
+              "date": "2020-12-29",
+              "basis": "official_dividend_reference",
+              "difference_bps": 0.09021601016442893
+            },
+            {
+              "portfolio": "D08",
+              "security": "068270",
+              "date": "2020-12-29",
+              "basis": "official_dividend_reference",
+              "difference_bps": 0.3664122137414516
+            },
+            {
+              "portfolio": "D09",
+              "security": "068270",
+              "date": "2019-12-27",
+              "basis": "official_dividend_reference",
+              "difference_bps": 0.2541436464081545
+            }
+          ]
+        },
+        {
+          "field": "/first_blocker",
+          "before": "<ABSENT>",
+          "after": null
+        },
+        {
+          "field": "/full_panel_diagnostics",
+          "before": "<ABSENT>",
+          "after": "separate source audit; these incidents concern planned selected cohorts only"
+        },
+        {
+          "field": "/history_coverage/annual",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "history_audit_contract_version": "1",
+              "status": "complete",
+              "calendar": "XKRX",
+              "calendar_package_version": "4.13.2",
+              "requested_start": "2019-01-01",
+              "requested_end": "2019-12-31",
+              "expected_first_session": "2019-01-02",
+              "expected_last_session": "2019-12-30",
+              "expected_sessions": 246,
+              "markets": {
+                "KOSDAQ": {
+                  "status": "complete",
+                  "observed_sessions": 246,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                },
+                "KOSPI": {
+                  "status": "complete",
+                  "observed_sessions": 246,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                }
+              },
+              "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+            },
+            {
+              "history_audit_contract_version": "1",
+              "status": "complete",
+              "calendar": "XKRX",
+              "calendar_package_version": "4.13.2",
+              "requested_start": "2020-01-01",
+              "requested_end": "2020-12-31",
+              "expected_first_session": "2020-01-02",
+              "expected_last_session": "2020-12-30",
+              "expected_sessions": 248,
+              "markets": {
+                "KOSDAQ": {
+                  "status": "complete",
+                  "observed_sessions": 248,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                },
+                "KOSPI": {
+                  "status": "complete",
+                  "observed_sessions": 248,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                }
+              },
+              "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+            }
+          ]
+        },
+        {
+          "field": "/history_coverage/calendar",
+          "before": "XKRX",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/calendar_package_version",
+          "before": "4.13.2",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/expected_first_session",
+          "before": "2019-01-02",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/expected_last_session",
+          "before": "2020-12-30",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/expected_sessions",
+          "before": 494,
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/history_audit_contract_version",
+          "before": "1",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/markets",
+          "before": {
+            "KOSDAQ": {
+              "status": "complete",
+              "observed_sessions": 494,
+              "missing_sessions": [],
+              "unexpected_dates": []
+            },
+            "KOSPI": {
+              "status": "complete",
+              "observed_sessions": 494,
+              "missing_sessions": [],
+              "unexpected_dates": []
+            }
+          },
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/requested_end",
+          "before": "2020-12-31",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/requested_start",
+          "before": "2019-01-01",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/scope",
+          "before": "market-level session presence only; per-security history and corporate-action completeness are not certified",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage_by_year",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "history_audit_contract_version": "1",
+              "status": "complete",
+              "calendar": "XKRX",
+              "calendar_package_version": "4.13.2",
+              "requested_start": "2019-01-01",
+              "requested_end": "2019-12-31",
+              "expected_first_session": "2019-01-02",
+              "expected_last_session": "2019-12-30",
+              "expected_sessions": 246,
+              "markets": {
+                "KOSDAQ": {
+                  "status": "complete",
+                  "observed_sessions": 246,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                },
+                "KOSPI": {
+                  "status": "complete",
+                  "observed_sessions": 246,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                }
+              },
+              "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+            },
+            {
+              "history_audit_contract_version": "1",
+              "status": "complete",
+              "calendar": "XKRX",
+              "calendar_package_version": "4.13.2",
+              "requested_start": "2020-01-01",
+              "requested_end": "2020-12-31",
+              "expected_first_session": "2020-01-02",
+              "expected_last_session": "2020-12-30",
+              "expected_sessions": 248,
+              "markets": {
+                "KOSDAQ": {
+                  "status": "complete",
+                  "observed_sessions": 248,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                },
+                "KOSPI": {
+                  "status": "complete",
+                  "observed_sessions": 248,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                }
+              },
+              "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+            }
+          ]
+        },
+        {
+          "field": "/investment_approved",
+          "before": "<ABSENT>",
+          "after": false
+        },
+        {
+          "field": "/issues",
+          "before": "<ABSENT>",
+          "after": []
+        },
+        {
+          "field": "/krx_panel/distinct_codes",
+          "before": 2443,
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/krx_panel/distinct_planned_codes",
+          "before": "<ABSENT>",
+          "after": 33
+        },
+        {
+          "field": "/krx_panel/markets",
+          "before": [
+            "KOSDAQ",
+            "KOSPI"
+          ],
+          "after": [
+            "KOSPI",
+            "KOSDAQ"
+          ]
+        },
+        {
+          "field": "/observation_codes_with_verified_successors",
+          "before": "<ABSENT>",
+          "after": [
+            "000270",
+            "000660",
+            "000810",
+            "003550",
+            "005380",
+            "005490",
+            "005930",
+            "005935",
+            "006400",
+            "010950",
+            "012330",
+            "015760",
+            "017670",
+            "018260",
+            "028260",
+            "032830",
+            "033780",
+            "034730",
+            "035420",
+            "035720",
+            "036570",
+            "051900",
+            "051910",
+            "055550",
+            "066570",
+            "068270",
+            "086790",
+            "090430",
+            "091990",
+            "096770",
+            "105560",
+            "207940",
+            "251270"
+          ]
+        },
+        {
+          "field": "/observed_sessions",
+          "before": "<ABSENT>",
+          "after": 494
+        },
+        {
+          "field": "/phase",
+          "before": "ready",
+          "after": "planned_ready"
+        },
+        {
+          "field": "/planned_execution_schedule",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "portfolio": "D01",
+              "signal_date": "2019-04-30",
+              "execution_date": "2019-05-02"
+            },
+            {
+              "portfolio": "D01",
+              "signal_date": "2020-04-29",
+              "execution_date": "2020-05-04"
+            },
+            {
+              "portfolio": "D02",
+              "signal_date": "2019-04-30",
+              "execution_date": "2019-05-02"
+            },
+            {
+              "portfolio": "D02",
+              "signal_date": "2020-04-29",
+              "execution_date": "2020-05-04"
+            },
+            {
+              "portfolio": "D03",
+              "signal_date": "2019-04-30",
+              "execution_date": "2019-05-02"
+            },
+            {
+              "portfolio": "D03",
+              "signal_date": "2020-04-29",
+              "execution_date": "2020-05-04"
+            },
+            {
+              "portfolio": "D04",
+              "signal_date": "2019-04-30",
+              "execution_date": "2019-05-02"
+            },
+            {
+              "portfolio": "D04",
+              "signal_date": "2020-04-29",
+              "execution_date": "2020-05-04"
+            },
+            {
+              "portfolio": "D05",
+              "signal_date": "2019-04-30",
+              "execution_date": "2019-05-02"
+            },
+            {
+              "portfolio": "D05",
+              "signal_date": "2020-04-29",
+              "execution_date": "2020-05-04"
+            },
+            {
+              "portfolio": "D06",
+              "signal_date": "2019-04-30",
+              "execution_date": "2019-05-02"
+            },
+            {
+              "portfolio": "D06",
+              "signal_date": "2020-04-29",
+              "execution_date": "2020-05-04"
+            },
+            {
+              "portfolio": "D07",
+              "signal_date": "2019-04-30",
+              "execution_date": "2019-05-02"
+            },
+            {
+              "portfolio": "D07",
+              "signal_date": "2020-04-29",
+              "execution_date": "2020-05-04"
+            },
+            {
+              "portfolio": "D08",
+              "signal_date": "2019-04-30",
+              "execution_date": "2019-05-02"
+            },
+            {
+              "portfolio": "D08",
+              "signal_date": "2020-04-29",
+              "execution_date": "2020-05-04"
+            },
+            {
+              "portfolio": "D09",
+              "signal_date": "2019-04-30",
+              "execution_date": "2019-05-02"
+            },
+            {
+              "portfolio": "D09",
+              "signal_date": "2020-04-29",
+              "execution_date": "2020-05-04"
+            },
+            {
+              "portfolio": "D10",
+              "signal_date": "2019-04-30",
+              "execution_date": "2019-05-02"
+            },
+            {
+              "portfolio": "D10",
+              "signal_date": "2020-04-29",
+              "execution_date": "2020-05-04"
+            }
+          ]
+        },
+        {
+          "field": "/planned_portfolios",
+          "before": "<ABSENT>",
+          "after": 10
+        },
+        {
+          "field": "/planned_readiness_contract_version",
+          "before": "<ABSENT>",
+          "after": "2"
+        },
+        {
+          "field": "/planned_selected_codes",
+          "before": "<ABSENT>",
+          "after": [
+            "000270",
+            "000660",
+            "000810",
+            "003550",
+            "005380",
+            "005490",
+            "005930",
+            "005935",
+            "006400",
+            "010950",
+            "012330",
+            "015760",
+            "017670",
+            "018260",
+            "028260",
+            "032830",
+            "033780",
+            "034730",
+            "035420",
+            "035720",
+            "036570",
+            "051900",
+            "051910",
+            "055550",
+            "066570",
+            "068270",
+            "086790",
+            "090430",
+            "091990",
+            "096770",
+            "105560",
+            "207940",
+            "251270"
+          ]
+        },
+        {
+          "field": "/price_validation",
+          "before": "<ABSENT>",
+          "after": "1bp source/reference diagnostic; economic rights/cash/NAV not simulated or certified"
+        },
+        {
+          "field": "/runtime_checks_still_required",
+          "before": "<ABSENT>",
+          "after": [
+            "actual held quantities and price path",
+            "rights economic value",
+            "settled cash and costs",
+            "drift-dependent trades",
+            "unregistered events beyond this planned trace"
+          ]
+        },
+        {
+          "field": "/signal_populations",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "signal_date": "2019-04-30",
+              "eligible_count": 33,
+              "required_minimum": 10
+            },
+            {
+              "signal_date": "2020-04-29",
+              "eligible_count": 26,
+              "required_minimum": 10
+            }
+          ]
+        },
+        {
+          "field": "/source_files",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "path": "data/krx_equities/yearly/marcap-2019.parquet",
+              "bytes": 20548266,
+              "sha256": "c60efce88cf71814174b574b429d1e277b03a1add373eaf91406c692f5ae185e"
+            },
+            {
+              "path": "data/krx_equities/yearly/marcap-2020.parquet",
+              "bytes": 21987765,
+              "sha256": "b8457fa399a3801558f06264bb2a16c444d1517caf7505fc3e7c24d7c9d036fd"
+            }
+          ]
+        },
+        {
+          "field": "/versions/corporate_action_registry_version",
+          "before": "7",
+          "after": "9"
+        },
+        {
+          "field": "/versions/dsl_machine_contract_version",
+          "before": "25",
+          "after": "30"
+        },
+        {
+          "field": "/versions/execution_engine_version",
+          "before": "v2-16-exec-5",
+          "after": "v2-16-exec-10"
+        },
+        {
+          "field": "/versions/history_audit_contract_version",
+          "before": "<ABSENT>",
+          "after": "1"
+        },
+        {
+          "field": "/versions/krx_market_normalization_version",
+          "before": "<ABSENT>",
+          "after": "1"
+        },
+        {
+          "field": "/versions/performance_template_version",
+          "before": "<ABSENT>",
+          "after": "v2-18"
+        },
+        {
+          "field": "/versions/preflight_contract_version",
+          "before": "<ABSENT>",
+          "after": "3"
+        },
+        {
+          "field": "/warnings",
+          "before": "<ABSENT>",
+          "after": []
+        }
+      ]
+    },
+    {
+      "path": "size2024/execution_plan.json",
+      "changes": [
+        {
+          "field": "/corporate_action_registry_version",
+          "before": "7",
+          "after": "9"
+        },
+        {
+          "field": "/dsl_machine_contract_version",
+          "before": "25",
+          "after": "30"
+        },
+        {
+          "field": "/execution_engine_version",
+          "before": "v2-16-exec-5",
+          "after": "v2-16-exec-10"
+        }
+      ]
+    },
+    {
+      "path": "size2024/preflight.json",
+      "changes": [
+        {
+          "field": "/contract",
+          "before": "<ABSENT>",
+          "after": {
+            "version": "2",
+            "scope": "planned positive cohorts and pending rights; no NAV/cost/drift; not investment certification",
+            "source": "annual bounded-memory reads, all historical signal cross-sections before selected-observation projection",
+            "failures": "structured facts/model/definition/capability/contract incidents; no event inference or universe exclusion",
+            "diagnostic_boundary": "A later failed order retains resolved liquidity schedule before its planned date; fallback exposures only from that date are diagnostic, never certified fills or NAV",
+            "limits": "execution liquidity/weight drift still require common engine; possible trade constraints remain warnings"
+          }
+        },
+        {
+          "field": "/control_files",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "path": "config/kr_corporate_actions.csv",
+              "bytes": 5049,
+              "sha256": "46da96743753f015780b8b2a1bfd1304137532eebd401e0e653b6462a5f1fed6"
+            },
+            {
+              "path": "config/kr_corporate_action_references.json",
+              "bytes": 648,
+              "sha256": "50ba2f70a525d6e8778cd49128b5cb4174a82885a0bae13d334f62190e07c092"
+            },
+            {
+              "path": "config/kr_corporate_action_gaps.json",
+              "bytes": 351,
+              "sha256": "6b550b783e1666c187ed52b115c429f00dbae49b80a627fadfe72209ca7398e3"
+            },
+            {
+              "path": "data/indices/KOSPI.csv",
+              "bytes": 763682,
+              "sha256": "bc5a9590454b10078b6156c4ea0e92562f7b780630ab71c09ca1344fc9ed15a0"
+            }
+          ]
+        },
+        {
+          "field": "/corporate_action_audit",
+          "before": {
+            "coverage": "known evidence gaps only; historical corporate-action completeness remains unverified",
+            "policy": "shared signal selection and lag; positive planned holdings; no NAV, drift or cost calculation",
+            "selection_performed": true,
+            "known_gap_count": 1,
+            "executed_target_count": 1,
+            "exposures": []
+          },
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/explained_registered_prices",
+          "before": "<ABSENT>",
+          "after": []
+        },
+        {
+          "field": "/first_blocker",
+          "before": "<ABSENT>",
+          "after": null
+        },
+        {
+          "field": "/full_panel_diagnostics",
+          "before": "<ABSENT>",
+          "after": "separate source audit; these incidents concern planned selected cohorts only"
+        },
+        {
+          "field": "/history_coverage/annual",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "history_audit_contract_version": "1",
+              "status": "complete",
+              "calendar": "XKRX",
+              "calendar_package_version": "4.13.2",
+              "requested_start": "2024-01-01",
+              "requested_end": "2024-12-31",
+              "expected_first_session": "2024-01-02",
+              "expected_last_session": "2024-12-30",
+              "expected_sessions": 244,
+              "markets": {
+                "KOSDAQ": {
+                  "status": "complete",
+                  "observed_sessions": 244,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                },
+                "KOSPI": {
+                  "status": "complete",
+                  "observed_sessions": 244,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                }
+              },
+              "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+            }
+          ]
+        },
+        {
+          "field": "/history_coverage/calendar",
+          "before": "XKRX",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/calendar_package_version",
+          "before": "4.13.2",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/expected_first_session",
+          "before": "2024-01-02",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/expected_last_session",
+          "before": "2024-12-30",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/expected_sessions",
+          "before": 244,
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/history_audit_contract_version",
+          "before": "1",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/markets",
+          "before": {
+            "KOSDAQ": {
+              "status": "complete",
+              "observed_sessions": 244,
+              "missing_sessions": [],
+              "unexpected_dates": []
+            },
+            "KOSPI": {
+              "status": "complete",
+              "observed_sessions": 244,
+              "missing_sessions": [],
+              "unexpected_dates": []
+            }
+          },
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/requested_end",
+          "before": "2024-12-31",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/requested_start",
+          "before": "2024-01-01",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/scope",
+          "before": "market-level session presence only; per-security history and corporate-action completeness are not certified",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage_by_year",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "history_audit_contract_version": "1",
+              "status": "complete",
+              "calendar": "XKRX",
+              "calendar_package_version": "4.13.2",
+              "requested_start": "2024-01-01",
+              "requested_end": "2024-12-31",
+              "expected_first_session": "2024-01-02",
+              "expected_last_session": "2024-12-30",
+              "expected_sessions": 244,
+              "markets": {
+                "KOSDAQ": {
+                  "status": "complete",
+                  "observed_sessions": 244,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                },
+                "KOSPI": {
+                  "status": "complete",
+                  "observed_sessions": 244,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                }
+              },
+              "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+            }
+          ]
+        },
+        {
+          "field": "/investment_approved",
+          "before": "<ABSENT>",
+          "after": false
+        },
+        {
+          "field": "/issues",
+          "before": "<ABSENT>",
+          "after": []
+        },
+        {
+          "field": "/krx_panel/distinct_codes",
+          "before": 2797,
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/krx_panel/distinct_planned_codes",
+          "before": "<ABSENT>",
+          "after": 1
+        },
+        {
+          "field": "/krx_panel/markets",
+          "before": [
+            "KOSDAQ",
+            "KOSPI"
+          ],
+          "after": [
+            "KOSPI",
+            "KOSDAQ"
+          ]
+        },
+        {
+          "field": "/observation_codes_with_verified_successors",
+          "before": "<ABSENT>",
+          "after": [
+            "005930"
+          ]
+        },
+        {
+          "field": "/observed_sessions",
+          "before": "<ABSENT>",
+          "after": 244
+        },
+        {
+          "field": "/phase",
+          "before": "ready",
+          "after": "planned_ready"
+        },
+        {
+          "field": "/planned_execution_schedule",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "portfolio": "top_n",
+              "signal_date": "2024-04-30",
+              "execution_date": "2024-05-02"
+            }
+          ]
+        },
+        {
+          "field": "/planned_portfolios",
+          "before": "<ABSENT>",
+          "after": 1
+        },
+        {
+          "field": "/planned_readiness_contract_version",
+          "before": "<ABSENT>",
+          "after": "2"
+        },
+        {
+          "field": "/planned_selected_codes",
+          "before": "<ABSENT>",
+          "after": [
+            "005930"
+          ]
+        },
+        {
+          "field": "/price_validation",
+          "before": "<ABSENT>",
+          "after": "1bp source/reference diagnostic; economic rights/cash/NAV not simulated or certified"
+        },
+        {
+          "field": "/runtime_checks_still_required",
+          "before": "<ABSENT>",
+          "after": [
+            "actual held quantities and price path",
+            "rights economic value",
+            "settled cash and costs",
+            "drift-dependent trades",
+            "unregistered events beyond this planned trace"
+          ]
+        },
+        {
+          "field": "/signal_populations",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "signal_date": "2024-04-30",
+              "eligible_count": 44,
+              "required_minimum": 1
+            }
+          ]
+        },
+        {
+          "field": "/source_files",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "path": "data/krx_equities/yearly/marcap-2024.parquet",
+              "bytes": 24906850,
+              "sha256": "aa1c1f7546fd17bcc4adb997b7e02a62b0f7a41199db99ea1784c0cb5e42f329"
+            }
+          ]
+        },
+        {
+          "field": "/versions/corporate_action_registry_version",
+          "before": "7",
+          "after": "9"
+        },
+        {
+          "field": "/versions/dsl_machine_contract_version",
+          "before": "25",
+          "after": "30"
+        },
+        {
+          "field": "/versions/execution_engine_version",
+          "before": "v2-16-exec-5",
+          "after": "v2-16-exec-10"
+        },
+        {
+          "field": "/versions/history_audit_contract_version",
+          "before": "<ABSENT>",
+          "after": "1"
+        },
+        {
+          "field": "/versions/krx_market_normalization_version",
+          "before": "<ABSENT>",
+          "after": "1"
+        },
+        {
+          "field": "/versions/performance_template_version",
+          "before": "<ABSENT>",
+          "after": "v2-18"
+        },
+        {
+          "field": "/versions/preflight_contract_version",
+          "before": "<ABSENT>",
+          "after": "3"
+        },
+        {
+          "field": "/warnings",
+          "before": "<ABSENT>",
+          "after": []
+        }
+      ]
+    },
+    {
+      "path": "momentum2020/execution_plan.json",
+      "changes": [
+        {
+          "field": "/corporate_action_registry_version",
+          "before": "7",
+          "after": "9"
+        },
+        {
+          "field": "/dsl_machine_contract_version",
+          "before": "25",
+          "after": "30"
+        },
+        {
+          "field": "/execution_engine_version",
+          "before": "v2-16-exec-5",
+          "after": "v2-16-exec-10"
+        }
+      ]
+    },
+    {
+      "path": "momentum2020/preflight.json",
+      "changes": [
+        {
+          "field": "/contract",
+          "before": "<ABSENT>",
+          "after": {
+            "version": "2",
+            "scope": "planned positive cohorts and pending rights; no NAV/cost/drift; not investment certification",
+            "source": "annual bounded-memory reads, all historical signal cross-sections before selected-observation projection",
+            "failures": "structured facts/model/definition/capability/contract incidents; no event inference or universe exclusion",
+            "diagnostic_boundary": "A later failed order retains resolved liquidity schedule before its planned date; fallback exposures only from that date are diagnostic, never certified fills or NAV",
+            "limits": "execution liquidity/weight drift still require common engine; possible trade constraints remain warnings"
+          }
+        },
+        {
+          "field": "/control_files",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "path": "config/kr_corporate_actions.csv",
+              "bytes": 5049,
+              "sha256": "46da96743753f015780b8b2a1bfd1304137532eebd401e0e653b6462a5f1fed6"
+            },
+            {
+              "path": "config/kr_corporate_action_references.json",
+              "bytes": 648,
+              "sha256": "50ba2f70a525d6e8778cd49128b5cb4174a82885a0bae13d334f62190e07c092"
+            },
+            {
+              "path": "config/kr_corporate_action_gaps.json",
+              "bytes": 351,
+              "sha256": "6b550b783e1666c187ed52b115c429f00dbae49b80a627fadfe72209ca7398e3"
+            },
+            {
+              "path": "config/research/stock_dividends_2019_2020.json",
+              "bytes": 5440,
+              "sha256": "c09b687cdc02ae342d7d314d0627f36683eee3627ae42825f0889e6975886b4f"
+            },
+            {
+              "path": "data/indices/KOSPI.csv",
+              "bytes": 763682,
+              "sha256": "bc5a9590454b10078b6156c4ea0e92562f7b780630ab71c09ca1344fc9ed15a0"
+            }
+          ]
+        },
+        {
+          "field": "/corporate_action_audit",
+          "before": {
+            "coverage": "known evidence gaps only; historical corporate-action completeness remains unverified",
+            "policy": "shared signal selection and lag; positive planned holdings; no NAV, drift or cost calculation",
+            "selection_performed": false,
+            "known_gap_count": 0,
+            "executed_target_count": 0,
+            "exposures": []
+          },
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/explained_registered_prices",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "portfolio": "top_n",
+              "security": "068270",
+              "date": "2020-12-29",
+              "basis": "official_dividend_reference",
+              "difference_bps": 0.3664122137414516
+            },
+            {
+              "portfolio": "top_n",
+              "security": "091990",
+              "date": "2020-12-29",
+              "basis": "official_dividend_reference",
+              "difference_bps": 0.09021601016442893
+            }
+          ]
+        },
+        {
+          "field": "/first_blocker",
+          "before": "<ABSENT>",
+          "after": null
+        },
+        {
+          "field": "/full_panel_diagnostics",
+          "before": "<ABSENT>",
+          "after": "separate source audit; these incidents concern planned selected cohorts only"
+        },
+        {
+          "field": "/history_coverage/annual",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "history_audit_contract_version": "1",
+              "status": "complete",
+              "calendar": "XKRX",
+              "calendar_package_version": "4.13.2",
+              "requested_start": "2020-01-01",
+              "requested_end": "2020-12-31",
+              "expected_first_session": "2020-01-02",
+              "expected_last_session": "2020-12-30",
+              "expected_sessions": 248,
+              "markets": {
+                "KOSDAQ": {
+                  "status": "complete",
+                  "observed_sessions": 248,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                },
+                "KOSPI": {
+                  "status": "complete",
+                  "observed_sessions": 248,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                }
+              },
+              "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+            }
+          ]
+        },
+        {
+          "field": "/history_coverage/calendar",
+          "before": "XKRX",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/calendar_package_version",
+          "before": "4.13.2",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/expected_first_session",
+          "before": "2020-01-02",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/expected_last_session",
+          "before": "2020-12-30",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/expected_sessions",
+          "before": 248,
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/history_audit_contract_version",
+          "before": "1",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/markets",
+          "before": {
+            "KOSDAQ": {
+              "status": "complete",
+              "observed_sessions": 248,
+              "missing_sessions": [],
+              "unexpected_dates": []
+            },
+            "KOSPI": {
+              "status": "complete",
+              "observed_sessions": 248,
+              "missing_sessions": [],
+              "unexpected_dates": []
+            }
+          },
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/requested_end",
+          "before": "2020-12-31",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/requested_start",
+          "before": "2020-01-01",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage/scope",
+          "before": "market-level session presence only; per-security history and corporate-action completeness are not certified",
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/history_coverage_by_year",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "history_audit_contract_version": "1",
+              "status": "complete",
+              "calendar": "XKRX",
+              "calendar_package_version": "4.13.2",
+              "requested_start": "2020-01-01",
+              "requested_end": "2020-12-31",
+              "expected_first_session": "2020-01-02",
+              "expected_last_session": "2020-12-30",
+              "expected_sessions": 248,
+              "markets": {
+                "KOSDAQ": {
+                  "status": "complete",
+                  "observed_sessions": 248,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                },
+                "KOSPI": {
+                  "status": "complete",
+                  "observed_sessions": 248,
+                  "missing_sessions": [],
+                  "unexpected_dates": []
+                }
+              },
+              "scope": "market-level session presence only; per-security history and corporate-action completeness are not certified"
+            }
+          ]
+        },
+        {
+          "field": "/investment_approved",
+          "before": "<ABSENT>",
+          "after": false
+        },
+        {
+          "field": "/issues",
+          "before": "<ABSENT>",
+          "after": []
+        },
+        {
+          "field": "/krx_panel/distinct_codes",
+          "before": 2426,
+          "after": "<ABSENT>"
+        },
+        {
+          "field": "/krx_panel/distinct_planned_codes",
+          "before": "<ABSENT>",
+          "after": 3
+        },
+        {
+          "field": "/krx_panel/markets",
+          "before": [
+            "KOSDAQ",
+            "KOSPI"
+          ],
+          "after": [
+            "KOSPI",
+            "KOSDAQ"
+          ]
+        },
+        {
+          "field": "/observation_codes_with_verified_successors",
+          "before": "<ABSENT>",
+          "after": [
+            "036570",
+            "068270",
+            "091990"
+          ]
+        },
+        {
+          "field": "/observed_sessions",
+          "before": "<ABSENT>",
+          "after": 248
+        },
+        {
+          "field": "/phase",
+          "before": "ready",
+          "after": "planned_ready"
+        },
+        {
+          "field": "/planned_execution_schedule",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "portfolio": "top_n",
+              "signal_date": "2020-04-29",
+              "execution_date": "2020-05-04"
+            }
+          ]
+        },
+        {
+          "field": "/planned_portfolios",
+          "before": "<ABSENT>",
+          "after": 1
+        },
+        {
+          "field": "/planned_readiness_contract_version",
+          "before": "<ABSENT>",
+          "after": "2"
+        },
+        {
+          "field": "/planned_selected_codes",
+          "before": "<ABSENT>",
+          "after": [
+            "036570",
+            "068270",
+            "091990"
+          ]
+        },
+        {
+          "field": "/price_validation",
+          "before": "<ABSENT>",
+          "after": "1bp source/reference diagnostic; economic rights/cash/NAV not simulated or certified"
+        },
+        {
+          "field": "/provider_coverage",
+          "before": [
+            {
+              "source": "technical",
+              "signal_date": "2020-04-29",
+              "field": "momentum_3_1",
+              "required_sessions": 63,
+              "available_sessions": 63,
+              "ratio": 1.0,
+              "raw_ok": true
+            }
+          ],
+          "after": [
+            {
+              "source": "technical",
+              "signal_date": "2020-04-29T00:00:00.000",
+              "field": "momentum_3_1",
+              "required_sessions": 63,
+              "available_sessions": 63,
+              "ratio": 1.0,
+              "raw_ok": true
+            }
+          ]
+        },
+        {
+          "field": "/runtime_checks_still_required",
+          "before": "<ABSENT>",
+          "after": [
+            "actual held quantities and price path",
+            "rights economic value",
+            "settled cash and costs",
+            "drift-dependent trades",
+            "unregistered events beyond this planned trace"
+          ]
+        },
+        {
+          "field": "/signal_populations",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "signal_date": "2020-04-29",
+              "eligible_count": 26,
+              "required_minimum": 3
+            }
+          ]
+        },
+        {
+          "field": "/source_files",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "path": "data/krx_equities/yearly/marcap-2020.parquet",
+              "bytes": 21987765,
+              "sha256": "b8457fa399a3801558f06264bb2a16c444d1517caf7505fc3e7c24d7c9d036fd"
+            }
+          ]
+        },
+        {
+          "field": "/technical_history_files",
+          "before": "<ABSENT>",
+          "after": [
+            {
+              "path": "data/krx_equities/yearly/marcap-2018.parquet",
+              "bytes": 19948936,
+              "sha256": "8326cbb45607c5a38532aed3412d74ab08ff7b28485b9442515c40ee2960b863"
+            },
+            {
+              "path": "data/krx_equities/yearly/marcap-2019.parquet",
+              "bytes": 20548266,
+              "sha256": "c60efce88cf71814174b574b429d1e277b03a1add373eaf91406c692f5ae185e"
+            },
+            {
+              "path": "data/krx_equities/yearly/marcap-2020.parquet",
+              "bytes": 21987765,
+              "sha256": "b8457fa399a3801558f06264bb2a16c444d1517caf7505fc3e7c24d7c9d036fd"
+            }
+          ]
+        },
+        {
+          "field": "/technical_lookback",
+          "before": "<ABSENT>",
+          "after": {
+            "momentum_3_1": {
+              "required_sessions": 63,
+              "skip_sessions": 21,
+              "owner": "registered technical provider; exact original per-code window, no shortening"
+            }
+          }
+        },
+        {
+          "field": "/versions/corporate_action_registry_version",
+          "before": "7",
+          "after": "9"
+        },
+        {
+          "field": "/versions/dsl_machine_contract_version",
+          "before": "25",
+          "after": "30"
+        },
+        {
+          "field": "/versions/execution_engine_version",
+          "before": "v2-16-exec-5",
+          "after": "v2-16-exec-10"
+        },
+        {
+          "field": "/versions/history_audit_contract_version",
+          "before": "<ABSENT>",
+          "after": "1"
+        },
+        {
+          "field": "/versions/krx_market_normalization_version",
+          "before": "<ABSENT>",
+          "after": "1"
+        },
+        {
+          "field": "/versions/performance_template_version",
+          "before": "<ABSENT>",
+          "after": "v2-18"
+        },
+        {
+          "field": "/versions/preflight_contract_version",
+          "before": "<ABSENT>",
+          "after": "3"
+        },
+        {
+          "field": "/warnings",
+          "before": "<ABSENT>",
+          "after": []
+        }
+      ]
+    },
+    {
+      "path": "original/artifacts/execution_plan.json",
+      "changes": [
+        {
+          "field": "/corporate_action_registry_version",
+          "before": "7",
+          "after": "9"
+        },
+        {
+          "field": "/dsl_machine_contract_version",
+          "before": "25",
+          "after": "30"
+        },
+        {
+          "field": "/execution_engine_version",
+          "before": "v2-16-exec-5",
+          "after": "v2-16-exec-10"
+        }
+      ]
+    },
+    {
+      "path": "size2024/artifacts/execution_plan.json",
+      "changes": [
+        {
+          "field": "/corporate_action_registry_version",
+          "before": "7",
+          "after": "9"
+        },
+        {
+          "field": "/dsl_machine_contract_version",
+          "before": "25",
+          "after": "30"
+        },
+        {
+          "field": "/execution_engine_version",
+          "before": "v2-16-exec-5",
+          "after": "v2-16-exec-10"
+        }
+      ]
+    },
+    {
+      "path": "momentum2020/artifacts/execution_plan.json",
+      "changes": [
+        {
+          "field": "/corporate_action_registry_version",
+          "before": "7",
+          "after": "9"
+        },
+        {
+          "field": "/dsl_machine_contract_version",
+          "before": "25",
+          "after": "30"
+        },
+        {
+          "field": "/execution_engine_version",
+          "before": "v2-16-exec-5",
+          "after": "v2-16-exec-10"
+        }
+      ]
+    }
+  ],
+  "volatile_files": [
+    {
+      "file": "original/postprocess.log",
+      "before_sha256": "0c7dc0199ba60e1c7550885db6b8b084900cddc83afb3a4fe8db72c561aac169",
+      "after_sha256": "689ca328edcdf124fd2ec74971bcadd125ebbe035a1f50f6046a356e29b6fe20",
+      "baseline_policy": "volatile_envelope_preserved_only",
+      "original_byte_or_field_diff": "UNVERIFIED_ORIGINAL_ARTIFACT_DOWNLOAD_BLOCKED",
+      "numeric_content_allowed_to_differ": false
+    },
+    {
+      "file": "original/report/chat_manifest_CURRENT.json",
+      "before_sha256": "43162e111babfea537e877e255e66bb52d9ba19bb1e457d8ae348c5122ccce78",
+      "after_sha256": "eb81c24c42d70f8cbbcc5f771afa1f8062127afd73ea6ee2fb01848eb40ddcbe",
+      "baseline_policy": "volatile_envelope_preserved_only",
+      "original_byte_or_field_diff": "UNVERIFIED_ORIGINAL_ARTIFACT_DOWNLOAD_BLOCKED",
+      "numeric_content_allowed_to_differ": false,
+      "current_top_level_fields": [
+        "template_version",
+        "mode",
+        "requested_report_contract_version",
+        "single_source_of_truth",
+        "source_daily_csv",
+        "market_calendar",
+        "benchmark_series",
+        "readiness",
+        "periods",
+        "dashboard_payload",
+        "render_mode",
+        "dashboard_file"
+      ],
+      "risk": "Report/chat envelope contains real numerical/chart payload; cannot be assumed metadata-only. Current payload separately checked against frozen canonical CSVs."
+    },
+    {
+      "file": "original/report/report_CURRENT.html",
+      "before_sha256": "8a73e2774b6558191341de24d30c8bf62059212cce94bedeb99312da9a1336a9",
+      "after_sha256": "50e7c5498a6577f80fde8dc0011451b5fb4ba156356e74db55dd691402989816",
+      "baseline_policy": "volatile_envelope_preserved_only",
+      "original_byte_or_field_diff": "UNVERIFIED_ORIGINAL_ARTIFACT_DOWNLOAD_BLOCKED",
+      "numeric_content_allowed_to_differ": false,
+      "risk": "Report/chat envelope contains real numerical/chart payload; cannot be assumed metadata-only. Current payload separately checked against frozen canonical CSVs."
+    },
+    {
+      "file": "original/run_status.json",
+      "before_sha256": "585dc1d9cc06c87c36704999282ea9493f5579f950c742acb2f61e440d240459",
+      "after_sha256": "e6bf8db2f19205f8ab50466ead1ec4450ce617ce651edfdef2849846f9361112",
+      "baseline_policy": "volatile_envelope_preserved_only",
+      "original_byte_or_field_diff": "UNVERIFIED_ORIGINAL_ARTIFACT_DOWNLOAD_BLOCKED",
+      "numeric_content_allowed_to_differ": false,
+      "current_top_level_fields": [
+        "run_contract_version",
+        "run_id",
+        "status",
+        "phase",
+        "started_at",
+        "finished_at",
+        "strategy_id",
+        "strategy_fingerprint",
+        "versions",
+        "mode",
+        "nav_ready",
+        "report_ready",
+        "input_path",
+        "output_dir",
+        "status_file",
+        "completed_stages",
+        "outputs",
+        "artifacts",
+        "error",
+        "requested_report_contract_version",
+        "report_complete",
+        "period_readiness"
+      ]
+    },
+    {
+      "file": "momentum2020/postprocess.log",
+      "before_sha256": "d2e8426b8c60ffea8a5c71d9d32ce167ec37aec268d4d04b103a501eb0dac10d",
+      "after_sha256": "5a9f95d75fd71158016e79abaaf5c4c16f12c5429a9d910895e3b26a806202d6",
+      "baseline_policy": "volatile_envelope_preserved_only",
+      "original_byte_or_field_diff": "UNVERIFIED_ORIGINAL_ARTIFACT_DOWNLOAD_BLOCKED",
+      "numeric_content_allowed_to_differ": false
+    },
+    {
+      "file": "momentum2020/report/chat_manifest_CURRENT.json",
+      "before_sha256": "760c925504cc8015167f0459441cfd15522a2566e9f443142643d821cfbd2963",
+      "after_sha256": "dc808a7ab50537bc181ba78627b243af63637715fcd258601c3d835063f8bfa6",
+      "baseline_policy": "volatile_envelope_preserved_only",
+      "original_byte_or_field_diff": "UNVERIFIED_ORIGINAL_ARTIFACT_DOWNLOAD_BLOCKED",
+      "numeric_content_allowed_to_differ": false,
+      "current_top_level_fields": [
+        "template_version",
+        "mode",
+        "requested_report_contract_version",
+        "single_source_of_truth",
+        "source_daily_csv",
+        "market_calendar",
+        "benchmark_series",
+        "readiness",
+        "periods",
+        "dashboard_payload",
+        "render_mode",
+        "dashboard_file"
+      ],
+      "risk": "Report/chat envelope contains real numerical/chart payload; cannot be assumed metadata-only. Current payload separately checked against frozen canonical CSVs."
+    },
+    {
+      "file": "momentum2020/report/report_CURRENT.html",
+      "before_sha256": "e051dbb62e6c5b52879cb080ca627dfb5b4372f0ec7f8e1a3b773cc407cc5ecb",
+      "after_sha256": "81d300fc4b5103f0d31396fd1b7cd5cf31f5ab54105259cef806d1636d48dc45",
+      "baseline_policy": "volatile_envelope_preserved_only",
+      "original_byte_or_field_diff": "UNVERIFIED_ORIGINAL_ARTIFACT_DOWNLOAD_BLOCKED",
+      "numeric_content_allowed_to_differ": false,
+      "risk": "Report/chat envelope contains real numerical/chart payload; cannot be assumed metadata-only. Current payload separately checked against frozen canonical CSVs."
+    },
+    {
+      "file": "momentum2020/run_status.json",
+      "before_sha256": "cc119f5ac0fb6b06a69c1c4fedebea04f166bc6ec6513f6842fb7d70bb5ba168",
+      "after_sha256": "dbf3430607c2e069eab8bfff7766bdd7b6265974820d1d745188c3edcbe41c19",
+      "baseline_policy": "volatile_envelope_preserved_only",
+      "original_byte_or_field_diff": "UNVERIFIED_ORIGINAL_ARTIFACT_DOWNLOAD_BLOCKED",
+      "numeric_content_allowed_to_differ": false,
+      "current_top_level_fields": [
+        "run_contract_version",
+        "run_id",
+        "status",
+        "phase",
+        "started_at",
+        "finished_at",
+        "strategy_id",
+        "strategy_fingerprint",
+        "versions",
+        "mode",
+        "nav_ready",
+        "report_ready",
+        "input_path",
+        "output_dir",
+        "status_file",
+        "completed_stages",
+        "outputs",
+        "artifacts",
+        "error",
+        "requested_report_contract_version",
+        "report_complete",
+        "period_readiness"
+      ]
+    },
+    {
+      "file": "size2024/postprocess.log",
+      "before_sha256": "85c671f3e73530d2d8f15692df374cacd57e7697e6dee78b9da354686818e1d8",
+      "after_sha256": "8dcff20bcbdeeb3adaa153c48b7e59d8e3a25121fc9528a386927ff64392c620",
+      "baseline_policy": "volatile_envelope_preserved_only",
+      "original_byte_or_field_diff": "UNVERIFIED_ORIGINAL_ARTIFACT_DOWNLOAD_BLOCKED",
+      "numeric_content_allowed_to_differ": false
+    },
+    {
+      "file": "size2024/report/chat_manifest_CURRENT.json",
+      "before_sha256": "83e7f8d9c292ac2f8815bd49f8fad66f36fc70305090f19a464c2366dc913d07",
+      "after_sha256": "fff7414374cd1028a9c756b51dcc2281b2db5ac462b1b3972921dbba8721087e",
+      "baseline_policy": "volatile_envelope_preserved_only",
+      "original_byte_or_field_diff": "UNVERIFIED_ORIGINAL_ARTIFACT_DOWNLOAD_BLOCKED",
+      "numeric_content_allowed_to_differ": false,
+      "current_top_level_fields": [
+        "template_version",
+        "mode",
+        "requested_report_contract_version",
+        "single_source_of_truth",
+        "source_daily_csv",
+        "market_calendar",
+        "benchmark_series",
+        "readiness",
+        "periods",
+        "dashboard_payload",
+        "render_mode",
+        "dashboard_file"
+      ],
+      "risk": "Report/chat envelope contains real numerical/chart payload; cannot be assumed metadata-only. Current payload separately checked against frozen canonical CSVs."
+    },
+    {
+      "file": "size2024/report/report_CURRENT.html",
+      "before_sha256": "406d9668e5dc4372dddab5f902d5b689d16c9e7c4ecf2cee1e09d5c6d8fa07ed",
+      "after_sha256": "bef153c1685af642ce197907889ae4ee0219d62f7c79fd35d4884672b593634b",
+      "baseline_policy": "volatile_envelope_preserved_only",
+      "original_byte_or_field_diff": "UNVERIFIED_ORIGINAL_ARTIFACT_DOWNLOAD_BLOCKED",
+      "numeric_content_allowed_to_differ": false,
+      "risk": "Report/chat envelope contains real numerical/chart payload; cannot be assumed metadata-only. Current payload separately checked against frozen canonical CSVs."
+    },
+    {
+      "file": "size2024/run_status.json",
+      "before_sha256": "3a3e0b439148d0e621e01af1562ee6e7cab6cd8aaa220707db5ecfa492bb0c85",
+      "after_sha256": "d1542208c84d24556a7a35eb2ed9b63285b344685c7a85dc99734f9c3a5ae475",
+      "baseline_policy": "volatile_envelope_preserved_only",
+      "original_byte_or_field_diff": "UNVERIFIED_ORIGINAL_ARTIFACT_DOWNLOAD_BLOCKED",
+      "numeric_content_allowed_to_differ": false,
+      "current_top_level_fields": [
+        "run_contract_version",
+        "run_id",
+        "status",
+        "phase",
+        "started_at",
+        "finished_at",
+        "strategy_id",
+        "strategy_fingerprint",
+        "versions",
+        "mode",
+        "nav_ready",
+        "report_ready",
+        "input_path",
+        "output_dir",
+        "status_file",
+        "completed_stages",
+        "outputs",
+        "artifacts",
+        "error",
+        "requested_report_contract_version",
+        "report_complete",
+        "period_readiness"
+      ]
+    }
+  ],
+  "current_numeric_envelope_checks": [
+    {
+      "run": "original",
+      "HTML_report_data_matches_chat_payload": true,
+      "metrics_exact_float_comparisons": 744,
+      "longest_plot_points_exactly_match_canonical_NAV": 12187,
+      "metric_tolerance": 0,
+      "old_envelope_byte_comparison": "UNVERIFIED_ORIGINAL_ARTIFACT_UNAVAILABLE",
+      "scope": "No exemption for metric differences; canonical CSV hashes remain the frozen baseline. This is current rendered-payload consistency, not old HTML equivalence."
+    },
+    {
+      "run": "momentum2020",
+      "HTML_report_data_matches_chat_payload": true,
+      "metrics_exact_float_comparisons": 64,
+      "longest_plot_points_exactly_match_canonical_NAV": 992,
+      "metric_tolerance": 0,
+      "old_envelope_byte_comparison": "UNVERIFIED_ORIGINAL_ARTIFACT_UNAVAILABLE",
+      "scope": "No exemption for metric differences; canonical CSV hashes remain the frozen baseline. This is current rendered-payload consistency, not old HTML equivalence."
+    },
+    {
+      "run": "size2024",
+      "HTML_report_data_matches_chat_payload": true,
+      "metrics_exact_float_comparisons": 32,
+      "longest_plot_points_exactly_match_canonical_NAV": 976,
+      "metric_tolerance": 0,
+      "old_envelope_byte_comparison": "UNVERIFIED_ORIGINAL_ARTIFACT_UNAVAILABLE",
+      "scope": "No exemption for metric differences; canonical CSV hashes remain the frozen baseline. This is current rendered-payload consistency, not old HTML equivalence."
+    }
+  ],
+  "original_artifact": {
+    "id": 12118487392,
+    "run_id": 39078538435,
+    "expired": false,
+    "size_bytes": 25116458,
+    "download": "GitHub connector download succeeded to FileService, but local transfer unavailable; direct redirect tunnel403 and FileService URLError. No policy bypass.",
+    "needed": "Provide the original artifact ZIP or an approved local file transfer to compare all12 old envelopes field-by-field"
+  },
+  "no_baseline_modified": true
+}

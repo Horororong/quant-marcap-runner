@@ -1,0 +1,29 @@
+[
+  {
+    "run": "original",
+    "HTML_report_data_matches_chat_payload": true,
+    "metrics_exact_float_comparisons": 744,
+    "longest_plot_points_exactly_match_canonical_NAV": 12187,
+    "metric_tolerance": 0,
+    "old_envelope_byte_comparison": "UNVERIFIED_ORIGINAL_ARTIFACT_UNAVAILABLE",
+    "scope": "No exemption for metric differences; canonical CSV hashes remain the frozen baseline. This is current rendered-payload consistency, not old HTML equivalence."
+  },
+  {
+    "run": "momentum2020",
+    "HTML_report_data_matches_chat_payload": true,
+    "metrics_exact_float_comparisons": 64,
+    "longest_plot_points_exactly_match_canonical_NAV": 992,
+    "metric_tolerance": 0,
+    "old_envelope_byte_comparison": "UNVERIFIED_ORIGINAL_ARTIFACT_UNAVAILABLE",
+    "scope": "No exemption for metric differences; canonical CSV hashes remain the frozen baseline. This is current rendered-payload consistency, not old HTML equivalence."
+  },
+  {
+    "run": "size2024",
+    "HTML_report_data_matches_chat_payload": true,
+    "metrics_exact_float_comparisons": 32,
+    "longest_plot_points_exactly_match_canonical_NAV": 976,
+    "metric_tolerance": 0,
+    "old_envelope_byte_comparison": "UNVERIFIED_ORIGINAL_ARTIFACT_UNAVAILABLE",
+    "scope": "No exemption for metric differences; canonical CSV hashes remain the frozen baseline. This is current rendered-payload consistency, not old HTML equivalence."
+  }
+]

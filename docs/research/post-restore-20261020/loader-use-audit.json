@@ -1,0 +1,56 @@
+{
+  "definitions": [
+    {
+      "path": "scripts/krx_backtest_data.py",
+      "line": 244
+    },
+    {
+      "path": "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py",
+      "line": 621
+    },
+    {
+      "path": "scripts/quant_backtest_template_PROJECT_v2-15_CURRENT.py",
+      "line": 585
+    }
+  ],
+  "direct_call_sites": [],
+  "registered_provider": "DartValueFactorAdapter -> load_financial_raw -> snapshots -> signal-date coverage",
+  "raw_sample_path": "data/financials/full_history/dart_full_2020_FY_CFS_0e3049c20bed20cd.csv.gz",
+  "raw_columns": [
+    "rcept_no",
+    "reprt_code",
+    "bsns_year",
+    "corp_code",
+    "sj_div",
+    "sj_nm",
+    "account_id",
+    "account_nm",
+    "account_detail",
+    "thstrm_nm",
+    "thstrm_amount",
+    "frmtrm_nm",
+    "frmtrm_amount",
+    "bfefrmtrm_nm",
+    "bfefrmtrm_amount",
+    "ord",
+    "currency",
+    "_stock_code",
+    "_corp_code",
+    "_requested_year",
+    "_period",
+    "_period_end",
+    "_reprt_code",
+    "_fs_div_requested",
+    "_filing_date",
+    "_collected_at_utc",
+    "thstrm_add_amount"
+  ],
+  "identifier_columns": {
+    "_stock_code": "052770",
+    "_filing_date": "20210323",
+    "_fs_div_requested": "CFS",
+    "_period": "FY",
+    "_requested_year": "2020"
+  },
+  "financial_semantic_equivalence_certified": false
+}

@@ -1,0 +1,121 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 118928544588,
+      "run_id": 39510053377,
+      "workflow_name": "Explicit pinned-kit target validation",
+      "head_branch": "ci/fixed-kit-restored-20261020",
+      "run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/runs/39510053377",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT80f3M8AAAAbsLGTTA",
+      "head_sha": "12296994def8c6b622554bb632a6d96d3b1b93d1",
+      "url": "https://api.github.com/repos/Horororong/quant-marcap-runner/actions/jobs/118928544588",
+      "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/39510053377/job/118928544588",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-20T22:42:31Z",
+      "started_at": "2026-10-20T22:42:34Z",
+      "completed_at": "2026-10-20T22:47:46Z",
+      "name": "pinned-kit-research",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-20T22:42:34Z",
+          "completed_at": "2026-10-20T22:42:35Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-20T22:42:35Z",
+          "completed_at": "2026-10-20T22:43:13Z"
+        },
+        {
+          "name": "Record exact target",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-20T22:43:13Z",
+          "completed_at": "2026-10-20T22:43:13Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-20T22:43:13Z",
+          "completed_at": "2026-10-20T22:43:13Z"
+        },
+        {
+          "name": "Official pinned kit only; no Internet pip",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-20T22:43:13Z",
+          "completed_at": "2026-10-20T22:43:34Z"
+        },
+        {
+          "name": "Language and saved-result provenance contracts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-20T22:43:34Z",
+          "completed_at": "2026-10-20T22:43:36Z"
+        },
+        {
+          "name": "Real browser, common engine, CURRENT, independent books",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-20T22:43:36Z",
+          "completed_at": "2026-10-20T22:47:42Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-20T22:47:42Z",
+          "completed_at": "2026-10-20T22:47:44Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-20T22:47:44Z",
+          "completed_at": "2026-10-20T22:47:44Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-20T22:47:44Z",
+          "completed_at": "2026-10-20T22:47:44Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-20T22:47:44Z",
+          "completed_at": "2026-10-20T22:47:44Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/Horororong/quant-marcap-runner/check-runs/118928544588",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000001324,
+      "runner_name": "GitHub Actions 1000001324",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

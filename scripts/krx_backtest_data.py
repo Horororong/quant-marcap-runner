@@ -248,6 +248,14 @@ def load_dart_financial_rows(
     stock_codes: Optional[Iterable[str]] = None,
     repo_root: Optional[str | Path] = None,
 ) -> pd.DataFrame:
+    """Legacy raw convenience API, unused by the registered DSL engine.
+
+    This API requires canonical ``stock_code`` shards and intentionally rejects
+    the current ``_stock_code`` raw schema. Use DartValueFactorAdapter through
+    the registered provider for current DSL research; loading raw rows alone is
+    neither semantic equivalence nor PIT approval. See
+    docs/research/post-restore-20261020/FINANCIAL_LOADER.md.
+    """
     root = resolve_project_root(repo_root)
     base = root / DART_FULL_HISTORY_DIR
     if not base.exists():
