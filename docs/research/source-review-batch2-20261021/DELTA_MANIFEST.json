@@ -16,9 +16,14 @@
   "original_source_already_preserved_in": "v2 backup; original remote Git objects; reuse no new DART request",
   "files": [
     {
+      "path": "PUBLICATION_PENDING_APPROVAL.json",
+      "bytes": 900,
+      "sha256": "a42743f6410686eec327b6ea2f3f8b883a438dfa0d1e952eafdd954fa599c68b"
+    },
+    {
       "path": "REPORT.md",
-      "bytes": 11717,
-      "sha256": "5cd1a41cb68ee8551fe3a638cadc31d454aa403958264d2589488ee27bd79eef"
+      "bytes": 12371,
+      "sha256": "38d6739b435efddaa4bdf0dcfd23947cce44de6ec527c8e068acb1dafd9a6167"
     },
     {
       "path": "all-48-document-review-ledger.json",
@@ -140,5 +145,6 @@
       "bytes": 1202,
       "sha256": "f83c81f62a54e3b2633e12f70722a9c4d8aa0e63a8ed5a9b70cd0aa8700c3e87"
     }
-  ]
+  ],
+  "publication": "LOCAL_ONLY_PENDING_NEW_EXPLICIT_PUBLICATION_APPROVAL"
 }
