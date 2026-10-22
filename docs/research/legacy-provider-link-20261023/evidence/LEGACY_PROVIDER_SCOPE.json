@@ -1,0 +1,215 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "periods": [
+    {
+      "period": "FY",
+      "rows": 5202,
+      "unique_companies": 281,
+      "unique_stock_hints": 281,
+      "unique_company_stock_pairs": 281,
+      "unique_receipts": 288,
+      "unique_fields": 22,
+      "unique_field_scope_statement_identities": 5077,
+      "unique_source_version_identities": 5202,
+      "exact_duplicate_rows": 0,
+      "repeated_source_version_rows": 0,
+      "multirow_field_identity_groups": 105,
+      "conflicting_value_identity_groups": 9,
+      "parser_versions": {
+        "legacy-v5-single-amount": 5202
+      },
+      "scope_counts": {
+        "OFS": 4870,
+        "CFS": 332
+      },
+      "period_end_hints": {
+        "2009-12-01": 4541,
+        "2009-03-01": 304,
+        "2008-12-01": 103,
+        "2009-06-01": 90,
+        "2009-09-01": 84,
+        "2009-01-01": 34,
+        "2009-08-01": 20,
+        "2009-05-01": 14,
+        "2008-10-01": 12
+      },
+      "source_quality_labels": {
+        "PASS": 5202
+      },
+      "raw_four_core_receipt_scope_groups": 274,
+      "raw_four_core_stock_hints": 262,
+      "canonical_engine_eligible_stocks": 0
+    },
+    {
+      "period": "Q3",
+      "rows": 13271,
+      "unique_companies": 650,
+      "unique_stock_hints": 650,
+      "unique_company_stock_pairs": 650,
+      "unique_receipts": 683,
+      "unique_fields": 22,
+      "unique_field_scope_statement_identities": 12613,
+      "unique_source_version_identities": 13271,
+      "exact_duplicate_rows": 0,
+      "repeated_source_version_rows": 0,
+      "multirow_field_identity_groups": 626,
+      "conflicting_value_identity_groups": 44,
+      "parser_versions": {
+        "legacy-v5-single-amount": 13271
+      },
+      "scope_counts": {
+        "OFS": 11837,
+        "CFS": 1434
+      },
+      "period_end_hints": {
+        "2009-09-01": 12467,
+        "2008-12-01": 567,
+        "2009-03-01": 88,
+        "2009-06-01": 73,
+        "2009-05-01": 20,
+        "2009-07-01": 18,
+        "2008-10-01": 17,
+        "2008-11-01": 11,
+        "2009-08-01": 10
+      },
+      "source_quality_labels": {
+        "PASS": 13271
+      },
+      "raw_four_core_receipt_scope_groups": 674,
+      "raw_four_core_stock_hints": 607,
+      "canonical_engine_eligible_stocks": 0
+    }
+  ],
+  "rows_total": 18473,
+  "raw_total_companies": 694,
+  "raw_total_stock_hints": 694,
+  "source_member_columns_present": false,
+  "canonical_coverage": [
+    {
+      "year": 2009,
+      "period": "Q3",
+      "completed_codes": 0,
+      "expected_codes": 1495,
+      "ratio": 0.0,
+      "cfs_ok_codes": 0,
+      "cfs_no_data_codes": 0,
+      "ofs_fallback_terminal_codes": 0,
+      "cfs_raw_shards": 0,
+      "ofs_raw_shards": 0,
+      "raw_ok": true,
+      "signal_date": "2010-04-30 00:00:00"
+    },
+    {
+      "year": 2009,
+      "period": "FY",
+      "completed_codes": 0,
+      "expected_codes": 1495,
+      "ratio": 0.0,
+      "cfs_ok_codes": 0,
+      "cfs_no_data_codes": 0,
+      "ofs_fallback_terminal_codes": 0,
+      "cfs_raw_shards": 0,
+      "ofs_raw_shards": 0,
+      "raw_ok": true,
+      "signal_date": "2010-04-30 00:00:00"
+    }
+  ],
+  "eligible_stocks_of_expected": 0,
+  "expected_population": 1495,
+  "bulk_legacy_rows_newly_admitted": 0,
+  "existing_verified_bridge": {
+    "account_rows": 3,
+    "stocks": 1,
+    "period": "2009FY",
+    "signal": "2010-04-01",
+    "net_new_PIT_fields": 0,
+    "matching_rows_from_old_v5_dataset": 0,
+    "source": "Already attested canary records, separate from oldv5bulk and880; no double-count of prior verification"
+  },
+  "new_issuer_core_provider_queries": [
+    {
+      "stock_code_hint": "050540",
+      "corp_code": "00302078",
+      "metric": "equity",
+      "status": "UNVERIFIED",
+      "reason": "CHAIN_NOT_CLOSED_AT_SIGNAL"
+    },
+    {
+      "stock_code_hint": "050540",
+      "corp_code": "00302078",
+      "metric": "net_income",
+      "status": "UNVERIFIED",
+      "reason": "CHAIN_NOT_CLOSED_AT_SIGNAL"
+    },
+    {
+      "stock_code_hint": "050540",
+      "corp_code": "00302078",
+      "metric": "ocf",
+      "status": "UNVERIFIED",
+      "reason": "CHAIN_NOT_CLOSED_AT_SIGNAL"
+    },
+    {
+      "stock_code_hint": "050540",
+      "corp_code": "00302078",
+      "metric": "revenue",
+      "status": "UNVERIFIED",
+      "reason": "CHAIN_NOT_CLOSED_AT_SIGNAL"
+    },
+    {
+      "stock_code_hint": "078940",
+      "corp_code": "00501970",
+      "metric": "equity",
+      "status": "UNVERIFIED",
+      "reason": "CHAIN_NOT_CLOSED_AT_SIGNAL"
+    },
+    {
+      "stock_code_hint": "078940",
+      "corp_code": "00501970",
+      "metric": "net_income",
+      "status": "UNVERIFIED",
+      "reason": "CHAIN_NOT_CLOSED_AT_SIGNAL"
+    },
+    {
+      "stock_code_hint": "078940",
+      "corp_code": "00501970",
+      "metric": "ocf",
+      "status": "UNVERIFIED",
+      "reason": "CHAIN_NOT_CLOSED_AT_SIGNAL"
+    },
+    {
+      "stock_code_hint": "078940",
+      "corp_code": "00501970",
+      "metric": "revenue",
+      "status": "UNVERIFIED",
+      "reason": "CHAIN_NOT_CLOSED_AT_SIGNAL"
+    }
+  ],
+  "full_population_refusal": "2010-04-30: DART PIT source is incomplete; refusing partial-universe backtest. 2009-Q3: 0/1495 (0.00%), raw_ok=True; 2009-FY: 0/1495 (0.00%), raw_ok=True",
+  "status_ledger_changed": false,
+  "source_HTTP": 0,
+  "causes": {
+    "schema": "v5 metric/amount columns differ from canonical account-row schema; new bridge maps only source-attested concepts",
+    "identifiers": "Stock/corp hints need exact historical identity, not padding/current-name guesses",
+    "period": "Month-first v5 period_end is a hint; only original-header duration can populate current vs YTD",
+    "unit": "NormalizedKRW must not be multiplied twice; source unit/multiplier must be attested",
+    "source": "Document SHA exists but source-member/version binding is absent from v5 schema",
+    "meaning": "Confidence/source_qualityPASS is not independent financial verification; conflicting source versions remain unresolved",
+    "PIT": "No population-complete publication/correction/identity attestations; new two-issuer values return no provider input"
+  },
+  "strategy_contract": {
+    "strategy": "Existing equity universe book_to_price rank, KOSPI/KOSDAQ observed population, April2010 signal",
+    "population": 1495,
+    "period_dependencies": [
+      "2009Q3",
+      "2009FY"
+    ],
+    "required_fields": [
+      "equity_FY_instant",
+      "revenue_FY_minus_same_scope_Q3_cumulative",
+      "net_income_FY_minus_same_scope_Q3_cumulative",
+      "ocf_FY_minus_same_scope_Q3_cumulative"
+    ],
+    "eligibility": "All required source/semantic/PIT/issuer conditions; original universe, no easy-stock subset",
+    "costs_execution": "Existing DSL fixedcost and next-close; not run because input gate remains blocked"
+  }
+}

@@ -1,0 +1,12 @@
+test_attested_annual_and_ytd_have_different_canonical_columns (test_legacy_reviewed_provider_bridge.Bridge.test_attested_annual_and_ytd_have_different_canonical_columns) ... ok
+test_existing_snapshot_owner_selected_and_population_stays_blocked (test_legacy_reviewed_provider_bridge.Bridge.test_existing_snapshot_owner_selected_and_population_stays_blocked) ... ok
+test_malformed_identifier_is_not_silently_padded (test_legacy_reviewed_provider_bridge.Bridge.test_malformed_identifier_is_not_silently_padded) ... ok
+test_normalized_KRW_is_not_scaled_twice (test_legacy_reviewed_provider_bridge.Bridge.test_normalized_KRW_is_not_scaled_twice) ... ok
+test_same_day_future_and_changed_original_block (test_legacy_reviewed_provider_bridge.Bridge.test_same_day_future_and_changed_original_block) ... ok
+test_unattested_v5_confidence_never_grants_provider_input (test_legacy_reviewed_provider_bridge.Bridge.test_unattested_v5_confidence_never_grants_provider_input) ... ok
+test_unknown_period_is_never_calendar_filled (test_legacy_reviewed_provider_bridge.Bridge.test_unknown_period_is_never_calendar_filled) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.027s
+
+OK

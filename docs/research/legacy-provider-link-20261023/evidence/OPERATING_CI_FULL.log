@@ -1,0 +1,462 @@
+﻿2026-10-22T22:34:20.6735584Z Current runner version: '2.338.0'
+2026-10-22T22:34:20.6759986Z ##[group]Runner Image Provisioner
+2026-10-22T22:34:20.6761238Z Hosted Compute Agent
+2026-10-22T22:34:20.6761840Z Version: 20261012.601
+2026-10-22T22:34:20.6762459Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-22T22:34:20.6763301Z Build Date: 2026-10-12T17:48:21Z
+2026-10-22T22:34:20.6763996Z Worker ID: {87d4255d-ccf9-41d8-b892-4f7e0742d717}
+2026-10-22T22:34:20.6764814Z Region: westus2
+2026-10-22T22:34:20.6765372Z Cloud: Azure
+2026-10-22T22:34:20.6765905Z ##[endgroup]
+2026-10-22T22:34:20.6767797Z ##[group]Operating System
+2026-10-22T22:34:20.6768461Z Ubuntu
+2026-10-22T22:34:20.6769048Z 24.04.5
+2026-10-22T22:34:20.6769581Z LTS
+2026-10-22T22:34:20.6770089Z ##[endgroup]
+2026-10-22T22:34:20.6771346Z ##[group]Runner Image
+2026-10-22T22:34:20.6772017Z Image: ubuntu-24.04
+2026-10-22T22:34:20.6772663Z Version: 20261012.334.1
+2026-10-22T22:34:20.6773931Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-22T22:34:20.6775600Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-22T22:34:20.6776593Z ##[endgroup]
+2026-10-22T22:34:20.6777893Z ##[group]GITHUB_TOKEN Permissions
+2026-10-22T22:34:20.6780081Z Actions: read
+2026-10-22T22:34:20.6781075Z Contents: read
+2026-10-22T22:34:20.6781680Z Metadata: read
+2026-10-22T22:34:20.6782252Z ##[endgroup]
+2026-10-22T22:34:20.6784381Z Secret source: Actions
+2026-10-22T22:34:20.6785380Z Cache mode: write
+2026-10-22T22:34:20.6786492Z Prepare workflow directory
+2026-10-22T22:34:20.7127989Z Prepare all required actions
+2026-10-22T22:34:20.7175250Z Getting action download info
+2026-10-22T22:34:21.0628590Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-22T22:34:21.1987546Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-22T22:34:21.2755537Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-22T22:34:21.4953751Z Complete job name: pinned-kit-research
+2026-10-22T22:34:21.5901634Z ##[group]Run actions/checkout@v4
+2026-10-22T22:34:21.5902604Z with:
+2026-10-22T22:34:21.5903099Z   ref: 7f77d83bbe956c15b84172c51c8c10cdee7e75b6
+2026-10-22T22:34:21.5903765Z   repository: Horororong/quant-marcap-runner
+2026-10-22T22:34:21.5907757Z   token: ***
+2026-10-22T22:34:21.5908203Z   ssh-strict: true
+2026-10-22T22:34:21.5908649Z   ssh-user: git
+2026-10-22T22:34:21.5909102Z   persist-credentials: true
+2026-10-22T22:34:21.5909603Z   clean: true
+2026-10-22T22:34:21.5910058Z   sparse-checkout-cone-mode: true
+2026-10-22T22:34:21.5911047Z   fetch-depth: 1
+2026-10-22T22:34:21.5911502Z   fetch-tags: false
+2026-10-22T22:34:21.5911955Z   show-progress: true
+2026-10-22T22:34:21.5912420Z   lfs: false
+2026-10-22T22:34:21.5912849Z   submodules: false
+2026-10-22T22:34:21.5913310Z   set-safe-directory: true
+2026-10-22T22:34:21.5913841Z   allow-unsafe-pr-checkout: false
+2026-10-22T22:34:21.5914720Z ##[endgroup]
+2026-10-22T22:34:21.7006992Z Syncing repository: Horororong/quant-marcap-runner
+2026-10-22T22:34:21.7011223Z ##[group]Getting Git version info
+2026-10-22T22:34:21.7012566Z Working directory is '/home/runner/work/quant-marcap-runner/quant-marcap-runner'
+2026-10-22T22:34:21.7014509Z [command]/usr/bin/git version
+2026-10-22T22:34:21.7091779Z git version 2.55.0
+2026-10-22T22:34:21.7123392Z ##[endgroup]
+2026-10-22T22:34:21.7131183Z Temporarily overriding HOME='/home/runner/work/_temp/92359372-3d26-4bae-9038-c9cd12d611ee' before making global git config changes
+2026-10-22T22:34:21.7133887Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T22:34:21.7137782Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/quant-marcap-runner/quant-marcap-runner
+2026-10-22T22:34:21.7187794Z Deleting the contents of '/home/runner/work/quant-marcap-runner/quant-marcap-runner'
+2026-10-22T22:34:21.7194776Z ##[group]Initializing the repository
+2026-10-22T22:34:21.7200798Z [command]/usr/bin/git init /home/runner/work/quant-marcap-runner/quant-marcap-runner
+2026-10-22T22:34:21.7335752Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-22T22:34:21.7337789Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-22T22:34:21.7342842Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-22T22:34:21.7344795Z hint: call:
+2026-10-22T22:34:21.7345873Z hint:
+2026-10-22T22:34:21.7347277Z hint: 	git config --global init.defaultBranch <name>
+2026-10-22T22:34:21.7348676Z hint:
+2026-10-22T22:34:21.7349854Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-22T22:34:21.7352015Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-22T22:34:21.7353960Z hint:
+2026-10-22T22:34:21.7355050Z hint: 	git branch -m <name>
+2026-10-22T22:34:21.7356153Z hint:
+2026-10-22T22:34:21.7357487Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-22T22:34:21.7359832Z Initialized empty Git repository in /home/runner/work/quant-marcap-runner/quant-marcap-runner/.git/
+2026-10-22T22:34:21.7364196Z [command]/usr/bin/git remote add origin https://github.com/Horororong/quant-marcap-runner
+2026-10-22T22:34:21.7441735Z ##[endgroup]
+2026-10-22T22:34:21.7442582Z ##[group]Disabling automatic garbage collection
+2026-10-22T22:34:21.7443335Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-22T22:34:21.7483373Z ##[endgroup]
+2026-10-22T22:34:21.7485301Z ##[group]Setting up auth
+2026-10-22T22:34:21.7491697Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T22:34:21.7526865Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T22:34:21.7948630Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T22:34:21.8006992Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T22:34:21.8249894Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T22:34:21.8287651Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T22:34:21.8516066Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-22T22:34:21.8558801Z ##[endgroup]
+2026-10-22T22:34:21.8560019Z ##[group]Fetching the repository
+2026-10-22T22:34:21.8568627Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 7f77d83bbe956c15b84172c51c8c10cdee7e75b6
+2026-10-22T22:35:14.4370967Z From https://github.com/Horororong/quant-marcap-runner
+2026-10-22T22:35:14.4375372Z  * branch            7f77d83bbe956c15b84172c51c8c10cdee7e75b6 -> FETCH_HEAD
+2026-10-22T22:35:14.4378187Z ##[endgroup]
+2026-10-22T22:35:14.4379378Z ##[group]Determining the checkout info
+2026-10-22T22:35:14.4380750Z ##[endgroup]
+2026-10-22T22:35:14.4386306Z [command]/usr/bin/git sparse-checkout disable
+2026-10-22T22:35:14.4454001Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-22T22:35:14.4564185Z ##[group]Checking out the ref
+2026-10-22T22:35:14.4565103Z [command]/usr/bin/git checkout --progress --force 7f77d83bbe956c15b84172c51c8c10cdee7e75b6
+2026-10-22T22:35:15.5481174Z Updating files:  40% (707/1746)
+2026-10-22T22:35:15.6822538Z Updating files:  41% (716/1746)
+2026-10-22T22:35:15.7505909Z Updating files:  42% (734/1746)
+2026-10-22T22:35:16.2860083Z Updating files:  43% (751/1746)
+2026-10-22T22:35:16.5071208Z Updating files:  44% (769/1746)
+2026-10-22T22:35:17.5423773Z Updating files:  44% (772/1746)
+2026-10-22T22:35:17.7414683Z Updating files:  44% (784/1746)
+2026-10-22T22:35:18.5385931Z Updating files:  45% (786/1746)
+2026-10-22T22:35:18.5486372Z Updating files:  45% (793/1746)
+2026-10-22T22:35:18.6700816Z Updating files:  46% (804/1746)
+2026-10-22T22:35:18.6714211Z Updating files:  47% (821/1746)
+2026-10-22T22:35:18.6729851Z Updating files:  48% (839/1746)
+2026-10-22T22:35:18.6749899Z Updating files:  49% (856/1746)
+2026-10-22T22:35:18.6765596Z Updating files:  50% (873/1746)
+2026-10-22T22:35:18.6904001Z Updating files:  51% (891/1746)
+2026-10-22T22:35:18.6918249Z Updating files:  52% (908/1746)
+2026-10-22T22:35:18.6955285Z Updating files:  53% (926/1746)
+2026-10-22T22:35:18.6970624Z Updating files:  54% (943/1746)
+2026-10-22T22:35:18.7009937Z Updating files:  55% (961/1746)
+2026-10-22T22:35:18.7034292Z Updating files:  56% (978/1746)
+2026-10-22T22:35:18.7778115Z Updating files:  57% (996/1746)
+2026-10-22T22:35:18.7814402Z Updating files:  58% (1013/1746)
+2026-10-22T22:35:18.7828053Z Updating files:  59% (1031/1746)
+2026-10-22T22:35:18.7842537Z Updating files:  60% (1048/1746)
+2026-10-22T22:35:18.7855578Z Updating files:  61% (1066/1746)
+2026-10-22T22:35:18.7868225Z Updating files:  62% (1083/1746)
+2026-10-22T22:35:18.7880498Z Updating files:  63% (1100/1746)
+2026-10-22T22:35:18.7894359Z Updating files:  64% (1118/1746)
+2026-10-22T22:35:18.8040617Z Updating files:  65% (1135/1746)
+2026-10-22T22:35:18.8051243Z Updating files:  66% (1153/1746)
+2026-10-22T22:35:18.8062078Z Updating files:  67% (1170/1746)
+2026-10-22T22:35:18.8071061Z Updating files:  68% (1188/1746)
+2026-10-22T22:35:18.8085834Z Updating files:  69% (1205/1746)
+2026-10-22T22:35:18.8098468Z Updating files:  70% (1223/1746)
+2026-10-22T22:35:18.8136203Z Updating files:  71% (1240/1746)
+2026-10-22T22:35:18.8194087Z Updating files:  72% (1258/1746)
+2026-10-22T22:35:18.8947679Z Updating files:  73% (1275/1746)
+2026-10-22T22:35:18.9042705Z Updating files:  74% (1293/1746)
+2026-10-22T22:35:18.9165950Z Updating files:  75% (1310/1746)
+2026-10-22T22:35:18.9229861Z Updating files:  76% (1327/1746)
+2026-10-22T22:35:18.9286392Z Updating files:  77% (1345/1746)
+2026-10-22T22:35:18.9350674Z Updating files:  78% (1362/1746)
+2026-10-22T22:35:18.9366942Z Updating files:  79% (1380/1746)
+2026-10-22T22:35:18.9429357Z Updating files:  80% (1397/1746)
+2026-10-22T22:35:18.9470903Z Updating files:  81% (1415/1746)
+2026-10-22T22:35:18.9518281Z Updating files:  82% (1432/1746)
+2026-10-22T22:35:19.0183771Z Updating files:  83% (1450/1746)
+2026-10-22T22:35:19.0229194Z Updating files:  84% (1467/1746)
+2026-10-22T22:35:19.0264825Z Updating files:  85% (1485/1746)
+2026-10-22T22:35:19.0280897Z Updating files:  86% (1502/1746)
+2026-10-22T22:35:19.0296594Z Updating files:  87% (1520/1746)
+2026-10-22T22:35:19.0311147Z Updating files:  88% (1537/1746)
+2026-10-22T22:35:19.0323113Z Updating files:  89% (1554/1746)
+2026-10-22T22:35:19.0336277Z Updating files:  90% (1572/1746)
+2026-10-22T22:35:19.0351005Z Updating files:  91% (1589/1746)
+2026-10-22T22:35:19.0374923Z Updating files:  92% (1607/1746)
+2026-10-22T22:35:19.0391035Z Updating files:  93% (1624/1746)
+2026-10-22T22:35:19.0402938Z Updating files:  94% (1642/1746)
+2026-10-22T22:35:19.0418740Z Updating files:  95% (1659/1746)
+2026-10-22T22:35:19.0450505Z Updating files:  96% (1677/1746)
+2026-10-22T22:35:19.0465871Z Updating files:  97% (1694/1746)
+2026-10-22T22:35:19.0507887Z Updating files:  98% (1712/1746)
+2026-10-22T22:35:19.0518523Z Updating files:  99% (1729/1746)
+2026-10-22T22:35:19.0519111Z Updating files: 100% (1746/1746)
+2026-10-22T22:35:19.0519561Z Updating files: 100% (1746/1746), done.
+2026-10-22T22:35:19.0542305Z Note: switching to '7f77d83bbe956c15b84172c51c8c10cdee7e75b6'.
+2026-10-22T22:35:19.0542808Z 
+2026-10-22T22:35:19.0543146Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-22T22:35:19.0544032Z changes and commit them, and you can discard any commits you make in this
+2026-10-22T22:35:19.0544839Z state without impacting any branches by switching back to a branch.
+2026-10-22T22:35:19.0545593Z 
+2026-10-22T22:35:19.0545914Z If you want to create a new branch to retain commits you create, you may
+2026-10-22T22:35:19.0546443Z do so (now or later) by using -c with the switch command. Example:
+2026-10-22T22:35:19.0546695Z 
+2026-10-22T22:35:19.0546807Z   git switch -c <new-branch-name>
+2026-10-22T22:35:19.0546980Z 
+2026-10-22T22:35:19.0547076Z Or undo this operation with:
+2026-10-22T22:35:19.0547235Z 
+2026-10-22T22:35:19.0547320Z   git switch -
+2026-10-22T22:35:19.0547449Z 
+2026-10-22T22:35:19.0547674Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-22T22:35:19.0548002Z 
+2026-10-22T22:35:19.0548330Z HEAD is now at 7f77d83 fix: enforce separate finite41 source budget without resetting original history [skip ci]
+2026-10-22T22:35:19.0725395Z ##[endgroup]
+2026-10-22T22:35:19.0770459Z [command]/usr/bin/git log -1 --format=%H
+2026-10-22T22:35:19.0803516Z 7f77d83bbe956c15b84172c51c8c10cdee7e75b6
+2026-10-22T22:35:19.1023461Z ##[group]Run test "$(git rev-parse HEAD)" = "$TARGET_SHA"
+2026-10-22T22:35:19.1024219Z [36;1mtest "$(git rev-parse HEAD)" = "$TARGET_SHA"[0m
+2026-10-22T22:35:19.1024846Z [36;1mgit rev-parse HEAD > "$RUNNER_TEMP/checked-target.txt"[0m
+2026-10-22T22:35:19.1309418Z shell: /usr/bin/bash -e {0}
+2026-10-22T22:35:19.1309754Z env:
+2026-10-22T22:35:19.1310327Z   TARGET_SHA: 7f77d83bbe956c15b84172c51c8c10cdee7e75b6
+2026-10-22T22:35:19.1310736Z ##[endgroup]
+2026-10-22T22:35:19.1547949Z ##[group]Run actions/setup-python@v5
+2026-10-22T22:35:19.1548261Z with:
+2026-10-22T22:35:19.1548471Z   python-version: 3.12
+2026-10-22T22:35:19.1548705Z   check-latest: false
+2026-10-22T22:35:19.1551560Z   token: ***
+2026-10-22T22:35:19.1551796Z   update-environment: true
+2026-10-22T22:35:19.1552045Z   allow-prereleases: false
+2026-10-22T22:35:19.1552288Z   freethreaded: false
+2026-10-22T22:35:19.1552500Z ##[endgroup]
+2026-10-22T22:35:19.2856444Z ##[group]Installed versions
+2026-10-22T22:35:19.2951646Z (node:2615) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T22:35:19.2952718Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T22:35:19.2953550Z Successfully set up CPython (3.12.15)
+2026-10-22T22:35:19.2954461Z ##[endgroup]
+2026-10-22T22:35:19.3119420Z ##[group]Run if [ "supplemental" = collection ] || [ "supplemental" = trial_evidence ] || [ "supplemental" = supplemental ]; then
+2026-10-22T22:35:19.3120498Z [36;1mif [ "supplemental" = collection ] || [ "supplemental" = trial_evidence ] || [ "supplemental" = supplemental ]; then[0m
+2026-10-22T22:35:19.3121200Z [36;1m  python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"[0m
+2026-10-22T22:35:19.3121632Z [36;1melse[0m
+2026-10-22T22:35:19.3122067Z [36;1m  python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/fixed"[0m
+2026-10-22T22:35:19.3122560Z [36;1mfi[0m
+2026-10-22T22:35:19.3123129Z [36;1mpython "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"[0m
+2026-10-22T22:35:19.3124183Z [36;1m"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"[0m
+2026-10-22T22:35:19.3207583Z shell: /usr/bin/bash -e {0}
+2026-10-22T22:35:19.3207993Z env:
+2026-10-22T22:35:19.3208435Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:19.3209190Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-22T22:35:19.3209868Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:19.3210556Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:19.3210967Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:19.3211429Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-22T22:35:19.3211995Z ##[endgroup]
+2026-10-22T22:35:28.5103990Z Original pinned kit release SHA/CRC verified; no artifact download or pip
+2026-10-22T22:35:44.3349977Z {
+2026-10-22T22:35:44.3350498Z   "status": "ok",
+2026-10-22T22:35:44.3350903Z   "kit_id": "26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd",
+2026-10-22T22:35:44.3351362Z   "runtime": "cp312-linux-x86_64",
+2026-10-22T22:35:44.3351678Z   "root": "/home/runner/work/_temp/fixed/runtime",
+2026-10-22T22:35:44.3352063Z   "python": "/home/runner/work/_temp/fixed/runtime/.venv/bin/python",
+2026-10-22T22:35:44.3352486Z   "source_revision": "822c435f4b6148c2832e12370a6ccb324a9e875f"
+2026-10-22T22:35:44.3352805Z }
+2026-10-22T22:35:44.9270885Z ##[group]Run "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/check_finite_trial_artifact.py --output "$RUNNER_TEMP/trial-qualification.json"
+2026-10-22T22:35:44.9271962Z [36;1m"$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/check_finite_trial_artifact.py --output "$RUNNER_TEMP/trial-qualification.json"[0m
+2026-10-22T22:35:44.9338221Z shell: /usr/bin/bash -e {0}
+2026-10-22T22:35:44.9338475Z env:
+2026-10-22T22:35:44.9338761Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:44.9339205Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-22T22:35:44.9339647Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:44.9340041Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:44.9340664Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:44.9341044Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-22T22:35:44.9343754Z   GH_TOKEN: ***
+2026-10-22T22:35:44.9343971Z ##[endgroup]
+2026-10-22T22:35:46.6261346Z TRIAL_QUALIFICATION_JSON={"status":"PASS_REAL_TRIAL_PREREQUISITES","run_id":"39863731314","artifact_id":12462438642,"artifact_sha256":"792ebb5767cd93bae59dad33c3e1a69145d201e3b25897ac478f15b7cea01263","code_sha":"7912455f138abf3d1ce9762f8de6a67c70e5b835","after_commit":"56514a4631fc5d677af732e90b382fb5937504c6","documents":[{"receipt":"20100331002062","stock_code_hint":"050540","company_hint":"엠피씨플러스","source_sha256":"0a7159b607f83dbcc36670ed1a044829a05ee38292c8f318c571dd079956f993","zip_crc":"PASS","candidate_fields":16,"status":"PARSED_4F","HTTP_requests_including_retries":1,"retries":0,"progress_sha256":"a4687c062de5c93f70e040e53482987b5fcea3393d38fd1375f286d04ab2778f"},{"receipt":"20100331002063","stock_code_hint":"078940","company_hint":"퀀타피아","source_sha256":"f6ae15ce36e585ac9e0eb8f9caf946aa9f196ce47ec5fa67d2e36fba23aa9dc7","zip_crc":"PASS","candidate_fields":18,"status":"PARSED_4F","HTTP_requests_including_retries":1,"retries":0,"progress_sha256":"10b05ba3454a48f741fc45abfe96a58adf35f6fe7d4ad4292cbb8e6e7d2b1862"}],"HTTP_requests_including_retries":2,"retries":0,"new_originals":2,"new_candidates":34,"duplicate_receipts":0,"duplicate_candidates":0,"source_elapsed_seconds":21.709,"normal_exit":true,"checkpoint_before":"20100331002054","checkpoint_after":"20100331002063","remaining_documents":41,"original_attempts":3,"original_runs_sha256":"85707cb67719f2142fcd10a03192db57b173dd0deda70ee12d3cadf7fa7bc4cd","financial_publication":"HOLD","investment_PIT":"0/6","classification":"RESEARCH_ONLY","semantic_validation":"NOT_PERFORMED","PIT_validation":"NOT_PERFORMED"}
+2026-10-22T22:35:46.6416339Z ##[group]Run PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
+2026-10-22T22:35:46.6416811Z [36;1mPY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"[0m
+2026-10-22T22:35:46.6418445Z [36;1m"$PY" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_financial_supplemental_resume","test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume","test_dart_corp_code","test_legacy_backfill_resume"]);assert s.countTestCases()>=70;r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'[0m
+2026-10-22T22:35:46.6421110Z [36;1m"$PY" -I -c 'import hashlib,json;from pathlib import Path;c=json.loads(Path("config/financial_limited_resume_v1.json").read_text());assert all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==v for p,v in c["source_code_sha256"].items());print("PASS_UNCHANGED_APPROVED_SOURCE_OWNERS")'[0m
+2026-10-22T22:35:46.6486280Z shell: /usr/bin/bash -e {0}
+2026-10-22T22:35:46.6486527Z env:
+2026-10-22T22:35:46.6486792Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:46.6487237Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-22T22:35:46.6487667Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:46.6488057Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:46.6488447Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:46.6488837Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-22T22:35:46.6489155Z ##[endgroup]
+2026-10-22T22:35:47.2552514Z test_already_completed_or_changed_checkpoint_cannot_redownload (test_financial_supplemental_resume.Supplemental.test_already_completed_or_changed_checkpoint_cannot_redownload) ... ok
+2026-10-22T22:35:47.2561780Z test_bad_reservations_or_completed_prefix_rejected (test_financial_supplemental_resume.Supplemental.test_bad_reservations_or_completed_prefix_rejected) ... ok
+2026-10-22T22:35:47.2566492Z test_before_approval_is_rejected_even_if_day_otherwise_qualifies (test_financial_supplemental_resume.Supplemental.test_before_approval_is_rejected_even_if_day_otherwise_qualifies) ... ok
+2026-10-22T22:35:47.2575296Z test_config_rebound_and_fixed_batch_sizes_block (test_financial_supplemental_resume.Supplemental.test_config_rebound_and_fixed_batch_sizes_block) ... ok
+2026-10-22T22:35:47.2763867Z test_coordinator_death_after_lease_retains_budget_and_original_history (test_financial_supplemental_resume.Supplemental.test_coordinator_death_after_lease_retains_budget_and_original_history) ... ok
+2026-10-22T22:35:47.2771553Z test_daily_limit_shared_with_original_and_supplemental (test_financial_supplemental_resume.Supplemental.test_daily_limit_shared_with_original_and_supplemental) ... ok
+2026-10-22T22:35:47.2783434Z test_direct_nonmain_entry_rejected_before_any_api (test_financial_supplemental_resume.Supplemental.test_direct_nonmain_entry_rejected_before_any_api) ... ok
+2026-10-22T22:35:47.2791418Z test_failure_or_running_lease_blocks_automatic_retry (test_financial_supplemental_resume.Supplemental.test_failure_or_running_lease_blocks_automatic_retry) ... ok
+2026-10-22T22:35:47.2796244Z test_finite_new_window_does_not_change_original_expiry (test_financial_supplemental_resume.Supplemental.test_finite_new_window_does_not_change_original_expiry) ... ok
+2026-10-22T22:35:47.2801897Z test_first_exact_prefix_and_original_ledger_not_mutated (test_financial_supplemental_resume.Supplemental.test_first_exact_prefix_and_original_ledger_not_mutated) ... ok
+2026-10-22T22:35:47.2808655Z test_original_history_and_financial_gates_unchanged (test_financial_supplemental_resume.Supplemental.test_original_history_and_financial_gates_unchanged) ... ok
+2026-10-22T22:35:47.2813384Z test_original_three_not_reset_or_supplemental_injected (test_financial_supplemental_resume.Supplemental.test_original_three_not_reset_or_supplemental_injected) ... ok
+2026-10-22T22:35:47.2818962Z test_second_prefix_twenty_and_total_worst_case82 (test_financial_supplemental_resume.Supplemental.test_second_prefix_twenty_and_total_worst_case82) ... ok
+2026-10-22T22:35:47.2823082Z test_short_first_batch_never_skips_remaining_receipts (test_financial_supplemental_resume.Supplemental.test_short_first_batch_never_skips_remaining_receipts) ... ok
+2026-10-22T22:35:47.2829580Z test_strict_order_limits_and_approval_id (test_financial_supplemental_resume.Supplemental.test_strict_order_limits_and_approval_id) ... ok
+2026-10-22T22:35:47.2835169Z test_two_attempt_ceiling_even_when_http_remains (test_financial_supplemental_resume.Supplemental.test_two_attempt_ceiling_even_when_http_remains) ... ok
+2026-10-22T22:35:47.2839611Z test_zero_collection_green_workflow_never_qualifies (test_financial_supplemental_resume.Supplemental.test_zero_collection_green_workflow_never_qualifies) ... ok
+2026-10-22T22:35:47.2871946Z test_api014_is_transport_absence_not_numeric_certification (test_financial_rollout.Queue.test_api014_is_transport_absence_not_numeric_certification) ... ok
+2026-10-22T22:35:47.2875054Z test_cannot_checkpoint_financial_success_without_original (test_financial_rollout.Queue.test_cannot_checkpoint_financial_success_without_original) ... ok
+2026-10-22T22:35:47.2876332Z test_no_over100_or_silent_negative_limit (test_financial_rollout.Queue.test_no_over100_or_silent_negative_limit) ... ok
+2026-10-22T22:35:47.2907160Z test_source_and_quality_versions_are_separate (test_financial_rollout.Queue.test_source_and_quality_versions_are_separate) ... ok
+2026-10-22T22:35:47.2914568Z test_source_sha_conflict_cannot_mark_receipt_complete (test_financial_rollout.Queue.test_source_sha_conflict_cannot_mark_receipt_complete) ... ok
+2026-10-22T22:35:47.2916582Z test_upgrade_never_requeues_old_parser_or_service_quarantine (test_financial_rollout.Queue.test_upgrade_never_requeues_old_parser_or_service_quarantine) ... ok
+2026-10-22T22:35:47.2921126Z test_actual_stdlib_http_path_has_bounded_body_and_status (test_financial_rollout.Transport.test_actual_stdlib_http_path_has_bounded_body_and_status) ... ok
+2026-10-22T22:35:47.2923024Z test_endpoint_redirect_or_plain_http_never_leaks_key (test_financial_rollout.Transport.test_endpoint_redirect_or_plain_http_never_leaks_key) ... ok
+2026-10-22T22:35:47.2933241Z test_progress_whitelist_excludes_secrets_urls_and_response_body (test_financial_rollout.Transport.test_progress_whitelist_excludes_secrets_urls_and_response_body) ... ok
+2026-10-22T22:35:47.3123273Z test_real_opener_dispatch_uses_ssl_context_without_private_hostname_attribute (test_financial_rollout.Transport.test_real_opener_dispatch_uses_ssl_context_without_private_hostname_attribute) ... ok
+2026-10-22T22:35:47.4235362Z test_crashing_worker_is_not_a_document_missing_success (test_financial_rollout.WallBudgets.test_crashing_worker_is_not_a_document_missing_success) ... ok
+2026-10-22T22:35:47.6373591Z test_hung_document_killed_with_pending_receipt_and_no_false_completion (test_financial_rollout.WallBudgets.test_hung_document_killed_with_pending_receipt_and_no_false_completion) ... ok
+2026-10-22T22:35:47.7489650Z test_common_guard_failure_stops_before_checkpoint_or_next_worker (test_financial_limited_resume.Limited.test_common_guard_failure_stops_before_checkpoint_or_next_worker) ... ok
+2026-10-22T22:35:47.9773054Z test_document_reject_then_next_document_complete_without_values (test_financial_limited_resume.Limited.test_document_reject_then_next_document_complete_without_values) ... ok
+2026-10-22T22:35:47.9779267Z test_first_schedule_review_daily_total_and_failure_gates (test_financial_limited_resume.Limited.test_first_schedule_review_daily_total_and_failure_gates) ... ok
+2026-10-22T22:35:47.9783551Z test_kst_midnight_not_utc_midnight (test_financial_limited_resume.Limited.test_kst_midnight_not_utc_midnight) ... ok
+2026-10-22T22:35:47.9803220Z test_publication_schema_never_certifies_a_source_gap (test_financial_limited_resume.Limited.test_publication_schema_never_certifies_a_source_gap) ... ok
+2026-10-22T22:35:48.1035896Z test_changed_selection_or_source_hash_is_hard_failure (test_financial_batch_resume.Resume.test_changed_selection_or_source_hash_is_hard_failure) ... ok
+2026-10-22T22:35:48.4508199Z test_count_pause_resume_skips_durable_without_rewrite (test_financial_batch_resume.Resume.test_count_pause_resume_skips_durable_without_rewrite) ... ok
+2026-10-22T22:35:48.4532036Z test_insufficient_admission_time_yields_before_worker (test_financial_batch_resume.Resume.test_insufficient_admission_time_yields_before_worker) ... ok
+2026-10-22T22:35:48.5694793Z test_quality_checkpoint_corruption_is_not_silently_repaired (test_financial_batch_resume.Resume.test_quality_checkpoint_corruption_is_not_silently_repaired) ... ok
+2026-10-22T22:35:48.5705217Z test_same_day_and_three_attempt_caps_remain_closed (test_financial_batch_resume.Resume.test_same_day_and_three_attempt_caps_remain_closed) ... ok
+2026-10-22T22:35:48.8915226Z test_sigkill_after_raw_source_resumes_without_redownload (test_financial_batch_resume.Resume.test_sigkill_after_raw_source_resumes_without_redownload) ... ok
+2026-10-22T22:35:48.9118551Z test_actual_loader_retains_dataframe_contract (test_dart_corp_code.CorpCodeTests.test_actual_loader_retains_dataframe_contract) ... ok
+2026-10-22T22:35:48.9240575Z test_actual_loader_typed_quota_and_fatal_errors (test_dart_corp_code.CorpCodeTests.test_actual_loader_typed_quota_and_fatal_errors) ... ok
+2026-10-22T22:35:48.9242085Z test_ambiguous_archive_fails (test_dart_corp_code.CorpCodeTests.test_ambiguous_archive_fails) ... ok
+2026-10-22T22:35:48.9285550Z {"phase": "legacy_start", "limit": 1}
+2026-10-22T22:35:48.9286700Z {"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": "BATCH_COMPLETE", "completed": 1475}
+2026-10-22T22:35:48.9296026Z {"phase": "modern_decision", "start": true, "reason": "LEGACY_BATCH_COMPLETE", "limit": 1}
+2026-10-22T22:35:48.9442501Z                      mode modern_run_tasks  modern_failed modern_failure_type modern_failure_kind modern_failure_status  modern_failure_attempts  modern_rate_limited  legacy_run_docs legacy_stop_reason                   updated_at_utc
+2026-10-22T22:35:48.9443892Z SUPER_VALUE_FAST_BACKFILL             None           True       CorpCodeError    invalid_response                                              1                 True             1475     BATCH_COMPLETE 2026-10-22T22:35:48.929521+00:00
+2026-10-22T22:35:48.9475983Z test_current_status_published_before_modern_failure (test_dart_corp_code.CorpCodeTests.test_current_status_published_before_modern_failure) ... ok
+2026-10-22T22:35:48.9527994Z {"phase": "legacy_start", "limit": 1}
+2026-10-22T22:35:48.9529291Z {"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": "BATCH_COMPLETE", "completed": 1475}
+2026-10-22T22:35:48.9533484Z {"phase": "modern_decision", "start": true, "reason": "LEGACY_BATCH_COMPLETE", "limit": 1}
+2026-10-22T22:35:48.9581932Z                      mode modern_run_tasks  modern_failed modern_failure_type modern_failure_kind modern_failure_status modern_failure_attempts  modern_rate_limited  legacy_run_docs legacy_stop_reason                   updated_at_utc
+2026-10-22T22:35:48.9584708Z SUPER_VALUE_FAST_BACKFILL             None           True          ValueError  modern_phase_error                                          None                False             1475     BATCH_COMPLETE 2026-10-22T22:35:48.952814+00:00
+2026-10-22T22:35:48.9592381Z test_generic_exception_details_not_published (test_dart_corp_code.CorpCodeTests.test_generic_exception_details_not_published) ... ok
+2026-10-22T22:35:48.9594941Z test_html_body_is_not_assumed_transient (test_dart_corp_code.CorpCodeTests.test_html_body_is_not_assumed_transient) ... ok
+2026-10-22T22:35:48.9598900Z test_http_quota_and_forbidden_do_not_retry (test_dart_corp_code.CorpCodeTests.test_http_quota_and_forbidden_do_not_retry) ... ok
+2026-10-22T22:35:48.9602445Z test_invalid_mapping_never_becomes_empty_success (test_dart_corp_code.CorpCodeTests.test_invalid_mapping_never_becomes_empty_success) ... ok
+2026-10-22T22:35:48.9653163Z {"phase": "legacy_start", "limit": 1}
+2026-10-22T22:35:48.9657098Z {"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": null, "completed": null}
+2026-10-22T22:35:48.9658406Z {"phase": "modern_decision", "start": false, "reason": "LEGACY_RATE_LIMIT", "limit": 1}
+2026-10-22T22:35:48.9694000Z                      mode  modern_run_tasks  modern_skipped modern_phase_decision  legacy_rate_limited                   updated_at_utc
+2026-10-22T22:35:48.9695616Z SUPER_VALUE_FAST_BACKFILL                 0            True     LEGACY_RATE_LIMIT                 True 2026-10-22T22:35:48.965337+00:00
+2026-10-22T22:35:48.9716211Z test_no_modern_calls_after_legacy_quota (test_dart_corp_code.CorpCodeTests.test_no_modern_calls_after_legacy_quota) ... ok
+2026-10-22T22:35:48.9718857Z test_non_xml_first_member_is_not_chosen (test_dart_corp_code.CorpCodeTests.test_non_xml_first_member_is_not_chosen) ... ok
+2026-10-22T22:35:48.9738657Z test_quota_and_auth_and_maintenance_do_not_retry (test_dart_corp_code.CorpCodeTests.test_quota_and_auth_and_maintenance_do_not_retry) ... ok
+2026-10-22T22:35:48.9809160Z test_recent_loader_uses_same_checked_response_and_keeps_filter (test_dart_corp_code.CorpCodeTests.test_recent_loader_uses_same_checked_response_and_keeps_filter) ... ok
+2026-10-22T22:35:48.9864859Z {"phase": "legacy_start", "limit": 1}
+2026-10-22T22:35:48.9865703Z {"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": "BATCH_COMPLETE", "completed": 1475}
+2026-10-22T22:35:48.9866678Z {"phase": "modern_decision", "start": true, "reason": "LEGACY_BATCH_COMPLETE", "limit": 1}
+2026-10-22T22:35:48.9904934Z                      mode  modern_run_tasks  legacy_run_docs legacy_stop_reason                   updated_at_utc
+2026-10-22T22:35:48.9905855Z SUPER_VALUE_FAST_BACKFILL              1000             1475     BATCH_COMPLETE 2026-10-22T22:35:48.986495+00:00
+2026-10-22T22:35:48.9928704Z test_success_path_still_preserves_both_counts (test_dart_corp_code.CorpCodeTests.test_success_path_still_preserves_both_counts) ... ok
+2026-10-22T22:35:48.9931738Z test_timeout_exhaustion_redacts_transport (test_dart_corp_code.CorpCodeTests.test_timeout_exhaustion_redacts_transport) ... ok
+2026-10-22T22:35:48.9936056Z test_timeout_recovers_with_bounded_attempts (test_dart_corp_code.CorpCodeTests.test_timeout_recovers_with_bounded_attempts) ... ok
+2026-10-22T22:35:48.9941371Z test_transient_http_retry_recovers (test_dart_corp_code.CorpCodeTests.test_transient_http_retry_recovers) ... ok
+2026-10-22T22:35:48.9947532Z test_truncated_zip_and_xml_and_empty_list_fail (test_dart_corp_code.CorpCodeTests.test_truncated_zip_and_xml_and_empty_list_fail) ... ok
+2026-10-22T22:35:49.0022018Z {"phase": "legacy_start", "limit": 1}
+2026-10-22T22:35:49.0022807Z {"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": null, "completed": 2}
+2026-10-22T22:35:49.0023600Z {"phase": "modern_decision", "start": false, "reason": "LEGACY_STOP_UNKNOWN", "limit": 1}
+2026-10-22T22:35:49.0064540Z                      mode  modern_run_tasks  modern_skipped modern_phase_decision  legacy_run_docs                   updated_at_utc
+2026-10-22T22:35:49.0065908Z SUPER_VALUE_FAST_BACKFILL                 0            True   LEGACY_STOP_UNKNOWN                2 2026-10-22T22:35:49.002169+00:00
+2026-10-22T22:35:49.0147826Z {"phase": "legacy_start", "limit": 1}
+2026-10-22T22:35:49.0148628Z {"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": "DEADLINE", "completed": 2}
+2026-10-22T22:35:49.0149597Z {"phase": "modern_decision", "start": false, "reason": "LEGACY_STOP_DEADLINE", "limit": 1}
+2026-10-22T22:35:49.0191582Z                      mode  modern_run_tasks  modern_skipped modern_phase_decision  legacy_run_docs legacy_stop_reason                   updated_at_utc
+2026-10-22T22:35:49.0193241Z SUPER_VALUE_FAST_BACKFILL                 0            True  LEGACY_STOP_DEADLINE                2           DEADLINE 2026-10-22T22:35:49.014716+00:00
+2026-10-22T22:35:49.0214823Z test_unknown_or_deadline_legacy_stop_never_starts_modern (test_dart_corp_code.CorpCodeTests.test_unknown_or_deadline_legacy_stop_never_starts_modern) ... ok
+2026-10-22T22:35:49.0217485Z test_valid_zip (test_dart_corp_code.CorpCodeTests.test_valid_zip) ... ok
+2026-10-22T22:35:49.0415054Z test_append_preserves_all_old_numeric_tokens_and_missing_strings_verbatim (test_legacy_backfill_resume.LegacyResume.test_append_preserves_all_old_numeric_tokens_and_missing_strings_verbatim) ... ok
+2026-10-22T22:35:49.0426659Z {"stage": "http_start", "updated_at_utc": "2026-10-22T22:35:49.042461+00:00", "monotonic": 602.299468112, "receipt": "20010101000000", "attempt": 1}
+2026-10-22T22:35:49.0428482Z {"stage": "http_received", "updated_at_utc": "2026-10-22T22:35:49.042519+00:00", "monotonic": 602.299521372, "receipt": "20010101000000", "attempt": 1, "http_status": 200, "bytes": 37}
+2026-10-22T22:35:49.0430582Z {"stage": "api_response", "updated_at_utc": "2026-10-22T22:35:49.042608+00:00", "monotonic": 602.299612452, "receipt": "20010101000000", "dart_status": "010"}
+2026-10-22T22:35:49.0439889Z test_authentication_failure_stops_without_classifying_source_as_missing (test_legacy_backfill_resume.LegacyResume.test_authentication_failure_stops_without_classifying_source_as_missing) ... ok
+2026-10-22T22:35:49.0589821Z legacy checkpoint: 1 receipts persisted
+2026-10-22T22:35:49.0982803Z legacy checkpoint: 1 receipts persisted
+2026-10-22T22:35:49.1094486Z legacy checkpoint: 2 receipts persisted
+2026-10-22T22:35:49.1227827Z test_checkpoint_survives_interruption_and_resume_skips_durable_receipt (test_legacy_backfill_resume.LegacyResume.test_checkpoint_survives_interruption_and_resume_skips_durable_receipt) ... ok
+2026-10-22T22:35:49.2107237Z test_collection_complete_requires_independent_audit_and_noop_preserves_bytes (test_legacy_backfill_resume.LegacyResume.test_collection_complete_requires_independent_audit_and_noop_preserves_bytes) ... ok
+2026-10-22T22:35:49.2181115Z test_data_publication_failure_never_marks_receipt_complete (test_legacy_backfill_resume.LegacyResume.test_data_publication_failure_never_marks_receipt_complete) ... ok
+2026-10-22T22:35:49.2195001Z test_deadline_and_signal_stop_have_no_new_requests_and_flush_work (test_legacy_backfill_resume.LegacyResume.test_deadline_and_signal_stop_have_no_new_requests_and_flush_work) ... ok
+2026-10-22T22:35:49.2205068Z test_error_diagnostics_never_persist_api_key (test_legacy_backfill_resume.LegacyResume.test_error_diagnostics_never_persist_api_key) ... ok
+2026-10-22T22:35:49.2327594Z legacy checkpoint: 1 receipts persisted
+2026-10-22T22:35:49.2509486Z legacy checkpoint: 1 receipts persisted
+2026-10-22T22:35:49.2741319Z legacy checkpoint: 1 receipts persisted
+2026-10-22T22:35:49.3226393Z test_error_retry_quarantine_does_not_starve_other_receipts (test_legacy_backfill_resume.LegacyResume.test_error_retry_quarantine_does_not_starve_other_receipts) ... ok
+2026-10-22T22:35:49.3278784Z test_index_data_is_published_before_ok_state (test_legacy_backfill_resume.LegacyResume.test_index_data_is_published_before_ok_state) ... ok
+2026-10-22T22:35:49.3353545Z test_index_rate_limit_blocks_following_document_requests (test_legacy_backfill_resume.LegacyResume.test_index_rate_limit_blocks_following_document_requests) ... ok
+2026-10-22T22:35:49.3636050Z test_initial_coverage_without_state_does_not_invent_completed_receipts (test_legacy_backfill_resume.LegacyResume.test_initial_coverage_without_state_does_not_invent_completed_receipts) ... ok
+2026-10-22T22:35:49.3648171Z test_missing_key_does_not_overwrite_progress (test_legacy_backfill_resume.LegacyResume.test_missing_key_does_not_overwrite_progress) ... ok
+2026-10-22T22:35:49.3952558Z legacy checkpoint: 1 receipts persisted
+2026-10-22T22:35:49.4415406Z test_numeric_parser_change_preserves_transport_only_no_document_state (test_legacy_backfill_resume.LegacyResume.test_numeric_parser_change_preserves_transport_only_no_document_state) ... ok
+2026-10-22T22:35:49.4646002Z test_parser_upgrade_requires_review_preserves_all_old_observations (test_legacy_backfill_resume.LegacyResume.test_parser_upgrade_requires_review_preserves_all_old_observations) ... ok
+2026-10-22T22:35:49.4659331Z test_rate_limit_stops_replenishment_and_flushes_completed_work (test_legacy_backfill_resume.LegacyResume.test_rate_limit_stops_replenishment_and_flushes_completed_work) ... ok
+2026-10-22T22:35:50.5029267Z test_real_saved_index_noop_preserves_mapped_queue_and_leading_zero_codes (test_legacy_backfill_resume.LegacyResume.test_real_saved_index_noop_preserves_mapped_queue_and_leading_zero_codes) ... ok
+2026-10-22T22:35:50.5040530Z {"stage": "http_start", "updated_at_utc": "2026-10-22T22:35:50.503824+00:00", "monotonic": 603.760831122, "receipt": "20010101000000", "attempt": 1}
+2026-10-22T22:35:50.5041725Z {"stage": "http_retry", "updated_at_utc": "2026-10-22T22:35:50.503884+00:00", "monotonic": 603.760885624, "receipt": "20010101000000", "attempt": 1}
+2026-10-22T22:35:50.5048868Z test_request_budget_counts_every_attempt_and_deferred_is_not_source_gap (test_legacy_backfill_resume.LegacyResume.test_request_budget_counts_every_attempt_and_deferred_is_not_source_gap) ... ok
+2026-10-22T22:35:50.5262744Z legacy checkpoint: 1 receipts persisted
+2026-10-22T22:35:50.5445275Z legacy checkpoint: 1 receipts persisted
+2026-10-22T22:35:50.5632792Z legacy checkpoint: 1 receipts persisted
+2026-10-22T22:35:50.5754831Z test_retry_count_survives_state_migration_and_mixed_empty_attempts (test_legacy_backfill_resume.LegacyResume.test_retry_count_survives_state_migration_and_mixed_empty_attempts) ... ok
+2026-10-22T22:35:50.5877383Z test_source_adapter_change_invalidates_previous_no_document_result (test_legacy_backfill_resume.LegacyResume.test_source_adapter_change_invalidates_previous_no_document_result) ... ok
+2026-10-22T22:35:50.6012929Z test_state_cannot_skip_missing_or_mismatched_normalized_data_missing_file (test_legacy_backfill_resume.LegacyResume.test_state_cannot_skip_missing_or_mismatched_normalized_data_missing_file) ... ok
+2026-10-22T22:35:50.6226081Z test_state_cannot_skip_missing_or_mismatched_normalized_data_wrong_hash (test_legacy_backfill_resume.LegacyResume.test_state_cannot_skip_missing_or_mismatched_normalized_data_wrong_hash) ... ok
+2026-10-22T22:35:50.6435549Z test_state_cannot_skip_missing_or_mismatched_normalized_data_wrong_row_count (test_legacy_backfill_resume.LegacyResume.test_state_cannot_skip_missing_or_mismatched_normalized_data_wrong_row_count) ... ok
+2026-10-22T22:35:50.6446455Z {"stage": "http_start", "updated_at_utc": "2026-10-22T22:35:50.644446+00:00", "monotonic": 603.901453419, "receipt": "20010101000000", "attempt": 1}
+2026-10-22T22:35:50.6448111Z {"stage": "http_retry", "updated_at_utc": "2026-10-22T22:35:50.644503+00:00", "monotonic": 603.901504384, "receipt": "20010101000000", "attempt": 1}
+2026-10-22T22:35:50.6449696Z {"stage": "http_start", "updated_at_utc": "2026-10-22T22:35:50.644553+00:00", "monotonic": 603.901557403, "receipt": "20010101000000", "attempt": 2}
+2026-10-22T22:35:50.6456999Z test_transport_attempt_ceiling_is_distinct_from_request_admission_budget (test_legacy_backfill_resume.LegacyResume.test_transport_attempt_ceiling_is_distinct_from_request_admission_budget) ... ok
+2026-10-22T22:35:50.6516442Z test_unattested_amounts_never_enter_backtest_normalized_store (test_legacy_backfill_resume.LegacyResume.test_unattested_amounts_never_enter_backtest_normalized_store) ... ok
+2026-10-22T22:35:50.6517636Z 
+2026-10-22T22:35:50.6517920Z ----------------------------------------------------------------------
+2026-10-22T22:35:50.6518512Z Ran 83 tests in 3.398s
+2026-10-22T22:35:50.6518736Z 
+2026-10-22T22:35:50.6518865Z OK
+2026-10-22T22:35:50.7429172Z PASS_UNCHANGED_APPROVED_SOURCE_OWNERS
+2026-10-22T22:35:50.7535339Z ##[group]Run actions/upload-artifact@v4
+2026-10-22T22:35:50.7535642Z with:
+2026-10-22T22:35:50.7535943Z   name: pinned-kit-target-7f77d83bbe956c15b84172c51c8c10cdee7e75b6
+2026-10-22T22:35:50.7537535Z   path: /home/runner/work/_temp/checked-target.txt
+/home/runner/work/_temp/runtime.json
+/home/runner/work/_temp/research-workspace
+/home/runner/work/_temp/frozen-regression
+/home/runner/work/_temp/parser-source-evidence.json
+/home/runner/work/_temp/saved-comparisons
+/home/runner/work/_temp/pit-source-case
+/home/runner/work/_temp/period-workspace
+/home/runner/work/_temp/trial-qualification.json
+
+2026-10-22T22:35:50.7539047Z   retention-days: 90
+2026-10-22T22:35:50.7539270Z   if-no-files-found: warn
+2026-10-22T22:35:50.7539501Z   compression-level: 6
+2026-10-22T22:35:50.7539725Z   overwrite: false
+2026-10-22T22:35:50.7539938Z   include-hidden-files: false
+2026-10-22T22:35:50.7540455Z env:
+2026-10-22T22:35:50.7540746Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:50.7541215Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-22T22:35:50.7541643Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:50.7542021Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:50.7542405Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-22T22:35:50.7542783Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-22T22:35:50.7543283Z ##[endgroup]
+2026-10-22T22:35:50.9172277Z (node:2703) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T22:35:50.9173129Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T22:35:50.9282452Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-22T22:35:50.9285454Z The least common ancestor is /home/runner/work/_temp. This will be the root directory of the artifact
+2026-10-22T22:35:50.9286502Z With the provided path, there will be 3 files uploaded
+2026-10-22T22:35:50.9287371Z Artifact name is valid!
+2026-10-22T22:35:50.9287624Z Root directory input is valid!
+2026-10-22T22:35:51.2904868Z Beginning upload of artifact content to blob storage
+2026-10-22T22:35:51.3131560Z (node:2703) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-22T22:35:51.6002232Z Uploaded bytes 3904
+2026-10-22T22:35:51.6787648Z Finished uploading artifact content to blob storage!
+2026-10-22T22:35:51.6788733Z SHA256 digest of uploaded artifact zip is 5c04962c088f004174608192c7519f6aa83d1c78103ab160257ecec93b63675e
+2026-10-22T22:35:51.6790862Z Finalizing artifact upload
+2026-10-22T22:35:52.1639899Z Artifact pinned-kit-target-7f77d83bbe956c15b84172c51c8c10cdee7e75b6.zip successfully finalized. Artifact ID 12464221301
+2026-10-22T22:35:52.1641587Z Artifact pinned-kit-target-7f77d83bbe956c15b84172c51c8c10cdee7e75b6 has been successfully uploaded! Final size is 3904 bytes. Artifact ID is 12464221301
+2026-10-22T22:35:52.1646986Z Artifact download URL: https://github.com/Horororong/quant-marcap-runner/actions/runs/39865916930/artifacts/12464221301
+2026-10-22T22:35:52.1815194Z Post job cleanup.
+2026-10-22T22:35:52.2980789Z (node:2715) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T22:35:52.2981762Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T22:35:52.3169885Z Post job cleanup.
+2026-10-22T22:35:52.4102030Z [command]/usr/bin/git version
+2026-10-22T22:35:52.4150880Z git version 2.55.0
+2026-10-22T22:35:52.4212887Z Temporarily overriding HOME='/home/runner/work/_temp/2df9eb66-e955-4d2c-a9d8-67533c6ce41d' before making global git config changes
+2026-10-22T22:35:52.4214384Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T22:35:52.4216023Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/quant-marcap-runner/quant-marcap-runner
+2026-10-22T22:35:52.4259572Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T22:35:52.4301313Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T22:35:52.4635751Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T22:35:52.4702357Z http.https://github.com/.extraheader
+2026-10-22T22:35:52.4722578Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-22T22:35:52.4757926Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T22:35:52.5104944Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T22:35:52.5148157Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T22:35:52.5556707Z Cleaning up orphan processes
+2026-10-22T22:35:52.5889184Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

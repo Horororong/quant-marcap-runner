@@ -1,0 +1,51 @@
+{
+  "status": "PASS_REAL_TRIAL_PREREQUISITES",
+  "run_id": "39863731314",
+  "artifact_id": 12462438642,
+  "artifact_sha256": "792ebb5767cd93bae59dad33c3e1a69145d201e3b25897ac478f15b7cea01263",
+  "code_sha": "7912455f138abf3d1ce9762f8de6a67c70e5b835",
+  "after_commit": "56514a4631fc5d677af732e90b382fb5937504c6",
+  "documents": [
+    {
+      "receipt": "20100331002062",
+      "stock_code_hint": "050540",
+      "company_hint": "엠피씨플러스",
+      "source_sha256": "0a7159b607f83dbcc36670ed1a044829a05ee38292c8f318c571dd079956f993",
+      "zip_crc": "PASS",
+      "candidate_fields": 16,
+      "status": "PARSED_4F",
+      "HTTP_requests_including_retries": 1,
+      "retries": 0,
+      "progress_sha256": "a4687c062de5c93f70e040e53482987b5fcea3393d38fd1375f286d04ab2778f"
+    },
+    {
+      "receipt": "20100331002063",
+      "stock_code_hint": "078940",
+      "company_hint": "퀀타피아",
+      "source_sha256": "f6ae15ce36e585ac9e0eb8f9caf946aa9f196ce47ec5fa67d2e36fba23aa9dc7",
+      "zip_crc": "PASS",
+      "candidate_fields": 18,
+      "status": "PARSED_4F",
+      "HTTP_requests_including_retries": 1,
+      "retries": 0,
+      "progress_sha256": "10b05ba3454a48f741fc45abfe96a58adf35f6fe7d4ad4292cbb8e6e7d2b1862"
+    }
+  ],
+  "HTTP_requests_including_retries": 2,
+  "retries": 0,
+  "new_originals": 2,
+  "new_candidates": 34,
+  "duplicate_receipts": 0,
+  "duplicate_candidates": 0,
+  "source_elapsed_seconds": 21.709,
+  "normal_exit": true,
+  "checkpoint_before": "20100331002054",
+  "checkpoint_after": "20100331002063",
+  "remaining_documents": 41,
+  "original_attempts": 3,
+  "financial_publication": "HOLD",
+  "investment_PIT": "0/6",
+  "classification": "RESEARCH_ONLY",
+  "semantic_validation": "NOT_PERFORMED",
+  "PIT_validation": "NOT_PERFORMED"
+}

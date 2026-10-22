@@ -1,3 +1,15 @@
+# Latest actual finite resume and legacy bridge —2026-10-23KST
+
+Read docs/research/legacy-provider-link-20261023/REPORT.md and RESUME.md. Actual2doc run39863731314SUCCESS:2HTTP/0retry/2original/34candidate/0duplicates,21.709sec,checkpoint2054→2063,41pending. Native SHA/CRC/actual workerprogress independently verified in fixedkit audit39864835870. Original3/3used; no retry of olddates/HOLD.
+
+Minimum operatingPR47 merged at18f5d064bc2e5f3a106a2a03603be3d5b5bbbf0a, testedsource7f77d83bbe956c15b84172c51c8c10cdee7e75b6, pinnedCI39865916930SUCCESS83tests+realartifact+unchanged6sourceowners. Original3runhistory/state/config untouchedbymerge. Separatefinite41-20261023 config/ledger enforces21+20,2leases,82HTTPincludingretry,600sec,oneKSTdayacrosshistories; newlyapprovedbudgetfinitewindowthrough10/25KST. TodaygateONCE_PER_KST_DAY; next10/24KSTwindow requireslivechecks. Alreadyapprovedsamebudget:DO_NOT_REASK. No futureautomationarmed. ResearchUI notmerged.
+
+Newlocalresearch/legacy-bridge-20261023 adds attestation-gated canonical accountrowbridge/inventory, not a population bypass. old18473rows=Q313271/650companies683receipts;FY5202/281companies288receipts,conflictingfieldidentitygroups44+9notautoresolved. oldbulkengineeligible0/1495;existingSajo3fieldsoneFYproviderframe reused without newPITcount. New34sourcefield numeric/meaningPASS outsideold880→proposed914=891PASS+23oldUV;operating905+heldparser9. New2issuerspublication/memberversionchainunverified;0789404/30namechangedto일경산업개발,notautomapped. Wholefiling/PITinvestmentcertificationunchanged. SajoQ320091116000562 staysoutside41HTTPscope.
+
+Recoverybundlepreparationcoversf8/v9/v10/v11plusnewresearchincrement; oldGit/kit/data and deterministicHTMLrenderparts excluded, exact46logicalsaved-reopenfiles restoredin/tmp withoutoriginalstores. Archivepublicapproval stillrequired. AdditionalCIindex publication was auto-review rejected and notexecuted; localGit/JSON/render alternatives used. Finalscope/SHA/checkpoint in/workspace/quant-finite-resume-20261023/FINAL_STATUS.md. Do not repeat unchangedUI/130CI/751audit/restoration/backups.
+
+---
+
 # Latest continuation: approved29b CI and finite source linkage —2026-10-21
 
 Read docs/research/finite-source-linkage-20261021/REPORT.md and RESUME.md. Approved29b6c4a2c277f6b2070e4bf70da54899f9fe4bcf published to fix/native-source-boundaries-20261021; separate driver2997930ea4cfe67c04441648dd066bc1e50efca7. Exact-checkout integrationCI39604804071 and periodCI39604801251 bothSUCCESS;130exact/9contract/12historicalUV preserved. No Internetpip/mainmerge/v10ZIPupload. main advanced independently to08dfad14e1bb2e0d9cb9fdca5b8a6979ad79c1fa for modern recentdata, legacy source code unchanged.

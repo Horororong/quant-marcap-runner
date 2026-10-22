@@ -1,0 +1,32 @@
+{
+  "main": "18f5d064bc2e5f3a106a2a03603be3d5b5bbbf0a",
+  "PR": 47,
+  "source_tested_commit": "7f77d83bbe956c15b84172c51c8c10cdee7e75b6",
+  "source_driver": "f36309c6ce7234ed987479d6740db09dc391b22d",
+  "CI": 39865916930,
+  "CI_result": "SUCCESS",
+  "main_diff_files": [
+    ".github/workflows/backfill-dart-legacy-2000-2014.yml",
+    "config/financial_supplemental_41_v1.json",
+    "docs/audits/financial-supplemental-20261023/README.md",
+    "docs/audits/financial-supplemental-20261023/trial-qualification.json",
+    "scripts/check_finite_trial_artifact.py",
+    "scripts/financial_limited_resume.py",
+    "scripts/financial_supplemental_resume.py",
+    "tests/test_financial_supplemental_resume.py"
+  ],
+  "source_readback": "ALL8_MATCH",
+  "original_state_and_three_execution_history": "EXACT_BYTES_UNCHANGED_BY_MERGE",
+  "original_config_expiry": "UNCHANGED",
+  "supplemental_gate": "ONCE_PER_KST_DAY",
+  "observed_kst": "2026-10-23T07:39:28.078208+09:00",
+  "original_executions_used": 3,
+  "original_executions_remaining": 0,
+  "supplemental_executions_used": 0,
+  "supplemental_executions_remaining": 2,
+  "supplemental_HTTP_used": 0,
+  "supplemental_HTTP_remaining": 82,
+  "new_HTTP_after_trial": 0,
+  "checkpoint": "20100331002063",
+  "automatic_resume": false
+}
