@@ -1,0 +1,271 @@
+{
+  "code_sha": "7912455f138abf3d1ce9762f8de6a67c70e5b835",
+  "financial_publication": "HOLD",
+  "plan_sha256": "7c0cc2527e39d04386157194593095385a0be5b05129f1632c20f9a050996108",
+  "summary": {
+    "automatic_financial_publication": "HOLD",
+    "backtest_eligible": false,
+    "candidate_fields": 34,
+    "collection": [
+      {
+        "archives": [
+          {
+            "bytes": 102167,
+            "path": "native/20100331002062-0a7159b607f83dbcc36670ed1a044829a05ee38292c8f318c571dd079956f993.zip",
+            "sha256": "0a7159b607f83dbcc36670ed1a044829a05ee38292c8f318c571dd079956f993"
+          }
+        ],
+        "rcept_no": "20100331002062",
+        "run_id": "39863731314",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-22T22:18:13.384012+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 120014,
+            "path": "native/20100331002063-f6ae15ce36e585ac9e0eb8f9caf946aa9f196ce47ec5fa67d2e36fba23aa9dc7.zip",
+            "sha256": "f6ae15ce36e585ac9e0eb8f9caf946aa9f196ce47ec5fa67d2e36fba23aa9dc7"
+          }
+        ],
+        "rcept_no": "20100331002063",
+        "run_id": "39863731314",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-22T22:18:25.341628+00:00"
+      }
+    ],
+    "completed_receipts": [
+      "20100331002062",
+      "20100331002063"
+    ],
+    "contract": "limited-source-observation-v1",
+    "counts": {
+      "PARSED_4F": 2
+    },
+    "durable_terminal_documents": 2,
+    "extracted_documents": 2,
+    "independently_verified_fields": 0,
+    "processed_results": 2,
+    "published_financial_fields": 0,
+    "quality": [
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "0a7159b607f83dbcc36670ed1a044829a05ee38292c8f318c571dd079956f993",
+        "extraction_state": "PARSED_4F",
+        "field_count": 16,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002062",
+        "rejection_reason": "[{\"member\": \"20100331002062.xml\", \"table\": 95, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-22T22:18:13.384028+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "f6ae15ce36e585ac9e0eb8f9caf946aa9f196ce47ec5fa67d2e36fba23aa9dc7",
+        "extraction_state": "PARSED_4F",
+        "field_count": 18,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002063",
+        "rejection_reason": "[{\"member\": \"20100331002063.xml\", \"table\": 65, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-22T22:18:25.341644+00:00"
+      }
+    ],
+    "quarantine": [],
+    "review_rule": "First20 hash-ranked receipts before HTTP; add first2 of every result class and at least10 extracted (all if<=20). Raw cells/semantic controls precede reading candidate amounts.",
+    "review_selection": [
+      "20100331002062",
+      "20100331002063",
+      "20100331002084",
+      "20100331002117",
+      "20100331002127",
+      "20100331002137",
+      "20100331002146",
+      "20100331002155",
+      "20100331002164"
+    ],
+    "run_status": {
+      "admitted_documents": 2,
+      "automatic_publication": "HELD",
+      "commit": "7912455f138abf3d1ce9762f8de6a67c70e5b835",
+      "completed": 2,
+      "current_receipt": "20100331002063",
+      "current_stage": "CHECKPOINT_DURABLE",
+      "document_states": {
+        "20100331002062": "CHECKPOINT_DURABLE",
+        "20100331002063": "CHECKPOINT_DURABLE",
+        "20100331002066": "PENDING",
+        "20100331002067": "PENDING",
+        "20100331002072": "PENDING",
+        "20100331002073": "PENDING",
+        "20100331002075": "PENDING",
+        "20100331002084": "PENDING",
+        "20100331002085": "PENDING",
+        "20100331002089": "PENDING",
+        "20100331002091": "PENDING",
+        "20100331002094": "PENDING",
+        "20100331002095": "PENDING",
+        "20100331002096": "PENDING",
+        "20100331002097": "PENDING",
+        "20100331002098": "PENDING",
+        "20100331002100": "PENDING",
+        "20100331002102": "PENDING",
+        "20100331002103": "PENDING",
+        "20100331002104": "PENDING",
+        "20100331002105": "PENDING",
+        "20100331002112": "PENDING",
+        "20100331002116": "PENDING",
+        "20100331002117": "PENDING",
+        "20100331002119": "PENDING",
+        "20100331002120": "PENDING",
+        "20100331002121": "PENDING",
+        "20100331002124": "PENDING",
+        "20100331002127": "PENDING",
+        "20100331002132": "PENDING",
+        "20100331002133": "PENDING",
+        "20100331002136": "PENDING",
+        "20100331002137": "PENDING",
+        "20100331002138": "PENDING",
+        "20100331002146": "PENDING",
+        "20100331002149": "PENDING",
+        "20100331002153": "PENDING",
+        "20100331002154": "PENDING",
+        "20100331002155": "PENDING",
+        "20100331002159": "PENDING",
+        "20100331002160": "PENDING",
+        "20100331002163": "PENDING",
+        "20100331002164": "PENDING"
+      },
+      "document_timings": [
+        {
+          "checkpoint_seconds": 0.003087,
+          "receipt": "20100331002062",
+          "replayed_source": false,
+          "validation_seconds": 0.021445,
+          "worker_progress_intervals": {
+            "download": 7.004917,
+            "parsing": 2.173202,
+            "startup_and_unattributed": 0.505697,
+            "storage": 0.037588,
+            "validation": 0.000916,
+            "waiting": 0.0
+          },
+          "worker_seconds": 9.722319
+        },
+        {
+          "checkpoint_seconds": 0.003014,
+          "receipt": "20100331002063",
+          "replayed_source": false,
+          "validation_seconds": 0.026574,
+          "worker_progress_intervals": {
+            "download": 8.366342,
+            "parsing": 2.978715,
+            "startup_and_unattributed": 0.530884,
+            "storage": 0.047104,
+            "validation": 0.000874,
+            "waiting": 0.0
+          },
+          "worker_seconds": 11.923918
+        }
+      ],
+      "elapsed_seconds": 21.709,
+      "financial_population_certification": "UNVERIFIED",
+      "finished_at_utc": "2026-10-22T22:18:25.345767+00:00",
+      "investment_PIT": "0/6",
+      "last_checkpoint": "20100331002063",
+      "prior_stop_reason": null,
+      "remaining_receipts": [
+        "20100331002066",
+        "20100331002067",
+        "20100331002072",
+        "20100331002073",
+        "20100331002075",
+        "20100331002084",
+        "20100331002085",
+        "20100331002089",
+        "20100331002091",
+        "20100331002094",
+        "20100331002095",
+        "20100331002096",
+        "20100331002097",
+        "20100331002098",
+        "20100331002100",
+        "20100331002102",
+        "20100331002103",
+        "20100331002104",
+        "20100331002105",
+        "20100331002112",
+        "20100331002116",
+        "20100331002117",
+        "20100331002119",
+        "20100331002120",
+        "20100331002121",
+        "20100331002124",
+        "20100331002127",
+        "20100331002132",
+        "20100331002133",
+        "20100331002136",
+        "20100331002137",
+        "20100331002138",
+        "20100331002146",
+        "20100331002149",
+        "20100331002153",
+        "20100331002154",
+        "20100331002155",
+        "20100331002159",
+        "20100331002160",
+        "20100331002163",
+        "20100331002164"
+      ],
+      "results": [
+        {
+          "receipt": "20100331002062",
+          "rows": 16,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002063",
+          "rows": 18,
+          "status": "PARSED_4F"
+        }
+      ],
+      "resume_history": [],
+      "resumed": false,
+      "run_id": "39863731314",
+      "started_at_utc": "2026-10-22T22:18:03.636655+00:00",
+      "status": "PAUSED_CANDIDATES_HELD",
+      "stop_reason": "BATCH_DOCUMENT_LIMIT",
+      "updated_at_utc": "2026-10-22T22:18:25.345777+00:00"
+    },
+    "source_absence_certification": "UNVERIFIED"
+  },
+  "transfers": [
+    {
+      "automatic_publication": false,
+      "blob_sha": "2a0504488b1527293bf9327f6193114180fe725b",
+      "bytes": 237054,
+      "compressed_sha256": "4051d356d9678070198695d6b691ac1d154667c5b1f758ece678aa62327ec250",
+      "financial_certification": "UNVERIFIED"
+    },
+    {
+      "automatic_publication": false,
+      "blob_sha": "1b60eb21c99aa932b77a23e957eab03212c5c110",
+      "bytes": 3740,
+      "compressed_sha256": "27f871e9f294bed62f5253ea4dd6a4270480a3ba3ff1be2daf39d07122296cd8",
+      "financial_certification": "UNVERIFIED"
+    },
+    {
+      "automatic_publication": false,
+      "blob_sha": "6e52317c92bd35adea34ca45dfa253abe87c4b5d",
+      "bytes": 2242,
+      "compressed_sha256": "5bbdc90fb473ea6b84ed2aaf92dce2bebf669fc7c09a5e50e55e716ca6070aee",
+      "financial_certification": "UNVERIFIED"
+    }
+  ]
+}

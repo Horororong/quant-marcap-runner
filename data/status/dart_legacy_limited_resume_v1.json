@@ -158,7 +158,9 @@
     "20100331002045",
     "20100331002046",
     "20100331002053",
-    "20100331002054"
+    "20100331002054",
+    "20100331002062",
+    "20100331002063"
   ],
   "contract": "limited-source-observation-v1",
   "first_review": {
@@ -194,8 +196,8 @@
     "status": "PASS_SOURCE_SAMPLE_NOT_POPULATION_CERTIFICATION"
   },
   "investment_PIT": "0/6",
-  "last_checkpoint": "20100331002054",
-  "phase": "RUNNING",
+  "last_checkpoint": "20100331002063",
+  "phase": "PAUSED_QUEUE",
   "runs": [
     {
       "candidate_fields": 1363,
@@ -268,15 +270,89 @@
       "resume_segments": [
         {
           "batch_document_limit": 2,
+          "candidate_fields": 34,
+          "completed_at_utc": "2026-10-22T22:18:26.505684+00:00",
+          "counts": {
+            "PARSED_4F": 2
+          },
           "day_kst": "2026-10-23",
+          "durable_documents": 2,
           "parent_run_id": "39504052321",
           "prior_phase": "HOLD_FAILURE",
+          "remaining_receipts": [
+            "20100331002066",
+            "20100331002067",
+            "20100331002072",
+            "20100331002073",
+            "20100331002075",
+            "20100331002084",
+            "20100331002085",
+            "20100331002089",
+            "20100331002091",
+            "20100331002094",
+            "20100331002095",
+            "20100331002096",
+            "20100331002097",
+            "20100331002098",
+            "20100331002100",
+            "20100331002102",
+            "20100331002103",
+            "20100331002104",
+            "20100331002105",
+            "20100331002112",
+            "20100331002116",
+            "20100331002117",
+            "20100331002119",
+            "20100331002120",
+            "20100331002121",
+            "20100331002124",
+            "20100331002127",
+            "20100331002132",
+            "20100331002133",
+            "20100331002136",
+            "20100331002137",
+            "20100331002138",
+            "20100331002146",
+            "20100331002149",
+            "20100331002153",
+            "20100331002154",
+            "20100331002155",
+            "20100331002159",
+            "20100331002160",
+            "20100331002163",
+            "20100331002164"
+          ],
+          "reservation_commit": "beeb61f90542e26345e531ea3da65e16e9eb95fb",
           "reserved_documents": 0,
           "run_id": "39863731314",
           "selection_sha256": "e76648c6755617ff4f740664f23dad68026910a09ce3a017b011d8a3530f681d",
           "start_checkpoint": "20100331002054",
           "started_at_utc": "2026-10-22T22:17:59.489433+00:00",
-          "status": "RUNNING"
+          "status": "PAUSED",
+          "stop_reason": "BATCH_DOCUMENT_LIMIT",
+          "transfers": [
+            {
+              "automatic_publication": false,
+              "blob_sha": "2a0504488b1527293bf9327f6193114180fe725b",
+              "bytes": 237054,
+              "compressed_sha256": "4051d356d9678070198695d6b691ac1d154667c5b1f758ece678aa62327ec250",
+              "financial_certification": "UNVERIFIED"
+            },
+            {
+              "automatic_publication": false,
+              "blob_sha": "1b60eb21c99aa932b77a23e957eab03212c5c110",
+              "bytes": 3740,
+              "compressed_sha256": "27f871e9f294bed62f5253ea4dd6a4270480a3ba3ff1be2daf39d07122296cd8",
+              "financial_certification": "UNVERIFIED"
+            },
+            {
+              "automatic_publication": false,
+              "blob_sha": "6e52317c92bd35adea34ca45dfa253abe87c4b5d",
+              "bytes": 2242,
+              "compressed_sha256": "5bbdc90fb473ea6b84ed2aaf92dce2bebf669fc7c09a5e50e55e716ca6070aee",
+              "financial_certification": "UNVERIFIED"
+            }
+          ]
         }
       ],
       "run_id": "39504052321",
