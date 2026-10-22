@@ -28,7 +28,7 @@ def raw(o):return (json.dumps(o,ensure_ascii=False,sort_keys=True,indent=2)+'\n'
 def stamp():return datetime.now(UTC).isoformat()
 def local_day(now):return now.astimezone(KST).date().isoformat()
 def initial():return dict(contract=CONTRACT,phase='READY_FIRST',last_checkpoint='20100331001757',runs=[],completed_receipts=[],automatic_financial_publication='HOLD',backtest_eligible=False,investment_PIT='0/6',first_review=None)
-def check_gate(config,state,now,event):
+def check_contract(config,state):
     from scripts.legacy_native_financials import PARSER_VERSION
     from scripts.legacy_document_quality import DIAGNOSTIC_VERSION
     if config['contract']!=CONTRACT or config['mode']!='LIMITED_OBSERVATION':raise ValueError('LIMITED_GATE_CLOSED')
@@ -37,6 +37,8 @@ def check_gate(config,state,now,event):
     if set(config['source_code_sha256'])!=SOURCE_OWNERS:raise ValueError('APPROVED_SOURCE_OWNER_SET_CHANGED')
     if config['investment_PIT']!='0/6' or state['investment_PIT']!='0/6' or state['backtest_eligible']is not False or state['automatic_financial_publication']!='HOLD':raise ValueError('PIT_OR_PUBLICATION_STATE_PROMOTION')
     if config['parser_version']!=PARSER_VERSION or config['source_diagnostic_version']!=DIAGNOSTIC_VERSION:raise ValueError('UNAPPROVED_PARSER_OR_DIAGNOSTIC_VERSION')
+def check_gate(config,state,now,event):
+    check_contract(config,state)
     if state['contract']!=CONTRACT or state['phase']not in {'READY_FIRST','READY_NEXT'}:raise ValueError('OBSERVATION_STOPPED_OR_UNREVIEWED')
     attempts=state['runs']+[segment for r in state['runs']for segment in r.get('resume_segments',[])]
     if len(attempts)>=3 or sum(r['reserved_documents']for r in state['runs'])>=300:raise ValueError('AUTHORIZED_OBSERVATION_EXHAUSTED')
@@ -161,8 +163,11 @@ class GitHub:
                 elif self.content(p,commit)!=b:raise ValueError('POST_COMMIT_READBACK_FAILURE')
             return commit
         raise ValueError('CONCURRENT_MAIN_CHANGED_TWICE')
-def run(root,out,event,parent_run=None,batch_documents=25):
+def run(root,out,event,parent_run=None,batch_documents=25,supplemental_approval=None):
     if os.getenv('GITHUB_REF')!='refs/heads/main'or os.getenv('GITHUB_RUN_ATTEMPT','1')!='1':raise ValueError('MAIN_FIRST_ATTEMPT_ONLY')
+    if supplemental_approval:
+        from scripts.financial_supplemental_resume import run_supplemental
+        return run_supplemental(root,out,event,parent_run,batch_documents,supplemental_approval)
     api=GitHub();head=api.head();current=api.content(STATE,head)
     state=json.loads(current)if current else initial();config=json.loads((root/CONFIG).read_text());now=datetime.now(UTC)
     try:
@@ -228,4 +233,4 @@ def run(root,out,event,parent_run=None,batch_documents=25):
     print(json.dumps(dict(status=state['phase'],commit=final,processed=summary['processed_results'],durable=summary['durable_terminal_documents'],counts=summary['counts'],candidate_fields=summary['candidate_fields'],financial_fields_published=0)))
     return code
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--event',choices=['first-approved-push','schedule'],required=True);p.add_argument('--resume-parent-run');p.add_argument('--batch-documents',type=int,choices=range(1,26),default=25);a=p.parse_args();raise SystemExit(run(ROOT,a.output,a.event,a.resume_parent_run,a.batch_documents))
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--event',choices=['first-approved-push','schedule'],required=True);p.add_argument('--resume-parent-run');p.add_argument('--batch-documents',type=int,choices=range(1,26),default=25);p.add_argument('--supplemental-approval');a=p.parse_args();raise SystemExit(run(ROOT,a.output,a.event,a.resume_parent_run,a.batch_documents,a.supplemental_approval))
