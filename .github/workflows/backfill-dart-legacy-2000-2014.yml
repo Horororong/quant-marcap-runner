@@ -12,6 +12,10 @@ on:
         description: Small source-only segment,1..25; does not reserve extra documents
         type: number
         default: 2
+      supplemental_approval:
+        description: Explicit finite41-20261023 supplemental budget; blank keeps original3-run contract
+        type: string
+        default: ''
 concurrency:
   group: super-value-fast-pit-backfill
   cancel-in-progress: false
@@ -41,9 +45,11 @@ jobs:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
           RESUME_PARENT_RUN: ${{ inputs.resume_parent_run || '' }}
           BATCH_DOCUMENTS: ${{ inputs.batch_documents || '25' }}
+          SUPPLEMENTAL_APPROVAL: ${{ inputs.supplemental_approval || '' }}
         run: |
           args=()
           if [ -n "$RESUME_PARENT_RUN" ]; then args+=(--resume-parent-run "$RESUME_PARENT_RUN"); fi
+          if [ -n "$SUPPLEMENTAL_APPROVAL" ]; then args+=(--supplemental-approval "$SUPPLEMENTAL_APPROVAL"); fi
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_limited_resume.py --event schedule --output "$RUNNER_TEMP/limited-observation" --batch-documents "$BATCH_DOCUMENTS" "${args[@]}"
       - uses: actions/upload-artifact@v4
         if: always()
