@@ -9,10 +9,11 @@ on:
       suite:
         description: Research or bounded collection coordinator
         type: choice
-        options: [research, collection, integration, parser, workspace, pit_period]
+        options: [research, collection, integration, parser, workspace, pit_period, trial_evidence, supplemental]
         default: research
 permissions:
   contents: read
+  actions: read
 jobs:
   pinned-kit-research:
     runs-on: ubuntu-latest
@@ -32,7 +33,7 @@ jobs:
           python-version: '3.12'
       - name: Official pinned kit only; no Internet pip
         run: |
-          if [ "${{ inputs.suite }}" = collection ]; then
+          if [ "${{ inputs.suite }}" = collection ] || [ "${{ inputs.suite }}" = trial_evidence ] || [ "${{ inputs.suite }}" = supplemental ]; then
             python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
           else
             python docs/audits/version-pit-stage6-20261014/restore_kit_only.py --output "$RUNNER_TEMP/fixed"
@@ -93,6 +94,18 @@ jobs:
           "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");sys.argv=["scripts/export_strategy_dsl_contract.py","--check"];runpy.run_path(sys.argv[0],run_name="__main__")'
           echo "Exact checkout: ${{ inputs.target_sha }}" >> "$GITHUB_STEP_SUMMARY"
           cat "$RUNNER_TEMP/parser-source-evidence.json" >> "$GITHUB_STEP_SUMMARY"
+      - name: Real trial artifact and prerequisite verification; no DART requests
+        if: inputs.suite == 'trial_evidence' || inputs.suite == 'supplemental'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/check_finite_trial_artifact.py --output "$RUNNER_TEMP/trial-qualification.json"
+      - name: Supplemental budget and original protected collector regression
+        if: inputs.suite == 'supplemental'
+        run: |
+          PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
+          "$PY" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_financial_supplemental_resume","test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume","test_dart_corp_code","test_legacy_backfill_resume"]);assert s.countTestCases()>=70;r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
+          "$PY" -I -c 'import hashlib,json;from pathlib import Path;c=json.loads(Path("config/financial_limited_resume_v1.json").read_text());assert all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==v for p,v in c["source_code_sha256"].items());print("PASS_UNCHANGED_APPROVED_SOURCE_OWNERS")'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -106,4 +119,5 @@ jobs:
             ${{ runner.temp }}/saved-comparisons
             ${{ runner.temp }}/pit-source-case
             ${{ runner.temp }}/period-workspace
+            ${{ runner.temp }}/trial-qualification.json
           retention-days: 90
