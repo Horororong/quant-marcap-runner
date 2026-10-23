@@ -1,0 +1,47 @@
+{
+  "status": "PASS_NEW_SOURCE_HASH_CRC_ROW_BINDING_FROZEN_ORDER_NO_DUPLICATE_NORMAL_EXIT",
+  "classification": "RESEARCH_ONLY",
+  "run_id": "40024818567",
+  "run_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/40024818567",
+  "code_sha": "3b505b5fb299e4d162a9676d9f4e757d4415fc69",
+  "source_result_commit": "299e97b47a06cadcf2414c07f9dac606a428e233",
+  "source_HTTP": 21,
+  "retries": 0,
+  "new_originals": 21,
+  "new_candidates": 273,
+  "duplicate_receipts": 0,
+  "duplicate_candidates": 0,
+  "elapsed_seconds": 251.381,
+  "normal_exit": true,
+  "stop_reason": "BATCH_COMPLETE",
+  "checkpoint_before": "20100331002063",
+  "checkpoint_after": "20100331002116",
+  "next_receipt": "20100331002117",
+  "budget": {
+    "executions_used": 1,
+    "executions_remaining": 1,
+    "documents_remaining": 20,
+    "HTTP_actual": 21,
+    "HTTP_reserved": 42,
+    "HTTP_additional_reservable": 40,
+    "total_approved_HTTP": 82
+  },
+  "source_states": {
+    "SOURCE_GAP": 4,
+    "PARSED_4F": 17
+  },
+  "new_source_semantic_PASS": 0,
+  "new_PIT": 0,
+  "new_engine_eligible": 0,
+  "original3history_preserved": true,
+  "sourcepack_remote_persistent": true,
+  "automatic_supplemental_resume": false,
+  "financial_publication": "HOLD",
+  "research_population": {
+    "total": 2565,
+    "PASS": 986,
+    "reviewed_UNVERIFIED": 23,
+    "unreviewed": 1556
+  },
+  "HTTP_evidence": "Deployed pinned collector instrumented progress counts persisted in both remote manifest and supplemental ledger; worker artifact independently checked only if download succeeds"
+}

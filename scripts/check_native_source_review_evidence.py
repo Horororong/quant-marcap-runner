@@ -77,10 +77,54 @@ def check(root):
         if key not in {'parser_version', 'source_code_sha256'}:
             assert config[key] == old[key], key
     from scripts.legacy_native_financials import PARSER_VERSION
-    assert config['parser_version'] == PARSER_VERSION == replay['after_version']
     source = 'scripts/legacy_native_financials.py'
     preserved = load(repair / 'MIGRATION_AND_TEST_STATUS.json')
-    assert config['source_code_sha256'][source] == preserved['research_source_sha256']
+    if PARSER_VERSION == replay['after_version']:
+        assert config['parser_version'] == PARSER_VERSION
+        assert config['source_code_sha256'][source] == preserved['research_source_sha256']
+    else:
+        # Historical9.3 evidence remains pinned to9.3. A later reviewed parser
+        # must prove an explicit migration; never relabel the old replay/hash.
+        assert PARSER_VERSION == config['parser_version'] == 'legacy-v9.4-explicit-audit-note-reference'
+        v93 = load(root / 'tests/fixtures/financial_limited_resume_approved_v9_3.json')
+        assert v93['parser_version'] == replay['after_version']
+        assert v93['source_code_sha256'][source] == preserved['research_source_sha256']
+        directory = root / 'docs/research/sbm-reference-pit-20261023/evidence'
+        migration = load(directory / 'MIGRATION.json')
+        regression = load(directory / 'REPLAY.json')
+        controls = load(directory / 'SBM_SOURCE_REVIEW.json')
+        assert migration['before_version'] == replay['after_version']
+        assert migration['after_version'] == PARSER_VERSION
+        assert migration['before_source_sha256'] == preserved['research_source_sha256']
+        assert migration['after_source_sha256'] == config['source_code_sha256'][source]
+        for file, field in [('REPLAY.json', 'replay_sha256'), ('SBM_SOURCE_REVIEW.json', 'source_review_sha256')]:
+            assert hashlib.sha256((directory / file).read_bytes()).hexdigest() == migration[field]
+        assert regression['before_version'] == replay['after_version']
+        assert regression['after_version'] == PARSER_VERSION
+        assert regression['existing_changes'] == regression['existing_losses'] == []
+        assert len(regression['documents']) == 159
+        assert sum(d['before'] for d in regression['documents']) == 2277
+        assert len(regression['additions']) == len(controls['rows']) == 15
+        assert {d['receipt'] for d in regression['additions']} == {'20100331001822'}
+        references = {candidate_key(r): r for r in controls['rows']}
+        for row in regression['additions']:
+            reference = references[candidate_key(row)]
+            assert reference['semantic_verdict'] == 'PASS'
+            assert row['amount_krw'] == reference['independent_amount_krw']
+            assert row['source_member_sha256'] == reference['source_member_sha256']
+            assert (row['table_index'], row['row_index'], row['value_col']) == (reference['table'], reference['row'], reference['current_physical_column'])
+            assert not reference['engine_eligible'] and reference['PIT'].startswith('UNVERIFIED')
+        for name in v93:
+            if name not in {'parser_version', 'source_code_sha256'}:
+                assert config[name] == v93[name], name
+        additional_path = directory / 'NEW21_REPLAY.json'
+        assert hashlib.sha256(additional_path.read_bytes()).hexdigest() == migration['additional_replay_sha256']
+        additional = load(additional_path)
+        assert additional['before_version'] == replay['after_version']
+        assert additional['after_version'] == PARSER_VERSION
+        assert additional['existing_changes'] == additional['existing_losses'] == additional['additions'] == []
+        assert additional['groups'] == {'new21': {'documents': 21, 'before': 273, 'after': 273}}
+        assert additional['source_HTTP'] == 0
     assert set(config['source_code_sha256']) == set(old['source_code_sha256'])
     for name, expected in config['source_code_sha256'].items():
         assert hashlib.sha256((root / name).read_bytes()).hexdigest() == expected, name

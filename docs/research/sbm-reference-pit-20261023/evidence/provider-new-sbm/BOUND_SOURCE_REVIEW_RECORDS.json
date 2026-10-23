@@ -1,0 +1,226 @@
+[
+  {
+    "row": {
+      "rcept_no": "20100331001822",
+      "document_sha256": "10f1e6aebdf5f245bd4026a030d494cf64cd94813c33eb89064c0e3989408c13",
+      "source_member": "20100331001822.xml",
+      "source_member_sha256": "72060bc182d3145be2e3e8623c043c05bb9f7bba684e3331074b38d156cb55ea",
+      "corp_code": "00265227",
+      "stock_code": "037630",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "14940496927",
+      "structural_status": "PASS"
+    },
+    "review": {
+      "verdict": "PASS",
+      "binding": {
+        "rcept_no": "20100331001822",
+        "document_sha256": "10f1e6aebdf5f245bd4026a030d494cf64cd94813c33eb89064c0e3989408c13",
+        "source_member": "20100331001822.xml",
+        "source_member_sha256": "72060bc182d3145be2e3e8623c043c05bb9f7bba684e3331074b38d156cb55ea",
+        "corp_code": "00265227",
+        "stock_code": "037630",
+        "metric": "equity",
+        "scope": "OFS",
+        "statement": "BS",
+        "period_start": "",
+        "period_end": "2009-12-31",
+        "measurement_basis": "instant",
+        "unit": "원",
+        "unit_multiplier": "1",
+        "amount_krw": "14940496927"
+      },
+      "evidence": [
+        {
+          "path": "/workspace/quant-sbm-pit-20261023/SBM_SOURCE_REVIEW.json",
+          "sha256": "46517f043a0d665f9c9a9efbe9554a548f4ab3da7ead87c89f721a4004a4ae4a",
+          "record": 7,
+          "table": 71,
+          "row": 92,
+          "column": 1
+        }
+      ],
+      "current_period_proved": true,
+      "scope_proved": true,
+      "unit_sign_proved": true,
+      "account_definition_proved": true
+    },
+    "filing_index_date": "2010-03-31",
+    "identifier_status": "CATALOG_HINT_NOT_HISTORICAL_ATTESTATION"
+  },
+  {
+    "row": {
+      "rcept_no": "20100331001822",
+      "document_sha256": "10f1e6aebdf5f245bd4026a030d494cf64cd94813c33eb89064c0e3989408c13",
+      "source_member": "20100331001822.xml",
+      "source_member_sha256": "72060bc182d3145be2e3e8623c043c05bb9f7bba684e3331074b38d156cb55ea",
+      "corp_code": "00265227",
+      "stock_code": "037630",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "26825640512",
+      "structural_status": "PASS"
+    },
+    "review": {
+      "verdict": "PASS",
+      "binding": {
+        "rcept_no": "20100331001822",
+        "document_sha256": "10f1e6aebdf5f245bd4026a030d494cf64cd94813c33eb89064c0e3989408c13",
+        "source_member": "20100331001822.xml",
+        "source_member_sha256": "72060bc182d3145be2e3e8623c043c05bb9f7bba684e3331074b38d156cb55ea",
+        "corp_code": "00265227",
+        "stock_code": "037630",
+        "metric": "revenue",
+        "scope": "OFS",
+        "statement": "IS",
+        "period_start": "2009-01-01",
+        "period_end": "2009-12-31",
+        "measurement_basis": "cumulative",
+        "unit": "원",
+        "unit_multiplier": "1",
+        "amount_krw": "26825640512"
+      },
+      "evidence": [
+        {
+          "path": "/workspace/quant-sbm-pit-20261023/SBM_SOURCE_REVIEW.json",
+          "sha256": "46517f043a0d665f9c9a9efbe9554a548f4ab3da7ead87c89f721a4004a4ae4a",
+          "record": 8,
+          "table": 73,
+          "row": 1,
+          "column": 1
+        }
+      ],
+      "current_period_proved": true,
+      "scope_proved": true,
+      "unit_sign_proved": true,
+      "account_definition_proved": true
+    },
+    "filing_index_date": "2010-03-31",
+    "identifier_status": "CATALOG_HINT_NOT_HISTORICAL_ATTESTATION"
+  },
+  {
+    "row": {
+      "rcept_no": "20100331001822",
+      "document_sha256": "10f1e6aebdf5f245bd4026a030d494cf64cd94813c33eb89064c0e3989408c13",
+      "source_member": "20100331001822.xml",
+      "source_member_sha256": "72060bc182d3145be2e3e8623c043c05bb9f7bba684e3331074b38d156cb55ea",
+      "corp_code": "00265227",
+      "stock_code": "037630",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "7265064249",
+      "structural_status": "PASS"
+    },
+    "review": {
+      "verdict": "PASS",
+      "binding": {
+        "rcept_no": "20100331001822",
+        "document_sha256": "10f1e6aebdf5f245bd4026a030d494cf64cd94813c33eb89064c0e3989408c13",
+        "source_member": "20100331001822.xml",
+        "source_member_sha256": "72060bc182d3145be2e3e8623c043c05bb9f7bba684e3331074b38d156cb55ea",
+        "corp_code": "00265227",
+        "stock_code": "037630",
+        "metric": "net_income",
+        "scope": "OFS",
+        "statement": "IS",
+        "period_start": "2009-01-01",
+        "period_end": "2009-12-31",
+        "measurement_basis": "cumulative",
+        "unit": "원",
+        "unit_multiplier": "1",
+        "amount_krw": "7265064249"
+      },
+      "evidence": [
+        {
+          "path": "/workspace/quant-sbm-pit-20261023/SBM_SOURCE_REVIEW.json",
+          "sha256": "46517f043a0d665f9c9a9efbe9554a548f4ab3da7ead87c89f721a4004a4ae4a",
+          "record": 13,
+          "table": 73,
+          "row": 67,
+          "column": 1
+        }
+      ],
+      "current_period_proved": true,
+      "scope_proved": true,
+      "unit_sign_proved": true,
+      "account_definition_proved": true
+    },
+    "filing_index_date": "2010-03-31",
+    "identifier_status": "CATALOG_HINT_NOT_HISTORICAL_ATTESTATION"
+  },
+  {
+    "row": {
+      "rcept_no": "20100331001822",
+      "document_sha256": "10f1e6aebdf5f245bd4026a030d494cf64cd94813c33eb89064c0e3989408c13",
+      "source_member": "20100331001822.xml",
+      "source_member_sha256": "72060bc182d3145be2e3e8623c043c05bb9f7bba684e3331074b38d156cb55ea",
+      "corp_code": "00265227",
+      "stock_code": "037630",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "7041030972",
+      "structural_status": "PASS"
+    },
+    "review": {
+      "verdict": "PASS",
+      "binding": {
+        "rcept_no": "20100331001822",
+        "document_sha256": "10f1e6aebdf5f245bd4026a030d494cf64cd94813c33eb89064c0e3989408c13",
+        "source_member": "20100331001822.xml",
+        "source_member_sha256": "72060bc182d3145be2e3e8623c043c05bb9f7bba684e3331074b38d156cb55ea",
+        "corp_code": "00265227",
+        "stock_code": "037630",
+        "metric": "ocf",
+        "scope": "OFS",
+        "statement": "CF",
+        "period_start": "2009-01-01",
+        "period_end": "2009-12-31",
+        "measurement_basis": "cumulative",
+        "unit": "원",
+        "unit_multiplier": "1",
+        "amount_krw": "7041030972"
+      },
+      "evidence": [
+        {
+          "path": "/workspace/quant-sbm-pit-20261023/SBM_SOURCE_REVIEW.json",
+          "sha256": "46517f043a0d665f9c9a9efbe9554a548f4ab3da7ead87c89f721a4004a4ae4a",
+          "record": 14,
+          "table": 79,
+          "row": 1,
+          "column": 1
+        }
+      ],
+      "current_period_proved": true,
+      "scope_proved": true,
+      "unit_sign_proved": true,
+      "account_definition_proved": true
+    },
+    "filing_index_date": "2010-03-31",
+    "identifier_status": "CATALOG_HINT_NOT_HISTORICAL_ATTESTATION"
+  }
+]

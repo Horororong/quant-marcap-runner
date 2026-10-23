@@ -1,0 +1,218 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "baseline": "33abf89aa46a388a57aab41c220ca82870cb1747",
+  "before_version": "legacy-v9.3-note-reference-token-guard",
+  "after_version": "legacy-v9.4-explicit-audit-note-reference",
+  "compared_fields": [
+    "metric",
+    "scope",
+    "statement",
+    "term",
+    "period_start",
+    "period_end",
+    "measurement_basis",
+    "amount_reported",
+    "amount_krw",
+    "unit",
+    "unit_multiplier",
+    "structural_status",
+    "availability_status",
+    "backtest_eligible",
+    "source_member",
+    "source_member_sha256",
+    "table_index",
+    "row_index",
+    "value_col",
+    "source_character",
+    "raw_amount",
+    "account_name",
+    "correction_file",
+    "amendment_region",
+    "numeric_normalization",
+    "fiscal_year",
+    "fiscal_year_evidence"
+  ],
+  "documents": [
+    {
+      "receipt": "20100331002066",
+      "group": "new21",
+      "before": 0,
+      "after": 0,
+      "added": 0,
+      "gap": true
+    },
+    {
+      "receipt": "20100331002067",
+      "group": "new21",
+      "before": 11,
+      "after": 11,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002072",
+      "group": "new21",
+      "before": 17,
+      "after": 17,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002073",
+      "group": "new21",
+      "before": 14,
+      "after": 14,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002075",
+      "group": "new21",
+      "before": 15,
+      "after": 15,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002084",
+      "group": "new21",
+      "before": 16,
+      "after": 16,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002085",
+      "group": "new21",
+      "before": 17,
+      "after": 17,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002089",
+      "group": "new21",
+      "before": 16,
+      "after": 16,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002091",
+      "group": "new21",
+      "before": 0,
+      "after": 0,
+      "added": 0,
+      "gap": true
+    },
+    {
+      "receipt": "20100331002094",
+      "group": "new21",
+      "before": 18,
+      "after": 18,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002095",
+      "group": "new21",
+      "before": 15,
+      "after": 15,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002096",
+      "group": "new21",
+      "before": 16,
+      "after": 16,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002097",
+      "group": "new21",
+      "before": 17,
+      "after": 17,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002098",
+      "group": "new21",
+      "before": 16,
+      "after": 16,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002100",
+      "group": "new21",
+      "before": 0,
+      "after": 0,
+      "added": 0,
+      "gap": true
+    },
+    {
+      "receipt": "20100331002102",
+      "group": "new21",
+      "before": 20,
+      "after": 20,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002103",
+      "group": "new21",
+      "before": 15,
+      "after": 15,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002104",
+      "group": "new21",
+      "before": 15,
+      "after": 15,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002105",
+      "group": "new21",
+      "before": 16,
+      "after": 16,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002112",
+      "group": "new21",
+      "before": 19,
+      "after": 19,
+      "added": 0,
+      "gap": false
+    },
+    {
+      "receipt": "20100331002116",
+      "group": "new21",
+      "before": 0,
+      "after": 0,
+      "added": 0,
+      "gap": true
+    }
+  ],
+  "additions": [],
+  "existing_changes": [],
+  "existing_losses": [],
+  "source_HTTP": 0,
+  "publication": "HOLD",
+  "PIT": "UNVERIFIED",
+  "groups": {
+    "new21": {
+      "documents": 21,
+      "before": 273,
+      "after": 273
+    }
+  }
+}

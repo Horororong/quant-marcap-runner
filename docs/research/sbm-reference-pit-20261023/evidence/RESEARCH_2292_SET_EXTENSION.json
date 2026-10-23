@@ -1,0 +1,23 @@
+{
+  "base_population": 2277,
+  "base_membership_sha256": "df62e2dfad8ae791076ff17edb3598e5f2566356a4b87b6e6708c004a00df549",
+  "delta": 15,
+  "delta_membership_sha256": "df6bae9243dba5eb64a9e46cf2e37d0ee13840aba98c187e22653a09ab1e94cc",
+  "overlap": 0,
+  "total": 2292,
+  "PASS": 986,
+  "reviewed_UNVERIFIED": 23,
+  "unreviewed": 1283,
+  "canary_four_fields_outside": true,
+  "new_remote21_candidates": "SEPARATE_COLLECTED_UNREVIEWED_COHORT_NOT_YET_KNOWN",
+  "provider_quarantine_before": {
+    "rows": 298,
+    "companies": 70
+  },
+  "provider_quarantine_after": {
+    "rows": 302,
+    "companies": 71
+  },
+  "actual_engine_eligible_in_this_pool": 0,
+  "PIT_promotions": 0
+}

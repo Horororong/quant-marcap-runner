@@ -1,0 +1,36 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "id_contract": "source-candidate-v1",
+  "id_fields": "receipt/scope/statement/metric/exact period/basis/member+SHA/table/row/column",
+  "amounts_not_in_id": "Changing an amount at the same source locator must be a regression, not a new ID",
+  "groups": {
+    "original_first100": 1363,
+    "original_second57": 871,
+    "new_trial34": 34,
+    "held_repair9": 9
+  },
+  "decisions": {
+    "UNREVIEWED": 1283,
+    "PASS": 971,
+    "UNVERIFIED": 23
+  },
+  "original_population": 2234,
+  "repair_additions": 9,
+  "collected_additions": 34,
+  "research_population": 2277,
+  "unique_ids": 2277,
+  "exact_same_set": true,
+  "missing_from_research": [],
+  "extra_in_research": [],
+  "duplicate_ids": 0,
+  "old_first100_reviews_are_within_population": 80,
+  "source_gap_documents_separate": 23,
+  "canary_four_fields_outside_population": true,
+  "provider_quarantine_rows": 298,
+  "provider_company_hints": 70,
+  "new_live_engine_values": 0,
+  "full_PIT_promotions": 0,
+  "source_HTTP": 0,
+  "limit": "SBM new parser additions are excluded from this historical2277 population and reported separately",
+  "membership_sha256": "df62e2dfad8ae791076ff17edb3598e5f2566356a4b87b6e6708c004a00df549"
+}

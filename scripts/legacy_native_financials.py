@@ -18,7 +18,7 @@ except ModuleNotFoundError as error:
         raise
     from legacy_financial_fields import choose_metric, norm_account
 
-PARSER_VERSION = "legacy-v9.3-note-reference-token-guard"
+PARSER_VERSION = "legacy-v9.4-explicit-audit-note-reference"
 DATE = re.compile(r"(\d{4})\s*[.년/-]\s*(\d{1,2})\s*[.월/-]\s*(\d{1,2})(?:\s*[.일])?")
 HEADING = re.compile(r"(?:연결)?(?:포괄손익계산서|손익계산서|대차대조표|재무상태표|현금흐름표|이익잉여금처분계산서|결손금처리계산서)")
 TERM = re.compile(r"(?:제\s*)?(\d+)\s*(?:\([당전]\))?\s*기")
@@ -332,6 +332,21 @@ def kind(start, end, header):
     return "QX"
 
 
+def boundary_probe(prefix):
+    """Remove only explicit citations from a boundary-only copy of the text.
+
+    In particular, referring readers to notes in an attached audit report is
+    not entering those notes. Do not suppress a general paragraph containing
+    '참조': real notes before/after this exact sentence must still close the
+    primary-statement zone. Source text and physical locators are untouched.
+    """
+    prefix = re.sub(
+        r"(?:연결)?재무제표에대한주석은첨부된\[감사보고서\]의"
+        r"['‘](?:연결)?재무제표에대한주석['’]을참조하시기바랍니다[.]?",
+        "", prefix)
+    return re.sub(r"(?:연결)?재무제표에대한주석참조", "", prefix)
+
+
 def parse_native(text):
     reader = NativeTables(text)
     reader.feed(text)
@@ -370,7 +385,7 @@ def parse_native(text):
         # Removing it cannot open a closed zone; real notes/segment markers
         # elsewhere in the prefix still close it. Dates, scope, unit and
         # physical current-column evidence below remain mandatory.
-        boundary_prefix = re.sub(r"(?:연결)?재무제표에대한주석참조", "", prefix)
+        boundary_prefix = boundary_probe(prefix)
         events = list(re.finditer(r"4[.]재무제표|가[.]재무제표|다[.]연결재무제표|(?:XI|Ⅺ|ⅩⅠ)[.](?:부속명세서|재무제표등)|부문별재무현황|사업부문별재무|합병전[ㆍ·]?후|외화자산과부채|주석", boundary_prefix))
         for event in events:
             zone = (event.group() in {"4.재무제표", "가.재무제표", "다.연결재무제표"}

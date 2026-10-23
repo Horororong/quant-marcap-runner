@@ -1,0 +1,13 @@
+{
+  "source_HTTP_before_actual_dispatch": 0,
+  "consumed_preflight_leases": 0,
+  "local_preflight_fixes": [
+    "Handle absent first-lease supplemental ledger only after complete remote tree/path history/original159receipt evidence; invoke unchanged merged initial() and all gates",
+    "Bind CONTRACT in read-only AST gate namespace; no source request/lease had happened"
+  ],
+  "automatic_review_initial_rejection": "Potential ledger reset; resolved through explicit independent read-only complete-tree+path-history+immutable-original-state proof and strengthened preconditions, then approved execution",
+  "large_source_download": "ContentsAPI >1MiB encoding=none is a metadata response; Gitblob read and blobSHA/manifestSHA validation restored real bytes; no original data overwritten",
+  "artifact_download": "Azure redirect Forbidden; signed URL redacted, no retry",
+  "old401": "Historical exact cause undetermined; current credential API/write/release/upload/download succeeded",
+  "repeat_failed_source_requests": 0
+}

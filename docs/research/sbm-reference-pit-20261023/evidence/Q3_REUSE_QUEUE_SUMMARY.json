@@ -1,0 +1,38 @@
+{
+  "required_companies": 21,
+  "rows": 68,
+  "receipt_count": 22,
+  "company_hints": 20,
+  "original_input": "data/financials/legacy_2000_2014/normalized/legacy_metrics_2009.csv.gz",
+  "input_sha256": "9047d40d559c6b9b443352c7681a50b8a662b69f977dcd3b3d3e5d80290d2ec6",
+  "fields": [
+    "revenue",
+    "net_income",
+    "ocf"
+  ],
+  "before_new_HTTP": "Look up exact receipt + archive SHA in existing recovery inventories; absence requires separately bounded collection approval, not use of the frozen41 budget",
+  "OFS_same_scope_hints": {
+    "000650": 3,
+    "002960": 3,
+    "004770": 3,
+    "005710": 3,
+    "008000": 3,
+    "008900": 3,
+    "009010": 3,
+    "022220": 3,
+    "023460": 3,
+    "033160": 3,
+    "037710": 3,
+    "042510": 3,
+    "049690": 3,
+    "058480": 3,
+    "066270": 3,
+    "066340": 3,
+    "068930": 3,
+    "079950": 3,
+    "104110": 3,
+    "104120": 3
+  },
+  "admitted_new_Q3_fields": 0,
+  "point": "Do not infer JanSep duration from month-first period_end2009-09-01 or old first-current-column heuristic"
+}

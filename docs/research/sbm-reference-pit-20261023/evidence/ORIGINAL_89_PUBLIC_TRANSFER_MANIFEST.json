@@ -1,0 +1,480 @@
+{
+  "status": "PREPARED_AWAITING_NEW_SCOPE_PUBLICATION_APPROVAL",
+  "repository": "Horororong/quant-marcap-runner",
+  "public_branch": "fix/native-source-boundaries-20261021",
+  "base_last_verified_public": "589a3ea2aa7dd3aa23f961aab7a8e75e1b1ac574",
+  "target": "33abf89aa46a388a57aab41c220ca82870cb1747",
+  "local_branch": "research/source-fields-batch3-20261023",
+  "commits": [
+    "dbb6287b9a9cb4afa36a4319cc75fc46a472e683",
+    "e886fb070dd42273a53c0c1ee942b1a15a1a463d",
+    "33abf89aa46a388a57aab41c220ca82870cb1747"
+  ],
+  "files": [
+    {
+      "path": "HANDOFF_CURRENT.md",
+      "bytes": 93441,
+      "sha256": "1b5bf0696132252607babc9b99a5059c7954dc8592a86832f6b868dcd91bb0dd"
+    },
+    {
+      "path": "docs/research/auth-delivery-20261023/REPORT.md",
+      "bytes": 2780,
+      "sha256": "7cf0c22b4bcbe514371fa9dff2436ddea9d94a395f00f7078b096f97c133fbf7"
+    },
+    {
+      "path": "docs/research/auth-delivery-20261023/evidence/AUTH_PREFLIGHT.json",
+      "bytes": 418,
+      "sha256": "b3d213430a4c93a7fc1037319932462b8e0816a29699fb65dcca9420aa9d5bd3"
+    },
+    {
+      "path": "docs/research/auth-delivery-20261023/evidence/REMOTE_RELEASE_RECEIPT.json",
+      "bytes": 2232,
+      "sha256": "08f92df651cbec12ca10fa7fa1c56f918107dadda8b239716b42bfdbe85f618e"
+    },
+    {
+      "path": "docs/research/auth-delivery-20261023/evidence/TAG_ASSERTION_DIAGNOSIS.json",
+      "bytes": 523,
+      "sha256": "7d81e4d425f7c9e44e6d5a26d117cb1c052759acdf5c2b611c9fbf6265a70dbc"
+    },
+    {
+      "path": "docs/research/auth-delivery-20261023/evidence/V12_DELIVERY_COMPLETED.json",
+      "bytes": 575,
+      "sha256": "e466da894f7a82478b26e0b3c069b2ebb371a8f27e57f23d09d27014ce8d18ef"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/REPORT.md",
+      "bytes": 12999,
+      "sha256": "b47f9093981721bc816ebb9872c1a7cc4a0b5d390f9659c55f84ecd3d4a3069e"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/RESUME.md",
+      "bytes": 3721,
+      "sha256": "b2edb3091ac3536c7a435bff92279d15a748bac550ed25ce9f4482add55e9541"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/APPROVED_589_TRANSFER_MANIFEST.json",
+      "bytes": 6678,
+      "sha256": "0975b2067fb40401ffb0c966edbda27a64b8368c04102e2d5a2545f8998fa705"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/APPROVED_FULL_HISTORY_PREFLIGHT.json",
+      "bytes": 20502,
+      "sha256": "f958baa442c9428953ae6223153fce515da27c014e42080046e29171601b96f0"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/AUTH_DIAGNOSIS.json",
+      "bytes": 1737,
+      "sha256": "8aae466e47fd3d5b150b00bfde2cbfa311b73706ef601b0ce1a93d0ce5cc6814"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/BATCH_BOUNDARY_FINAL.log",
+      "bytes": 107,
+      "sha256": "a2f243794c6d0bb3411a92861920e8af2aa57f8f26a66b669fec6894341696f0"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/CI_SCOPE_LIMITATION.json",
+      "bytes": 634,
+      "sha256": "3b64a0173a16f982a04013382b7190d34360ad33ebcd744d8ae253ac6a2fa5c1"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/EXISTING_SOURCE_PROBES_AND_GAPS.json",
+      "bytes": 3009,
+      "sha256": "19ae145a315d80cd488e0acc42385d80355f63e4496dd2d24dec8cbc0df892f2"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/INTERMEDIATE_BRANCH_TRANSFER_MANIFEST.json",
+      "bytes": 9250,
+      "sha256": "1cb88495e47179ed0531b53be3e598670aae19b0530408561bee7f733b3b4df6"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/PUBLISHED_589.json",
+      "bytes": 1745,
+      "sha256": "74743b4b6110046b4c643c21e3d45df0641aa1b42ff15fac32350bd80638b950"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/TESTED_CODE_HASHES.json",
+      "bytes": 355,
+      "sha256": "1831d78904774af544d8499a0e5184e6315637ed21e492a158edb7dcae4e961b"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/UNCHANGED_PROTECTED_OWNERS.json",
+      "bytes": 623,
+      "sha256": "b0725ab4fec5fdf3b0f69c3b87a920671e6189d7b1dc16ab8bc60021d78a1d85"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/V12_ASSET_OBSERVATION.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/V12_PREFLIGHT.json",
+      "bytes": 389,
+      "sha256": "2b6f34f5e55fb5b5bc5ec266dbc55fdfea7d8d007030cbc146b9dc05df6e470d"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/batch-final/2009-FY-CANDIDATE_ACCOUNT_ROWS.csv",
+      "bytes": 16528,
+      "sha256": "42444410e8c82eee8cba73e3ce6c4ce1bee67bb3acdd2da224d5ae4776569576"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/batch-final/2009-FY-CANDIDATE_SNAPSHOTS.csv",
+      "bytes": 5510,
+      "sha256": "e439dfd37abc8a634385e7d648cda622fdd5273c30f020efb7c444e546942db8"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/batch-final/2009-FY-STRICT_READY_ROWS.csv",
+      "bytes": 110,
+      "sha256": "56fe2e1e0bf09699ccfaad8e71abdd91416c4009ad8fb3e5eb0e289cebeeb3d7"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/batch-final/AUDIT.json",
+      "bytes": 342320,
+      "sha256": "0c23947635ff5c4ede549cb53382e90b30817ee0f2562f11ede4931e27a9b2b3"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/batch-final/BOUND_SOURCE_REVIEW_RECORDS.json",
+      "bytes": 422799,
+      "sha256": "92dd2f56d8912201abe82d8047a0228ef9fc0c53f32d8cb76ffd91a6bc79de6f"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/batch-final/CANONICAL_PREVIEW_ROUNDTRIPS.json",
+      "bytes": 59740,
+      "sha256": "8d4944fe31bd3907609c35b3b1995768e2f1868d8dde118c80c701b93fabf9cf"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/batch-final/CONFLICTS.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/batch-final/FY_CORE4_PREVIEW_GROUPS.json",
+      "bytes": 12299,
+      "sha256": "ee2fff6302957e605b5bea9e0f0fdb3556d922845383d9a47782b8935a948129"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/batch-final/HELD.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/batch-final/INPUTS.json",
+      "bytes": 676,
+      "sha256": "45de7be8c88bb313b0876aa1b1cfea0c3da7aaf56a10fd445f2baa79688b121d"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/batch-final/PER_ROW_READINESS.json",
+      "bytes": 298259,
+      "sha256": "6936e1b2ecea792a9aca9973168db97f00829db44d073df950004e9fec6eae67"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/batch-final/STRICT_ADMISSION_DECISIONS.json",
+      "bytes": 36296,
+      "sha256": "c759b17ae0fba7cbe1119b4610eafbec2977eca48a55831bc54522540e2ea7bb"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/batch-final/SUMMARY.json",
+      "bytes": 1566,
+      "sha256": "3f0183034ceab42c0902e0af714d74438919b322e9f9227037173a338f93da8d"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/population/ALL_MEMBERSHIP.csv",
+      "bytes": 302080,
+      "sha256": "97e1eab7e979145194d1212d0d142e073c2cf8e6791a17b245646f39eb141c84"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/population/INTERSECTION.csv",
+      "bytes": 217634,
+      "sha256": "aab584654dd1fbec663cc3b48216468216d7f401148b0cb5b88df8c2016bc44e"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/population/LEDGER_ONLY.csv",
+      "bytes": 996,
+      "sha256": "ec93989370443efef6a78b5178e4f2a34d28694afb3a35844920b837dd461c07"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/population/OUTSIDE_REASON_METHOD_COUNTS.csv",
+      "bytes": 237,
+      "sha256": "65def72e888987ffbb42801f88d7fc0ce8bfe0e1c3b5bff987febb384cfcdd0a"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/population/STRATEGY_ONLY.csv",
+      "bytes": 83922,
+      "sha256": "10f9efcc51333bbaaaed262acba13b9a063e940e65545a68e2c9dc3aa98dd533"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/population/STRATEGY_ONLY_WITH_MAPPING_METHOD.csv",
+      "bytes": 103824,
+      "sha256": "cd4a00b1cbea2bcecbee3a6d3fd25b4e5ca5ca24124f8a5b2e09c82c625c1223"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/population/SUMMARY.json",
+      "bytes": 5042,
+      "sha256": "ecd836f197a77a64a6c2d69dd28a6f90516c84e7bbc2d4560ad55d80ccfab6cd"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/evidence/runtime-verify.json",
+      "bytes": 21113,
+      "sha256": "a2776816a1db5c3a67a035d2985185c1bbf03a3e3d566b1e9e29efbfe57e2de4"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/tools/reconcile_population.py",
+      "bytes": 6360,
+      "sha256": "7d93038a5d751338d5196761513d39ba25b6348557b8f5cd6d2d9d1ee7fcdcf9"
+    },
+    {
+      "path": "docs/research/multi-provider-20261023/tools/resume_approved_v12_after_auth_update.py",
+      "bytes": 6500,
+      "sha256": "0b085e8b48e26c4de1e2af9d189a5fb9fd8812411c43c1010e617f6014398f0f"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/REPORT.md",
+      "bytes": 11511,
+      "sha256": "013374d5fe08f9de959cb783a73aa5650ff540a4b304ab08f104fab11d1030af"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/RESUME.md",
+      "bytes": 4629,
+      "sha256": "0402d0377436c5b2cde71495063ba0c68c90e2b82e76fe603b77676687e1e740"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/EXTENSION_BOUNDARY_TESTS.log",
+      "bytes": 693,
+      "sha256": "7e6681bc71008920cf787c56fe26c5fc0c769c2fc076779aa6852a575c366d44"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/FINAL_SOURCE_CORE_CHECK.json",
+      "bytes": 360,
+      "sha256": "9438c10054fd4d5695f2c1ef308b478d5efaaee6c8fe8afd945389571ea3e57d"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/FIXED_EXISTING_SOURCE_LOCATIONS.json",
+      "bytes": 1525,
+      "sha256": "47ecd8795dc502336760c8be266589d53356c51a64dd49527d30ce31b1ba94cf"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/FROZEN_NEW_REVIEW_SCOPE.json",
+      "bytes": 10195,
+      "sha256": "0b02281fb0ff5bfe1dca3d002ef86c5dfab4976cedf54c2e4b46f83a57b0267a"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/IDENTITY_BOUNDARY_TESTS.log",
+      "bytes": 1320,
+      "sha256": "e8173e3698cd7e3afd31780823908364d45a0edfdf77dd78631481bc5c160ddd"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/NEW20_HISTORICAL_MAPPING_CHECKS.json",
+      "bytes": 11288,
+      "sha256": "83a631f05f141b4032e7e04b32bb7d97927588225504007ed4a9075aee251b03"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/OPERATING_PATH_OBSERVATION.json",
+      "bytes": 844,
+      "sha256": "e9477359c1bd57c258e4a8a858f27b28b884db0778a5288234ad7afaff941cfd"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/PACK_UNPACK_RECEIPT.json",
+      "bytes": 524,
+      "sha256": "0e020ac953b67eb1ec843aaf2666d507d8d830feaad442f38af0bd3c2b449bcb"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/REPRODUCERS_VERIFIED.json",
+      "bytes": 499,
+      "sha256": "2f0fc247570184c6a631ca508b4ab37cfaa911c6524e8a191763d03927aa2666"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/SBM_CURRENT93_DIAGNOSTIC.json",
+      "bytes": 17902,
+      "sha256": "fbed2236b77b0ad1354a3ab8e0801252120163d51299b4205492cb6bd608cf81"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/SBM_HEADER_FAILURE_SOURCE.json",
+      "bytes": 5558,
+      "sha256": "ac9110f3c3699249839e8a1c139f0244e819b157b620e48d5283509a124d2644"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/SBM_ZERO_ROOT_CAUSE.json",
+      "bytes": 2457,
+      "sha256": "17f0ae54637c448a43909ace700bd3c1bfcb3163bf8910c3ed169aa48f4d9d45"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/SLOT_INCREMENT.json",
+      "bytes": 364,
+      "sha256": "4b0d307d60a705ff50a6bf52c82f34614c7c398467441dd214ddfbac17f2cd00"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/TESTED_CODE_HASHES.json",
+      "bytes": 573,
+      "sha256": "25062447b9a02b238dd275b778bbe6b6548993f0b25c274a8684b4d28a9c01ed"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/UNCHANGED_PROTECTED_OWNERS.json",
+      "bytes": 623,
+      "sha256": "b0725ab4fec5fdf3b0f69c3b87a920671e6189d7b1dc16ab8bc60021d78a1d85"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/identity-final/FIELD_READINESS_AT_SIGNALS.json",
+      "bytes": 213073,
+      "sha256": "93fa80b01e45978e247f50db5afb27369d33493b57f581605f74518ded4199a8"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/identity-final/IDENTITY_AT_SIGNALS.json",
+      "bytes": 60137,
+      "sha256": "b189eb8b5c62ec77cccb29d694a06cb5b38a2341cde809c8d4d65785ca949a05"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/identity-final/REVIEWED_SELF_NAME_ALIASES.json",
+      "bytes": 3627,
+      "sha256": "c2bec547d27a821028d0706567945d727de35d134b6b58eba37d72e7c9ac6e83"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/identity-final/STRATEGY_MAP_GAP_SNAPSHOT_EVIDENCE.json",
+      "bytes": 10611,
+      "sha256": "112ad7246df3590957848e5561aec93362b444dcecc65a3ad0eb2949a4fdb4f3"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/identity-final/SUMMARY.json",
+      "bytes": 625,
+      "sha256": "1fb75586bc94c7568d37de96d3c77c3c7af473e6c87470918710dffa7f7458b4"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/new20-review/NEW20_CORE_SOURCE_REVIEW.json",
+      "bytes": 351641,
+      "sha256": "12d129003bfeb0f9aa9bf321f19cbb059cd344fd6b5d32d31dfcf03ce46bfd32"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/new20-review/SUMMARY.json",
+      "bytes": 804,
+      "sha256": "a2b337e43f8e73e741b4315e293f96f8e636beec549daf6d0ec95945933f26b8"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/provider-new80/2009-FY-CANDIDATE_ACCOUNT_ROWS.csv",
+      "bytes": 6103,
+      "sha256": "e3abe5a64111f18a4a77bb818a24d6b86ac638543fe46596070a99175b10cd5d"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/provider-new80/2009-FY-CANDIDATE_SNAPSHOTS.csv",
+      "bytes": 2074,
+      "sha256": "9843a44ba09a70fb1d0568add659fa10a8928ab46c7e79e91a2b9326716d1391"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/provider-new80/2009-FY-STRICT_READY_ROWS.csv",
+      "bytes": 110,
+      "sha256": "56fe2e1e0bf09699ccfaad8e71abdd91416c4009ad8fb3e5eb0e289cebeeb3d7"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/provider-new80/AUDIT.json",
+      "bytes": 125469,
+      "sha256": "1e0cde71fedb6033a59b85ec3a8bdc103bbb5cd63d3ca450ae396b8f8ba7c58b"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/provider-new80/BOUND_SOURCE_REVIEW_RECORDS.json",
+      "bytes": 155712,
+      "sha256": "8c60b6a6a52474a49f2306d1e05404beb11aa5b1a4735dc40318b0a17a18698c"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/provider-new80/CANONICAL_PREVIEW_ROUNDTRIPS.json",
+      "bytes": 21869,
+      "sha256": "bc0512b1d47040f7fe9b57023377e8f78f4acd91fe40ce4147827c6ad7bd3085"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/provider-new80/CONFLICTS.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/provider-new80/HELD.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/provider-new80/INPUTS.json",
+      "bytes": 232,
+      "sha256": "6adf2003e431e68b091fe51288fc0088b1cfeb51e6856140e78d04ad6dfc21d4"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/provider-new80/PER_ROW_READINESS.json",
+      "bytes": 109376,
+      "sha256": "01f926a0b83ead98ef413a49f3e5a5e80e78daa5530d132a628f5a9e8fc6261c"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/provider-new80/STRICT_ADMISSION_DECISIONS.json",
+      "bytes": 13323,
+      "sha256": "f45e6e9409a31e7852f207278448327f15da53841a4b075c6d3fe26923220377"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/evidence/provider-new80/SUMMARY.json",
+      "bytes": 1481,
+      "sha256": "baded41653bf6f41de27329f9bf8b7740d3c1372b377c431e1b4fe4171bdfd94"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/tools/join_new20_identity.py",
+      "bytes": 6228,
+      "sha256": "50c06d1c03b103d5a3fc6a83e121087a90627bad1b2397789e163a5228e48ea5"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/tools/review_new20_core.py",
+      "bytes": 8646,
+      "sha256": "7fcf75ff1a1ce96e84c79ca0ddd2d92f1c0c1b3f325abd953dd402c2d911a348"
+    },
+    {
+      "path": "docs/research/source-core-batch3-20261023/tools/unpack_first100_preserved.py",
+      "bytes": 1659,
+      "sha256": "1b65fe3cb3af492b4fed71369ca251a6fb2c2ef2215dc3e25e7b973a5f64e218"
+    },
+    {
+      "path": "scripts/apply_reviewed_financial_batch.py",
+      "bytes": 10999,
+      "sha256": "d6a6184e42d235a38f63371187e4cb28c56165780ce584d8aece02ce75ccea36"
+    },
+    {
+      "path": "scripts/check_source_core_increment.py",
+      "bytes": 3003,
+      "sha256": "9cb70b28fa1b4a02066437af88c0764a523ecc89647634887dfe51dc56228a86"
+    },
+    {
+      "path": "scripts/historical_source_identity.py",
+      "bytes": 3990,
+      "sha256": "acb21ca610261944351165a62fecbb83093a290c969ffd2036c4a37f0dd6edad"
+    },
+    {
+      "path": "scripts/reviewed_financial_batch_bridge.py",
+      "bytes": 5802,
+      "sha256": "344c023a9f73dcaf3dd1c918adbab4479e170cbf70d856ba89e30a0835163020"
+    },
+    {
+      "path": "scripts/test_historical_source_identity.py",
+      "bytes": 3583,
+      "sha256": "4281a77cc88eab41588dd91c086ceaf69e3a3c7f138f6a196aff6f83796b9ccd"
+    },
+    {
+      "path": "scripts/test_reviewed_financial_batch_bridge.py",
+      "bytes": 4121,
+      "sha256": "7b14d874ed9f0896e4c3535c0189eb122264c38418f16cbecde2f9911e9bd2fc"
+    },
+    {
+      "path": "scripts/test_reviewed_source_extensions.py",
+      "bytes": 2889,
+      "sha256": "2271cf3a1863a1c009b8dc47a05fafde74b84c99ad17401019873ff607856d4a"
+    }
+  ],
+  "file_count": 89,
+  "file_bytes": 3303596,
+  "historical_file_versions": 95,
+  "secret_hits": 0,
+  "public_suitability": "Public corporate filings/market-derived field audits, code, historical-identity proof and delivery receipts; no private data or credentials detected",
+  "scope": "All still-local code/evidence since public589, including dbb6287 commonbridge and e886fb0 authreceipt; no unapproved intermediate parents omitted",
+  "driver": {
+    "separate_from_code_files": true,
+    "name": "fixed-kit-source-core-driver.yml",
+    "bytes": 11071,
+    "sha256": "a46a8c0b283efb092e54f163bf08f27fdd992682b0cc3316fa3d89f384325b02",
+    "publication_branch": "ci/fixed-kit-restored-20261020",
+    "new_suite": "source_core",
+    "actual_driver_commit": "NOT_CREATED"
+  },
+  "new_remote_CI": "NOT_RUN",
+  "main_merge": false,
+  "source_HTTP": 0,
+  "financial_publication": "HOLD",
+  "PIT": "0/6"
+}

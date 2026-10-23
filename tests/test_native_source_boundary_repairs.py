@@ -65,6 +65,25 @@ class NoteReferenceBoundary(unittest.TestCase):
                                    '<TD>123</TD><TD>3,507,674,422</TD>')
         self.assertEqual(select_verified(parse_native(text)['candidates']), [])
 
+    def test_explicit_attached_audit_reference_is_not_a_notes_section(self):
+        citation = "재무제표에 대한 주석은 첨부된 [감사보고서]의 '재무제표에 대한 주석'을 참조하시기 바랍니다."
+        rows = self.selected(citation=citation)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]['amount_krw'], '3507674422')
+        self.assertEqual(rows[0]['value_col'], 2)
+        self.assertFalse(rows[0]['backtest_eligible'])
+        for zone in ['', '주석', '부문별재무현황']:
+            self.assertEqual(self.selected(citation=citation, zone=zone), [])
+        for suffix in [' 주석', ' 부문별재무현황', ' 합병전후']:
+            self.assertEqual(self.selected(citation=citation + suffix), [])
+            self.assertEqual(self.selected(citation=suffix + citation), [])
+
+    def test_general_notes_paragraph_cannot_join_primary_statements(self):
+        for citation in ["주석 1. 재무제표의 작성기준은 감사보고서를 참조하시기 바랍니다.",
+                         "재무제표에 대한 주석은 첨부된 [감사보고서]를 참조하시기 바랍니다.",
+                         "재무제표에 대한 주석은 첨부된 [감사보고서]의 '재무제표에 대한 주석'을 참조. 주석"]:
+            self.assertEqual(self.selected(citation=citation), [])
+
 
 class NativeBreakDecoration(unittest.TestCase):
     def test_one_scalar_then_native_linebreak_and_terminal_rule(self):
@@ -94,6 +113,18 @@ class NativeBreakDecoration(unittest.TestCase):
 
 
 class ApprovalBoundary(unittest.TestCase):
+    def test_previous_v93_approval_rejects_v94_without_rebinding(self):
+        import json
+        from datetime import datetime, timezone
+        from scripts.financial_limited_resume import check_gate, initial
+        config = json.loads((Path(__file__).parent /
+                             'fixtures/financial_limited_resume_approved_v9_3.json').read_text())
+        state = initial()
+        before = json.dumps(state, sort_keys=True)
+        with self.assertRaisesRegex(ValueError, 'UNAPPROVED_PARSER_OR_DIAGNOSTIC_VERSION'):
+            check_gate(config, state, datetime(2026, 10, 21, tzinfo=timezone.utc), 'schedule')
+        self.assertEqual(json.dumps(state, sort_keys=True), before)
+
     def test_old_approved_collection_contract_rejects_new_parser(self):
         import json
         from datetime import datetime, timezone

@@ -1,0 +1,107 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "source_HTTP": 0,
+  "selected_candidates": 15,
+  "source_member_observations": [
+    {
+      "member": "20100331001822.xml",
+      "member_sha256": "72060bc182d3145be2e3e8623c043c05bb9f7bba684e3331074b38d156cb55ea",
+      "observations": 19,
+      "tables": [
+        71,
+        73,
+        79
+      ]
+    },
+    {
+      "member": "20100331001822_00760.xml",
+      "member_sha256": "979d99f1b3a87602ba66de00dc4157005836a2ea9ee02dddc9a9f794d443c0ed",
+      "observations": 0,
+      "tables": []
+    }
+  ],
+  "independent_source_review": "15PASS_NOT_PIT",
+  "historical_identity": [
+    {
+      "verdict": "PASS",
+      "reason": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+      "signal_date": "2010-04-01",
+      "historical_security_mapping": {
+        "verdict": "PASS",
+        "stock_code": "037630",
+        "from": "2010-04-01",
+        "through": "2010-04-01",
+        "evidence": [
+          {
+            "original": {
+              "corp_code": "00265227",
+              "rcept_no": "20100331001822",
+              "source_member_sha256": "72060bc182d3145be2e3e8623c043c05bb9f7bba684e3331074b38d156cb55ea",
+              "source_archive_sha256": "10f1e6aebdf5f245bd4026a030d494cf64cd94813c33eb89064c0e3989408c13"
+            },
+            "official": {
+              "date": "2010-04-01",
+              "source": [
+                "stk_bydd_trd_20100401.json",
+                "ksq_bydd_trd_20100401.json"
+              ],
+              "sha256": {
+                "stk_bydd_trd_20100401.json": "044425642d156cd9b839ca7b3b9752873f889dbd64a70325e360317d3e52a721",
+                "ksq_bydd_trd_20100401.json": "01bb9cdd4b78981f75dfe27065c5d25a0b90f330154e318187a37a40e9b62243"
+              },
+              "source_pack_sha256": "52edb555b2fb880699255770b5af9ab3dde6ef4ddb3b252b5586d3c24bea8f23"
+            },
+            "method": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+            "official_name": "에스비엠",
+            "source_alias": null
+          }
+        ]
+      },
+      "publication_certified": false,
+      "whole_PIT_eligible": false,
+      "interval_between_snapshots_certified": false
+    },
+    {
+      "verdict": "PASS",
+      "reason": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+      "signal_date": "2010-04-30",
+      "historical_security_mapping": {
+        "verdict": "PASS",
+        "stock_code": "037630",
+        "from": "2010-04-30",
+        "through": "2010-04-30",
+        "evidence": [
+          {
+            "original": {
+              "corp_code": "00265227",
+              "rcept_no": "20100331001822",
+              "source_member_sha256": "72060bc182d3145be2e3e8623c043c05bb9f7bba684e3331074b38d156cb55ea",
+              "source_archive_sha256": "10f1e6aebdf5f245bd4026a030d494cf64cd94813c33eb89064c0e3989408c13"
+            },
+            "official": {
+              "date": "2010-04-30",
+              "source": [
+                "stk_bydd_trd_20100430.json",
+                "ksq_bydd_trd_20100430.json"
+              ],
+              "sha256": {
+                "stk_bydd_trd_20100430.json": "070ba0268ed0f49493bada43278a154ca02478c10ed3233b8f76dfb2abd83d0c",
+                "ksq_bydd_trd_20100430.json": "d73a6fef13da950f5fb67f4faf92fe10ad0b3a0e01b230eb153c92b7190c81da"
+              },
+              "source_pack_sha256": "52edb555b2fb880699255770b5af9ab3dde6ef4ddb3b252b5586d3c24bea8f23"
+            },
+            "method": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+            "official_name": "에스비엠",
+            "source_alias": null
+          }
+        ]
+      },
+      "publication_certified": false,
+      "whole_PIT_eligible": false,
+      "interval_between_snapshots_certified": false
+    }
+  ],
+  "new_PIT": 0,
+  "new_engine": 0,
+  "financial_publication": "HOLD"
+}

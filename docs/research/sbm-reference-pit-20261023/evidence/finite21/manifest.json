@@ -1,0 +1,1184 @@
+{
+  "HTTP_requests_observed": 21,
+  "approval_id": "finite41-20261023",
+  "approval_sha256": "f48d8059b5182031626da267d71e8cfce2537202b65e442688a1c53507b7d0c7",
+  "code_sha": "3b505b5fb299e4d162a9676d9f4e757d4415fc69",
+  "financial_publication": "HOLD",
+  "http_reserved": 42,
+  "plan_sha256": "78f114c92cd520b7dac8558bd6699a7f352042d047ab5b0f377a7b5d1fe5d02a",
+  "summary": {
+    "automatic_financial_publication": "HOLD",
+    "backtest_eligible": false,
+    "candidate_fields": 273,
+    "collection": [
+      {
+        "archives": [
+          {
+            "bytes": 148669,
+            "path": "native/20100331002066-405193b85b1ed24673e38e458e86799db0e41b5f72d1043139874fe0534f9653.zip",
+            "sha256": "405193b85b1ed24673e38e458e86799db0e41b5f72d1043139874fe0534f9653"
+          }
+        ],
+        "rcept_no": "20100331002066",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:12:31.970466+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 65863,
+            "path": "native/20100331002067-40104cef670170a030abeb7a06e0d205a6006e815ebc9dcfcc0e2b07c5c7a30b.zip",
+            "sha256": "40104cef670170a030abeb7a06e0d205a6006e815ebc9dcfcc0e2b07c5c7a30b"
+          }
+        ],
+        "rcept_no": "20100331002067",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:12:38.601271+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 104294,
+            "path": "native/20100331002072-dfa51c8f6f3a5f1b3a7aff649d315cf16c75a884f2b79073e43824520030b75a.zip",
+            "sha256": "dfa51c8f6f3a5f1b3a7aff649d315cf16c75a884f2b79073e43824520030b75a"
+          }
+        ],
+        "rcept_no": "20100331002072",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:12:49.349862+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 56973,
+            "path": "native/20100331002073-114b27cd1c8039dc1214747a7a7aaea441d2dac88b1a202644dddb0471e6c326.zip",
+            "sha256": "114b27cd1c8039dc1214747a7a7aaea441d2dac88b1a202644dddb0471e6c326"
+          }
+        ],
+        "rcept_no": "20100331002073",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:12:55.495093+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 131447,
+            "path": "native/20100331002075-6767ba3af18632af17e34c41d0973049b688c4fe44506e593071d3005059c9b6.zip",
+            "sha256": "6767ba3af18632af17e34c41d0973049b688c4fe44506e593071d3005059c9b6"
+          }
+        ],
+        "rcept_no": "20100331002075",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:13:08.345281+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 149649,
+            "path": "native/20100331002084-1498941e434b3eb641dffd53e3de7c2e5ab7b96fdf6d6da31a5801006a5d9b62.zip",
+            "sha256": "1498941e434b3eb641dffd53e3de7c2e5ab7b96fdf6d6da31a5801006a5d9b62"
+          }
+        ],
+        "rcept_no": "20100331002084",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:13:22.899037+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 98025,
+            "path": "native/20100331002085-0d63c44a840d317b20cec0ddee3d61f32d820f293163c5ca12efc37fb83a4f09.zip",
+            "sha256": "0d63c44a840d317b20cec0ddee3d61f32d820f293163c5ca12efc37fb83a4f09"
+          }
+        ],
+        "rcept_no": "20100331002085",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:13:32.945988+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 207478,
+            "path": "native/20100331002089-0b2b785d57ff4a0990171d094a3ca3dc9ce2d6291b4c4071b332e2d13014e679.zip",
+            "sha256": "0b2b785d57ff4a0990171d094a3ca3dc9ce2d6291b4c4071b332e2d13014e679"
+          }
+        ],
+        "rcept_no": "20100331002089",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:13:53.917567+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 162810,
+            "path": "native/20100331002091-14ecd832d332994e27d1751ed38c1aea3e356693d2040fa4eebb8482eee10cc6.zip",
+            "sha256": "14ecd832d332994e27d1751ed38c1aea3e356693d2040fa4eebb8482eee10cc6"
+          }
+        ],
+        "rcept_no": "20100331002091",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:14:09.856746+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 95294,
+            "path": "native/20100331002094-bf6bcc21bfa483afaee8424465c8dc4a0862dddeeb0294454f93abd8c4927ffd.zip",
+            "sha256": "bf6bcc21bfa483afaee8424465c8dc4a0862dddeeb0294454f93abd8c4927ffd"
+          }
+        ],
+        "rcept_no": "20100331002094",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:14:19.898460+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 74143,
+            "path": "native/20100331002095-1f1a81e7e81f938d54575a54d38cf46f2e9d54b3860b7a528a1a4244d365c682.zip",
+            "sha256": "1f1a81e7e81f938d54575a54d38cf46f2e9d54b3860b7a528a1a4244d365c682"
+          }
+        ],
+        "rcept_no": "20100331002095",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:14:27.633782+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 92781,
+            "path": "native/20100331002096-2e738f6eeaf751649e36ad35e04c612ab10e33a2146408cb48b0add62bf82998.zip",
+            "sha256": "2e738f6eeaf751649e36ad35e04c612ab10e33a2146408cb48b0add62bf82998"
+          }
+        ],
+        "rcept_no": "20100331002096",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:14:37.480998+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 128783,
+            "path": "native/20100331002097-7c7b5a54b2918acf30044f01d88ca92a2f6eb5b46642437154cab189bbbc072d.zip",
+            "sha256": "7c7b5a54b2918acf30044f01d88ca92a2f6eb5b46642437154cab189bbbc072d"
+          }
+        ],
+        "rcept_no": "20100331002097",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:14:49.939349+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 142684,
+            "path": "native/20100331002098-2c1a2cde2107d5acb137ab84dc42d5670b8cace29332eb6cd7bc71ec8b312312.zip",
+            "sha256": "2c1a2cde2107d5acb137ab84dc42d5670b8cace29332eb6cd7bc71ec8b312312"
+          }
+        ],
+        "rcept_no": "20100331002098",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:15:04.092291+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 120644,
+            "path": "native/20100331002100-9dbd64a001e13c542a337292a7f3cbfe544612c31ac698c5c7d6cca87aed1b2c.zip",
+            "sha256": "9dbd64a001e13c542a337292a7f3cbfe544612c31ac698c5c7d6cca87aed1b2c"
+          }
+        ],
+        "rcept_no": "20100331002100",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:15:16.225937+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 146092,
+            "path": "native/20100331002102-65d37dd3de8d0620afd2ec8d3d8313298e2f198b0db662cd107fbf18db034483.zip",
+            "sha256": "65d37dd3de8d0620afd2ec8d3d8313298e2f198b0db662cd107fbf18db034483"
+          }
+        ],
+        "rcept_no": "20100331002102",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:15:30.886148+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 98653,
+            "path": "native/20100331002103-f8228c00841718fc40be34040137485ed3cc41eb1c67494ea10bef88c58dce11.zip",
+            "sha256": "f8228c00841718fc40be34040137485ed3cc41eb1c67494ea10bef88c58dce11"
+          }
+        ],
+        "rcept_no": "20100331002103",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:15:40.629855+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 94013,
+            "path": "native/20100331002104-ac1221ce38216c0c20c1e9f9f5d9b3b67430a8ed4f2c01b8fd033ee8998a1d5b.zip",
+            "sha256": "ac1221ce38216c0c20c1e9f9f5d9b3b67430a8ed4f2c01b8fd033ee8998a1d5b"
+          }
+        ],
+        "rcept_no": "20100331002104",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:15:49.972211+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 106927,
+            "path": "native/20100331002105-05e531fbdc1812b091ef8f8e0973e5d1c2a787212659d814ce7a0d9eec7cb6d6.zip",
+            "sha256": "05e531fbdc1812b091ef8f8e0973e5d1c2a787212659d814ce7a0d9eec7cb6d6"
+          }
+        ],
+        "rcept_no": "20100331002105",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:16:00.619057+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 186241,
+            "path": "native/20100331002112-4bb9dd55bc7ea3452ff877cd9c00717b9309cdf316c6ed8ebe364a0e7514f3c2.zip",
+            "sha256": "4bb9dd55bc7ea3452ff877cd9c00717b9309cdf316c6ed8ebe364a0e7514f3c2"
+          }
+        ],
+        "rcept_no": "20100331002112",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:16:18.786797+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 98629,
+            "path": "native/20100331002116-dae0ed8832189892f6e520cac26afade059543f32f8164aca5e310b4f40fb1ea.zip",
+            "sha256": "dae0ed8832189892f6e520cac26afade059543f32f8164aca5e310b4f40fb1ea"
+          }
+        ],
+        "rcept_no": "20100331002116",
+        "run_id": "40024818567",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-23T21:16:28.714633+00:00"
+      }
+    ],
+    "completed_receipts": [
+      "20100331002066",
+      "20100331002067",
+      "20100331002072",
+      "20100331002073",
+      "20100331002075",
+      "20100331002084",
+      "20100331002085",
+      "20100331002089",
+      "20100331002091",
+      "20100331002094",
+      "20100331002095",
+      "20100331002096",
+      "20100331002097",
+      "20100331002098",
+      "20100331002100",
+      "20100331002102",
+      "20100331002103",
+      "20100331002104",
+      "20100331002105",
+      "20100331002112",
+      "20100331002116"
+    ],
+    "contract": "limited-source-observation-v1",
+    "counts": {
+      "PARSED_4F": 17,
+      "SOURCE_GAP": 4
+    },
+    "durable_terminal_documents": 21,
+    "extracted_documents": 17,
+    "independently_verified_fields": 0,
+    "processed_results": 21,
+    "published_financial_fields": 0,
+    "quality": [
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "405193b85b1ed24673e38e458e86799db0e41b5f72d1043139874fe0534f9653",
+        "extraction_state": "SOURCE_GAP",
+        "field_count": 0,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002066",
+        "rejection_reason": "[{\"member\": \"20100331002066.xml\", \"bytes\": 594541, \"sha256\": \"1dd6e627ca4040859038e38262944c07921be7f18a5083c6c0a0e7f5ee589b5b\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 761}, {\"member\": \"20100331002066_00760.xml\", \"bytes\": 323622, \"sha256\": \"095e59d25ca04cf086054858b83af816112f0c3d9255ba9dd70acc9ccce741e3\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 353, \"literal_label_view\": [{\"offset\": 189255, \"literal\": \"<당기>\"}, {\"offset\": 191007, \"literal\": \"<전기>\"}, {\"offset\": 194669, \"literal\": \"<당기>\"}, {\"offset\": 196701, \"literal\": \"<전기>\"}, {\"offset\": 198796, \"literal\": \"<당기>\"}, {\"offset\": 200553, \"literal\": \"<전기>\"}, {\"offset\": 202410, \"literal\": \"<당기>\"}, {\"offset\": 204447, \"literal\": \"<전기>\"}, {\"offset\": 206892, \"literal\": \"<당기>\"}, {\"offset\": 211885, \"literal\": \"<전기>\"}, {\"offset\": 214982, \"literal\": \"<당기>\"}, {\"offset\": 216545, \"literal\": \"<전기>\"}, {\"offset\": 217629, \"literal\": \"<당기>\"}, {\"offset\": 219153, \"literal\": \"<전기>\"}, {\"offset\": 222232, \"literal\": \"<당기>\"}, {\"offset\": 226059, \"literal\": \"<전기>\"}, {\"offset\": 285971, \"literal\": \"<당기>\"}, {\"offset\": 287755, \"literal\": \"<전기>\"}], \"structural_view_sha256\": \"075cc599f9ee81b76eaacbd3a34733a039ecd86089292a97ae7ff3378fc51410\"}, {\"member\": \"20100331002066_00761.xml\", \"bytes\": 233070, \"sha256\": \"62a18c4954ae740575f21014b89dfe2822544dde88b8000eb692571736f79a15\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 319, \"literal_label_view\": [{\"offset\": 118070, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 127117, \"literal\": \"<단위:천원>\"}, {\"offset\": 129189, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 131587, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 133149, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 138676, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 140347, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 141895, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 144333, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 145633, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 147283, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 150607, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 157768, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 159034, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 160508, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 162166, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 164941, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 167370, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 170047, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 172515, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 173580, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 174620, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 176348, \"literal\": \"<단위 : JPY, EUR, 천원>\"}, {\"offset\": 182045, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 183890, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 199148, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 200731, \"literal\": \"<단위 : 원>\"}, {\"offset\": 203434, \"literal\": \"<단위 : 천원, USD, EUR>\"}, {\"offset\": 209765, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 213110, \"literal\": \"<단위 : 천원>\"}], \"structural_view_sha256\": \"7d4904ca19a6dce4a29094f1632ab6d7f0361f5aa1a8ab605d2cd2ee3e45292f\", \"xml_error\": \"not well-formed (invalid token): line 3368, column 46\"}]",
+        "updated_at_utc": "2026-10-23T21:12:31.970478+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "40104cef670170a030abeb7a06e0d205a6006e815ebc9dcfcc0e2b07c5c7a30b",
+        "extraction_state": "PARSED_4F",
+        "field_count": 11,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002067",
+        "rejection_reason": "[{\"member\": \"20100331002067.xml\", \"table\": 67, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002067_00760.xml\", \"table\": 22, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:12:38.601282+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "dfa51c8f6f3a5f1b3a7aff649d315cf16c75a884f2b79073e43824520030b75a",
+        "extraction_state": "PARSED_4F",
+        "field_count": 17,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002072",
+        "rejection_reason": "[{\"member\": \"20100331002072.xml\", \"table\": 125, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:12:49.349875+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "114b27cd1c8039dc1214747a7a7aaea441d2dac88b1a202644dddb0471e6c326",
+        "extraction_state": "PARSED_4F",
+        "field_count": 14,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002073",
+        "rejection_reason": "[{\"member\": \"20100331002073.xml\", \"table\": 41, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:12:55.495105+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "6767ba3af18632af17e34c41d0973049b688c4fe44506e593071d3005059c9b6",
+        "extraction_state": "PARSED_4F",
+        "field_count": 15,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002075",
+        "rejection_reason": "[{\"member\": \"20100331002075_00760.xml\", \"table\": 16, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002075.xml\", \"table\": 116, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002075.xml\", \"table\": 122, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002075.xml\", \"table\": 124, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:13:08.345293+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "1498941e434b3eb641dffd53e3de7c2e5ab7b96fdf6d6da31a5801006a5d9b62",
+        "extraction_state": "PARSED_4F",
+        "field_count": 16,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002084",
+        "rejection_reason": "[{\"member\": \"20100331002084_00760.xml\", \"table\": 22, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002084.xml\", \"table\": 110, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:13:22.899048+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "0d63c44a840d317b20cec0ddee3d61f32d820f293163c5ca12efc37fb83a4f09",
+        "extraction_state": "PARSED_4F",
+        "field_count": 17,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002085",
+        "rejection_reason": "[{\"member\": \"20100331002085.xml\", \"table\": 98, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:13:32.945999+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "0b2b785d57ff4a0990171d094a3ca3dc9ce2d6291b4c4071b332e2d13014e679",
+        "extraction_state": "PARSED_4F",
+        "field_count": 16,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002089",
+        "rejection_reason": "[{\"member\": \"20100331002089.xml\", \"table\": 73, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:13:53.917576+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "14ecd832d332994e27d1751ed38c1aea3e356693d2040fa4eebb8482eee10cc6",
+        "extraction_state": "SOURCE_GAP",
+        "field_count": 0,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002091",
+        "rejection_reason": "[{\"member\": \"20100331002091.xml\", \"bytes\": 495652, \"sha256\": \"b71f4cd7b870b128badc7fb64478ab995ca882b74a5dc86481914a1c1d551ca0\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 738, \"xml_error\": \"not well-formed (invalid token): line 1702, column 271\"}, {\"member\": \"20100331002091_00761.xml\", \"bytes\": 467478, \"sha256\": \"5c7485f94961cac56ce5954cd32a0eaf43a96ffdedc9e16e49bd791a7f7fdbc5\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 363, \"literal_label_view\": [{\"offset\": 212726, \"literal\": \"<당기>\"}, {\"offset\": 217168, \"literal\": \"<전기>\"}, {\"offset\": 221616, \"literal\": \"<당기>\"}, {\"offset\": 223860, \"literal\": \"<전기>\"}, {\"offset\": 226145, \"literal\": \"<당기>\"}, {\"offset\": 227339, \"literal\": \"<전기>\"}, {\"offset\": 228626, \"literal\": \"<당기>\"}, {\"offset\": 231048, \"literal\": \"<전기>\"}, {\"offset\": 233680, \"literal\": \"<당기>\"}, {\"offset\": 236224, \"literal\": \"<전기>\"}, {\"offset\": 240535, \"literal\": \"<당기>\"}, {\"offset\": 244051, \"literal\": \"<전기>\"}, {\"offset\": 250565, \"literal\": \"<시장성 있는 매도가능증권>\"}, {\"offset\": 252520, \"literal\": \"<시장성 없는 매도가능증권>\"}, {\"offset\": 281585, \"literal\": \"<당기>\"}, {\"offset\": 284712, \"literal\": \"<전기>\"}, {\"offset\": 288958, \"literal\": \"<당기>\"}, {\"offset\": 291432, \"literal\": \"<전기>\"}, {\"offset\": 293979, \"literal\": \"<당기>\"}, {\"offset\": 296786, \"literal\": \"<전기>\"}, {\"offset\": 329861, \"literal\": \"<당기>\"}, {\"offset\": 336445, \"literal\": \"<전기>\"}, {\"offset\": 375106, \"literal\": \"<당기>\"}, {\"offset\": 385762, \"literal\": \"<전기>\"}, {\"offset\": 401460, \"literal\": \"<당기>\"}, {\"offset\": 406923, \"literal\": \"<전기>\"}, {\"offset\": 419890, \"literal\": \"<당기>\"}, {\"offset\": 421301, \"literal\": \"<전기>\"}, {\"offset\": 422783, \"literal\": \"<당기>\"}], \"structural_view_sha256\": \"3217952898979bb360709f3889bdfa64891aac23cd0c2b390911d901367f000f\", \"xml_error\": \"not well-formed (invalid token): line 3351, column 261\"}, {\"member\": \"20100331002091_00760.xml\", \"bytes\": 389038, \"sha256\": \"1792a266a5548948aa92a7c61e0264df77f6b4b3d12ca67a5babbe99fd87a427\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 316, \"literal_label_view\": [{\"offset\": 186142, \"literal\": \"<당기>\"}, {\"offset\": 189658, \"literal\": \"<전기>\"}, {\"offset\": 194366, \"literal\": \"<당기>\"}, {\"offset\": 199147, \"literal\": \"<전 기>\"}, {\"offset\": 203971, \"literal\": \"<당기>\"}, {\"offset\": 206633, \"literal\": \"<전기>\"}, {\"offset\": 209343, \"literal\": \"<당기>\"}, {\"offset\": 210541, \"literal\": \"<전기>\"}, {\"offset\": 211831, \"literal\": \"<당기>\"}, {\"offset\": 214700, \"literal\": \"<당기>\"}, {\"offset\": 217545, \"literal\": \"<전기>\"}, {\"offset\": 220470, \"literal\": \"<당기>\"}, {\"offset\": 223625, \"literal\": \"<전기>\"}, {\"offset\": 227833, \"literal\": \"<당기>\"}, {\"offset\": 230377, \"literal\": \"<전기>\"}, {\"offset\": 232930, \"literal\": \"<당기>\"}, {\"offset\": 235759, \"literal\": \"<전기>\"}, {\"offset\": 266679, \"literal\": \"<당기>\"}, {\"offset\": 273263, \"literal\": \"<전기>\"}, {\"offset\": 295268, \"literal\": \"<당기>\"}, {\"offset\": 308382, \"literal\": \"<당기>\"}, {\"offset\": 318725, \"literal\": \"<전기>\"}, {\"offset\": 331277, \"literal\": \"<당기>\"}, {\"offset\": 336713, \"literal\": \"<전기>\"}, {\"offset\": 345735, \"literal\": \"<당기>\"}, {\"offset\": 347146, \"literal\": \"<전기>\"}, {\"offset\": 352941, \"literal\": \"<당기>\"}, {\"offset\": 356027, \"literal\": \"<전기>\"}], \"structural_view_sha256\": \"d88076d94cfe76612cc2c1db0d80dd2821d0ddce38eaa141b50f754a6cf1c103\"}]",
+        "updated_at_utc": "2026-10-23T21:14:09.856756+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "bf6bcc21bfa483afaee8424465c8dc4a0862dddeeb0294454f93abd8c4927ffd",
+        "extraction_state": "PARSED_4F",
+        "field_count": 18,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002094",
+        "rejection_reason": "[{\"member\": \"20100331002094.xml\", \"table\": 94, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002094.xml\", \"table\": 100, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002094.xml\", \"table\": 102, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002094.xml\", \"table\": 104, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002094.xml\", \"table\": 105, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002094.xml\", \"table\": 106, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002094.xml\", \"table\": 107, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002094.xml\", \"table\": 108, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002094.xml\", \"table\": 109, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002094.xml\", \"table\": 110, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002094.xml\", \"table\": 112, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002094.xml\", \"table\": 113, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002094.xml\", \"table\": 114, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:14:19.898470+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "1f1a81e7e81f938d54575a54d38cf46f2e9d54b3860b7a528a1a4244d365c682",
+        "extraction_state": "PARSED_4F",
+        "field_count": 15,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002095",
+        "rejection_reason": "[{\"member\": \"20100331002095.xml\", \"table\": 74, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:14:27.633797+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "2e738f6eeaf751649e36ad35e04c612ab10e33a2146408cb48b0add62bf82998",
+        "extraction_state": "PARSED_4F",
+        "field_count": 16,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002096",
+        "rejection_reason": "[{\"member\": \"20100331002096_00760.xml\", \"table\": 22, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002096.xml\", \"table\": 100, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002096.xml\", \"table\": 106, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002096.xml\", \"table\": 108, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002096.xml\", \"table\": 110, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002096.xml\", \"table\": 111, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002096.xml\", \"table\": 112, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:14:37.481012+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "7c7b5a54b2918acf30044f01d88ca92a2f6eb5b46642437154cab189bbbc072d",
+        "extraction_state": "PARSED_4F",
+        "field_count": 17,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002097",
+        "rejection_reason": "[{\"member\": \"20100331002097.xml\", \"table\": 108, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002097.xml\", \"table\": 114, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002097_00760.xml\", \"table\": 22, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:14:49.939361+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "2c1a2cde2107d5acb137ab84dc42d5670b8cace29332eb6cd7bc71ec8b312312",
+        "extraction_state": "PARSED_4F",
+        "field_count": 16,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002098",
+        "rejection_reason": "[{\"member\": \"20100331002098.xml\", \"table\": 106, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002098.xml\", \"table\": 112, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002098.xml\", \"table\": 114, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002098.xml\", \"table\": 116, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002098.xml\", \"table\": 117, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002098.xml\", \"table\": 118, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:15:04.092301+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "9dbd64a001e13c542a337292a7f3cbfe544612c31ac698c5c7d6cca87aed1b2c",
+        "extraction_state": "SOURCE_GAP",
+        "field_count": 0,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002100",
+        "rejection_reason": "[{\"member\": \"20100331002100.xml\", \"bytes\": 531662, \"sha256\": \"2ebd39f6d6b6bc507cc5b8b0277da823674c187643c71edc74d61980549fba74\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 1122, \"literal_label_view\": [{\"offset\": 484563, \"literal\": \"<당기>\"}, {\"offset\": 487378, \"literal\": \"<전기>\"}], \"structural_view_sha256\": \"5986133c46c6bcec817a3169b379d42da7e1617c7e8d1a11dad3323654d4c765\", \"xml_error\": \"not well-formed (invalid token): line 3134, column 41\"}, {\"member\": \"20100331002100_00760.xml\", \"bytes\": 402423, \"sha256\": \"123855639e4a0572ae988d08318bb8533f71ff70b29ea4a2e65fc9d5e8369479\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 507, \"literal_label_view\": [{\"offset\": 210206, \"literal\": \"<당기>\"}, {\"offset\": 215650, \"literal\": \"<전기>\"}, {\"offset\": 228527, \"literal\": \"<당기>\"}, {\"offset\": 233786, \"literal\": \"<전기>\"}, {\"offset\": 239483, \"literal\": \"<당기>\"}, {\"offset\": 242248, \"literal\": \"<전기>\"}, {\"offset\": 259400, \"literal\": \"<당기>\"}, {\"offset\": 260951, \"literal\": \"<전기>\"}, {\"offset\": 264329, \"literal\": \"<외화리스료>\"}, {\"offset\": 268026, \"literal\": \"<원화리스료>\"}, {\"offset\": 270251, \"literal\": \"<당기>\"}, {\"offset\": 271387, \"literal\": \"<전기>\"}, {\"offset\": 272511, \"literal\": \"<당기>\"}, {\"offset\": 273612, \"literal\": \"<전기>\"}, {\"offset\": 274986, \"literal\": \"<통화옵션등>\"}, {\"offset\": 308459, \"literal\": \"<기계사업부-원화이외의 통화>\"}, {\"offset\": 310243, \"literal\": \"<해운사업부-US Dallor이외의 통화>\"}, {\"offset\": 334404, \"literal\": \"<가중평균유통보통주식수>\"}, {\"offset\": 335153, \"literal\": \"<총발행주식수>\"}, {\"offset\": 336310, \"literal\": \"<자기주식>\"}, {\"offset\": 346081, \"literal\": \"<당기>\"}, {\"offset\": 349292, \"literal\": \"<전기>\"}, {\"offset\": 366536, \"literal\": \"<당기>\"}, {\"offset\": 367641, \"literal\": \"<전기>\"}, {\"offset\": 369364, \"literal\": \"<당기>\"}, {\"offset\": 371051, \"literal\": \"<전기>\"}], \"structural_view_sha256\": \"8d1a231c5272f3f4e07b096d4d4be013a8ca725440a8eb044b913a0b53a378ff\"}]",
+        "updated_at_utc": "2026-10-23T21:15:16.225946+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "65d37dd3de8d0620afd2ec8d3d8313298e2f198b0db662cd107fbf18db034483",
+        "extraction_state": "PARSED_4F",
+        "field_count": 20,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002102",
+        "rejection_reason": "[{\"member\": \"20100331002102.xml\", \"table\": 98, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002102_00760.xml\", \"table\": 21, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:15:30.886165+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "f8228c00841718fc40be34040137485ed3cc41eb1c67494ea10bef88c58dce11",
+        "extraction_state": "PARSED_4F",
+        "field_count": 15,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002103",
+        "rejection_reason": "[{\"member\": \"20100331002103.xml\", \"table\": 57, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002103_00760.xml\", \"table\": 23, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:15:40.629865+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "ac1221ce38216c0c20c1e9f9f5d9b3b67430a8ed4f2c01b8fd033ee8998a1d5b",
+        "extraction_state": "PARSED_4F",
+        "field_count": 15,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002104",
+        "rejection_reason": "[{\"member\": \"20100331002104_00760.xml\", \"table\": 20, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002104.xml\", \"table\": 90, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:15:49.972221+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "05e531fbdc1812b091ef8f8e0973e5d1c2a787212659d814ce7a0d9eec7cb6d6",
+        "extraction_state": "PARSED_4F",
+        "field_count": 16,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002105",
+        "rejection_reason": "[{\"member\": \"20100331002105.xml\", \"table\": 114, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002105_00760.xml\", \"table\": 22, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:16:00.619069+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "4bb9dd55bc7ea3452ff877cd9c00717b9309cdf316c6ed8ebe364a0e7514f3c2",
+        "extraction_state": "PARSED_4F",
+        "field_count": 19,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002112",
+        "rejection_reason": "[{\"member\": \"20100331002112.xml\", \"table\": 127, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002112_00760.xml\", \"table\": 20, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-23T21:16:18.786810+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "dae0ed8832189892f6e520cac26afade059543f32f8164aca5e310b4f40fb1ea",
+        "extraction_state": "SOURCE_GAP",
+        "field_count": 0,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002116",
+        "rejection_reason": "[{\"member\": \"20100331002116.xml\", \"bytes\": 482630, \"sha256\": \"e2b4edbbd794c40e78ceac835d520074b29bdbf56ac04ea8ea7c04d9ae1daa4d\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 707}, {\"member\": \"20100331002116_00760.xml\", \"bytes\": 302852, \"sha256\": \"91636fd1166a98fcbbd08e084a9eba5989a4a7283b4188c0513b70565382ba46\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 365, \"xml_error\": \"not well-formed (invalid token): line 3150, column 53\"}]",
+        "updated_at_utc": "2026-10-23T21:16:28.714643+00:00"
+      }
+    ],
+    "quarantine": [
+      {
+        "detail": "[{\"member\": \"20100331002066.xml\", \"bytes\": 594541, \"sha256\": \"1dd6e627ca4040859038e38262944c07921be7f18a5083c6c0a0e7f5ee589b5b\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 761}, {\"member\": \"20100331002066_00760.xml\", \"bytes\": 323622, \"sha256\": \"095e59d25ca04cf086054858b83af816112f0c3d9255ba9dd70acc9ccce741e3\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 353, \"literal_label_view\": [{\"offset\": 189255, \"literal\": \"<당기>\"}, {\"offset\": 191007, \"literal\": \"<전기>\"}, {\"offset\": 194669, \"literal\": \"<당기>\"}, {\"offset\": 196701, \"literal\": \"<전기>\"}, {\"offset\": 198796, \"literal\": \"<당기>\"}, {\"offset\": 200553, \"literal\": \"<전기>\"}, {\"offset\": 202410, \"literal\": \"<당기>\"}, {\"offset\": 204447, \"literal\": \"<전기>\"}, {\"offset\": 206892, \"literal\": \"<당기>\"}, {\"offset\": 211885, \"literal\": \"<전기>\"}, {\"offset\": 214982, \"literal\": \"<당기>\"}, {\"offset\": 216545, \"literal\": \"<전기>\"}, {\"offset\": 217629, \"literal\": \"<당기>\"}, {\"offset\": 219153, \"literal\": \"<전기>\"}, {\"offset\": 222232, \"literal\": \"<당기>\"}, {\"offset\": 226059, \"literal\": \"<전기>\"}, {\"offset\": 285971, \"literal\": \"<당기>\"}, {\"offset\": 287755, \"literal\": \"<전기>\"}], \"structural_view_sha256\": \"075cc599f9ee81b76eaacbd3a34733a039ecd86089292a97ae7ff3378fc51410\"}, {\"member\": \"20100331002066_00761.xml\", \"bytes\": 233070, \"sha256\": \"62a18c4954ae740575f21014b89dfe2822544dde88b8000eb692571736f79a15\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 319, \"literal_label_view\": [{\"offset\": 118070, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 127117, \"literal\": \"<단위:천원>\"}, {\"offset\": 129189, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 131587, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 133149, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 138676, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 140347, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 141895, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 144333, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 145633, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 147283, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 150607, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 157768, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 159034, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 160508, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 162166, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 164941, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 167370, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 170047, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 172515, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 173580, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 174620, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 176348, \"literal\": \"<단위 : JPY, EUR, 천원>\"}, {\"offset\": 182045, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 183890, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 199148, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 200731, \"literal\": \"<단위 : 원>\"}, {\"offset\": 203434, \"literal\": \"<단위 : 천원, USD, EUR>\"}, {\"offset\": 209765, \"literal\": \"<단위 : 천원>\"}, {\"offset\": 213110, \"literal\": \"<단위 : 천원>\"}], \"structural_view_sha256\": \"7d4904ca19a6dce4a29094f1632ab6d7f0361f5aa1a8ab605d2cd2ee3e45292f\", \"xml_error\": \"not well-formed (invalid token): line 3368, column 46\"}]",
+        "evidence": [
+          {
+            "bytes": 148669,
+            "path": "native/20100331002066-405193b85b1ed24673e38e458e86799db0e41b5f72d1043139874fe0534f9653.zip",
+            "sha256": "405193b85b1ed24673e38e458e86799db0e41b5f72d1043139874fe0534f9653"
+          }
+        ],
+        "reason": "SOURCE_GAP",
+        "receipt": "20100331002066",
+        "scope": "DOCUMENT",
+        "source_status": "DURABLE"
+      },
+      {
+        "detail": "[{\"member\": \"20100331002091.xml\", \"bytes\": 495652, \"sha256\": \"b71f4cd7b870b128badc7fb64478ab995ca882b74a5dc86481914a1c1d551ca0\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 738, \"xml_error\": \"not well-formed (invalid token): line 1702, column 271\"}, {\"member\": \"20100331002091_00761.xml\", \"bytes\": 467478, \"sha256\": \"5c7485f94961cac56ce5954cd32a0eaf43a96ffdedc9e16e49bd791a7f7fdbc5\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 363, \"literal_label_view\": [{\"offset\": 212726, \"literal\": \"<당기>\"}, {\"offset\": 217168, \"literal\": \"<전기>\"}, {\"offset\": 221616, \"literal\": \"<당기>\"}, {\"offset\": 223860, \"literal\": \"<전기>\"}, {\"offset\": 226145, \"literal\": \"<당기>\"}, {\"offset\": 227339, \"literal\": \"<전기>\"}, {\"offset\": 228626, \"literal\": \"<당기>\"}, {\"offset\": 231048, \"literal\": \"<전기>\"}, {\"offset\": 233680, \"literal\": \"<당기>\"}, {\"offset\": 236224, \"literal\": \"<전기>\"}, {\"offset\": 240535, \"literal\": \"<당기>\"}, {\"offset\": 244051, \"literal\": \"<전기>\"}, {\"offset\": 250565, \"literal\": \"<시장성 있는 매도가능증권>\"}, {\"offset\": 252520, \"literal\": \"<시장성 없는 매도가능증권>\"}, {\"offset\": 281585, \"literal\": \"<당기>\"}, {\"offset\": 284712, \"literal\": \"<전기>\"}, {\"offset\": 288958, \"literal\": \"<당기>\"}, {\"offset\": 291432, \"literal\": \"<전기>\"}, {\"offset\": 293979, \"literal\": \"<당기>\"}, {\"offset\": 296786, \"literal\": \"<전기>\"}, {\"offset\": 329861, \"literal\": \"<당기>\"}, {\"offset\": 336445, \"literal\": \"<전기>\"}, {\"offset\": 375106, \"literal\": \"<당기>\"}, {\"offset\": 385762, \"literal\": \"<전기>\"}, {\"offset\": 401460, \"literal\": \"<당기>\"}, {\"offset\": 406923, \"literal\": \"<전기>\"}, {\"offset\": 419890, \"literal\": \"<당기>\"}, {\"offset\": 421301, \"literal\": \"<전기>\"}, {\"offset\": 422783, \"literal\": \"<당기>\"}], \"structural_view_sha256\": \"3217952898979bb360709f3889bdfa64891aac23cd0c2b390911d901367f000f\", \"xml_error\": \"not well-formed (invalid token): line 3351, column 261\"}, {\"member\": \"20100331002091_00760.xml\", \"bytes\": 389038, \"sha256\": \"1792a266a5548948aa92a7c61e0264df77f6b4b3d12ca67a5babbe99fd87a427\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 316, \"literal_label_view\": [{\"offset\": 186142, \"literal\": \"<당기>\"}, {\"offset\": 189658, \"literal\": \"<전기>\"}, {\"offset\": 194366, \"literal\": \"<당기>\"}, {\"offset\": 199147, \"literal\": \"<전 기>\"}, {\"offset\": 203971, \"literal\": \"<당기>\"}, {\"offset\": 206633, \"literal\": \"<전기>\"}, {\"offset\": 209343, \"literal\": \"<당기>\"}, {\"offset\": 210541, \"literal\": \"<전기>\"}, {\"offset\": 211831, \"literal\": \"<당기>\"}, {\"offset\": 214700, \"literal\": \"<당기>\"}, {\"offset\": 217545, \"literal\": \"<전기>\"}, {\"offset\": 220470, \"literal\": \"<당기>\"}, {\"offset\": 223625, \"literal\": \"<전기>\"}, {\"offset\": 227833, \"literal\": \"<당기>\"}, {\"offset\": 230377, \"literal\": \"<전기>\"}, {\"offset\": 232930, \"literal\": \"<당기>\"}, {\"offset\": 235759, \"literal\": \"<전기>\"}, {\"offset\": 266679, \"literal\": \"<당기>\"}, {\"offset\": 273263, \"literal\": \"<전기>\"}, {\"offset\": 295268, \"literal\": \"<당기>\"}, {\"offset\": 308382, \"literal\": \"<당기>\"}, {\"offset\": 318725, \"literal\": \"<전기>\"}, {\"offset\": 331277, \"literal\": \"<당기>\"}, {\"offset\": 336713, \"literal\": \"<전기>\"}, {\"offset\": 345735, \"literal\": \"<당기>\"}, {\"offset\": 347146, \"literal\": \"<전기>\"}, {\"offset\": 352941, \"literal\": \"<당기>\"}, {\"offset\": 356027, \"literal\": \"<전기>\"}], \"structural_view_sha256\": \"d88076d94cfe76612cc2c1db0d80dd2821d0ddce38eaa141b50f754a6cf1c103\"}]",
+        "evidence": [
+          {
+            "bytes": 162810,
+            "path": "native/20100331002091-14ecd832d332994e27d1751ed38c1aea3e356693d2040fa4eebb8482eee10cc6.zip",
+            "sha256": "14ecd832d332994e27d1751ed38c1aea3e356693d2040fa4eebb8482eee10cc6"
+          }
+        ],
+        "reason": "SOURCE_GAP",
+        "receipt": "20100331002091",
+        "scope": "DOCUMENT",
+        "source_status": "DURABLE"
+      },
+      {
+        "detail": "[{\"member\": \"20100331002100.xml\", \"bytes\": 531662, \"sha256\": \"2ebd39f6d6b6bc507cc5b8b0277da823674c187643c71edc74d61980549fba74\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 1122, \"literal_label_view\": [{\"offset\": 484563, \"literal\": \"<당기>\"}, {\"offset\": 487378, \"literal\": \"<전기>\"}], \"structural_view_sha256\": \"5986133c46c6bcec817a3169b379d42da7e1617c7e8d1a11dad3323654d4c765\", \"xml_error\": \"not well-formed (invalid token): line 3134, column 41\"}, {\"member\": \"20100331002100_00760.xml\", \"bytes\": 402423, \"sha256\": \"123855639e4a0572ae988d08318bb8533f71ff70b29ea4a2e65fc9d5e8369479\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 507, \"literal_label_view\": [{\"offset\": 210206, \"literal\": \"<당기>\"}, {\"offset\": 215650, \"literal\": \"<전기>\"}, {\"offset\": 228527, \"literal\": \"<당기>\"}, {\"offset\": 233786, \"literal\": \"<전기>\"}, {\"offset\": 239483, \"literal\": \"<당기>\"}, {\"offset\": 242248, \"literal\": \"<전기>\"}, {\"offset\": 259400, \"literal\": \"<당기>\"}, {\"offset\": 260951, \"literal\": \"<전기>\"}, {\"offset\": 264329, \"literal\": \"<외화리스료>\"}, {\"offset\": 268026, \"literal\": \"<원화리스료>\"}, {\"offset\": 270251, \"literal\": \"<당기>\"}, {\"offset\": 271387, \"literal\": \"<전기>\"}, {\"offset\": 272511, \"literal\": \"<당기>\"}, {\"offset\": 273612, \"literal\": \"<전기>\"}, {\"offset\": 274986, \"literal\": \"<통화옵션등>\"}, {\"offset\": 308459, \"literal\": \"<기계사업부-원화이외의 통화>\"}, {\"offset\": 310243, \"literal\": \"<해운사업부-US Dallor이외의 통화>\"}, {\"offset\": 334404, \"literal\": \"<가중평균유통보통주식수>\"}, {\"offset\": 335153, \"literal\": \"<총발행주식수>\"}, {\"offset\": 336310, \"literal\": \"<자기주식>\"}, {\"offset\": 346081, \"literal\": \"<당기>\"}, {\"offset\": 349292, \"literal\": \"<전기>\"}, {\"offset\": 366536, \"literal\": \"<당기>\"}, {\"offset\": 367641, \"literal\": \"<전기>\"}, {\"offset\": 369364, \"literal\": \"<당기>\"}, {\"offset\": 371051, \"literal\": \"<전기>\"}], \"structural_view_sha256\": \"8d1a231c5272f3f4e07b096d4d4be013a8ca725440a8eb044b913a0b53a378ff\"}]",
+        "evidence": [
+          {
+            "bytes": 120644,
+            "path": "native/20100331002100-9dbd64a001e13c542a337292a7f3cbfe544612c31ac698c5c7d6cca87aed1b2c.zip",
+            "sha256": "9dbd64a001e13c542a337292a7f3cbfe544612c31ac698c5c7d6cca87aed1b2c"
+          }
+        ],
+        "reason": "SOURCE_GAP",
+        "receipt": "20100331002100",
+        "scope": "DOCUMENT",
+        "source_status": "DURABLE"
+      },
+      {
+        "detail": "[{\"member\": \"20100331002116.xml\", \"bytes\": 482630, \"sha256\": \"e2b4edbbd794c40e78ceac835d520074b29bdbf56ac04ea8ea7c04d9ae1daa4d\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 707}, {\"member\": \"20100331002116_00760.xml\", \"bytes\": 302852, \"sha256\": \"91636fd1166a98fcbbd08e084a9eba5989a4a7283b4188c0513b70565382ba46\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 365, \"xml_error\": \"not well-formed (invalid token): line 3150, column 53\"}]",
+        "evidence": [
+          {
+            "bytes": 98629,
+            "path": "native/20100331002116-dae0ed8832189892f6e520cac26afade059543f32f8164aca5e310b4f40fb1ea.zip",
+            "sha256": "dae0ed8832189892f6e520cac26afade059543f32f8164aca5e310b4f40fb1ea"
+          }
+        ],
+        "reason": "SOURCE_GAP",
+        "receipt": "20100331002116",
+        "scope": "DOCUMENT",
+        "source_status": "DURABLE"
+      }
+    ],
+    "review_rule": "First20 hash-ranked receipts before HTTP; add first2 of every result class and at least10 extracted (all if<=20). Raw cells/semantic controls precede reading candidate amounts.",
+    "review_selection": [
+      "20100331002067",
+      "20100331002072",
+      "20100331002073",
+      "20100331002075",
+      "20100331002084",
+      "20100331002085",
+      "20100331002089",
+      "20100331002091",
+      "20100331002094",
+      "20100331002095",
+      "20100331002096",
+      "20100331002097",
+      "20100331002098",
+      "20100331002102",
+      "20100331002103",
+      "20100331002104",
+      "20100331002105",
+      "20100331002112",
+      "20100331002116"
+    ],
+    "run_status": {
+      "admitted_documents": 21,
+      "automatic_publication": "HELD",
+      "commit": "3b505b5fb299e4d162a9676d9f4e757d4415fc69",
+      "completed": 21,
+      "current_receipt": "20100331002116",
+      "current_stage": "CHECKPOINT_DURABLE",
+      "document_states": {
+        "20100331002066": "CHECKPOINT_DURABLE",
+        "20100331002067": "CHECKPOINT_DURABLE",
+        "20100331002072": "CHECKPOINT_DURABLE",
+        "20100331002073": "CHECKPOINT_DURABLE",
+        "20100331002075": "CHECKPOINT_DURABLE",
+        "20100331002084": "CHECKPOINT_DURABLE",
+        "20100331002085": "CHECKPOINT_DURABLE",
+        "20100331002089": "CHECKPOINT_DURABLE",
+        "20100331002091": "CHECKPOINT_DURABLE",
+        "20100331002094": "CHECKPOINT_DURABLE",
+        "20100331002095": "CHECKPOINT_DURABLE",
+        "20100331002096": "CHECKPOINT_DURABLE",
+        "20100331002097": "CHECKPOINT_DURABLE",
+        "20100331002098": "CHECKPOINT_DURABLE",
+        "20100331002100": "CHECKPOINT_DURABLE",
+        "20100331002102": "CHECKPOINT_DURABLE",
+        "20100331002103": "CHECKPOINT_DURABLE",
+        "20100331002104": "CHECKPOINT_DURABLE",
+        "20100331002105": "CHECKPOINT_DURABLE",
+        "20100331002112": "CHECKPOINT_DURABLE",
+        "20100331002116": "CHECKPOINT_DURABLE"
+      },
+      "document_timings": [
+        {
+          "checkpoint_seconds": 0.003378,
+          "receipt": "20100331002066",
+          "replayed_source": false,
+          "validation_seconds": 0.006379,
+          "worker_progress_intervals": {
+            "download": 10.252548,
+            "parsing": 3.784947,
+            "startup_and_unattributed": 0.53799,
+            "storage": 0.047595,
+            "validation": 0.000839,
+            "waiting": 0.0
+          },
+          "worker_seconds": 14.623919
+        },
+        {
+          "checkpoint_seconds": 0.002464,
+          "receipt": "20100331002067",
+          "replayed_source": false,
+          "validation_seconds": 0.009457,
+          "worker_progress_intervals": {
+            "download": 4.890249,
+            "parsing": 1.221166,
+            "startup_and_unattributed": 0.490388,
+            "storage": 0.01176,
+            "validation": 0.000746,
+            "waiting": 0.0
+          },
+          "worker_seconds": 6.614309
+        },
+        {
+          "checkpoint_seconds": 0.016192,
+          "receipt": "20100331002072",
+          "replayed_source": false,
+          "validation_seconds": 0.023201,
+          "worker_progress_intervals": {
+            "download": 7.201559,
+            "parsing": 2.971496,
+            "startup_and_unattributed": 0.505104,
+            "storage": 0.040828,
+            "validation": 0.00076,
+            "waiting": 0.0
+          },
+          "worker_seconds": 10.719747
+        },
+        {
+          "checkpoint_seconds": 0.002395,
+          "receipt": "20100331002073",
+          "replayed_source": false,
+          "validation_seconds": 0.010303,
+          "worker_progress_intervals": {
+            "download": 4.356094,
+            "parsing": 1.269681,
+            "startup_and_unattributed": 0.467153,
+            "storage": 0.020367,
+            "validation": 0.000761,
+            "waiting": 0.0
+          },
+          "worker_seconds": 6.114055
+        },
+        {
+          "checkpoint_seconds": 0.002973,
+          "receipt": "20100331002075",
+          "replayed_source": false,
+          "validation_seconds": 0.020674,
+          "worker_progress_intervals": {
+            "download": 9.180764,
+            "parsing": 3.091442,
+            "startup_and_unattributed": 0.524402,
+            "storage": 0.026503,
+            "validation": 0.000848,
+            "waiting": 0.0
+          },
+          "worker_seconds": 12.823959
+        },
+        {
+          "checkpoint_seconds": 0.00267,
+          "receipt": "20100331002084",
+          "replayed_source": false,
+          "validation_seconds": 0.020275,
+          "worker_progress_intervals": {
+            "download": 10.102664,
+            "parsing": 3.928058,
+            "startup_and_unattributed": 0.46007,
+            "storage": 0.034996,
+            "validation": 0.000846,
+            "waiting": 0.0
+          },
+          "worker_seconds": 14.526634
+        },
+        {
+          "checkpoint_seconds": 0.002706,
+          "receipt": "20100331002085",
+          "replayed_source": false,
+          "validation_seconds": 0.021713,
+          "worker_progress_intervals": {
+            "download": 7.040317,
+            "parsing": 2.396251,
+            "startup_and_unattributed": 0.539644,
+            "storage": 0.041372,
+            "validation": 0.000863,
+            "waiting": 0.0
+          },
+          "worker_seconds": 10.018447
+        },
+        {
+          "checkpoint_seconds": 0.002794,
+          "receipt": "20100331002089",
+          "replayed_source": false,
+          "validation_seconds": 0.033769,
+          "worker_progress_intervals": {
+            "download": 13.757645,
+            "parsing": 6.563643,
+            "startup_and_unattributed": 0.544985,
+            "storage": 0.064672,
+            "validation": 0.000877,
+            "waiting": 0.0
+          },
+          "worker_seconds": 20.931823
+        },
+        {
+          "checkpoint_seconds": 0.002074,
+          "receipt": "20100331002091",
+          "replayed_source": false,
+          "validation_seconds": 0.004771,
+          "worker_progress_intervals": {
+            "download": 10.862984,
+            "parsing": 4.516552,
+            "startup_and_unattributed": 0.517299,
+            "storage": 0.030226,
+            "validation": 0.000996,
+            "waiting": 0.0
+          },
+          "worker_seconds": 15.928058
+        },
+        {
+          "checkpoint_seconds": 0.002803,
+          "receipt": "20100331002094",
+          "replayed_source": false,
+          "validation_seconds": 0.019255,
+          "worker_progress_intervals": {
+            "download": 6.780412,
+            "parsing": 2.714776,
+            "startup_and_unattributed": 0.486787,
+            "storage": 0.034274,
+            "validation": 0.000854,
+            "waiting": 0.0
+          },
+          "worker_seconds": 10.017103
+        },
+        {
+          "checkpoint_seconds": 0.002914,
+          "receipt": "20100331002095",
+          "replayed_source": false,
+          "validation_seconds": 0.013649,
+          "worker_progress_intervals": {
+            "download": 5.425095,
+            "parsing": 1.766062,
+            "startup_and_unattributed": 0.498465,
+            "storage": 0.025078,
+            "validation": 0.000861,
+            "waiting": 0.0
+          },
+          "worker_seconds": 7.715561
+        },
+        {
+          "checkpoint_seconds": 0.002789,
+          "receipt": "20100331002096",
+          "replayed_source": false,
+          "validation_seconds": 0.018648,
+          "worker_progress_intervals": {
+            "download": 6.708358,
+            "parsing": 2.530505,
+            "startup_and_unattributed": 0.552989,
+            "storage": 0.026896,
+            "validation": 0.000874,
+            "waiting": 0.0
+          },
+          "worker_seconds": 9.819621
+        },
+        {
+          "checkpoint_seconds": 0.00282,
+          "receipt": "20100331002097",
+          "replayed_source": false,
+          "validation_seconds": 0.029399,
+          "worker_progress_intervals": {
+            "download": 8.815329,
+            "parsing": 3.012753,
+            "startup_and_unattributed": 0.544421,
+            "storage": 0.049153,
+            "validation": 0.000916,
+            "waiting": 0.0
+          },
+          "worker_seconds": 12.422572
+        },
+        {
+          "checkpoint_seconds": 0.006441,
+          "receipt": "20100331002098",
+          "replayed_source": false,
+          "validation_seconds": 0.023004,
+          "worker_progress_intervals": {
+            "download": 9.54418,
+            "parsing": 4.0155,
+            "startup_and_unattributed": 0.480436,
+            "storage": 0.082688,
+            "validation": 0.000897,
+            "waiting": 0.0
+          },
+          "worker_seconds": 14.123701
+        },
+        {
+          "checkpoint_seconds": 0.001981,
+          "receipt": "20100331002100",
+          "replayed_source": false,
+          "validation_seconds": 0.003772,
+          "worker_progress_intervals": {
+            "download": 8.459005,
+            "parsing": 3.176768,
+            "startup_and_unattributed": 0.447532,
+            "storage": 0.035989,
+            "validation": 0.000848,
+            "waiting": 0.0
+          },
+          "worker_seconds": 12.120141
+        },
+        {
+          "checkpoint_seconds": 0.003372,
+          "receipt": "20100331002102",
+          "replayed_source": false,
+          "validation_seconds": 0.027943,
+          "worker_progress_intervals": {
+            "download": 10.092015,
+            "parsing": 3.959013,
+            "startup_and_unattributed": 0.532176,
+            "storage": 0.042429,
+            "validation": 0.000888,
+            "waiting": 0.0
+          },
+          "worker_seconds": 14.626522
+        },
+        {
+          "checkpoint_seconds": 0.002626,
+          "receipt": "20100331002103",
+          "replayed_source": false,
+          "validation_seconds": 0.017918,
+          "worker_progress_intervals": {
+            "download": 6.935528,
+            "parsing": 2.286997,
+            "startup_and_unattributed": 0.462819,
+            "storage": 0.03211,
+            "validation": 0.000961,
+            "waiting": 0.0
+          },
+          "worker_seconds": 9.718415
+        },
+        {
+          "checkpoint_seconds": 0.002487,
+          "receipt": "20100331002104",
+          "replayed_source": false,
+          "validation_seconds": 0.01861,
+          "worker_progress_intervals": {
+            "download": 6.521865,
+            "parsing": 2.259944,
+            "startup_and_unattributed": 0.511141,
+            "storage": 0.023105,
+            "validation": 0.00083,
+            "waiting": 0.0
+          },
+          "worker_seconds": 9.316886
+        },
+        {
+          "checkpoint_seconds": 0.002696,
+          "receipt": "20100331002105",
+          "replayed_source": false,
+          "validation_seconds": 0.021733,
+          "worker_progress_intervals": {
+            "download": 7.558246,
+            "parsing": 2.478446,
+            "startup_and_unattributed": 0.53816,
+            "storage": 0.043228,
+            "validation": 0.000962,
+            "waiting": 0.0
+          },
+          "worker_seconds": 10.619042
+        },
+        {
+          "checkpoint_seconds": 0.002914,
+          "receipt": "20100331002112",
+          "replayed_source": false,
+          "validation_seconds": 0.030962,
+          "worker_progress_intervals": {
+            "download": 12.52669,
+            "parsing": 5.047525,
+            "startup_and_unattributed": 0.525151,
+            "storage": 0.029933,
+            "validation": 0.001043,
+            "waiting": 0.0
+          },
+          "worker_seconds": 18.130341
+        },
+        {
+          "checkpoint_seconds": 0.001862,
+          "receipt": "20100331002116",
+          "replayed_source": false,
+          "validation_seconds": 0.003546,
+          "worker_progress_intervals": {
+            "download": 6.835478,
+            "parsing": 2.581112,
+            "startup_and_unattributed": 0.458876,
+            "storage": 0.041201,
+            "validation": 0.001007,
+            "waiting": 0.0
+          },
+          "worker_seconds": 9.917674
+        }
+      ],
+      "elapsed_seconds": 251.381,
+      "financial_population_certification": "UNVERIFIED",
+      "finished_at_utc": "2026-10-23T21:16:28.717826+00:00",
+      "investment_PIT": "0/6",
+      "last_checkpoint": "20100331002116",
+      "prior_stop_reason": null,
+      "remaining_receipts": [],
+      "results": [
+        {
+          "receipt": "20100331002066",
+          "rows": 0,
+          "status": "SOURCE_GAP"
+        },
+        {
+          "receipt": "20100331002067",
+          "rows": 11,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002072",
+          "rows": 17,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002073",
+          "rows": 14,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002075",
+          "rows": 15,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002084",
+          "rows": 16,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002085",
+          "rows": 17,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002089",
+          "rows": 16,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002091",
+          "rows": 0,
+          "status": "SOURCE_GAP"
+        },
+        {
+          "receipt": "20100331002094",
+          "rows": 18,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002095",
+          "rows": 15,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002096",
+          "rows": 16,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002097",
+          "rows": 17,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002098",
+          "rows": 16,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002100",
+          "rows": 0,
+          "status": "SOURCE_GAP"
+        },
+        {
+          "receipt": "20100331002102",
+          "rows": 20,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002103",
+          "rows": 15,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002104",
+          "rows": 15,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002105",
+          "rows": 16,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002112",
+          "rows": 19,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002116",
+          "rows": 0,
+          "status": "SOURCE_GAP"
+        }
+      ],
+      "resume_history": [],
+      "resumed": false,
+      "run_id": "40024818567",
+      "started_at_utc": "2026-10-23T21:12:17.336665+00:00",
+      "status": "COMPLETE_CANDIDATES_HELD",
+      "stop_reason": "BATCH_COMPLETE",
+      "updated_at_utc": "2026-10-23T21:16:28.717836+00:00"
+    },
+    "source_absence_certification": "UNVERIFIED"
+  },
+  "transfers": [
+    {
+      "automatic_publication": false,
+      "blob_sha": "b34e0e43761ac1cf7384297eab8a2df0d23e59c9",
+      "bytes": 2504480,
+      "compressed_sha256": "fa5520ecc7ca9ccab42d7d151c53a2aef837d83091e179fe999e5ebba01181cc",
+      "financial_certification": "UNVERIFIED"
+    },
+    {
+      "automatic_publication": false,
+      "blob_sha": "d6f5fea2c9f4495843de4c30b42e0e8733775beb",
+      "bytes": 105596,
+      "compressed_sha256": "f18188c60e24fd62541901995fc811809f04505c58a075dd327973bdbcd3308a",
+      "financial_certification": "UNVERIFIED"
+    }
+  ]
+}

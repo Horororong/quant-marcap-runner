@@ -1,0 +1,737 @@
+[
+  {
+    "receipt": "20100331002116",
+    "quality_state": "SOURCE_GAP_NOT_WORLDWIDE_ABSENCE_CERTIFICATION",
+    "member_diagnostics": [
+      {
+        "member": "20100331002116.xml",
+        "bytes": 482630,
+        "sha256": "e2b4edbbd794c40e78ceac835d520074b29bdbf56ac04ea8ea7c04d9ae1daa4d",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 707
+      },
+      {
+        "member": "20100331002116_00760.xml",
+        "bytes": 302852,
+        "sha256": "91636fd1166a98fcbbd08e084a9eba5989a4a7283b4188c0513b70565382ba46",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 365,
+        "xml_error": "not well-formed (invalid token): line 3150, column 53"
+      }
+    ]
+  },
+  {
+    "receipt": "20100331002091",
+    "quality_state": "SOURCE_GAP_NOT_WORLDWIDE_ABSENCE_CERTIFICATION",
+    "member_diagnostics": [
+      {
+        "member": "20100331002091.xml",
+        "bytes": 495652,
+        "sha256": "b71f4cd7b870b128badc7fb64478ab995ca882b74a5dc86481914a1c1d551ca0",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 738,
+        "xml_error": "not well-formed (invalid token): line 1702, column 271"
+      },
+      {
+        "member": "20100331002091_00761.xml",
+        "bytes": 467478,
+        "sha256": "5c7485f94961cac56ce5954cd32a0eaf43a96ffdedc9e16e49bd791a7f7fdbc5",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 363,
+        "literal_label_view": [
+          {
+            "offset": 212726,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 217168,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 221616,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 223860,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 226145,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 227339,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 228626,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 231048,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 233680,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 236224,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 240535,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 244051,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 250565,
+            "literal": "<시장성 있는 매도가능증권>"
+          },
+          {
+            "offset": 252520,
+            "literal": "<시장성 없는 매도가능증권>"
+          },
+          {
+            "offset": 281585,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 284712,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 288958,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 291432,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 293979,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 296786,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 329861,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 336445,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 375106,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 385762,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 401460,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 406923,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 419890,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 421301,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 422783,
+            "literal": "<당기>"
+          }
+        ],
+        "structural_view_sha256": "3217952898979bb360709f3889bdfa64891aac23cd0c2b390911d901367f000f",
+        "xml_error": "not well-formed (invalid token): line 3351, column 261"
+      },
+      {
+        "member": "20100331002091_00760.xml",
+        "bytes": 389038,
+        "sha256": "1792a266a5548948aa92a7c61e0264df77f6b4b3d12ca67a5babbe99fd87a427",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 316,
+        "literal_label_view": [
+          {
+            "offset": 186142,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 189658,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 194366,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 199147,
+            "literal": "<전 기>"
+          },
+          {
+            "offset": 203971,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 206633,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 209343,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 210541,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 211831,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 214700,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 217545,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 220470,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 223625,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 227833,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 230377,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 232930,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 235759,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 266679,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 273263,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 295268,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 308382,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 318725,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 331277,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 336713,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 345735,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 347146,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 352941,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 356027,
+            "literal": "<전기>"
+          }
+        ],
+        "structural_view_sha256": "d88076d94cfe76612cc2c1db0d80dd2821d0ddce38eaa141b50f754a6cf1c103"
+      }
+    ]
+  },
+  {
+    "receipt": "20100331002066",
+    "quality_state": "SOURCE_GAP_NOT_WORLDWIDE_ABSENCE_CERTIFICATION",
+    "member_diagnostics": [
+      {
+        "member": "20100331002066.xml",
+        "bytes": 594541,
+        "sha256": "1dd6e627ca4040859038e38262944c07921be7f18a5083c6c0a0e7f5ee589b5b",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 761
+      },
+      {
+        "member": "20100331002066_00760.xml",
+        "bytes": 323622,
+        "sha256": "095e59d25ca04cf086054858b83af816112f0c3d9255ba9dd70acc9ccce741e3",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 353,
+        "literal_label_view": [
+          {
+            "offset": 189255,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 191007,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 194669,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 196701,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 198796,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 200553,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 202410,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 204447,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 206892,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 211885,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 214982,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 216545,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 217629,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 219153,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 222232,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 226059,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 285971,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 287755,
+            "literal": "<전기>"
+          }
+        ],
+        "structural_view_sha256": "075cc599f9ee81b76eaacbd3a34733a039ecd86089292a97ae7ff3378fc51410"
+      },
+      {
+        "member": "20100331002066_00761.xml",
+        "bytes": 233070,
+        "sha256": "62a18c4954ae740575f21014b89dfe2822544dde88b8000eb692571736f79a15",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 319,
+        "literal_label_view": [
+          {
+            "offset": 118070,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 127117,
+            "literal": "<단위:천원>"
+          },
+          {
+            "offset": 129189,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 131587,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 133149,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 138676,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 140347,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 141895,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 144333,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 145633,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 147283,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 150607,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 157768,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 159034,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 160508,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 162166,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 164941,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 167370,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 170047,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 172515,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 173580,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 174620,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 176348,
+            "literal": "<단위 : JPY, EUR, 천원>"
+          },
+          {
+            "offset": 182045,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 183890,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 199148,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 200731,
+            "literal": "<단위 : 원>"
+          },
+          {
+            "offset": 203434,
+            "literal": "<단위 : 천원, USD, EUR>"
+          },
+          {
+            "offset": 209765,
+            "literal": "<단위 : 천원>"
+          },
+          {
+            "offset": 213110,
+            "literal": "<단위 : 천원>"
+          }
+        ],
+        "structural_view_sha256": "7d4904ca19a6dce4a29094f1632ab6d7f0361f5aa1a8ab605d2cd2ee3e45292f",
+        "xml_error": "not well-formed (invalid token): line 3368, column 46"
+      }
+    ]
+  },
+  {
+    "receipt": "20100331002100",
+    "quality_state": "SOURCE_GAP_NOT_WORLDWIDE_ABSENCE_CERTIFICATION",
+    "member_diagnostics": [
+      {
+        "member": "20100331002100.xml",
+        "bytes": 531662,
+        "sha256": "2ebd39f6d6b6bc507cc5b8b0277da823674c187643c71edc74d61980549fba74",
+        "issues": [
+          "SOURCE_XML_INCOMPLETE_OR_INVALID"
+        ],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 1122,
+        "literal_label_view": [
+          {
+            "offset": 484563,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 487378,
+            "literal": "<전기>"
+          }
+        ],
+        "structural_view_sha256": "5986133c46c6bcec817a3169b379d42da7e1617c7e8d1a11dad3323654d4c765",
+        "xml_error": "not well-formed (invalid token): line 3134, column 41"
+      },
+      {
+        "member": "20100331002100_00760.xml",
+        "bytes": 402423,
+        "sha256": "123855639e4a0572ae988d08318bb8533f71ff70b29ea4a2e65fc9d5e8369479",
+        "issues": [],
+        "warnings": [
+          "LEGACY_ENCODING_DECLARATION_MISMATCH",
+          "LEGACY_HTML_AMPERSAND_SYNTAX",
+          "LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY"
+        ],
+        "encoding": "utf-8",
+        "resolved_encoding": "cp949",
+        "replacement_characters": 0,
+        "ampersand_escapes_for_structure": 507,
+        "literal_label_view": [
+          {
+            "offset": 210206,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 215650,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 228527,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 233786,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 239483,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 242248,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 259400,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 260951,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 264329,
+            "literal": "<외화리스료>"
+          },
+          {
+            "offset": 268026,
+            "literal": "<원화리스료>"
+          },
+          {
+            "offset": 270251,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 271387,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 272511,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 273612,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 274986,
+            "literal": "<통화옵션등>"
+          },
+          {
+            "offset": 308459,
+            "literal": "<기계사업부-원화이외의 통화>"
+          },
+          {
+            "offset": 310243,
+            "literal": "<해운사업부-US Dallor이외의 통화>"
+          },
+          {
+            "offset": 334404,
+            "literal": "<가중평균유통보통주식수>"
+          },
+          {
+            "offset": 335153,
+            "literal": "<총발행주식수>"
+          },
+          {
+            "offset": 336310,
+            "literal": "<자기주식>"
+          },
+          {
+            "offset": 346081,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 349292,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 366536,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 367641,
+            "literal": "<전기>"
+          },
+          {
+            "offset": 369364,
+            "literal": "<당기>"
+          },
+          {
+            "offset": 371051,
+            "literal": "<전기>"
+          }
+        ],
+        "structural_view_sha256": "8d1a231c5272f3f4e07b096d4d4be013a8ca725440a8eb044b913a0b53a378ff"
+      }
+    ]
+  }
+]

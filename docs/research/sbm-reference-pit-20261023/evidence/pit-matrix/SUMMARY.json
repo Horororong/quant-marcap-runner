@@ -1,0 +1,46 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "strategy": "super_value_dart_dsl",
+  "strategy_signal": "2010-04-30 close, execution under existing next-close contract",
+  "population": 1946,
+  "full_population_required_slots": 13622,
+  "slots_per_stock": 7,
+  "required_slots": [
+    "FY2009 equity Dec31",
+    "FY2009 annual revenue",
+    "FY2009 annual net_income",
+    "FY2009 annual OCF",
+    "Q3Jan1Sep30 cumulative revenue",
+    "Q3Jan1Sep30 cumulative net_income",
+    "Q3Jan1Sep30 cumulative OCF"
+  ],
+  "strategy_definition": "EP/BP/CFP/SP; annual-minus-Q3 for the three Q4flows. No Q3equity requirement added",
+  "companies": 20,
+  "issuer_signals": 40,
+  "identity": {
+    "PASS": 33,
+    "UNVERIFIED": 7
+  },
+  "field_signal_queries": 160,
+  "FY_independent_semantics": 80,
+  "required_semantic_slots_selected20": 140,
+  "selected20_source_semantics_ratio": "80/140; all FY only, Q3 source-period and semantics unverified",
+  "selected20_full_ready_stocks": 0,
+  "selected20_PIT_ready_fields": 0,
+  "actual_correction_pairs_newly_compared": 0,
+  "new_identity_PASS": 0,
+  "new_PIT_fields": 0,
+  "new_live_engine_fields": 0,
+  "no_correction_rule": "A verified closed as-of single-version chain is sufficient; never require a hypothetical second version",
+  "existing33_identity_proofs_preserved": true,
+  "whole_population_ranking_still_blocked": true,
+  "calendar_shared": true,
+  "source_HTTP": 0,
+  "publication": "HOLD",
+  "priority": [
+    "Actual original/version publication proof for20 source-bound FY documents",
+    "Resolve7 remaining identity signal pairs with official alias/change evidence",
+    "Retrieve existing Q3 raw/version evidence before proposing any re-collection; validate only3needed flows",
+    "Full1946 universe and CFS/OFS/corporate-action/source-coverage gates before ranking"
+  ]
+}

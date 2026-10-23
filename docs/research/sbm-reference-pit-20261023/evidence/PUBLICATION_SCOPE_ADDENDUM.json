@@ -1,0 +1,61 @@
+{
+  "repository": "Horororong/quant-marcap-runner",
+  "branch": "fix/native-source-boundaries-20261021",
+  "base": "589a3ea2aa7dd3aa23f961aab7a8e75e1b1ac574",
+  "code_target": "33abf89aa46a388a57aab41c220ca82870cb1747",
+  "manifest": "/workspace/quant-source-audit-next-20261023/CONSOLIDATED_PUBLIC_TRANSFER_MANIFEST.json",
+  "manifest_sha256": "1279f5f22a72f9457ab40447e06d3c7d67fd503ee302fe86e1fa8c8fb58180b3",
+  "purpose_groups": {
+    "handoff": {
+      "files": 1,
+      "bytes": 93441
+    },
+    "auth_and_v12_delivery_receipts": {
+      "files": 6,
+      "bytes": 13028
+    },
+    "common_reviewed_provider_and_population": {
+      "files": 39,
+      "bytes": 2019991
+    },
+    "historical_identity_and_new80_source_review": {
+      "files": 43,
+      "bytes": 1177136
+    }
+  },
+  "net_files": 89,
+  "net_bytes": 3303596,
+  "driver": {
+    "bytes": 11071,
+    "sha256": "a46a8c0b283efb092e54f163bf08f27fdd992682b0cc3316fa3d89f384325b02",
+    "included_in89": false,
+    "code_checkout": "33abf89aa46a388a57aab41c220ca82870cb1747",
+    "driver_commit": "NOT_CREATED_NOT_PUBLISHED",
+    "target_branch": "ci/fixed-kit-restored-20261020"
+  },
+  "overlap": {
+    "base_already_public_excluded": true,
+    "v12_archive_already_remote_not_reuploaded": true,
+    "source_packs_already_public_excluded": true,
+    "v12_delivery_receipts_included_are_new_metadata_only": true,
+    "latest_SBM_repair_excluded": true
+  },
+  "CI": {
+    "kit": "original pinned offline kit only; no Internet pip",
+    "scope": [
+      "11 source-extension/identity boundary tests",
+      "80 independent actual-source controls",
+      "80 common-provider quarantine roundtrip",
+      "40 historical identity checks",
+      "strict new source-core comparison"
+    ],
+    "skip": "unchanged browser/130-file/whole-project hash audits"
+  },
+  "approval": "PENDING_NEW_89_PLUS_DRIVER_APPROVAL",
+  "secret_scan": {
+    "token_private_key_patterns": [],
+    "findings": 0,
+    "existing_parent_scope": "All three unpublished commits contained in89 manifest; historical file versions scanned in preserved original receipt",
+    "limit": "Pattern scan plus manual review; no credential values written"
+  }
+}

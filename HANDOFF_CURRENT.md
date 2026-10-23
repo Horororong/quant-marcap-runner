@@ -1,3 +1,42 @@
+# Latest checkpoint: SBM reference repair and actual finite21 collection (2026-10-24 KST)
+
+Continue on `research/sbm-reference-pit-20261023` in the existing repair worktree.
+Read `docs/research/sbm-reference-pit-20261023/REPORT.md` and `RESUME.md` first.
+Research parser9.4 fixes only an explicit attached-audit note reference. Original159
+documents preserve2277 candidates with0changes/0losses; SBM adds15source-semanticPASS,
+including4FYstrategycore values. Additional21source replay273→273 also has0changes/losses.
+118relevant testsPASS; previous9.2/9.3 approvals still reject new parser until explicit
+version/hash binding. Research binding only changed; operating main/parser9.2 untouched.
+Provider quarantine298/70→302/71, strict engine/PIT increase0. SBM037630 identity at
+2010-04-01/04-30 adds2PASS; previous20companies33PASS/7UV retained. Necessary strategy
+is super_value_dart_dsl, original1946, FY4 plusJanSepQ3three flows; no universe pruning.
+
+Actual approved finite21 run40024818567 SUCCESS, code3b505b5fb299e4d162a9676d9f4e757d4415fc69,
+source result299e97b47a06cadcf2414c07f9dac606a428e233.21HTTP/0retry/21ZIP/273candidate/
+0duplicates/251.381sec normalBATCH_COMPLETE, checkpoint2063→2116,next20100331002117.
+17PARSED_4F+4SOURCE_GAP;273meaning/PIT unreviewed. Original3executions/history preserved.
+Additional budget1/2used,42/82HTTP reserved(21observed),20docs/1execution/40HTTP remain;
+10/24KST opportunity used.10/25nextwindow,expiry10/25KST23:59:59. No auto supplemental
+resume armed; same finite budget already approved, do not reask or repeat today's gates.
+Source packs2 are already remoteGit at resultSHA; local21CRC/SHA/member checks PASS.
+Artifact redirect Forbidden, no retry; temporary signedURL removed. HTTP counts are
+persisted deployed-code observations, worker-artifact independent recount not performed.
+
+CandidateIDs prove original2234+repair9+trial34 exactly matches2277=(971PASS+23UV+1283unreviewed).
+AfterSBM15+new273:2565=(986PASS+23UV+1556unreviewed). Canary4 stays outside.53old conflicts
+and old23UV not reclassified. Newly neededQ3 queue is68v5rows/22receipts/20companies,
+unverified period/member/PIT; no direct ZIP filenames found, archive-wide absence not claimed.
+SBM Q3has no candidate in that oldfile. Source accuracy, completeness, PIT and engine
+admission remain separate; financialpublicationHOLD/PIT0of6/CA/source gates retained.
+
+v12 approved release421514386 is delivered/remoteSHA+CRCverified; do not upload again.
+Old public research589a3ea… remains last published. The old89file/3303596byte packet
+target33abf89 and11071byte driver remains frozen; newSBM/actual-source audit is a later
+local delta. Consolidate the full unapproved code+evidence+separate driver in one exact
+manifest before asking once for publication. No whole research mainmerge/financial
+publication/PIT release/old rejectedCIindex publication. No remote CI claim for localcode.
+Full-project remote-only restoration remains unperformed. Preserve all old workspaces/backups.
+
 ## 최신: 첫100 중 신규20회사 핵심80·당시 종목 연결33 — 2026-10-23KST
 
 RESEARCH_ONLY. 보고/재개:docs/research/source-core-batch3-20261023/REPORT.md/RESUME.md,

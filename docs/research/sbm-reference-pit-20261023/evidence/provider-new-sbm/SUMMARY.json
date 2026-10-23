@@ -1,0 +1,53 @@
+{
+  "candidate_rows": 4,
+  "candidate_stock_hints": 1,
+  "source_ready_rows": 0,
+  "source_ready_stocks": 0,
+  "classification": "RESEARCH_ONLY",
+  "candidate_rows_engine_eligible": false,
+  "whole_population_ready": false,
+  "investment_approved": false,
+  "source_HTTP": 0,
+  "canonical_ledger_edited": false,
+  "source_counts": {
+    "source_semantic_PASS": 15,
+    "not_core_or_unverified": 11
+  },
+  "submitted_core_rows": 4,
+  "held_rows": 0,
+  "same_receipt_field_conflicts": 0,
+  "period_counts": [
+    {
+      "year": 2009,
+      "period": "FY",
+      "candidate_rows": 4,
+      "stock_hints": 1,
+      "snapshot_rows": 1,
+      "strict_ready_rows": 0
+    }
+  ],
+  "receipt_count": 1,
+  "company_hints": 1,
+  "IS_taxonomy_normalizations": 2,
+  "canonical_preview_exact": 4,
+  "canonical_preview_checked": 4,
+  "strict_blockers": {
+    "CHAIN_NOT_CLOSED_AT_SIGNAL": 4
+  },
+  "independent_readiness_blockers": {
+    "publication": 4,
+    "version_relationship": 4,
+    "historical_security_mapping": 4,
+    "signal_availability": 4
+  },
+  "NEW_PIT_stocks": 0,
+  "NEW_meaning_reviews": 0,
+  "NEW_live_engine_stocks": 0,
+  "existing_semantic_decisions_reused": true,
+  "missing_values_filled": false,
+  "catalog": {
+    "path": "data/financials/legacy_2000_2014/legacy_filings.csv.gz",
+    "sha256": "310001c3e9ed429684da5008983ccfa8d27cd92a16659dd18a1060c6e112406c"
+  },
+  "note": "Candidate snapshots are an explicit quarantine preview; no completion ledger/provider registry/gate edited."
+}

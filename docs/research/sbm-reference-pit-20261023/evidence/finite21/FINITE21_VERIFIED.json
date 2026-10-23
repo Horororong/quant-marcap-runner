@@ -1,0 +1,491 @@
+{
+  "status": "PASS_NEW_SOURCE_HASH_CRC_ROW_BINDING_FROZEN_ORDER_NO_DUPLICATE_NORMAL_EXIT",
+  "classification": "RESEARCH_ONLY",
+  "run_id": "40024818567",
+  "run_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/40024818567",
+  "code_sha": "3b505b5fb299e4d162a9676d9f4e757d4415fc69",
+  "source_result_commit": "299e97b47a06cadcf2414c07f9dac606a428e233",
+  "source_HTTP": 21,
+  "retries": 0,
+  "new_originals": 21,
+  "new_candidates": 273,
+  "duplicate_receipts": 0,
+  "duplicate_candidates": 0,
+  "elapsed_seconds": 251.381,
+  "normal_exit": true,
+  "stop_reason": "BATCH_COMPLETE",
+  "checkpoint_before": "20100331002063",
+  "checkpoint_after": "20100331002116",
+  "next_receipt": "20100331002117",
+  "budget": {
+    "executions_used": 1,
+    "executions_remaining": 1,
+    "documents_remaining": 20,
+    "HTTP_actual": 21,
+    "HTTP_reserved": 42,
+    "HTTP_additional_reservable": 40,
+    "total_approved_HTTP": 82
+  },
+  "source_states": {
+    "SOURCE_GAP": 4,
+    "PARSED_4F": 17
+  },
+  "new_source_semantic_PASS": 0,
+  "new_PIT": 0,
+  "new_engine_eligible": 0,
+  "original3history_preserved": true,
+  "sourcepack_remote_persistent": true,
+  "automatic_supplemental_resume": false,
+  "financial_publication": "HOLD",
+  "research_population": {
+    "total": 2565,
+    "PASS": 986,
+    "reviewed_UNVERIFIED": 23,
+    "unreviewed": 1556
+  },
+  "documents": [
+    {
+      "receipt": "20100331002066",
+      "stock_hint": "056710",
+      "corp_code": "00361035",
+      "company": "미리넷",
+      "source_archive_sha256": "405193b85b1ed24673e38e458e86799db0e41b5f72d1043139874fe0534f9653",
+      "source_CRC": "PASS",
+      "candidate_count": 0,
+      "extraction_status": "SOURCE_GAP",
+      "core_field_hints": {
+        "OFS": [],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002067",
+      "stock_hint": "084240",
+      "corp_code": "00538497",
+      "company": "동북아15호선박투자회사",
+      "source_archive_sha256": "40104cef670170a030abeb7a06e0d205a6006e815ebc9dcfcc0e2b07c5c7a30b",
+      "source_CRC": "PASS",
+      "candidate_count": 11,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002072",
+      "stock_hint": "000500",
+      "corp_code": "00104768",
+      "company": "가온전선",
+      "source_archive_sha256": "dfa51c8f6f3a5f1b3a7aff649d315cf16c75a884f2b79073e43824520030b75a",
+      "source_CRC": "PASS",
+      "candidate_count": 17,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002073",
+      "stock_hint": "049720",
+      "corp_code": "00336297",
+      "company": "고려신용정보",
+      "source_archive_sha256": "114b27cd1c8039dc1214747a7a7aaea441d2dac88b1a202644dddb0471e6c326",
+      "source_CRC": "PASS",
+      "candidate_count": 14,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002075",
+      "stock_hint": "065310",
+      "corp_code": "00307037",
+      "company": "더스텔라",
+      "source_archive_sha256": "6767ba3af18632af17e34c41d0973049b688c4fe44506e593071d3005059c9b6",
+      "source_CRC": "PASS",
+      "candidate_count": 15,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002084",
+      "stock_hint": "040350",
+      "corp_code": "00346407",
+      "company": "크레오에스지",
+      "source_archive_sha256": "1498941e434b3eb641dffd53e3de7c2e5ab7b96fdf6d6da31a5801006a5d9b62",
+      "source_CRC": "PASS",
+      "candidate_count": 16,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002085",
+      "stock_hint": "041830",
+      "corp_code": "00269922",
+      "company": "인바디",
+      "source_archive_sha256": "0d63c44a840d317b20cec0ddee3d61f32d820f293163c5ca12efc37fb83a4f09",
+      "source_CRC": "PASS",
+      "candidate_count": 17,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002089",
+      "stock_hint": "002670",
+      "corp_code": "00115472",
+      "company": "미주제강",
+      "source_archive_sha256": "0b2b785d57ff4a0990171d094a3ca3dc9ce2d6291b4c4071b332e2d13014e679",
+      "source_CRC": "PASS",
+      "candidate_count": 16,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002091",
+      "stock_hint": "033030",
+      "corp_code": "00232317",
+      "company": "지오엠씨",
+      "source_archive_sha256": "14ecd832d332994e27d1751ed38c1aea3e356693d2040fa4eebb8482eee10cc6",
+      "source_CRC": "PASS",
+      "candidate_count": 0,
+      "extraction_status": "SOURCE_GAP",
+      "core_field_hints": {
+        "OFS": [],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002094",
+      "stock_hint": "031990",
+      "corp_code": "00110307",
+      "company": "대선조선",
+      "source_archive_sha256": "bf6bcc21bfa483afaee8424465c8dc4a0862dddeeb0294454f93abd8c4927ffd",
+      "source_CRC": "PASS",
+      "candidate_count": 18,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002095",
+      "stock_hint": "078070",
+      "corp_code": "00411385",
+      "company": "유비쿼스홀딩스",
+      "source_archive_sha256": "1f1a81e7e81f938d54575a54d38cf46f2e9d54b3860b7a528a1a4244d365c682",
+      "source_CRC": "PASS",
+      "candidate_count": 15,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002096",
+      "stock_hint": "034300",
+      "corp_code": "00217947",
+      "company": "신세계건설",
+      "source_archive_sha256": "2e738f6eeaf751649e36ad35e04c612ab10e33a2146408cb48b0add62bf82998",
+      "source_CRC": "PASS",
+      "candidate_count": 16,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002097",
+      "stock_hint": "092730",
+      "corp_code": "00551920",
+      "company": "네오팜",
+      "source_archive_sha256": "7c7b5a54b2918acf30044f01d88ca92a2f6eb5b46642437154cab189bbbc072d",
+      "source_CRC": "PASS",
+      "candidate_count": 17,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002098",
+      "stock_hint": "004980",
+      "corp_code": "00132804",
+      "company": "성신양회",
+      "source_archive_sha256": "2c1a2cde2107d5acb137ab84dc42d5670b8cace29332eb6cd7bc71ec8b312312",
+      "source_CRC": "PASS",
+      "candidate_count": 16,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002100",
+      "stock_hint": "005350",
+      "corp_code": "00123648",
+      "company": "심팩인더스트리",
+      "source_archive_sha256": "9dbd64a001e13c542a337292a7f3cbfe544612c31ac698c5c7d6cca87aed1b2c",
+      "source_CRC": "PASS",
+      "candidate_count": 0,
+      "extraction_status": "SOURCE_GAP",
+      "core_field_hints": {
+        "OFS": [],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002102",
+      "stock_hint": "002820",
+      "corp_code": "00132211",
+      "company": "SUN&L",
+      "source_archive_sha256": "65d37dd3de8d0620afd2ec8d3d8313298e2f198b0db662cd107fbf18db034483",
+      "source_CRC": "PASS",
+      "candidate_count": 20,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002103",
+      "stock_hint": "084990",
+      "corp_code": "00359395",
+      "company": "헬릭스미스",
+      "source_archive_sha256": "f8228c00841718fc40be34040137485ed3cc41eb1c67494ea10bef88c58dce11",
+      "source_CRC": "PASS",
+      "candidate_count": 15,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002104",
+      "stock_hint": "053320",
+      "corp_code": "00350738",
+      "company": "제네시스디벨롭먼트홀딩스",
+      "source_archive_sha256": "ac1221ce38216c0c20c1e9f9f5d9b3b67430a8ed4f2c01b8fd033ee8998a1d5b",
+      "source_CRC": "PASS",
+      "candidate_count": 15,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002105",
+      "stock_hint": "053700",
+      "corp_code": "00351092",
+      "company": "삼보모터스",
+      "source_archive_sha256": "05e531fbdc1812b091ef8f8e0973e5d1c2a787212659d814ce7a0d9eec7cb6d6",
+      "source_CRC": "PASS",
+      "candidate_count": 16,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002112",
+      "stock_hint": "002410",
+      "corp_code": "00122694",
+      "company": "범양건영",
+      "source_archive_sha256": "4bb9dd55bc7ea3452ff877cd9c00717b9309cdf316c6ed8ebe364a0e7514f3c2",
+      "source_CRC": "PASS",
+      "candidate_count": 19,
+      "extraction_status": "PARSED_4F",
+      "core_field_hints": {
+        "OFS": [
+          "equity",
+          "net_income",
+          "ocf",
+          "revenue"
+        ],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    },
+    {
+      "receipt": "20100331002116",
+      "stock_hint": "009720",
+      "corp_code": "00159175",
+      "company": "한국전기초자",
+      "source_archive_sha256": "dae0ed8832189892f6e520cac26afade059543f32f8164aca5e310b4f40fb1ea",
+      "source_CRC": "PASS",
+      "candidate_count": 0,
+      "extraction_status": "SOURCE_GAP",
+      "core_field_hints": {
+        "OFS": [],
+        "CFS": []
+      },
+      "semantic": "UNREVIEWED",
+      "PIT": "UNVERIFIED",
+      "whole_filing_completeness": "UNVERIFIED"
+    }
+  ],
+  "HTTP_evidence": "Deployed pinned collector instrumented progress counts persisted in both remote manifest and supplemental ledger; worker artifact independently checked only if download succeeds"
+}

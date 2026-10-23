@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-23T21:08:57.724529+00:00",
+  "head": "3b505b5fb299e4d162a9676d9f4e757d4415fc69",
+  "tree_complete": true,
+  "ledger_tree_entries": [],
+  "ledger_path_commit_history": [],
+  "files": {
+    "data/status/dart_legacy_limited_resume_v1.json": {
+      "blob": "5d3b38ef70e7a11eb3345fde7c510cd1ef626b99",
+      "sha256": "92ddee82d9b301a3da35e5309cd39980d246f77015d80dc5bc7d69381da9ef02"
+    },
+    "config/financial_supplemental_41_v1.json": {
+      "blob": "578014f95b5d1a3216b9e7aaa9114a3bba3ffa1c",
+      "sha256": "945647e4740366ca325111fbf26c3459b89ddd78d2b455248460f21d3eee9c5d"
+    },
+    "config/financial_limited_resume_v1.json": {
+      "blob": "7189984139e5173d7404ae9df952be98a2ee46ee",
+      "sha256": "054ea855ecb0d83720463de4deb5696b38ce19fb7fd06a1cfc190e83ac825884"
+    },
+    "scripts/financial_supplemental_resume.py": {
+      "blob": "6ab17ad04c1bf0c770f10a457d6034626d7f32f7",
+      "sha256": "89efd38fa40abd30e8738887ca142e0438fd17f4cb586589001d3442dbe733aa"
+    }
+  },
+  "original_phase": "PAUSED_QUEUE",
+  "original_checkpoint": "20100331002063",
+  "original_attempts": [
+    {
+      "run_id": "39248507369",
+      "day_kst": "2026-10-19"
+    },
+    {
+      "run_id": "39504052321",
+      "day_kst": "2026-10-21"
+    },
+    {
+      "run_id": "39863731314",
+      "day_kst": "2026-10-23"
+    }
+  ],
+  "completed_count": 159,
+  "known_supplemental_receipts_already_collected": [],
+  "source_HTTP": 0,
+  "dispatch": false,
+  "read_only": true
+}
