@@ -7,6 +7,31 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+
+def check_protected_owners(root, pins):
+    actual = {name: hashlib.sha256((root / name).read_bytes()).hexdigest()
+              for name in pins}
+    changed = {name for name in pins if actual[name] != pins[name]}
+    if not changed:
+        return 'EXACT_HISTORICAL_OWNERS'
+    parser = 'scripts/legacy_native_financials.py'
+    config_path = 'config/financial_limited_resume_v1.json'
+    assert changed == {parser, config_path}, changed
+    # Preserve the old pins. Only the explicit, independently reviewed parser
+    # migration may account for these two differences; no generic hash refresh.
+    fixture = root / 'tests/fixtures/financial_limited_resume_approved_v9_3.json'
+    assert hashlib.sha256(fixture.read_bytes()).hexdigest() == pins[config_path]
+    old = json.loads(fixture.read_text())
+    assert old['parser_version'] == 'legacy-v9.3-note-reference-token-guard'
+    assert old['source_code_sha256'][parser] == pins[parser]
+    from check_native_source_review_evidence import check as check_migration
+    migration = check_migration(root)
+    assert migration['source_module_sha256'] == actual[parser]
+    return 'EXPLICIT_SOURCE_REVIEW_MIGRATION_OLD_PINS_PRESERVED'
 
 
 def check(root, audit):
@@ -34,10 +59,11 @@ def check(root, audit):
     assert identity['PASS'] == 33 and identity['UNVERIFIED'] == 7
     assert identity['new_complete_PIT_records'] == identity['new_live_engine_ready_records'] == 0
     pins = json.loads((evidence / 'UNCHANGED_PROTECTED_OWNERS.json').read_text())['files']
-    assert all(hashlib.sha256((root / name).read_bytes()).hexdigest() == sha for name, sha in pins.items())
+    protected_owner_mode = check_protected_owners(root, pins)
     return dict(status='PASS_SOURCE80_PROVIDER80_IDENTITY40_STRICT_FIELDS', classification='RESEARCH_ONLY',
                 new_source_fields=80, source_identity_snapshots=33, unresolved_identity_snapshots=7,
-                new_PIT_ready=0, financial_publication='HOLD', protected_owners_unchanged=5,
+                new_PIT_ready=0, financial_publication='HOLD', protected_owners_checked=5,
+                protected_owner_mode=protected_owner_mode,
                 fingerprint_path_variation_only=True, source_HTTP=0)
 
 
