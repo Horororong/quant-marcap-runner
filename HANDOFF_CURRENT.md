@@ -1,3 +1,15 @@
+## 최신: v12 인증 재확인·전송 완료 — 2026-10-23KST
+
+현재 GH_BACKUP_TOKEN 명시적 실행으로 repo/draft조회·업로드·원격다운로드 성공.
+기존 draft421514386/untagged-03579765533e135a15a1 유지,4assets,원본ZIP538254/SHA464aa445… 및CRC/41payload 전체PASS.
+기존 태그 assertion오류는 실제release ID/name/draft/target바인딩으로 수정. 추가권한/토큰재발급 요구불필요.
+완료 링크 https://github.com/Horororong/quant-marcap-runner/releases/tag/untagged-03579765533e135a15a1
+이전PENDING_AUTH/asset0은해결된이력이다. 반복업로드하지않는다.
+RESEARCH_ONLY/금융HOLD/PIT유지;새연구코드공개/CI/main/DART수집변경없음.
+최신증거 docs/research/auth-delivery-20261023/REPORT.md 및 /workspace/quant-auth-recheck-20261023/FINAL_STATUS.md.
+
+---
+
 ## 2026-10-23 최신 재개: 다종목 bridge와 v12 인증
 
 RESEARCH_ONLY. 최신 상세: `docs/research/multi-provider-20261023/REPORT.md`, `RESUME.md`,

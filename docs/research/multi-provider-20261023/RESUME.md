@@ -1,3 +1,5 @@
+> **최신 보완(2026-10-23KST): v12 전송 완료.** 현재 GH_BACKUP_TOKEN으로 인증·기존 draft 업로드·4assets 실제 다운로드·ZIP SHA/CRC/41payload 일치 PASS. 새 권한/토큰 교체 불필요. 아래 PENDING_AUTH 진단은 당시 이력이다. 최신 증거: `docs/research/auth-delivery-20261023/REPORT.md`, `/workspace/quant-auth-recheck-20261023/FINAL_STATUS.md`. 승인된 동일 v12는 다시 전송하지 않는다.
+
 # 재개 — RESEARCH_ONLY
 
 먼저 이 폴더 REPORT.md와 `/workspace/quant-multi-provider-20261023/FINAL_STATUS.md`를

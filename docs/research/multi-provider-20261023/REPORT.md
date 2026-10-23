@@ -1,3 +1,5 @@
+> **최신 보완(2026-10-23KST): v12 전송 완료.** 현재 GH_BACKUP_TOKEN으로 인증·기존 draft 업로드·4assets 실제 다운로드·ZIP SHA/CRC/41payload 일치 PASS. 새 권한/토큰 교체 불필요. 아래 PENDING_AUTH 진단은 당시 이력이다. 최신 증거: `docs/research/auth-delivery-20261023/REPORT.md`, `/workspace/quant-auth-recheck-20261023/FINAL_STATUS.md`. 승인된 동일 v12는 다시 전송하지 않는다.
+
 # 다종목 재무 연결·모집단 대조·인증 재개점 — 2026-10-23
 
 모든 결과는 **RESEARCH_ONLY**다. 금융 게시 HOLD, PIT0/6, source coverage,

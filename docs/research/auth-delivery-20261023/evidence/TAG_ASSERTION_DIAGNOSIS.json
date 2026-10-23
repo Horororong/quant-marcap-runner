@@ -1,0 +1,8 @@
+{
+  "authentication": "RepositoryGET and existing draftGET succeeded using current GH_BACKUP_TOKEN",
+  "failure": "Local expected-tag assertion, not HTTP auth failure",
+  "actual_tag": "untagged-03579765533e135a15a1",
+  "expected_requested_tag": "backup-quant-recovery-union-v12-20261023-7691fd2",
+  "fix": "Bind existing immutable releaseID+draft+name+target commit, use API-returned actual tag; no new release and no asset overwrite",
+  "code_sha256": "ba4718a2552a4a73fe485c0686953dfb5c969650b2675b0ee62b9169ef1cbdaf"
+}

@@ -1,6 +1,6 @@
-"""Resume the exact approved v12 into its existing draft after user credential update.
+"""Resume the exact approved v12 into its existing draft after explicit user-requested authentication recheck.
 
-Requires explicit --credential-updated. Does not create releases, overwrite
+Requires explicit --recheck-authorized. Does not create releases, overwrite
 assets, publish research code, run CI, or change any original backup bytes.
 The dedicated secret is passed only to gh's process environment, never logged.
 """
@@ -14,7 +14,7 @@ import tempfile
 import zipfile
 from pathlib import Path
 
-P = Path('/workspace/quant-multi-provider-20261023')
+P = Path(__file__).resolve().parent
 B = Path('/workspace/quant-backups/quant-recovery-union-v12-20261023')
 REPO = 'Horororong/quant-marcap-runner'
 RELEASE_ID = 421514386
@@ -23,7 +23,7 @@ SHA = '464aa445c1c1d92a891bad9072973f34cc27bf2e92cbb13b8947f38c4a3a820e'
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--credential-updated', action='store_true', required=True)
+    parser.add_argument('--recheck-authorized', '--credential-updated', action='store_true', required=True)
     parser.parse_args()
     token = os.environ.get('GH_BACKUP_TOKEN')
     if not token:
@@ -61,7 +61,8 @@ def main():
     repo = json.loads(gh(['api', api], 'repository authentication'))
     assert repo['full_name'] == REPO and not repo['private'] and repo['permissions']['push']
     release = json.loads(gh(['api', f'{api}/releases/{RELEASE_ID}'], 'existing approved draft lookup'))
-    assert release['draft'] and release['tag_name'] == 'backup-quant-recovery-union-v12-20261023-7691fd2'
+    assert release['id'] == RELEASE_ID and release['draft'] and release['name'] == 'quant-recovery-union-v12-20261023'
+    assert release['target_commitish'] == '29b6c4a2c277f6b2070e4bf70da54899f9fe4bcf'
     assets = json.loads(gh(['api', f'{api}/releases/{RELEASE_ID}/assets?per_page=100'], 'asset observation'))
     by_name = {a['name']: a for a in assets}
     assert len(by_name) == len(assets) and not (set(by_name) - {p.name for p in paths})
@@ -101,7 +102,7 @@ def main():
     receipt = dict(status='PASS_REMOTE_DOWNLOAD_SHA256_CRC_ALL41_PAYLOADS', release_id=RELEASE_ID,
                    release_url=release['html_url'], draft=True, repository_public=True, archive_bytes=538254,
                    sha256=SHA, payload_files=41, ZIP_entries=42, sidecars=3, assets=4,
-                   authentication='GH_BACKUP_TOKEN after user replacement', old_backups_changed=False)
+                   authentication='Current configured GH_BACKUP_TOKEN after explicit user-requested recheck', old_backups_changed=False)
     (P / 'V12_DELIVERY_COMPLETED.json').write_text(json.dumps(receipt, indent=2) + '\n')
     print(json.dumps(receipt, indent=2))
 
