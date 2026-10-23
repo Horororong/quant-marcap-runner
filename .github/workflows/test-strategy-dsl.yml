@@ -9,7 +9,7 @@ on:
       suite:
         description: Research or bounded collection coordinator
         type: choice
-        options: [research, collection, integration, parser, workspace, pit_period, trial_evidence, supplemental]
+        options: [research, collection, integration, parser, workspace, pit_period, trial_evidence, supplemental, source_core]
         default: research
 permissions:
   contents: read
@@ -106,6 +106,27 @@ jobs:
           PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
           "$PY" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_financial_supplemental_resume","test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume","test_dart_corp_code","test_legacy_backfill_resume"]);assert s.countTestCases()>=70;r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
           "$PY" -I -c 'import hashlib,json;from pathlib import Path;c=json.loads(Path("config/financial_limited_resume_v1.json").read_text());assert all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==v for p,v in c["source_code_sha256"].items());print("PASS_UNCHANGED_APPROVED_SOURCE_OWNERS")'
+      - name: New source core fields and historical identity; no source requests
+        if: inputs.suite == 'source_core'
+        run: |
+          PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
+          "$PY" -I -m unittest discover -s scripts -p test_historical_source_identity.py -v
+          "$PY" -I -m unittest discover -s scripts -p test_reviewed_source_extensions.py -v
+          "$PY" -I docs/research/source-core-batch3-20261023/tools/unpack_first100_preserved.py --root . --workdir "$RUNNER_TEMP/source-core"
+          "$PY" -I docs/research/source-core-batch3-20261023/tools/review_new20_core.py --root . --workdir "$RUNNER_TEMP/source-core"
+          "$PY" -I scripts/apply_reviewed_financial_batch.py --root . --extension-only --review-extension "$RUNNER_TEMP/source-core/new20-review/NEW20_CORE_SOURCE_REVIEW.json" --output "$RUNNER_TEMP/source-core/provider-new80"
+          "$PY" -I docs/research/source-core-batch3-20261023/tools/join_new20_identity.py --root . --workdir "$RUNNER_TEMP/source-core"
+          "$PY" -I scripts/check_source_core_increment.py --audit-root "$RUNNER_TEMP/source-core" --output "$RUNNER_TEMP/source-core/CI_VERIFIED.json"
+      - name: Source-reference parser migration and bounded real SBM case
+        if: inputs.suite == 'source_core'
+        run: |
+          PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
+          "$PY" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_native_source_boundary_repairs","test_financial_accuracy_repair","test_financial_backfill_v8","test_financial_extraction_stage3","test_financial_record_readiness","test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume","test_legacy_backfill_resume"]);assert s.countTestCases()>=118;r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
+          "$PY" -I scripts/check_native_source_review_evidence.py --output "$RUNNER_TEMP/parser-source-evidence.json"
+          "$PY" -I docs/research/sbm-reference-pit-20261023/tools/check_sbm_actual.py --root . --archive "$RUNNER_TEMP/source-core/first100-chunks/part01/native/20100331001822-10f1e6aebdf5f245bd4026a030d494cf64cd94813c33eb89064c0e3989408c13.zip" --output "$RUNNER_TEMP/source-core/sbm-current"
+          "$PY" -I scripts/apply_reviewed_financial_batch.py --root . --extension-only --review-extension "$RUNNER_TEMP/source-core/sbm-current/SBM_SOURCE_REVIEW.json" --output "$RUNNER_TEMP/source-core/sbm-provider"
+          "$PY" -I docs/research/sbm-reference-pit-20261023/tools/build_strategy_pit_matrix.py --root . --output "$RUNNER_TEMP/source-core/strategy-pit-matrix"
+          "$PY" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");sys.argv=["scripts/export_strategy_dsl_contract.py","--check"];runpy.run_path(sys.argv[0],run_name="__main__")'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -120,4 +141,11 @@ jobs:
             ${{ runner.temp }}/pit-source-case
             ${{ runner.temp }}/period-workspace
             ${{ runner.temp }}/trial-qualification.json
+            ${{ runner.temp }}/source-core/CI_VERIFIED.json
+            ${{ runner.temp }}/source-core/new20-review
+            ${{ runner.temp }}/source-core/identity-final
+            ${{ runner.temp }}/source-core/provider-new80
+            ${{ runner.temp }}/source-core/sbm-current
+            ${{ runner.temp }}/source-core/sbm-provider
+            ${{ runner.temp }}/source-core/strategy-pit-matrix
           retention-days: 90
