@@ -1,0 +1,473 @@
+{
+  "base": "29b6c4a2c277f6b2070e4bf70da54899f9fe4bcf",
+  "target": "589a3ea2aa7dd3aa23f961aab7a8e75e1b1ac574",
+  "commits": [
+    "f8f2e62d09d63b46e80412d996a9118519759ecc",
+    "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+    "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+    "589a3ea2aa7dd3aa23f961aab7a8e75e1b1ac574"
+  ],
+  "paths": 71,
+  "file_versions": 76,
+  "bytes": 2030672,
+  "secret_hits": 0,
+  "explicit_intermediate_approval": "User answered 다 해라 to exact43path/880628byte scope",
+  "versions": [
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "HANDOFF_CURRENT.md",
+      "bytes": 82830,
+      "sha256": "86b8ce750a15d40ad4d8bcd73ef4932a4443494748a2eee553a805e8ca777024"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/REPORT.md",
+      "bytes": 12345,
+      "sha256": "16f4498fb503f9d51a28df2a87d94183d53bff8042b06a75760df31a6bd1d78d"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/RESUME.md",
+      "bytes": 2528,
+      "sha256": "6ee76b037aab8b6f4e7321802955a8f4757992fc7297d06819712fb56ffdc1e5"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/SUPPLEMENTAL_DEPLOYMENT_REQUIREMENTS.md",
+      "bytes": 2154,
+      "sha256": "e630f387bed300ed296fe1efd8868d0162c2d15bd6040ae9fb5b11b05dee9b3b"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/ANNUAL_PIT_CASES.json",
+      "bytes": 34984,
+      "sha256": "d6581b52a419740121c4108f85d1be16d23e00873942645298c202d2b6151736"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/ANNUAL_QUERY_TESTS.log",
+      "bytes": 2131,
+      "sha256": "9d3a417d7a9f552356d55072fa65865e04663f037a2a42e68a6a54bc3eaa2b40"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/APPROVED_FINITE_COLLECTION_SCOPE.json",
+      "bytes": 2578,
+      "sha256": "7d0c65bb5a3a9e8cd314b83a89baf36a1fd013b82a7426b4fc2c8cd13004c56b"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/APPROVED_TRANSFER_MANIFEST.json",
+      "bytes": 10799,
+      "sha256": "54a30918d92ad0c585490017a73265849aad2fbbeda1ed9ebe3e860d2c4efae7"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/APPROVED_TRANSFER_MANIFEST.json.sha256",
+      "bytes": 98,
+      "sha256": "43d3e05d49f07a7f71e111b4ec4b17051998c5553523755cae4a5281c9e2e5c2"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/CI_INTEGRATION_EXCERPTS.log",
+      "bytes": 4094,
+      "sha256": "e2a7a708ab4a9ddb2ec85faf4e1a7e2f1d97b71c03eb866dbfd36c59c0a90cab"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/CI_PIT_PERIOD_EXCERPTS.log",
+      "bytes": 4516,
+      "sha256": "5f05c8bb1218ffbd39f2e0f1434e29c45cb1fdb481443f6eff540e11f2000684"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/FINAL_APPROVED_CODE_CI.json",
+      "bytes": 1963,
+      "sha256": "1124401ff63d9f1e6b2f01a85420bf46c6649c4558951f4a8447b3c3b98ca145"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/FROZEN_41_DOCUMENT_GAP_MAP.csv",
+      "bytes": 30026,
+      "sha256": "53c70d22eedd65d13f82edd0c90cc62e96bf751d0b5fd6a15bcc4f5d753b5591"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/LIVE_COLLECTION_GATE.json",
+      "bytes": 15636,
+      "sha256": "5b952895544b10e0209fa43d38a1b01accf6d9f098f93a528477b4ba6396bc98"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/LOCAL_ONLY_RECOVERY_INVENTORY.json",
+      "bytes": 25264,
+      "sha256": "1e87dbe7cda7b93d7dff4bcbb7cff9e34dc4287b382e1e24af711a50ff1ce2f1"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/MAIN_OBSERVED_CHANGE.json",
+      "bytes": 1089,
+      "sha256": "4893d33a5b99cd656ec96a44341ec88b9af329520201b3ddcf1542c1dae58613"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/PROVIDER_2009_DIAGNOSIS.json",
+      "bytes": 3091,
+      "sha256": "3951b312006f207aa8115655414877ae113e3d8832564e9a20fff1cd93a27b73"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/PUBLICATION_RECEIPT.json",
+      "bytes": 3853,
+      "sha256": "f14007adf9ecf841fd1c4625ebb2132bcbf1ee9af5f180ce778836b75a36d29f"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "docs/research/finite-source-linkage-20261021/evidence/SAJO_QUARTER_DEPENDENCY.json",
+      "bytes": 1114,
+      "sha256": "67fed86557e9639bb7c955672ab73ebe0f556c13dcd86a5eaa508497a9f544d3"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "scripts/reviewed_annual_income_query.py",
+      "bytes": 3180,
+      "sha256": "9d2f48d81db7354501c1826c15521169cef1fcab53354481dac36794a785194e"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "scripts/test_reviewed_annual_income_query.py",
+      "bytes": 3218,
+      "sha256": "42d27dd1ab04d80ab70030d1b4672e0a5c1d6775dc2ed01b0d3f0089e2f8856f"
+    },
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "path": "scripts/verify_reviewed_annual_income.py",
+      "bytes": 9211,
+      "sha256": "d859c5494f7cc3e732628c3a683cdba933607110c625e1d3310c598a34fa52f4"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "HANDOFF_CURRENT.md",
+      "bytes": 84956,
+      "sha256": "4b8dd5efd9c975c9b632b52c84d2a49aecc16aea00ab2cfecc50d80469fb7d4e"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/REPORT.md",
+      "bytes": 10778,
+      "sha256": "42058cd09e40de037670d2b92b16fd02e34e9917f3273fe6ade4c8987d82d40a"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/RESUME.md",
+      "bytes": 2107,
+      "sha256": "e95c8a1583e971e92c3461cfc93e43e264de4a95a50eadb1bf32fd862d4c5d8d"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/BRIDGE_TESTS_FINAL.log",
+      "bytes": 1207,
+      "sha256": "a5a1d485f5157d04d358a1c945583382ba03d4ceff2ce463d5bfb6e3fd840077"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/DEPLOYMENT_VERIFICATION.json",
+      "bytes": 1274,
+      "sha256": "3d9ef1f7416fbb6100210aeb5aceb9401b9eb7d363245eff05c9a3b578e3d706"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/EXISTING_ATTESTED_ACCOUNT_ROWS.csv",
+      "bytes": 321,
+      "sha256": "30bafcd42d59a625b7f0f0d144cb2ab48610fbd109b84ff134bf24aa5ad25458"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/EXISTING_PROVIDER_SNAPSHOT.csv",
+      "bytes": 227,
+      "sha256": "4d4ed6bbb1bd88b0a2da48849a34ece2cf7a4158722107148ca1167780e5cd2c"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/FIELDS_PERIODS_VERSIONS.csv",
+      "bytes": 6011,
+      "sha256": "a4c5096fcd2545a15dcde55b56302dab955d2e8fef81116260cd429933cddd2d"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/FY_DUPLICATE_FIELD_GROUPS.csv",
+      "bytes": 5451,
+      "sha256": "bed70f24a713822979fd8eeac4fd5eae79799fef9be831c3fc31de4e3ecdcbae"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/LEGACY_PROVIDER_SCOPE.json",
+      "bytes": 6775,
+      "sha256": "bb789379d8a1edff7039fc7a4a9f4e469a98ea98f8ed8d4546f6249d870470c5"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/NEW34_SOURCE_REVIEW.json",
+      "bytes": 101415,
+      "sha256": "597edc329a294bb05741e16407dbf7a7c426d9af8cb85601980547c21dbfc558"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/OPERATING_CI_FULL.log",
+      "bytes": 49457,
+      "sha256": "1fad454247d527959b064ad2f38a65281e3ef4a839f0ec109e9e0c1da565e3db"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/OPERATING_TRANSFER_MANIFEST.json",
+      "bytes": 1757,
+      "sha256": "fc8f59f0b6165b63576b90dff6e03ccf6bd5d86cf7eaa73dfc4b602b4de45823"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/Q3_DUPLICATE_FIELD_GROUPS.csv",
+      "bytes": 32014,
+      "sha256": "97810c601afe2354f74e24eac80b8613c007c53fe8137eb6d14cf81220bd6a15"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/TRIAL_DISPATCH.json",
+      "bytes": 350,
+      "sha256": "f1b890d5dadc21be89d3db665f79e278bbd6a2c71374ed2929447bfd92cae4c6"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/TRIAL_PREFLIGHT.json",
+      "bytes": 12111,
+      "sha256": "901896cc308a28fcae02ad1cfecbf514ad2055d3ccbc1cc5dc8266bcb7865d15"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/TRIAL_QUALIFICATION.json",
+      "bytes": 1776,
+      "sha256": "7a3b5b028c4ad96c8894d71a5041a5dcc3cebfd1316c8441e7be085a22a14099"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "docs/research/legacy-provider-link-20261023/evidence/VALUE_STRATEGY_1495_REQUIREMENTS.csv",
+      "bytes": 367224,
+      "sha256": "8ceff2d1641098b53e7430208bb679337640eb761930155d21c0762753f4620c"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "scripts/inventory_legacy_provider_scope.py",
+      "bytes": 8194,
+      "sha256": "211c73bc5c68c9a1955256fc39de6b752dceb58c721fbd8fa6fe9dd24bfe131b"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "scripts/legacy_reviewed_provider_bridge.py",
+      "bytes": 4286,
+      "sha256": "fc6661530a2294f80486d0501478b48edf3cda187ad97bd7c7a34937a1f2af51"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "scripts/review_finite_source_fields.py",
+      "bytes": 6214,
+      "sha256": "1009b129bf6623e49cad9c3caf3ea78b6efc25c90c833d32d5ee3fa121988696"
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "path": "scripts/test_legacy_reviewed_provider_bridge.py",
+      "bytes": 2851,
+      "sha256": "950f18bd4a9ae6a8f2cd22bfcae075b6476bb2b9ea8d4f4436729214779d08b9"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "HANDOFF_CURRENT.md",
+      "bytes": 87182,
+      "sha256": "832ab23064563ad00858cec34efcebb6734df1163e54ced18f01d0eb3c0847ef"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/REPORT.md",
+      "bytes": 12146,
+      "sha256": "302217ac6aa8c1e977106817312d73c622da3cd449c3e99ebb7fd8c14fb0939d"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/RESUME.md",
+      "bytes": 2502,
+      "sha256": "1e0acee905c0ea189ebec1376d305e1775646125ce5ef6c945c597a585b80ad9"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/BRIDGE_TESTS_CUMULATIVE.log",
+      "bytes": 109,
+      "sha256": "0d1dee4adf0f0026746ebd16d8fbfecd59a1288e4a275640266d9f15c681c17e"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/CANONICAL_FY4_ACCOUNT_ROWS.csv",
+      "bytes": 412,
+      "sha256": "2f51a8ceb4410356e4772ad121d1417de295184909e1a8fb20428189baf00cbe"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/CANONICAL_FY4_SNAPSHOT.csv",
+      "bytes": 240,
+      "sha256": "4e30c947a9f26668ee5c4ea330d028fb3bd23a525510331f0654eebdab436f2f"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/CAUSE_MATRIX_1495.csv",
+      "bytes": 325380,
+      "sha256": "57302b72dfe634dbaaca99844704392e3fe6aec5469e47d32a3a6d3b0d6354ad"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/CONFLICT53_DECISIONS.json",
+      "bytes": 268083,
+      "sha256": "e8ab737918c8da997c6ccbdeac4f5c9077c15bdad248796c018f56108bb983c2"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/CONFLICT_TESTS_FINAL.log",
+      "bytes": 104,
+      "sha256": "c6b9b1f09add0403cc07e90bfdf272129b1ddfa2f8f7675ea8218862f2516371"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/EXECUTION_PLAN.json",
+      "bytes": 4005,
+      "sha256": "7f15f4f332279d65a028d11c4063e82e03962564e5b6b6663d3047e0a2367ad2"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/NATIVE_SOURCE_SEARCH_INDEX.json",
+      "bytes": 5799,
+      "sha256": "fbae2f41262bb4dfb65b3c9e819d593d13c6b9c1c372b5807249d92cc8ee1135"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/OCF_CASE.json",
+      "bytes": 21409,
+      "sha256": "d6bb9fb4442523ad1cfb53b8e18a19a2ba0706b0072765623e52154f3f4c2b19"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/OCF_FINAL.log",
+      "bytes": 1142,
+      "sha256": "b395a8a3ff66e049fffe60b1e4c77dc43e3f880281bbb78fcdf1f5479501e948"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/ORIGINAL_SIGNAL_UNIVERSE_1946.csv",
+      "bytes": 210951,
+      "sha256": "cc524dfa3a2bb506a954424148b7b1aaac9e04ddb223ac1d2eb1128941fa6a5f"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/REQUIRED_EXISTING_SOURCE_RECOVERY_25.csv",
+      "bytes": 4067,
+      "sha256": "ae2e7cd35524f71b2f20e701c757d22c429f2aafddf6c0ca888ff07f3f1e96f8"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/SOURCE_FILENAME_SEARCH_WITH_IGNORED.json",
+      "bytes": 1049,
+      "sha256": "5b7eb2a575f06f83b5e8b7cda10b757decc3ec629cec49b8f9d7cd3f94144f6d"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/SOURCE_MAP_GAP_456.csv",
+      "bytes": 49994,
+      "sha256": "fecc76ad19d3aa955f34b4178e1a4fe6334e92f80b7f07f122a00b4fcfebc56d"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/STRATEGY_REQUIREMENTS_DSL.json",
+      "bytes": 2156,
+      "sha256": "1ff87fee9f2df6a40683eb94f498c978f109dc655c5e299561aa52afc5d494f2"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/SUMMARY.json",
+      "bytes": 3778,
+      "sha256": "bffaa9a238842071e4fee9a7a4a280de43f3cdfcc8ae2cf63efef94064adb782"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/TESTED_CODE_HASHES.json",
+      "bytes": 724,
+      "sha256": "922067c28b0bd4257c92b3fd61dfc76af6e40da30b9e56ca0e385750a84a1d9b"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/UNCHANGED_PROTECTED_OWNERS.json",
+      "bytes": 684,
+      "sha256": "86645cef7ae210ff380edaf1501f31e26c62424f5c676e37c8d44ba9857adc55"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/UNIVERSE_GAP_SUMMARY.json",
+      "bytes": 511,
+      "sha256": "420425619ead2850a78a49dad7400b67683f1de1cc62724d9040cb592de995ae"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/V12_DELIVERY_BLOCKED.json",
+      "bytes": 791,
+      "sha256": "9092c16fe91bb6e191e858d3f1adf653719ea4510d316174626d02ed2d17cb3e"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/evidence/runtime-verify.json",
+      "bytes": 21113,
+      "sha256": "a2776816a1db5c3a67a035d2985185c1bbf03a3e3d566b1e9e29efbfe57e2de4"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "docs/research/legacy-resolution-20261023/tools/analyze_requirements.py",
+      "bytes": 11792,
+      "sha256": "ba9d9d93e4ac67e86c7789f61ea52759e2cef444fd1e40958625255e29127fda"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "scripts/legacy_conflict_diagnostics.py",
+      "bytes": 2826,
+      "sha256": "c689cb6eddeca55f556209db0f90cc5287a0cf5a2a98aeab97d03774fef9e9f4"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "scripts/legacy_reviewed_provider_bridge.py",
+      "bytes": 4678,
+      "sha256": "7952aa684362d5dbe4c325a7ef18ed9e8d581fa7f1a02333c51abc38f3f156bb"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "scripts/test_legacy_conflict_diagnostics.py",
+      "bytes": 2186,
+      "sha256": "9f999d139414d45fb9abb85d0383662b79a88d1467f75204ef270d8faafa8220"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "scripts/test_legacy_reviewed_provider_bridge.py",
+      "bytes": 4017,
+      "sha256": "22f86c9a462617615de2511ff9e9b82769fcf2dd5154019b519afd20fee2e7fc"
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "path": "scripts/verify_reviewed_legacy_ocf.py",
+      "bytes": 8508,
+      "sha256": "12560d5be460a23978ae1642a2ceea8c98dc7d1c871f1eff432b73c78da9e115"
+    },
+    {
+      "commit": "589a3ea2aa7dd3aa23f961aab7a8e75e1b1ac574",
+      "path": "docs/research/legacy-resolution-20261023/RESUME.md",
+      "bytes": 2514,
+      "sha256": "95b4b338e7124059aaad124ea17e885dec24642b708e4ac34167eba526067012"
+    },
+    {
+      "commit": "589a3ea2aa7dd3aa23f961aab7a8e75e1b1ac574",
+      "path": "docs/research/legacy-resolution-20261023/tools/deliver_approved_v12.py",
+      "bytes": 6362,
+      "sha256": "2c0d789d4eabeff1303533438648031264975dd878d11f76414cfda2b4af9d4f"
+    }
+  ]
+}

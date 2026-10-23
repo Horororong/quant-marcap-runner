@@ -1,0 +1,10 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "remote_head": "589a3ea2aa7dd3aa23f961aab7a8e75e1b1ac574",
+  "remote_CI": "NOT_RUN",
+  "existing_workflow_read_only": true,
+  "existing_driver_sha256": "a25c81f1ca2dd31a266e1370b8378ba90044acf53264be0db31c357818107ac1",
+  "existing_suites": "Previously approved driver supports parser/period/supplemental; no new legacy bridge/conflict/batch suite",
+  "reason_not_run": "Existing passing UI/parser/period checks are unchanged and do not exercise the new financial bridge. No substitute CI certification claimed; no driver/index publication.",
+  "current_new_local_code_remote_CI": "NOT_RUN"
+}

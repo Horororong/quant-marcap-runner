@@ -1,3 +1,40 @@
+## 2026-10-23 최신 재개: 다종목 bridge와 v12 인증
+
+RESEARCH_ONLY. 최신 상세: `docs/research/multi-provider-20261023/REPORT.md`, `RESUME.md`,
+정확한 로컬 SHA/증분 보존: `/workspace/quant-multi-provider-20261023/FINAL_STATUS.md`.
+공개 연구 `fix/native-source-boundaries-20261021`은 승인한 중간 f8/7691과 후속589를
+모두 포함하는589a3ea2aa7dd3aa23f961aab7a8e75e1b1ac574. 정확한 원격tree/readback PASS,
+비밀값0, forceFalse/main불변/새driver없음/589원격CI NOT_RUN.
+새 개발은 별도 `research/multi-provider-20261023` LOCAL_ONLY. 이 커밋 이후의
+다종목 후보 bridge/집합증거를 589/v12 승인에 임의 포함해 공개하지 않는다.
+
+v12 승인538254bytes/SHA464aa445... 유지. 기존 GH_BACKUP_TOKEN API401의 응답본문은
+미캡처,원인미확정. 다른 gh 인증은 API/Git게시 성공하지만 uploads401 Bad credentials.
+새draft421514386은asset0/UPLOAD_PENDING_AUTHENTICATION; 원격백업검증미실시.
+환경 GH_BACKUP_TOKEN 교체확인 뒤에만 새RESUME helper를 한 번 실행한다.
+기존 실패인증 재호출/다른전송경로/CI색인우회 없음. 사용자에게 token값 받지 않는다.
+
+1946/1495는 교집합1490/전략밖456/장부만5로 산술PASS.1495는2009관측연도 기준,
+2010-04-30 같은날 map은1521/전략교집합1516.456의 원인은268 current_stock_code
+관측범위밖/124 unmatched회사/38종목행없음/26관측2010시작. 원래모집단 제외0.
+후보2337/10465=22.33%,의미160/10465=1.53%;원래1946에서는2689/13622=19.74%,
+의미200/13622=1.47%.7slot=FY4+Q3누적3. 전체준비0.
+
+기존891PASS/23UV를 재사용해 FY2009 218core행/50회사·종목hint를 canonical
+candidate report_snapshots로 조회, 금액218/218정확. IS누적→duration106행은 명시적
+원문기간 검토 아래의 taxonomy변환만 하고원본보존/PIT자동승계금지.53scope-report에
+core4존재/50stocks,원래전략겹침49종목/196고유slot. 엄격준비0/신규PIT0/신규전략0.
+9새 경계시험PASS,5protected owners정확불변. 공개·정정chain·역사종목연결·신호
+이용가능성218행모두미완결;첫CHAIN오류만으로다른부족을숨기지않는다.
+기존53충돌금액확정0/전체미해결유지. 새source HTTP0/후보0/의미신규0.
+
+오늘10/23KST기회는실제run39863731314로이미사용,게이트/dispatch반복없음.
+checkpoint2063완료/다음2066,고정41(21+20)/추가2실행/82HTTP잔여전부보존,
+각600초/재시도포함/하루1회/별도유한만료10/25KST23:59:59/자동실행미설정.
+다음10/24KSTwindow에서liveguard확인후기존승인예산으로재개한다.
+
+---
+
 # Latest legacy resolution —2026-10-23KST
 
 Read docs/research/legacy-resolution-20261023/REPORT.md and RESUME.md. v12 exact538254byte/SHA464aa445... explicit public approval received, but configuredGH_BACKUP_TOKEN actualrepoGET401 before release creation:0assets/remoteverificationNOTDONE. No credential retry or CI-index bypass. Replace secret in environment, not chat, then resume exact approved payload only.

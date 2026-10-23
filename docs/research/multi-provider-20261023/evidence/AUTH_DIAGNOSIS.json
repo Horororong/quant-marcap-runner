@@ -1,0 +1,40 @@
+{
+  "historical_failure": {
+    "api": "GET https://api.github.com/repos/Horororong/quant-marcap-runner",
+    "authentication": "Authorization Bearer from configured GH_BACKUP_TOKEN",
+    "http_status": 401,
+    "http_reason": "Unauthorized",
+    "response_body": "NOT_CAPTURED_IN_OLD_LOG",
+    "root_cause": "UNDETERMINED: expiry/revocation/wrong token/injection cannot be distinguished from this response",
+    "retry": false
+  },
+  "alternative": {
+    "auth": "Existing ghCLI GH_TOKEN distinct from GH_BACKUP_TOKEN",
+    "api_result": "RepositoryGET and releasePOST success",
+    "repository_public": true,
+    "upload_api": "POST https://uploads.github.com/repos/Horororong/quant-marcap-runner/releases/421514386/assets",
+    "normal_release_CLI_upload_response": "HTTP401 Bad credentials",
+    "upload_root_cause": "Credentials accepted for API operations, not accepted for uploads endpoint; expiry NOT inferred",
+    "connector": "GitHub connected app reads repo and can editGit, but enabled tools expose no release-asset uploader",
+    "new_release_id": 421514386,
+    "new_release_url": "https://github.com/Horororong/quant-marcap-runner/releases/tag/untagged-03579765533e135a15a1",
+    "uploaded_assets": 0,
+    "remote_download_verification": false,
+    "stop_after_auth_rejection": true
+  },
+  "required_action": {
+    "variable": "GH_BACKUP_TOKEN",
+    "repository": "Horororong/quant-marcap-runner only",
+    "fine_grained_permissions": [
+      "Contents read and write for Releases and release assets",
+      "Metadata read"
+    ],
+    "allowed_domains": [
+      "api.github.com",
+      "uploads.github.com"
+    ],
+    "token_value_in_chat": false
+  },
+  "same_payload_approval_remains": true,
+  "CI_index_retry": false
+}

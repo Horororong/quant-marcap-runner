@@ -1,0 +1,80 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "source_HTTP": 0,
+  "new_semantic_PASS": 0,
+  "new_PIT_fields": 0,
+  "sources": [
+    {
+      "path": "docs/research/source-readiness-20261019/preserved10.json.gz.b64",
+      "sha256": "3a837b4c12dca5748a492639b6f6d7309fdfa80255ab42b542b6314d11fbcee8"
+    },
+    {
+      "path": "docs/research/source-readiness-20261019/publication-proof.json.gz.b64",
+      "sha256": "ee2264676258328b3fac5b109fe8de6c518ba442e0dd6407901766701d51e108"
+    },
+    {
+      "path": "docs/research/source-readiness-20261019/official-market-proof.json.gz.b64",
+      "sha256": "2118768edb7ba6a2b795d85f8994ea7341f9ef5696b09354680bfd4cdd1933d5"
+    },
+    {
+      "path": "docs/research/source-readiness-20261019/official-primary-section.json.gz.b64",
+      "sha256": "3565a13ba14bdee509e112428ec5a24e3b8425e116c333a4768d2b813a9b1664"
+    }
+  ],
+  "new_issuer_targets": [
+    {
+      "stock_hint": "089890",
+      "receipt": "20100331001578",
+      "original_issuer": "(주)고려반도체시스템",
+      "official20100401_name": "고려반도체",
+      "existing_primary_source": true,
+      "existing_list_and_viewer": true,
+      "missing": [
+        "Explicit historical name/security alias corroboration",
+        "Archived official XI primary rendered body linked to original member, closing exact version scope"
+      ],
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "stock_hint": "026540",
+      "receipt": "20100331001580",
+      "original_issuer": "제일창업투자",
+      "official20100401_name": "제일창투",
+      "existing_primary_source": true,
+      "existing_list_and_viewer": true,
+      "missing": [
+        "Explicit historical name/security alias corroboration",
+        "Archived primary body linked to original member"
+      ],
+      "PIT": "UNVERIFIED"
+    },
+    {
+      "stock_hint": "050540",
+      "receipt": "20100331002062",
+      "original_issuer": "엠피씨",
+      "existing_primary_source": true,
+      "official_name_mapping": "Existing exact officialKRX name/code evidence at4/1 and4/30",
+      "missing": [
+        "Official viewer member/publication graph",
+        "Bounded OpenDART list with all pages and last_reprt_at=N",
+        "Official primary section corroboration of field/member version"
+      ],
+      "PIT": "UNVERIFIED"
+    }
+  ],
+  "forbidden_inference": "Receipt or current company stock-code hints and index OK rows do not prove historical publication/version/security chains.",
+  "proposed_new_scope_NOT_APPROVED": {
+    "preferred_stock_hint": "050540",
+    "receipt": "20100331002062",
+    "requests": [
+      "One bounded complete OpenDART listing response",
+      "One official DART viewer",
+      "One exact primary XI financial section"
+    ],
+    "max_HTTP_including_retries": 4,
+    "max_execution_seconds": 600,
+    "purpose": "Try to close already-reviewed FY2009 four core fields for a NEW issuer; does not supply missing Q3 or certify the whole universe",
+    "outside_frozen41": true,
+    "executed": false
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "status": "APPROVED_EXACT31_PREFLIGHT_PASS_WAITING_REQUIRED_PARENT_SCOPE",
+  "repository": "Horororong/quant-marcap-runner",
+  "branch": "fix/native-source-boundaries-20261021",
+  "base": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+  "target": "589a3ea2aa7dd3aa23f961aab7a8e75e1b1ac574",
+  "files": [
+    {
+      "path": "HANDOFF_CURRENT.md",
+      "bytes": 87182,
+      "sha256": "832ab23064563ad00858cec34efcebb6734df1163e54ced18f01d0eb3c0847ef"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/REPORT.md",
+      "bytes": 12146,
+      "sha256": "302217ac6aa8c1e977106817312d73c622da3cd449c3e99ebb7fd8c14fb0939d"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/RESUME.md",
+      "bytes": 2514,
+      "sha256": "95b4b338e7124059aaad124ea17e885dec24642b708e4ac34167eba526067012"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/BRIDGE_TESTS_CUMULATIVE.log",
+      "bytes": 109,
+      "sha256": "0d1dee4adf0f0026746ebd16d8fbfecd59a1288e4a275640266d9f15c681c17e"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/CANONICAL_FY4_ACCOUNT_ROWS.csv",
+      "bytes": 412,
+      "sha256": "2f51a8ceb4410356e4772ad121d1417de295184909e1a8fb20428189baf00cbe"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/CANONICAL_FY4_SNAPSHOT.csv",
+      "bytes": 240,
+      "sha256": "4e30c947a9f26668ee5c4ea330d028fb3bd23a525510331f0654eebdab436f2f"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/CAUSE_MATRIX_1495.csv",
+      "bytes": 325380,
+      "sha256": "57302b72dfe634dbaaca99844704392e3fe6aec5469e47d32a3a6d3b0d6354ad"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/CONFLICT53_DECISIONS.json",
+      "bytes": 268083,
+      "sha256": "e8ab737918c8da997c6ccbdeac4f5c9077c15bdad248796c018f56108bb983c2"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/CONFLICT_TESTS_FINAL.log",
+      "bytes": 104,
+      "sha256": "c6b9b1f09add0403cc07e90bfdf272129b1ddfa2f8f7675ea8218862f2516371"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/EXECUTION_PLAN.json",
+      "bytes": 4005,
+      "sha256": "7f15f4f332279d65a028d11c4063e82e03962564e5b6b6663d3047e0a2367ad2"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/NATIVE_SOURCE_SEARCH_INDEX.json",
+      "bytes": 5799,
+      "sha256": "fbae2f41262bb4dfb65b3c9e819d593d13c6b9c1c372b5807249d92cc8ee1135"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/OCF_CASE.json",
+      "bytes": 21409,
+      "sha256": "d6bb9fb4442523ad1cfb53b8e18a19a2ba0706b0072765623e52154f3f4c2b19"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/OCF_FINAL.log",
+      "bytes": 1142,
+      "sha256": "b395a8a3ff66e049fffe60b1e4c77dc43e3f880281bbb78fcdf1f5479501e948"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/ORIGINAL_SIGNAL_UNIVERSE_1946.csv",
+      "bytes": 210951,
+      "sha256": "cc524dfa3a2bb506a954424148b7b1aaac9e04ddb223ac1d2eb1128941fa6a5f"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/REQUIRED_EXISTING_SOURCE_RECOVERY_25.csv",
+      "bytes": 4067,
+      "sha256": "ae2e7cd35524f71b2f20e701c757d22c429f2aafddf6c0ca888ff07f3f1e96f8"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/SOURCE_FILENAME_SEARCH_WITH_IGNORED.json",
+      "bytes": 1049,
+      "sha256": "5b7eb2a575f06f83b5e8b7cda10b757decc3ec629cec49b8f9d7cd3f94144f6d"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/SOURCE_MAP_GAP_456.csv",
+      "bytes": 49994,
+      "sha256": "fecc76ad19d3aa955f34b4178e1a4fe6334e92f80b7f07f122a00b4fcfebc56d"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/STRATEGY_REQUIREMENTS_DSL.json",
+      "bytes": 2156,
+      "sha256": "1ff87fee9f2df6a40683eb94f498c978f109dc655c5e299561aa52afc5d494f2"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/SUMMARY.json",
+      "bytes": 3778,
+      "sha256": "bffaa9a238842071e4fee9a7a4a280de43f3cdfcc8ae2cf63efef94064adb782"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/TESTED_CODE_HASHES.json",
+      "bytes": 724,
+      "sha256": "922067c28b0bd4257c92b3fd61dfc76af6e40da30b9e56ca0e385750a84a1d9b"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/UNCHANGED_PROTECTED_OWNERS.json",
+      "bytes": 684,
+      "sha256": "86645cef7ae210ff380edaf1501f31e26c62424f5c676e37c8d44ba9857adc55"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/UNIVERSE_GAP_SUMMARY.json",
+      "bytes": 511,
+      "sha256": "420425619ead2850a78a49dad7400b67683f1de1cc62724d9040cb592de995ae"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/V12_DELIVERY_BLOCKED.json",
+      "bytes": 791,
+      "sha256": "9092c16fe91bb6e191e858d3f1adf653719ea4510d316174626d02ed2d17cb3e"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/runtime-verify.json",
+      "bytes": 21113,
+      "sha256": "a2776816a1db5c3a67a035d2985185c1bbf03a3e3d566b1e9e29efbfe57e2de4"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/tools/analyze_requirements.py",
+      "bytes": 11792,
+      "sha256": "ba9d9d93e4ac67e86c7789f61ea52759e2cef444fd1e40958625255e29127fda"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/tools/deliver_approved_v12.py",
+      "bytes": 6362,
+      "sha256": "2c0d789d4eabeff1303533438648031264975dd878d11f76414cfda2b4af9d4f"
+    },
+    {
+      "path": "scripts/legacy_conflict_diagnostics.py",
+      "bytes": 2826,
+      "sha256": "c689cb6eddeca55f556209db0f90cc5287a0cf5a2a98aeab97d03774fef9e9f4"
+    },
+    {
+      "path": "scripts/legacy_reviewed_provider_bridge.py",
+      "bytes": 4678,
+      "sha256": "7952aa684362d5dbe4c325a7ef18ed9e8d581fa7f1a02333c51abc38f3f156bb"
+    },
+    {
+      "path": "scripts/test_legacy_conflict_diagnostics.py",
+      "bytes": 2186,
+      "sha256": "9f999d139414d45fb9abb85d0383662b79a88d1467f75204ef270d8faafa8220"
+    },
+    {
+      "path": "scripts/test_legacy_reviewed_provider_bridge.py",
+      "bytes": 4017,
+      "sha256": "22f86c9a462617615de2511ff9e9b82769fcf2dd5154019b519afd20fee2e7fc"
+    },
+    {
+      "path": "scripts/verify_reviewed_legacy_ocf.py",
+      "bytes": 8508,
+      "sha256": "12560d5be460a23978ae1642a2ceea8c98dc7d1c871f1eff432b73c78da9e115"
+    }
+  ],
+  "file_count": 31,
+  "bytes": 1064712,
+  "secret_hits": 0,
+  "required_parent_present_in_remote": false,
+  "CI_driver_needed": false
+}

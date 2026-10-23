@@ -1,0 +1,50 @@
+{
+  "status": "PASS_EXACT_APPROVED589_REMOTE_HEAD_TREE_AND3SHA256_READBACKS",
+  "repository": "Horororong/quant-marcap-runner",
+  "branch": "fix/native-source-boundaries-20261021",
+  "base": "29b6c4a2c277f6b2070e4bf70da54899f9fe4bcf",
+  "head": "589a3ea2aa7dd3aa23f961aab7a8e75e1b1ac574",
+  "commit_url": "https://github.com/Horororong/quant-marcap-runner/commit/589a3ea2aa7dd3aa23f961aab7a8e75e1b1ac574",
+  "commits": [
+    {
+      "commit": "f8f2e62d09d63b46e80412d996a9118519759ecc",
+      "tree": "ad3159a6d1c50c193ce9a58813e73b2627f45430",
+      "changed_paths": 22
+    },
+    {
+      "commit": "7691fd2cb1f0c78f2d55e077e1602c842d3c5e44",
+      "tree": "94c5534ce4fd3d48bfc533ff07f41b8b62dd7cc8",
+      "changed_paths": 22
+    },
+    {
+      "commit": "22222b381b1c1ee2000c10055c2ba9f3a006a980",
+      "tree": "c693b34fd0e0c37addbe87bd00852daa897ef2d2",
+      "changed_paths": 30
+    },
+    {
+      "commit": "589a3ea2aa7dd3aa23f961aab7a8e75e1b1ac574",
+      "tree": "b61ffb33e1f07170ae655d7e2e3cd21e9c365bf0",
+      "changed_paths": 2
+    }
+  ],
+  "secret_hits": 0,
+  "force": false,
+  "main_changed": false,
+  "CI_driver_published": false,
+  "remote_CI_for589": "NOT_RUN",
+  "readbacks": [
+    {
+      "path": "scripts/legacy_reviewed_provider_bridge.py",
+      "sha256": "7952aa684362d5dbe4c325a7ef18ed9e8d581fa7f1a02333c51abc38f3f156bb"
+    },
+    {
+      "path": "scripts/legacy_conflict_diagnostics.py",
+      "sha256": "c689cb6eddeca55f556209db0f90cc5287a0cf5a2a98aeab97d03774fef9e9f4"
+    },
+    {
+      "path": "docs/research/legacy-resolution-20261023/evidence/OCF_CASE.json",
+      "sha256": "d6bb9fb4442523ad1cfb53b8e18a19a2ba0706b0072765623e52154f3f4c2b19"
+    }
+  ],
+  "unapproved_current_worktree_changes_published": false
+}
