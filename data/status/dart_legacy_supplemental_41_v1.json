@@ -1,0 +1,46 @@
+{
+  "approval_id": "finite41-20261023",
+  "approval_sha256": "f48d8059b5182031626da267d71e8cfce2537202b65e442688a1c53507b7d0c7",
+  "attempts": [
+    {
+      "completed_receipts": [],
+      "day_kst": "2026-10-24",
+      "document_limit": 21,
+      "http_reserved": 42,
+      "new_reservation": 0,
+      "receipts": [
+        "20100331002066",
+        "20100331002067",
+        "20100331002072",
+        "20100331002073",
+        "20100331002075",
+        "20100331002084",
+        "20100331002085",
+        "20100331002089",
+        "20100331002091",
+        "20100331002094",
+        "20100331002095",
+        "20100331002096",
+        "20100331002097",
+        "20100331002098",
+        "20100331002100",
+        "20100331002102",
+        "20100331002103",
+        "20100331002104",
+        "20100331002105",
+        "20100331002112",
+        "20100331002116"
+      ],
+      "run_id": "40024818567",
+      "started_at_utc": "2026-10-23T21:12:14.155716+00:00",
+      "status": "RUNNING"
+    }
+  ],
+  "backtest_eligible": false,
+  "completed_receipts": [],
+  "contract": "supplemental-finite-source-v1",
+  "financial_publication": "HOLD",
+  "investment_PIT": "0/6",
+  "original_runs_sha256": "85707cb67719f2142fcd10a03192db57b173dd0deda70ee12d3cadf7fa7bc4cd",
+  "phase": "RUNNING"
+}
