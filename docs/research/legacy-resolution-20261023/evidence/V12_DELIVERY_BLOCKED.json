@@ -1,0 +1,18 @@
+{
+  "status": "BLOCKED_AUTHENTICATION_BEFORE_RELEASE_CREATION",
+  "http_status": 401,
+  "action": "GET repository metadata with configured GH_BACKUP_TOKEN",
+  "retries": 0,
+  "release_created": false,
+  "assets_uploaded": 0,
+  "remote_download_verified": false,
+  "archive_bytes": 538254,
+  "archive_sha256": "464aa445c1c1d92a891bad9072973f34cc27bf2e92cbb13b8947f38c4a3a820e",
+  "ZIP_payload_files": 41,
+  "ZIP_manifest_files": 1,
+  "ZIP_entries": 42,
+  "secret_scan": "PASS_PAYLOAD_AND_BUNDLE_SOURCE_BLOBS",
+  "configured_secret_readiness": "READY is setup observation; actual GitHub authorization failed",
+  "required_action": "Replace GH_BACKUP_TOKEN in managed environment secret settings; Contents read/write for this repository; never paste token in chat",
+  "CI_index_retry": false
+}

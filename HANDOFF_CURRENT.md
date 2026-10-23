@@ -1,3 +1,19 @@
+# Latest legacy resolution —2026-10-23KST
+
+Read docs/research/legacy-resolution-20261023/REPORT.md and RESUME.md. v12 exact538254byte/SHA464aa445... explicit public approval received, but configuredGH_BACKUP_TOKEN actualrepoGET401 before release creation:0assets/remoteverificationNOTDONE. No credential retry or CI-index bypass. Replace secret in environment, not chat, then resume exact approved payload only.
+
+Today source opportunity already consumed by39863731314; newsourceHTTP0/no repeatedgate/no dispatch. Checkpoint2063,next2066, supplemental41/2runs/82HTTP remain;next10/24KST then10/25finiteexpiry, no automaticexecutionconfigured. Operatingmain18f5/PR47 unchanged,83CI notrerun.
+
+0/1495 sourcegate causes overlap8969memberships across1495unique; raw7slot hints2337/10465=22.33%, same-scopecompletepair178. Actual originalsignalpositiveMarcap1946/tradable1853 versus source-map1495/intersection1490/mapgap456(ofwhich103have2356v5rows), no universepruning. Existing914cohortsemantic156requiredslots+separatecanary4=160/10465=1.53%; whole-ready0.
+
+53conflicts/107alternatives/12issuers/25receipts: sourceadjudicated0,financialresolved0;20exact1000x/31unitchange/5sign/4precision signatures overlap;4nonDecFY targethints separated but all53 remainunresolved. Native sources25notfound in accessibleindexedlocalcohorts. Next proposed2PowerlogicsQ3ZIP≤4HTTP is OUTSIDE41/notapproved/notexecuted.
+
+Realnewsource-provider increase: Sajo2009OFSannualOCF15922637039KRW, cumulative sourcebasis explicitly converted to canonicalYTDcolumn under unchangedreadiness+snapshotowners. Before/dayofpublication/beyondclosed4/30/valuechange blocked;4/1+4/30PASS. New1field/0newstocks/0newperiods/2field-signalpairs, outside914; original3rows/values unchanged;FYcore4now source-ready. True standaloneQ3OCF notallowed into YTDfallback. Localbridge10tests+conflict6tests+actualsourcecasePASS; newremoteCI NOTRUN; no globalregistry/ledger/parser/config/UI changes. Newrankstrategyperiods0, financialHOLD/PIT0of6.
+
+Newresearchincrement is outside immutablev12 archive/approval, remainsLOCAL with manifest/bundle and FINAL_STATUS.md in/workspace/quant-legacy-resolution-20261023. Do not cite old7691 or7f CI as thiscode's remoteCI.
+
+---
+
 # Latest actual finite resume and legacy bridge —2026-10-23KST
 
 Read docs/research/legacy-provider-link-20261023/REPORT.md and RESUME.md. Actual2doc run39863731314SUCCESS:2HTTP/0retry/2original/34candidate/0duplicates,21.709sec,checkpoint2054→2063,41pending. Native SHA/CRC/actual workerprogress independently verified in fixedkit audit39864835870. Original3/3used; no retry of olddates/HOLD.

@@ -1,0 +1,125 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "strategy": "STRATEGY_REQUIREMENTS_DSL.json",
+  "signal": "2010-04-30 close; at least next-session close execution",
+  "required_source_periods": [
+    "2009Q3",
+    "2009FY"
+  ],
+  "required_field_slots": [
+    [
+      "FY",
+      "equity"
+    ],
+    [
+      "FY",
+      "revenue"
+    ],
+    [
+      "FY",
+      "net_income"
+    ],
+    [
+      "FY",
+      "ocf"
+    ],
+    [
+      "Q3",
+      "revenue"
+    ],
+    [
+      "Q3",
+      "net_income"
+    ],
+    [
+      "Q3",
+      "ocf"
+    ]
+  ],
+  "canonical_source_gate_population": 1495,
+  "actual_signal_universe": {
+    "observed_positive_marcap_codes": 1946,
+    "tradable_codes": 1853,
+    "expected_map_codes_present": 1490,
+    "signal_codes_outside_source_map": 456,
+    "source_map_codes_not_in_signal": 5,
+    "note": "0/1495 is the existing annual source-completion gate, not a replacement for actual full engine universe"
+  },
+  "causes_overlap_counts": {
+    "missing_field_or_exact_period": 1495,
+    "missing_original_member_or_version": 1495,
+    "missing_historical_identity": 1494,
+    "missing_semantic_validation": 1495,
+    "missing_PIT": 1495,
+    "missing_canonical_ledger_or_binding": 1495
+  },
+  "cause_memberships": 8969,
+  "unique_blocked_codes": 1495,
+  "raw_hint_gaps": {
+    "stocks_missing_one_or_more_of7": 1315,
+    "stocks_all7_hints": 180,
+    "stocks_same_scope_with_complete_receipt_pair": 178,
+    "raw_slots_found": 2337,
+    "required_slots": 10465,
+    "FY_calendar_month_hint_stocks": 217,
+    "Q3_calendar_month_hint_stocks": 506,
+    "exact_periods_attested_stocks": 0,
+    "warning": "Month-first dates are report-month hints; no current/comparative or cumulative proof inferred",
+    "raw_hint_slot_rate": 0.22331581462016245
+  },
+  "semantic_scope": {
+    "reused_PASS_source_values": 891,
+    "verified_required_slots": 160,
+    "stocks_with_some_verified_slots": 40,
+    "stocks_with_all7": 0,
+    "verification_rate_full_ready": 0,
+    "separate_canary_verified_FY_fields": 4,
+    "canary_net_new_fields_this_turn": 1,
+    "first100candidate_pool": "Not newly certified or included as semanticPASS",
+    "point_Sajo_4_fields": "Outside914:3previouslyverified plus1newOCF; no population or914promotion",
+    "verified_slot_rate": 0.015289058767319636
+  },
+  "provider": {
+    "conversion_code": "Existing source-attested bridge handles four core aliases and calendar period duration; raw schema conversion implemented, evidence not fabricated",
+    "new_values": 1,
+    "new_stocks": 0,
+    "new_periods": 0,
+    "new_bounded_PIT_fields": 1,
+    "new_population_PIT": 0,
+    "canonical_ledger_edited": false
+  },
+  "conflicts": {
+    "groups": 53,
+    "rows": 107,
+    "issuers": 12,
+    "receipts": 25,
+    "source_originals_locally_found": 0,
+    "source_adjudicated": 0,
+    "definition_fully_resolved": 0,
+    "excluded_from_calendar_Q3_FY_target": 4,
+    "target_relevant_remaining": 49,
+    "reason_counts_including_overlap": {
+      "INDEXED_AMENDMENT_SOURCE_GRAPH_UNVERIFIED": 53,
+      "DIFFERENT_SOURCE_UNIT_REPRESENTATION": 31,
+      "SIGN_OR_ACCOUNT_DEFINITION_AMBIGUITY": 5,
+      "VALUE_OR_CURRENT_COMPARATIVE_VERSION_UNRESOLVED": 24,
+      "OUTSIDE_TARGET_CALENDAR_PERIOD_HINT": 4,
+      "WITHIN_SOURCE_DISPLAY_PRECISION_NOT_EQUAL": 4,
+      "EXACT_1000X_SCALE_SIGNATURE": 20
+    },
+    "all_alternatives_retained": true,
+    "version_keys_unique": 107
+  },
+  "source_HTTP": 0,
+  "backfill": {
+    "current_KST_date": "2026-10-23",
+    "daily_opportunity_already_used": true,
+    "new_gate_query": false,
+    "new_dispatch": false,
+    "supplemental_used": 0,
+    "supplemental_remaining_executions": 2,
+    "supplemental_remaining_HTTP": 82,
+    "checkpoint": "20100331002063",
+    "next_receipt": "20100331002066"
+  }
+}

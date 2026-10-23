@@ -29,13 +29,19 @@ def to_account_row(row,attestation):
   if row.get('measurement_basis')!='instant'or row.get('period_start'):raise ValueError('LEGACY_BALANCE_NOT_INSTANT')
   current=str(amount)
  else:
-  if row.get('measurement_basis')!='duration':raise ValueError('LEGACY_FLOW_DURATION_UNVERIFIED')
+  basis=row.get('measurement_basis')
+  if basis!='duration' and not(metric=='ocf'and basis=='cumulative'):raise ValueError('LEGACY_FLOW_DURATION_UNVERIFIED')
   start=date.fromisoformat(row['period_start'])
   if start.year!=end.year or(end.month,end.day)not in {(9,30),(12,31)}:raise ValueError('LEGACY_CALENDAR_Q3_FY_ONLY')
   if(start.month,start.day)==(1,1):
-   if(end.month,end.day)==(12,31):current=str(amount) # actual annual total
+   if metric=='ocf'and basis=='cumulative':cumulative=str(amount) # explicit source CF YTD, including annual total
+   elif(end.month,end.day)==(12,31):current=str(amount) # actual annual total
    else:cumulative=str(amount) # actual Jan..Sep YTD, never a standalone Q3
-  elif(start.month,start.day)==(7,1)and(end.month,end.day)==(9,30):current=str(amount)
+  elif(start.month,start.day)==(7,1)and(end.month,end.day)==(9,30):
+   # The canonical Q3 CF fallback interprets thstrm_amount as YTD.
+   # A true standalone CF quarter cannot enter that column safely.
+   if metric=='ocf':raise ValueError('LEGACY_OCF_YTD_REQUIRED_FOR_PROVIDER')
+   current=str(amount)
   else:raise ValueError('LEGACY_FLOW_WINDOW_UNSUPPORTED')
  return dict(stock_code=row['stock_code'],fs_div_requested=scope,rcept_no=row['rcept_no'],filing_date=publication,sj_div=row['statement'],account_id='',account_nm=CONCEPTS[metric][1],thstrm_amount=current,thstrm_add_amount=cumulative)
 

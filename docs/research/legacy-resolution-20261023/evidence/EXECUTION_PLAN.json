@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "strategy_id": "research_legacy_super_value_april2010",
+  "strategy_fingerprint": "c81bdb278c68a2764c0a0f0953b4614fdba42cf3b00f6e2aea82ec40ed9a973a",
+  "research_model": null,
+  "factor_registry_version": "7",
+  "execution_engine_version": "v2-16-exec-10",
+  "corporate_action_registry_version": "9",
+  "dsl_machine_contract_version": "30",
+  "preflight_contract_version": "3",
+  "history_audit_contract_version": "1",
+  "krx_market_normalization_version": "1",
+  "project_template_version": "v2-16",
+  "performance_template_version": "v2-18",
+  "asset_class": "kr_equity",
+  "data_contract": {
+    "price_universe": "data/krx_equities/yearly/marcap-YYYY.parquet",
+    "factor_sources": [
+      "dart",
+      "krx"
+    ],
+    "pit_required": true,
+    "held_return_reference": "mandatory ChangesRatio/100 at execution; no automatic replacement of NAV returns",
+    "held_return_tolerance_bps": 1.0,
+    "session_coverage": "exact XKRX sessions in requested period for each requested market; fail on missing or unexpected dates"
+  },
+  "universe": {
+    "markets": [
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "filters": [
+      {
+        "field": "Marcap",
+        "op": "gt",
+        "value": 0
+      }
+    ],
+    "require_tradable_on_signal": false
+  },
+  "factors": [
+    {
+      "name": "EP",
+      "source": "dart",
+      "field": "earnings_yield",
+      "direction": "high",
+      "weight": 1.0,
+      "transform": "identity"
+    },
+    {
+      "name": "BP",
+      "source": "dart",
+      "field": "book_to_price",
+      "direction": "high",
+      "weight": 1.0,
+      "transform": "identity"
+    },
+    {
+      "name": "CFP",
+      "source": "dart",
+      "field": "cashflow_yield",
+      "direction": "high",
+      "weight": 1.0,
+      "transform": "identity"
+    },
+    {
+      "name": "SP",
+      "source": "dart",
+      "field": "sales_yield",
+      "direction": "high",
+      "weight": 1.0,
+      "transform": "identity"
+    }
+  ],
+  "factor_contracts": [
+    {
+      "name": "EP",
+      "source": "dart",
+      "field": "earnings_yield",
+      "storage": "external",
+      "description": "standalone-quarter net income / signal-date market cap"
+    },
+    {
+      "name": "BP",
+      "source": "dart",
+      "field": "book_to_price",
+      "storage": "external",
+      "description": "latest reported equity / signal-date market cap"
+    },
+    {
+      "name": "CFP",
+      "source": "dart",
+      "field": "cashflow_yield",
+      "storage": "external",
+      "description": "standalone-quarter operating cash flow / signal-date market cap"
+    },
+    {
+      "name": "SP",
+      "source": "dart",
+      "field": "sales_yield",
+      "storage": "external",
+      "description": "standalone-quarter revenue / signal-date market cap"
+    }
+  ],
+  "filter_contracts": [
+    {
+      "field": "Marcap",
+      "source": "krx",
+      "storage": "panel",
+      "description": "signal-date market capitalization"
+    }
+  ],
+  "benchmark": null,
+  "portfolio": {
+    "number_of_positions": 20,
+    "weighting": "equal",
+    "selection": "top_n"
+  },
+  "decile_contract": null,
+  "rebalance": {
+    "frequency": "months",
+    "months": [
+      4,
+      10
+    ],
+    "trading_day": "last"
+  },
+  "execution": {
+    "lag_sessions": 1,
+    "price": "next_close"
+  },
+  "cost_scenarios": {
+    "gross": {
+      "commission_bps": 0.0,
+      "sell_tax_bps": 0.0,
+      "spread_bps": 0.0,
+      "slippage_bps": 0.0,
+      "market_impact_bps": 0.0
+    },
+    "assumed_net": {
+      "commission_bps": 2.0,
+      "sell_tax_bps": 30.0,
+      "spread_bps": 5.0,
+      "slippage_bps": 5.0,
+      "market_impact_bps": 0.0
+    }
+  },
+  "period": {
+    "start": "2010-04-01",
+    "end": "2010-09-30",
+    "book_start": "2010-04-01",
+    "book_end": "2010-09-30",
+    "as_of_date": "2010-09-30"
+  },
+  "initial_capital": 10000000.0,
+  "canonical_metrics_source": "scripts/quant_backtest_template_CURRENT.py",
+  "project_engine": "scripts/quant_backtest_template_PROJECT_v2-16_CURRENT.py"
+}

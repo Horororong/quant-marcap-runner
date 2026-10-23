@@ -1,0 +1,548 @@
+{
+  "status": "PASS_NEW_SOURCE_ATTESTED_ANNUAL_CUMULATIVE_OCF",
+  "classification": "RESEARCH_ONLY",
+  "new_unique_provider_fields": 1,
+  "new_issuers": 0,
+  "new_periods": 0,
+  "new_field_signal_pairs": 2,
+  "stock": "007160",
+  "corp": "00124799",
+  "receipt": "20100331001582",
+  "annual_OCF_krw": "15922637039",
+  "measurement_basis": "cumulative",
+  "current_provider_owner": "dart_value_factor_adapter.report_snapshots/latest_snapshot",
+  "raw_controls": [
+    {
+      "native_table": 174,
+      "official_table": 9,
+      "row": 1,
+      "current_column": 1,
+      "raw_TR": 1633,
+      "label": "영업활동으로인한현금흐름",
+      "literal": "15,922,637,039",
+      "comparative": [
+        "8,316,397,604",
+        "10,451,710,974"
+      ]
+    },
+    {
+      "native_table": 174,
+      "official_table": 9,
+      "row": 2,
+      "current_column": 1,
+      "raw_TR": 1634,
+      "label": "당기순이익(손실)",
+      "literal": "34,326,086,558",
+      "comparative": [
+        "16,078,382,384",
+        "2,347,252,119"
+      ]
+    },
+    {
+      "native_table": 174,
+      "official_table": 9,
+      "row": 3,
+      "current_column": 1,
+      "raw_TR": 1635,
+      "label": "현금의유출이없는비용등의가산",
+      "literal": "14,580,298,231",
+      "comparative": [
+        "18,335,262,343",
+        "9,172,096,099"
+      ]
+    },
+    {
+      "native_table": 174,
+      "official_table": 9,
+      "row": 17,
+      "current_column": 1,
+      "raw_TR": 1649,
+      "label": "현금의유입이없는수익등의차감",
+      "literal": "(28,544,031,412)",
+      "comparative": [
+        "(13,401,221,737)",
+        "(4,123,382,377)"
+      ]
+    },
+    {
+      "native_table": 174,
+      "official_table": 9,
+      "row": 25,
+      "current_column": 1,
+      "raw_TR": 1657,
+      "label": "영업활동으로인한자산·부채의변동",
+      "literal": "(4,439,716,338)",
+      "comparative": [
+        "(12,696,025,386)",
+        "3,055,745,133"
+      ]
+    }
+  ],
+  "top_level_OCF_identity": "34326086558+14580298231-28544031412-4439716338=15922637039",
+  "cases": [
+    {
+      "signal": "2010-04-01",
+      "row": {
+        "statement": "CF",
+        "scope": "OFS",
+        "term": "39",
+        "period_start": "2009-01-01",
+        "period_end": "2009-12-31",
+        "heading": "대차대조표",
+        "unit": "원",
+        "period": "FY",
+        "metric": "ocf",
+        "account_name": "자본총계",
+        "raw_amount": "131,053,210,651",
+        "amount_reported": "131053210651",
+        "amount_krw": "15922637039",
+        "unit_multiplier": "1",
+        "unit_known": true,
+        "priority": 0,
+        "parser_confidence": 1.0,
+        "table_index": 166,
+        "row_index": 93,
+        "value_col": 1,
+        "source_line_index": 0,
+        "source_character": 609622,
+        "measurement_basis": "cumulative",
+        "amendment_region": "FILED_BODY",
+        "correction_file": false,
+        "structural_status": "PASS",
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "value_basis": "explicit current term and measurement basis from original headers",
+        "numeric_normalization": "whole_token",
+        "account_normalization": "exact",
+        "parser_version": "legacy-v9.1-primary-source-metadata",
+        "fiscal_year": 2009,
+        "fiscal_year_evidence": "original_annual_report_end",
+        "balance_sheet_side": "EQUITY",
+        "source_member": "20100331001582.xml",
+        "source_member_sha256": "ac34be631af65e6c911138792fbff6e3c5b8a3a3176ba610382dec77af27d284",
+        "candidate_count": 1,
+        "net_income_source": "primary_statement",
+        "rcept_no": "20100331001582",
+        "corp_code": "00124799",
+        "corp_name": "사조산업",
+        "stock_code": "007160",
+        "report_nm": "[첨부추가]사업보고서 (2009.12)",
+        "filing_date": "2010-03-31",
+        "period_end_evidence": "original_statement_header",
+        "index_fiscal_year": "2009",
+        "document_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+        "source_diagnostic_version": "legacy-document-quality-v2",
+        "source_quality": "STRUCTURAL_ONLY_PIT_UNVERIFIED",
+        "financial_source_literal_verdict": "PASS",
+        "financial_period_unit_scope_verdict": "PASS",
+        "historical_identity_verdict": "UNVERIFIED",
+        "correction_chain_verdict": "UNVERIFIED",
+        "official_publication_verdict": "UNVERIFIED",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "source_archive_artifact": 12153773795,
+        "source_run_id": 39174955546,
+        "source_control_sha256": "cdb9aa833b04b20bc42bd0a5bc2aceaa0ec0cba5dafd533237892cd5adcf9d77",
+        "corp_name_semantics": "index label, not historical-identity certification",
+        "original_issuer_name": "사조산업",
+        "source_viewer_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20100331001582"
+      },
+      "attestation": {
+        "binding": {
+          "rcept_no": "20100331001582",
+          "document_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+          "source_member": "20100331001582.xml",
+          "source_member_sha256": "ac34be631af65e6c911138792fbff6e3c5b8a3a3176ba610382dec77af27d284",
+          "corp_code": "00124799",
+          "stock_code": "007160",
+          "metric": "ocf",
+          "scope": "OFS",
+          "statement": "CF",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "measurement_basis": "cumulative",
+          "unit": "원",
+          "unit_multiplier": "1",
+          "amount_krw": "15922637039"
+        },
+        "financial_accuracy": {
+          "verdict": "PASS",
+          "evidence": [
+            "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+            "ac34be631af65e6c911138792fbff6e3c5b8a3a3176ba610382dec77af27d284",
+            "cb78f57965c2d1beae36121088ef1f591df08e334ca23f2229f03e00f3c224da",
+            "Primary OFS CF table174/official9 currentrow1/col1; source-header annual Jan1-Dec31 and 4top-level-components exact sum"
+          ]
+        },
+        "publication": {
+          "verdict": "PASS",
+          "date": "2010-03-31",
+          "evidence": [
+            "725e0ff35b7b21bdd64bafc4c0e0af24b6e5429536ea6a03bbd41fde734bee6e",
+            "00124799-list1.json"
+          ]
+        },
+        "version_relationship": {
+          "verdict": "PASS",
+          "chain_id": "DART-20100331001582-primary-dcm2591068",
+          "version_rank": 0,
+          "asof_closed_through": "2010-04-30",
+          "scope": "New independently source-reviewed named primary OFS annual CF/OCF, same already proved publication/node family through2010-04-30 only",
+          "evidence": [
+            "Official viewer family explicitly identifies only primary business-report receipt20100331001582 dated2010-03-31 and node25/dcm2591068 for XI financial statements.",
+            "OpenDART last_reprt_at=N,20100301-20100501,all1page: the named business report is the only business-report candidate for FY2009 in this bounded interval; no unlinked correction is selected by title similarity.",
+            "Official node25 rendered body captured once: cb78f57965c2d1beae36121088ef1f591df08e334ca23f2229f03e00f3c224da. Primary OFS current FY2009 equity at table1,row93,column1 exactly131,053,210,651 KRW and agrees with original ZIP main table166,row93,column1.",
+            "Official att option/dcm2651030 separately dates added CFS audit2010-04-30; neither its audit-valid date nor the parent receipt date is substituted for its publication date. No CFS field is imported into this primary OFS value.",
+            "Additional field independently checked against original XML rawTR and official primary IS; equity-specific conclusion is not reused as financial accuracy.",
+            "Named CF field is independently corroborated against original XML and same official node; late CFS attachment not imported."
+          ],
+          "full_correction_history_certified": false,
+          "primary_section": {
+            "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20100331001582&dcmNo=2591068&eleId=25&offset=592088&length=125209&dtd=dart3.xsd",
+            "sha256": "cb78f57965c2d1beae36121088ef1f591df08e334ca23f2229f03e00f3c224da",
+            "table": 9,
+            "row": 1,
+            "column": 1,
+            "literal": "15,922,637,039",
+            "account": "영업활동으로인한현금흐름",
+            "period_end": "2009-12-31",
+            "unit": "원",
+            "period_start": "2009-01-01"
+          }
+        },
+        "historical_security_mapping": {
+          "verdict": "PASS",
+          "stock_code": "007160",
+          "from": "2010-04-01",
+          "through": "2010-04-01",
+          "evidence": [
+            "Original AREGCIK=00124799 name=사조산업 주식회사",
+            "stk_bydd_trd_20100401.json",
+            "404",
+            "사조산업"
+          ],
+          "scope": "Exact signal date only, not continuous issuer lineage"
+        }
+      },
+      "calendar": {
+        "verdict": "PASS",
+        "evidence": [
+          "stk_bydd_trd_20100401.json",
+          "404"
+        ],
+        "coverage_start": "2010-03-31",
+        "coverage_end": "2010-04-01",
+        "sessions": [
+          "2010-04-01"
+        ],
+        "additional_verified_sessions": {
+          "2010-04-30": {
+            "verdict": "PASS",
+            "evidence": [
+              "stk_bydd_trd_20100430.json",
+              "404"
+            ]
+          }
+        }
+      },
+      "provider_rows": [
+        {
+          "stock_code": "007160",
+          "fs_div_requested": "OFS",
+          "rcept_no": "20100331001582",
+          "filing_date": "2010-03-31",
+          "sj_div": "CF",
+          "account_id": "",
+          "account_nm": "영업활동으로인한현금흐름",
+          "thstrm_amount": "",
+          "thstrm_add_amount": "15922637039"
+        }
+      ],
+      "provider_snapshots": [
+        {
+          "Code": "007160",
+          "fs_div": "OFS",
+          "rcept_no": "20100331001582",
+          "filing_date": "2010-03-31 00:00:00",
+          "equity_current": NaN,
+          "equity_cum": NaN,
+          "revenue_current": NaN,
+          "revenue_cum": NaN,
+          "net_income_current": NaN,
+          "net_income_cum": NaN,
+          "ocf_current": NaN,
+          "ocf_cum": 15922637039.0
+        }
+      ],
+      "boundary_checks": {
+        "2010-03-30": [
+          {
+            "stock_code_hint": "007160",
+            "corp_code": "00124799",
+            "metric": "ocf",
+            "status": "UNAVAILABLE",
+            "reason": "NOT_YET_PUBLIC_UNDER_NEXT_SESSION_RULE"
+          }
+        ],
+        "2010-03-31": [
+          {
+            "stock_code_hint": "007160",
+            "corp_code": "00124799",
+            "metric": "ocf",
+            "status": "UNAVAILABLE",
+            "reason": "NOT_YET_PUBLIC_UNDER_NEXT_SESSION_RULE"
+          }
+        ],
+        "2010-05-03": [
+          {
+            "stock_code_hint": "007160",
+            "corp_code": "00124799",
+            "metric": "ocf",
+            "status": "UNVERIFIED",
+            "reason": "CHAIN_NOT_CLOSED_AT_SIGNAL"
+          }
+        ]
+      },
+      "amount_change_rejected": true,
+      "classification": "RESEARCH_ONLY",
+      "population_ready": false
+    },
+    {
+      "signal": "2010-04-30",
+      "row": {
+        "statement": "CF",
+        "scope": "OFS",
+        "term": "39",
+        "period_start": "2009-01-01",
+        "period_end": "2009-12-31",
+        "heading": "대차대조표",
+        "unit": "원",
+        "period": "FY",
+        "metric": "ocf",
+        "account_name": "자본총계",
+        "raw_amount": "131,053,210,651",
+        "amount_reported": "131053210651",
+        "amount_krw": "15922637039",
+        "unit_multiplier": "1",
+        "unit_known": true,
+        "priority": 0,
+        "parser_confidence": 1.0,
+        "table_index": 166,
+        "row_index": 93,
+        "value_col": 1,
+        "source_line_index": 0,
+        "source_character": 609622,
+        "measurement_basis": "cumulative",
+        "amendment_region": "FILED_BODY",
+        "correction_file": false,
+        "structural_status": "PASS",
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "value_basis": "explicit current term and measurement basis from original headers",
+        "numeric_normalization": "whole_token",
+        "account_normalization": "exact",
+        "parser_version": "legacy-v9.1-primary-source-metadata",
+        "fiscal_year": 2009,
+        "fiscal_year_evidence": "original_annual_report_end",
+        "balance_sheet_side": "EQUITY",
+        "source_member": "20100331001582.xml",
+        "source_member_sha256": "ac34be631af65e6c911138792fbff6e3c5b8a3a3176ba610382dec77af27d284",
+        "candidate_count": 1,
+        "net_income_source": "primary_statement",
+        "rcept_no": "20100331001582",
+        "corp_code": "00124799",
+        "corp_name": "사조산업",
+        "stock_code": "007160",
+        "report_nm": "[첨부추가]사업보고서 (2009.12)",
+        "filing_date": "2010-03-31",
+        "period_end_evidence": "original_statement_header",
+        "index_fiscal_year": "2009",
+        "document_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+        "source_diagnostic_version": "legacy-document-quality-v2",
+        "source_quality": "STRUCTURAL_ONLY_PIT_UNVERIFIED",
+        "financial_source_literal_verdict": "PASS",
+        "financial_period_unit_scope_verdict": "PASS",
+        "historical_identity_verdict": "UNVERIFIED",
+        "correction_chain_verdict": "UNVERIFIED",
+        "official_publication_verdict": "UNVERIFIED",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "source_archive_artifact": 12153773795,
+        "source_run_id": 39174955546,
+        "source_control_sha256": "cdb9aa833b04b20bc42bd0a5bc2aceaa0ec0cba5dafd533237892cd5adcf9d77",
+        "corp_name_semantics": "index label, not historical-identity certification",
+        "original_issuer_name": "사조산업",
+        "source_viewer_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20100331001582"
+      },
+      "attestation": {
+        "binding": {
+          "rcept_no": "20100331001582",
+          "document_sha256": "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+          "source_member": "20100331001582.xml",
+          "source_member_sha256": "ac34be631af65e6c911138792fbff6e3c5b8a3a3176ba610382dec77af27d284",
+          "corp_code": "00124799",
+          "stock_code": "007160",
+          "metric": "ocf",
+          "scope": "OFS",
+          "statement": "CF",
+          "period_start": "2009-01-01",
+          "period_end": "2009-12-31",
+          "measurement_basis": "cumulative",
+          "unit": "원",
+          "unit_multiplier": "1",
+          "amount_krw": "15922637039"
+        },
+        "financial_accuracy": {
+          "verdict": "PASS",
+          "evidence": [
+            "d693e81f40b496cb57dd0b5f935c5a564bf3e7590002a4f09b593bd63be8f667",
+            "ac34be631af65e6c911138792fbff6e3c5b8a3a3176ba610382dec77af27d284",
+            "cb78f57965c2d1beae36121088ef1f591df08e334ca23f2229f03e00f3c224da",
+            "Primary OFS CF table174/official9 currentrow1/col1; source-header annual Jan1-Dec31 and 4top-level-components exact sum"
+          ]
+        },
+        "publication": {
+          "verdict": "PASS",
+          "date": "2010-03-31",
+          "evidence": [
+            "725e0ff35b7b21bdd64bafc4c0e0af24b6e5429536ea6a03bbd41fde734bee6e",
+            "00124799-list1.json"
+          ]
+        },
+        "version_relationship": {
+          "verdict": "PASS",
+          "chain_id": "DART-20100331001582-primary-dcm2591068",
+          "version_rank": 0,
+          "asof_closed_through": "2010-04-30",
+          "scope": "New independently source-reviewed named primary OFS annual CF/OCF, same already proved publication/node family through2010-04-30 only",
+          "evidence": [
+            "Official viewer family explicitly identifies only primary business-report receipt20100331001582 dated2010-03-31 and node25/dcm2591068 for XI financial statements.",
+            "OpenDART last_reprt_at=N,20100301-20100501,all1page: the named business report is the only business-report candidate for FY2009 in this bounded interval; no unlinked correction is selected by title similarity.",
+            "Official node25 rendered body captured once: cb78f57965c2d1beae36121088ef1f591df08e334ca23f2229f03e00f3c224da. Primary OFS current FY2009 equity at table1,row93,column1 exactly131,053,210,651 KRW and agrees with original ZIP main table166,row93,column1.",
+            "Official att option/dcm2651030 separately dates added CFS audit2010-04-30; neither its audit-valid date nor the parent receipt date is substituted for its publication date. No CFS field is imported into this primary OFS value.",
+            "Additional field independently checked against original XML rawTR and official primary IS; equity-specific conclusion is not reused as financial accuracy.",
+            "Named CF field is independently corroborated against original XML and same official node; late CFS attachment not imported."
+          ],
+          "full_correction_history_certified": false,
+          "primary_section": {
+            "url": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20100331001582&dcmNo=2591068&eleId=25&offset=592088&length=125209&dtd=dart3.xsd",
+            "sha256": "cb78f57965c2d1beae36121088ef1f591df08e334ca23f2229f03e00f3c224da",
+            "table": 9,
+            "row": 1,
+            "column": 1,
+            "literal": "15,922,637,039",
+            "account": "영업활동으로인한현금흐름",
+            "period_end": "2009-12-31",
+            "unit": "원",
+            "period_start": "2009-01-01"
+          }
+        },
+        "historical_security_mapping": {
+          "verdict": "PASS",
+          "stock_code": "007160",
+          "from": "2010-04-30",
+          "through": "2010-04-30",
+          "evidence": [
+            "Original AREGCIK=00124799 name=사조산업 주식회사",
+            "stk_bydd_trd_20100430.json",
+            "404",
+            "사조산업"
+          ],
+          "scope": "Exact signal date only, not continuous issuer lineage"
+        }
+      },
+      "calendar": {
+        "verdict": "PASS",
+        "evidence": [
+          "stk_bydd_trd_20100401.json",
+          "404"
+        ],
+        "coverage_start": "2010-03-31",
+        "coverage_end": "2010-04-01",
+        "sessions": [
+          "2010-04-01"
+        ],
+        "additional_verified_sessions": {
+          "2010-04-30": {
+            "verdict": "PASS",
+            "evidence": [
+              "stk_bydd_trd_20100430.json",
+              "404"
+            ]
+          }
+        }
+      },
+      "provider_rows": [
+        {
+          "stock_code": "007160",
+          "fs_div_requested": "OFS",
+          "rcept_no": "20100331001582",
+          "filing_date": "2010-03-31",
+          "sj_div": "CF",
+          "account_id": "",
+          "account_nm": "영업활동으로인한현금흐름",
+          "thstrm_amount": "",
+          "thstrm_add_amount": "15922637039"
+        }
+      ],
+      "provider_snapshots": [
+        {
+          "Code": "007160",
+          "fs_div": "OFS",
+          "rcept_no": "20100331001582",
+          "filing_date": "2010-03-31 00:00:00",
+          "equity_current": NaN,
+          "equity_cum": NaN,
+          "revenue_current": NaN,
+          "revenue_cum": NaN,
+          "net_income_current": NaN,
+          "net_income_cum": NaN,
+          "ocf_current": NaN,
+          "ocf_cum": 15922637039.0
+        }
+      ],
+      "boundary_checks": {
+        "2010-03-30": [
+          {
+            "stock_code_hint": "007160",
+            "corp_code": "00124799",
+            "metric": "ocf",
+            "status": "UNAVAILABLE",
+            "reason": "NOT_YET_PUBLIC_UNDER_NEXT_SESSION_RULE"
+          }
+        ],
+        "2010-03-31": [
+          {
+            "stock_code_hint": "007160",
+            "corp_code": "00124799",
+            "metric": "ocf",
+            "status": "UNAVAILABLE",
+            "reason": "NOT_YET_PUBLIC_UNDER_NEXT_SESSION_RULE"
+          }
+        ],
+        "2010-05-03": [
+          {
+            "stock_code_hint": "007160",
+            "corp_code": "00124799",
+            "metric": "ocf",
+            "status": "UNVERIFIED",
+            "reason": "CHAIN_NOT_CLOSED_AT_SIGNAL"
+          }
+        ]
+      },
+      "amount_change_rejected": true,
+      "classification": "RESEARCH_ONLY",
+      "population_ready": false
+    }
+  ],
+  "prior_three_source_rows": "EXACT_UNCHANGED",
+  "prior_three_provider_values": "EXACT_UNCHANGED",
+  "total_previously_reviewed_plus_new_FY_core_fields": 4,
+  "old_bulk_newly_admitted": 0,
+  "current914_changed": false,
+  "current914_PIT_promoted": 0,
+  "new_rank_strategy_periods": 0,
+  "source_HTTP": 0,
+  "operating_values_changed": 0,
+  "financial_publication": "HOLD",
+  "investment_PIT": "0/6",
+  "scope_limit": "Outside914 existing canary; bounded named primary OFS field at4/1 and4/30 only. Annual notQ4. No actual two-version correction, whole-document extraction or full-universe certification."
+}

@@ -27,4 +27,15 @@ class Bridge(unittest.TestCase):
  def test_malformed_identifier_is_not_silently_padded(self):
   r,c=self.fixture();r['row']['corp_code']='1'
   with self.assertRaisesRegex(ValueError,'UNVERIFIED_IDENTIFIER'):to_account_row(r['row'],r['attestation'])
+ def test_explicit_cumulative_ocf_uses_canonical_YTD_column(self):
+  r,c=self.fixture();r['row'].update(metric='ocf',statement='CF',measurement_basis='cumulative',period_start='2009-01-01')
+  for end in ['2009-09-30','2009-12-31']:
+   r['row']['period_end']=end;out=to_account_row(r['row'],r['attestation']);self.assertEqual(out['thstrm_add_amount'],'100');self.assertEqual(out['thstrm_amount'],'')
+ def test_true_standalone_ocf_never_enters_YTD_fallback(self):
+  r,c=self.fixture();r['row'].update(metric='ocf',statement='CF',measurement_basis='duration',period_start='2009-07-01',period_end='2009-09-30')
+  with self.assertRaisesRegex(ValueError,'OCF_YTD_REQUIRED'):to_account_row(r['row'],r['attestation'])
+ def test_cumulative_basis_does_not_approve_unattested_or_IS_rows(self):
+  r,c=self.fixture();r['row'].update(metric='ocf',statement='CF',measurement_basis='cumulative',period_start='2009-01-01');r['attestation']={};self.assertEqual(bridge([r],'2010-04-01',c)['source_ready_rows'],0)
+  r['row'].update(metric='revenue',statement='IS')
+  with self.assertRaisesRegex(ValueError,'FLOW_DURATION'):to_account_row(r['row'],{'publication':{'date':'2010-03-31'}})
 if __name__=='__main__':unittest.main()
