@@ -1,0 +1,428 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "selection_rule": "First20 receipt order with FY4 and Q3three candidate hints, excluding old first-review23documents and previously staged50corporateIDs; source hints are prioritization only, not financial/PIT certification",
+  "documents": [
+    {
+      "receipt": "20100331001761",
+      "stock_hint": "008000",
+      "corp": "00148717",
+      "name": "도레이케미칼",
+      "old_seed_control_doc": false,
+      "candidate_rows": 15,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091113001232",
+      "result": "part00/results/20100331001761.json"
+    },
+    {
+      "receipt": "20100331001769",
+      "stock_hint": "009010",
+      "corp": "00173634",
+      "name": "에듀언스",
+      "old_seed_control_doc": false,
+      "candidate_rows": 17,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091116000569|20091116000758",
+      "result": "part00/results/20100331001769.json"
+    },
+    {
+      "receipt": "20100331001771",
+      "stock_hint": "004770",
+      "corp": "00138057",
+      "name": "써니전자",
+      "old_seed_control_doc": false,
+      "candidate_rows": 16,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091112000260",
+      "result": "part00/results/20100331001771.json"
+    },
+    {
+      "receipt": "20100331001778",
+      "stock_hint": "033160",
+      "corp": "00121686",
+      "name": "엠케이전자",
+      "old_seed_control_doc": false,
+      "candidate_rows": 18,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091113000579",
+      "result": "part00/results/20100331001778.json"
+    },
+    {
+      "receipt": "20100331001779",
+      "stock_hint": "104120",
+      "corp": "00686147",
+      "name": "신성에프에이",
+      "old_seed_control_doc": false,
+      "candidate_rows": 15,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091113001067",
+      "result": "part00/results/20100331001779.json"
+    },
+    {
+      "receipt": "20100331001780",
+      "stock_hint": "023460",
+      "corp": "00149266",
+      "name": "씨앤에이치",
+      "old_seed_control_doc": false,
+      "candidate_rows": 13,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091116000994",
+      "result": "part00/results/20100331001780.json"
+    },
+    {
+      "receipt": "20100331001781",
+      "stock_hint": "005710",
+      "corp": "00111874",
+      "name": "대원산업",
+      "old_seed_control_doc": false,
+      "candidate_rows": 14,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091113001110",
+      "result": "part00/results/20100331001781.json"
+    },
+    {
+      "receipt": "20100331001783",
+      "stock_hint": "049690",
+      "corp": "00331733",
+      "name": "포휴먼",
+      "old_seed_control_doc": false,
+      "candidate_rows": 18,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091116000957",
+      "result": "part00/results/20100331001783.json"
+    },
+    {
+      "receipt": "20100331001788",
+      "stock_hint": "058480",
+      "corp": "00252001",
+      "name": "해원에스티",
+      "old_seed_control_doc": false,
+      "candidate_rows": 16,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091113001241",
+      "result": "part01/results/20100331001788.json"
+    },
+    {
+      "receipt": "20100331001811",
+      "stock_hint": "037710",
+      "corp": "00220561",
+      "name": "광주신세계",
+      "old_seed_control_doc": false,
+      "candidate_rows": 15,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091116000098",
+      "result": "part01/results/20100331001811.json"
+    },
+    {
+      "receipt": "20100331001823",
+      "stock_hint": "042510",
+      "corp": "00255433",
+      "name": "라온시큐어",
+      "old_seed_control_doc": false,
+      "candidate_rows": 16,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091116000637",
+      "result": "part01/results/20100331001823.json"
+    },
+    {
+      "receipt": "20100331001830",
+      "stock_hint": "022220",
+      "corp": "00140061",
+      "name": "티케이지애강",
+      "old_seed_control_doc": false,
+      "candidate_rows": 17,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091116000656",
+      "result": "part02/results/20100331001830.json"
+    },
+    {
+      "receipt": "20100331001840",
+      "stock_hint": "079950",
+      "corp": "00409371",
+      "name": "인베니아",
+      "old_seed_control_doc": false,
+      "candidate_rows": 18,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091116000446|20100202000052",
+      "result": "part02/results/20100331001840.json"
+    },
+    {
+      "receipt": "20100331001853",
+      "stock_hint": "066340",
+      "corp": "00385451",
+      "name": "케이에스리소스",
+      "old_seed_control_doc": false,
+      "candidate_rows": 15,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091116000763",
+      "result": "part02/results/20100331001853.json"
+    },
+    {
+      "receipt": "20100331001861",
+      "stock_hint": "104110",
+      "corp": "00686068",
+      "name": "신성이엔지",
+      "old_seed_control_doc": false,
+      "candidate_rows": 19,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091116000599",
+      "result": "part03/results/20100331001861.json"
+    },
+    {
+      "receipt": "20100331001862",
+      "stock_hint": "000650",
+      "corp": "00151395",
+      "name": "천일고속",
+      "old_seed_control_doc": false,
+      "candidate_rows": 15,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091113000824",
+      "result": "part03/results/20100331001862.json"
+    },
+    {
+      "receipt": "20100331001866",
+      "stock_hint": "008900",
+      "corp": "00138127",
+      "name": "티이씨앤코",
+      "old_seed_control_doc": false,
+      "candidate_rows": 15,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091116000719",
+      "result": "part03/results/20100331001866.json"
+    },
+    {
+      "receipt": "20100331001878",
+      "stock_hint": "002960",
+      "corp": "00158149",
+      "name": "한국쉘석유",
+      "old_seed_control_doc": false,
+      "candidate_rows": 16,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091116000534",
+      "result": "part03/results/20100331001878.json"
+    },
+    {
+      "receipt": "20100331001888",
+      "stock_hint": "066270",
+      "corp": "00361725",
+      "name": "네이트커뮤니케이션즈",
+      "old_seed_control_doc": false,
+      "candidate_rows": 11,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091113000652",
+      "result": "part03/results/20100331001888.json"
+    },
+    {
+      "receipt": "20100331001893",
+      "stock_hint": "068930",
+      "corp": "00398808",
+      "name": "디지털대성",
+      "old_seed_control_doc": false,
+      "candidate_rows": 13,
+      "FY_core_hints": [
+        "equity",
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_flow_hints": [
+        "net_income",
+        "ocf",
+        "revenue"
+      ],
+      "Q3_receipts": "20091113000245",
+      "result": "part03/results/20100331001893.json"
+    }
+  ],
+  "source_HTTP": 0,
+  "changes_original_strategy_universe": false
+}

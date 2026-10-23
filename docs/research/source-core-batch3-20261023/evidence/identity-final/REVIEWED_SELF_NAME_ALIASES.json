@@ -1,0 +1,63 @@
+[
+  {
+    "receipt": "20100331001780",
+    "official_alias": "CNH",
+    "alias_literal": "CNH CO.,LTD.",
+    "source_quote": "당사의 명칭은 \"씨앤에이치주식회사\"라고 표기합니다. 또한, 영문으로는 \"CNH CO.,LTD.\"이라 표기합니다.",
+    "from": "2010-04-01",
+    "through": "2010-04-30",
+    "meaning": "Own English legal name explicitly reported as CNH CO.,LTD.; legal-form suffix only, no counterparty substring or transliteration inference",
+    "verdict": "PASS",
+    "binding": {
+      "corp_code": "00149266",
+      "rcept_no": "20100331001780",
+      "source_member_sha256": "0c872d36a09863bbacc7299306192d0c2f218eb9174ff7e7ee6512b7f9d94785",
+      "source_archive_sha256": "3a8ef625a9308873f453a447c59bb7644a2c4ff5d98babbb8691082127f576d0"
+    },
+    "scope": "CURRENT_ISSUER_SELF_IDENTIFICATION",
+    "evidence": [
+      "Independent reading of original company overview self-name/alias/history; member hash and exact quote retained; no current-code map inference"
+    ]
+  },
+  {
+    "receipt": "20100331001840",
+    "official_alias": "LIG에이디피",
+    "alias_literal": "LIG에이디피주식회사",
+    "source_quote": "2010년 3월 26일 정기주주총회 이후 당사의 명칭은 '엘아이지에이디피주식회사'('LIG에이디피주식회사'라 칭하며), 영문으로는 'LIG ADP Co.,Ltd.'(약호LIG ADP)로 변경되었습니다.",
+    "from": "2010-03-26",
+    "through": "2010-04-30",
+    "meaning": "Explicit2010-03-26 own-name change, legal suffix removed; old KRX4/1 에이디피 alias remains unproved",
+    "verdict": "PASS",
+    "binding": {
+      "corp_code": "00409371",
+      "rcept_no": "20100331001840",
+      "source_member_sha256": "77d09cd1304a1c98e5f0ab0c3c77781da4f1e65094319eb07defc4f8c8d77fc7",
+      "source_archive_sha256": "2117da95f7e1af55fa596a1926e5d25ae37761490b671c42b2fd10ab5534e125"
+    },
+    "scope": "CURRENT_ISSUER_SELF_IDENTIFICATION",
+    "evidence": [
+      "Independent reading of original company overview self-name/alias/history; member hash and exact quote retained; no current-code map inference"
+    ]
+  },
+  {
+    "receipt": "20100331001888",
+    "official_alias": "SK컴즈",
+    "alias_literal": "SK컴즈",
+    "source_quote": "당사의 명칭은 에스케이커뮤니케이션즈 주식회사라고 표기합니다.또한 영문으로는 SKcommunications Co.,Ltd라 표기합니다.단,약식으로 표기하는 경우에는 SK컴즈라고 표기합니다.",
+    "from": "2010-04-01",
+    "through": "2010-04-30",
+    "meaning": "Original XML company header is stale 지식발전소; actual issuer self-name, explicit short name and dated corporate history link the same source CIK",
+    "supporting_history_quote": "당사는 1996년9월19일에 (주)지식발전소라는 명칭으로 설립되었습니다.2003년 11월 코스닥시장 등록 및 매매개시가 되었고 2005년 3월에 엠파스로 사명이 변경되었습니다.2007년 11월 SK커뮤니케이션즈 주식회사와 합병,사명을 SK커뮤니케이션즈주식회사로 변경하였습니다.",
+    "verdict": "PASS",
+    "binding": {
+      "corp_code": "00361725",
+      "rcept_no": "20100331001888",
+      "source_member_sha256": "3a6f03a33af01a3f37c026f63b07a0ab34e0280c603cae3312db8da5abb1cbb3",
+      "source_archive_sha256": "5d31de6e52a3490750f3a958d706a220983cffc1d62c6167a20a87547b28a844"
+    },
+    "scope": "CURRENT_ISSUER_SELF_IDENTIFICATION",
+    "evidence": [
+      "Independent reading of original company overview self-name/alias/history; member hash and exact quote retained; no current-code map inference"
+    ]
+  }
+]

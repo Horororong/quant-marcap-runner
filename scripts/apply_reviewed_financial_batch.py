@@ -30,19 +30,22 @@ def dump(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
 
 
-def run(root, output):
+def run(root, output, extensions=(), extension_only=False):
     output.mkdir(parents=True, exist_ok=False)
     catalog_path = root / 'data/financials/legacy_2000_2014/legacy_filings.csv.gz'
     catalog = pd.read_csv(catalog_path, dtype=str).fillna('')
     records, inputs, excluded, counts = [], [], [], Counter()
-    for group, relative in SOURCES:
+    sources = ([] if extension_only else SOURCES) + [('extension', str(p)) for p in extensions]
+    if not sources:
+        raise ValueError('SOURCE_REVIEW_LEDGER_REQUIRED')
+    for group, relative in sources:
         raw = (root / relative).read_bytes()
         sha = hashlib.sha256(raw).hexdigest()
         payload = json.loads(raw)
         rows = payload if group == 'old871' else payload['records' if group == 'held9' else 'rows']
         inputs.append(dict(path=relative, bytes=len(raw), sha256=sha, rows=len(rows)))
         for index, d in enumerate(rows):
-            passed = (d.get('semantic_verdict') == 'PASS' if group == 'old871' else
+            passed = (d.get('semantic_verdict') == 'PASS' if group in {'old871', 'extension'} else
                       d.get('source_row_semantics') == 'PASS' if group == 'held9' else
                       d.get('semantic') == 'PASS_NAMED_SOURCE_FIELD')
             counts['source_semantic_PASS' if passed else 'source_semantic_UNVERIFIED'] += 1
@@ -80,7 +83,7 @@ def run(root, output):
                 structural_status='PASS',
             )
             flags = [d.get(k) == 'PASS' for k in ['period_current_comparative', 'scope_heading', 'unit_sign', 'account_definition']]
-            if group != 'old871':
+            if group not in {'old871', 'extension'}:
                 flags = [passed] * 4  # explicit, named-source independent control; no PIT inference
             proof = dict(verdict='PASS', binding=binding(row),
                          evidence=[dict(path=relative, sha256=sha, record=index,
@@ -155,5 +158,9 @@ if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
     p.add_argument('--output', required=True, type=Path)
+    p.add_argument('--review-extension', action='append', type=Path, default=[],
+                   help='Additional preserved independent-review JSON with rows; never raw parser confidence')
+    p.add_argument('--extension-only', action='store_true',
+                   help='Process only the new reviewed increment, leaving completed previews untouched')
     a = p.parse_args()
-    run(a.root, a.output)
+    run(a.root, a.output, a.review_extension, a.extension_only)

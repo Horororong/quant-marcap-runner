@@ -1,3 +1,37 @@
+## 최신: 첫100 중 신규20회사 핵심80·당시 종목 연결33 — 2026-10-23KST
+
+RESEARCH_ONLY. 보고/재개:docs/research/source-core-batch3-20261023/REPORT.md/RESUME.md,
+정확한 로컬 SHA/보존/추가공개 범위는 /workspace/quant-source-audit-next-20261023/FINAL_STATUS.md.
+새 branch research/source-fields-batch3-20261023. v12 원격보존 완료/4assets 검증은 변경없어반복안함.
+
+오늘21:35KST는실제39863731314와같은KST날이므로HTTP0/dispatch0/게이트반복0.
+checkpoint2063/next2066/추가41(21+20)·2실행·82HTTP잔여보존,각600초/하루1회/10/25KST23:59:59만료.
+다음10/24허용창에서실제guards확인후승인된21문서를 main으로실행,같은예산재승인불필요.
+운영main읽기확인3b505b5fb299e4d162a9676d9f4e757d4415fc69/기존cron은supplemental입력없음,
+추가자동재개설정없음. main/운영parser/config/기존결과변경없음.
+
+첫100의미검토20회사 FY2009 OFS equity/revenue/NI/OCF80행을 독립원문controls→후보대조:
+신규80PASS/0FAIL/0신규후보추출. 공통canonicalpreview80/80금액정확,이전218와합쳐298/70회사후보,
+strictnewengine0/신규fullPIT0/신규전략0. 기존914=891PASS+23UV불변. 첫1001363중80PASS/1283미검토,
+결합연구2277=971PASS+23UV+1283미검토(별도사조canary4제외). 선정20문서의다른232개미검토,
+문서전체완료0. 다음20100331001761남은11후보. sourcegap14+9와53미해결충돌불변.
+
+원문CIK/자기명칭·명시적별칭·hash/실제KRXsnapshot으로2010-04-01 16/20,4/30 17/20,
+합계33/40역사종목연결PASS. CNH영문자기명칭/SK컴즈본문약칭·지식발전소옛XML헤더차이/ADP3월26명칭변경을
+원문으로구분. source binding·일자없는유사도/음역추정금지. 기존map밖456중009010/049690/058480의
+두snapshot증거확보,전체map/모집단/연속상장gate수정없음. 132field-signal mappingcomponentPASS,
+공개·정정chain·신호이용은160개모두미완료. 7identity사례UNVERIFIED유지.
+
+에스비엠20100331001822 main table70 source계약FY2009BS는있지만XI직후주석참조설명문의두주석이zone닫음.
+연구9.3원문1건0재현,후속처분계산서/첨부주석header경고2개가main0의직접원인아님. 수리미실시/파서불변.
+다음reference경계수리시실제notes/date/unit/currentcolumn차단과기존값회귀/migration필요.
+
+신규경계시험8+3=11PASS,실제80+identity40 및 영구helper의원문/identity전체바이트재현PASS.
+보호5ownerSHA정확불변. 원격CI NOT_RUN/새공개게시없음. 별도source_core fixedkitdriver11071bytes
+미게시상태로준비. 새로미보존된모든중간연구delta+driver는전송manifest로정리,임의공개금지.
+
+---
+
 ## 최신: v12 인증 재확인·전송 완료 — 2026-10-23KST
 
 현재 GH_BACKUP_TOKEN 명시적 실행으로 repo/draft조회·업로드·원격다운로드 성공.

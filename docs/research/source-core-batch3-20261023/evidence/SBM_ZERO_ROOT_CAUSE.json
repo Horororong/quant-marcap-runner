@@ -1,0 +1,41 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "receipt": "20100331001822",
+  "source_archive_sha256": "10f1e6aebdf5f245bd4026a030d494cf64cd94813c33eb89064c0e3989408c13",
+  "member": "20100331001822.xml",
+  "member_sha256": "72060bc182d3145be2e3e8623c043c05bb9f7bba684e3331074b38d156cb55ea",
+  "table": 70,
+  "events": [
+    {
+      "text": "XI.재무제표등",
+      "position": 0
+    },
+    {
+      "text": "주석",
+      "position": 61
+    },
+    {
+      "text": "주석",
+      "position": 83
+    }
+  ],
+  "final_zone": false,
+  "explicit_primary_contract": {
+    "statement": "BS",
+    "scope": "OFS",
+    "term": "13",
+    "period_start": "",
+    "period_end": "2009-12-31",
+    "heading": "대차대조표"
+  },
+  "source_reference_prefix": "\n\n\n\n\n\n\n\n\n\n\n\nXI. 재무제표 등\n\n\n\n\n\n\n\n1. 재무제표&cr;     \n당사의 제13기(2009년도)의 재무제표는 외부 감사를 수행한 재무제표이며, 재무제표에 대한 주석은 첨부된 [감사보고서]의 '재무제표에 대한 주석'을 참조하시기 바랍니다.&cr;     또한, 당사는 제11기 사업년도 중에, 2007년 12월 4일 (주)신우아이티를 흡수합병 하면서 '기업인수 및 합병 등에 관한 회계처리준칙'에 의거하여 (주)신우아이티를 실질 매수 회사로 간주하여 회계처리 하였습니다. 따라서, 제11기의 합병일(2007년 12월 4일) 이전에 관한 내용은 (주)신우아이티의 내용을 기재하였습니다.&cr;&cr;\n\n\n\n\n◆click◆『XBRL 개별재무제표』 삽입\n11011#*.dslx\n\n\n(주)에스비엠-제13기-사업보고서_2010-03-31-제출.xbd\n\n\n\n재무상태표(대차대조표)\n\n",
+  "reproduced_parser": "legacy-v9.3-note-reference-token-guard",
+  "whole_file_candidates": 0,
+  "main_source_has_cover_end": "2009-12-31",
+  "attachment_cover_end_unverified": true,
+  "diagnosis": "XI opens zone, narrative references to notes close it again before independently dated primary statement; fresh source contract exists but closed zone prevents extraction. Later STATEMENT_HEADER_UNVERIFIED warnings are not the direct cause of zero primary rows.",
+  "new_financial_values": 0,
+  "parser_changed": false,
+  "fix_status": "NOT_IMPLEMENTED",
+  "required_regression": "Preserve true note/segment/correction/date/unit/current-column closures; distinguish explicit referential paragraph from a section boundary, retain original source coordinates and version approval"
+}

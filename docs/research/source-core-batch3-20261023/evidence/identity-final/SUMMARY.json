@@ -1,0 +1,28 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "issuer_signal_checks": 40,
+  "PASS": 33,
+  "UNVERIFIED": 7,
+  "by_signal": {
+    "2010-04-01": {
+      "PASS": 16,
+      "UNVERIFIED": 4
+    },
+    "2010-04-30": {
+      "PASS": 17,
+      "UNVERIFIED": 3
+    }
+  },
+  "reviewed_alias_rules": 3,
+  "mapping_PASS_field_signal_pairs": 132,
+  "new_complete_PIT_records": 0,
+  "new_live_engine_ready_records": 0,
+  "remaining_blockers": {
+    "publication": 160,
+    "version_relationship": 160,
+    "signal_availability": 160,
+    "historical_security_mapping": 28
+  },
+  "interval_between_signals_certified": false,
+  "source_HTTP": 0
+}

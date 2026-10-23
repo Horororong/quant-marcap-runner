@@ -1,0 +1,279 @@
+{
+  "status": "NEW_POINT_EVIDENCE_NOT_CANONICAL_MAP_REWRITE",
+  "rows": [
+    {
+      "receipt": "20100331001769",
+      "stock_code": "009010",
+      "corp_code": "00173634",
+      "verdict": "PASS",
+      "reason": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+      "signal_date": "2010-04-01",
+      "historical_security_mapping": {
+        "verdict": "PASS",
+        "stock_code": "009010",
+        "from": "2010-04-01",
+        "through": "2010-04-01",
+        "evidence": [
+          {
+            "original": {
+              "corp_code": "00173634",
+              "rcept_no": "20100331001769",
+              "source_member_sha256": "063a3fcc10a72a9bdfe843e751ffe0ff246980a34fb9a9dea6f83d7174e9e871",
+              "source_archive_sha256": "b79cf891afdddbdaf418fa8cea007aa17410d13ccad12234b8cb0e563e6896dd"
+            },
+            "official": {
+              "date": "2010-04-01",
+              "source": [
+                "stk_bydd_trd_20100401.json",
+                "ksq_bydd_trd_20100401.json"
+              ],
+              "sha256": {
+                "stk_bydd_trd_20100401.json": "044425642d156cd9b839ca7b3b9752873f889dbd64a70325e360317d3e52a721",
+                "ksq_bydd_trd_20100401.json": "01bb9cdd4b78981f75dfe27065c5d25a0b90f330154e318187a37a40e9b62243"
+              },
+              "source_pack_sha256": "52edb555b2fb880699255770b5af9ab3dde6ef4ddb3b252b5586d3c24bea8f23"
+            },
+            "method": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+            "official_name": "에듀언스",
+            "source_alias": null
+          }
+        ]
+      },
+      "publication_certified": false,
+      "whole_PIT_eligible": false,
+      "interval_between_snapshots_certified": false
+    },
+    {
+      "receipt": "20100331001769",
+      "stock_code": "009010",
+      "corp_code": "00173634",
+      "verdict": "PASS",
+      "reason": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+      "signal_date": "2010-04-30",
+      "historical_security_mapping": {
+        "verdict": "PASS",
+        "stock_code": "009010",
+        "from": "2010-04-30",
+        "through": "2010-04-30",
+        "evidence": [
+          {
+            "original": {
+              "corp_code": "00173634",
+              "rcept_no": "20100331001769",
+              "source_member_sha256": "063a3fcc10a72a9bdfe843e751ffe0ff246980a34fb9a9dea6f83d7174e9e871",
+              "source_archive_sha256": "b79cf891afdddbdaf418fa8cea007aa17410d13ccad12234b8cb0e563e6896dd"
+            },
+            "official": {
+              "date": "2010-04-30",
+              "source": [
+                "stk_bydd_trd_20100430.json",
+                "ksq_bydd_trd_20100430.json"
+              ],
+              "sha256": {
+                "stk_bydd_trd_20100430.json": "070ba0268ed0f49493bada43278a154ca02478c10ed3233b8f76dfb2abd83d0c",
+                "ksq_bydd_trd_20100430.json": "d73a6fef13da950f5fb67f4faf92fe10ad0b3a0e01b230eb153c92b7190c81da"
+              },
+              "source_pack_sha256": "52edb555b2fb880699255770b5af9ab3dde6ef4ddb3b252b5586d3c24bea8f23"
+            },
+            "method": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+            "official_name": "에듀언스",
+            "source_alias": null
+          }
+        ]
+      },
+      "publication_certified": false,
+      "whole_PIT_eligible": false,
+      "interval_between_snapshots_certified": false
+    },
+    {
+      "receipt": "20100331001783",
+      "stock_code": "049690",
+      "corp_code": "00331733",
+      "verdict": "PASS",
+      "reason": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+      "signal_date": "2010-04-01",
+      "historical_security_mapping": {
+        "verdict": "PASS",
+        "stock_code": "049690",
+        "from": "2010-04-01",
+        "through": "2010-04-01",
+        "evidence": [
+          {
+            "original": {
+              "corp_code": "00331733",
+              "rcept_no": "20100331001783",
+              "source_member_sha256": "ef18ab4377f0b2ed9f4fc7f5d69a337c630f76c716afe9104fbf038feb62aa80",
+              "source_archive_sha256": "f4c49d642bf28666cf5b77c2f6105ba8dab8cc337b572ca92d6c257b4b4d9b1a"
+            },
+            "official": {
+              "date": "2010-04-01",
+              "source": [
+                "stk_bydd_trd_20100401.json",
+                "ksq_bydd_trd_20100401.json"
+              ],
+              "sha256": {
+                "stk_bydd_trd_20100401.json": "044425642d156cd9b839ca7b3b9752873f889dbd64a70325e360317d3e52a721",
+                "ksq_bydd_trd_20100401.json": "01bb9cdd4b78981f75dfe27065c5d25a0b90f330154e318187a37a40e9b62243"
+              },
+              "source_pack_sha256": "52edb555b2fb880699255770b5af9ab3dde6ef4ddb3b252b5586d3c24bea8f23"
+            },
+            "method": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+            "official_name": "포휴먼",
+            "source_alias": null
+          }
+        ]
+      },
+      "publication_certified": false,
+      "whole_PIT_eligible": false,
+      "interval_between_snapshots_certified": false
+    },
+    {
+      "receipt": "20100331001783",
+      "stock_code": "049690",
+      "corp_code": "00331733",
+      "verdict": "PASS",
+      "reason": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+      "signal_date": "2010-04-30",
+      "historical_security_mapping": {
+        "verdict": "PASS",
+        "stock_code": "049690",
+        "from": "2010-04-30",
+        "through": "2010-04-30",
+        "evidence": [
+          {
+            "original": {
+              "corp_code": "00331733",
+              "rcept_no": "20100331001783",
+              "source_member_sha256": "ef18ab4377f0b2ed9f4fc7f5d69a337c630f76c716afe9104fbf038feb62aa80",
+              "source_archive_sha256": "f4c49d642bf28666cf5b77c2f6105ba8dab8cc337b572ca92d6c257b4b4d9b1a"
+            },
+            "official": {
+              "date": "2010-04-30",
+              "source": [
+                "stk_bydd_trd_20100430.json",
+                "ksq_bydd_trd_20100430.json"
+              ],
+              "sha256": {
+                "stk_bydd_trd_20100430.json": "070ba0268ed0f49493bada43278a154ca02478c10ed3233b8f76dfb2abd83d0c",
+                "ksq_bydd_trd_20100430.json": "d73a6fef13da950f5fb67f4faf92fe10ad0b3a0e01b230eb153c92b7190c81da"
+              },
+              "source_pack_sha256": "52edb555b2fb880699255770b5af9ab3dde6ef4ddb3b252b5586d3c24bea8f23"
+            },
+            "method": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+            "official_name": "포휴먼",
+            "source_alias": null
+          }
+        ]
+      },
+      "publication_certified": false,
+      "whole_PIT_eligible": false,
+      "interval_between_snapshots_certified": false
+    },
+    {
+      "receipt": "20100331001788",
+      "stock_code": "058480",
+      "corp_code": "00252001",
+      "verdict": "PASS",
+      "reason": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+      "signal_date": "2010-04-01",
+      "historical_security_mapping": {
+        "verdict": "PASS",
+        "stock_code": "058480",
+        "from": "2010-04-01",
+        "through": "2010-04-01",
+        "evidence": [
+          {
+            "original": {
+              "corp_code": "00252001",
+              "rcept_no": "20100331001788",
+              "source_member_sha256": "e3305e1a562aa591f92ef6b8e02dc130106b2d378750123d838aaaa47c611fd8",
+              "source_archive_sha256": "a05b2270f29e2cd6e9c13af284dedf3b592649c07e728dd7883ffd5a72f2df05"
+            },
+            "official": {
+              "date": "2010-04-01",
+              "source": [
+                "stk_bydd_trd_20100401.json",
+                "ksq_bydd_trd_20100401.json"
+              ],
+              "sha256": {
+                "stk_bydd_trd_20100401.json": "044425642d156cd9b839ca7b3b9752873f889dbd64a70325e360317d3e52a721",
+                "ksq_bydd_trd_20100401.json": "01bb9cdd4b78981f75dfe27065c5d25a0b90f330154e318187a37a40e9b62243"
+              },
+              "source_pack_sha256": "52edb555b2fb880699255770b5af9ab3dde6ef4ddb3b252b5586d3c24bea8f23"
+            },
+            "method": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+            "official_name": "해원에스티",
+            "source_alias": null
+          }
+        ]
+      },
+      "publication_certified": false,
+      "whole_PIT_eligible": false,
+      "interval_between_snapshots_certified": false
+    },
+    {
+      "receipt": "20100331001788",
+      "stock_code": "058480",
+      "corp_code": "00252001",
+      "verdict": "PASS",
+      "reason": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+      "signal_date": "2010-04-30",
+      "historical_security_mapping": {
+        "verdict": "PASS",
+        "stock_code": "058480",
+        "from": "2010-04-30",
+        "through": "2010-04-30",
+        "evidence": [
+          {
+            "original": {
+              "corp_code": "00252001",
+              "rcept_no": "20100331001788",
+              "source_member_sha256": "e3305e1a562aa591f92ef6b8e02dc130106b2d378750123d838aaaa47c611fd8",
+              "source_archive_sha256": "a05b2270f29e2cd6e9c13af284dedf3b592649c07e728dd7883ffd5a72f2df05"
+            },
+            "official": {
+              "date": "2010-04-30",
+              "source": [
+                "stk_bydd_trd_20100430.json",
+                "ksq_bydd_trd_20100430.json"
+              ],
+              "sha256": {
+                "stk_bydd_trd_20100430.json": "070ba0268ed0f49493bada43278a154ca02478c10ed3233b8f76dfb2abd83d0c",
+                "ksq_bydd_trd_20100430.json": "d73a6fef13da950f5fb67f4faf92fe10ad0b3a0e01b230eb153c92b7190c81da"
+              },
+              "source_pack_sha256": "52edb555b2fb880699255770b5af9ab3dde6ef4ddb3b252b5586d3c24bea8f23"
+            },
+            "method": "EXACT_ORIGINAL_ISSUER_AND_OFFICIAL_NAME",
+            "official_name": "해원에스티",
+            "source_alias": null
+          }
+        ]
+      },
+      "publication_certified": false,
+      "whole_PIT_eligible": false,
+      "interval_between_snapshots_certified": false
+    },
+    {
+      "receipt": "20100331001853",
+      "stock_code": "066340",
+      "corp_code": "00385451",
+      "verdict": "UNVERIFIED",
+      "reason": "HISTORICAL_ALIAS_OR_CHANGE_NOT_ATTESTED",
+      "signal_date": "2010-04-01",
+      "publication_certified": false,
+      "whole_PIT_eligible": false
+    },
+    {
+      "receipt": "20100331001853",
+      "stock_code": "066340",
+      "corp_code": "00385451",
+      "verdict": "UNVERIFIED",
+      "reason": "HISTORICAL_ALIAS_OR_CHANGE_NOT_ATTESTED",
+      "signal_date": "2010-04-30",
+      "publication_certified": false,
+      "whole_PIT_eligible": false
+    }
+  ],
+  "source_gate_still_1495": true,
+  "original456_not_pruned": true
+}

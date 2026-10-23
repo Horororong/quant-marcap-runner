@@ -1,0 +1,3202 @@
+[
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001761",
+      "document_sha256": "7129cd00880439cedb5c83ae26ed925676b7ff73229ab7d401f1cbb86af55bc7",
+      "source_member": "20100331001761.xml",
+      "source_member_sha256": "0375ab9d356ece546fb6048d5d17e461b7c31e3f34f9d1c6b828f03496759c21",
+      "corp_code": "00148717",
+      "stock_code": "008000",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "267164561466"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "0db362998599a7063d54efef5faa2f71625456a65036525c19e8387310f037da"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001761",
+      "document_sha256": "7129cd00880439cedb5c83ae26ed925676b7ff73229ab7d401f1cbb86af55bc7",
+      "source_member": "20100331001761.xml",
+      "source_member_sha256": "0375ab9d356ece546fb6048d5d17e461b7c31e3f34f9d1c6b828f03496759c21",
+      "corp_code": "00148717",
+      "stock_code": "008000",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "803174786065"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "9fd4cb638a4ae64b4c1130cd9215271f4cd51fedc665cc281bc9e372d1e822c0"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001761",
+      "document_sha256": "7129cd00880439cedb5c83ae26ed925676b7ff73229ab7d401f1cbb86af55bc7",
+      "source_member": "20100331001761.xml",
+      "source_member_sha256": "0375ab9d356ece546fb6048d5d17e461b7c31e3f34f9d1c6b828f03496759c21",
+      "corp_code": "00148717",
+      "stock_code": "008000",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "10182466223"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "429657efa28c3a76a24f555f0a177d4099f1dee67262c88116dd47419b052828"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001761",
+      "document_sha256": "7129cd00880439cedb5c83ae26ed925676b7ff73229ab7d401f1cbb86af55bc7",
+      "source_member": "20100331001761.xml",
+      "source_member_sha256": "0375ab9d356ece546fb6048d5d17e461b7c31e3f34f9d1c6b828f03496759c21",
+      "corp_code": "00148717",
+      "stock_code": "008000",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "109869545005"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "e16d0f6a14e65a32e3beee7c22500acef50adc067c795baa74fb1119422f4b20"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001769",
+      "document_sha256": "b79cf891afdddbdaf418fa8cea007aa17410d13ccad12234b8cb0e563e6896dd",
+      "source_member": "20100331001769.xml",
+      "source_member_sha256": "063a3fcc10a72a9bdfe843e751ffe0ff246980a34fb9a9dea6f83d7174e9e871",
+      "corp_code": "00173634",
+      "stock_code": "009010",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "17403479511"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "5863070869d2ed9c2c865754a138fe4d3c4a5a5e5a688ec566a287bcc8540de1"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001769",
+      "document_sha256": "b79cf891afdddbdaf418fa8cea007aa17410d13ccad12234b8cb0e563e6896dd",
+      "source_member": "20100331001769.xml",
+      "source_member_sha256": "063a3fcc10a72a9bdfe843e751ffe0ff246980a34fb9a9dea6f83d7174e9e871",
+      "corp_code": "00173634",
+      "stock_code": "009010",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "50125849731"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "a1d4e2be26ab53ee3e19a740c05fe17316053d926cbf383ce038e660d229258a"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001769",
+      "document_sha256": "b79cf891afdddbdaf418fa8cea007aa17410d13ccad12234b8cb0e563e6896dd",
+      "source_member": "20100331001769.xml",
+      "source_member_sha256": "063a3fcc10a72a9bdfe843e751ffe0ff246980a34fb9a9dea6f83d7174e9e871",
+      "corp_code": "00173634",
+      "stock_code": "009010",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "765191041"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "9f00513fc3e3d418f7caca0c5ecfe6134e0d79f120d086b3e5f06088b2b3754d"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001769",
+      "document_sha256": "b79cf891afdddbdaf418fa8cea007aa17410d13ccad12234b8cb0e563e6896dd",
+      "source_member": "20100331001769.xml",
+      "source_member_sha256": "063a3fcc10a72a9bdfe843e751ffe0ff246980a34fb9a9dea6f83d7174e9e871",
+      "corp_code": "00173634",
+      "stock_code": "009010",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "22252523901"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "c7701cd97ae355a0718ce562e25f3b66f5f169ddef362215ead9bd03cbbe67e6"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001771",
+      "document_sha256": "2413eb593a4da49ab46173f852b9137d7e3143464ac15ff1f15f9addb6b297ac",
+      "source_member": "20100331001771.xml",
+      "source_member_sha256": "bd64d673d7a7b86d69d0558b60c05f2e656a997ede8c32b821d3e03699d91fae",
+      "corp_code": "00138057",
+      "stock_code": "004770",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "30458591369"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "650684d6374c1c707d185d044510c0ab67e54965ac40f0f89a370c48e4431c8c"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001771",
+      "document_sha256": "2413eb593a4da49ab46173f852b9137d7e3143464ac15ff1f15f9addb6b297ac",
+      "source_member": "20100331001771.xml",
+      "source_member_sha256": "bd64d673d7a7b86d69d0558b60c05f2e656a997ede8c32b821d3e03699d91fae",
+      "corp_code": "00138057",
+      "stock_code": "004770",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "25765057888"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "b098cd11ddaeb700be5dcf7efd2b14f5a642a02f3295db9739864a17ef928d28"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001771",
+      "document_sha256": "2413eb593a4da49ab46173f852b9137d7e3143464ac15ff1f15f9addb6b297ac",
+      "source_member": "20100331001771.xml",
+      "source_member_sha256": "bd64d673d7a7b86d69d0558b60c05f2e656a997ede8c32b821d3e03699d91fae",
+      "corp_code": "00138057",
+      "stock_code": "004770",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "351420446"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "9e80c09ab95d90a6097e8cb37472636a879d5736d5cc2bc87959672ecf93e7a5"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001771",
+      "document_sha256": "2413eb593a4da49ab46173f852b9137d7e3143464ac15ff1f15f9addb6b297ac",
+      "source_member": "20100331001771.xml",
+      "source_member_sha256": "bd64d673d7a7b86d69d0558b60c05f2e656a997ede8c32b821d3e03699d91fae",
+      "corp_code": "00138057",
+      "stock_code": "004770",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "1205723502"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "3176851299b50bfbfda268c8748fd32930bc21bd2d40d1fbeb26cccf724895e2"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001778",
+      "document_sha256": "432ce28cbe90929870417c87416b74a019abc1b5cd43f5b080a9fdfc74d5f77d",
+      "source_member": "20100331001778.xml",
+      "source_member_sha256": "91ad2c2e3d9d4ac13af9784a2d84dd03c37fdf5d3f7415e948d0094dfc79bdb0",
+      "corp_code": "00121686",
+      "stock_code": "033160",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "81487763621"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "05bce8eaecd2cb5f3aab4c1ef98492a16f53847141d06447e4269769d372f90c"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001778",
+      "document_sha256": "432ce28cbe90929870417c87416b74a019abc1b5cd43f5b080a9fdfc74d5f77d",
+      "source_member": "20100331001778.xml",
+      "source_member_sha256": "91ad2c2e3d9d4ac13af9784a2d84dd03c37fdf5d3f7415e948d0094dfc79bdb0",
+      "corp_code": "00121686",
+      "stock_code": "033160",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "571821264398"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "a63c209987c8de0493ce82bfa7602ec061d91ad70ea8ac569f0c5fcfcd3f00ea"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001778",
+      "document_sha256": "432ce28cbe90929870417c87416b74a019abc1b5cd43f5b080a9fdfc74d5f77d",
+      "source_member": "20100331001778.xml",
+      "source_member_sha256": "91ad2c2e3d9d4ac13af9784a2d84dd03c37fdf5d3f7415e948d0094dfc79bdb0",
+      "corp_code": "00121686",
+      "stock_code": "033160",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "6790259439"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "0453b679b00945a2f9d353329594af69045b2ad80f9af4e64efe898276cdba32"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001778",
+      "document_sha256": "432ce28cbe90929870417c87416b74a019abc1b5cd43f5b080a9fdfc74d5f77d",
+      "source_member": "20100331001778.xml",
+      "source_member_sha256": "91ad2c2e3d9d4ac13af9784a2d84dd03c37fdf5d3f7415e948d0094dfc79bdb0",
+      "corp_code": "00121686",
+      "stock_code": "033160",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "-21787711407"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "da6ab2ac027c67956b0dfafa817850c4dc6a6367817dae2532fc5dbf05829e8a"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001779",
+      "document_sha256": "ca090dc191739f0558ab3fcd2aa17f420a1f37b46f8f544252511ef00f34e8ac",
+      "source_member": "20100331001779.xml",
+      "source_member_sha256": "24c09d7354a47388e6e187bec2e4faab1de0105426c7792aed26c332b40c76bb",
+      "corp_code": "00686147",
+      "stock_code": "104120",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "34274895149"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "54a48950dc449d5755d565712e7d210412c6238136d713de13b322bd6f6856e1"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001779",
+      "document_sha256": "ca090dc191739f0558ab3fcd2aa17f420a1f37b46f8f544252511ef00f34e8ac",
+      "source_member": "20100331001779.xml",
+      "source_member_sha256": "24c09d7354a47388e6e187bec2e4faab1de0105426c7792aed26c332b40c76bb",
+      "corp_code": "00686147",
+      "stock_code": "104120",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "74916538296"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "a7e41213141ef34d3f1af01651561ab4b04465414e89ea36ea2b5dcdd3583bd4"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001779",
+      "document_sha256": "ca090dc191739f0558ab3fcd2aa17f420a1f37b46f8f544252511ef00f34e8ac",
+      "source_member": "20100331001779.xml",
+      "source_member_sha256": "24c09d7354a47388e6e187bec2e4faab1de0105426c7792aed26c332b40c76bb",
+      "corp_code": "00686147",
+      "stock_code": "104120",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "3013683040"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "14caf646a5ff31ddfca9ca82dbcdbc19b9952da2007e508af346d9d4986d76f4"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001779",
+      "document_sha256": "ca090dc191739f0558ab3fcd2aa17f420a1f37b46f8f544252511ef00f34e8ac",
+      "source_member": "20100331001779.xml",
+      "source_member_sha256": "24c09d7354a47388e6e187bec2e4faab1de0105426c7792aed26c332b40c76bb",
+      "corp_code": "00686147",
+      "stock_code": "104120",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "2321848125"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "d8e9b3faa811089e9901772818172bb46be035654bc081f6e8ebe9992afb00f0"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001780",
+      "document_sha256": "3a8ef625a9308873f453a447c59bb7644a2c4ff5d98babbb8691082127f576d0",
+      "source_member": "20100331001780.xml",
+      "source_member_sha256": "0c872d36a09863bbacc7299306192d0c2f218eb9174ff7e7ee6512b7f9d94785",
+      "corp_code": "00149266",
+      "stock_code": "023460",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "105687074334"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "9af460828ce3b6ba5d89dc820ddae2f8c542977f8948f37f8742afaa31940bd5"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001780",
+      "document_sha256": "3a8ef625a9308873f453a447c59bb7644a2c4ff5d98babbb8691082127f576d0",
+      "source_member": "20100331001780.xml",
+      "source_member_sha256": "0c872d36a09863bbacc7299306192d0c2f218eb9174ff7e7ee6512b7f9d94785",
+      "corp_code": "00149266",
+      "stock_code": "023460",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "64748407097"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "f8a772898fa37da473b4e0d82d6bf7427d5f97b649d5a66d39e92b44c513dbc8"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001780",
+      "document_sha256": "3a8ef625a9308873f453a447c59bb7644a2c4ff5d98babbb8691082127f576d0",
+      "source_member": "20100331001780.xml",
+      "source_member_sha256": "0c872d36a09863bbacc7299306192d0c2f218eb9174ff7e7ee6512b7f9d94785",
+      "corp_code": "00149266",
+      "stock_code": "023460",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "5521470916"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "1f59f38a05bd2e1fa49db07d176ff1d4ebeb37d0f20557ac9136668af765a20d"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001780",
+      "document_sha256": "3a8ef625a9308873f453a447c59bb7644a2c4ff5d98babbb8691082127f576d0",
+      "source_member": "20100331001780.xml",
+      "source_member_sha256": "0c872d36a09863bbacc7299306192d0c2f218eb9174ff7e7ee6512b7f9d94785",
+      "corp_code": "00149266",
+      "stock_code": "023460",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "68301540403"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "abc36157a98c451cbb832d1e24ca95cddff64d5231227598af97f6201b6c7ee9"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001781",
+      "document_sha256": "ccbca691a979f97a0bc94aa07916afe0ebebb7d9e1fe407c5e4977195ff1467b",
+      "source_member": "20100331001781.xml",
+      "source_member_sha256": "9e2c006c4bcda4f22c4ce7c40327c45ca522381fe73049d988ae71be972dfdf2",
+      "corp_code": "00111874",
+      "stock_code": "005710",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "77177985784"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "f8e6f70c830246afd8c27e1a25ccaf8f88a65ea849673870d60eb34a3d835e55"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001781",
+      "document_sha256": "ccbca691a979f97a0bc94aa07916afe0ebebb7d9e1fe407c5e4977195ff1467b",
+      "source_member": "20100331001781.xml",
+      "source_member_sha256": "9e2c006c4bcda4f22c4ce7c40327c45ca522381fe73049d988ae71be972dfdf2",
+      "corp_code": "00111874",
+      "stock_code": "005710",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "257079909995"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "7c3a211eaf705efd72985ae1dd416769298a9b0173eb2d5559ff11983bcc8aea"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001781",
+      "document_sha256": "ccbca691a979f97a0bc94aa07916afe0ebebb7d9e1fe407c5e4977195ff1467b",
+      "source_member": "20100331001781.xml",
+      "source_member_sha256": "9e2c006c4bcda4f22c4ce7c40327c45ca522381fe73049d988ae71be972dfdf2",
+      "corp_code": "00111874",
+      "stock_code": "005710",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "7452348986"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "8f8df0fc8f3e61a8121d3c559a6ceeb3aa4d3f4225f3f7571d2ea13622ca3710"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001781",
+      "document_sha256": "ccbca691a979f97a0bc94aa07916afe0ebebb7d9e1fe407c5e4977195ff1467b",
+      "source_member": "20100331001781.xml",
+      "source_member_sha256": "9e2c006c4bcda4f22c4ce7c40327c45ca522381fe73049d988ae71be972dfdf2",
+      "corp_code": "00111874",
+      "stock_code": "005710",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "18439373054"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "a05ec778b4913397bbc7327311c72ec0c43ff317115c965776699cdadc92108b"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001783",
+      "document_sha256": "f4c49d642bf28666cf5b77c2f6105ba8dab8cc337b572ca92d6c257b4b4d9b1a",
+      "source_member": "20100331001783.xml",
+      "source_member_sha256": "ef18ab4377f0b2ed9f4fc7f5d69a337c630f76c716afe9104fbf038feb62aa80",
+      "corp_code": "00331733",
+      "stock_code": "049690",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "127160786541"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "04d80751ac431e9929459082ccd1854f677d033981994dfbeb62aa27080827b1"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001783",
+      "document_sha256": "f4c49d642bf28666cf5b77c2f6105ba8dab8cc337b572ca92d6c257b4b4d9b1a",
+      "source_member": "20100331001783.xml",
+      "source_member_sha256": "ef18ab4377f0b2ed9f4fc7f5d69a337c630f76c716afe9104fbf038feb62aa80",
+      "corp_code": "00331733",
+      "stock_code": "049690",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "9631327008"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "a091b5c685feb35ae930c8d1e94c2beca57348da03f1ae11dadeadab0e1783d6"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001783",
+      "document_sha256": "f4c49d642bf28666cf5b77c2f6105ba8dab8cc337b572ca92d6c257b4b4d9b1a",
+      "source_member": "20100331001783.xml",
+      "source_member_sha256": "ef18ab4377f0b2ed9f4fc7f5d69a337c630f76c716afe9104fbf038feb62aa80",
+      "corp_code": "00331733",
+      "stock_code": "049690",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "-11200439241"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "9bb255259080b01c68d85b5ad95b8649fdc7cdbb28b3d8d206de5b64bf597dcd"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001783",
+      "document_sha256": "f4c49d642bf28666cf5b77c2f6105ba8dab8cc337b572ca92d6c257b4b4d9b1a",
+      "source_member": "20100331001783.xml",
+      "source_member_sha256": "ef18ab4377f0b2ed9f4fc7f5d69a337c630f76c716afe9104fbf038feb62aa80",
+      "corp_code": "00331733",
+      "stock_code": "049690",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "-2358451137"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "ed69dd1139bcee29ec5981ea740c0df597f09976f46ad8af3e46bc74458c9ecd"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001788",
+      "document_sha256": "a05b2270f29e2cd6e9c13af284dedf3b592649c07e728dd7883ffd5a72f2df05",
+      "source_member": "20100331001788.xml",
+      "source_member_sha256": "e3305e1a562aa591f92ef6b8e02dc130106b2d378750123d838aaaa47c611fd8",
+      "corp_code": "00252001",
+      "stock_code": "058480",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "26323946348"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "cc523cfcd5aca4b0624d6e7b12d4444f48a0701b0fd1858fab04813441d21429"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001788",
+      "document_sha256": "a05b2270f29e2cd6e9c13af284dedf3b592649c07e728dd7883ffd5a72f2df05",
+      "source_member": "20100331001788.xml",
+      "source_member_sha256": "e3305e1a562aa591f92ef6b8e02dc130106b2d378750123d838aaaa47c611fd8",
+      "corp_code": "00252001",
+      "stock_code": "058480",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "207217582967"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "0ea2505c72899507564e34bb4c570278f4e219caafa6255e051099fe20e4e76a"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001788",
+      "document_sha256": "a05b2270f29e2cd6e9c13af284dedf3b592649c07e728dd7883ffd5a72f2df05",
+      "source_member": "20100331001788.xml",
+      "source_member_sha256": "e3305e1a562aa591f92ef6b8e02dc130106b2d378750123d838aaaa47c611fd8",
+      "corp_code": "00252001",
+      "stock_code": "058480",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "6551322530"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "c6c571f8907f9765472f4856a315d2499c6dce2e613bc346ecf8b276ebd418d3"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001788",
+      "document_sha256": "a05b2270f29e2cd6e9c13af284dedf3b592649c07e728dd7883ffd5a72f2df05",
+      "source_member": "20100331001788.xml",
+      "source_member_sha256": "e3305e1a562aa591f92ef6b8e02dc130106b2d378750123d838aaaa47c611fd8",
+      "corp_code": "00252001",
+      "stock_code": "058480",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "1375154632"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "42d7f98bd8f0d0da2dfcdfce2f7e6a4cb825bea04083bcd314d3d49677e82f1a"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001811",
+      "document_sha256": "9e783826d3d575d804aa5cfc2e99619600280dfe69aab67e687fa80066ebc712",
+      "source_member": "20100331001811.xml",
+      "source_member_sha256": "3a948d1ed5eb345a47d3b68eb522da7d12822626de0a064c0a8353e55211d08d",
+      "corp_code": "00220561",
+      "stock_code": "037710",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "221582517054"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "02bb81c43b2449bd5b51f7164d224cd2396dc0e2ac58ed38fa8917f5caefec61"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001811",
+      "document_sha256": "9e783826d3d575d804aa5cfc2e99619600280dfe69aab67e687fa80066ebc712",
+      "source_member": "20100331001811.xml",
+      "source_member_sha256": "3a948d1ed5eb345a47d3b68eb522da7d12822626de0a064c0a8353e55211d08d",
+      "corp_code": "00220561",
+      "stock_code": "037710",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "191841842440"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "c09e4ff9b355b3850264bb78647eb36f600abca090fce0875d2db9dde2a10688"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001811",
+      "document_sha256": "9e783826d3d575d804aa5cfc2e99619600280dfe69aab67e687fa80066ebc712",
+      "source_member": "20100331001811.xml",
+      "source_member_sha256": "3a948d1ed5eb345a47d3b68eb522da7d12822626de0a064c0a8353e55211d08d",
+      "corp_code": "00220561",
+      "stock_code": "037710",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "36519338829"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "c5ff5aa4ef0e913ae64148b97ec7960ea9c7654749686589798db482223ec75f"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001811",
+      "document_sha256": "9e783826d3d575d804aa5cfc2e99619600280dfe69aab67e687fa80066ebc712",
+      "source_member": "20100331001811.xml",
+      "source_member_sha256": "3a948d1ed5eb345a47d3b68eb522da7d12822626de0a064c0a8353e55211d08d",
+      "corp_code": "00220561",
+      "stock_code": "037710",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "49729618154"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "522057ccb6fdba0419ae9c7c4e406a1c5a55baf028cfa7d6ba81a01aacf7aada"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001823",
+      "document_sha256": "fbf6c8ab68ae2757be9f48cd9350024927dadc4ec189293ac92d732005e38611",
+      "source_member": "20100331001823.xml",
+      "source_member_sha256": "5566404e2a9dcfbc51c413d29f92bb143492e35b39d4015a3f4c43d1accd839b",
+      "corp_code": "00255433",
+      "stock_code": "042510",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "21297188765"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "0f34393c484bb0a767c90fb324026f46c5428d406ba5f9c43ec10d3fb39e1239"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001823",
+      "document_sha256": "fbf6c8ab68ae2757be9f48cd9350024927dadc4ec189293ac92d732005e38611",
+      "source_member": "20100331001823.xml",
+      "source_member_sha256": "5566404e2a9dcfbc51c413d29f92bb143492e35b39d4015a3f4c43d1accd839b",
+      "corp_code": "00255433",
+      "stock_code": "042510",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "15006835551"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "eb936882a4b7bda566067f6755bc36f4904a09037881182e2dfbf90892d519e9"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001823",
+      "document_sha256": "fbf6c8ab68ae2757be9f48cd9350024927dadc4ec189293ac92d732005e38611",
+      "source_member": "20100331001823.xml",
+      "source_member_sha256": "5566404e2a9dcfbc51c413d29f92bb143492e35b39d4015a3f4c43d1accd839b",
+      "corp_code": "00255433",
+      "stock_code": "042510",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "-8962262830"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "52306c7cf266cbe32a8e9bcf4654c33671deaba199645108ea39f9303ffca43c"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001823",
+      "document_sha256": "fbf6c8ab68ae2757be9f48cd9350024927dadc4ec189293ac92d732005e38611",
+      "source_member": "20100331001823.xml",
+      "source_member_sha256": "5566404e2a9dcfbc51c413d29f92bb143492e35b39d4015a3f4c43d1accd839b",
+      "corp_code": "00255433",
+      "stock_code": "042510",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "-1493428329"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "9ee6c75ba0fc4bf4517eb22d094a8d54302477cc8f2698a4cf982a96d41f4e40"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001830",
+      "document_sha256": "98929ef5054e8e24d41f4e3101c4e304b64f03632542f3e13623ce492497688e",
+      "source_member": "20100331001830.xml",
+      "source_member_sha256": "b3e2c63b92c030bfadb662d8603f91f4568a155ca0627ceaa96d58bb005ad6f3",
+      "corp_code": "00140061",
+      "stock_code": "022220",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "68553447290"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "026891e99559ca731788af8a192006659a2892773b4890c85642da7001e61c97"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001830",
+      "document_sha256": "98929ef5054e8e24d41f4e3101c4e304b64f03632542f3e13623ce492497688e",
+      "source_member": "20100331001830.xml",
+      "source_member_sha256": "b3e2c63b92c030bfadb662d8603f91f4568a155ca0627ceaa96d58bb005ad6f3",
+      "corp_code": "00140061",
+      "stock_code": "022220",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "127457053649"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "598bdc05aaa6e5f5ac6e1c1cf2a5e4b5699c7ae1d7076badbd96d4ab817b84a2"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001830",
+      "document_sha256": "98929ef5054e8e24d41f4e3101c4e304b64f03632542f3e13623ce492497688e",
+      "source_member": "20100331001830.xml",
+      "source_member_sha256": "b3e2c63b92c030bfadb662d8603f91f4568a155ca0627ceaa96d58bb005ad6f3",
+      "corp_code": "00140061",
+      "stock_code": "022220",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "889899712"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "321aafeedeb2fab7a04574a331c3dc2c404e7d7b3401b890a4e796810746f074"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001830",
+      "document_sha256": "98929ef5054e8e24d41f4e3101c4e304b64f03632542f3e13623ce492497688e",
+      "source_member": "20100331001830.xml",
+      "source_member_sha256": "b3e2c63b92c030bfadb662d8603f91f4568a155ca0627ceaa96d58bb005ad6f3",
+      "corp_code": "00140061",
+      "stock_code": "022220",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "-976932330"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "e4a85c8e5d2cd1a89997b160176c0cf6f212a435de41fcb17e18f0b4672f8749"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001840",
+      "document_sha256": "2117da95f7e1af55fa596a1926e5d25ae37761490b671c42b2fd10ab5534e125",
+      "source_member": "20100331001840.xml",
+      "source_member_sha256": "77d09cd1304a1c98e5f0ab0c3c77781da4f1e65094319eb07defc4f8c8d77fc7",
+      "corp_code": "00409371",
+      "stock_code": "079950",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "36126924110"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "7845d32662d483be348409db254660126694a7051f4559b80d68f0756edb2e17"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001840",
+      "document_sha256": "2117da95f7e1af55fa596a1926e5d25ae37761490b671c42b2fd10ab5534e125",
+      "source_member": "20100331001840.xml",
+      "source_member_sha256": "77d09cd1304a1c98e5f0ab0c3c77781da4f1e65094319eb07defc4f8c8d77fc7",
+      "corp_code": "00409371",
+      "stock_code": "079950",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "86009899002"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "f2e100a604699b9584c98fd67e0358ad31955d2acb79564d2922a460c8836383"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001840",
+      "document_sha256": "2117da95f7e1af55fa596a1926e5d25ae37761490b671c42b2fd10ab5534e125",
+      "source_member": "20100331001840.xml",
+      "source_member_sha256": "77d09cd1304a1c98e5f0ab0c3c77781da4f1e65094319eb07defc4f8c8d77fc7",
+      "corp_code": "00409371",
+      "stock_code": "079950",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "-15326315973"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "5ea94f352f62cce3afe8028ffa2ef70b6a5e6bfa1cba6e93cc54e79abbfbd092"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001840",
+      "document_sha256": "2117da95f7e1af55fa596a1926e5d25ae37761490b671c42b2fd10ab5534e125",
+      "source_member": "20100331001840.xml",
+      "source_member_sha256": "77d09cd1304a1c98e5f0ab0c3c77781da4f1e65094319eb07defc4f8c8d77fc7",
+      "corp_code": "00409371",
+      "stock_code": "079950",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "19861984024"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "8454d29893179543df058443b97ab7fa0ff8bf9ff6c4d76535e039e39b0a0db8"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001853",
+      "document_sha256": "a2d2d7a02c2c20ce7bc6808e06bc7541b51b1cd98a4b503cdc07b907f59fd619",
+      "source_member": "20100331001853.xml",
+      "source_member_sha256": "ad40ec32e050c5aa4dd28e18ffbf1c4d3fbe2df5ddd2f4812b4bdf2d118e6340",
+      "corp_code": "00385451",
+      "stock_code": "066340",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "70171558614"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "a0eb61393c13794a487894ca8133b8b6eb2906369175e30e8cc72de73e0fb202"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001853",
+      "document_sha256": "a2d2d7a02c2c20ce7bc6808e06bc7541b51b1cd98a4b503cdc07b907f59fd619",
+      "source_member": "20100331001853.xml",
+      "source_member_sha256": "ad40ec32e050c5aa4dd28e18ffbf1c4d3fbe2df5ddd2f4812b4bdf2d118e6340",
+      "corp_code": "00385451",
+      "stock_code": "066340",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "6854420166"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "77c6ced2340a3d9a942bbd2ae3bebff012e3318eab9c12eaf7b519d5f52ec7a5"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001853",
+      "document_sha256": "a2d2d7a02c2c20ce7bc6808e06bc7541b51b1cd98a4b503cdc07b907f59fd619",
+      "source_member": "20100331001853.xml",
+      "source_member_sha256": "ad40ec32e050c5aa4dd28e18ffbf1c4d3fbe2df5ddd2f4812b4bdf2d118e6340",
+      "corp_code": "00385451",
+      "stock_code": "066340",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "-7459012958"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "1a777765a0d6b98b9b2346655723ad0d5823a8df0e3aef655d7260cee7918f89"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001853",
+      "document_sha256": "a2d2d7a02c2c20ce7bc6808e06bc7541b51b1cd98a4b503cdc07b907f59fd619",
+      "source_member": "20100331001853.xml",
+      "source_member_sha256": "ad40ec32e050c5aa4dd28e18ffbf1c4d3fbe2df5ddd2f4812b4bdf2d118e6340",
+      "corp_code": "00385451",
+      "stock_code": "066340",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "-1996263242"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "8d92efd638c73219c0876a198d99bb1dbc0df9612df29d28a54ae49d046adac0"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001861",
+      "document_sha256": "2d4d5d4a1ca6963f1a4b73074e7e10ca5d0852df7d1503bc9e1d841c344a4f01",
+      "source_member": "20100331001861.xml",
+      "source_member_sha256": "25cf6d811a2f79077549225dd08db4a647b6492fe5c335f265210a3d755c551b",
+      "corp_code": "00686068",
+      "stock_code": "104110",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "30499137789"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "816f5292b68dc27cf2daae43a21a2699a8b618aa751a38c97da20f0d81f41021"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001861",
+      "document_sha256": "2d4d5d4a1ca6963f1a4b73074e7e10ca5d0852df7d1503bc9e1d841c344a4f01",
+      "source_member": "20100331001861.xml",
+      "source_member_sha256": "25cf6d811a2f79077549225dd08db4a647b6492fe5c335f265210a3d755c551b",
+      "corp_code": "00686068",
+      "stock_code": "104110",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "74514553314"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "b61af249c27727eb7db65bdc9d83cc2e626c86b549d78dc754e8681d8f34cf08"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001861",
+      "document_sha256": "2d4d5d4a1ca6963f1a4b73074e7e10ca5d0852df7d1503bc9e1d841c344a4f01",
+      "source_member": "20100331001861.xml",
+      "source_member_sha256": "25cf6d811a2f79077549225dd08db4a647b6492fe5c335f265210a3d755c551b",
+      "corp_code": "00686068",
+      "stock_code": "104110",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "-1179952979"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "ad0045868e3756cd651f026d80c41f439c2a44bc7476157ab4b616951bf8f715"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001861",
+      "document_sha256": "2d4d5d4a1ca6963f1a4b73074e7e10ca5d0852df7d1503bc9e1d841c344a4f01",
+      "source_member": "20100331001861.xml",
+      "source_member_sha256": "25cf6d811a2f79077549225dd08db4a647b6492fe5c335f265210a3d755c551b",
+      "corp_code": "00686068",
+      "stock_code": "104110",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "811368549"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "d5276e0a03d2a19a6e283af052b94366fb22f6d276b8152d8e67a722d29f7115"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001862",
+      "document_sha256": "a26293443414c817e3da5851e126ef2730a340e7912c9fbf226c0189871d91ce",
+      "source_member": "20100331001862.xml",
+      "source_member_sha256": "fe71ceee147583296458526525dcfa3f87b876a59e53e9d86e6edf6695a9b28f",
+      "corp_code": "00151395",
+      "stock_code": "000650",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "30177328172"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "dcd1fac3ebeef8683321944530278a3e7add9d78be2dcf4ead75c34946fb63dd"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001862",
+      "document_sha256": "a26293443414c817e3da5851e126ef2730a340e7912c9fbf226c0189871d91ce",
+      "source_member": "20100331001862.xml",
+      "source_member_sha256": "fe71ceee147583296458526525dcfa3f87b876a59e53e9d86e6edf6695a9b28f",
+      "corp_code": "00151395",
+      "stock_code": "000650",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "48595592085"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "22cfc9ce8771406219d61a1061b69f2383147c0db359d99d4feaaffe489fe3a3"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001862",
+      "document_sha256": "a26293443414c817e3da5851e126ef2730a340e7912c9fbf226c0189871d91ce",
+      "source_member": "20100331001862.xml",
+      "source_member_sha256": "fe71ceee147583296458526525dcfa3f87b876a59e53e9d86e6edf6695a9b28f",
+      "corp_code": "00151395",
+      "stock_code": "000650",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "2888948848"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "4e8cf96b5475e5a786cf1ff55088770e22790f9d1d9f8d39a14601b911ac1e28"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001862",
+      "document_sha256": "a26293443414c817e3da5851e126ef2730a340e7912c9fbf226c0189871d91ce",
+      "source_member": "20100331001862.xml",
+      "source_member_sha256": "fe71ceee147583296458526525dcfa3f87b876a59e53e9d86e6edf6695a9b28f",
+      "corp_code": "00151395",
+      "stock_code": "000650",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "4406658439"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "6b6b03a969d591fe17ed10d540228d654835cdf8f7e9d4f385e631fa1af68a4c"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001866",
+      "document_sha256": "8f2d18923b1051d6bd93cbb5726a86fc3c415597bf600f08e2703fa43f6bcfc6",
+      "source_member": "20100331001866.xml",
+      "source_member_sha256": "505c7f1a07f3fd97ab05fe7988d668e2bf5869c8b7e3638e04a45a854be5453c",
+      "corp_code": "00138127",
+      "stock_code": "008900",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "100417983784"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "fe51b09565a7e39da761a555e01d86de42f262653390467236965d6d8d845f2a"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001866",
+      "document_sha256": "8f2d18923b1051d6bd93cbb5726a86fc3c415597bf600f08e2703fa43f6bcfc6",
+      "source_member": "20100331001866.xml",
+      "source_member_sha256": "505c7f1a07f3fd97ab05fe7988d668e2bf5869c8b7e3638e04a45a854be5453c",
+      "corp_code": "00138127",
+      "stock_code": "008900",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "10830190881"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "32f1695452c84ef63e1ff9b07efcd0ceeeb377bfd7008ee7b07fe64e64ddf0b5"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001866",
+      "document_sha256": "8f2d18923b1051d6bd93cbb5726a86fc3c415597bf600f08e2703fa43f6bcfc6",
+      "source_member": "20100331001866.xml",
+      "source_member_sha256": "505c7f1a07f3fd97ab05fe7988d668e2bf5869c8b7e3638e04a45a854be5453c",
+      "corp_code": "00138127",
+      "stock_code": "008900",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "-37132383552"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "4a1e97f0bd096ed49b3ab3a2505771facbba9bcfa1a319e89731c87caff15752"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001866",
+      "document_sha256": "8f2d18923b1051d6bd93cbb5726a86fc3c415597bf600f08e2703fa43f6bcfc6",
+      "source_member": "20100331001866.xml",
+      "source_member_sha256": "505c7f1a07f3fd97ab05fe7988d668e2bf5869c8b7e3638e04a45a854be5453c",
+      "corp_code": "00138127",
+      "stock_code": "008900",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "4432977059"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "ec3df80bc5ee0e2235fb122d77e1c884d319bfebca06ee15a0aa84e9de660c5c"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001878",
+      "document_sha256": "13bb510d363081d61e5612e085fc6d294539fd03c0fd27754297382def35fabc",
+      "source_member": "20100331001878.xml",
+      "source_member_sha256": "bb39658adb48c469496fcabb18259d943c1af53c677a0d29c11e10ed7b5572be",
+      "corp_code": "00158149",
+      "stock_code": "002960",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "72733421020"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "6ca48ac942ad6d4e9dc430e6d6a83adb694dec6531b7523a843b9c517dff3a5b"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001878",
+      "document_sha256": "13bb510d363081d61e5612e085fc6d294539fd03c0fd27754297382def35fabc",
+      "source_member": "20100331001878.xml",
+      "source_member_sha256": "bb39658adb48c469496fcabb18259d943c1af53c677a0d29c11e10ed7b5572be",
+      "corp_code": "00158149",
+      "stock_code": "002960",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "221030682513"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "8c9009d9a8724fab6751c063c31c74943aa33567f87569f0c06bdb9828af8f61"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001878",
+      "document_sha256": "13bb510d363081d61e5612e085fc6d294539fd03c0fd27754297382def35fabc",
+      "source_member": "20100331001878.xml",
+      "source_member_sha256": "bb39658adb48c469496fcabb18259d943c1af53c677a0d29c11e10ed7b5572be",
+      "corp_code": "00158149",
+      "stock_code": "002960",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "31325990110"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "4ba644b41da22bd6a633511122426c7c8432d57da51f1735900e28039d493ca2"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001878",
+      "document_sha256": "13bb510d363081d61e5612e085fc6d294539fd03c0fd27754297382def35fabc",
+      "source_member": "20100331001878.xml",
+      "source_member_sha256": "bb39658adb48c469496fcabb18259d943c1af53c677a0d29c11e10ed7b5572be",
+      "corp_code": "00158149",
+      "stock_code": "002960",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "32059271678"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "2acfa62cc16140cba24b0ad3781328f119c49d67170bce23186bc2b88a908ed8"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001888",
+      "document_sha256": "5d31de6e52a3490750f3a958d706a220983cffc1d62c6167a20a87547b28a844",
+      "source_member": "20100331001888.xml",
+      "source_member_sha256": "3a6f03a33af01a3f37c026f63b07a0ab34e0280c603cae3312db8da5abb1cbb3",
+      "corp_code": "00361725",
+      "stock_code": "066270",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "214933638464"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "93f29b053b00d8b1dc2ced93118f65ca5ae22f32c2f646c53a00f40e6fc0ad76"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001888",
+      "document_sha256": "5d31de6e52a3490750f3a958d706a220983cffc1d62c6167a20a87547b28a844",
+      "source_member": "20100331001888.xml",
+      "source_member_sha256": "3a6f03a33af01a3f37c026f63b07a0ab34e0280c603cae3312db8da5abb1cbb3",
+      "corp_code": "00361725",
+      "stock_code": "066270",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "200095504250"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "eceb13ae436734eef2d7d5da986bf19cab8a04c090594c0d76639e1224c9e4bb"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001888",
+      "document_sha256": "5d31de6e52a3490750f3a958d706a220983cffc1d62c6167a20a87547b28a844",
+      "source_member": "20100331001888.xml",
+      "source_member_sha256": "3a6f03a33af01a3f37c026f63b07a0ab34e0280c603cae3312db8da5abb1cbb3",
+      "corp_code": "00361725",
+      "stock_code": "066270",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "2359444272"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "aafe8b5e45a7cd5af515d300eba0c74445043b831e954cbcfd9f42ff293a72a0"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001888",
+      "document_sha256": "5d31de6e52a3490750f3a958d706a220983cffc1d62c6167a20a87547b28a844",
+      "source_member": "20100331001888.xml",
+      "source_member_sha256": "3a6f03a33af01a3f37c026f63b07a0ab34e0280c603cae3312db8da5abb1cbb3",
+      "corp_code": "00361725",
+      "stock_code": "066270",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "30735693662"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "2ce9af260fcb18e4d2f14767194dbae675b4086bf3b003e4b72af5d55bbac543"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001893",
+      "document_sha256": "cdddcec73277eb39d06d9368de03623d1f1316727fbe6fa939700cbae6f31f07",
+      "source_member": "20100331001893.xml",
+      "source_member_sha256": "4608b6034b446e55d896e0208b2f6459c148005deba68dadafad41d0101d9548",
+      "corp_code": "00398808",
+      "stock_code": "068930",
+      "metric": "equity",
+      "scope": "OFS",
+      "statement": "BS",
+      "period_start": "",
+      "period_end": "2009-12-31",
+      "measurement_basis": "instant",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "23766662854"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "05cb13fa0c91c67484b42dba99f4bac558f291c7f260a023a4c51223697636a8"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001893",
+      "document_sha256": "cdddcec73277eb39d06d9368de03623d1f1316727fbe6fa939700cbae6f31f07",
+      "source_member": "20100331001893.xml",
+      "source_member_sha256": "4608b6034b446e55d896e0208b2f6459c148005deba68dadafad41d0101d9548",
+      "corp_code": "00398808",
+      "stock_code": "068930",
+      "metric": "revenue",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "33400784023"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "b6110e0c2671993fab43e7f398152f72fc8ffaac58cff49dfd3e60373c724ccf"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001893",
+      "document_sha256": "cdddcec73277eb39d06d9368de03623d1f1316727fbe6fa939700cbae6f31f07",
+      "source_member": "20100331001893.xml",
+      "source_member_sha256": "4608b6034b446e55d896e0208b2f6459c148005deba68dadafad41d0101d9548",
+      "corp_code": "00398808",
+      "stock_code": "068930",
+      "metric": "net_income",
+      "scope": "OFS",
+      "statement": "IS",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "duration",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "192946419"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "587e3d4c5321e6ef44168f32d1b593d6d60a294294deb1b26086aec1d8e2060d"
+  },
+  {
+    "contract": "financial-record-readiness-v1",
+    "binding": {
+      "rcept_no": "20100331001893",
+      "document_sha256": "cdddcec73277eb39d06d9368de03623d1f1316727fbe6fa939700cbae6f31f07",
+      "source_member": "20100331001893.xml",
+      "source_member_sha256": "4608b6034b446e55d896e0208b2f6459c148005deba68dadafad41d0101d9548",
+      "corp_code": "00398808",
+      "stock_code": "068930",
+      "metric": "ocf",
+      "scope": "OFS",
+      "statement": "CF",
+      "period_start": "2009-01-01",
+      "period_end": "2009-12-31",
+      "measurement_basis": "cumulative",
+      "unit": "원",
+      "unit_multiplier": "1",
+      "amount_krw": "2611619596"
+    },
+    "signal_date": "2010-04-30",
+    "dimensions": {
+      "financial_accuracy": "PASS",
+      "publication": "UNVERIFIED",
+      "version_relationship": "UNVERIFIED",
+      "historical_security_mapping": "UNVERIFIED",
+      "signal_availability": "UNVERIFIED"
+    },
+    "usable_from_close": null,
+    "exact_publication_time": "UNVERIFIED",
+    "research_record_ready": false,
+    "investment_approved": false,
+    "operating_gate_unchanged": true,
+    "blockers": [
+      "publication",
+      "version_relationship",
+      "historical_security_mapping",
+      "signal_availability"
+    ],
+    "evidence_fingerprint": "6e9c8fd417159ea60658adc320331c327fbc87816a9ac7c2b099c64ef8f143d3"
+  }
+]
