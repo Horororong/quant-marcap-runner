@@ -1,0 +1,108 @@
+{
+  "repository": "Horororong/quant-marcap-runner",
+  "branch": "fix/native-source-boundaries-20261021",
+  "base_full_sha": "cc817d6d030e1980bb6e159a3c0efa52ab23611d",
+  "final_code_full_sha": "ff195aa31db153f8fd042ad170a937150c092df4",
+  "driver_sha": "2bdbaff396c65e08cf5471fd32cbeca5ccd5c401",
+  "commits": [
+    "3ea24a603c60727f86d02b9030885f7d94f546a8",
+    "ff195aa31db153f8fd042ad170a937150c092df4"
+  ],
+  "file_count": 6,
+  "total_bytes": 32560,
+  "files": [
+    {
+      "path": "docs/research/source-core-ci-migration-20261024/REPORT.md",
+      "bytes": 4985,
+      "sha256": "266fb2c766810cb6a11f3535e789995c5e8f1d0ce8b9d9944e270bfdef6ca425"
+    },
+    {
+      "path": "docs/research/source-core-ci-migration-20261024/evidence/BASELINE_CC817_FAILURE.log",
+      "bytes": 609,
+      "sha256": "6f778d1f03c7567f77f28778313952acfb1337a37744959fd3b10120227e9343"
+    },
+    {
+      "path": "docs/research/source-core-ci-migration-20261024/evidence/LOCAL_VALIDATION.json",
+      "bytes": 3941,
+      "sha256": "f6970111b53bb249e3b4aac6547f5e86fa4f86c55e20a5bdff3a45033f34c21c"
+    },
+    {
+      "path": "scripts/check_source_core_increment.py",
+      "bytes": 8022,
+      "sha256": "db19a729b1b3ee0ee54801f8b2ee75024db0cc0a4977df111d4dd40433706410"
+    },
+    {
+      "path": "scripts/test_source_core_owner_migration.py",
+      "bytes": 5508,
+      "sha256": "6ef5ff7949ca1375a05503d1b9bf107cd1cfe48f7f8954a4b5594bd8cb2e2202"
+    },
+    {
+      "path": "tests/test_native_source_boundary_repairs.py",
+      "bytes": 9495,
+      "sha256": "4151d8865e2e686d015c0eb9fc0c98cff338d3476d5465875673c34bf2a52348"
+    }
+  ],
+  "file_versions": [
+    {
+      "commit": "3ea24a603c60727f86d02b9030885f7d94f546a8",
+      "path": "docs/research/source-core-ci-migration-20261024/REPORT.md",
+      "bytes": 2797,
+      "sha256": "e6bc20adfa5cf0d28eb0ee8bc4cca1760566fda08fb84737ff091b3c969f2b3b"
+    },
+    {
+      "commit": "3ea24a603c60727f86d02b9030885f7d94f546a8",
+      "path": "scripts/check_source_core_increment.py",
+      "bytes": 4269,
+      "sha256": "9a223583749518eb6173066d0e460bccc1a48d060e3832968db470fc79c90716"
+    },
+    {
+      "commit": "3ea24a603c60727f86d02b9030885f7d94f546a8",
+      "path": "scripts/test_source_core_owner_migration.py",
+      "bytes": 2036,
+      "sha256": "e08758f95126247e95e68aefc33a4b31607720080f1b6da780c5c89350d62692"
+    },
+    {
+      "commit": "ff195aa31db153f8fd042ad170a937150c092df4",
+      "path": "docs/research/source-core-ci-migration-20261024/REPORT.md",
+      "bytes": 4985,
+      "sha256": "266fb2c766810cb6a11f3535e789995c5e8f1d0ce8b9d9944e270bfdef6ca425"
+    },
+    {
+      "commit": "ff195aa31db153f8fd042ad170a937150c092df4",
+      "path": "docs/research/source-core-ci-migration-20261024/evidence/BASELINE_CC817_FAILURE.log",
+      "bytes": 609,
+      "sha256": "6f778d1f03c7567f77f28778313952acfb1337a37744959fd3b10120227e9343"
+    },
+    {
+      "commit": "ff195aa31db153f8fd042ad170a937150c092df4",
+      "path": "docs/research/source-core-ci-migration-20261024/evidence/LOCAL_VALIDATION.json",
+      "bytes": 3941,
+      "sha256": "f6970111b53bb249e3b4aac6547f5e86fa4f86c55e20a5bdff3a45033f34c21c"
+    },
+    {
+      "commit": "ff195aa31db153f8fd042ad170a937150c092df4",
+      "path": "scripts/check_source_core_increment.py",
+      "bytes": 8022,
+      "sha256": "db19a729b1b3ee0ee54801f8b2ee75024db0cc0a4977df111d4dd40433706410"
+    },
+    {
+      "commit": "ff195aa31db153f8fd042ad170a937150c092df4",
+      "path": "scripts/test_source_core_owner_migration.py",
+      "bytes": 5508,
+      "sha256": "6ef5ff7949ca1375a05503d1b9bf107cd1cfe48f7f8954a4b5594bd8cb2e2202"
+    },
+    {
+      "commit": "ff195aa31db153f8fd042ad170a937150c092df4",
+      "path": "tests/test_native_source_boundary_repairs.py",
+      "bytes": 9495,
+      "sha256": "4151d8865e2e686d015c0eb9fc0c98cff338d3476d5465875673c34bf2a52348"
+    }
+  ],
+  "secret_hits": 0,
+  "exclusions": [],
+  "approval": "Explicit prepared3-file repair plus directly necessary same9.3-hash/migration CI repair code/tests/evidence; no reapproval by changed count/SHA",
+  "main_changed": false,
+  "new_raw_sources_published": false,
+  "unrelated0f7f_audit_published": false,
+  "force": false
+}

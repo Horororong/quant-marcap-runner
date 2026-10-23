@@ -75,3 +75,26 @@ boundary test family through unittest's load_tests hook, so the unchanged driver
 runs the original118 cases plus15 additional cases=133. The previous arbitrary
 current-hash direct-call test was tightened to reject an unbound replacement;
 no existing118 test was removed or weakened.
+
+## Actual remote result for final repair code
+
+Final validated code **ff195aa31db153f8fd042ad170a937150c092df4** published
+fast-forward after3ea, six net CI-issue paths/32,560 bytes, no secret hits.
+All remote file SHA256 and the full Git tree matched. No0f7f audit, new source
+bytes, main merge, financial publication or PIT relaxation was included.
+
+[Fixed-kit CI40034805026](https://github.com/Horororong/quant-marcap-runner/actions/runs/40034805026)
+**SUCCESS**, created2026-10-23T22:37:26Z/completed22:38:51Z. Unchanged separate
+driver2bdbaff396c65e08cf5471fd32cbeca5ccd5c401; workflow dispatch input and
+mandatory exact-target assertion bind checkout toff195... . Both source-core and
+subsequent source-reference/migration/SBM steps succeeded. The selected native
+family includes original118 cases plus15 tamper/migration cases=133; source-core
+also runs11 identity/extension cases, source80/canonical80/identity40, actualSBM15
+source controls/core4 previews,160 financial as-of field/signal checks and the
+generated contract check. Historical2277+273 preservation evidence is pinned and
+validated; this is not a new180-document parser replay. All non-admissions stay
+blocked; these tests grant no new PIT certification. No Internetpip or DART calls.
+
+This result/evidence-only append may have a later Git SHA thanff195... . It is
+not another code change or another CI run; the exact tested code SHA remains
+ff195... . The prior failedcc817 run is retained as historical failure evidence.

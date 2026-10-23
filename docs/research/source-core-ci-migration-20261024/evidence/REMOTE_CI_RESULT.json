@@ -1,0 +1,129 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "validated_code_sha": "ff195aa31db153f8fd042ad170a937150c092df4",
+  "driver_sha": "2bdbaff396c65e08cf5471fd32cbeca5ccd5c401",
+  "suite": "source_core",
+  "run": {
+    "id": 40034805026,
+    "html_url": "https://github.com/Horororong/quant-marcap-runner/actions/runs/40034805026",
+    "head_sha": "2bdbaff396c65e08cf5471fd32cbeca5ccd5c401",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-10-23T22:37:26Z",
+    "updated_at": "2026-10-23T22:38:51Z"
+  },
+  "job_steps": [
+    {
+      "name": "pinned-kit-research",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record exact target",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Official pinned kit only; no Internet pip",
+          "conclusion": "success"
+        },
+        {
+          "name": "Language and saved-result provenance contracts",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Real browser, common engine, CURRENT, independent books",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Named CURRENT comparison guards and browser reopen",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "PIT boundaries and partial-year period contracts",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Real existing-NAV analysis and changed-period engine execution",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Original frozen inputs and130 strict files",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Bounded coordinator and real SIGKILL recovery tests",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Readiness guards; real preflight and known-event blocking",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Native parser approval, protection boundaries and real interruption recovery",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Real trial artifact and prerequisite verification; no DART requests",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Supplemental budget and original protected collector regression",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "New source core fields and historical identity; no source requests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Source-reference parser migration and bounded real SBM case",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "test_scope": {
+    "original_selected_cases": 118,
+    "additional_owner_migration_tamper_cases": 15,
+    "total_selected_cases": 133,
+    "identity_and_extension_cases": 11,
+    "source_core_fields": 80,
+    "canonical_preview_roundtrips": 80,
+    "identity_signals": 40,
+    "actual_SBM_source_reviewed_fields": 15,
+    "SBM_core_roundtrips": 4,
+    "financial_asof_field_signal_cases": 160,
+    "generated_contract_check": "PASS",
+    "historical_candidate_preservation": "Pinned2277+273 evidence checked, not a fresh180-document parser replay"
+  },
+  "Internet_pip": false,
+  "DART_HTTP": 0,
+  "new_PIT_certification": 0,
+  "financial_publication": "HOLD"
+}
