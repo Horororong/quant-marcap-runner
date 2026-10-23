@@ -1,6 +1,6 @@
 # 재개 순서 — RESEARCH_ONLY
 
-1. 환경설정의GH_BACKUP_TOKEN을유효한토큰으로교체해야v12배송을계속할수있다. 값은채팅/로그/Git에넣지않는다. 기존정확ZIP승인은충족했으므로다시승인을묻지않는다. 공개repo Contents read/write와만료를확인한다. 교체후에만/workspace/quant-legacy-resolution-20261023/deliver_v12.py를고정Python-I로재개한다. release생성기록이있으면같은새release만이어간다. 공개전송범위는정확v12+기존보고manifest/검증자료만이며CI색인이나추가연구commit을push하지않는다.
+1. 환경설정의GH_BACKUP_TOKEN을유효한토큰으로교체해야v12배송을계속할수있다. 값은채팅/로그/Git에넣지않는다. 기존정확ZIP승인은충족했으므로다시승인을묻지않는다. 공개repo Contents read/write와만료를확인한다. 교체후에만docs/research/legacy-resolution-20261023/tools/deliver_approved_v12.py를고정Python-I로재개한다. release생성기록이있으면같은새release만이어간다. 공개전송범위는정확v12+기존보고manifest/검증자료만이며CI색인이나추가연구commit을push하지않는다.
 
 2. 오늘10/23KST수집은이미실제완료돼gate재조회/dispatch하지않는다.10/24다음창부터main의livegate를한번확인하고승인된41중21을실행할수있다.그다음허용day20. 예산2실행/82HTTP/각600초/일일1회/만료10/25KST23:59:59,동일예산재승인불필요. 자동실행미설정. checkpoint20100331002063, next20100331002066. 금융HOLD/PIT0/6.
 
