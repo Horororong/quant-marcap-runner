@@ -40,3 +40,38 @@ reuse2bdb... with `target_sha=<repair commit>` and `suite=source_core` after app
 Do not cite the local seven tests as successful remote CI. Do not rerun the old
 failing SHA without a cause correction. Evidence and exact publication/readback
 receipts remain in /workspace/quant-publish-q3-20261024.
+
+## Follow-up expressly authorized on2026-10-24KST
+
+The user authorized both the prepared3-file repair and directly necessary
+follow-up code/tests/evidence for this same CI failure. The earlier pending
+approval statement applies historically; this issue-scoped follow-up does not
+need another approval merely because its file count or SHA changes. It does not
+publish the later unrelated68-field audit, new raw sources or main changes.
+
+The old native module hash protects statement-boundary, current-period, scope,
+unit/sign and extraction behavior. The old approval-config hash protects its
+explicit parser/source authorization and all finite-operation limits. They
+changed because the independently reviewed9.4 parser recognizes the exact
+attached-audit-note reference without terminating SBM's primary statement. The
+old9.3 pins and approved fixture remain unchanged. No general acceptance of
+changed hashes was introduced.
+
+Additional protection:19 exact file SHA256 anchors are taken from the already
+approved immutable cc817 commit, including historical owner pins/fixtures, the
+before/after module/config relationship, source-transfer manifest, source80
+financial/identity reference bytes, old audit manifests and the9.4 migration,
+replay and independent controls. Mutable proof plus a simultaneously rewritten
+hash is insufficient. The complete existing migration verifier still runs after
+these byte checks and verifies versions, zero changes/losses, raw-member source
+bindings and config limits. The old owner dictionary cannot be replaced with
+current hashes to bypass this route.
+
+Fifteen boundary cases now include actual parser+config+after-hash rewriting,
+financial controls with a matching rewritten proof hash, source-transfer
+manifest changes, wrong before/after links, missing or contradictory migration
+and historical-pin tampering. These are included in the existing selected native
+boundary test family through unittest's load_tests hook, so the unchanged driver
+runs the original118 cases plus15 additional cases=133. The previous arbitrary
+current-hash direct-call test was tightened to reject an unbound replacement;
+no existing118 test was removed or weakened.

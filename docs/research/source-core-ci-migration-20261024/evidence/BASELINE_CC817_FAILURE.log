@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/quant-parser-repair-20261021/code/scripts/check_source_core_increment.py", line 50, in <module>
+    raw = json.dumps(check(a.root, a.audit_root), indent=2) + '\n'
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/quant-parser-repair-20261021/code/scripts/check_source_core_increment.py", line 37, in check
+    assert all(hashlib.sha256((root / name).read_bytes()).hexdigest() == sha for name, sha in pins.items())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

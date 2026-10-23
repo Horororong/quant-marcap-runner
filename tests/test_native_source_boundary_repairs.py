@@ -157,5 +157,13 @@ class ApprovalBoundary(unittest.TestCase):
         self.assertNotEqual(current['parser_version'], old['parser_version'])
 
 
+# The pinned source_core suite already selects this boundary family. Include
+# owner/migration tamper cases without changing its approved CI driver.
+def load_tests(loader, tests, pattern):
+    from scripts import test_source_core_owner_migration
+    tests.addTests(loader.loadTestsFromModule(test_source_core_owner_migration))
+    return tests
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
