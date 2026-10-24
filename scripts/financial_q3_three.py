@@ -90,7 +90,7 @@ def _run(root,out,approval,public,api,transport,now,begin):
   runs=api.call('/actions/workflows/'+workflow+'/runs?per_page=20')['workflow_runs']
   active.extend(dict(id=r['id'],status=r['status'])for r in runs if str(r['id'])!=os.environ['GITHUB_RUN_ID']and r['status']in {'queued','in_progress','waiting','pending'})
  src.gate(original,supp,sc,active,now)
- old.check_q3_day(api,head,now)
+ old.check_q3_day(api,head,now,q3_mode=True)
  from scripts.financial_limited_review import verify_approval
  verify_approval(root,original)
  run_id=os.environ['GITHUB_RUN_ID'];out.mkdir(parents=True,exist_ok=False)

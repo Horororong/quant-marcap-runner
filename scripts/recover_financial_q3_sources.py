@@ -55,6 +55,9 @@ def recover(manifest,read_blob,output):
   if json.loads((output/(receipt+'-official.json')).read_text())!=official:raise ValueError('Q3_OFFICIAL_SOURCE_BINDING')
   source=json.loads((output/(receipt+'-source.json')).read_text());checked=q.validate_archive((output/archive['archive']).read_bytes(),target)
   if source['target']!=target or source['official']!=official or any(source['source'].get(k)!=checked[k]for k in ['archive_sha256','members','ZIP_CRC']):raise ValueError('Q3_ORIGINAL_MEMBER_BINDING')
+  provenance=source.get('request_provenance')
+  if provenance and(provenance.get('source_url')!='https://opendart.fss.or.kr/api/document.xml'or provenance.get('params')!=dict(rcept_no=receipt)):raise ValueError('Q3_REQUEST_PROVENANCE_MISMATCH')
+  archive['request_provenance']=provenance or dict(source_url='https://opendart.fss.or.kr/api/document.xml',params=dict(rcept_no=receipt),collected_at_utc=None,collection_time_status='UNRECORDED_IN_OLDER_PACKET')
  report=dict(classification='RESEARCH_ONLY',DART_HTTP=0,source_packs=packs,unique_files=len(seen),repeated_identical_metadata_files_deduplicated=duplicates,raw_originals=len(archives),archives=archives,new_candidates=0,new_semantic_PASS=0,new_PIT=0,new_engine_eligible=0,financial_publication='HOLD',incomplete_receipts=[r for r in targets if r not in {a['receipt']for a in archives}])
  (output/'RECOVERY_REPORT.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');return report
 

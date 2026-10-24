@@ -165,10 +165,14 @@ class GitHub:
                 elif self.content(p,commit)!=b:raise ValueError('POST_COMMIT_READBACK_FAILURE')
             return commit
         raise ValueError('CONCURRENT_MAIN_CHANGED_TWICE')
-def check_q3_day(api,head,now):
+def check_q3_day(api,head,now,q3_mode=False):
     """All approved collection modes share the Q3 lease/day, without ledger reset."""
     state=api.content(Path('data/status/dart_q3_three_v1.json'),head)
-    if state is None:return
+    if state is None:
+        if not q3_mode:
+            approval=api.content(Path('config/financial_q3_three_v1.json'),head)
+            if approval is not None and json.loads(approval).get('approval_id')=='q3-three-company-20261024':raise ValueError('Q3_PRIORITY_BEFORE_FY_NO_BUDGET_CONSUMED')
+        return
     q=json.loads(state)
     if q.get('contract')!='q3-fixed-source-v1' or q.get('approval_id')!='q3-three-company-20261024':raise ValueError('Q3_LEDGER_CONTRACT_CHANGED')
     if q.get('executions_used')!=1 or q.get('HTTP_reserved')!=12 or not 0<=q.get('HTTP_attempts',-1)<=12:raise ValueError('Q3_LEDGER_BUDGET_CHANGED')
