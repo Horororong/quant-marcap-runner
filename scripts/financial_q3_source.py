@@ -61,8 +61,8 @@ def gate(original, supp, cfg, active, now):
         raise ValueError('FY_CHECKPOINT_PREFIX')
     if original['last_checkpoint'] != (complete[-1] if complete else '20100331002063') or any((r not in original['completed_receipts'] for r in complete)):
         raise ValueError('FY_FINAL_CHECKPOINT')
-    if len(complete) < 41 and now <= datetime.datetime.fromisoformat(cfg['expires_at_utc']):
-        raise ValueError('FY_APPROVED_WINDOW_PRIORITY')
+    # Owner's latest instruction prioritizes Q3 at the next shared daily window.
+    # Do not change the FY expiry, budget, histories or shared daily/failure gates.
     if len(complete) == 41 and (supp['phase'] != 'COMPLETE' or len(supp['attempts']) != 2):
         raise ValueError('FY_COMPLETION_STATE')
     if any((r.get('status') != 'COMPLETE' for r in supp['attempts'])):
@@ -95,15 +95,17 @@ class Budget:
             raise ValueError('TIME_BUDGET_CHECKPOINT_SAVED')
         if endpoint not in {'list.json', 'document.xml'}:
             raise ValueError('UNAPPROVED_ENDPOINT')
+        if any(k.lower() in {'crtfc_key','api_key','token','authorization'} for k in params):
+            raise ValueError('AUTH_PARAMETER_MUST_NOT_BE_PERSISTED')
         self.state['HTTP_attempts'] += 1
-        event = dict(number=self.state['HTTP_attempts'], label=label, endpoint=endpoint, params=params, status='ATTEMPT_STARTED')
+        event = dict(number=self.state['HTTP_attempts'], label=label, endpoint=endpoint, source_url='https://opendart.fss.or.kr/api/'+endpoint, params=params, intent_recorded_at_utc=datetime.datetime.now(UTC).isoformat(), status='ATTEMPT_STARTED')
         self.state['requests'].append(event)
         self.persist()
         try:
             if self.remaining() < self.reserve_seconds:
                 raise HTTPFailure('TIME_BUDGET_BEFORE_WIRE_INTENT_CHARGED')
             status, body = transport(endpoint, params, key, min(45, self.remaining() - 10))
-            event.update(HTTP_status=status, response_bytes=len(body))
+            event.update(HTTP_status=status, response_bytes=len(body),response_received_at_utc=datetime.datetime.now(UTC).isoformat())
             if key.encode() in body:
                 raise HTTPFailure('CREDENTIAL_ECHO_REJECTED')
             if status != 200:
@@ -198,17 +200,24 @@ def collect(root, budget, transport, key, cache, after_raw=None):
             cache_file = cache / (target['corp'] + '-list' + str(page) + '.json')
             proof_file = cache_file.with_suffix('.proof.json')
             body = None
+            cached_proof = None
             if cache_file.is_file() and proof_file.is_file():
                 proof = json.loads(proof_file.read_text())
                 cached = cache_file.read_bytes()
                 if proof.get('params') == params and proof.get('sha256') == sha(cached) and (proof.get('endpoint') == 'list.json'):
                     body = cached
+                    cached_proof = proof
             if body is None:
                 body = budget.request(target['corp'] + '-list' + str(page), 'list.json', params, key, transport)
-                f = root / 'metadata' / cache_file.name
-                f.parent.mkdir(exist_ok=True)
-                f.write_bytes(body)
-                atomic(f.with_suffix('.proof.json'), dict(params=params, endpoint='list.json', sha256=sha(body), observed_at_utc=datetime.datetime.now(UTC).isoformat()))
+                collected_at = budget.state['requests'][-1]['response_received_at_utc']
+            else:
+                collected_at = cached_proof.get('observed_at_utc')
+            # Reused metadata must travel with reused originals too. A cache
+            # hit is not a new HTTP observation or a newly known collection time.
+            f = root / 'metadata' / cache_file.name
+            f.parent.mkdir(exist_ok=True)
+            f.write_bytes(body)
+            atomic(f.with_suffix('.proof.json'),dict(params=params,endpoint='list.json',source_url='https://opendart.fss.or.kr/api/list.json',sha256=sha(body),observed_at_utc=collected_at,cache_reused=cached_proof is not None,copied_at_utc=datetime.datetime.now(UTC).isoformat()))
             d = validate_page(body, target, page)
             pages.append(d)
             if page >= int(d['total_page']):
@@ -220,14 +229,21 @@ def collect(root, budget, transport, key, cache, after_raw=None):
         cache_file = cache / (target['receipt'] + '.zip')
         proof_file = cache_file.with_suffix('.proof.json')
         blob = None
+        cached_provenance = None
         if cache_file.is_file() and proof_file.is_file():
             proof = json.loads(proof_file.read_text())
             cached = cache_file.read_bytes()
             if proof.get('receipt') == target['receipt'] and proof.get('sha256') == sha(cached):
                 blob = cached
+                cached_provenance = proof.get('request_provenance')
         downloaded = blob is None
         if downloaded:
             blob = budget.request(target['receipt'], 'document.xml', dict(rcept_no=target['receipt']), key, transport)
+            event=budget.state['requests'][-1]
+            assert event['endpoint']=='document.xml'and event['params']==dict(rcept_no=target['receipt'])
+            provenance=dict(source_url=event['source_url'],params=event['params'],intent_recorded_at_utc=event['intent_recorded_at_utc'],collected_at_utc=event['response_received_at_utc'],collection_time_status='RESPONSE_RECEIVED_UTC',cache_reused=False)
+        else:
+            provenance=cached_provenance or dict(source_url='https://opendart.fss.or.kr/api/document.xml',params=dict(rcept_no=target['receipt']),collected_at_utc=None,collection_time_status='UNKNOWN_FOR_LEGACY_CACHE',cache_reused=True)
         check = validate_archive(blob, target)
         hints_path = cache.parent / 'LEGACY_SOURCE_HINTS.json'
         hints = json.loads(hints_path.read_text()).get(target['receipt'], {}) if hints_path.is_file() else {}
@@ -239,7 +255,7 @@ def collect(root, budget, transport, key, cache, after_raw=None):
             raise ValueError('NEW_OUTPUT_COLLISION')
         f.write_bytes(blob)
         proof = root / (target['receipt'] + '-source.json')
-        atomic(proof, dict(target=target, downloaded=downloaded, source=check, official=official))
+        atomic(proof, dict(target=target, downloaded=downloaded, source=check, official=official,request_provenance=provenance))
         budget.state['completed_receipts'].append(target['receipt'])
         budget.state['new_raw_documents'] += int(downloaded)
         atomic(budget.path, budget.state)

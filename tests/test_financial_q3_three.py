@@ -85,10 +85,10 @@ class Q3(unittest.TestCase):
    with self.assertRaisesRegex(ValueError,'SCOPE_OR_LIMIT'):m.validate(n,m.initial(n),m.APPROVAL,m.PUBLIC)
   n=copy.deepcopy(c);n['targets'].reverse()
   with self.assertRaises(ValueError):m.validate(n,m.initial(n),m.APPROVAL,m.PUBLIC)
- def test_today_and_FY_priority_are_shared_not_reset_by_runtime(self):
+ def test_today_shared_and_latest_Q3_priority_does_not_reset_FY_budget(self):
   o,s,c=original_states()
   with self.assertRaisesRegex(ValueError,'ONCE_PER_KST_DAY'):q.gate(o,s,c,[],datetime(2026,10,24,tzinfo=q.KST))
-  with self.assertRaisesRegex(ValueError,'FY_APPROVED_WINDOW_PRIORITY'):q.gate(o,s,c,[],datetime(2026,10,25,tzinfo=q.KST))
+  before=copy.deepcopy((o,s,c));self.assertEqual(q.gate(o,s,c,[],datetime(2026,10,25,tzinfo=q.KST)),'OPEN');self.assertEqual((o,s,c),before)
   self.assertEqual(q.gate(o,s,c,[],datetime(2026,10,26,tzinfo=q.KST)),'OPEN');self.assertEqual(len(s['attempts']),1)
  def test_changed_history_and_failure_hold_are_not_reset(self):
   o,s,c=original_states();o['runs'][0]['day_kst']='2000-01-01'
@@ -149,6 +149,14 @@ class Q3(unittest.TestCase):
    p=cache/(t['corp']+'-list1.json');p.write_text(json.dumps(page(t)));q.atomic(p.with_suffix('.proof.json'),dict(params=dict(q.LIST_BASE,corp_code=t['corp'],page_no='1'),endpoint='list.json',sha256=q.sha(p.read_bytes())));p=cache/(t['receipt']+'.zip');p.write_bytes(archive(t));q.atomic(p.with_suffix('.proof.json'),dict(receipt=t['receipt'],sha256=q.sha(p.read_bytes())))
   q.collect(out,q.Budget(state,self.home/'state.json'),lambda*x:self.fail('Cached source fetched again'),'fixture',cache)
   self.assertEqual(state['HTTP_attempts'],0);self.assertEqual(state['new_raw_documents'],0)
+  for t in q.TARGETS:
+   self.assertTrue((out/'metadata'/(t['corp']+'-list1.json')).is_file())
+   proof=json.loads((out/(t['receipt']+'-source.json')).read_text());self.assertIsNone(proof['request_provenance']['collected_at_utc'])
+  manifest=dict(approval_id=m.APPROVAL,raw_data_publication_requires=m.PUBLIC,automatic_financial_publication='HOLD',PIT='UNVERIFIED',engine_eligible=False,source_packs={});blobs={}
+  for t in q.TARGETS:
+   packed,proof=m.source_pack(out,t['receipt']);encoded=base64.b64encode(packed)+b'\n';sha=old.git_blob_sha(encoded);blobs[sha]=encoded;manifest['source_packs'][t['receipt']]=dict(proof,blob_sha=sha)
+  recovered=recovery.recover(manifest,lambda sha:blobs[sha],self.home/'cache-reopened')
+  self.assertEqual(recovered['raw_originals'],3);self.assertTrue(all(a['request_provenance']['collected_at_utc']is None for a in recovered['archives']))
  def test_nonmain_and_GitHub_rerun_never_reach_API(self):
   for change in [dict(GITHUB_REF='refs/heads/other'),dict(GITHUB_RUN_ATTEMPT='2')]:
    env=dict(self.env,**change)
@@ -200,5 +208,43 @@ with patch('scripts.financial_limited_review.verify_approval'):t.m.run_q3(r,h/"o
   self.execute();manifest=json.loads(self.api.content(m.BASE/'runs'/self.env['GITHUB_RUN_ID']/'manifest.json','head'));out=self.home/'original';out.mkdir();p=out/'baseline.txt';p.write_text('unchanged')
   with self.assertRaises(FileExistsError):recovery.recover(manifest,lambda sha:base64.b64decode(self.api.read()['blobs'][sha]),out)
   self.assertEqual(p.read_text(),'unchanged')
+ def test_requested_Q3_first_on25_keeps_FY_expiry_and_blocks_same_day(self):
+  self.now=datetime(2026,10,25,tzinfo=q.KST);original=self.api.content(old.STATE,'head');supp=self.api.content(m.SUPP_STATE,'head')
+  self.assertEqual(self.execute(),0)
+  self.assertEqual(original,self.api.content(old.STATE,'head'));self.assertEqual(supp,self.api.content(m.SUPP_STATE,'head'))
+  with self.assertRaisesRegex(ValueError,'ONCE_PER_KST_DAY'):old.check_q3_day(self.api,'head',datetime(2026,10,25,22,tzinfo=q.KST))
+  from scripts import financial_supplemental_resume as fy
+  o,s,c=original_states();operating=json.loads((ROOT/old.CONFIG).read_text())
+  with self.assertRaisesRegex(ValueError,'WINDOW_EXPIRED'):fy.check(c,s,o,operating,datetime(2026,10,26,tzinfo=q.KST),20,'finite41-20261023')
+ def test_FY_cannot_take_next_day_before_pending_Q3(self):
+  data=self.api.read();data['files'][str(m.CONFIG)]=base64.b64encode(old.raw(m.expected_config())).decode();self.api.write(data)
+  before=self.api.read()
+  with self.assertRaisesRegex(ValueError,'Q3_PRIORITY_BEFORE_FY'):old.check_q3_day(self.api,'head',datetime(2026,10,25,tzinfo=q.KST))
+  self.assertEqual(before,self.api.read());old.check_q3_day(self.api,'head',datetime(2026,10,25,tzinfo=q.KST),q3_mode=True)
+ def test_request_provenance_has_URL_conditions_time_without_key(self):
+  self.execute();state=json.loads(self.api.content(m.STATE,'head'))
+  for event in state['requests']:
+   self.assertEqual(event['source_url'],'https://opendart.fss.or.kr/api/'+event['endpoint']);self.assertNotIn('crtfc_key',event['params']);self.assertLessEqual(event['intent_recorded_at_utc'],event['response_received_at_utc'])
+  self.assertNotIn(self.env['DART_API_KEY'],json.dumps(state))
+  self.assertNotIn('?',state['requests'][0]['source_url'])
+ def test_authentication_parameters_cannot_be_persisted(self):
+  state=dict(HTTP_attempts=0,requests=[]);b=q.Budget(state,self.home/'budget.json')
+  with self.assertRaisesRegex(ValueError,'AUTH_PARAMETER'):b.request('x','list.json',dict(crtfc_key='offline-only'),'offline-only',lambda*x:self.fail('Unexpected HTTP'))
+  self.assertEqual(state['HTTP_attempts'],0);self.assertFalse((self.home/'budget.json').exists())
+
+ def test_q3_before_25_is_rejected_before_GitHub_or_DART(self):
+  from unittest.mock import Mock
+  api=Mock();self.now=datetime(2026,10,24,23,59,59,tzinfo=q.KST)
+  with self.assertRaisesRegex(ValueError,'WINDOW_SCHEDULE_NOT_OPEN'):self.execute(api=api)
+  api.head.assert_not_called()
+ def test_actual_Q3_on25_then_FY_on26_keeps_original_ledger(self):
+  from scripts import financial_supplemental_resume as fy
+  self.now=datetime(2026,10,25,tzinfo=q.KST);self.assertEqual(self.execute(),0)
+  now=datetime(2026,10,26,tzinfo=q.KST);old.check_q3_day(self.api,'head',now)
+  o,s,c=original_states();s['contract']=c['contract'];before=copy.deepcopy((o,s,c));w=json.loads((ROOT/fy.WINDOW).read_text())
+  selected=fy.check(c,s,o,json.loads((ROOT/old.CONFIG).read_text()),now,20,fy.APPROVAL,w)
+  self.assertEqual(selected,c['receipts'][21:]);self.assertEqual((o,s,c),before)
+  state=json.loads(self.api.content(m.STATE,'head'));self.assertEqual(state['executions_used'],1);self.assertEqual(state['HTTP_reserved'],12)
+  self.assertEqual(state['window_approval'],w)
 
 if __name__=='__main__':unittest.main(verbosity=2)
