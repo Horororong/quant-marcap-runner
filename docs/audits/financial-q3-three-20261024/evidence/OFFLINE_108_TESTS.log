@@ -1,0 +1,162 @@
+OFFLINE SYNTHETIC FIXTURES ONLY. No real DART requests/documents/PIT verification in this log.
+test_13th_HTTP_and_budget_deadline_are_blocked (test_financial_q3_three.Q3.test_13th_HTTP_and_budget_deadline_are_blocked) ... ok
+test_actual_SIGKILL_preserves_one_lease_completed_source_and_offline_reopen (test_financial_q3_three.Q3.test_actual_SIGKILL_preserves_one_lease_completed_source_and_offline_reopen) ... ok
+test_changed_history_and_failure_hold_are_not_reset (test_financial_q3_three.Q3.test_changed_history_and_failure_hold_are_not_reset) ... ok
+test_completed_Q3_blocks_same_KST_day_for_FY (test_financial_q3_three.Q3.test_completed_Q3_blocks_same_KST_day_for_FY) ... ok
+test_compressed_member_with_key_is_refused_before_publication (test_financial_q3_three.Q3.test_compressed_member_with_key_is_refused_before_publication) ... ok
+test_correction_list_is_evidence_not_PIT_certification (test_financial_q3_three.Q3.test_correction_list_is_evidence_not_PIT_certification) ... ok
+test_existing_Q3_lease_blocks_FY_even_nextday (test_financial_q3_three.Q3.test_existing_Q3_lease_blocks_FY_even_nextday) ... ok
+test_existing_cache_is_reused_with_zero_DART_calls (test_financial_q3_three.Q3.test_existing_cache_is_reused_with_zero_DART_calls) ... ok
+test_extra_state_CAS_guard_checks_before_creating_a_tree (test_financial_q3_three.Q3.test_extra_state_CAS_guard_checks_before_creating_a_tree) ... ok
+test_full_raw_source_durability_uses6HTTP_and_no_financial_promotion (test_financial_q3_three.Q3.test_full_raw_source_durability_uses6HTTP_and_no_financial_promotion) ... ok
+test_intent_is_durable_before_transport_and_401_never_retried (test_financial_q3_three.Q3.test_intent_is_durable_before_transport_and_401_never_retried) ... ok
+test_key_echo_refused_without_source_pack (test_financial_q3_three.Q3.test_key_echo_refused_without_source_pack) ... ok
+test_missing_public_preservation_approval_does_not_lease (test_financial_q3_three.Q3.test_missing_public_preservation_approval_does_not_lease) ... ok
+test_nonmain_and_GitHub_rerun_never_reach_API (test_financial_q3_three.Q3.test_nonmain_and_GitHub_rerun_never_reach_API) ... ok
+test_official_pagination_company_and_duplicates_fail_closed (test_financial_q3_three.Q3.test_official_pagination_company_and_duplicates_fail_closed) ... ok
+test_persistence_failure_never_advances_remote_source_checkpoint (test_financial_q3_three.Q3.test_persistence_failure_never_advances_remote_source_checkpoint) ... ok
+test_readonly_validation_workflow_does_not_inject_DART_secret (test_financial_q3_three.Q3.test_readonly_validation_workflow_does_not_inject_DART_secret) ... ok
+test_recovery_never_overwrites_an_existing_directory (test_financial_q3_three.Q3.test_recovery_never_overwrites_an_existing_directory) ... ok
+test_recovery_refuses_corrupt_compressed_hash (test_financial_q3_three.Q3.test_recovery_refuses_corrupt_compressed_hash) ... ok
+test_second_execution_is_blocked_before_transport (test_financial_q3_three.Q3.test_second_execution_is_blocked_before_transport) ... ok
+test_shared_transport_has_no_redirect_following (test_financial_q3_three.Q3.test_shared_transport_has_no_redirect_following) ... ok
+test_soft_deadline_saves_a_normal_stop_but_does_not_free_execution (test_financial_q3_three.Q3.test_soft_deadline_saves_a_normal_stop_but_does_not_free_execution) ... ok
+test_source_error020_is_preserved_as_reason_not_expired_key (test_financial_q3_three.Q3.test_source_error020_is_preserved_as_reason_not_expired_key) ... ok
+test_today_and_FY_priority_are_shared_not_reset_by_runtime (test_financial_q3_three.Q3.test_today_and_FY_priority_are_shared_not_reset_by_runtime) ... ok
+test_wrong_target_order_or_scope_or_limits_rejected (test_financial_q3_three.Q3.test_wrong_target_order_or_scope_or_limits_rejected) ... ok
+test_already_completed_or_changed_checkpoint_cannot_redownload (test_financial_supplemental_resume.Supplemental.test_already_completed_or_changed_checkpoint_cannot_redownload) ... ok
+test_bad_reservations_or_completed_prefix_rejected (test_financial_supplemental_resume.Supplemental.test_bad_reservations_or_completed_prefix_rejected) ... ok
+test_before_approval_is_rejected_even_if_day_otherwise_qualifies (test_financial_supplemental_resume.Supplemental.test_before_approval_is_rejected_even_if_day_otherwise_qualifies) ... ok
+test_config_rebound_and_fixed_batch_sizes_block (test_financial_supplemental_resume.Supplemental.test_config_rebound_and_fixed_batch_sizes_block) ... ok
+test_coordinator_death_after_lease_retains_budget_and_original_history (test_financial_supplemental_resume.Supplemental.test_coordinator_death_after_lease_retains_budget_and_original_history) ... ok
+test_daily_limit_shared_with_original_and_supplemental (test_financial_supplemental_resume.Supplemental.test_daily_limit_shared_with_original_and_supplemental) ... ok
+test_direct_nonmain_entry_rejected_before_any_api (test_financial_supplemental_resume.Supplemental.test_direct_nonmain_entry_rejected_before_any_api) ... ok
+test_failure_or_running_lease_blocks_automatic_retry (test_financial_supplemental_resume.Supplemental.test_failure_or_running_lease_blocks_automatic_retry) ... ok
+test_finite_new_window_does_not_change_original_expiry (test_financial_supplemental_resume.Supplemental.test_finite_new_window_does_not_change_original_expiry) ... ok
+test_first_exact_prefix_and_original_ledger_not_mutated (test_financial_supplemental_resume.Supplemental.test_first_exact_prefix_and_original_ledger_not_mutated) ... ok
+test_original_history_and_financial_gates_unchanged (test_financial_supplemental_resume.Supplemental.test_original_history_and_financial_gates_unchanged) ... ok
+test_original_three_not_reset_or_supplemental_injected (test_financial_supplemental_resume.Supplemental.test_original_three_not_reset_or_supplemental_injected) ... ok
+test_second_prefix_twenty_and_total_worst_case82 (test_financial_supplemental_resume.Supplemental.test_second_prefix_twenty_and_total_worst_case82) ... ok
+test_short_first_batch_never_skips_remaining_receipts (test_financial_supplemental_resume.Supplemental.test_short_first_batch_never_skips_remaining_receipts) ... ok
+test_strict_order_limits_and_approval_id (test_financial_supplemental_resume.Supplemental.test_strict_order_limits_and_approval_id) ... ok
+test_two_attempt_ceiling_even_when_http_remains (test_financial_supplemental_resume.Supplemental.test_two_attempt_ceiling_even_when_http_remains) ... ok
+test_zero_collection_green_workflow_never_qualifies (test_financial_supplemental_resume.Supplemental.test_zero_collection_green_workflow_never_qualifies) ... ok
+test_api014_is_transport_absence_not_numeric_certification (test_financial_rollout.Queue.test_api014_is_transport_absence_not_numeric_certification) ... ok
+test_cannot_checkpoint_financial_success_without_original (test_financial_rollout.Queue.test_cannot_checkpoint_financial_success_without_original) ... ok
+test_no_over100_or_silent_negative_limit (test_financial_rollout.Queue.test_no_over100_or_silent_negative_limit) ... ok
+test_source_and_quality_versions_are_separate (test_financial_rollout.Queue.test_source_and_quality_versions_are_separate) ... ok
+test_source_sha_conflict_cannot_mark_receipt_complete (test_financial_rollout.Queue.test_source_sha_conflict_cannot_mark_receipt_complete) ... ok
+test_upgrade_never_requeues_old_parser_or_service_quarantine (test_financial_rollout.Queue.test_upgrade_never_requeues_old_parser_or_service_quarantine) ... ok
+test_actual_stdlib_http_path_has_bounded_body_and_status (test_financial_rollout.Transport.test_actual_stdlib_http_path_has_bounded_body_and_status) ... ok
+test_endpoint_redirect_or_plain_http_never_leaks_key (test_financial_rollout.Transport.test_endpoint_redirect_or_plain_http_never_leaks_key) ... ok
+test_progress_whitelist_excludes_secrets_urls_and_response_body (test_financial_rollout.Transport.test_progress_whitelist_excludes_secrets_urls_and_response_body) ... ok
+test_real_opener_dispatch_uses_ssl_context_without_private_hostname_attribute (test_financial_rollout.Transport.test_real_opener_dispatch_uses_ssl_context_without_private_hostname_attribute) ... ok
+test_crashing_worker_is_not_a_document_missing_success (test_financial_rollout.WallBudgets.test_crashing_worker_is_not_a_document_missing_success) ... ok
+test_hung_document_killed_with_pending_receipt_and_no_false_completion (test_financial_rollout.WallBudgets.test_hung_document_killed_with_pending_receipt_and_no_false_completion) ... ok
+test_common_guard_failure_stops_before_checkpoint_or_next_worker (test_financial_limited_resume.Limited.test_common_guard_failure_stops_before_checkpoint_or_next_worker) ... ok
+test_document_reject_then_next_document_complete_without_values (test_financial_limited_resume.Limited.test_document_reject_then_next_document_complete_without_values) ... ok
+test_first_schedule_review_daily_total_and_failure_gates (test_financial_limited_resume.Limited.test_first_schedule_review_daily_total_and_failure_gates) ... ok
+test_kst_midnight_not_utc_midnight (test_financial_limited_resume.Limited.test_kst_midnight_not_utc_midnight) ... ok
+test_publication_schema_never_certifies_a_source_gap (test_financial_limited_resume.Limited.test_publication_schema_never_certifies_a_source_gap) ... ok
+test_changed_selection_or_source_hash_is_hard_failure (test_financial_batch_resume.Resume.test_changed_selection_or_source_hash_is_hard_failure) ... ok
+test_count_pause_resume_skips_durable_without_rewrite (test_financial_batch_resume.Resume.test_count_pause_resume_skips_durable_without_rewrite) ... ok
+test_insufficient_admission_time_yields_before_worker (test_financial_batch_resume.Resume.test_insufficient_admission_time_yields_before_worker) ... ok
+test_quality_checkpoint_corruption_is_not_silently_repaired (test_financial_batch_resume.Resume.test_quality_checkpoint_corruption_is_not_silently_repaired) ... ok
+test_same_day_and_three_attempt_caps_remain_closed (test_financial_batch_resume.Resume.test_same_day_and_three_attempt_caps_remain_closed) ... ok
+test_sigkill_after_raw_source_resumes_without_redownload (test_financial_batch_resume.Resume.test_sigkill_after_raw_source_resumes_without_redownload) ... ok
+test_actual_loader_retains_dataframe_contract (test_dart_corp_code.CorpCodeTests.test_actual_loader_retains_dataframe_contract) ... ok
+test_actual_loader_typed_quota_and_fatal_errors (test_dart_corp_code.CorpCodeTests.test_actual_loader_typed_quota_and_fatal_errors) ... ok
+test_ambiguous_archive_fails (test_dart_corp_code.CorpCodeTests.test_ambiguous_archive_fails) ... ok
+test_current_status_published_before_modern_failure (test_dart_corp_code.CorpCodeTests.test_current_status_published_before_modern_failure) ... {"phase": "legacy_start", "limit": 1}
+{"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": "BATCH_COMPLETE", "completed": 1475}
+{"phase": "modern_decision", "start": true, "reason": "LEGACY_BATCH_COMPLETE", "limit": 1}
+                     mode modern_run_tasks  modern_failed modern_failure_type modern_failure_kind modern_failure_status  modern_failure_attempts  modern_rate_limited  legacy_run_docs legacy_stop_reason                   updated_at_utc
+SUPER_VALUE_FAST_BACKFILL             None           True       CorpCodeError    invalid_response                                              1                 True             1475     BATCH_COMPLETE 2026-10-24T04:53:34.056791+00:00
+ok
+test_generic_exception_details_not_published (test_dart_corp_code.CorpCodeTests.test_generic_exception_details_not_published) ... {"phase": "legacy_start", "limit": 1}
+{"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": "BATCH_COMPLETE", "completed": 1475}
+{"phase": "modern_decision", "start": true, "reason": "LEGACY_BATCH_COMPLETE", "limit": 1}
+                     mode modern_run_tasks  modern_failed modern_failure_type modern_failure_kind modern_failure_status modern_failure_attempts  modern_rate_limited  legacy_run_docs legacy_stop_reason                   updated_at_utc
+SUPER_VALUE_FAST_BACKFILL             None           True          ValueError  modern_phase_error                                          None                False             1475     BATCH_COMPLETE 2026-10-24T04:53:34.068285+00:00
+ok
+test_html_body_is_not_assumed_transient (test_dart_corp_code.CorpCodeTests.test_html_body_is_not_assumed_transient) ... ok
+test_http_quota_and_forbidden_do_not_retry (test_dart_corp_code.CorpCodeTests.test_http_quota_and_forbidden_do_not_retry) ... ok
+test_invalid_mapping_never_becomes_empty_success (test_dart_corp_code.CorpCodeTests.test_invalid_mapping_never_becomes_empty_success) ... ok
+test_no_modern_calls_after_legacy_quota (test_dart_corp_code.CorpCodeTests.test_no_modern_calls_after_legacy_quota) ... {"phase": "legacy_start", "limit": 1}
+{"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": null, "completed": null}
+{"phase": "modern_decision", "start": false, "reason": "LEGACY_RATE_LIMIT", "limit": 1}
+                     mode  modern_run_tasks  modern_skipped modern_phase_decision  legacy_rate_limited                   updated_at_utc
+SUPER_VALUE_FAST_BACKFILL                 0            True     LEGACY_RATE_LIMIT                 True 2026-10-24T04:53:34.076383+00:00
+ok
+test_non_xml_first_member_is_not_chosen (test_dart_corp_code.CorpCodeTests.test_non_xml_first_member_is_not_chosen) ... ok
+test_quota_and_auth_and_maintenance_do_not_retry (test_dart_corp_code.CorpCodeTests.test_quota_and_auth_and_maintenance_do_not_retry) ... ok
+test_recent_loader_uses_same_checked_response_and_keeps_filter (test_dart_corp_code.CorpCodeTests.test_recent_loader_uses_same_checked_response_and_keeps_filter) ... ok
+test_success_path_still_preserves_both_counts (test_dart_corp_code.CorpCodeTests.test_success_path_still_preserves_both_counts) ... {"phase": "legacy_start", "limit": 1}
+{"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": "BATCH_COMPLETE", "completed": 1475}
+{"phase": "modern_decision", "start": true, "reason": "LEGACY_BATCH_COMPLETE", "limit": 1}
+                     mode  modern_run_tasks  legacy_run_docs legacy_stop_reason                   updated_at_utc
+SUPER_VALUE_FAST_BACKFILL              1000             1475     BATCH_COMPLETE 2026-10-24T04:53:34.090409+00:00
+ok
+test_timeout_exhaustion_redacts_transport (test_dart_corp_code.CorpCodeTests.test_timeout_exhaustion_redacts_transport) ... ok
+test_timeout_recovers_with_bounded_attempts (test_dart_corp_code.CorpCodeTests.test_timeout_recovers_with_bounded_attempts) ... ok
+test_transient_http_retry_recovers (test_dart_corp_code.CorpCodeTests.test_transient_http_retry_recovers) ... ok
+test_truncated_zip_and_xml_and_empty_list_fail (test_dart_corp_code.CorpCodeTests.test_truncated_zip_and_xml_and_empty_list_fail) ... ok
+test_unknown_or_deadline_legacy_stop_never_starts_modern (test_dart_corp_code.CorpCodeTests.test_unknown_or_deadline_legacy_stop_never_starts_modern) ... {"phase": "legacy_start", "limit": 1}
+{"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": null, "completed": 2}
+{"phase": "modern_decision", "start": false, "reason": "LEGACY_STOP_UNKNOWN", "limit": 1}
+                     mode  modern_run_tasks  modern_skipped modern_phase_decision  legacy_run_docs                   updated_at_utc
+SUPER_VALUE_FAST_BACKFILL                 0            True   LEGACY_STOP_UNKNOWN                2 2026-10-24T04:53:34.098207+00:00
+{"phase": "legacy_start", "limit": 1}
+{"phase": "legacy_end", "elapsed_seconds": 0.0, "stop_reason": "DEADLINE", "completed": 2}
+{"phase": "modern_decision", "start": false, "reason": "LEGACY_STOP_DEADLINE", "limit": 1}
+                     mode  modern_run_tasks  modern_skipped modern_phase_decision  legacy_run_docs legacy_stop_reason                   updated_at_utc
+SUPER_VALUE_FAST_BACKFILL                 0            True  LEGACY_STOP_DEADLINE                2           DEADLINE 2026-10-24T04:53:34.104968+00:00
+ok
+test_valid_zip (test_dart_corp_code.CorpCodeTests.test_valid_zip) ... ok
+test_append_preserves_all_old_numeric_tokens_and_missing_strings_verbatim (test_legacy_backfill_resume.LegacyResume.test_append_preserves_all_old_numeric_tokens_and_missing_strings_verbatim) ... ok
+test_authentication_failure_stops_without_classifying_source_as_missing (test_legacy_backfill_resume.LegacyResume.test_authentication_failure_stops_without_classifying_source_as_missing) ... {"stage": "http_start", "updated_at_utc": "2026-10-24T04:53:34.126768+00:00", "monotonic": 110865.697906846, "receipt": "20010101000000", "attempt": 1}
+{"stage": "http_received", "updated_at_utc": "2026-10-24T04:53:34.126820+00:00", "monotonic": 110865.697953561, "receipt": "20010101000000", "attempt": 1, "http_status": 200, "bytes": 37}
+{"stage": "api_response", "updated_at_utc": "2026-10-24T04:53:34.126865+00:00", "monotonic": 110865.697998229, "receipt": "20010101000000", "dart_status": "010"}
+ok
+test_checkpoint_survives_interruption_and_resume_skips_durable_receipt (test_legacy_backfill_resume.LegacyResume.test_checkpoint_survives_interruption_and_resume_skips_durable_receipt) ... legacy checkpoint: 1 receipts persisted
+legacy checkpoint: 1 receipts persisted
+legacy checkpoint: 2 receipts persisted
+ok
+test_collection_complete_requires_independent_audit_and_noop_preserves_bytes (test_legacy_backfill_resume.LegacyResume.test_collection_complete_requires_independent_audit_and_noop_preserves_bytes) ... ok
+test_data_publication_failure_never_marks_receipt_complete (test_legacy_backfill_resume.LegacyResume.test_data_publication_failure_never_marks_receipt_complete) ... ok
+test_deadline_and_signal_stop_have_no_new_requests_and_flush_work (test_legacy_backfill_resume.LegacyResume.test_deadline_and_signal_stop_have_no_new_requests_and_flush_work) ... ok
+test_error_diagnostics_never_persist_api_key (test_legacy_backfill_resume.LegacyResume.test_error_diagnostics_never_persist_api_key) ... ok
+test_error_retry_quarantine_does_not_starve_other_receipts (test_legacy_backfill_resume.LegacyResume.test_error_retry_quarantine_does_not_starve_other_receipts) ... legacy checkpoint: 1 receipts persisted
+legacy checkpoint: 1 receipts persisted
+legacy checkpoint: 1 receipts persisted
+ok
+test_index_data_is_published_before_ok_state (test_legacy_backfill_resume.LegacyResume.test_index_data_is_published_before_ok_state) ... ok
+test_index_rate_limit_blocks_following_document_requests (test_legacy_backfill_resume.LegacyResume.test_index_rate_limit_blocks_following_document_requests) ... ok
+test_initial_coverage_without_state_does_not_invent_completed_receipts (test_legacy_backfill_resume.LegacyResume.test_initial_coverage_without_state_does_not_invent_completed_receipts) ... ok
+test_missing_key_does_not_overwrite_progress (test_legacy_backfill_resume.LegacyResume.test_missing_key_does_not_overwrite_progress) ... ok
+test_numeric_parser_change_preserves_transport_only_no_document_state (test_legacy_backfill_resume.LegacyResume.test_numeric_parser_change_preserves_transport_only_no_document_state) ... legacy checkpoint: 1 receipts persisted
+ok
+test_parser_upgrade_requires_review_preserves_all_old_observations (test_legacy_backfill_resume.LegacyResume.test_parser_upgrade_requires_review_preserves_all_old_observations) ... ok
+test_rate_limit_stops_replenishment_and_flushes_completed_work (test_legacy_backfill_resume.LegacyResume.test_rate_limit_stops_replenishment_and_flushes_completed_work) ... ok
+test_real_saved_index_noop_preserves_mapped_queue_and_leading_zero_codes (test_legacy_backfill_resume.LegacyResume.test_real_saved_index_noop_preserves_mapped_queue_and_leading_zero_codes) ... ok
+test_request_budget_counts_every_attempt_and_deferred_is_not_source_gap (test_legacy_backfill_resume.LegacyResume.test_request_budget_counts_every_attempt_and_deferred_is_not_source_gap) ... {"stage": "http_start", "updated_at_utc": "2026-10-24T04:53:35.626569+00:00", "monotonic": 110867.197712307, "receipt": "20010101000000", "attempt": 1}
+{"stage": "http_retry", "updated_at_utc": "2026-10-24T04:53:35.626638+00:00", "monotonic": 110867.197771156, "receipt": "20010101000000", "attempt": 1}
+ok
+test_retry_count_survives_state_migration_and_mixed_empty_attempts (test_legacy_backfill_resume.LegacyResume.test_retry_count_survives_state_migration_and_mixed_empty_attempts) ... legacy checkpoint: 1 receipts persisted
+legacy checkpoint: 1 receipts persisted
+legacy checkpoint: 1 receipts persisted
+ok
+test_source_adapter_change_invalidates_previous_no_document_result (test_legacy_backfill_resume.LegacyResume.test_source_adapter_change_invalidates_previous_no_document_result) ... ok
+test_state_cannot_skip_missing_or_mismatched_normalized_data_missing_file (test_legacy_backfill_resume.LegacyResume.test_state_cannot_skip_missing_or_mismatched_normalized_data_missing_file) ... ok
+test_state_cannot_skip_missing_or_mismatched_normalized_data_wrong_hash (test_legacy_backfill_resume.LegacyResume.test_state_cannot_skip_missing_or_mismatched_normalized_data_wrong_hash) ... ok
+test_state_cannot_skip_missing_or_mismatched_normalized_data_wrong_row_count (test_legacy_backfill_resume.LegacyResume.test_state_cannot_skip_missing_or_mismatched_normalized_data_wrong_row_count) ... ok
+test_transport_attempt_ceiling_is_distinct_from_request_admission_budget (test_legacy_backfill_resume.LegacyResume.test_transport_attempt_ceiling_is_distinct_from_request_admission_budget) ... {"stage": "http_start", "updated_at_utc": "2026-10-24T04:53:35.743330+00:00", "monotonic": 110867.314472975, "receipt": "20010101000000", "attempt": 1}
+{"stage": "http_retry", "updated_at_utc": "2026-10-24T04:53:35.743387+00:00", "monotonic": 110867.314520038, "receipt": "20010101000000", "attempt": 1}
+{"stage": "http_start", "updated_at_utc": "2026-10-24T04:53:35.743409+00:00", "monotonic": 110867.314541596, "receipt": "20010101000000", "attempt": 2}
+ok
+test_unattested_amounts_never_enter_backtest_normalized_store (test_legacy_backfill_resume.LegacyResume.test_unattested_amounts_never_enter_backtest_normalized_store) ... ok
+
+----------------------------------------------------------------------
+Ran 108 tests in 3.597s
+
+OK

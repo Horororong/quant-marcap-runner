@@ -77,6 +77,7 @@ def run_supplemental(root,out,event,parent_run,batch_documents,approval_id):
  if os.getenv('GITHUB_REF')!='refs/heads/main'or os.getenv('GITHUB_RUN_ATTEMPT','1')!='1':raise ValueError('MAIN_FIRST_ATTEMPT_ONLY')
  api=old.GitHub();head=api.head();original_bytes=api.content(old.STATE,head);original=json.loads(original_bytes);operating=json.loads((root/old.CONFIG).read_text());c=json.loads((root/CONFIG).read_text());previous=api.content(STATE,head);budget=json.loads(previous)if previous else initial(c,original);now=datetime.now(old.UTC)
  try:
+  old.check_q3_day(api,head,now)
   if parent_run!=c['parent_run']:raise ValueError('SUPPLEMENTAL_PARENT_REQUIRED')
   selected=check(c,budget,original,operating,now,batch_documents,approval_id)
  except ValueError as e:
