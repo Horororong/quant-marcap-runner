@@ -232,4 +232,19 @@ with patch('scripts.financial_limited_review.verify_approval'):t.m.run_q3(r,h/"o
   with self.assertRaisesRegex(ValueError,'AUTH_PARAMETER'):b.request('x','list.json',dict(crtfc_key='offline-only'),'offline-only',lambda*x:self.fail('Unexpected HTTP'))
   self.assertEqual(state['HTTP_attempts'],0);self.assertFalse((self.home/'budget.json').exists())
 
+ def test_q3_before_25_is_rejected_before_GitHub_or_DART(self):
+  from unittest.mock import Mock
+  api=Mock();self.now=datetime(2026,10,24,23,59,59,tzinfo=q.KST)
+  with self.assertRaisesRegex(ValueError,'WINDOW_SCHEDULE_NOT_OPEN'):self.execute(api=api)
+  api.head.assert_not_called()
+ def test_actual_Q3_on25_then_FY_on26_keeps_original_ledger(self):
+  from scripts import financial_supplemental_resume as fy
+  self.now=datetime(2026,10,25,tzinfo=q.KST);self.assertEqual(self.execute(),0)
+  now=datetime(2026,10,26,tzinfo=q.KST);old.check_q3_day(self.api,'head',now)
+  o,s,c=original_states();s['contract']=c['contract'];before=copy.deepcopy((o,s,c));w=json.loads((ROOT/fy.WINDOW).read_text())
+  selected=fy.check(c,s,o,json.loads((ROOT/old.CONFIG).read_text()),now,20,fy.APPROVAL,w)
+  self.assertEqual(selected,c['receipts'][21:]);self.assertEqual((o,s,c),before)
+  state=json.loads(self.api.content(m.STATE,'head'));self.assertEqual(state['executions_used'],1);self.assertEqual(state['HTTP_reserved'],12)
+  self.assertEqual(state['window_approval'],w)
+
 if __name__=='__main__':unittest.main(verbosity=2)

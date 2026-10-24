@@ -71,6 +71,9 @@ def _run(root,out,approval,public,api,transport,now,begin):
  config=json.loads((root/CONFIG).read_text())
  # Explicit publication authority is checked before any network call or lease.
  if config!=expected_config()or approval!=APPROVAL or public!=PUBLIC:raise ValueError('Q3_COLLECTION_OR_PUBLIC_PRESERVATION_NOT_APPROVED')
+ from scripts.financial_supplemental_resume import WINDOW,validate_window
+ window=json.loads((root/WINDOW).read_text());now=now or datetime.now(old.UTC)
+ validate_window(json.loads((root/SUPP_CONFIG).read_text()),window,now,'q3')
  if not os.getenv('DART_API_KEY'):raise ValueError('Q3_DART_SECRET_MISSING_NO_LEASE')
  api=api or old.GitHub();head=api.head();original_bytes=api.content(old.STATE,head);original=json.loads(original_bytes)
  supp_bytes=api.content(SUPP_STATE,head);supp=json.loads(supp_bytes);sc=json.loads((root/SUPP_CONFIG).read_text())
@@ -96,10 +99,10 @@ def _run(root,out,approval,public,api,transport,now,begin):
  run_id=os.environ['GITHUB_RUN_ID'];out.mkdir(parents=True,exist_ok=False)
  checkout=os.getenv('SOURCE_CHECKOUT_SHA','')
  if not re.fullmatch('[0-9a-f]{40}',checkout):raise ValueError('ACTUAL_CHECKOUT_SHA_REQUIRED_NO_LEASE')
- state.update(phase='RUNNING',executions_used=1,HTTP_reserved=12,run_id=run_id,day_kst=old.local_day(now),started_at_utc=old.stamp(),public_preservation_approval=public,source_checkout=checkout,dispatch_SHA=os.getenv('GITHUB_SHA','UNVERIFIED'),original_runs_sha256=old.sha(old.raw(original['runs'])),original_state_sha256=old.sha(original_bytes),supplemental_state_sha256=old.sha(supp_bytes))
+ state.update(phase='RUNNING',executions_used=1,HTTP_reserved=12,run_id=run_id,day_kst=old.local_day(now),started_at_utc=old.stamp(),public_preservation_approval=public,window_approval=window,source_checkout=checkout,dispatch_SHA=os.getenv('GITHUB_SHA','UNVERIFIED'),original_runs_sha256=old.sha(old.raw(original['runs'])),original_state_sha256=old.sha(original_bytes),supplemental_state_sha256=old.sha(supp_bytes))
  originals_fingerprint=old.sha(original_bytes);supp_fingerprint=old.sha(supp_bytes)
  extra={SUPP_STATE:supp_bytes}
- for p in [CONFIG,SUPP_CONFIG,Path('scripts/financial_q3_three.py'),Path('scripts/financial_q3_source.py'),Path('.github/workflows/backfill-dart-legacy-2000-2014.yml')]:extra[p]=(root/p).read_bytes()
+ for p in [CONFIG,SUPP_CONFIG,WINDOW,Path('scripts/financial_q3_three.py'),Path('scripts/financial_q3_source.py'),Path('.github/workflows/backfill-dart-legacy-2000-2014.yml')]:extra[p]=(root/p).read_bytes()
  last=[previous];manifest={'classification':'RESEARCH_ONLY','approval_id':APPROVAL,'raw_data_publication_requires':PUBLIC,'source_packs':{},'automatic_financial_publication':'HOLD','PIT':'UNVERIFIED','engine_eligible':False}
  def persist(files=None,message='Checkpoint bounded Q3 source intent; HOLD [skip ci]'):
   packed=old.raw(state);old.atomic(out/'Q3_STATE.json',state)

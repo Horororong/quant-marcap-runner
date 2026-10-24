@@ -12,6 +12,18 @@ STATE=Path('data/status/dart_legacy_supplemental_41_v1.json')
 APPROVAL='finite41-20261023'
 ORDER_SHA='7bfafadb83322a9c7e2d358fd3c0f9331784b7597770c133ed83fb3e78283904'
 TRIAL='39863731314'
+WINDOW=Path('config/financial_q3_fy_window_v1.json')
+WINDOW_EXPECTED={'approval_id': 'q3-first-fy-window-20261024', 'original_approval_sha256': 'f48d8059b5182031626da267d71e8cfce2537202b65e442688a1c53507b7d0c7', 'frozen41_order_sha256': '7bfafadb83322a9c7e2d358fd3c0f9331784b7597770c133ed83fb3e78283904', 'q3_not_before_utc': '2026-10-24T15:00:00+00:00', 'fy_not_before_utc': '2026-10-25T15:00:00+00:00', 'fy_expires_at_utc': '2026-10-26T14:59:59+00:00', 'remaining_FY_documents': 20, 'remaining_FY_executions': 1, 'remaining_FY_HTTP': 40, 'Q3_executions': 1, 'Q3_HTTP': 12, 'run_seconds': 600, 'maximum_runs_per_KST_day': 1, 'automatic_scheduling': False, 'financial_publication': 'HOLD', 'investment_PIT': '0/6'}
+
+def validate_window(c,window,now,mode):
+ # Separate owner renewal: the original configuration/hash and used ledger stay intact.
+ validate_approval(c)
+ if window!=WINDOW_EXPECTED or window['original_approval_sha256']!=approval_hash(c):raise ValueError('WINDOW_APPROVAL_OR_ORIGINAL_BINDING_CHANGED')
+ if mode not in {'q3','fy'}:raise ValueError('WINDOW_UNKNOWN_MODE')
+ if now<datetime.fromisoformat(window[mode+'_not_before_utc']):raise ValueError('WINDOW_SCHEDULE_NOT_OPEN')
+ if mode=='fy' and now>datetime.fromisoformat(window['fy_expires_at_utc']):raise ValueError('SUPPLEMENTAL_WINDOW_EXPIRED')
+ return window['fy_expires_at_utc']
+
 
 def approval_hash(c):return old.sha(old.raw(c))
 def validate_approval(c):
@@ -25,11 +37,13 @@ def validate_approval(c):
 
 def initial(c,original):
  return dict(contract=c['contract'],approval_id=APPROVAL,approval_sha256=approval_hash(c),phase='READY',attempts=[],completed_receipts=[],original_runs_sha256=old.sha(old.raw(original['runs'])),financial_publication='HOLD',backtest_eligible=False,investment_PIT='0/6')
-def check(c,budget,original,operating,now,batch_documents,approval_id):
+def check(c,budget,original,operating,now,batch_documents,approval_id,window=None):
  rs=validate_approval(c);old.check_contract(operating,original)
  if original.get('contract')!=old.CONTRACT or sum(s['reserved_documents']for s in original['runs'])>300:raise ValueError('SUPPLEMENTAL_ORIGINAL_CONTRACT_OR_RESERVATIONS')
  if approval_id!=APPROVAL:raise ValueError('SUPPLEMENTAL_EXPLICIT_ID_REQUIRED')
- if now>datetime.fromisoformat(c['expires_at_utc']):raise ValueError('SUPPLEMENTAL_WINDOW_EXPIRED')
+ expiry=validate_window(c,window,now,'fy')if window is not None else c['expires_at_utc']
+ if window is not None and (len(budget['attempts'])!=1 or len(budget['completed_receipts'])!=21 or batch_documents!=20):raise ValueError('WINDOW_RENEWAL_REMAINDER_ONLY')
+ if now>datetime.fromisoformat(expiry):raise ValueError('SUPPLEMENTAL_WINDOW_EXPIRED')
  if now<datetime.fromisoformat(c['approved_at_utc']):raise ValueError('SUPPLEMENTAL_BEFORE_APPROVAL')
  original_attempts=original['runs']+[s for r in original['runs']for s in r.get('resume_segments',[])]
  if len(original_attempts)!=3 or original_attempts[-1]['run_id']!=TRIAL:raise ValueError('SUPPLEMENTAL_ORIGINAL_THREE_EXECUTIONS_REQUIRED')
@@ -79,7 +93,8 @@ def run_supplemental(root,out,event,parent_run,batch_documents,approval_id):
  try:
   old.check_q3_day(api,head,now)
   if parent_run!=c['parent_run']:raise ValueError('SUPPLEMENTAL_PARENT_REQUIRED')
-  selected=check(c,budget,original,operating,now,batch_documents,approval_id)
+  window=json.loads((root/WINDOW).read_text())if batch_documents==20 else None
+  selected=check(c,budget,original,operating,now,batch_documents,approval_id,window)
  except ValueError as e:
   out.mkdir(parents=True,exist_ok=False);old.atomic(out/'gate.json',dict(status='NO_COLLECTION',reason=str(e),approval_id=APPROVAL));print(json.dumps(dict(status='NO_COLLECTION',reason=str(e))));return 0
  for name,expected in operating['source_code_sha256'].items():
@@ -94,10 +109,12 @@ def run_supplemental(root,out,event,parent_run,batch_documents,approval_id):
  run_id=os.environ['GITHUB_RUN_ID']
  if run_id in {s['run_id']for s in budget['attempts']}:raise ValueError('SUPPLEMENTAL_RUN_REPLAY')
  plan=dict(prior,run_id=run_id,parent_run_id=parent_run,approval_id=APPROVAL,samples=[by[r]for r in selected],start_checkpoint=original['last_checkpoint'],selection_sha256=old.sha(old.raw([by[r]for r in selected])),frozen41_order_sha256=ORDER_SHA,new_document_reservation=0)
+ if window is not None:plan['window_renewal']=window
  out.mkdir(parents=True,exist_ok=False);old.atomic(out/'batch_plan.json',plan);old.atomic(out/'trial_qualification.json',proof)
  slot=dict(run_id=run_id,day_kst=old.local_day(now),started_at_utc=old.stamp(),status='RUNNING',document_limit=len(selected),http_reserved=2*len(selected),receipts=selected,completed_receipts=[],new_reservation=0)
  budget['attempts'].append(slot);budget['phase']='RUNNING';original['phase']='RUNNING_SUPPLEMENTAL';leased=old.raw(original)
- reservation=api.commit({old.STATE:leased,STATE:old.raw(budget),old.BASE/'runs'/run_id/'selection.json':old.raw(plan)},original_bytes,root,'Lease explicit finite41 supplemental '+run_id+' [skip ci]');old.atomic(out/'reservation.json',dict(commit=reservation,approval_id=APPROVAL))
+ lease_guards=dict(expected_extra={WINDOW:(root/WINDOW).read_bytes(),CONFIG:(root/CONFIG).read_bytes(),STATE:previous})if window is not None else {}
+ reservation=api.commit({old.STATE:leased,STATE:old.raw(budget),old.BASE/'runs'/run_id/'selection.json':old.raw(plan)},original_bytes,root,'Lease explicit finite41 supplemental '+run_id+' [skip ci]',**lease_guards);old.atomic(out/'reservation.json',dict(commit=reservation,approval_id=APPROVAL))
  batch=out/'batch';code=1;failure=''
  try:code=old.run_batch(plan['samples'],batch,result_validator=validate_result,document_seconds=90,total_seconds=600,max_documents=len(selected))
  except Exception as e:failure=type(e).__name__+':'+str(e)if isinstance(e,ValueError)else type(e).__name__
@@ -123,5 +140,6 @@ def run_supplemental(root,out,event,parent_run,batch_documents,approval_id):
  original['phase']='HOLD_SUPPLEMENTAL_FAILURE'if code else'PAUSED_QUEUE'if remaining else'OBSERVATION_COMPLETE'
  if old.sha(old.raw(original['runs']))!=budget['original_runs_sha256']:raise ValueError('SUPPLEMENTAL_ORIGINAL_HISTORY_CHANGED')
  manifest=dict(summary=summary,transfers=transfers,approval_id=APPROVAL,approval_sha256=approval_hash(c),plan_sha256=old.sha(old.raw(plan)),HTTP_requests_observed=actual,http_reserved=slot['http_reserved'],financial_publication='HOLD',code_sha=os.environ['GITHUB_SHA'])
+ if window is not None:manifest['window_renewal']=window
  files={old.STATE:old.raw(original),STATE:old.raw(budget),old.BASE/'runs'/run_id/'manifest.json':old.raw(manifest)};files.update({old.BASE/'runs'/run_id/f'sources{i:02d}.json.gz.b64':dict(sha=t['blob_sha'])for i,t in enumerate(transfers)})
  final=api.commit(files,leased,root,'Preserve finite41 source results '+run_id+'; financial publication HOLD [skip ci]');old.atomic(out/'final_commit.json',dict(sha=final,phase=budget['phase'],checkpoint=original['last_checkpoint']));print(json.dumps(dict(status=budget['phase'],commit=final,new_originals=summary['durable_terminal_documents'],new_candidates=summary['candidate_fields'],HTTP_requests_observed=actual,http_reserved=slot['http_reserved'],checkpoint=original['last_checkpoint'],pending=len(remaining),financial_publication='HOLD')));return code

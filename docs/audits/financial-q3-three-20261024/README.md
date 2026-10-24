@@ -220,3 +220,23 @@ is up to9 Q3 cumulative flow fields for these3 companies, then their actual
 field-bound review/PIT/provider checks. The original1946-security population and
 whole-strategy readiness gates are not reduced to these three companies.
 Financial publicationHOLD,RESEARCH_ONLY,PIT/source/CA/held-return gates remain.
+
+## Owner-approved ordered window renewal
+
+The 2026-10-24 owner approval authorizes Q3 from 2026-10-25 00:00 KST, then the remaining 20 FY documents from 2026-10-26 00:00 KST through 23:59:59 KST. No automatic scheduling is added. The immutable original finite41 config and its budget hash remain unchanged; `config/financial_q3_fy_window_v1.json` separately binds the renewal to that exact approval and frozen receipt order. The runtime requires the original single completed 21-document attempt, preserves its 42 reserved HTTP and all three original executions, and permits only the remaining one 20-document/40-HTTP/600-second FY execution. Both modes share the persisted KST-day/failure/lease checks. A successful Q3 run on the 25th blocks FY that day; the same durable Q3 ledger permits FY on the 26th. Unknown, edited or expired renewal evidence is rejected. A failed Q3 remains held; dates do not reset any lease or budget.
+
+Offline tests cover Q3-before-window/no-network, full synthetic Q3 collection plus next-day FY admission, same-day denial, exact expiry, altered budget/binding rejection, original-ledger immutability, source recovery, and interruption/restart. Synthetic documents do not certify real financial or PIT data. Existing source-owner pins, financial HOLD, PIT 0/6 and runtime kit remain unchanged.
+
+### Manual resume only
+
+After confirming the live shared ledger/day/budget and no active collector, use the existing workflow on main with the following inputs. Authentication remains the existing GitHub environment binding; DART_API_KEY is injected by Actions only. No task has been scheduled by these commands.
+
+Q3, not before 2026-10-25 00:00 KST:
+```sh
+gh workflow run backfill-dart-legacy-2000-2014.yml --repo Horororong/quant-marcap-runner --ref main -f q3_approval=q3-three-company-20261024 -f q3_public_preservation=q3-three-public-preservation-20261024 -f batch_documents=2
+```
+FY remaining 20, after successful Q3 and not before 2026-10-26 00:00 KST, expires 2026-10-26 23:59:59 KST:
+```sh
+gh workflow run backfill-dart-legacy-2000-2014.yml --repo Horororong/quant-marcap-runner --ref main -f resume_parent_run=39504052321 -f supplemental_approval=finite41-20261023 -f batch_documents=20
+```
+Each POST is issued once only after live gating; an uncertain dispatch is reconciled by run ID rather than repeated. A green workflow with zero requests/new originals is not a backfill success. Source processing checkpoint remains 20100331002116; next FY receipt is 20100331002117. Q3 uses its own receipt ledger and must not move that FY checkpoint.
