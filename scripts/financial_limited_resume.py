@@ -136,13 +136,15 @@ class GitHub:
             if str(e)=='GITHUB_HTTP_404':return None
             raise
         return base64.b64decode(o['content'])
-    def commit(self,files,expected_state,root,message):
+    def commit(self,files,expected_state,root,message,expected_extra=None):
         # One bounded CAS-race recovery, never a repeated HTTP failure. Preserve
         # unrelated recent-DART commits by basing each tree on freshly read main.
         guards=[CONFIG,INDEX,OLD,Path('scripts/financial_rollout.py'),Path('scripts/financial_limited_resume.py'),Path('scripts/legacy_native_financials.py'),Path('scripts/legacy_document_quality.py')]
         for race in range(2):
             parent=self.head();current=self.content(STATE,parent)
             if current!=expected_state:raise ValueError('LEASE_OR_CHECKPOINT_CHANGED')
+            for path,expected in (expected_extra or {}).items():
+                if self.content(path,parent)!=expected:raise ValueError('EXTRA_LEASE_OR_INPUT_CHANGED:'+str(path))
             parent_tree=self.call('/git/commits/'+parent)['tree']['sha']
             entries={x['path']:x['sha']for x in self.call('/git/trees/'+parent_tree+'?recursive=1')['tree']}
             for p in guards:
@@ -163,14 +165,31 @@ class GitHub:
                 elif self.content(p,commit)!=b:raise ValueError('POST_COMMIT_READBACK_FAILURE')
             return commit
         raise ValueError('CONCURRENT_MAIN_CHANGED_TWICE')
-def run(root,out,event,parent_run=None,batch_documents=25,supplemental_approval=None):
+def check_q3_day(api,head,now):
+    """All approved collection modes share the Q3 lease/day, without ledger reset."""
+    state=api.content(Path('data/status/dart_q3_three_v1.json'),head)
+    if state is None:return
+    q=json.loads(state)
+    if q.get('contract')!='q3-fixed-source-v1' or q.get('approval_id')!='q3-three-company-20261024':raise ValueError('Q3_LEDGER_CONTRACT_CHANGED')
+    if q.get('executions_used')!=1 or q.get('HTTP_reserved')!=12 or not 0<=q.get('HTTP_attempts',-1)<=12:raise ValueError('Q3_LEDGER_BUDGET_CHANGED')
+    if q.get('financial_publication')!='HOLD' or q.get('backtest_eligible')is not False or q.get('investment_PIT')!='0/6':raise ValueError('Q3_LEDGER_FINANCIAL_GATE_CHANGED')
+    if q.get('phase')not in {'RUNNING','HOLD_FAILURE','STOPPED_TIME_BUDGET','RAW_COMPLETE_PENDING_WORKSPACE_REVIEW'}:raise ValueError('Q3_LEDGER_PHASE_CHANGED')
+    if q.get('phase') in {'RUNNING','HOLD_FAILURE','STOPPED_TIME_BUDGET'}:raise ValueError('Q3_LEASE_OR_FAILURE_HELD')
+    if q.get('day_kst')==local_day(now):raise ValueError('ONCE_PER_KST_DAY')
+def run(root,out,event,parent_run=None,batch_documents=25,supplemental_approval=None,q3_approval=None,q3_public_preservation=None):
     if os.getenv('GITHUB_REF')!='refs/heads/main'or os.getenv('GITHUB_RUN_ATTEMPT','1')!='1':raise ValueError('MAIN_FIRST_ATTEMPT_ONLY')
+    if q3_public_preservation and not q3_approval:raise ValueError('Q3_PUBLIC_ID_WITHOUT_COLLECTION_ID')
+    if q3_approval:
+        if parent_run or supplemental_approval:raise ValueError('Q3_AND_FY_MODES_CANNOT_BE_COMBINED')
+        from scripts.financial_q3_three import run_q3
+        return run_q3(root,out,q3_approval,q3_public_preservation)
     if supplemental_approval:
         from scripts.financial_supplemental_resume import run_supplemental
         return run_supplemental(root,out,event,parent_run,batch_documents,supplemental_approval)
     api=GitHub();head=api.head();current=api.content(STATE,head)
     state=json.loads(current)if current else initial();config=json.loads((root/CONFIG).read_text());now=datetime.now(UTC)
     try:
+        check_q3_day(api,head,now)
         if parent_run:check_recovery_gate(config,state,now,parent_run,batch_documents)
         else:check_gate(config,state,now,event)
     except ValueError as e:
@@ -233,4 +252,4 @@ def run(root,out,event,parent_run=None,batch_documents=25,supplemental_approval=
     print(json.dumps(dict(status=state['phase'],commit=final,processed=summary['processed_results'],durable=summary['durable_terminal_documents'],counts=summary['counts'],candidate_fields=summary['candidate_fields'],financial_fields_published=0)))
     return code
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--event',choices=['first-approved-push','schedule'],required=True);p.add_argument('--resume-parent-run');p.add_argument('--batch-documents',type=int,choices=range(1,26),default=25);p.add_argument('--supplemental-approval');a=p.parse_args();raise SystemExit(run(ROOT,a.output,a.event,a.resume_parent_run,a.batch_documents,a.supplemental_approval))
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--event',choices=['first-approved-push','schedule'],required=True);p.add_argument('--resume-parent-run');p.add_argument('--batch-documents',type=int,choices=range(1,26),default=25);p.add_argument('--supplemental-approval');p.add_argument('--q3-approval');p.add_argument('--q3-public-preservation');a=p.parse_args();raise SystemExit(run(ROOT,a.output,a.event,a.resume_parent_run,a.batch_documents,a.supplemental_approval,a.q3_approval,a.q3_public_preservation))

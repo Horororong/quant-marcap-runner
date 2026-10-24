@@ -16,6 +16,18 @@ on:
         description: Explicit finite41-20261023 supplemental budget; blank keeps original3-run contract
         type: string
         default: ''
+      q3_approval:
+        description: Separate fixed3 Q3 budget ID; blank preserves FY behavior
+        type: string
+        default: ''
+      q3_public_preservation:
+        description: Separate explicit approval for publishing the three originals and official lists
+        type: string
+        default: ''
+      validate_q3_only:
+        description: Fixed-kit offline tests only; no DART secret, lease, or collection
+        type: boolean
+        default: false
 concurrency:
   group: super-value-fast-pit-backfill
   cancel-in-progress: false
@@ -24,7 +36,7 @@ permissions:
   actions: read
 jobs:
   limited-source-observation:
-    if: github.ref == 'refs/heads/main' && github.run_attempt == 1
+    if: github.ref == 'refs/heads/main' && github.run_attempt == 1 && inputs.validate_q3_only != true
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -46,13 +58,19 @@ jobs:
           RESUME_PARENT_RUN: ${{ inputs.resume_parent_run || '' }}
           BATCH_DOCUMENTS: ${{ inputs.batch_documents || '25' }}
           SUPPLEMENTAL_APPROVAL: ${{ inputs.supplemental_approval || '' }}
+          Q3_APPROVAL: ${{ inputs.q3_approval || '' }}
+          Q3_PUBLIC_PRESERVATION: ${{ inputs.q3_public_preservation || '' }}
         run: |
           args=()
+          if [ -n "$Q3_PUBLIC_PRESERVATION" ] && [ -z "$Q3_APPROVAL" ]; then echo 'Q3 preservation ID requires Q3 collection ID'; exit 2; fi
           if [ -n "$RESUME_PARENT_RUN" ]; then args+=(--resume-parent-run "$RESUME_PARENT_RUN"); fi
           if [ -n "$SUPPLEMENTAL_APPROVAL" ]; then args+=(--supplemental-approval "$SUPPLEMENTAL_APPROVAL"); fi
+          if [ -n "$Q3_APPROVAL" ]; then args+=(--q3-approval "$Q3_APPROVAL" --q3-public-preservation "$Q3_PUBLIC_PRESERVATION"); fi
+          export SOURCE_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          echo "Actual collector checkout: $SOURCE_CHECKOUT_SHA"
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_limited_resume.py --event schedule --output "$RUNNER_TEMP/limited-observation" --batch-documents "$BATCH_DOCUMENTS" "${args[@]}"
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && inputs.q3_approval == ''
         with:
           name: limited-source-observation-HELD
           path: |
@@ -60,5 +78,41 @@ jobs:
             ${{ runner.temp }}/runtime.json
           if-no-files-found: error
           retention-days: 90
+      - uses: actions/upload-artifact@v4
+        if: always() && inputs.q3_approval != ''
+        with:
+          name: q3-source-receipt-only-HELD
+          path: |
+            ${{ runner.temp }}/limited-observation/Q3_STATE.json
+            ${{ runner.temp }}/limited-observation/gate.json
+            ${{ runner.temp }}/limited-observation/LATEST_PERSISTENCE.json
+            ${{ runner.temp }}/runtime.json
+          if-no-files-found: warn
+          retention-days: 90
+  q3-validation:
+    if: inputs.validate_q3_only == true && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact validation checkout and original fixed kit; no Internet pip
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          echo "Actual validation checkout: $(git rev-parse HEAD)"
+          python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: Q3 boundaries plus existing finite collection and interruption contracts
+        run: |
+          PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
+          "$PY" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_financial_q3_three","test_financial_supplemental_resume","test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume","test_dart_corp_code","test_legacy_backfill_resume"]);r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
+          git diff --exit-code -- config/financial_limited_resume_v1.json config/financial_supplemental_41_v1.json data/status
 # 05:17 Asia/Seoul. Code ledger enforces caps even if dispatch/schedule duplicates.
 # No legacy-v5,2000,modern collection fallback and no automatic metric publication.

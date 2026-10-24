@@ -1,0 +1,49 @@
+{
+  "classification": "RESEARCH_ONLY",
+  "offline_tests": {
+    "new_Q3": 25,
+    "existing_collection": 83,
+    "total": 108,
+    "result": "PASS",
+    "actual_network_HTTP": 0,
+    "real_SIGKILL_fixture": true,
+    "recovery_fixture_SHA_CRC": true,
+    "source_semantic_or_PIT_certification": false
+  },
+  "original_runtime": {
+    "status": "ok",
+    "kit_id": "26e4ec02e56943ccc497cef786e2972dafc44f213ba805849769e9f0789686cd",
+    "dedicated_isolated_Python": true,
+    "Internet_pip": false
+  },
+  "workflow_shell_blocks_checked": 4,
+  "workflow_shell_syntax": "PASS",
+  "original_source_owner_pins": {
+    "scripts/legacy_native_financials.py": "3cff54f28e3081a1a014e5e12ad56ed13ea36d2d16e16af7aeef0aa0dd1c2773",
+    "scripts/legacy_financial_fields.py": "e2c3f1d1c821dced7fcd2a11fbb4ec74c40b0f4016f3745fbaaf7a053b228163",
+    "scripts/legacy_document_quality.py": "c9be4765ab971a1115cdc0991f36acb5212636ef41e98fd190416b168c21e1fb",
+    "scripts/backfill_dart_legacy_2000_2014.py": "ce3ef9e0d86a2e80dd03e744f26b686ed04a73d03b552cbc5b95e9c22d495a41",
+    "scripts/dart_http.py": "f4d3584e3bd57dcdcf0bd03c5fcad47c234a49864c76c9ea19cb3ac4846ee6e5",
+    "scripts/dart_service_status.py": "b05e2f5bc95bb69c62203f6b950d5fa4a955c640f797446e7834bed671140695"
+  },
+  "original_and_FY_config_bytes": "UNCHANGED",
+  "existing_data_states": "NOT_IN_CHANGESET",
+  "actual_collection_increment": {
+    "DART_HTTP": 0,
+    "raw": 0,
+    "candidates": 0,
+    "meaning": 0,
+    "PIT": 0,
+    "engine": 0,
+    "strategy_periods": 0
+  },
+  "remote_CI": "NOT_RUN_UNPUBLISHED_NEW_SCOPE",
+  "local_direct_disabled": {
+    "status": "LOCAL_DIRECT_DISABLED_BEFORE_LEASE",
+    "reason": "LOCAL_Q3_TRANSPORT_DISABLED_USE_SHARED_GITHUB_LEDGER_NO_LEASE",
+    "old_budget_SHA256": "9023bae98c91433eab00126d32d04dbaa0d1901bb9fbab5d7af20323dfcda61d",
+    "old_budget_unchanged": true,
+    "DART_HTTP": 0
+  },
+  "no_automation_armed": true
+}

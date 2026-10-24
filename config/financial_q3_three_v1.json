@@ -1,0 +1,42 @@
+{
+  "contract": "q3-fixed-source-v1",
+  "approval_id": "q3-three-company-20261024",
+  "max_executions": 1,
+  "max_HTTP": 12,
+  "run_seconds": 600,
+  "maximum_runs_per_KST_day": 1,
+  "targets": [
+    {
+      "name": "사조산업",
+      "stock": "007160",
+      "corp": "00124799",
+      "receipt": "20091116000562"
+    },
+    {
+      "name": "가온전선",
+      "stock": "000500",
+      "corp": "00104768",
+      "receipt": "20091116000251"
+    },
+    {
+      "name": "고려신용정보",
+      "stock": "049720",
+      "corp": "00336297",
+      "receipt": "20091113001077"
+    }
+  ],
+  "metadata": {
+    "bgn_de": "20090101",
+    "end_de": "20100430",
+    "pblntf_ty": "A",
+    "last_reprt_at": "N",
+    "page_count": "100"
+  },
+  "requires_public_preservation_id": "q3-three-public-preservation-20261024",
+  "max_source_pack_compressed_bytes": 12582912,
+  "max_source_packs": 4,
+  "automatic_financial_publication": "HOLD",
+  "backtest_eligible": false,
+  "investment_PIT": "0/6",
+  "collection_only_no_semantic_or_PIT_promotion": true
+}
