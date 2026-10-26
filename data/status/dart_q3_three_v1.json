@@ -60,6 +60,7 @@
       "status": "RECEIVED"
     },
     {
+      "HTTP_status": 200,
       "endpoint": "list.json",
       "intent_recorded_at_utc": "2026-10-26T14:51:37.025101+00:00",
       "label": "00336297-list1",
@@ -73,8 +74,11 @@
         "page_no": "1",
         "pblntf_ty": "A"
       },
+      "response_bytes": 1219,
+      "response_received_at_utc": "2026-10-26T14:51:44.817627+00:00",
+      "sha256": "ebae54c1c62d7c41a6ef5fd01c57d8c6cee3d25b2f83dcefc711d3f1e42bcb8b",
       "source_url": "https://opendart.fss.or.kr/api/list.json",
-      "status": "ATTEMPT_STARTED"
+      "status": "RECEIVED"
     }
   ],
   "run_id": "40343246238",
