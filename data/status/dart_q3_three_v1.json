@@ -1,6 +1,9 @@
 {
   "HTTP_attempts": 6,
+  "HTTP_remaining": 0,
   "HTTP_reserved": 12,
+  "HTTP_responses_observed": 6,
+  "HTTP_unused": 6,
   "approval_id": "q3-three-company-20261024",
   "approval_sha256": "0d0027131c7e291cd799d15740093c9ea3aa7e08ce1c12462444ed10d14dd177",
   "backtest_eligible": false,
@@ -12,14 +15,24 @@
   "contract": "q3-fixed-source-v1",
   "day_kst": "2026-10-26",
   "dispatch_SHA": "345e07374a8762193167585227b38a4022d8e85e",
+  "durable_raw_documents": 3,
+  "elapsed_seconds": 141.965964582,
+  "executions_remaining": 0,
   "executions_used": 1,
   "financial_publication": "HOLD",
+  "finished_at_utc": "2026-10-26T14:53:07.287711+00:00",
   "investment_PIT": "0/6",
+  "new_PIT": 0,
+  "new_candidates": 0,
+  "new_engine_eligible": 0,
   "new_raw_documents": 3,
+  "new_semantic_PASS": 0,
+  "normal_exit": true,
   "original_runs_sha256": "85707cb67719f2142fcd10a03192db57b173dd0deda70ee12d3cadf7fa7bc4cd",
   "original_state_sha256": "ec7d9acfd793b36b738f203e10dcfe36a79232a564d62122aa13b4f18ed3e81a",
-  "phase": "RUNNING",
+  "phase": "RAW_COMPLETE_PENDING_WORKSPACE_REVIEW",
   "public_preservation_approval": "q3-three-public-preservation-20261024",
+  "remaining_receipts": [],
   "requests": [
     {
       "HTTP_status": 200,
@@ -147,6 +160,7 @@
     }
   },
   "started_at_utc": "2026-10-26T14:50:56.280184+00:00",
+  "stop_reason": "FIXED_THREE_SOURCE_COMPLETE",
   "supplemental_state_sha256": "82d3e015f4b145755d125b0fb5073b9652df360fd151fb06f9d992d32aaf8f1e",
   "window_approval": {
     "Q3_HTTP": 12,

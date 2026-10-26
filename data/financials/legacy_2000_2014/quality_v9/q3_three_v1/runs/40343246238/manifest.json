@@ -4,6 +4,7 @@
   "automatic_financial_publication": "HOLD",
   "classification": "RESEARCH_ONLY",
   "engine_eligible": false,
+  "original_state_sha256": "ec7d9acfd793b36b738f203e10dcfe36a79232a564d62122aa13b4f18ed3e81a",
   "raw_data_publication_requires": "q3-three-public-preservation-20261024",
   "source_packs": {
     "20091113001077": {
@@ -171,5 +172,189 @@
       ],
       "financial_certification": "UNVERIFIED"
     }
-  }
+  },
+  "state": {
+    "HTTP_attempts": 6,
+    "HTTP_remaining": 0,
+    "HTTP_reserved": 12,
+    "HTTP_responses_observed": 6,
+    "HTTP_unused": 6,
+    "approval_id": "q3-three-company-20261024",
+    "approval_sha256": "0d0027131c7e291cd799d15740093c9ea3aa7e08ce1c12462444ed10d14dd177",
+    "backtest_eligible": false,
+    "completed_receipts": [
+      "20091116000562",
+      "20091116000251",
+      "20091113001077"
+    ],
+    "contract": "q3-fixed-source-v1",
+    "day_kst": "2026-10-26",
+    "dispatch_SHA": "345e07374a8762193167585227b38a4022d8e85e",
+    "durable_raw_documents": 3,
+    "elapsed_seconds": 141.965964582,
+    "executions_remaining": 0,
+    "executions_used": 1,
+    "financial_publication": "HOLD",
+    "finished_at_utc": "2026-10-26T14:53:07.287711+00:00",
+    "investment_PIT": "0/6",
+    "new_PIT": 0,
+    "new_candidates": 0,
+    "new_engine_eligible": 0,
+    "new_raw_documents": 3,
+    "new_semantic_PASS": 0,
+    "normal_exit": true,
+    "original_runs_sha256": "85707cb67719f2142fcd10a03192db57b173dd0deda70ee12d3cadf7fa7bc4cd",
+    "original_state_sha256": "ec7d9acfd793b36b738f203e10dcfe36a79232a564d62122aa13b4f18ed3e81a",
+    "phase": "RAW_COMPLETE_PENDING_WORKSPACE_REVIEW",
+    "public_preservation_approval": "q3-three-public-preservation-20261024",
+    "remaining_receipts": [],
+    "requests": [
+      {
+        "HTTP_status": 200,
+        "endpoint": "list.json",
+        "intent_recorded_at_utc": "2026-10-26T14:51:05.308349+00:00",
+        "label": "00124799-list1",
+        "number": 1,
+        "params": {
+          "bgn_de": "20090101",
+          "corp_code": "00124799",
+          "end_de": "20100430",
+          "last_reprt_at": "N",
+          "page_count": "100",
+          "page_no": "1",
+          "pblntf_ty": "A"
+        },
+        "response_bytes": 1193,
+        "response_received_at_utc": "2026-10-26T14:51:14.021963+00:00",
+        "sha256": "94751fce417c9d31aec4b1ab7c510b9cdef75dc3122991f309fc8f5dd9b97af5",
+        "source_url": "https://opendart.fss.or.kr/api/list.json",
+        "status": "RECEIVED"
+      },
+      {
+        "HTTP_status": 200,
+        "endpoint": "list.json",
+        "intent_recorded_at_utc": "2026-10-26T14:51:21.278719+00:00",
+        "label": "00104768-list1",
+        "number": 2,
+        "params": {
+          "bgn_de": "20090101",
+          "corp_code": "00104768",
+          "end_de": "20100430",
+          "last_reprt_at": "N",
+          "page_count": "100",
+          "page_no": "1",
+          "pblntf_ty": "A"
+        },
+        "response_bytes": 1187,
+        "response_received_at_utc": "2026-10-26T14:51:30.079909+00:00",
+        "sha256": "52dab39a1829a120a52a0dc71ee034117ab66b7d94b9f08888e4c74df7ef19b3",
+        "source_url": "https://opendart.fss.or.kr/api/list.json",
+        "status": "RECEIVED"
+      },
+      {
+        "HTTP_status": 200,
+        "endpoint": "list.json",
+        "intent_recorded_at_utc": "2026-10-26T14:51:37.025101+00:00",
+        "label": "00336297-list1",
+        "number": 3,
+        "params": {
+          "bgn_de": "20090101",
+          "corp_code": "00336297",
+          "end_de": "20100430",
+          "last_reprt_at": "N",
+          "page_count": "100",
+          "page_no": "1",
+          "pblntf_ty": "A"
+        },
+        "response_bytes": 1219,
+        "response_received_at_utc": "2026-10-26T14:51:44.817627+00:00",
+        "sha256": "ebae54c1c62d7c41a6ef5fd01c57d8c6cee3d25b2f83dcefc711d3f1e42bcb8b",
+        "source_url": "https://opendart.fss.or.kr/api/list.json",
+        "status": "RECEIVED"
+      },
+      {
+        "HTTP_status": 200,
+        "endpoint": "document.xml",
+        "intent_recorded_at_utc": "2026-10-26T14:51:51.814993+00:00",
+        "label": "20091116000562",
+        "number": 4,
+        "params": {
+          "rcept_no": "20091116000562"
+        },
+        "response_bytes": 124428,
+        "response_received_at_utc": "2026-10-26T14:52:00.008086+00:00",
+        "sha256": "7f3dbae57d8cf780f07c137f1593eb6e5247cd00e2387a1726994ec11610d9b4",
+        "source_url": "https://opendart.fss.or.kr/api/document.xml",
+        "status": "RECEIVED"
+      },
+      {
+        "HTTP_status": 200,
+        "endpoint": "document.xml",
+        "intent_recorded_at_utc": "2026-10-26T14:52:17.799115+00:00",
+        "label": "20091116000251",
+        "number": 5,
+        "params": {
+          "rcept_no": "20091116000251"
+        },
+        "response_bytes": 68637,
+        "response_received_at_utc": "2026-10-26T14:52:26.191963+00:00",
+        "sha256": "8013a0a37c6ca7102f5c1294453fe1a9ebd22faafe6cafa21fa0f461c4e5b41a",
+        "source_url": "https://opendart.fss.or.kr/api/document.xml",
+        "status": "RECEIVED"
+      },
+      {
+        "HTTP_status": 200,
+        "endpoint": "document.xml",
+        "intent_recorded_at_utc": "2026-10-26T14:52:42.022945+00:00",
+        "label": "20091113001077",
+        "number": 6,
+        "params": {
+          "rcept_no": "20091113001077"
+        },
+        "response_bytes": 41192,
+        "response_received_at_utc": "2026-10-26T14:52:50.551138+00:00",
+        "sha256": "278b7ef1c3084145092f8eee257f4b42b690e3990d751bae912bc708e4bb9313",
+        "source_url": "https://opendart.fss.or.kr/api/document.xml",
+        "status": "RECEIVED"
+      }
+    ],
+    "run_id": "40343246238",
+    "source_checkout": "345e07374a8762193167585227b38a4022d8e85e",
+    "source_packs": {
+      "20091113001077": {
+        "blob_sha": "dce17699d3fd02a7c46dd013a82c37b9d46ebffe",
+        "compressed_sha256": "c4051e432b6672d1e989558679414d8ad35135720637feda7feca9125d986490"
+      },
+      "20091116000251": {
+        "blob_sha": "5f5280b861b9495474c3dd61daea9103e4d7a698",
+        "compressed_sha256": "e4dba3d2e4dd168ce2cc473cff16efa69d0d0fd910731d77d7b2f224d16d9ac2"
+      },
+      "20091116000562": {
+        "blob_sha": "1c4e1f7884ac71ce736a60e0c0fcaa473472bd25",
+        "compressed_sha256": "e398a6b4d58f7abd4a9415d2d381ccd1b776bf0c7ebca96c082701761c7dba19"
+      }
+    },
+    "started_at_utc": "2026-10-26T14:50:56.280184+00:00",
+    "stop_reason": "FIXED_THREE_SOURCE_COMPLETE",
+    "supplemental_state_sha256": "82d3e015f4b145755d125b0fb5073b9652df360fd151fb06f9d992d32aaf8f1e",
+    "window_approval": {
+      "Q3_HTTP": 12,
+      "Q3_executions": 1,
+      "approval_id": "q3-first-fy-window-20261024",
+      "automatic_scheduling": false,
+      "financial_publication": "HOLD",
+      "frozen41_order_sha256": "7bfafadb83322a9c7e2d358fd3c0f9331784b7597770c133ed83fb3e78283904",
+      "fy_expires_at_utc": "2026-10-26T14:59:59+00:00",
+      "fy_not_before_utc": "2026-10-25T15:00:00+00:00",
+      "investment_PIT": "0/6",
+      "maximum_runs_per_KST_day": 1,
+      "original_approval_sha256": "f48d8059b5182031626da267d71e8cfce2537202b65e442688a1c53507b7d0c7",
+      "q3_not_before_utc": "2026-10-24T15:00:00+00:00",
+      "remaining_FY_HTTP": 40,
+      "remaining_FY_documents": 20,
+      "remaining_FY_executions": 1,
+      "run_seconds": 600
+    }
+  },
+  "supplemental_state_sha256": "82d3e015f4b145755d125b0fb5073b9652df360fd151fb06f9d992d32aaf8f1e"
 }
