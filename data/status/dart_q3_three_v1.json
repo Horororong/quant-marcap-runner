@@ -1,5 +1,5 @@
 {
-  "HTTP_attempts": 0,
+  "HTTP_attempts": 1,
   "HTTP_reserved": 12,
   "approval_id": "q3-three-company-20261024",
   "approval_sha256": "0d0027131c7e291cd799d15740093c9ea3aa7e08ce1c12462444ed10d14dd177",
@@ -16,7 +16,25 @@
   "original_state_sha256": "ec7d9acfd793b36b738f203e10dcfe36a79232a564d62122aa13b4f18ed3e81a",
   "phase": "RUNNING",
   "public_preservation_approval": "q3-three-public-preservation-20261024",
-  "requests": [],
+  "requests": [
+    {
+      "endpoint": "list.json",
+      "intent_recorded_at_utc": "2026-10-26T14:51:05.308349+00:00",
+      "label": "00124799-list1",
+      "number": 1,
+      "params": {
+        "bgn_de": "20090101",
+        "corp_code": "00124799",
+        "end_de": "20100430",
+        "last_reprt_at": "N",
+        "page_count": "100",
+        "page_no": "1",
+        "pblntf_ty": "A"
+      },
+      "source_url": "https://opendart.fss.or.kr/api/list.json",
+      "status": "ATTEMPT_STARTED"
+    }
+  ],
   "run_id": "40343246238",
   "source_checkout": "345e07374a8762193167585227b38a4022d8e85e",
   "source_packs": {},
