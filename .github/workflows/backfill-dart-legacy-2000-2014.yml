@@ -51,7 +51,12 @@ jobs:
           python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
           python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
-      - name: Once per KST day, maximum3 reservations and300 documents; first actual review required
+      - name: Snapshot shared ledger before collector invocation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/financial_collection_outcome.py --snapshot "$RUNNER_TEMP/collection-before.json"
+      - name: Run approved bounded source path; business outcome reported separately
+        id: collect
         env:
           GH_TOKEN: ${{ github.token }}
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
@@ -69,6 +74,25 @@ jobs:
           export SOURCE_CHECKOUT_SHA="$(git rev-parse HEAD)"
           echo "Actual collector checkout: $SOURCE_CHECKOUT_SHA"
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_limited_resume.py --event schedule --output "$RUNNER_TEMP/limited-observation" --batch-documents "$BATCH_DOCUMENTS" "${args[@]}"
+      - name: Report actual source progress; zero collection is not completion
+        if: always()
+        id: collection_outcome
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COLLECTOR_STEP_OUTCOME: ${{ steps.collect.outcome }}
+        run: >-
+          python scripts/financial_collection_outcome.py
+          --before "$RUNNER_TEMP/collection-before.json"
+          --source-output "$RUNNER_TEMP/limited-observation"
+          --output "$RUNNER_TEMP/collection-outcome"
+          --step-outcome "$COLLECTOR_STEP_OUTCOME"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: collection-business-outcome
+          path: ${{ runner.temp }}/collection-outcome
+          if-no-files-found: error
+          retention-days: 90
       - uses: actions/upload-artifact@v4
         if: always() && inputs.q3_approval == ''
         with:
@@ -112,7 +136,7 @@ jobs:
       - name: Q3 boundaries plus existing finite collection and interruption contracts
         run: |
           PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
-          "$PY" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_financial_q3_three","test_financial_supplemental_resume","test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume","test_dart_corp_code","test_legacy_backfill_resume"]);r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
+          "$PY" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_financial_fy20_renewal","test_financial_collection_outcome","test_financial_q3_three","test_financial_supplemental_resume","test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume","test_dart_corp_code","test_legacy_backfill_resume"]);r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
           git diff --exit-code -- config/financial_limited_resume_v1.json config/financial_supplemental_41_v1.json data/status
 # 05:17 Asia/Seoul. Code ledger enforces caps even if dispatch/schedule duplicates.
 # No legacy-v5,2000,modern collection fallback and no automatic metric publication.
