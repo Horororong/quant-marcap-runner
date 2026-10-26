@@ -6,6 +6,61 @@
   "engine_eligible": false,
   "raw_data_publication_requires": "q3-three-public-preservation-20261024",
   "source_packs": {
+    "20091113001077": {
+      "PIT": "UNVERIFIED",
+      "blob_sha": "dce17699d3fd02a7c46dd013a82c37b9d46ebffe",
+      "compressed_bytes": 44600,
+      "compressed_sha256": "c4051e432b6672d1e989558679414d8ad35135720637feda7feca9125d986490",
+      "engine_eligible": false,
+      "files": [
+        {
+          "bytes": 1187,
+          "path": "metadata/00104768-list1.json",
+          "sha256": "52dab39a1829a120a52a0dc71ee034117ab66b7d94b9f08888e4c74df7ef19b3"
+        },
+        {
+          "bytes": 499,
+          "path": "metadata/00104768-list1.proof.json",
+          "sha256": "3d8c56bb9187f600be6a8405f518ab67b54ff293ec0f7e9584334069feed0699"
+        },
+        {
+          "bytes": 1193,
+          "path": "metadata/00124799-list1.json",
+          "sha256": "94751fce417c9d31aec4b1ab7c510b9cdef75dc3122991f309fc8f5dd9b97af5"
+        },
+        {
+          "bytes": 499,
+          "path": "metadata/00124799-list1.proof.json",
+          "sha256": "4059399f5d750f18cc1dfb932da0ccda8a6d2b509f98c484f307e8d6a0392398"
+        },
+        {
+          "bytes": 1219,
+          "path": "metadata/00336297-list1.json",
+          "sha256": "ebae54c1c62d7c41a6ef5fd01c57d8c6cee3d25b2f83dcefc711d3f1e42bcb8b"
+        },
+        {
+          "bytes": 499,
+          "path": "metadata/00336297-list1.proof.json",
+          "sha256": "15da91849ff64559da1e0410eb3e131d7f2240261ce55c1afd0f80f5888e0476"
+        },
+        {
+          "bytes": 41192,
+          "path": "20091113001077-278b7ef1c3084145092f8eee257f4b42b690e3990d751bae912bc708e4bb9313.zip",
+          "sha256": "278b7ef1c3084145092f8eee257f4b42b690e3990d751bae912bc708e4bb9313"
+        },
+        {
+          "bytes": 829,
+          "path": "20091113001077-official.json",
+          "sha256": "401e41f6d178c1189251516a784a99ed2b1d60bfc7c8b3c28b08642b2469a008"
+        },
+        {
+          "bytes": 1962,
+          "path": "20091113001077-source.json",
+          "sha256": "3f4bb9fa072ab16321622d0dccd3af08651fd5cb93539e5e346f3f426bf6a457"
+        }
+      ],
+      "financial_certification": "UNVERIFIED"
+    },
     "20091116000251": {
       "PIT": "UNVERIFIED",
       "blob_sha": "5f5280b861b9495474c3dd61daea9103e4d7a698",

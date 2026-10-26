@@ -6,7 +6,8 @@
   "backtest_eligible": false,
   "completed_receipts": [
     "20091116000562",
-    "20091116000251"
+    "20091116000251",
+    "20091113001077"
   ],
   "contract": "q3-fixed-source-v1",
   "day_kst": "2026-10-26",
@@ -14,7 +15,7 @@
   "executions_used": 1,
   "financial_publication": "HOLD",
   "investment_PIT": "0/6",
-  "new_raw_documents": 2,
+  "new_raw_documents": 3,
   "original_runs_sha256": "85707cb67719f2142fcd10a03192db57b173dd0deda70ee12d3cadf7fa7bc4cd",
   "original_state_sha256": "ec7d9acfd793b36b738f203e10dcfe36a79232a564d62122aa13b4f18ed3e81a",
   "phase": "RUNNING",
@@ -132,6 +133,10 @@
   "run_id": "40343246238",
   "source_checkout": "345e07374a8762193167585227b38a4022d8e85e",
   "source_packs": {
+    "20091113001077": {
+      "blob_sha": "dce17699d3fd02a7c46dd013a82c37b9d46ebffe",
+      "compressed_sha256": "c4051e432b6672d1e989558679414d8ad35135720637feda7feca9125d986490"
+    },
     "20091116000251": {
       "blob_sha": "5f5280b861b9495474c3dd61daea9103e4d7a698",
       "compressed_sha256": "e4dba3d2e4dd168ce2cc473cff16efa69d0d0fd910731d77d7b2f224d16d9ac2"
