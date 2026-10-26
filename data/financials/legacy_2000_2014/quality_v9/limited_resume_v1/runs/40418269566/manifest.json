@@ -1,0 +1,1176 @@
+{
+  "HTTP_requests_observed": 20,
+  "approval_id": "finite41-20261023",
+  "approval_sha256": "f48d8059b5182031626da267d71e8cfce2537202b65e442688a1c53507b7d0c7",
+  "code_sha": "154ac739c22ae9647a2d03979665dcf979da35c8",
+  "expiry_addendum": {
+    "approval_id": "fy20-expiry-renewal-20261027",
+    "automatic_dispatch": false,
+    "checkpoint": "20100331002116",
+    "contract": "existing-fy20-expiry-only-v1",
+    "expires_at_utc": "2026-10-28T14:59:59+00:00",
+    "financial_publication": "HOLD",
+    "frozen41_order_sha256": "7bfafadb83322a9c7e2d358fd3c0f9331784b7597770c133ed83fb3e78283904",
+    "investment_PIT": "0/6",
+    "maximum_runs_per_KST_day": 1,
+    "not_before_utc": "2026-10-26T15:00:00+00:00",
+    "original_approval_id": "finite41-20261023",
+    "original_approval_sha256": "f48d8059b5182031626da267d71e8cfce2537202b65e442688a1c53507b7d0c7",
+    "preserved_Q3_run": "40343246238",
+    "preserved_prior_supplemental_run": "40024818567",
+    "prior_window_sha256": "1fcb87591afeb5ea3780cb811de25541eae5367a05307ae3311462b985a36c10",
+    "remaining_HTTP": 40,
+    "remaining_documents": 20,
+    "remaining_executions": 1,
+    "remaining_order_sha256": "41e232ee119c9fccff6035b8bb3e4b10faed57372d136be2bfb2bc3b33a71a82",
+    "remaining_receipts": [
+      "20100331002117",
+      "20100331002119",
+      "20100331002120",
+      "20100331002121",
+      "20100331002124",
+      "20100331002127",
+      "20100331002132",
+      "20100331002133",
+      "20100331002136",
+      "20100331002137",
+      "20100331002138",
+      "20100331002146",
+      "20100331002149",
+      "20100331002153",
+      "20100331002154",
+      "20100331002155",
+      "20100331002159",
+      "20100331002160",
+      "20100331002163",
+      "20100331002164"
+    ],
+    "run_seconds": 600
+  },
+  "financial_publication": "HOLD",
+  "http_reserved": 40,
+  "plan_sha256": "3c0ddad944806d3d1d16b41cb6338a88547798186d733922d4194e7246d76952",
+  "summary": {
+    "automatic_financial_publication": "HOLD",
+    "backtest_eligible": false,
+    "candidate_fields": 320,
+    "collection": [
+      {
+        "archives": [
+          {
+            "bytes": 91139,
+            "path": "native/20100331002117-1ea2d299c5522cc898cf21aa3079d5daf306713400ae8f2fad2b36c010c0db7f.zip",
+            "sha256": "1ea2d299c5522cc898cf21aa3079d5daf306713400ae8f2fad2b36c010c0db7f"
+          }
+        ],
+        "rcept_no": "20100331002117",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:15:29.784580+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 123271,
+            "path": "native/20100331002119-9086c2bd45ba50c6a087309a4a306d67455a34440aa30251ffdf8fb0dd73399c.zip",
+            "sha256": "9086c2bd45ba50c6a087309a4a306d67455a34440aa30251ffdf8fb0dd73399c"
+          }
+        ],
+        "rcept_no": "20100331002119",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:15:40.144622+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 106825,
+            "path": "native/20100331002120-61d24c2b7ab08cdcf1fe980ab701a8c9b8b0ba8d6bc4ea79d01f9fbf93786de8.zip",
+            "sha256": "61d24c2b7ab08cdcf1fe980ab701a8c9b8b0ba8d6bc4ea79d01f9fbf93786de8"
+          }
+        ],
+        "rcept_no": "20100331002120",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:15:49.396082+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 121583,
+            "path": "native/20100331002121-2d83ea837dfe741c391021a30f93c85bb7eed7a3f0a3fb1dee3259cbafda76b6.zip",
+            "sha256": "2d83ea837dfe741c391021a30f93c85bb7eed7a3f0a3fb1dee3259cbafda76b6"
+          }
+        ],
+        "rcept_no": "20100331002121",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:15:59.824999+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 162432,
+            "path": "native/20100331002124-b285ce6dd182b66596fa182cbb428aff3b4146ffd370bd01abc8a44b96d1a4cd.zip",
+            "sha256": "b285ce6dd182b66596fa182cbb428aff3b4146ffd370bd01abc8a44b96d1a4cd"
+          }
+        ],
+        "rcept_no": "20100331002124",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:16:13.685697+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 116819,
+            "path": "native/20100331002127-3b6261a1b9437e760953517003bdbd40262df5e0a18dbe6bb8e3eef02ed9e753.zip",
+            "sha256": "3b6261a1b9437e760953517003bdbd40262df5e0a18dbe6bb8e3eef02ed9e753"
+          }
+        ],
+        "rcept_no": "20100331002127",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:16:23.616512+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 263004,
+            "path": "native/20100331002132-ab85a9ac56a291fa26918b366f18d525b3b408d8e56c45a6fe8d0444418ef4ea.zip",
+            "sha256": "ab85a9ac56a291fa26918b366f18d525b3b408d8e56c45a6fe8d0444418ef4ea"
+          }
+        ],
+        "rcept_no": "20100331002132",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:16:45.311344+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 91908,
+            "path": "native/20100331002133-b5f2212bca6d7ec0255e404a231f0275335673cbf335974e0c88acc66d712fb2.zip",
+            "sha256": "b5f2212bca6d7ec0255e404a231f0275335673cbf335974e0c88acc66d712fb2"
+          }
+        ],
+        "rcept_no": "20100331002133",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:16:53.753590+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 57743,
+            "path": "native/20100331002136-0c5c9ddf1e3e0b0ae0326a88d4b50ae244bbf7239fb34a661426a61ad194acc0.zip",
+            "sha256": "0c5c9ddf1e3e0b0ae0326a88d4b50ae244bbf7239fb34a661426a61ad194acc0"
+          }
+        ],
+        "rcept_no": "20100331002136",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:16:59.303366+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 284454,
+            "path": "native/20100331002137-8a9888395435e4d5204db2a1ba84db4a273cca16d5e22d85aef74e5f260ebf2f.zip",
+            "sha256": "8a9888395435e4d5204db2a1ba84db4a273cca16d5e22d85aef74e5f260ebf2f"
+          }
+        ],
+        "rcept_no": "20100331002137",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:17:24.558058+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 105004,
+            "path": "native/20100331002138-b99ae820c2a795f5efa5360262abfe8c7e43d0c806e4ccbae3a4527a49c30fa8.zip",
+            "sha256": "b99ae820c2a795f5efa5360262abfe8c7e43d0c806e4ccbae3a4527a49c30fa8"
+          }
+        ],
+        "rcept_no": "20100331002138",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:17:33.314464+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 99015,
+            "path": "native/20100331002146-d90ef12a2d281c8121b52bec16d61f150d9e3d2fbac7ed51f31fa939ffb44408.zip",
+            "sha256": "d90ef12a2d281c8121b52bec16d61f150d9e3d2fbac7ed51f31fa939ffb44408"
+          }
+        ],
+        "rcept_no": "20100331002146",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:17:39.855450+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 198186,
+            "path": "native/20100331002149-d22a472e2f1b89608a2446ac90cf0625da244d5322db7bf837016e53430ae40a.zip",
+            "sha256": "d22a472e2f1b89608a2446ac90cf0625da244d5322db7bf837016e53430ae40a"
+          }
+        ],
+        "rcept_no": "20100331002149",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:17:56.827386+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 57371,
+            "path": "native/20100331002153-19c5a1fd260eac0a5cb5a7f5ac895d69ec24b1eca9a4259dfeae737e065b08c8.zip",
+            "sha256": "19c5a1fd260eac0a5cb5a7f5ac895d69ec24b1eca9a4259dfeae737e065b08c8"
+          }
+        ],
+        "rcept_no": "20100331002153",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:18:01.658526+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 165792,
+            "path": "native/20100331002154-71d8ed0007e70bfaf8b19d547917a06c189490966c0c0b47e9e17736c5f39bd2.zip",
+            "sha256": "71d8ed0007e70bfaf8b19d547917a06c189490966c0c0b47e9e17736c5f39bd2"
+          }
+        ],
+        "rcept_no": "20100331002154",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:18:15.121789+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 248195,
+            "path": "native/20100331002155-8d8aafa23c06d1d3f64dce0a8aaa89475bd02e4cdceadad158a74bdbbcfe224b.zip",
+            "sha256": "8d8aafa23c06d1d3f64dce0a8aaa89475bd02e4cdceadad158a74bdbbcfe224b"
+          }
+        ],
+        "rcept_no": "20100331002155",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:18:34.560055+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 151665,
+            "path": "native/20100331002159-c1b1a319acc7e954f255fa9f29f836b164298393d87f8d6401939c8aab3332fe.zip",
+            "sha256": "c1b1a319acc7e954f255fa9f29f836b164298393d87f8d6401939c8aab3332fe"
+          }
+        ],
+        "rcept_no": "20100331002159",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:18:47.418975+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 157332,
+            "path": "native/20100331002160-4ef826593ede60dd6330908c592b3e35d4f198a0d593556ec8a2c21e22c19ba9.zip",
+            "sha256": "4ef826593ede60dd6330908c592b3e35d4f198a0d593556ec8a2c21e22c19ba9"
+          }
+        ],
+        "rcept_no": "20100331002160",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:18:54.565631+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 107231,
+            "path": "native/20100331002163-c1709214e69c9ca4cdf6a39c33d0865f6709d04964295a689cb89c48af2253f8.zip",
+            "sha256": "c1709214e69c9ca4cdf6a39c33d0865f6709d04964295a689cb89c48af2253f8"
+          }
+        ],
+        "rcept_no": "20100331002163",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:19:03.510142+00:00"
+      },
+      {
+        "archives": [
+          {
+            "bytes": 112728,
+            "path": "native/20100331002164-354be1797e9dc13d24e9e1f0dbad6544ff492361719042663542980aa994e897.zip",
+            "sha256": "354be1797e9dc13d24e9e1f0dbad6544ff492361719042663542980aa994e897"
+          }
+        ],
+        "rcept_no": "20100331002164",
+        "run_id": "40418269566",
+        "source_status": "DURABLE",
+        "source_version": "opendart-document-v1",
+        "updated_at_utc": "2026-10-26T23:19:12.364636+00:00"
+      }
+    ],
+    "completed_receipts": [
+      "20100331002117",
+      "20100331002119",
+      "20100331002120",
+      "20100331002121",
+      "20100331002124",
+      "20100331002127",
+      "20100331002132",
+      "20100331002133",
+      "20100331002136",
+      "20100331002137",
+      "20100331002138",
+      "20100331002146",
+      "20100331002149",
+      "20100331002153",
+      "20100331002154",
+      "20100331002155",
+      "20100331002159",
+      "20100331002160",
+      "20100331002163",
+      "20100331002164"
+    ],
+    "contract": "limited-source-observation-v1",
+    "counts": {
+      "PARSED_4F": 17,
+      "SOURCE_GAP": 3
+    },
+    "durable_terminal_documents": 20,
+    "extracted_documents": 17,
+    "independently_verified_fields": 0,
+    "processed_results": 20,
+    "published_financial_fields": 0,
+    "quality": [
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "1ea2d299c5522cc898cf21aa3079d5daf306713400ae8f2fad2b36c010c0db7f",
+        "extraction_state": "SOURCE_GAP",
+        "field_count": 0,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002117",
+        "rejection_reason": "[{\"member\": \"20100331002117.xml\", \"bytes\": 417687, \"sha256\": \"b3ff2efc4bfbb36e0f37168696507ac2a053035941162647ace86e8a12c05a62\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 543, \"literal_label_view\": [{\"offset\": 13468, \"literal\": \"<공룡왕>\"}, {\"offset\": 13501, \"literal\": \"<공룡왕>\"}, {\"offset\": 13533, \"literal\": \"<컴온베이비 온라인>\"}, {\"offset\": 13673, \"literal\": \"<장금이의 꿈>\"}, {\"offset\": 13925, \"literal\": \"<마법전사 유캔도>\"}, {\"offset\": 14117, \"literal\": \"<탑블레이드 더 무비>\"}, {\"offset\": 223481, \"literal\": \"<탑블레이드 더 무비>\"}, {\"offset\": 223539, \"literal\": \"<탑블레이드 더 무비>\"}, {\"offset\": 223684, \"literal\": \"<종료됨>\"}, {\"offset\": 223864, \"literal\": \"<Dinosaur King(원제:Dinosaur king D-kids Adventures)>\"}, {\"offset\": 224220, \"literal\": \"< 라라의 스타일기 >\"}, {\"offset\": 224279, \"literal\": \"<라라의 스타일기>\"}, {\"offset\": 224367, \"literal\": \"<계약종료>\"}, {\"offset\": 224524, \"literal\": \"< 부탁해  마이멜로디 >\"}, {\"offset\": 224625, \"literal\": \"<부탁해 마이멜로디>\"}, {\"offset\": 224689, \"literal\": \"<부탁해 마이멜로디2>\"}], \"structural_view_sha256\": \"dc57d6904a77ccdefcb81ee18a5eef28a44ee629ea06e1f57c017e4c68fe8f57\", \"xml_error\": \"not well-formed (invalid token): line 412, column 981\"}, {\"member\": \"20100331002117_00760.xml\", \"bytes\": 284970, \"sha256\": \"37c395e3118633b28ac6c15e106ca39f1641b432e6d3481c665ff3c07b93eee7\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 311}]",
+        "updated_at_utc": "2026-10-26T23:15:29.784595+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "9086c2bd45ba50c6a087309a4a306d67455a34440aa30251ffdf8fb0dd73399c",
+        "extraction_state": "PARSED_4F",
+        "field_count": 17,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002119",
+        "rejection_reason": "[{\"member\": \"20100331002119.xml\", \"table\": 114, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:15:40.144644+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "61d24c2b7ab08cdcf1fe980ab701a8c9b8b0ba8d6bc4ea79d01f9fbf93786de8",
+        "extraction_state": "PARSED_4F",
+        "field_count": 16,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002120",
+        "rejection_reason": "[{\"member\": \"20100331002120.xml\", \"table\": 107, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002120_00760.xml\", \"table\": 22, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:15:49.396099+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "2d83ea837dfe741c391021a30f93c85bb7eed7a3f0a3fb1dee3259cbafda76b6",
+        "extraction_state": "SOURCE_GAP",
+        "field_count": 0,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002121",
+        "rejection_reason": "[{\"member\": \"20100331002121_00760.xml\", \"bytes\": 303175, \"sha256\": \"314cc2177544c6c9404a257b3226ab54662ee10e12463176060684b8e01e381c\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 246}, {\"member\": \"20100331002121.xml\", \"bytes\": 332587, \"sha256\": \"aef07b081d3ea3622e7d5d592e0070430e0e755279d2d362b1e5c946666e5965\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 534, \"literal_label_view\": [{\"offset\": 159859, \"literal\": \"<주1>\"}, {\"offset\": 159992, \"literal\": \"<주2>\"}, {\"offset\": 160179, \"literal\": \"<주3>\"}], \"structural_view_sha256\": \"5958cff50b8f80da09f0922c3447c8f12a2d217b83f4f26b1b124386020254a2\", \"xml_error\": \"not well-formed (invalid token): line 886, column 81\"}, {\"member\": \"20100331002121_00761.xml\", \"bytes\": 289865, \"sha256\": \"67b6c55b57189b84c73e0fc393ef4c362c36229457b1e1969fdc37a2075ce819\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 224}]",
+        "updated_at_utc": "2026-10-26T23:15:59.825014+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "b285ce6dd182b66596fa182cbb428aff3b4146ffd370bd01abc8a44b96d1a4cd",
+        "extraction_state": "PARSED_4F",
+        "field_count": 18,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002124",
+        "rejection_reason": "[{\"member\": \"20100331002124.xml\", \"table\": 158, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:16:13.685716+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "3b6261a1b9437e760953517003bdbd40262df5e0a18dbe6bb8e3eef02ed9e753",
+        "extraction_state": "SOURCE_GAP",
+        "field_count": 0,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002127",
+        "rejection_reason": "[{\"member\": \"20100331002127_00760.xml\", \"bytes\": 410074, \"sha256\": \"5fd22cd99b15a2351bf117d53be15e763e0a992e6071e1fba0a19f4e0787924f\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 414}, {\"member\": \"20100331002127.xml\", \"bytes\": 489980, \"sha256\": \"3ada08a5b8e8a11b9a62646064cb4b67d3ef6ed4ea8dbbfb1f479429f03af078\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 973, \"literal_label_view\": [{\"offset\": 9218, \"literal\": \"<계열사 현황>\"}, {\"offset\": 15180, \"literal\": \"<무보증사채>\"}, {\"offset\": 45875, \"literal\": \"<2009년도>\"}, {\"offset\": 155808, \"literal\": \"<주요 특허등록>\"}], \"structural_view_sha256\": \"f87c401a7ee3a1512cd107eea1594df1ad344ae9250e54b6c21e7f462cbcf029\", \"xml_error\": \"mismatched tag: line 365, column 37\"}]",
+        "updated_at_utc": "2026-10-26T23:16:23.616529+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "ab85a9ac56a291fa26918b366f18d525b3b408d8e56c45a6fe8d0444418ef4ea",
+        "extraction_state": "PARSED_4F",
+        "field_count": 18,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002132",
+        "rejection_reason": "[{\"member\": \"20100331002132_00760.xml\", \"table\": 24, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002132.xml\", \"table\": 165, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:16:45.311364+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "b5f2212bca6d7ec0255e404a231f0275335673cbf335974e0c88acc66d712fb2",
+        "extraction_state": "PARSED_4F",
+        "field_count": 15,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002133",
+        "rejection_reason": "[{\"member\": \"20100331002133.xml\", \"table\": 101, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002133_00760.xml\", \"table\": 22, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002133_00760.xml\", \"table\": 102, \"reason\": \"ISOLATED_STATEMENT_HEADING_RESETS_CONTEXT\"}]",
+        "updated_at_utc": "2026-10-26T23:16:53.753608+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "0c5c9ddf1e3e0b0ae0326a88d4b50ae244bbf7239fb34a661426a61ad194acc0",
+        "extraction_state": "PARSED_4F",
+        "field_count": 19,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002136",
+        "rejection_reason": "[{\"member\": \"20100331002136.xml\", \"table\": 130, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:16:59.303385+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "8a9888395435e4d5204db2a1ba84db4a273cca16d5e22d85aef74e5f260ebf2f",
+        "extraction_state": "PARSED_4F",
+        "field_count": 36,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002137",
+        "rejection_reason": "[{\"member\": \"20100331002137.xml\", \"table\": 150, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002137.xml\", \"table\": 161, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002137.xml\", \"table\": 164, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002137.xml\", \"table\": 166, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002137.xml\", \"table\": 168, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002137.xml\", \"table\": 169, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002137.xml\", \"table\": 170, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:17:24.558076+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "b99ae820c2a795f5efa5360262abfe8c7e43d0c806e4ccbae3a4527a49c30fa8",
+        "extraction_state": "PARSED_4F",
+        "field_count": 17,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002138",
+        "rejection_reason": "[{\"member\": \"20100331002138.xml\", \"table\": 114, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:17:33.314480+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "d90ef12a2d281c8121b52bec16d61f150d9e3d2fbac7ed51f31fa939ffb44408",
+        "extraction_state": "PARSED_4F",
+        "field_count": 16,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002146",
+        "rejection_reason": "[{\"member\": \"20100331002146.xml\", \"table\": 82, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002146_00760.xml\", \"table\": 21, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:17:39.855465+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "d22a472e2f1b89608a2446ac90cf0625da244d5322db7bf837016e53430ae40a",
+        "extraction_state": "PARSED_4F",
+        "field_count": 18,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002149",
+        "rejection_reason": "[{\"member\": \"20100331002149.xml\", \"table\": 148, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002149.xml\", \"table\": 154, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002149.xml\", \"table\": 156, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002149.xml\", \"table\": 158, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002149.xml\", \"table\": 159, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002149.xml\", \"table\": 160, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002149.xml\", \"table\": 161, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002149.xml\", \"table\": 163, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002149.xml\", \"table\": 164, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:17:56.827406+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "19c5a1fd260eac0a5cb5a7f5ac895d69ec24b1eca9a4259dfeae737e065b08c8",
+        "extraction_state": "PARSED_4F",
+        "field_count": 11,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002153",
+        "rejection_reason": "[{\"member\": \"20100331002153.xml\", \"table\": 77, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002153_00760.xml\", \"table\": 17, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:18:01.658545+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "71d8ed0007e70bfaf8b19d547917a06c189490966c0c0b47e9e17736c5f39bd2",
+        "extraction_state": "PARSED_4F",
+        "field_count": 16,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002154",
+        "rejection_reason": "[{\"member\": \"20100331002154_00760.xml\", \"table\": 16, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002154.xml\", \"table\": 84, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:18:15.121807+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "8d8aafa23c06d1d3f64dce0a8aaa89475bd02e4cdceadad158a74bdbbcfe224b",
+        "extraction_state": "PARSED_4F",
+        "field_count": 34,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002155",
+        "rejection_reason": "[{\"member\": \"20100331002155.xml\", \"table\": 165, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002155.xml\", \"table\": 176, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002155.xml\", \"table\": 178, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002155.xml\", \"table\": 179, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002155.xml\", \"table\": 181, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002155.xml\", \"table\": 183, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002155.xml\", \"table\": 184, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002155.xml\", \"table\": 185, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:18:34.560074+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "c1b1a319acc7e954f255fa9f29f836b164298393d87f8d6401939c8aab3332fe",
+        "extraction_state": "PARSED_4F",
+        "field_count": 18,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002159",
+        "rejection_reason": "[{\"member\": \"20100331002159_00760.xml\", \"table\": 22, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002159.xml\", \"table\": 113, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002159.xml\", \"table\": 119, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002159.xml\", \"table\": 121, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:18:47.418992+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "4ef826593ede60dd6330908c592b3e35d4f198a0d593556ec8a2c21e22c19ba9",
+        "extraction_state": "PARSED_4F",
+        "field_count": 16,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002160",
+        "rejection_reason": "[{\"member\": \"20100331002160.xml\", \"table\": 102, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002160_00760.xml\", \"table\": 21, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:18:54.565648+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "c1709214e69c9ca4cdf6a39c33d0865f6709d04964295a689cb89c48af2253f8",
+        "extraction_state": "PARSED_4F",
+        "field_count": 17,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002163",
+        "rejection_reason": "[{\"member\": \"20100331002163.xml\", \"table\": 59, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}, {\"member\": \"20100331002163.xml\", \"table\": 67, \"reason\": \"CURRENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:19:03.510158+00:00"
+      },
+      {
+        "availability_status": "UNVERIFIED",
+        "backtest_eligible": false,
+        "document_sha256": "354be1797e9dc13d24e9e1f0dbad6544ff492361719042663542980aa994e897",
+        "extraction_state": "PARSED_4F",
+        "field_count": 18,
+        "financial_accuracy": "UNVERIFIED_UNAUDITED",
+        "parser_version": "legacy-v9.2-statement-boundary-guard",
+        "quality_version": "financial-quality-v1-source-linked-not-PIT",
+        "rcept_no": "20100331002164",
+        "rejection_reason": "[{\"member\": \"20100331002164.xml\", \"table\": 140, \"reason\": \"STATEMENT_HEADER_UNVERIFIED\"}]",
+        "updated_at_utc": "2026-10-26T23:19:12.364654+00:00"
+      }
+    ],
+    "quarantine": [
+      {
+        "detail": "[{\"member\": \"20100331002117.xml\", \"bytes\": 417687, \"sha256\": \"b3ff2efc4bfbb36e0f37168696507ac2a053035941162647ace86e8a12c05a62\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 543, \"literal_label_view\": [{\"offset\": 13468, \"literal\": \"<공룡왕>\"}, {\"offset\": 13501, \"literal\": \"<공룡왕>\"}, {\"offset\": 13533, \"literal\": \"<컴온베이비 온라인>\"}, {\"offset\": 13673, \"literal\": \"<장금이의 꿈>\"}, {\"offset\": 13925, \"literal\": \"<마법전사 유캔도>\"}, {\"offset\": 14117, \"literal\": \"<탑블레이드 더 무비>\"}, {\"offset\": 223481, \"literal\": \"<탑블레이드 더 무비>\"}, {\"offset\": 223539, \"literal\": \"<탑블레이드 더 무비>\"}, {\"offset\": 223684, \"literal\": \"<종료됨>\"}, {\"offset\": 223864, \"literal\": \"<Dinosaur King(원제:Dinosaur king D-kids Adventures)>\"}, {\"offset\": 224220, \"literal\": \"< 라라의 스타일기 >\"}, {\"offset\": 224279, \"literal\": \"<라라의 스타일기>\"}, {\"offset\": 224367, \"literal\": \"<계약종료>\"}, {\"offset\": 224524, \"literal\": \"< 부탁해  마이멜로디 >\"}, {\"offset\": 224625, \"literal\": \"<부탁해 마이멜로디>\"}, {\"offset\": 224689, \"literal\": \"<부탁해 마이멜로디2>\"}], \"structural_view_sha256\": \"dc57d6904a77ccdefcb81ee18a5eef28a44ee629ea06e1f57c017e4c68fe8f57\", \"xml_error\": \"not well-formed (invalid token): line 412, column 981\"}, {\"member\": \"20100331002117_00760.xml\", \"bytes\": 284970, \"sha256\": \"37c395e3118633b28ac6c15e106ca39f1641b432e6d3481c665ff3c07b93eee7\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 311}]",
+        "evidence": [
+          {
+            "bytes": 91139,
+            "path": "native/20100331002117-1ea2d299c5522cc898cf21aa3079d5daf306713400ae8f2fad2b36c010c0db7f.zip",
+            "sha256": "1ea2d299c5522cc898cf21aa3079d5daf306713400ae8f2fad2b36c010c0db7f"
+          }
+        ],
+        "reason": "SOURCE_GAP",
+        "receipt": "20100331002117",
+        "scope": "DOCUMENT",
+        "source_status": "DURABLE"
+      },
+      {
+        "detail": "[{\"member\": \"20100331002121_00760.xml\", \"bytes\": 303175, \"sha256\": \"314cc2177544c6c9404a257b3226ab54662ee10e12463176060684b8e01e381c\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 246}, {\"member\": \"20100331002121.xml\", \"bytes\": 332587, \"sha256\": \"aef07b081d3ea3622e7d5d592e0070430e0e755279d2d362b1e5c946666e5965\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 534, \"literal_label_view\": [{\"offset\": 159859, \"literal\": \"<주1>\"}, {\"offset\": 159992, \"literal\": \"<주2>\"}, {\"offset\": 160179, \"literal\": \"<주3>\"}], \"structural_view_sha256\": \"5958cff50b8f80da09f0922c3447c8f12a2d217b83f4f26b1b124386020254a2\", \"xml_error\": \"not well-formed (invalid token): line 886, column 81\"}, {\"member\": \"20100331002121_00761.xml\", \"bytes\": 289865, \"sha256\": \"67b6c55b57189b84c73e0fc393ef4c362c36229457b1e1969fdc37a2075ce819\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 224}]",
+        "evidence": [
+          {
+            "bytes": 121583,
+            "path": "native/20100331002121-2d83ea837dfe741c391021a30f93c85bb7eed7a3f0a3fb1dee3259cbafda76b6.zip",
+            "sha256": "2d83ea837dfe741c391021a30f93c85bb7eed7a3f0a3fb1dee3259cbafda76b6"
+          }
+        ],
+        "reason": "SOURCE_GAP",
+        "receipt": "20100331002121",
+        "scope": "DOCUMENT",
+        "source_status": "DURABLE"
+      },
+      {
+        "detail": "[{\"member\": \"20100331002127_00760.xml\", \"bytes\": 410074, \"sha256\": \"5fd22cd99b15a2351bf117d53be15e763e0a992e6071e1fba0a19f4e0787924f\", \"issues\": [], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 414}, {\"member\": \"20100331002127.xml\", \"bytes\": 489980, \"sha256\": \"3ada08a5b8e8a11b9a62646064cb4b67d3ef6ed4ea8dbbfb1f479429f03af078\", \"issues\": [\"SOURCE_XML_INCOMPLETE_OR_INVALID\"], \"warnings\": [\"LEGACY_ENCODING_DECLARATION_MISMATCH\", \"LEGACY_HTML_AMPERSAND_SYNTAX\", \"LEGACY_LITERAL_KOREAN_LABELS_VIEW_ONLY\"], \"encoding\": \"utf-8\", \"resolved_encoding\": \"cp949\", \"replacement_characters\": 0, \"ampersand_escapes_for_structure\": 973, \"literal_label_view\": [{\"offset\": 9218, \"literal\": \"<계열사 현황>\"}, {\"offset\": 15180, \"literal\": \"<무보증사채>\"}, {\"offset\": 45875, \"literal\": \"<2009년도>\"}, {\"offset\": 155808, \"literal\": \"<주요 특허등록>\"}], \"structural_view_sha256\": \"f87c401a7ee3a1512cd107eea1594df1ad344ae9250e54b6c21e7f462cbcf029\", \"xml_error\": \"mismatched tag: line 365, column 37\"}]",
+        "evidence": [
+          {
+            "bytes": 116819,
+            "path": "native/20100331002127-3b6261a1b9437e760953517003bdbd40262df5e0a18dbe6bb8e3eef02ed9e753.zip",
+            "sha256": "3b6261a1b9437e760953517003bdbd40262df5e0a18dbe6bb8e3eef02ed9e753"
+          }
+        ],
+        "reason": "SOURCE_GAP",
+        "receipt": "20100331002127",
+        "scope": "DOCUMENT",
+        "source_status": "DURABLE"
+      }
+    ],
+    "review_rule": "First20 hash-ranked receipts before HTTP; add first2 of every result class and at least10 extracted (all if<=20). Raw cells/semantic controls precede reading candidate amounts.",
+    "review_selection": [
+      "20100331002117",
+      "20100331002119",
+      "20100331002120",
+      "20100331002124",
+      "20100331002127",
+      "20100331002132",
+      "20100331002133",
+      "20100331002136",
+      "20100331002137",
+      "20100331002138",
+      "20100331002146",
+      "20100331002149",
+      "20100331002153",
+      "20100331002154",
+      "20100331002155",
+      "20100331002159",
+      "20100331002160",
+      "20100331002163",
+      "20100331002164"
+    ],
+    "run_status": {
+      "admitted_documents": 20,
+      "automatic_publication": "HELD",
+      "commit": "154ac739c22ae9647a2d03979665dcf979da35c8",
+      "completed": 20,
+      "current_receipt": "20100331002164",
+      "current_stage": "CHECKPOINT_DURABLE",
+      "document_states": {
+        "20100331002117": "CHECKPOINT_DURABLE",
+        "20100331002119": "CHECKPOINT_DURABLE",
+        "20100331002120": "CHECKPOINT_DURABLE",
+        "20100331002121": "CHECKPOINT_DURABLE",
+        "20100331002124": "CHECKPOINT_DURABLE",
+        "20100331002127": "CHECKPOINT_DURABLE",
+        "20100331002132": "CHECKPOINT_DURABLE",
+        "20100331002133": "CHECKPOINT_DURABLE",
+        "20100331002136": "CHECKPOINT_DURABLE",
+        "20100331002137": "CHECKPOINT_DURABLE",
+        "20100331002138": "CHECKPOINT_DURABLE",
+        "20100331002146": "CHECKPOINT_DURABLE",
+        "20100331002149": "CHECKPOINT_DURABLE",
+        "20100331002153": "CHECKPOINT_DURABLE",
+        "20100331002154": "CHECKPOINT_DURABLE",
+        "20100331002155": "CHECKPOINT_DURABLE",
+        "20100331002159": "CHECKPOINT_DURABLE",
+        "20100331002160": "CHECKPOINT_DURABLE",
+        "20100331002163": "CHECKPOINT_DURABLE",
+        "20100331002164": "CHECKPOINT_DURABLE"
+      },
+      "document_timings": [
+        {
+          "checkpoint_seconds": 0.003138,
+          "receipt": "20100331002117",
+          "replayed_source": false,
+          "validation_seconds": 0.004021,
+          "worker_progress_intervals": {
+            "download": 5.748463,
+            "parsing": 1.809173,
+            "startup_and_unattributed": 0.519562,
+            "storage": 0.039261,
+            "validation": 0.000787,
+            "waiting": 0.0
+          },
+          "worker_seconds": 8.117246
+        },
+        {
+          "checkpoint_seconds": 0.003969,
+          "receipt": "20100331002119",
+          "replayed_source": false,
+          "validation_seconds": 0.036254,
+          "worker_progress_intervals": {
+            "download": 7.331097,
+            "parsing": 2.4476,
+            "startup_and_unattributed": 0.485198,
+            "storage": 0.052084,
+            "validation": 0.000757,
+            "waiting": 0.0
+          },
+          "worker_seconds": 10.316736
+        },
+        {
+          "checkpoint_seconds": 0.003348,
+          "receipt": "20100331002120",
+          "replayed_source": false,
+          "validation_seconds": 0.027668,
+          "worker_progress_intervals": {
+            "download": 6.580889,
+            "parsing": 2.070518,
+            "startup_and_unattributed": 0.50839,
+            "storage": 0.055575,
+            "validation": 0.000758,
+            "waiting": 0.0
+          },
+          "worker_seconds": 9.21613
+        },
+        {
+          "checkpoint_seconds": 0.002312,
+          "receipt": "20100331002121",
+          "replayed_source": false,
+          "validation_seconds": 0.004483,
+          "worker_progress_intervals": {
+            "download": 7.507263,
+            "parsing": 2.380792,
+            "startup_and_unattributed": 0.49921,
+            "storage": 0.029323,
+            "validation": 0.000962,
+            "waiting": 0.0
+          },
+          "worker_seconds": 10.417549
+        },
+        {
+          "checkpoint_seconds": 0.003802,
+          "receipt": "20100331002124",
+          "replayed_source": false,
+          "validation_seconds": 0.031818,
+          "worker_progress_intervals": {
+            "download": 9.627713,
+            "parsing": 3.641314,
+            "startup_and_unattributed": 0.518734,
+            "storage": 0.03412,
+            "validation": 0.000826,
+            "waiting": 0.0
+          },
+          "worker_seconds": 13.822707
+        },
+        {
+          "checkpoint_seconds": 0.002336,
+          "receipt": "20100331002127",
+          "replayed_source": false,
+          "validation_seconds": 0.004462,
+          "worker_progress_intervals": {
+            "download": 7.023989,
+            "parsing": 2.355925,
+            "startup_and_unattributed": 0.505069,
+            "storage": 0.032802,
+            "validation": 0.000738,
+            "waiting": 0.0
+          },
+          "worker_seconds": 9.918522
+        },
+        {
+          "checkpoint_seconds": 0.003627,
+          "receipt": "20100331002132",
+          "replayed_source": false,
+          "validation_seconds": 0.05828,
+          "worker_progress_intervals": {
+            "download": 15.144129,
+            "parsing": 5.925699,
+            "startup_and_unattributed": 0.511485,
+            "storage": 0.048182,
+            "validation": 0.00093,
+            "waiting": 0.0
+          },
+          "worker_seconds": 21.630424
+        },
+        {
+          "checkpoint_seconds": 0.003431,
+          "receipt": "20100331002133",
+          "replayed_source": false,
+          "validation_seconds": 0.020792,
+          "worker_progress_intervals": {
+            "download": 5.929287,
+            "parsing": 1.919053,
+            "startup_and_unattributed": 0.516133,
+            "storage": 0.04891,
+            "validation": 0.000729,
+            "waiting": 0.0
+          },
+          "worker_seconds": 8.414112
+        },
+        {
+          "checkpoint_seconds": 0.004156,
+          "receipt": "20100331002136",
+          "replayed_source": false,
+          "validation_seconds": 0.030985,
+          "worker_progress_intervals": {
+            "download": 3.707085,
+            "parsing": 1.248085,
+            "startup_and_unattributed": 0.514944,
+            "storage": 0.040574,
+            "validation": 0.000694,
+            "waiting": 0.0
+          },
+          "worker_seconds": 5.511382
+        },
+        {
+          "checkpoint_seconds": 0.004482,
+          "receipt": "20100331002137",
+          "replayed_source": false,
+          "validation_seconds": 0.108006,
+          "worker_progress_intervals": {
+            "download": 16.257093,
+            "parsing": 8.229203,
+            "startup_and_unattributed": 0.488007,
+            "storage": 0.162395,
+            "validation": 0.000938,
+            "waiting": 0.0
+          },
+          "worker_seconds": 25.137636
+        },
+        {
+          "checkpoint_seconds": 0.003925,
+          "receipt": "20100331002138",
+          "replayed_source": false,
+          "validation_seconds": 0.032769,
+          "worker_progress_intervals": {
+            "download": 6.411019,
+            "parsing": 1.833572,
+            "startup_and_unattributed": 0.436576,
+            "storage": 0.033341,
+            "validation": 0.000809,
+            "waiting": 0.0
+          },
+          "worker_seconds": 8.715318
+        },
+        {
+          "checkpoint_seconds": 0.003323,
+          "receipt": "20100331002146",
+          "replayed_source": false,
+          "validation_seconds": 0.021323,
+          "worker_progress_intervals": {
+            "download": 3.827588,
+            "parsing": 2.13849,
+            "startup_and_unattributed": 0.507671,
+            "storage": 0.037007,
+            "validation": 0.000799,
+            "waiting": 0.0
+          },
+          "worker_seconds": 6.511555
+        },
+        {
+          "checkpoint_seconds": 0.0042,
+          "receipt": "20100331002149",
+          "replayed_source": false,
+          "validation_seconds": 0.037834,
+          "worker_progress_intervals": {
+            "download": 11.648052,
+            "parsing": 4.786529,
+            "startup_and_unattributed": 0.450574,
+            "storage": 0.041057,
+            "validation": 0.000882,
+            "waiting": 0.0
+          },
+          "worker_seconds": 16.927094
+        },
+        {
+          "checkpoint_seconds": 0.007867,
+          "receipt": "20100331002153",
+          "replayed_source": false,
+          "validation_seconds": 0.012071,
+          "worker_progress_intervals": {
+            "download": 3.486944,
+            "parsing": 0.852192,
+            "startup_and_unattributed": 0.444854,
+            "storage": 0.024918,
+            "validation": 0.001782,
+            "waiting": 0.0
+          },
+          "worker_seconds": 4.81069
+        },
+        {
+          "checkpoint_seconds": 0.003535,
+          "receipt": "20100331002154",
+          "replayed_source": false,
+          "validation_seconds": 0.031374,
+          "worker_progress_intervals": {
+            "download": 9.781086,
+            "parsing": 3.13526,
+            "startup_and_unattributed": 0.463453,
+            "storage": 0.039246,
+            "validation": 0.000822,
+            "waiting": 0.0
+          },
+          "worker_seconds": 13.419866
+        },
+        {
+          "checkpoint_seconds": 0.004497,
+          "receipt": "20100331002155",
+          "replayed_source": false,
+          "validation_seconds": 0.097314,
+          "worker_progress_intervals": {
+            "download": 12.882038,
+            "parsing": 5.82547,
+            "startup_and_unattributed": 0.529141,
+            "storage": 0.092875,
+            "validation": 0.000974,
+            "waiting": 0.0
+          },
+          "worker_seconds": 19.330498
+        },
+        {
+          "checkpoint_seconds": 0.003857,
+          "receipt": "20100331002159",
+          "replayed_source": false,
+          "validation_seconds": 0.029525,
+          "worker_progress_intervals": {
+            "download": 9.112432,
+            "parsing": 3.20769,
+            "startup_and_unattributed": 0.467081,
+            "storage": 0.032827,
+            "validation": 0.000886,
+            "waiting": 0.0
+          },
+          "worker_seconds": 12.820916
+        },
+        {
+          "checkpoint_seconds": 0.003675,
+          "receipt": "20100331002160",
+          "replayed_source": false,
+          "validation_seconds": 0.024745,
+          "worker_progress_intervals": {
+            "download": 3.294402,
+            "parsing": 3.305569,
+            "startup_and_unattributed": 0.467628,
+            "storage": 0.045025,
+            "validation": 0.000893,
+            "waiting": 0.0
+          },
+          "worker_seconds": 7.113517
+        },
+        {
+          "checkpoint_seconds": 0.003717,
+          "receipt": "20100331002163",
+          "replayed_source": false,
+          "validation_seconds": 0.021017,
+          "worker_progress_intervals": {
+            "download": 6.571396,
+            "parsing": 1.846902,
+            "startup_and_unattributed": 0.466695,
+            "storage": 0.029659,
+            "validation": 0.00079,
+            "waiting": 0.0
+          },
+          "worker_seconds": 8.915442
+        },
+        {
+          "checkpoint_seconds": 0.003621,
+          "receipt": "20100331002164",
+          "replayed_source": false,
+          "validation_seconds": 0.030703,
+          "worker_progress_intervals": {
+            "download": 5.991524,
+            "parsing": 2.319802,
+            "startup_and_unattributed": 0.475857,
+            "storage": 0.027966,
+            "validation": 0.000831,
+            "waiting": 0.0
+          },
+          "worker_seconds": 8.815981
+        }
+      ],
+      "elapsed_seconds": 230.71,
+      "financial_population_certification": "UNVERIFIED",
+      "finished_at_utc": "2026-10-26T23:19:12.369716+00:00",
+      "investment_PIT": "0/6",
+      "last_checkpoint": "20100331002164",
+      "prior_stop_reason": null,
+      "remaining_receipts": [],
+      "results": [
+        {
+          "receipt": "20100331002117",
+          "rows": 0,
+          "status": "SOURCE_GAP"
+        },
+        {
+          "receipt": "20100331002119",
+          "rows": 17,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002120",
+          "rows": 16,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002121",
+          "rows": 0,
+          "status": "SOURCE_GAP"
+        },
+        {
+          "receipt": "20100331002124",
+          "rows": 18,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002127",
+          "rows": 0,
+          "status": "SOURCE_GAP"
+        },
+        {
+          "receipt": "20100331002132",
+          "rows": 18,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002133",
+          "rows": 15,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002136",
+          "rows": 19,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002137",
+          "rows": 36,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002138",
+          "rows": 17,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002146",
+          "rows": 16,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002149",
+          "rows": 18,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002153",
+          "rows": 11,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002154",
+          "rows": 16,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002155",
+          "rows": 34,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002159",
+          "rows": 18,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002160",
+          "rows": 16,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002163",
+          "rows": 17,
+          "status": "PARSED_4F"
+        },
+        {
+          "receipt": "20100331002164",
+          "rows": 18,
+          "status": "PARSED_4F"
+        }
+      ],
+      "resume_history": [],
+      "resumed": false,
+      "run_id": "40418269566",
+      "started_at_utc": "2026-10-26T23:15:21.659669+00:00",
+      "status": "COMPLETE_CANDIDATES_HELD",
+      "stop_reason": "BATCH_COMPLETE",
+      "updated_at_utc": "2026-10-26T23:19:12.369726+00:00"
+    },
+    "source_absence_certification": "UNVERIFIED"
+  },
+  "transfers": [
+    {
+      "automatic_publication": false,
+      "blob_sha": "d298138bed1ebb046df25b814f35041dbdeee8da",
+      "bytes": 2921334,
+      "compressed_sha256": "847c350df640ebbc199a78d9e7da3d1aad0a8238fea720ef90fedaeddf7d10f4",
+      "financial_certification": "UNVERIFIED"
+    }
+  ],
+  "window_renewal": {
+    "Q3_HTTP": 12,
+    "Q3_executions": 1,
+    "approval_id": "q3-first-fy-window-20261024",
+    "automatic_scheduling": false,
+    "financial_publication": "HOLD",
+    "frozen41_order_sha256": "7bfafadb83322a9c7e2d358fd3c0f9331784b7597770c133ed83fb3e78283904",
+    "fy_expires_at_utc": "2026-10-26T14:59:59+00:00",
+    "fy_not_before_utc": "2026-10-25T15:00:00+00:00",
+    "investment_PIT": "0/6",
+    "maximum_runs_per_KST_day": 1,
+    "original_approval_sha256": "f48d8059b5182031626da267d71e8cfce2537202b65e442688a1c53507b7d0c7",
+    "q3_not_before_utc": "2026-10-24T15:00:00+00:00",
+    "remaining_FY_HTTP": 40,
+    "remaining_FY_documents": 20,
+    "remaining_FY_executions": 1,
+    "run_seconds": 600
+  }
+}

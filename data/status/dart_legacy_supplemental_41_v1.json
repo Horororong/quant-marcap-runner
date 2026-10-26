@@ -64,7 +64,31 @@
       "stop_reason": "BATCH_COMPLETE"
     },
     {
-      "completed_receipts": [],
+      "HTTP_requests_observed": 20,
+      "candidate_fields": 320,
+      "completed_at_utc": "2026-10-26T23:19:14.061079+00:00",
+      "completed_receipts": [
+        "20100331002117",
+        "20100331002119",
+        "20100331002120",
+        "20100331002121",
+        "20100331002124",
+        "20100331002127",
+        "20100331002132",
+        "20100331002133",
+        "20100331002136",
+        "20100331002137",
+        "20100331002138",
+        "20100331002146",
+        "20100331002149",
+        "20100331002153",
+        "20100331002154",
+        "20100331002155",
+        "20100331002159",
+        "20100331002160",
+        "20100331002163",
+        "20100331002164"
+      ],
       "day_kst": "2026-10-27",
       "document_limit": 20,
       "http_reserved": 40,
@@ -91,9 +115,12 @@
         "20100331002163",
         "20100331002164"
       ],
+      "retries_observed": 0,
       "run_id": "40418269566",
+      "source_elapsed_seconds": 230.71,
       "started_at_utc": "2026-10-26T23:15:15.147780+00:00",
-      "status": "RUNNING"
+      "status": "COMPLETE",
+      "stop_reason": "BATCH_COMPLETE"
     }
   ],
   "backtest_eligible": false,
@@ -118,14 +145,7 @@
     "20100331002104",
     "20100331002105",
     "20100331002112",
-    "20100331002116"
-  ],
-  "contract": "supplemental-finite-source-v1",
-  "financial_publication": "HOLD",
-  "investment_PIT": "0/6",
-  "original_runs_sha256": "85707cb67719f2142fcd10a03192db57b173dd0deda70ee12d3cadf7fa7bc4cd",
-  "phase": "RUNNING",
-  "remaining_receipts": [
+    "20100331002116",
     "20100331002117",
     "20100331002119",
     "20100331002120",
@@ -146,5 +166,11 @@
     "20100331002160",
     "20100331002163",
     "20100331002164"
-  ]
+  ],
+  "contract": "supplemental-finite-source-v1",
+  "financial_publication": "HOLD",
+  "investment_PIT": "0/6",
+  "original_runs_sha256": "85707cb67719f2142fcd10a03192db57b173dd0deda70ee12d3cadf7fa7bc4cd",
+  "phase": "COMPLETE",
+  "remaining_receipts": []
 }
