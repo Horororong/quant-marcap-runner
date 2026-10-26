@@ -136,7 +136,7 @@ jobs:
       - name: Q3 boundaries plus existing finite collection and interruption contracts
         run: |
           PY="$RUNNER_TEMP/fixed/runtime/.venv/bin/python"
-          "$PY" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_financial_q3_three","test_financial_supplemental_resume","test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume","test_dart_corp_code","test_legacy_backfill_resume"]);r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
+          "$PY" -I -c 'import sys,unittest;sys.path[:0]=[".","tests"];s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_financial_collection_outcome","test_financial_q3_three","test_financial_supplemental_resume","test_financial_rollout","test_financial_limited_resume","test_financial_batch_resume","test_dart_corp_code","test_legacy_backfill_resume"]);r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
           git diff --exit-code -- config/financial_limited_resume_v1.json config/financial_supplemental_41_v1.json data/status
 # 05:17 Asia/Seoul. Code ledger enforces caps even if dispatch/schedule duplicates.
 # No legacy-v5,2000,modern collection fallback and no automatic metric publication.
