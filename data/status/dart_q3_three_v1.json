@@ -114,6 +114,7 @@
       "status": "RECEIVED"
     },
     {
+      "HTTP_status": 200,
       "endpoint": "document.xml",
       "intent_recorded_at_utc": "2026-10-26T14:52:42.022945+00:00",
       "label": "20091113001077",
@@ -121,8 +122,11 @@
       "params": {
         "rcept_no": "20091113001077"
       },
+      "response_bytes": 41192,
+      "response_received_at_utc": "2026-10-26T14:52:50.551138+00:00",
+      "sha256": "278b7ef1c3084145092f8eee257f4b42b690e3990d751bae912bc708e4bb9313",
       "source_url": "https://opendart.fss.or.kr/api/document.xml",
-      "status": "ATTEMPT_STARTED"
+      "status": "RECEIVED"
     }
   ],
   "run_id": "40343246238",
