@@ -36,3 +36,11 @@ notbefore10/27KST,expiry10/28KST23:59:59. Original3runhistory+FY21used42reserved
 21actualHTTP andQ3singleused6HTTP retained. No quota reset or batch substitution.
 Publication/minimal operating PR+CI+merge and this exact finite window amendment
 need approval; never dispatch from this unreviewed research branch.
+
+## Owner-approved FY20 expiry addendum — 2026-10-27
+
+The owner approved publishing the prepared five-file reporting delta, fixed-kit validation, a reviewable minimal PR and normal main merge, plus renewal of the same remaining FY20 allowance through 2026-10-28 23:59:59 KST. Added a separate exact-hash-bound addendum; original signed configs/window and all used ledgers remain unchanged. Its original approval hash, prior window hash, frozen remainder, completed prior run, 42 reserved prior HTTP, one remaining execution/40 HTTP/600 seconds and shared KST-day limit are enforced. It cannot renew Q3, replenish budget, retry failure or schedule future execution. Lease CAS includes the addendum bytes. No raw source or credentials are in this code delta.
+
+Reporting records the matching current FY attempt's actual HTTP separately from raw archives, candidates, checkpoint and verification increments. No archive evidence means no new original. A process success without collection is not collection completion.
+
+Local isolated original-kit suite: 134/134 PASS, including exact expiry boundaries, old-window immutability, changed limits/bindings/history rejection, one shared daily opportunity, interrupted runtime lease/CAS binding, budget reuse denial and actual FY HTTP reporting. No live DART calls in validation. Remote CI/main/deployment evidence is recorded externally after execution; local tests are not remote success.

@@ -1,4 +1,5 @@
-import json,tempfile,unittest
+import json,tempfile,unittest,os
+from unittest.mock import patch
 from pathlib import Path
 from scripts.financial_collection_outcome import observe
 class Outcome(unittest.TestCase):
@@ -19,4 +20,8 @@ class Outcome(unittest.TestCase):
   x=self.run_case({'summary.json':{'collection':[{'rcept_no':'1','source_status':'DURABLE','archives':[{}]}],'candidate_fields':9}},after={'states':{'original':{'last_checkpoint':'B'}}});self.assertTrue(x['checkpoint_moved']);self.assertEqual(x['new_raw_originals'],1)
  def test_existing_archive_receipt_not_counted_twice(self):
   x=self.run_case({'summary.json':{'collection':[{'rcept_no':'1','source_status':'DURABLE','archives':[{}]}]}},before={'states':{'original':{'completed_receipts':['1'],'last_checkpoint':'A'}}});self.assertEqual(x['new_raw_originals'],0)
+ def test_FY_actual_HTTP_from_matching_durable_attempt(self):
+  with patch.dict(os.environ,{'GITHUB_RUN_ID':'new'}):
+   x=self.run_case({'summary.json':{'collection':[{'rcept_no':'1','source_status':'DURABLE','archives':[{}]}],'candidate_fields':7}},after={'states':{'original':{'last_checkpoint':'B'},'supplemental':{'attempts':[{'run_id':'old','HTTP_requests_observed':21},{'run_id':'new','HTTP_requests_observed':20}]}}})
+  self.assertEqual(x['source_HTTP_observed'],20);self.assertEqual(x['new_raw_originals'],1);self.assertEqual(x['new_candidates_extracted'],7)
 if __name__=='__main__':unittest.main()

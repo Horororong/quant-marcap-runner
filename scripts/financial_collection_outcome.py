@@ -22,6 +22,9 @@ def observe(before,after,source,step):
  elif summary:
   originals={c['rcept_no']for c in summary.get('collection',[])if c.get('source_status')=='DURABLE'and c.get('archives')}
   new_raw=len(originals-known_before);candidates=summary.get('candidate_fields',0);reason=summary.get('run_status',{}).get('stop_reason','Processed source batch');normal=step=='success'
+  attempts=(a.get('supplemental')or{}).get('attempts',[])
+  current=[x for x in attempts if x.get('run_id')==os.getenv('GITHUB_RUN_ID')]
+  if len(current)==1:http=current[0].get('HTTP_requests_observed')
  elif gate:new_raw=0;http=0;reason=gate.get('reason',gate.get('phase','Gate stopped before source collection'))
  if 'states' not in before or not before.get('states'):
   new_raw = 0 if gate and not started else None
