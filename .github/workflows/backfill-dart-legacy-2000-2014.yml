@@ -51,7 +51,12 @@ jobs:
           python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
           python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
-      - name: Once per KST day, maximum3 reservations and300 documents; first actual review required
+      - name: Snapshot shared ledger before collector invocation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/financial_collection_outcome.py --snapshot "$RUNNER_TEMP/collection-before.json"
+      - name: Run approved bounded source path; business outcome reported separately
+        id: collect
         env:
           GH_TOKEN: ${{ github.token }}
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
@@ -69,6 +74,25 @@ jobs:
           export SOURCE_CHECKOUT_SHA="$(git rev-parse HEAD)"
           echo "Actual collector checkout: $SOURCE_CHECKOUT_SHA"
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I scripts/financial_limited_resume.py --event schedule --output "$RUNNER_TEMP/limited-observation" --batch-documents "$BATCH_DOCUMENTS" "${args[@]}"
+      - name: Report actual source progress; zero collection is not completion
+        if: always()
+        id: collection_outcome
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COLLECTOR_STEP_OUTCOME: ${{ steps.collect.outcome }}
+        run: >-
+          python scripts/financial_collection_outcome.py
+          --before "$RUNNER_TEMP/collection-before.json"
+          --source-output "$RUNNER_TEMP/limited-observation"
+          --output "$RUNNER_TEMP/collection-outcome"
+          --step-outcome "$COLLECTOR_STEP_OUTCOME"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: collection-business-outcome
+          path: ${{ runner.temp }}/collection-outcome
+          if-no-files-found: error
+          retention-days: 90
       - uses: actions/upload-artifact@v4
         if: always() && inputs.q3_approval == ''
         with:
