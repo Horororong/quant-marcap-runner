@@ -1,5 +1,5 @@
 {
-  "HTTP_attempts": 4,
+  "HTTP_attempts": 5,
   "HTTP_reserved": 12,
   "approval_id": "q3-three-company-20261024",
   "approval_sha256": "0d0027131c7e291cd799d15740093c9ea3aa7e08ce1c12462444ed10d14dd177",
@@ -96,6 +96,17 @@
       "sha256": "7f3dbae57d8cf780f07c137f1593eb6e5247cd00e2387a1726994ec11610d9b4",
       "source_url": "https://opendart.fss.or.kr/api/document.xml",
       "status": "RECEIVED"
+    },
+    {
+      "endpoint": "document.xml",
+      "intent_recorded_at_utc": "2026-10-26T14:52:17.799115+00:00",
+      "label": "20091116000251",
+      "number": 5,
+      "params": {
+        "rcept_no": "20091116000251"
+      },
+      "source_url": "https://opendart.fss.or.kr/api/document.xml",
+      "status": "ATTEMPT_STARTED"
     }
   ],
   "run_id": "40343246238",
