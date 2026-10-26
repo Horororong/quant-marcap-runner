@@ -4,14 +4,16 @@
   "approval_id": "q3-three-company-20261024",
   "approval_sha256": "0d0027131c7e291cd799d15740093c9ea3aa7e08ce1c12462444ed10d14dd177",
   "backtest_eligible": false,
-  "completed_receipts": [],
+  "completed_receipts": [
+    "20091116000562"
+  ],
   "contract": "q3-fixed-source-v1",
   "day_kst": "2026-10-26",
   "dispatch_SHA": "345e07374a8762193167585227b38a4022d8e85e",
   "executions_used": 1,
   "financial_publication": "HOLD",
   "investment_PIT": "0/6",
-  "new_raw_documents": 0,
+  "new_raw_documents": 1,
   "original_runs_sha256": "85707cb67719f2142fcd10a03192db57b173dd0deda70ee12d3cadf7fa7bc4cd",
   "original_state_sha256": "ec7d9acfd793b36b738f203e10dcfe36a79232a564d62122aa13b4f18ed3e81a",
   "phase": "RUNNING",
@@ -98,7 +100,12 @@
   ],
   "run_id": "40343246238",
   "source_checkout": "345e07374a8762193167585227b38a4022d8e85e",
-  "source_packs": {},
+  "source_packs": {
+    "20091116000562": {
+      "blob_sha": "1c4e1f7884ac71ce736a60e0c0fcaa473472bd25",
+      "compressed_sha256": "e398a6b4d58f7abd4a9415d2d381ccd1b776bf0c7ebca96c082701761c7dba19"
+    }
+  },
   "started_at_utc": "2026-10-26T14:50:56.280184+00:00",
   "supplemental_state_sha256": "82d3e015f4b145755d125b0fb5073b9652df360fd151fb06f9d992d32aaf8f1e",
   "window_approval": {

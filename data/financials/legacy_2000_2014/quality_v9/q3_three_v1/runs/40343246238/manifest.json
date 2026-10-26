@@ -1,0 +1,65 @@
+{
+  "PIT": "UNVERIFIED",
+  "approval_id": "q3-three-company-20261024",
+  "automatic_financial_publication": "HOLD",
+  "classification": "RESEARCH_ONLY",
+  "engine_eligible": false,
+  "raw_data_publication_requires": "q3-three-public-preservation-20261024",
+  "source_packs": {
+    "20091116000562": {
+      "PIT": "UNVERIFIED",
+      "blob_sha": "1c4e1f7884ac71ce736a60e0c0fcaa473472bd25",
+      "compressed_bytes": 128816,
+      "compressed_sha256": "e398a6b4d58f7abd4a9415d2d381ccd1b776bf0c7ebca96c082701761c7dba19",
+      "engine_eligible": false,
+      "files": [
+        {
+          "bytes": 1187,
+          "path": "metadata/00104768-list1.json",
+          "sha256": "52dab39a1829a120a52a0dc71ee034117ab66b7d94b9f08888e4c74df7ef19b3"
+        },
+        {
+          "bytes": 499,
+          "path": "metadata/00104768-list1.proof.json",
+          "sha256": "3d8c56bb9187f600be6a8405f518ab67b54ff293ec0f7e9584334069feed0699"
+        },
+        {
+          "bytes": 1193,
+          "path": "metadata/00124799-list1.json",
+          "sha256": "94751fce417c9d31aec4b1ab7c510b9cdef75dc3122991f309fc8f5dd9b97af5"
+        },
+        {
+          "bytes": 499,
+          "path": "metadata/00124799-list1.proof.json",
+          "sha256": "4059399f5d750f18cc1dfb932da0ccda8a6d2b509f98c484f307e8d6a0392398"
+        },
+        {
+          "bytes": 1219,
+          "path": "metadata/00336297-list1.json",
+          "sha256": "ebae54c1c62d7c41a6ef5fd01c57d8c6cee3d25b2f83dcefc711d3f1e42bcb8b"
+        },
+        {
+          "bytes": 499,
+          "path": "metadata/00336297-list1.proof.json",
+          "sha256": "15da91849ff64559da1e0410eb3e131d7f2240261ce55c1afd0f80f5888e0476"
+        },
+        {
+          "bytes": 124428,
+          "path": "20091116000562-7f3dbae57d8cf780f07c137f1593eb6e5247cd00e2387a1726994ec11610d9b4.zip",
+          "sha256": "7f3dbae57d8cf780f07c137f1593eb6e5247cd00e2387a1726994ec11610d9b4"
+        },
+        {
+          "bytes": 805,
+          "path": "20091116000562-official.json",
+          "sha256": "9ac9b74fd710b2eca708fcaadf8f18d73509a8f64980454befa22cf7a18e2f49"
+        },
+        {
+          "bytes": 1940,
+          "path": "20091116000562-source.json",
+          "sha256": "fa7f4ab004b9b688ba79b49c8481140acd5e54141a80196f40305b1ef677e41b"
+        }
+      ],
+      "financial_certification": "UNVERIFIED"
+    }
+  }
+}
