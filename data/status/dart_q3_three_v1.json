@@ -18,6 +18,7 @@
   "public_preservation_approval": "q3-three-public-preservation-20261024",
   "requests": [
     {
+      "HTTP_status": 200,
       "endpoint": "list.json",
       "intent_recorded_at_utc": "2026-10-26T14:51:05.308349+00:00",
       "label": "00124799-list1",
@@ -31,8 +32,11 @@
         "page_no": "1",
         "pblntf_ty": "A"
       },
+      "response_bytes": 1193,
+      "response_received_at_utc": "2026-10-26T14:51:14.021963+00:00",
+      "sha256": "94751fce417c9d31aec4b1ab7c510b9cdef75dc3122991f309fc8f5dd9b97af5",
       "source_url": "https://opendart.fss.or.kr/api/list.json",
-      "status": "ATTEMPT_STARTED"
+      "status": "RECEIVED"
     }
   ],
   "run_id": "40343246238",
