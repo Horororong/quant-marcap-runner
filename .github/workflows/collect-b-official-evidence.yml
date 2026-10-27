@@ -24,19 +24,32 @@ permissions:
   actions: read
 jobs:
   validate:
+    env:
+      TARGET_CODE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /AGENTS.md
+            /PROJECT_CHARTER.md
+            /scripts/restore_pinned_financial_kit.py
+            /scripts/bounded_official_evidence.py
+            /scripts/bounded_official_github.py
+            /scripts/test_bounded_official_evidence.py
+            /scripts/test_bounded_official_github.py
+            /config/research/fixed_three_evidence_approval_20261028.json
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Exact checkout and original fixed kit; no Internet pip
         run: |
-          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          echo "Actual validation checkout: $GITHUB_SHA"
+          test "$(git rev-parse HEAD)" = "$TARGET_CODE_SHA"
+          echo "Actual validation checkout: $TARGET_CODE_SHA"
+          echo "Actual CI driver: ${{ github.workflow_sha }}"
           python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
           python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
@@ -52,6 +65,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /AGENTS.md
+            /PROJECT_CHARTER.md
+            /scripts/restore_pinned_financial_kit.py
+            /scripts/bounded_official_evidence.py
+            /scripts/bounded_official_github.py
+            /scripts/test_bounded_official_evidence.py
+            /scripts/test_bounded_official_github.py
+            /config/research/fixed_three_evidence_approval_20261028.json
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
