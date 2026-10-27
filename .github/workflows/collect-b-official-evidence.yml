@@ -91,9 +91,10 @@ jobs:
           KRX_AUTH_KEY: ${{ secrets.KRX_AUTH_KEY }}
           B_PRIVATE_BACKUP_TOKEN: ${{ secrets.B_PRIVATE_BACKUP_TOKEN || secrets.GH_BACKUP_TOKEN }}
         run: |
+          set -o pipefail
           umask 077
           echo "Actual source checkout: $GITHUB_SHA"
-          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/bounded_official_github.py",run_name="__main__")' --private-root "$RUNNER_TEMP/b-private" --grant config/research/fixed_three_evidence_approval_20261028.json > "$RUNNER_TEMP/b-summary.json"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/bounded_official_github.py",run_name="__main__")' --private-root "$RUNNER_TEMP/b-private" --grant config/research/fixed_three_evidence_approval_20261028.json | tee "$RUNNER_TEMP/b-summary.json"
       - name: Business outcome; a stopped or partial inventory is not B completion
         if: always()
         run: |
