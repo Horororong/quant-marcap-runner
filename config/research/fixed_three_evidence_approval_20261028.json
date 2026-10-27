@@ -1,0 +1,50 @@
+{
+  "contract": "bounded-fixed-three-official-evidence-v1",
+  "approval_id": "fixed-three-official-evidence-20261028",
+  "approved": true,
+  "approved_scope": "User explicitly approved36sourceHTTP/localimplementation only; no public code/raw/main/paid/automatic scheduling",
+  "expires_at": "2026-11-04T23:59:59+09:00",
+  "max_executions": 2,
+  "max_HTTP": 36,
+  "phase_limits": {
+    "inventory": 15,
+    "conditional": 21
+  },
+  "group_limits": {
+    "signal_market": 2,
+    "dart_inventory": 6,
+    "kind_inventory": 7,
+    "annual": 3,
+    "event": 18
+  },
+  "max_retries": 0,
+  "run_seconds": 600,
+  "max_executions_per_KST_day": 1,
+  "members": [
+    {
+      "stock_code": "000500",
+      "corp_code": "00104768"
+    },
+    {
+      "stock_code": "007160",
+      "corp_code": "00124799"
+    },
+    {
+      "stock_code": "049720",
+      "corp_code": "00336297"
+    }
+  ],
+  "signal_date": "2009-12-30",
+  "holding_start": "2010-01-04",
+  "holding_end": "2010-12-30",
+  "original_plan_sha256": "e149285675ad15931ee5c46e0af022cfce82d9822697c282dc2d2b2c39c53ff1",
+  "financial_publication": "HOLD",
+  "classification": "RESEARCH_ONLY",
+  "investment_approved": false,
+  "reset_prior_budgets": false,
+  "existing_Q3_receipts": {
+    "007160": "20091116000562",
+    "000500": "20091116000251",
+    "049720": "20091113001077"
+  }
+}
