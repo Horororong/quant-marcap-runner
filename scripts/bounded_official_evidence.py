@@ -18,6 +18,7 @@ def stamp(now=None):return (now or datetime.now(UTC)).isoformat()
 def day(now):return now.astimezone(KST).date().isoformat()
 class Stop(RuntimeError):pass
 class Deadline(Stop):pass
+class DataUnavailable(Stop):pass
 
 def private_root(path):
     path=Path(path)
@@ -129,6 +130,7 @@ def fetch(spec,timeout):
     encoded=parse.urlencode(params).encode();url=spec['url'];data=None
     if spec['method']=='GET':url+='?'+encoded.decode()
     else:data=encoded;headers['Content-Type']='application/x-www-form-urlencoded'
+    if host=='kind.krx.co.kr' and spec['method']=='POST':headers['X-Requested-With']='XMLHttpRequest'
     req=request.Request(url,data=data,method=spec['method'],headers=headers)
     try:
         with request.build_opener(NoRedirect()).open(req,timeout=timeout)as response:
@@ -176,10 +178,21 @@ class Collector:
         self.state=json.loads(path.read_text())if path.exists()else dict(contract=grant['contract'],approval_id=grant['approval_id'],approval_sha256=sha(raw(grant)),executions=[],requests=[],status='READY',inventory_freeze=None)
         if self.state['approval_sha256']!=sha(raw(grant)):self.close();raise Stop('BUDGET_CANNOT_BE_REBOUND_OR_RESET')
         if any(e['status']=='RUNNING'for e in self.state['executions']):self.close();raise Stop('INTERRUPTED_LEASE_HELD_NO_AUTOMATIC_RETRY')
-        if self.state['status']=='HOLD_FAILURE':self.close();raise Stop('ACTUAL_SOURCE_FAILURE_HELD')
+        try:self.validate_held_state()
+        except BaseException:self.close();raise
         try:self.save()
         except BaseException:self.close();raise
     def __enter__(self):return self
+    def validate_held_state(self):
+        if self.state['status']=='HOLD_FAILURE':raise Stop('ACTUAL_SOURCE_FAILURE_HELD')
+    def validate_spec(self,spec):return validate_request(spec,self.grant,frozen=self.state['inventory_freeze'])
+    def check_form(self,spec):
+        if spec['group']=='kind_inventory'and spec['method']=='POST':
+            hashes={r.get('sha256')for r in self.state['requests']if r['group']=='kind_inventory'and r['status']=='COMPLETE'}
+            if spec['kind_binding']['form_sha256']not in hashes:raise Stop('KIND_FORM_NOT_IN_VERIFIED_CACHE')
+    def validate_body(self,spec,body):return validate_response(spec,body)
+    def group_limit(self,group):return self.grant['group_limits'][group]
+    def phase_for(self,group):return GROUP_PHASE[group]
     def __exit__(self,kind,error,tb):
         try:
             if self.execution:
@@ -214,18 +227,15 @@ class Collector:
         return body
     def get(self,spec):
         spec=json.loads(raw(spec))
-        frozen=self.state['inventory_freeze'];key=validate_request(spec,self.grant,frozen=frozen)
-        if spec['group']=='kind_inventory'and spec['method']=='POST':
-            hashes={r.get('sha256')for r in self.state['requests']if r['group']=='kind_inventory'and r['status']=='COMPLETE'}
-            if spec['kind_binding']['form_sha256']not in hashes:raise Stop('KIND_FORM_NOT_IN_VERIFIED_CACHE')
+        key=self.validate_spec(spec);self.check_form(spec)
         cached=self.cached(key)
         if cached is not None:return cached
         # Reserve time for private remote persistence and the final checkpoint.
         if self.monotonic()+90>=self.deadline:raise Deadline('STOP_BEFORE_600S_CHECKPOINT_SAVED')
         if self.now()>datetime.fromisoformat(self.grant['expires_at']):raise Stop('APPROVAL_EXPIRED')
         if self.execution and day(self.now())!=self.execution['day_kst']:raise Deadline('STOP_AT_KST_DAY_BOUNDARY')
-        phase=GROUP_PHASE[spec['group']]
-        if len(self.state['requests'])>=self.grant['max_HTTP']or sum(r['phase']==phase for r in self.state['requests'])>=self.grant['phase_limits'][phase]or sum(r['group']==spec['group']for r in self.state['requests'])>=self.grant['group_limits'][spec['group']]:raise Stop('TOTAL_PHASE_OR_GROUP_HTTP_EXHAUSTED')
+        phase=self.phase_for(spec['group'])
+        if len(self.state['requests'])>=self.grant['max_HTTP']or sum(r['phase']==phase for r in self.state['requests'])>=self.grant['phase_limits'][phase]or sum(r['group']==spec['group']for r in self.state['requests'])>=self.group_limit(spec['group']):raise Stop('TOTAL_PHASE_OR_GROUP_HTTP_EXHAUSTED')
         self.start()
         row=dict(id=key,phase=phase,group=spec['group'],request=spec,execution_id=self.execution['id'],status='ATTEMPT_STARTED',started_at=stamp(self.now()))
         self.state['requests'].append(row);self.save()  # durable accounting BEFORE transport
@@ -236,9 +246,11 @@ class Collector:
             row.update(status='RESPONSE_RECEIVED',body_path=location,bytes=len(body),sha256=sha(body));self.save()
             if self.preserve:self.preserve(location,body,self.deadline)
             row['private_remote_preserved']=bool(self.preserve)
-            validate_response(spec,body)
+            self.validate_body(spec,body)
             row.update(status='COMPLETE',body_path=location,bytes=len(body),sha256=sha(body),finished_at=stamp(self.now()))
             atomic(self.root/'receipts'/str(key+'.json'),row);self.save();return body
+        except DataUnavailable as exc:
+            row.update(status='SOURCE_GAP_NO_RETRY',reason=str(exc));self.save();raise
         except BaseException:
             row['status']='FAILED_NO_RETRY';self.save();raise
     def freeze(self,inventory,targets):
