@@ -211,6 +211,14 @@ def targets_from_inventories(inventories,grant):
                 else:spec.update(url='https://opendart.fss.or.kr/api/document.xml',params=dict(rcept_no=receipt))
                 targets.append(spec)
     unique={request_id(s):s for s in targets}
+    # The three annual slots mean one issuer confirmation each. Additional
+    # original/corrected versions remain mandatory review candidates within
+    # the SAME16event-call pool, never crowd out the other fixed issuers.
+    seen_annual=set()
+    for s in sorted(unique.values(),key=lambda s:(s['security'],s['receipt'])):
+        if s['group']=='annual':
+            if s['security']in seen_annual:s['group']='event'
+            else:seen_annual.add(s['security'])
     ordered=sorted(unique.values(),key=lambda s:(0 if s['group']=='annual'else 1 if 'opendart' in s['url'] else 2,s['security'],s['receipt']))
     return ordered,unclassified
 
