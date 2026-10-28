@@ -1,0 +1,31 @@
+{
+  "calendar_urls": [
+    "https://global.krx.co.kr/contents/GLB/06/0602/0602010201/GLB0602010201T1.jsp",
+    "https://global.krx.co.kr/contents/GLB/06/0602/0602020204/GLB0602020204T1.jsp"
+  ],
+  "classification": "RESEARCH_ONLY",
+  "contract": "b2-purpose-amendment-v1",
+  "cumulative_group_limits": {
+    "annual": 3,
+    "calendar": 2,
+    "dart_inventory": 6,
+    "event": 16,
+    "execution_market": 2,
+    "kind_inventory": 6,
+    "signal_market": 1
+  },
+  "expires_at": "2026-11-04T23:59:59+09:00",
+  "final_valuation": "2010-12-30",
+  "financial_publication": "HOLD",
+  "form_sha256": "55ad8d2a02ebe0b5c1f43b58d35182d56e8c233b662184f9a64001c6067327fb",
+  "original_approval_sha256": "d95188d3713c69340951e3d8c2ac56164344b2b7110ce172177cc9f1e20eb827",
+  "proposed_first_fill": "2010-05-03",
+  "remaining_HTTP": 35,
+  "remaining_executions": 1,
+  "reset_budget": false,
+  "retries": 0,
+  "seconds": 600,
+  "shared_KST_daily_limit": 1,
+  "signal_date": "2010-04-30",
+  "strategy_id": "research_fixed_three_q3_b2_20100430"
+}

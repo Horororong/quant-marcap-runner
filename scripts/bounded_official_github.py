@@ -141,7 +141,7 @@ class PrivateJournal:
 
 def main():
     import argparse
-    parser=argparse.ArgumentParser();parser.add_argument('--private-root',required=True);parser.add_argument('--grant',required=True)
+    parser=argparse.ArgumentParser();parser.add_argument('--private-root',required=True);parser.add_argument('--grant',required=True);parser.add_argument('--b2-amendment')
     args=parser.parse_args()
     if os.environ.get('GITHUB_REPOSITORY')!=PUBLIC or os.environ.get('GITHUB_REF')!='refs/heads/main'or os.environ.get('GITHUB_RUN_ATTEMPT')!='1':
         raise Stop('REVIEWED_MAIN_FIRST_ATTEMPT_ONLY')
@@ -155,6 +155,27 @@ def main():
     grant=json.loads(Path(args.grant).read_bytes())
     validate_grant(grant)
     journal=PrivateJournal(priv,args.private_root)
+    if args.b2_amendment:
+        from b2_official_execution import B2Collector,run_b2
+        amendment=json.loads(Path(args.b2_amendment).read_bytes())
+        # The retained official form is PRIVATE evidence, never a new public
+        # source-data dependency. Read exact bytes without a source request.
+        packed,_=content(priv,PRIVATE,PREFIX+'raw/'+amendment['form_sha256']+'.bin.gz',BRANCH)
+        form_body=gzip.decompress(packed)
+        if sha(form_body)!=amendment['form_sha256']:raise Stop('PRIVATE_RETAINED_FORM_HASH_MISMATCH')
+        try:
+            with B2Collector(args.private_root,grant,history,source_ready=True,mirror=journal.mirror,preserve=journal.preserve,
+                             amendment=amendment,form_body=form_body)as c:
+                c.deadline=deadline;c.started=deadline-600;out=run_b2(c)
+            # Full outcome and inventory hashes stay PRIVATE; public summary
+            # contains status/counters only, no private paths or source bytes.
+            safe=dict(status=out['status'],source_collection_complete=False,source_HTTP_this_run=out['source_HTTP_this_run'],
+                      remaining=out['remaining'],new_financial_values=0,financial_eligible=False,
+                      classification='RESEARCH_ONLY',financial_publication='HOLD')
+        except __import__('bounded_official_evidence').Deadline:
+            safe=dict(status='STOPPED_TIME',source_collection_complete=False,financial_eligible=False,
+                      classification='RESEARCH_ONLY',financial_publication='HOLD',remaining=c.remaining())
+        print(json.dumps(safe,ensure_ascii=False));return
     # This first operational draft only performs the fixed initial inventory.
     # KIND criteria/pagination must be derived from its returned official form;
     # no guessed form, incomplete inventory freeze, or conditional HTTP occurs.

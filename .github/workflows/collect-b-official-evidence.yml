@@ -1,11 +1,13 @@
-# PREPARED ONLY. Copy to .github/workflows/collect-b-official-evidence.yml
-# only after explicit operating-code publication/main approval and required CI.
-name: Fixed-three B official evidence; private raw; financial HOLD
+name: Fixed-three B2 official evidence; original budget; private raw
 on:
   pull_request:
     paths:
       - scripts/bounded_official_evidence.py
       - scripts/bounded_official_github.py
+      - config/research/b2_evidence_amendment_20261028.json
+      - scripts/test_b2_official_execution.py
+      - scripts/b2_official_execution.py
+      - scripts/b_official_request_preparation.py
       - scripts/test_bounded_official_evidence.py
       - scripts/test_bounded_official_github.py
       - config/research/fixed_three_evidence_approval_20261028.json
@@ -13,7 +15,7 @@ on:
   workflow_dispatch:
     inputs:
       collect:
-        description: Execute the approved fixed initial inventory; false only validates
+        description: Execute remaining approved B2 purpose once; false only validates
         type: boolean
         default: false
 concurrency:
@@ -39,6 +41,10 @@ jobs:
             /scripts/restore_pinned_financial_kit.py
             /scripts/bounded_official_evidence.py
             /scripts/bounded_official_github.py
+            /config/research/b2_evidence_amendment_20261028.json
+            /scripts/test_b2_official_execution.py
+            /scripts/b2_official_execution.py
+            /scripts/b_official_request_preparation.py
             /scripts/test_bounded_official_evidence.py
             /scripts/test_bounded_official_github.py
             /config/research/fixed_three_evidence_approval_20261028.json
@@ -55,7 +61,7 @@ jobs:
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
       - name: Offline finite-budget, interruption and private-storage tests; no source secrets
         run: |
-          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import sys,unittest;sys.path.insert(0,"scripts");s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_bounded_official_evidence","test_bounded_official_github"]);r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import sys,unittest;sys.path.insert(0,"scripts");s=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromName(x)for x in ["test_bounded_official_evidence","test_bounded_official_github","test_b2_official_execution"]);r=unittest.TextTestRunner(verbosity=2).run(s);raise SystemExit(not r.wasSuccessful())'
   collect:
     needs: validate
     if: github.event_name == 'workflow_dispatch' && inputs.collect == true && github.ref == 'refs/heads/main' && github.run_attempt == 1
@@ -72,6 +78,10 @@ jobs:
             /scripts/restore_pinned_financial_kit.py
             /scripts/bounded_official_evidence.py
             /scripts/bounded_official_github.py
+            /config/research/b2_evidence_amendment_20261028.json
+            /scripts/test_b2_official_execution.py
+            /scripts/b2_official_execution.py
+            /scripts/b_official_request_preparation.py
             /scripts/test_bounded_official_evidence.py
             /scripts/test_bounded_official_github.py
             /config/research/fixed_three_evidence_approval_20261028.json
@@ -84,7 +94,7 @@ jobs:
           python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
           python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
           "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
-      - name: Fixed initial B inventory; 600 seconds includes private persistence
+      - name: Approved B2 remaining purpose; 600 seconds includes private persistence
         env:
           GITHUB_TOKEN: ${{ github.token }}
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
@@ -94,7 +104,7 @@ jobs:
           set -o pipefail
           umask 077
           echo "Actual source checkout: $GITHUB_SHA"
-          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/bounded_official_github.py",run_name="__main__")' --private-root "$RUNNER_TEMP/b-private" --grant config/research/fixed_three_evidence_approval_20261028.json | tee "$RUNNER_TEMP/b-summary.json"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/bounded_official_github.py",run_name="__main__")' --private-root "$RUNNER_TEMP/b-private" --grant config/research/fixed_three_evidence_approval_20261028.json --b2-amendment config/research/b2_evidence_amendment_20261028.json | tee "$RUNNER_TEMP/b-summary.json"
       - name: Business outcome; a stopped or partial inventory is not B completion
         if: always()
         run: |
