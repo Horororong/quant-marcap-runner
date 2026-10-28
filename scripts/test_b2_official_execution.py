@@ -139,5 +139,17 @@ class B2Operations(unittest.TestCase):
         def mirror(*args):raise Stop('PRIVATE_WRITE_FAILED')
         with self.assertRaises(Stop):self.collector(mirror=mirror)
         self.assertFalse(self.calls)
+    def test_annual_versions_cannot_consume_other_issuers_three_slots(self):
+        inventories={}
+        for s in primary_requests(G,kind_form_contract(FORM)):
+            if s['group']!='dart_inventory':continue
+            p=dart_page(s,response(s,1));inventories['DART:'+s['security']]=dict(status='COMPLETE',evidence={'pages':[p]})
+        first=inventories['DART:000500']['evidence']['pages'][0]
+        original=copy.deepcopy(first['rows'][-1]);original.update(rcept_no='20110401000001',rcept_dt='20110401',report_nm='[기재정정] 사업보고서 (2010.12)');first['rows'].append(original)
+        targets,_=targets_from_inventories(inventories,G)
+        self.assertEqual({s['security']for s in targets if s['group']=='annual'},set(MEMBERS))
+        self.assertEqual(sum(s['group']=='annual'for s in targets),3)
+        self.assertEqual(next(s for s in targets if s['receipt']=='20110401000001')['group'],'event')
+        self.assertTrue(all(s['group']=='annual'for s in targets[:3]))
 
 if __name__=='__main__':unittest.main(verbosity=2)
