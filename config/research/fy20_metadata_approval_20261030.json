@@ -1,0 +1,136 @@
+{
+  "approval_id": "fy20-asof-metadata-20261030",
+  "approved": true,
+  "classification": "RESEARCH_ONLY",
+  "contract": "fy20-asof-metadata-v1",
+  "expires_at": "2026-11-04T23:59:59+09:00",
+  "fields": [
+    "revenue",
+    "net_income",
+    "ocf",
+    "equity"
+  ],
+  "financial_publication": "HOLD",
+  "group_limits": {
+    "correction": 10,
+    "list": 40,
+    "metadata": 20
+  },
+  "max_HTTP": 70,
+  "max_HTTP_per_execution": 35,
+  "max_executions": 2,
+  "max_executions_per_KST_day": 1,
+  "max_retries": 0,
+  "period_end": "2009-12-31",
+  "phase_limits": {
+    "correction": 10,
+    "list": 40,
+    "metadata": 20
+  },
+  "reset_prior_budgets": false,
+  "run_seconds": 600,
+  "scope": "OFS",
+  "signal_date": "2010-04-30",
+  "targets": [
+    {
+      "corp": "00306870",
+      "issuer": "손오공",
+      "receipt": "20100331002117"
+    },
+    {
+      "corp": "00426068",
+      "issuer": "주식회사 아이에스이커머스",
+      "receipt": "20100331002119"
+    },
+    {
+      "corp": "00405278",
+      "issuer": "주식회사 모빌리언스",
+      "receipt": "20100331002120"
+    },
+    {
+      "corp": "00378628",
+      "issuer": "KH 바텍",
+      "receipt": "20100331002121"
+    },
+    {
+      "corp": "00146269",
+      "issuer": "일신방직주식회사",
+      "receipt": "20100331002124"
+    },
+    {
+      "corp": "00106669",
+      "issuer": "세아베스틸",
+      "receipt": "20100331002127"
+    },
+    {
+      "corp": "00105271",
+      "issuer": "(주)케이씨씨",
+      "receipt": "20100331002132"
+    },
+    {
+      "corp": "00160612",
+      "issuer": "KPX화인케미칼(주)",
+      "receipt": "20100331002133"
+    },
+    {
+      "corp": "00142883",
+      "issuer": "(주)우신시스템",
+      "receipt": "20100331002136"
+    },
+    {
+      "corp": "00120030",
+      "issuer": "지에스건설(주)",
+      "receipt": "20100331002137"
+    },
+    {
+      "corp": "00146427",
+      "issuer": "(주)일야하이텍",
+      "receipt": "20100331002138"
+    },
+    {
+      "corp": "00106456",
+      "issuer": "티엘씨레저(주)",
+      "receipt": "20100331002146"
+    },
+    {
+      "corp": "00139889",
+      "issuer": "SKC주식회사",
+      "receipt": "20100331002149"
+    },
+    {
+      "corp": "00548865",
+      "issuer": "동북아21호선박투자회사",
+      "receipt": "20100331002153"
+    },
+    {
+      "corp": "00314000",
+      "issuer": "클라스타",
+      "receipt": "20100331002154"
+    },
+    {
+      "corp": "00164830",
+      "issuer": "현대중공업(주)",
+      "receipt": "20100331002155"
+    },
+    {
+      "corp": "00164672",
+      "issuer": "현대시멘트(주)",
+      "receipt": "20100331002159"
+    },
+    {
+      "corp": "00261212",
+      "issuer": "(주)시노펙스그린테크",
+      "receipt": "20100331002160"
+    },
+    {
+      "corp": "00480950",
+      "issuer": "주식회사 쉘라인",
+      "receipt": "20100331002163"
+    },
+    {
+      "corp": "00508274",
+      "issuer": "일진다이아몬드",
+      "receipt": "20100331002164"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+name: FY20 finite as-of metadata; private responses only
+on:
+  pull_request:
+    paths:
+      - .github/workflows/collect-fy20-asof-metadata.yml
+      - scripts/fy20_metadata_collection.py
+      - scripts/fy20_metadata_github.py
+      - scripts/test_fy20_metadata_collection.py
+      - config/research/fy20_metadata_approval_20261030.json
+      - docs/operations/FY20_METADATA.md
+  workflow_dispatch:
+    inputs:
+      collect:
+        type: boolean
+        default: false
+        description: Use the existing finite FY20 approval once; false validates only
+      use_private_correction_review:
+        type: boolean
+        default: false
+        description: Load already reviewed exact material correction targets from private storage
+concurrency:
+  group: super-value-fast-pit-backfill
+  cancel-in-progress: false
+permissions:
+  contents: read
+  actions: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/restore_pinned_financial_kit.py
+            /scripts/bounded_official_evidence.py
+            /scripts/bounded_official_github.py
+            /scripts/fy20_metadata_collection.py
+            /scripts/fy20_metadata_github.py
+            /scripts/test_fy20_metadata_collection.py
+            /config/research/fy20_metadata_approval_20261030.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact code and driver; original immutable kit; no Internet pip
+        env:
+          TARGET_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$TARGET_SHA"
+          echo "Actual code checkout: $TARGET_SHA"
+          echo "Actual workflow driver: ${{ github.workflow_sha }}"
+          python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify
+      - name: Finite budget, no retry, preserved history, private storage and pagination boundaries
+        run: |
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import sys,unittest;sys.path.insert(0,"scripts");r=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromName("test_fy20_metadata_collection"));raise SystemExit(not r.wasSuccessful())'
+  collect:
+    needs: validate
+    if: github.event_name == 'workflow_dispatch' && inputs.collect == true && github.ref == 'refs/heads/main' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/restore_pinned_financial_kit.py
+            /scripts/bounded_official_evidence.py
+            /scripts/bounded_official_github.py
+            /scripts/fy20_metadata_collection.py
+            /scripts/fy20_metadata_github.py
+            /config/research/fy20_metadata_approval_20261030.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Same pinned runtime for source processing
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          echo "Actual source checkout: $GITHUB_SHA"
+          python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify > "$RUNNER_TEMP/runtime.json"
+      - name: Finite metadata processing and private preservation; 600 seconds total
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+          B_PRIVATE_BACKUP_TOKEN: ${{ secrets.B_PRIVATE_BACKUP_TOKEN || secrets.GH_BACKUP_TOKEN }}
+          USE_REVIEW: ${{ inputs.use_private_correction_review }}
+        run: |
+          set -o pipefail
+          umask 077
+          args=()
+          if [ "$USE_REVIEW" = true ]; then args+=(--use-private-correction-review); fi
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/fy20_metadata_github.py",run_name="__main__")' --private-root "$RUNNER_TEMP/fy20-private" --grant config/research/fy20_metadata_approval_20261030.json "${args[@]}" | tee "$RUNNER_TEMP/fy20-summary.json"
+      - name: Counters and holds only; metadata is not financial eligibility
+        if: always()
+        run: |
+          if [ -f "$RUNNER_TEMP/fy20-summary.json" ]; then cat "$RUNNER_TEMP/fy20-summary.json" >> "$GITHUB_STEP_SUMMARY"; fi
+      # No schedule, artifact upload, public raw, release, cache or financial publish step.
