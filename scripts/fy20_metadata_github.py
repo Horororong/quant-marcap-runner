@@ -21,7 +21,7 @@ class FYJournal:
     No new storage destination, credential or public data channel is created.
     Paths and journal fingerprints are deliberately absent from public output.
     """
-    def __init__(self,api,root):
+    def __init__(self,api,root,*,rehydrate_ids=None):
         self.api=api;self.root=private_root(root)
         meta=api('GET','/repos/'+PRIVATE)
         if meta.get('full_name')!=PRIVATE or meta.get('private')is not True or not meta.get('permissions',{}).get('push'):
@@ -40,6 +40,7 @@ class FYJournal:
         if local.exists()and local.read_bytes()!=raw(existing):raise Stop('FY20_LOCAL_REMOTE_HISTORY_CONFLICT')
         atomic(local,existing)
         for r in existing['requests']:
+            if rehydrate_ids is not None and r['id'] not in rehydrate_ids:continue
             if not r.get('body_path'):continue
             if r['body_path']!='raw/'+r.get('sha256','')+'.bin':raise Stop('FY20_CACHE_PATH_NOT_CONTENT_BOUND')
             target=self.root/r['body_path']
