@@ -1,0 +1,24 @@
+{
+  "contract": "fy20-completion-continuation-v1",
+  "approval_id": "fy20-completion-20261103",
+  "base_approval": "fy20-asof-metadata-20261030",
+  "base_used_HTTP": 40,
+  "base_used_executions": 2,
+  "max_HTTP": 70,
+  "additional_HTTP": 0,
+  "additional_executions": 2,
+  "run_seconds": 600,
+  "max_retries": 0,
+  "max_executions_per_KST_day": 1,
+  "expires_at": "2026-11-06T23:59:59+09:00",
+  "phase_caps": {
+    "identity_calendar": 8,
+    "selected_holding": 22
+  },
+  "signal": "2010-04-30",
+  "proposed_fill": "2010-05-03",
+  "end": "2010-12-30",
+  "source_authority": "PROPOSAL_ONLY_UNTIL_USER_APPROVES",
+  "financial_publication": "HOLD",
+  "classification": "RESEARCH_ONLY"
+}
