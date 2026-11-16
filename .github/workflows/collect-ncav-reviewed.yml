@@ -1,0 +1,78 @@
+name: Reviewed finite NCAV evidence, private only
+on:
+  pull_request:
+    paths:
+      - scripts/ncav_*.py
+      - scripts/test_ncav*.py
+      - .github/workflows/collect-ncav-reviewed.yml
+  workflow_dispatch:
+    inputs:
+      collect:
+        type: boolean
+        default: false
+        description: Collect only under an installed private approval
+      plan_sha256:
+        type: string
+        required: true
+        description: Reviewed immutable plan fingerprint; never a private location
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: super-value-fast-pit-backfill
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          sparse-checkout: scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact checkout and pinned kit, no pip
+        env:
+          TARGET_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$TARGET_SHA"
+          echo "Code: $TARGET_SHA"
+          echo "Driver: ${{ github.workflow_sha }}"
+          python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify
+      - name: Queue, private CAS and source contract boundaries without source HTTP
+        run: |
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import sys,unittest;sys.path.insert(0,"scripts");r=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromNames(["test_ncav_coverage.Tests","test_ncav_operations"]));raise SystemExit(not r.wasSuccessful())'
+  collect:
+    needs: validate
+    if: github.event_name == 'workflow_dispatch' && inputs.collect && github.ref == 'refs/heads/main' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          sparse-checkout: scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore existing fixed runtime
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          python scripts/restore_pinned_financial_kit.py --output "$RUNNER_TEMP/fixed"
+          python "$RUNNER_TEMP/fixed/kit-parts/bootstrap_quant.py" --parts-dir "$RUNNER_TEMP/fixed/kit-parts" --destination "$RUNNER_TEMP/fixed/runtime"
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I "$RUNNER_TEMP/fixed/runtime/scripts/sandbox_runtime.py" verify
+      - name: Approved private request scope; one 600 second accounting window
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          B_PRIVATE_BACKUP_TOKEN: ${{ secrets.B_PRIVATE_BACKUP_TOKEN }}
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+          KRX_AUTH_KEY: ${{ secrets.KRX_AUTH_KEY }}
+          PLAN_SHA256: ${{ inputs.plan_sha256 }}
+        run: |
+          umask 077
+          "$RUNNER_TEMP/fixed/runtime/.venv/bin/python" -I -c 'import runpy,sys;sys.path.insert(0,"scripts");runpy.run_path("scripts/ncav_actions_bridge.py",run_name="__main__")' --plan-sha256 "$PLAN_SHA256" --private-root "$RUNNER_TEMP/ncav-private"
+      # No schedule, upload-artifact, cache, release or public data commit.
