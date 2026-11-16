@@ -301,13 +301,22 @@ def scored_signals_from_panel(
 
     for dt in signal_dates_from_panel(p, spec):
         cs = p[p["Date"] == dt].copy()
+        full_cs=cs
+        if spec.universe.codes:
+            missing=set(spec.universe.codes)-set(cs['Code'])
+            if missing:raise RuntimeError('FIXED_COHORT_MISSING: '+','.join(sorted(missing)))
+            cs=cs[cs['Code'].isin(spec.universe.codes)].copy()
+            if not cs['Market'].isin(spec.universe.markets).all():raise RuntimeError('FIXED_COHORT_MARKET_MISMATCH')
         external_frames: list[pd.DataFrame] = []
         for source, provider in providers.items():
             requested = sorted(
                 set(fields_for_source(spec.factors, source))
                 | set(filter_fields_for_source(spec.universe.filters, source))
             )
-            frame = provider.factor_frame(pd.Timestamp(dt), cs, requested)
+            if source=='reviewed_ncav' and spec.universe.codes:
+                frame=provider.factor_frame(pd.Timestamp(dt),full_cs,requested,securities=spec.universe.codes)
+            else:
+                frame = provider.factor_frame(pd.Timestamp(dt), cs, requested)
             if frame["Code"].duplicated().any():
                 raise AssertionError(f"{source} provider returned duplicate Code rows")
             external_frames.append(frame)
@@ -370,7 +379,11 @@ def factor_provider_coverage_audit(
                 set(fields_for_source(spec.factors, source))
                 | set(filter_fields_for_source(spec.universe.filters, source))
             )
-            rows.extend(provider.coverage_report(pd.Timestamp(dt), requested))
+            if source=='reviewed_ncav' and spec.universe.codes:
+                cs=panel[pd.to_datetime(panel['Date']).dt.normalize()==pd.Timestamp(dt)].copy()
+                rows.extend(provider.coverage_report(pd.Timestamp(dt),requested,securities=spec.universe.codes,cross_section=cs))
+            else:
+                rows.extend(provider.coverage_report(pd.Timestamp(dt), requested))
     return pd.DataFrame(rows)
 
 

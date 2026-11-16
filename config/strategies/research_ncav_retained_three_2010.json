@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "strategy_id": "research_ncav_retained_three_2010",
+  "title": "보존 공시 고정 3사 · 2009 FY NCAV/발행사 시총 상위 1사 · 2010년 4월 선정 후 보유",
+  "asset_class": "kr_equity",
+  "universe": {
+    "markets": [
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "codes": [
+      "089890",
+      "026540",
+      "007160"
+    ],
+    "filters": [],
+    "require_tradable_on_signal": false
+  },
+  "factors": [
+    {
+      "name": "ncav_yield",
+      "source": "reviewed_ncav",
+      "field": "ncav_to_market_cap",
+      "direction": "high",
+      "weight": 1.0,
+      "transform": "identity"
+    }
+  ],
+  "portfolio": {
+    "number_of_positions": 1,
+    "weighting": "equal"
+  },
+  "rebalance": {
+    "frequency": "months",
+    "months": [
+      4
+    ],
+    "trading_day": "last"
+  },
+  "execution": {
+    "lag_sessions": 1,
+    "price": "next_close"
+  },
+  "cost_scenarios": {
+    "base": {
+      "commission_bps": 1.5,
+      "sell_tax_bps": 15.0,
+      "spread_bps": 3.0,
+      "slippage_bps": 5.0,
+      "market_impact_bps": 0.0
+    }
+  },
+  "period": {
+    "start": "2010-04-30",
+    "end": "2010-12-30",
+    "book_start": "2010-04-30",
+    "book_end": "2010-12-30",
+    "as_of_date": "2010-12-30"
+  },
+  "benchmark": null,
+  "initial_capital": 10000000.0,
+  "metadata": {
+    "classification": "RESEARCH_ONLY",
+    "population_basis": "Complete three-subject retained official-publication probe cohort; not a market sample or return-selected subset",
+    "fixed_financial_period": "2009-12-31 FY",
+    "scope_policy": "CFS known available by signal preferred; otherwise verified same-statement OFS labelled separately. Date-only 2010-04-30 attachment is unavailable for that signal.",
+    "signal_time": "2010-04-30 close",
+    "first_execution": "2010-05-03 next close, official positive-volume snapshots retained",
+    "ranking": "Highest NCAV / complete issuer share-class capitalization; no positive-NCAV filter; code ascending tie-break",
+    "initial_cash": "KRW 10000000; no additional contributions",
+    "untradable": "No hypothetical fill or replacement; existing engine trading/CA gates; unresolved required fill blocks",
+    "holding": "No further rebalance; final mark at 2010-12-30, no forced liquidation",
+    "cost_assumptions": "Existing fixed research bps; not certified 2010 statutory tax or historical impact",
+    "limits": "All three inputs must qualify. No NAV until historical issuer/version/capitalization and actual holding-rights evidence is reviewed."
+  }
+}

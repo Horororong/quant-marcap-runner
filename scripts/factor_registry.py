@@ -16,7 +16,7 @@ import pandas as pd
 
 from krx_technical_factor_adapter import TECHNICAL_FACTOR_SPECS
 
-FACTOR_REGISTRY_VERSION = "7"
+FACTOR_REGISTRY_VERSION = "8"
 
 
 @dataclass(frozen=True)
@@ -88,6 +88,13 @@ for _field, _description in {
 }.items():
     register_factor(FactorDefinition("dart", _field, "external", _description))
 
+
+# Reviewed NCAV is independent of quarterly profit/flow reconstruction.
+for _field, _description in {
+    "ncav": "same-filing/scope/period KRW current assets minus total liabilities; source admission required",
+    "ncav_to_market_cap": "admitted issuer NCAV / complete issuer share-class signal-date capitalization",
+}.items():
+    register_factor(FactorDefinition("reviewed_ncav", _field, "external", _description))
 
 # KRX exchange-reported technical factors.
 for _field, _spec in TECHNICAL_FACTOR_SPECS.items():
@@ -342,7 +349,10 @@ class KrxTechnicalFactorProvider:
         return [{"source": self.source, **row} for row in rows]
 
 
+from ncav_provider import NcavProvider
+
 PROVIDER_FACTORIES = {
+    "reviewed_ncav": NcavProvider,
     "dart": DartFactorProvider,
     "technical": KrxTechnicalFactorProvider,
 }

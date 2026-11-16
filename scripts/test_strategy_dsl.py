@@ -61,10 +61,10 @@ def main() -> None:
     plan = compile_execution_plan(spec)
     assert plan["project_engine"].endswith("v2-16_CURRENT.py")
     assert plan["strategy_fingerprint"] == spec.fingerprint()
-    assert plan["factor_registry_version"] == "7"
+    assert plan["factor_registry_version"] == "8"  # Added reviewed NCAV source; economic DSL unchanged
     assert plan["execution_engine_version"] == "v2-16-exec-3"
     assert plan["corporate_action_registry_version"] == "5"
-    assert plan["dsl_machine_contract_version"] == "23"
+    assert plan["dsl_machine_contract_version"] == "24"  # Optional explicit cohort, no legacy numeric change.
     assert plan["preflight_contract_version"] == "3"
     assert plan["history_audit_contract_version"] == "1"
     assert plan["krx_market_normalization_version"] == "1"

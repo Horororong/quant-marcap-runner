@@ -151,6 +151,23 @@
                 "properties": {
                   "field": {
                     "enum": [
+                      "ncav",
+                      "ncav_to_market_cap"
+                    ]
+                  },
+                  "source": {
+                    "const": "reviewed_ncav"
+                  }
+                },
+                "required": [
+                  "source",
+                  "field"
+                ]
+              },
+              {
+                "properties": {
+                  "field": {
+                    "enum": [
                       "momentum_12_0",
                       "momentum_12_1",
                       "momentum_3_1",
@@ -377,6 +394,15 @@
     "universe": {
       "additionalProperties": false,
       "properties": {
+        "codes": {
+          "items": {
+            "pattern": "^[0-9A-Z]{6}$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
         "filters": {
           "default": [],
           "items": {
@@ -533,6 +559,8 @@
                   "momentum_12_1",
                   "momentum_3_1",
                   "momentum_6_1",
+                  "ncav",
+                  "ncav_to_market_cap",
                   "quarterly_net_margin",
                   "quarterly_ocf_margin",
                   "quarterly_roe",

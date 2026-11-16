@@ -175,6 +175,8 @@ def build_strategy_json_schema() -> dict:
                 "additionalProperties": False,
                 "required": ["markets"],
                 "properties": {
+                    "codes": {"type": "array", "minItems": 1, "uniqueItems": True,
+                              "items": {"type": "string", "pattern": "^[0-9A-Z]{6}$"}},
                     "markets": {
                         "type": "array",
                         "minItems": 1,
@@ -375,6 +377,7 @@ class UniverseSpec:
     markets: tuple[str, ...] = ("KOSPI", "KOSDAQ")
     filters: tuple[FilterSpec, ...] = ()
     require_tradable_on_signal: bool = True
+    codes: tuple[str, ...] = ()
 
     @classmethod
     def from_dict(cls, raw: Mapping[str, Any]) -> "UniverseSpec":
@@ -385,7 +388,11 @@ class UniverseSpec:
         if bad:
             raise ValueError(f"unsupported KRX markets: {sorted(bad)}")
         filters = tuple(FilterSpec.from_dict(x) for x in raw.get("filters", []))
-        return cls(markets=markets, filters=filters, require_tradable_on_signal=bool(raw.get("require_tradable_on_signal", True)))
+        codes=tuple(raw.get("codes",()))
+        import re
+        if len(codes)!=len(set(codes)) or any(not isinstance(c,str) or not re.fullmatch('[0-9A-Z]{6}',c) for c in codes):
+            raise ValueError('universe.codes must contain distinct exact six-character security codes')
+        return cls(markets=markets, filters=filters, require_tradable_on_signal=bool(raw.get("require_tradable_on_signal", True)),codes=codes)
 
 
 @dataclass(frozen=True)
@@ -627,6 +634,8 @@ class StrategySpec:
     def to_dict(self) -> dict[str, Any]:
         out = asdict(self)
         out["rebalance"] = self.rebalance.to_dict()
+        if not self.universe.codes:
+            out["universe"].pop("codes")
         # Retain normalized JSON/fingerprints of existing top-N strategies.
         if self.portfolio.selection == "top_n":
             out["portfolio"].pop("selection")
@@ -673,7 +682,7 @@ def compile_execution_plan(spec: StrategySpec) -> dict[str, Any]:
             "held_return_tolerance_bps": HELD_RETURN_TOLERANCE_BPS,
             "session_coverage": "exact XKRX sessions in requested period for each requested market; fail on missing or unexpected dates",
         },
-        "universe": asdict(spec.universe),
+        "universe": spec.to_dict()["universe"],
         "factors": [asdict(x) for x in spec.factors],
         "factor_contracts": [
             {

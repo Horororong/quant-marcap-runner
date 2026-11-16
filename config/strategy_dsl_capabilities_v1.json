@@ -157,7 +157,7 @@
     "version": "1",
     "weighting": "equal within each bucket"
   },
-  "dsl_machine_contract_version": "23",
+  "dsl_machine_contract_version": "24",
   "execution_constraints": {
     "held_return_failure_policy": "fail on missing/non-finite reference or inconsistent effective held return; never substitute reference for NAV return",
     "held_return_reference": "mandatory in public DSL runners: decimal ChangesRatio/100 checked before NAV and before execution-day rebalance",
@@ -173,7 +173,7 @@
     "high",
     "low"
   ],
-  "factor_registry_version": "7",
+  "factor_registry_version": "8",
   "factor_source_constraints": {
     "dart": {
       "period_policies": {
@@ -319,6 +319,18 @@
       "storage": "panel"
     },
     {
+      "description": "same-filing/scope/period KRW current assets minus total liabilities; source admission required",
+      "field": "ncav",
+      "source": "reviewed_ncav",
+      "storage": "external"
+    },
+    {
+      "description": "admitted issuer NCAV / complete issuer share-class signal-date capitalization",
+      "field": "ncav_to_market_cap",
+      "source": "reviewed_ncav",
+      "storage": "external"
+    },
+    {
       "description": "compound KRX daily ChangesRatio over roughly 12 months through the signal date",
       "field": "momentum_12_0",
       "source": "technical",
@@ -462,6 +474,18 @@
       "description": "compound KRX daily ChangesRatio over roughly 6 months, skipping the latest 1 month",
       "field": "momentum_6_1",
       "source": "technical",
+      "storage": "external"
+    },
+    {
+      "description": "same-filing/scope/period KRW current assets minus total liabilities; source admission required",
+      "field": "ncav",
+      "source": "reviewed_ncav",
+      "storage": "external"
+    },
+    {
+      "description": "admitted issuer NCAV / complete issuer share-class signal-date capitalization",
+      "field": "ncav_to_market_cap",
+      "source": "reviewed_ncav",
       "storage": "external"
     },
     {

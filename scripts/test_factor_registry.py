@@ -56,7 +56,7 @@ def main() -> None:
     assert registry.get_factor_definition("technical", "volatility_3m").storage == "external"
     assert "dart" in registry.supported_sources()
     assert "book_to_price" in registry.supported_fields("dart")
-    assert registry.FACTOR_REGISTRY_VERSION == "7"
+    assert registry.FACTOR_REGISTRY_VERSION == "8"  # NCAV provider registration contract
     constraints = registry.factor_source_constraints()
     assert constraints["dart"]["rebalance_months"] == [4, 10]
 
