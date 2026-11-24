@@ -40,8 +40,10 @@ class FakeStore:
         if name in self.files:
             if body.get('sha')!=self.versions[name] or self.fail_cas:raise RuntimeError('CAS_CONFLICT')
         elif 'sha'in body:raise AssertionError('Invalid creation')
-        self.writes+=1;self.files[name]=base64.b64decode(body['content']);self.versions[name]=str(self.writes+1)
-        return {'content':{'sha':self.versions[name]}}
+        self.writes += 1
+        self.files[name] = base64.b64decode(body['content'])
+        self.versions[name] = format(self.writes + 1, '040x')
+        return {'content': {'sha': self.versions[name]}, 'commit': {'sha': format(self.writes, '040x')}}
 
 class Operations(unittest.TestCase):
     def setUp(self):
