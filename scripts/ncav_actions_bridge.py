@@ -26,14 +26,14 @@ def validate_envelope(envelope, expected):
         raise PermissionError('REVIEWED_APPROVAL_REQUIRED')
     if p.get('grant_id','').startswith(('fy20','b2','b-')) or not p.get('grant_id','').startswith('ncav-'):
         raise ValueError('SEPARATE_NCAV_GRANT_REQUIRED')
-    if p.get('max_runs')!=2 or p.get('retries')!=0 or p.get('seconds_per_execution')!=600:
+    if type(p.get('max_runs')) is not int or p['max_runs'] not in (1, 2) or p.get('retries')!=0 or p.get('seconds_per_execution')!=600:
         raise ValueError('FINITE_LIMITS_CHANGED')
     if not 0<p.get('max_http',0)<=479 or not 0<p.get('max_http_per_run',0)<=p['max_http']:
         raise ValueError('HTTP_LIMITS')
     if p.get('financial_publication')!='HOLD' or p.get('classification')!='RESEARCH_ONLY':
         raise ValueError('QUALITY_GATES_CHANGED')
     caps=p.get('per_run_http_caps',[p['max_http_per_run']]*p['max_runs'])
-    if len(caps)!=2 or any(not isinstance(c,int)or not 0<c<=p['max_http_per_run']for c in caps):raise ValueError('PER_RUN_HTTP_CAPS')
+    if len(caps)!=p['max_runs'] or any(not isinstance(c,int)or not 0<c<=p['max_http_per_run']for c in caps):raise ValueError('PER_RUN_HTTP_CAPS')
     return p
 
 class Journal:
@@ -165,12 +165,29 @@ class Journal:
 
     def preserve(self,body):
         name=self.m.PREFIX+'raw/'+digest(body)+'.bin.gz'
-        try:packed,_=self.m.content(self.api,self.m.PRIVATE,name,self.m.BRANCH)
+        try:
+            packed, _ = self.m.content(self.api, self.m.PRIVATE, name, self.m.BRANCH)
         except self.m.Missing:
-            self.api('PUT',f'/repos/{self.m.PRIVATE}/contents/{name}',dict(message='Private retained response',
-                branch=self.m.BRANCH,content=base64.b64encode(gzip.compress(body,mtime=0)).decode()))
-            packed,_=self.m.content(self.api,self.m.PRIVATE,name,self.m.BRANCH)
-        if digest(gzip.decompress(packed))!=digest(body):raise ValueError('PRIVATE_READBACK_CHANGED')
+            result = self.api('PUT', f'/repos/{self.m.PRIVATE}/contents/{name}', dict(
+                message='Private retained response', branch=self.m.BRANCH,
+                content=base64.b64encode(gzip.compress(body, mtime=0)).decode()))
+            # Read back the immutable result of this upload. A branch read can
+            # briefly miss a file whose commit was already accepted.
+            commit = result['commit']['sha']
+            blob = result['content']['sha']
+            if not re.fullmatch(r'[0-9a-f]{40}', commit) or not re.fullmatch(r'[0-9a-f]{40}', blob):
+                raise ValueError('PRIVATE_WRITE_RECEIPT_INVALID')
+            try:
+                packed, actual_blob = self.m.content(self.api, self.m.PRIVATE, name, commit)
+            except self.m.Missing:
+                stored_blob = self.api('GET', f'/repos/{self.m.PRIVATE}/git/blobs/{blob}')
+                if stored_blob['encoding'] != 'base64':
+                    raise ValueError('PRIVATE_BLOB_ENCODING')
+                packed, actual_blob = base64.b64decode(stored_blob['content']), stored_blob['sha']
+            if actual_blob != blob:
+                raise ValueError('PRIVATE_BLOB_CHANGED')
+        if digest(gzip.decompress(packed)) != digest(body):
+            raise ValueError('PRIVATE_READBACK_CHANGED')
 
 def collect_source(task, deadline, key_value, opener, plan=None, krx_key=None):
     # This bridge currently covers the frozen arithmetic financial/document
@@ -241,11 +258,14 @@ def main():
             '.github/workflows/collect-ncav-reviewed.yml','.github/workflows/collect-fy20-completion.yml'}for r in runs.get('workflow_runs',[])):
             raise PermissionError('OTHER_FINITE_COLLECTION_ACTIVE')
     check_history(h,now)
+    caps = j.plan.get('per_run_http_caps', [j.plan['max_http_per_run']] * j.plan['max_runs'])
+    run_index = len(j.outer.get('additional_finite_grants', {}).get(j.grant, {}).get('executions', []))
+    if run_index >= j.plan['max_runs']:
+        raise PermissionError('Execution budget exhausted')
     result=run(j.plan,j.root,approved=True,
         transport=lambda t:collect_source(t,deadline,os.environ['DART_API_KEY'],request.build_opener(NoRedirect()),j.plan,os.environ.get('KRX_AUTH_KEY')),
         acquire_shared_day=lambda *_:check_history(h,datetime.now(timezone.utc)),
-        seconds=min(600,int(deadline-time.monotonic())),max_http=j.plan.get('per_run_http_caps',[j.plan['max_http_per_run']]*2)[
-            min(1,len(j.outer.get('additional_finite_grants',{}).get(j.grant,{}).get('executions',[])))],
+        seconds=min(600,int(deadline-time.monotonic())),max_http=caps[run_index],
         now=now,mirror=j.mirror,preserve=j.preserve,reviewed_tasks=j.followups)
     print(json.dumps({**result,'new_PIT_values':0,'backtest_completed':False,'financial_publication':'HOLD'}))
 
