@@ -230,26 +230,33 @@ def collect_source(task, deadline, key_value, opener, plan=None, krx_key=None):
     if len(b)>32*1024*1024 or key_value.encode()in b:raise ValueError('SOURCE_SIZE_OR_SECRET')
     return classify_response(task,b)
 
-def main():
+def main(diag):
+    diag['stage'] = 'workflow_inputs'
     p=argparse.ArgumentParser();p.add_argument('--plan-sha256',required=True);p.add_argument('--private-root',required=True);a=p.parse_args()
     if not re.fullmatch('[0-9a-f]{64}',a.plan_sha256):raise ValueError('PLAN_HASH')
     # Existing deployed helpers, not new copies of private destination constants.
+    diag['stage'] = 'control_imports'
     import bounded_official_github as m
     from bounded_official_evidence import NoRedirect, check_history
     from fy20_metadata_github import complete_shared_history
+    diag['stage'] = 'runner_identity'
     if os.environ.get('GITHUB_REPOSITORY')!=m.PUBLIC or os.environ.get('GITHUB_REF')!='refs/heads/main' or os.environ.get('GITHUB_RUN_ATTEMPT')!='1':
         raise PermissionError('MAIN_FIRST_ATTEMPT_ONLY')
+    diag['stage'] = 'runner_credentials'
     if not all(os.environ.get(k)for k in ['GITHUB_TOKEN','B_PRIVATE_BACKUP_TOKEN','DART_API_KEY']):
         raise PermissionError('EXISTING_SECRET_INJECTION_REQUIRED')
     deadline=time.monotonic()+600
     public=m.API(os.environ['GITHUB_TOKEN'],deadline);private=m.API(os.environ['B_PRIVATE_BACKUP_TOKEN'],deadline)
+    diag['stage'] = 'private_plan'
     j=Journal(private,m,a.private_root,a.plan_sha256)
     j.reconcile_completed_runner(public)
+    diag['stage'] = 'verify_requests'
     j.verify_requests()
     if any(t.get('request',{}).get('url','').startswith('https://data-dbg.krx.co.kr/')for t in j.plan['tasks'])and not os.environ.get('KRX_AUTH_KEY'):
         raise PermissionError('KRX_SECRET_REQUIRED_NO_LEASE')
     # Check all existing finite histories. Do not rewrite FY/B/B2 counters.
     now=datetime.now(timezone.utc)
+    diag['stage'] = 'shared_history'
     h=complete_shared_history(public,private,now,os.environ['GITHUB_RUN_ID'],j)
     for status in ('in_progress','queued','waiting','requested','pending'):
         runs=public('GET',f'/repos/{m.PUBLIC}/actions/runs?status={status}&per_page=100')
@@ -262,6 +269,7 @@ def main():
     run_index = len(j.outer.get('additional_finite_grants', {}).get(j.grant, {}).get('executions', []))
     if run_index >= j.plan['max_runs']:
         raise PermissionError('Execution budget exhausted')
+    diag['stage'] = 'queue'
     result=run(j.plan,j.root,approved=True,
         transport=lambda t:collect_source(t,deadline,os.environ['DART_API_KEY'],request.build_opener(NoRedirect()),j.plan,os.environ.get('KRX_AUTH_KEY')),
         acquire_shared_day=lambda *_:check_history(h,datetime.now(timezone.utc)),
@@ -270,8 +278,17 @@ def main():
     print(json.dumps({**result,'new_PIT_values':0,'backtest_completed':False,'financial_publication':'HOLD'}))
 
 if __name__=='__main__':
-    try:main()
-    except Exception:
-        # Exception messages may contain source URLs, private keys or headers.
-        print(json.dumps(dict(status='HELD_NO_RETRY',backtest_completed=False,financial_publication='HOLD')))
-        raise SystemExit(2)from None
+    diag = {'stage': 'startup'}
+    try:
+        main(diag)
+    except Exception as exc:
+        # Log a fixed stage and allowlisted identifiers only.
+        message = str(exc)
+        known = {'PRIVATE_APPROVED_PLAN_NOT_INSTALLED', 'REVIEWED_APPROVAL_REQUIRED',
+                 'EXISTING_PRIVATE_ACCESS_REQUIRED', 'EXISTING_SECRET_INJECTION_REQUIRED',
+                 'MAIN_FIRST_ATTEMPT_ONLY', 'ONCE_PER_KST_DAY', 'OTHER_FINITE_COLLECTION_ACTIVE',
+                 'CONTROL_RESOURCE_NOT_FOUND', 'CONTROL_TRANSPORT_FAILURE_NO_RETRY'}
+        reason = message if message in known or re.fullmatch(r'CONTROL_HTTP_[0-9]{3}_NO_RETRY', message) else 'UNCLASSIFIED'
+        print(json.dumps(dict(status='HELD_NO_RETRY', stage=diag['stage'], reason=reason,
+                              backtest_completed=False, financial_publication='HOLD')))
+        raise SystemExit(2) from None
